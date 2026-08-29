@@ -26,7 +26,7 @@ class RegistriesListRepositoriesV2 extends \Jane\Generated\DigitalOcean\Runtime\
     }
     public function getUri(): string
     {
-        return str_replace(['{registry_name}'], [$this->registry_name], '/v2/registries/{registry_name}/repositoriesV2');
+        return str_replace(['{registry_name}'], [rawurlencode($this->registry_name)], '/v2/registries/{registry_name}/repositoriesV2');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

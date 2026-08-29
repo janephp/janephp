@@ -20,7 +20,7 @@ class FloatingIPsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
     }
     public function getUri(): string
     {
-        return str_replace(['{floating_ip}'], [$this->floating_ip], '/v2/floating_ips/{floating_ip}');
+        return str_replace(['{floating_ip}'], [rawurlencode($this->floating_ip)], '/v2/floating_ips/{floating_ip}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

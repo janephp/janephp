@@ -25,7 +25,7 @@ class AddRkszonesWlansHotspot20ByZoneId extends \Jane\Component\OpenApi3\Tests\E
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/wlans/hotspot20');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/wlans/hotspot20');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

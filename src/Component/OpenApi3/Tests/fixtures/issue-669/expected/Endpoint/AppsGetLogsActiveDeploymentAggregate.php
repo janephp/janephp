@@ -30,7 +30,7 @@ class AppsGetLogsActiveDeploymentAggregate extends \Jane\Generated\DigitalOcean\
     }
     public function getUri(): string
     {
-        return str_replace(['{app_id}'], [$this->app_id], '/v2/apps/{app_id}/logs');
+        return str_replace(['{app_id}'], [rawurlencode($this->app_id)], '/v2/apps/{app_id}/logs');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

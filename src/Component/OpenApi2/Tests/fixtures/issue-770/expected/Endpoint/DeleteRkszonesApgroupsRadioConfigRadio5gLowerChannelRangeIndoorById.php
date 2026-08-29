@@ -26,7 +26,7 @@ class DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorById extend
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}'], [$this->zoneId, $this->id], '/rkszones/{zoneId}/apgroups/{id}/radioConfig/radio5gLower/channelRangeIndoor');
+        return str_replace(['{zoneId}', '{id}'], [rawurlencode($this->zoneId), rawurlencode($this->id)], '/rkszones/{zoneId}/apgroups/{id}/radioConfig/radio5gLower/channelRangeIndoor');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

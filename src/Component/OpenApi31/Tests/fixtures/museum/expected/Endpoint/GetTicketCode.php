@@ -23,7 +23,7 @@ class GetTicketCode extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cli
     }
     public function getUri(): string
     {
-        return str_replace(['{ticketId}'], [$this->ticketId], '/tickets/{ticketId}/qr');
+        return str_replace(['{ticketId}'], [rawurlencode($this->ticketId)], '/tickets/{ticketId}/qr');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

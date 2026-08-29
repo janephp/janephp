@@ -27,7 +27,7 @@ class NfsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint
     }
     public function getUri(): string
     {
-        return str_replace(['{nfs_id}'], [$this->nfs_id], '/v2/nfs/{nfs_id}');
+        return str_replace(['{nfs_id}'], [rawurlencode($this->nfs_id)], '/v2/nfs/{nfs_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

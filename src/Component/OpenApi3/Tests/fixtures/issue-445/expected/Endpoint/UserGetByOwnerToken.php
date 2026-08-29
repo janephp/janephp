@@ -19,7 +19,7 @@ class UserGetByOwnerToken extends \PicturePark\API\Runtime\Client\BaseEndpoint i
     }
     public function getUri(): string
     {
-        return str_replace(['{tokenId}'], [$this->tokenId], '/v1/Users/owner/{tokenId}');
+        return str_replace(['{tokenId}'], [rawurlencode($this->tokenId)], '/v1/Users/owner/{tokenId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

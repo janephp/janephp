@@ -23,7 +23,7 @@ class FindAvcSignaturePackageApplicationByApplicationName extends \Jane\Componen
     }
     public function getUri(): string
     {
-        return str_replace(['{applicationName}'], [$this->applicationName], '/avc/signaturePackage/application/{applicationName}');
+        return str_replace(['{applicationName}'], [rawurlencode($this->applicationName)], '/avc/signaturePackage/application/{applicationName}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -20,7 +20,7 @@ class SchemaExists extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Schemas/{id}/exists');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Schemas/{id}/exists');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

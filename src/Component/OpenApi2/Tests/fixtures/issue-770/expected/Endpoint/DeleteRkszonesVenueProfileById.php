@@ -23,7 +23,7 @@ class DeleteRkszonesVenueProfileById extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/{id}/venueProfile');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/{id}/venueProfile');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

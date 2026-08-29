@@ -23,7 +23,7 @@ class FindZoneSwitchGroupLinksById extends \Jane\Component\OpenApi3\Tests\Expect
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/zoneSwitchGroupLinks/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/zoneSwitchGroupLinks/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

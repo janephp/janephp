@@ -32,7 +32,7 @@ class ListNotificationEventsInAPortfolioFiltered extends \CreditSafe\API\Runtime
     }
     public function getUri(): string
     {
-        return str_replace(['{portfolioId}'], [$this->portfolioId], '/monitoring/portfolios/{portfolioId}/notificationEvents');
+        return str_replace(['{portfolioId}'], [rawurlencode($this->portfolioId)], '/monitoring/portfolios/{portfolioId}/notificationEvents');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

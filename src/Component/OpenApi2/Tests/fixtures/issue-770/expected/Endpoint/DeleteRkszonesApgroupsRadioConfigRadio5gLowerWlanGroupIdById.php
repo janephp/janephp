@@ -26,7 +26,7 @@ class DeleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdById extends \Jane
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}'], [$this->zoneId, $this->id], '/rkszones/{zoneId}/apgroups/{id}/radioConfig/radio5gLower/wlanGroupId');
+        return str_replace(['{zoneId}', '{id}'], [rawurlencode($this->zoneId), rawurlencode($this->id)], '/rkszones/{zoneId}/apgroups/{id}/radioConfig/radio5gLower/wlanGroupId');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

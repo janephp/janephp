@@ -25,7 +25,7 @@ class BusinessProcessWaitForLifeCycles extends \PicturePark\API\Runtime\Client\B
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/BusinessProcesses/{id}/waitLifeCycles');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/BusinessProcesses/{id}/waitLifeCycles');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

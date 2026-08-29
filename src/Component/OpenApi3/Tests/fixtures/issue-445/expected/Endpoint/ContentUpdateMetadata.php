@@ -34,7 +34,7 @@ class ContentUpdateMetadata extends \PicturePark\API\Runtime\Client\BaseEndpoint
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Contents/{id}/metadata');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Contents/{id}/metadata');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -37,7 +37,7 @@ class ServiceLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/services/{id}/logs');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/services/{id}/logs');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -26,7 +26,7 @@ class DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Compo
     }
     public function getUri(): string
     {
-        return str_replace(['{id}', '{spaceId}'], [$this->id, $this->spaceId], '/dpDhcpProfiles/{id}/dpDhcpProfileOptionSpaces/{spaceId}');
+        return str_replace(['{id}', '{spaceId}'], [rawurlencode($this->id), rawurlencode($this->spaceId)], '/dpDhcpProfiles/{id}/dpDhcpProfileOptionSpaces/{spaceId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

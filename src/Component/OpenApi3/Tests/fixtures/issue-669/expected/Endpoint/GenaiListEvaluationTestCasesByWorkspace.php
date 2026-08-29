@@ -20,7 +20,7 @@ class GenaiListEvaluationTestCasesByWorkspace extends \Jane\Generated\DigitalOce
     }
     public function getUri(): string
     {
-        return str_replace(['{workspace_uuid}'], [$this->workspace_uuid], '/v2/gen-ai/workspaces/{workspace_uuid}/evaluation_test_cases');
+        return str_replace(['{workspace_uuid}'], [rawurlencode($this->workspace_uuid)], '/v2/gen-ai/workspaces/{workspace_uuid}/evaluation_test_cases');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class DeleteRkszonesLoadBalancingBandBalancingById extends \Jane\Component\OpenA
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/{id}/loadBalancing/bandBalancing');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/{id}/loadBalancing/bandBalancing');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class FindApsBonjourFencingStatisticByApMac extends \Jane\Component\OpenApi3\Tes
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/bonjourFencingStatistic');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/bonjourFencingStatistic');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

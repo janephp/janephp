@@ -37,7 +37,7 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
     }
     public function getUri(): string
     {
-        return str_replace(['{transferId}', '{requestId}'], [$this->transferId, $this->requestId], '/v1/Transfers/{transferId}/files/{requestId}/upload');
+        return str_replace(['{transferId}', '{requestId}'], [rawurlencode($this->transferId), rawurlencode($this->requestId)], '/v1/Transfers/{transferId}/files/{requestId}/upload');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

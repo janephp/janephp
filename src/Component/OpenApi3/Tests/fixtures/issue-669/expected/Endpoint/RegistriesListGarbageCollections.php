@@ -25,7 +25,7 @@ class RegistriesListGarbageCollections extends \Jane\Generated\DigitalOcean\Runt
     }
     public function getUri(): string
     {
-        return str_replace(['{registry_name}'], [$this->registry_name], '/v2/registries/{registry_name}/garbage-collections');
+        return str_replace(['{registry_name}'], [rawurlencode($this->registry_name)], '/v2/registries/{registry_name}/garbage-collections');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

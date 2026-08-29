@@ -22,7 +22,7 @@ class GenaiUpdateWorkspace extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     }
     public function getUri(): string
     {
-        return str_replace(['{workspace_uuid}'], [$this->workspace_uuid], '/v2/gen-ai/workspaces/{workspace_uuid}');
+        return str_replace(['{workspace_uuid}'], [rawurlencode($this->workspace_uuid)], '/v2/gen-ai/workspaces/{workspace_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

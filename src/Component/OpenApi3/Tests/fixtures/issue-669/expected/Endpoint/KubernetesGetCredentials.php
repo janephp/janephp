@@ -40,7 +40,7 @@ class KubernetesGetCredentials extends \Jane\Generated\DigitalOcean\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{cluster_id}'], [$this->cluster_id], '/v2/kubernetes/clusters/{cluster_id}/credentials');
+        return str_replace(['{cluster_id}'], [rawurlencode($this->cluster_id)], '/v2/kubernetes/clusters/{cluster_id}/credentials');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class DeleteApsLoginByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Runt
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/login');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/login');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

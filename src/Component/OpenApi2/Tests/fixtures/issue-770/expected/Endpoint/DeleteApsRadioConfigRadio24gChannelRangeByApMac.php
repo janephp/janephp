@@ -23,7 +23,7 @@ class DeleteApsRadioConfigRadio24gChannelRangeByApMac extends \Jane\Component\Op
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/radioConfig/radio24g/channelRange');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/radioConfig/radio24g/channelRange');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

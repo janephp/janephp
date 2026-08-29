@@ -24,7 +24,7 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
     }
     public function getUri(): string
     {
-        return str_replace(['{imageId}'], [$this->imageId], '/images/{imageId}');
+        return str_replace(['{imageId}'], [rawurlencode($this->imageId)], '/images/{imageId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

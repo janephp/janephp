@@ -23,7 +23,7 @@ class AppsGetDeployment extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     }
     public function getUri(): string
     {
-        return str_replace(['{app_id}', '{deployment_id}'], [$this->app_id, $this->deployment_id], '/v2/apps/{app_id}/deployments/{deployment_id}');
+        return str_replace(['{app_id}', '{deployment_id}'], [rawurlencode($this->app_id), rawurlencode($this->deployment_id)], '/v2/apps/{app_id}/deployments/{deployment_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

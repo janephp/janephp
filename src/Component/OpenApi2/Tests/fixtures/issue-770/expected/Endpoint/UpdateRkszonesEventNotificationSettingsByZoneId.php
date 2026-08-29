@@ -25,7 +25,7 @@ class UpdateRkszonesEventNotificationSettingsByZoneId extends \Jane\Component\Op
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/eventNotificationSettings');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/eventNotificationSettings');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

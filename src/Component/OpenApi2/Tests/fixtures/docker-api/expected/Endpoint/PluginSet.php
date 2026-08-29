@@ -23,7 +23,7 @@ class PluginSet extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getUri(): string
     {
-        return str_replace(['{name}'], [$this->name], '/plugins/{name}/set');
+        return str_replace(['{name}'], [rawurlencode($this->name)], '/plugins/{name}/set');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

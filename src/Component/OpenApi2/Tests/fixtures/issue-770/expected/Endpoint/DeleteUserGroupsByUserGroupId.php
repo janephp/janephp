@@ -23,7 +23,7 @@ class DeleteUserGroupsByUserGroupId extends \Jane\Component\OpenApi3\Tests\Expec
     }
     public function getUri(): string
     {
-        return str_replace(['{userGroupId}'], [$this->userGroupId], '/userGroups/{userGroupId}');
+        return str_replace(['{userGroupId}'], [rawurlencode($this->userGroupId)], '/userGroups/{userGroupId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

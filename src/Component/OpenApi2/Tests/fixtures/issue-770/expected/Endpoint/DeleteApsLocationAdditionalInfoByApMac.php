@@ -23,7 +23,7 @@ class DeleteApsLocationAdditionalInfoByApMac extends \Jane\Component\OpenApi3\Te
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/locationAdditionalInfo');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/locationAdditionalInfo');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

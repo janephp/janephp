@@ -35,7 +35,7 @@ class CompanyComplianceSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     }
     public function getUri(): string
     {
-        return str_replace(['{predefinedSearch}'], [$this->predefinedSearch], '/compliancetemp/companies/{predefinedSearch}');
+        return str_replace(['{predefinedSearch}'], [rawurlencode($this->predefinedSearch)], '/compliancetemp/companies/{predefinedSearch}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

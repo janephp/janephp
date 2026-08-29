@@ -27,7 +27,7 @@ class TransferPartialImport extends \PicturePark\API\Runtime\Client\BaseEndpoint
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Transfers/{id}/partialImport');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Transfers/{id}/partialImport');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

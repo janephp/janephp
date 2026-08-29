@@ -23,7 +23,7 @@ class DeleteRkszonesClientIsolationWhitelistById extends \Jane\Component\OpenApi
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/clientIsolationWhitelist/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/clientIsolationWhitelist/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

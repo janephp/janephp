@@ -63,7 +63,7 @@ class VolumeActionsPostById extends \Jane\Generated\DigitalOcean\Runtime\Client\
     }
     public function getUri(): string
     {
-        return str_replace(['{volume_id}'], [$this->volume_id], '/v2/volumes/{volume_id}/actions');
+        return str_replace(['{volume_id}'], [rawurlencode($this->volume_id)], '/v2/volumes/{volume_id}/actions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

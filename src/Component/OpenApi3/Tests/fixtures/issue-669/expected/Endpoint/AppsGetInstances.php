@@ -20,7 +20,7 @@ class AppsGetInstances extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     }
     public function getUri(): string
     {
-        return str_replace(['{app_id}'], [$this->app_id], '/v2/apps/{app_id}/instances');
+        return str_replace(['{app_id}'], [rawurlencode($this->app_id)], '/v2/apps/{app_id}/instances');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -30,7 +30,7 @@ class ImageDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getUri(): string
     {
-        return str_replace(['{name}'], [$this->name], '/images/{name}');
+        return str_replace(['{name}'], [rawurlencode($this->name)], '/images/{name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

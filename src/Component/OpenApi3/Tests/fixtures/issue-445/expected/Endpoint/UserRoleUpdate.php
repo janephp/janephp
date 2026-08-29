@@ -22,7 +22,7 @@ class UserRoleUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/UserRoles/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/UserRoles/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

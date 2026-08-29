@@ -25,7 +25,7 @@ class InvoicesGetByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     }
     public function getUri(): string
     {
-        return str_replace(['{invoice_uuid}'], [$this->invoice_uuid], '/v2/customers/my/invoices/{invoice_uuid}');
+        return str_replace(['{invoice_uuid}'], [rawurlencode($this->invoice_uuid)], '/v2/customers/my/invoices/{invoice_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

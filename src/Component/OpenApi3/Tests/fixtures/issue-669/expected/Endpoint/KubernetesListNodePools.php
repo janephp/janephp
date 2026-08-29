@@ -22,7 +22,7 @@ class KubernetesListNodePools extends \Jane\Generated\DigitalOcean\Runtime\Clien
     }
     public function getUri(): string
     {
-        return str_replace(['{cluster_id}'], [$this->cluster_id], '/v2/kubernetes/clusters/{cluster_id}/node_pools');
+        return str_replace(['{cluster_id}'], [rawurlencode($this->cluster_id)], '/v2/kubernetes/clusters/{cluster_id}/node_pools');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

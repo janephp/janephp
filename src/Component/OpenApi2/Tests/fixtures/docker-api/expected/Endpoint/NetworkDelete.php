@@ -19,7 +19,7 @@ class NetworkDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/networks/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/networks/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

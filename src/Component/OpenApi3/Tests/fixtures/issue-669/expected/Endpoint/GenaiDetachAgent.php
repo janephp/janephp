@@ -23,7 +23,7 @@ class GenaiDetachAgent extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     }
     public function getUri(): string
     {
-        return str_replace(['{parent_agent_uuid}', '{child_agent_uuid}'], [$this->parent_agent_uuid, $this->child_agent_uuid], '/v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}');
+        return str_replace(['{parent_agent_uuid}', '{child_agent_uuid}'], [rawurlencode($this->parent_agent_uuid), rawurlencode($this->child_agent_uuid)], '/v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

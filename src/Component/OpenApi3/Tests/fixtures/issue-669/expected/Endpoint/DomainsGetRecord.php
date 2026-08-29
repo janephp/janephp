@@ -23,7 +23,7 @@ class DomainsGetRecord extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     }
     public function getUri(): string
     {
-        return str_replace(['{domain_name}', '{domain_record_id}'], [$this->domain_name, $this->domain_record_id], '/v2/domains/{domain_name}/records/{domain_record_id}');
+        return str_replace(['{domain_name}', '{domain_record_id}'], [rawurlencode($this->domain_name), rawurlencode($this->domain_record_id)], '/v2/domains/{domain_name}/records/{domain_record_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

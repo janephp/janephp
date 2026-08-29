@@ -23,7 +23,7 @@ class GenaiDetachAgentFunction extends \Jane\Generated\DigitalOcean\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{agent_uuid}', '{function_uuid}'], [$this->agent_uuid, $this->function_uuid], '/v2/gen-ai/agents/{agent_uuid}/functions/{function_uuid}');
+        return str_replace(['{agent_uuid}', '{function_uuid}'], [rawurlencode($this->agent_uuid), rawurlencode($this->function_uuid)], '/v2/gen-ai/agents/{agent_uuid}/functions/{function_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

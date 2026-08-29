@@ -23,7 +23,7 @@ class DeleteProfilesUtpUplinkRateLimitingById extends \Jane\Component\OpenApi3\T
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/profiles/utp/{id}/uplinkRateLimiting');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/profiles/utp/{id}/uplinkRateLimiting');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

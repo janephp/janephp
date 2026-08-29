@@ -31,7 +31,7 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
     }
     public function getUri(): string
     {
-        return str_replace(['{id}', '{size}'], [$this->id, $this->size], '/v1/Contents/thumbnails/{id}/{size}');
+        return str_replace(['{id}', '{size}'], [rawurlencode($this->id), rawurlencode($this->size)], '/v1/Contents/thumbnails/{id}/{size}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

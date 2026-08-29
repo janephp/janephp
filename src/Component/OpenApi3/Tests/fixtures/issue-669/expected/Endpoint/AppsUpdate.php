@@ -22,7 +22,7 @@ class AppsUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v2/apps/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v2/apps/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -32,7 +32,7 @@ class BillingInsightsList extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     }
     public function getUri(): string
     {
-        return str_replace(['{account_urn}', '{start_date}', '{end_date}'], [$this->account_urn, $this->start_date, $this->end_date], '/v2/billing/{account_urn}/insights/{start_date}/{end_date}');
+        return str_replace(['{account_urn}', '{start_date}', '{end_date}'], [rawurlencode($this->account_urn), rawurlencode($this->start_date), rawurlencode($this->end_date)], '/v2/billing/{account_urn}/insights/{start_date}/{end_date}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

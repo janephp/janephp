@@ -29,7 +29,7 @@ class FirewallsDeleteTags extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     }
     public function getUri(): string
     {
-        return str_replace(['{firewall_id}'], [$this->firewall_id], '/v2/firewalls/{firewall_id}/tags');
+        return str_replace(['{firewall_id}'], [rawurlencode($this->firewall_id)], '/v2/firewalls/{firewall_id}/tags');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -26,7 +26,7 @@ class ContainerTop extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/containers/{id}/top');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/containers/{id}/top');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

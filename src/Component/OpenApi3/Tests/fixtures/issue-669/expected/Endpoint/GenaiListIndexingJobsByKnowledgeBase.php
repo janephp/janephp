@@ -20,7 +20,7 @@ class GenaiListIndexingJobsByKnowledgeBase extends \Jane\Generated\DigitalOcean\
     }
     public function getUri(): string
     {
-        return str_replace(['{knowledge_base_uuid}'], [$this->knowledge_base_uuid], '/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/indexing_jobs');
+        return str_replace(['{knowledge_base_uuid}'], [rawurlencode($this->knowledge_base_uuid)], '/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/indexing_jobs');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

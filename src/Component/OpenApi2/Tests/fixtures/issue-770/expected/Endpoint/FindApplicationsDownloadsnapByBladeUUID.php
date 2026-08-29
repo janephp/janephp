@@ -23,7 +23,7 @@ class FindApplicationsDownloadsnapByBladeUUID extends \Jane\Component\OpenApi3\T
     }
     public function getUri(): string
     {
-        return str_replace(['{bladeUUID}'], [$this->bladeUUID], '/applications/downloadsnap/{bladeUUID}');
+        return str_replace(['{bladeUUID}'], [rawurlencode($this->bladeUUID)], '/applications/downloadsnap/{bladeUUID}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

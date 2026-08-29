@@ -27,7 +27,7 @@ class AppsListJobInvocations extends \Jane\Generated\DigitalOcean\Runtime\Client
     }
     public function getUri(): string
     {
-        return str_replace(['{app_id}'], [$this->app_id], '/v2/apps/{app_id}/job-invocations');
+        return str_replace(['{app_id}'], [rawurlencode($this->app_id)], '/v2/apps/{app_id}/job-invocations');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -21,7 +21,7 @@ class DatabasesGetSqlMode extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}'], [$this->database_cluster_uuid], '/v2/databases/{database_cluster_uuid}/sql_mode');
+        return str_replace(['{database_cluster_uuid}'], [rawurlencode($this->database_cluster_uuid)], '/v2/databases/{database_cluster_uuid}/sql_mode');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class FindDhcpDataDhcpMsgStatsByApMac extends \Jane\Component\OpenApi3\Tests\Exp
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/dhcpData/dhcpMsgStats/{apMac}');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/dhcpData/dhcpMsgStats/{apMac}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

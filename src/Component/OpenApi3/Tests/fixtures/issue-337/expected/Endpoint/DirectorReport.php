@@ -28,7 +28,7 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
     }
     public function getUri(): string
     {
-        return str_replace(['{personId}'], [$this->personId], '/people/{personId}');
+        return str_replace(['{personId}'], [rawurlencode($this->personId)], '/people/{personId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

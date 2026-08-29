@@ -23,7 +23,7 @@ class DeleteRkszonesIpsecProfilesById extends \Jane\Component\OpenApi3\Tests\Exp
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/{id}/ipsecProfiles');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/{id}/ipsecProfiles');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class DeleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMac extends \Jane\C
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/radioConfig/radio6g/multicastUplinkRateLimit');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/radioConfig/radio6g/multicastUplinkRateLimit');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

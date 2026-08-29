@@ -30,7 +30,7 @@ class DomainsListRecords extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     }
     public function getUri(): string
     {
-        return str_replace(['{domain_name}'], [$this->domain_name], '/v2/domains/{domain_name}/records');
+        return str_replace(['{domain_name}'], [rawurlencode($this->domain_name)], '/v2/domains/{domain_name}/records');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

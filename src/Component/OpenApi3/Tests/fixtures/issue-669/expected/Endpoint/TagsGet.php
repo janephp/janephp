@@ -25,7 +25,7 @@ class TagsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint i
     }
     public function getUri(): string
     {
-        return str_replace(['{tag_id}'], [$this->tag_id], '/v2/tags/{tag_id}');
+        return str_replace(['{tag_id}'], [rawurlencode($this->tag_id)], '/v2/tags/{tag_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

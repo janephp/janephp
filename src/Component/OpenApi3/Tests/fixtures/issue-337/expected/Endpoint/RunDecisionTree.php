@@ -32,7 +32,7 @@ class RunDecisionTree extends \CreditSafe\API\Runtime\Client\BaseEndpoint implem
     }
     public function getUri(): string
     {
-        return str_replace(['{provenirId}'], [$this->provenirId], '/decisionEngine/{provenirId}');
+        return str_replace(['{provenirId}'], [rawurlencode($this->provenirId)], '/decisionEngine/{provenirId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

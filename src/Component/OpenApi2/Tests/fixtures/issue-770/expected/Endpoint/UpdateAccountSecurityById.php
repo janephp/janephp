@@ -25,7 +25,7 @@ class UpdateAccountSecurityById extends \Jane\Component\OpenApi3\Tests\Expected\
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/accountSecurity/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/accountSecurity/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

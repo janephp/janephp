@@ -20,7 +20,7 @@ class OutputFormatGet extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/OutputFormats/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/OutputFormats/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

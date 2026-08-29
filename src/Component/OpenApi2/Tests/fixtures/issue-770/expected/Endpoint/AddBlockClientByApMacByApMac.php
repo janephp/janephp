@@ -25,7 +25,7 @@ class AddBlockClientByApMacByApMac extends \Jane\Component\OpenApi3\Tests\Expect
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/blockClient/byApMac/{apMac}');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/blockClient/byApMac/{apMac}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

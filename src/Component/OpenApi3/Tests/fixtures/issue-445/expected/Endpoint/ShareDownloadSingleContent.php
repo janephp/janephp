@@ -38,7 +38,7 @@ class ShareDownloadSingleContent extends \PicturePark\API\Runtime\Client\BaseEnd
     }
     public function getUri(): string
     {
-        return str_replace(['{token}', '{contentId}', '{outputFormatId}'], [$this->token, $this->contentId, $this->outputFormatId], '/v1/Shares/d/{token}/{contentId}/{outputFormatId}');
+        return str_replace(['{token}', '{contentId}', '{outputFormatId}'], [rawurlencode($this->token), rawurlencode($this->contentId), rawurlencode($this->outputFormatId)], '/v1/Shares/d/{token}/{contentId}/{outputFormatId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

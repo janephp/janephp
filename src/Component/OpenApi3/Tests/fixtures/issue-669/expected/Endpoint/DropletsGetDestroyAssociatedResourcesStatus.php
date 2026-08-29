@@ -23,7 +23,7 @@ class DropletsGetDestroyAssociatedResourcesStatus extends \Jane\Generated\Digita
     }
     public function getUri(): string
     {
-        return str_replace(['{droplet_id}'], [$this->droplet_id], '/v2/droplets/{droplet_id}/destroy_with_associated_resources/status');
+        return str_replace(['{droplet_id}'], [rawurlencode($this->droplet_id)], '/v2/droplets/{droplet_id}/destroy_with_associated_resources/status');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

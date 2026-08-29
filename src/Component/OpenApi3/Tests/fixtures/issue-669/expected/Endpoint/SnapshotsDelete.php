@@ -26,7 +26,7 @@ class SnapshotsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     }
     public function getUri(): string
     {
-        return str_replace(['{snapshot_id}'], [$this->snapshot_id], '/v2/snapshots/{snapshot_id}');
+        return str_replace(['{snapshot_id}'], [rawurlencode($this->snapshot_id)], '/v2/snapshots/{snapshot_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

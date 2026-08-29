@@ -25,7 +25,7 @@ class PartialUpdateServicesAuthLocalDbById extends \Jane\Component\OpenApi3\Test
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/services/auth/local_db/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/services/auth/local_db/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

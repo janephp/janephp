@@ -28,7 +28,7 @@ class AddRkszonesWlansDpskById extends \Jane\Component\OpenApi3\Tests\Expected\R
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}'], [$this->zoneId, $this->id], '/rkszones/{zoneId}/wlans/{id}/dpsk');
+        return str_replace(['{zoneId}', '{id}'], [rawurlencode($this->zoneId), rawurlencode($this->id)], '/rkszones/{zoneId}/wlans/{id}/dpsk');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

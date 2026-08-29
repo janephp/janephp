@@ -23,7 +23,7 @@ class DeleteProfilesHs20IdentityprovidersById extends \Jane\Component\OpenApi3\T
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/profiles/hs20/identityproviders/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/profiles/hs20/identityproviders/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

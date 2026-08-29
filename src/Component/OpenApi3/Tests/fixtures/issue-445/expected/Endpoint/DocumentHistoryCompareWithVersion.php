@@ -30,7 +30,7 @@ class DocumentHistoryCompareWithVersion extends \PicturePark\API\Runtime\Client\
     }
     public function getUri(): string
     {
-        return str_replace(['{documentType}', '{documentId}', '{documentVersion}'], [$this->documentType, $this->documentId, $this->documentVersion], '/v1/history/{documentType}/{documentId}/{documentVersion}/compare');
+        return str_replace(['{documentType}', '{documentId}', '{documentVersion}'], [rawurlencode($this->documentType), rawurlencode($this->documentId), rawurlencode($this->documentVersion)], '/v1/history/{documentType}/{documentId}/{documentVersion}/compare');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

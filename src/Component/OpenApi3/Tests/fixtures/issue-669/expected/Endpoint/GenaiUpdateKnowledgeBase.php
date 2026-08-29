@@ -22,7 +22,7 @@ class GenaiUpdateKnowledgeBase extends \Jane\Generated\DigitalOcean\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{uuid}'], [$this->uuid], '/v2/gen-ai/knowledge_bases/{uuid}');
+        return str_replace(['{uuid}'], [rawurlencode($this->uuid)], '/v2/gen-ai/knowledge_bases/{uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -26,7 +26,7 @@ class DatabasesDeleteOnlineMigration extends \Jane\Generated\DigitalOcean\Runtim
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{migration_id}'], [$this->database_cluster_uuid, $this->migration_id], '/v2/databases/{database_cluster_uuid}/online-migration/{migration_id}');
+        return str_replace(['{database_cluster_uuid}', '{migration_id}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->migration_id)], '/v2/databases/{database_cluster_uuid}/online-migration/{migration_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

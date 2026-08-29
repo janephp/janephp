@@ -25,7 +25,7 @@ class UpdateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtim
     }
     public function getUri(): string
     {
-        return str_replace(['{eventId}'], [$this->eventId], '/special-events/{eventId}');
+        return str_replace(['{eventId}'], [rawurlencode($this->eventId)], '/special-events/{eventId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

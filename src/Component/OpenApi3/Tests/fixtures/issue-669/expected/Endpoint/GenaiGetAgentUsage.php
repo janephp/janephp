@@ -25,7 +25,7 @@ class GenaiGetAgentUsage extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     }
     public function getUri(): string
     {
-        return str_replace(['{uuid}'], [$this->uuid], '/v2/gen-ai/agents/{uuid}/usage');
+        return str_replace(['{uuid}'], [rawurlencode($this->uuid)], '/v2/gen-ai/agents/{uuid}/usage');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

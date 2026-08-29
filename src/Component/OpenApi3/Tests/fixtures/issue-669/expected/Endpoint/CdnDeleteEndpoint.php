@@ -25,7 +25,7 @@ class CdnDeleteEndpoint extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     }
     public function getUri(): string
     {
-        return str_replace(['{cdn_id}'], [$this->cdn_id], '/v2/cdn/endpoints/{cdn_id}');
+        return str_replace(['{cdn_id}'], [rawurlencode($this->cdn_id)], '/v2/cdn/endpoints/{cdn_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

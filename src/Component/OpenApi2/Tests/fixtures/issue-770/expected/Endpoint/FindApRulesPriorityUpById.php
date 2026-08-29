@@ -23,7 +23,7 @@ class FindApRulesPriorityUpById extends \Jane\Component\OpenApi3\Tests\Expected\
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/apRules/priorityUp/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/apRules/priorityUp/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

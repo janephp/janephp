@@ -25,7 +25,7 @@ class FindApplicationsByBladeUUID extends \Jane\Component\OpenApi3\Tests\Expecte
     }
     public function getUri(): string
     {
-        return str_replace(['{bladeUUID}'], [$this->bladeUUID], '/applications/{bladeUUID}');
+        return str_replace(['{bladeUUID}'], [rawurlencode($this->bladeUUID)], '/applications/{bladeUUID}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

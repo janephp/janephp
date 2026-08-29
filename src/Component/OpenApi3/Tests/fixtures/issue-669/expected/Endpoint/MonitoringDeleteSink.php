@@ -20,7 +20,7 @@ class MonitoringDeleteSink extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     }
     public function getUri(): string
     {
-        return str_replace(['{sink_uuid}'], [$this->sink_uuid], '/v2/monitoring/sinks/{sink_uuid}');
+        return str_replace(['{sink_uuid}'], [rawurlencode($this->sink_uuid)], '/v2/monitoring/sinks/{sink_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

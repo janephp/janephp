@@ -29,7 +29,7 @@ class RegistryListRepositories extends \Jane\Generated\DigitalOcean\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{registry_name}'], [$this->registry_name], '/v2/registry/{registry_name}/repositories');
+        return str_replace(['{registry_name}'], [rawurlencode($this->registry_name)], '/v2/registry/{registry_name}/repositories');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class DeleteApsClientAdmissionControl50ByApMac extends \Jane\Component\OpenApi3\
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/clientAdmissionControl50');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/clientAdmissionControl50');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

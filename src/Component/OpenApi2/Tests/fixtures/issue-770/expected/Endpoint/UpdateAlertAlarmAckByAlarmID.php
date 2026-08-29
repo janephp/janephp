@@ -23,7 +23,7 @@ class UpdateAlertAlarmAckByAlarmID extends \Jane\Component\OpenApi3\Tests\Expect
     }
     public function getUri(): string
     {
-        return str_replace(['{alarmID}'], [$this->alarmID], '/alert/alarm/{alarmID}/ack');
+        return str_replace(['{alarmID}'], [rawurlencode($this->alarmID)], '/alert/alarm/{alarmID}/ack');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

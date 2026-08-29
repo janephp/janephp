@@ -20,7 +20,7 @@ class InvoicesGetSummaryByUUID extends \Jane\Generated\DigitalOcean\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{invoice_uuid}'], [$this->invoice_uuid], '/v2/customers/my/invoices/{invoice_uuid}/summary');
+        return str_replace(['{invoice_uuid}'], [rawurlencode($this->invoice_uuid)], '/v2/customers/my/invoices/{invoice_uuid}/summary');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

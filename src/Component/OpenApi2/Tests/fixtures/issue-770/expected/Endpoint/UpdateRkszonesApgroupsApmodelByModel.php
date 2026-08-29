@@ -31,7 +31,7 @@ class UpdateRkszonesApgroupsApmodelByModel extends \Jane\Component\OpenApi3\Test
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}', '{model}'], [$this->zoneId, $this->id, $this->model], '/rkszones/{zoneId}/apgroups/{id}/apmodel/{model}');
+        return str_replace(['{zoneId}', '{id}', '{model}'], [rawurlencode($this->zoneId), rawurlencode($this->id), rawurlencode($this->model)], '/rkszones/{zoneId}/apgroups/{id}/apmodel/{model}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

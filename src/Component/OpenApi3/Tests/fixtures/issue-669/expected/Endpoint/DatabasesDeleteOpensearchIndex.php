@@ -28,7 +28,7 @@ class DatabasesDeleteOpensearchIndex extends \Jane\Generated\DigitalOcean\Runtim
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{index_name}'], [$this->database_cluster_uuid, $this->index_name], '/v2/databases/{database_cluster_uuid}/indexes/{index_name}');
+        return str_replace(['{database_cluster_uuid}', '{index_name}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->index_name)], '/v2/databases/{database_cluster_uuid}/indexes/{index_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

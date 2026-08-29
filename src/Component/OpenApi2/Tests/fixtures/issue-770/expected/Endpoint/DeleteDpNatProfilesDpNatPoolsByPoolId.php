@@ -26,7 +26,7 @@ class DeleteDpNatProfilesDpNatPoolsByPoolId extends \Jane\Component\OpenApi3\Tes
     }
     public function getUri(): string
     {
-        return str_replace(['{id}', '{poolId}'], [$this->id, $this->poolId], '/dpNatProfiles/{id}/dpNatPools/{poolId}');
+        return str_replace(['{id}', '{poolId}'], [rawurlencode($this->id), rawurlencode($this->poolId)], '/dpNatProfiles/{id}/dpNatPools/{poolId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

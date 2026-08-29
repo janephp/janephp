@@ -36,7 +36,7 @@ class RegistryDeleteRepositoryManifest extends \Jane\Generated\DigitalOcean\Runt
     }
     public function getUri(): string
     {
-        return str_replace(['{registry_name}', '{repository_name}', '{manifest_digest}'], [$this->registry_name, $this->repository_name, $this->manifest_digest], '/v2/registry/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}');
+        return str_replace(['{registry_name}', '{repository_name}', '{manifest_digest}'], [rawurlencode($this->registry_name), rawurlencode($this->repository_name), rawurlencode($this->manifest_digest)], '/v2/registry/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

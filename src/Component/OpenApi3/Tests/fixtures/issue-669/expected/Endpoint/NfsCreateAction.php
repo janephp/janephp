@@ -32,7 +32,7 @@ class NfsCreateAction extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     }
     public function getUri(): string
     {
-        return str_replace(['{nfs_id}'], [$this->nfs_id], '/v2/nfs/{nfs_id}/actions');
+        return str_replace(['{nfs_id}'], [rawurlencode($this->nfs_id)], '/v2/nfs/{nfs_id}/actions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

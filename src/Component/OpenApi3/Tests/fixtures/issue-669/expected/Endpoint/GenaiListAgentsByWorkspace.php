@@ -26,7 +26,7 @@ class GenaiListAgentsByWorkspace extends \Jane\Generated\DigitalOcean\Runtime\Cl
     }
     public function getUri(): string
     {
-        return str_replace(['{workspace_uuid}'], [$this->workspace_uuid], '/v2/gen-ai/workspaces/{workspace_uuid}/agents');
+        return str_replace(['{workspace_uuid}'], [rawurlencode($this->workspace_uuid)], '/v2/gen-ai/workspaces/{workspace_uuid}/agents');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

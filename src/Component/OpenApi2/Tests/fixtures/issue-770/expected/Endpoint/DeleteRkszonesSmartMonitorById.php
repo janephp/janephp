@@ -23,7 +23,7 @@ class DeleteRkszonesSmartMonitorById extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/{id}/smartMonitor');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/{id}/smartMonitor');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

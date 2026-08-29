@@ -24,7 +24,7 @@ class FindUserGroupsRolesPermissionsByRole extends \Jane\Component\OpenApi3\Test
     }
     public function getUri(): string
     {
-        return str_replace(['{role}'], [$this->role], '/userGroups/roles/{role}/permissions');
+        return str_replace(['{role}'], [rawurlencode($this->role)], '/userGroups/roles/{role}/permissions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

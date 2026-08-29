@@ -26,7 +26,7 @@ class FindDhcpDataDhcpPoolsByPoolIndex extends \Jane\Component\OpenApi3\Tests\Ex
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}', '{poolIndex}'], [$this->apMac, $this->poolIndex], '/dhcpData/dhcpPools/{apMac}/{poolIndex}');
+        return str_replace(['{apMac}', '{poolIndex}'], [rawurlencode($this->apMac), rawurlencode($this->poolIndex)], '/dhcpData/dhcpPools/{apMac}/{poolIndex}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -29,7 +29,7 @@ class UpdateCompanyDetailsInAPortfolio extends \CreditSafe\API\Runtime\Client\Ba
     }
     public function getUri(): string
     {
-        return str_replace(['{portfolioId}', '{id}'], [$this->portfolioId, $this->id], '/monitoring/portfolios/{portfolioId}/companies/{id}');
+        return str_replace(['{portfolioId}', '{id}'], [rawurlencode($this->portfolioId), rawurlencode($this->id)], '/monitoring/portfolios/{portfolioId}/companies/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

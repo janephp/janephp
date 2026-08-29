@@ -30,7 +30,7 @@ class ReservedIPv6ActionsPost extends \Jane\Generated\DigitalOcean\Runtime\Clien
     }
     public function getUri(): string
     {
-        return str_replace(['{reserved_ipv6}'], [$this->reserved_ipv6], '/v2/reserved_ipv6/{reserved_ipv6}/actions');
+        return str_replace(['{reserved_ipv6}'], [rawurlencode($this->reserved_ipv6)], '/v2/reserved_ipv6/{reserved_ipv6}/actions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

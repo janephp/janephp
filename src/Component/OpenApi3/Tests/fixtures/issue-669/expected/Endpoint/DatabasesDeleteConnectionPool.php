@@ -28,7 +28,7 @@ class DatabasesDeleteConnectionPool extends \Jane\Generated\DigitalOcean\Runtime
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{pool_name}'], [$this->database_cluster_uuid, $this->pool_name], '/v2/databases/{database_cluster_uuid}/pools/{pool_name}');
+        return str_replace(['{database_cluster_uuid}', '{pool_name}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->pool_name)], '/v2/databases/{database_cluster_uuid}/pools/{pool_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -24,7 +24,7 @@ class AddonsPatch extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
     }
     public function getUri(): string
     {
-        return str_replace(['{resource_uuid}'], [$this->resource_uuid], '/v2/add-ons/saas/{resource_uuid}');
+        return str_replace(['{resource_uuid}'], [rawurlencode($this->resource_uuid)], '/v2/add-ons/saas/{resource_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

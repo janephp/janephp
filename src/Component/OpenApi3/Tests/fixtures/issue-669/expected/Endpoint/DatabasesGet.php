@@ -30,7 +30,7 @@ class DatabasesGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{database_name}'], [$this->database_cluster_uuid, $this->database_name], '/v2/databases/{database_cluster_uuid}/dbs/{database_name}');
+        return str_replace(['{database_cluster_uuid}', '{database_name}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->database_name)], '/v2/databases/{database_cluster_uuid}/dbs/{database_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

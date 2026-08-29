@@ -30,7 +30,7 @@ class LoadBalancersAddForwardingRules extends \Jane\Generated\DigitalOcean\Runti
     }
     public function getUri(): string
     {
-        return str_replace(['{lb_id}'], [$this->lb_id], '/v2/load_balancers/{lb_id}/forwarding_rules');
+        return str_replace(['{lb_id}'], [rawurlencode($this->lb_id)], '/v2/load_balancers/{lb_id}/forwarding_rules');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -21,7 +21,7 @@ class ImagesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
     }
     public function getUri(): string
     {
-        return str_replace(['{image_id}'], [$this->image_id], '/v2/images/{image_id}');
+        return str_replace(['{image_id}'], [rawurlencode($this->image_id)], '/v2/images/{image_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -24,7 +24,7 @@ class FilteredEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint imp
     }
     public function getUri(): string
     {
-        return str_replace(['{countryCode}'], [$this->countryCode], '/monitoring/eventRules/{countryCode}');
+        return str_replace(['{countryCode}'], [rawurlencode($this->countryCode)], '/monitoring/eventRules/{countryCode}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

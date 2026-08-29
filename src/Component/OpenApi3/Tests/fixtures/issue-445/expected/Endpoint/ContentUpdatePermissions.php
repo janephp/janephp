@@ -30,7 +30,7 @@ class ContentUpdatePermissions extends \PicturePark\API\Runtime\Client\BaseEndpo
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Contents/{id}/permissions');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Contents/{id}/permissions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

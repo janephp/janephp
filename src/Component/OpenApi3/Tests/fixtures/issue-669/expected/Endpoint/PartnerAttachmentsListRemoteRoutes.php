@@ -27,7 +27,7 @@ class PartnerAttachmentsListRemoteRoutes extends \Jane\Generated\DigitalOcean\Ru
     }
     public function getUri(): string
     {
-        return str_replace(['{pa_id}'], [$this->pa_id], '/v2/partner_network_connect/attachments/{pa_id}/remote_routes');
+        return str_replace(['{pa_id}'], [rawurlencode($this->pa_id)], '/v2/partner_network_connect/attachments/{pa_id}/remote_routes');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

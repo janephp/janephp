@@ -24,7 +24,7 @@ class ShareGetShareJson extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
     }
     public function getUri(): string
     {
-        return str_replace(['{token}'], [$this->token], '/v1/Shares/json/{token}');
+        return str_replace(['{token}'], [rawurlencode($this->token)], '/v1/Shares/json/{token}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

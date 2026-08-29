@@ -23,7 +23,7 @@ class FunctionsGetTrigger extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     }
     public function getUri(): string
     {
-        return str_replace(['{namespace_id}', '{trigger_name}'], [$this->namespace_id, $this->trigger_name], '/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}');
+        return str_replace(['{namespace_id}', '{trigger_name}'], [rawurlencode($this->namespace_id), rawurlencode($this->trigger_name)], '/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

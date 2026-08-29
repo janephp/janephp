@@ -23,7 +23,7 @@ class ReservedIPsActionsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\
     }
     public function getUri(): string
     {
-        return str_replace(['{reserved_ip}', '{action_id}'], [$this->reserved_ip, $this->action_id], '/v2/reserved_ips/{reserved_ip}/actions/{action_id}');
+        return str_replace(['{reserved_ip}', '{action_id}'], [rawurlencode($this->reserved_ip), rawurlencode($this->action_id)], '/v2/reserved_ips/{reserved_ip}/actions/{action_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

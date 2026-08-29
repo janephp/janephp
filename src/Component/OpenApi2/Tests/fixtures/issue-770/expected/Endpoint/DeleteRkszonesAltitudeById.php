@@ -23,7 +23,7 @@ class DeleteRkszonesAltitudeById extends \Jane\Component\OpenApi3\Tests\Expected
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/{id}/altitude');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/{id}/altitude');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

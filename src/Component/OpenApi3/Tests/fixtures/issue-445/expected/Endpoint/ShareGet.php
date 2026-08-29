@@ -24,7 +24,7 @@ class ShareGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Shares/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Shares/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

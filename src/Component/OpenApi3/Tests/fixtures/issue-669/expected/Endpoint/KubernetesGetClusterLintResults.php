@@ -31,7 +31,7 @@ class KubernetesGetClusterLintResults extends \Jane\Generated\DigitalOcean\Runti
     }
     public function getUri(): string
     {
-        return str_replace(['{cluster_id}'], [$this->cluster_id], '/v2/kubernetes/clusters/{cluster_id}/clusterlint');
+        return str_replace(['{cluster_id}'], [rawurlencode($this->cluster_id)], '/v2/kubernetes/clusters/{cluster_id}/clusterlint');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

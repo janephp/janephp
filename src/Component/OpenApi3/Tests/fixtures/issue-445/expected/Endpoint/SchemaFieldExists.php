@@ -24,7 +24,7 @@ class SchemaFieldExists extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
     }
     public function getUri(): string
     {
-        return str_replace(['{schemaId}', '{fieldId}'], [$this->schemaId, $this->fieldId], '/v1/Schemas/{schemaId}/{fieldId}/exists');
+        return str_replace(['{schemaId}', '{fieldId}'], [rawurlencode($this->schemaId), rawurlencode($this->fieldId)], '/v1/Schemas/{schemaId}/{fieldId}/exists');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

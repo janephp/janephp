@@ -22,7 +22,7 @@ class VpcnatgatewaysGet extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v2/vpc_nat_gateways/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v2/vpc_nat_gateways/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{planetId}'], [$this->planetId], '/planets/{planetId}');
+        return str_replace(['{planetId}'], [rawurlencode($this->planetId)], '/planets/{planetId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

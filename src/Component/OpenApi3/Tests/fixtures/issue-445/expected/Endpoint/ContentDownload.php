@@ -35,7 +35,7 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     }
     public function getUri(): string
     {
-        return str_replace(['{contentId}', '{outputFormatId}'], [$this->contentId, $this->outputFormatId], '/v1/Contents/downloads/{contentId}/{outputFormatId}');
+        return str_replace(['{contentId}', '{outputFormatId}'], [rawurlencode($this->contentId), rawurlencode($this->outputFormatId)], '/v1/Contents/downloads/{contentId}/{outputFormatId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

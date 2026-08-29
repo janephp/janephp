@@ -31,7 +31,7 @@ class CompanyCreditReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint im
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/companies/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/companies/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

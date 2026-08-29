@@ -19,7 +19,7 @@ class ContentGetDownloadLink extends \PicturePark\API\Runtime\Client\BaseEndpoin
     }
     public function getUri(): string
     {
-        return str_replace(['{token}'], [$this->token], '/v1/Contents/downloadLink/{token}');
+        return str_replace(['{token}'], [rawurlencode($this->token)], '/v1/Contents/downloadLink/{token}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

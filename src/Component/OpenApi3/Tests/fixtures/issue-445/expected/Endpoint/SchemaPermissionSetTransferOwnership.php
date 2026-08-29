@@ -22,7 +22,7 @@ class SchemaPermissionSetTransferOwnership extends \PicturePark\API\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/SchemaPermissionSets/{id}/ownership');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/SchemaPermissionSets/{id}/ownership');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

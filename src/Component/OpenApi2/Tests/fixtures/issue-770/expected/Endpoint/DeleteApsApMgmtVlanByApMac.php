@@ -23,7 +23,7 @@ class DeleteApsApMgmtVlanByApMac extends \Jane\Component\OpenApi3\Tests\Expected
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/apMgmtVlan');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/apMgmtVlan');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

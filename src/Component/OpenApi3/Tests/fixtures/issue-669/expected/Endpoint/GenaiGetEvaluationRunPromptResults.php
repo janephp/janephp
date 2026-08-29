@@ -23,7 +23,7 @@ class GenaiGetEvaluationRunPromptResults extends \Jane\Generated\DigitalOcean\Ru
     }
     public function getUri(): string
     {
-        return str_replace(['{evaluation_run_uuid}', '{prompt_id}'], [$this->evaluation_run_uuid, $this->prompt_id], '/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}/results/{prompt_id}');
+        return str_replace(['{evaluation_run_uuid}', '{prompt_id}'], [rawurlencode($this->evaluation_run_uuid), rawurlencode($this->prompt_id)], '/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}/results/{prompt_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

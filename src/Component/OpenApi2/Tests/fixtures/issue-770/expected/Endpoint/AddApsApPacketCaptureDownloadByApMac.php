@@ -23,7 +23,7 @@ class AddApsApPacketCaptureDownloadByApMac extends \Jane\Component\OpenApi3\Test
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/apPacketCapture/download');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/apPacketCapture/download');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

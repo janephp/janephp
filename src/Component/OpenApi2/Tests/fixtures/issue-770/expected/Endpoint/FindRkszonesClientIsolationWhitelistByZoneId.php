@@ -23,7 +23,7 @@ class FindRkszonesClientIsolationWhitelistByZoneId extends \Jane\Component\OpenA
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/clientIsolationWhitelist');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/clientIsolationWhitelist');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

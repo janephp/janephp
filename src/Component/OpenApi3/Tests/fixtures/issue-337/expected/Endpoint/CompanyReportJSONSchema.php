@@ -29,7 +29,7 @@ class CompanyReportJSONSchema extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     }
     public function getUri(): string
     {
-        return str_replace(['{countryCode}'], [$this->countryCode], '/companies/schema/{countryCode}');
+        return str_replace(['{countryCode}'], [rawurlencode($this->countryCode)], '/companies/schema/{countryCode}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

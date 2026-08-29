@@ -20,7 +20,7 @@ class UptimeGetCheck extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
     }
     public function getUri(): string
     {
-        return str_replace(['{check_id}'], [$this->check_id], '/v2/uptime/checks/{check_id}');
+        return str_replace(['{check_id}'], [rawurlencode($this->check_id)], '/v2/uptime/checks/{check_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

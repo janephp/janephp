@@ -20,7 +20,7 @@ class UserRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Users/{id}/restore');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Users/{id}/restore');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

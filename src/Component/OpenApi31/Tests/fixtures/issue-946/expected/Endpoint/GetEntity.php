@@ -19,7 +19,7 @@ class GetEntity extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/my/api/endpoint/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/my/api/endpoint/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

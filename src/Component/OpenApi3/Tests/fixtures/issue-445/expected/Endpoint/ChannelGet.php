@@ -20,7 +20,7 @@ class ChannelGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Channels/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Channels/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

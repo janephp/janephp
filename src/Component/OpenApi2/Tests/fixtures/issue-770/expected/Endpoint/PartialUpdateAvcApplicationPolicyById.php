@@ -25,7 +25,7 @@ class PartialUpdateAvcApplicationPolicyById extends \Jane\Component\OpenApi3\Tes
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/avc/applicationPolicy/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/avc/applicationPolicy/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

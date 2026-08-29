@@ -35,7 +35,7 @@ class IndividualPersonComplianceSearch extends \CreditSafe\API\Runtime\Client\Ba
     }
     public function getUri(): string
     {
-        return str_replace(['{predefinedSearch}'], [$this->predefinedSearch], '/compliancetemp/people/{predefinedSearch}');
+        return str_replace(['{predefinedSearch}'], [rawurlencode($this->predefinedSearch)], '/compliancetemp/people/{predefinedSearch}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

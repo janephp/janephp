@@ -25,7 +25,7 @@ class DatabasesDeleteLogsink extends \Jane\Generated\DigitalOcean\Runtime\Client
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{logsink_id}'], [$this->database_cluster_uuid, $this->logsink_id], '/v2/databases/{database_cluster_uuid}/logsink/{logsink_id}');
+        return str_replace(['{database_cluster_uuid}', '{logsink_id}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->logsink_id)], '/v2/databases/{database_cluster_uuid}/logsink/{logsink_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

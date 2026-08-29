@@ -23,7 +23,7 @@ class FindNorthboundDataStreamingProfileById extends \Jane\Component\OpenApi3\Te
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/northboundDataStreamingProfile/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/northboundDataStreamingProfile/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

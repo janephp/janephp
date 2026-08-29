@@ -24,7 +24,7 @@ class GenaiGetEvaluationTestCase extends \Jane\Generated\DigitalOcean\Runtime\Cl
     }
     public function getUri(): string
     {
-        return str_replace(['{test_case_uuid}'], [$this->test_case_uuid], '/v2/gen-ai/evaluation_test_cases/{test_case_uuid}');
+        return str_replace(['{test_case_uuid}'], [rawurlencode($this->test_case_uuid)], '/v2/gen-ai/evaluation_test_cases/{test_case_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

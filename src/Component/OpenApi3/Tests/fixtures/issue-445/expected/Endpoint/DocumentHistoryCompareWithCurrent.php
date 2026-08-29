@@ -27,7 +27,7 @@ class DocumentHistoryCompareWithCurrent extends \PicturePark\API\Runtime\Client\
     }
     public function getUri(): string
     {
-        return str_replace(['{documentType}', '{documentId}'], [$this->documentType, $this->documentId], '/v1/history/{documentType}/{documentId}/current/compare');
+        return str_replace(['{documentType}', '{documentId}'], [rawurlencode($this->documentType), rawurlencode($this->documentId)], '/v1/history/{documentType}/{documentId}/current/compare');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

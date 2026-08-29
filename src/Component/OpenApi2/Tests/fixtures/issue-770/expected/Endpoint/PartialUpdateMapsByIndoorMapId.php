@@ -25,7 +25,7 @@ class PartialUpdateMapsByIndoorMapId extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getUri(): string
     {
-        return str_replace(['{indoorMapId}'], [$this->indoorMapId], '/maps/{indoorMapId}');
+        return str_replace(['{indoorMapId}'], [rawurlencode($this->indoorMapId)], '/maps/{indoorMapId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

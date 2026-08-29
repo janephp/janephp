@@ -35,7 +35,7 @@ class ImageActionsPost extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     }
     public function getUri(): string
     {
-        return str_replace(['{image_id}'], [$this->image_id], '/v2/images/{image_id}/actions');
+        return str_replace(['{image_id}'], [rawurlencode($this->image_id)], '/v2/images/{image_id}/actions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

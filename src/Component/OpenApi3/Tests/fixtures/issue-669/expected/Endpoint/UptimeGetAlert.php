@@ -23,7 +23,7 @@ class UptimeGetAlert extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
     }
     public function getUri(): string
     {
-        return str_replace(['{check_id}', '{alert_id}'], [$this->check_id, $this->alert_id], '/v2/uptime/checks/{check_id}/alerts/{alert_id}');
+        return str_replace(['{check_id}', '{alert_id}'], [rawurlencode($this->check_id), rawurlencode($this->alert_id)], '/v2/uptime/checks/{check_id}/alerts/{alert_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -22,7 +22,7 @@ class GetMemberBySelector extends \Jane\Component\OpenApi31\Tests\Expected\Runti
     }
     public function getUri(): string
     {
-        return str_replace(['{selector}'], [$this->selector], '/members/{selector}');
+        return str_replace(['{selector}'], [rawurlencode($this->selector)], '/members/{selector}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

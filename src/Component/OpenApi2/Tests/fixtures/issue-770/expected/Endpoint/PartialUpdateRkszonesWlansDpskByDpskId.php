@@ -31,7 +31,7 @@ class PartialUpdateRkszonesWlansDpskByDpskId extends \Jane\Component\OpenApi3\Te
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}', '{dpskId}'], [$this->zoneId, $this->id, $this->dpskId], '/rkszones/{zoneId}/wlans/{id}/dpsk/{dpskId}');
+        return str_replace(['{zoneId}', '{id}', '{dpskId}'], [rawurlencode($this->zoneId), rawurlencode($this->id), rawurlencode($this->dpskId)], '/rkszones/{zoneId}/wlans/{id}/dpsk/{dpskId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

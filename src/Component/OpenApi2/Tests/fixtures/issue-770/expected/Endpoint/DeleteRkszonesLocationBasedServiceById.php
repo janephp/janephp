@@ -23,7 +23,7 @@ class DeleteRkszonesLocationBasedServiceById extends \Jane\Component\OpenApi3\Te
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/{id}/locationBasedService');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/{id}/locationBasedService');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

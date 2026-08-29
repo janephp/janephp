@@ -23,7 +23,7 @@ class FindRkszonesById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -25,7 +25,7 @@ class PartialUpdateProfilesBridgeById extends \Jane\Component\OpenApi3\Tests\Exp
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/profiles/bridge/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/profiles/bridge/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

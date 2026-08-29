@@ -23,7 +23,7 @@ class DeleteApsBonjourGatewayByApMac extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/bonjourGateway');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/bonjourGateway');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

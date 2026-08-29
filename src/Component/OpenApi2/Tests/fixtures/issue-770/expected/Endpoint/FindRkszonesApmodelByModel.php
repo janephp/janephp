@@ -26,7 +26,7 @@ class FindRkszonesApmodelByModel extends \Jane\Component\OpenApi3\Tests\Expected
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{model}'], [$this->zoneId, $this->model], '/rkszones/{zoneId}/apmodel/{model}');
+        return str_replace(['{zoneId}', '{model}'], [rawurlencode($this->zoneId), rawurlencode($this->model)], '/rkszones/{zoneId}/apmodel/{model}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

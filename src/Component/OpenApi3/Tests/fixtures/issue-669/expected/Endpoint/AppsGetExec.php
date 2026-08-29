@@ -30,7 +30,7 @@ class AppsGetExec extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
     }
     public function getUri(): string
     {
-        return str_replace(['{app_id}', '{deployment_id}', '{component_name}'], [$this->app_id, $this->deployment_id, $this->component_name], '/v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/exec');
+        return str_replace(['{app_id}', '{deployment_id}', '{component_name}'], [rawurlencode($this->app_id), rawurlencode($this->deployment_id), rawurlencode($this->component_name)], '/v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/exec');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class DeleteApsRadioConfigRadio5gAutoChannelSelectionByApMac extends \Jane\Compo
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/radioConfig/radio5g/autoChannelSelection');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/radioConfig/radio5g/autoChannelSelection');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

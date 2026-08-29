@@ -23,7 +23,7 @@ class PluginPush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getUri(): string
     {
-        return str_replace(['{name}'], [$this->name], '/plugins/{name}/push');
+        return str_replace(['{name}'], [rawurlencode($this->name)], '/plugins/{name}/push');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

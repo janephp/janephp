@@ -29,7 +29,7 @@ class DatabasesUpdateKafkaTopic extends \Jane\Generated\DigitalOcean\Runtime\Cli
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{topic_name}'], [$this->database_cluster_uuid, $this->topic_name], '/v2/databases/{database_cluster_uuid}/topics/{topic_name}');
+        return str_replace(['{database_cluster_uuid}', '{topic_name}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->topic_name)], '/v2/databases/{database_cluster_uuid}/topics/{topic_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

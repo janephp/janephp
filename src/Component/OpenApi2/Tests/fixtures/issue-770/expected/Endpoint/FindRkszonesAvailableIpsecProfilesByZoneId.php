@@ -23,7 +23,7 @@ class FindRkszonesAvailableIpsecProfilesByZoneId extends \Jane\Component\OpenApi
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/availableIpsecProfiles');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/availableIpsecProfiles');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

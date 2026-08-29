@@ -31,7 +31,7 @@ class CompanyEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/monitoring/companies/{id}/events');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/monitoring/companies/{id}/events');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

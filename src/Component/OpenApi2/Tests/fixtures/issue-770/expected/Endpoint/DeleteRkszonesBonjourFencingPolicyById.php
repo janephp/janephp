@@ -23,7 +23,7 @@ class DeleteRkszonesBonjourFencingPolicyById extends \Jane\Component\OpenApi3\Te
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/bonjourFencingPolicy/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/bonjourFencingPolicy/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

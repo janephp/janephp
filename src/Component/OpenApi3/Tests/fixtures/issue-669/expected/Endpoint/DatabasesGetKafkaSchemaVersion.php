@@ -28,7 +28,7 @@ class DatabasesGetKafkaSchemaVersion extends \Jane\Generated\DigitalOcean\Runtim
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{subject_name}', '{version}'], [$this->database_cluster_uuid, $this->subject_name, $this->version], '/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}/versions/{version}');
+        return str_replace(['{database_cluster_uuid}', '{subject_name}', '{version}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->subject_name), rawurlencode($this->version)], '/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}/versions/{version}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class ContainerRestart extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/containers/{id}/restart');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/containers/{id}/restart');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

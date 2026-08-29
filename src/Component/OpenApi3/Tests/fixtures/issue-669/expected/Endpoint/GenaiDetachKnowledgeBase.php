@@ -23,7 +23,7 @@ class GenaiDetachKnowledgeBase extends \Jane\Generated\DigitalOcean\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{agent_uuid}', '{knowledge_base_uuid}'], [$this->agent_uuid, $this->knowledge_base_uuid], '/v2/gen-ai/agents/{agent_uuid}/knowledge_bases/{knowledge_base_uuid}');
+        return str_replace(['{agent_uuid}', '{knowledge_base_uuid}'], [rawurlencode($this->agent_uuid), rawurlencode($this->knowledge_base_uuid)], '/v2/gen-ai/agents/{agent_uuid}/knowledge_bases/{knowledge_base_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

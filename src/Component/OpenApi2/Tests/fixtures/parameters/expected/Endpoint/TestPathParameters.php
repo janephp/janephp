@@ -25,7 +25,7 @@ class TestPathParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
     }
     public function getUri(): string
     {
-        return str_replace(['{testString}', '{testInteger}', '{testFloat}'], [$this->testString, $this->testInteger, $this->testFloat], '/test-path/{testString}/{testInteger}/{testFloat}');
+        return str_replace(['{testString}', '{testInteger}', '{testFloat}'], [rawurlencode($this->testString), rawurlencode($this->testInteger), rawurlencode($this->testFloat)], '/test-path/{testString}/{testInteger}/{testFloat}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

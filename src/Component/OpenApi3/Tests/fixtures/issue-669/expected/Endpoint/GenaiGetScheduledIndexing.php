@@ -20,7 +20,7 @@ class GenaiGetScheduledIndexing extends \Jane\Generated\DigitalOcean\Runtime\Cli
     }
     public function getUri(): string
     {
-        return str_replace(['{knowledge_base_uuid}'], [$this->knowledge_base_uuid], '/v2/gen-ai/scheduled-indexing/knowledge-base/{knowledge_base_uuid}');
+        return str_replace(['{knowledge_base_uuid}'], [rawurlencode($this->knowledge_base_uuid)], '/v2/gen-ai/scheduled-indexing/knowledge-base/{knowledge_base_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -22,7 +22,7 @@ class GenaiAttachAgentFunction extends \Jane\Generated\DigitalOcean\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{agent_uuid}'], [$this->agent_uuid], '/v2/gen-ai/agents/{agent_uuid}/functions');
+        return str_replace(['{agent_uuid}'], [rawurlencode($this->agent_uuid)], '/v2/gen-ai/agents/{agent_uuid}/functions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

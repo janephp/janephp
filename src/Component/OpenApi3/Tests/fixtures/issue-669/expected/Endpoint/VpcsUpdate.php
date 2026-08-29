@@ -23,7 +23,7 @@ class VpcsUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
     }
     public function getUri(): string
     {
-        return str_replace(['{vpc_id}'], [$this->vpc_id], '/v2/vpcs/{vpc_id}');
+        return str_replace(['{vpc_id}'], [rawurlencode($this->vpc_id)], '/v2/vpcs/{vpc_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

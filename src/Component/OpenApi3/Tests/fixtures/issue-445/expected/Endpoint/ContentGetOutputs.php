@@ -20,7 +20,7 @@ class ContentGetOutputs extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Contents/{id}/outputs');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Contents/{id}/outputs');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

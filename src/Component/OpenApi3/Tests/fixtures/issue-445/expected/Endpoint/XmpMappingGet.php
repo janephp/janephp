@@ -20,7 +20,7 @@ class XmpMappingGet extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/XmpMappings/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/XmpMappings/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

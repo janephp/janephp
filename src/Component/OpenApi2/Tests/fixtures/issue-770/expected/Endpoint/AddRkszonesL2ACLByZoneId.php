@@ -25,7 +25,7 @@ class AddRkszonesL2ACLByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\R
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/l2ACL');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/l2ACL');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

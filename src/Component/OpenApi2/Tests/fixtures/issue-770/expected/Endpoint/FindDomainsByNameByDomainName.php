@@ -23,7 +23,7 @@ class FindDomainsByNameByDomainName extends \Jane\Component\OpenApi3\Tests\Expec
     }
     public function getUri(): string
     {
-        return str_replace(['{domainName}'], [$this->domainName], '/domains/byName/{domainName}');
+        return str_replace(['{domainName}'], [rawurlencode($this->domainName)], '/domains/byName/{domainName}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

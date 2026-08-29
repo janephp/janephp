@@ -23,7 +23,7 @@ class DeleteApsRadioConfigRadio5gLowerWlanGroupIdByApMac extends \Jane\Component
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/radioConfig/radio5gLower/wlanGroupId');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/radioConfig/radio5gLower/wlanGroupId');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

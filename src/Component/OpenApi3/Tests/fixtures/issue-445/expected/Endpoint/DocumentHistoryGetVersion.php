@@ -26,7 +26,7 @@ class DocumentHistoryGetVersion extends \PicturePark\API\Runtime\Client\BaseEndp
     }
     public function getUri(): string
     {
-        return str_replace(['{documentType}', '{documentId}', '{documentVersion}'], [$this->documentType, $this->documentId, $this->documentVersion], '/v1/history/{documentType}/{documentId}/{documentVersion}');
+        return str_replace(['{documentType}', '{documentId}', '{documentVersion}'], [rawurlencode($this->documentType), rawurlencode($this->documentId), rawurlencode($this->documentVersion)], '/v1/history/{documentType}/{documentId}/{documentVersion}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

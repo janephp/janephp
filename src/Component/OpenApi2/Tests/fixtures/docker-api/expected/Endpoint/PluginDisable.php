@@ -21,7 +21,7 @@ class PluginDisable extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri(): string
     {
-        return str_replace(['{name}'], [$this->name], '/plugins/{name}/disable');
+        return str_replace(['{name}'], [rawurlencode($this->name)], '/plugins/{name}/disable');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

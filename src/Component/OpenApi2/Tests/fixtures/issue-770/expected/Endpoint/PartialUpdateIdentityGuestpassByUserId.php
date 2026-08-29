@@ -25,7 +25,7 @@ class PartialUpdateIdentityGuestpassByUserId extends \Jane\Component\OpenApi3\Te
     }
     public function getUri(): string
     {
-        return str_replace(['{userId}'], [$this->userId], '/identity/guestpass/{userId}');
+        return str_replace(['{userId}'], [rawurlencode($this->userId)], '/identity/guestpass/{userId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

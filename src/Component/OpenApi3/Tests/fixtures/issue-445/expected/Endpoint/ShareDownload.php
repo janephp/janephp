@@ -31,7 +31,7 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     }
     public function getUri(): string
     {
-        return str_replace(['{token}'], [$this->token], '/v1/Shares/d/{token}');
+        return str_replace(['{token}'], [rawurlencode($this->token)], '/v1/Shares/d/{token}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

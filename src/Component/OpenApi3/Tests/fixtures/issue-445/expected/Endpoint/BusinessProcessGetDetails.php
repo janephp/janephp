@@ -20,7 +20,7 @@ class BusinessProcessGetDetails extends \PicturePark\API\Runtime\Client\BaseEndp
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/BusinessProcesses/{id}/details');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/BusinessProcesses/{id}/details');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

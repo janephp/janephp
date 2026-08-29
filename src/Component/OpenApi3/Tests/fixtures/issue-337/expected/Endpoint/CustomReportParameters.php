@@ -28,7 +28,7 @@ class CustomReportParameters extends \CreditSafe\API\Runtime\Client\BaseEndpoint
     }
     public function getUri(): string
     {
-        return str_replace(['{country}'], [$this->country], '/reportcustomdata/{country}');
+        return str_replace(['{country}'], [rawurlencode($this->country)], '/reportcustomdata/{country}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

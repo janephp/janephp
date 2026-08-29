@@ -20,7 +20,7 @@ class DomainsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
     }
     public function getUri(): string
     {
-        return str_replace(['{domain_name}'], [$this->domain_name], '/v2/domains/{domain_name}');
+        return str_replace(['{domain_name}'], [rawurlencode($this->domain_name)], '/v2/domains/{domain_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

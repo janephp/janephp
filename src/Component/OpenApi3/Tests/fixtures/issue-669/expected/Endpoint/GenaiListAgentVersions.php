@@ -25,7 +25,7 @@ class GenaiListAgentVersions extends \Jane\Generated\DigitalOcean\Runtime\Client
     }
     public function getUri(): string
     {
-        return str_replace(['{uuid}'], [$this->uuid], '/v2/gen-ai/agents/{uuid}/versions');
+        return str_replace(['{uuid}'], [rawurlencode($this->uuid)], '/v2/gen-ai/agents/{uuid}/versions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -29,7 +29,7 @@ class UpdateIsProcessedFlagOnAnNotificationEvent extends \CreditSafe\API\Runtime
     }
     public function getUri(): string
     {
-        return str_replace(['{portfolioId}', '{notificationEventId}'], [$this->portfolioId, $this->notificationEventId], '/monitoring/portfolios/{portfolioId}/notificationEvents/{notificationEventId}');
+        return str_replace(['{portfolioId}', '{notificationEventId}'], [rawurlencode($this->portfolioId), rawurlencode($this->notificationEventId)], '/monitoring/portfolios/{portfolioId}/notificationEvents/{notificationEventId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

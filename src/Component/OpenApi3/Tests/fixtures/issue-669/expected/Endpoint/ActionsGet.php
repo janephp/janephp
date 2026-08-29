@@ -20,7 +20,7 @@ class ActionsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
     }
     public function getUri(): string
     {
-        return str_replace(['{action_id}'], [$this->action_id], '/v2/actions/{action_id}');
+        return str_replace(['{action_id}'], [rawurlencode($this->action_id)], '/v2/actions/{action_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

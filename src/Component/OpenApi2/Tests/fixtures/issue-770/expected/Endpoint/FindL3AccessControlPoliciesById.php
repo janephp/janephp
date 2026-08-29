@@ -23,7 +23,7 @@ class FindL3AccessControlPoliciesById extends \Jane\Component\OpenApi3\Tests\Exp
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/l3AccessControlPolicies/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/l3AccessControlPolicies/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

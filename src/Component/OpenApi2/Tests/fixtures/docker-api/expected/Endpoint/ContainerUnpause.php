@@ -20,7 +20,7 @@ class ContainerUnpause extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/containers/{id}/unpause');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/containers/{id}/unpause');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

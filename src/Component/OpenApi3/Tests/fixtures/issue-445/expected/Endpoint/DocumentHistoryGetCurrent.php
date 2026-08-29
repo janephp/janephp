@@ -23,7 +23,7 @@ class DocumentHistoryGetCurrent extends \PicturePark\API\Runtime\Client\BaseEndp
     }
     public function getUri(): string
     {
-        return str_replace(['{documentType}', '{documentId}'], [$this->documentType, $this->documentId], '/v1/history/{documentType}/{documentId}/current');
+        return str_replace(['{documentType}', '{documentId}'], [rawurlencode($this->documentType), rawurlencode($this->documentId)], '/v1/history/{documentType}/{documentId}/current');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

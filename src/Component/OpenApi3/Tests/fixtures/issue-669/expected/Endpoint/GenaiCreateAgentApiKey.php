@@ -22,7 +22,7 @@ class GenaiCreateAgentApiKey extends \Jane\Generated\DigitalOcean\Runtime\Client
     }
     public function getUri(): string
     {
-        return str_replace(['{agent_uuid}'], [$this->agent_uuid], '/v2/gen-ai/agents/{agent_uuid}/api_keys');
+        return str_replace(['{agent_uuid}'], [rawurlencode($this->agent_uuid)], '/v2/gen-ai/agents/{agent_uuid}/api_keys');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

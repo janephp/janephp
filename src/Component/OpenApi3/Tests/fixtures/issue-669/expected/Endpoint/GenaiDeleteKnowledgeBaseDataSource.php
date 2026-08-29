@@ -23,7 +23,7 @@ class GenaiDeleteKnowledgeBaseDataSource extends \Jane\Generated\DigitalOcean\Ru
     }
     public function getUri(): string
     {
-        return str_replace(['{knowledge_base_uuid}', '{data_source_uuid}'], [$this->knowledge_base_uuid, $this->data_source_uuid], '/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources/{data_source_uuid}');
+        return str_replace(['{knowledge_base_uuid}', '{data_source_uuid}'], [rawurlencode($this->knowledge_base_uuid), rawurlencode($this->data_source_uuid)], '/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources/{data_source_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class GetBooking extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client
     }
     public function getUri(): string
     {
-        return str_replace(['{bookingId}'], [$this->bookingId], '/bookings/{bookingId}');
+        return str_replace(['{bookingId}'], [rawurlencode($this->bookingId)], '/bookings/{bookingId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

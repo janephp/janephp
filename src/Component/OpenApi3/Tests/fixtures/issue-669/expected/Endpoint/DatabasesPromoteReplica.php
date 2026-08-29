@@ -27,7 +27,7 @@ class DatabasesPromoteReplica extends \Jane\Generated\DigitalOcean\Runtime\Clien
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{replica_name}'], [$this->database_cluster_uuid, $this->replica_name], '/v2/databases/{database_cluster_uuid}/replicas/{replica_name}/promote');
+        return str_replace(['{database_cluster_uuid}', '{replica_name}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->replica_name)], '/v2/databases/{database_cluster_uuid}/replicas/{replica_name}/promote');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

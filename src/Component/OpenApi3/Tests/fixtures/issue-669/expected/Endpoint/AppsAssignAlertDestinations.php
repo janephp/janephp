@@ -25,7 +25,7 @@ class AppsAssignAlertDestinations extends \Jane\Generated\DigitalOcean\Runtime\C
     }
     public function getUri(): string
     {
-        return str_replace(['{app_id}', '{alert_id}'], [$this->app_id, $this->alert_id], '/v2/apps/{app_id}/alerts/{alert_id}/destinations');
+        return str_replace(['{app_id}', '{alert_id}'], [rawurlencode($this->app_id), rawurlencode($this->alert_id)], '/v2/apps/{app_id}/alerts/{alert_id}/destinations');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

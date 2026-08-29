@@ -34,7 +34,7 @@ class DatabasesUpdateUser extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{username}'], [$this->database_cluster_uuid, $this->username], '/v2/databases/{database_cluster_uuid}/users/{username}');
+        return str_replace(['{database_cluster_uuid}', '{username}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->username)], '/v2/databases/{database_cluster_uuid}/users/{username}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

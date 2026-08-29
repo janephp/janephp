@@ -25,7 +25,7 @@ class CreateBookingPayment extends \Jane\Component\OpenApi31\Tests\Expected\Runt
     }
     public function getUri(): string
     {
-        return str_replace(['{bookingId}'], [$this->bookingId], '/bookings/{bookingId}/payment');
+        return str_replace(['{bookingId}'], [rawurlencode($this->bookingId)], '/bookings/{bookingId}/payment');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class VpcPeeringsPatch extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     }
     public function getUri(): string
     {
-        return str_replace(['{vpc_peering_id}'], [$this->vpc_peering_id], '/v2/vpc_peerings/{vpc_peering_id}');
+        return str_replace(['{vpc_peering_id}'], [rawurlencode($this->vpc_peering_id)], '/v2/vpc_peerings/{vpc_peering_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

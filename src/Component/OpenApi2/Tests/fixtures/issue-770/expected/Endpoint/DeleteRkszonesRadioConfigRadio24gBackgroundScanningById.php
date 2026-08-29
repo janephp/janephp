@@ -23,7 +23,7 @@ class DeleteRkszonesRadioConfigRadio24gBackgroundScanningById extends \Jane\Comp
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/{id}/radioConfig/radio24g/backgroundScanning');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/{id}/radioConfig/radio24g/backgroundScanning');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

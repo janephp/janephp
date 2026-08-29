@@ -23,7 +23,7 @@ class DeleteApsRadioConfigRadio6gBssMinRateByApMac extends \Jane\Component\OpenA
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/radioConfig/radio6g/bssMinRate');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/radioConfig/radio6g/bssMinRate');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

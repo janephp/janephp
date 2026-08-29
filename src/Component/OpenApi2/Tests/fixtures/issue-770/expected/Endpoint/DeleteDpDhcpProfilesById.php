@@ -23,7 +23,7 @@ class DeleteDpDhcpProfilesById extends \Jane\Component\OpenApi3\Tests\Expected\R
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/dpDhcpProfiles/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/dpDhcpProfiles/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

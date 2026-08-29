@@ -24,7 +24,7 @@ class SpacesKeyUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     }
     public function getUri(): string
     {
-        return str_replace(['{access_key}'], [$this->access_key], '/v2/spaces/keys/{access_key}');
+        return str_replace(['{access_key}'], [rawurlencode($this->access_key)], '/v2/spaces/keys/{access_key}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

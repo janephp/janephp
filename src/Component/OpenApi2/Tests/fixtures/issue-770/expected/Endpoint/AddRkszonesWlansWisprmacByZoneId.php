@@ -25,7 +25,7 @@ class AddRkszonesWlansWisprmacByZoneId extends \Jane\Component\OpenApi3\Tests\Ex
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/wlans/wisprmac');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/wlans/wisprmac');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

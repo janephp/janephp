@@ -22,7 +22,7 @@ class GetParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\Ex
     }
     public function getUri(): string
     {
-        return str_replace(['{parent_id}', '{child_id}'], [$this->parent_id, $this->child_id], '/parents/{parent_id}/child/child_id/');
+        return str_replace(['{parent_id}', '{child_id}'], [rawurlencode($this->parent_id), rawurlencode($this->child_id)], '/parents/{parent_id}/child/child_id/');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

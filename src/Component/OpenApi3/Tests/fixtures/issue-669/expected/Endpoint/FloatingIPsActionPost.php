@@ -30,7 +30,7 @@ class FloatingIPsActionPost extends \Jane\Generated\DigitalOcean\Runtime\Client\
     }
     public function getUri(): string
     {
-        return str_replace(['{floating_ip}'], [$this->floating_ip], '/v2/floating_ips/{floating_ip}/actions');
+        return str_replace(['{floating_ip}'], [rawurlencode($this->floating_ip)], '/v2/floating_ips/{floating_ip}/actions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

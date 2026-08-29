@@ -31,7 +31,7 @@ class ContainerAttachWebsocket extends \Docker\Api\Runtime\Client\BaseEndpoint i
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/containers/{id}/attach/ws');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/containers/{id}/attach/ws');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

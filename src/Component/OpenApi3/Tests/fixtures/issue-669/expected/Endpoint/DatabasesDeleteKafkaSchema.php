@@ -25,7 +25,7 @@ class DatabasesDeleteKafkaSchema extends \Jane\Generated\DigitalOcean\Runtime\Cl
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{subject_name}'], [$this->database_cluster_uuid, $this->subject_name], '/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}');
+        return str_replace(['{database_cluster_uuid}', '{subject_name}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->subject_name)], '/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

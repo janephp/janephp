@@ -23,7 +23,7 @@ class DeleteFtpsByFtpId extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\
     }
     public function getUri(): string
     {
-        return str_replace(['{ftpId}'], [$this->ftpId], '/ftps/{ftpId}');
+        return str_replace(['{ftpId}'], [rawurlencode($this->ftpId)], '/ftps/{ftpId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

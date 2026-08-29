@@ -23,7 +23,7 @@ class DeleteDevicePolicyById extends \Jane\Component\OpenApi3\Tests\Expected\Run
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/devicePolicy/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/devicePolicy/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

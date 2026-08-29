@@ -19,7 +19,7 @@ class UserCancelDeletionRequest extends \PicturePark\API\Runtime\Client\BaseEndp
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Users/{id}/cancelDeletionRequest');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Users/{id}/cancelDeletionRequest');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

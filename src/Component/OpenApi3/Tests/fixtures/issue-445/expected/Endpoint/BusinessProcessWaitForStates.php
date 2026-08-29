@@ -25,7 +25,7 @@ class BusinessProcessWaitForStates extends \PicturePark\API\Runtime\Client\BaseE
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/BusinessProcesses/{id}/waitStates');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/BusinessProcesses/{id}/waitStates');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

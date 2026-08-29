@@ -25,7 +25,7 @@ class AddProfilesDnsserverCloneById extends \Jane\Component\OpenApi3\Tests\Expec
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/profiles/dnsserver/clone/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/profiles/dnsserver/clone/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

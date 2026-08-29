@@ -25,7 +25,7 @@ class UpdateApsByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

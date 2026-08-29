@@ -39,7 +39,7 @@ class ImagePush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getUri(): string
     {
-        return str_replace(['{name}'], [$this->name], '/images/{name}/push');
+        return str_replace(['{name}'], [rawurlencode($this->name)], '/images/{name}/push');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

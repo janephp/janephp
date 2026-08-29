@@ -25,7 +25,7 @@ class LoadBalancersDeleteCache extends \Jane\Generated\DigitalOcean\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{lb_id}'], [$this->lb_id], '/v2/load_balancers/{lb_id}/cache');
+        return str_replace(['{lb_id}'], [rawurlencode($this->lb_id)], '/v2/load_balancers/{lb_id}/cache');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

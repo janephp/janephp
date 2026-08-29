@@ -20,7 +20,7 @@ class ContentPermissionSetGet extends \PicturePark\API\Runtime\Client\BaseEndpoi
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/ContentPermissionSets/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/ContentPermissionSets/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

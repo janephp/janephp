@@ -22,7 +22,7 @@ class SshKeysUpdate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
     }
     public function getUri(): string
     {
-        return str_replace(['{ssh_key_identifier}'], [$this->ssh_key_identifier], '/v2/account/keys/{ssh_key_identifier}');
+        return str_replace(['{ssh_key_identifier}'], [rawurlencode($this->ssh_key_identifier)], '/v2/account/keys/{ssh_key_identifier}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

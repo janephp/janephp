@@ -20,7 +20,7 @@ class GenaiGetIndexingJob extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     }
     public function getUri(): string
     {
-        return str_replace(['{uuid}'], [$this->uuid], '/v2/gen-ai/indexing_jobs/{uuid}');
+        return str_replace(['{uuid}'], [rawurlencode($this->uuid)], '/v2/gen-ai/indexing_jobs/{uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

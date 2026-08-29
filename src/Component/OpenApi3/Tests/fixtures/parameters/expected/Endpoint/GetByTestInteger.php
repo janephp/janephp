@@ -19,7 +19,7 @@ class GetByTestInteger extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
     }
     public function getUri(): string
     {
-        return str_replace(['{test_integer}'], [$this->test_integer], '/{test_integer}');
+        return str_replace(['{test_integer}'], [rawurlencode($this->test_integer)], '/{test_integer}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

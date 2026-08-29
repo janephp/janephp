@@ -22,7 +22,7 @@ class MonitoringUpdateAlertPolicy extends \Jane\Generated\DigitalOcean\Runtime\C
     }
     public function getUri(): string
     {
-        return str_replace(['{alert_uuid}'], [$this->alert_uuid], '/v2/monitoring/alerts/{alert_uuid}');
+        return str_replace(['{alert_uuid}'], [rawurlencode($this->alert_uuid)], '/v2/monitoring/alerts/{alert_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

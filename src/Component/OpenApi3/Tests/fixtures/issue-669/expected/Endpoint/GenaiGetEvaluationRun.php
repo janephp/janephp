@@ -20,7 +20,7 @@ class GenaiGetEvaluationRun extends \Jane\Generated\DigitalOcean\Runtime\Client\
     }
     public function getUri(): string
     {
-        return str_replace(['{evaluation_run_uuid}'], [$this->evaluation_run_uuid], '/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}');
+        return str_replace(['{evaluation_run_uuid}'], [rawurlencode($this->evaluation_run_uuid)], '/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

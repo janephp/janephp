@@ -36,7 +36,7 @@ class RegistriesDeleteRepositoryTag extends \Jane\Generated\DigitalOcean\Runtime
     }
     public function getUri(): string
     {
-        return str_replace(['{registry_name}', '{repository_name}', '{repository_tag}'], [$this->registry_name, $this->repository_name, $this->repository_tag], '/v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag}');
+        return str_replace(['{registry_name}', '{repository_name}', '{repository_tag}'], [rawurlencode($this->registry_name), rawurlencode($this->repository_name), rawurlencode($this->repository_tag)], '/v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

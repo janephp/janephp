@@ -22,7 +22,7 @@ class AddonsGetAppMetadata extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     }
     public function getUri(): string
     {
-        return str_replace(['{app_slug}'], [$this->app_slug], '/v2/add-ons/apps/{app_slug}/metadata');
+        return str_replace(['{app_slug}'], [rawurlencode($this->app_slug)], '/v2/add-ons/apps/{app_slug}/metadata');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

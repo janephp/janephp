@@ -23,7 +23,7 @@ class DeleteProfilesHs20OperatorsCertificateById extends \Jane\Component\OpenApi
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/profiles/hs20/operators/{id}/certificate');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/profiles/hs20/operators/{id}/certificate');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

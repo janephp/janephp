@@ -23,7 +23,7 @@ class FindBlockClientByZoneByZoneId extends \Jane\Component\OpenApi3\Tests\Expec
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/blockClient/byZone/{zoneId}');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/blockClient/byZone/{zoneId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

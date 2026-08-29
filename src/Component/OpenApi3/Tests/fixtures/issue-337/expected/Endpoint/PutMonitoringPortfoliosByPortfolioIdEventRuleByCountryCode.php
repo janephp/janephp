@@ -29,7 +29,7 @@ class PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode extends \Credit
     }
     public function getUri(): string
     {
-        return str_replace(['{portfolioId}', '{countryCode}'], [$this->portfolioId, $this->countryCode], '/monitoring/portfolios/{portfolioId}/eventRules/{countryCode}');
+        return str_replace(['{portfolioId}', '{countryCode}'], [rawurlencode($this->portfolioId), rawurlencode($this->countryCode)], '/monitoring/portfolios/{portfolioId}/eventRules/{countryCode}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

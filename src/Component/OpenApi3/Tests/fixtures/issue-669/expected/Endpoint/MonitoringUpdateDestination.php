@@ -22,7 +22,7 @@ class MonitoringUpdateDestination extends \Jane\Generated\DigitalOcean\Runtime\C
     }
     public function getUri(): string
     {
-        return str_replace(['{destination_uuid}'], [$this->destination_uuid], '/v2/monitoring/sinks/destinations/{destination_uuid}');
+        return str_replace(['{destination_uuid}'], [rawurlencode($this->destination_uuid)], '/v2/monitoring/sinks/destinations/{destination_uuid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class DeleteAvcApplicationPolicyV2ById extends \Jane\Component\OpenApi3\Tests\Ex
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/avc/applicationPolicyV2/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/avc/applicationPolicyV2/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

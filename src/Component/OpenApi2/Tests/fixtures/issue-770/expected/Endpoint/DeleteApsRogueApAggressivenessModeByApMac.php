@@ -23,7 +23,7 @@ class DeleteApsRogueApAggressivenessModeByApMac extends \Jane\Component\OpenApi3
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/rogueApAggressivenessMode');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/rogueApAggressivenessMode');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

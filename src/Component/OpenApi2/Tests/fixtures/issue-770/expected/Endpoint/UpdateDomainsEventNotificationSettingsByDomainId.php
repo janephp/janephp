@@ -25,7 +25,7 @@ class UpdateDomainsEventNotificationSettingsByDomainId extends \Jane\Component\O
     }
     public function getUri(): string
     {
-        return str_replace(['{domainId}'], [$this->domainId], '/domains/{domainId}/eventNotificationSettings');
+        return str_replace(['{domainId}'], [rawurlencode($this->domainId)], '/domains/{domainId}/eventNotificationSettings');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

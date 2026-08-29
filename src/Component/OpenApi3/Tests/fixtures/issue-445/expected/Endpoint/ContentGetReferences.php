@@ -22,7 +22,7 @@ class ContentGetReferences extends \PicturePark\API\Runtime\Client\BaseEndpoint 
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Contents/{id}/references/search');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Contents/{id}/references/search');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

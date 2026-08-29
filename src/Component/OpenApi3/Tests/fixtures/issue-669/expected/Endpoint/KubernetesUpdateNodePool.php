@@ -29,7 +29,7 @@ class KubernetesUpdateNodePool extends \Jane\Generated\DigitalOcean\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{cluster_id}', '{node_pool_id}'], [$this->cluster_id, $this->node_pool_id], '/v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}');
+        return str_replace(['{cluster_id}', '{node_pool_id}'], [rawurlencode($this->cluster_id), rawurlencode($this->node_pool_id)], '/v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -22,7 +22,7 @@ class ContentPermissionSetTransferOwnership extends \PicturePark\API\Runtime\Cli
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/ContentPermissionSets/{id}/ownership');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/ContentPermissionSets/{id}/ownership');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

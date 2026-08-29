@@ -22,7 +22,7 @@ class GenaiUpdateAgentDeploymentVisibility extends \Jane\Generated\DigitalOcean\
     }
     public function getUri(): string
     {
-        return str_replace(['{uuid}'], [$this->uuid], '/v2/gen-ai/agents/{uuid}/deployment_visibility');
+        return str_replace(['{uuid}'], [rawurlencode($this->uuid)], '/v2/gen-ai/agents/{uuid}/deployment_visibility');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

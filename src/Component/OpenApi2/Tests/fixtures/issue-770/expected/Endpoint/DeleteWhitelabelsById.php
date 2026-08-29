@@ -23,7 +23,7 @@ class DeleteWhitelabelsById extends \Jane\Component\OpenApi3\Tests\Expected\Runt
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/whitelabels/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/whitelabels/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

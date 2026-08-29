@@ -25,7 +25,7 @@ class ContainerResize extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/containers/{id}/resize');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/containers/{id}/resize');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

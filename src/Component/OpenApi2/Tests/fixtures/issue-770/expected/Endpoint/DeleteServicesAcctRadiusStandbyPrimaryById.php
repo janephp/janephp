@@ -23,7 +23,7 @@ class DeleteServicesAcctRadiusStandbyPrimaryById extends \Jane\Component\OpenApi
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/services/acct/radius/{id}/standbyPrimary');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/services/acct/radius/{id}/standbyPrimary');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

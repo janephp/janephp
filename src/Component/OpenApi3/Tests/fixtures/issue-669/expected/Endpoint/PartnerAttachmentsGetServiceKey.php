@@ -22,7 +22,7 @@ class PartnerAttachmentsGetServiceKey extends \Jane\Generated\DigitalOcean\Runti
     }
     public function getUri(): string
     {
-        return str_replace(['{pa_id}'], [$this->pa_id], '/v2/partner_network_connect/attachments/{pa_id}/service_key');
+        return str_replace(['{pa_id}'], [rawurlencode($this->pa_id)], '/v2/partner_network_connect/attachments/{pa_id}/service_key');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

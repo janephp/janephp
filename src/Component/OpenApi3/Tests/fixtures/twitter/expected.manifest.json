@@ -8,7 +8,7 @@
         "Endpoint/FindUsersByIdOrUsername.php": "53f521dafef879a942fdef19cc27b809c149585190f8b78e87f36c7e14e58975",
         "Endpoint/GetOpenApiSpec.php": "122073dbd0c55d4d2b33d7645113a510b52f741e1982a88b7c63291c8c9b87c6",
         "Endpoint/GetRules.php": "7fb79b12ddb179aa10c196f33f2ec7b509962260693e1a094b32dd363d7a977c",
-        "Endpoint/HideReplyById.php": "c9c1c29d67e19e2480dbe6a4755d7045809dcde6c2a3ba4c8de2e0c9f2fc3acb",
+        "Endpoint/HideReplyById.php": "82a309a20a51f8a812186d35150ec105a58e24e56a2a06f9010516604e9fe8a8",
         "Endpoint/StreamFilter.php": "44334fc2c1d664821c7df7259593606943ac7befc3ac813de9b58ca4e1dad28a",
         "Endpoint/StreamSample.php": "bad0a6fce8c3b32c9e44b59ff1756aa6e6bdff151d666c248d3eeb4d76738569",
         "Endpoint/TweetsRecentSearch.php": "8c6d6d7c92a4292684c436cc5b656137df866a4fc854cba7dd0f1ebe9c77ed22",

@@ -28,7 +28,7 @@ class RegistriesDeleteRepository extends \Jane\Generated\DigitalOcean\Runtime\Cl
     }
     public function getUri(): string
     {
-        return str_replace(['{registry_name}', '{repository_name}'], [$this->registry_name, $this->repository_name], '/v2/registries/{registry_name}/repositories/{repository_name}');
+        return str_replace(['{registry_name}', '{repository_name}'], [rawurlencode($this->registry_name), rawurlencode($this->repository_name)], '/v2/registries/{registry_name}/repositories/{repository_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -24,7 +24,7 @@ class EditPendingFreshInvestigation extends \CreditSafe\API\Runtime\Client\BaseE
     }
     public function getUri(): string
     {
-        return str_replace(['{orderId}'], [$this->orderId], '/freshInvestigations/{orderId}');
+        return str_replace(['{orderId}'], [rawurlencode($this->orderId)], '/freshInvestigations/{orderId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

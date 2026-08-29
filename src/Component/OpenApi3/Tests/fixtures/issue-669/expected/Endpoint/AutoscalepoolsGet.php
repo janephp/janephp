@@ -22,7 +22,7 @@ class AutoscalepoolsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     }
     public function getUri(): string
     {
-        return str_replace(['{autoscale_pool_id}'], [$this->autoscale_pool_id], '/v2/droplets/autoscale/{autoscale_pool_id}');
+        return str_replace(['{autoscale_pool_id}'], [rawurlencode($this->autoscale_pool_id)], '/v2/droplets/autoscale/{autoscale_pool_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

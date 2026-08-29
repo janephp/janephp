@@ -23,7 +23,7 @@ class DeleteApsRadioConfigRadio24gProtectionModeByApMac extends \Jane\Component\
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/radioConfig/radio24g/protectionMode');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/radioConfig/radio24g/protectionMode');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

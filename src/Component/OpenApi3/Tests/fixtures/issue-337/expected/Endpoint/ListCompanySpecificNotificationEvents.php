@@ -36,7 +36,7 @@ class ListCompanySpecificNotificationEvents extends \CreditSafe\API\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{portfolioId}', '{id}'], [$this->portfolioId, $this->id], '/monitoring/portfolios/{portfolioId}/companies/{id}/notificationEvents');
+        return str_replace(['{portfolioId}', '{id}'], [rawurlencode($this->portfolioId), rawurlencode($this->id)], '/monitoring/portfolios/{portfolioId}/companies/{id}/notificationEvents');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

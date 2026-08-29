@@ -23,7 +23,7 @@ class DeleteServicesAuthRadiusSecondaryById extends \Jane\Component\OpenApi3\Tes
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/services/auth/radius/{id}/secondary');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/services/auth/radius/{id}/secondary');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

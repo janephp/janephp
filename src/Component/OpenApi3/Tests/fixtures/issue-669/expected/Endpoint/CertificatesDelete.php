@@ -22,7 +22,7 @@ class CertificatesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     }
     public function getUri(): string
     {
-        return str_replace(['{certificate_id}'], [$this->certificate_id], '/v2/certificates/{certificate_id}');
+        return str_replace(['{certificate_id}'], [rawurlencode($this->certificate_id)], '/v2/certificates/{certificate_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

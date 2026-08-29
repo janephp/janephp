@@ -23,7 +23,7 @@ class VolumesDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
     }
     public function getUri(): string
     {
-        return str_replace(['{volume_id}'], [$this->volume_id], '/v2/volumes/{volume_id}');
+        return str_replace(['{volume_id}'], [rawurlencode($this->volume_id)], '/v2/volumes/{volume_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

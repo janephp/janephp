@@ -25,7 +25,7 @@ class GenaiListAgentsByOpenaiKey extends \Jane\Generated\DigitalOcean\Runtime\Cl
     }
     public function getUri(): string
     {
-        return str_replace(['{uuid}'], [$this->uuid], '/v2/gen-ai/openai/keys/{uuid}/agents');
+        return str_replace(['{uuid}'], [rawurlencode($this->uuid)], '/v2/gen-ai/openai/keys/{uuid}/agents');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

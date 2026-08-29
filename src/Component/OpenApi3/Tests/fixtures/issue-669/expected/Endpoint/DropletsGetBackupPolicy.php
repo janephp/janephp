@@ -22,7 +22,7 @@ class DropletsGetBackupPolicy extends \Jane\Generated\DigitalOcean\Runtime\Clien
     }
     public function getUri(): string
     {
-        return str_replace(['{droplet_id}'], [$this->droplet_id], '/v2/droplets/{droplet_id}/backups/policy');
+        return str_replace(['{droplet_id}'], [rawurlencode($this->droplet_id)], '/v2/droplets/{droplet_id}/backups/policy');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

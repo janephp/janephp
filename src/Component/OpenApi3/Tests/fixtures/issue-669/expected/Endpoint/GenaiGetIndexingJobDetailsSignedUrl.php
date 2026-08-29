@@ -20,7 +20,7 @@ class GenaiGetIndexingJobDetailsSignedUrl extends \Jane\Generated\DigitalOcean\R
     }
     public function getUri(): string
     {
-        return str_replace(['{indexing_job_uuid}'], [$this->indexing_job_uuid], '/v2/gen-ai/indexing_jobs/{indexing_job_uuid}/details_signed_url');
+        return str_replace(['{indexing_job_uuid}'], [rawurlencode($this->indexing_job_uuid)], '/v2/gen-ai/indexing_jobs/{indexing_job_uuid}/details_signed_url');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

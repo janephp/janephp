@@ -20,7 +20,7 @@ class AppsGetInstanceSize extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     }
     public function getUri(): string
     {
-        return str_replace(['{slug}'], [$this->slug], '/v2/apps/tiers/instance_sizes/{slug}');
+        return str_replace(['{slug}'], [rawurlencode($this->slug)], '/v2/apps/tiers/instance_sizes/{slug}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

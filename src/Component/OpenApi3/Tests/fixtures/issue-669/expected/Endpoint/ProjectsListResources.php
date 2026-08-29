@@ -28,7 +28,7 @@ class ProjectsListResources extends \Jane\Generated\DigitalOcean\Runtime\Client\
     }
     public function getUri(): string
     {
-        return str_replace(['{project_id}'], [$this->project_id], '/v2/projects/{project_id}/resources');
+        return str_replace(['{project_id}'], [rawurlencode($this->project_id)], '/v2/projects/{project_id}/resources');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

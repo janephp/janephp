@@ -29,7 +29,7 @@ class AutoscalepoolsListMembers extends \Jane\Generated\DigitalOcean\Runtime\Cli
     }
     public function getUri(): string
     {
-        return str_replace(['{autoscale_pool_id}'], [$this->autoscale_pool_id], '/v2/droplets/autoscale/{autoscale_pool_id}/members');
+        return str_replace(['{autoscale_pool_id}'], [rawurlencode($this->autoscale_pool_id)], '/v2/droplets/autoscale/{autoscale_pool_id}/members');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

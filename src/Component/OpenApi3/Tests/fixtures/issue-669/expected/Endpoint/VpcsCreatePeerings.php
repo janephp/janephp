@@ -24,7 +24,7 @@ class VpcsCreatePeerings extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     }
     public function getUri(): string
     {
-        return str_replace(['{vpc_id}'], [$this->vpc_id], '/v2/vpcs/{vpc_id}/peerings');
+        return str_replace(['{vpc_id}'], [rawurlencode($this->vpc_id)], '/v2/vpcs/{vpc_id}/peerings');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

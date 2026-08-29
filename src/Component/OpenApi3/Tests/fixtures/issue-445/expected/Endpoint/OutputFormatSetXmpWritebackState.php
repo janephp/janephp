@@ -23,7 +23,7 @@ class OutputFormatSetXmpWritebackState extends \PicturePark\API\Runtime\Client\B
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/OutputFormats/{id}/xmpWriteback');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/OutputFormats/{id}/xmpWriteback');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

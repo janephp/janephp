@@ -27,7 +27,7 @@ class DatabasesGetKafkaSchemaSubjectConfig extends \Jane\Generated\DigitalOcean\
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{subject_name}'], [$this->database_cluster_uuid, $this->subject_name], '/v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}');
+        return str_replace(['{database_cluster_uuid}', '{subject_name}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->subject_name)], '/v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

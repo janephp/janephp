@@ -20,7 +20,7 @@ class SchemaGetReferenced extends \PicturePark\API\Runtime\Client\BaseEndpoint i
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/v1/Schemas/{id}/referenced');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Schemas/{id}/referenced');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

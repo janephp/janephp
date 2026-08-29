@@ -19,7 +19,7 @@ class _Clone extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Base
     }
     public function getUri(): string
     {
-        return str_replace(['{orderId}'], [$this->orderId], '/orders/{orderId}');
+        return str_replace(['{orderId}'], [rawurlencode($this->orderId)], '/orders/{orderId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

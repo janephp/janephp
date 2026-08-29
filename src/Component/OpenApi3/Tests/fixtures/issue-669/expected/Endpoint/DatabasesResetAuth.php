@@ -34,7 +34,7 @@ class DatabasesResetAuth extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     }
     public function getUri(): string
     {
-        return str_replace(['{database_cluster_uuid}', '{username}'], [$this->database_cluster_uuid, $this->username], '/v2/databases/{database_cluster_uuid}/users/{username}/reset_auth');
+        return str_replace(['{database_cluster_uuid}', '{username}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->username)], '/v2/databases/{database_cluster_uuid}/users/{username}/reset_auth');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -20,7 +20,7 @@ class GenaiAttachKnowledgeBases extends \Jane\Generated\DigitalOcean\Runtime\Cli
     }
     public function getUri(): string
     {
-        return str_replace(['{agent_uuid}'], [$this->agent_uuid], '/v2/gen-ai/agents/{agent_uuid}/knowledge_bases');
+        return str_replace(['{agent_uuid}'], [rawurlencode($this->agent_uuid)], '/v2/gen-ai/agents/{agent_uuid}/knowledge_bases');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
