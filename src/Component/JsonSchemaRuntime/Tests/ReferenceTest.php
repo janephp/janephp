@@ -2,6 +2,7 @@
 
 namespace Jane\Component\JsonSchemaRuntime\Tests;
 
+use Jane\Component\JsonSchemaRuntime\Exception\ReferenceResolveException;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use PHPUnit\Framework\TestCase;
 
@@ -142,6 +143,59 @@ class ReferenceTest extends TestCase
         $result = $ref->resolve();
 
         self::assertIsArray($result);
+    }
+
+    public function testValidJsonArrayRootIsResolvedAsJson(): void
+    {
+        // An empty array root is falsy: it must not be misrouted through the
+        // YAML parser by the old falsy-check based decode logic.
+        $ref = new Reference('#', __DIR__ . '/array-root.json');
+
+        self::assertSame([], $ref->resolve());
+    }
+
+    public function testValidJsonScalarRootIsResolvedAsJson(): void
+    {
+        $ref = new Reference('#', __DIR__ . '/scalar-root.json');
+
+        self::assertSame(0, $ref->resolve());
+    }
+
+    public function testUnparsableContentThrowsReferenceResolveException(): void
+    {
+        $treeRoot = $this->createTempTree();
+
+        try {
+            // Unclosed YAML flow collection: neither valid JSON nor valid YAML.
+            file_put_contents($treeRoot . '/base/garbage.json', '{foo: [1, 2');
+            $ref = new Reference('garbage.json', $treeRoot . '/base/schema.json');
+
+            try {
+                $ref->resolve();
+                self::fail('Expected ReferenceResolveException to be thrown');
+            } catch (ReferenceResolveException $exception) {
+                self::assertStringContainsString('neither valid JSON nor valid YAML', $exception->getMessage());
+                // BC: the exception must stay catchable as a RuntimeException.
+                self::assertInstanceOf(\RuntimeException::class, $exception);
+            }
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testUnreadableDocumentThrowsReferenceResolveException(): void
+    {
+        $treeRoot = $this->createTempTree();
+
+        try {
+            $ref = new Reference('missing.json', $treeRoot . '/base/schema.json');
+
+            $this->expectException(ReferenceResolveException::class);
+            $this->expectExceptionMessage('Unable to fetch reference document');
+            $ref->resolve();
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
     }
 
     public function testLocalSiblingDirectoryRefBlockedByDefault(): void

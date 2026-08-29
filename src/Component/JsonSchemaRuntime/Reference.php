@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Jane\Component\JsonSchemaRuntime;
 
+use Jane\Component\JsonSchemaRuntime\Exception\ReferenceResolveException;
 use League\Uri\Http;
 use League\Uri\UriString;
 use Psr\Http\Message\UriInterface;
 use Rs\Json\Pointer;
+use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -23,7 +25,7 @@ class Reference
     private static array $allowedExternalHosts = [];
     private static array $allowedLocalRefRoots = [];
 
-    private string|array|null $resolved = null;
+    private string|int|float|bool|array|null $resolved = null;
     private Http $referenceUri;
     private Http $originUri;
     private Http $mergedUri;
@@ -88,9 +90,9 @@ class Reference
     /**
      * Resolve a JSON Reference for a Schema.
      *
-     * @return string|array Return the json value referenced
+     * @return string|int|float|bool|array|null Return the json value referenced
      */
-    protected function doResolve(): string|array
+    protected function doResolve(): string|int|float|bool|array|null
     {
         $fragment = (string) $this->mergedUri->withFragment('');
         $reference = \sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
@@ -98,15 +100,7 @@ class Reference
         $this->validateReference($fragment);
 
         if (!\array_key_exists($fragment, self::$fileCache)) {
-            $contents = file_get_contents($fragment);
-
-            if (!json_decode($contents, true) || \JSON_ERROR_NONE !== json_last_error()) {
-                $decoded = Yaml::parse($contents,
-                    Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
-                $contents = json_encode($decoded);
-            }
-
-            self::$fileCache[$fragment] = $contents;
+            self::$fileCache[$fragment] = $this->fetchAndNormalizeContents($fragment);
         }
 
         if (!\array_key_exists($reference, self::$arrayCache)) {
@@ -124,6 +118,45 @@ class Reference
         }
 
         return self::$arrayCache[$reference];
+    }
+
+    /**
+     * Fetch the referenced document and normalize its contents to JSON.
+     *
+     * JSON is tried first (valid JSON roots such as "[]" / "0" / "null" must
+     * not be misrouted through the YAML parser); YAML is the fallback for
+     * YAML documents.
+     */
+    private function fetchAndNormalizeContents(string $fragment): string
+    {
+        $contents = @file_get_contents($fragment);
+
+        if (false === $contents) {
+            throw new ReferenceResolveException(\sprintf('Unable to fetch reference document "%s".', $fragment));
+        }
+
+        try {
+            json_decode($contents, true, 512, \JSON_THROW_ON_ERROR);
+
+            return $contents;
+        } catch (\JsonException) {
+            // Not JSON: fall back to YAML parsing below.
+        }
+
+        try {
+            $decoded = Yaml::parse($contents,
+                Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
+        } catch (ParseException $exception) {
+            throw new ReferenceResolveException(\sprintf('Unable to parse reference document "%s": content is neither valid JSON nor valid YAML.', $fragment), 0, $exception);
+        }
+
+        $encoded = json_encode($decoded);
+
+        if (false === $encoded) {
+            throw new ReferenceResolveException(\sprintf('Unable to convert reference document "%s" back to JSON.', $fragment));
+        }
+
+        return $encoded;
     }
 
     /**
