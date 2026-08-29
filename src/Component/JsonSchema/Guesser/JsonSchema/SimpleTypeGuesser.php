@@ -42,7 +42,7 @@ class SimpleTypeGuesser implements GuesserInterface, TypeGuesserInterface
         return ($object instanceof $class)
             && \in_array($object->getType(), $this->typesSupported)
             && (
-                !\in_array($object->getType(), $this->excludeFormat)
+                !\array_key_exists($object->getType(), $this->excludeFormat)
                 || !\in_array($object->getFormat(), $this->excludeFormat[$object->getType()])
             )
         ;
