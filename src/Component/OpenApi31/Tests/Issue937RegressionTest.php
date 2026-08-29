@@ -83,7 +83,7 @@ class Issue937RegressionTest extends TestCase
 
             $endpointContent = file_get_contents($generatedDirectory . '/Endpoint/GetProposal.php');
             self::assertIsString($endpointContent);
-            self::assertStringContainsString("return str_replace(['{proposalId}'], [\$this->proposalId], '/proposals/{proposalId}');", $endpointContent);
+            self::assertStringContainsString("return str_replace(['{proposalId}'], [rawurlencode(\$this->proposalId)], '/proposals/{proposalId}');", $endpointContent);
             self::assertStringContainsString("\$optionsResolver->setRequired(['preview']);", $endpointContent);
         } finally {
             $this->removeDirectory($fixtureDirectory);

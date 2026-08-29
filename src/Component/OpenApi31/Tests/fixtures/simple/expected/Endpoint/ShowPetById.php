@@ -19,7 +19,7 @@ class ShowPetById extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
     }
     public function getUri(): string
     {
-        return str_replace(['{petId}'], [$this->petId], '/pets/{petId}');
+        return str_replace(['{petId}'], [rawurlencode($this->petId)], '/pets/{petId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -39,7 +39,7 @@ class ShowPetById extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Pet', 'json');
         }
     }

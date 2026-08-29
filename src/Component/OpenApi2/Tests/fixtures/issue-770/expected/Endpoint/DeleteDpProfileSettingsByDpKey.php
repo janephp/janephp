@@ -23,7 +23,7 @@ class DeleteDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getUri(): string
     {
-        return str_replace(['{dpKey}'], [$this->dpKey], '/dpProfileSettings/{dpKey}');
+        return str_replace(['{dpKey}'], [rawurlencode($this->dpKey)], '/dpProfileSettings/{dpKey}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

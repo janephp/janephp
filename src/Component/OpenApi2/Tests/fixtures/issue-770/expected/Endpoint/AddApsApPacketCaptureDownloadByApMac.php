@@ -23,7 +23,7 @@ class AddApsApPacketCaptureDownloadByApMac extends \Jane\Component\OpenApi3\Test
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/apPacketCapture/download');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/apPacketCapture/download');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -69,7 +69,12 @@ class AddApsApPacketCaptureDownloadByApMac extends \Jane\Component\OpenApi3\Test
             throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsApPacketCaptureDownloadByApMacUnprocessableEntityException($response);
         }
         if (200 === $status) {
-            return json_decode($body);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                return $decodedBody;
+            } catch (\JsonException $jsonException) {
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
     }
     public function getAuthenticationScopes(): array

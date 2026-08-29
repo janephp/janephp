@@ -23,7 +23,7 @@ class DeleteApsDirectedMulticastFromWirelessClientEnabledByApMac extends \Jane\C
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/directedMulticastFromWirelessClientEnabled');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/directedMulticastFromWirelessClientEnabled');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

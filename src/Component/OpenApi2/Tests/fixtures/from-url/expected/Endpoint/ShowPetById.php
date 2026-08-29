@@ -19,7 +19,7 @@ class ShowPetById extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client
     }
     public function getUri(): string
     {
-        return str_replace(['{petId}'], [$this->petId], '/pets/{petId}');
+        return str_replace(['{petId}'], [rawurlencode($this->petId)], '/pets/{petId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

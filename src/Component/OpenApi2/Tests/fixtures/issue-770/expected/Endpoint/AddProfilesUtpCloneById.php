@@ -25,7 +25,7 @@ class AddProfilesUtpCloneById extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/profiles/utp/clone/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/profiles/utp/clone/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class FindVlanpoolingsById extends \Jane\Component\OpenApi3\Tests\Expected\Runti
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/vlanpoolings/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/vlanpoolings/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

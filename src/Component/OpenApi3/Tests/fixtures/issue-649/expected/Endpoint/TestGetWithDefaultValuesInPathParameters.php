@@ -30,7 +30,7 @@ class TestGetWithDefaultValuesInPathParameters extends \Jane\Component\OpenApi3\
     }
     public function getUri(): string
     {
-        return str_replace(['{foo}', '{bar}'], [$this->foo, $this->bar], '/test-path-parameters/{testPath}');
+        return str_replace(['{foo}', '{bar}'], [rawurlencode($this->foo), rawurlencode($this->bar)], '/test-path-parameters/{testPath}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

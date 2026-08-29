@@ -25,7 +25,7 @@ class FindApsOperationalNeighborByApMac extends \Jane\Component\OpenApi3\Tests\E
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/operational/neighbor');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/operational/neighbor');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

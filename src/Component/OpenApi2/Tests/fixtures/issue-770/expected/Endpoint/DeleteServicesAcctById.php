@@ -23,7 +23,7 @@ class DeleteServicesAcctById extends \Jane\Component\OpenApi3\Tests\Expected\Run
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/services/acct/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/services/acct/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

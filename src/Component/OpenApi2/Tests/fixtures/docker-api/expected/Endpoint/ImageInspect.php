@@ -20,7 +20,7 @@ class ImageInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getUri(): string
     {
-        return str_replace(['{name}'], [$this->name], '/images/{name}/json');
+        return str_replace(['{name}'], [rawurlencode($this->name)], '/images/{name}/json');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

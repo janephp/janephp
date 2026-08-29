@@ -19,7 +19,7 @@ class GetEntity extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/my/api/endpoint/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/my/api/endpoint/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -39,7 +39,7 @@ class GetEntity extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\MyApiEndpointIdGetResponse200', 'json');
         }
     }

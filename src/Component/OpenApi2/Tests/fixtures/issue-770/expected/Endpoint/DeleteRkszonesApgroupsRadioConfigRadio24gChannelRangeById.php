@@ -26,7 +26,7 @@ class DeleteRkszonesApgroupsRadioConfigRadio24gChannelRangeById extends \Jane\Co
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}'], [$this->zoneId, $this->id], '/rkszones/{zoneId}/apgroups/{id}/radioConfig/radio24g/channelRange');
+        return str_replace(['{zoneId}', '{id}'], [rawurlencode($this->zoneId), rawurlencode($this->id)], '/rkszones/{zoneId}/apgroups/{id}/radioConfig/radio24g/channelRange');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

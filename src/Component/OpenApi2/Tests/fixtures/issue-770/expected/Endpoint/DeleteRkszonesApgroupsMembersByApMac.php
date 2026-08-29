@@ -29,7 +29,7 @@ class DeleteRkszonesApgroupsMembersByApMac extends \Jane\Component\OpenApi3\Test
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}', '{apMac}'], [$this->zoneId, $this->id, $this->apMac], '/rkszones/{zoneId}/apgroups/{id}/members/{apMac}');
+        return str_replace(['{zoneId}', '{id}', '{apMac}'], [rawurlencode($this->zoneId), rawurlencode($this->id), rawurlencode($this->apMac)], '/rkszones/{zoneId}/apgroups/{id}/members/{apMac}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

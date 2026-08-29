@@ -23,7 +23,7 @@ class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests
     }
     public function getUri(): string
     {
-        return str_replace(['{firmwareVersion:.+}'], [$this->firmwareVersion___], '/system/apmodels/{firmwareVersion:.+}');
+        return str_replace(['{firmwareVersion:.+}'], [rawurlencode($this->firmwareVersion___)], '/system/apmodels/{firmwareVersion:.+}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

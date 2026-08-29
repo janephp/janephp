@@ -23,7 +23,7 @@ class ContainerRename extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/containers/{id}/rename');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/containers/{id}/rename');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

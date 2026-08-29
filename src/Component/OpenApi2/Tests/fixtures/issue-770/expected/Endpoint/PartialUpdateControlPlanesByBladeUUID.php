@@ -25,7 +25,7 @@ class PartialUpdateControlPlanesByBladeUUID extends \Jane\Component\OpenApi3\Tes
     }
     public function getUri(): string
     {
-        return str_replace(['{bladeUUID}'], [$this->bladeUUID], '/controlPlanes/{bladeUUID}');
+        return str_replace(['{bladeUUID}'], [rawurlencode($this->bladeUUID)], '/controlPlanes/{bladeUUID}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

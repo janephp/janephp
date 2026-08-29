@@ -29,7 +29,7 @@ class DeleteRkszonesWlangroupsMembersVlanOverrideByMemberId extends \Jane\Compon
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}', '{memberId}'], [$this->zoneId, $this->id, $this->memberId], '/rkszones/{zoneId}/wlangroups/{id}/members/{memberId}/vlanOverride');
+        return str_replace(['{zoneId}', '{id}', '{memberId}'], [rawurlencode($this->zoneId), rawurlencode($this->id), rawurlencode($this->memberId)], '/rkszones/{zoneId}/wlangroups/{id}/members/{memberId}/vlanOverride');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

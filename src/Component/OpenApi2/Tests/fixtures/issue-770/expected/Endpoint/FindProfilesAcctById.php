@@ -23,7 +23,7 @@ class FindProfilesAcctById extends \Jane\Component\OpenApi3\Tests\Expected\Runti
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/profiles/acct/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/profiles/acct/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

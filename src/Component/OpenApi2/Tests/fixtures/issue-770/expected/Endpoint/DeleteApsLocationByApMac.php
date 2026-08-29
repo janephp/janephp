@@ -23,7 +23,7 @@ class DeleteApsLocationByApMac extends \Jane\Component\OpenApi3\Tests\Expected\R
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/location');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/location');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

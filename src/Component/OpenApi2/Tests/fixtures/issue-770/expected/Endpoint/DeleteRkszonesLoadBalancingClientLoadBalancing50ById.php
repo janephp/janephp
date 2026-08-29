@@ -23,7 +23,7 @@ class DeleteRkszonesLoadBalancingClientLoadBalancing50ById extends \Jane\Compone
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/{id}/loadBalancing/clientLoadBalancing50');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/{id}/loadBalancing/clientLoadBalancing50');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

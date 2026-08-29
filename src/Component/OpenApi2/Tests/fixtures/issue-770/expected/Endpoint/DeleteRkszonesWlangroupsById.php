@@ -26,7 +26,7 @@ class DeleteRkszonesWlangroupsById extends \Jane\Component\OpenApi3\Tests\Expect
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}'], [$this->zoneId, $this->id], '/rkszones/{zoneId}/wlangroups/{id}');
+        return str_replace(['{zoneId}', '{id}'], [rawurlencode($this->zoneId), rawurlencode($this->id)], '/rkszones/{zoneId}/wlangroups/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

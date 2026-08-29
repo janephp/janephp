@@ -23,7 +23,7 @@ class DeleteNetworkSegmentationEthernetPortProfileById extends \Jane\Component\O
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/networkSegmentation/ethernetPortProfile/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/networkSegmentation/ethernetPortProfile/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

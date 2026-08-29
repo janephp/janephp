@@ -29,7 +29,7 @@ class ConfigUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/configs/{id}/update');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/configs/{id}/update');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

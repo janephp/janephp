@@ -31,7 +31,7 @@ class TestGetWithPathParameters extends \Jane\OpenApi2\Tests\Expected\Runtime\Cl
     }
     public function getUri(): string
     {
-        return str_replace(['{testPath}'], [$this->testPath], '/test-path-parameters/{testPath}');
+        return str_replace(['{testPath}'], [rawurlencode($this->testPath)], '/test-path-parameters/{testPath}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -81,6 +81,7 @@ class ConfigLoader implements ConfigLoaderInterface
             'enums-as-objects' => false,
             'allow-external-refs' => false,
             'external-ref-allowed-hosts' => [],
+            'external-ref-follow-redirects' => false,
             'allowed-local-ref-roots' => [],
         ];
     }

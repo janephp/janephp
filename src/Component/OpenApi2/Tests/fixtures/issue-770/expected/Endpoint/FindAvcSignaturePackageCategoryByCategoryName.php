@@ -23,7 +23,7 @@ class FindAvcSignaturePackageCategoryByCategoryName extends \Jane\Component\Open
     }
     public function getUri(): string
     {
-        return str_replace(['{categoryName}'], [$this->categoryName], '/avc/signaturePackage/category/{categoryName}');
+        return str_replace(['{categoryName}'], [rawurlencode($this->categoryName)], '/avc/signaturePackage/category/{categoryName}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

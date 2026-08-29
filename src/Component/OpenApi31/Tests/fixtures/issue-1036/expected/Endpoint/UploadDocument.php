@@ -63,7 +63,7 @@ class UploadDocument extends \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\R
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Model\Document', 'json');
         }
     }

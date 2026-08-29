@@ -26,7 +26,7 @@ class FindRkszonesApmodelCommonAttributeByModel extends \Jane\Component\OpenApi3
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{model}'], [$this->zoneId, $this->model], '/rkszones/{zoneId}/apmodel/{model}/commonAttribute');
+        return str_replace(['{zoneId}', '{model}'], [rawurlencode($this->zoneId), rawurlencode($this->model)], '/rkszones/{zoneId}/apmodel/{model}/commonAttribute');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

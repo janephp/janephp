@@ -22,7 +22,7 @@ class GetMemberBySelector extends \Jane\Component\OpenApi31\Tests\Expected\Runti
     }
     public function getUri(): string
     {
-        return str_replace(['{selector}'], [$this->selector], '/members/{selector}');
+        return str_replace(['{selector}'], [rawurlencode($this->selector)], '/members/{selector}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -45,10 +45,10 @@ class GetMemberBySelector extends \Jane\Component\OpenApi31\Tests\Expected\Runti
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\MemberDetails', 'json');
         }
-        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+        if (stripos(strtolower($contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\RequestError', 'json');
         }
     }

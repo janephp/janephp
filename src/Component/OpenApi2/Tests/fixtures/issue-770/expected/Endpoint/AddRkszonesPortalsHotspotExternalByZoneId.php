@@ -25,7 +25,7 @@ class AddRkszonesPortalsHotspotExternalByZoneId extends \Jane\Component\OpenApi3
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/portals/hotspot/external');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/portals/hotspot/external');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

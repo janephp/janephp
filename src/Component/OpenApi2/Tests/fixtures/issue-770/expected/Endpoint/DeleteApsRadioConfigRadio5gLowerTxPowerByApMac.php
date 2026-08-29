@@ -23,7 +23,7 @@ class DeleteApsRadioConfigRadio5gLowerTxPowerByApMac extends \Jane\Component\Ope
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/radioConfig/radio5gLower/txPower');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/radioConfig/radio5gLower/txPower');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

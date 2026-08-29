@@ -25,7 +25,7 @@ class PartialUpdateUsersByUserId extends \Jane\Component\OpenApi3\Tests\Expected
     }
     public function getUri(): string
     {
-        return str_replace(['{userId}'], [$this->userId], '/users/{userId}');
+        return str_replace(['{userId}'], [rawurlencode($this->userId)], '/users/{userId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

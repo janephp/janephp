@@ -23,7 +23,7 @@ class FindRkszonesAaaLdapByZoneId extends \Jane\Component\OpenApi3\Tests\Expecte
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/aaa/ldap');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/aaa/ldap');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

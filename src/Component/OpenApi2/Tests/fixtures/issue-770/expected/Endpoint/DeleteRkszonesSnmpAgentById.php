@@ -23,7 +23,7 @@ class DeleteRkszonesSnmpAgentById extends \Jane\Component\OpenApi3\Tests\Expecte
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/rkszones/{id}/snmpAgent');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/rkszones/{id}/snmpAgent');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -31,7 +31,7 @@ class PartialUpdateRkszonesWlangroupsMembersByMemberId extends \Jane\Component\O
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}', '{memberId}'], [$this->zoneId, $this->id, $this->memberId], '/rkszones/{zoneId}/wlangroups/{id}/members/{memberId}');
+        return str_replace(['{zoneId}', '{id}', '{memberId}'], [rawurlencode($this->zoneId), rawurlencode($this->id), rawurlencode($this->memberId)], '/rkszones/{zoneId}/wlangroups/{id}/members/{memberId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

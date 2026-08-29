@@ -25,7 +25,7 @@ class PartialUpdatePlanesByBladeUUID extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getUri(): string
     {
-        return str_replace(['{bladeUUID}'], [$this->bladeUUID], '/planes/{bladeUUID}');
+        return str_replace(['{bladeUUID}'], [rawurlencode($this->bladeUUID)], '/planes/{bladeUUID}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

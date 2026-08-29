@@ -25,7 +25,7 @@ class UpdateSystemApMacOUIsByOUI extends \Jane\Component\OpenApi3\Tests\Expected
     }
     public function getUri(): string
     {
-        return str_replace(['{OUI}'], [$this->OUI], '/system/apMacOUIs/{OUI}');
+        return str_replace(['{OUI}'], [rawurlencode($this->OUI)], '/system/apMacOUIs/{OUI}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

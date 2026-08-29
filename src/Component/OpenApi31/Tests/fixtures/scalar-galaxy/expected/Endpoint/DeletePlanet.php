@@ -23,7 +23,7 @@ class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{planetId}'], [$this->planetId], '/planets/{planetId}');
+        return str_replace(['{planetId}'], [rawurlencode($this->planetId)], '/planets/{planetId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -50,7 +50,7 @@ class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\DeletePlanetNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\NotFoundError', 'json'), $response);
         }
     }

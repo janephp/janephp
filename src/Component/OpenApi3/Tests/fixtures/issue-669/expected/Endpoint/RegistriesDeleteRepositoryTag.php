@@ -36,7 +36,7 @@ class RegistriesDeleteRepositoryTag extends \Jane\Generated\DigitalOcean\Runtime
     }
     public function getUri(): string
     {
-        return str_replace(['{registry_name}', '{repository_name}', '{repository_tag}'], [$this->registry_name, $this->repository_name, $this->repository_tag], '/v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag}');
+        return str_replace(['{registry_name}', '{repository_name}', '{repository_tag}'], [rawurlencode($this->registry_name), rawurlencode($this->repository_name), rawurlencode($this->repository_tag)], '/v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -63,19 +63,19 @@ class RegistriesDeleteRepositoryTag extends \Jane\Generated\DigitalOcean\Runtime
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTagUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTagNotFoundException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (429 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (429 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTagTooManyRequestsException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTagInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+        if (stripos(strtolower($contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
         }
     }

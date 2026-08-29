@@ -28,7 +28,7 @@ class UpdateDpDhcpProfilesDpDhcpProfilePoolsByPoolId extends \Jane\Component\Ope
     }
     public function getUri(): string
     {
-        return str_replace(['{id}', '{poolId}'], [$this->id, $this->poolId], '/dpDhcpProfiles/{id}/dpDhcpProfilePools/{poolId}');
+        return str_replace(['{id}', '{poolId}'], [rawurlencode($this->id), rawurlencode($this->poolId)], '/dpDhcpProfiles/{id}/dpDhcpProfilePools/{poolId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

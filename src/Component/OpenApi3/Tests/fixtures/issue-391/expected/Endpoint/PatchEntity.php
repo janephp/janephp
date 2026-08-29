@@ -21,7 +21,7 @@ class PatchEntity extends \Gounlaf\JanephpBug\Runtime\Client\BaseEndpoint implem
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/patchable/entity/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/patchable/entity/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

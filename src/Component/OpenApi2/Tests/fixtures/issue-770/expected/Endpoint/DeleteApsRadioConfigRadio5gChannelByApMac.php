@@ -23,7 +23,7 @@ class DeleteApsRadioConfigRadio5gChannelByApMac extends \Jane\Component\OpenApi3
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/radioConfig/radio5g/channel');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/radioConfig/radio5g/channel');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

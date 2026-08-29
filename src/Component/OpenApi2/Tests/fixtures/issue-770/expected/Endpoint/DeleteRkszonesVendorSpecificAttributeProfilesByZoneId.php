@@ -25,7 +25,7 @@ class DeleteRkszonesVendorSpecificAttributeProfilesByZoneId extends \Jane\Compon
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/vendorSpecificAttributeProfiles');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/vendorSpecificAttributeProfiles');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

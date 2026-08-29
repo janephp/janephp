@@ -23,7 +23,7 @@ class UpdateAlertAlarmClearByAlarmID extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getUri(): string
     {
-        return str_replace(['{alarmID}'], [$this->alarmID], '/alert/alarm/{alarmID}/clear');
+        return str_replace(['{alarmID}'], [rawurlencode($this->alarmID)], '/alert/alarm/{alarmID}/clear');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

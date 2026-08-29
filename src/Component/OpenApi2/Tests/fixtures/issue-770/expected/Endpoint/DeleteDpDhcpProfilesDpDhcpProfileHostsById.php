@@ -25,7 +25,7 @@ class DeleteDpDhcpProfilesDpDhcpProfileHostsById extends \Jane\Component\OpenApi
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/dpDhcpProfiles/{id}/dpDhcpProfileHosts');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/dpDhcpProfiles/{id}/dpDhcpProfileHosts');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

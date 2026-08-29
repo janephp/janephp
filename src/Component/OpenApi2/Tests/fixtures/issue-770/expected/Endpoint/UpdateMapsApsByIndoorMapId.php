@@ -25,7 +25,7 @@ class UpdateMapsApsByIndoorMapId extends \Jane\Component\OpenApi3\Tests\Expected
     }
     public function getUri(): string
     {
-        return str_replace(['{indoorMapId}'], [$this->indoorMapId], '/maps/{indoorMapId}/aps');
+        return str_replace(['{indoorMapId}'], [rawurlencode($this->indoorMapId)], '/maps/{indoorMapId}/aps');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

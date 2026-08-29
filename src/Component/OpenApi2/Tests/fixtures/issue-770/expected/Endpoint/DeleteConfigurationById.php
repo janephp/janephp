@@ -23,7 +23,7 @@ class DeleteConfigurationById extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/configuration/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/configuration/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

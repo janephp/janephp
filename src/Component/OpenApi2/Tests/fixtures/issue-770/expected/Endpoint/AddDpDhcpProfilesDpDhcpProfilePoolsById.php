@@ -25,7 +25,7 @@ class AddDpDhcpProfilesDpDhcpProfilePoolsById extends \Jane\Component\OpenApi3\T
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/dpDhcpProfiles/{id}/dpDhcpProfilePools');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/dpDhcpProfiles/{id}/dpDhcpProfilePools');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

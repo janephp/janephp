@@ -24,7 +24,7 @@ class PatchParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\
     }
     public function getUri(): string
     {
-        return str_replace(['{parent_id}', '{child_id}'], [$this->parent_id, $this->child_id], '/parents/{parent_id}/child/child_id/');
+        return str_replace(['{parent_id}', '{child_id}'], [rawurlencode($this->parent_id), rawurlencode($this->child_id)], '/parents/{parent_id}/child/child_id/');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -47,7 +47,7 @@ class PatchParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Child', 'json');
         }
     }

@@ -26,7 +26,7 @@ class DeleteRkszonesApgroupsRadioConfigRadio6gBssMinRateById extends \Jane\Compo
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}'], [$this->zoneId, $this->id], '/rkszones/{zoneId}/apgroups/{id}/radioConfig/radio6g/bssMinRate');
+        return str_replace(['{zoneId}', '{id}'], [rawurlencode($this->zoneId), rawurlencode($this->id)], '/rkszones/{zoneId}/apgroups/{id}/radioConfig/radio6g/bssMinRate');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

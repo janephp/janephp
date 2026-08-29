@@ -23,7 +23,7 @@ class DeleteUrlFilteringUrlFilteringPolicyById extends \Jane\Component\OpenApi3\
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/urlFiltering/urlFilteringPolicy/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/urlFiltering/urlFilteringPolicy/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

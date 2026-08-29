@@ -23,7 +23,7 @@ class FindApsApPacketCaptureByApMac extends \Jane\Component\OpenApi3\Tests\Expec
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/apPacketCapture');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/apPacketCapture');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

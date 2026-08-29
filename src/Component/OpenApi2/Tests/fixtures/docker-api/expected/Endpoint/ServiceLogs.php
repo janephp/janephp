@@ -37,7 +37,7 @@ class ServiceLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/services/{id}/logs');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/services/{id}/logs');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -76,7 +76,12 @@ class ServiceLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            return json_decode($body);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                return $decodedBody;
+            } catch (\JsonException $jsonException) {
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
         if (404 === $status) {
             throw new \Docker\Api\Exception\ServiceLogsNotFoundException($serializer->deserialize($body, 'Docker\Api\Model\ErrorResponse', 'json'), $response);

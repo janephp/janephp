@@ -23,7 +23,7 @@ class DeleteClusterById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\
     }
     public function getUri(): string
     {
-        return str_replace(['{id:.+}'], [$this->id___], '/cluster/{id:.+}');
+        return str_replace(['{id:.+}'], [rawurlencode($this->id___)], '/cluster/{id:.+}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class FindRkszonesProfileBondPortByZoneId extends \Jane\Component\OpenApi3\Tests
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/profile/bondPort');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/profile/bondPort');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

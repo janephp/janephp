@@ -27,7 +27,7 @@ class ExecResize extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/exec/{id}/resize');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/exec/{id}/resize');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

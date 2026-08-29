@@ -19,7 +19,7 @@ class TestGetWithUppercasePathParameters extends \Jane\Component\OpenApi3\Tests\
     }
     public function getUri(): string
     {
-        return str_replace(['{test-parameter}'], [$this->test_parameter], '/test-uppercase-path-parameters/{test-parameter}');
+        return str_replace(['{test-parameter}'], [rawurlencode($this->test_parameter)], '/test-uppercase-path-parameters/{test-parameter}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

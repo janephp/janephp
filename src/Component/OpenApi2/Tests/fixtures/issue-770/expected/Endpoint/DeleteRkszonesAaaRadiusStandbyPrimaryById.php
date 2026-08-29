@@ -26,7 +26,7 @@ class DeleteRkszonesAaaRadiusStandbyPrimaryById extends \Jane\Component\OpenApi3
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}'], [$this->zoneId, $this->id], '/rkszones/{zoneId}/aaa/radius/{id}/standbyPrimary');
+        return str_replace(['{zoneId}', '{id}'], [rawurlencode($this->zoneId), rawurlencode($this->id)], '/rkszones/{zoneId}/aaa/radius/{id}/standbyPrimary');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

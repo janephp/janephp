@@ -24,7 +24,7 @@ class FindRkszonesAaaRadiusByZoneId extends \Jane\Component\OpenApi3\Tests\Expec
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/aaa/radius');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/aaa/radius');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

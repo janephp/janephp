@@ -26,7 +26,7 @@ class FindDpDhcpProfilesDpDhcpProfileHostsByHostId extends \Jane\Component\OpenA
     }
     public function getUri(): string
     {
-        return str_replace(['{id}', '{hostId}'], [$this->id, $this->hostId], '/dpDhcpProfiles/{id}/dpDhcpProfileHosts/{hostId}');
+        return str_replace(['{id}', '{hostId}'], [rawurlencode($this->id), rawurlencode($this->hostId)], '/dpDhcpProfiles/{id}/dpDhcpProfileHosts/{hostId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

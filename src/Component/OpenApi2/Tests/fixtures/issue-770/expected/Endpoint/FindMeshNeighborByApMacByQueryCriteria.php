@@ -25,7 +25,7 @@ class FindMeshNeighborByApMacByQueryCriteria extends \Jane\Component\OpenApi3\Te
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/query/mesh/{apMac}/neighbor');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/query/mesh/{apMac}/neighbor');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

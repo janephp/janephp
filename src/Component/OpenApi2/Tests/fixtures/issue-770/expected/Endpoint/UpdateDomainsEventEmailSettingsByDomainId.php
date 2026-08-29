@@ -25,7 +25,7 @@ class UpdateDomainsEventEmailSettingsByDomainId extends \Jane\Component\OpenApi3
     }
     public function getUri(): string
     {
-        return str_replace(['{domainId}'], [$this->domainId], '/domains/{domainId}/eventEmailSettings');
+        return str_replace(['{domainId}'], [rawurlencode($this->domainId)], '/domains/{domainId}/eventEmailSettings');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class FindDhcpDataDhcpPoolsByApMac extends \Jane\Component\OpenApi3\Tests\Expect
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/dhcpData/dhcpPools/{apMac}');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/dhcpData/dhcpPools/{apMac}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

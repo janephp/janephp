@@ -21,7 +21,7 @@ class PluginInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri(): string
     {
-        return str_replace(['{name}'], [$this->name], '/plugins/{name}/json');
+        return str_replace(['{name}'], [rawurlencode($this->name)], '/plugins/{name}/json');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class FindToolSpeedflexByWcid extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     }
     public function getUri(): string
     {
-        return str_replace(['{wcid}'], [$this->wcid], '/tool/speedflex/{wcid}');
+        return str_replace(['{wcid}'], [rawurlencode($this->wcid)], '/tool/speedflex/{wcid}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

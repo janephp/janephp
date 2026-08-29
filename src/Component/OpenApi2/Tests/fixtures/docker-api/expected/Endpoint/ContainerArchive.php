@@ -24,7 +24,7 @@ class ContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/containers/{id}/archive');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/containers/{id}/archive');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

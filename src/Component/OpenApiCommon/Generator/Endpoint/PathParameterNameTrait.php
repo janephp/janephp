@@ -44,10 +44,10 @@ trait PathParameterNameTrait
             $type = $types[$index] ?? null;
 
             if ('array' === $type) {
-                return new ArrayItem(new Expr\FuncCall(new Name('implode'), [new Arg(new Scalar\String_(',')), new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $name))]));
+                return new ArrayItem(new Expr\FuncCall(new Name('rawurlencode'), [new Arg(new Expr\FuncCall(new Name('implode'), [new Arg(new Scalar\String_(',')), new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $name))]))]));
             }
 
-            return new ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), $name));
+            return new ArrayItem(new Expr\FuncCall(new Name('rawurlencode'), [new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $name))]));
         }, array_keys($propertyNames), $propertyNames);
     }
 }

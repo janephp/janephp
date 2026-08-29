@@ -28,7 +28,7 @@ class TestSimplePathArrayParameters extends \Jane\Component\OpenApi3\Tests\Expec
     }
     public function getUri(): string
     {
-        return str_replace(['{string}', '{array}', '{stringRef}', '{arrayRef}'], [$this->string, implode(',', $this->array), $this->stringRef, implode(',', $this->arrayRef)], '/test-simple-path-array-parameters/{string}/{array}/{stringRef}/{arrayRef}');
+        return str_replace(['{string}', '{array}', '{stringRef}', '{arrayRef}'], [rawurlencode($this->string), rawurlencode(implode(',', $this->array)), rawurlencode($this->stringRef), rawurlencode(implode(',', $this->arrayRef))], '/test-simple-path-array-parameters/{string}/{array}/{stringRef}/{arrayRef}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

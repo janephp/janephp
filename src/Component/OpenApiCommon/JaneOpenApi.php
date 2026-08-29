@@ -74,7 +74,7 @@ abstract class JaneOpenApi extends ChainGenerator
         }
 
         $chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->serializer);
-        $checkWhitelistedPaths = \count($registry->getWhitelistedPaths() ?? []) > 0;
+        $checkWhitelistedPaths = \count($registry->getWhitelistedPaths()) > 0;
 
         foreach ($schemas as $schema) {
             /** @var array<string, \RuntimeException> Guessing failures indexed by class reference */
@@ -194,6 +194,9 @@ abstract class JaneOpenApi extends ChainGenerator
         }
         if (!empty($options['external-ref-allowed-hosts'] ?? [])) {
             Reference::setAllowedExternalHosts($options['external-ref-allowed-hosts']);
+        }
+        if (!empty($options['external-ref-follow-redirects'] ?? false)) {
+            Reference::setFollowRedirects(true);
         }
         if (!empty($options['allowed-local-ref-roots'] ?? [])) {
             Reference::setAllowedLocalRefRoots($options['allowed-local-ref-roots']);

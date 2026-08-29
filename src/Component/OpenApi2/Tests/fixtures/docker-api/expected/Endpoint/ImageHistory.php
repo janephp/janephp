@@ -20,7 +20,7 @@ class ImageHistory extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getUri(): string
     {
-        return str_replace(['{name}'], [$this->name], '/images/{name}/history');
+        return str_replace(['{name}'], [rawurlencode($this->name)], '/images/{name}/history');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

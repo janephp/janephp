@@ -23,7 +23,7 @@ class FindWifiCallingWifiCallingPolicyById extends \Jane\Component\OpenApi3\Test
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/wifiCalling/wifiCallingPolicy/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/wifiCalling/wifiCallingPolicy/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

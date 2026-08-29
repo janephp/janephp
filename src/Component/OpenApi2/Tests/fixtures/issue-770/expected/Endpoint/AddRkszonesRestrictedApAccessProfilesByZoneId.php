@@ -25,7 +25,7 @@ class AddRkszonesRestrictedApAccessProfilesByZoneId extends \Jane\Component\Open
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/restrictedApAccessProfiles');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/restrictedApAccessProfiles');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

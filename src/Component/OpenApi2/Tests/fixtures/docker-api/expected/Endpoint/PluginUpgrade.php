@@ -39,7 +39,7 @@ class PluginUpgrade extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri(): string
     {
-        return str_replace(['{name}'], [$this->name], '/plugins/{name}/upgrade');
+        return str_replace(['{name}'], [rawurlencode($this->name)], '/plugins/{name}/upgrade');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

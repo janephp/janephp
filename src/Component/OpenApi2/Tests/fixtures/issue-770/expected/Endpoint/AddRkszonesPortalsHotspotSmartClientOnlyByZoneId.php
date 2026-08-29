@@ -25,7 +25,7 @@ class AddRkszonesPortalsHotspotSmartClientOnlyByZoneId extends \Jane\Component\O
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/portals/hotspot/smartClientOnly');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/portals/hotspot/smartClientOnly');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

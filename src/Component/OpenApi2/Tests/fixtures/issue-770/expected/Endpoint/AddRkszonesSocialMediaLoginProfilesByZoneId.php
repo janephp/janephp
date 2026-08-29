@@ -25,7 +25,7 @@ class AddRkszonesSocialMediaLoginProfilesByZoneId extends \Jane\Component\OpenAp
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/socialMediaLoginProfiles');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/socialMediaLoginProfiles');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

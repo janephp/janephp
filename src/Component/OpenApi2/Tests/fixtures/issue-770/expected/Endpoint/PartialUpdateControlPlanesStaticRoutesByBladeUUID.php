@@ -25,7 +25,7 @@ class PartialUpdateControlPlanesStaticRoutesByBladeUUID extends \Jane\Component\
     }
     public function getUri(): string
     {
-        return str_replace(['{bladeUUID}'], [$this->bladeUUID], '/controlPlanes/{bladeUUID}/staticRoutes');
+        return str_replace(['{bladeUUID}'], [rawurlencode($this->bladeUUID)], '/controlPlanes/{bladeUUID}/staticRoutes');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

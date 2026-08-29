@@ -23,7 +23,7 @@ class DeletePlanesStaticRouteByBladeUUID extends \Jane\Component\OpenApi3\Tests\
     }
     public function getUri(): string
     {
-        return str_replace(['{bladeUUID}'], [$this->bladeUUID], '/planes/{bladeUUID}/staticRoute');
+        return str_replace(['{bladeUUID}'], [rawurlencode($this->bladeUUID)], '/planes/{bladeUUID}/staticRoute');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

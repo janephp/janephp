@@ -25,7 +25,7 @@ class PartialUpdateProfilesAuthById extends \Jane\Component\OpenApi3\Tests\Expec
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/profiles/auth/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/profiles/auth/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

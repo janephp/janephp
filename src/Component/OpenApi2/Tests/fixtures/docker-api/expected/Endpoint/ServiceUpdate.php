@@ -46,7 +46,7 @@ class ServiceUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/services/{id}/update');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/services/{id}/update');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

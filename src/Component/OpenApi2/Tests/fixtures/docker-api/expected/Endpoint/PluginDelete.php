@@ -27,7 +27,7 @@ class PluginDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getUri(): string
     {
-        return str_replace(['{name}'], [$this->name], '/plugins/{name}');
+        return str_replace(['{name}'], [rawurlencode($this->name)], '/plugins/{name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

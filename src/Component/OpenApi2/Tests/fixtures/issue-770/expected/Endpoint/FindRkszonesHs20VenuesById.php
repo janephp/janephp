@@ -26,7 +26,7 @@ class FindRkszonesHs20VenuesById extends \Jane\Component\OpenApi3\Tests\Expected
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}'], [$this->zoneId, $this->id], '/rkszones/{zoneId}/hs20/venues/{id}');
+        return str_replace(['{zoneId}', '{id}'], [rawurlencode($this->zoneId), rawurlencode($this->id)], '/rkszones/{zoneId}/hs20/venues/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -23,7 +23,7 @@ class DeleteControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component
     }
     public function getUri(): string
     {
-        return str_replace(['{bladeUUID}'], [$this->bladeUUID], '/controlPlanes/{bladeUUID}/userDefinedInterface');
+        return str_replace(['{bladeUUID}'], [rawurlencode($this->bladeUUID)], '/controlPlanes/{bladeUUID}/userDefinedInterface');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

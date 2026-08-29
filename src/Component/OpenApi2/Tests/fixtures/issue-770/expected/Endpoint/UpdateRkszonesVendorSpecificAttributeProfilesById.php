@@ -28,7 +28,7 @@ class UpdateRkszonesVendorSpecificAttributeProfilesById extends \Jane\Component\
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}'], [$this->zoneId, $this->id], '/rkszones/{zoneId}/vendorSpecificAttributeProfiles/{id}');
+        return str_replace(['{zoneId}', '{id}'], [rawurlencode($this->zoneId), rawurlencode($this->id)], '/rkszones/{zoneId}/vendorSpecificAttributeProfiles/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

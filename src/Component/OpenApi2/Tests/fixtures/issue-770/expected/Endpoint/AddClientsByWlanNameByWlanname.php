@@ -25,7 +25,7 @@ class AddClientsByWlanNameByWlanname extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getUri(): string
     {
-        return str_replace(['{wlanname}'], [$this->wlanname], '/clients/byWlanName/{wlanname}');
+        return str_replace(['{wlanname}'], [rawurlencode($this->wlanname)], '/clients/byWlanName/{wlanname}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

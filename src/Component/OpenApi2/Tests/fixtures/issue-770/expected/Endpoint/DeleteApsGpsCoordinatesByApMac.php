@@ -23,7 +23,7 @@ class DeleteApsGpsCoordinatesByApMac extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getUri(): string
     {
-        return str_replace(['{apMac}'], [$this->apMac], '/aps/{apMac}/gpsCoordinates');
+        return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/gpsCoordinates');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -24,7 +24,7 @@ class FindRkszonesAaaHttp2ByZoneId extends \Jane\Component\OpenApi3\Tests\Expect
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/aaa/http2');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/aaa/http2');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

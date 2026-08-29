@@ -23,7 +23,7 @@ class FindRkszonesPortalsGuestByZoneId extends \Jane\Component\OpenApi3\Tests\Ex
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/portals/guest');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/portals/guest');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

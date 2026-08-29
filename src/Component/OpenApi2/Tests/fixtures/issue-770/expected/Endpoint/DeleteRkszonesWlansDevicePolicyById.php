@@ -26,7 +26,7 @@ class DeleteRkszonesWlansDevicePolicyById extends \Jane\Component\OpenApi3\Tests
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}', '{id}'], [$this->zoneId, $this->id], '/rkszones/{zoneId}/wlans/{id}/devicePolicy');
+        return str_replace(['{zoneId}', '{id}'], [rawurlencode($this->zoneId), rawurlencode($this->id)], '/rkszones/{zoneId}/wlans/{id}/devicePolicy');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

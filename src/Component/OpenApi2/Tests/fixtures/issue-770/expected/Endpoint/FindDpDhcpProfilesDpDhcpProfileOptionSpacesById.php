@@ -23,7 +23,7 @@ class FindDpDhcpProfilesDpDhcpProfileOptionSpacesById extends \Jane\Component\Op
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/dpDhcpProfiles/{id}/dpDhcpProfileOptionSpaces');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/dpDhcpProfiles/{id}/dpDhcpProfileOptionSpaces');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

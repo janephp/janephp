@@ -25,7 +25,7 @@ class AddRkszonesPortalsWebauthByZoneId extends \Jane\Component\OpenApi3\Tests\E
     }
     public function getUri(): string
     {
-        return str_replace(['{zoneId}'], [$this->zoneId], '/rkszones/{zoneId}/portals/webauth');
+        return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/portals/webauth');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

@@ -25,7 +25,7 @@ class PartialUpdatePrecedenceById extends \Jane\Component\OpenApi3\Tests\Expecte
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/precedence/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/precedence/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

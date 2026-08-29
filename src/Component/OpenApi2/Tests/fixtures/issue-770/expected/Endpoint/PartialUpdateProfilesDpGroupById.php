@@ -25,7 +25,7 @@ class PartialUpdateProfilesDpGroupById extends \Jane\Component\OpenApi3\Tests\Ex
     }
     public function getUri(): string
     {
-        return str_replace(['{id}'], [$this->id], '/profiles/dpGroup/{id}');
+        return str_replace(['{id}'], [rawurlencode($this->id)], '/profiles/dpGroup/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
