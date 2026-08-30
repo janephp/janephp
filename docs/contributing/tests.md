@@ -52,6 +52,30 @@ invalid PHP carries a `.known-invalid-php` marker file (its content links to the
 gate asserts the output still *fails* to parse — once the bug is fixed, the marker file must be deleted along with
 refreshing the baseline.
 
+### Static analysis of generated code
+
+The syntax gate proves generated code *parses*; PHPStan proves more of it is *correct*. The root `phpstan.neon`
+deliberately excludes fixture trees, so a second configuration, `phpstan-generated.neon`, analyses the committed
+`expected/` trees of a representative set of fixtures — one per generated artifact kind (models, normalizers,
+validators, enums, endpoints, exceptions, clients). Those fixtures are picked so each uses a distinct namespace and
+they can all be analysed in a single run:
+
+```bash
+castor qa:phpstan:generated
+```
+
+It runs at **level 5**, the highest level where every reported error is a defect rather than a documentation-style
+preference (see [ADR 0008](adrs/0008-phpstan-on-generated-code.md)). Findings that predate the gate are frozen in
+`phpstan-generated-baseline.neon`, so the check is green today and fails on anything *new*. Fixing a generator bug
+shrinks the baseline; regenerate it with:
+
+```bash
+castor qa:phpstan:generated --generate-baseline
+```
+
+Never add an entry to the baseline by hand to silence a new finding — fix the generator, or the baseline stops
+meaning anything.
+
 > **Important:** a few fixtures are *executed* by functional tests (their classes are loaded at runtime, through the
 > composer classmap or explicit `require_once`). Those fixtures keep their full `expected/` trees, including `Runtime/`
 > copies: currently `multi-namespace` (JsonSchema), `docker-api`, `issue-793`, `bad-response-exception`,

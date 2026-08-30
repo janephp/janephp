@@ -1,0 +1,2023 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/JsonSchema/Tests/fixtures/multi-namespace/expected/Schema1/Normalizer/TestNormalizer.php
+
+		-
+			message: '#^Trait Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema1\\Runtime\\AdditionalAndPatternProperties is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/JsonSchema/Tests/fixtures/multi-namespace/expected/Schema1/Runtime/AdditionalAndPatternProperties.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/JsonSchema/Tests/fixtures/multi-namespace/expected/Schema2/Normalizer/FooNormalizer.php
+
+		-
+			message: '#^Trait Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Runtime\\AdditionalAndPatternProperties is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/JsonSchema/Tests/fixtures/multi-namespace/expected/Schema2/Runtime/AdditionalAndPatternProperties.php
+
+		-
+			message: '#^Trait Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema3\\Runtime\\AdditionalAndPatternProperties is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/JsonSchema/Tests/fixtures/multi-namespace/expected/Schema3/Runtime/AdditionalAndPatternProperties.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 63
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Client.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Client.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\BuildPrune\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\BuildPrunePostResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/BuildPrune.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/BuildPrune.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ConfigCreate\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\IdResponse\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ConfigCreate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ConfigDelete\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ConfigDelete.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ConfigInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Config\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ConfigInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ConfigList\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\Config\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ConfigList.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ConfigList.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ConfigUpdate\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ConfigUpdate.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ConfigUpdate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerArchive\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerArchive.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerArchive.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerArchiveInfo\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerArchiveInfo.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerArchiveInfo.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerAttach\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerAttach.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerAttach.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerAttachWebsocket\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerAttachWebsocket.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerAttachWebsocket.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerChanges\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\ContainersIdChangesGetResponse200Item\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerChanges.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerCreate\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\ContainersCreatePostResponse201\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerCreate.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerCreate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerDelete\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerDelete.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerDelete.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerExec\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\IdResponse\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerExec.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerExport\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerExport.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\ContainersIdJsonGetResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerInspect.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerKill\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerKill.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerKill.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerList\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\ContainerSummary\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerList.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerList.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerLogs\:\:transformResponseBody\(\) should return string\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerLogs.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerLogs.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerPause\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerPause.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerPrune\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\ContainersPrunePostResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerPrune.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerPrune.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerRename\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerRename.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerRename.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerResize\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerResize.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerResize.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerRestart\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerRestart.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerRestart.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerStart\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerStart.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerStart.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerStats\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerStats.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerStats.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerStop\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerStop.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerStop.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerTop\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\ContainersIdTopGetResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerTop.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerTop.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerUnpause\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerUnpause.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerUpdate\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\ContainersIdUpdatePostResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerUpdate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ContainerWait\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\ContainersIdWaitPostResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerWait.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ContainerWait.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\DistributionInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\DistributionInspect\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/DistributionInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ExecInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\ExecIdJsonGetResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ExecInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ExecResize\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ExecResize.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ExecResize.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ExecStart\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ExecStart.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\GetPluginPrivileges\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\PluginPrivilege\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/GetPluginPrivileges.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/GetPluginPrivileges.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageBuild\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageBuild.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageBuild.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageCommit\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\IdResponse\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageCommit.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageCommit.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageCreate\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageCreate.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageCreate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageDelete\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\ImageDeleteResponseItem\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageDelete.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageDelete.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageGet\:\:transformResponseBody\(\) should return string\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageGet.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageGetAll\:\:transformResponseBody\(\) should return string\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageGetAll.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageGetAll.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageHistory\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\ImagesNameHistoryGetResponse200Item\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageHistory.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Image\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageList\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\ImageSummary\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageList.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageList.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageLoad\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageLoad.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageLoad.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImagePrune\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\ImagesPrunePostResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImagePrune.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImagePrune.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImagePush\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImagePush.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImagePush.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageSearch\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\ImagesSearchGetResponse200Item\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageSearch.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageSearch.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ImageTag\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageTag.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ImageTag.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NetworkConnect\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NetworkConnect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NetworkCreate\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\NetworksCreatePostResponse201\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NetworkCreate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NetworkDelete\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NetworkDelete.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NetworkDisconnect\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NetworkDisconnect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NetworkInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Network\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NetworkInspect.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NetworkInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NetworkList\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\Network\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NetworkList.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NetworkList.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NetworkPrune\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\NetworksPrunePostResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NetworkPrune.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NetworkPrune.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NodeDelete\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NodeDelete.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NodeDelete.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NodeInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Node\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NodeInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NodeList\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\Node\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NodeList.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NodeList.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\NodeUpdate\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NodeUpdate.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/NodeUpdate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PluginCreate\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginCreate.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginCreate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PluginDelete\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Plugin\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginDelete.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginDelete.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PluginDisable\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginDisable.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PluginEnable\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginEnable.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginEnable.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PluginInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Plugin\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PluginList\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\Plugin\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginList.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginList.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PluginPull\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginPull.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginPull.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PluginPush\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginPush.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PluginSet\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginSet.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PluginUpgrade\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginUpgrade.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PluginUpgrade.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\PutContainerArchive\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PutContainerArchive.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/PutContainerArchive.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SecretCreate\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\IdResponse\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SecretCreate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SecretDelete\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SecretDelete.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SecretInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Secret\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SecretInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SecretList\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\Secret\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SecretList.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SecretList.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SecretUpdate\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SecretUpdate.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SecretUpdate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ServiceCreate\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\ServicesCreatePostResponse201\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceCreate.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceCreate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ServiceDelete\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceDelete.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ServiceInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Service\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceInspect.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ServiceList\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\Service\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceList.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceList.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ServiceLogs\:\:transformResponseBody\(\) should return string\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceLogs.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceLogs.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\ServiceUpdate\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\ServiceUpdateResponse\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceUpdate.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/ServiceUpdate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\Session\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/Session.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SwarmInit\:\:transformResponseBody\(\) should return string\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SwarmInit.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SwarmInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Swarm\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SwarmInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SwarmJoin\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SwarmJoin.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SwarmLeave\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SwarmLeave.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SwarmLeave.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SwarmUnlock\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SwarmUnlock.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SwarmUnlockkey\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\SwarmUnlockkeyGetResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SwarmUnlockkey.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SwarmUpdate\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SwarmUpdate.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SwarmUpdate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SystemAuth\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\AuthPostResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SystemAuth.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SystemDataUsage\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\SystemDfGetResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SystemDataUsage.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SystemEvents\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\EventMessage\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SystemEvents.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SystemEvents.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SystemInfo\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\SystemInfo\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SystemInfo.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SystemPing\:\:transformResponseBody\(\) should return string\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SystemPing.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SystemPingHead\:\:transformResponseBody\(\) should return string\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SystemPingHead.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\SystemVersion\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\SystemVersion\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/SystemVersion.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\TaskInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Task\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/TaskInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\TaskList\:\:transformResponseBody\(\) should return array\<Docker\\Api\\Model\\Task\>\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/TaskList.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/TaskList.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\TaskLogs\:\:transformResponseBody\(\) should return string\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/TaskLogs.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/TaskLogs.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\VolumeCreate\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Volume\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/VolumeCreate.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\VolumeDelete\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/VolumeDelete.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/VolumeDelete.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\VolumeInspect\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\Volume\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/VolumeInspect.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\VolumeList\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\VolumesGetResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/VolumeList.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/VolumeList.php
+
+		-
+			message: '#^Method Docker\\Api\\Endpoint\\VolumePrune\:\:transformResponseBody\(\) should return Docker\\Api\\Model\\VolumesPrunePostResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/VolumePrune.php
+
+		-
+			message: '#^PHPDoc tag @var above a method has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Endpoint/VolumePrune.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/BuildCacheNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 3
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/BuildInfoNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 3
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ClusterInfoNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\ConfigSpec\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ConfigSpecNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ConfigSpecNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\ConfigsCreatePostBody\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ConfigsCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ConfigsCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$exposedPorts of method Docker\\Api\\Model\\ContainerConfig\:\:setExposedPorts\(\) expects array\<string, mixed\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\ContainerConfig\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$volumes of method Docker\\Api\\Model\\ContainerConfig\:\:setVolumes\(\) expects array\<string, mixed\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerConfigNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerConfigNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerStateNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$networks of method Docker\\Api\\Model\\ContainerSummaryNetworkSettings\:\:setNetworks\(\) expects array\<string, Docker\\Api\\Model\\EndpointSettings\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerSummaryNetworkSettingsNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\ContainerSummary\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerSummaryNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainerSummaryNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$exposedPorts of method Docker\\Api\\Model\\ContainersCreatePostBody\:\:setExposedPorts\(\) expects array\<string, mixed\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\ContainersCreatePostBody\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$volumes of method Docker\\Api\\Model\\ContainersCreatePostBody\:\:setVolumes\(\) expects array\<string, mixed\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 3
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 5
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersIdJsonGetResponse200Normalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersIdJsonGetResponse200Normalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersIdUpdatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersIdUpdatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ContainersIdWaitPostResponse200Normalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/CreateImageInfoNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Docker\\Api\\Model\\DeviceRequest\:\:setOptions\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/DeviceRequestNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Docker\\Api\\Model\\Driver\:\:setOptions\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/DriverNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$driverOpts of method Docker\\Api\\Model\\EndpointSettings\:\:setDriverOpts\(\) expects array\<string, string\>\|null, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/EndpointSettingsNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/EndpointSettingsNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/EndpointSettingsNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\EngineDescription\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/EngineDescriptionNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of method Docker\\Api\\Model\\EventActor\:\:setAttributes\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/EventActorNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/EventMessageNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ExecIdJsonGetResponse200Normalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/GenericResourcesItemNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$data of method Docker\\Api\\Model\\GraphDriverData\:\:setData\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/GraphDriverDataNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$config of method Docker\\Api\\Model\\HostConfigLogConfig\:\:setConfig\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigLogConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$portBindings of method Docker\\Api\\Model\\HostConfig\:\:setPortBindings\(\) expects array\<string, list\<Docker\\Api\\Model\\PortBinding\>\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$storageOpt of method Docker\\Api\\Model\\HostConfig\:\:setStorageOpt\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$sysctls of method Docker\\Api\\Model\\HostConfig\:\:setSysctls\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$tmpfs of method Docker\\Api\\Model\\HostConfig\:\:setTmpfs\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/HostConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$config of method Docker\\Api\\Model\\IPAM\:\:setConfig\(\) expects list\<array\<string, string\>\>, list\<Docker\\Api\\Runtime\\JsonObject\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/IPAMNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Docker\\Api\\Model\\IPAM\:\:setOptions\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/IPAMNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 3
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ImageNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\ImageSummary\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ImageSummaryNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 3
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/MountNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Docker\\Api\\Model\\MountVolumeOptionsDriverConfig\:\:setOptions\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/MountVolumeOptionsDriverConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\MountVolumeOptions\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/MountVolumeOptionsNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/MountVolumeOptionsNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$driverOpts of method Docker\\Api\\Model\\NetworkAttachmentConfig\:\:setDriverOpts\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkAttachmentConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$containers of method Docker\\Api\\Model\\Network\:\:setContainers\(\) expects array\<string, Docker\\Api\\Model\\NetworkContainer\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\Network\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Docker\\Api\\Model\\Network\:\:setOptions\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$networks of method Docker\\Api\\Model\\NetworkSettings\:\:setNetworks\(\) expects array\<string, Docker\\Api\\Model\\EndpointSettings\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkSettingsNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$ports of method Docker\\Api\\Model\\NetworkSettings\:\:setPorts\(\) expects array\<string, list\<Docker\\Api\\Model\\PortBinding\>\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkSettingsNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkSettingsNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$endpointsConfig of method Docker\\Api\\Model\\NetworkingConfig\:\:setEndpointsConfig\(\) expects array\<string, Docker\\Api\\Model\\EndpointSettings\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworkingConfigNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\NetworksCreatePostBody\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworksCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Docker\\Api\\Model\\NetworksCreatePostBody\:\:setOptions\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworksCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworksCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NetworksIdConnectPostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 4
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NodeDescriptionNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 5
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NodeNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NodeNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\NodeSpec\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/NodeSpecNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/PluginConfigNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/PushImageInfoNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$indexConfigs of method Docker\\Api\\Model\\RegistryServiceConfig\:\:setIndexConfigs\(\) expects array\<string, Docker\\Api\\Model\\IndexInfo\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/RegistryServiceConfigNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ResourcesNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/RuntimeNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SecretNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\SecretSpec\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SecretSpecNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SecretSpecNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\SecretsCreatePostBody\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SecretsCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SecretsCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServiceEndpointNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServiceJobStatusNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 6
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServiceNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServiceSpecModeNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\ServiceSpec\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServiceSpecNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 5
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServiceSpecNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\ServicesCreatePostBody\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServicesCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 5
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServicesCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\ServicesIdUpdatePostBody\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServicesIdUpdatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 5
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/ServicesIdUpdatePostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmInfoNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 4
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmInfoNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmInitPostBodyNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 4
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Docker\\Api\\Model\\SwarmSpecCAConfigExternalCAsItem\:\:setOptions\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmSpecCAConfigExternalCAsItemNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\SwarmSpec\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmSpecNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 6
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmSpecNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 3
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmSpecNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Docker\\Api\\Model\\SwarmSpecTaskDefaultsLogDriver\:\:setOptions\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmSpecTaskDefaultsLogDriverNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SwarmSpecTaskDefaultsNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$runtimes of method Docker\\Api\\Model\\SystemInfo\:\:setRuntimes\(\) expects array\<string, Docker\\Api\\Model\\Runtime\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SystemInfoNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 6
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SystemInfoNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SystemInfoNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SystemVersionComponentsItemNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/SystemVersionNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\Task\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 4
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecContainerSpecConfigsItemNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\TaskSpecContainerSpec\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecContainerSpecNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$sysctls of method Docker\\Api\\Model\\TaskSpecContainerSpec\:\:setSysctls\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecContainerSpecNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 3
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecContainerSpecNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecContainerSpecNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecContainerSpecPrivilegesNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecContainerSpecSecretsItemNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Docker\\Api\\Model\\TaskSpecLogDriver\:\:setOptions\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecLogDriverNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 7
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecPlacementPreferencesItemNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskSpecResourcesNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/TaskStatusNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\Volume\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumeNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Docker\\Api\\Model\\Volume\:\:setOptions\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumeNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$status of method Docker\\Api\\Model\\Volume\:\:setStatus\(\) expects array\<string, mixed\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumeNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumeNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumeNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$driverOpts of method Docker\\Api\\Model\\VolumesCreatePostBody\:\:setDriverOpts\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumesCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Parameter \#1 \$labels of method Docker\\Api\\Model\\VolumesCreatePostBody\:\:setLabels\(\) expects array\<string, string\>, Docker\\Api\\Runtime\\JsonObject given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Normalizer/VolumesCreatePostBodyNormalizer.php
+
+		-
+			message: '#^Trait Docker\\Api\\Runtime\\AdditionalAndPatternProperties is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/docker-api/expected/Runtime/AdditionalAndPatternProperties.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/enum-as-objects/expected/Client.php
+
+		-
+			message: '#^Method Jane\\Component\\OpenApi2\\Tests\\EnumAsObjects\\Endpoint\\GetItems\:\:transformResponseBody\(\) should return Jane\\Component\\OpenApi2\\Tests\\EnumAsObjects\\Model\\Item\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/enum-as-objects/expected/Endpoint/GetItems.php
+
+		-
+			message: '#^Trait Jane\\Component\\OpenApi2\\Tests\\EnumAsObjects\\Runtime\\AdditionalAndPatternProperties is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/enum-as-objects/expected/Runtime/AdditionalAndPatternProperties.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/One/Client.php
+
+		-
+			message: '#^Method Jane\\Component\\OpenApi2\\Tests\\Expected\\One\\Endpoint\\TestOne\:\:transformResponseBody\(\) should return Jane\\Component\\OpenApi2\\Tests\\Expected\\One\\Model\\TestOneGetResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/One/Endpoint/TestOne.php
+
+		-
+			message: '#^Trait Jane\\Component\\OpenApi2\\Tests\\Expected\\One\\Runtime\\AdditionalAndPatternProperties is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/One/Runtime/AdditionalAndPatternProperties.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/Two/Client.php
+
+		-
+			message: '#^Method Jane\\Component\\OpenApi2\\Tests\\Expected\\Two\\Endpoint\\TestTwo\:\:transformResponseBody\(\) should return Jane\\Component\\OpenApi2\\Tests\\Expected\\Two\\Model\\TestTwoGetResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/Two/Endpoint/TestTwo.php
+
+		-
+			message: '#^Trait Jane\\Component\\OpenApi2\\Tests\\Expected\\Two\\Runtime\\AdditionalAndPatternProperties is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected/Two/Runtime/AdditionalAndPatternProperties.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/array-items-validation/expected/Client.php
+
+		-
+			message: '#^Trait Jane\\Component\\OpenApi3\\Tests\\ArrayItemsValidation\\Runtime\\Client\\EndpointTrait is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/array-items-validation/expected/Runtime/Client/EndpointTrait.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/bad-response-exception/expected/Client.php
+
+		-
+			message: '#^Trait Jane\\Component\\OpenApi3\\Tests\\BadResponse\\Runtime\\AdditionalAndPatternProperties is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/bad-response-exception/expected/Runtime/AdditionalAndPatternProperties.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/issue-680/expected/Client.php
+
+		-
+			message: '#^Method Jane\\Component\\OpenApi3\\Tests\\Issue680\\Endpoint\\PostTest\:\:transformResponseBody\(\) should return null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/issue-680/expected/Endpoint/PostTest.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/issue-680/expected/Normalizer/TestBodyNormalizer.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/issue-793/expected/Client.php
+
+		-
+			message: '#^Call to an undefined method Symfony\\Component\\Serializer\\SerializerInterface\:\:normalize\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/issue-793/expected/Endpoint/UploadFile.php
+
+		-
+			message: '#^Method Jane\\Component\\OpenApi3\\Tests\\ExpectedIssue793\\Endpoint\\UploadFile\:\:transformResponseBody\(\) should return Jane\\Component\\OpenApi3\\Tests\\ExpectedIssue793\\Model\\FilePostResponse200\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/issue-793/expected/Endpoint/UploadFile.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/issue-793/expected/Normalizer/FilePostBodyNormalizer.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/multipart-boolean/expected/Client.php
+
+		-
+			message: '#^Call to an undefined method Symfony\\Component\\Serializer\\SerializerInterface\:\:normalize\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/multipart-boolean/expected/Endpoint/PostFileDeposit.php
+
+		-
+			message: '#^Method Jane\\Component\\OpenApi3\\Tests\\ExpectedMultiPartBoolean\\Endpoint\\PostFileDeposit\:\:transformResponseBody\(\) should return string\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/multipart-boolean/expected/Endpoint/PostFileDeposit.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi3/Tests/fixtures/status-code-range/expected/Client.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi31/Tests/fixtures/discriminator/expected/Client.php
+
+		-
+			message: '#^Elseif condition is always false\.$#'
+			identifier: elseif.alwaysFalse
+			count: 1
+			path: src/Component/OpenApi31/Tests/fixtures/discriminator/expected/Normalizer/FooBarNormalizer.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between object and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi31/Tests/fixtures/discriminator/expected/Normalizer/FooBarNormalizer.php
+
+		-
+			message: '#^Trait Jane\\Component\\OpenApi31\\Tests\\DiscriminatorExpected\\Runtime\\Client\\EndpointTrait is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/OpenApi31/Tests/fixtures/discriminator/expected/Runtime/Client/EndpointTrait.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi31/Tests/fixtures/enum-as-objects/expected/Client.php
+
+		-
+			message: '#^Method Jane\\Component\\OpenApi31\\Tests\\EnumAsObjects\\Endpoint\\GetItems\:\:transformResponseBody\(\) should return Jane\\Component\\OpenApi31\\Tests\\EnumAsObjects\\Model\\Item\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi31/Tests/fixtures/enum-as-objects/expected/Endpoint/GetItems.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi31/Tests/fixtures/issue-1006/expected/Client.php
+
+		-
+			message: '#^Method Jane\\Component\\OpenApi31\\Tests\\Issue1006\\Endpoint\\CreateWidget\:\:transformResponseBody\(\) should return Jane\\Component\\OpenApi31\\Tests\\Issue1006\\Model\\Widget\|null but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Component/OpenApi31/Tests/fixtures/issue-1006/expected/Endpoint/CreateWidget.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between mixed and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Component/OpenApi31/Tests/fixtures/issue-1006/expected/Normalizer/WidgetNormalizer.php
+
+		-
+			message: '#^Trait Jane\\Component\\OpenApi31\\Tests\\Issue1006\\Runtime\\AdditionalAndPatternProperties is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Component/OpenApi31/Tests/fixtures/issue-1006/expected/Runtime/AdditionalAndPatternProperties.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Component/OpenApi31/Tests/fixtures/status-code-range/expected/Client.php

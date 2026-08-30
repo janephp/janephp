@@ -38,6 +38,20 @@ function qa_phpstan(bool $generateBaseline = false): void
     phpstan($params, '2.2.2');
 }
 
+#[AsTask('phpstan:generated', namespace: 'qa', description: 'Run PHPStan over the code Jane generates (fixture expected/ trees)')]
+function qa_phpstan_generated(bool $generateBaseline = false): void
+{
+    $params = ['analyse', '--configuration', __DIR__ . '/phpstan-generated.neon', '--memory-limit=-1', '-v'];
+    if ($generateBaseline) {
+        // The config includes the baseline, so it has to be emptied before regenerating it.
+        file_put_contents(__DIR__ . '/phpstan-generated-baseline.neon', "parameters:\n\tignoreErrors: []\n");
+        $params[] = '--generate-baseline';
+        $params[] = __DIR__ . '/phpstan-generated-baseline.neon';
+    }
+
+    phpstan($params, '2.2.2');
+}
+
 #[AsTask('install', namespace: 'doc', description: 'Install tool for documentation (need poetry)')]
 function doc_install(): void
 {

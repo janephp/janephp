@@ -38,6 +38,8 @@ This file gives coding agents the minimum project context needed to work safely 
   - `vendor/bin/phpunit --testsuite <Component>` (e.g. `JsonSchema`; see `vendor/bin/phpunit --list-suites`)
 - Run static analysis:
   - `castor qa:phpstan`
+- Run static analysis on generated code (level 5, baselined):
+  - `castor qa:phpstan:generated`
 - Run coding standards (dry run):
   - `castor qa:cs:check`
 - Fix coding standards:

@@ -1,0 +1,37 @@
+# Static analysis of *generated* code (see docs/contributing/tests.md).
+#
+# The main phpstan.neon deliberately excludes fixture trees: this config is the
+# counterpart that analyses the code Jane produces, which is what the project
+# actually ships to its users. It runs over the committed `expected/` baselines
+# of a representative set of fixtures — one per generated artifact kind
+# (models, normalizers, validators, enums, endpoints, exceptions, clients)
+# — picked so that every fixture uses a distinct namespace
+# and they can all be analysed in a single run.
+#
+# Target level is 5: the highest level where every reported error is a defect
+# rather than a documentation-style preference. Level 6 adds ~9 000 findings on
+# a real-world client, all `missingType.*`, and is deliberately out of scope.
+includes:
+    - phpstan-generated-baseline.neon
+parameters:
+    level: 5
+    tmpDir: cache
+    paths:
+        # JsonSchema: models, normalizers, multi-namespace mapping
+        - src/Component/JsonSchema/Tests/fixtures/multi-namespace/expected
+        # OpenApi2: a large real-world client, exceptions, enums
+        - src/Component/OpenApi2/Tests/fixtures/docker-api/expected
+        - src/Component/OpenApi2/Tests/fixtures/exception-with-no-schema/expected
+        - src/Component/OpenApi2/Tests/fixtures/enum-as-objects/expected
+        # OpenApi3: exceptions, validators, status code ranges, streams, multipart
+        - src/Component/OpenApi3/Tests/fixtures/bad-response-exception/expected
+        - src/Component/OpenApi3/Tests/fixtures/array-items-validation/expected
+        - src/Component/OpenApi3/Tests/fixtures/status-code-range/expected
+        - src/Component/OpenApi3/Tests/fixtures/issue-793/expected
+        - src/Component/OpenApi3/Tests/fixtures/multipart-boolean/expected
+        - src/Component/OpenApi3/Tests/fixtures/issue-680/expected
+        # OpenApi31: discriminator hierarchies, status code ranges, enums
+        - src/Component/OpenApi31/Tests/fixtures/discriminator/expected
+        - src/Component/OpenApi31/Tests/fixtures/status-code-range/expected
+        - src/Component/OpenApi31/Tests/fixtures/issue-1006/expected
+        - src/Component/OpenApi31/Tests/fixtures/enum-as-objects/expected
