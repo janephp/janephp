@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Endpoint;
 
-class GetTest extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class GetTest extends \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\TestGetBody $requestBody
+     * @param \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Model\TestGetBody $requestBody
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\TestGetBody $requestBody)
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Model\TestGetBody $requestBody)
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -22,8 +22,8 @@ class GetTest extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\TestGetBody) {
-            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
+        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Model\TestGetBody) {
+            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }

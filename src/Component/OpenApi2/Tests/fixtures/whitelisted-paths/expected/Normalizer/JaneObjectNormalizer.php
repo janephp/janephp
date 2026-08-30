@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer;
 
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\CheckArray;
+use Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,23 +18,23 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\OpenApi2\Tests\Expected\Model\Company::class => \Jane\OpenApi2\Tests\Expected\Normalizer\CompanyNormalizer::class,
+        \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Company::class => \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\CompanyNormalizer::class,
         
-        \Jane\OpenApi2\Tests\Expected\Model\Project::class => \Jane\OpenApi2\Tests\Expected\Normalizer\ProjectNormalizer::class,
+        \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Project::class => \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectNormalizer::class,
         
-        \Jane\OpenApi2\Tests\Expected\Model\ProjectClient::class => \Jane\OpenApi2\Tests\Expected\Normalizer\ProjectClientNormalizer::class,
+        \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectClient::class => \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectClientNormalizer::class,
         
-        \Jane\OpenApi2\Tests\Expected\Model\Projects::class => \Jane\OpenApi2\Tests\Expected\Normalizer\ProjectsNormalizer::class,
+        \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class => \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectsNormalizer::class,
         
-        \Jane\OpenApi2\Tests\Expected\Model\Error::class => \Jane\OpenApi2\Tests\Expected\Normalizer\ErrorNormalizer::class,
+        \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Error::class => \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ErrorNormalizer::class,
         
-        \Jane\OpenApi2\Tests\Expected\Model\PaginationLinks::class => \Jane\OpenApi2\Tests\Expected\Normalizer\PaginationLinksNormalizer::class,
+        \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\PaginationLinks::class => \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\PaginationLinksNormalizer::class,
         
-        \Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody::class => \Jane\OpenApi2\Tests\Expected\Normalizer\CompanyPatchBodyNormalizer::class,
+        \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\CompanyPatchBody::class => \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\CompanyPatchBodyNormalizer::class,
         
-        \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody::class => \Jane\OpenApi2\Tests\Expected\Normalizer\ProjectsPostBodyNormalizer::class,
+        \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody::class => \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer\ProjectsPostBodyNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

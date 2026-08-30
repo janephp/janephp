@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProfileL2oGREProfileNormalizer implements DenormalizerInterface, Normalize
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL2oGREProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL2oGREProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL2oGREProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -47,10 +47,10 @@ class ProfileL2oGREProfileNormalizer implements DenormalizerInterface, Normalize
             $object->setDescription($data['description']);
         }
         if (\array_key_exists('coreNetworkGateway', $data)) {
-            $object->setCoreNetworkGateway($this->denormalizer->denormalize($data['coreNetworkGateway'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCoreNetworkGateway::class, 'json', $context));
+            $object->setCoreNetworkGateway($this->denormalizer->denormalize($data['coreNetworkGateway'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCoreNetworkGateway::class, 'json', $context));
         }
         if (\array_key_exists('dhcpRelay', $data)) {
-            $object->setDhcpRelay($this->denormalizer->denormalize($data['dhcpRelay'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpRelayNoRelayTunnel::class, 'json', $context));
+            $object->setDhcpRelay($this->denormalizer->denormalize($data['dhcpRelay'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpRelayNoRelayTunnel::class, 'json', $context));
         }
         if (\array_key_exists('domainId', $data)) {
             $object->setDomainId($data['domainId']);
@@ -88,10 +88,10 @@ class ProfileL2oGREProfileNormalizer implements DenormalizerInterface, Normalize
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('coreNetworkGateway') && null !== $data->getCoreNetworkGateway()) {
-            $dataArray['coreNetworkGateway'] = $data->getCoreNetworkGateway() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCoreNetworkGateway(), 'json', $context));
+            $dataArray['coreNetworkGateway'] = $data->getCoreNetworkGateway() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getCoreNetworkGateway(), 'json', $context));
         }
         if ($data->isInitialized('dhcpRelay') && null !== $data->getDhcpRelay()) {
-            $dataArray['dhcpRelay'] = $data->getDhcpRelay() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDhcpRelay(), 'json', $context));
+            $dataArray['dhcpRelay'] = $data->getDhcpRelay() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getDhcpRelay(), 'json', $context));
         }
         if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
             $dataArray['domainId'] = $data->getDomainId();
@@ -118,6 +118,6 @@ class ProfileL2oGREProfileNormalizer implements DenormalizerInterface, Normalize
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL2oGREProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfile::class => false];
     }
 }

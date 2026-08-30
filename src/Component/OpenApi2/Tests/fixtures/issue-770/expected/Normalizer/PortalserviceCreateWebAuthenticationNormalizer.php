@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PortalserviceCreateWebAuthenticationNormalizer implements DenormalizerInte
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWebAuthentication::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWebAuthentication::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWebAuthentication::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWebAuthentication::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWebAuthentication();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWebAuthentication();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -44,10 +44,10 @@ class PortalserviceCreateWebAuthenticationNormalizer implements DenormalizerInte
             $object->setDescription($data['description']);
         }
         if (\array_key_exists('redirect', $data)) {
-            $object->setRedirect($this->denormalizer->denormalize($data['redirect'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalRedirect::class, 'json', $context));
+            $object->setRedirect($this->denormalizer->denormalize($data['redirect'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalRedirect::class, 'json', $context));
         }
         if (\array_key_exists('webAuthenticationPortalCustomization', $data)) {
-            $object->setWebAuthenticationPortalCustomization($this->denormalizer->denormalize($data['webAuthenticationPortalCustomization'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonWebAuthenticationPortalCustomization::class, 'json', $context));
+            $object->setWebAuthenticationPortalCustomization($this->denormalizer->denormalize($data['webAuthenticationPortalCustomization'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonWebAuthenticationPortalCustomization::class, 'json', $context));
         }
         return $object;
     }
@@ -59,15 +59,15 @@ class PortalserviceCreateWebAuthenticationNormalizer implements DenormalizerInte
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('redirect') && null !== $data->getRedirect()) {
-            $dataArray['redirect'] = $data->getRedirect() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRedirect(), 'json', $context));
+            $dataArray['redirect'] = $data->getRedirect() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getRedirect(), 'json', $context));
         }
         if ($data->isInitialized('webAuthenticationPortalCustomization') && null !== $data->getWebAuthenticationPortalCustomization()) {
-            $dataArray['webAuthenticationPortalCustomization'] = $data->getWebAuthenticationPortalCustomization() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWebAuthenticationPortalCustomization(), 'json', $context));
+            $dataArray['webAuthenticationPortalCustomization'] = $data->getWebAuthenticationPortalCustomization() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getWebAuthenticationPortalCustomization(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWebAuthentication::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWebAuthentication::class => false];
     }
 }

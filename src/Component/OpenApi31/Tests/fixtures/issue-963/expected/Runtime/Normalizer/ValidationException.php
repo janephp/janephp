@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue963\Runtime\Normalizer;
 
 use RuntimeException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;

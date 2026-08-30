@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ApSnmpAgentProfileUpdateApSnmpAgentProfileNormalizer implements Denormaliz
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -46,14 +46,14 @@ class ApSnmpAgentProfileUpdateApSnmpAgentProfileNormalizer implements Denormaliz
         if (\array_key_exists('snmpV2Agent', $data)) {
             $values = [];
             foreach ($data['snmpV2Agent'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileApSnmpCommunity::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileApSnmpCommunity::class, 'json', $context);
             }
             $object->setSnmpV2Agent($values);
         }
         if (\array_key_exists('snmpV3Agent', $data)) {
             $values_1 = [];
             foreach ($data['snmpV3Agent'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileApSnmpUser::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileApSnmpUser::class, 'json', $context);
             }
             $object->setSnmpV3Agent($values_1);
         }
@@ -69,14 +69,14 @@ class ApSnmpAgentProfileUpdateApSnmpAgentProfileNormalizer implements Denormaliz
         if ($data->isInitialized('snmpV2Agent') && null !== $data->getSnmpV2Agent()) {
             $values = [];
             foreach ($data->getSnmpV2Agent() as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['snmpV2Agent'] = $values;
         }
         if ($data->isInitialized('snmpV3Agent') && null !== $data->getSnmpV3Agent()) {
             $values_1 = [];
             foreach ($data->getSnmpV3Agent() as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['snmpV3Agent'] = $values_1;
         }
@@ -84,6 +84,6 @@ class ApSnmpAgentProfileUpdateApSnmpAgentProfileNormalizer implements Denormaliz
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile::class => false];
     }
 }

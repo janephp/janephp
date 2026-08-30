@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Endpoint;
 
-class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Client\Endpoint
 {
     protected $accept;
     /**
@@ -19,7 +19,7 @@ class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -55,7 +55,7 @@ class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Error
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,7 +70,7 @@ class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
             }
         }
         if (stripos(strtolower($contentType), 'application/json') !== false) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Error', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Error', 'json');
         }
         if (stripos(strtolower($contentType), 'application/problem+json') !== false) {
             try {

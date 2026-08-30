@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Exception;
 
 abstract class NotFoundException extends \RuntimeException implements ClientException, WithResponseInterface
 {

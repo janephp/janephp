@@ -2,6 +2,6 @@
 
 return [
     'openapi-file' => __DIR__ .  '/swagger.json',
-    'namespace' => 'Jane\OpenApi3\Tests\Expected',
+    'namespace' => 'Jane\OpenApi3\Tests\Expected\SkipParameterCheck',
     'directory' => __DIR__ . '/generated',
 ];

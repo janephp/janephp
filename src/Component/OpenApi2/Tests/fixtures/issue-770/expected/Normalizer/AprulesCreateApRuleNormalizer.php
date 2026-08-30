@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class AprulesCreateApRuleNormalizer implements DenormalizerInterface, Normalizer
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesCreateApRule::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesCreateApRule::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesCreateApRule::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesCreateApRule::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesCreateApRule();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesCreateApRule();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -44,19 +44,19 @@ class AprulesCreateApRuleNormalizer implements DenormalizerInterface, Normalizer
             $object->setType($data['type']);
         }
         if (\array_key_exists('ipAddressRange', $data)) {
-            $object->setIpAddressRange($this->denormalizer->denormalize($data['ipAddressRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesIpAddressRange::class, 'json', $context));
+            $object->setIpAddressRange($this->denormalizer->denormalize($data['ipAddressRange'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesIpAddressRange::class, 'json', $context));
         }
         if (\array_key_exists('subnet', $data)) {
-            $object->setSubnet($this->denormalizer->denormalize($data['subnet'], \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesSubnet::class, 'json', $context));
+            $object->setSubnet($this->denormalizer->denormalize($data['subnet'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesSubnet::class, 'json', $context));
         }
         if (\array_key_exists('gpsCoordinates', $data)) {
-            $object->setGpsCoordinates($this->denormalizer->denormalize($data['gpsCoordinates'], \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesGpsCoordinates::class, 'json', $context));
+            $object->setGpsCoordinates($this->denormalizer->denormalize($data['gpsCoordinates'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesGpsCoordinates::class, 'json', $context));
         }
         if (\array_key_exists('provisionTag', $data)) {
             $object->setProvisionTag($data['provisionTag']);
         }
         if (\array_key_exists('mobilityZone', $data)) {
-            $object->setMobilityZone($this->denormalizer->denormalize($data['mobilityZone'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setMobilityZone($this->denormalizer->denormalize($data['mobilityZone'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         return $object;
     }
@@ -68,22 +68,22 @@ class AprulesCreateApRuleNormalizer implements DenormalizerInterface, Normalizer
         }
         $dataArray['type'] = $data->getType();
         if ($data->isInitialized('ipAddressRange') && null !== $data->getIpAddressRange()) {
-            $dataArray['ipAddressRange'] = $data->getIpAddressRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpAddressRange(), 'json', $context));
+            $dataArray['ipAddressRange'] = $data->getIpAddressRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getIpAddressRange(), 'json', $context));
         }
         if ($data->isInitialized('subnet') && null !== $data->getSubnet()) {
-            $dataArray['subnet'] = $data->getSubnet() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubnet(), 'json', $context));
+            $dataArray['subnet'] = $data->getSubnet() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getSubnet(), 'json', $context));
         }
         if ($data->isInitialized('gpsCoordinates') && null !== $data->getGpsCoordinates()) {
-            $dataArray['gpsCoordinates'] = $data->getGpsCoordinates() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getGpsCoordinates(), 'json', $context));
+            $dataArray['gpsCoordinates'] = $data->getGpsCoordinates() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getGpsCoordinates(), 'json', $context));
         }
         if ($data->isInitialized('provisionTag') && null !== $data->getProvisionTag()) {
             $dataArray['provisionTag'] = $data->getProvisionTag();
         }
-        $dataArray['mobilityZone'] = $data->getMobilityZone() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMobilityZone(), 'json', $context));
+        $dataArray['mobilityZone'] = $data->getMobilityZone() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getMobilityZone(), 'json', $context));
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\AprulesCreateApRule::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesCreateApRule::class => false];
     }
 }

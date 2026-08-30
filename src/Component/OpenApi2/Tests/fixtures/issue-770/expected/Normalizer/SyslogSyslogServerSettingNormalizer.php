@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogSyslogServerSetting::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSyslogServerSetting::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogSyslogServerSetting::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSyslogServerSetting::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogSyslogServerSetting();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSyslogServerSetting();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -65,10 +65,10 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
             $object->setForwardUEEventsMsgFormatType($data['forwardUEEventsMsgFormatType']);
         }
         if (\array_key_exists('primaryServer', $data)) {
-            $object->setPrimaryServer($this->denormalizer->denormalize($data['primaryServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogPrimaryServer::class, 'json', $context));
+            $object->setPrimaryServer($this->denormalizer->denormalize($data['primaryServer'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogPrimaryServer::class, 'json', $context));
         }
         if (\array_key_exists('secondaryServer', $data)) {
-            $object->setSecondaryServer($this->denormalizer->denormalize($data['secondaryServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogSecondaryServer::class, 'json', $context));
+            $object->setSecondaryServer($this->denormalizer->denormalize($data['secondaryServer'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSecondaryServer::class, 'json', $context));
         }
         if (\array_key_exists('eventFilter', $data)) {
             $object->setEventFilter($data['eventFilter']);
@@ -77,7 +77,7 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
             $object->setEventFilterSeverity($data['eventFilterSeverity']);
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($this->denormalizer->denormalize($data['priority'], \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogPriority::class, 'json', $context));
+            $object->setPriority($this->denormalizer->denormalize($data['priority'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogPriority::class, 'json', $context));
         }
         return $object;
     }
@@ -109,10 +109,10 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
             $dataArray['forwardUEEventsMsgFormatType'] = $data->getForwardUEEventsMsgFormatType();
         }
         if ($data->isInitialized('primaryServer') && null !== $data->getPrimaryServer()) {
-            $dataArray['primaryServer'] = $data->getPrimaryServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPrimaryServer(), 'json', $context));
+            $dataArray['primaryServer'] = $data->getPrimaryServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getPrimaryServer(), 'json', $context));
         }
         if ($data->isInitialized('secondaryServer') && null !== $data->getSecondaryServer()) {
-            $dataArray['secondaryServer'] = $data->getSecondaryServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondaryServer(), 'json', $context));
+            $dataArray['secondaryServer'] = $data->getSecondaryServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getSecondaryServer(), 'json', $context));
         }
         if ($data->isInitialized('eventFilter') && null !== $data->getEventFilter()) {
             $dataArray['eventFilter'] = $data->getEventFilter();
@@ -121,12 +121,12 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
             $dataArray['eventFilterSeverity'] = $data->getEventFilterSeverity();
         }
         if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPriority(), 'json', $context));
+            $dataArray['priority'] = $data->getPriority() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getPriority(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\SyslogSyslogServerSetting::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSyslogServerSetting::class => false];
     }
 }

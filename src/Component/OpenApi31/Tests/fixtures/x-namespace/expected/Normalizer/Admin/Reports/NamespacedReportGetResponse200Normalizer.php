@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer\Admin\Reports;
+namespace Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\Admin\Reports;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class NamespacedReportGetResponse200Normalizer implements DenormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\Admin\Reports\NamespacedReportGetResponse200::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Admin\Reports\NamespacedReportGetResponse200::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Admin\Reports\NamespacedReportGetResponse200();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -63,6 +63,6 @@ class NamespacedReportGetResponse200Normalizer implements DenormalizerInterface,
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\Admin\Reports\NamespacedReportGetResponse200::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200::class => false];
     }
 }

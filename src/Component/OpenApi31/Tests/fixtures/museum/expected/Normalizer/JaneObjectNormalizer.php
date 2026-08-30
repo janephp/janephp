@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,21 +18,21 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BuyMuseumTickets::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BuyMuseumTicketsNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\BuyMuseumTickets::class => \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\BuyMuseumTicketsNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Ticket::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TicketNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Ticket::class => \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\TicketNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\MuseumTicketsConfirmation::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\MuseumTicketsConfirmationNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumTicketsConfirmation::class => \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\MuseumTicketsConfirmationNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\MuseumDailyHours::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\MuseumDailyHoursNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumDailyHours::class => \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\MuseumDailyHoursNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\SpecialEventFieldsNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEventFields::class => \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\SpecialEventFieldsNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\SpecialEventNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent::class => \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\SpecialEventNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Error::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ErrorNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error::class => \Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer\ErrorNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

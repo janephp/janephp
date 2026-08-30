@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Model;
+namespace Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Model;
 
 class Schema
 {

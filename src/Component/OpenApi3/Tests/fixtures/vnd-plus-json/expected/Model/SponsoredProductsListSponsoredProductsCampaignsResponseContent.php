@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Runtime\AdditionalPropertiesInterface;
 class SponsoredProductsListSponsoredProductsCampaignsResponseContent implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

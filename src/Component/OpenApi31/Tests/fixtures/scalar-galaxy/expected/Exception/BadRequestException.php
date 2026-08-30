@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception;
 
 abstract class BadRequestException extends \RuntimeException implements ClientException, WithResponseInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\JsonSchema\Tests\Expected\Validator\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\CheckArray;
+use Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo::class;
+        return $type === \Jane\JsonSchema\Tests\Expected\Validator\Model\ModelFooooooo::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Validator\Model\ModelFooooooo;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo();
+        $object = new \Jane\JsonSchema\Tests\Expected\Validator\Model\ModelFooooooo();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\ModelFoooooooConstraint());
+            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\Validator\ModelFoooooooConstraint());
         }
         if (\array_key_exists('enumString', $data)) {
             $object->setEnumString($data['enumString']);
@@ -132,14 +132,14 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('dateFormat', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['dateFormat']);
             if (false === $date) {
-                throw new \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateFormat'], 'Y-m-d');
+                throw new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\InvalidDateException($data['dateFormat'], 'Y-m-d');
             }
             $object->setDateFormat($date->setTime(0, 0, 0));
         }
         if (\array_key_exists('dateNullableFormat', $data) && $data['dateNullableFormat'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d', $data['dateNullableFormat']);
             if (false === $date_1) {
-                throw new \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateNullableFormat'], 'Y-m-d');
+                throw new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\InvalidDateException($data['dateNullableFormat'], 'Y-m-d');
             }
             $object->setDateNullableFormat($date_1->setTime(0, 0, 0));
         }
@@ -149,12 +149,12 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('dateTimeFormat', $data)) {
             $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateTimeFormat']);
             if (false === $date_2) {
-                throw new \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateTimeFormat'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\InvalidDateException($data['dateTimeFormat'], 'Y-m-d\TH:i:sP');
             }
             $object->setDateTimeFormat($date_2);
         }
         if (\array_key_exists('foo', $data)) {
-            $object->setFoo($this->denormalizer->denormalize($data['foo'], \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class, 'json', $context));
+            $object->setFoo($this->denormalizer->denormalize($data['foo'], \Jane\JsonSchema\Tests\Expected\Validator\Model\FooFooFoo::class, 'json', $context));
         }
         if (\array_key_exists('arrayEmptyItems', $data)) {
             $values_4 = [];
@@ -270,7 +270,7 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['dateTimeFormat'] = $data->getDateTimeFormat()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo() === null ? null : new \Jane\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFoo(), 'json', $context));
+            $dataArray['foo'] = $data->getFoo() === null ? null : new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\JsonObject($this->normalizer->normalize($data->getFoo(), 'json', $context));
         }
         if ($data->isInitialized('arrayEmptyItems') && null !== $data->getArrayEmptyItems()) {
             $values_4 = [];
@@ -287,12 +287,12 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['arrayBoolItems'] = $values_5;
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\JsonSchema\Tests\Expected\Validator\ModelFoooooooConstraint());
+            $this->validate($dataArray, new \Jane\JsonSchema\Tests\Expected\Validator\Validator\ModelFoooooooConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo::class => false];
+        return [\Jane\JsonSchema\Tests\Expected\Validator\Model\ModelFooooooo::class => false];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class IdentityModifyIdentityUserRoleNormalizer implements DenormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityModifyIdentityUserRole::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyIdentityUserRole::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityModifyIdentityUserRole::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyIdentityUserRole::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityModifyIdentityUserRole();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyIdentityUserRole();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -50,25 +50,25 @@ class IdentityModifyIdentityUserRoleNormalizer implements DenormalizerInterface,
             $object->setDescription($data['description']);
         }
         if (\array_key_exists('userTrafficProfile', $data)) {
-            $object->setUserTrafficProfile($this->denormalizer->denormalize($data['userTrafficProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setUserTrafficProfile($this->denormalizer->denormalize($data['userTrafficProfile'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         if (\array_key_exists('firewallProfileId', $data)) {
             $object->setFirewallProfileId($data['firewallProfileId']);
         }
         if (\array_key_exists('maxDevices', $data)) {
-            $object->setMaxDevices($this->denormalizer->denormalize($data['maxDevices'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityMaxDevices::class, 'json', $context));
+            $object->setMaxDevices($this->denormalizer->denormalize($data['maxDevices'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityMaxDevices::class, 'json', $context));
         }
         if (\array_key_exists('vlanId', $data)) {
             $object->setVlanId($data['vlanId']);
         }
         if (\array_key_exists('vlanPooling', $data)) {
-            $object->setVlanPooling($this->denormalizer->denormalize($data['vlanPooling'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setVlanPooling($this->denormalizer->denormalize($data['vlanPooling'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         if (\array_key_exists('timeSchedulePolicy', $data)) {
             $object->setTimeSchedulePolicy($data['timeSchedulePolicy']);
         }
         if (\array_key_exists('timeScheduleList', $data)) {
-            $object->setTimeScheduleList($this->denormalizer->denormalize($data['timeScheduleList'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityTimeScheduleList::class, 'json', $context));
+            $object->setTimeScheduleList($this->denormalizer->denormalize($data['timeScheduleList'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityTimeScheduleList::class, 'json', $context));
         }
         return $object;
     }
@@ -88,30 +88,30 @@ class IdentityModifyIdentityUserRoleNormalizer implements DenormalizerInterface,
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('userTrafficProfile') && null !== $data->getUserTrafficProfile()) {
-            $dataArray['userTrafficProfile'] = $data->getUserTrafficProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserTrafficProfile(), 'json', $context));
+            $dataArray['userTrafficProfile'] = $data->getUserTrafficProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getUserTrafficProfile(), 'json', $context));
         }
         if ($data->isInitialized('firewallProfileId') && null !== $data->getFirewallProfileId()) {
             $dataArray['firewallProfileId'] = $data->getFirewallProfileId();
         }
         if ($data->isInitialized('maxDevices') && null !== $data->getMaxDevices()) {
-            $dataArray['maxDevices'] = $data->getMaxDevices() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMaxDevices(), 'json', $context));
+            $dataArray['maxDevices'] = $data->getMaxDevices() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getMaxDevices(), 'json', $context));
         }
         if ($data->isInitialized('vlanId') && null !== $data->getVlanId()) {
             $dataArray['vlanId'] = $data->getVlanId();
         }
         if ($data->isInitialized('vlanPooling') && null !== $data->getVlanPooling()) {
-            $dataArray['vlanPooling'] = $data->getVlanPooling() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getVlanPooling(), 'json', $context));
+            $dataArray['vlanPooling'] = $data->getVlanPooling() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getVlanPooling(), 'json', $context));
         }
         if ($data->isInitialized('timeSchedulePolicy') && null !== $data->getTimeSchedulePolicy()) {
             $dataArray['timeSchedulePolicy'] = $data->getTimeSchedulePolicy();
         }
         if ($data->isInitialized('timeScheduleList') && null !== $data->getTimeScheduleList()) {
-            $dataArray['timeScheduleList'] = $data->getTimeScheduleList() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTimeScheduleList(), 'json', $context));
+            $dataArray['timeScheduleList'] = $data->getTimeScheduleList() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getTimeScheduleList(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityModifyIdentityUserRole::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyIdentityUserRole::class => false];
     }
 }

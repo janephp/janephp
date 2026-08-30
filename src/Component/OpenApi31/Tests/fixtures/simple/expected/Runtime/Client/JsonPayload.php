@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Runtime\Client;
+namespace Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Client;
 
 use Symfony\Component\Serializer\SerializerInterface;
 final class JsonPayload

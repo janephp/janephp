@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi2\Tests\Expected\FromUrl\Normalizer;
 
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi2\Tests\Expected\Model\Pet::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\PetNormalizer::class,
+        \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Pet::class => \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Normalizer\PetNormalizer::class,
         
-        \Jane\Component\OpenApi2\Tests\Expected\Model\Error::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\ErrorNormalizer::class,
+        \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error::class => \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Normalizer\ErrorNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

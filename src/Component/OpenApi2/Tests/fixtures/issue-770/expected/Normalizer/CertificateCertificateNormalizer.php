@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class CertificateCertificateNormalizer implements DenormalizerInterface, Normali
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertificate::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificate::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertificate::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificate::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertificate();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificate();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -66,7 +66,7 @@ class CertificateCertificateNormalizer implements DenormalizerInterface, Normali
             $object->setPrivateKeyData($data['privateKeyData']);
         }
         if (\array_key_exists('certificasSigningRequest', $data)) {
-            $object->setCertificasSigningRequest($this->denormalizer->denormalize($data['certificasSigningRequest'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setCertificasSigningRequest($this->denormalizer->denormalize($data['certificasSigningRequest'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         if (\array_key_exists('passphrase', $data)) {
             $object->setPassphrase($data['passphrase']);
@@ -108,7 +108,7 @@ class CertificateCertificateNormalizer implements DenormalizerInterface, Normali
             $dataArray['privateKeyData'] = $data->getPrivateKeyData();
         }
         if ($data->isInitialized('certificasSigningRequest') && null !== $data->getCertificasSigningRequest()) {
-            $dataArray['certificasSigningRequest'] = $data->getCertificasSigningRequest() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCertificasSigningRequest(), 'json', $context));
+            $dataArray['certificasSigningRequest'] = $data->getCertificasSigningRequest() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getCertificasSigningRequest(), 'json', $context));
         }
         if ($data->isInitialized('passphrase') && null !== $data->getPassphrase()) {
             $dataArray['passphrase'] = $data->getPassphrase();
@@ -120,6 +120,6 @@ class CertificateCertificateNormalizer implements DenormalizerInterface, Normali
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertificate::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificate::class => false];
     }
 }

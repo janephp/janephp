@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class DpskWlanExternalDpskNormalizer implements DenormalizerInterface, Normalize
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\DpskWlanExternalDpsk::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskWlanExternalDpsk::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\DpskWlanExternalDpsk::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskWlanExternalDpsk::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\DpskWlanExternalDpsk();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskWlanExternalDpsk();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -44,10 +44,10 @@ class DpskWlanExternalDpskNormalizer implements DenormalizerInterface, Normalize
             $object->setEnabled($data['enabled']);
         }
         if (\array_key_exists('encryption', $data)) {
-            $object->setEncryption($this->denormalizer->denormalize($data['encryption'], \Jane\Component\OpenApi3\Tests\Expected\Model\DpskWlanExternalDpskEncryption::class, 'json', $context));
+            $object->setEncryption($this->denormalizer->denormalize($data['encryption'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskWlanExternalDpskEncryption::class, 'json', $context));
         }
         if (\array_key_exists('authService', $data)) {
-            $object->setAuthService($this->denormalizer->denormalize($data['authService'], \Jane\Component\OpenApi3\Tests\Expected\Model\DpskWlanExternalDpskAuthService::class, 'json', $context));
+            $object->setAuthService($this->denormalizer->denormalize($data['authService'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskWlanExternalDpskAuthService::class, 'json', $context));
         }
         return $object;
     }
@@ -56,15 +56,15 @@ class DpskWlanExternalDpskNormalizer implements DenormalizerInterface, Normalize
         $dataArray = [];
         $dataArray['enabled'] = $data->getEnabled();
         if ($data->isInitialized('encryption') && null !== $data->getEncryption()) {
-            $dataArray['encryption'] = $data->getEncryption() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEncryption(), 'json', $context));
+            $dataArray['encryption'] = $data->getEncryption() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getEncryption(), 'json', $context));
         }
         if ($data->isInitialized('authService') && null !== $data->getAuthService()) {
-            $dataArray['authService'] = $data->getAuthService() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAuthService(), 'json', $context));
+            $dataArray['authService'] = $data->getAuthService() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getAuthService(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\DpskWlanExternalDpsk::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskWlanExternalDpsk::class => false];
     }
 }

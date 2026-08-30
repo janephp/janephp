@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Endpoint;
 
-class GetTestComplexList extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class GetTestComplexList extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -21,7 +21,7 @@ class GetTestComplexList extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
      * {@inheritdoc}
      *
      *
-     * @return null|array|\Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault
+     * @return null|array|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestComplexListGetResponsedefault
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -35,7 +35,7 @@ class GetTestComplexList extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault', 'json');
+        return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestComplexListGetResponsedefault', 'json');
     }
     public function getAuthenticationScopes(): array
     {

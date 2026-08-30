@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddSystemApRoutineStatusIntervalSpeedup extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddSystemApRoutineStatusIntervalSpeedup extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
      * @param array $queryParameters {
@@ -13,7 +13,7 @@ class AddSystemApRoutineStatusIntervalSpeedup extends \Jane\Component\OpenApi3\T
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -42,10 +42,10 @@ class AddSystemApRoutineStatusIntervalSpeedup extends \Jane\Component\OpenApi3\T
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSpeedupBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSpeedupForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSpeedupInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSpeedupUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupUnprocessableEntityException
      *
      * @return null
      */
@@ -54,16 +54,16 @@ class AddSystemApRoutineStatusIntervalSpeedup extends \Jane\Component\OpenApi3\T
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSpeedupBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSpeedupForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSpeedupInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSpeedupUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemApRoutineStatusIntervalSpeedupUnprocessableEntityException($response);
         }
         if (204 === $status) {
             return null;

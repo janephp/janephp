@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class UrlFilteringCreateUrlFilteringPolicyNormalizer implements DenormalizerInte
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringCreateUrlFilteringPolicy::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringCreateUrlFilteringPolicy::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringCreateUrlFilteringPolicy::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringCreateUrlFilteringPolicy::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringCreateUrlFilteringPolicy();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringCreateUrlFilteringPolicy();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,7 +98,7 @@ class UrlFilteringCreateUrlFilteringPolicyNormalizer implements DenormalizerInte
             $object->setBlacklist($values_2);
         }
         if (\array_key_exists('blockByThreatLevelConfig', $data)) {
-            $object->setBlockByThreatLevelConfig($this->denormalizer->denormalize($data['blockByThreatLevelConfig'], \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringCreateUrlFilteringPolicyBlockByThreatLevelConfig::class, 'json', $context));
+            $object->setBlockByThreatLevelConfig($this->denormalizer->denormalize($data['blockByThreatLevelConfig'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringCreateUrlFilteringPolicyBlockByThreatLevelConfig::class, 'json', $context));
         }
         return $object;
     }
@@ -155,12 +155,12 @@ class UrlFilteringCreateUrlFilteringPolicyNormalizer implements DenormalizerInte
             $dataArray['blacklist'] = $values_2;
         }
         if ($data->isInitialized('blockByThreatLevelConfig') && null !== $data->getBlockByThreatLevelConfig()) {
-            $dataArray['blockByThreatLevelConfig'] = $data->getBlockByThreatLevelConfig() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBlockByThreatLevelConfig(), 'json', $context));
+            $dataArray['blockByThreatLevelConfig'] = $data->getBlockByThreatLevelConfig() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getBlockByThreatLevelConfig(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringCreateUrlFilteringPolicy::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringCreateUrlFilteringPolicy::class => false];
     }
 }

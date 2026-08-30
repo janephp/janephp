@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\JsonSchema\Tests\Expected\DollarDefs\Normalizer;
 
-use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\JsonSchema\Tests\Expected\DollarDefs\Runtime\Normalizer\CheckArray;
+use Jane\JsonSchema\Tests\Expected\DollarDefs\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,13 +18,13 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\JsonSchema\Tests\Expected\Model\Foo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\FooNormalizer::class,
+        \Jane\JsonSchema\Tests\Expected\DollarDefs\Model\Foo::class => \Jane\JsonSchema\Tests\Expected\DollarDefs\Normalizer\FooNormalizer::class,
         
-        \Jane\JsonSchema\Tests\Expected\Model\BarItem::class => \Jane\JsonSchema\Tests\Expected\Normalizer\BarItemNormalizer::class,
+        \Jane\JsonSchema\Tests\Expected\DollarDefs\Model\BarItem::class => \Jane\JsonSchema\Tests\Expected\DollarDefs\Normalizer\BarItemNormalizer::class,
         
-        \Jane\JsonSchema\Tests\Expected\Model\HelloWorld::class => \Jane\JsonSchema\Tests\Expected\Normalizer\HelloWorldNormalizer::class,
+        \Jane\JsonSchema\Tests\Expected\DollarDefs\Model\HelloWorld::class => \Jane\JsonSchema\Tests\Expected\DollarDefs\Normalizer\HelloWorldNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\JsonSchema\Tests\Expected\DollarDefs\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,65 +18,65 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Station::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\StationNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Station::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\LinksSelf::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\LinksSelfNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksSelf::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksSelfNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\LinksDestination::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\LinksDestinationNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksDestination::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksDestinationNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\LinksOrigin::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\LinksOriginNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksOrigin::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksOriginNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\LinksPagination::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\LinksPaginationNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksPagination::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksPaginationNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Problem::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ProblemNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\ProblemNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Trip::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TripNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Trip::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Booking::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Booking::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\WrapperCollection::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\WrapperCollectionNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\WrapperCollection::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\WrapperCollectionNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BookingPayment::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingPaymentNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingPayment::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingPaymentNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\LinksBooking::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\LinksBookingNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksBooking::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\LinksBookingNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\StationsGetJsonResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetJsonResponse200Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\StationsGetJsonResponse200LinksNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetJsonResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetJsonResponse200LinksNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\StationsGetXmlResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetXmlResponse200Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetXmlResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\StationsGetXmlResponse200LinksNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetXmlResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\StationsGetXmlResponse200LinksNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TripsGetJsonResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetJsonResponse200Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200DataItem::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TripsGetJsonResponse200DataItemNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200DataItem::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetJsonResponse200DataItemNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TripsGetJsonResponse200LinksNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetJsonResponse200LinksNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TripsGetXmlResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetXmlResponse200Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetXmlResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TripsGetXmlResponse200LinksNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetXmlResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\TripsGetXmlResponse200LinksNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingsGetJsonResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetJsonResponse200Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetJsonResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingsGetJsonResponse200LinksNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsGetJsonResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetJsonResponse200LinksNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingsGetXmlResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetXmlResponse200Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetXmlResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingsGetXmlResponse200LinksNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsGetXmlResponse200Links::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsGetXmlResponse200LinksNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsPostJsonResponse201::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingsPostJsonResponse201Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsPostJsonResponse201::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsPostJsonResponse201Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsPostXmlResponse201::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingsPostXmlResponse201Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsPostXmlResponse201::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsPostXmlResponse201Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsBookingIdGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingsBookingIdGetJsonResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsBookingIdGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdGetJsonResponse200Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsBookingIdGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingsBookingIdGetXmlResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsBookingIdGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdGetXmlResponse200Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsBookingIdPaymentPostResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BookingsBookingIdPaymentPostResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsBookingIdPaymentPostResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer\BookingsBookingIdPaymentPostResponse200Normalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

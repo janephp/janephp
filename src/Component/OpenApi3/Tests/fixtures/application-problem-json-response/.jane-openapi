@@ -2,7 +2,7 @@
 
 return [
     'openapi-file' => __DIR__ . '/swagger.yaml',
-    'namespace' => 'Jane\Component\OpenApi3\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse',
     'directory' => __DIR__ . '/generated',
     'throw-unexpected-status-code' => true,
 ];

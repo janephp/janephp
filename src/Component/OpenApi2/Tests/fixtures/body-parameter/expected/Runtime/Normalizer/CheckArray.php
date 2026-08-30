@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer;
+namespace Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Normalizer;
 
 trait CheckArray
 {

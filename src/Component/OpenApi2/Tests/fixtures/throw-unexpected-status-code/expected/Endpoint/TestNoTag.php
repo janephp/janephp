@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\ThrowUnexpectedStatusCode\Endpoint;
 
-class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\ThrowUnexpectedStatusCode\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\ThrowUnexpectedStatusCode\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\ThrowUnexpectedStatusCode\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -20,7 +20,7 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\B
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\BadResponseException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ThrowUnexpectedStatusCode\Exception\BadResponseException
      *
      * @return null
      */
@@ -31,7 +31,7 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\B
         if (200 === $status) {
             return null;
         }
-        throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\BadResponseException($status, $body, $response);
+        throw new \Jane\Component\OpenApi2\Tests\Expected\ThrowUnexpectedStatusCode\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class SystemModifyControlPlaneNormalizer implements DenormalizerInterface, Norma
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyControlPlane::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyControlPlane::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyControlPlane::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyControlPlane::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyControlPlane();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyControlPlane();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,28 +41,28 @@ class SystemModifyControlPlaneNormalizer implements DenormalizerInterface, Norma
             $data['enableAccessAndCoreSeparation'] = (bool) $data['enableAccessAndCoreSeparation'];
         }
         if (\array_key_exists('ipv4ControlInterface', $data)) {
-            $object->setIpv4ControlInterface($this->denormalizer->denormalize($data['ipv4ControlInterface'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIpv4ControlInterface::class, 'json', $context));
+            $object->setIpv4ControlInterface($this->denormalizer->denormalize($data['ipv4ControlInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIpv4ControlInterface::class, 'json', $context));
         }
         if (\array_key_exists('ipv4ClusterInterface', $data)) {
-            $object->setIpv4ClusterInterface($this->denormalizer->denormalize($data['ipv4ClusterInterface'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIpv4ClusterInterface::class, 'json', $context));
+            $object->setIpv4ClusterInterface($this->denormalizer->denormalize($data['ipv4ClusterInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIpv4ClusterInterface::class, 'json', $context));
         }
         if (\array_key_exists('ipv4ManagementInterface', $data)) {
-            $object->setIpv4ManagementInterface($this->denormalizer->denormalize($data['ipv4ManagementInterface'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIpv4ManagementInterface::class, 'json', $context));
+            $object->setIpv4ManagementInterface($this->denormalizer->denormalize($data['ipv4ManagementInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIpv4ManagementInterface::class, 'json', $context));
         }
         if (\array_key_exists('ipv6ControlInterface', $data)) {
-            $object->setIpv6ControlInterface($this->denormalizer->denormalize($data['ipv6ControlInterface'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIpv6ControlInterface::class, 'json', $context));
+            $object->setIpv6ControlInterface($this->denormalizer->denormalize($data['ipv6ControlInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIpv6ControlInterface::class, 'json', $context));
         }
         if (\array_key_exists('ipv6ManagementInterface', $data)) {
-            $object->setIpv6ManagementInterface($this->denormalizer->denormalize($data['ipv6ManagementInterface'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIpv6ManagementInterface::class, 'json', $context));
+            $object->setIpv6ManagementInterface($this->denormalizer->denormalize($data['ipv6ManagementInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIpv6ManagementInterface::class, 'json', $context));
         }
         if (\array_key_exists('enableAccessAndCoreSeparation', $data)) {
             $object->setEnableAccessAndCoreSeparation($data['enableAccessAndCoreSeparation']);
         }
         if (\array_key_exists('ipv4AccessAndCoreSeparation', $data)) {
-            $object->setIpv4AccessAndCoreSeparation($this->denormalizer->denormalize($data['ipv4AccessAndCoreSeparation'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIpv4AccessAndCoreSeparation::class, 'json', $context));
+            $object->setIpv4AccessAndCoreSeparation($this->denormalizer->denormalize($data['ipv4AccessAndCoreSeparation'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIpv4AccessAndCoreSeparation::class, 'json', $context));
         }
         if (\array_key_exists('ipv6AccessAndCoreSeparation', $data)) {
-            $object->setIpv6AccessAndCoreSeparation($this->denormalizer->denormalize($data['ipv6AccessAndCoreSeparation'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIpv6AccessAndCoreSeparation::class, 'json', $context));
+            $object->setIpv6AccessAndCoreSeparation($this->denormalizer->denormalize($data['ipv6AccessAndCoreSeparation'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIpv6AccessAndCoreSeparation::class, 'json', $context));
         }
         return $object;
     }
@@ -70,33 +70,33 @@ class SystemModifyControlPlaneNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if ($data->isInitialized('ipv4ControlInterface') && null !== $data->getIpv4ControlInterface()) {
-            $dataArray['ipv4ControlInterface'] = $data->getIpv4ControlInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv4ControlInterface(), 'json', $context));
+            $dataArray['ipv4ControlInterface'] = $data->getIpv4ControlInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getIpv4ControlInterface(), 'json', $context));
         }
         if ($data->isInitialized('ipv4ClusterInterface') && null !== $data->getIpv4ClusterInterface()) {
-            $dataArray['ipv4ClusterInterface'] = $data->getIpv4ClusterInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv4ClusterInterface(), 'json', $context));
+            $dataArray['ipv4ClusterInterface'] = $data->getIpv4ClusterInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getIpv4ClusterInterface(), 'json', $context));
         }
         if ($data->isInitialized('ipv4ManagementInterface') && null !== $data->getIpv4ManagementInterface()) {
-            $dataArray['ipv4ManagementInterface'] = $data->getIpv4ManagementInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv4ManagementInterface(), 'json', $context));
+            $dataArray['ipv4ManagementInterface'] = $data->getIpv4ManagementInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getIpv4ManagementInterface(), 'json', $context));
         }
         if ($data->isInitialized('ipv6ControlInterface') && null !== $data->getIpv6ControlInterface()) {
-            $dataArray['ipv6ControlInterface'] = $data->getIpv6ControlInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6ControlInterface(), 'json', $context));
+            $dataArray['ipv6ControlInterface'] = $data->getIpv6ControlInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6ControlInterface(), 'json', $context));
         }
         if ($data->isInitialized('ipv6ManagementInterface') && null !== $data->getIpv6ManagementInterface()) {
-            $dataArray['ipv6ManagementInterface'] = $data->getIpv6ManagementInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6ManagementInterface(), 'json', $context));
+            $dataArray['ipv6ManagementInterface'] = $data->getIpv6ManagementInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6ManagementInterface(), 'json', $context));
         }
         if ($data->isInitialized('enableAccessAndCoreSeparation') && null !== $data->getEnableAccessAndCoreSeparation()) {
             $dataArray['enableAccessAndCoreSeparation'] = $data->getEnableAccessAndCoreSeparation();
         }
         if ($data->isInitialized('ipv4AccessAndCoreSeparation') && null !== $data->getIpv4AccessAndCoreSeparation()) {
-            $dataArray['ipv4AccessAndCoreSeparation'] = $data->getIpv4AccessAndCoreSeparation() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv4AccessAndCoreSeparation(), 'json', $context));
+            $dataArray['ipv4AccessAndCoreSeparation'] = $data->getIpv4AccessAndCoreSeparation() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getIpv4AccessAndCoreSeparation(), 'json', $context));
         }
         if ($data->isInitialized('ipv6AccessAndCoreSeparation') && null !== $data->getIpv6AccessAndCoreSeparation()) {
-            $dataArray['ipv6AccessAndCoreSeparation'] = $data->getIpv6AccessAndCoreSeparation() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6AccessAndCoreSeparation(), 'json', $context));
+            $dataArray['ipv6AccessAndCoreSeparation'] = $data->getIpv6AccessAndCoreSeparation() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6AccessAndCoreSeparation(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyControlPlane::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyControlPlane::class => false];
     }
 }

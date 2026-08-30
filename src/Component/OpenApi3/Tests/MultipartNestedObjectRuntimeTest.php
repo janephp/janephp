@@ -32,11 +32,11 @@ class MultipartNestedObjectRuntimeTest extends TestCase
         require_once $expectedDir . '/Validator/FilePostBodyItemConstraint.php';
         require_once $expectedDir . '/Endpoint/PostFile.php';
 
-        $item = new Expected\Model\FilePostBodyItem();
+        $item = new Expected\MultipartNestedObject\Model\FilePostBodyItem();
         $item->setItemId(42);
         $item->setItemType('document');
 
-        $body = new Expected\Model\FilePostBody();
+        $body = new Expected\MultipartNestedObject\Model\FilePostBody();
         $body->setFichier('file-content');
         if (method_exists($body, 'setItem')) {
             $body->setItem($item);
@@ -44,7 +44,7 @@ class MultipartNestedObjectRuntimeTest extends TestCase
 
         $normalizers = [
             new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
-            new Expected\Normalizer\JaneObjectNormalizer(),
+            new Expected\MultipartNestedObject\Normalizer\JaneObjectNormalizer(),
         ];
         $encoders = [
             new \Symfony\Component\Serializer\Encoder\JsonEncoder(
@@ -55,7 +55,7 @@ class MultipartNestedObjectRuntimeTest extends TestCase
         $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, $encoders);
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
 
-        $endpoint = new Expected\Endpoint\PostFile($body);
+        $endpoint = new Expected\MultipartNestedObject\Endpoint\PostFile($body);
         $result = $endpoint->getBody($serializer, $streamFactory);
 
         $this->assertIsArray($result);

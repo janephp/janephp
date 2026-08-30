@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class IdentityUserConfigurationNormalizer implements DenormalizerInterface, Norm
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserConfiguration::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserConfiguration::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserConfiguration::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserConfiguration::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserConfiguration();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserConfiguration();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,7 +74,7 @@ class IdentityUserConfigurationNormalizer implements DenormalizerInterface, Norm
             $object->setUserName($data['userName']);
         }
         if (\array_key_exists('subscriberPackage', $data)) {
-            $object->setSubscriberPackage($this->denormalizer->denormalize($data['subscriberPackage'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setSubscriberPackage($this->denormalizer->denormalize($data['subscriberPackage'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         if (\array_key_exists('isDisabled', $data)) {
             $object->setIsDisabled($data['isDisabled']);
@@ -110,10 +110,10 @@ class IdentityUserConfigurationNormalizer implements DenormalizerInterface, Norm
             $object->setModifierUsername($data['modifierUsername']);
         }
         if (\array_key_exists('usernamePasswordCredentialsImplDto', $data)) {
-            $object->setUsernamePasswordCredentialsImplDto($this->denormalizer->denormalize($data['usernamePasswordCredentialsImplDto'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUsernamePasswordCredentialsImplDto::class, 'json', $context));
+            $object->setUsernamePasswordCredentialsImplDto($this->denormalizer->denormalize($data['usernamePasswordCredentialsImplDto'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUsernamePasswordCredentialsImplDto::class, 'json', $context));
         }
         if (\array_key_exists('credentialsGuestPassDto', $data)) {
-            $object->setCredentialsGuestPassDto($this->denormalizer->denormalize($data['credentialsGuestPassDto'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserConfigurationCredentialsGuestPassDto::class, 'json', $context));
+            $object->setCredentialsGuestPassDto($this->denormalizer->denormalize($data['credentialsGuestPassDto'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserConfigurationCredentialsGuestPassDto::class, 'json', $context));
         }
         return $object;
     }
@@ -157,7 +157,7 @@ class IdentityUserConfigurationNormalizer implements DenormalizerInterface, Norm
             $dataArray['userName'] = $data->getUserName();
         }
         if ($data->isInitialized('subscriberPackage') && null !== $data->getSubscriberPackage()) {
-            $dataArray['subscriberPackage'] = $data->getSubscriberPackage() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context));
+            $dataArray['subscriberPackage'] = $data->getSubscriberPackage() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context));
         }
         if ($data->isInitialized('isDisabled') && null !== $data->getIsDisabled()) {
             $dataArray['isDisabled'] = $data->getIsDisabled();
@@ -193,15 +193,15 @@ class IdentityUserConfigurationNormalizer implements DenormalizerInterface, Norm
             $dataArray['modifierUsername'] = $data->getModifierUsername();
         }
         if ($data->isInitialized('usernamePasswordCredentialsImplDto') && null !== $data->getUsernamePasswordCredentialsImplDto()) {
-            $dataArray['usernamePasswordCredentialsImplDto'] = $data->getUsernamePasswordCredentialsImplDto() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUsernamePasswordCredentialsImplDto(), 'json', $context));
+            $dataArray['usernamePasswordCredentialsImplDto'] = $data->getUsernamePasswordCredentialsImplDto() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getUsernamePasswordCredentialsImplDto(), 'json', $context));
         }
         if ($data->isInitialized('credentialsGuestPassDto') && null !== $data->getCredentialsGuestPassDto()) {
-            $dataArray['credentialsGuestPassDto'] = $data->getCredentialsGuestPassDto() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCredentialsGuestPassDto(), 'json', $context));
+            $dataArray['credentialsGuestPassDto'] = $data->getCredentialsGuestPassDto() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getCredentialsGuestPassDto(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserConfiguration::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserConfiguration::class => false];
     }
 }

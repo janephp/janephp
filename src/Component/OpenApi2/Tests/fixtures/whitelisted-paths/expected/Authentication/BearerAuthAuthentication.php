@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Authentication;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Authentication;
 
 class BearerAuthAuthentication implements \Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin
 {

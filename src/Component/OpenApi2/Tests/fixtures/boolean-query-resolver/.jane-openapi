@@ -4,7 +4,7 @@ require_once __DIR__ . '/CustomQueryResolver.php';
 
 return [
     'openapi-file' => __DIR__ .  '/swagger.json',
-    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected\BooleanQueryResolver',
     'directory' => __DIR__ . '/generated',
     'custom-query-resolver' => [
         '/foo' => [

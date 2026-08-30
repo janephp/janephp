@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Endpoint;
 
-class GetEmptyTest extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class GetEmptyTest extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -21,14 +21,14 @@ class GetEmptyTest extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Clien
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\EmptySpace
+     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\EmptySpace
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Model\EmptySpace', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\EmptySpace', 'json');
         }
     }
     public function getAuthenticationScopes(): array

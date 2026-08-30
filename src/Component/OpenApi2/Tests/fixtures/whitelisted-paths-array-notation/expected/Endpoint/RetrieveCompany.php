@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint;
 
-class RetrieveCompany extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class RetrieveCompany extends \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\BaseEndpoint implements \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -21,16 +21,16 @@ class RetrieveCompany extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseE
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error
+     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\OpenApi2\Tests\Expected\Model\Company', 'json');
+            return $serializer->deserialize($body, 'Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company', 'json');
         }
-        return $serializer->deserialize($body, 'Jane\OpenApi2\Tests\Expected\Model\Error', 'json');
+        return $serializer->deserialize($body, 'Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error', 'json');
     }
     public function getAuthenticationScopes(): array
     {

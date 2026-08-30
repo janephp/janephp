@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Validator;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue966\Validator;
 
 class OrderProductDataConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {

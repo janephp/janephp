@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class;
+        return $type === \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Baz::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Baz;
+        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Baz;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Baz();
+        $object = new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Baz();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -35,13 +35,13 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $object->setFoo($data['foo']);
         }
         if (\array_key_exists('Bar', $data)) {
-            $object->setBar($this->denormalizer->denormalize($data['Bar'], \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class, 'json', $context));
+            $object->setBar($this->denormalizer->denormalize($data['Bar'], \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Bar::class, 'json', $context));
         }
         if (\array_key_exists('Baz', $data)) {
-            $object->setBaz($this->denormalizer->denormalize($data['Baz'], \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class, 'json', $context));
+            $object->setBaz($this->denormalizer->denormalize($data['Baz'], \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\BazBaz::class, 'json', $context));
         }
         if (\array_key_exists('inlineProperty', $data)) {
-            $object->setInlineProperty($this->denormalizer->denormalize($data['inlineProperty'], \Jane\Component\JsonSchema\Tests\Expected\Model\BazInlineProperty::class, 'json', $context));
+            $object->setInlineProperty($this->denormalizer->denormalize($data['inlineProperty'], \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\BazInlineProperty::class, 'json', $context));
         }
         return $object;
     }
@@ -52,18 +52,18 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $dataArray['foo'] = $data->getFoo();
         }
         if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $dataArray['Bar'] = $data->getBar() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBar(), 'json', $context));
+            $dataArray['Bar'] = $data->getBar() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\JsonObject($this->normalizer->normalize($data->getBar(), 'json', $context));
         }
         if ($data->isInitialized('baz') && null !== $data->getBaz()) {
-            $dataArray['Baz'] = $data->getBaz() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBaz(), 'json', $context));
+            $dataArray['Baz'] = $data->getBaz() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\JsonObject($this->normalizer->normalize($data->getBaz(), 'json', $context));
         }
         if ($data->isInitialized('inlineProperty') && null !== $data->getInlineProperty()) {
-            $dataArray['inlineProperty'] = $data->getInlineProperty() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getInlineProperty(), 'json', $context));
+            $dataArray['inlineProperty'] = $data->getInlineProperty() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\JsonObject($this->normalizer->normalize($data->getInlineProperty(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => false];
+        return [\Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Baz::class => false];
     }
 }

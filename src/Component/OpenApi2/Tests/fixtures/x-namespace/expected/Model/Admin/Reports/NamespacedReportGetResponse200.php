@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Model\Admin\Reports;
+namespace Jane\Component\OpenApi2\Tests\Expected\XNamespace\Model\Admin\Reports;
 
 class NamespacedReportGetResponse200
 {

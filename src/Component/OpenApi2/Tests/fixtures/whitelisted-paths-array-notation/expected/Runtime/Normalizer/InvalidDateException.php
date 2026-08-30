@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Runtime\Normalizer;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer;
 
 use RuntimeException;
 class InvalidDateException extends RuntimeException

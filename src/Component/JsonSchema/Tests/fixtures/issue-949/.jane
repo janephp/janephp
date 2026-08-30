@@ -3,7 +3,7 @@
 return [
     'json-schema-file' => __DIR__ . '/schema.json',
     'root-class' => 'ProjectProposal',
-    'namespace' => 'Jane\Component\JsonSchema\Tests\Expected',
+    'namespace' => 'Jane\Component\JsonSchema\Tests\Expected\Issue949',
     'directory' => __DIR__ . '/generated',
     'reference' => true,
 ];

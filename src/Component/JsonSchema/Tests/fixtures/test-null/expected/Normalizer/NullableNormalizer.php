@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\TestNull\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\TestNull\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\TestNull\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Nullable::class;
+        return $type === \Jane\Component\JsonSchema\Tests\Expected\TestNull\Model\Nullable::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Nullable;
+        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\TestNull\Model\Nullable;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Nullable();
+        $object = new \Jane\Component\JsonSchema\Tests\Expected\TestNull\Model\Nullable();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -99,6 +99,6 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\JsonSchema\Tests\Expected\Model\Nullable::class => false];
+        return [\Jane\Component\JsonSchema\Tests\Expected\TestNull\Model\Nullable::class => false];
     }
 }

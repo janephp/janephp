@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class IdentityImportIdentityGuestPassNormalizer implements DenormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityImportIdentityGuestPass::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityImportIdentityGuestPass::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityImportIdentityGuestPass::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityImportIdentityGuestPass::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityImportIdentityGuestPass();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityImportIdentityGuestPass();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,13 +41,13 @@ class IdentityImportIdentityGuestPassNormalizer implements DenormalizerInterface
             $object->setDomainId($data['domainId']);
         }
         if (\array_key_exists('wlan', $data)) {
-            $object->setWlan($this->denormalizer->denormalize($data['wlan'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setWlan($this->denormalizer->denormalize($data['wlan'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         if (\array_key_exists('zone', $data)) {
-            $object->setZone($this->denormalizer->denormalize($data['zone'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setZone($this->denormalizer->denormalize($data['zone'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         if (\array_key_exists('passValidFor', $data)) {
-            $object->setPassValidFor($this->denormalizer->denormalize($data['passValidFor'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityPassValidFor::class, 'json', $context));
+            $object->setPassValidFor($this->denormalizer->denormalize($data['passValidFor'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityPassValidFor::class, 'json', $context));
         }
         if (\array_key_exists('passEffectSince', $data)) {
             $object->setPassEffectSince($data['passEffectSince']);
@@ -56,10 +56,10 @@ class IdentityImportIdentityGuestPassNormalizer implements DenormalizerInterface
             $object->setPassUseDays($data['passUseDays']);
         }
         if (\array_key_exists('maxDevices', $data)) {
-            $object->setMaxDevices($this->denormalizer->denormalize($data['maxDevices'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityMaxDevices::class, 'json', $context));
+            $object->setMaxDevices($this->denormalizer->denormalize($data['maxDevices'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityMaxDevices::class, 'json', $context));
         }
         if (\array_key_exists('sessionDuration', $data)) {
-            $object->setSessionDuration($this->denormalizer->denormalize($data['sessionDuration'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentitySessionDuration::class, 'json', $context));
+            $object->setSessionDuration($this->denormalizer->denormalize($data['sessionDuration'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySessionDuration::class, 'json', $context));
         }
         return $object;
     }
@@ -69,23 +69,23 @@ class IdentityImportIdentityGuestPassNormalizer implements DenormalizerInterface
         if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
             $dataArray['domainId'] = $data->getDomainId();
         }
-        $dataArray['wlan'] = $data->getWlan() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWlan(), 'json', $context));
-        $dataArray['zone'] = $data->getZone() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getZone(), 'json', $context));
-        $dataArray['passValidFor'] = $data->getPassValidFor() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPassValidFor(), 'json', $context));
+        $dataArray['wlan'] = $data->getWlan() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getWlan(), 'json', $context));
+        $dataArray['zone'] = $data->getZone() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getZone(), 'json', $context));
+        $dataArray['passValidFor'] = $data->getPassValidFor() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getPassValidFor(), 'json', $context));
         if ($data->isInitialized('passEffectSince') && null !== $data->getPassEffectSince()) {
             $dataArray['passEffectSince'] = $data->getPassEffectSince();
         }
         if ($data->isInitialized('passUseDays') && null !== $data->getPassUseDays()) {
             $dataArray['passUseDays'] = $data->getPassUseDays();
         }
-        $dataArray['maxDevices'] = $data->getMaxDevices() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMaxDevices(), 'json', $context));
+        $dataArray['maxDevices'] = $data->getMaxDevices() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getMaxDevices(), 'json', $context));
         if ($data->isInitialized('sessionDuration') && null !== $data->getSessionDuration()) {
-            $dataArray['sessionDuration'] = $data->getSessionDuration() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSessionDuration(), 'json', $context));
+            $dataArray['sessionDuration'] = $data->getSessionDuration() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getSessionDuration(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityImportIdentityGuestPass::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityImportIdentityGuestPass::class => false];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Runtime;
+namespace Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Runtime;
 
 trait AdditionalAndPatternProperties
 {

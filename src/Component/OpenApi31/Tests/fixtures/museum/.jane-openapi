@@ -2,7 +2,7 @@
 
 return [
     'openapi-file' => __DIR__ . '/openapi.yaml',
-    'namespace' => 'Jane\Component\OpenApi31\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi31\Tests\Expected\Museum',
     'directory' => __DIR__ . '/generated',
     'validation' => true,
 ];

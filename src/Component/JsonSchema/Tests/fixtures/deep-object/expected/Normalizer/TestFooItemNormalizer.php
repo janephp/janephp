@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\DeepObject\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\DeepObject\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\DeepObject\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class TestFooItemNormalizer implements DenormalizerInterface, NormalizerInterfac
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\TestFooItem::class;
+        return $type === \Jane\Component\JsonSchema\Tests\Expected\DeepObject\Model\TestFooItem::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\TestFooItem;
+        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\DeepObject\Model\TestFooItem;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\TestFooItem();
+        $object = new \Jane\Component\JsonSchema\Tests\Expected\DeepObject\Model\TestFooItem();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -52,6 +52,6 @@ class TestFooItemNormalizer implements DenormalizerInterface, NormalizerInterfac
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\JsonSchema\Tests\Expected\Model\TestFooItem::class => false];
+        return [\Jane\Component\JsonSchema\Tests\Expected\DeepObject\Model\TestFooItem::class => false];
     }
 }

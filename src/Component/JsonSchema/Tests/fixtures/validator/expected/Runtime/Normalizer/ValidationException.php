@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\JsonSchema\Tests\Expected\Runtime\Normalizer;
+namespace Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer;
 
 use RuntimeException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;

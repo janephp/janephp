@@ -2,7 +2,7 @@
 
 return [
     'openapi-file' => __DIR__ . '/swagger.yaml',
-    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator',
     'directory' => __DIR__ . '/generated',
     'use-fixer' => false,
     'endpoint-generator' => 'Jane\Component\OpenApi2\Tests\Fixtures\CustomEndpointGenerator\CustomEndpointGenerator'

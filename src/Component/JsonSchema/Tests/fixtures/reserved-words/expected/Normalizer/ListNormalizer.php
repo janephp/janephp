@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\ReservedWords\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\ReservedWords\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\ReservedWords\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ListNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\_List::class;
+        return $type === \Jane\Component\JsonSchema\Tests\Expected\ReservedWords\Model\_List::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\_List;
+        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\ReservedWords\Model\_List;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\_List();
+        $object = new \Jane\Component\JsonSchema\Tests\Expected\ReservedWords\Model\_List();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -52,6 +52,6 @@ class ListNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\JsonSchema\Tests\Expected\Model\_List::class => false];
+        return [\Jane\Component\JsonSchema\Tests\Expected\ReservedWords\Model\_List::class => false];
     }
 }

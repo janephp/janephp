@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\JsonSchema\Tests\Expected\Validator;
+namespace Jane\JsonSchema\Tests\Expected\CustomValidators\Validator;
 
 class PriceConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {

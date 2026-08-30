@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\Account::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Account::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\Account::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Account::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Account();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Account();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -52,7 +52,7 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('countryOfBirth', $data) && $data['countryOfBirth'] !== null) {
             $value = $data['countryOfBirth'];
             if (is_array($data['countryOfBirth'])) {
-                $value = $this->denormalizer->denormalize($data['countryOfBirth'], \Jane\Component\OpenApi3\Tests\Expected\Model\Country::class, 'json', $context);
+                $value = $this->denormalizer->denormalize($data['countryOfBirth'], \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Country::class, 'json', $context);
             }
             $object->setCountryOfBirth($value);
             unset($data['countryOfBirth']);
@@ -62,17 +62,17 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
             unset($data['countryOfBirth']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], \Jane\Component\OpenApi3\Tests\Expected\Model\Country::class, 'json', $context));
+            $object->setCountry($this->denormalizer->denormalize($data['country'], \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Country::class, 'json', $context));
             unset($data['country']);
         }
         if (\array_key_exists('nationality', $data) && $data['nationality'] !== null) {
             $value_1 = $data['nationality'];
             if (is_array($data['nationality'])) {
-                $value_1 = $this->denormalizer->denormalize($data['nationality'], \Jane\Component\OpenApi3\Tests\Expected\Model\Country::class, 'json', $context);
+                $value_1 = $this->denormalizer->denormalize($data['nationality'], \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Country::class, 'json', $context);
             } elseif (is_array($data['nationality']) && $this->isOnlyNumericKeys($data['nationality'])) {
                 $values = [];
                 foreach ($data['nationality'] as $value_2) {
-                    $values[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\Country::class, 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Country::class, 'json', $context);
                 }
                 $value_1 = $values;
             }
@@ -102,21 +102,21 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('countryOfBirth') && null !== $data->getCountryOfBirth()) {
             $value = $data->getCountryOfBirth();
             if (is_object($data->getCountryOfBirth())) {
-                $value = $data->getCountryOfBirth() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCountryOfBirth(), 'json', $context));
+                $value = $data->getCountryOfBirth() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\JsonObject($this->normalizer->normalize($data->getCountryOfBirth(), 'json', $context));
             }
             $dataArray['countryOfBirth'] = $value;
         }
         if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $data->getCountry() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCountry(), 'json', $context));
+            $dataArray['country'] = $data->getCountry() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\JsonObject($this->normalizer->normalize($data->getCountry(), 'json', $context));
         }
         if ($data->isInitialized('nationality') && null !== $data->getNationality()) {
             $value_1 = $data->getNationality();
             if (is_object($data->getNationality())) {
-                $value_1 = $data->getNationality() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getNationality(), 'json', $context));
+                $value_1 = $data->getNationality() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\JsonObject($this->normalizer->normalize($data->getNationality(), 'json', $context));
             } elseif (is_array($data->getNationality())) {
                 $values = [];
                 foreach ($data->getNationality() as $value_2) {
-                    $values[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $values[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 }
                 $value_1 = $values;
             }
@@ -131,6 +131,6 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\Account::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Account::class => false];
     }
 }

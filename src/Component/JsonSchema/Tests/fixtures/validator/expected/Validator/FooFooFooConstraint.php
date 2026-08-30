@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\JsonSchema\Tests\Expected\Validator;
+namespace Jane\JsonSchema\Tests\Expected\Validator\Validator;
 
 class FooFooFooConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {

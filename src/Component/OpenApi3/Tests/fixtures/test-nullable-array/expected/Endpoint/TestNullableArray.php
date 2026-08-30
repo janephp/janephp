@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\TestNullableArray\Endpoint;
 
-class TestNullableArray extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestNullableArray extends \Jane\Component\OpenApi3\Tests\Expected\TestNullableArray\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\TestNullableArray\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\TestNullableArray\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

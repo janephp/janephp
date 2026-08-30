@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Endpoint;
 
-class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Runtime\Client\Endpoint
 {
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Model\FooPayload $requestBody
      */
-    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody = null)
+    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Model\FooPayload $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -22,15 +22,15 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload) {
-            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
+        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Model\FooPayload) {
+            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\BadResponseException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Exception\BadResponseException
      *
      * @return null
      */
@@ -41,7 +41,7 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
         if (200 === $status) {
             return null;
         }
-        throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\BadResponseException($status, $body, $response);
+        throw new \Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

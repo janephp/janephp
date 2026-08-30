@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PortalserviceModifyHotspot20WlanProfileNormalizer implements DenormalizerI
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyHotspot20WlanProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot20WlanProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyHotspot20WlanProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot20WlanProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyHotspot20WlanProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot20WlanProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -50,20 +50,20 @@ class PortalserviceModifyHotspot20WlanProfileNormalizer implements DenormalizerI
             $object->setDescription($data['description']);
         }
         if (\array_key_exists('operator', $data)) {
-            $object->setOperator($this->denormalizer->denormalize($data['operator'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setOperator($this->denormalizer->denormalize($data['operator'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         if (\array_key_exists('identityProviders', $data)) {
             $values = [];
             foreach ($data['identityProviders'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
             }
             $object->setIdentityProviders($values);
         }
         if (\array_key_exists('defaultIdentityProvider', $data)) {
-            $object->setDefaultIdentityProvider($this->denormalizer->denormalize($data['defaultIdentityProvider'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setDefaultIdentityProvider($this->denormalizer->denormalize($data['defaultIdentityProvider'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         if (\array_key_exists('signupSsid', $data)) {
-            $object->setSignupSsid($this->denormalizer->denormalize($data['signupSsid'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setSignupSsid($this->denormalizer->denormalize($data['signupSsid'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         if (\array_key_exists('internetOption', $data)) {
             $object->setInternetOption($data['internetOption']);
@@ -80,14 +80,14 @@ class PortalserviceModifyHotspot20WlanProfileNormalizer implements DenormalizerI
         if (\array_key_exists('connectionCapabilities', $data)) {
             $values_1 = [];
             foreach ($data['connectionCapabilities'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceDefaultConnectionCapability::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceDefaultConnectionCapability::class, 'json', $context);
             }
             $object->setConnectionCapabilities($values_1);
         }
         if (\array_key_exists('customConnectionCapabilities', $data)) {
             $values_2 = [];
             foreach ($data['customConnectionCapabilities'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceConnectionCapability::class, 'json', $context);
+                $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceConnectionCapability::class, 'json', $context);
             }
             $object->setCustomConnectionCapabilities($values_2);
         }
@@ -106,20 +106,20 @@ class PortalserviceModifyHotspot20WlanProfileNormalizer implements DenormalizerI
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('operator') && null !== $data->getOperator()) {
-            $dataArray['operator'] = $data->getOperator() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOperator(), 'json', $context));
+            $dataArray['operator'] = $data->getOperator() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getOperator(), 'json', $context));
         }
         if ($data->isInitialized('identityProviders') && null !== $data->getIdentityProviders()) {
             $values = [];
             foreach ($data->getIdentityProviders() as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['identityProviders'] = $values;
         }
         if ($data->isInitialized('defaultIdentityProvider') && null !== $data->getDefaultIdentityProvider()) {
-            $dataArray['defaultIdentityProvider'] = $data->getDefaultIdentityProvider() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDefaultIdentityProvider(), 'json', $context));
+            $dataArray['defaultIdentityProvider'] = $data->getDefaultIdentityProvider() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getDefaultIdentityProvider(), 'json', $context));
         }
         if ($data->isInitialized('signupSsid') && null !== $data->getSignupSsid()) {
-            $dataArray['signupSsid'] = $data->getSignupSsid() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSignupSsid(), 'json', $context));
+            $dataArray['signupSsid'] = $data->getSignupSsid() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getSignupSsid(), 'json', $context));
         }
         if ($data->isInitialized('internetOption') && null !== $data->getInternetOption()) {
             $dataArray['internetOption'] = $data->getInternetOption();
@@ -136,14 +136,14 @@ class PortalserviceModifyHotspot20WlanProfileNormalizer implements DenormalizerI
         if ($data->isInitialized('connectionCapabilities') && null !== $data->getConnectionCapabilities()) {
             $values_1 = [];
             foreach ($data->getConnectionCapabilities() as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['connectionCapabilities'] = $values_1;
         }
         if ($data->isInitialized('customConnectionCapabilities') && null !== $data->getCustomConnectionCapabilities()) {
             $values_2 = [];
             foreach ($data->getCustomConnectionCapabilities() as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['customConnectionCapabilities'] = $values_2;
         }
@@ -154,6 +154,6 @@ class PortalserviceModifyHotspot20WlanProfileNormalizer implements DenormalizerI
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyHotspot20WlanProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot20WlanProfile::class => false];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteria::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteria::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteria::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteria::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteria();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteria();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -43,7 +43,7 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('filters', $data)) {
             $values = [];
             foreach ($data['filters'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriaFiltersItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteriaFiltersItem::class, 'json', $context);
             }
             $object->setFilters($values);
         }
@@ -57,10 +57,10 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
             $object->setOptions($data['options']);
         }
         if (\array_key_exists('extraTimeRange', $data)) {
-            $object->setExtraTimeRange($this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTimeRange::class, 'json', $context));
+            $object->setExtraTimeRange($this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonTimeRange::class, 'json', $context));
         }
         if (\array_key_exists('fullTextSearch', $data)) {
-            $object->setFullTextSearch($this->denormalizer->denormalize($data['fullTextSearch'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonFullTextSearch::class, 'json', $context));
+            $object->setFullTextSearch($this->denormalizer->denormalize($data['fullTextSearch'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonFullTextSearch::class, 'json', $context));
         }
         if (\array_key_exists('attributes', $data)) {
             $values_1 = [];
@@ -70,7 +70,7 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
             $object->setAttributes($values_1);
         }
         if (\array_key_exists('sortInfo', $data)) {
-            $object->setSortInfo($this->denormalizer->denormalize($data['sortInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSortInfo::class, 'json', $context));
+            $object->setSortInfo($this->denormalizer->denormalize($data['sortInfo'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSortInfo::class, 'json', $context));
         }
         if (\array_key_exists('page', $data)) {
             $object->setPage($data['page']);
@@ -95,7 +95,7 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('filters') && null !== $data->getFilters()) {
             $values = [];
             foreach ($data->getFilters() as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['filters'] = $values;
         }
@@ -109,10 +109,10 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
             $dataArray['options'] = $data->getOptions();
         }
         if ($data->isInitialized('extraTimeRange') && null !== $data->getExtraTimeRange()) {
-            $dataArray['extraTimeRange'] = $data->getExtraTimeRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getExtraTimeRange(), 'json', $context));
+            $dataArray['extraTimeRange'] = $data->getExtraTimeRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getExtraTimeRange(), 'json', $context));
         }
         if ($data->isInitialized('fullTextSearch') && null !== $data->getFullTextSearch()) {
-            $dataArray['fullTextSearch'] = $data->getFullTextSearch() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFullTextSearch(), 'json', $context));
+            $dataArray['fullTextSearch'] = $data->getFullTextSearch() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getFullTextSearch(), 'json', $context));
         }
         if ($data->isInitialized('attributes') && null !== $data->getAttributes()) {
             $values_1 = [];
@@ -122,7 +122,7 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
             $dataArray['attributes'] = $values_1;
         }
         if ($data->isInitialized('sortInfo') && null !== $data->getSortInfo()) {
-            $dataArray['sortInfo'] = $data->getSortInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSortInfo(), 'json', $context));
+            $dataArray['sortInfo'] = $data->getSortInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getSortInfo(), 'json', $context));
         }
         if ($data->isInitialized('page') && null !== $data->getPage()) {
             $dataArray['page'] = $data->getPage();
@@ -143,6 +143,6 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteria::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteria::class => false];
     }
 }

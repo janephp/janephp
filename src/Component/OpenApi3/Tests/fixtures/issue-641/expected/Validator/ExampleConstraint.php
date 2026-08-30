@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Validator;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue641\Validator;
 
 class ExampleConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {

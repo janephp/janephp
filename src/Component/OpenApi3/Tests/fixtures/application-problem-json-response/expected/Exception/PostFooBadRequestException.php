@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception;
 
 class PostFooBadRequestException extends BadRequestException
 {
     /**
-     * @var \Jane\Component\OpenApi3\Tests\Expected\Model\ResponseProblemDetailsResponse400
+     * @var \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse400
      */
     private $responseProblemDetailsResponse400;
     /**
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\ResponseProblemDetailsResponse400 $responseProblemDetailsResponse400, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse400 $responseProblemDetailsResponse400, \Psr\Http\Message\ResponseInterface $response)
     {
         parent::__construct('An error occurred');
         $this->responseProblemDetailsResponse400 = $responseProblemDetailsResponse400;
         $this->response = $response;
     }
-    public function getResponseProblemDetailsResponse400(): \Jane\Component\OpenApi3\Tests\Expected\Model\ResponseProblemDetailsResponse400
+    public function getResponseProblemDetailsResponse400(): \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse400
     {
         return $this->responseProblemDetailsResponse400;
     }

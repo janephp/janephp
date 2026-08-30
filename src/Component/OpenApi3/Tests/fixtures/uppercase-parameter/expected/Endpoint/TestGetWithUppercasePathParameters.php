@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\Endpoint;
 
-class TestGetWithUppercasePathParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestGetWithUppercasePathParameters extends \Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\Runtime\Client\Endpoint
 {
     protected $test_parameter;
     /**
@@ -12,7 +12,7 @@ class TestGetWithUppercasePathParameters extends \Jane\Component\OpenApi3\Tests\
     {
         $this->test_parameter = $testParameter;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

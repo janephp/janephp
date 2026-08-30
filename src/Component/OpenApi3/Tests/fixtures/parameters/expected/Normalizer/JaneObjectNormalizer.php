@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Parameters\Normalizer;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\TestFormPostBodyNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody::class => \Jane\Component\OpenApi3\Tests\Expected\Parameters\Normalizer\TestFormPostBodyNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\TestFormFilePostBodyNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormFilePostBody::class => \Jane\Component\OpenApi3\Tests\Expected\Parameters\Normalizer\TestFormFilePostBodyNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanAdvanced::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanAdvanced::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanAdvanced::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanAdvanced::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanAdvanced();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanAdvanced();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -185,7 +185,7 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setClientIsolationAutoVrrpEnabled($data['clientIsolationAutoVrrpEnabled']);
         }
         if (\array_key_exists('clientIsolationWhitelist', $data)) {
-            $object->setClientIsolationWhitelist($this->denormalizer->denormalize($data['clientIsolationWhitelist'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->setClientIsolationWhitelist($this->denormalizer->denormalize($data['clientIsolationWhitelist'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context));
         }
         if (\array_key_exists('priority', $data)) {
             $object->setPriority($data['priority']);
@@ -420,7 +420,7 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setOceApChannelReportEnabled($data['oceApChannelReportEnabled']);
         }
         if (\array_key_exists('fils', $data)) {
-            $object->setFils($this->denormalizer->denormalize($data['fils'], \Jane\Component\OpenApi3\Tests\Expected\Model\WlanFastInitialLinkSetup::class, 'json', $context));
+            $object->setFils($this->denormalizer->denormalize($data['fils'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanFastInitialLinkSetup::class, 'json', $context));
         }
         if (\array_key_exists('dhcp82SubOptRadiusFormat', $data)) {
             $object->setDhcp82SubOptRadiusFormat($data['dhcp82SubOptRadiusFormat']);
@@ -432,7 +432,7 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setVlanNameProfileId($data['vlanNameProfileId']);
         }
         if (\array_key_exists('userRoleAccess', $data)) {
-            $object->setUserRoleAccess($this->denormalizer->denormalize($data['userRoleAccess'], \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanAdvancedUserRoleAccess::class, 'json', $context));
+            $object->setUserRoleAccess($this->denormalizer->denormalize($data['userRoleAccess'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanAdvancedUserRoleAccess::class, 'json', $context));
         }
         return $object;
     }
@@ -452,7 +452,7 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['clientIsolationAutoVrrpEnabled'] = $data->getClientIsolationAutoVrrpEnabled();
         }
         if ($data->isInitialized('clientIsolationWhitelist') && null !== $data->getClientIsolationWhitelist()) {
-            $dataArray['clientIsolationWhitelist'] = $data->getClientIsolationWhitelist() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClientIsolationWhitelist(), 'json', $context));
+            $dataArray['clientIsolationWhitelist'] = $data->getClientIsolationWhitelist() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getClientIsolationWhitelist(), 'json', $context));
         }
         if ($data->isInitialized('priority') && null !== $data->getPriority()) {
             $dataArray['priority'] = $data->getPriority();
@@ -687,7 +687,7 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['oceApChannelReportEnabled'] = $data->getOceApChannelReportEnabled();
         }
         if ($data->isInitialized('fils') && null !== $data->getFils()) {
-            $dataArray['fils'] = $data->getFils() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFils(), 'json', $context));
+            $dataArray['fils'] = $data->getFils() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getFils(), 'json', $context));
         }
         if ($data->isInitialized('dhcp82SubOptRadiusFormat') && null !== $data->getDhcp82SubOptRadiusFormat()) {
             $dataArray['dhcp82SubOptRadiusFormat'] = $data->getDhcp82SubOptRadiusFormat();
@@ -699,12 +699,12 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['vlanNameProfileId'] = $data->getVlanNameProfileId();
         }
         if ($data->isInitialized('userRoleAccess') && null !== $data->getUserRoleAccess()) {
-            $dataArray['userRoleAccess'] = $data->getUserRoleAccess() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserRoleAccess(), 'json', $context));
+            $dataArray['userRoleAccess'] = $data->getUserRoleAccess() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getUserRoleAccess(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanAdvanced::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanAdvanced::class => false];
     }
 }

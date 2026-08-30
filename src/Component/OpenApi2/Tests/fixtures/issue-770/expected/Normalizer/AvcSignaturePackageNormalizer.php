@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class AvcSignaturePackageNormalizer implements DenormalizerInterface, Normalizer
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -52,15 +52,15 @@ class AvcSignaturePackageNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('binariesInfo', $data)) {
             $values = [];
             foreach ($data['binariesInfo'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackageBinary::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackageBinary::class, 'json', $context);
             }
             $object->setBinariesInfo($values);
         }
         if (\array_key_exists('checkLatestInstallableSettings', $data)) {
-            $object->setCheckLatestInstallableSettings($this->denormalizer->denormalize($data['checkLatestInstallableSettings'], \Jane\Component\OpenApi3\Tests\Expected\Model\AvcCheckLatestInstallableSignaturePackageSettings::class, 'json', $context));
+            $object->setCheckLatestInstallableSettings($this->denormalizer->denormalize($data['checkLatestInstallableSettings'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCheckLatestInstallableSignaturePackageSettings::class, 'json', $context));
         }
         if (\array_key_exists('latestInstallable', $data)) {
-            $object->setLatestInstallable($this->denormalizer->denormalize($data['latestInstallable'], \Jane\Component\OpenApi3\Tests\Expected\Model\AvcLatestInstallableSignaturePackage::class, 'json', $context));
+            $object->setLatestInstallable($this->denormalizer->denormalize($data['latestInstallable'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcLatestInstallableSignaturePackage::class, 'json', $context));
         }
         return $object;
     }
@@ -82,20 +82,20 @@ class AvcSignaturePackageNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('binariesInfo') && null !== $data->getBinariesInfo()) {
             $values = [];
             foreach ($data->getBinariesInfo() as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['binariesInfo'] = $values;
         }
         if ($data->isInitialized('checkLatestInstallableSettings') && null !== $data->getCheckLatestInstallableSettings()) {
-            $dataArray['checkLatestInstallableSettings'] = $data->getCheckLatestInstallableSettings() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCheckLatestInstallableSettings(), 'json', $context));
+            $dataArray['checkLatestInstallableSettings'] = $data->getCheckLatestInstallableSettings() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getCheckLatestInstallableSettings(), 'json', $context));
         }
         if ($data->isInitialized('latestInstallable') && null !== $data->getLatestInstallable()) {
-            $dataArray['latestInstallable'] = $data->getLatestInstallable() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLatestInstallable(), 'json', $context));
+            $dataArray['latestInstallable'] = $data->getLatestInstallable() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getLatestInstallable(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage::class => false];
     }
 }

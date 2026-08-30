@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class SystemModifyDataPlaneNormalizer implements DenormalizerInterface, Normaliz
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyDataPlane::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlane::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyDataPlane::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlane::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyDataPlane();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlane();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -47,21 +47,21 @@ class SystemModifyDataPlaneNormalizer implements DenormalizerInterface, Normaliz
             $object->setInterfaceMode($data['interfaceMode']);
         }
         if (\array_key_exists('primaryInterface', $data)) {
-            $object->setPrimaryInterface($this->denormalizer->denormalize($data['primaryInterface'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemPrimaryInterface::class, 'json', $context));
+            $object->setPrimaryInterface($this->denormalizer->denormalize($data['primaryInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemPrimaryInterface::class, 'json', $context));
         }
         if (\array_key_exists('ipv6PrimaryInterface', $data)) {
-            $object->setIpv6PrimaryInterface($this->denormalizer->denormalize($data['ipv6PrimaryInterface'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIpv6PrimaryInterface::class, 'json', $context));
+            $object->setIpv6PrimaryInterface($this->denormalizer->denormalize($data['ipv6PrimaryInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIpv6PrimaryInterface::class, 'json', $context));
         }
         if (\array_key_exists('ipv6SecondaryInterface', $data)) {
-            $object->setIpv6SecondaryInterface($this->denormalizer->denormalize($data['ipv6SecondaryInterface'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIpv6SecondaryInterface::class, 'json', $context));
+            $object->setIpv6SecondaryInterface($this->denormalizer->denormalize($data['ipv6SecondaryInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIpv6SecondaryInterface::class, 'json', $context));
         }
         if (\array_key_exists('secondaryInterface', $data)) {
-            $object->setSecondaryInterface($this->denormalizer->denormalize($data['secondaryInterface'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemSecondaryInterface::class, 'json', $context));
+            $object->setSecondaryInterface($this->denormalizer->denormalize($data['secondaryInterface'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSecondaryInterface::class, 'json', $context));
         }
         if (\array_key_exists('staticRoute', $data)) {
             $values = [];
             foreach ($data['staticRoute'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemStaticRoute::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStaticRoute::class, 'json', $context);
             }
             $object->setStaticRoute($values);
         }
@@ -77,18 +77,18 @@ class SystemModifyDataPlaneNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         $dataArray['interfaceMode'] = $data->getInterfaceMode();
-        $dataArray['primaryInterface'] = $data->getPrimaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPrimaryInterface(), 'json', $context));
-        $dataArray['ipv6PrimaryInterface'] = $data->getIpv6PrimaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6PrimaryInterface(), 'json', $context));
+        $dataArray['primaryInterface'] = $data->getPrimaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getPrimaryInterface(), 'json', $context));
+        $dataArray['ipv6PrimaryInterface'] = $data->getIpv6PrimaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6PrimaryInterface(), 'json', $context));
         if ($data->isInitialized('ipv6SecondaryInterface') && null !== $data->getIpv6SecondaryInterface()) {
-            $dataArray['ipv6SecondaryInterface'] = $data->getIpv6SecondaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6SecondaryInterface(), 'json', $context));
+            $dataArray['ipv6SecondaryInterface'] = $data->getIpv6SecondaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6SecondaryInterface(), 'json', $context));
         }
         if ($data->isInitialized('secondaryInterface') && null !== $data->getSecondaryInterface()) {
-            $dataArray['secondaryInterface'] = $data->getSecondaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondaryInterface(), 'json', $context));
+            $dataArray['secondaryInterface'] = $data->getSecondaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getSecondaryInterface(), 'json', $context));
         }
         if ($data->isInitialized('staticRoute') && null !== $data->getStaticRoute()) {
             $values = [];
             foreach ($data->getStaticRoute() as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['staticRoute'] = $values;
         }
@@ -102,6 +102,6 @@ class SystemModifyDataPlaneNormalizer implements DenormalizerInterface, Normaliz
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyDataPlane::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlane::class => false];
     }
 }

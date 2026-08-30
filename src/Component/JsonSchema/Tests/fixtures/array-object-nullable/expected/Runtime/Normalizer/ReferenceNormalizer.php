@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Runtime\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

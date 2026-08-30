@@ -2,6 +2,6 @@
 
 return [
     'openapi-file' => __DIR__ . '/ruckus-openapi.json',
-    'namespace' => 'Jane\Component\OpenApi3\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi3\Tests\Expected\Issue770',
     'directory' => __DIR__ . '/generated',
 ];

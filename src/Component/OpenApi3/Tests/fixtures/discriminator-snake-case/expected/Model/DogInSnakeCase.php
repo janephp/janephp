@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Model;
 
 class DogInSnakeCase extends Pet
 {

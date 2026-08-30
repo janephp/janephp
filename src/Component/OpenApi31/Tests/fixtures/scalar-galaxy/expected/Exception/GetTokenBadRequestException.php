@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception;
 
 class GetTokenBadRequestException extends BadRequestException
 {
     /**
-     * @var \Jane\Component\OpenApi31\Tests\Expected\Model\BadRequestError
+     * @var \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\BadRequestError
      */
     private $badRequestError;
     /**
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
-    public function __construct(\Jane\Component\OpenApi31\Tests\Expected\Model\BadRequestError $badRequestError, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\BadRequestError $badRequestError, \Psr\Http\Message\ResponseInterface $response)
     {
         parent::__construct('Bad Request');
         $this->badRequestError = $badRequestError;
         $this->response = $response;
     }
-    public function getBadRequestError(): \Jane\Component\OpenApi31\Tests\Expected\Model\BadRequestError
+    public function getBadRequestError(): \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\BadRequestError
     {
         return $this->badRequestError;
     }

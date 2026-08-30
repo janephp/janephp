@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class UpdateRkszonesApgroupsApmodelByModel extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class UpdateRkszonesApgroupsApmodelByModel extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $zoneId;
     protected $id;
@@ -11,12 +11,12 @@ class UpdateRkszonesApgroupsApmodelByModel extends \Jane\Component\OpenApi3\Test
      * @param string $zoneId
      * @param string $id
      * @param string $model
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApmodelApModel $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $zoneId, string $id, string $model, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApmodelApModel $body, array $queryParameters = [])
+    public function __construct(string $zoneId, string $id, string $model, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel $body, array $queryParameters = [])
     {
         $this->zoneId = $zoneId;
         $this->id = $id;
@@ -24,7 +24,7 @@ class UpdateRkszonesApgroupsApmodelByModel extends \Jane\Component\OpenApi3\Test
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PUT';
@@ -53,31 +53,31 @@ class UpdateRkszonesApgroupsApmodelByModel extends \Jane\Component\OpenApi3\Test
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsApmodelByModelBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsApmodelByModelForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsApmodelByModelInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsApmodelByModelUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsApmodelByModelBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsApmodelByModelForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsApmodelByModelInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsApmodelByModelUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateRkszonesApgroupsApmodelByModelUnprocessableEntityException($response);
         }
         if (204 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult', 'json');
         }
     }
     public function getAuthenticationScopes(): array

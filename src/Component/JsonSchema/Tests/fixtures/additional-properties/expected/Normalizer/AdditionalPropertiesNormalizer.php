@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class AdditionalPropertiesNormalizer implements DenormalizerInterface, Normalize
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\AdditionalProperties::class;
+        return $type === \Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Model\AdditionalProperties::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\AdditionalProperties;
+        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Model\AdditionalProperties;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\AdditionalProperties();
+        $object = new \Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Model\AdditionalProperties();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -63,6 +63,6 @@ class AdditionalPropertiesNormalizer implements DenormalizerInterface, Normalize
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\JsonSchema\Tests\Expected\Model\AdditionalProperties::class => false];
+        return [\Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Model\AdditionalProperties::class => false];
     }
 }

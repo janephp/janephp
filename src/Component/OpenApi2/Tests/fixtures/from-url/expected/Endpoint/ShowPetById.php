@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\FromUrl\Endpoint;
 
-class ShowPetById extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class ShowPetById extends \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Client\Endpoint
 {
     protected $petId;
     /**
@@ -12,7 +12,7 @@ class ShowPetById extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client
     {
         $this->petId = $petId;
     }
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -33,16 +33,16 @@ class ShowPetById extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Pet[]|\Jane\Component\OpenApi2\Tests\Expected\Model\Error
+     * @return null|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Pet[]|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Model\Pet[]', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Pet[]', 'json');
         }
-        return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Model\Error', 'json');
+        return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error', 'json');
     }
     public function getAuthenticationScopes(): array
     {

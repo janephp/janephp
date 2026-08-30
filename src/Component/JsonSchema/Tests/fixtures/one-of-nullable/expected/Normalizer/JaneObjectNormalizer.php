@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Normalizer;
 
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Normalizer\TestNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Id::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\IdNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Model\Id::class => \Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Normalizer\IdNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

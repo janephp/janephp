@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Normalizer;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,13 +18,13 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Container::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ContainerNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container::class => \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Normalizer\ContainerNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\ContainerIconAnyOfAnyOf::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ContainerIconAnyOfAnyOfNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\ContainerIconAnyOfAnyOf::class => \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Normalizer\ContainerIconAnyOfAnyOfNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Image::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ImageNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Image::class => \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Normalizer\ImageNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

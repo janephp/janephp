@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ServiceCreateRadiusAuthenticationNormalizer implements DenormalizerInterfa
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCreateRadiusAuthentication::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAuthentication::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCreateRadiusAuthentication::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAuthentication::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCreateRadiusAuthentication();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAuthentication();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -71,26 +71,26 @@ class ServiceCreateRadiusAuthenticationNormalizer implements DenormalizerInterfa
             $object->setType($data['type']);
         }
         if (\array_key_exists('primary', $data)) {
-            $object->setPrimary($this->denormalizer->denormalize($data['primary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServerWhenTlsEnabled::class, 'json', $context));
+            $object->setPrimary($this->denormalizer->denormalize($data['primary'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRadiusServerWhenTlsEnabled::class, 'json', $context));
         }
         if (\array_key_exists('secondary', $data)) {
-            $object->setSecondary($this->denormalizer->denormalize($data['secondary'], \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceSecondaryRadiusServer::class, 'json', $context));
+            $object->setSecondary($this->denormalizer->denormalize($data['secondary'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceSecondaryRadiusServer::class, 'json', $context));
         }
         if (\array_key_exists('healthCheckPolicy', $data)) {
-            $object->setHealthCheckPolicy($this->denormalizer->denormalize($data['healthCheckPolicy'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonHealthCheckPolicy::class, 'json', $context));
+            $object->setHealthCheckPolicy($this->denormalizer->denormalize($data['healthCheckPolicy'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonHealthCheckPolicy::class, 'json', $context));
         }
         if (\array_key_exists('rateLimiting', $data)) {
-            $object->setRateLimiting($this->denormalizer->denormalize($data['rateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRateLimiting::class, 'json', $context));
+            $object->setRateLimiting($this->denormalizer->denormalize($data['rateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRateLimiting::class, 'json', $context));
         }
         if (\array_key_exists('mappings', $data)) {
             $values = [];
             foreach ($data['mappings'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceModifyGroupAttrIdentityUserRoleMapping::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyGroupAttrIdentityUserRoleMapping::class, 'json', $context);
             }
             $object->setMappings($values);
         }
         if (\array_key_exists('standbyPrimary', $data)) {
-            $object->setStandbyPrimary($this->denormalizer->denormalize($data['standbyPrimary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServerWhenTlsEnabled::class, 'json', $context));
+            $object->setStandbyPrimary($this->denormalizer->denormalize($data['standbyPrimary'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRadiusServerWhenTlsEnabled::class, 'json', $context));
         }
         if (\array_key_exists('standbyServerEnabled', $data)) {
             $object->setStandbyServerEnabled($data['standbyServerEnabled']);
@@ -149,25 +149,25 @@ class ServiceCreateRadiusAuthenticationNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();
         }
-        $dataArray['primary'] = $data->getPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPrimary(), 'json', $context));
+        $dataArray['primary'] = $data->getPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getPrimary(), 'json', $context));
         if ($data->isInitialized('secondary') && null !== $data->getSecondary()) {
-            $dataArray['secondary'] = $data->getSecondary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondary(), 'json', $context));
+            $dataArray['secondary'] = $data->getSecondary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getSecondary(), 'json', $context));
         }
         if ($data->isInitialized('healthCheckPolicy') && null !== $data->getHealthCheckPolicy()) {
-            $dataArray['healthCheckPolicy'] = $data->getHealthCheckPolicy() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getHealthCheckPolicy(), 'json', $context));
+            $dataArray['healthCheckPolicy'] = $data->getHealthCheckPolicy() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getHealthCheckPolicy(), 'json', $context));
         }
         if ($data->isInitialized('rateLimiting') && null !== $data->getRateLimiting()) {
-            $dataArray['rateLimiting'] = $data->getRateLimiting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRateLimiting(), 'json', $context));
+            $dataArray['rateLimiting'] = $data->getRateLimiting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getRateLimiting(), 'json', $context));
         }
         if ($data->isInitialized('mappings') && null !== $data->getMappings()) {
             $values = [];
             foreach ($data->getMappings() as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['mappings'] = $values;
         }
         if ($data->isInitialized('standbyPrimary') && null !== $data->getStandbyPrimary()) {
-            $dataArray['standbyPrimary'] = $data->getStandbyPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyPrimary(), 'json', $context));
+            $dataArray['standbyPrimary'] = $data->getStandbyPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyPrimary(), 'json', $context));
         }
         if ($data->isInitialized('standbyServerEnabled') && null !== $data->getStandbyServerEnabled()) {
             $dataArray['standbyServerEnabled'] = $data->getStandbyServerEnabled();
@@ -206,6 +206,6 @@ class ServiceCreateRadiusAuthenticationNormalizer implements DenormalizerInterfa
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCreateRadiusAuthentication::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAuthentication::class => false];
     }
 }

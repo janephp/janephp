@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Normalizer;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\MessageM700PostBody::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\MessageM700PostBodyNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Model\MessageM700PostBody::class => \Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Normalizer\MessageM700PostBodyNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\MessageM70047PostBody::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\MessageM70047PostBodyNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Model\MessageM70047PostBody::class => \Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Normalizer\MessageM70047PostBodyNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class AdministrationUpgradePatchInfoNormalizer implements DenormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradePatchInfo::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradePatchInfo::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradePatchInfo::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradePatchInfo::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradePatchInfo();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradePatchInfo();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,10 +38,10 @@ class AdministrationUpgradePatchInfoNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('clusterOperationProgress', $data)) {
-            $object->setClusterOperationProgress($this->denormalizer->denormalize($data['clusterOperationProgress'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterUpgradeProgress::class, 'json', $context));
+            $object->setClusterOperationProgress($this->denormalizer->denormalize($data['clusterOperationProgress'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterUpgradeProgress::class, 'json', $context));
         }
         if (\array_key_exists('uploadPatchInfo', $data)) {
-            $object->setUploadPatchInfo($this->denormalizer->denormalize($data['uploadPatchInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeUploadPatchInfo::class, 'json', $context));
+            $object->setUploadPatchInfo($this->denormalizer->denormalize($data['uploadPatchInfo'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeUploadPatchInfo::class, 'json', $context));
         }
         return $object;
     }
@@ -49,15 +49,15 @@ class AdministrationUpgradePatchInfoNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if ($data->isInitialized('clusterOperationProgress') && null !== $data->getClusterOperationProgress()) {
-            $dataArray['clusterOperationProgress'] = $data->getClusterOperationProgress() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClusterOperationProgress(), 'json', $context));
+            $dataArray['clusterOperationProgress'] = $data->getClusterOperationProgress() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getClusterOperationProgress(), 'json', $context));
         }
         if ($data->isInitialized('uploadPatchInfo') && null !== $data->getUploadPatchInfo()) {
-            $dataArray['uploadPatchInfo'] = $data->getUploadPatchInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUploadPatchInfo(), 'json', $context));
+            $dataArray['uploadPatchInfo'] = $data->getUploadPatchInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getUploadPatchInfo(), 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradePatchInfo::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradePatchInfo::class => false];
     }
 }

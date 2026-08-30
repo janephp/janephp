@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\OpenApi3\Tests\Expected\SkipParameterCheck\Endpoint;
 
-class TestGetWithPathParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestGetWithPathParameters extends \Jane\OpenApi3\Tests\Expected\SkipParameterCheck\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\SkipParameterCheck\Runtime\Client\Endpoint
 {
     protected $testPath;
     /**
@@ -22,7 +22,7 @@ class TestGetWithPathParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\Cl
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\OpenApi3\Tests\Expected\SkipParameterCheck\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi3\Tests\Expected\Exceptions\Exception;
 
 abstract class InternalServerErrorException extends \RuntimeException implements ServerException, WithResponseInterface
 {

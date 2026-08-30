@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Normalizer;
 
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,9 +18,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Normalizer\TestNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\TestFoo::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestFooNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Model\TestFoo::class => \Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Normalizer\TestFooNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

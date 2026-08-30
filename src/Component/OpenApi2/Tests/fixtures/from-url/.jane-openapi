@@ -2,7 +2,7 @@
 
 return [
     'openapi-file' => \Jane\Component\JsonSchema\Tests\LocalSchemaServer::url(__DIR__ . '/petstore.yaml'),
-    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected\FromUrl',
     'directory' => __DIR__ . '/generated',
     'use-fixer' => false,
     'allow-external-refs' => true,

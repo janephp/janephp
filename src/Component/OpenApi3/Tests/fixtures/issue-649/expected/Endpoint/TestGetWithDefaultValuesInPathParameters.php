@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue649\Endpoint;
 
-class TestGetWithDefaultValuesInPathParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestGetWithDefaultValuesInPathParameters extends \Jane\Component\OpenApi3\Tests\Expected\Issue649\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue649\Runtime\Client\Endpoint
 {
     protected $foo;
     protected $bar;
@@ -23,7 +23,7 @@ class TestGetWithDefaultValuesInPathParameters extends \Jane\Component\OpenApi3\
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue649\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

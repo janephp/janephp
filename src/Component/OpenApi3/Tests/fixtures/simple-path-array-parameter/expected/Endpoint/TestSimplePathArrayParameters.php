@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\SimplePathArrayParameter\Endpoint;
 
-class TestSimplePathArrayParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestSimplePathArrayParameters extends \Jane\Component\OpenApi3\Tests\Expected\SimplePathArrayParameter\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\SimplePathArrayParameter\Runtime\Client\Endpoint
 {
     protected $string;
     protected $array;
@@ -21,7 +21,7 @@ class TestSimplePathArrayParameters extends \Jane\Component\OpenApi3\Tests\Expec
         $this->stringRef = $stringRef;
         $this->arrayRef = $arrayRef;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\SimplePathArrayParameter\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

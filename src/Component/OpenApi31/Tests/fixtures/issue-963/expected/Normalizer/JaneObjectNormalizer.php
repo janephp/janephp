@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue963\Normalizer;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Issue963\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Issue963\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\RequestError::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\RequestErrorNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\RequestError::class => \Jane\Component\OpenApi31\Tests\Expected\Issue963\Normalizer\RequestErrorNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\MemberDetails::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\MemberDetailsNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\MemberDetails::class => \Jane\Component\OpenApi31\Tests\Expected\Issue963\Normalizer\MemberDetailsNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Issue963\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class AaaCreateAuthenticationServerNormalizer implements DenormalizerInterface, 
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\AaaCreateAuthenticationServer::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\AaaCreateAuthenticationServer::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AaaCreateAuthenticationServer();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -47,20 +47,20 @@ class AaaCreateAuthenticationServerNormalizer implements DenormalizerInterface, 
             $object->setDescription($data['description']);
         }
         if (\array_key_exists('primary', $data)) {
-            $object->setPrimary($this->denormalizer->denormalize($data['primary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServer::class, 'json', $context));
+            $object->setPrimary($this->denormalizer->denormalize($data['primary'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRadiusServer::class, 'json', $context));
         }
         if (\array_key_exists('secondary', $data)) {
-            $object->setSecondary($this->denormalizer->denormalize($data['secondary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServer::class, 'json', $context));
+            $object->setSecondary($this->denormalizer->denormalize($data['secondary'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRadiusServer::class, 'json', $context));
         }
         if (\array_key_exists('mappings', $data)) {
             $values = [];
             foreach ($data['mappings'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyGroupAttrIdentityUserRoleMapping::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyGroupAttrIdentityUserRoleMapping::class, 'json', $context);
             }
             $object->setMappings($values);
         }
         if (\array_key_exists('standbyPrimary', $data)) {
-            $object->setStandbyPrimary($this->denormalizer->denormalize($data['standbyPrimary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServer::class, 'json', $context));
+            $object->setStandbyPrimary($this->denormalizer->denormalize($data['standbyPrimary'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRadiusServer::class, 'json', $context));
         }
         if (\array_key_exists('standbyServerEnabled', $data)) {
             $object->setStandbyServerEnabled($data['standbyServerEnabled']);
@@ -74,19 +74,19 @@ class AaaCreateAuthenticationServerNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        $dataArray['primary'] = $data->getPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPrimary(), 'json', $context));
+        $dataArray['primary'] = $data->getPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getPrimary(), 'json', $context));
         if ($data->isInitialized('secondary') && null !== $data->getSecondary()) {
-            $dataArray['secondary'] = $data->getSecondary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondary(), 'json', $context));
+            $dataArray['secondary'] = $data->getSecondary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getSecondary(), 'json', $context));
         }
         if ($data->isInitialized('mappings') && null !== $data->getMappings()) {
             $values = [];
             foreach ($data->getMappings() as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['mappings'] = $values;
         }
         if ($data->isInitialized('standbyPrimary') && null !== $data->getStandbyPrimary()) {
-            $dataArray['standbyPrimary'] = $data->getStandbyPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyPrimary(), 'json', $context));
+            $dataArray['standbyPrimary'] = $data->getStandbyPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyPrimary(), 'json', $context));
         }
         if ($data->isInitialized('standbyServerEnabled') && null !== $data->getStandbyServerEnabled()) {
             $dataArray['standbyServerEnabled'] = $data->getStandbyServerEnabled();
@@ -95,6 +95,6 @@ class AaaCreateAuthenticationServerNormalizer implements DenormalizerInterface, 
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\AaaCreateAuthenticationServer::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer::class => false];
     }
 }

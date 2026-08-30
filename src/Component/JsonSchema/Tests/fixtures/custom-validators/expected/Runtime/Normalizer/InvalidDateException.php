@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\JsonSchema\Tests\Expected\Runtime\Normalizer;
+namespace Jane\JsonSchema\Tests\Expected\CustomValidators\Runtime\Normalizer;
 
 use RuntimeException;
 class InvalidDateException extends RuntimeException

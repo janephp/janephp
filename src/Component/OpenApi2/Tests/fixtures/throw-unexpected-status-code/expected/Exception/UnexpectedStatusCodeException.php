@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi2\Tests\Expected\ThrowUnexpectedStatusCode\Exception;
 
 class UnexpectedStatusCodeException extends \RuntimeException implements ClientException, WithResponseInterface
 {

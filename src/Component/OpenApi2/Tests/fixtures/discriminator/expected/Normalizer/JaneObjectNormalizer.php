@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi2\Tests\Expected\Discriminator\Normalizer;
 
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi2\Tests\Expected\Discriminator\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi2\Tests\Expected\Discriminator\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,13 +18,13 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi2\Tests\Expected\Model\Pet::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\PetNormalizer::class,
+        \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Model\Pet::class => \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Normalizer\PetNormalizer::class,
         
-        \Jane\Component\OpenApi2\Tests\Expected\Model\Cat::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\CatNormalizer::class,
+        \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Model\Cat::class => \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Normalizer\CatNormalizer::class,
         
-        \Jane\Component\OpenApi2\Tests\Expected\Model\Dog::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\DogNormalizer::class,
+        \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Model\Dog::class => \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Normalizer\DogNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi2\Tests\Expected\Discriminator\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

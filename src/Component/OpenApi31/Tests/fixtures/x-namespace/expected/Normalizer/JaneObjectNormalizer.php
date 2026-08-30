@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,13 +18,13 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\FlatItem::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\FlatItemNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\FlatItem::class => \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\FlatItemNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Catalog\TaggedItem::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\Catalog\TaggedItemNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Catalog\TaggedItem::class => \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\Catalog\TaggedItemNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Admin\Reports\NamespacedReportGetResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\Admin\Reports\NamespacedReportGetResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\Admin\Reports\NamespacedReportGetResponse200Normalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

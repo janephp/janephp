@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Normalizer;
 
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Document::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\DocumentNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Model\Document::class => \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Normalizer\DocumentNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Attributes::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\AttributesNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Model\Attributes::class => \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Normalizer\AttributesNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

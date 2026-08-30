@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Model;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model;
 
 class ProjectClient
 {

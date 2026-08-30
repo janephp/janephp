@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteria::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteria::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteria();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -43,7 +43,7 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('filters', $data)) {
             $values = [];
             foreach ($data['filters'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaFiltersItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteriaFiltersItem::class, 'json', $context);
             }
             $object->setFilters($values);
         }
@@ -54,10 +54,10 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
             $object->setExtraNotFilters($data['extraNotFilters']);
         }
         if (\array_key_exists('options', $data)) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions::class, 'json', $context));
+            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteriaOptions::class, 'json', $context));
         }
         if (\array_key_exists('extraTimeRange', $data)) {
-            $object->setExtraTimeRange($this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTimeRange::class, 'json', $context));
+            $object->setExtraTimeRange($this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonTimeRange::class, 'json', $context));
         }
         if (\array_key_exists('fullTextSearch', $data)) {
             $object->setFullTextSearch($data['fullTextSearch']);
@@ -70,7 +70,7 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
             $object->setAttributes($values_1);
         }
         if (\array_key_exists('sortInfo', $data)) {
-            $object->setSortInfo($this->denormalizer->denormalize($data['sortInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSortInfo::class, 'json', $context));
+            $object->setSortInfo($this->denormalizer->denormalize($data['sortInfo'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSortInfo::class, 'json', $context));
         }
         if (\array_key_exists('page', $data)) {
             $object->setPage($data['page']);
@@ -95,7 +95,7 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('filters') && null !== $data->getFilters()) {
             $values = [];
             foreach ($data->getFilters() as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['filters'] = $values;
         }
@@ -106,10 +106,10 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['extraNotFilters'] = $data->getExtraNotFilters();
         }
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $dataArray['options'] = $data->getOptions() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
+            $dataArray['options'] = $data->getOptions() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
         }
         if ($data->isInitialized('extraTimeRange') && null !== $data->getExtraTimeRange()) {
-            $dataArray['extraTimeRange'] = $data->getExtraTimeRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getExtraTimeRange(), 'json', $context));
+            $dataArray['extraTimeRange'] = $data->getExtraTimeRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getExtraTimeRange(), 'json', $context));
         }
         if ($data->isInitialized('fullTextSearch') && null !== $data->getFullTextSearch()) {
             $dataArray['fullTextSearch'] = $data->getFullTextSearch();
@@ -122,7 +122,7 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['attributes'] = $values_1;
         }
         if ($data->isInitialized('sortInfo') && null !== $data->getSortInfo()) {
-            $dataArray['sortInfo'] = $data->getSortInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSortInfo(), 'json', $context));
+            $dataArray['sortInfo'] = $data->getSortInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getSortInfo(), 'json', $context));
         }
         if ($data->isInitialized('page') && null !== $data->getPage()) {
             $dataArray['page'] = $data->getPage();
@@ -143,6 +143,6 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteria::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria::class => false];
     }
 }

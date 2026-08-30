@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,53 +18,53 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\User::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\UserNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UserNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Credentials::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\CredentialsNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Credentials::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\CredentialsNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Token::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TokenNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Token::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\TokenNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalProperties::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetPhysicalPropertiesNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetPhysicalProperties::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetPhysicalPropertiesNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalPropertiesTemperature::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetPhysicalPropertiesTemperatureNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetPhysicalPropertiesTemperature::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetPhysicalPropertiesTemperatureNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetAtmosphereItem::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetAtmosphereItemNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetAtmosphereItem::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetAtmosphereItemNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Satellite::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\SatelliteNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Satellite::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\SatelliteNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\SatelliteOrbitNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\SatelliteOrbit::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\SatelliteOrbitNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\PaginatedResource::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PaginatedResourceNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PaginatedResource::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PaginatedResourceNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\PaginatedResourceMeta::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PaginatedResourceMetaNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PaginatedResourceMeta::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PaginatedResourceMetaNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\ImageUploadedMessage::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ImageUploadedMessageNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ImageUploadedMessage::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\ImageUploadedMessageNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\BadRequestError::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\BadRequestErrorNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\BadRequestError::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\BadRequestErrorNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\ForbiddenError::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ForbiddenErrorNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ForbiddenError::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\ForbiddenErrorNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\NotFoundError::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\NotFoundErrorNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\NotFoundError::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\NotFoundErrorNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\UnauthorizedError::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\UnauthorizedErrorNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UnauthorizedError::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UnauthorizedErrorNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Conflict::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ConflictNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Conflict::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\ConflictNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\UnprocessableEntityNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UnprocessableEntity::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UnprocessableEntityNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\TooManyRequestsError::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TooManyRequestsErrorNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\TooManyRequestsError::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\TooManyRequestsErrorNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetsGetJsonResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetsGetJsonResponse200Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetsGetXmlResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetsGetXmlResponse200Normalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetsPlanetIdImagePostBodyNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsPlanetIdImagePostBody::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\PlanetsPlanetIdImagePostBodyNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\UserSignupPostBody::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\UserSignupPostBodyNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UserSignupPostBody::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer\UserSignupPostBodyNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

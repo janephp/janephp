@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue968\Normalizer;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\Report::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ReportNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\Report::class => \Jane\Component\OpenApi31\Tests\Expected\Issue968\Normalizer\ReportNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\ReportPeriod::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ReportPeriodNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\ReportPeriod::class => \Jane\Component\OpenApi31\Tests\Expected\Issue968\Normalizer\ReportPeriodNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

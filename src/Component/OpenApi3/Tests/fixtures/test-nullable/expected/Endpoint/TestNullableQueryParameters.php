@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\TestNullable\Endpoint;
 
-class TestNullableQueryParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestNullableQueryParameters extends \Jane\Component\OpenApi3\Tests\Expected\TestNullable\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\TestNullable\Runtime\Client\Endpoint
 {
     /**
      * @param array{
@@ -13,7 +13,7 @@ class TestNullableQueryParameters extends \Jane\Component\OpenApi3\Tests\Expecte
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\TestNullable\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\CheckArray;
+use Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PollOptionNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\OpenApi3\Tests\Expected\Model\PollOption::class;
+        return $type === \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\PollOption::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\OpenApi3\Tests\Expected\Model\PollOption::class;
+        return is_object($data) && get_class($data) === \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\PollOption::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\OpenApi3\Tests\Expected\Model\PollOption();
+        $object = new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\PollOption();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -71,6 +71,6 @@ class PollOptionNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\OpenApi3\Tests\Expected\Model\PollOption::class => false];
+        return [\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\PollOption::class => false];
     }
 }

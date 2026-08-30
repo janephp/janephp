@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint;
 
-class TestFormParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestFormParameters extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Client\Endpoint
 {
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody $requestBody
      */
-    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody = null)
+    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -22,7 +22,7 @@ class TestFormParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody) {
+        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody) {
             return [['Content-Type' => ['application/x-www-form-urlencoded']], http_build_query($serializer->normalize($this->body, 'json'))];
         }
         return [[], null];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Authentication;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Authentication;
 
 class MuseumPlaceholderAuthAuthentication implements \Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin
 {

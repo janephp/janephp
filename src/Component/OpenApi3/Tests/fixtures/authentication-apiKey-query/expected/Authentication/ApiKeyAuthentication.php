@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Authentication;
+namespace Jane\Component\OpenApi3\Tests\Expected\AuthenticationApiKeyQuery\Authentication;
 
 class ApiKeyAuthentication implements \Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin
 {

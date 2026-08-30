@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class SubBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\SubBaz::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\SubBaz::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\SubBaz::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\SubBaz::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SubBaz();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\SubBaz();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class SubBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('parent', $data)) {
-            $object->setParent($this->denormalizer->denormalize($data['parent'], \Jane\Component\OpenApi3\Tests\Expected\Model\Baz::class, 'json', $context));
+            $object->setParent($this->denormalizer->denormalize($data['parent'], \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Baz::class, 'json', $context));
             unset($data['parent']);
         }
         foreach ($data as $key => $value) {
@@ -52,7 +52,7 @@ class SubBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if ($data->isInitialized('parent') && null !== $data->getParent()) {
-            $dataArray['parent'] = $data->getParent() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getParent(), 'json', $context));
+            $dataArray['parent'] = $data->getParent() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\JsonObject($this->normalizer->normalize($data->getParent(), 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -63,6 +63,6 @@ class SubBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\SubBaz::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\SubBaz::class => false];
     }
 }

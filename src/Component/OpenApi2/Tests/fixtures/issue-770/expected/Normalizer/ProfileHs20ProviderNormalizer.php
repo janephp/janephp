@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProfileHs20ProviderNormalizer implements DenormalizerInterface, Normalizer
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Provider::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Provider::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Provider();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -49,40 +49,40 @@ class ProfileHs20ProviderNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('realms', $data)) {
             $values = [];
             foreach ($data['realms'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderRealm::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderRealm::class, 'json', $context);
             }
             $object->setRealms($values);
         }
         if (\array_key_exists('plmns', $data)) {
             $values_1 = [];
             foreach ($data['plmns'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderPLMN::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderPLMN::class, 'json', $context);
             }
             $object->setPlmns($values_1);
         }
         if (\array_key_exists('homeOis', $data)) {
             $values_2 = [];
             foreach ($data['homeOis'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderHomeOIs::class, 'json', $context);
+                $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderHomeOIs::class, 'json', $context);
             }
             $object->setHomeOis($values_2);
         }
         if (\array_key_exists('authentications', $data)) {
             $values_3 = [];
             foreach ($data['authentications'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderAuthentication::class, 'json', $context);
+                $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderAuthentication::class, 'json', $context);
             }
             $object->setAuthentications($values_3);
         }
         if (\array_key_exists('accountings', $data)) {
             $values_4 = [];
             foreach ($data['accountings'] as $value_4) {
-                $values_4[] = $this->denormalizer->denormalize($value_4, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderAccounting::class, 'json', $context);
+                $values_4[] = $this->denormalizer->denormalize($value_4, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderAccounting::class, 'json', $context);
             }
             $object->setAccountings($values_4);
         }
         if (\array_key_exists('osu', $data)) {
-            $object->setOsu($this->denormalizer->denormalize($data['osu'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderOnlineSignup::class, 'json', $context));
+            $object->setOsu($this->denormalizer->denormalize($data['osu'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProviderOnlineSignup::class, 'json', $context));
         }
         if (\array_key_exists('domainId', $data)) {
             $object->setDomainId($data['domainId']);
@@ -122,40 +122,40 @@ class ProfileHs20ProviderNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('realms') && null !== $data->getRealms()) {
             $values = [];
             foreach ($data->getRealms() as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['realms'] = $values;
         }
         if ($data->isInitialized('plmns') && null !== $data->getPlmns()) {
             $values_1 = [];
             foreach ($data->getPlmns() as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['plmns'] = $values_1;
         }
         if ($data->isInitialized('homeOis') && null !== $data->getHomeOis()) {
             $values_2 = [];
             foreach ($data->getHomeOis() as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['homeOis'] = $values_2;
         }
         if ($data->isInitialized('authentications') && null !== $data->getAuthentications()) {
             $values_3 = [];
             foreach ($data->getAuthentications() as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $values_3[] = $value_3 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['authentications'] = $values_3;
         }
         if ($data->isInitialized('accountings') && null !== $data->getAccountings()) {
             $values_4 = [];
             foreach ($data->getAccountings() as $value_4) {
-                $values_4[] = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $values_4[] = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['accountings'] = $values_4;
         }
         if ($data->isInitialized('osu') && null !== $data->getOsu()) {
-            $dataArray['osu'] = $data->getOsu() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOsu(), 'json', $context));
+            $dataArray['osu'] = $data->getOsu() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getOsu(), 'json', $context));
         }
         if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
             $dataArray['domainId'] = $data->getDomainId();
@@ -182,6 +182,6 @@ class ProfileHs20ProviderNormalizer implements DenormalizerInterface, Normalizer
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Provider::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider::class => false];
     }
 }

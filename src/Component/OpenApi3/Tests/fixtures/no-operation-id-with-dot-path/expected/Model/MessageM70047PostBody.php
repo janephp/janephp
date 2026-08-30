@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Model;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Runtime\AdditionalPropertiesInterface;
 class MessageM70047PostBody implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

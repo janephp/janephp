@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\OpenApi3\Tests\Expected\Model;
+namespace Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model;
 
-use Jane\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\AdditionalAndPatternProperties;
+use Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\AdditionalPropertiesInterface;
 class Poll implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

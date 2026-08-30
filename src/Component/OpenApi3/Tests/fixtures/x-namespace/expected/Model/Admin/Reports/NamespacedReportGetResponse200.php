@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model\Admin\Reports;
+namespace Jane\Component\OpenApi3\Tests\Expected\XNamespace\Model\Admin\Reports;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi3\Tests\Expected\XNamespace\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\XNamespace\Runtime\AdditionalPropertiesInterface;
 class NamespacedReportGetResponse200 implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

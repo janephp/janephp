@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue968\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ReportPeriodNormalizer implements DenormalizerInterface, NormalizerInterfa
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\ReportPeriod::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\ReportPeriod::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\ReportPeriod::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\ReportPeriod::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\ReportPeriod();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\ReportPeriod();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class ReportPeriodNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ReportPeriodConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Issue968\Validator\ReportPeriodConstraint());
         }
         if (\array_key_exists('from', $data) && $data['from'] !== null) {
             $value = $data['from'];
@@ -79,12 +79,12 @@ class ReportPeriodNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ReportPeriodConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Issue968\Validator\ReportPeriodConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\ReportPeriod::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\ReportPeriod::class => false];
     }
 }

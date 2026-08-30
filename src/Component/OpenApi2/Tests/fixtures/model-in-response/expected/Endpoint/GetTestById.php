@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Endpoint;
 
-class GetTestById extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class GetTestById extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client\Endpoint
 {
     protected $id;
     /**
@@ -12,7 +12,7 @@ class GetTestById extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client
     {
         $this->id = $id;
     }
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -28,23 +28,23 @@ class GetTestById extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestByIdBadRequestException
-     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestByIdNotFoundException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestByIdBadRequestException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestByIdNotFoundException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\TestIdGetResponse200
+     * @return null|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestIdGetResponse200
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Model\TestIdGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\TestIdGetResponse200', 'json');
         }
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestByIdBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestByIdBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Error', 'json'), $response);
         }
         if (404 === $status) {
-            throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestByIdNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception\GetTestByIdNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array

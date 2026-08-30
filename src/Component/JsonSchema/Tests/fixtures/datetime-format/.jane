@@ -3,7 +3,7 @@
 return [
     'json-schema-file' => __DIR__ . '/schema.json',
     'root-class' => 'Test',
-    'namespace' => 'Jane\Component\JsonSchema\Tests\Expected',
+    'namespace' => 'Jane\Component\JsonSchema\Tests\Expected\DatetimeFormat',
     'directory' => __DIR__ . '/generated',
     'date-format' => \DateTime::RFC850,
 ];

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class RadioRadioConfigApGroupNormalizer implements DenormalizerInterface, Normal
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadioConfigApGroup::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioRadioConfigApGroup::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadioConfigApGroup::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioRadioConfigApGroup::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadioConfigApGroup();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioRadioConfigApGroup();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,19 +41,19 @@ class RadioRadioConfigApGroupNormalizer implements DenormalizerInterface, Normal
             $data['dual5gEnabled'] = (bool) $data['dual5gEnabled'];
         }
         if (\array_key_exists('radio24g', $data)) {
-            $object->setRadio24g($this->denormalizer->denormalize($data['radio24g'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadio24gApGroup::class, 'json', $context));
+            $object->setRadio24g($this->denormalizer->denormalize($data['radio24g'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioRadio24gApGroup::class, 'json', $context));
         }
         if (\array_key_exists('radio5g', $data)) {
-            $object->setRadio5g($this->denormalizer->denormalize($data['radio5g'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadio5gApGroup::class, 'json', $context));
+            $object->setRadio5g($this->denormalizer->denormalize($data['radio5g'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioRadio5gApGroup::class, 'json', $context));
         }
         if (\array_key_exists('radio5gLower', $data)) {
-            $object->setRadio5gLower($this->denormalizer->denormalize($data['radio5gLower'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadio5gApGroup::class, 'json', $context));
+            $object->setRadio5gLower($this->denormalizer->denormalize($data['radio5gLower'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioRadio5gApGroup::class, 'json', $context));
         }
         if (\array_key_exists('radio5gUpper', $data)) {
-            $object->setRadio5gUpper($this->denormalizer->denormalize($data['radio5gUpper'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadio5gApGroup::class, 'json', $context));
+            $object->setRadio5gUpper($this->denormalizer->denormalize($data['radio5gUpper'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioRadio5gApGroup::class, 'json', $context));
         }
         if (\array_key_exists('radio6g', $data)) {
-            $object->setRadio6g($this->denormalizer->denormalize($data['radio6g'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadio6gApGroup::class, 'json', $context));
+            $object->setRadio6g($this->denormalizer->denormalize($data['radio6g'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioRadio6gApGroup::class, 'json', $context));
         }
         if (\array_key_exists('dual5gEnabled', $data)) {
             $object->setDual5gEnabled($data['dual5gEnabled']);
@@ -64,19 +64,19 @@ class RadioRadioConfigApGroupNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if ($data->isInitialized('radio24g') && null !== $data->getRadio24g()) {
-            $dataArray['radio24g'] = $data->getRadio24g() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadio24g(), 'json', $context));
+            $dataArray['radio24g'] = $data->getRadio24g() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getRadio24g(), 'json', $context));
         }
         if ($data->isInitialized('radio5g') && null !== $data->getRadio5g()) {
-            $dataArray['radio5g'] = $data->getRadio5g() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadio5g(), 'json', $context));
+            $dataArray['radio5g'] = $data->getRadio5g() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getRadio5g(), 'json', $context));
         }
         if ($data->isInitialized('radio5gLower') && null !== $data->getRadio5gLower()) {
-            $dataArray['radio5gLower'] = $data->getRadio5gLower() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadio5gLower(), 'json', $context));
+            $dataArray['radio5gLower'] = $data->getRadio5gLower() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getRadio5gLower(), 'json', $context));
         }
         if ($data->isInitialized('radio5gUpper') && null !== $data->getRadio5gUpper()) {
-            $dataArray['radio5gUpper'] = $data->getRadio5gUpper() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadio5gUpper(), 'json', $context));
+            $dataArray['radio5gUpper'] = $data->getRadio5gUpper() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getRadio5gUpper(), 'json', $context));
         }
         if ($data->isInitialized('radio6g') && null !== $data->getRadio6g()) {
-            $dataArray['radio6g'] = $data->getRadio6g() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadio6g(), 'json', $context));
+            $dataArray['radio6g'] = $data->getRadio6g() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->getRadio6g(), 'json', $context));
         }
         if ($data->isInitialized('dual5gEnabled') && null !== $data->getDual5gEnabled()) {
             $dataArray['dual5gEnabled'] = $data->getDual5gEnabled();
@@ -85,6 +85,6 @@ class RadioRadioConfigApGroupNormalizer implements DenormalizerInterface, Normal
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadioConfigApGroup::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioRadioConfigApGroup::class => false];
     }
 }

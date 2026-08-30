@@ -1,27 +1,27 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $id;
     protected $spaceId;
     /**
      * @param string $id
      * @param string $spaceId
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileOptionSpaceBO $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceBO $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $id, string $spaceId, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileOptionSpaceBO $body, array $queryParameters = [])
+    public function __construct(string $id, string $spaceId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceBO $body, array $queryParameters = [])
     {
         $this->id = $id;
         $this->spaceId = $spaceId;
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PUT';
@@ -50,10 +50,10 @@ class UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Compo
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdUnprocessableEntityException
      *
      * @return null
      */
@@ -62,16 +62,16 @@ class UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Compo
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdUnprocessableEntityException($response);
         }
         if (200 === $status) {
             return null;
