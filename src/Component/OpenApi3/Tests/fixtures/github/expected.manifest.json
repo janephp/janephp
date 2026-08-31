@@ -1,7 +1,7 @@
 {
     "algorithm": "sha256",
     "files": {
-        "Client.php": "ecbde58cd62856bbef44807240167c8ef5ef2c2af92c83db59531073f30f772d",
+        "Client.php": "0ee5516cdb5d0aa6cf86669ddf1e4d8bc1988c1809b050220896258097a06e35",
         "Endpoint/ActionsAddSelectedRepoToOrgSecret.php": "99ef5246f38e4a0511bd0c6b9260991ea89abdb11a66a5a919ad2b0d3da28ae1",
         "Endpoint/ActionsCancelWorkflowRun.php": "2b2ca6dee42cbd71d003e188f42b3769963284455a19ad575875f41d362fcc43",
         "Endpoint/ActionsCreateOrUpdateOrgSecret.php": "99243c441c9ea6f5e2524768522d44274bddce56108c6c88cdaf7ff1fec97452",

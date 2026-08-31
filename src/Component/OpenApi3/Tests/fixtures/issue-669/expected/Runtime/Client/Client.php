@@ -13,18 +13,10 @@ abstract class Client
 {
     public const FETCH_RESPONSE = 'response';
     public const FETCH_OBJECT = 'object';
-    protected ClientInterface $httpClient;
-    protected RequestFactoryInterface $requestFactory;
-    protected SerializerInterface $serializer;
-    protected StreamFactoryInterface $streamFactory;
-    public function __construct(ClientInterface $httpClient, RequestFactoryInterface $requestFactory, SerializerInterface $serializer, StreamFactoryInterface $streamFactory)
+    public function __construct(protected readonly ClientInterface $httpClient, protected readonly RequestFactoryInterface $requestFactory, protected readonly SerializerInterface $serializer, protected readonly StreamFactoryInterface $streamFactory)
     {
-        $this->httpClient = $httpClient;
-        $this->requestFactory = $requestFactory;
-        $this->serializer = $serializer;
-        $this->streamFactory = $streamFactory;
     }
-    public function executeEndpoint(Endpoint $endpoint, string $fetch = self::FETCH_OBJECT)
+    public function executeEndpoint(Endpoint $endpoint, string $fetch = self::FETCH_OBJECT): mixed
     {
         if (self::FETCH_RESPONSE === $fetch) {
             trigger_deprecation('jane-php/open-api-common', '7.3', 'Using %s::%s method with $fetch parameter equals to response is deprecated, use %s::%s instead.', __CLASS__, __METHOD__, __CLASS__, 'executeRawEndpoint');
@@ -58,12 +50,9 @@ abstract class Client
         foreach ($endpoint->getHeaders($bodyHeaders) as $name => $value) {
             $request = $request->withHeader($name, !is_bool($value) ? $value : ($value ? 'true' : 'false'));
         }
-        if (count($endpoint->getAuthenticationScopes()) > 0) {
-            $scopes = [];
-            foreach ($endpoint->getAuthenticationScopes() as $scope) {
-                $scopes[] = $scope;
-            }
-            $request = $request->withHeader(AuthenticationRegistry::SCOPES_HEADER, $scopes);
+        $authenticationScopes = $endpoint->getAuthenticationScopes();
+        if ([] !== $authenticationScopes) {
+            $request = $request->withHeader(AuthenticationRegistry::SCOPES_HEADER, $authenticationScopes);
         }
         return $this->httpClient->sendRequest($request);
     }

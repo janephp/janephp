@@ -1,7 +1,7 @@
 {
     "algorithm": "sha256",
     "files": {
-        "Client.php": "af8c5a25d17e4222c4273ffe3bdd899608b965b794b48436c05c2be4d8063ae9",
+        "Client.php": "8318f73f5612142df4b04ffb9d81336af714dfd4ab70af1d78a28a3b3864dc85",
         "Endpoint/AddOrDeleteRules.php": "5fe41989b818fd8944abdb263398571e1845544d015dd9d3371d156aa4b8c1ee",
         "Endpoint/FindPrivateTweetMetricsById.php": "dd22c23717a8c9e6d7cc9c052245c96eef6774a22006d7ca0777d9a76f61b56c",
         "Endpoint/FindTweetsById.php": "db4fdc21d20106905e15ee8b1d7506c79def902e8ab445da4671044163839fe3",

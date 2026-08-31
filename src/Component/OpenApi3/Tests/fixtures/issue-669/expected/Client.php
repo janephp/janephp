@@ -10321,7 +10321,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\GenaiListEvaluationTestCasesByWorkspace($workspaceUuid), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];
         if (null === $httpClient) {
