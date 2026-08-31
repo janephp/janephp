@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schemas exercising the default-additional-properties option: unspecified and explicit false",
+    "definitions": {
+        "Unspecified": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "ExplicitFalse": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}

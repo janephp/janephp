@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\Component\JsonSchema\Guesser\ClassGuesserInterface;
+use Jane\Component\JsonSchema\Guesser\DefaultAdditionalPropertiesTrait;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\ObjectType;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
@@ -21,13 +22,16 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, PropertiesGuesserInterface, ClassGuesserInterface
 {
     use ChainGuesserAwareTrait;
+    use DefaultAdditionalPropertiesTrait;
     use GuesserResolverTrait;
 
     public function __construct(
         DenormalizerInterface $denormalizer,
         protected Naming $naming,
+        ?bool $defaultAdditionalProperties = null,
     ) {
         $this->denormalizer = $denormalizer;
+        $this->defaultAdditionalProperties = $defaultAdditionalProperties;
     }
 
     public function guessClass($object, string $name, string $reference, Registry $registry): void
@@ -85,12 +89,13 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     protected function resolveAdditionalProperties($object, string $reference): array
     {
         $extensions = [];
+        $additionalProperties = $this->getEffectiveAdditionalProperties($object);
 
-        if ($object->getAdditionalProperties()) {
+        if ($additionalProperties) {
             $extensionObject = null;
 
-            if (\is_object($object->getAdditionalProperties())) {
-                $extensionObject = $object->getAdditionalProperties();
+            if (\is_object($additionalProperties)) {
+                $extensionObject = $additionalProperties;
             }
 
             $extensions['.*'] = [

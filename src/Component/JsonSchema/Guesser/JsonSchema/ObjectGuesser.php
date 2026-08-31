@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\Component\JsonSchema\Guesser\ClassGuesserInterface;
+use Jane\Component\JsonSchema\Guesser\DefaultAdditionalPropertiesTrait;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\ObjectType;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
@@ -24,6 +25,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, ClassGuesserInterface
 {
     use ChainGuesserAwareTrait;
+    use DefaultAdditionalPropertiesTrait;
     use GuesserResolverTrait;
 
     protected ?ValidatorInterface $chainValidator = null;
@@ -31,8 +33,10 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     public function __construct(
         DenormalizerInterface $denormalizer,
         protected Naming $naming,
+        ?bool $defaultAdditionalProperties = null,
     ) {
         $this->denormalizer = $denormalizer;
+        $this->defaultAdditionalProperties = $defaultAdditionalProperties;
     }
 
     public function supportObject($object): bool
@@ -68,12 +72,13 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     protected function resolveAdditionalProperties($object, string $reference): array
     {
         $extensions = [];
+        $additionalProperties = $this->getEffectiveAdditionalProperties($object);
 
-        if ($object->getAdditionalProperties()) {
+        if ($additionalProperties) {
             $extensionObject = null;
 
-            if (\is_object($object->getAdditionalProperties())) {
-                $extensionObject = $object->getAdditionalProperties();
+            if (\is_object($additionalProperties)) {
+                $extensionObject = $additionalProperties;
             }
 
             $extensions['.*'] = [

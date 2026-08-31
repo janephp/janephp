@@ -8,6 +8,8 @@ class ArrayGuesser extends BaseArrayGuesser
 {
     use SchemaClassTrait;
 
+    protected ?bool $defaultAdditionalProperties = null;
+
     public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();

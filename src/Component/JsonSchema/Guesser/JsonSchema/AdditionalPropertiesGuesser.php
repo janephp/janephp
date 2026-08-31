@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Guesser\JsonSchema;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\Component\JsonSchema\Guesser\ClassGuesserInterface;
+use Jane\Component\JsonSchema\Guesser\DefaultAdditionalPropertiesTrait;
 use Jane\Component\JsonSchema\Guesser\Guess\MapType;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\Guesser\GuesserInterface;
@@ -15,6 +16,12 @@ use Jane\Component\JsonSchema\Registry\Registry;
 class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, ClassGuesserInterface
 {
     use ChainGuesserAwareTrait;
+    use DefaultAdditionalPropertiesTrait;
+
+    public function __construct(?bool $defaultAdditionalProperties = null)
+    {
+        $this->defaultAdditionalProperties = $defaultAdditionalProperties;
+    }
 
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
@@ -35,7 +42,9 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
             return false;
         }
 
-        if (true !== $object->getAdditionalProperties() && !\is_object($object->getAdditionalProperties())) {
+        $additionalProperties = $this->getEffectiveAdditionalProperties($object);
+
+        if (true !== $additionalProperties && !\is_object($additionalProperties)) {
             return false;
         }
 
@@ -44,11 +53,13 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
-        if (true === $object->getAdditionalProperties()) {
+        $additionalProperties = $this->getEffectiveAdditionalProperties($object);
+
+        if (!\is_object($additionalProperties)) {
             return new MapType($object, new Type($object, 'mixed'));
         }
 
-        return new MapType($object, $this->chainGuesser->guessType($object->getAdditionalProperties(), $name . 'Item', $reference . '/additionalProperties', $registry));
+        return new MapType($object, $this->chainGuesser->guessType($additionalProperties, $name . 'Item', $reference . '/additionalProperties', $registry));
     }
 
     protected function getSchemaClass(): string

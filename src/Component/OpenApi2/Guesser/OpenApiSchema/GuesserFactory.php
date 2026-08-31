@@ -29,6 +29,7 @@ class GuesserFactory
         $inputDateTimeFormat = $options['date-input-format'] ?? null;
         $datePreferInterface = $options['date-prefer-interface'] ?? null;
         $operationNaming = OperationNamingFactory::create($options['operation-namings'] ?? []);
+        $defaultAdditionalProperties = $options['default-additional-properties'] ?? null;
 
         $chainGuesser = new ChainGuesser();
         if ($options['enums-as-objects'] ?? false) {
@@ -40,9 +41,9 @@ class GuesserFactory
         $chainGuesser->addGuesser(new BinaryStringFormatGuesser(Schema::class));
         $chainGuesser->addGuesser(new ReferenceGuesser($denormalizer, Schema::class));
         $chainGuesser->addGuesser(new OpenApiGuesser($operationNaming));
-        $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming));
-        $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(Schema::class));
-        $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, Schema::class));
+        $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming, $defaultAdditionalProperties));
+        $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(Schema::class, $defaultAdditionalProperties));
+        $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, Schema::class, $defaultAdditionalProperties));
         $chainGuesser->addGuesser(new ArrayGuesser(Schema::class));
         $chainGuesser->addGuesser(new ItemsGuesser(Schema::class));
         $chainGuesser->addGuesser(new SimpleTypeGuesser(Schema::class, ['boolean', 'integer', 'number', 'string']));

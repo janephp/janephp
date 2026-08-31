@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/swagger.json',
+    'namespace' => 'Jane\Component\OpenApi31\Tests\DefaultAdditionalProps',
+    'directory' => __DIR__ . '/generated',
+    'default-additional-properties' => false,
+];

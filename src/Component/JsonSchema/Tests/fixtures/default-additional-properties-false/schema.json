@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schemas exercising the default-additional-properties option: unspecified and explicit false, forced closed, with validation generation",
+    "definitions": {
+        "Unspecified": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "ExplicitFalse": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "ExplicitTrue": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": true
+        }
+    }
+}

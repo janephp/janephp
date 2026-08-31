@@ -45,6 +45,7 @@ class SchemaLoader implements SchemaLoaderInterface
             'validators',
             'include-null-value',
             'enums-as-objects',
+            'default-additional-properties',
             'allow-external-refs',
             'external-ref-allowed-hosts',
             'external-ref-follow-redirects',

@@ -30,6 +30,7 @@ class GuesserFactory
         $datePreferInterface = $options['date-prefer-interface'] ?? null;
         $customStringFormatMapping = $options['custom-string-format-mapping'] ?? [];
         $operationNaming = OperationNamingFactory::create($options['operation-namings'] ?? []);
+        $defaultAdditionalProperties = $options['default-additional-properties'] ?? null;
 
         $chainGuesser = new ChainGuesser();
         if ($options['enums-as-objects'] ?? false) {
@@ -43,9 +44,9 @@ class GuesserFactory
         $chainGuesser->addGuesser(new ReferenceGuesser($denormalizer, Schema::class));
         $chainGuesser->addGuesser(new DollarRefGuesser($denormalizer, Schema::class));
         $chainGuesser->addGuesser(new OpenApiGuesser($denormalizer, $operationNaming));
-        $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming));
-        $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(Schema::class));
-        $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, Schema::class));
+        $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming, $defaultAdditionalProperties));
+        $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(Schema::class, $defaultAdditionalProperties));
+        $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, Schema::class, $defaultAdditionalProperties));
         $chainGuesser->addGuesser(new AnyOfReferencefGuesser($denormalizer, $naming, Schema::class));
         $chainGuesser->addGuesser(new OneOfReferencefGuesser($denormalizer, $naming, Schema::class));
         $chainGuesser->addGuesser(new ArrayGuesser(Schema::class));
