@@ -13,20 +13,12 @@ abstract class Client
     public const FETCH_RESPONSE = 'response';
     public const FETCH_OBJECT = 'object';
 
-    protected ClientInterface $httpClient;
-
-    protected RequestFactoryInterface $requestFactory;
-
-    protected SerializerInterface $serializer;
-
-    protected StreamFactoryInterface $streamFactory;
-
-    public function __construct(ClientInterface $httpClient, RequestFactoryInterface $requestFactory, SerializerInterface $serializer, StreamFactoryInterface $streamFactory)
-    {
-        $this->httpClient = $httpClient;
-        $this->requestFactory = $requestFactory;
-        $this->serializer = $serializer;
-        $this->streamFactory = $streamFactory;
+    public function __construct(
+        protected readonly ClientInterface $httpClient,
+        protected readonly RequestFactoryInterface $requestFactory,
+        protected readonly SerializerInterface $serializer,
+        protected readonly StreamFactoryInterface $streamFactory,
+    ) {
     }
 
     public function executeEndpoint(Endpoint $endpoint, string $fetch = self::FETCH_OBJECT)
@@ -69,12 +61,10 @@ abstract class Client
             $request = $request->withHeader($name, !is_bool($value) ? $value : ($value ? 'true' : 'false'));
         }
 
-        if (count($endpoint->getAuthenticationScopes()) > 0) {
-            $scopes = [];
-            foreach ($endpoint->getAuthenticationScopes() as $scope) {
-                $scopes[] = $scope;
-            }
-            $request = $request->withHeader(AuthenticationRegistry::SCOPES_HEADER, $scopes);
+        $authenticationScopes = $endpoint->getAuthenticationScopes();
+
+        if ([] !== $authenticationScopes) {
+            $request = $request->withHeader(AuthenticationRegistry::SCOPES_HEADER, $authenticationScopes);
         }
 
         return $this->httpClient->sendRequest($request);
