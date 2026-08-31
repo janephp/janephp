@@ -271,76 +271,16 @@ message = 'Method `isinitialized` does not exist on type `Jane\Component\JsonSch
 count = 2
 
 [[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Model/Unspecified.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Model\Unspecified` cannot implement unknown type `AdditionalPropertiesInterface`'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Model/Unspecified.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Model\Unspecified` cannot use unknown type `AdditionalAndPatternProperties`'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/ExplicitFalseNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Normalizer\ExplicitFalseNormalizer` cannot use unknown type `CheckArray`'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/ExplicitFalseNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Normalizer\ExplicitFalseNormalizer` cannot use unknown type `ValidatorTrait`'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/JaneObjectNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Normalizer\JaneObjectNormalizer` cannot use unknown type `CheckArray`'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/JaneObjectNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Normalizer\JaneObjectNormalizer` cannot use unknown type `ValidatorTrait`'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/JaneObjectNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class, interface, enum, or trait `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Runtime\Normalizer\ReferenceNormalizer` not found.'
-count = 1
-
-[[issues]]
 file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/JaneObjectNormalizer.php"
 code = "unknown-class-instantiation"
 message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/UnspecifiedNormalizer.php"
-code = "invalid-array-access"
-message = 'Cannot access array index on object `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Model\Unspecified` that does not implement `ArrayAccess`.'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/UnspecifiedNormalizer.php"
-code = "invalid-array-index"
-message = 'Invalid index type `array-key` used for array access on `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Model\Unspecified`.'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/UnspecifiedNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Normalizer\UnspecifiedNormalizer` cannot use unknown type `CheckArray`'
-count = 1
-
-[[issues]]
-file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Normalizer/UnspecifiedNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Normalizer\UnspecifiedNormalizer` cannot use unknown type `ValidatorTrait`'
-count = 1
+file = "src/Component/JsonSchema/Tests/fixtures/default-additional-properties-true/expected/Runtime/AdditionalAndPatternProperties.php"
+code = "non-existent-method"
+message = 'Method `isinitialized` does not exist on type `Jane\Component\JsonSchema\Tests\DefaultAdditionalProps\Runtime\AdditionalAndPatternProperties`.'
+count = 2
 
 [[issues]]
 file = "src/Component/JsonSchema/Tests/fixtures/definitions/expected/Normalizer/JaneObjectNormalizer.php"
@@ -41618,86 +41558,8 @@ count = 1
 
 [[issues]]
 file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Client.php"
-code = "non-existent-class"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Runtime\Client\FormEncoder` not found.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Client.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Client` cannot extend unknown type `\Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Runtime\Client\Client`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Client.php"
 code = "unsafe-instantiation"
 message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Model/ExplicitTrue.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Model\ExplicitTrue` cannot implement unknown type `AdditionalPropertiesInterface`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Model/ExplicitTrue.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Model\ExplicitTrue` cannot use unknown type `AdditionalAndPatternProperties`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitFalseNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Normalizer\ExplicitFalseNormalizer` cannot use unknown type `CheckArray`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitFalseNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Normalizer\ExplicitFalseNormalizer` cannot use unknown type `ValidatorTrait`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitTrueNormalizer.php"
-code = "invalid-array-access"
-message = 'Cannot access array index on object `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Model\ExplicitTrue` that does not implement `ArrayAccess`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitTrueNormalizer.php"
-code = "invalid-array-index"
-message = 'Invalid index type `array-key` used for array access on `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Model\ExplicitTrue`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitTrueNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Normalizer\ExplicitTrueNormalizer` cannot use unknown type `CheckArray`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitTrueNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Normalizer\ExplicitTrueNormalizer` cannot use unknown type `ValidatorTrait`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Normalizer\JaneObjectNormalizer` cannot use unknown type `CheckArray`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Normalizer\JaneObjectNormalizer` cannot use unknown type `ValidatorTrait`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class, interface, enum, or trait `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Runtime\Normalizer\ReferenceNormalizer` not found.'
 count = 1
 
 [[issues]]
@@ -41707,15 +41569,39 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/UnspecifiedNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Normalizer\UnspecifiedNormalizer` cannot use unknown type `CheckArray`'
+file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Runtime/AdditionalAndPatternProperties.php"
+code = "non-existent-method"
+message = 'Method `isinitialized` does not exist on type `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Runtime\AdditionalAndPatternProperties`.'
+count = 2
+
+[[issues]]
+file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Runtime/Client/Client.php"
+code = "invalid-destructuring-source"
+message = "Invalid destructuring assignment: Cannot unpack type `mixed` into variables."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Normalizer/UnspecifiedNormalizer.php"
+file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Runtime/Client/Client.php"
+code = "invalid-method-access"
+message = 'Attempting to access a method on a non-object type (`unknown-ref(Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Runtime\Client\Endpoint)`).'
+count = 10
+
+[[issues]]
+file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Runtime/Client/Client.php"
 code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Normalizer\UnspecifiedNormalizer` cannot use unknown type `ValidatorTrait`'
+message = 'Cannot find class, interface, enum, or type alias `Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Runtime\Client\Endpoint`.'
+count = 3
+
+[[issues]]
+file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Runtime/Client/Client.php"
+code = "unknown-iterator-type"
+message = "Cannot determine the type of the expression provided to `foreach`."
+count = 2
+
+[[issues]]
+file = "src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Runtime/Client/FormEncoder.php"
+code = "reference-to-undefined-variable"
+message = "Reference created from a previously undefined variable `$result`."
 count = 1
 
 [[issues]]
@@ -80090,86 +79976,8 @@ count = 1
 
 [[issues]]
 file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Client.php"
-code = "non-existent-class"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Runtime\Client\FormEncoder` not found.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Client.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Client` cannot extend unknown type `\Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Runtime\Client\Client`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Client.php"
 code = "unsafe-instantiation"
 message = 'Unsafe `new static()`: constructor of `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Client` is not final and its signature might change in child classes, potentially leading to runtime errors.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Model/ExplicitTrue.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Model\ExplicitTrue` cannot implement unknown type `AdditionalPropertiesInterface`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Model/ExplicitTrue.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Model\ExplicitTrue` cannot use unknown type `AdditionalAndPatternProperties`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitFalseNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Normalizer\ExplicitFalseNormalizer` cannot use unknown type `CheckArray`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitFalseNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Normalizer\ExplicitFalseNormalizer` cannot use unknown type `ValidatorTrait`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitTrueNormalizer.php"
-code = "invalid-array-access"
-message = 'Cannot access array index on object `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Model\ExplicitTrue` that does not implement `ArrayAccess`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitTrueNormalizer.php"
-code = "invalid-array-index"
-message = 'Invalid index type `array-key` used for array access on `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Model\ExplicitTrue`.'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitTrueNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Normalizer\ExplicitTrueNormalizer` cannot use unknown type `CheckArray`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/ExplicitTrueNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Normalizer\ExplicitTrueNormalizer` cannot use unknown type `ValidatorTrait`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Normalizer\JaneObjectNormalizer` cannot use unknown type `CheckArray`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Normalizer\JaneObjectNormalizer` cannot use unknown type `ValidatorTrait`'
-count = 1
-
-[[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/JaneObjectNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class, interface, enum, or trait `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Runtime\Normalizer\ReferenceNormalizer` not found.'
 count = 1
 
 [[issues]]
@@ -80179,15 +79987,39 @@ message = "Cannot determine the concrete class for instantiation."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/UnspecifiedNormalizer.php"
-code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Normalizer\UnspecifiedNormalizer` cannot use unknown type `CheckArray`'
+file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Runtime/AdditionalAndPatternProperties.php"
+code = "non-existent-method"
+message = 'Method `isinitialized` does not exist on type `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Runtime\AdditionalAndPatternProperties`.'
+count = 2
+
+[[issues]]
+file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Runtime/Client/Client.php"
+code = "invalid-destructuring-source"
+message = "Invalid destructuring assignment: Cannot unpack type `mixed` into variables."
 count = 1
 
 [[issues]]
-file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Normalizer/UnspecifiedNormalizer.php"
+file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Runtime/Client/Client.php"
+code = "invalid-method-access"
+message = 'Attempting to access a method on a non-object type (`unknown-ref(Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Runtime\Client\Endpoint)`).'
+count = 10
+
+[[issues]]
+file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Runtime/Client/Client.php"
 code = "non-existent-class-like"
-message = 'Class `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Normalizer\UnspecifiedNormalizer` cannot use unknown type `ValidatorTrait`'
+message = 'Cannot find class, interface, enum, or type alias `Jane\Component\OpenApi31\Tests\DefaultAdditionalProps\Runtime\Client\Endpoint`.'
+count = 3
+
+[[issues]]
+file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Runtime/Client/Client.php"
+code = "unknown-iterator-type"
+message = "Cannot determine the type of the expression provided to `foreach`."
+count = 2
+
+[[issues]]
+file = "src/Component/OpenApi31/Tests/fixtures/default-additional-properties-false/expected/Runtime/Client/FormEncoder.php"
+code = "reference-to-undefined-variable"
+message = "Reference created from a previously undefined variable `$result`."
 count = 1
 
 [[issues]]

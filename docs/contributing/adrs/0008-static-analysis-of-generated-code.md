@@ -13,14 +13,14 @@ never type-checked. A generator change emitting type-invalid PHP passes the
 suite as long as the baseline is refreshed alongside it.
 
 Two analysers were measured over the full corpus — the committed `expected/`
-trees of all 183 fixtures, ~20 150 files:
+trees of all 183 fixtures, ~20 180 files:
 
 |                        | PHPStan 2.2 (level 5)      | Mago 1.47                  |
 |------------------------|----------------------------|----------------------------|
 | Wall time, full corpus | 638 s                      | **2 s**                    |
 | Processes needed       | 5 (OOM-killed above ~4 000 files) | **1**               |
 | Extra tooling          | group packing + verbatim NEON baseline merging | **none** |
-| Findings               | 11 795                     | 23 867 (after `ignore` list) |
+| Findings               | 11 795                     | 23 866 (after `ignore` list) |
 
 Both tools agree on the defect core — the clusters line up exactly where they
 implement the same check (2 258 missing `return` statements, 270 invalid
@@ -29,7 +29,7 @@ severity dial: level 5 is the highest level where every finding is a defect,
 because 5 → 6 adds ~9 200 `missingType.*` findings on one real-world client
 alone, and generated code conveys types through `@var` / `@param` docblocks by
 design. Mago has no levels; the same line must be drawn as a per-code `ignore`
-list instead. Measured over the corpus, 16 codes carry 150 582 of 174 449
+list instead. Measured over the corpus, 16 codes carry 150 690 of 174 556
 default-config findings (86 %) and all of them flag the *shape* of generated
 output rather than bugs in it: the `mixed-*` family (values moving through
 `mixed`-typed normalizer plumbing — territory PHPStan only enters at levels
@@ -78,7 +78,7 @@ covariance codes, generics-annotation requests, and dynamic
    `issue-770` fixture generated into the OpenApi3 test namespace. Unique
    namespaces fix that at the source instead of working around it in tooling.
 7. **Pre-existing findings are frozen** in `mago-generated-baseline.toml`
-   (13 607 entries covering 23 867 findings), so the gate blocks new
+   (13 579 entries covering 23 866 findings), so the gate blocks new
    regressions immediately instead of waiting on a cleanup. The baseline is
    regenerated (never hand-edited) as generator fixes shrink it:
    `castor qa:mago:generated --generate-baseline`. It uses Mago's `loose`

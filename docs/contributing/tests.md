@@ -39,10 +39,13 @@ component tests folder with a schema related to the added feature. That way when
   files would create huge PR diffs and merge conflicts. On failure, the test lists exactly which files are missing,
   unexpected or changed.
 
-In both modes, everything under a `Runtime/` folder of the generated output is skipped: those files are verbatim copies
-of the templates shipped in `Generator/Runtime/data` and are identical for every fixture of a component. They are
-asserted once per component, by the dedicated `runtime-boilerplate` fixture (which opts back into full comparison via
-a `.full-compare` marker file). This keeps template changes from rippling into every fixture diff.
+In both modes, the *contents* of everything under a `Runtime/` folder of the generated output are skipped: those files
+are verbatim copies of the templates shipped in `Generator/Runtime/data` and are identical for every fixture of a
+component. They are asserted once per component, by the dedicated `runtime-boilerplate` fixture (which opts back into
+full comparison via a `.full-compare` marker file). This keeps template changes from rippling into every fixture diff.
+In directory mode the *set* of Runtime files is still compared per fixture: runtime classes are only generated when
+required, so which files a fixture gets is fixture-specific — a mismatch means the committed `expected/` tree drifted
+from what the generator produces and needs a refresh.
 
 ### Syntax gate
 

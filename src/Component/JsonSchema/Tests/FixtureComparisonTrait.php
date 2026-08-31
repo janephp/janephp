@@ -19,9 +19,12 @@ use Symfony\Component\Finder\SplFileInfo;
  *
  * Two baseline modes per fixture directory:
  *  - directory mode (default): committed `expected/` tree compared with the
- *    freshly generated `generated/` tree, file by file. Runtime boilerplate
- *    copies (`Runtime/` segments) are skipped: they are asserted centrally by
- *    each component's `runtime-boilerplate` fixture.
+ *    freshly generated `generated/` tree, file by file. The contents of
+ *    runtime boilerplate copies (`Runtime/` segments) are skipped — they are
+ *    asserted centrally by each component's `runtime-boilerplate` fixture —
+ *    but their presence is still compared: runtime classes are only generated
+ *    when required, so which Runtime files a fixture gets is fixture-specific
+ *    and would otherwise drift unnoticed in the committed trees.
  *  - manifest mode: when an `expected.manifest.json` file exists, no
  *    `expected/` tree is needed; generated files are hashed and compared
  *    against the manifest instead.
@@ -106,9 +109,35 @@ trait FixtureComparisonTrait
         return \in_array('Runtime', explode('/', $relativePathname), true);
     }
 
+    /**
+     * Which Runtime files a tree holds. Their contents are boilerplate, but
+     * runtime classes are only generated when required, so the file set
+     * itself is fixture-specific and has to be asserted per fixture.
+     *
+     * @return list<string>
+     */
+    private static function boilerplateFileNames(string $directory): array
+    {
+        $names = [];
+
+        $finder = new Finder();
+        $finder->in($directory)->files();
+
+        foreach ($finder as $file) {
+            if (self::isBoilerplateFile($file->getRelativePathname())) {
+                $names[] = $file->getRelativePathname();
+            }
+        }
+
+        sort($names);
+
+        return $names;
+    }
+
     private function assertDirectoriesMatch(string $testDirectory): void
     {
         $skipBoilerplate = !self::comparesEverything($testDirectory);
+        $fixtureName = basename($testDirectory);
 
         $expectedFinder = new Finder();
         $expectedFinder->in($testDirectory . \DIRECTORY_SEPARATOR . 'expected');
@@ -117,6 +146,20 @@ trait FixtureComparisonTrait
         $generatedFinder->in($testDirectory . \DIRECTORY_SEPARATOR . 'generated');
 
         if ($skipBoilerplate) {
+            $expectedRuntime = self::boilerplateFileNames($testDirectory . \DIRECTORY_SEPARATOR . 'expected');
+            $generatedRuntime = self::boilerplateFileNames($testDirectory . \DIRECTORY_SEPARATOR . 'generated');
+            $stale = array_values(array_diff($expectedRuntime, $generatedRuntime));
+            $missing = array_values(array_diff($generatedRuntime, $expectedRuntime));
+
+            if ([] !== $stale || [] !== $missing) {
+                $this->fail(\sprintf(
+                    'The committed Runtime/ file set drifted from generated output for %s — refresh the expected/ tree (replace-all-expected-fixtures.sh).%s%s',
+                    $fixtureName,
+                    [] === $stale ? '' : "\nCommitted but no longer generated:\n  " . implode("\n  ", $stale),
+                    [] === $missing ? '' : "\nGenerated but not committed:\n  " . implode("\n  ", $missing)
+                ));
+            }
+
             $filter = function (SplFileInfo $file) {
                 if (self::isBoilerplateFile($file->getRelativePathname())) {
                     return false;
@@ -125,8 +168,6 @@ trait FixtureComparisonTrait
             $expectedFinder->filter($filter);
             $generatedFinder->filter($filter);
         }
-
-        $fixtureName = basename($testDirectory);
 
         $this->assertEquals(
             \count($expectedFinder),
