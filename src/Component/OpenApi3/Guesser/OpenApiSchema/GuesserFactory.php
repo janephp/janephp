@@ -51,7 +51,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming, $defaultAdditionalProperties, $chainValidatorFactory));
         $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(Schema::class, $defaultAdditionalProperties));
         $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, Schema::class, $defaultAdditionalProperties));
-        $chainGuesser->addGuesser(new AnyOfReferencefGuesser($denormalizer, $naming, Schema::class));
+        $chainGuesser->addGuesser(new AnyOfReferenceGuesser($denormalizer, $naming, Schema::class));
         $chainGuesser->addGuesser(new OneOfGuesser($denormalizer, Schema::class));
         $chainGuesser->addGuesser(new ArrayGuesser(Schema::class));
         $chainGuesser->addGuesser(new ItemsGuesser(Schema::class));
