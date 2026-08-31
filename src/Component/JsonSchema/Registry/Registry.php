@@ -79,6 +79,11 @@ class Registry implements RegistryInterface
         return $schema->getClass($classReference);
     }
 
+    /**
+     * Baseline options hash for the plain JsonSchema registry, which does not
+     * carry generation options of its own. Components that do (e.g. OpenAPI)
+     * override this with a hash of their tracked options.
+     */
     public function getOptionsHash(): string
     {
         return md5(json_encode([]));
