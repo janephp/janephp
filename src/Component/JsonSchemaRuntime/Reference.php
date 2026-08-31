@@ -106,12 +106,12 @@ class Reference
      */
     public function resolve(?callable $deserializeCallback = null)
     {
-        if (null === $deserializeCallback) {
-            $deserializeCallback = function ($data) { return $data; };
-        }
-
         if (null === $this->resolved) {
             $this->resolved = $this->doResolve();
+        }
+
+        if (null === $deserializeCallback) {
+            return $this->resolved;
         }
 
         return $deserializeCallback($this->resolved);
@@ -292,10 +292,11 @@ class Reference
         // An empty or root origin path degenerates to an empty base directory,
         // which authorizes absolute paths only: containment logic still runs,
         // there is just no meaningful directory to stay under.
-        $basePath = @realpath(\dirname($originPath));
+        $baseDir = \dirname($originPath);
+        $basePath = is_dir($baseDir) ? realpath($baseDir) : false;
 
         if (false === $basePath) {
-            $basePath = \dirname($originPath);
+            $basePath = $baseDir;
         }
 
         $basePath = rtrim(str_replace('\\', '/', $basePath), '/');
@@ -309,7 +310,7 @@ class Reference
             $path = $basePath . '/' . $path;
         }
 
-        $normalized = @realpath($path);
+        $normalized = file_exists($path) ? realpath($path) : false;
         if (false === $normalized) {
             $normalized = $this->normalizePath($path);
         }
@@ -343,7 +344,7 @@ class Reference
             }
 
             $root = str_replace('\\', '/', $root);
-            $realRoot = @realpath($root);
+            $realRoot = is_dir($root) ? realpath($root) : false;
 
             $root = false !== $realRoot ? str_replace('\\', '/', $realRoot) : $this->normalizePath($root);
 
