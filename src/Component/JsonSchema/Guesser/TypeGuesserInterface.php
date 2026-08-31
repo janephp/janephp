@@ -5,7 +5,7 @@ namespace Jane\Component\JsonSchema\Guesser;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\Registry\Registry;
 
-interface TypeGuesserInterface
+interface TypeGuesserInterface extends GuesserInterface
 {
     /**
      * Return all types guessed.

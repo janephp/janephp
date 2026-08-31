@@ -48,6 +48,15 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
         }
     }
 
+    /**
+     * The dispatcher itself never directly supports objects; it routes to the
+     * registered guessers instead.
+     */
+    public function supportObject($object): bool
+    {
+        return false;
+    }
+
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         if (\is_bool($object)) {

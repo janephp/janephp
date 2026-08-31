@@ -4,6 +4,7 @@ namespace Jane\Component\JsonSchema\Guesser\JsonSchema;
 
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareTrait;
+use Jane\Component\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\Component\JsonSchema\Guesser\Guess\ArrayType;
 use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
@@ -11,8 +12,9 @@ use Jane\Component\JsonSchema\Guesser\GuesserInterface;
 use Jane\Component\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
+use Jane\Component\JsonSchema\Registry\Schema;
 
-class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface
+class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, ClassGuesserInterface
 {
     use ChainGuesserAwareTrait;
 
@@ -26,7 +28,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /** @var array<string, int> */
     protected array $refGuessLevel = [];
 
-    /**
+/**
      * Guess the class of array items.
      *
      * In this base guesser the check targets {@see Schema::class} (the schema
