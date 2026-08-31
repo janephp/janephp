@@ -1,0 +1,10 @@
+<?php
+
+return [
+    'json-schema-file' => __DIR__ . '/schema.json',
+    'root-class' => 'Test',
+    'namespace' => 'Jane\Component\JsonSchema\Tests\DefaultAdditionalPropsFalse',
+    'directory' => __DIR__ . '/generated',
+    'validation' => true,
+    'default-additional-properties' => false,
+];

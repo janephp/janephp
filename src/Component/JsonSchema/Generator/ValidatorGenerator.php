@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Generator;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use Jane\Component\JsonSchema\Guesser\DefaultAdditionalPropertiesTrait;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
 use Jane\Component\JsonSchema\Registry\Schema;
@@ -16,13 +17,17 @@ use Symfony\Component\Validator\Constraints\Required;
 
 class ValidatorGenerator implements GeneratorInterface
 {
+    use DefaultAdditionalPropertiesTrait;
+
     public const FILE_TYPE_VALIDATOR = 'validator';
     public const VALIDATOR_INTERFACE_NAME = 'ValidatorInterface';
     public const VALIDATOR_EXCEPTION_NAME = 'ValidationException';
 
     public function __construct(
         private readonly Naming $naming,
+        ?bool $defaultAdditionalProperties = null,
     ) {
+        $this->defaultAdditionalProperties = $defaultAdditionalProperties;
     }
 
     public function generate(Schema $schema, string $className, Context $context): void
@@ -87,12 +92,13 @@ class ValidatorGenerator implements GeneratorInterface
             }
 
             if (\count($collectionItems) > 0) {
-                $allowExtraFields = $class->getObject()->getAdditionalProperties();
-                if (null === $allowExtraFields || $allowExtraFields) {
-                    $allowExtraFields = 'true';
-                } else {
-                    $allowExtraFields = 'false';
-                }
+                // Same resolution as the model generator: the explicit
+                // additionalProperties value from the specification wins, then
+                // the `default-additional-properties` option, then the
+                // component default. Unspecified keeps the legacy validator
+                // default (extra fields allowed).
+                $additionalProperties = $this->getEffectiveAdditionalProperties($class->getObject());
+                $allowExtraFields = (null === $additionalProperties || $additionalProperties) ? 'true' : 'false';
 
                 $constraintsItems[] = new Expr\ArrayItem(new Expr\New_(new Node\Name\FullyQualified(Collection::class), [
                     new Node\Arg(

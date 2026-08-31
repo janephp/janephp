@@ -158,6 +158,14 @@ Other options are available to customize the generated code:
   [Custom validators](../guides/validation.md#custom-validators) section of the Validation guide.
 - `include-null-value`: Will enable a way to manage null values. By default it is enabled.
 - `enums-as-objects`: When enabled, schemas with `type: string` or `type: integer` and an `enum` will be generated as native PHP backed enums instead of plain scalar types, and properties referencing these schemas will be typed with the enum class. Disabled by default.
+- `default-additional-properties`: Controls how a schema that leaves `additionalProperties` unspecified is treated.
+  `null` (default) keeps each component's own behavior: closed models for the JsonSchema component and OpenAPI 2,
+  open models (unknown keys captured) for OpenAPI 3 / 3.1. `true` treats unspecified `additionalProperties` as open
+  in every component; `false` treats it as closed in every component — the recommended setting when migrating from
+  older Jane versions where unspecified meant closed. An explicit `additionalProperties` value in the specification
+  always wins over this option. The generated Symfony validation `Collection` constraint (`allowExtraFields`) follows
+  the same resolution: while the option is unset it keeps its previous behavior (extra fields allowed), and once the
+  option is set — or the specification sets `additionalProperties: false` — it matches the generated model.
 - `allow-external-refs`: A boolean which indicates whether remote (`http://` / `https://`) references may be resolved
   during code generation. Disabled by default: Jane rejects external references to protect you from SSRF and
   unwanted network access at generation time. Enable it only if your specification legitimately references remote

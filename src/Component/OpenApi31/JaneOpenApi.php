@@ -58,7 +58,7 @@ class JaneOpenApi extends CommonJaneOpenApi
         yield GeneratorFactory::build($denormalizer, $options['endpoint-generator'] ?: EndpointGenerator::class, $operationNaming);
         yield new RuntimeGenerator($naming, $parser);
         if ($options['validation'] ?? false) {
-            yield new ValidatorGenerator($naming);
+            yield new ValidatorGenerator($naming, $options['default-additional-properties'] ?? null);
         }
         if ($options['enums-as-objects'] ?? false) {
             yield new EnumGenerator();

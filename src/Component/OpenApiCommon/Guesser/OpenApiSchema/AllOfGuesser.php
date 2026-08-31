@@ -14,8 +14,9 @@ class AllOfGuesser extends BaseAllOfGuesser
         DenormalizerInterface $denormalizer,
         Naming $naming,
         private readonly string $schemaClass,
+        ?bool $defaultAdditionalProperties = null,
     ) {
-        parent::__construct($denormalizer, $naming);
+        parent::__construct($denormalizer, $naming, $defaultAdditionalProperties);
     }
 
     protected function createClassGuess($object, $reference, $name, $extensions): BaseClassGuess

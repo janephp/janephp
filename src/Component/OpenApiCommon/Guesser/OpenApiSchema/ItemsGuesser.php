@@ -7,4 +7,6 @@ use Jane\Component\JsonSchema\Guesser\JsonSchema\ItemsGuesser as BaseItemsGuesse
 class ItemsGuesser extends BaseItemsGuesser
 {
     use SchemaClassTrait;
+
+    protected ?bool $defaultAdditionalProperties = null;
 }

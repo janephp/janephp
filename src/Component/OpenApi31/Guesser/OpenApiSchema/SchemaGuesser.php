@@ -60,9 +60,13 @@ class SchemaGuesser extends ObjectGuesser
 
     protected function resolveAdditionalProperties($object, string $reference): array
     {
-        if (null === $object->getAdditionalProperties()
-            && (!method_exists($object, 'getPatternProperties') || null === $object->getPatternProperties())
-        ) {
+        $unspecified = null === $object->getAdditionalProperties()
+            && (!method_exists($object, 'getPatternProperties') || null === $object->getPatternProperties());
+
+        // OpenApi31 treats an unspecified additionalProperties as open (JSON
+        // Schema 2020-12 default). The option can force it closed instead;
+        // explicit values always fall through to the base resolution.
+        if ($unspecified && false !== $this->defaultAdditionalProperties) {
             return [
                 '.*' => [
                     'object' => null,

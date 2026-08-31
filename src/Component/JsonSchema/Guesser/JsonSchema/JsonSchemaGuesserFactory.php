@@ -19,6 +19,7 @@ class JsonSchemaGuesserFactory
         $outputDateTimeFormat = isset($options['date-format']) ? $options['date-format'] : \DateTimeInterface::RFC3339;
         $inputDateTimeFormat = isset($options['date-input-format']) ? $options['date-input-format'] : null;
         $datePreferInterface = isset($options['date-prefer-interface']) ? $options['date-prefer-interface'] : null;
+        $defaultAdditionalProperties = $options['default-additional-properties'] ?? null;
 
         if ($options['enums-as-objects'] ?? false) {
             $chainGuesser->addGuesser(new EnumGuesser($naming));
@@ -29,16 +30,16 @@ class JsonSchemaGuesserFactory
         $chainGuesser->addGuesser(new SimpleTypeGuesser());
         $chainGuesser->addGuesser(new ArrayGuesser());
         $chainGuesser->addGuesser(new MultipleGuesser());
-        $chainGuesser->addGuesser(new ObjectGuesser($denormalizer, $naming));
+        $chainGuesser->addGuesser(new ObjectGuesser($denormalizer, $naming, $defaultAdditionalProperties));
         $chainGuesser->addGuesser(new DefinitionGuesser());
         $chainGuesser->addGuesser(new ItemsGuesser());
         $chainGuesser->addGuesser(new AnyOfGuesser());
-        $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming));
+        $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, $defaultAdditionalProperties));
         $chainGuesser->addGuesser(new OneOfGuesser());
         $chainGuesser->addGuesser(new ObjectOneOfGuesser($denormalizer, $merger));
         $chainGuesser->addGuesser(new PatternPropertiesGuesser());
         $chainGuesser->addGuesser(new AdditionalItemsGuesser());
-        $chainGuesser->addGuesser(new AdditionalPropertiesGuesser());
+        $chainGuesser->addGuesser(new AdditionalPropertiesGuesser($defaultAdditionalProperties));
 
         return $chainGuesser;
     }
