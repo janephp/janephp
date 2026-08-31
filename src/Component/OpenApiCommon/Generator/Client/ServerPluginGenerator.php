@@ -29,8 +29,6 @@ trait ServerPluginGenerator
 
     /**
      * @param object $openApi
-     *
-     * @return array
      */
     protected function getServerPluginsStatements(mixed $openApi): array
     {
