@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApi3\Guesser\OpenApiSchema;
 
 use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\JsonSchema\Generator\Options;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
@@ -26,17 +27,18 @@ class GuesserFactory
 {
     public static function create(DenormalizerInterface $denormalizer, array $options = [], ?ChainValidatorFactory $chainValidatorFactory = null): ChainGuesser
     {
+        $options = Options::fromArray($options);
         $naming = new Naming();
-        $dateFormat = $options['full-date-format'] ?? 'Y-m-d';
-        $outputDateTimeFormat = $options['date-format'] ?? \DateTimeInterface::RFC3339;
-        $inputDateTimeFormat = $options['date-input-format'] ?? null;
-        $datePreferInterface = $options['date-prefer-interface'] ?? null;
-        $customStringFormatMapping = $options['custom-string-format-mapping'] ?? [];
-        $operationNaming = OperationNamingFactory::create($options['operation-namings'] ?? []);
-        $defaultAdditionalProperties = $options['default-additional-properties'] ?? null;
+        $dateFormat = $options->fullDateFormat;
+        $outputDateTimeFormat = $options->dateFormat;
+        $inputDateTimeFormat = $options->dateInputFormat;
+        $datePreferInterface = $options->datePreferInterface;
+        $customStringFormatMapping = $options->customStringFormatMapping;
+        $operationNaming = OperationNamingFactory::create($options->operationNamings);
+        $defaultAdditionalProperties = $options->defaultAdditionalProperties;
 
         $chainGuesser = new ChainGuesser();
-        if ($options['enums-as-objects'] ?? false) {
+        if ($options->enumsAsObjects) {
             $chainGuesser->addGuesser(new EnumGuesser(Schema::class, $naming));
         }
         $chainGuesser->addGuesser(new SecurityGuesser());

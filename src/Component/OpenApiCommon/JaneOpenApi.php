@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApiCommon;
 use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\JsonSchema\Generator\Options;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
@@ -190,24 +191,26 @@ abstract class JaneOpenApi extends ChainGenerator
 
     public static function build(array $options = [])
     {
-        ReferenceResolver::default()->applyOptions($options);
+        $options = Options::fromArray($options);
+        $optionsArray = $options->toArray();
+        ReferenceResolver::default()->applyOptions($optionsArray);
 
         $chainValidatorFactory = new ChainValidatorFactory(
-            $options['full-date-format'] ?? 'Y-m-d',
-            $options['date-format'] ?? \DateTimeInterface::RFC3339,
-            $options['date-input-format'] ?? null,
+            $options->fullDateFormat,
+            $options->dateFormat,
+            $options->dateInputFormat,
         );
-        foreach ($options['validators'] ?? [] as $validator) {
+        foreach ($options->validators as $validator) {
             $chainValidatorFactory->addValidator($validator);
         }
 
-        $instance = static::create($options, $chainValidatorFactory);
-        $instance->options = $options;
+        $instance = static::create($optionsArray, $chainValidatorFactory);
+        $instance->options = $optionsArray;
         $instance->chainValidatorFactory = $chainValidatorFactory;
 
         /** @var DenormalizerInterface $denormalizer */
         $denormalizer = $instance->getSerializer();
-        $generators = static::generators($denormalizer, $options);
+        $generators = static::generators($denormalizer, $optionsArray);
 
         foreach ($generators as $generator) {
             $instance->addGenerator($generator);
