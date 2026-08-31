@@ -34,7 +34,7 @@ class GetFoo extends \Jane\Component\OpenApi31\Tests\StatusCodeRange\Runtime\Cli
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\StatusCodeRange\Model\Message', 'json');
         }
         if (404 === $status) {
@@ -43,7 +43,7 @@ class GetFoo extends \Jane\Component\OpenApi31\Tests\StatusCodeRange\Runtime\Cli
         if ($status >= 400 && $status <= 499) {
             throw new \Jane\Component\OpenApi31\Tests\StatusCodeRange\Exception\GetFooClientErrorException($response);
         }
-        if (is_null($contentType) === false && ($status >= 500 && $status <= 599 && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && ($status >= 500 && $status <= 599 && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\StatusCodeRange\Exception\GetFooServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\StatusCodeRange\Model\Message', 'json'), $response);
         }
         return null;

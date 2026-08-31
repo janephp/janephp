@@ -11,7 +11,7 @@
         "Endpoint/ApiBooksIdPut.php": "f9ea66bd1b22aba34354a2bb781098860e9eb6ddcdc8ca51e35e09ed6aa79cea",
         "Endpoint/ApiBooksIdgenerateCoverPut.php": "55b40a168838e867de7c9d2be9169b25198d03335c65dc48ca7005dc3068c9f6",
         "Endpoint/ApiBooksPost.php": "d791148ce7b5ba2969529aaf5abfcb551a5897d728f4037951ac765d1548cede",
-        "Endpoint/ApiGetStats.php": "b05f19d9d1c95a78a555f494dcb03ddd9f3253e8eb5897ed9b3826586783414b",
+        "Endpoint/ApiGetStats.php": "1336c5cc2aa15749025fc6e3f6f90edd6533844a4531164f48595091a1260e66",
         "Endpoint/ApiParchmentsGetCollection.php": "b4726a754c132a24bc282dea4e6259587b2cbd92689af6a76f365390eca64628",
         "Endpoint/ApiParchmentsIdDelete.php": "043d0efbfe426320884da3a2da0fe665deaee3759639c17b33d5a2f81c0fe3b9",
         "Endpoint/ApiParchmentsIdGet.php": "49082d35534773901f5feb9d246c1d13ec1bdd49b3fe367e801ee6906def712f",
