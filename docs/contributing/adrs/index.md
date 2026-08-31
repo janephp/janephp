@@ -25,6 +25,7 @@ Each record follows a lightweight ADR format:
 | [0005](0005-php-floor.md) | Stay within the PHP `^8.1` floor | Accepted |
 | [0006](0006-follow-upstream-specifications.md) | Follow upstream specifications faithfully | Accepted |
 | [0007](0007-tiered-fixture-baselines.md) | Tiered fixture baselines — content trees, manifests, centralized boilerplate | Accepted |
+| [0008](0008-static-analysis-of-generated-code.md) | Generated code is statically analysed with Mago | Accepted |
 
 ## Adding a new record
 

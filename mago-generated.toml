@@ -1,0 +1,72 @@
+# Static analysis of the code Jane generates: the committed `expected/` trees
+# of every fixture. The root phpstan.neon deliberately excludes those trees, so
+# this second configuration covers what the project actually ships.
+#
+# Run it via `castor qa:mago:generated` (see docs/contributing/tests.md and
+# docs/contributing/adrs/0008-static-analysis-of-generated-code.md).
+
+# Pinned so the committed baseline does not depend on the contributor's PHP.
+php-version = "8.4"
+
+[source]
+paths = [
+    "src/Component/JsonSchema/Tests/fixtures",
+    "src/Component/OpenApi2/Tests/fixtures",
+    "src/Component/OpenApi3/Tests/fixtures",
+    "src/Component/OpenApi31/Tests/fixtures",
+]
+# Symbols the generated code references without being analysed themselves.
+includes = ["vendor", "src/Component/JsonSchemaRuntime", "src/Component/OpenApiRuntime"]
+excludes = [
+    # Live generator output: gitignored, already compared file-by-file against
+    # expected/ by the fixture tests.
+    "**/generated/**",
+    # Deliberately partial trees which would report their own missing runtime
+    # classes. Those templates live in src/Component/*/Generator/Runtime/data
+    # and are analysed as part of src/.
+    "**/runtime-boilerplate/**",
+    # Fixture configuration, not generated output.
+    "**/.jane*",
+]
+
+[analyzer]
+baseline = "mago-generated-baseline.toml"
+# Fail on new findings of every severity: several kept codes (for example
+# redundant-comparison) report below "error".
+minimum-fail-level = "note"
+
+# Generated code conveys types through `@var` / `@param` docblocks and moves
+# values through `mixed`-typed normalizer plumbing by design. The codes below
+# flag that design itself — every one of their findings asks for differently
+# shaped output (strictness preferences), not for a bug fix, so they are
+# switched off wholesale instead of baselined. Everything NOT listed here is a
+# defect class and belongs in the baseline, where fixing a generator bug makes
+# entries disappear. The measurements behind this split are recorded in ADR
+# 0008. Audit what is being suppressed with `--skip-ignores`.
+ignore = [
+    # `mixed` flowing out of normalizer plumbing (~135 000 findings, 77 % of
+    # the corpus): PHPStan only reports these at levels 8-9.
+    "mixed-argument",
+    "mixed-method-access",
+    "mixed-operand",
+    "mixed-assignment",
+    "mixed-array-access",
+    "mixed-array-assignment",
+    "mixed-property-access",
+    "mixed-return-statement",
+    # foreach / property access on values inferred only as mixed or nonnull —
+    # the same inference limit, different reporters (every finding in the
+    # corpus resolves to `mixed` or `nonnull`).
+    "invalid-iterator",
+    "invalid-member-selector",
+    # "provided type is less specific than the parameter/return type":
+    # covariance rigor over values the docblocks already describe.
+    "less-specific-argument",
+    "less-specific-return-statement",
+    "less-specific-nested-argument-type",
+    # Requests for generics annotations the generator does not emit.
+    "missing-template-parameter",
+    # Dynamic `$object->{$property}` access is how normalizers work.
+    "string-member-selector",
+    "ambiguous-object-method-access",
+]

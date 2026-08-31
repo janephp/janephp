@@ -38,6 +38,28 @@ function qa_phpstan(bool $generateBaseline = false): void
     phpstan($params, '2.2.2');
 }
 
+#[AsTask('mago:generated', namespace: 'qa', description: 'Run Mago static analysis over the code Jane generates (fixture expected/ trees)')]
+function qa_mago_generated(bool $generateBaseline = false): void
+{
+    // A composer dev dependency (pinned exactly: the committed baseline is
+    // only reproducible against that release), unlike the castor-managed QA
+    // phars — Mago is a native binary distributed through a composer wrapper.
+    $binary = __DIR__ . '/vendor/bin/mago';
+    if (!file_exists($binary)) {
+        throw new RuntimeException('vendor/bin/mago not found: run `composer update` first.');
+    }
+
+    $params = [$binary, '--workspace', __DIR__, '--config', __DIR__ . '/mago-generated.toml', 'analyze'];
+
+    if ($generateBaseline) {
+        $params[] = '--generate-baseline';
+    }
+
+    run($params);
+
+    io()->success($generateBaseline ? 'Baseline regenerated.' : 'No new findings in generated code.');
+}
+
 #[AsTask('install', namespace: 'doc', description: 'Install tool for documentation (need poetry)')]
 function doc_install(): void
 {

@@ -52,12 +52,43 @@ invalid PHP carries a `.known-invalid-php` marker file (its content links to the
 gate asserts the output still *fails* to parse — once the bug is fixed, the marker file must be deleted along with
 refreshing the baseline.
 
+### Static analysis of generated code
+
+The syntax gate proves generated code *parses*; [Mago](https://mago.carthage.software/) proves more of it is
+*correct*. The root `phpstan.neon` deliberately excludes fixture trees, so `mago-generated.toml` analyses the
+committed `expected/` tree of **every** fixture in one two-second process (`runtime-boilerplate` excepted — its
+deliberately partial trees would report their own missing runtime classes). This only works because every fixture
+generates into its own namespace (`ExpectedNamespaceUniquenessTest` guards this; see
+[ADR 0008](adrs/0008-static-analysis-of-generated-code.md)):
+
+```bash
+castor qa:mago:generated
+```
+
+Mago comes in as a composer dev dependency pinned to an exact release (the committed baseline is only reproducible
+against that release), so `composer update` is all the setup the task needs. Issue codes that merely dislike the *shape* of generated output — values moving through `mixed`-typed normalizer
+plumbing, docblock-conveyed types — are switched off in `mago-generated.toml`'s `ignore` list, each with its
+justification; every remaining code marks a defect (see [ADR 0008](adrs/0008-static-analysis-of-generated-code.md)).
+Findings that predate the gate are frozen in `mago-generated-baseline.toml`, so the check is green today and fails
+on anything *new*. Fixing a generator bug shrinks the baseline; regenerate it with:
+
+```bash
+castor qa:mago:generated --generate-baseline
+```
+
+Never add an entry to the baseline by hand to silence a new finding — fix the generator, or the baseline stops
+meaning anything.
+
 > **Important:** a few fixtures are *executed* by functional tests (their classes are loaded at runtime, through the
 > composer classmap or explicit `require_once`). Those fixtures keep their full `expected/` trees, including `Runtime/`
 > copies: currently `multi-namespace` (JsonSchema), `docker-api`, `issue-793`, `bad-response-exception`,
 > `multipart-boolean`, `multipart-nested-object` and `issue-680` (OpenAPI 2 / 3).
 
 ### Creating / refreshing baselines
+
+A new fixture's config must generate into a namespace no other fixture uses — the convention is the component's
+`…\Tests\Expected\` followed by the fixture directory name in StudlyCase (`all-of-merge` →
+`…\Tests\Expected\AllOfMerge`). `ExpectedNamespaceUniquenessTest` fails if two fixtures declare the same class.
 
 If you just created a fixture folder and don't have `expected/` folder, just run tests and check manually
 `generated/` files and if everything is ok, you can copy the folder and name it `expected/`. If you have to do this
