@@ -19,9 +19,9 @@ use Psr\Http\Message\StreamInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
-    use PathParameterNameTrait;
     use OpenApiNumberTypeResolverTrait;
     use OptionResolverNormalizationTrait;
+    use PathParameterNameTrait;
 
     /**
      * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
