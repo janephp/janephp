@@ -10,13 +10,14 @@ use Jane\Component\JsonSchemaRuntime\Exception\ReferenceFetchException;
 use Jane\Component\JsonSchemaRuntime\Exception\ReferencePointerException;
 use Jane\Component\JsonSchemaRuntime\Exception\ReferenceResolveException;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\ReferenceResolver;
 use PHPUnit\Framework\TestCase;
 
 class ReferenceTest extends TestCase
 {
     protected function setUp(): void
     {
-        Reference::resetConfig();
+        ReferenceResolver::default()->resetConfiguration();
     }
 
     /**
@@ -47,7 +48,7 @@ class ReferenceTest extends TestCase
 
     public function testExternalRefAllowed(): void
     {
-        Reference::allowExternalRefs(true);
+        ReferenceResolver::default()->setAllowExternalRefs(true);
         // Served by the loopback schema server: redirects are not followed
         // anymore, so the reference must point at a directly reachable host.
         $ref = new Reference(LocalSchemaServer::url(__DIR__ . '/schema.json'), __DIR__ . '/schema.json');
@@ -59,8 +60,8 @@ class ReferenceTest extends TestCase
 
     public function testExternalRefBlockedByHostAllowlist(): void
     {
-        Reference::allowExternalRefs(true);
-        Reference::setAllowedExternalHosts(['example.com']);
+        ReferenceResolver::default()->setAllowExternalRefs(true);
+        ReferenceResolver::default()->setAllowedExternalHosts(['example.com']);
         $ref = new Reference(LocalSchemaServer::url(__DIR__ . '/schema.json'), __DIR__ . '/schema.json');
 
         $this->expectException(\RuntimeException::class);
@@ -70,8 +71,8 @@ class ReferenceTest extends TestCase
 
     public function testExternalRefAllowedByHostAllowlist(): void
     {
-        Reference::allowExternalRefs(true);
-        Reference::setAllowedExternalHosts(['127.0.0.1']);
+        ReferenceResolver::default()->setAllowExternalRefs(true);
+        ReferenceResolver::default()->setAllowedExternalHosts(['127.0.0.1']);
         $ref = new Reference(LocalSchemaServer::url(__DIR__ . '/schema.json'), __DIR__ . '/schema.json');
 
         $result = $ref->resolve();
@@ -81,8 +82,8 @@ class ReferenceTest extends TestCase
 
     public function testExternalRefSubdomainMatchesHostAllowlistValidationPasses(): void
     {
-        Reference::allowExternalRefs(true);
-        Reference::setAllowedExternalHosts(['example.com']);
+        ReferenceResolver::default()->setAllowExternalRefs(true);
+        ReferenceResolver::default()->setAllowedExternalHosts(['example.com']);
         // Nothing needs to be reachable at sub.example.com: the point is that
         // the host allowlist check passes for a subdomain of an allowed host,
         // so the fetch proceeds (and may fail later for network reasons).
@@ -229,8 +230,8 @@ class ReferenceTest extends TestCase
         // with "Unable to fetch" instead of reporting the redirect.
         $childCode = <<<'PHP'
 require $argv[1];
-Jane\Component\JsonSchemaRuntime\Reference::allowExternalRefs(true);
-Jane\Component\JsonSchemaRuntime\Reference::setAllowedExternalHosts(['127.0.0.1']);
+Jane\Component\JsonSchemaRuntime\ReferenceResolver::default()->setAllowExternalRefs(true);
+Jane\Component\JsonSchemaRuntime\ReferenceResolver::default()->setAllowedExternalHosts(['127.0.0.1']);
 try {
     (new Jane\Component\JsonSchemaRuntime\Reference($argv[2], $argv[3]))->resolve();
     echo 'NO_EXCEPTION';
@@ -297,9 +298,9 @@ PHP;
         // the resolution must succeed through the redirect.
         $childCode = <<<'PHP'
 require $argv[1];
-Jane\Component\JsonSchemaRuntime\Reference::allowExternalRefs(true);
-Jane\Component\JsonSchemaRuntime\Reference::setAllowedExternalHosts(['127.0.0.1']);
-Jane\Component\JsonSchemaRuntime\Reference::setFollowRedirects(true);
+Jane\Component\JsonSchemaRuntime\ReferenceResolver::default()->setAllowExternalRefs(true);
+Jane\Component\JsonSchemaRuntime\ReferenceResolver::default()->setAllowedExternalHosts(['127.0.0.1']);
+Jane\Component\JsonSchemaRuntime\ReferenceResolver::default()->setFollowRedirects(true);
 try {
     $result = (new Jane\Component\JsonSchemaRuntime\Reference($argv[2], $argv[3]))->resolve();
     echo 'RESOLVED:' . var_export($result, true);
@@ -362,8 +363,8 @@ PHP;
         $port = (int) substr($name, strrpos($name, ':') + 1);
         fclose($server);
 
-        Reference::allowExternalRefs(true);
-        Reference::setAllowedExternalHosts(['127.0.0.1']);
+        ReferenceResolver::default()->setAllowExternalRefs(true);
+        ReferenceResolver::default()->setAllowedExternalHosts(['127.0.0.1']);
         $ref = new Reference(\sprintf('http://127.0.0.1:%d/doc.json', $port), __DIR__ . '/schema.json');
 
         $this->expectException(ReferenceFetchException::class);
@@ -441,7 +442,7 @@ PHP;
         $treeRoot = $this->createTempTree();
 
         try {
-            Reference::setAllowedLocalRefRoots([$treeRoot . '/sibling']);
+            ReferenceResolver::default()->setAllowedLocalRefRoots([$treeRoot . '/sibling']);
             $ref = new Reference('../sibling/other.json#/Foo', $treeRoot . '/base/schema.json');
 
             $result = $ref->resolve();
@@ -457,7 +458,7 @@ PHP;
         $treeRoot = $this->createTempTree();
 
         try {
-            Reference::setAllowedLocalRefRoots([$treeRoot . '/sibling']);
+            ReferenceResolver::default()->setAllowedLocalRefRoots([$treeRoot . '/sibling']);
             $ref = new Reference('../elsewhere/outside.json#/Qux', $treeRoot . '/base/schema.json');
 
             $this->expectException(\RuntimeException::class);
@@ -474,7 +475,7 @@ PHP;
 
         try {
             // "…/base" must not authorize "…/base2": containment is checked on full path segments.
-            Reference::setAllowedLocalRefRoots([$treeRoot . '/base']);
+            ReferenceResolver::default()->setAllowedLocalRefRoots([$treeRoot . '/base']);
             $ref = new Reference('../base2/file.json#/Baz', $treeRoot . '/base/schema.json');
 
             $this->expectException(\RuntimeException::class);
@@ -490,7 +491,7 @@ PHP;
         $treeRoot = $this->createTempTree();
 
         try {
-            Reference::setAllowedLocalRefRoots([$treeRoot . '/sibling']);
+            ReferenceResolver::default()->setAllowedLocalRefRoots([$treeRoot . '/sibling']);
 
             $sameDirectory = new Reference('schema.json', $treeRoot . '/base/schema.json');
             self::assertIsArray($sameDirectory->resolve());
@@ -507,10 +508,10 @@ PHP;
         $treeRoot = $this->createTempTree();
 
         try {
-            Reference::setAllowedLocalRefRoots([$treeRoot . '/sibling']);
+            ReferenceResolver::default()->setAllowedLocalRefRoots([$treeRoot . '/sibling']);
             self::assertIsArray((new Reference('../sibling/other.json#/Foo', $treeRoot . '/base/schema.json'))->resolve());
 
-            Reference::resetConfig();
+            ReferenceResolver::default()->resetConfiguration();
 
             $blocked = new Reference('../sibling/other.json#/Foo', $treeRoot . '/base/schema.json');
 

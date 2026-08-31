@@ -9,7 +9,7 @@ use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\Registry\Registry;
-use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\ReferenceResolver;
 use Jane\Component\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
@@ -35,6 +35,8 @@ abstract class JaneOpenApi extends ChainGenerator
 
     protected SchemaParser $schemaParser;
     protected Naming $naming;
+
+    protected ChainValidatorFactory $chainValidatorFactory;
 
     /** @var array<string, mixed> */
     protected array $options = [];
@@ -73,7 +75,7 @@ abstract class JaneOpenApi extends ChainGenerator
             $schema->setParsed($openApiSpec);
         }
 
-        $chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->serializer);
+        $chainValidator = $this->chainValidatorFactory->create($this->naming, $registry, $this->serializer);
         $checkWhitelistedPaths = \count($registry->getWhitelistedPaths()) > 0;
 
         foreach ($schemas as $schema) {
@@ -182,38 +184,26 @@ abstract class JaneOpenApi extends ChainGenerator
         return new Serializer([new $objectNormalizerClass()], $encoders);
     }
 
-    abstract protected static function create(array $options = []): self;
+    abstract protected static function create(array $options = [], ?ChainValidatorFactory $chainValidatorFactory = null): self;
 
     abstract protected static function generators(DenormalizerInterface $denormalizer, array $options = []): \Generator;
 
     public static function build(array $options = [])
     {
-        Reference::resetConfig();
-        if ($options['allow-external-refs'] ?? false) {
-            Reference::allowExternalRefs(true);
-        }
-        if (!empty($options['external-ref-allowed-hosts'] ?? [])) {
-            Reference::setAllowedExternalHosts($options['external-ref-allowed-hosts']);
-        }
-        if (!empty($options['external-ref-follow-redirects'] ?? false)) {
-            Reference::setFollowRedirects(true);
-        }
-        if (!empty($options['allowed-local-ref-roots'] ?? [])) {
-            Reference::setAllowedLocalRefRoots($options['allowed-local-ref-roots']);
-        }
+        ReferenceResolver::default()->applyOptions($options);
 
-        ChainValidatorFactory::resetCustomValidators();
-        ChainValidatorFactory::setDateFormats(
+        $chainValidatorFactory = new ChainValidatorFactory(
             $options['full-date-format'] ?? 'Y-m-d',
             $options['date-format'] ?? \DateTimeInterface::RFC3339,
             $options['date-input-format'] ?? null,
         );
         foreach ($options['validators'] ?? [] as $validator) {
-            ChainValidatorFactory::addValidator($validator);
+            $chainValidatorFactory->addValidator($validator);
         }
 
-        $instance = static::create($options);
+        $instance = static::create($options, $chainValidatorFactory);
         $instance->options = $options;
+        $instance->chainValidatorFactory = $chainValidatorFactory;
 
         /** @var DenormalizerInterface $denormalizer */
         $denormalizer = $instance->getSerializer();

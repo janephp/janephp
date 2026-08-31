@@ -5,12 +5,13 @@ namespace Jane\Component\JsonSchema\Guesser\JsonSchema;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserFactory;
+use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\Tools\JsonSchemaMerger;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class JsonSchemaGuesserFactory
 {
-    public static function create(DenormalizerInterface $denormalizer, array $options = []): ChainGuesser
+    public static function create(DenormalizerInterface $denormalizer, array $options = [], ?ChainValidatorFactory $chainValidatorFactory = null): ChainGuesser
     {
         $chainGuesser = ChainGuesserFactory::create($denormalizer);
         $naming = new Naming();
@@ -30,7 +31,7 @@ class JsonSchemaGuesserFactory
         $chainGuesser->addGuesser(new SimpleTypeGuesser());
         $chainGuesser->addGuesser(new ArrayGuesser());
         $chainGuesser->addGuesser(new MultipleGuesser());
-        $chainGuesser->addGuesser(new ObjectGuesser($denormalizer, $naming, $defaultAdditionalProperties));
+        $chainGuesser->addGuesser(new ObjectGuesser($denormalizer, $naming, $defaultAdditionalProperties, $chainValidatorFactory));
         $chainGuesser->addGuesser(new DefinitionGuesser());
         $chainGuesser->addGuesser(new ItemsGuesser());
         $chainGuesser->addGuesser(new AnyOfGuesser());

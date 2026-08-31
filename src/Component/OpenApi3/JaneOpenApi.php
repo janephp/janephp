@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi3;
 use Jane\Component\JsonSchema\Generator\EnumGenerator;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Generator\ValidatorGenerator;
+use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\OpenApi3\Generator\EndpointGenerator;
 use Jane\Component\OpenApi3\Generator\GeneratorFactory;
 use Jane\Component\OpenApi3\Guesser\OpenApiSchema\GuesserFactory;
@@ -23,13 +24,13 @@ class JaneOpenApi extends CommonJaneOpenApi
     protected const OBJECT_NORMALIZER_CLASS = JsonSchema\Normalizer\JaneObjectNormalizer::class;
     protected const WHITELIST_FETCH_CLASS = WhitelistedSchema::class;
 
-    protected static function create(array $options = []): CommonJaneOpenApi
+    protected static function create(array $options = [], ?ChainValidatorFactory $chainValidatorFactory = null): CommonJaneOpenApi
     {
         $serializer = self::buildSerializer();
 
         return new self(
             SchemaParser::class,
-            GuesserFactory::create($serializer, $options),
+            GuesserFactory::create($serializer, $options, $chainValidatorFactory),
             $options['strict'] ?? true
         );
     }

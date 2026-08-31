@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApi3\Guesser\OpenApiSchema;
 
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
+use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AdditionalPropertiesGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AllOfGuesser;
@@ -23,7 +24,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class GuesserFactory
 {
-    public static function create(DenormalizerInterface $denormalizer, array $options = []): ChainGuesser
+    public static function create(DenormalizerInterface $denormalizer, array $options = [], ?ChainValidatorFactory $chainValidatorFactory = null): ChainGuesser
     {
         $naming = new Naming();
         $dateFormat = $options['full-date-format'] ?? 'Y-m-d';
@@ -45,7 +46,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new BinaryStringFormatGuesser(Schema::class));
         $chainGuesser->addGuesser(new ReferenceGuesser($denormalizer, Schema::class));
         $chainGuesser->addGuesser(new OpenApiGuesser($denormalizer, $operationNaming));
-        $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming, $defaultAdditionalProperties));
+        $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming, $defaultAdditionalProperties, $chainValidatorFactory));
         $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(Schema::class, $defaultAdditionalProperties));
         $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, Schema::class, $defaultAdditionalProperties));
         $chainGuesser->addGuesser(new AnyOfReferencefGuesser($denormalizer, $naming, Schema::class));
