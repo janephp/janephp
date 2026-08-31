@@ -1,12 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Generator\RequestBodyContent;
+namespace Jane\Component\OpenApiCommon\Generator\RequestBodyContent;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
-use Jane\Component\OpenApi3\Generator\RequestBodyContentGeneratorInterface;
-use Jane\Component\OpenApi3\Guesser\GuessClass;
-use Jane\Component\OpenApi3\JsonSchema\Model\MediaType;
-use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
+use Jane\Component\OpenApiCommon\Guesser\GuessClass;
 use Jane\Component\OpenApiCommon\Naming\XNamespaceResolver;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
@@ -18,20 +15,25 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 abstract class AbstractBodyContentGenerator implements RequestBodyContentGeneratorInterface
 {
     protected GuessClass $guessClass;
+
+    private readonly string $schemaClass;
+
     public const PHP_TYPE_MIXED = 'mixed';
 
-    public function __construct(DenormalizerInterface $denormalizer)
+    public function __construct(DenormalizerInterface $denormalizer, string $schemaClass)
     {
-        $this->guessClass = new GuessClass(Schema::class, $denormalizer);
+        $this->schemaClass = $schemaClass;
+        $this->guessClass = new GuessClass($schemaClass, $denormalizer);
     }
 
-    public function getTypes(MediaType $content, string $reference, Context $context): array
+    public function getTypes($content, string $reference, Context $context): array
     {
         $schema = ($content->schema ?? null);
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if ($classGuess === null) {
-            $types = $this->schemaTypeToPHP($schema?->type ?? null, $schema?->format ?? null);
+            [$type, $format] = $this->schemaTypeAndFormat($schema);
+            $types = $this->schemaTypeToPHP($type, $format);
 
             if ($array) {
                 $types = array_map(function ($type) {
@@ -51,13 +53,15 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         return [['\\' . $class], $array];
     }
 
-    public function getTypeCondition(MediaType $content, string $reference, Context $context): Node
+    public function getTypeCondition($content, string $reference, Context $context): Node
     {
         $schema = ($content->schema ?? null);
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if (null === $classGuess) {
-            return $this->typeToCondition($schema?->type ?? null, $schema?->format ?? null, new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));
+            [$type, $format] = $this->schemaTypeAndFormat($schema);
+
+            return $this->typeToCondition($type, $format, new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));
         }
 
         $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model' . XNamespaceResolver::subNamespaceSuffix($classGuess) . '\\' . $classGuess->getName();
@@ -85,6 +89,30 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
             new Expr\PropertyFetch(new Expr\Variable('this'), 'body'),
             new Name('\\' . $class)
         );
+    }
+
+    /**
+     * Read the (possibly union / array) type and format from a schema object.
+     *
+     * Works for the OpenAPI 3.0 Schema model (scalar type property) and the
+     * JSON Schema based 3.1 model (type possibly returning an array).
+     *
+     * @return array{0: ?string, 1: ?string}
+     */
+    private function schemaTypeAndFormat($schema): array
+    {
+        if (!$schema instanceof $this->schemaClass) {
+            return [null, null];
+        }
+
+        $type = ($schema->type ?? null);
+        if (\is_array($type)) {
+            $type = $type[0] ?? null;
+        }
+
+        $format = ($schema->format ?? null);
+
+        return [$type, $format];
     }
 
     private function schemaTypeToPHP(?string $type, ?string $format = null): array

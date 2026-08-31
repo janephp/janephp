@@ -8,16 +8,23 @@ use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi31\JsonSchema\Model\Encoding;
 use Jane\Component\OpenApi31\JsonSchema\Model\MediaType;
 use Jane\Component\OpenApi31\JsonSchema\Model\Schema;
+use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\AbstractBodyContentGenerator;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use Psr\Http\Message\StreamInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class FormBodyContentGenerator extends AbstractBodyContentGenerator
 {
-    public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
+    public function __construct(DenormalizerInterface $denormalizer)
+    {
+        parent::__construct($denormalizer, Schema::class);
+    }
+
+    public function getSerializeStatements($content, string $contentType, string $reference, Context $context): array
     {
         if (preg_match('/multipart\/form-data/', $contentType)) {
             $partOptions = $this->guessPartOptions($content);

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Generator\Endpoint;
+namespace Jane\Component\OpenApiCommon\Generator\Endpoint;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
-use Jane\Component\OpenApi31\Guesser\GuessClass;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Guesser\GuessClass;
 use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -23,6 +23,7 @@ trait GetGetExtraHeadersTrait
             return null;
         }
 
+        // Add all content types except text/html as default Accept content types.
         $items = [];
         foreach ($produces as $contentType) {
             if ($contentType === 'text/html') {

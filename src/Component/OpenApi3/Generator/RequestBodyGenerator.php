@@ -3,9 +3,10 @@
 namespace Jane\Component\OpenApi3\Generator;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
-use Jane\Component\OpenApi3\Generator\RequestBodyContent\AbstractBodyContentGenerator;
 use Jane\Component\OpenApi3\JsonSchema\Model\Reference;
 use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
+use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\AbstractBodyContentGenerator;
+use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\RequestBodyContentGeneratorInterface;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
