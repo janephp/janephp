@@ -3,7 +3,11 @@
 namespace Jane\Component\JsonSchemaRuntime\Tests;
 
 use Jane\Component\JsonSchema\Tests\LocalSchemaServer;
+use Jane\Component\JsonSchemaRuntime\Exception\InvalidReferenceException;
 use Jane\Component\JsonSchemaRuntime\Exception\JaneExceptionInterface;
+use Jane\Component\JsonSchemaRuntime\Exception\ReferenceDecodeException;
+use Jane\Component\JsonSchemaRuntime\Exception\ReferenceFetchException;
+use Jane\Component\JsonSchemaRuntime\Exception\ReferencePointerException;
 use Jane\Component\JsonSchemaRuntime\Exception\ReferenceResolveException;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use PHPUnit\Framework\TestCase;
@@ -164,7 +168,7 @@ class ReferenceTest extends TestCase
         self::assertSame(0, $ref->resolve());
     }
 
-    public function testUnparsableContentThrowsReferenceResolveException(): void
+    public function testUnparsableContentThrowsReferenceDecodeException(): void
     {
         $treeRoot = $this->createTempTree();
 
@@ -175,11 +179,14 @@ class ReferenceTest extends TestCase
 
             try {
                 $ref->resolve();
-                self::fail('Expected ReferenceResolveException to be thrown');
-            } catch (ReferenceResolveException $exception) {
+                self::fail('Expected ReferenceDecodeException to be thrown');
+            } catch (ReferenceDecodeException $exception) {
                 self::assertStringContainsString('neither valid JSON nor valid YAML', $exception->getMessage());
+                // The parse failure is chained as the previous exception.
+                self::assertNotNull($exception->getPrevious());
                 // BC: the exception must stay catchable as a RuntimeException.
                 self::assertInstanceOf(\RuntimeException::class, $exception);
+                self::assertInstanceOf(ReferenceResolveException::class, $exception);
                 // ADR 0002: user-facing errors join the Jane error taxonomy so
                 // generation commands render them cleanly.
                 self::assertInstanceOf(JaneExceptionInterface::class, $exception);
@@ -189,14 +196,14 @@ class ReferenceTest extends TestCase
         }
     }
 
-    public function testUnreadableDocumentThrowsReferenceResolveException(): void
+    public function testUnreadableDocumentThrowsReferenceFetchException(): void
     {
         $treeRoot = $this->createTempTree();
 
         try {
             $ref = new Reference('missing.json', $treeRoot . '/base/schema.json');
 
-            $this->expectException(ReferenceResolveException::class);
+            $this->expectException(ReferenceFetchException::class);
             $this->expectExceptionMessage('Unable to fetch reference document');
             $ref->resolve();
         } finally {
@@ -274,7 +281,7 @@ PHP;
         fclose($pipes[2]);
         proc_close($process);
 
-        self::assertStringContainsString(ReferenceResolveException::class, $output, 'Child output: ' . $output . $errorOutput);
+        self::assertStringContainsString(ReferenceFetchException::class, $output, 'Child output: ' . $output . $errorOutput);
         self::assertStringContainsString('redirects are not followed', $output, 'Child output: ' . $output . $errorOutput);
     }
 
@@ -341,7 +348,7 @@ PHP;
         self::assertStringContainsString("RESOLVED:'object'", $output, 'Child output: ' . $output . $errorOutput);
     }
 
-    public function testRemoteFetchFailureThrowsReferenceResolveException(): void
+    public function testRemoteFetchFailureThrowsReferenceFetchException(): void
     {
         // Bind then release a port: nothing listens there anymore, the fetch
         // must fail with a clear error instead of a TypeError.
@@ -359,9 +366,45 @@ PHP;
         Reference::setAllowedExternalHosts(['127.0.0.1']);
         $ref = new Reference(\sprintf('http://127.0.0.1:%d/doc.json', $port), __DIR__ . '/schema.json');
 
-        $this->expectException(ReferenceResolveException::class);
+        $this->expectException(ReferenceFetchException::class);
         $this->expectExceptionMessage('Unable to fetch reference document');
         $ref->resolve();
+    }
+
+    public function testMissingPointerThrowsReferencePointerException(): void
+    {
+        $treeRoot = $this->createTempTree();
+
+        try {
+            file_put_contents($treeRoot . '/base/schema.json', json_encode(['type' => 'object']));
+            $ref = new Reference('#/does/not/exist', $treeRoot . '/base/schema.json');
+
+            try {
+                $ref->resolve();
+                self::fail('Expected ReferencePointerException to be thrown');
+            } catch (ReferencePointerException $exception) {
+                self::assertStringContainsString('Unable to resolve pointer', $exception->getMessage());
+                self::assertNotNull($exception->getPrevious());
+                self::assertInstanceOf(ReferenceResolveException::class, $exception);
+                self::assertInstanceOf(\RuntimeException::class, $exception);
+            }
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testSchemePolicyViolationThrowsInvalidReferenceException(): void
+    {
+        $ref = new Reference('ftp://example.com/schema.json', __DIR__ . '/schema.json');
+
+        try {
+            $ref->resolve();
+            self::fail('Expected InvalidReferenceException to be thrown');
+        } catch (InvalidReferenceException $exception) {
+            self::assertStringContainsString('scheme "ftp" is not allowed', $exception->getMessage());
+            self::assertInstanceOf(ReferenceResolveException::class, $exception);
+            self::assertInstanceOf(\RuntimeException::class, $exception);
+        }
     }
 
     public function testRootOriginPathDoesNotBypassContainment(): void
