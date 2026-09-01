@@ -2,8 +2,6 @@
 
 namespace Jane\Component\OpenApi2\Generator\Client;
 
-use Http\Client\Common\Plugin\AddHostPlugin;
-use Http\Client\Common\Plugin\AddPathPlugin;
 use Jane\Component\OpenApi2\JsonSchema\Model\OpenApi;
 use Jane\Component\OpenApiCommon\Generator\Client\ServerPluginGenerator as BaseServerPluginGenerator;
 
@@ -13,6 +11,8 @@ trait ServerPluginGenerator
 
     /**
      * @param OpenApi $openApi
+     *
+     * @return array{0: string|null}
      */
     protected function discoverServer($openApi): array
     {
@@ -25,16 +25,14 @@ trait ServerPluginGenerator
             }
 
             $baseUri = $scheme . '://' . trim($host, '/');
-            $plugins[] = AddHostPlugin::class;
 
             if (null !== ($basePath = ($openApi->basePath ?? null))) {
                 $baseUri .= '/' . trim($basePath, '/');
-                $plugins[] = AddPathPlugin::class;
             }
 
-            return [$baseUri, $plugins];
+            return [$baseUri];
         }
 
-        return [null, []];
+        return [null];
     }
 }

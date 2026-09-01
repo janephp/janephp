@@ -2,6 +2,8 @@
 
 namespace Jane\Component\OpenApiCommon\Guesser\Guess;
 
+use Jane\Component\OpenApiRuntime\Client\FetchMode;
+
 class OperationGuess
 {
     public const DELETE = 'DELETE';
@@ -17,6 +19,8 @@ class OperationGuess
     private array $securityScopes;
     /** @var string[] Sub-namespace segments from the "x-namespace" extension; empty when the endpoint uses the flat layout */
     private array $subNamespace = [];
+    /** Fetch mode of the operation (a FetchMode value); only meaningful on GET/HEAD, other verbs are always eager */
+    private string $fetchMode = FetchMode::Lazy->value;
 
     public function __construct(
         object $pathItem,
@@ -78,5 +82,15 @@ class OperationGuess
     public function setSubNamespace(array $subNamespace): void
     {
         $this->subNamespace = $subNamespace;
+    }
+
+    public function getFetchMode(): string
+    {
+        return $this->fetchMode;
+    }
+
+    public function setFetchMode(string $fetchMode): void
+    {
+        $this->fetchMode = $fetchMode;
     }
 }

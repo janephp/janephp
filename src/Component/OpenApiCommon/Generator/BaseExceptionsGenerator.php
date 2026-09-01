@@ -83,7 +83,7 @@ class BaseExceptionsGenerator implements GeneratorInterface
                         new Stmt\ClassMethod('getResponse', [
                             'flags' => Modifiers::PUBLIC,
                             'stmts' => null,
-                            'returnType' => new Name('?\\Psr\\Http\\Message\\ResponseInterface'),
+                            'returnType' => new Name('?\\Symfony\\Contracts\\HttpClient\\ResponseInterface'),
                         ]),
                     ],
                 ]
@@ -117,7 +117,7 @@ class BaseExceptionsGenerator implements GeneratorInterface
                             new Stmt\PropertyProperty('response'),
                         ], ['comments' => [new Doc(<<<EOD
 /**
- * @var \Psr\Http\Message\ResponseInterface|null
+ * @var \Symfony\Contracts\HttpClient\ResponseInterface|null
  */
 EOD
                         )]]),
@@ -129,7 +129,7 @@ EOD
                                 new Param(
                                     new Expr\Variable('response'),
                                     new Expr\ConstFetch(new Name('null')),
-                                    new Node\NullableType(new Name('\\Psr\\Http\\Message\\ResponseInterface'))
+                                    new Node\NullableType(new Name('\\Symfony\\Contracts\\HttpClient\\ResponseInterface'))
                                 ),
                             ],
                             'stmts' => [
@@ -155,7 +155,7 @@ EOD
                                     )
                                 ),
                             ],
-                            'returnType' => new Name('?\\Psr\\Http\\Message\\ResponseInterface'),
+                            'returnType' => new Name('?\\Symfony\\Contracts\\HttpClient\\ResponseInterface'),
                         ]),
                     ],
                 ]
@@ -179,7 +179,7 @@ EOD
                                 new Param(
                                     new Expr\Variable('response'),
                                     new Expr\ConstFetch(new Name('null')),
-                                    new Node\NullableType(new Name('\\Psr\\Http\\Message\\ResponseInterface'))
+                                    new Node\NullableType(new Name('\\Symfony\\Contracts\\HttpClient\\ResponseInterface'))
                                 ),
                             ],
                             'stmts' => [

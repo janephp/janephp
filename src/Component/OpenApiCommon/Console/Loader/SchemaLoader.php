@@ -43,6 +43,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
             'include-null-value',
             'enums-as-objects',
             'default-additional-properties',
+            'default-fetch-mode',
             'allow-external-refs',
             'external-ref-allowed-hosts',
             'external-ref-follow-redirects',

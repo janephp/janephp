@@ -2,19 +2,18 @@
 
 namespace Jane\Component\OpenApi31\Generator\RequestBodyContent;
 
-use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi31\JsonSchema\Model\Encoding;
 use Jane\Component\OpenApi31\JsonSchema\Model\MediaType;
 use Jane\Component\OpenApi31\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\AbstractBodyContentGenerator;
+use Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
-use Psr\Http\Message\StreamInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class FormBodyContentGenerator extends AbstractBodyContentGenerator
@@ -33,9 +32,7 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
                 new Arg(new Expr\Variable('value')),
             ];
             $statements = [
-                new Stmt\Expression(new Expr\Assign(new Expr\Variable('bodyBuilder'), new Expr\New_(new Name('\\' . MultipartStreamBuilder::class), [
-                    new Arg(new Expr\Variable('streamFactory')),
-                ]))),
+                new Stmt\Expression(new Expr\Assign(new Expr\Variable('bodyBuilder'), new Expr\New_(new Name('\\' . MultipartStreamBuilder::class)))),
                 new Stmt\Expression(new Expr\Assign(new Expr\Variable('formParameters'), new Expr\MethodCall(new Expr\Variable('serializer'), 'normalize', [
                     new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'body')),
                     new Arg(new Scalar\String_('json')),
@@ -171,18 +168,16 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
     /**
      * Statements resolving the effective addResource() options for the current
      * form parameter: the generation-time default filename is dropped when the
-     * value is a stream or resource backed by a real file, so that
-     * MultipartStreamBuilder keeps deriving the actual file name (and guessing
-     * a Content-Type from its extension) exactly as it did before.
+     * value is a resource backed by a real file, so that the multipart builder
+     * keeps deriving the actual file name (and guessing a Content-Type from
+     * its extension) exactly as it did before.
      *
      * Emitted PHP:
      *
      *     $resourceOptions = $partOptions[$key] ?? [];
      *     if (isset($resourceOptions['filename'])) {
      *         $uri = null;
-     *         if ($value instanceof \Psr\Http\Message\StreamInterface) {
-     *             $uri = $value->getMetadata('uri');
-     *         } elseif (is_resource($value)) {
+     *         if (is_resource($value)) {
      *             $uri = stream_get_meta_data($value)['uri'] ?? null;
      *         }
      *         if (is_string($uri) && is_file($uri)) {
@@ -205,26 +200,16 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
                     'stmts' => [
                         new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\ConstFetch(new Name('null')))),
                         new Stmt\If_(
-                            new Expr\Instanceof_(new Expr\Variable('value'), new Name('\\' . StreamInterface::class)),
+                            new Expr\FuncCall(new Name('is_resource'), [new Arg(new Expr\Variable('value'))]),
                             [
                                 'stmts' => [
-                                    new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\MethodCall(new Expr\Variable('value'), 'getMetadata', [
-                                        new Arg(new Scalar\String_('uri')),
-                                    ]))),
-                                ],
-                                'elseifs' => [
-                                    new Stmt\ElseIf_(
-                                        new Expr\FuncCall(new Name('is_resource'), [new Arg(new Expr\Variable('value'))]),
-                                        [
-                                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\BinaryOp\Coalesce(
-                                                new Expr\ArrayDimFetch(
-                                                    new Expr\FuncCall(new Name('stream_get_meta_data'), [new Arg(new Expr\Variable('value'))]),
-                                                    new Scalar\String_('uri')
-                                                ),
-                                                new Expr\ConstFetch(new Name('null'))
-                                            ))),
-                                        ]
-                                    ),
+                                    new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\BinaryOp\Coalesce(
+                                        new Expr\ArrayDimFetch(
+                                            new Expr\FuncCall(new Name('stream_get_meta_data'), [new Arg(new Expr\Variable('value'))]),
+                                            new Scalar\String_('uri')
+                                        ),
+                                        new Expr\ConstFetch(new Name('null'))
+                                    ))),
                                 ],
                             ]
                         ),

@@ -31,6 +31,7 @@ class ConfigLoader extends BaseConfigLoader implements ConfigLoaderInterface
             'throw-unexpected-status-code' => false,
             'generate-error-exceptions' => true,
             'enums-as-objects' => false,
+            'default-fetch-mode' => null,
         ]);
     }
 }

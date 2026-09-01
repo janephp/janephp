@@ -9,7 +9,6 @@ use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
-use Psr\Http\Message\StreamInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 abstract class AbstractBodyContentGenerator implements RequestBodyContentGeneratorInterface
@@ -165,11 +164,8 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
             'string' => [
                 'default' => new Expr\FuncCall(new Name('is_string'), [$inputArg]),
                 'binary' => new Expr\BinaryOp\LogicalOr(
-                    new Expr\BinaryOp\LogicalOr(
-                        new Expr\FuncCall(new Name('is_string'), [$inputArg]),
-                        new Expr\FuncCall(new Name('is_resource'), [$inputArg])
-                    ),
-                    new Expr\Instanceof_($fetch, new Name('\\' . StreamInterface::class))
+                    new Expr\FuncCall(new Name('is_string'), [$inputArg]),
+                    new Expr\FuncCall(new Name('is_resource'), [$inputArg])
                 ),
             ],
             'number' => [
@@ -189,11 +185,8 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
             ],
             'file' => [
                 'default' => new Expr\BinaryOp\LogicalOr(
-                    new Expr\BinaryOp\LogicalOr(
-                        new Expr\FuncCall(new Name('is_string'), [$inputArg]),
-                        new Expr\FuncCall(new Name('is_resource'), [$inputArg])
-                    ),
-                    new Expr\Instanceof_($fetch, new Name('\\' . StreamInterface::class))
+                    new Expr\FuncCall(new Name('is_string'), [$inputArg]),
+                    new Expr\FuncCall(new Name('is_resource'), [$inputArg])
                 ),
             ],
         ];

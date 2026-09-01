@@ -18,6 +18,7 @@ use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi3\JsonSchema\Model\Response;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Naming\FetchModeResolver;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\Component\OpenApiCommon\Naming\XNamespaceResolver;
@@ -36,13 +37,15 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     private SluggerInterface $slugger;
     private OperationNamingInterface $naming;
     private XNamespaceResolver $xNamespaceResolver;
+    private FetchModeResolver $fetchModeResolver;
 
-    public function __construct(DenormalizerInterface $denormalizer, ?OperationNamingInterface $naming = null)
+    public function __construct(DenormalizerInterface $denormalizer, ?OperationNamingInterface $naming = null, ?string $defaultFetchMode = null)
     {
         $this->denormalizer = $denormalizer;
         $this->slugger = new AsciiSlugger();
         $this->naming = $naming ?? OperationNamingFactory::create();
         $this->xNamespaceResolver = new XNamespaceResolver();
+        $this->fetchModeResolver = new FetchModeResolver($defaultFetchMode);
     }
 
     public function supportObject($object): bool
@@ -206,6 +209,10 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
         $operationSubNamespace = $this->xNamespaceResolver->resolveFromObject($operation);
         $operationGuess->setSubNamespace($operationSubNamespace);
+
+        if (\in_array($operationType, [OperationGuess::GET, OperationGuess::HEAD], true)) {
+            $operationGuess->setFetchMode($this->fetchModeResolver->resolveFromObject($operation));
+        }
 
         /** @var OpenApiRegistrySchema|null $schema */
         $schema = $registry->getSchema($reference);

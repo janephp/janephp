@@ -133,12 +133,12 @@ EOD, '\\' . $classFqdn, $isArray ? '[]' : '');
                                     new Param(
                                         new Expr\Variable('response'),
                                         null,
-                                        new Name('\\Psr\\Http\\Message\\ResponseInterface'),
+                                        new Name('\\Symfony\\Contracts\\HttpClient\\ResponseInterface'),
                                         false,
                                         false,
                                         ['comments' => [new Doc(<<<EOD
 /**
- * @var \Psr\Http\Message\ResponseInterface
+ * @var \Symfony\Contracts\HttpClient\ResponseInterface
  */
 EOD
                                         )]],
@@ -171,7 +171,7 @@ EOD
                                         )
                                     ),
                                 ],
-                                'returnType' => new Name('\\Psr\\Http\\Message\\ResponseInterface'),
+                                'returnType' => new Name('\\Symfony\\Contracts\\HttpClient\\ResponseInterface'),
                             ]),
                         ],
                     ]
@@ -195,12 +195,12 @@ EOD
                                 new Param(
                                     new Expr\Variable('response'),
                                     new Expr\ConstFetch(new Name('null')),
-                                    new Node\NullableType(new Name('\\Psr\\Http\\Message\\ResponseInterface')),
+                                    new Node\NullableType(new Name('\\Symfony\\Contracts\\HttpClient\\ResponseInterface')),
                                     false,
                                     false,
                                     ['comments' => [new Doc(<<<EOD
 /**
- * @var \Psr\Http\Message\ResponseInterface|null
+ * @var \Symfony\Contracts\HttpClient\ResponseInterface|null
  */
 EOD
                                     )]],
@@ -223,7 +223,7 @@ EOD
                                     )
                                 ),
                             ],
-                            'returnType' => new Name('?\\Psr\\Http\\Message\\ResponseInterface'),
+                            'returnType' => new Name('?\\Symfony\\Contracts\\HttpClient\\ResponseInterface'),
                         ]),
                     ],
                 ]

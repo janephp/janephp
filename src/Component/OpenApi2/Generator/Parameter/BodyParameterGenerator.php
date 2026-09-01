@@ -11,7 +11,6 @@ use Jane\Component\OpenApi2\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Generator\Parameter\ParameterGenerator;
 use PhpParser\Node;
 use PhpParser\Parser;
-use Psr\Http\Message\StreamInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class BodyParameterGenerator extends ParameterGenerator
@@ -130,7 +129,7 @@ class BodyParameterGenerator extends ParameterGenerator
         $convertArray = [
             'string' => [
                 'default' => ['string'],
-                'binary' => ['string', 'resource', '\\' . StreamInterface::class],
+                'binary' => ['string', 'resource'],
             ],
             'number' => [
                 'default' => ['float'],
@@ -148,7 +147,7 @@ class BodyParameterGenerator extends ParameterGenerator
                 'default' => ['\\stdClass'],
             ],
             'file' => [
-                'default' => ['string', 'resource', '\\' . StreamInterface::class],
+                'default' => ['string', 'resource'],
             ],
         ];
 
