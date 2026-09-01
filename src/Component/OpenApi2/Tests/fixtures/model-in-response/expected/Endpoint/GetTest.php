@@ -13,7 +13,7 @@ class GetTest extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Ru
     {
         return '/test';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -25,10 +25,10 @@ class GetTest extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Ru
      *
      * @return null|\Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Schema
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Schema', 'json');
         }
@@ -42,5 +42,9 @@ class GetTest extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Ru
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

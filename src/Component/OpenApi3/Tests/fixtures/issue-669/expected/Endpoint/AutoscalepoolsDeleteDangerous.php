@@ -28,7 +28,7 @@ class AutoscalepoolsDeleteDangerous extends \Jane\Generated\DigitalOcean\Runtime
     {
         return str_replace(['{autoscale_pool_id}'], [rawurlencode($this->autoscale_pool_id)], '/v2/droplets/autoscale/{autoscale_pool_id}/dangerous');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -55,10 +55,10 @@ class AutoscalepoolsDeleteDangerous extends \Jane\Generated\DigitalOcean\Runtime
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (202 === $status) {
             return null;
         }
@@ -81,5 +81,9 @@ class AutoscalepoolsDeleteDangerous extends \Jane\Generated\DigitalOcean\Runtime
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

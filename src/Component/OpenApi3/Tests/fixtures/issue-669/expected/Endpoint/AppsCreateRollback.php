@@ -31,7 +31,7 @@ class AppsCreateRollback extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     {
         return str_replace(['{app_id}'], [rawurlencode($this->app_id)], '/v2/apps/{app_id}/rollback');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Generated\DigitalOcean\Model\AppsRollbackAppRequest) {
             return [['Content-Type' => ['application/json']], \Jane\Generated\DigitalOcean\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -52,10 +52,10 @@ class AppsCreateRollback extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse', 'json');
         }
@@ -78,5 +78,9 @@ class AppsCreateRollback extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

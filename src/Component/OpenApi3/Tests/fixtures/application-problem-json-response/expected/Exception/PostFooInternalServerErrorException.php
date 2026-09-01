@@ -10,9 +10,9 @@ class PostFooInternalServerErrorException extends InternalServerErrorException
          */
         private readonly \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse500 $responseProblemDetailsResponse500,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('An error occurred');
@@ -21,7 +21,7 @@ class PostFooInternalServerErrorException extends InternalServerErrorException
     {
         return $this->responseProblemDetailsResponse500;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

@@ -13,7 +13,7 @@ class TestOne extends \Jane\Component\OpenApi2\Tests\Expected\One\Runtime\Client
     {
         return '/test-one';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -28,10 +28,10 @@ class TestOne extends \Jane\Component\OpenApi2\Tests\Expected\One\Runtime\Client
      *
      * @return null|\Jane\Component\OpenApi2\Tests\Expected\One\Model\TestOneGetResponse200
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\One\Model\TestOneGetResponse200', 'json');
         }
@@ -42,5 +42,9 @@ class TestOne extends \Jane\Component\OpenApi2\Tests\Expected\One\Runtime\Client
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

@@ -1,36 +1,35 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter;
+namespace Jane\Component\OpenApi3\Tests\Expected;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
      * @param mixed $testParameter
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testGetWithUppercasePathParameters($testParameter, string $fetch = self::FETCH_OBJECT)
+    public function testGetWithUppercasePathParameters($testParameter)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\Endpoint\TestGetWithUppercasePathParameters($testParameter), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestGetWithUppercasePathParameters($testParameter));
     }
-    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = [];
-            if (count($additionalPlugins) > 0) {
-                $plugins = array_merge($plugins, $additionalPlugins);
-            }
-            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
+            $httpClient = \Symfony\Component\HttpClient\HttpClient::create();
         }
-        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\Normalizer\JaneObjectNormalizer()];
+        $plugins = [];
+        if (count($additionalPlugins) > 0) {
+            $plugins = array_merge($plugins, $additionalPlugins);
+        }
+        foreach ($plugins as $plugin) {
+            $httpClient = $plugin($httpClient);
+        }
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\UppercaseParameter\Runtime\Client\FormEncoder()]);
-        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        return new static($httpClient, $serializer);
     }
 }

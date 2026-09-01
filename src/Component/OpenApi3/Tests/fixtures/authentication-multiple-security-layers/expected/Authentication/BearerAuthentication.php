@@ -9,11 +9,9 @@ class BearerAuthentication implements \Jane\Component\OpenApiRuntime\Client\Auth
     {
         $this->{'token'} = $token;
     }
-    public function authentication(\Psr\Http\Message\RequestInterface $request): \Psr\Http\Message\RequestInterface
+    public function decorate(string $method, string $url, array &$options): void
     {
-        $header = sprintf('Bearer %s', $this->{'token'});
-        $request = $request->withHeader('Authorization', $header);
-        return $request;
+        $options['headers']['Authorization'] = sprintf('Bearer %s', $this->{'token'});
     }
     public function getScope(): string
     {

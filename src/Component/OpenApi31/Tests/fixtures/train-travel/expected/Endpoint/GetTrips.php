@@ -33,7 +33,7 @@ class GetTrips extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runt
     {
         return '/trips';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -70,10 +70,10 @@ class GetTrips extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runt
      *
      * @return null|\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200', 'json');
         }
@@ -96,5 +96,9 @@ class GetTrips extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runt
     public function getAuthenticationScopes(): array
     {
         return ['OAuth2'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

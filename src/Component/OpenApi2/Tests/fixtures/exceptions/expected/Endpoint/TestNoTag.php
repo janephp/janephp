@@ -13,7 +13,7 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Runti
     {
         return '/test-exception';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -27,10 +27,10 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Runti
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (400 === $status) {
             throw new \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Exceptions\Model\Error', 'json'), $response);
         }
@@ -47,5 +47,9 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Runti
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

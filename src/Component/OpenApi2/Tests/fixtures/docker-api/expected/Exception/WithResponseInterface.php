@@ -4,5 +4,5 @@ namespace Docker\Api\Exception;
 
 interface WithResponseInterface
 {
-    public function getResponse(): ?\Psr\Http\Message\ResponseInterface;
+    public function getResponse(): ?\Symfony\Contracts\HttpClient\ResponseInterface;
 }

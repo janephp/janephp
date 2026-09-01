@@ -10,9 +10,9 @@ class FilteredEventRulesBadRequestException extends BadRequestException
          */
         private readonly \CreditSafe\API\Model\BadRequestError $badRequestError,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('Bad Request - specific error information is provided in the `details` field. </br> Most common causes of this response are incorrect, missing or unexpected parameters in the request e.g. missing the `Authorization Header`, invalid search criteria or providing an invalid `connectId` for a report).');
@@ -21,7 +21,7 @@ class FilteredEventRulesBadRequestException extends BadRequestException
     {
         return $this->badRequestError;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

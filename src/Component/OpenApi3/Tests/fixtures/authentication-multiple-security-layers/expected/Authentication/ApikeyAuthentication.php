@@ -9,17 +9,9 @@ class ApikeyAuthentication implements \Jane\Component\OpenApiRuntime\Client\Auth
     {
         $this->{'apiKey'} = $apiKey;
     }
-    public function authentication(\Psr\Http\Message\RequestInterface $request): \Psr\Http\Message\RequestInterface
+    public function decorate(string $method, string $url, array &$options): void
     {
-        $uri = $request->getUri();
-        $query = $uri->getQuery();
-        $params = [];
-        parse_str($query, $params);
-        $params = array_merge($params, ['api_key' => $this->{'apiKey'}]);
-        $query = http_build_query($params);
-        $uri = $uri->withQuery($query);
-        $request = $request->withUri($uri);
-        return $request;
+        $options['query']['api_key'] = $this->{'apiKey'};
     }
     public function getScope(): string
     {

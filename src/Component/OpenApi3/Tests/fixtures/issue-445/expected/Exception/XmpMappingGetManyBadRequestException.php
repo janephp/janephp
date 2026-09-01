@@ -10,9 +10,9 @@ class XmpMappingGetManyBadRequestException extends BadRequestException
          */
         private readonly \PicturePark\API\Model\RequestSizeLimitExceededException $requestSizeLimitExceededException,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('List of IDs exceeded maximum size');
@@ -21,7 +21,7 @@ class XmpMappingGetManyBadRequestException extends BadRequestException
     {
         return $this->requestSizeLimitExceededException;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

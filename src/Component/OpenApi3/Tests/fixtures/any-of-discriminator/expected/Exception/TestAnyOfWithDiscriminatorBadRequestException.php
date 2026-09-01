@@ -10,9 +10,9 @@ class TestAnyOfWithDiscriminatorBadRequestException extends BadRequestException
          */
         private readonly \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBarWithMapping $fooBarWithMapping,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('some error');
@@ -21,7 +21,7 @@ class TestAnyOfWithDiscriminatorBadRequestException extends BadRequestException
     {
         return $this->fooBarWithMapping;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

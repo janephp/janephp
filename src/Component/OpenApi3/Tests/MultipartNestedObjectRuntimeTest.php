@@ -51,18 +51,17 @@ class MultipartNestedObjectRuntimeTest extends TestCase
             ),
         ];
         $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, $encoders);
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
 
         $endpoint = new Expected\MultipartNestedObject\Endpoint\PostFile($body);
-        $result = $endpoint->getBody($serializer, $streamFactory);
+        $result = $endpoint->getBody($serializer);
 
         $this->assertIsArray($result);
         $this->assertCount(2, $result);
         $this->assertArrayHasKey('Content-Type', $result[0]);
         $this->assertStringContainsString('multipart/form-data', $result[0]['Content-Type'][0]);
-        $this->assertInstanceOf(\Psr\Http\Message\StreamInterface::class, $result[1]);
+        self::assertIsString($result[1]);
 
-        $streamContent = (string) $result[1];
+        $streamContent = $result[1];
         $this->assertStringContainsString('file-content', $streamContent);
         $this->assertStringContainsString('{"itemId":42,"itemType":"document"}', $streamContent);
     }

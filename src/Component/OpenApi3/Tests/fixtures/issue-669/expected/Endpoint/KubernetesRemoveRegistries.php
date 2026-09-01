@@ -21,7 +21,7 @@ class KubernetesRemoveRegistries extends \Jane\Generated\DigitalOcean\Runtime\Cl
     {
         return '/v2/kubernetes/registries';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Generated\DigitalOcean\Model\ClusterRegistries) {
             return [['Content-Type' => ['application/json']], \Jane\Generated\DigitalOcean\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -41,10 +41,10 @@ class KubernetesRemoveRegistries extends \Jane\Generated\DigitalOcean\Runtime\Cl
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (204 === $status) {
             return null;
         }
@@ -64,5 +64,9 @@ class KubernetesRemoveRegistries extends \Jane\Generated\DigitalOcean\Runtime\Cl
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

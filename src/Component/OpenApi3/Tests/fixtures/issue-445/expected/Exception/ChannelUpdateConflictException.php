@@ -10,9 +10,9 @@ class ChannelUpdateConflictException extends ConflictException
          */
         private readonly \PicturePark\API\Model\PictureparkConflictException $pictureparkConflictException,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('Version conflict');
@@ -21,7 +21,7 @@ class ChannelUpdateConflictException extends ConflictException
     {
         return $this->pictureparkConflictException;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

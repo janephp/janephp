@@ -30,7 +30,7 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
     {
         return str_replace(['{personId}'], [rawurlencode($this->personId)], '/people/{personId}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -66,10 +66,10 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
      *
      * @return null|\CreditSafe\API\Model\GbPeopleReportReponse
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\API\Model\GbPeopleReportReponse', 'json');
         }
@@ -101,5 +101,9 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
     public function getAuthenticationScopes(): array
     {
         return ['bearerAuth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

@@ -27,7 +27,7 @@ class AddDpDhcpProfilesDpDhcpProfileHostsById extends \Jane\Component\OpenApi3\T
     {
         return str_replace(['{id}'], [rawurlencode($this->id)], '/dpDhcpProfiles/{id}/dpDhcpProfileHosts');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getSerializedObjectBody($serializer);
     }
@@ -54,10 +54,10 @@ class AddDpDhcpProfilesDpDhcpProfileHostsById extends \Jane\Component\OpenApi3\T
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (400 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdBadRequestException($response);
         }
@@ -77,5 +77,9 @@ class AddDpDhcpProfilesDpDhcpProfileHostsById extends \Jane\Component\OpenApi3\T
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

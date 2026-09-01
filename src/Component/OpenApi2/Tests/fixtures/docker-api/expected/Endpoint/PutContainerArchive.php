@@ -8,7 +8,7 @@ class PutContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implem
     /**
     * Upload a tar archive to be extracted to a path in the filesystem of container id.
     * @param string $id ID or name of the container
-    * @param string|resource|\Psr\Http\Message\StreamInterface $inputStream The input stream must be a tar archive compressed with one of the
+    * @param string|resource $inputStream The input stream must be a tar archive compressed with one of the
     following algorithms: `identity` (no compression), `gzip`, `bzip2`,
     or `xz`.
     * @param array $queryParameters {
@@ -37,7 +37,7 @@ class PutContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implem
     {
         return str_replace(['{id}'], [rawurlencode($this->id)], '/containers/{id}/archive');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], $this->body];
     }
@@ -66,10 +66,10 @@ class PutContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implem
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return null;
         }
@@ -89,5 +89,9 @@ class PutContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implem
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

@@ -13,7 +13,7 @@ class GetFlatItems extends \Jane\Component\OpenApi2\Tests\Expected\XNamespace\Ru
     {
         return '/flat-items';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -23,10 +23,10 @@ class GetFlatItems extends \Jane\Component\OpenApi2\Tests\Expected\XNamespace\Ru
      *
      * @return null|\Jane\Component\OpenApi2\Tests\Expected\XNamespace\Model\FlatItem
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\XNamespace\Model\FlatItem', 'json');
         }
@@ -34,5 +34,9 @@ class GetFlatItems extends \Jane\Component\OpenApi2\Tests\Expected\XNamespace\Ru
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

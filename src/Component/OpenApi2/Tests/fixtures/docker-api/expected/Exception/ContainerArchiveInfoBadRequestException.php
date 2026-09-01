@@ -10,9 +10,9 @@ class ContainerArchiveInfoBadRequestException extends BadRequestException
          */
         private readonly \Docker\Api\Model\ContainersIdArchiveHeadResponse400 $containersIdArchiveHeadResponse400,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('Bad parameter');
@@ -21,7 +21,7 @@ class ContainerArchiveInfoBadRequestException extends BadRequestException
     {
         return $this->containersIdArchiveHeadResponse400;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

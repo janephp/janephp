@@ -2,7 +2,6 @@
 
 namespace Jane\Component\OpenApi31\Tests;
 
-use Http\Client\Common\Plugin\HeaderSetPlugin;
 use Jane\Component\JsonSchema\Tests\CodeStyleFixerTrait;
 use Jane\Component\JsonSchema\Tests\FixtureComparisonTrait;
 use Jane\Component\OpenApi31\Tests\Client\Authentication\ApiKeyAuthAuthentication;
@@ -21,7 +20,8 @@ use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\Console\Loader\SchemaLoader;
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Finder\Finder;
@@ -126,7 +126,7 @@ class JaneOpenApiResourceTest extends TestCase
         // 10. Typed exception on a 404 response selected through the Prefer header
         $preferClient = Client::create(null, [
             new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')]),
-            new HeaderSetPlugin(['Prefer' => 'code=404']),
+            static fn (HttpClientInterface $httpClient): HttpClientInterface => $httpClient->withOptions(['headers' => ['Prefer' => 'code=404']]),
         ]);
         try {
             $preferClient->getThing('thing-1', ['q' => 'search']);

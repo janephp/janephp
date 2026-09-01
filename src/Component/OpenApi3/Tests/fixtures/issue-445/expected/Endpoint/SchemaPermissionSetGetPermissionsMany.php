@@ -23,7 +23,7 @@ class SchemaPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cli
     {
         return '/v1/SchemaPermissionSets/many/permissions';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -57,10 +57,10 @@ class SchemaPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cli
      *
      * @return null|\PicturePark\API\Model\PermissionSetUserPermissionRights[]
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\PermissionSetUserPermissionRights[]', 'json');
         }
@@ -89,5 +89,9 @@ class SchemaPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cli
     public function getAuthenticationScopes(): array
     {
         return ['Bearer'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

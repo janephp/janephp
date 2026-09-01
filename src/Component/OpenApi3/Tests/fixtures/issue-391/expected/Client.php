@@ -7,33 +7,32 @@ class Client extends \Gounlaf\JanephpBug\Runtime\Client\Client
     /**
      * @param int $id ID of the entity
      * @param \Gounlaf\JanephpBug\Model\PatchableEntity $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Gounlaf\JanephpBug\Exception\PatchEntityBadRequestException
      * @throws \Gounlaf\JanephpBug\Exception\PatchEntityNotFoundException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function patchEntity(int $id, \Gounlaf\JanephpBug\Model\PatchableEntity $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function patchEntity(int $id, \Gounlaf\JanephpBug\Model\PatchableEntity $requestBody)
     {
-        return $this->executeEndpoint(new \Gounlaf\JanephpBug\Endpoint\PatchEntity($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Gounlaf\JanephpBug\Endpoint\PatchEntity($id, $requestBody));
     }
-    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = [];
-            if (count($additionalPlugins) > 0) {
-                $plugins = array_merge($plugins, $additionalPlugins);
-            }
-            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
+            $httpClient = \Symfony\Component\HttpClient\HttpClient::create();
         }
-        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
+        $plugins = [];
+        if (count($additionalPlugins) > 0) {
+            $plugins = array_merge($plugins, $additionalPlugins);
+        }
+        foreach ($plugins as $plugin) {
+            $httpClient = $plugin($httpClient);
+        }
         $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Gounlaf\JanephpBug\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
         $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Gounlaf\JanephpBug\Runtime\Client\FormEncoder()]);
-        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
+        return new static($httpClient, $serializer);
     }
 }

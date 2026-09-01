@@ -31,7 +31,7 @@ class KubernetesUpdateNodePool extends \Jane\Generated\DigitalOcean\Runtime\Clie
     {
         return str_replace(['{cluster_id}', '{node_pool_id}'], [rawurlencode($this->cluster_id), rawurlencode($this->node_pool_id)], '/v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Generated\DigitalOcean\Model\KubernetesNodePoolUpdate) {
             return [['Content-Type' => ['application/json']], \Jane\Generated\DigitalOcean\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -52,10 +52,10 @@ class KubernetesUpdateNodePool extends \Jane\Generated\DigitalOcean\Runtime\Clie
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNodePoolUpdate|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (202 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseNodePoolUpdate', 'json');
         }
@@ -78,5 +78,9 @@ class KubernetesUpdateNodePool extends \Jane\Generated\DigitalOcean\Runtime\Clie
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

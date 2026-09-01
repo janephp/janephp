@@ -22,6 +22,7 @@ final class Result
 {
     private ?ResponseInterface $response = null;
     private readonly ?\Closure $responseFactory;
+    private bool $cancelled = false;
     private bool $parsed = false;
     private mixed $parsedValue = null;
 
@@ -44,10 +45,20 @@ final class Result
 
     /**
      * The underlying HTTP response, sending the request if it was deferred.
+     *
+     * @throws \LogicException when the result was cancelled before being sent
      */
     public function getResponse(): ResponseInterface
     {
-        return $this->response ??= ($this->responseFactory)();
+        if (null === $this->response) {
+            if ($this->cancelled) {
+                throw new \LogicException('This Result was cancelled before being sent: the deferred request can no longer be made.');
+            }
+
+            $this->response = ($this->responseFactory)();
+        }
+
+        return $this->response;
     }
 
     /**
@@ -104,11 +115,19 @@ final class Result
     }
 
     /**
-     * Abort the transfer. The response cannot be read afterwards.
+     * Abort the transfer. For an in-flight response the transfer is cancelled;
+     * for a deferred (lazy) request the send is prevented. The response cannot
+     * be read afterwards.
      */
     public function cancel(): void
     {
-        $this->getResponse()->cancel();
+        if (null === $this->response) {
+            $this->cancelled = true;
+
+            return;
+        }
+
+        $this->response->cancel();
     }
 
     private function parse(): mixed

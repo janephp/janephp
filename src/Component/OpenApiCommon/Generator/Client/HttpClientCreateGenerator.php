@@ -107,7 +107,7 @@ trait HttpClientCreateGenerator
                 'stmts' => [
                     new Stmt\Expression(new Expr\Assign(
                         new Expr\Variable('httpClient'),
-                        new Expr\Call(
+                        new Expr\FuncCall(
                             new Expr\Variable('plugin'),
                             [
                                 new Node\Arg(new Expr\Variable('httpClient')),

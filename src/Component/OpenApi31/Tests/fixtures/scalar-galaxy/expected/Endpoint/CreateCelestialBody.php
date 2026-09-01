@@ -20,7 +20,7 @@ class CreateCelestialBody extends \Jane\Component\OpenApi31\Tests\Expected\Scala
     {
         return '/celestial-bodies';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if (isset($this->body)) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
@@ -37,10 +37,10 @@ class CreateCelestialBody extends \Jane\Component\OpenApi31\Tests\Expected\Scala
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
@@ -53,5 +53,9 @@ class CreateCelestialBody extends \Jane\Component\OpenApi31\Tests\Expected\Scala
     public function getAuthenticationScopes(): array
     {
         return ['bearerAuth', 'basicAuth', 'apiKeyQuery', 'apiKeyHeader', 'apiKeyCookie', 'oAuth2', 'openIdConnect'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

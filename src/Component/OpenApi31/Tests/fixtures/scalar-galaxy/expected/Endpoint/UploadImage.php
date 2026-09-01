@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
-class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Client\Endpoint
+class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
     protected $planetId;
     protected $accept;
     /**
      * Got a crazy good photo of a planet? Share it with the world!
      * @param int $planetId The ID of the planet to get
-     * @param null|\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsPlanetIdImagePostBody $requestBody
+     * @param null|\Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody $requestBody
      * @param array $accept Accept content header application/json|application/xml
      */
-    public function __construct(int $planetId, ?\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsPlanetIdImagePostBody $requestBody = null, array $accept = [])
+    public function __construct(int $planetId, ?\Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody $requestBody = null, array $accept = [])
     {
         $this->planetId = $planetId;
         $this->body = $requestBody;
         $this->accept = $accept;
     }
-    use \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -27,10 +27,10 @@ class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\
     {
         return str_replace(['{planetId}'], [rawurlencode($this->planetId)], '/planets/{planetId}/image');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
-        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsPlanetIdImagePostBody) {
-            $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody) {
+            $bodyBuilder = new \Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder();
             $formParameters = $serializer->normalize($this->body, 'json');
             $partOptions = ['image' => ['filename' => 'image']];
             foreach ($formParameters as $key => $value) {
@@ -41,9 +41,7 @@ class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\
                 $resourceOptions = $partOptions[$key] ?? [];
                 if (isset($resourceOptions['filename'])) {
                     $uri = null;
-                    if ($value instanceof \Psr\Http\Message\StreamInterface) {
-                        $uri = $value->getMetadata('uri');
-                    } elseif (is_resource($value)) {
+                    if (is_resource($value)) {
                         $uri = stream_get_meta_data($value)['uri'] ?? null;
                     }
                     if (is_string($uri) && is_file($uri)) {
@@ -66,31 +64,35 @@ class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UploadImageBadRequestException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UploadImageForbiddenException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UploadImageNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\UploadImageBadRequestException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\UploadImageForbiddenException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\UploadImageNotFoundException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ImageUploadedMessage
+     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Model\ImageUploadedMessage
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ImageUploadedMessage', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\ImageUploadedMessage', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UploadImageBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\BadRequestError', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\UploadImageBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\BadRequestError', 'json'), $response);
         }
         if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UploadImageForbiddenException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ForbiddenError', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\UploadImageForbiddenException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\ForbiddenError', 'json'), $response);
         }
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\UploadImageNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\NotFoundError', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\UploadImageNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\NotFoundError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array
     {
         return ['bearerAuth', 'basicAuth', 'apiKeyQuery', 'apiKeyHeader', 'apiKeyCookie', 'oAuth2', 'openIdConnect'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

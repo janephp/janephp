@@ -25,7 +25,7 @@ class FindControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component\O
     {
         return str_replace(['{bladeUUID}'], [rawurlencode($this->bladeUUID)], '/controlPlanes/{bladeUUID}/userDefinedInterface');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -51,10 +51,10 @@ class FindControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component\O
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUserDefinedInterfaceList
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (400 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindControlPlanesUserDefinedInterfaceByBladeUUIDBadRequestException($response);
         }
@@ -71,5 +71,9 @@ class FindControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component\O
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

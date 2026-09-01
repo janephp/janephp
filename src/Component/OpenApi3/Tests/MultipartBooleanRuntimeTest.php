@@ -42,19 +42,18 @@ class MultipartBooleanRuntimeTest extends TestCase
             ),
         ];
         $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, $encoders);
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
 
         $trueBody = new ExpectedMultiPartBoolean\Model\FileDepositPostBody();
         $trueBody->fichier = 'file-content';
         $trueBody->valid = true;
-        $trueResult = (new ExpectedMultiPartBoolean\Endpoint\PostFileDeposit($trueBody))->getBody($serializer, $streamFactory);
+        $trueResult = (new ExpectedMultiPartBoolean\Endpoint\PostFileDeposit($trueBody))->getBody($serializer);
         $trueStreamContent = (string) $trueResult[1];
         $this->assertMatchesRegularExpression('/name="valid".*?\R\Rtrue\R/s', $trueStreamContent);
 
         $falseBody = new ExpectedMultiPartBoolean\Model\FileDepositPostBody();
         $falseBody->fichier = 'file-content';
         $falseBody->valid = false;
-        $falseResult = (new ExpectedMultiPartBoolean\Endpoint\PostFileDeposit($falseBody))->getBody($serializer, $streamFactory);
+        $falseResult = (new ExpectedMultiPartBoolean\Endpoint\PostFileDeposit($falseBody))->getBody($serializer);
         $falseStreamContent = (string) $falseResult[1];
         $this->assertMatchesRegularExpression('/name="valid".*?\R\Rfalse\R/s', $falseStreamContent);
     }

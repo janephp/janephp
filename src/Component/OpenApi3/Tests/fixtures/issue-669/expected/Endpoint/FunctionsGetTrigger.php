@@ -25,7 +25,7 @@ class FunctionsGetTrigger extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     {
         return str_replace(['{namespace_id}', '{trigger_name}'], [rawurlencode($this->namespace_id), rawurlencode($this->trigger_name)], '/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -43,10 +43,10 @@ class FunctionsGetTrigger extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse', 'json');
         }
@@ -69,5 +69,9 @@ class FunctionsGetTrigger extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

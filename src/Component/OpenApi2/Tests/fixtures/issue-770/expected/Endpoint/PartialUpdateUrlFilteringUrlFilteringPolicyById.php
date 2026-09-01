@@ -27,7 +27,7 @@ class PartialUpdateUrlFilteringUrlFilteringPolicyById extends \Jane\Component\Op
     {
         return str_replace(['{id}'], [rawurlencode($this->id)], '/urlFiltering/urlFilteringPolicy/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getSerializedObjectBody($serializer);
     }
@@ -54,10 +54,10 @@ class PartialUpdateUrlFilteringUrlFilteringPolicyById extends \Jane\Component\Op
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (400 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateUrlFilteringUrlFilteringPolicyByIdBadRequestException($response);
         }
@@ -77,5 +77,9 @@ class PartialUpdateUrlFilteringUrlFilteringPolicyById extends \Jane\Component\Op
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

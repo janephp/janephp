@@ -28,7 +28,7 @@ class FindRkszonesApmodelByModel extends \Jane\Component\OpenApi3\Tests\Expected
     {
         return str_replace(['{zoneId}', '{model}'], [rawurlencode($this->zoneId), rawurlencode($this->model)], '/rkszones/{zoneId}/apmodel/{model}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,10 +54,10 @@ class FindRkszonesApmodelByModel extends \Jane\Component\OpenApi3\Tests\Expected
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (400 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesApmodelByModelBadRequestException($response);
         }
@@ -74,5 +74,9 @@ class FindRkszonesApmodelByModel extends \Jane\Component\OpenApi3\Tests\Expected
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

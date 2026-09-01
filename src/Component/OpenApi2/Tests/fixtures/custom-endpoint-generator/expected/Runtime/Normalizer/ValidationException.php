@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator\Runtime\Normalizer;
+namespace Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer;
 
 use RuntimeException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;

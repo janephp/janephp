@@ -10,9 +10,9 @@ class BusinessRuleGetConfigurationBadRequestException extends BadRequestExceptio
          */
         private readonly \PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('Validation exception');
@@ -21,7 +21,7 @@ class BusinessRuleGetConfigurationBadRequestException extends BadRequestExceptio
     {
         return $this->pictureparkValidationException;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

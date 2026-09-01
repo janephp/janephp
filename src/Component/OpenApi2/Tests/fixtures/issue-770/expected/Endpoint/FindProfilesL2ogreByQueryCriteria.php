@@ -24,7 +24,7 @@ class FindProfilesL2ogreByQueryCriteria extends \Jane\Component\OpenApi3\Tests\E
     {
         return '/profiles/l2ogre/query';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getSerializedObjectBody($serializer);
     }
@@ -51,10 +51,10 @@ class FindProfilesL2ogreByQueryCriteria extends \Jane\Component\OpenApi3\Tests\E
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfileList
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (400 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesL2ogreByQueryCriteriaBadRequestException($response);
         }
@@ -74,5 +74,9 @@ class FindProfilesL2ogreByQueryCriteria extends \Jane\Component\OpenApi3\Tests\E
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

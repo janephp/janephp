@@ -9,10 +9,9 @@ class ApiKeyHeaderAuthentication implements \Jane\Component\OpenApiRuntime\Clien
     {
         $this->{'apiKey'} = $apiKey;
     }
-    public function authentication(\Psr\Http\Message\RequestInterface $request): \Psr\Http\Message\RequestInterface
+    public function decorate(string $method, string $url, array &$options): void
     {
-        $request = $request->withHeader('X-API-Key', $this->{'apiKey'});
-        return $request;
+        $options['headers']['X-API-Key'] = $this->{'apiKey'};
     }
     public function getScope(): string
     {

@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/openapi.json',
+    'namespace' => 'Jane\Component\OpenApi3\Tests\FetchModeDefault',
+    'directory' => __DIR__ . '/generated',
+    'default-fetch-mode' => 'eager',
+];

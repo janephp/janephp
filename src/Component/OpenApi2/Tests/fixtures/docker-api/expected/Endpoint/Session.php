@@ -13,7 +13,7 @@ class Session extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker
     {
         return '/session';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -29,10 +29,10 @@ class Session extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (101 === $status) {
             return null;
         }
@@ -46,5 +46,9 @@ class Session extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

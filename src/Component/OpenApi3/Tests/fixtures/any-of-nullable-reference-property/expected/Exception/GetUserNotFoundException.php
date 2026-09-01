@@ -6,14 +6,14 @@ class GetUserNotFoundException extends NotFoundException
 {
     public function __construct(
         /**
-         * @var \Psr\Http\Message\ResponseInterface|null
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface|null
          */
-        private readonly ?\Psr\Http\Message\ResponseInterface $response = null
+        private readonly ?\Symfony\Contracts\HttpClient\ResponseInterface $response = null
     )
     {
         parent::__construct('Resource not found');
     }
-    public function getResponse(): ?\Psr\Http\Message\ResponseInterface
+    public function getResponse(): ?\Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

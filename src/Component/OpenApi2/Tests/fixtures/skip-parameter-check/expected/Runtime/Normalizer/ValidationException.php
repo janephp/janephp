@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Runtime\Normalizer;
+namespace Jane\OpenApi2\Tests\Expected\Runtime\Normalizer;
 
 use RuntimeException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;

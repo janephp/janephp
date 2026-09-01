@@ -6,7 +6,7 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Par
 {
     /**
      * @param array $formParameters {
-     *     @var string|resource|\Psr\Http\Message\StreamInterface $testFile
+     *     @var string|resource $testFile
      * }
      */
     public function __construct(array $formParameters = [])
@@ -22,9 +22,9 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Par
     {
         return '/test-form-file';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
-        return $this->getMultipartBody($streamFactory);
+        return $this->getMultipartBody();
     }
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
@@ -32,7 +32,7 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Par
         $optionsResolver->setDefined(['testFile']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('testFile', ['string', 'resource', '\Psr\Http\Message\StreamInterface']);
+        $optionsResolver->addAllowedTypes('testFile', ['string', 'resource']);
         return $optionsResolver;
     }
     /**
@@ -41,10 +41,10 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Par
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return null;
         }
@@ -52,5 +52,9 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Par
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

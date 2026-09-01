@@ -25,7 +25,7 @@ class DocumentHistoryGetCurrent extends \PicturePark\API\Runtime\Client\BaseEndp
     {
         return str_replace(['{documentType}', '{documentId}'], [rawurlencode($this->documentType), rawurlencode($this->documentId)], '/v1/history/{documentType}/{documentId}/current');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -46,10 +46,10 @@ class DocumentHistoryGetCurrent extends \PicturePark\API\Runtime\Client\BaseEndp
      *
      * @return null|\PicturePark\API\Model\DocumentHistory
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\DocumentHistory', 'json');
         }
@@ -78,5 +78,9 @@ class DocumentHistoryGetCurrent extends \PicturePark\API\Runtime\Client\BaseEndp
     public function getAuthenticationScopes(): array
     {
         return ['Bearer'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

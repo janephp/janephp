@@ -1,35 +1,34 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition;
+namespace Jane\Component\OpenApi2\Tests\Expected;
 
-class Client extends \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Client
 {
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Model\BarItem[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\BarItem[]
      */
-    public function testSimple(string $fetch = self::FETCH_OBJECT)
+    public function testSimple()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Endpoint\TestSimple(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\TestSimple());
     }
-    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = [];
-            if (count($additionalPlugins) > 0) {
-                $plugins = array_merge($plugins, $additionalPlugins);
-            }
-            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
+            $httpClient = \Symfony\Component\HttpClient\HttpClient::create();
         }
-        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Normalizer\JaneObjectNormalizer()];
+        $plugins = [];
+        if (count($additionalPlugins) > 0) {
+            $plugins = array_merge($plugins, $additionalPlugins);
+        }
+        foreach ($plugins as $plugin) {
+            $httpClient = $plugin($httpClient);
+        }
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\ArrayDefinition\Runtime\Client\FormEncoder()]);
-        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\FormEncoder()]);
+        return new static($httpClient, $serializer);
     }
 }

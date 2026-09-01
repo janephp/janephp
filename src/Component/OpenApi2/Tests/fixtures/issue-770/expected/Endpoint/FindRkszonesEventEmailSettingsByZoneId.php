@@ -25,7 +25,7 @@ class FindRkszonesEventEmailSettingsByZoneId extends \Jane\Component\OpenApi3\Te
     {
         return str_replace(['{zoneId}'], [rawurlencode($this->zoneId)], '/rkszones/{zoneId}/eventEmailSettings');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -51,10 +51,10 @@ class FindRkszonesEventEmailSettingsByZoneId extends \Jane\Component\OpenApi3\Te
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (400 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesEventEmailSettingsByZoneIdBadRequestException($response);
         }
@@ -71,5 +71,9 @@ class FindRkszonesEventEmailSettingsByZoneId extends \Jane\Component\OpenApi3\Te
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

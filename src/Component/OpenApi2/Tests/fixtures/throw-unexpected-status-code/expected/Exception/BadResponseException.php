@@ -4,7 +4,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\ThrowUnexpectedStatusCode\Excep
 
 class BadResponseException extends UnexpectedStatusCodeException
 {
-    public function __construct($status, $message = '', ?\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct($status, $message = '', ?\Symfony\Contracts\HttpClient\ResponseInterface $response = null)
     {
         parent::__construct($status, $message, $response);
     }

@@ -20,7 +20,7 @@ class TestObjectListBodyParameter extends \Jane\Component\OpenApi2\Tests\Expecte
     {
         return '/test-object-list';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getSerializedBody($serializer);
     }
@@ -30,10 +30,10 @@ class TestObjectListBodyParameter extends \Jane\Component\OpenApi2\Tests\Expecte
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return null;
         }
@@ -41,5 +41,9 @@ class TestObjectListBodyParameter extends \Jane\Component\OpenApi2\Tests\Expecte
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

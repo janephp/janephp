@@ -10,9 +10,9 @@ class CreateUserConflictException extends ConflictException
          */
         private readonly \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Conflict $conflict,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('Conflict');
@@ -21,7 +21,7 @@ class CreateUserConflictException extends ConflictException
     {
         return $this->conflict;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

@@ -36,7 +36,7 @@ class FindIdentityUsers extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
     {
         return '/identity/users';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -76,10 +76,10 @@ class FindIdentityUsers extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserList
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (400 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindIdentityUsersBadRequestException($response);
         }
@@ -96,5 +96,9 @@ class FindIdentityUsers extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }
