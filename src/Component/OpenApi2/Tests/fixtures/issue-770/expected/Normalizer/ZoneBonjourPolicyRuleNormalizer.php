@@ -38,33 +38,33 @@ class ZoneBonjourPolicyRuleNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('bridgeService', $data)) {
-            $object->setBridgeService($data['bridgeService']);
+            $object->bridgeService = $data['bridgeService'];
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
         }
         if (\array_key_exists('fromVlan', $data)) {
-            $object->setFromVlan($data['fromVlan']);
+            $object->fromVlan = $data['fromVlan'];
         }
         if (\array_key_exists('toVlan', $data)) {
-            $object->setToVlan($data['toVlan']);
+            $object->toVlan = $data['toVlan'];
         }
         if (\array_key_exists('notes', $data)) {
-            $object->setNotes($data['notes']);
+            $object->notes = $data['notes'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['bridgeService'] = $data->getBridgeService();
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        $dataArray['bridgeService'] = $data->bridgeService ?? null;
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
-        $dataArray['fromVlan'] = $data->getFromVlan();
-        $dataArray['toVlan'] = $data->getToVlan();
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
-            $dataArray['notes'] = $data->getNotes();
+        $dataArray['fromVlan'] = $data->fromVlan ?? null;
+        $dataArray['toVlan'] = $data->toVlan ?? null;
+        if (array_key_exists('notes', get_object_vars($data)) && null !== ($data->notes ?? null)) {
+            $dataArray['notes'] = $data->notes ?? null;
         }
         return $dataArray;
     }

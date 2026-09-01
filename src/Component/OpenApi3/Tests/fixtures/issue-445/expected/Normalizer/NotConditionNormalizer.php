@@ -38,15 +38,15 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('condition', $data) && $data['condition'] !== null) {
@@ -54,11 +54,11 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
             if (is_array($data['condition']) and \array_key_exists('kind', $data['condition'])) {
                 $value = $this->denormalizer->denormalize($data['condition'], \PicturePark\API\Model\BusinessRuleCondition::class, 'json', $context);
             }
-            $object->setCondition($value);
+            $object->condition = $value;
             unset($data['condition']);
         }
         elseif (\array_key_exists('condition', $data) && $data['condition'] === null) {
-            $object->setCondition(null);
+            $object->condition = null;
             unset($data['condition']);
         }
         foreach ($data as $key => $value_1) {
@@ -71,14 +71,14 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('condition') && null !== $data->getCondition()) {
-            $value = $data->getCondition();
-            if (is_object($data->getCondition())) {
-                $value = $data->getCondition() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getCondition(), 'json', $context));
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('condition', get_object_vars($data)) && null !== ($data->condition ?? null)) {
+            $value = $data->condition ?? null;
+            if (is_object($data->condition ?? null)) {
+                $value = ($data->condition ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->condition ?? null, 'json', $context));
             }
             $dataArray['condition'] = $value;
         }

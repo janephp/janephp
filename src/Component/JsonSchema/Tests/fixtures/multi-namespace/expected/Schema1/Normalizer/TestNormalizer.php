@@ -32,15 +32,15 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return $object;
         }
         if (\array_key_exists('foo', $data)) {
-            $object->setFoo($this->denormalizer->denormalize($data['foo'], \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class, 'json', $context));
+            $object->foo = $this->denormalizer->denormalize($data['foo'], \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Schema1\Runtime\JsonObject($this->normalizer->normalize($data->getFoo(), 'json', $context));
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $dataArray['foo'] = ($data->foo ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Schema1\Runtime\JsonObject($this->normalizer->normalize($data->foo ?? null, 'json', $context));
         }
         return $dataArray;
     }

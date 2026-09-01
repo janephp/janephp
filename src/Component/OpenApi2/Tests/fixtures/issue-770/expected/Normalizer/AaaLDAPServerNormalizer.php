@@ -41,143 +41,143 @@ class AaaLDAPServerNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['standbyServerEnabled'] = (bool) $data['standbyServerEnabled'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('zoneId', $data)) {
-            $object->setZoneId($data['zoneId']);
+            $object->zoneId = $data['zoneId'];
         }
         if (\array_key_exists('mvnoId', $data)) {
-            $object->setMvnoId($data['mvnoId']);
+            $object->mvnoId = $data['mvnoId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('baseDomainName', $data)) {
-            $object->setBaseDomainName($data['baseDomainName']);
+            $object->baseDomainName = $data['baseDomainName'];
         }
         if (\array_key_exists('adminDomainName', $data)) {
-            $object->setAdminDomainName($data['adminDomainName']);
+            $object->adminDomainName = $data['adminDomainName'];
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
         }
         if (\array_key_exists('keyAttribute', $data)) {
-            $object->setKeyAttribute($data['keyAttribute']);
+            $object->keyAttribute = $data['keyAttribute'];
         }
         if (\array_key_exists('searchFilter', $data)) {
-            $object->setSearchFilter($data['searchFilter']);
+            $object->searchFilter = $data['searchFilter'];
         }
         if (\array_key_exists('mappings', $data)) {
             $values = [];
             foreach ($data['mappings'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaGroupAttrIdentityUserRoleMapping::class, 'json', $context);
             }
-            $object->setMappings($values);
+            $object->mappings = $values;
         }
         if (\array_key_exists('standbyServerEnabled', $data)) {
-            $object->setStandbyServerEnabled($data['standbyServerEnabled']);
+            $object->standbyServerEnabled = $data['standbyServerEnabled'];
         }
         if (\array_key_exists('standbyIp', $data)) {
-            $object->setStandbyIp($data['standbyIp']);
+            $object->standbyIp = $data['standbyIp'];
         }
         if (\array_key_exists('standbyPort', $data)) {
-            $object->setStandbyPort($data['standbyPort']);
+            $object->standbyPort = $data['standbyPort'];
         }
         if (\array_key_exists('standbyBaseDomainName', $data)) {
-            $object->setStandbyBaseDomainName($data['standbyBaseDomainName']);
+            $object->standbyBaseDomainName = $data['standbyBaseDomainName'];
         }
         if (\array_key_exists('standbyAdminDomainName', $data)) {
-            $object->setStandbyAdminDomainName($data['standbyAdminDomainName']);
+            $object->standbyAdminDomainName = $data['standbyAdminDomainName'];
         }
         if (\array_key_exists('standbyPassword', $data)) {
-            $object->setStandbyPassword($data['standbyPassword']);
+            $object->standbyPassword = $data['standbyPassword'];
         }
         if (\array_key_exists('standbyKeyAttribute', $data)) {
-            $object->setStandbyKeyAttribute($data['standbyKeyAttribute']);
+            $object->standbyKeyAttribute = $data['standbyKeyAttribute'];
         }
         if (\array_key_exists('standbySearchFilter', $data)) {
-            $object->setStandbySearchFilter($data['standbySearchFilter']);
+            $object->standbySearchFilter = $data['standbySearchFilter'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('zoneId') && null !== $data->getZoneId()) {
-            $dataArray['zoneId'] = $data->getZoneId();
+        if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
+            $dataArray['zoneId'] = $data->zoneId ?? null;
         }
-        if ($data->isInitialized('mvnoId') && null !== $data->getMvnoId()) {
-            $dataArray['mvnoId'] = $data->getMvnoId();
+        if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
+            $dataArray['mvnoId'] = $data->mvnoId ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
-        if ($data->isInitialized('baseDomainName') && null !== $data->getBaseDomainName()) {
-            $dataArray['baseDomainName'] = $data->getBaseDomainName();
+        if (array_key_exists('baseDomainName', get_object_vars($data)) && null !== ($data->baseDomainName ?? null)) {
+            $dataArray['baseDomainName'] = $data->baseDomainName ?? null;
         }
-        if ($data->isInitialized('adminDomainName') && null !== $data->getAdminDomainName()) {
-            $dataArray['adminDomainName'] = $data->getAdminDomainName();
+        if (array_key_exists('adminDomainName', get_object_vars($data)) && null !== ($data->adminDomainName ?? null)) {
+            $dataArray['adminDomainName'] = $data->adminDomainName ?? null;
         }
-        if ($data->isInitialized('password') && null !== $data->getPassword()) {
-            $dataArray['password'] = $data->getPassword();
+        if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
+            $dataArray['password'] = $data->password ?? null;
         }
-        if ($data->isInitialized('keyAttribute') && null !== $data->getKeyAttribute()) {
-            $dataArray['keyAttribute'] = $data->getKeyAttribute();
+        if (array_key_exists('keyAttribute', get_object_vars($data)) && null !== ($data->keyAttribute ?? null)) {
+            $dataArray['keyAttribute'] = $data->keyAttribute ?? null;
         }
-        if ($data->isInitialized('searchFilter') && null !== $data->getSearchFilter()) {
-            $dataArray['searchFilter'] = $data->getSearchFilter();
+        if (array_key_exists('searchFilter', get_object_vars($data)) && null !== ($data->searchFilter ?? null)) {
+            $dataArray['searchFilter'] = $data->searchFilter ?? null;
         }
-        if ($data->isInitialized('mappings') && null !== $data->getMappings()) {
+        if (array_key_exists('mappings', get_object_vars($data)) && null !== ($data->mappings ?? null)) {
             $values = [];
-            foreach ($data->getMappings() as $value) {
+            foreach ($data->mappings ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['mappings'] = $values;
         }
-        if ($data->isInitialized('standbyServerEnabled') && null !== $data->getStandbyServerEnabled()) {
-            $dataArray['standbyServerEnabled'] = $data->getStandbyServerEnabled();
+        if (array_key_exists('standbyServerEnabled', get_object_vars($data)) && null !== ($data->standbyServerEnabled ?? null)) {
+            $dataArray['standbyServerEnabled'] = $data->standbyServerEnabled ?? null;
         }
-        if ($data->isInitialized('standbyIp') && null !== $data->getStandbyIp()) {
-            $dataArray['standbyIp'] = $data->getStandbyIp();
+        if (array_key_exists('standbyIp', get_object_vars($data)) && null !== ($data->standbyIp ?? null)) {
+            $dataArray['standbyIp'] = $data->standbyIp ?? null;
         }
-        if ($data->isInitialized('standbyPort') && null !== $data->getStandbyPort()) {
-            $dataArray['standbyPort'] = $data->getStandbyPort();
+        if (array_key_exists('standbyPort', get_object_vars($data)) && null !== ($data->standbyPort ?? null)) {
+            $dataArray['standbyPort'] = $data->standbyPort ?? null;
         }
-        if ($data->isInitialized('standbyBaseDomainName') && null !== $data->getStandbyBaseDomainName()) {
-            $dataArray['standbyBaseDomainName'] = $data->getStandbyBaseDomainName();
+        if (array_key_exists('standbyBaseDomainName', get_object_vars($data)) && null !== ($data->standbyBaseDomainName ?? null)) {
+            $dataArray['standbyBaseDomainName'] = $data->standbyBaseDomainName ?? null;
         }
-        if ($data->isInitialized('standbyAdminDomainName') && null !== $data->getStandbyAdminDomainName()) {
-            $dataArray['standbyAdminDomainName'] = $data->getStandbyAdminDomainName();
+        if (array_key_exists('standbyAdminDomainName', get_object_vars($data)) && null !== ($data->standbyAdminDomainName ?? null)) {
+            $dataArray['standbyAdminDomainName'] = $data->standbyAdminDomainName ?? null;
         }
-        if ($data->isInitialized('standbyPassword') && null !== $data->getStandbyPassword()) {
-            $dataArray['standbyPassword'] = $data->getStandbyPassword();
+        if (array_key_exists('standbyPassword', get_object_vars($data)) && null !== ($data->standbyPassword ?? null)) {
+            $dataArray['standbyPassword'] = $data->standbyPassword ?? null;
         }
-        if ($data->isInitialized('standbyKeyAttribute') && null !== $data->getStandbyKeyAttribute()) {
-            $dataArray['standbyKeyAttribute'] = $data->getStandbyKeyAttribute();
+        if (array_key_exists('standbyKeyAttribute', get_object_vars($data)) && null !== ($data->standbyKeyAttribute ?? null)) {
+            $dataArray['standbyKeyAttribute'] = $data->standbyKeyAttribute ?? null;
         }
-        if ($data->isInitialized('standbySearchFilter') && null !== $data->getStandbySearchFilter()) {
-            $dataArray['standbySearchFilter'] = $data->getStandbySearchFilter();
+        if (array_key_exists('standbySearchFilter', get_object_vars($data)) && null !== ($data->standbySearchFilter ?? null)) {
+            $dataArray['standbySearchFilter'] = $data->standbySearchFilter ?? null;
         }
         return $dataArray;
     }

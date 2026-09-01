@@ -48,13 +48,13 @@ class ListItemDeleteManyRequestNormalizer implements DenormalizerInterface, Norm
             foreach ($data['listItemIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setListItemIds($values);
+            $object->listItemIds = $values;
         }
         if (\array_key_exists('forceReferenceRemoval', $data)) {
-            $object->setForceReferenceRemoval($data['forceReferenceRemoval']);
+            $object->forceReferenceRemoval = $data['forceReferenceRemoval'];
         }
         if (\array_key_exists('notifyProgress', $data)) {
-            $object->setNotifyProgress($data['notifyProgress']);
+            $object->notifyProgress = $data['notifyProgress'];
         }
         return $object;
     }
@@ -62,12 +62,12 @@ class ListItemDeleteManyRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getListItemIds() as $value) {
+        foreach ($data->listItemIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['listItemIds'] = $values;
-        $dataArray['forceReferenceRemoval'] = $data->getForceReferenceRemoval();
-        $dataArray['notifyProgress'] = $data->getNotifyProgress();
+        $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval ?? null;
+        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

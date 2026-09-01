@@ -45,25 +45,25 @@ class BuildPrunePostResponse200Normalizer implements DenormalizerInterface, Norm
             foreach ($data['CachesDeleted'] as $value) {
                 $values[] = $value;
             }
-            $object->setCachesDeleted($values);
+            $object->cachesDeleted = $values;
         }
         if (\array_key_exists('SpaceReclaimed', $data)) {
-            $object->setSpaceReclaimed($data['SpaceReclaimed']);
+            $object->spaceReclaimed = $data['SpaceReclaimed'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('cachesDeleted') && null !== $data->getCachesDeleted()) {
+        if (array_key_exists('cachesDeleted', get_object_vars($data)) && null !== ($data->cachesDeleted ?? null)) {
             $values = [];
-            foreach ($data->getCachesDeleted() as $value) {
+            foreach ($data->cachesDeleted ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['CachesDeleted'] = $values;
         }
-        if ($data->isInitialized('spaceReclaimed') && null !== $data->getSpaceReclaimed()) {
-            $dataArray['SpaceReclaimed'] = $data->getSpaceReclaimed();
+        if (array_key_exists('spaceReclaimed', get_object_vars($data)) && null !== ($data->spaceReclaimed ?? null)) {
+            $dataArray['SpaceReclaimed'] = $data->spaceReclaimed ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\BuildPrunePostResponse200Constraint());

@@ -38,21 +38,21 @@ class ProfileHs20TermsConditionsNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('filename', $data)) {
-            $object->setFilename($data['filename']);
+            $object->filename = $data['filename'];
         }
         if (\array_key_exists('timestamp', $data)) {
-            $object->setTimestamp($data['timestamp']);
+            $object->timestamp = $data['timestamp'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('filename') && null !== $data->getFilename()) {
-            $dataArray['filename'] = $data->getFilename();
+        if (array_key_exists('filename', get_object_vars($data)) && null !== ($data->filename ?? null)) {
+            $dataArray['filename'] = $data->filename ?? null;
         }
-        if ($data->isInitialized('timestamp') && null !== $data->getTimestamp()) {
-            $dataArray['timestamp'] = $data->getTimestamp();
+        if (array_key_exists('timestamp', get_object_vars($data)) && null !== ($data->timestamp ?? null)) {
+            $dataArray['timestamp'] = $data->timestamp ?? null;
         }
         return $dataArray;
     }

@@ -41,21 +41,21 @@ class ZoneDownlinkDiffServNormalizer implements DenormalizerInterface, Normalize
             $data['downlinkEnable'] = (bool) $data['downlinkEnable'];
         }
         if (\array_key_exists('downlinkEnable', $data)) {
-            $object->setDownlinkEnable($data['downlinkEnable']);
+            $object->downlinkEnable = $data['downlinkEnable'];
         }
         if (\array_key_exists('downlink', $data)) {
-            $object->setDownlink($data['downlink']);
+            $object->downlink = $data['downlink'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('downlinkEnable') && null !== $data->getDownlinkEnable()) {
-            $dataArray['downlinkEnable'] = $data->getDownlinkEnable();
+        if (array_key_exists('downlinkEnable', get_object_vars($data)) && null !== ($data->downlinkEnable ?? null)) {
+            $dataArray['downlinkEnable'] = $data->downlinkEnable ?? null;
         }
-        if ($data->isInitialized('downlink') && null !== $data->getDownlink()) {
-            $dataArray['downlink'] = $data->getDownlink();
+        if (array_key_exists('downlink', get_object_vars($data)) && null !== ($data->downlink ?? null)) {
+            $dataArray['downlink'] = $data->downlink ?? null;
         }
         return $dataArray;
     }

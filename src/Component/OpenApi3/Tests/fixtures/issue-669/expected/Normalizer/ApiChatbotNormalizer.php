@@ -42,31 +42,31 @@ class ApiChatbotNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['allowed_domains'] as $value) {
                 $values[] = $value;
             }
-            $object->setAllowedDomains($values);
+            $object->allowedDomains = $values;
             unset($data['allowed_domains']);
         }
         if (\array_key_exists('button_background_color', $data)) {
-            $object->setButtonBackgroundColor($data['button_background_color']);
+            $object->buttonBackgroundColor = $data['button_background_color'];
             unset($data['button_background_color']);
         }
         if (\array_key_exists('logo', $data)) {
-            $object->setLogo($data['logo']);
+            $object->logo = $data['logo'];
             unset($data['logo']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('primary_color', $data)) {
-            $object->setPrimaryColor($data['primary_color']);
+            $object->primaryColor = $data['primary_color'];
             unset($data['primary_color']);
         }
         if (\array_key_exists('secondary_color', $data)) {
-            $object->setSecondaryColor($data['secondary_color']);
+            $object->secondaryColor = $data['secondary_color'];
             unset($data['secondary_color']);
         }
         if (\array_key_exists('starting_message', $data)) {
-            $object->setStartingMessage($data['starting_message']);
+            $object->startingMessage = $data['starting_message'];
             unset($data['starting_message']);
         }
         foreach ($data as $key => $value_1) {
@@ -79,30 +79,30 @@ class ApiChatbotNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('allowedDomains') && null !== $data->getAllowedDomains()) {
+        if (array_key_exists('allowedDomains', get_object_vars($data)) && null !== ($data->allowedDomains ?? null)) {
             $values = [];
-            foreach ($data->getAllowedDomains() as $value) {
+            foreach ($data->allowedDomains ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['allowed_domains'] = $values;
         }
-        if ($data->isInitialized('buttonBackgroundColor') && null !== $data->getButtonBackgroundColor()) {
-            $dataArray['button_background_color'] = $data->getButtonBackgroundColor();
+        if (array_key_exists('buttonBackgroundColor', get_object_vars($data)) && null !== ($data->buttonBackgroundColor ?? null)) {
+            $dataArray['button_background_color'] = $data->buttonBackgroundColor ?? null;
         }
-        if ($data->isInitialized('logo') && null !== $data->getLogo()) {
-            $dataArray['logo'] = $data->getLogo();
+        if (array_key_exists('logo', get_object_vars($data)) && null !== ($data->logo ?? null)) {
+            $dataArray['logo'] = $data->logo ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('primaryColor') && null !== $data->getPrimaryColor()) {
-            $dataArray['primary_color'] = $data->getPrimaryColor();
+        if (array_key_exists('primaryColor', get_object_vars($data)) && null !== ($data->primaryColor ?? null)) {
+            $dataArray['primary_color'] = $data->primaryColor ?? null;
         }
-        if ($data->isInitialized('secondaryColor') && null !== $data->getSecondaryColor()) {
-            $dataArray['secondary_color'] = $data->getSecondaryColor();
+        if (array_key_exists('secondaryColor', get_object_vars($data)) && null !== ($data->secondaryColor ?? null)) {
+            $dataArray['secondary_color'] = $data->secondaryColor ?? null;
         }
-        if ($data->isInitialized('startingMessage') && null !== $data->getStartingMessage()) {
-            $dataArray['starting_message'] = $data->getStartingMessage();
+        if (array_key_exists('startingMessage', get_object_vars($data)) && null !== ($data->startingMessage ?? null)) {
+            $dataArray['starting_message'] = $data->startingMessage ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

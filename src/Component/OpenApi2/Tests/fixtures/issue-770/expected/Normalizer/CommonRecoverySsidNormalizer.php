@@ -41,15 +41,15 @@ class CommonRecoverySsidNormalizer implements DenormalizerInterface, NormalizerI
             $data['recoverySsidEnabled'] = (bool) $data['recoverySsidEnabled'];
         }
         if (\array_key_exists('recoverySsidEnabled', $data)) {
-            $object->setRecoverySsidEnabled($data['recoverySsidEnabled']);
+            $object->recoverySsidEnabled = $data['recoverySsidEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('recoverySsidEnabled') && null !== $data->getRecoverySsidEnabled()) {
-            $dataArray['recoverySsidEnabled'] = $data->getRecoverySsidEnabled();
+        if (array_key_exists('recoverySsidEnabled', get_object_vars($data)) && null !== ($data->recoverySsidEnabled ?? null)) {
+            $dataArray['recoverySsidEnabled'] = $data->recoverySsidEnabled ?? null;
         }
         return $dataArray;
     }

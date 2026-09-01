@@ -39,8 +39,8 @@ trait GetTransformResponseBodyTrait
         $outputTypes = $registry->getThrowUnexpectedStatusCode() ? [] : ['null'];
         $throwTypes = [];
 
-        if ($operation->getOperation()->getResponses()) {
-            foreach ($operation->getOperation()->getResponses() as $status => $response) {
+        if ($operation->getOperation()->responses ?? null) {
+            foreach ($operation->getOperation()->responses ?? null as $status => $response) {
                 $reference = $operation->getReference() . '/responses/' . $status;
 
                 if ($response instanceof Reference) {
@@ -51,10 +51,10 @@ trait GetTransformResponseBodyTrait
                 [$outputType, $throwType, $ifStatus] = $this->createResponseDenormalizationStatement(
                     $endpointName,
                     $status,
-                    $response->getSchema(),
+                    $response->schema,
                     $context,
                     $reference,
-                    $response->getDescription()
+                    $response->description
                 );
 
                 if (null !== $outputType || null !== $throwType) {
@@ -238,21 +238,21 @@ EOD
 
     private function convertResponseType(Schema $schema): ?string
     {
-        $type = $schema->getType();
+        $type = $schema->type;
 
-        if (null === $type && null !== $schema->getEnum() && \count($schema->getEnum()) > 0) {
+        if (null === $type && null !== $schema->enum && \count($schema->enum) > 0) {
             $type = 'string';
         }
 
         return match ($type) {
             'string' => 'string',
             'number' => $this->isNumberFloat(
-                $schema->getFormat(),
-                $schema->getDefault(),
-                $schema->getMinimum(),
-                $schema->getMaximum(),
-                $schema->getMultipleOf(),
-                $schema->getEnum()
+                $schema->format,
+                $schema->default,
+                $schema->minimum,
+                $schema->maximum,
+                $schema->multipleOf,
+                $schema->enum
             ) ? 'float' : 'int',
             'boolean' => 'bool',
             'integer' => 'int',

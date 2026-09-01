@@ -8,81 +8,19 @@ class ResponseAllChecks implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var list<array<string, mixed>>
      */
-    protected $checks;
+    public array $checks;
     /**
      * @var PageLinks
      */
-    protected $links;
+    public PageLinks $links;
     /**
      * @var MetaMeta
      */
-    protected $meta;
-    /**
-     * @return list<array<string, mixed>>
-     */
-    public function getChecks(): array
-    {
-        return $this->checks;
-    }
-    /**
-     * @param list<array<string, mixed>> $checks
-     *
-     * @return self
-     */
-    public function setChecks(array $checks): self
-    {
-        $this->initialized['checks'] = true;
-        $this->checks = $checks;
-        return $this;
-    }
-    /**
-     * @return PageLinks
-     */
-    public function getLinks(): PageLinks
-    {
-        return $this->links;
-    }
-    /**
-     * @param PageLinks $links
-     *
-     * @return self
-     */
-    public function setLinks(PageLinks $links): self
-    {
-        $this->initialized['links'] = true;
-        $this->links = $links;
-        return $this;
-    }
-    /**
-     * @return MetaMeta
-     */
-    public function getMeta(): MetaMeta
-    {
-        return $this->meta;
-    }
-    /**
-     * @param MetaMeta $meta
-     *
-     * @return self
-     */
-    public function setMeta(MetaMeta $meta): self
-    {
-        $this->initialized['meta'] = true;
-        $this->meta = $meta;
-        return $this;
-    }
+    public MetaMeta $meta;
     public function definedProperties(): array
     {
-        return ['checks' => ['checks', 'getChecks', 'setChecks'], 'links' => ['links', 'getLinks', 'setLinks'], 'meta' => ['meta', 'getMeta', 'setMeta']];
+        return ['checks' => 'checks', 'links' => 'links', 'meta' => 'meta'];
     }
 }

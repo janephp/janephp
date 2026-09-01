@@ -22,14 +22,14 @@ class DefinitionGuesser implements ChainGuesserAwareInterface, GuesserInterface,
          * @var string     $key
          * @var JsonSchema $definition
          */
-        foreach ($object->getDefinitions() ?? [] as $key => $definition) {
+        foreach (($object->definitions ?? null) ?? [] as $key => $definition) {
             $this->chainGuesser->guessClass($definition, $key, $reference . '/definitions/' . $key, $registry);
         }
         /**
          * @var string     $key
          * @var JsonSchema $definition
          */
-        foreach ($object->getDollarDefs() ?? [] as $key => $definition) {
+        foreach (($object->dollarDefs ?? null) ?? [] as $key => $definition) {
             $this->chainGuesser->guessClass($definition, $key, $reference . '/$defs/' . $key, $registry);
         }
     }
@@ -38,8 +38,8 @@ class DefinitionGuesser implements ChainGuesserAwareInterface, GuesserInterface,
     {
         return ($object instanceof JsonSchema)
             && (
-                (null !== $object->getDefinitions() && \count($object->getDefinitions()) > 0)
-                || (null !== $object->getDollarDefs() && \count($object->getDollarDefs()) > 0)
+                (null !== ($object->definitions ?? null) && \count($object->definitions ?? null) > 0)
+                || (null !== ($object->dollarDefs ?? null) && \count($object->dollarDefs ?? null) > 0)
             );
     }
 

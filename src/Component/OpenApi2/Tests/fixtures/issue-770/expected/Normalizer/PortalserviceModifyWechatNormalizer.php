@@ -38,70 +38,70 @@ class PortalserviceModifyWechatNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('authUrl', $data)) {
-            $object->setAuthUrl($data['authUrl']);
+            $object->authUrl = $data['authUrl'];
         }
         if (\array_key_exists('dnatDestination', $data)) {
-            $object->setDnatDestination($data['dnatDestination']);
+            $object->dnatDestination = $data['dnatDestination'];
         }
         if (\array_key_exists('gracePeriod', $data)) {
-            $object->setGracePeriod($data['gracePeriod']);
+            $object->gracePeriod = $data['gracePeriod'];
         }
         if (\array_key_exists('blackList', $data)) {
-            $object->setBlackList($data['blackList']);
+            $object->blackList = $data['blackList'];
         }
         if (\array_key_exists('whiteList', $data)) {
             $values = [];
             foreach ($data['whiteList'] as $value) {
                 $values[] = $value;
             }
-            $object->setWhiteList($values);
+            $object->whiteList = $values;
         }
         if (\array_key_exists('dnatPortMapping', $data)) {
             $values_1 = [];
             foreach ($data['dnatPortMapping'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceDnatPortMapping::class, 'json', $context);
             }
-            $object->setDnatPortMapping($values_1);
+            $object->dnatPortMapping = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('authUrl') && null !== $data->getAuthUrl()) {
-            $dataArray['authUrl'] = $data->getAuthUrl();
+        if (array_key_exists('authUrl', get_object_vars($data)) && null !== ($data->authUrl ?? null)) {
+            $dataArray['authUrl'] = $data->authUrl ?? null;
         }
-        if ($data->isInitialized('dnatDestination') && null !== $data->getDnatDestination()) {
-            $dataArray['dnatDestination'] = $data->getDnatDestination();
+        if (array_key_exists('dnatDestination', get_object_vars($data)) && null !== ($data->dnatDestination ?? null)) {
+            $dataArray['dnatDestination'] = $data->dnatDestination ?? null;
         }
-        if ($data->isInitialized('gracePeriod') && null !== $data->getGracePeriod()) {
-            $dataArray['gracePeriod'] = $data->getGracePeriod();
+        if (array_key_exists('gracePeriod', get_object_vars($data)) && null !== ($data->gracePeriod ?? null)) {
+            $dataArray['gracePeriod'] = $data->gracePeriod ?? null;
         }
-        if ($data->isInitialized('blackList') && null !== $data->getBlackList()) {
-            $dataArray['blackList'] = $data->getBlackList();
+        if (array_key_exists('blackList', get_object_vars($data)) && null !== ($data->blackList ?? null)) {
+            $dataArray['blackList'] = $data->blackList ?? null;
         }
-        if ($data->isInitialized('whiteList') && null !== $data->getWhiteList()) {
+        if (array_key_exists('whiteList', get_object_vars($data)) && null !== ($data->whiteList ?? null)) {
             $values = [];
-            foreach ($data->getWhiteList() as $value) {
+            foreach ($data->whiteList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['whiteList'] = $values;
         }
-        if ($data->isInitialized('dnatPortMapping') && null !== $data->getDnatPortMapping()) {
+        if (array_key_exists('dnatPortMapping', get_object_vars($data)) && null !== ($data->dnatPortMapping ?? null)) {
             $values_1 = [];
-            foreach ($data->getDnatPortMapping() as $value_1) {
+            foreach ($data->dnatPortMapping ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['dnatPortMapping'] = $values_1;

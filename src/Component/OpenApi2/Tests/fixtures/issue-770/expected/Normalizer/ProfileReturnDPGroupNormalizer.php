@@ -41,109 +41,109 @@ class ProfileReturnDPGroupNormalizer implements DenormalizerInterface, Normalize
             $data['isDpVersionConsistent'] = (bool) $data['isDpVersionConsistent'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('profileType', $data)) {
-            $object->setProfileType($data['profileType']);
+            $object->profileType = $data['profileType'];
         }
         if (\array_key_exists('dpGroupList', $data)) {
             $values = [];
             foreach ($data['dpGroupList'] as $value) {
                 $values[] = $value;
             }
-            $object->setDpGroupList($values);
+            $object->dpGroupList = $values;
         }
         if (\array_key_exists('dpGroupListWithPriority', $data)) {
             $values_1 = [];
             foreach ($data['dpGroupListWithPriority'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileReturnDPGroupDpGroupListWithPriorityItem::class, 'json', $context);
             }
-            $object->setDpGroupListWithPriority($values_1);
+            $object->dpGroupListWithPriority = $values_1;
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('creatorId', $data)) {
-            $object->setCreatorId($data['creatorId']);
+            $object->creatorId = $data['creatorId'];
         }
         if (\array_key_exists('modifierId', $data)) {
-            $object->setModifierId($data['modifierId']);
+            $object->modifierId = $data['modifierId'];
         }
         if (\array_key_exists('creatorUsername', $data)) {
-            $object->setCreatorUsername($data['creatorUsername']);
+            $object->creatorUsername = $data['creatorUsername'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         if (\array_key_exists('isDpVersionConsistent', $data)) {
-            $object->setIsDpVersionConsistent($data['isDpVersionConsistent']);
+            $object->isDpVersionConsistent = $data['isDpVersionConsistent'];
         }
         if (\array_key_exists('baseDpVersion', $data)) {
-            $object->setBaseDpVersion($data['baseDpVersion']);
+            $object->baseDpVersion = $data['baseDpVersion'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('profileType') && null !== $data->getProfileType()) {
-            $dataArray['profileType'] = $data->getProfileType();
+        if (array_key_exists('profileType', get_object_vars($data)) && null !== ($data->profileType ?? null)) {
+            $dataArray['profileType'] = $data->profileType ?? null;
         }
-        if ($data->isInitialized('dpGroupList') && null !== $data->getDpGroupList()) {
+        if (array_key_exists('dpGroupList', get_object_vars($data)) && null !== ($data->dpGroupList ?? null)) {
             $values = [];
-            foreach ($data->getDpGroupList() as $value) {
+            foreach ($data->dpGroupList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['dpGroupList'] = $values;
         }
-        if ($data->isInitialized('dpGroupListWithPriority') && null !== $data->getDpGroupListWithPriority()) {
+        if (array_key_exists('dpGroupListWithPriority', get_object_vars($data)) && null !== ($data->dpGroupListWithPriority ?? null)) {
             $values_1 = [];
-            foreach ($data->getDpGroupListWithPriority() as $value_1) {
+            foreach ($data->dpGroupListWithPriority ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['dpGroupListWithPriority'] = $values_1;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
-            $dataArray['creatorId'] = $data->getCreatorId();
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
         }
-        if ($data->isInitialized('modifierId') && null !== $data->getModifierId()) {
-            $dataArray['modifierId'] = $data->getModifierId();
+        if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
+            $dataArray['modifierId'] = $data->modifierId ?? null;
         }
-        if ($data->isInitialized('creatorUsername') && null !== $data->getCreatorUsername()) {
-            $dataArray['creatorUsername'] = $data->getCreatorUsername();
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
-        if ($data->isInitialized('isDpVersionConsistent') && null !== $data->getIsDpVersionConsistent()) {
-            $dataArray['isDpVersionConsistent'] = $data->getIsDpVersionConsistent();
+        if (array_key_exists('isDpVersionConsistent', get_object_vars($data)) && null !== ($data->isDpVersionConsistent ?? null)) {
+            $dataArray['isDpVersionConsistent'] = $data->isDpVersionConsistent ?? null;
         }
-        if ($data->isInitialized('baseDpVersion') && null !== $data->getBaseDpVersion()) {
-            $dataArray['baseDpVersion'] = $data->getBaseDpVersion();
+        if (array_key_exists('baseDpVersion', get_object_vars($data)) && null !== ($data->baseDpVersion ?? null)) {
+            $dataArray['baseDpVersion'] = $data->baseDpVersion ?? null;
         }
         return $dataArray;
     }

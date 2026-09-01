@@ -44,7 +44,7 @@ class AppsRegionNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['disabled'] = (bool) $data['disabled'];
         }
         if (\array_key_exists('continent', $data)) {
-            $object->setContinent($data['continent']);
+            $object->continent = $data['continent'];
             unset($data['continent']);
         }
         if (\array_key_exists('data_centers', $data)) {
@@ -52,31 +52,31 @@ class AppsRegionNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['data_centers'] as $value) {
                 $values[] = $value;
             }
-            $object->setDataCenters($values);
+            $object->dataCenters = $values;
             unset($data['data_centers']);
         }
         if (\array_key_exists('default', $data)) {
-            $object->setDefault($data['default']);
+            $object->default = $data['default'];
             unset($data['default']);
         }
         if (\array_key_exists('disabled', $data)) {
-            $object->setDisabled($data['disabled']);
+            $object->disabled = $data['disabled'];
             unset($data['disabled']);
         }
         if (\array_key_exists('flag', $data)) {
-            $object->setFlag($data['flag']);
+            $object->flag = $data['flag'];
             unset($data['flag']);
         }
         if (\array_key_exists('label', $data)) {
-            $object->setLabel($data['label']);
+            $object->label = $data['label'];
             unset($data['label']);
         }
         if (\array_key_exists('reason', $data)) {
-            $object->setReason($data['reason']);
+            $object->reason = $data['reason'];
             unset($data['reason']);
         }
         if (\array_key_exists('slug', $data)) {
-            $object->setSlug($data['slug']);
+            $object->slug = $data['slug'];
             unset($data['slug']);
         }
         foreach ($data as $key => $value_1) {

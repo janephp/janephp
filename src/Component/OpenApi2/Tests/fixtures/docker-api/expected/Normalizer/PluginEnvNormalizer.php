@@ -41,34 +41,34 @@ class PluginEnvNormalizer implements DenormalizerInterface, NormalizerInterface,
             $this->validate($data, new \Docker\Api\Validator\PluginEnvConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Description', $data)) {
-            $object->setDescription($data['Description']);
+            $object->description = $data['Description'];
         }
         if (\array_key_exists('Settable', $data)) {
             $values = [];
             foreach ($data['Settable'] as $value) {
                 $values[] = $value;
             }
-            $object->setSettable($values);
+            $object->settable = $values;
         }
         if (\array_key_exists('Value', $data)) {
-            $object->setValue($data['Value']);
+            $object->value = $data['Value'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->getName();
-        $dataArray['Description'] = $data->getDescription();
+        $dataArray['Name'] = $data->name ?? null;
+        $dataArray['Description'] = $data->description ?? null;
         $values = [];
-        foreach ($data->getSettable() as $value) {
+        foreach ($data->settable ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['Settable'] = $values;
-        $dataArray['Value'] = $data->getValue();
+        $dataArray['Value'] = $data->value ?? null;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginEnvConstraint());
         }

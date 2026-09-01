@@ -123,7 +123,7 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
      */
     private function guessPartOptions(MediaType $content): array
     {
-        $schema = $content->getSchema();
+        $schema = ($content->schema ?? null);
 
         if ($schema instanceof Reference) {
             [, $schema] = $this->guessClass->resolve($schema, Schema::class);
@@ -131,24 +131,24 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
 
         $partOptions = [];
 
-        if ($schema instanceof Schema && null !== $schema->getProperties()) {
-            foreach ($schema->getProperties() as $property => $propertySchema) {
+        if ($schema instanceof Schema && null !== ($schema->properties ?? null)) {
+            foreach (($schema->properties ?? null ?? []) as $property => $propertySchema) {
                 if ($propertySchema instanceof Reference) {
                     [, $propertySchema] = $this->guessClass->resolve($propertySchema, Schema::class);
                 }
 
-                if ($propertySchema instanceof Schema && 'string' === $propertySchema->getType() && 'binary' === $propertySchema->getFormat()) {
+                if ($propertySchema instanceof Schema && 'string' === ($propertySchema->type ?? null) && 'binary' === ($propertySchema->format ?? null)) {
                     $partOptions[$property]['filename'] = $property;
                 }
             }
         }
 
-        foreach ($content->getEncoding() ?? [] as $property => $encoding) {
+        foreach (($content->encoding ?? null) ?? [] as $property => $encoding) {
             if (!$encoding instanceof Encoding) {
                 continue;
             }
 
-            $encodingContentType = $encoding->getContentType();
+            $encodingContentType = ($encoding->contentType ?? null);
 
             // wildcard and comma-separated values are match constraints, not a concrete media type
             if (null === $encodingContentType || str_contains($encodingContentType, '*') || str_contains($encodingContentType, ',')) {

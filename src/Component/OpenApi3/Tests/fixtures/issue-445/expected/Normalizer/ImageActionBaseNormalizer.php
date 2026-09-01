@@ -50,26 +50,26 @@ class ImageActionBaseNormalizer implements DenormalizerInterface, NormalizerInte
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\WatermarkAction', $format, $context);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'AlphaHandlingAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'AlphaHandlingAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'CropAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'CropAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'UnsharpenMaskAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'UnsharpenMaskAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'WatermarkAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'WatermarkAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -41,26 +41,26 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
             $this->validate($data, new \Docker\Api\Validator\SystemVersionComponentsItemConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Version', $data)) {
-            $object->setVersion($data['Version']);
+            $object->version = $data['Version'];
         }
         if (\array_key_exists('Details', $data) && $data['Details'] !== null) {
-            $object->setDetails($data['Details']);
+            $object->details = $data['Details'];
         }
         elseif (\array_key_exists('Details', $data) && $data['Details'] === null) {
-            $object->setDetails(null);
+            $object->details = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->getName();
-        $dataArray['Version'] = $data->getVersion();
-        if ($data->isInitialized('details') && null !== $data->getDetails()) {
-            $dataArray['Details'] = $data->getDetails();
+        $dataArray['Name'] = $data->name ?? null;
+        $dataArray['Version'] = $data->version ?? null;
+        if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
+            $dataArray['Details'] = $data->details ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SystemVersionComponentsItemConstraint());

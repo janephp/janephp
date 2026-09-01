@@ -42,39 +42,39 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('outputId', $data) && $data['outputId'] !== null) {
-            $object->setOutputId($data['outputId']);
+            $object->outputId = $data['outputId'];
             unset($data['outputId']);
         }
         elseif (\array_key_exists('outputId', $data) && $data['outputId'] === null) {
-            $object->setOutputId(null);
+            $object->outputId = null;
             unset($data['outputId']);
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
             unset($data['contentId']);
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
-            $object->setContentId(null);
+            $object->contentId = null;
             unset($data['contentId']);
         }
         if (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] !== null) {
-            $object->setOutputFormatId($data['outputFormatId']);
+            $object->outputFormatId = $data['outputFormatId'];
             unset($data['outputFormatId']);
         }
         elseif (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] === null) {
-            $object->setOutputFormatId(null);
+            $object->outputFormatId = null;
             unset($data['outputFormatId']);
         }
         if (\array_key_exists('renderingState', $data)) {
-            $object->setRenderingState($data['renderingState']);
+            $object->renderingState = $data['renderingState'];
             unset($data['renderingState']);
         }
         foreach ($data as $key => $value) {
@@ -87,19 +87,19 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('outputId') && null !== $data->getOutputId()) {
-            $dataArray['outputId'] = $data->getOutputId();
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('outputId', get_object_vars($data)) && null !== ($data->outputId ?? null)) {
+            $dataArray['outputId'] = $data->outputId ?? null;
         }
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
-            $dataArray['contentId'] = $data->getContentId();
+        if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
+            $dataArray['contentId'] = $data->contentId ?? null;
         }
-        if ($data->isInitialized('outputFormatId') && null !== $data->getOutputFormatId()) {
-            $dataArray['outputFormatId'] = $data->getOutputFormatId();
+        if (array_key_exists('outputFormatId', get_object_vars($data)) && null !== ($data->outputFormatId ?? null)) {
+            $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
         }
-        if ($data->isInitialized('renderingState') && null !== $data->getRenderingState()) {
-            $dataArray['renderingState'] = $data->getRenderingState();
+        if (array_key_exists('renderingState', get_object_vars($data)) && null !== ($data->renderingState ?? null)) {
+            $dataArray['renderingState'] = $data->renderingState ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

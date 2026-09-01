@@ -42,7 +42,7 @@ class SchemaCreateManyRequestNormalizer implements DenormalizerInterface, Normal
             foreach ($data['schemas'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\SchemaCreateRequest::class, 'json', $context);
             }
-            $object->setSchemas($values);
+            $object->schemas = $values;
         }
         return $object;
     }
@@ -50,7 +50,7 @@ class SchemaCreateManyRequestNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getSchemas() as $value) {
+        foreach ($data->schemas ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['schemas'] = $values;

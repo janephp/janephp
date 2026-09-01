@@ -38,7 +38,7 @@ class ResponseUpdatedLoadBalancerNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('load_balancer', $data)) {
-            $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], \Jane\Generated\DigitalOcean\Model\LoadBalancer::class, 'json', $context));
+            $object->loadBalancer = $this->denormalizer->denormalize($data['load_balancer'], \Jane\Generated\DigitalOcean\Model\LoadBalancer::class, 'json', $context);
             unset($data['load_balancer']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseUpdatedLoadBalancerNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('loadBalancer') && null !== $data->getLoadBalancer()) {
-            $dataArray['load_balancer'] = $data->getLoadBalancer() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLoadBalancer(), 'json', $context));
+        if (array_key_exists('loadBalancer', get_object_vars($data)) && null !== ($data->loadBalancer ?? null)) {
+            $dataArray['load_balancer'] = ($data->loadBalancer ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->loadBalancer ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

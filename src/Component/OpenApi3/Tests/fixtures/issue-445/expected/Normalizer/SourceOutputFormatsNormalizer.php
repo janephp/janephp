@@ -38,54 +38,54 @@ class SourceOutputFormatsNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('image', $data) && $data['image'] !== null) {
-            $object->setImage($data['image']);
+            $object->image = $data['image'];
         }
         elseif (\array_key_exists('image', $data) && $data['image'] === null) {
-            $object->setImage(null);
+            $object->image = null;
         }
         if (\array_key_exists('video', $data) && $data['video'] !== null) {
-            $object->setVideo($data['video']);
+            $object->video = $data['video'];
         }
         elseif (\array_key_exists('video', $data) && $data['video'] === null) {
-            $object->setVideo(null);
+            $object->video = null;
         }
         if (\array_key_exists('document', $data) && $data['document'] !== null) {
-            $object->setDocument($data['document']);
+            $object->document = $data['document'];
         }
         elseif (\array_key_exists('document', $data) && $data['document'] === null) {
-            $object->setDocument(null);
+            $object->document = null;
         }
         if (\array_key_exists('audio', $data) && $data['audio'] !== null) {
-            $object->setAudio($data['audio']);
+            $object->audio = $data['audio'];
         }
         elseif (\array_key_exists('audio', $data) && $data['audio'] === null) {
-            $object->setAudio(null);
+            $object->audio = null;
         }
         if (\array_key_exists('vector', $data) && $data['vector'] !== null) {
-            $object->setVector($data['vector']);
+            $object->vector = $data['vector'];
         }
         elseif (\array_key_exists('vector', $data) && $data['vector'] === null) {
-            $object->setVector(null);
+            $object->vector = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('image') && null !== $data->getImage()) {
-            $dataArray['image'] = $data->getImage();
+        if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
+            $dataArray['image'] = $data->image ?? null;
         }
-        if ($data->isInitialized('video') && null !== $data->getVideo()) {
-            $dataArray['video'] = $data->getVideo();
+        if (array_key_exists('video', get_object_vars($data)) && null !== ($data->video ?? null)) {
+            $dataArray['video'] = $data->video ?? null;
         }
-        if ($data->isInitialized('document') && null !== $data->getDocument()) {
-            $dataArray['document'] = $data->getDocument();
+        if (array_key_exists('document', get_object_vars($data)) && null !== ($data->document ?? null)) {
+            $dataArray['document'] = $data->document ?? null;
         }
-        if ($data->isInitialized('audio') && null !== $data->getAudio()) {
-            $dataArray['audio'] = $data->getAudio();
+        if (array_key_exists('audio', get_object_vars($data)) && null !== ($data->audio ?? null)) {
+            $dataArray['audio'] = $data->audio ?? null;
         }
-        if ($data->isInitialized('vector') && null !== $data->getVector()) {
-            $dataArray['vector'] = $data->getVector();
+        if (array_key_exists('vector', get_object_vars($data)) && null !== ($data->vector ?? null)) {
+            $dataArray['vector'] = $data->vector ?? null;
         }
         return $dataArray;
     }

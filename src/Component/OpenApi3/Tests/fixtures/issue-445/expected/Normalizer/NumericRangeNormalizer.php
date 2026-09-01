@@ -52,44 +52,44 @@ class NumericRangeNormalizer implements DenormalizerInterface, NormalizerInterfa
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
         }
         if (\array_key_exists('from', $data) && $data['from'] !== null) {
-            $object->setFrom($data['from']);
+            $object->from = $data['from'];
         }
         elseif (\array_key_exists('from', $data) && $data['from'] === null) {
-            $object->setFrom(null);
+            $object->from = null;
         }
         if (\array_key_exists('to', $data) && $data['to'] !== null) {
-            $object->setTo($data['to']);
+            $object->to = $data['to'];
         }
         elseif (\array_key_exists('to', $data) && $data['to'] === null) {
-            $object->setTo(null);
+            $object->to = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_1) {
+                foreach ($data->names ?? null as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
             }
             $dataArray['names'] = $value;
         }
-        if ($data->isInitialized('from') && null !== $data->getFrom()) {
-            $dataArray['from'] = $data->getFrom();
+        if (array_key_exists('from', get_object_vars($data)) && null !== ($data->from ?? null)) {
+            $dataArray['from'] = $data->from ?? null;
         }
-        if ($data->isInitialized('to') && null !== $data->getTo()) {
-            $dataArray['to'] = $data->getTo();
+        if (array_key_exists('to', get_object_vars($data)) && null !== ($data->to ?? null)) {
+            $dataArray['to'] = $data->to ?? null;
         }
         return $dataArray;
     }

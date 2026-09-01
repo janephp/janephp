@@ -38,32 +38,32 @@ class UserRoleRightsOfPermissionSetRightNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('userRoleId', $data) && $data['userRoleId'] !== null) {
-            $object->setUserRoleId($data['userRoleId']);
+            $object->userRoleId = $data['userRoleId'];
         }
         elseif (\array_key_exists('userRoleId', $data) && $data['userRoleId'] === null) {
-            $object->setUserRoleId(null);
+            $object->userRoleId = null;
         }
         if (\array_key_exists('rights', $data) && $data['rights'] !== null) {
             $values = [];
             foreach ($data['rights'] as $value) {
                 $values[] = $value;
             }
-            $object->setRights($values);
+            $object->rights = $values;
         }
         elseif (\array_key_exists('rights', $data) && $data['rights'] === null) {
-            $object->setRights(null);
+            $object->rights = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('userRoleId') && null !== $data->getUserRoleId()) {
-            $dataArray['userRoleId'] = $data->getUserRoleId();
+        if (array_key_exists('userRoleId', get_object_vars($data)) && null !== ($data->userRoleId ?? null)) {
+            $dataArray['userRoleId'] = $data->userRoleId ?? null;
         }
-        if ($data->isInitialized('rights') && null !== $data->getRights()) {
+        if (array_key_exists('rights', get_object_vars($data)) && null !== ($data->rights ?? null)) {
             $values = [];
-            foreach ($data->getRights() as $value) {
+            foreach ($data->rights ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['rights'] = $values;

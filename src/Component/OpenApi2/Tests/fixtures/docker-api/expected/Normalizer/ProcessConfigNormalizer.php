@@ -47,44 +47,44 @@ class ProcessConfigNormalizer implements DenormalizerInterface, NormalizerInterf
             $this->validate($data, new \Docker\Api\Validator\ProcessConfigConstraint());
         }
         if (\array_key_exists('privileged', $data)) {
-            $object->setPrivileged($data['privileged']);
+            $object->privileged = $data['privileged'];
         }
         if (\array_key_exists('user', $data)) {
-            $object->setUser($data['user']);
+            $object->user = $data['user'];
         }
         if (\array_key_exists('tty', $data)) {
-            $object->setTty($data['tty']);
+            $object->tty = $data['tty'];
         }
         if (\array_key_exists('entrypoint', $data)) {
-            $object->setEntrypoint($data['entrypoint']);
+            $object->entrypoint = $data['entrypoint'];
         }
         if (\array_key_exists('arguments', $data)) {
             $values = [];
             foreach ($data['arguments'] as $value) {
                 $values[] = $value;
             }
-            $object->setArguments($values);
+            $object->arguments = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('privileged') && null !== $data->getPrivileged()) {
-            $dataArray['privileged'] = $data->getPrivileged();
+        if (array_key_exists('privileged', get_object_vars($data)) && null !== ($data->privileged ?? null)) {
+            $dataArray['privileged'] = $data->privileged ?? null;
         }
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['user'] = $data->getUser();
+        if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
+            $dataArray['user'] = $data->user ?? null;
         }
-        if ($data->isInitialized('tty') && null !== $data->getTty()) {
-            $dataArray['tty'] = $data->getTty();
+        if (array_key_exists('tty', get_object_vars($data)) && null !== ($data->tty ?? null)) {
+            $dataArray['tty'] = $data->tty ?? null;
         }
-        if ($data->isInitialized('entrypoint') && null !== $data->getEntrypoint()) {
-            $dataArray['entrypoint'] = $data->getEntrypoint();
+        if (array_key_exists('entrypoint', get_object_vars($data)) && null !== ($data->entrypoint ?? null)) {
+            $dataArray['entrypoint'] = $data->entrypoint ?? null;
         }
-        if ($data->isInitialized('arguments') && null !== $data->getArguments()) {
+        if (array_key_exists('arguments', get_object_vars($data)) && null !== ($data->arguments ?? null)) {
             $values = [];
-            foreach ($data->getArguments() as $value) {
+            foreach ($data->arguments ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['arguments'] = $values;

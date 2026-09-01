@@ -38,7 +38,7 @@ class NfsActionsResponseNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('action', $data)) {
-            $object->setAction($this->denormalizer->denormalize($data['action'], \Jane\Generated\DigitalOcean\Model\NfsActionsResponseAction::class, 'json', $context));
+            $object->action = $this->denormalizer->denormalize($data['action'], \Jane\Generated\DigitalOcean\Model\NfsActionsResponseAction::class, 'json', $context);
             unset($data['action']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class NfsActionsResponseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['action'] = $data->getAction() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAction(), 'json', $context));
+        $dataArray['action'] = ($data->action ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->action ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

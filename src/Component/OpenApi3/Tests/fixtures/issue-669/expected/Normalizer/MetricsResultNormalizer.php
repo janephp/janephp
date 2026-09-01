@@ -42,7 +42,7 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['metric'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setMetric($values);
+            $object->metric = $values;
             unset($data['metric']);
         }
         if (\array_key_exists('values', $data)) {
@@ -60,7 +60,7 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
                 }
                 $values_1[] = $values_2;
             }
-            $object->setValues($values_1);
+            $object->values = $values_1;
             unset($data['values']);
         }
         foreach ($data as $key_1 => $value_4) {
@@ -74,12 +74,12 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-        foreach ($data->getMetric() as $key => $value) {
+        foreach ($data->metric ?? null as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['metric'] = $values;
         $values_1 = [];
-        foreach ($data->getValues() as $value_1) {
+        foreach ($data->values ?? null as $value_1) {
             $values_2 = [];
             foreach ($value_1 as $value_2) {
                 $value_3 = $value_2;

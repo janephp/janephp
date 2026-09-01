@@ -41,21 +41,21 @@ class ServiceSpecModeReplicatedJobNormalizer implements DenormalizerInterface, N
             $this->validate($data, new \Docker\Api\Validator\ServiceSpecModeReplicatedJobConstraint());
         }
         if (\array_key_exists('MaxConcurrent', $data)) {
-            $object->setMaxConcurrent($data['MaxConcurrent']);
+            $object->maxConcurrent = $data['MaxConcurrent'];
         }
         if (\array_key_exists('TotalCompletions', $data)) {
-            $object->setTotalCompletions($data['TotalCompletions']);
+            $object->totalCompletions = $data['TotalCompletions'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('maxConcurrent') && null !== $data->getMaxConcurrent()) {
-            $dataArray['MaxConcurrent'] = $data->getMaxConcurrent();
+        if (array_key_exists('maxConcurrent', get_object_vars($data)) && null !== ($data->maxConcurrent ?? null)) {
+            $dataArray['MaxConcurrent'] = $data->maxConcurrent ?? null;
         }
-        if ($data->isInitialized('totalCompletions') && null !== $data->getTotalCompletions()) {
-            $dataArray['TotalCompletions'] = $data->getTotalCompletions();
+        if (array_key_exists('totalCompletions', get_object_vars($data)) && null !== ($data->totalCompletions ?? null)) {
+            $dataArray['TotalCompletions'] = $data->totalCompletions ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceSpecModeReplicatedJobConstraint());

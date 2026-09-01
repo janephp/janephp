@@ -38,15 +38,15 @@ class V2AddOnsSaasPostBodyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('app_slug', $data)) {
-            $object->setAppSlug($data['app_slug']);
+            $object->appSlug = $data['app_slug'];
             unset($data['app_slug']);
         }
         if (\array_key_exists('plan_slug', $data)) {
-            $object->setPlanSlug($data['plan_slug']);
+            $object->planSlug = $data['plan_slug'];
             unset($data['plan_slug']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('metadata', $data)) {
@@ -54,15 +54,15 @@ class V2AddOnsSaasPostBodyNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['metadata'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AddonsResourceMetadata::class, 'json', $context);
             }
-            $object->setMetadata($values);
+            $object->metadata = $values;
             unset($data['metadata']);
         }
         if (\array_key_exists('linked_droplet_id', $data)) {
-            $object->setLinkedDropletId($data['linked_droplet_id']);
+            $object->linkedDropletId = $data['linked_droplet_id'];
             unset($data['linked_droplet_id']);
         }
         if (\array_key_exists('fleet_uuid', $data)) {
-            $object->setFleetUuid($data['fleet_uuid']);
+            $object->fleetUuid = $data['fleet_uuid'];
             unset($data['fleet_uuid']);
         }
         foreach ($data as $key => $value_1) {
@@ -75,19 +75,19 @@ class V2AddOnsSaasPostBodyNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['app_slug'] = $data->getAppSlug();
-        $dataArray['plan_slug'] = $data->getPlanSlug();
-        $dataArray['name'] = $data->getName();
+        $dataArray['app_slug'] = $data->appSlug ?? null;
+        $dataArray['plan_slug'] = $data->planSlug ?? null;
+        $dataArray['name'] = $data->name ?? null;
         $values = [];
-        foreach ($data->getMetadata() as $value) {
+        foreach ($data->metadata ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['metadata'] = $values;
-        if ($data->isInitialized('linkedDropletId') && null !== $data->getLinkedDropletId()) {
-            $dataArray['linked_droplet_id'] = $data->getLinkedDropletId();
+        if (array_key_exists('linkedDropletId', get_object_vars($data)) && null !== ($data->linkedDropletId ?? null)) {
+            $dataArray['linked_droplet_id'] = $data->linkedDropletId ?? null;
         }
-        if ($data->isInitialized('fleetUuid') && null !== $data->getFleetUuid()) {
-            $dataArray['fleet_uuid'] = $data->getFleetUuid();
+        if (array_key_exists('fleetUuid', get_object_vars($data)) && null !== ($data->fleetUuid ?? null)) {
+            $dataArray['fleet_uuid'] = $data->fleetUuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,53 +38,53 @@ class ZoneScheduleUpgradeHistoryNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('taskName', $data)) {
-            $object->setTaskName($data['taskName']);
+            $object->taskName = $data['taskName'];
         }
         if (\array_key_exists('scheduleTime', $data)) {
-            $object->setScheduleTime($data['scheduleTime']);
+            $object->scheduleTime = $data['scheduleTime'];
         }
         if (\array_key_exists('targetVersion', $data)) {
-            $object->setTargetVersion($data['targetVersion']);
+            $object->targetVersion = $data['targetVersion'];
         }
         if (\array_key_exists('zoneList', $data)) {
             $values = [];
             foreach ($data['zoneList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneScheduleUpgradeZone::class, 'json', $context);
             }
-            $object->setZoneList($values);
+            $object->zoneList = $values;
         }
         if (\array_key_exists('errorLog', $data)) {
-            $object->setErrorLog($data['errorLog']);
+            $object->errorLog = $data['errorLog'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('taskName') && null !== $data->getTaskName()) {
-            $dataArray['taskName'] = $data->getTaskName();
+        if (array_key_exists('taskName', get_object_vars($data)) && null !== ($data->taskName ?? null)) {
+            $dataArray['taskName'] = $data->taskName ?? null;
         }
-        if ($data->isInitialized('scheduleTime') && null !== $data->getScheduleTime()) {
-            $dataArray['scheduleTime'] = $data->getScheduleTime();
+        if (array_key_exists('scheduleTime', get_object_vars($data)) && null !== ($data->scheduleTime ?? null)) {
+            $dataArray['scheduleTime'] = $data->scheduleTime ?? null;
         }
-        if ($data->isInitialized('targetVersion') && null !== $data->getTargetVersion()) {
-            $dataArray['targetVersion'] = $data->getTargetVersion();
+        if (array_key_exists('targetVersion', get_object_vars($data)) && null !== ($data->targetVersion ?? null)) {
+            $dataArray['targetVersion'] = $data->targetVersion ?? null;
         }
-        if ($data->isInitialized('zoneList') && null !== $data->getZoneList()) {
+        if (array_key_exists('zoneList', get_object_vars($data)) && null !== ($data->zoneList ?? null)) {
             $values = [];
-            foreach ($data->getZoneList() as $value) {
+            foreach ($data->zoneList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['zoneList'] = $values;
         }
-        if ($data->isInitialized('errorLog') && null !== $data->getErrorLog()) {
-            $dataArray['errorLog'] = $data->getErrorLog();
+        if (array_key_exists('errorLog', get_object_vars($data)) && null !== ($data->errorLog ?? null)) {
+            $dataArray['errorLog'] = $data->errorLog ?? null;
         }
         return $dataArray;
     }

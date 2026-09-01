@@ -41,15 +41,15 @@ class ApiAgentKnowledgeBaseVersionNormalizer implements DenormalizerInterface, N
             $data['is_deleted'] = (bool) $data['is_deleted'];
         }
         if (\array_key_exists('is_deleted', $data)) {
-            $object->setIsDeleted($data['is_deleted']);
+            $object->isDeleted = $data['is_deleted'];
             unset($data['is_deleted']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         foreach ($data as $key => $value) {
@@ -62,14 +62,14 @@ class ApiAgentKnowledgeBaseVersionNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isDeleted') && null !== $data->getIsDeleted()) {
-            $dataArray['is_deleted'] = $data->getIsDeleted();
+        if (array_key_exists('isDeleted', get_object_vars($data)) && null !== ($data->isDeleted ?? null)) {
+            $dataArray['is_deleted'] = $data->isDeleted ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

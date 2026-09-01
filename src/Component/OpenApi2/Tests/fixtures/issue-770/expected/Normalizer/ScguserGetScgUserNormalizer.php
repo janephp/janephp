@@ -47,137 +47,137 @@ class ScguserGetScgUserNormalizer implements DenormalizerInterface, NormalizerIn
             $data['credentialExpired'] = (bool) $data['credentialExpired'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('tenantUUID', $data)) {
-            $object->setTenantUUID($data['tenantUUID']);
+            $object->tenantUUID = $data['tenantUUID'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('locked', $data)) {
-            $object->setLocked($data['locked']);
+            $object->locked = $data['locked'];
         }
         if (\array_key_exists('userName', $data)) {
-            $object->setUserName($data['userName']);
+            $object->userName = $data['userName'];
         }
         if (\array_key_exists('realName', $data)) {
-            $object->setRealName($data['realName']);
+            $object->realName = $data['realName'];
         }
         if (\array_key_exists('title', $data)) {
-            $object->setTitle($data['title']);
+            $object->title = $data['title'];
         }
         if (\array_key_exists('phone', $data)) {
-            $object->setPhone($data['phone']);
+            $object->phone = $data['phone'];
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
         }
         if (\array_key_exists('accountLockout', $data)) {
-            $object->setAccountLockout($data['accountLockout']);
+            $object->accountLockout = $data['accountLockout'];
         }
         if (\array_key_exists('lockoutDuration', $data)) {
-            $object->setLockoutDuration($data['lockoutDuration']);
+            $object->lockoutDuration = $data['lockoutDuration'];
         }
         if (\array_key_exists('passwordExpiration', $data)) {
-            $object->setPasswordExpiration($data['passwordExpiration']);
+            $object->passwordExpiration = $data['passwordExpiration'];
         }
         if (\array_key_exists('passwordReuse', $data)) {
-            $object->setPasswordReuse($data['passwordReuse']);
+            $object->passwordReuse = $data['passwordReuse'];
         }
         if (\array_key_exists('sessionIdle', $data)) {
-            $object->setSessionIdle($data['sessionIdle']);
+            $object->sessionIdle = $data['sessionIdle'];
         }
         if (\array_key_exists('minimumPasswordLength', $data)) {
-            $object->setMinimumPasswordLength($data['minimumPasswordLength']);
+            $object->minimumPasswordLength = $data['minimumPasswordLength'];
         }
         if (\array_key_exists('passwordComplexityEnabled', $data)) {
-            $object->setPasswordComplexityEnabled($data['passwordComplexityEnabled']);
+            $object->passwordComplexityEnabled = $data['passwordComplexityEnabled'];
         }
         if (\array_key_exists('minimumPasswordLifetimeEnabled', $data)) {
-            $object->setMinimumPasswordLifetimeEnabled($data['minimumPasswordLifetimeEnabled']);
+            $object->minimumPasswordLifetimeEnabled = $data['minimumPasswordLifetimeEnabled'];
         }
         if (\array_key_exists('sshPublicKeys', $data)) {
             $values = [];
             foreach ($data['sshPublicKeys'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonSshPublicKeyRef::class, 'json', $context);
             }
-            $object->setSshPublicKeys($values);
+            $object->sshPublicKeys = $values;
         }
         if (\array_key_exists('credentialExpired', $data)) {
-            $object->setCredentialExpired($data['credentialExpired']);
+            $object->credentialExpired = $data['credentialExpired'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('tenantUUID') && null !== $data->getTenantUUID()) {
-            $dataArray['tenantUUID'] = $data->getTenantUUID();
+        if (array_key_exists('tenantUUID', get_object_vars($data)) && null !== ($data->tenantUUID ?? null)) {
+            $dataArray['tenantUUID'] = $data->tenantUUID ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
-            $dataArray['enabled'] = $data->getEnabled();
+        if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
+            $dataArray['enabled'] = $data->enabled ?? null;
         }
-        if ($data->isInitialized('locked') && null !== $data->getLocked()) {
-            $dataArray['locked'] = $data->getLocked();
+        if (array_key_exists('locked', get_object_vars($data)) && null !== ($data->locked ?? null)) {
+            $dataArray['locked'] = $data->locked ?? null;
         }
-        if ($data->isInitialized('userName') && null !== $data->getUserName()) {
-            $dataArray['userName'] = $data->getUserName();
+        if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
+            $dataArray['userName'] = $data->userName ?? null;
         }
-        if ($data->isInitialized('realName') && null !== $data->getRealName()) {
-            $dataArray['realName'] = $data->getRealName();
+        if (array_key_exists('realName', get_object_vars($data)) && null !== ($data->realName ?? null)) {
+            $dataArray['realName'] = $data->realName ?? null;
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
-            $dataArray['title'] = $data->getTitle();
+        if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title ?? null;
         }
-        if ($data->isInitialized('phone') && null !== $data->getPhone()) {
-            $dataArray['phone'] = $data->getPhone();
+        if (array_key_exists('phone', get_object_vars($data)) && null !== ($data->phone ?? null)) {
+            $dataArray['phone'] = $data->phone ?? null;
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email ?? null;
         }
-        if ($data->isInitialized('accountLockout') && null !== $data->getAccountLockout()) {
-            $dataArray['accountLockout'] = $data->getAccountLockout();
+        if (array_key_exists('accountLockout', get_object_vars($data)) && null !== ($data->accountLockout ?? null)) {
+            $dataArray['accountLockout'] = $data->accountLockout ?? null;
         }
-        if ($data->isInitialized('lockoutDuration') && null !== $data->getLockoutDuration()) {
-            $dataArray['lockoutDuration'] = $data->getLockoutDuration();
+        if (array_key_exists('lockoutDuration', get_object_vars($data)) && null !== ($data->lockoutDuration ?? null)) {
+            $dataArray['lockoutDuration'] = $data->lockoutDuration ?? null;
         }
-        if ($data->isInitialized('passwordExpiration') && null !== $data->getPasswordExpiration()) {
-            $dataArray['passwordExpiration'] = $data->getPasswordExpiration();
+        if (array_key_exists('passwordExpiration', get_object_vars($data)) && null !== ($data->passwordExpiration ?? null)) {
+            $dataArray['passwordExpiration'] = $data->passwordExpiration ?? null;
         }
-        if ($data->isInitialized('passwordReuse') && null !== $data->getPasswordReuse()) {
-            $dataArray['passwordReuse'] = $data->getPasswordReuse();
+        if (array_key_exists('passwordReuse', get_object_vars($data)) && null !== ($data->passwordReuse ?? null)) {
+            $dataArray['passwordReuse'] = $data->passwordReuse ?? null;
         }
-        if ($data->isInitialized('sessionIdle') && null !== $data->getSessionIdle()) {
-            $dataArray['sessionIdle'] = $data->getSessionIdle();
+        if (array_key_exists('sessionIdle', get_object_vars($data)) && null !== ($data->sessionIdle ?? null)) {
+            $dataArray['sessionIdle'] = $data->sessionIdle ?? null;
         }
-        if ($data->isInitialized('minimumPasswordLength') && null !== $data->getMinimumPasswordLength()) {
-            $dataArray['minimumPasswordLength'] = $data->getMinimumPasswordLength();
+        if (array_key_exists('minimumPasswordLength', get_object_vars($data)) && null !== ($data->minimumPasswordLength ?? null)) {
+            $dataArray['minimumPasswordLength'] = $data->minimumPasswordLength ?? null;
         }
-        if ($data->isInitialized('passwordComplexityEnabled') && null !== $data->getPasswordComplexityEnabled()) {
-            $dataArray['passwordComplexityEnabled'] = $data->getPasswordComplexityEnabled();
+        if (array_key_exists('passwordComplexityEnabled', get_object_vars($data)) && null !== ($data->passwordComplexityEnabled ?? null)) {
+            $dataArray['passwordComplexityEnabled'] = $data->passwordComplexityEnabled ?? null;
         }
-        if ($data->isInitialized('minimumPasswordLifetimeEnabled') && null !== $data->getMinimumPasswordLifetimeEnabled()) {
-            $dataArray['minimumPasswordLifetimeEnabled'] = $data->getMinimumPasswordLifetimeEnabled();
+        if (array_key_exists('minimumPasswordLifetimeEnabled', get_object_vars($data)) && null !== ($data->minimumPasswordLifetimeEnabled ?? null)) {
+            $dataArray['minimumPasswordLifetimeEnabled'] = $data->minimumPasswordLifetimeEnabled ?? null;
         }
-        if ($data->isInitialized('sshPublicKeys') && null !== $data->getSshPublicKeys()) {
+        if (array_key_exists('sshPublicKeys', get_object_vars($data)) && null !== ($data->sshPublicKeys ?? null)) {
             $values = [];
-            foreach ($data->getSshPublicKeys() as $value) {
+            foreach ($data->sshPublicKeys ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['sshPublicKeys'] = $values;
         }
-        if ($data->isInitialized('credentialExpired') && null !== $data->getCredentialExpired()) {
-            $dataArray['credentialExpired'] = $data->getCredentialExpired();
+        if (array_key_exists('credentialExpired', get_object_vars($data)) && null !== ($data->credentialExpired ?? null)) {
+            $dataArray['credentialExpired'] = $data->credentialExpired ?? null;
         }
         return $dataArray;
     }

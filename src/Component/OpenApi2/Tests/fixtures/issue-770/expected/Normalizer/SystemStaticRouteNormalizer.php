@@ -38,22 +38,22 @@ class SystemStaticRouteNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('networkAddress', $data)) {
-            $object->setNetworkAddress($data['networkAddress']);
+            $object->networkAddress = $data['networkAddress'];
         }
         if (\array_key_exists('subnetMask', $data)) {
-            $object->setSubnetMask($data['subnetMask']);
+            $object->subnetMask = $data['subnetMask'];
         }
         if (\array_key_exists('gateway', $data)) {
-            $object->setGateway($data['gateway']);
+            $object->gateway = $data['gateway'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['networkAddress'] = $data->getNetworkAddress();
-        $dataArray['subnetMask'] = $data->getSubnetMask();
-        $dataArray['gateway'] = $data->getGateway();
+        $dataArray['networkAddress'] = $data->networkAddress ?? null;
+        $dataArray['subnetMask'] = $data->subnetMask ?? null;
+        $dataArray['gateway'] = $data->gateway ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

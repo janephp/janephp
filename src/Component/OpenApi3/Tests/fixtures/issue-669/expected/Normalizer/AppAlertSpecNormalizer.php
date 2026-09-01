@@ -44,23 +44,23 @@ class AppAlertSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['disabled'] = (bool) $data['disabled'];
         }
         if (\array_key_exists('rule', $data)) {
-            $object->setRule($data['rule']);
+            $object->rule = $data['rule'];
             unset($data['rule']);
         }
         if (\array_key_exists('disabled', $data)) {
-            $object->setDisabled($data['disabled']);
+            $object->disabled = $data['disabled'];
             unset($data['disabled']);
         }
         if (\array_key_exists('operator', $data)) {
-            $object->setOperator($data['operator']);
+            $object->operator = $data['operator'];
             unset($data['operator']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
             unset($data['value']);
         }
         if (\array_key_exists('window', $data)) {
-            $object->setWindow($data['window']);
+            $object->window = $data['window'];
             unset($data['window']);
         }
         foreach ($data as $key => $value) {
@@ -73,20 +73,20 @@ class AppAlertSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('rule') && null !== $data->getRule()) {
-            $dataArray['rule'] = $data->getRule();
+        if (array_key_exists('rule', get_object_vars($data)) && null !== ($data->rule ?? null)) {
+            $dataArray['rule'] = $data->rule ?? null;
         }
-        if ($data->isInitialized('disabled') && null !== $data->getDisabled()) {
-            $dataArray['disabled'] = $data->getDisabled();
+        if (array_key_exists('disabled', get_object_vars($data)) && null !== ($data->disabled ?? null)) {
+            $dataArray['disabled'] = $data->disabled ?? null;
         }
-        if ($data->isInitialized('operator') && null !== $data->getOperator()) {
-            $dataArray['operator'] = $data->getOperator();
+        if (array_key_exists('operator', get_object_vars($data)) && null !== ($data->operator ?? null)) {
+            $dataArray['operator'] = $data->operator ?? null;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+        if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['value'] = $data->value ?? null;
         }
-        if ($data->isInitialized('window') && null !== $data->getWindow()) {
-            $dataArray['window'] = $data->getWindow();
+        if (array_key_exists('window', get_object_vars($data)) && null !== ($data->window ?? null)) {
+            $dataArray['window'] = $data->window ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

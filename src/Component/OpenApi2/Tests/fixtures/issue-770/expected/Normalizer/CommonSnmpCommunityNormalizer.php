@@ -47,42 +47,42 @@ class CommonSnmpCommunityNormalizer implements DenormalizerInterface, Normalizer
             $data['notificationEnabled'] = (bool) $data['notificationEnabled'];
         }
         if (\array_key_exists('communityName', $data)) {
-            $object->setCommunityName($data['communityName']);
+            $object->communityName = $data['communityName'];
         }
         if (\array_key_exists('readEnabled', $data)) {
-            $object->setReadEnabled($data['readEnabled']);
+            $object->readEnabled = $data['readEnabled'];
         }
         if (\array_key_exists('writeEnabled', $data)) {
-            $object->setWriteEnabled($data['writeEnabled']);
+            $object->writeEnabled = $data['writeEnabled'];
         }
         if (\array_key_exists('notificationEnabled', $data)) {
-            $object->setNotificationEnabled($data['notificationEnabled']);
+            $object->notificationEnabled = $data['notificationEnabled'];
         }
         if (\array_key_exists('notificationType', $data)) {
-            $object->setNotificationType($data['notificationType']);
+            $object->notificationType = $data['notificationType'];
         }
         if (\array_key_exists('notificationTarget', $data)) {
             $values = [];
             foreach ($data['notificationTarget'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTargetConfig::class, 'json', $context);
             }
-            $object->setNotificationTarget($values);
+            $object->notificationTarget = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['communityName'] = $data->getCommunityName();
-        $dataArray['readEnabled'] = $data->getReadEnabled();
-        $dataArray['writeEnabled'] = $data->getWriteEnabled();
-        $dataArray['notificationEnabled'] = $data->getNotificationEnabled();
-        if ($data->isInitialized('notificationType') && null !== $data->getNotificationType()) {
-            $dataArray['notificationType'] = $data->getNotificationType();
+        $dataArray['communityName'] = $data->communityName ?? null;
+        $dataArray['readEnabled'] = $data->readEnabled ?? null;
+        $dataArray['writeEnabled'] = $data->writeEnabled ?? null;
+        $dataArray['notificationEnabled'] = $data->notificationEnabled ?? null;
+        if (array_key_exists('notificationType', get_object_vars($data)) && null !== ($data->notificationType ?? null)) {
+            $dataArray['notificationType'] = $data->notificationType ?? null;
         }
-        if ($data->isInitialized('notificationTarget') && null !== $data->getNotificationTarget()) {
+        if (array_key_exists('notificationTarget', get_object_vars($data)) && null !== ($data->notificationTarget ?? null)) {
             $values = [];
-            foreach ($data->getNotificationTarget() as $value) {
+            foreach ($data->notificationTarget ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['notificationTarget'] = $values;

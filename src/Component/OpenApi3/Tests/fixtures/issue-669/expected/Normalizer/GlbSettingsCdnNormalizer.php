@@ -41,7 +41,7 @@ class GlbSettingsCdnNormalizer implements DenormalizerInterface, NormalizerInter
             $data['is_enabled'] = (bool) $data['is_enabled'];
         }
         if (\array_key_exists('is_enabled', $data)) {
-            $object->setIsEnabled($data['is_enabled']);
+            $object->isEnabled = $data['is_enabled'];
             unset($data['is_enabled']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class GlbSettingsCdnNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isEnabled') && null !== $data->getIsEnabled()) {
-            $dataArray['is_enabled'] = $data->getIsEnabled();
+        if (array_key_exists('isEnabled', get_object_vars($data)) && null !== ($data->isEnabled ?? null)) {
+            $dataArray['is_enabled'] = $data->isEnabled ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

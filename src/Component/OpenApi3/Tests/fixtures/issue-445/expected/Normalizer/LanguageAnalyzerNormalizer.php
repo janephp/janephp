@@ -38,7 +38,7 @@ class LanguageAnalyzerNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('type', $data)) {
@@ -46,15 +46,15 @@ class LanguageAnalyzerNormalizer implements DenormalizerInterface, NormalizerInt
             if (is_string($data['type'])) {
                 $value = $data['type'];
             }
-            $object->setType($value);
+            $object->type = $value;
             unset($data['type']);
         }
         if (\array_key_exists('fieldSuffix', $data) && $data['fieldSuffix'] !== null) {
-            $object->setFieldSuffix($data['fieldSuffix']);
+            $object->fieldSuffix = $data['fieldSuffix'];
             unset($data['fieldSuffix']);
         }
         elseif (\array_key_exists('fieldSuffix', $data) && $data['fieldSuffix'] === null) {
-            $object->setFieldSuffix(null);
+            $object->fieldSuffix = null;
             unset($data['fieldSuffix']);
         }
         foreach ($data as $key => $value_1) {
@@ -67,16 +67,16 @@ class LanguageAnalyzerNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $value = $data->getType();
-            if (is_string($data->getType())) {
-                $value = $data->getType();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $value = $data->type ?? null;
+            if (is_string($data->type ?? null)) {
+                $value = $data->type ?? null;
             }
             $dataArray['type'] = $value;
         }
-        if ($data->isInitialized('fieldSuffix') && null !== $data->getFieldSuffix()) {
-            $dataArray['fieldSuffix'] = $data->getFieldSuffix();
+        if (array_key_exists('fieldSuffix', get_object_vars($data)) && null !== ($data->fieldSuffix ?? null)) {
+            $dataArray['fieldSuffix'] = $data->fieldSuffix ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

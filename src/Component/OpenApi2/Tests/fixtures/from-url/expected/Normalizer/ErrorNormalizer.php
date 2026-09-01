@@ -38,18 +38,18 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('code', $data)) {
-            $object->setCode($data['code']);
+            $object->code = $data['code'];
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['code'] = $data->getCode();
-        $dataArray['message'] = $data->getMessage();
+        $dataArray['code'] = $data->code ?? null;
+        $dataArray['message'] = $data->message ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

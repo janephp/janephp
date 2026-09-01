@@ -42,17 +42,17 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             if (false === $date) {
                 throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['date'], 'l, d-M-y H:i:s T');
             }
-            $object->setDate($date);
+            $object->date = $date;
         }
         if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
             $date_1 = \DateTime::createFromFormat('l, d-M-y H:i:s T', $data['dateOrNull']);
             if (false === $date_1) {
                 throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateOrNull'], 'l, d-M-y H:i:s T');
             }
-            $object->setDateOrNull($date_1);
+            $object->dateOrNull = $date_1;
         }
         elseif (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] === null) {
-            $object->setDateOrNull(null);
+            $object->dateOrNull = null;
         }
         if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
             $value = $data['dateOrNullOrInt'];
@@ -71,30 +71,30 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             } elseif (is_string($data['dateOrNullOrInt'])) {
                 throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'l, d-M-y H:i:s T');
             }
-            $object->setDateOrNullOrInt($value);
+            $object->dateOrNullOrInt = $value;
         }
         elseif (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] === null) {
-            $object->setDateOrNullOrInt(null);
+            $object->dateOrNullOrInt = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate()->format('l, d-M-y H:i:s T');
+        if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
+            $dataArray['date'] = ($data->date ?? null)->format('l, d-M-y H:i:s T');
         }
-        if ($data->isInitialized('dateOrNull') && null !== $data->getDateOrNull()) {
-            $dataArray['dateOrNull'] = $data->getDateOrNull()?->format('l, d-M-y H:i:s T');
+        if (array_key_exists('dateOrNull', get_object_vars($data)) && null !== ($data->dateOrNull ?? null)) {
+            $dataArray['dateOrNull'] = ($data->dateOrNull ?? null)?->format('l, d-M-y H:i:s T');
         }
-        if ($data->isInitialized('dateOrNullOrInt') && null !== $data->getDateOrNullOrInt()) {
-            $value = $data->getDateOrNullOrInt();
-            if (is_object($data->getDateOrNullOrInt())) {
-                $value = $data->getDateOrNullOrInt()->format('l, d-M-y H:i:s T');
-            } elseif (is_null($data->getDateOrNullOrInt())) {
-                $value = $data->getDateOrNullOrInt();
-            } elseif (is_int($data->getDateOrNullOrInt())) {
-                $value = $data->getDateOrNullOrInt();
+        if (array_key_exists('dateOrNullOrInt', get_object_vars($data)) && null !== ($data->dateOrNullOrInt ?? null)) {
+            $value = $data->dateOrNullOrInt ?? null;
+            if (is_object($data->dateOrNullOrInt ?? null)) {
+                $value = ($data->dateOrNullOrInt ?? null)->format('l, d-M-y H:i:s T');
+            } elseif (is_null($data->dateOrNullOrInt ?? null)) {
+                $value = $data->dateOrNullOrInt ?? null;
+            } elseif (is_int($data->dateOrNullOrInt ?? null)) {
+                $value = $data->dateOrNullOrInt ?? null;
             }
             $dataArray['dateOrNullOrInt'] = $value;
         }

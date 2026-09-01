@@ -41,14 +41,14 @@ class ZoneModifyBonjourGatewayEnableNormalizer implements DenormalizerInterface,
             $data['enabledBonjourGateway'] = (bool) $data['enabledBonjourGateway'];
         }
         if (\array_key_exists('enabledBonjourGateway', $data)) {
-            $object->setEnabledBonjourGateway($data['enabledBonjourGateway']);
+            $object->enabledBonjourGateway = $data['enabledBonjourGateway'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabledBonjourGateway'] = $data->getEnabledBonjourGateway();
+        $dataArray['enabledBonjourGateway'] = $data->enabledBonjourGateway ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

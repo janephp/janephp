@@ -42,7 +42,7 @@ class V2LoadBalancersLbIdDropletsPostBodyNormalizer implements DenormalizerInter
             foreach ($data['droplet_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setDropletIds($values);
+            $object->dropletIds = $values;
             unset($data['droplet_ids']);
         }
         foreach ($data as $key => $value_1) {
@@ -56,7 +56,7 @@ class V2LoadBalancersLbIdDropletsPostBodyNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getDropletIds() as $value) {
+        foreach ($data->dropletIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['droplet_ids'] = $values;

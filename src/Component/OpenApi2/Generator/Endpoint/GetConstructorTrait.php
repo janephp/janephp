@@ -38,9 +38,9 @@ trait GetConstructorTrait
             }
 
             if ($parameter instanceof PathParameterSubSchema) {
-                $pathPropertyName = $this->normalizePathPropertyName($parameter->getName());
-                $pathVariableName = $this->normalizePathVariableName($parameter->getName());
-                if (null === $parameter->getDefault()) {
+                $pathPropertyName = $this->normalizePathPropertyName($parameter->name);
+                $pathVariableName = $this->normalizePathVariableName($parameter->name);
+                if (null === ($parameter->default ?? null)) {
                     $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                     $pathParamsDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 } else {
@@ -57,7 +57,7 @@ trait GetConstructorTrait
             if ($parameter instanceof BodyParameter) {
                 $bodyParam = $bodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $bodyDoc = $bodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $bodyAssign = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
+                $bodyAssign = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable($this->getInflector()->camelize($parameter->name))));
             }
 
             if ($parameter instanceof QueryParameterSubSchema) {
@@ -104,8 +104,8 @@ trait GetConstructorTrait
         );
 
         $methodParamsDoc = ['/**'];
-        if ($operation->getOperation()->getDescription()) {
-            foreach (explode("\n", $operation->getOperation()->getDescription()) as $line) {
+        if ($operation->getOperation()->description ?? null) {
+            foreach (explode("\n", $operation->getOperation()->description ?? null) as $line) {
                 $methodParamsDoc[] = rtrim(' * ' . str_replace('*/', '*\\/', $line));
             }
         }

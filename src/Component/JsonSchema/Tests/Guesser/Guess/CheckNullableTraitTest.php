@@ -25,7 +25,7 @@ class CheckNullableTraitTest extends TestCase
     public function testJsonSchemaNullable(mixed $type, bool $expectedNullable): void
     {
         $schema = new JsonSchema();
-        $schema->setType($type);
+        $schema->type = $type;
 
         self::assertSame($expectedNullable, $this->checker->isNullable($schema));
     }
@@ -61,11 +61,11 @@ class CheckNullableTraitTest extends TestCase
     public function testOpenApi3Nullable(): void
     {
         $nullableSchema = new OpenApi3Schema();
-        $nullableSchema->setNullable(true);
+        $nullableSchema->nullable = true;
         self::assertTrue($this->checker->isNullable($nullableSchema));
 
         $notNullableSchema = new OpenApi3Schema();
-        $notNullableSchema->setNullable(false);
+        $notNullableSchema->nullable = false;
         self::assertFalse($this->checker->isNullable($notNullableSchema));
 
         $unsetSchema = new OpenApi3Schema();

@@ -41,21 +41,21 @@ class ZoneQueryCriteriaOptionsNormalizer implements DenormalizerInterface, Norma
             $data['includeSharedResources'] = (bool) $data['includeSharedResources'];
         }
         if (\array_key_exists('zone_ipmode', $data)) {
-            $object->setZoneIpmode($data['zone_ipmode']);
+            $object->zoneIpmode = $data['zone_ipmode'];
         }
         if (\array_key_exists('includeSharedResources', $data)) {
-            $object->setIncludeSharedResources($data['includeSharedResources']);
+            $object->includeSharedResources = $data['includeSharedResources'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('zoneIpmode') && null !== $data->getZoneIpmode()) {
-            $dataArray['zone_ipmode'] = $data->getZoneIpmode();
+        if (array_key_exists('zoneIpmode', get_object_vars($data)) && null !== ($data->zoneIpmode ?? null)) {
+            $dataArray['zone_ipmode'] = $data->zoneIpmode ?? null;
         }
-        if ($data->isInitialized('includeSharedResources') && null !== $data->getIncludeSharedResources()) {
-            $dataArray['includeSharedResources'] = $data->getIncludeSharedResources();
+        if (array_key_exists('includeSharedResources', get_object_vars($data)) && null !== ($data->includeSharedResources ?? null)) {
+            $dataArray['includeSharedResources'] = $data->includeSharedResources ?? null;
         }
         return $dataArray;
     }

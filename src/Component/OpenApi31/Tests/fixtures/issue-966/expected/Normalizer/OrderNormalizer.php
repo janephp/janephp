@@ -41,11 +41,11 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\OrderConstraint());
         }
         if (\array_key_exists('product_data', $data)) {
-            $object->setProductData($this->denormalizer->denormalize($data['product_data'], \Jane\Component\OpenApi31\Tests\Expected\Model\OrderProductData::class, 'json', $context));
+            $object->productData = $this->denormalizer->denormalize($data['product_data'], \Jane\Component\OpenApi31\Tests\Expected\Model\OrderProductData::class, 'json', $context);
             unset($data['product_data']);
         }
         if (\array_key_exists('product', $data)) {
-            $object->setProduct($this->denormalizer->denormalize($data['product'], \Jane\Component\OpenApi31\Tests\Expected\Model\OrderProduct::class, 'json', $context));
+            $object->product = $this->denormalizer->denormalize($data['product'], \Jane\Component\OpenApi31\Tests\Expected\Model\OrderProduct::class, 'json', $context);
             unset($data['product']);
         }
         foreach ($data as $key => $value) {
@@ -58,11 +58,11 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('productData') && null !== $data->getProductData()) {
-            $dataArray['product_data'] = $data->getProductData() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getProductData(), 'json', $context));
+        if (array_key_exists('productData', get_object_vars($data)) && null !== ($data->productData ?? null)) {
+            $dataArray['product_data'] = ($data->productData ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->productData ?? null, 'json', $context));
         }
-        if ($data->isInitialized('product') && null !== $data->getProduct()) {
-            $dataArray['product'] = $data->getProduct() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getProduct(), 'json', $context));
+        if (array_key_exists('product', get_object_vars($data)) && null !== ($data->product ?? null)) {
+            $dataArray['product'] = ($data->product ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->product ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

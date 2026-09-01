@@ -38,11 +38,11 @@ class ResponseAppsValidateRollbackErrorNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('code', $data)) {
-            $object->setCode($data['code']);
+            $object->code = $data['code'];
             unset($data['code']);
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
             unset($data['message']);
         }
         if (\array_key_exists('components', $data)) {
@@ -50,7 +50,7 @@ class ResponseAppsValidateRollbackErrorNormalizer implements DenormalizerInterfa
             foreach ($data['components'] as $value) {
                 $values[] = $value;
             }
-            $object->setComponents($values);
+            $object->components = $values;
             unset($data['components']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,15 +63,15 @@ class ResponseAppsValidateRollbackErrorNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('code') && null !== $data->getCode()) {
-            $dataArray['code'] = $data->getCode();
+        if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
+            $dataArray['code'] = $data->code ?? null;
         }
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['message'] = $data->message ?? null;
         }
-        if ($data->isInitialized('components') && null !== $data->getComponents()) {
+        if (array_key_exists('components', get_object_vars($data)) && null !== ($data->components ?? null)) {
             $values = [];
-            foreach ($data->getComponents() as $value) {
+            foreach ($data->components ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['components'] = $values;

@@ -38,7 +38,7 @@ class ApiCreateAgentAPIKeyOutputNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('api_key_info', $data)) {
-            $object->setApiKeyInfo($this->denormalizer->denormalize($data['api_key_info'], \Jane\Generated\DigitalOcean\Model\ApiAgentAPIKeyInfo::class, 'json', $context));
+            $object->apiKeyInfo = $this->denormalizer->denormalize($data['api_key_info'], \Jane\Generated\DigitalOcean\Model\ApiAgentAPIKeyInfo::class, 'json', $context);
             unset($data['api_key_info']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiCreateAgentAPIKeyOutputNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apiKeyInfo') && null !== $data->getApiKeyInfo()) {
-            $dataArray['api_key_info'] = $data->getApiKeyInfo() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getApiKeyInfo(), 'json', $context));
+        if (array_key_exists('apiKeyInfo', get_object_vars($data)) && null !== ($data->apiKeyInfo ?? null)) {
+            $dataArray['api_key_info'] = ($data->apiKeyInfo ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->apiKeyInfo ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

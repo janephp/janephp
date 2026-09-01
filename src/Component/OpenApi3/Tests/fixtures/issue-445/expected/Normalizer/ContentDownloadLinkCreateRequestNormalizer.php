@@ -45,10 +45,10 @@ class ContentDownloadLinkCreateRequestNormalizer implements DenormalizerInterfac
             foreach ($data['contents'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ContentDownloadRequestItem::class, 'json', $context);
             }
-            $object->setContents($values);
+            $object->contents = $values;
         }
         if (\array_key_exists('notifyProgress', $data)) {
-            $object->setNotifyProgress($data['notifyProgress']);
+            $object->notifyProgress = $data['notifyProgress'];
         }
         return $object;
     }
@@ -56,11 +56,11 @@ class ContentDownloadLinkCreateRequestNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getContents() as $value) {
+        foreach ($data->contents ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['contents'] = $values;
-        $dataArray['notifyProgress'] = $data->getNotifyProgress();
+        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

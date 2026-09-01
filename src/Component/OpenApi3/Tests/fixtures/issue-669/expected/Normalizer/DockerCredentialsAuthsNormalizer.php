@@ -38,7 +38,7 @@ class DockerCredentialsAuthsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('registry.digitalocean.com', $data)) {
-            $object->setRegistryDigitaloceanCom($this->denormalizer->denormalize($data['registry.digitalocean.com'], \Jane\Generated\DigitalOcean\Model\DockerCredentialsAuthsRegistryDigitaloceanCom::class, 'json', $context));
+            $object->registryDigitaloceanCom = $this->denormalizer->denormalize($data['registry.digitalocean.com'], \Jane\Generated\DigitalOcean\Model\DockerCredentialsAuthsRegistryDigitaloceanCom::class, 'json', $context);
             unset($data['registry.digitalocean.com']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class DockerCredentialsAuthsNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('registryDigitaloceanCom') && null !== $data->getRegistryDigitaloceanCom()) {
-            $dataArray['registry.digitalocean.com'] = $data->getRegistryDigitaloceanCom() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRegistryDigitaloceanCom(), 'json', $context));
+        if (array_key_exists('registryDigitaloceanCom', get_object_vars($data)) && null !== ($data->registryDigitaloceanCom ?? null)) {
+            $dataArray['registry.digitalocean.com'] = ($data->registryDigitaloceanCom ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->registryDigitaloceanCom ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,31 +38,31 @@ class V2UptimeChecksCheckIdAlertsPostBodyNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('threshold', $data)) {
-            $object->setThreshold($data['threshold']);
+            $object->threshold = $data['threshold'];
             unset($data['threshold']);
         }
         if (\array_key_exists('comparison', $data)) {
-            $object->setComparison($data['comparison']);
+            $object->comparison = $data['comparison'];
             unset($data['comparison']);
         }
         if (\array_key_exists('notifications', $data)) {
-            $object->setNotifications($this->denormalizer->denormalize($data['notifications'], \Jane\Generated\DigitalOcean\Model\Notification::class, 'json', $context));
+            $object->notifications = $this->denormalizer->denormalize($data['notifications'], \Jane\Generated\DigitalOcean\Model\Notification::class, 'json', $context);
             unset($data['notifications']);
         }
         if (\array_key_exists('period', $data)) {
-            $object->setPeriod($data['period']);
+            $object->period = $data['period'];
             unset($data['period']);
         }
         foreach ($data as $key => $value) {
@@ -75,23 +75,23 @@ class V2UptimeChecksCheckIdAlertsPostBodyNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('threshold') && null !== $data->getThreshold()) {
-            $dataArray['threshold'] = $data->getThreshold();
+        if (array_key_exists('threshold', get_object_vars($data)) && null !== ($data->threshold ?? null)) {
+            $dataArray['threshold'] = $data->threshold ?? null;
         }
-        if ($data->isInitialized('comparison') && null !== $data->getComparison()) {
-            $dataArray['comparison'] = $data->getComparison();
+        if (array_key_exists('comparison', get_object_vars($data)) && null !== ($data->comparison ?? null)) {
+            $dataArray['comparison'] = $data->comparison ?? null;
         }
-        if ($data->isInitialized('notifications') && null !== $data->getNotifications()) {
-            $dataArray['notifications'] = $data->getNotifications() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getNotifications(), 'json', $context));
+        if (array_key_exists('notifications', get_object_vars($data)) && null !== ($data->notifications ?? null)) {
+            $dataArray['notifications'] = ($data->notifications ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->notifications ?? null, 'json', $context));
         }
-        if ($data->isInitialized('period') && null !== $data->getPeriod()) {
-            $dataArray['period'] = $data->getPeriod();
+        if (array_key_exists('period', get_object_vars($data)) && null !== ($data->period ?? null)) {
+            $dataArray['period'] = $data->period ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

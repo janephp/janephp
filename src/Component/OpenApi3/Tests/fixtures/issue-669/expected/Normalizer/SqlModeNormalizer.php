@@ -38,7 +38,7 @@ class SqlModeNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('sql_mode', $data)) {
-            $object->setSqlMode($data['sql_mode']);
+            $object->sqlMode = $data['sql_mode'];
             unset($data['sql_mode']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class SqlModeNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['sql_mode'] = $data->getSqlMode();
+        $dataArray['sql_mode'] = $data->sqlMode ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -38,33 +38,33 @@ class ServiceGroupAttrIdentityUserRoleMappingUserRoleNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('userTrafficProfile', $data)) {
-            $object->setUserTrafficProfile($this->denormalizer->denormalize($data['userTrafficProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceGroupAttrIdentityUserRoleMappingUserRoleUserTrafficProfile::class, 'json', $context));
+            $object->userTrafficProfile = $this->denormalizer->denormalize($data['userTrafficProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceGroupAttrIdentityUserRoleMappingUserRoleUserTrafficProfile::class, 'json', $context);
         }
         if (\array_key_exists('firewallProfileId', $data)) {
-            $object->setFirewallProfileId($data['firewallProfileId']);
+            $object->firewallProfileId = $data['firewallProfileId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('userTrafficProfile') && null !== $data->getUserTrafficProfile()) {
-            $dataArray['userTrafficProfile'] = $data->getUserTrafficProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserTrafficProfile(), 'json', $context));
+        if (array_key_exists('userTrafficProfile', get_object_vars($data)) && null !== ($data->userTrafficProfile ?? null)) {
+            $dataArray['userTrafficProfile'] = ($data->userTrafficProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->userTrafficProfile ?? null, 'json', $context));
         }
-        if ($data->isInitialized('firewallProfileId') && null !== $data->getFirewallProfileId()) {
-            $dataArray['firewallProfileId'] = $data->getFirewallProfileId();
+        if (array_key_exists('firewallProfileId', get_object_vars($data)) && null !== ($data->firewallProfileId ?? null)) {
+            $dataArray['firewallProfileId'] = $data->firewallProfileId ?? null;
         }
         return $dataArray;
     }

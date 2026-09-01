@@ -38,21 +38,21 @@ class PortalserviceUserSessionNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('timeoutInMin', $data)) {
-            $object->setTimeoutInMin($data['timeoutInMin']);
+            $object->timeoutInMin = $data['timeoutInMin'];
         }
         if (\array_key_exists('gracePeriodInMin', $data)) {
-            $object->setGracePeriodInMin($data['gracePeriodInMin']);
+            $object->gracePeriodInMin = $data['gracePeriodInMin'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('timeoutInMin') && null !== $data->getTimeoutInMin()) {
-            $dataArray['timeoutInMin'] = $data->getTimeoutInMin();
+        if (array_key_exists('timeoutInMin', get_object_vars($data)) && null !== ($data->timeoutInMin ?? null)) {
+            $dataArray['timeoutInMin'] = $data->timeoutInMin ?? null;
         }
-        if ($data->isInitialized('gracePeriodInMin') && null !== $data->getGracePeriodInMin()) {
-            $dataArray['gracePeriodInMin'] = $data->getGracePeriodInMin();
+        if (array_key_exists('gracePeriodInMin', get_object_vars($data)) && null !== ($data->gracePeriodInMin ?? null)) {
+            $dataArray['gracePeriodInMin'] = $data->gracePeriodInMin ?? null;
         }
         return $dataArray;
     }

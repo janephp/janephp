@@ -38,15 +38,15 @@ class MultiregistryCreateNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('subscription_tier_slug', $data)) {
-            $object->setSubscriptionTierSlug($data['subscription_tier_slug']);
+            $object->subscriptionTierSlug = $data['subscription_tier_slug'];
             unset($data['subscription_tier_slug']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         foreach ($data as $key => $value) {
@@ -59,12 +59,12 @@ class MultiregistryCreateNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('subscriptionTierSlug') && null !== $data->getSubscriptionTierSlug()) {
-            $dataArray['subscription_tier_slug'] = $data->getSubscriptionTierSlug();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('subscriptionTierSlug', get_object_vars($data)) && null !== ($data->subscriptionTierSlug ?? null)) {
+            $dataArray['subscription_tier_slug'] = $data->subscriptionTierSlug ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

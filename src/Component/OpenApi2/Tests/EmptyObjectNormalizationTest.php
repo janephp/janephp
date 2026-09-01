@@ -18,7 +18,7 @@ class EmptyObjectNormalizationTest extends TestCase
     public function testEmptyAdditionalPropertiesMapIsEncodedAsJsonObject(): void
     {
         $body = new ContainersCreatePostBody();
-        $body->setExposedPorts(new JsonObject());
+        $body->exposedPorts = new JsonObject();
 
         $data = $this->createSerializer()->normalize($body, 'json');
 
@@ -33,8 +33,8 @@ class EmptyObjectNormalizationTest extends TestCase
 
         $body = $serializer->denormalize(['ExposedPorts' => []], ContainersCreatePostBody::class, 'json');
 
-        self::assertInstanceOf(JsonObject::class, $body->getExposedPorts());
-        self::assertSame([], iterator_to_array($body->getExposedPorts()));
+        self::assertInstanceOf(JsonObject::class, $body->exposedPorts);
+        self::assertSame([], iterator_to_array($body->exposedPorts));
 
         $data = $serializer->normalize($body, 'json');
 
@@ -47,7 +47,7 @@ class EmptyObjectNormalizationTest extends TestCase
         $ports['80/tcp'] = new JsonObject();
 
         $body = new ContainersCreatePostBody();
-        $body->setExposedPorts($ports);
+        $body->exposedPorts = $ports;
 
         $data = json_encode($this->createSerializer()->normalize($body, 'json'));
 
@@ -57,7 +57,7 @@ class EmptyObjectNormalizationTest extends TestCase
     public function testEmptyNestedModelObjectIsEncodedAsJsonObject(): void
     {
         $body = new ContainersCreatePostBody();
-        $body->setHealthcheck(new \Docker\Api\Model\HealthConfig());
+        $body->healthcheck = new \Docker\Api\Model\HealthConfig();
 
         $data = json_encode($this->createSerializer()->normalize($body, 'json'));
 

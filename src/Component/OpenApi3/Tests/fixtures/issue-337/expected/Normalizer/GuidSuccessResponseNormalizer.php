@@ -42,7 +42,7 @@ class GuidSuccessResponseNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['GUIDList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GuidSuccessResponseGUIDListItem::class, 'json', $context);
             }
-            $object->setGUIDList($values);
+            $object->gUIDList = $values;
             unset($data['GUIDList']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class GuidSuccessResponseNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('gUIDList') && null !== $data->getGUIDList()) {
+        if (array_key_exists('gUIDList', get_object_vars($data)) && null !== ($data->gUIDList ?? null)) {
             $values = [];
-            foreach ($data->getGUIDList() as $value) {
+            foreach ($data->gUIDList ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['GUIDList'] = $values;

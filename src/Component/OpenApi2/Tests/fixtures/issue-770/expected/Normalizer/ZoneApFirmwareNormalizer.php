@@ -41,35 +41,35 @@ class ZoneApFirmwareNormalizer implements DenormalizerInterface, NormalizerInter
             $data['supported'] = (bool) $data['supported'];
         }
         if (\array_key_exists('firmwareVersion', $data)) {
-            $object->setFirmwareVersion($data['firmwareVersion']);
+            $object->firmwareVersion = $data['firmwareVersion'];
         }
         if (\array_key_exists('unsupportedApModelSummary', $data)) {
             $values = [];
             foreach ($data['unsupportedApModelSummary'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneUnsupportedApModel::class, 'json', $context);
             }
-            $object->setUnsupportedApModelSummary($values);
+            $object->unsupportedApModelSummary = $values;
         }
         if (\array_key_exists('supported', $data)) {
-            $object->setSupported($data['supported']);
+            $object->supported = $data['supported'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('firmwareVersion') && null !== $data->getFirmwareVersion()) {
-            $dataArray['firmwareVersion'] = $data->getFirmwareVersion();
+        if (array_key_exists('firmwareVersion', get_object_vars($data)) && null !== ($data->firmwareVersion ?? null)) {
+            $dataArray['firmwareVersion'] = $data->firmwareVersion ?? null;
         }
-        if ($data->isInitialized('unsupportedApModelSummary') && null !== $data->getUnsupportedApModelSummary()) {
+        if (array_key_exists('unsupportedApModelSummary', get_object_vars($data)) && null !== ($data->unsupportedApModelSummary ?? null)) {
             $values = [];
-            foreach ($data->getUnsupportedApModelSummary() as $value) {
+            foreach ($data->unsupportedApModelSummary ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['unsupportedApModelSummary'] = $values;
         }
-        if ($data->isInitialized('supported') && null !== $data->getSupported()) {
-            $dataArray['supported'] = $data->getSupported();
+        if (array_key_exists('supported', get_object_vars($data)) && null !== ($data->supported ?? null)) {
+            $dataArray['supported'] = $data->supported ?? null;
         }
         return $dataArray;
     }

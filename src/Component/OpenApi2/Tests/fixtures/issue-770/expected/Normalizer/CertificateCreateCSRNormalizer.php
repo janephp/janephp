@@ -38,50 +38,50 @@ class CertificateCreateCSRNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('commonName', $data)) {
-            $object->setCommonName($data['commonName']);
+            $object->commonName = $data['commonName'];
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
         }
         if (\array_key_exists('organization', $data)) {
-            $object->setOrganization($data['organization']);
+            $object->organization = $data['organization'];
         }
         if (\array_key_exists('organizationUnit', $data)) {
-            $object->setOrganizationUnit($data['organizationUnit']);
+            $object->organizationUnit = $data['organizationUnit'];
         }
         if (\array_key_exists('city', $data)) {
-            $object->setCity($data['city']);
+            $object->city = $data['city'];
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
         }
         if (\array_key_exists('countryCode', $data)) {
-            $object->setCountryCode($data['countryCode']);
+            $object->countryCode = $data['countryCode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['commonName'] = $data->getCommonName();
-        $dataArray['email'] = $data->getEmail();
-        $dataArray['organization'] = $data->getOrganization();
-        if ($data->isInitialized('organizationUnit') && null !== $data->getOrganizationUnit()) {
-            $dataArray['organizationUnit'] = $data->getOrganizationUnit();
+        $dataArray['commonName'] = $data->commonName ?? null;
+        $dataArray['email'] = $data->email ?? null;
+        $dataArray['organization'] = $data->organization ?? null;
+        if (array_key_exists('organizationUnit', get_object_vars($data)) && null !== ($data->organizationUnit ?? null)) {
+            $dataArray['organizationUnit'] = $data->organizationUnit ?? null;
         }
-        $dataArray['city'] = $data->getCity();
-        $dataArray['state'] = $data->getState();
-        $dataArray['countryCode'] = $data->getCountryCode();
+        $dataArray['city'] = $data->city ?? null;
+        $dataArray['state'] = $data->state ?? null;
+        $dataArray['countryCode'] = $data->countryCode ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

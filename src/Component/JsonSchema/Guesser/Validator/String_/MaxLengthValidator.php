@@ -16,7 +16,7 @@ class MaxLengthValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && ((\is_array($object->getType()) ? \in_array('string', $object->getType()) : 'string' === $object->getType()) || null === $object->getType()) && null !== $object->getMaxLength();
+        return $this->checkObject($object) && ((\is_array($object->type ?? null) ? \in_array('string', $object->type ?? null) : 'string' === ($object->type ?? null)) || null === ($object->type ?? null)) && null !== ($object->maxLength ?? null);
     }
 
     /**
@@ -26,7 +26,7 @@ class MaxLengthValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(Length::class, [
-            'max' => $object->getMaxLength(),
+            'max' => ($object->maxLength ?? null),
             'maxMessage' => 'This value is too long. It should have {{ limit }} characters or less.',
         ]));
     }

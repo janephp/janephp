@@ -41,89 +41,89 @@ class AaaAuthenticationServerNormalizer implements DenormalizerInterface, Normal
             $data['standbyServerEnabled'] = (bool) $data['standbyServerEnabled'];
         }
         if (\array_key_exists('serviceType', $data)) {
-            $object->setServiceType($data['serviceType']);
+            $object->serviceType = $data['serviceType'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('zoneId', $data)) {
-            $object->setZoneId($data['zoneId']);
+            $object->zoneId = $data['zoneId'];
         }
         if (\array_key_exists('mvnoId', $data)) {
-            $object->setMvnoId($data['mvnoId']);
+            $object->mvnoId = $data['mvnoId'];
         }
         if (\array_key_exists('partnerDomainId', $data)) {
-            $object->setPartnerDomainId($data['partnerDomainId']);
+            $object->partnerDomainId = $data['partnerDomainId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('primary', $data)) {
-            $object->setPrimary($this->denormalizer->denormalize($data['primary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServer::class, 'json', $context));
+            $object->primary = $this->denormalizer->denormalize($data['primary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServer::class, 'json', $context);
         }
         if (\array_key_exists('secondary', $data)) {
-            $object->setSecondary($this->denormalizer->denormalize($data['secondary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServer::class, 'json', $context));
+            $object->secondary = $this->denormalizer->denormalize($data['secondary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServer::class, 'json', $context);
         }
         if (\array_key_exists('mappings', $data)) {
             $values = [];
             foreach ($data['mappings'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaGroupAttrIdentityUserRoleMapping::class, 'json', $context);
             }
-            $object->setMappings($values);
+            $object->mappings = $values;
         }
         if (\array_key_exists('standbyPrimary', $data)) {
-            $object->setStandbyPrimary($this->denormalizer->denormalize($data['standbyPrimary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServer::class, 'json', $context));
+            $object->standbyPrimary = $this->denormalizer->denormalize($data['standbyPrimary'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRadiusServer::class, 'json', $context);
         }
         if (\array_key_exists('standbyServerEnabled', $data)) {
-            $object->setStandbyServerEnabled($data['standbyServerEnabled']);
+            $object->standbyServerEnabled = $data['standbyServerEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('serviceType') && null !== $data->getServiceType()) {
-            $dataArray['serviceType'] = $data->getServiceType();
+        if (array_key_exists('serviceType', get_object_vars($data)) && null !== ($data->serviceType ?? null)) {
+            $dataArray['serviceType'] = $data->serviceType ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('zoneId') && null !== $data->getZoneId()) {
-            $dataArray['zoneId'] = $data->getZoneId();
+        if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
+            $dataArray['zoneId'] = $data->zoneId ?? null;
         }
-        if ($data->isInitialized('mvnoId') && null !== $data->getMvnoId()) {
-            $dataArray['mvnoId'] = $data->getMvnoId();
+        if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
+            $dataArray['mvnoId'] = $data->mvnoId ?? null;
         }
-        if ($data->isInitialized('partnerDomainId') && null !== $data->getPartnerDomainId()) {
-            $dataArray['partnerDomainId'] = $data->getPartnerDomainId();
+        if (array_key_exists('partnerDomainId', get_object_vars($data)) && null !== ($data->partnerDomainId ?? null)) {
+            $dataArray['partnerDomainId'] = $data->partnerDomainId ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('primary') && null !== $data->getPrimary()) {
-            $dataArray['primary'] = $data->getPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPrimary(), 'json', $context));
+        if (array_key_exists('primary', get_object_vars($data)) && null !== ($data->primary ?? null)) {
+            $dataArray['primary'] = ($data->primary ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->primary ?? null, 'json', $context));
         }
-        if ($data->isInitialized('secondary') && null !== $data->getSecondary()) {
-            $dataArray['secondary'] = $data->getSecondary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondary(), 'json', $context));
+        if (array_key_exists('secondary', get_object_vars($data)) && null !== ($data->secondary ?? null)) {
+            $dataArray['secondary'] = ($data->secondary ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->secondary ?? null, 'json', $context));
         }
-        if ($data->isInitialized('mappings') && null !== $data->getMappings()) {
+        if (array_key_exists('mappings', get_object_vars($data)) && null !== ($data->mappings ?? null)) {
             $values = [];
-            foreach ($data->getMappings() as $value) {
+            foreach ($data->mappings ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['mappings'] = $values;
         }
-        if ($data->isInitialized('standbyPrimary') && null !== $data->getStandbyPrimary()) {
-            $dataArray['standbyPrimary'] = $data->getStandbyPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyPrimary(), 'json', $context));
+        if (array_key_exists('standbyPrimary', get_object_vars($data)) && null !== ($data->standbyPrimary ?? null)) {
+            $dataArray['standbyPrimary'] = ($data->standbyPrimary ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->standbyPrimary ?? null, 'json', $context));
         }
-        if ($data->isInitialized('standbyServerEnabled') && null !== $data->getStandbyServerEnabled()) {
-            $dataArray['standbyServerEnabled'] = $data->getStandbyServerEnabled();
+        if (array_key_exists('standbyServerEnabled', get_object_vars($data)) && null !== ($data->standbyServerEnabled ?? null)) {
+            $dataArray['standbyServerEnabled'] = $data->standbyServerEnabled ?? null;
         }
         return $dataArray;
     }

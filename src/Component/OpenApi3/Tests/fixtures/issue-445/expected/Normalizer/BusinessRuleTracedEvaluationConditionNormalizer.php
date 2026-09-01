@@ -41,31 +41,31 @@ class BusinessRuleTracedEvaluationConditionNormalizer implements DenormalizerInt
             $data['satisfied'] = (bool) $data['satisfied'];
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
         }
         if (\array_key_exists('satisfied', $data)) {
-            $object->setSatisfied($data['satisfied']);
+            $object->satisfied = $data['satisfied'];
         }
         if (\array_key_exists('reason', $data) && $data['reason'] !== null) {
-            $object->setReason($data['reason']);
+            $object->reason = $data['reason'];
         }
         elseif (\array_key_exists('reason', $data) && $data['reason'] === null) {
-            $object->setReason(null);
+            $object->reason = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['satisfied'] = $data->getSatisfied();
-        if ($data->isInitialized('reason') && null !== $data->getReason()) {
-            $dataArray['reason'] = $data->getReason();
+        $dataArray['satisfied'] = $data->satisfied ?? null;
+        if (array_key_exists('reason', get_object_vars($data)) && null !== ($data->reason ?? null)) {
+            $dataArray['reason'] = $data->reason ?? null;
         }
         return $dataArray;
     }

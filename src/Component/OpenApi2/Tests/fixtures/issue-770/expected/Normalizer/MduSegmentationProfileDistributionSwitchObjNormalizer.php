@@ -38,83 +38,83 @@ class MduSegmentationProfileDistributionSwitchObjNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('siteName', $data)) {
-            $object->setSiteName($data['siteName']);
+            $object->siteName = $data['siteName'];
         }
         if (\array_key_exists('vlanList', $data)) {
-            $object->setVlanList($data['vlanList']);
+            $object->vlanList = $data['vlanList'];
         }
         if (\array_key_exists('loopbackInterfaceId', $data)) {
-            $object->setLoopbackInterfaceId($data['loopbackInterfaceId']);
+            $object->loopbackInterfaceId = $data['loopbackInterfaceId'];
         }
         if (\array_key_exists('loopbackInterfaceIpAddress', $data)) {
-            $object->setLoopbackInterfaceIpAddress($data['loopbackInterfaceIpAddress']);
+            $object->loopbackInterfaceIpAddress = $data['loopbackInterfaceIpAddress'];
         }
         if (\array_key_exists('loopbackInterfaceSubnetMask', $data)) {
-            $object->setLoopbackInterfaceSubnetMask($data['loopbackInterfaceSubnetMask']);
+            $object->loopbackInterfaceSubnetMask = $data['loopbackInterfaceSubnetMask'];
         }
         if (\array_key_exists('siteSecondaryList', $data)) {
             $values = [];
             foreach ($data['siteSecondaryList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileSiteSecondary::class, 'json', $context);
             }
-            $object->setSiteSecondaryList($values);
+            $object->siteSecondaryList = $values;
         }
         if (\array_key_exists('siteKeepAlive', $data)) {
-            $object->setSiteKeepAlive($data['siteKeepAlive']);
+            $object->siteKeepAlive = $data['siteKeepAlive'];
         }
         if (\array_key_exists('siteRetry', $data)) {
-            $object->setSiteRetry($data['siteRetry']);
+            $object->siteRetry = $data['siteRetry'];
         }
         if (\array_key_exists('dispatchMessage', $data)) {
-            $object->setDispatchMessage($data['dispatchMessage']);
+            $object->dispatchMessage = $data['dispatchMessage'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('siteName') && null !== $data->getSiteName()) {
-            $dataArray['siteName'] = $data->getSiteName();
+        if (array_key_exists('siteName', get_object_vars($data)) && null !== ($data->siteName ?? null)) {
+            $dataArray['siteName'] = $data->siteName ?? null;
         }
-        if ($data->isInitialized('vlanList') && null !== $data->getVlanList()) {
-            $dataArray['vlanList'] = $data->getVlanList();
+        if (array_key_exists('vlanList', get_object_vars($data)) && null !== ($data->vlanList ?? null)) {
+            $dataArray['vlanList'] = $data->vlanList ?? null;
         }
-        if ($data->isInitialized('loopbackInterfaceId') && null !== $data->getLoopbackInterfaceId()) {
-            $dataArray['loopbackInterfaceId'] = $data->getLoopbackInterfaceId();
+        if (array_key_exists('loopbackInterfaceId', get_object_vars($data)) && null !== ($data->loopbackInterfaceId ?? null)) {
+            $dataArray['loopbackInterfaceId'] = $data->loopbackInterfaceId ?? null;
         }
-        if ($data->isInitialized('loopbackInterfaceIpAddress') && null !== $data->getLoopbackInterfaceIpAddress()) {
-            $dataArray['loopbackInterfaceIpAddress'] = $data->getLoopbackInterfaceIpAddress();
+        if (array_key_exists('loopbackInterfaceIpAddress', get_object_vars($data)) && null !== ($data->loopbackInterfaceIpAddress ?? null)) {
+            $dataArray['loopbackInterfaceIpAddress'] = $data->loopbackInterfaceIpAddress ?? null;
         }
-        if ($data->isInitialized('loopbackInterfaceSubnetMask') && null !== $data->getLoopbackInterfaceSubnetMask()) {
-            $dataArray['loopbackInterfaceSubnetMask'] = $data->getLoopbackInterfaceSubnetMask();
+        if (array_key_exists('loopbackInterfaceSubnetMask', get_object_vars($data)) && null !== ($data->loopbackInterfaceSubnetMask ?? null)) {
+            $dataArray['loopbackInterfaceSubnetMask'] = $data->loopbackInterfaceSubnetMask ?? null;
         }
-        if ($data->isInitialized('siteSecondaryList') && null !== $data->getSiteSecondaryList()) {
+        if (array_key_exists('siteSecondaryList', get_object_vars($data)) && null !== ($data->siteSecondaryList ?? null)) {
             $values = [];
-            foreach ($data->getSiteSecondaryList() as $value) {
+            foreach ($data->siteSecondaryList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['siteSecondaryList'] = $values;
         }
-        if ($data->isInitialized('siteKeepAlive') && null !== $data->getSiteKeepAlive()) {
-            $dataArray['siteKeepAlive'] = $data->getSiteKeepAlive();
+        if (array_key_exists('siteKeepAlive', get_object_vars($data)) && null !== ($data->siteKeepAlive ?? null)) {
+            $dataArray['siteKeepAlive'] = $data->siteKeepAlive ?? null;
         }
-        if ($data->isInitialized('siteRetry') && null !== $data->getSiteRetry()) {
-            $dataArray['siteRetry'] = $data->getSiteRetry();
+        if (array_key_exists('siteRetry', get_object_vars($data)) && null !== ($data->siteRetry ?? null)) {
+            $dataArray['siteRetry'] = $data->siteRetry ?? null;
         }
-        if ($data->isInitialized('dispatchMessage') && null !== $data->getDispatchMessage()) {
-            $dataArray['dispatchMessage'] = $data->getDispatchMessage();
+        if (array_key_exists('dispatchMessage', get_object_vars($data)) && null !== ($data->dispatchMessage ?? null)) {
+            $dataArray['dispatchMessage'] = $data->dispatchMessage ?? null;
         }
         return $dataArray;
     }

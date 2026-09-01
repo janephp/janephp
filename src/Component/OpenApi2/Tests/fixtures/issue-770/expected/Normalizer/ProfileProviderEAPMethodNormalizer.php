@@ -38,24 +38,24 @@ class ProfileProviderEAPMethodNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('authSettings', $data)) {
             $values = [];
             foreach ($data['authSettings'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderEAPAuthSetting::class, 'json', $context);
             }
-            $object->setAuthSettings($values);
+            $object->authSettings = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('authSettings') && null !== $data->getAuthSettings()) {
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('authSettings', get_object_vars($data)) && null !== ($data->authSettings ?? null)) {
             $values = [];
-            foreach ($data->getAuthSettings() as $value) {
+            foreach ($data->authSettings ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['authSettings'] = $values;

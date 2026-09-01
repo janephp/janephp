@@ -38,19 +38,19 @@ class TriggerInfoScheduledRunsNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('last_run_at', $data) && $data['last_run_at'] !== null) {
-            $object->setLastRunAt($data['last_run_at']);
+            $object->lastRunAt = $data['last_run_at'];
             unset($data['last_run_at']);
         }
         elseif (\array_key_exists('last_run_at', $data) && $data['last_run_at'] === null) {
-            $object->setLastRunAt(null);
+            $object->lastRunAt = null;
             unset($data['last_run_at']);
         }
         if (\array_key_exists('next_run_at', $data) && $data['next_run_at'] !== null) {
-            $object->setNextRunAt($data['next_run_at']);
+            $object->nextRunAt = $data['next_run_at'];
             unset($data['next_run_at']);
         }
         elseif (\array_key_exists('next_run_at', $data) && $data['next_run_at'] === null) {
-            $object->setNextRunAt(null);
+            $object->nextRunAt = null;
             unset($data['next_run_at']);
         }
         foreach ($data as $key => $value) {
@@ -63,11 +63,11 @@ class TriggerInfoScheduledRunsNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('lastRunAt') && null !== $data->getLastRunAt()) {
-            $dataArray['last_run_at'] = $data->getLastRunAt();
+        if (array_key_exists('lastRunAt', get_object_vars($data)) && null !== ($data->lastRunAt ?? null)) {
+            $dataArray['last_run_at'] = $data->lastRunAt ?? null;
         }
-        if ($data->isInitialized('nextRunAt') && null !== $data->getNextRunAt()) {
-            $dataArray['next_run_at'] = $data->getNextRunAt();
+        if (array_key_exists('nextRunAt', get_object_vars($data)) && null !== ($data->nextRunAt ?? null)) {
+            $dataArray['next_run_at'] = $data->nextRunAt ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

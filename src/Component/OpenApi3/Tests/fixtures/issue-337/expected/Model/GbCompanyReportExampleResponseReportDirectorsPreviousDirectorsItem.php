@@ -8,125 +8,27 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem impleme
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $id;
     /**
      * @var string
      */
-    protected $id;
+    public string $name;
     /**
      * @var string
      */
-    protected $name;
+    public string $gender;
     /**
      * @var string
      */
-    protected $gender;
-    /**
-     * @var string
-     */
-    protected $directorType;
+    public string $directorType;
     /**
      * @var list<string>
      */
-    protected $positions;
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getGender(): string
-    {
-        return $this->gender;
-    }
-    /**
-     * @param string $gender
-     *
-     * @return self
-     */
-    public function setGender(string $gender): self
-    {
-        $this->initialized['gender'] = true;
-        $this->gender = $gender;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getDirectorType(): string
-    {
-        return $this->directorType;
-    }
-    /**
-     * @param string $directorType
-     *
-     * @return self
-     */
-    public function setDirectorType(string $directorType): self
-    {
-        $this->initialized['directorType'] = true;
-        $this->directorType = $directorType;
-        return $this;
-    }
-    /**
-     * @return list<string>
-     */
-    public function getPositions(): array
-    {
-        return $this->positions;
-    }
-    /**
-     * @param list<string> $positions
-     *
-     * @return self
-     */
-    public function setPositions(array $positions): self
-    {
-        $this->initialized['positions'] = true;
-        $this->positions = $positions;
-        return $this;
-    }
+    public array $positions;
     public function definedProperties(): array
     {
-        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'gender' => ['gender', 'getGender', 'setGender'], 'directorType' => ['directorType', 'getDirectorType', 'setDirectorType'], 'positions' => ['positions', 'getPositions', 'setPositions']];
+        return ['id' => 'id', 'name' => 'name', 'gender' => 'gender', 'directorType' => 'directorType', 'positions' => 'positions'];
     }
 }

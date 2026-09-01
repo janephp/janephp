@@ -48,17 +48,17 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['Capabilities'] as $value) {
                 $values[] = $value;
             }
-            $object->setCapabilities($values);
+            $object->capabilities = $values;
         }
         if (\array_key_exists('AllowAllDevices', $data)) {
-            $object->setAllowAllDevices($data['AllowAllDevices']);
+            $object->allowAllDevices = $data['AllowAllDevices'];
         }
         if (\array_key_exists('Devices', $data)) {
             $values_1 = [];
             foreach ($data['Devices'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Docker\Api\Model\PluginDevice::class, 'json', $context);
             }
-            $object->setDevices($values_1);
+            $object->devices = $values_1;
         }
         return $object;
     }
@@ -66,13 +66,13 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getCapabilities() as $value) {
+        foreach ($data->capabilities ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['Capabilities'] = $values;
-        $dataArray['AllowAllDevices'] = $data->getAllowAllDevices();
+        $dataArray['AllowAllDevices'] = $data->allowAllDevices ?? null;
         $values_1 = [];
-        foreach ($data->getDevices() as $value_1) {
+        foreach ($data->devices ?? null as $value_1) {
             $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['Devices'] = $values_1;

@@ -38,23 +38,23 @@ class NfsResponseNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('size_gib', $data)) {
-            $object->setSizeGib($data['size_gib']);
+            $object->sizeGib = $data['size_gib'];
             unset($data['size_gib']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -62,7 +62,7 @@ class NfsResponseNormalizer implements DenormalizerInterface, NormalizerInterfac
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('vpc_ids', $data)) {
@@ -70,15 +70,15 @@ class NfsResponseNormalizer implements DenormalizerInterface, NormalizerInterfac
             foreach ($data['vpc_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setVpcIds($values);
+            $object->vpcIds = $values;
             unset($data['vpc_ids']);
         }
         if (\array_key_exists('mount_path', $data)) {
-            $object->setMountPath($data['mount_path']);
+            $object->mountPath = $data['mount_path'];
             unset($data['mount_path']);
         }
         if (\array_key_exists('host', $data)) {
-            $object->setHost($data['host']);
+            $object->host = $data['host'];
             unset($data['host']);
         }
         foreach ($data as $key => $value_1) {
@@ -91,21 +91,21 @@ class NfsResponseNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['size_gib'] = $data->getSizeGib();
-        $dataArray['region'] = $data->getRegion();
-        if ($data->isInitialized('vpcIds') && null !== $data->getVpcIds()) {
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['size_gib'] = $data->sizeGib ?? null;
+        $dataArray['region'] = $data->region ?? null;
+        if (array_key_exists('vpcIds', get_object_vars($data)) && null !== ($data->vpcIds ?? null)) {
             $values = [];
-            foreach ($data->getVpcIds() as $value) {
+            foreach ($data->vpcIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['vpc_ids'] = $values;
         }
-        if ($data->isInitialized('mountPath') && null !== $data->getMountPath()) {
-            $dataArray['mount_path'] = $data->getMountPath();
+        if (array_key_exists('mountPath', get_object_vars($data)) && null !== ($data->mountPath ?? null)) {
+            $dataArray['mount_path'] = $data->mountPath ?? null;
         }
-        if ($data->isInitialized('host') && null !== $data->getHost()) {
-            $dataArray['host'] = $data->getHost();
+        if (array_key_exists('host', get_object_vars($data)) && null !== ($data->host ?? null)) {
+            $dataArray['host'] = $data->host ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

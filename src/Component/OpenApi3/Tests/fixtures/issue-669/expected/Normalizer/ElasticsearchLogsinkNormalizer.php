@@ -41,23 +41,23 @@ class ElasticsearchLogsinkNormalizer implements DenormalizerInterface, Normalize
             $data['timeout'] = (float) $data['timeout'];
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
             unset($data['url']);
         }
         if (\array_key_exists('index_prefix', $data)) {
-            $object->setIndexPrefix($data['index_prefix']);
+            $object->indexPrefix = $data['index_prefix'];
             unset($data['index_prefix']);
         }
         if (\array_key_exists('index_days_max', $data)) {
-            $object->setIndexDaysMax($data['index_days_max']);
+            $object->indexDaysMax = $data['index_days_max'];
             unset($data['index_days_max']);
         }
         if (\array_key_exists('timeout', $data)) {
-            $object->setTimeout($data['timeout']);
+            $object->timeout = $data['timeout'];
             unset($data['timeout']);
         }
         if (\array_key_exists('ca', $data)) {
-            $object->setCa($data['ca']);
+            $object->ca = $data['ca'];
             unset($data['ca']);
         }
         foreach ($data as $key => $value) {
@@ -70,16 +70,16 @@ class ElasticsearchLogsinkNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['url'] = $data->getUrl();
-        $dataArray['index_prefix'] = $data->getIndexPrefix();
-        if ($data->isInitialized('indexDaysMax') && null !== $data->getIndexDaysMax()) {
-            $dataArray['index_days_max'] = $data->getIndexDaysMax();
+        $dataArray['url'] = $data->url ?? null;
+        $dataArray['index_prefix'] = $data->indexPrefix ?? null;
+        if (array_key_exists('indexDaysMax', get_object_vars($data)) && null !== ($data->indexDaysMax ?? null)) {
+            $dataArray['index_days_max'] = $data->indexDaysMax ?? null;
         }
-        if ($data->isInitialized('timeout') && null !== $data->getTimeout()) {
-            $dataArray['timeout'] = $data->getTimeout();
+        if (array_key_exists('timeout', get_object_vars($data)) && null !== ($data->timeout ?? null)) {
+            $dataArray['timeout'] = $data->timeout ?? null;
         }
-        if ($data->isInitialized('ca') && null !== $data->getCa()) {
-            $dataArray['ca'] = $data->getCa();
+        if (array_key_exists('ca', get_object_vars($data)) && null !== ($data->ca ?? null)) {
+            $dataArray['ca'] = $data->ca ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

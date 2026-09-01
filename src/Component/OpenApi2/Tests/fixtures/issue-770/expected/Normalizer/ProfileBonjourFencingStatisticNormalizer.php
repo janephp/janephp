@@ -38,44 +38,44 @@ class ProfileBonjourFencingStatisticNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('forwardedPackets', $data)) {
-            $object->setForwardedPackets($data['forwardedPackets']);
+            $object->forwardedPackets = $data['forwardedPackets'];
         }
         if (\array_key_exists('droppedPacketsDueToServiceType', $data)) {
-            $object->setDroppedPacketsDueToServiceType($data['droppedPacketsDueToServiceType']);
+            $object->droppedPacketsDueToServiceType = $data['droppedPacketsDueToServiceType'];
         }
         if (\array_key_exists('droppedPacketsDueToNeighbor', $data)) {
-            $object->setDroppedPacketsDueToNeighbor($data['droppedPacketsDueToNeighbor']);
+            $object->droppedPacketsDueToNeighbor = $data['droppedPacketsDueToNeighbor'];
         }
         if (\array_key_exists('serviceList', $data)) {
             $values = [];
             foreach ($data['serviceList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingService::class, 'json', $context);
             }
-            $object->setServiceList($values);
+            $object->serviceList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('forwardedPackets') && null !== $data->getForwardedPackets()) {
-            $dataArray['forwardedPackets'] = $data->getForwardedPackets();
+        if (array_key_exists('forwardedPackets', get_object_vars($data)) && null !== ($data->forwardedPackets ?? null)) {
+            $dataArray['forwardedPackets'] = $data->forwardedPackets ?? null;
         }
-        if ($data->isInitialized('droppedPacketsDueToServiceType') && null !== $data->getDroppedPacketsDueToServiceType()) {
-            $dataArray['droppedPacketsDueToServiceType'] = $data->getDroppedPacketsDueToServiceType();
+        if (array_key_exists('droppedPacketsDueToServiceType', get_object_vars($data)) && null !== ($data->droppedPacketsDueToServiceType ?? null)) {
+            $dataArray['droppedPacketsDueToServiceType'] = $data->droppedPacketsDueToServiceType ?? null;
         }
-        if ($data->isInitialized('droppedPacketsDueToNeighbor') && null !== $data->getDroppedPacketsDueToNeighbor()) {
-            $dataArray['droppedPacketsDueToNeighbor'] = $data->getDroppedPacketsDueToNeighbor();
+        if (array_key_exists('droppedPacketsDueToNeighbor', get_object_vars($data)) && null !== ($data->droppedPacketsDueToNeighbor ?? null)) {
+            $dataArray['droppedPacketsDueToNeighbor'] = $data->droppedPacketsDueToNeighbor ?? null;
         }
-        if ($data->isInitialized('serviceList') && null !== $data->getServiceList()) {
+        if (array_key_exists('serviceList', get_object_vars($data)) && null !== ($data->serviceList ?? null)) {
             $values = [];
-            foreach ($data->getServiceList() as $value) {
+            foreach ($data->serviceList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['serviceList'] = $values;

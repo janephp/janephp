@@ -42,7 +42,7 @@ class FirewallRulesOutboundRulesItemDestinationsNormalizer implements Denormaliz
             foreach ($data['addresses'] as $value) {
                 $values[] = $value;
             }
-            $object->setAddresses($values);
+            $object->addresses = $values;
             unset($data['addresses']);
         }
         if (\array_key_exists('droplet_ids', $data)) {
@@ -50,7 +50,7 @@ class FirewallRulesOutboundRulesItemDestinationsNormalizer implements Denormaliz
             foreach ($data['droplet_ids'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setDropletIds($values_1);
+            $object->dropletIds = $values_1;
             unset($data['droplet_ids']);
         }
         if (\array_key_exists('load_balancer_uids', $data)) {
@@ -58,7 +58,7 @@ class FirewallRulesOutboundRulesItemDestinationsNormalizer implements Denormaliz
             foreach ($data['load_balancer_uids'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setLoadBalancerUids($values_2);
+            $object->loadBalancerUids = $values_2;
             unset($data['load_balancer_uids']);
         }
         if (\array_key_exists('kubernetes_ids', $data)) {
@@ -66,7 +66,7 @@ class FirewallRulesOutboundRulesItemDestinationsNormalizer implements Denormaliz
             foreach ($data['kubernetes_ids'] as $value_3) {
                 $values_3[] = $value_3;
             }
-            $object->setKubernetesIds($values_3);
+            $object->kubernetesIds = $values_3;
             unset($data['kubernetes_ids']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -74,7 +74,7 @@ class FirewallRulesOutboundRulesItemDestinationsNormalizer implements Denormaliz
             foreach ($data['tags'] as $value_4) {
                 $values_4[] = $value_4;
             }
-            $object->setTags($values_4);
+            $object->tags = $values_4;
             unset($data['tags']);
         }
         foreach ($data as $key => $value_5) {
@@ -87,37 +87,37 @@ class FirewallRulesOutboundRulesItemDestinationsNormalizer implements Denormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('addresses') && null !== $data->getAddresses()) {
+        if (array_key_exists('addresses', get_object_vars($data)) && null !== ($data->addresses ?? null)) {
             $values = [];
-            foreach ($data->getAddresses() as $value) {
+            foreach ($data->addresses ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['addresses'] = $values;
         }
-        if ($data->isInitialized('dropletIds') && null !== $data->getDropletIds()) {
+        if (array_key_exists('dropletIds', get_object_vars($data)) && null !== ($data->dropletIds ?? null)) {
             $values_1 = [];
-            foreach ($data->getDropletIds() as $value_1) {
+            foreach ($data->dropletIds ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['droplet_ids'] = $values_1;
         }
-        if ($data->isInitialized('loadBalancerUids') && null !== $data->getLoadBalancerUids()) {
+        if (array_key_exists('loadBalancerUids', get_object_vars($data)) && null !== ($data->loadBalancerUids ?? null)) {
             $values_2 = [];
-            foreach ($data->getLoadBalancerUids() as $value_2) {
+            foreach ($data->loadBalancerUids ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['load_balancer_uids'] = $values_2;
         }
-        if ($data->isInitialized('kubernetesIds') && null !== $data->getKubernetesIds()) {
+        if (array_key_exists('kubernetesIds', get_object_vars($data)) && null !== ($data->kubernetesIds ?? null)) {
             $values_3 = [];
-            foreach ($data->getKubernetesIds() as $value_3) {
+            foreach ($data->kubernetesIds ?? null as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['kubernetes_ids'] = $values_3;
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_4 = [];
-            foreach ($data->getTags() as $value_4) {
+            foreach ($data->tags ?? null as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['tags'] = $values_4;

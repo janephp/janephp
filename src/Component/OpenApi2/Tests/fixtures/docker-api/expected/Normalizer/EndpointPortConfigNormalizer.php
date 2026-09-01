@@ -41,39 +41,39 @@ class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerI
             $this->validate($data, new \Docker\Api\Validator\EndpointPortConfigConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Protocol', $data)) {
-            $object->setProtocol($data['Protocol']);
+            $object->protocol = $data['Protocol'];
         }
         if (\array_key_exists('TargetPort', $data)) {
-            $object->setTargetPort($data['TargetPort']);
+            $object->targetPort = $data['TargetPort'];
         }
         if (\array_key_exists('PublishedPort', $data)) {
-            $object->setPublishedPort($data['PublishedPort']);
+            $object->publishedPort = $data['PublishedPort'];
         }
         if (\array_key_exists('PublishMode', $data)) {
-            $object->setPublishMode($data['PublishMode']);
+            $object->publishMode = $data['PublishMode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['Protocol'] = $data->getProtocol();
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['Protocol'] = $data->protocol ?? null;
         }
-        if ($data->isInitialized('targetPort') && null !== $data->getTargetPort()) {
-            $dataArray['TargetPort'] = $data->getTargetPort();
+        if (array_key_exists('targetPort', get_object_vars($data)) && null !== ($data->targetPort ?? null)) {
+            $dataArray['TargetPort'] = $data->targetPort ?? null;
         }
-        if ($data->isInitialized('publishedPort') && null !== $data->getPublishedPort()) {
-            $dataArray['PublishedPort'] = $data->getPublishedPort();
+        if (array_key_exists('publishedPort', get_object_vars($data)) && null !== ($data->publishedPort ?? null)) {
+            $dataArray['PublishedPort'] = $data->publishedPort ?? null;
         }
-        if ($data->isInitialized('publishMode') && null !== $data->getPublishMode()) {
-            $dataArray['PublishMode'] = $data->getPublishMode();
+        if (array_key_exists('publishMode', get_object_vars($data)) && null !== ($data->publishMode ?? null)) {
+            $dataArray['PublishMode'] = $data->publishMode ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\EndpointPortConfigConstraint());

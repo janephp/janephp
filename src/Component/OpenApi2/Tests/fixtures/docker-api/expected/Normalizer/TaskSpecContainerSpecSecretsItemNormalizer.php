@@ -41,27 +41,27 @@ class TaskSpecContainerSpecSecretsItemNormalizer implements DenormalizerInterfac
             $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemConstraint());
         }
         if (\array_key_exists('File', $data)) {
-            $object->setFile($this->denormalizer->denormalize($data['File'], \Docker\Api\Model\TaskSpecContainerSpecSecretsItemFile::class, 'json', $context));
+            $object->file = $this->denormalizer->denormalize($data['File'], \Docker\Api\Model\TaskSpecContainerSpecSecretsItemFile::class, 'json', $context);
         }
         if (\array_key_exists('SecretID', $data)) {
-            $object->setSecretID($data['SecretID']);
+            $object->secretID = $data['SecretID'];
         }
         if (\array_key_exists('SecretName', $data)) {
-            $object->setSecretName($data['SecretName']);
+            $object->secretName = $data['SecretName'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('file') && null !== $data->getFile()) {
-            $dataArray['File'] = $data->getFile() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
+        if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
+            $dataArray['File'] = ($data->file ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->file ?? null, 'json', $context));
         }
-        if ($data->isInitialized('secretID') && null !== $data->getSecretID()) {
-            $dataArray['SecretID'] = $data->getSecretID();
+        if (array_key_exists('secretID', get_object_vars($data)) && null !== ($data->secretID ?? null)) {
+            $dataArray['SecretID'] = $data->secretID ?? null;
         }
-        if ($data->isInitialized('secretName') && null !== $data->getSecretName()) {
-            $dataArray['SecretName'] = $data->getSecretName();
+        if (array_key_exists('secretName', get_object_vars($data)) && null !== ($data->secretName ?? null)) {
+            $dataArray['SecretName'] = $data->secretName ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecSecretsItemConstraint());

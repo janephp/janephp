@@ -87,63 +87,63 @@ class ApplicationEventNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'TransferEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'TransferEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ReindexEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ReindexEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ContentDetailViewEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ContentDetailViewEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ContentDownloadEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ContentDownloadEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'SessionRenewalEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'SessionRenewalEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'SharePageViewEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'SharePageViewEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ApiStatisticsEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ApiStatisticsEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'BusinessProcessEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'BusinessProcessEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'OutputRenderedEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'OutputRenderedEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ConfigurationChangeEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ConfigurationChangeEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'CustomerChangeEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'CustomerChangeEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'SearchReindexCompletedEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'SearchReindexCompletedEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'BusinessRuleFiredEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'BusinessRuleFiredEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'BusinessProcessCancellationRequestedEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'BusinessProcessCancellationRequestedEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'XmpWritebackCompletedEvent' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'XmpWritebackCompletedEvent' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

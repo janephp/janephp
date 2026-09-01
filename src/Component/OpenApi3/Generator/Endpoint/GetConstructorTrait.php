@@ -38,15 +38,15 @@ trait GetConstructorTrait
                 $parameter = $guessClass->resolveParameter($parameter);
             }
 
-            if (!$parameter instanceof \stdClass && $parameter->getSchema() instanceof Reference) {
-                [, $schema] = $guessClass->resolve($parameter->getSchema(), Schema::class);
-                $parameter->setSchema($schema);
+            if (!$parameter instanceof \stdClass && $parameter->schema instanceof Reference) {
+                [, $schema] = $guessClass->resolve($parameter->schema, Schema::class);
+                $parameter->schema = $schema;
             }
 
-            if ($parameter instanceof Parameter && EndpointGenerator::IN_PATH === $parameter->getIn()) {
-                $pathPropertyName = $this->normalizePathPropertyName($parameter->getName());
-                $pathVariableName = $this->normalizePathVariableName($parameter->getName());
-                if (null === $parameter->getSchema()?->getDefault()) {
+            if ($parameter instanceof Parameter && EndpointGenerator::IN_PATH === ($parameter->in ?? null)) {
+                $pathPropertyName = $this->normalizePathPropertyName($parameter->name ?? null);
+                $pathVariableName = $this->normalizePathVariableName($parameter->name ?? null);
+                if (null === $parameter->schema?->default) {
                     $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                     $pathParamsDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 } else {
@@ -60,15 +60,15 @@ trait GetConstructorTrait
                 ]);
             }
 
-            if ($parameter instanceof Parameter && EndpointGenerator::IN_QUERY === $parameter->getIn()) {
+            if ($parameter instanceof Parameter && EndpointGenerator::IN_QUERY === ($parameter->in ?? null)) {
                 $queryParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
             }
-            if ($parameter instanceof Parameter && EndpointGenerator::IN_HEADER === $parameter->getIn()) {
+            if ($parameter instanceof Parameter && EndpointGenerator::IN_HEADER === ($parameter->in ?? null)) {
                 $headerParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
             }
         }
 
-        if (($requestBody = $operation->getOperation()->getRequestBody()) instanceof RequestBody && null !== $requestBody->getContent()) {
+        if (($requestBody = $operation->getOperation()->requestBody ?? null) instanceof RequestBody && null !== $requestBody->content) {
             $bodyParam = $requestBodyGenerator->generateMethodParameter($requestBody, $operation->getReference() . '/requestBody', $context);
             $bodyDoc = $requestBodyGenerator->generateMethodDocParameter($requestBody, $operation->getReference() . '/requestBody', $context);
             $bodyAssign = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable('requestBody')));
@@ -110,8 +110,8 @@ trait GetConstructorTrait
         );
 
         $methodParamsDoc = ['/**'];
-        if ($operation->getOperation()->getDescription()) {
-            foreach (explode("\n", $operation->getOperation()->getDescription()) as $line) {
+        if ($operation->getOperation()->description ?? null) {
+            foreach (explode("\n", $operation->getOperation()->description ?? null) as $line) {
                 $methodParamsDoc[] = rtrim(' * ' . str_replace('*/', '*\\/', $line));
             }
         }

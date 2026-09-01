@@ -42,44 +42,44 @@ class MduSegmentationProfileMduSegmentationProfileSummaryNetworkSegmentationSwit
             foreach ($data['groups'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileSwitchGroups::class, 'json', $context);
             }
-            $object->setGroups($values);
+            $object->groups = $values;
         }
         if (\array_key_exists('distributionSwitches', $data)) {
             $values_1 = [];
             foreach ($data['distributionSwitches'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileDistributionSwitchObj::class, 'json', $context);
             }
-            $object->setDistributionSwitches($values_1);
+            $object->distributionSwitches = $values_1;
         }
         if (\array_key_exists('accessSwitches', $data)) {
             $values_2 = [];
             foreach ($data['accessSwitches'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileAccessSwitchObj::class, 'json', $context);
             }
-            $object->setAccessSwitches($values_2);
+            $object->accessSwitches = $values_2;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('groups') && null !== $data->getGroups()) {
+        if (array_key_exists('groups', get_object_vars($data)) && null !== ($data->groups ?? null)) {
             $values = [];
-            foreach ($data->getGroups() as $value) {
+            foreach ($data->groups ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['groups'] = $values;
         }
-        if ($data->isInitialized('distributionSwitches') && null !== $data->getDistributionSwitches()) {
+        if (array_key_exists('distributionSwitches', get_object_vars($data)) && null !== ($data->distributionSwitches ?? null)) {
             $values_1 = [];
-            foreach ($data->getDistributionSwitches() as $value_1) {
+            foreach ($data->distributionSwitches ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['distributionSwitches'] = $values_1;
         }
-        if ($data->isInitialized('accessSwitches') && null !== $data->getAccessSwitches()) {
+        if (array_key_exists('accessSwitches', get_object_vars($data)) && null !== ($data->accessSwitches ?? null)) {
             $values_2 = [];
-            foreach ($data->getAccessSwitches() as $value_2) {
+            foreach ($data->accessSwitches ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['accessSwitches'] = $values_2;

@@ -41,7 +41,7 @@ class PlanetsPlanetIdImagePostBodyNormalizer implements DenormalizerInterface, N
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetsPlanetIdImagePostBodyConstraint());
         }
         if (\array_key_exists('image', $data)) {
-            $object->setImage($data['image']);
+            $object->image = $data['image'];
             unset($data['image']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class PlanetsPlanetIdImagePostBodyNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('image') && null !== $data->getImage()) {
-            $dataArray['image'] = $data->getImage();
+        if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
+            $dataArray['image'] = $data->image ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

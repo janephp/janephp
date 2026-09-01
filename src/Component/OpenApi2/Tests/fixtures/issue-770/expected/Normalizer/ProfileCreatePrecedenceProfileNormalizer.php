@@ -38,46 +38,46 @@ class ProfileCreatePrecedenceProfileNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('vlanPrecedence', $data)) {
             $values = [];
             foreach ($data['vlanPrecedence'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileVlanPrecedenceItem::class, 'json', $context);
             }
-            $object->setVlanPrecedence($values);
+            $object->vlanPrecedence = $values;
         }
         if (\array_key_exists('rateLimitingPrecedence', $data)) {
             $values_1 = [];
             foreach ($data['rateLimitingPrecedence'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRateLimitingPrecedenceItem::class, 'json', $context);
             }
-            $object->setRateLimitingPrecedence($values_1);
+            $object->rateLimitingPrecedence = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('vlanPrecedence') && null !== $data->getVlanPrecedence()) {
+        if (array_key_exists('vlanPrecedence', get_object_vars($data)) && null !== ($data->vlanPrecedence ?? null)) {
             $values = [];
-            foreach ($data->getVlanPrecedence() as $value) {
+            foreach ($data->vlanPrecedence ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['vlanPrecedence'] = $values;
         }
-        if ($data->isInitialized('rateLimitingPrecedence') && null !== $data->getRateLimitingPrecedence()) {
+        if (array_key_exists('rateLimitingPrecedence', get_object_vars($data)) && null !== ($data->rateLimitingPrecedence ?? null)) {
             $values_1 = [];
-            foreach ($data->getRateLimitingPrecedence() as $value_1) {
+            foreach ($data->rateLimitingPrecedence ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['rateLimitingPrecedence'] = $values_1;

@@ -8,59 +8,15 @@ class LinksPagination implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $next;
     /**
      * @var string
      */
-    protected $next;
-    /**
-     * @var string
-     */
-    protected $prev;
-    /**
-     * @return string
-     */
-    public function getNext(): string
-    {
-        return $this->next;
-    }
-    /**
-     * @param string $next
-     *
-     * @return self
-     */
-    public function setNext(string $next): self
-    {
-        $this->initialized['next'] = true;
-        $this->next = $next;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getPrev(): string
-    {
-        return $this->prev;
-    }
-    /**
-     * @param string $prev
-     *
-     * @return self
-     */
-    public function setPrev(string $prev): self
-    {
-        $this->initialized['prev'] = true;
-        $this->prev = $prev;
-        return $this;
-    }
+    public string $prev;
     public function definedProperties(): array
     {
-        return ['next' => ['next', 'getNext', 'setNext'], 'prev' => ['prev', 'getPrev', 'setPrev']];
+        return ['next' => 'next', 'prev' => 'prev'];
     }
 }

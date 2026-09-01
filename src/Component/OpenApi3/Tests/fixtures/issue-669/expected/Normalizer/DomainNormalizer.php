@@ -38,27 +38,27 @@ class DomainNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('ip_address', $data)) {
-            $object->setIpAddress($data['ip_address']);
+            $object->ipAddress = $data['ip_address'];
             unset($data['ip_address']);
         }
         if (\array_key_exists('ttl', $data) && $data['ttl'] !== null) {
-            $object->setTtl($data['ttl']);
+            $object->ttl = $data['ttl'];
             unset($data['ttl']);
         }
         elseif (\array_key_exists('ttl', $data) && $data['ttl'] === null) {
-            $object->setTtl(null);
+            $object->ttl = null;
             unset($data['ttl']);
         }
         if (\array_key_exists('zone_file', $data) && $data['zone_file'] !== null) {
-            $object->setZoneFile($data['zone_file']);
+            $object->zoneFile = $data['zone_file'];
             unset($data['zone_file']);
         }
         elseif (\array_key_exists('zone_file', $data) && $data['zone_file'] === null) {
-            $object->setZoneFile(null);
+            $object->zoneFile = null;
             unset($data['zone_file']);
         }
         foreach ($data as $key => $value) {
@@ -71,11 +71,11 @@ class DomainNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('ipAddress') && null !== $data->getIpAddress()) {
-            $dataArray['ip_address'] = $data->getIpAddress();
+        if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
+            $dataArray['ip_address'] = $data->ipAddress ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

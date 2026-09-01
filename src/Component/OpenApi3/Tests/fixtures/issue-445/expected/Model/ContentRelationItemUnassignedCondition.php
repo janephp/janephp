@@ -8,71 +8,19 @@ class ContentRelationItemUnassignedCondition extends BusinessRuleCondition imple
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Content id that should be matched against.
      *
      * @var string|null
      */
-    protected $contentId;
+    public ?string $contentId;
     /**
      * JSON path to the field
      *
      * @var string|null
      */
-    protected $fieldPath;
-    /**
-     * Content id that should be matched against.
-     *
-     * @return string|null
-     */
-    public function getContentId(): ?string
-    {
-        return $this->contentId;
-    }
-    /**
-     * Content id that should be matched against.
-     *
-     * @param string|null $contentId
-     *
-     * @return self
-     */
-    public function setContentId(?string $contentId): self
-    {
-        $this->initialized['contentId'] = true;
-        $this->contentId = $contentId;
-        return $this;
-    }
-    /**
-     * JSON path to the field
-     *
-     * @return string|null
-     */
-    public function getFieldPath(): ?string
-    {
-        return $this->fieldPath;
-    }
-    /**
-     * JSON path to the field
-     *
-     * @param string|null $fieldPath
-     *
-     * @return self
-     */
-    public function setFieldPath(?string $fieldPath): self
-    {
-        $this->initialized['fieldPath'] = true;
-        $this->fieldPath = $fieldPath;
-        return $this;
-    }
+    public ?string $fieldPath;
     public function definedProperties(): array
     {
-        return ['contentId' => ['contentId', 'getContentId', 'setContentId'], 'fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath']];
+        return ['contentId' => 'contentId', 'fieldPath' => 'fieldPath'];
     }
 }

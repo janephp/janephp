@@ -44,105 +44,105 @@ class ProfileModifyIpsecProfileNormalizer implements DenormalizerInterface, Norm
             $data['espRekeyTime'] = (float) $data['espRekeyTime'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('serverAddr', $data)) {
-            $object->setServerAddr($data['serverAddr']);
+            $object->serverAddr = $data['serverAddr'];
         }
         if (\array_key_exists('authType', $data)) {
-            $object->setAuthType($data['authType']);
+            $object->authType = $data['authType'];
         }
         if (\array_key_exists('preSharedKey', $data)) {
-            $object->setPreSharedKey($data['preSharedKey']);
+            $object->preSharedKey = $data['preSharedKey'];
         }
         if (\array_key_exists('ikeSecurityAssociation', $data)) {
-            $object->setIkeSecurityAssociation($this->denormalizer->denormalize($data['ikeSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileIkeSecurityAssociationContent::class, 'json', $context));
+            $object->ikeSecurityAssociation = $this->denormalizer->denormalize($data['ikeSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileIkeSecurityAssociationContent::class, 'json', $context);
         }
         if (\array_key_exists('espSecurityAssociation', $data)) {
-            $object->setEspSecurityAssociation($this->denormalizer->denormalize($data['espSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileEspSecurityAssociationContent::class, 'json', $context));
+            $object->espSecurityAssociation = $this->denormalizer->denormalize($data['espSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileEspSecurityAssociationContent::class, 'json', $context);
         }
         if (\array_key_exists('ikeRekeyTime', $data)) {
-            $object->setIkeRekeyTime($data['ikeRekeyTime']);
+            $object->ikeRekeyTime = $data['ikeRekeyTime'];
         }
         if (\array_key_exists('ikeRekeyTimeUnit', $data)) {
-            $object->setIkeRekeyTimeUnit($data['ikeRekeyTimeUnit']);
+            $object->ikeRekeyTimeUnit = $data['ikeRekeyTimeUnit'];
         }
         if (\array_key_exists('espRekeyTime', $data)) {
-            $object->setEspRekeyTime($data['espRekeyTime']);
+            $object->espRekeyTime = $data['espRekeyTime'];
         }
         if (\array_key_exists('espRekeyTimeUnit', $data)) {
-            $object->setEspRekeyTimeUnit($data['espRekeyTimeUnit']);
+            $object->espRekeyTimeUnit = $data['espRekeyTimeUnit'];
         }
         if (\array_key_exists('cmProtocolOption', $data)) {
-            $object->setCmProtocolOption($this->denormalizer->denormalize($data['cmProtocolOption'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCmProtocolOptionContent::class, 'json', $context));
+            $object->cmProtocolOption = $this->denormalizer->denormalize($data['cmProtocolOption'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCmProtocolOptionContent::class, 'json', $context);
         }
         if (\array_key_exists('advancedOption', $data)) {
-            $object->setAdvancedOption($this->denormalizer->denormalize($data['advancedOption'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAdvancedOptionContent::class, 'json', $context));
+            $object->advancedOption = $this->denormalizer->denormalize($data['advancedOption'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAdvancedOptionContent::class, 'json', $context);
         }
         if (\array_key_exists('ipMode', $data)) {
-            $object->setIpMode($data['ipMode']);
+            $object->ipMode = $data['ipMode'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('serverAddr') && null !== $data->getServerAddr()) {
-            $dataArray['serverAddr'] = $data->getServerAddr();
+        if (array_key_exists('serverAddr', get_object_vars($data)) && null !== ($data->serverAddr ?? null)) {
+            $dataArray['serverAddr'] = $data->serverAddr ?? null;
         }
-        if ($data->isInitialized('authType') && null !== $data->getAuthType()) {
-            $dataArray['authType'] = $data->getAuthType();
+        if (array_key_exists('authType', get_object_vars($data)) && null !== ($data->authType ?? null)) {
+            $dataArray['authType'] = $data->authType ?? null;
         }
-        if ($data->isInitialized('preSharedKey') && null !== $data->getPreSharedKey()) {
-            $dataArray['preSharedKey'] = $data->getPreSharedKey();
+        if (array_key_exists('preSharedKey', get_object_vars($data)) && null !== ($data->preSharedKey ?? null)) {
+            $dataArray['preSharedKey'] = $data->preSharedKey ?? null;
         }
-        if ($data->isInitialized('ikeSecurityAssociation') && null !== $data->getIkeSecurityAssociation()) {
-            $dataArray['ikeSecurityAssociation'] = $data->getIkeSecurityAssociation() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIkeSecurityAssociation(), 'json', $context));
+        if (array_key_exists('ikeSecurityAssociation', get_object_vars($data)) && null !== ($data->ikeSecurityAssociation ?? null)) {
+            $dataArray['ikeSecurityAssociation'] = ($data->ikeSecurityAssociation ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ikeSecurityAssociation ?? null, 'json', $context));
         }
-        if ($data->isInitialized('espSecurityAssociation') && null !== $data->getEspSecurityAssociation()) {
-            $dataArray['espSecurityAssociation'] = $data->getEspSecurityAssociation() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEspSecurityAssociation(), 'json', $context));
+        if (array_key_exists('espSecurityAssociation', get_object_vars($data)) && null !== ($data->espSecurityAssociation ?? null)) {
+            $dataArray['espSecurityAssociation'] = ($data->espSecurityAssociation ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->espSecurityAssociation ?? null, 'json', $context));
         }
-        if ($data->isInitialized('ikeRekeyTime') && null !== $data->getIkeRekeyTime()) {
-            $dataArray['ikeRekeyTime'] = $data->getIkeRekeyTime();
+        if (array_key_exists('ikeRekeyTime', get_object_vars($data)) && null !== ($data->ikeRekeyTime ?? null)) {
+            $dataArray['ikeRekeyTime'] = $data->ikeRekeyTime ?? null;
         }
-        if ($data->isInitialized('ikeRekeyTimeUnit') && null !== $data->getIkeRekeyTimeUnit()) {
-            $dataArray['ikeRekeyTimeUnit'] = $data->getIkeRekeyTimeUnit();
+        if (array_key_exists('ikeRekeyTimeUnit', get_object_vars($data)) && null !== ($data->ikeRekeyTimeUnit ?? null)) {
+            $dataArray['ikeRekeyTimeUnit'] = $data->ikeRekeyTimeUnit ?? null;
         }
-        if ($data->isInitialized('espRekeyTime') && null !== $data->getEspRekeyTime()) {
-            $dataArray['espRekeyTime'] = $data->getEspRekeyTime();
+        if (array_key_exists('espRekeyTime', get_object_vars($data)) && null !== ($data->espRekeyTime ?? null)) {
+            $dataArray['espRekeyTime'] = $data->espRekeyTime ?? null;
         }
-        if ($data->isInitialized('espRekeyTimeUnit') && null !== $data->getEspRekeyTimeUnit()) {
-            $dataArray['espRekeyTimeUnit'] = $data->getEspRekeyTimeUnit();
+        if (array_key_exists('espRekeyTimeUnit', get_object_vars($data)) && null !== ($data->espRekeyTimeUnit ?? null)) {
+            $dataArray['espRekeyTimeUnit'] = $data->espRekeyTimeUnit ?? null;
         }
-        if ($data->isInitialized('cmProtocolOption') && null !== $data->getCmProtocolOption()) {
-            $dataArray['cmProtocolOption'] = $data->getCmProtocolOption() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCmProtocolOption(), 'json', $context));
+        if (array_key_exists('cmProtocolOption', get_object_vars($data)) && null !== ($data->cmProtocolOption ?? null)) {
+            $dataArray['cmProtocolOption'] = ($data->cmProtocolOption ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->cmProtocolOption ?? null, 'json', $context));
         }
-        if ($data->isInitialized('advancedOption') && null !== $data->getAdvancedOption()) {
-            $dataArray['advancedOption'] = $data->getAdvancedOption() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAdvancedOption(), 'json', $context));
+        if (array_key_exists('advancedOption', get_object_vars($data)) && null !== ($data->advancedOption ?? null)) {
+            $dataArray['advancedOption'] = ($data->advancedOption ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->advancedOption ?? null, 'json', $context));
         }
-        if ($data->isInitialized('ipMode') && null !== $data->getIpMode()) {
-            $dataArray['ipMode'] = $data->getIpMode();
+        if (array_key_exists('ipMode', get_object_vars($data)) && null !== ($data->ipMode ?? null)) {
+            $dataArray['ipMode'] = $data->ipMode ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
         return $dataArray;
     }

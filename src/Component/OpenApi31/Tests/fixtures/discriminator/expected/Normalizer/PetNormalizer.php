@@ -44,11 +44,11 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Dog', $format, $context);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('petType', $data)) {
-            $object->setPetType($data['petType']);
+            $object->petType = $data['petType'];
             unset($data['petType']);
         }
         foreach ($data as $key => $value) {
@@ -61,14 +61,14 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getPetType() and 'cat' === $data->getPetType()) {
+        if (null !== ($data->petType ?? null) and 'cat' === ($data->petType ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getPetType() and 'dog' === $data->getPetType()) {
+        if (null !== ($data->petType ?? null) and 'dog' === ($data->petType ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['name'] = $data->getName();
-        $dataArray['petType'] = $data->getPetType();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['petType'] = $data->petType ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

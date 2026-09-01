@@ -38,7 +38,7 @@ class ResponseDatabaseSchemaRegistryConfigNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('compatibility_level', $data)) {
-            $object->setCompatibilityLevel($data['compatibility_level']);
+            $object->compatibilityLevel = $data['compatibility_level'];
             unset($data['compatibility_level']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class ResponseDatabaseSchemaRegistryConfigNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['compatibility_level'] = $data->getCompatibilityLevel();
+        $dataArray['compatibility_level'] = $data->compatibilityLevel ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

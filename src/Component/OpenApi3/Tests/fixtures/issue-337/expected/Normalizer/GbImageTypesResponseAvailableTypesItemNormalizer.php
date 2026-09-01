@@ -38,15 +38,15 @@ class GbImageTypesResponseAvailableTypesItemNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('imageType', $data)) {
-            $object->setImageType($data['imageType']);
+            $object->imageType = $data['imageType'];
             unset($data['imageType']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('availableFormats', $data)) {
@@ -54,7 +54,7 @@ class GbImageTypesResponseAvailableTypesItemNormalizer implements DenormalizerIn
             foreach ($data['availableFormats'] as $value) {
                 $values[] = $value;
             }
-            $object->setAvailableFormats($values);
+            $object->availableFormats = $values;
             unset($data['availableFormats']);
         }
         foreach ($data as $key => $value_1) {
@@ -67,18 +67,18 @@ class GbImageTypesResponseAvailableTypesItemNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('imageType') && null !== $data->getImageType()) {
-            $dataArray['imageType'] = $data->getImageType();
+        if (array_key_exists('imageType', get_object_vars($data)) && null !== ($data->imageType ?? null)) {
+            $dataArray['imageType'] = $data->imageType ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('availableFormats') && null !== $data->getAvailableFormats()) {
+        if (array_key_exists('availableFormats', get_object_vars($data)) && null !== ($data->availableFormats ?? null)) {
             $values = [];
-            foreach ($data->getAvailableFormats() as $value) {
+            foreach ($data->availableFormats ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['availableFormats'] = $values;

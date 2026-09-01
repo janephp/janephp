@@ -38,19 +38,19 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate($data['date']);
+            $object->date = $data['date'];
             unset($data['date']);
         }
         if (\array_key_exists('event', $data)) {
-            $object->setEvent($data['event']);
+            $object->event = $data['event'];
             unset($data['event']);
         }
         if (\array_key_exists('note', $data)) {
-            $object->setNote($data['note']);
+            $object->note = $data['note'];
             unset($data['note']);
         }
         if (\array_key_exists('user', $data)) {
-            $object->setUser($data['user']);
+            $object->user = $data['user'];
             unset($data['user']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate();
+        if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
+            $dataArray['date'] = $data->date ?? null;
         }
-        if ($data->isInitialized('event') && null !== $data->getEvent()) {
-            $dataArray['event'] = $data->getEvent();
+        if (array_key_exists('event', get_object_vars($data)) && null !== ($data->event ?? null)) {
+            $dataArray['event'] = $data->event ?? null;
         }
-        if ($data->isInitialized('note') && null !== $data->getNote()) {
-            $dataArray['note'] = $data->getNote();
+        if (array_key_exists('note', get_object_vars($data)) && null !== ($data->note ?? null)) {
+            $dataArray['note'] = $data->note ?? null;
         }
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['user'] = $data->getUser();
+        if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
+            $dataArray['user'] = $data->user ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

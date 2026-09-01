@@ -38,7 +38,7 @@ class ApiCreateDataSourceFileUploadPresignedUrlsOutputNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('request_id', $data)) {
-            $object->setRequestId($data['request_id']);
+            $object->requestId = $data['request_id'];
             unset($data['request_id']);
         }
         if (\array_key_exists('uploads', $data)) {
@@ -46,7 +46,7 @@ class ApiCreateDataSourceFileUploadPresignedUrlsOutputNormalizer implements Deno
             foreach ($data['uploads'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiFilePresignedUrlResponse::class, 'json', $context);
             }
-            $object->setUploads($values);
+            $object->uploads = $values;
             unset($data['uploads']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class ApiCreateDataSourceFileUploadPresignedUrlsOutputNormalizer implements Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
-            $dataArray['request_id'] = $data->getRequestId();
+        if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
+            $dataArray['request_id'] = $data->requestId ?? null;
         }
-        if ($data->isInitialized('uploads') && null !== $data->getUploads()) {
+        if (array_key_exists('uploads', get_object_vars($data)) && null !== ($data->uploads ?? null)) {
             $values = [];
-            foreach ($data->getUploads() as $value) {
+            foreach ($data->uploads ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['uploads'] = $values;

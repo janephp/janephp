@@ -45,11 +45,11 @@ class WrapperCollectionNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['data'] as $value) {
                 $values[] = $value;
             }
-            $object->setData($values);
+            $object->data = $values;
             unset($data['data']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($data['links']);
+            $object->links = $data['links'];
             unset($data['links']);
         }
         foreach ($data as $key => $value_1) {
@@ -62,9 +62,9 @@ class WrapperCollectionNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('data') && null !== $data->getData()) {
+        if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
-            foreach ($data->getData() as $value) {
+            foreach ($data->data ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['data'] = $values;

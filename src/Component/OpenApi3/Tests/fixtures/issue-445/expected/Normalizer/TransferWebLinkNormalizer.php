@@ -38,31 +38,31 @@ class TransferWebLinkNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('identifier', $data) && $data['identifier'] !== null) {
-            $object->setIdentifier($data['identifier']);
+            $object->identifier = $data['identifier'];
             unset($data['identifier']);
         }
         elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
-            $object->setIdentifier(null);
+            $object->identifier = null;
             unset($data['identifier']);
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
-            $object->setRequestId($data['requestId']);
+            $object->requestId = $data['requestId'];
             unset($data['requestId']);
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
-            $object->setRequestId(null);
+            $object->requestId = null;
             unset($data['requestId']);
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
             unset($data['url']);
         }
         if (\array_key_exists('fileName', $data) && $data['fileName'] !== null) {
-            $object->setFileName($data['fileName']);
+            $object->fileName = $data['fileName'];
             unset($data['fileName']);
         }
         elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
-            $object->setFileName(null);
+            $object->fileName = null;
             unset($data['fileName']);
         }
         foreach ($data as $key => $value) {
@@ -75,15 +75,15 @@ class TransferWebLinkNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('identifier') && null !== $data->getIdentifier()) {
-            $dataArray['identifier'] = $data->getIdentifier();
+        if (array_key_exists('identifier', get_object_vars($data)) && null !== ($data->identifier ?? null)) {
+            $dataArray['identifier'] = $data->identifier ?? null;
         }
-        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
-            $dataArray['requestId'] = $data->getRequestId();
+        if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
+            $dataArray['requestId'] = $data->requestId ?? null;
         }
-        $dataArray['url'] = $data->getUrl();
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
-            $dataArray['fileName'] = $data->getFileName();
+        $dataArray['url'] = $data->url ?? null;
+        if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
+            $dataArray['fileName'] = $data->fileName ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

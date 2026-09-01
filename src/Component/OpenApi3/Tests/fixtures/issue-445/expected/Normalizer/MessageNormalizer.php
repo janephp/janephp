@@ -50,44 +50,44 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['deduplicate'] = (bool) $data['deduplicate'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
         }
         if (\array_key_exists('retries', $data)) {
-            $object->setRetries($data['retries']);
+            $object->retries = $data['retries'];
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         if (\array_key_exists('deduplicate', $data)) {
-            $object->setDeduplicate($data['deduplicate']);
+            $object->deduplicate = $data['deduplicate'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'ConsoleMessage' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ConsoleMessage' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'NodeInfoMessage' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'NodeInfoMessage' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'LiveStreamMessage' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'LiveStreamMessage' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['retries'] = $data->getRetries();
-        $dataArray['priority'] = $data->getPriority();
-        $dataArray['deduplicate'] = $data->getDeduplicate();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['retries'] = $data->retries ?? null;
+        $dataArray['priority'] = $data->priority ?? null;
+        $dataArray['deduplicate'] = $data->deduplicate ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

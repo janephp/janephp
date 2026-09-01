@@ -44,23 +44,23 @@ class ApiPromptChunkNormalizer implements DenormalizerInterface, NormalizerInter
             $data['chunk_used'] = (bool) $data['chunk_used'];
         }
         if (\array_key_exists('chunk_usage_pct', $data)) {
-            $object->setChunkUsagePct($data['chunk_usage_pct']);
+            $object->chunkUsagePct = $data['chunk_usage_pct'];
             unset($data['chunk_usage_pct']);
         }
         if (\array_key_exists('chunk_used', $data)) {
-            $object->setChunkUsed($data['chunk_used']);
+            $object->chunkUsed = $data['chunk_used'];
             unset($data['chunk_used']);
         }
         if (\array_key_exists('index_uuid', $data)) {
-            $object->setIndexUuid($data['index_uuid']);
+            $object->indexUuid = $data['index_uuid'];
             unset($data['index_uuid']);
         }
         if (\array_key_exists('source_name', $data)) {
-            $object->setSourceName($data['source_name']);
+            $object->sourceName = $data['source_name'];
             unset($data['source_name']);
         }
         if (\array_key_exists('text', $data)) {
-            $object->setText($data['text']);
+            $object->text = $data['text'];
             unset($data['text']);
         }
         foreach ($data as $key => $value) {
@@ -73,20 +73,20 @@ class ApiPromptChunkNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('chunkUsagePct') && null !== $data->getChunkUsagePct()) {
-            $dataArray['chunk_usage_pct'] = $data->getChunkUsagePct();
+        if (array_key_exists('chunkUsagePct', get_object_vars($data)) && null !== ($data->chunkUsagePct ?? null)) {
+            $dataArray['chunk_usage_pct'] = $data->chunkUsagePct ?? null;
         }
-        if ($data->isInitialized('chunkUsed') && null !== $data->getChunkUsed()) {
-            $dataArray['chunk_used'] = $data->getChunkUsed();
+        if (array_key_exists('chunkUsed', get_object_vars($data)) && null !== ($data->chunkUsed ?? null)) {
+            $dataArray['chunk_used'] = $data->chunkUsed ?? null;
         }
-        if ($data->isInitialized('indexUuid') && null !== $data->getIndexUuid()) {
-            $dataArray['index_uuid'] = $data->getIndexUuid();
+        if (array_key_exists('indexUuid', get_object_vars($data)) && null !== ($data->indexUuid ?? null)) {
+            $dataArray['index_uuid'] = $data->indexUuid ?? null;
         }
-        if ($data->isInitialized('sourceName') && null !== $data->getSourceName()) {
-            $dataArray['source_name'] = $data->getSourceName();
+        if (array_key_exists('sourceName', get_object_vars($data)) && null !== ($data->sourceName ?? null)) {
+            $dataArray['source_name'] = $data->sourceName ?? null;
         }
-        if ($data->isInitialized('text') && null !== $data->getText()) {
-            $dataArray['text'] = $data->getText();
+        if (array_key_exists('text', get_object_vars($data)) && null !== ($data->text ?? null)) {
+            $dataArray['text'] = $data->text ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

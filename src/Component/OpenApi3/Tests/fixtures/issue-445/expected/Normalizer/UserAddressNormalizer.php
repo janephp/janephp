@@ -38,81 +38,81 @@ class UserAddressNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('company', $data) && $data['company'] !== null) {
-            $object->setCompany($data['company']);
+            $object->company = $data['company'];
         }
         elseif (\array_key_exists('company', $data) && $data['company'] === null) {
-            $object->setCompany(null);
+            $object->company = null;
         }
         if (\array_key_exists('department', $data) && $data['department'] !== null) {
-            $object->setDepartment($data['department']);
+            $object->department = $data['department'];
         }
         elseif (\array_key_exists('department', $data) && $data['department'] === null) {
-            $object->setDepartment(null);
+            $object->department = null;
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
-            $object->setAddress($data['address']);
+            $object->address = $data['address'];
         }
         elseif (\array_key_exists('address', $data) && $data['address'] === null) {
-            $object->setAddress(null);
+            $object->address = null;
         }
         if (\array_key_exists('alternativeAddress', $data) && $data['alternativeAddress'] !== null) {
-            $object->setAlternativeAddress($data['alternativeAddress']);
+            $object->alternativeAddress = $data['alternativeAddress'];
         }
         elseif (\array_key_exists('alternativeAddress', $data) && $data['alternativeAddress'] === null) {
-            $object->setAlternativeAddress(null);
+            $object->alternativeAddress = null;
         }
         if (\array_key_exists('zip', $data) && $data['zip'] !== null) {
-            $object->setZip($data['zip']);
+            $object->zip = $data['zip'];
         }
         elseif (\array_key_exists('zip', $data) && $data['zip'] === null) {
-            $object->setZip(null);
+            $object->zip = null;
         }
         if (\array_key_exists('city', $data) && $data['city'] !== null) {
-            $object->setCity($data['city']);
+            $object->city = $data['city'];
         }
         elseif (\array_key_exists('city', $data) && $data['city'] === null) {
-            $object->setCity(null);
+            $object->city = null;
         }
         if (\array_key_exists('phone', $data) && $data['phone'] !== null) {
-            $object->setPhone($data['phone']);
+            $object->phone = $data['phone'];
         }
         elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
-            $object->setPhone(null);
+            $object->phone = null;
         }
         if (\array_key_exists('countryCode', $data) && $data['countryCode'] !== null) {
-            $object->setCountryCode($data['countryCode']);
+            $object->countryCode = $data['countryCode'];
         }
         elseif (\array_key_exists('countryCode', $data) && $data['countryCode'] === null) {
-            $object->setCountryCode(null);
+            $object->countryCode = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('company') && null !== $data->getCompany()) {
-            $dataArray['company'] = $data->getCompany();
+        if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
+            $dataArray['company'] = $data->company ?? null;
         }
-        if ($data->isInitialized('department') && null !== $data->getDepartment()) {
-            $dataArray['department'] = $data->getDepartment();
+        if (array_key_exists('department', get_object_vars($data)) && null !== ($data->department ?? null)) {
+            $dataArray['department'] = $data->department ?? null;
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $data->getAddress();
+        if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
+            $dataArray['address'] = $data->address ?? null;
         }
-        if ($data->isInitialized('alternativeAddress') && null !== $data->getAlternativeAddress()) {
-            $dataArray['alternativeAddress'] = $data->getAlternativeAddress();
+        if (array_key_exists('alternativeAddress', get_object_vars($data)) && null !== ($data->alternativeAddress ?? null)) {
+            $dataArray['alternativeAddress'] = $data->alternativeAddress ?? null;
         }
-        if ($data->isInitialized('zip') && null !== $data->getZip()) {
-            $dataArray['zip'] = $data->getZip();
+        if (array_key_exists('zip', get_object_vars($data)) && null !== ($data->zip ?? null)) {
+            $dataArray['zip'] = $data->zip ?? null;
         }
-        if ($data->isInitialized('city') && null !== $data->getCity()) {
-            $dataArray['city'] = $data->getCity();
+        if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
+            $dataArray['city'] = $data->city ?? null;
         }
-        if ($data->isInitialized('phone') && null !== $data->getPhone()) {
-            $dataArray['phone'] = $data->getPhone();
+        if (array_key_exists('phone', get_object_vars($data)) && null !== ($data->phone ?? null)) {
+            $dataArray['phone'] = $data->phone ?? null;
         }
-        if ($data->isInitialized('countryCode') && null !== $data->getCountryCode()) {
-            $dataArray['countryCode'] = $data->getCountryCode();
+        if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
+            $dataArray['countryCode'] = $data->countryCode ?? null;
         }
         return $dataArray;
     }

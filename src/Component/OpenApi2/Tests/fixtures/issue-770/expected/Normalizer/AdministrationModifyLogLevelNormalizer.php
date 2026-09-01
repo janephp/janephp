@@ -38,21 +38,21 @@ class AdministrationModifyLogLevelNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('applicationName', $data)) {
-            $object->setApplicationName($data['applicationName']);
+            $object->applicationName = $data['applicationName'];
         }
         if (\array_key_exists('logLevel', $data)) {
-            $object->setLogLevel($data['logLevel']);
+            $object->logLevel = $data['logLevel'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('applicationName') && null !== $data->getApplicationName()) {
-            $dataArray['applicationName'] = $data->getApplicationName();
+        if (array_key_exists('applicationName', get_object_vars($data)) && null !== ($data->applicationName ?? null)) {
+            $dataArray['applicationName'] = $data->applicationName ?? null;
         }
-        if ($data->isInitialized('logLevel') && null !== $data->getLogLevel()) {
-            $dataArray['logLevel'] = $data->getLogLevel();
+        if (array_key_exists('logLevel', get_object_vars($data)) && null !== ($data->logLevel ?? null)) {
+            $dataArray['logLevel'] = $data->logLevel ?? null;
         }
         return $dataArray;
     }

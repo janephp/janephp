@@ -38,165 +38,165 @@ class IdentityUserConfigurationNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('firstName', $data)) {
-            $object->setFirstName($data['firstName']);
+            $object->firstName = $data['firstName'];
         }
         if (\array_key_exists('lastName', $data)) {
-            $object->setLastName($data['lastName']);
+            $object->lastName = $data['lastName'];
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
         }
         if (\array_key_exists('phone', $data)) {
-            $object->setPhone($data['phone']);
+            $object->phone = $data['phone'];
         }
         if (\array_key_exists('address', $data)) {
-            $object->setAddress($data['address']);
+            $object->address = $data['address'];
         }
         if (\array_key_exists('city', $data)) {
-            $object->setCity($data['city']);
+            $object->city = $data['city'];
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
         }
         if (\array_key_exists('zipCode', $data)) {
-            $object->setZipCode($data['zipCode']);
+            $object->zipCode = $data['zipCode'];
         }
         if (\array_key_exists('countryName', $data)) {
-            $object->setCountryName($data['countryName']);
+            $object->countryName = $data['countryName'];
         }
         if (\array_key_exists('countryShortName', $data)) {
-            $object->setCountryShortName($data['countryShortName']);
+            $object->countryShortName = $data['countryShortName'];
         }
         if (\array_key_exists('remark', $data)) {
-            $object->setRemark($data['remark']);
+            $object->remark = $data['remark'];
         }
         if (\array_key_exists('userName', $data)) {
-            $object->setUserName($data['userName']);
+            $object->userName = $data['userName'];
         }
         if (\array_key_exists('subscriberPackage', $data)) {
-            $object->setSubscriberPackage($this->denormalizer->denormalize($data['subscriberPackage'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->subscriberPackage = $this->denormalizer->denormalize($data['subscriberPackage'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('isDisabled', $data)) {
-            $object->setIsDisabled($data['isDisabled']);
+            $object->isDisabled = $data['isDisabled'];
         }
         if (\array_key_exists('packageStatus', $data)) {
-            $object->setPackageStatus($data['packageStatus']);
+            $object->packageStatus = $data['packageStatus'];
         }
         if (\array_key_exists('packageExpirationInterval', $data)) {
-            $object->setPackageExpirationInterval($data['packageExpirationInterval']);
+            $object->packageExpirationInterval = $data['packageExpirationInterval'];
         }
         if (\array_key_exists('packageExpirationValue', $data)) {
-            $object->setPackageExpirationValue($data['packageExpirationValue']);
+            $object->packageExpirationValue = $data['packageExpirationValue'];
         }
         if (\array_key_exists('packageExpirationDate', $data)) {
-            $object->setPackageExpirationDate($data['packageExpirationDate']);
+            $object->packageExpirationDate = $data['packageExpirationDate'];
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('creatorId', $data)) {
-            $object->setCreatorId($data['creatorId']);
+            $object->creatorId = $data['creatorId'];
         }
         if (\array_key_exists('modifierId', $data)) {
-            $object->setModifierId($data['modifierId']);
+            $object->modifierId = $data['modifierId'];
         }
         if (\array_key_exists('creatorUsername', $data)) {
-            $object->setCreatorUsername($data['creatorUsername']);
+            $object->creatorUsername = $data['creatorUsername'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         if (\array_key_exists('usernamePasswordCredentialsImplDto', $data)) {
-            $object->setUsernamePasswordCredentialsImplDto($this->denormalizer->denormalize($data['usernamePasswordCredentialsImplDto'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUsernamePasswordCredentialsImplDto::class, 'json', $context));
+            $object->usernamePasswordCredentialsImplDto = $this->denormalizer->denormalize($data['usernamePasswordCredentialsImplDto'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUsernamePasswordCredentialsImplDto::class, 'json', $context);
         }
         if (\array_key_exists('credentialsGuestPassDto', $data)) {
-            $object->setCredentialsGuestPassDto($this->denormalizer->denormalize($data['credentialsGuestPassDto'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserConfigurationCredentialsGuestPassDto::class, 'json', $context));
+            $object->credentialsGuestPassDto = $this->denormalizer->denormalize($data['credentialsGuestPassDto'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserConfigurationCredentialsGuestPassDto::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $dataArray['firstName'] = $data->getFirstName();
+        if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
+            $dataArray['firstName'] = $data->firstName ?? null;
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
-            $dataArray['lastName'] = $data->getLastName();
+        if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
+            $dataArray['lastName'] = $data->lastName ?? null;
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email ?? null;
         }
-        if ($data->isInitialized('phone') && null !== $data->getPhone()) {
-            $dataArray['phone'] = $data->getPhone();
+        if (array_key_exists('phone', get_object_vars($data)) && null !== ($data->phone ?? null)) {
+            $dataArray['phone'] = $data->phone ?? null;
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $data->getAddress();
+        if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
+            $dataArray['address'] = $data->address ?? null;
         }
-        if ($data->isInitialized('city') && null !== $data->getCity()) {
-            $dataArray['city'] = $data->getCity();
+        if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
+            $dataArray['city'] = $data->city ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
-        if ($data->isInitialized('zipCode') && null !== $data->getZipCode()) {
-            $dataArray['zipCode'] = $data->getZipCode();
+        if (array_key_exists('zipCode', get_object_vars($data)) && null !== ($data->zipCode ?? null)) {
+            $dataArray['zipCode'] = $data->zipCode ?? null;
         }
-        if ($data->isInitialized('countryName') && null !== $data->getCountryName()) {
-            $dataArray['countryName'] = $data->getCountryName();
+        if (array_key_exists('countryName', get_object_vars($data)) && null !== ($data->countryName ?? null)) {
+            $dataArray['countryName'] = $data->countryName ?? null;
         }
-        if ($data->isInitialized('countryShortName') && null !== $data->getCountryShortName()) {
-            $dataArray['countryShortName'] = $data->getCountryShortName();
+        if (array_key_exists('countryShortName', get_object_vars($data)) && null !== ($data->countryShortName ?? null)) {
+            $dataArray['countryShortName'] = $data->countryShortName ?? null;
         }
-        if ($data->isInitialized('remark') && null !== $data->getRemark()) {
-            $dataArray['remark'] = $data->getRemark();
+        if (array_key_exists('remark', get_object_vars($data)) && null !== ($data->remark ?? null)) {
+            $dataArray['remark'] = $data->remark ?? null;
         }
-        if ($data->isInitialized('userName') && null !== $data->getUserName()) {
-            $dataArray['userName'] = $data->getUserName();
+        if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
+            $dataArray['userName'] = $data->userName ?? null;
         }
-        if ($data->isInitialized('subscriberPackage') && null !== $data->getSubscriberPackage()) {
-            $dataArray['subscriberPackage'] = $data->getSubscriberPackage() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context));
+        if (array_key_exists('subscriberPackage', get_object_vars($data)) && null !== ($data->subscriberPackage ?? null)) {
+            $dataArray['subscriberPackage'] = ($data->subscriberPackage ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->subscriberPackage ?? null, 'json', $context));
         }
-        if ($data->isInitialized('isDisabled') && null !== $data->getIsDisabled()) {
-            $dataArray['isDisabled'] = $data->getIsDisabled();
+        if (array_key_exists('isDisabled', get_object_vars($data)) && null !== ($data->isDisabled ?? null)) {
+            $dataArray['isDisabled'] = $data->isDisabled ?? null;
         }
-        if ($data->isInitialized('packageStatus') && null !== $data->getPackageStatus()) {
-            $dataArray['packageStatus'] = $data->getPackageStatus();
+        if (array_key_exists('packageStatus', get_object_vars($data)) && null !== ($data->packageStatus ?? null)) {
+            $dataArray['packageStatus'] = $data->packageStatus ?? null;
         }
-        if ($data->isInitialized('packageExpirationInterval') && null !== $data->getPackageExpirationInterval()) {
-            $dataArray['packageExpirationInterval'] = $data->getPackageExpirationInterval();
+        if (array_key_exists('packageExpirationInterval', get_object_vars($data)) && null !== ($data->packageExpirationInterval ?? null)) {
+            $dataArray['packageExpirationInterval'] = $data->packageExpirationInterval ?? null;
         }
-        if ($data->isInitialized('packageExpirationValue') && null !== $data->getPackageExpirationValue()) {
-            $dataArray['packageExpirationValue'] = $data->getPackageExpirationValue();
+        if (array_key_exists('packageExpirationValue', get_object_vars($data)) && null !== ($data->packageExpirationValue ?? null)) {
+            $dataArray['packageExpirationValue'] = $data->packageExpirationValue ?? null;
         }
-        if ($data->isInitialized('packageExpirationDate') && null !== $data->getPackageExpirationDate()) {
-            $dataArray['packageExpirationDate'] = $data->getPackageExpirationDate();
+        if (array_key_exists('packageExpirationDate', get_object_vars($data)) && null !== ($data->packageExpirationDate ?? null)) {
+            $dataArray['packageExpirationDate'] = $data->packageExpirationDate ?? null;
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
-            $dataArray['creatorId'] = $data->getCreatorId();
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
         }
-        if ($data->isInitialized('modifierId') && null !== $data->getModifierId()) {
-            $dataArray['modifierId'] = $data->getModifierId();
+        if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
+            $dataArray['modifierId'] = $data->modifierId ?? null;
         }
-        if ($data->isInitialized('creatorUsername') && null !== $data->getCreatorUsername()) {
-            $dataArray['creatorUsername'] = $data->getCreatorUsername();
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
-        if ($data->isInitialized('usernamePasswordCredentialsImplDto') && null !== $data->getUsernamePasswordCredentialsImplDto()) {
-            $dataArray['usernamePasswordCredentialsImplDto'] = $data->getUsernamePasswordCredentialsImplDto() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUsernamePasswordCredentialsImplDto(), 'json', $context));
+        if (array_key_exists('usernamePasswordCredentialsImplDto', get_object_vars($data)) && null !== ($data->usernamePasswordCredentialsImplDto ?? null)) {
+            $dataArray['usernamePasswordCredentialsImplDto'] = ($data->usernamePasswordCredentialsImplDto ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->usernamePasswordCredentialsImplDto ?? null, 'json', $context));
         }
-        if ($data->isInitialized('credentialsGuestPassDto') && null !== $data->getCredentialsGuestPassDto()) {
-            $dataArray['credentialsGuestPassDto'] = $data->getCredentialsGuestPassDto() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCredentialsGuestPassDto(), 'json', $context));
+        if (array_key_exists('credentialsGuestPassDto', get_object_vars($data)) && null !== ($data->credentialsGuestPassDto ?? null)) {
+            $dataArray['credentialsGuestPassDto'] = ($data->credentialsGuestPassDto ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->credentialsGuestPassDto ?? null, 'json', $context));
         }
         return $dataArray;
     }

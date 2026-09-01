@@ -38,47 +38,47 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('dpInfoList', $data)) {
             $values = [];
             foreach ($data['dpInfoList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileMduProfileDpInfo::class, 'json', $context);
             }
-            $object->setDpInfoList($values);
+            $object->dpInfoList = $values;
         }
         if (\array_key_exists('apGroupInfoList', $data)) {
             $values_1 = [];
             foreach ($data['apGroupInfoList'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileMduProfileApGroupInfo::class, 'json', $context);
             }
-            $object->setApGroupInfoList($values_1);
+            $object->apGroupInfoList = $values_1;
         }
         if (\array_key_exists('networkSegmentationSwitchInfo', $data)) {
-            $object->setNetworkSegmentationSwitchInfo($this->denormalizer->denormalize($data['networkSegmentationSwitchInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileUpdateMduSegmentationProfileNetworkSegmentationSwitchInfo::class, 'json', $context));
+            $object->networkSegmentationSwitchInfo = $this->denormalizer->denormalize($data['networkSegmentationSwitchInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileUpdateMduSegmentationProfileNetworkSegmentationSwitchInfo::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domainId'] = $data->getDomainId();
-        $dataArray['name'] = $data->getName();
+        $dataArray['domainId'] = $data->domainId ?? null;
+        $dataArray['name'] = $data->name ?? null;
         $values = [];
-        foreach ($data->getDpInfoList() as $value) {
+        foreach ($data->dpInfoList ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['dpInfoList'] = $values;
         $values_1 = [];
-        foreach ($data->getApGroupInfoList() as $value_1) {
+        foreach ($data->apGroupInfoList ?? null as $value_1) {
             $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['apGroupInfoList'] = $values_1;
-        if ($data->isInitialized('networkSegmentationSwitchInfo') && null !== $data->getNetworkSegmentationSwitchInfo()) {
-            $dataArray['networkSegmentationSwitchInfo'] = $data->getNetworkSegmentationSwitchInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getNetworkSegmentationSwitchInfo(), 'json', $context));
+        if (array_key_exists('networkSegmentationSwitchInfo', get_object_vars($data)) && null !== ($data->networkSegmentationSwitchInfo ?? null)) {
+            $dataArray['networkSegmentationSwitchInfo'] = ($data->networkSegmentationSwitchInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo ?? null, 'json', $context));
         }
         return $dataArray;
     }

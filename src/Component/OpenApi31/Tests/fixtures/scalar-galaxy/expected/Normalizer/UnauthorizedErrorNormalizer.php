@@ -41,19 +41,19 @@ class UnauthorizedErrorNormalizer implements DenormalizerInterface, NormalizerIn
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\UnauthorizedErrorConstraint());
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('title', $data)) {
-            $object->setTitle($data['title']);
+            $object->title = $data['title'];
             unset($data['title']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('detail', $data)) {
-            $object->setDetail($data['detail']);
+            $object->detail = $data['detail'];
             unset($data['detail']);
         }
         foreach ($data as $key => $value) {
@@ -66,17 +66,17 @@ class UnauthorizedErrorNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
-            $dataArray['title'] = $data->getTitle();
+        if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
-            $dataArray['detail'] = $data->getDetail();
+        if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
+            $dataArray['detail'] = $data->detail ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,19 +38,19 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItemNormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('gender', $data)) {
-            $object->setGender($data['gender']);
+            $object->gender = $data['gender'];
             unset($data['gender']);
         }
         if (\array_key_exists('directorType', $data)) {
-            $object->setDirectorType($data['directorType']);
+            $object->directorType = $data['directorType'];
             unset($data['directorType']);
         }
         if (\array_key_exists('positions', $data)) {
@@ -58,7 +58,7 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItemNormaliz
             foreach ($data['positions'] as $value) {
                 $values[] = $value;
             }
-            $object->setPositions($values);
+            $object->positions = $values;
             unset($data['positions']);
         }
         foreach ($data as $key => $value_1) {
@@ -71,21 +71,21 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItemNormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('gender') && null !== $data->getGender()) {
-            $dataArray['gender'] = $data->getGender();
+        if (array_key_exists('gender', get_object_vars($data)) && null !== ($data->gender ?? null)) {
+            $dataArray['gender'] = $data->gender ?? null;
         }
-        if ($data->isInitialized('directorType') && null !== $data->getDirectorType()) {
-            $dataArray['directorType'] = $data->getDirectorType();
+        if (array_key_exists('directorType', get_object_vars($data)) && null !== ($data->directorType ?? null)) {
+            $dataArray['directorType'] = $data->directorType ?? null;
         }
-        if ($data->isInitialized('positions') && null !== $data->getPositions()) {
+        if (array_key_exists('positions', get_object_vars($data)) && null !== ($data->positions ?? null)) {
             $values = [];
-            foreach ($data->getPositions() as $value) {
+            foreach ($data->positions ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['positions'] = $values;

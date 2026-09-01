@@ -41,19 +41,19 @@ class AppsDomainNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['rotate_validation_records'] = (bool) $data['rotate_validation_records'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('phase', $data)) {
-            $object->setPhase($data['phase']);
+            $object->phase = $data['phase'];
             unset($data['phase']);
         }
         if (\array_key_exists('progress', $data)) {
-            $object->setProgress($this->denormalizer->denormalize($data['progress'], \Jane\Generated\DigitalOcean\Model\AppsDomainProgress::class, 'json', $context));
+            $object->progress = $this->denormalizer->denormalize($data['progress'], \Jane\Generated\DigitalOcean\Model\AppsDomainProgress::class, 'json', $context);
             unset($data['progress']);
         }
         if (\array_key_exists('spec', $data)) {
-            $object->setSpec($this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppDomainSpec::class, 'json', $context));
+            $object->spec = $this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppDomainSpec::class, 'json', $context);
             unset($data['spec']);
         }
         if (\array_key_exists('validations', $data)) {
@@ -61,11 +61,11 @@ class AppsDomainNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['validations'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppDomainValidation::class, 'json', $context);
             }
-            $object->setValidations($values);
+            $object->validations = $values;
             unset($data['validations']);
         }
         if (\array_key_exists('rotate_validation_records', $data)) {
-            $object->setRotateValidationRecords($data['rotate_validation_records']);
+            $object->rotateValidationRecords = $data['rotate_validation_records'];
             unset($data['rotate_validation_records']);
         }
         if (\array_key_exists('certificate_expires_at', $data)) {
@@ -73,7 +73,7 @@ class AppsDomainNormalizer implements DenormalizerInterface, NormalizerInterface
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['certificate_expires_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCertificateExpiresAt($date);
+            $object->certificateExpiresAt = $date;
             unset($data['certificate_expires_at']);
         }
         foreach ($data as $key => $value_1) {
@@ -86,21 +86,21 @@ class AppsDomainNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('phase') && null !== $data->getPhase()) {
-            $dataArray['phase'] = $data->getPhase();
+        if (array_key_exists('phase', get_object_vars($data)) && null !== ($data->phase ?? null)) {
+            $dataArray['phase'] = $data->phase ?? null;
         }
-        if ($data->isInitialized('progress') && null !== $data->getProgress()) {
-            $dataArray['progress'] = $data->getProgress() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getProgress(), 'json', $context));
+        if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
+            $dataArray['progress'] = ($data->progress ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->progress ?? null, 'json', $context));
         }
-        if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['spec'] = $data->getSpec() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
+        if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
+            $dataArray['spec'] = ($data->spec ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
         }
-        if ($data->isInitialized('validations') && null !== $data->getValidations()) {
+        if (array_key_exists('validations', get_object_vars($data)) && null !== ($data->validations ?? null)) {
             $values = [];
-            foreach ($data->getValidations() as $value) {
+            foreach ($data->validations ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['validations'] = $values;

@@ -48,31 +48,31 @@ class GlobalEcoScoreNormalizer implements DenormalizerInterface, NormalizerInter
             } elseif (is_null($data['emission_factors'])) {
                 $value = $data['emission_factors'];
             }
-            $object->setEmissionFactors($value);
+            $object->emissionFactors = $value;
         }
         elseif (\array_key_exists('emission_factors', $data) && $data['emission_factors'] === null) {
-            $object->setEmissionFactors(null);
+            $object->emissionFactors = null;
         }
         if (\array_key_exists('tracingId', $data)) {
-            $object->setTracingId($data['tracingId']);
+            $object->tracingId = $data['tracingId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getEmissionFactors();
-        if (is_array($data->getEmissionFactors())) {
+        $value = $data->emissionFactors ?? null;
+        if (is_array($data->emissionFactors ?? null)) {
             $values = [];
-            foreach ($data->getEmissionFactors() as $value_1) {
+            foreach ($data->emissionFactors ?? null as $value_1) {
                 $values[] = $value_1;
             }
             $value = $values;
-        } elseif (is_null($data->getEmissionFactors())) {
-            $value = $data->getEmissionFactors();
+        } elseif (is_null($data->emissionFactors ?? null)) {
+            $value = $data->emissionFactors ?? null;
         }
         $dataArray['emission_factors'] = $value;
-        $dataArray['tracingId'] = $data->getTracingId();
+        $dataArray['tracingId'] = $data->tracingId ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -38,23 +38,23 @@ class DropletActionChangeBackupPolicyBackupPolicyNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('plan', $data)) {
-            $object->setPlan($data['plan']);
+            $object->plan = $data['plan'];
             unset($data['plan']);
         }
         if (\array_key_exists('weekday', $data)) {
-            $object->setWeekday($data['weekday']);
+            $object->weekday = $data['weekday'];
             unset($data['weekday']);
         }
         if (\array_key_exists('hour', $data)) {
-            $object->setHour($data['hour']);
+            $object->hour = $data['hour'];
             unset($data['hour']);
         }
         if (\array_key_exists('window_length_hours', $data)) {
-            $object->setWindowLengthHours($data['window_length_hours']);
+            $object->windowLengthHours = $data['window_length_hours'];
             unset($data['window_length_hours']);
         }
         if (\array_key_exists('retention_period_days', $data)) {
-            $object->setRetentionPeriodDays($data['retention_period_days']);
+            $object->retentionPeriodDays = $data['retention_period_days'];
             unset($data['retention_period_days']);
         }
         foreach ($data as $key => $value) {
@@ -67,14 +67,14 @@ class DropletActionChangeBackupPolicyBackupPolicyNormalizer implements Denormali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('plan') && null !== $data->getPlan()) {
-            $dataArray['plan'] = $data->getPlan();
+        if (array_key_exists('plan', get_object_vars($data)) && null !== ($data->plan ?? null)) {
+            $dataArray['plan'] = $data->plan ?? null;
         }
-        if ($data->isInitialized('weekday') && null !== $data->getWeekday()) {
-            $dataArray['weekday'] = $data->getWeekday();
+        if (array_key_exists('weekday', get_object_vars($data)) && null !== ($data->weekday ?? null)) {
+            $dataArray['weekday'] = $data->weekday ?? null;
         }
-        if ($data->isInitialized('hour') && null !== $data->getHour()) {
-            $dataArray['hour'] = $data->getHour();
+        if (array_key_exists('hour', get_object_vars($data)) && null !== ($data->hour ?? null)) {
+            $dataArray['hour'] = $data->hour ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

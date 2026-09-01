@@ -38,19 +38,19 @@ class AppInstanceNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('component_name', $data)) {
-            $object->setComponentName($data['component_name']);
+            $object->componentName = $data['component_name'];
             unset($data['component_name']);
         }
         if (\array_key_exists('component_type', $data)) {
-            $object->setComponentType($data['component_type']);
+            $object->componentType = $data['component_type'];
             unset($data['component_type']);
         }
         if (\array_key_exists('instance_name', $data)) {
-            $object->setInstanceName($data['instance_name']);
+            $object->instanceName = $data['instance_name'];
             unset($data['instance_name']);
         }
         if (\array_key_exists('instance_alias', $data)) {
-            $object->setInstanceAlias($data['instance_alias']);
+            $object->instanceAlias = $data['instance_alias'];
             unset($data['instance_alias']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class AppInstanceNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('componentName') && null !== $data->getComponentName()) {
-            $dataArray['component_name'] = $data->getComponentName();
+        if (array_key_exists('componentName', get_object_vars($data)) && null !== ($data->componentName ?? null)) {
+            $dataArray['component_name'] = $data->componentName ?? null;
         }
-        if ($data->isInitialized('componentType') && null !== $data->getComponentType()) {
-            $dataArray['component_type'] = $data->getComponentType();
+        if (array_key_exists('componentType', get_object_vars($data)) && null !== ($data->componentType ?? null)) {
+            $dataArray['component_type'] = $data->componentType ?? null;
         }
-        if ($data->isInitialized('instanceName') && null !== $data->getInstanceName()) {
-            $dataArray['instance_name'] = $data->getInstanceName();
+        if (array_key_exists('instanceName', get_object_vars($data)) && null !== ($data->instanceName ?? null)) {
+            $dataArray['instance_name'] = $data->instanceName ?? null;
         }
-        if ($data->isInitialized('instanceAlias') && null !== $data->getInstanceAlias()) {
-            $dataArray['instance_alias'] = $data->getInstanceAlias();
+        if (array_key_exists('instanceAlias', get_object_vars($data)) && null !== ($data->instanceAlias ?? null)) {
+            $dataArray['instance_alias'] = $data->instanceAlias ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

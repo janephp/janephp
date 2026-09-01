@@ -38,21 +38,21 @@ class CommonAltitudeNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('altitudeUnit', $data)) {
-            $object->setAltitudeUnit($data['altitudeUnit']);
+            $object->altitudeUnit = $data['altitudeUnit'];
         }
         if (\array_key_exists('altitudeValue', $data)) {
-            $object->setAltitudeValue($data['altitudeValue']);
+            $object->altitudeValue = $data['altitudeValue'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('altitudeUnit') && null !== $data->getAltitudeUnit()) {
-            $dataArray['altitudeUnit'] = $data->getAltitudeUnit();
+        if (array_key_exists('altitudeUnit', get_object_vars($data)) && null !== ($data->altitudeUnit ?? null)) {
+            $dataArray['altitudeUnit'] = $data->altitudeUnit ?? null;
         }
-        if ($data->isInitialized('altitudeValue') && null !== $data->getAltitudeValue()) {
-            $dataArray['altitudeValue'] = $data->getAltitudeValue();
+        if (array_key_exists('altitudeValue', get_object_vars($data)) && null !== ($data->altitudeValue ?? null)) {
+            $dataArray['altitudeValue'] = $data->altitudeValue ?? null;
         }
         return $dataArray;
     }

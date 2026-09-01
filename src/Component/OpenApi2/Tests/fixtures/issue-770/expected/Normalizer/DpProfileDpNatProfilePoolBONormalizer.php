@@ -38,99 +38,99 @@ class DpProfileDpNatProfilePoolBONormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('publicPrefix', $data)) {
-            $object->setPublicPrefix($data['publicPrefix']);
+            $object->publicPrefix = $data['publicPrefix'];
         }
         if (\array_key_exists('profileId', $data)) {
-            $object->setProfileId($data['profileId']);
+            $object->profileId = $data['profileId'];
         }
         if (\array_key_exists('poolId', $data)) {
-            $object->setPoolId($data['poolId']);
+            $object->poolId = $data['poolId'];
         }
         if (\array_key_exists('natPortRange', $data)) {
-            $object->setNatPortRange($data['natPortRange']);
+            $object->natPortRange = $data['natPortRange'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('vlanType', $data)) {
-            $object->setVlanType($data['vlanType']);
+            $object->vlanType = $data['vlanType'];
         }
         if (\array_key_exists('publicVlan', $data)) {
-            $object->setPublicVlan($data['publicVlan']);
+            $object->publicVlan = $data['publicVlan'];
         }
         if (\array_key_exists('privateVlanRange', $data)) {
             $values = [];
             foreach ($data['privateVlanRange'] as $value) {
                 $values[] = $value;
             }
-            $object->setPrivateVlanRange($values);
+            $object->privateVlanRange = $values;
         }
         if (\array_key_exists('privateQinqVlanRange', $data)) {
             $values_1 = [];
             foreach ($data['privateQinqVlanRange'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePrivateQinqVlanRangeBO::class, 'json', $context);
             }
-            $object->setPrivateQinqVlanRange($values_1);
+            $object->privateQinqVlanRange = $values_1;
         }
         if (\array_key_exists('publicAddressRange', $data)) {
             $values_2 = [];
             foreach ($data['publicAddressRange'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setPublicAddressRange($values_2);
+            $object->publicAddressRange = $values_2;
         }
         if (\array_key_exists('poolName', $data)) {
-            $object->setPoolName($data['poolName']);
+            $object->poolName = $data['poolName'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('publicPrefix') && null !== $data->getPublicPrefix()) {
-            $dataArray['publicPrefix'] = $data->getPublicPrefix();
+        if (array_key_exists('publicPrefix', get_object_vars($data)) && null !== ($data->publicPrefix ?? null)) {
+            $dataArray['publicPrefix'] = $data->publicPrefix ?? null;
         }
-        if ($data->isInitialized('profileId') && null !== $data->getProfileId()) {
-            $dataArray['profileId'] = $data->getProfileId();
+        if (array_key_exists('profileId', get_object_vars($data)) && null !== ($data->profileId ?? null)) {
+            $dataArray['profileId'] = $data->profileId ?? null;
         }
-        if ($data->isInitialized('poolId') && null !== $data->getPoolId()) {
-            $dataArray['poolId'] = $data->getPoolId();
+        if (array_key_exists('poolId', get_object_vars($data)) && null !== ($data->poolId ?? null)) {
+            $dataArray['poolId'] = $data->poolId ?? null;
         }
-        if ($data->isInitialized('natPortRange') && null !== $data->getNatPortRange()) {
-            $dataArray['natPortRange'] = $data->getNatPortRange();
+        if (array_key_exists('natPortRange', get_object_vars($data)) && null !== ($data->natPortRange ?? null)) {
+            $dataArray['natPortRange'] = $data->natPortRange ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('vlanType') && null !== $data->getVlanType()) {
-            $dataArray['vlanType'] = $data->getVlanType();
+        if (array_key_exists('vlanType', get_object_vars($data)) && null !== ($data->vlanType ?? null)) {
+            $dataArray['vlanType'] = $data->vlanType ?? null;
         }
-        if ($data->isInitialized('publicVlan') && null !== $data->getPublicVlan()) {
-            $dataArray['publicVlan'] = $data->getPublicVlan();
+        if (array_key_exists('publicVlan', get_object_vars($data)) && null !== ($data->publicVlan ?? null)) {
+            $dataArray['publicVlan'] = $data->publicVlan ?? null;
         }
-        if ($data->isInitialized('privateVlanRange') && null !== $data->getPrivateVlanRange()) {
+        if (array_key_exists('privateVlanRange', get_object_vars($data)) && null !== ($data->privateVlanRange ?? null)) {
             $values = [];
-            foreach ($data->getPrivateVlanRange() as $value) {
+            foreach ($data->privateVlanRange ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['privateVlanRange'] = $values;
         }
-        if ($data->isInitialized('privateQinqVlanRange') && null !== $data->getPrivateQinqVlanRange()) {
+        if (array_key_exists('privateQinqVlanRange', get_object_vars($data)) && null !== ($data->privateQinqVlanRange ?? null)) {
             $values_1 = [];
-            foreach ($data->getPrivateQinqVlanRange() as $value_1) {
+            foreach ($data->privateQinqVlanRange ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['privateQinqVlanRange'] = $values_1;
         }
-        if ($data->isInitialized('publicAddressRange') && null !== $data->getPublicAddressRange()) {
+        if (array_key_exists('publicAddressRange', get_object_vars($data)) && null !== ($data->publicAddressRange ?? null)) {
             $values_2 = [];
-            foreach ($data->getPublicAddressRange() as $value_2) {
+            foreach ($data->publicAddressRange ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['publicAddressRange'] = $values_2;
         }
-        if ($data->isInitialized('poolName') && null !== $data->getPoolName()) {
-            $dataArray['poolName'] = $data->getPoolName();
+        if (array_key_exists('poolName', get_object_vars($data)) && null !== ($data->poolName ?? null)) {
+            $dataArray['poolName'] = $data->poolName ?? null;
         }
         return $dataArray;
     }

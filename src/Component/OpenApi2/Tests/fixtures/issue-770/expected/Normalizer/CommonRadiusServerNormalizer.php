@@ -38,22 +38,22 @@ class CommonRadiusServerNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('sharedSecret', $data)) {
-            $object->setSharedSecret($data['sharedSecret']);
+            $object->sharedSecret = $data['sharedSecret'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ip'] = $data->getIp();
-        $dataArray['port'] = $data->getPort();
-        $dataArray['sharedSecret'] = $data->getSharedSecret();
+        $dataArray['ip'] = $data->ip ?? null;
+        $dataArray['port'] = $data->port ?? null;
+        $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

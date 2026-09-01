@@ -45,7 +45,7 @@ class ContainersIdTopGetResponse200Normalizer implements DenormalizerInterface, 
             foreach ($data['Titles'] as $value) {
                 $values[] = $value;
             }
-            $object->setTitles($values);
+            $object->titles = $values;
         }
         if (\array_key_exists('Processes', $data)) {
             $values_1 = [];
@@ -56,23 +56,23 @@ class ContainersIdTopGetResponse200Normalizer implements DenormalizerInterface, 
                 }
                 $values_1[] = $values_2;
             }
-            $object->setProcesses($values_1);
+            $object->processes = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('titles') && null !== $data->getTitles()) {
+        if (array_key_exists('titles', get_object_vars($data)) && null !== ($data->titles ?? null)) {
             $values = [];
-            foreach ($data->getTitles() as $value) {
+            foreach ($data->titles ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['Titles'] = $values;
         }
-        if ($data->isInitialized('processes') && null !== $data->getProcesses()) {
+        if (array_key_exists('processes', get_object_vars($data)) && null !== ($data->processes ?? null)) {
             $values_1 = [];
-            foreach ($data->getProcesses() as $value_1) {
+            foreach ($data->processes ?? null as $value_1) {
                 $values_2 = [];
                 foreach ($value_1 as $value_2) {
                     $values_2[] = $value_2;

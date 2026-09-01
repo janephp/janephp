@@ -22,7 +22,7 @@ class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGu
     {
         $class = $this->getSchemaClass();
 
-        return ($object instanceof $class) && \is_array($object->getType());
+        return ($object instanceof $class) && \is_array($object->type ?? null);
     }
 
     protected function getSchemaClass(): string
@@ -34,13 +34,13 @@ class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGu
     {
         $typeGuess = new MultipleType($object);
 
-        foreach ($object->getType() as $type) {
+        foreach (($object->type ?? null ?? []) as $type) {
             if (\in_array($type, $this->bannedTypes)) {
                 continue;
             }
 
             $fakeSchema = clone $object;
-            $fakeSchema->setType($type);
+            $fakeSchema->type = $type;
             $typeGuess->addType($this->chainGuesser->guessType($fakeSchema, $name, $reference, $registry));
         }
 

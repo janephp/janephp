@@ -42,7 +42,7 @@ class ResponseGetFirewallResponseNormalizer implements DenormalizerInterface, No
             foreach ($data['firewall'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setFirewall($values);
+            $object->firewall = $values;
             unset($data['firewall']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -55,9 +55,9 @@ class ResponseGetFirewallResponseNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('firewall') && null !== $data->getFirewall()) {
+        if (array_key_exists('firewall', get_object_vars($data)) && null !== ($data->firewall ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getFirewall() as $key => $value) {
+            foreach ($data->firewall ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['firewall'] = $values;

@@ -38,21 +38,21 @@ class ServiceTestingConfigNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('loginRequest', $data)) {
-            $object->setLoginRequest($this->denormalizer->denormalize($data['loginRequest'], \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTestingConfigLoginRequest::class, 'json', $context));
+            $object->loginRequest = $this->denormalizer->denormalize($data['loginRequest'], \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTestingConfigLoginRequest::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('loginRequest') && null !== $data->getLoginRequest()) {
-            $dataArray['loginRequest'] = $data->getLoginRequest() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLoginRequest(), 'json', $context));
+        if (array_key_exists('loginRequest', get_object_vars($data)) && null !== ($data->loginRequest ?? null)) {
+            $dataArray['loginRequest'] = ($data->loginRequest ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->loginRequest ?? null, 'json', $context));
         }
         return $dataArray;
     }

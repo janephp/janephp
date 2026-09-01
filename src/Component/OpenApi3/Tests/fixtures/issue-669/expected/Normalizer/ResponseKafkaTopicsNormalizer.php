@@ -46,7 +46,7 @@ class ResponseKafkaTopicsNormalizer implements DenormalizerInterface, Normalizer
                 }
                 $values[] = $values_1;
             }
-            $object->setTopics($values);
+            $object->topics = $values;
             unset($data['topics']);
         }
         foreach ($data as $key_1 => $value_2) {
@@ -59,9 +59,9 @@ class ResponseKafkaTopicsNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('topics') && null !== $data->getTopics()) {
+        if (array_key_exists('topics', get_object_vars($data)) && null !== ($data->topics ?? null)) {
             $values = [];
-            foreach ($data->getTopics() as $value) {
+            foreach ($data->topics ?? null as $value) {
                 $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;

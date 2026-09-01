@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('basicInformation', $data)) {
-            $object->setBasicInformation($this->denormalizer->denormalize($data['basicInformation'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation::class, 'json', $context));
+            $object->basicInformation = $this->denormalizer->denormalize($data['basicInformation'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation::class, 'json', $context);
             unset($data['basicInformation']);
         }
         if (\array_key_exists('activityClassifications', $data)) {
@@ -46,7 +46,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
             foreach ($data['activityClassifications'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem::class, 'json', $context);
             }
-            $object->setActivityClassifications($values);
+            $object->activityClassifications = $values;
             unset($data['activityClassifications']);
         }
         if (\array_key_exists('previousNames', $data)) {
@@ -54,7 +54,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
             foreach ($data['previousNames'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem::class, 'json', $context);
             }
-            $object->setPreviousNames($values_1);
+            $object->previousNames = $values_1;
             unset($data['previousNames']);
         }
         foreach ($data as $key => $value_2) {
@@ -67,19 +67,19 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('basicInformation') && null !== $data->getBasicInformation()) {
-            $dataArray['basicInformation'] = $data->getBasicInformation() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getBasicInformation(), 'json', $context));
+        if (array_key_exists('basicInformation', get_object_vars($data)) && null !== ($data->basicInformation ?? null)) {
+            $dataArray['basicInformation'] = ($data->basicInformation ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->basicInformation ?? null, 'json', $context));
         }
-        if ($data->isInitialized('activityClassifications') && null !== $data->getActivityClassifications()) {
+        if (array_key_exists('activityClassifications', get_object_vars($data)) && null !== ($data->activityClassifications ?? null)) {
             $values = [];
-            foreach ($data->getActivityClassifications() as $value) {
+            foreach ($data->activityClassifications ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['activityClassifications'] = $values;
         }
-        if ($data->isInitialized('previousNames') && null !== $data->getPreviousNames()) {
+        if (array_key_exists('previousNames', get_object_vars($data)) && null !== ($data->previousNames ?? null)) {
             $values_1 = [];
-            foreach ($data->getPreviousNames() as $value_1) {
+            foreach ($data->previousNames ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['previousNames'] = $values_1;

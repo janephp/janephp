@@ -44,88 +44,88 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['bool'] = (bool) $data['bool'];
         }
         if (\array_key_exists('string', $data) && $data['string'] !== null) {
-            $object->setString($data['string']);
+            $object->string = $data['string'];
         }
         elseif (\array_key_exists('string', $data) && $data['string'] === null) {
-            $object->setString(null);
+            $object->string = null;
         }
         if (\array_key_exists('bool', $data) && $data['bool'] !== null) {
-            $object->setBool($data['bool']);
+            $object->bool = $data['bool'];
         }
         elseif (\array_key_exists('bool', $data) && $data['bool'] === null) {
-            $object->setBool(null);
+            $object->bool = null;
         }
         if (\array_key_exists('integer', $data) && $data['integer'] !== null) {
-            $object->setInteger($data['integer']);
+            $object->integer = $data['integer'];
         }
         elseif (\array_key_exists('integer', $data) && $data['integer'] === null) {
-            $object->setInteger(null);
+            $object->integer = null;
         }
         if (\array_key_exists('float', $data) && $data['float'] !== null) {
-            $object->setFloat($data['float']);
+            $object->float = $data['float'];
         }
         elseif (\array_key_exists('float', $data) && $data['float'] === null) {
-            $object->setFloat(null);
+            $object->float = null;
         }
         if (\array_key_exists('array', $data) && $data['array'] !== null) {
             $values = [];
             foreach ($data['array'] as $value) {
                 $values[] = $value;
             }
-            $object->setArray($values);
+            $object->array = $values;
         }
         elseif (\array_key_exists('array', $data) && $data['array'] === null) {
-            $object->setArray(null);
+            $object->array = null;
         }
         if (\array_key_exists('object', $data) && $data['object'] !== null) {
             $values_1 = [];
             foreach ($data['object'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setObject($values_1);
+            $object->object = $values_1;
         }
         elseif (\array_key_exists('object', $data) && $data['object'] === null) {
-            $object->setObject(null);
+            $object->object = null;
         }
         if (\array_key_exists('subObject', $data) && $data['subObject'] !== null) {
-            $object->setSubObject($this->denormalizer->denormalize($data['subObject'], \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class, 'json', $context));
+            $object->subObject = $this->denormalizer->denormalize($data['subObject'], \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class, 'json', $context);
         }
         elseif (\array_key_exists('subObject', $data) && $data['subObject'] === null) {
-            $object->setSubObject(null);
+            $object->subObject = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('string') && null !== $data->getString()) {
-            $dataArray['string'] = $data->getString();
+        if (array_key_exists('string', get_object_vars($data)) && null !== ($data->string ?? null)) {
+            $dataArray['string'] = $data->string ?? null;
         }
-        if ($data->isInitialized('bool') && null !== $data->getBool()) {
-            $dataArray['bool'] = $data->getBool();
+        if (array_key_exists('bool', get_object_vars($data)) && null !== ($data->bool ?? null)) {
+            $dataArray['bool'] = $data->bool ?? null;
         }
-        if ($data->isInitialized('integer') && null !== $data->getInteger()) {
-            $dataArray['integer'] = $data->getInteger();
+        if (array_key_exists('integer', get_object_vars($data)) && null !== ($data->integer ?? null)) {
+            $dataArray['integer'] = $data->integer ?? null;
         }
-        if ($data->isInitialized('float') && null !== $data->getFloat()) {
-            $dataArray['float'] = $data->getFloat();
+        if (array_key_exists('float', get_object_vars($data)) && null !== ($data->float ?? null)) {
+            $dataArray['float'] = $data->float ?? null;
         }
-        if ($data->isInitialized('array') && null !== $data->getArray()) {
+        if (array_key_exists('array', get_object_vars($data)) && null !== ($data->array ?? null)) {
             $values = [];
-            foreach ($data->getArray() as $value) {
+            foreach ($data->array ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['array'] = $values;
         }
-        if ($data->isInitialized('object') && null !== $data->getObject()) {
+        if (array_key_exists('object', get_object_vars($data)) && null !== ($data->object ?? null)) {
             $values_1 = [];
-            foreach ($data->getObject() as $value_1) {
+            foreach ($data->object ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['object'] = $values_1;
         }
-        if ($data->isInitialized('subObject') && null !== $data->getSubObject()) {
-            $dataArray['subObject'] = $data->getSubObject() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubObject(), 'json', $context));
+        if (array_key_exists('subObject', get_object_vars($data)) && null !== ($data->subObject ?? null)) {
+            $dataArray['subObject'] = ($data->subObject ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->subObject ?? null, 'json', $context));
         }
         return $dataArray;
     }

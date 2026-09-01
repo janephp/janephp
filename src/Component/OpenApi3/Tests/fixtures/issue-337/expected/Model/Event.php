@@ -8,295 +8,67 @@ class Event implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * The unique identifier for the event.
      *
      * @var float
      */
-    protected $eventId;
+    public float $eventId;
     /**
      * The Safe Number (Creditsafe's identifier on all Companies owned in the Creditsafe Universe) of the company that triggered the event.
      *
      * @var float
      */
-    protected $companyId;
+    public float $companyId;
     /**
      * The portfolio Id of the portfolio that contains the company that you requested event information for.
      *
      * @var float
      */
-    protected $portfolioId;
+    public float $portfolioId;
     /**
      * A short description of the company event.
      *
      * @var string
      */
-    protected $ruleName;
+    public string $ruleName;
     /**
      * The local event code for the event.
      *
      * @var string
      */
-    protected $localEventCode;
+    public string $localEventCode;
     /**
      * The global event code that has been mapped to the local event.
      *
      * @var string
      */
-    protected $globalEventCode;
+    public string $globalEventCode;
     /**
      * Some events contain an `oldValue` and `newValue` (e.g. a change in Credit Limit).
      *
      * @var string
      */
-    protected $newValue;
+    public string $newValue;
     /**
      * Some events contain an `oldValue` and `newValue` (e.g. a change in Credit Limit).
      *
      * @var string
      */
-    protected $oldValue;
+    public string $oldValue;
     /**
      * The date that the event occured.
      *
      * @var \DateTime
      */
-    protected $eventDate;
+    public \DateTime $eventDate;
     /**
      * The date that the event was created in the Creditsafe database.
      *
      * @var \DateTime
      */
-    protected $createdDate;
-    /**
-     * The unique identifier for the event.
-     *
-     * @return float
-     */
-    public function getEventId(): float
-    {
-        return $this->eventId;
-    }
-    /**
-     * The unique identifier for the event.
-     *
-     * @param float $eventId
-     *
-     * @return self
-     */
-    public function setEventId(float $eventId): self
-    {
-        $this->initialized['eventId'] = true;
-        $this->eventId = $eventId;
-        return $this;
-    }
-    /**
-     * The Safe Number (Creditsafe's identifier on all Companies owned in the Creditsafe Universe) of the company that triggered the event.
-     *
-     * @return float
-     */
-    public function getCompanyId(): float
-    {
-        return $this->companyId;
-    }
-    /**
-     * The Safe Number (Creditsafe's identifier on all Companies owned in the Creditsafe Universe) of the company that triggered the event.
-     *
-     * @param float $companyId
-     *
-     * @return self
-     */
-    public function setCompanyId(float $companyId): self
-    {
-        $this->initialized['companyId'] = true;
-        $this->companyId = $companyId;
-        return $this;
-    }
-    /**
-     * The portfolio Id of the portfolio that contains the company that you requested event information for.
-     *
-     * @return float
-     */
-    public function getPortfolioId(): float
-    {
-        return $this->portfolioId;
-    }
-    /**
-     * The portfolio Id of the portfolio that contains the company that you requested event information for.
-     *
-     * @param float $portfolioId
-     *
-     * @return self
-     */
-    public function setPortfolioId(float $portfolioId): self
-    {
-        $this->initialized['portfolioId'] = true;
-        $this->portfolioId = $portfolioId;
-        return $this;
-    }
-    /**
-     * A short description of the company event.
-     *
-     * @return string
-     */
-    public function getRuleName(): string
-    {
-        return $this->ruleName;
-    }
-    /**
-     * A short description of the company event.
-     *
-     * @param string $ruleName
-     *
-     * @return self
-     */
-    public function setRuleName(string $ruleName): self
-    {
-        $this->initialized['ruleName'] = true;
-        $this->ruleName = $ruleName;
-        return $this;
-    }
-    /**
-     * The local event code for the event.
-     *
-     * @return string
-     */
-    public function getLocalEventCode(): string
-    {
-        return $this->localEventCode;
-    }
-    /**
-     * The local event code for the event.
-     *
-     * @param string $localEventCode
-     *
-     * @return self
-     */
-    public function setLocalEventCode(string $localEventCode): self
-    {
-        $this->initialized['localEventCode'] = true;
-        $this->localEventCode = $localEventCode;
-        return $this;
-    }
-    /**
-     * The global event code that has been mapped to the local event.
-     *
-     * @return string
-     */
-    public function getGlobalEventCode(): string
-    {
-        return $this->globalEventCode;
-    }
-    /**
-     * The global event code that has been mapped to the local event.
-     *
-     * @param string $globalEventCode
-     *
-     * @return self
-     */
-    public function setGlobalEventCode(string $globalEventCode): self
-    {
-        $this->initialized['globalEventCode'] = true;
-        $this->globalEventCode = $globalEventCode;
-        return $this;
-    }
-    /**
-     * Some events contain an `oldValue` and `newValue` (e.g. a change in Credit Limit).
-     *
-     * @return string
-     */
-    public function getNewValue(): string
-    {
-        return $this->newValue;
-    }
-    /**
-     * Some events contain an `oldValue` and `newValue` (e.g. a change in Credit Limit).
-     *
-     * @param string $newValue
-     *
-     * @return self
-     */
-    public function setNewValue(string $newValue): self
-    {
-        $this->initialized['newValue'] = true;
-        $this->newValue = $newValue;
-        return $this;
-    }
-    /**
-     * Some events contain an `oldValue` and `newValue` (e.g. a change in Credit Limit).
-     *
-     * @return string
-     */
-    public function getOldValue(): string
-    {
-        return $this->oldValue;
-    }
-    /**
-     * Some events contain an `oldValue` and `newValue` (e.g. a change in Credit Limit).
-     *
-     * @param string $oldValue
-     *
-     * @return self
-     */
-    public function setOldValue(string $oldValue): self
-    {
-        $this->initialized['oldValue'] = true;
-        $this->oldValue = $oldValue;
-        return $this;
-    }
-    /**
-     * The date that the event occured.
-     *
-     * @return \DateTime
-     */
-    public function getEventDate(): \DateTime
-    {
-        return $this->eventDate;
-    }
-    /**
-     * The date that the event occured.
-     *
-     * @param \DateTime $eventDate
-     *
-     * @return self
-     */
-    public function setEventDate(\DateTime $eventDate): self
-    {
-        $this->initialized['eventDate'] = true;
-        $this->eventDate = $eventDate;
-        return $this;
-    }
-    /**
-     * The date that the event was created in the Creditsafe database.
-     *
-     * @return \DateTime
-     */
-    public function getCreatedDate(): \DateTime
-    {
-        return $this->createdDate;
-    }
-    /**
-     * The date that the event was created in the Creditsafe database.
-     *
-     * @param \DateTime $createdDate
-     *
-     * @return self
-     */
-    public function setCreatedDate(\DateTime $createdDate): self
-    {
-        $this->initialized['createdDate'] = true;
-        $this->createdDate = $createdDate;
-        return $this;
-    }
+    public \DateTime $createdDate;
     public function definedProperties(): array
     {
-        return ['eventId' => ['eventId', 'getEventId', 'setEventId'], 'companyId' => ['companyId', 'getCompanyId', 'setCompanyId'], 'portfolioId' => ['portfolioId', 'getPortfolioId', 'setPortfolioId'], 'ruleName' => ['ruleName', 'getRuleName', 'setRuleName'], 'localEventCode' => ['localEventCode', 'getLocalEventCode', 'setLocalEventCode'], 'globalEventCode' => ['globalEventCode', 'getGlobalEventCode', 'setGlobalEventCode'], 'newValue' => ['newValue', 'getNewValue', 'setNewValue'], 'oldValue' => ['oldValue', 'getOldValue', 'setOldValue'], 'eventDate' => ['eventDate', 'getEventDate', 'setEventDate'], 'createdDate' => ['createdDate', 'getCreatedDate', 'setCreatedDate']];
+        return ['eventId' => 'eventId', 'companyId' => 'companyId', 'portfolioId' => 'portfolioId', 'ruleName' => 'ruleName', 'localEventCode' => 'localEventCode', 'globalEventCode' => 'globalEventCode', 'newValue' => 'newValue', 'oldValue' => 'oldValue', 'eventDate' => 'eventDate', 'createdDate' => 'createdDate'];
     }
 }

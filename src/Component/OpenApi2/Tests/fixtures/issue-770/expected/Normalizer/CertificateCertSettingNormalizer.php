@@ -42,16 +42,16 @@ class CertificateCertSettingNormalizer implements DenormalizerInterface, Normali
             foreach ($data['serviceCertificates'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CertificateServiceCertificate::class, 'json', $context);
             }
-            $object->setServiceCertificates($values);
+            $object->serviceCertificates = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('serviceCertificates') && null !== $data->getServiceCertificates()) {
+        if (array_key_exists('serviceCertificates', get_object_vars($data)) && null !== ($data->serviceCertificates ?? null)) {
             $values = [];
-            foreach ($data->getServiceCertificates() as $value) {
+            foreach ($data->serviceCertificates ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['serviceCertificates'] = $values;

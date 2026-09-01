@@ -41,23 +41,23 @@ class ApiAgentFunctionVersionNormalizer implements DenormalizerInterface, Normal
             $data['is_deleted'] = (bool) $data['is_deleted'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('faas_name', $data)) {
-            $object->setFaasName($data['faas_name']);
+            $object->faasName = $data['faas_name'];
             unset($data['faas_name']);
         }
         if (\array_key_exists('faas_namespace', $data)) {
-            $object->setFaasNamespace($data['faas_namespace']);
+            $object->faasNamespace = $data['faas_namespace'];
             unset($data['faas_namespace']);
         }
         if (\array_key_exists('is_deleted', $data)) {
-            $object->setIsDeleted($data['is_deleted']);
+            $object->isDeleted = $data['is_deleted'];
             unset($data['is_deleted']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         foreach ($data as $key => $value) {
@@ -70,20 +70,20 @@ class ApiAgentFunctionVersionNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('faasName') && null !== $data->getFaasName()) {
-            $dataArray['faas_name'] = $data->getFaasName();
+        if (array_key_exists('faasName', get_object_vars($data)) && null !== ($data->faasName ?? null)) {
+            $dataArray['faas_name'] = $data->faasName ?? null;
         }
-        if ($data->isInitialized('faasNamespace') && null !== $data->getFaasNamespace()) {
-            $dataArray['faas_namespace'] = $data->getFaasNamespace();
+        if (array_key_exists('faasNamespace', get_object_vars($data)) && null !== ($data->faasNamespace ?? null)) {
+            $dataArray['faas_namespace'] = $data->faasNamespace ?? null;
         }
-        if ($data->isInitialized('isDeleted') && null !== $data->getIsDeleted()) {
-            $dataArray['is_deleted'] = $data->getIsDeleted();
+        if (array_key_exists('isDeleted', get_object_vars($data)) && null !== ($data->isDeleted ?? null)) {
+            $dataArray['is_deleted'] = $data->isDeleted ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

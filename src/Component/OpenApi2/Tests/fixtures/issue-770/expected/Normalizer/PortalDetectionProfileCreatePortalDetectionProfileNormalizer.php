@@ -38,30 +38,30 @@ class PortalDetectionProfileCreatePortalDetectionProfileNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('portalDetectionPatterns', $data)) {
             $values = [];
             foreach ($data['portalDetectionPatterns'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalDetectionProfilePortalDetectionPattern::class, 'json', $context);
             }
-            $object->setPortalDetectionPatterns($values);
+            $object->portalDetectionPatterns = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('portalDetectionPatterns') && null !== $data->getPortalDetectionPatterns()) {
+        if (array_key_exists('portalDetectionPatterns', get_object_vars($data)) && null !== ($data->portalDetectionPatterns ?? null)) {
             $values = [];
-            foreach ($data->getPortalDetectionPatterns() as $value) {
+            foreach ($data->portalDetectionPatterns ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['portalDetectionPatterns'] = $values;

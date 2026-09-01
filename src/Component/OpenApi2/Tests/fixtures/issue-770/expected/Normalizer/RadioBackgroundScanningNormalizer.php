@@ -38,14 +38,14 @@ class RadioBackgroundScanningNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('frequencyInSec', $data)) {
-            $object->setFrequencyInSec($data['frequencyInSec']);
+            $object->frequencyInSec = $data['frequencyInSec'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['frequencyInSec'] = $data->getFrequencyInSec();
+        $dataArray['frequencyInSec'] = $data->frequencyInSec ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

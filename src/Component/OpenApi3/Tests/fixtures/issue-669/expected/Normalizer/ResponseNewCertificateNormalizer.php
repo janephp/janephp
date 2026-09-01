@@ -38,7 +38,7 @@ class ResponseNewCertificateNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('certificate', $data)) {
-            $object->setCertificate($this->denormalizer->denormalize($data['certificate'], \Jane\Generated\DigitalOcean\Model\Certificate::class, 'json', $context));
+            $object->certificate = $this->denormalizer->denormalize($data['certificate'], \Jane\Generated\DigitalOcean\Model\Certificate::class, 'json', $context);
             unset($data['certificate']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseNewCertificateNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('certificate') && null !== $data->getCertificate()) {
-            $dataArray['certificate'] = $data->getCertificate() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCertificate(), 'json', $context));
+        if (array_key_exists('certificate', get_object_vars($data)) && null !== ($data->certificate ?? null)) {
+            $dataArray['certificate'] = ($data->certificate ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->certificate ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

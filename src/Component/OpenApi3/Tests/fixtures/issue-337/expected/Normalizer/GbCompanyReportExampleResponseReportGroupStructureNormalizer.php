@@ -42,7 +42,7 @@ class GbCompanyReportExampleResponseReportGroupStructureNormalizer implements De
             foreach ($data['subsidiaryCompanies'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem::class, 'json', $context);
             }
-            $object->setSubsidiaryCompanies($values);
+            $object->subsidiaryCompanies = $values;
             unset($data['subsidiaryCompanies']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class GbCompanyReportExampleResponseReportGroupStructureNormalizer implements De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('subsidiaryCompanies') && null !== $data->getSubsidiaryCompanies()) {
+        if (array_key_exists('subsidiaryCompanies', get_object_vars($data)) && null !== ($data->subsidiaryCompanies ?? null)) {
             $values = [];
-            foreach ($data->getSubsidiaryCompanies() as $value) {
+            foreach ($data->subsidiaryCompanies ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['subsidiaryCompanies'] = $values;

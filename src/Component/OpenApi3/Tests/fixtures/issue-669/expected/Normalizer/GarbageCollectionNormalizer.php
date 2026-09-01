@@ -38,15 +38,15 @@ class GarbageCollectionNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('registry_name', $data)) {
-            $object->setRegistryName($data['registry_name']);
+            $object->registryName = $data['registry_name'];
             unset($data['registry_name']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -54,7 +54,7 @@ class GarbageCollectionNormalizer implements DenormalizerInterface, NormalizerIn
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -62,15 +62,15 @@ class GarbageCollectionNormalizer implements DenormalizerInterface, NormalizerIn
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         if (\array_key_exists('blobs_deleted', $data)) {
-            $object->setBlobsDeleted($data['blobs_deleted']);
+            $object->blobsDeleted = $data['blobs_deleted'];
             unset($data['blobs_deleted']);
         }
         if (\array_key_exists('freed_bytes', $data)) {
-            $object->setFreedBytes($data['freed_bytes']);
+            $object->freedBytes = $data['freed_bytes'];
             unset($data['freed_bytes']);
         }
         foreach ($data as $key => $value) {
@@ -83,26 +83,26 @@ class GarbageCollectionNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
-        if ($data->isInitialized('registryName') && null !== $data->getRegistryName()) {
-            $dataArray['registry_name'] = $data->getRegistryName();
+        if (array_key_exists('registryName', get_object_vars($data)) && null !== ($data->registryName ?? null)) {
+            $dataArray['registry_name'] = $data->registryName ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('blobsDeleted') && null !== $data->getBlobsDeleted()) {
-            $dataArray['blobs_deleted'] = $data->getBlobsDeleted();
+        if (array_key_exists('blobsDeleted', get_object_vars($data)) && null !== ($data->blobsDeleted ?? null)) {
+            $dataArray['blobs_deleted'] = $data->blobsDeleted ?? null;
         }
-        if ($data->isInitialized('freedBytes') && null !== $data->getFreedBytes()) {
-            $dataArray['freed_bytes'] = $data->getFreedBytes();
+        if (array_key_exists('freedBytes', get_object_vars($data)) && null !== ($data->freedBytes ?? null)) {
+            $dataArray['freed_bytes'] = $data->freedBytes ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

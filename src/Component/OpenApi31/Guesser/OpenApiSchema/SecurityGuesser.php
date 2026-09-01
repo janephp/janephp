@@ -14,7 +14,7 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
 {
     public function supportObject($object): bool
     {
-        return $object instanceof SecurityScheme && \in_array($object->getType(), SecuritySchemeGuess::getAvailableTypes());
+        return $object instanceof SecurityScheme && \in_array($object->type ?? null, SecuritySchemeGuess::getAvailableTypes());
     }
 
     /**
@@ -22,27 +22,27 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        if (!\in_array($object->getType(), [SecuritySchemeGuess::TYPE_HTTP, SecuritySchemeGuess::TYPE_API_KEY])) {
+        if (!\in_array($object->type ?? null, [SecuritySchemeGuess::TYPE_HTTP, SecuritySchemeGuess::TYPE_API_KEY])) {
             return;
         }
 
-        $isHttp = $object->getType() === SecuritySchemeGuess::TYPE_HTTP;
-        $variable = $isHttp ? $name : ($object instanceof EnrichedSecurityScheme ? $object->getName() ?? $name : $name);
+        $isHttp = $object->type === SecuritySchemeGuess::TYPE_HTTP;
+        $variable = $isHttp ? $name : ($object instanceof EnrichedSecurityScheme ? $object->name ?? $name : $name);
 
-        $securitySchemeGuess = new SecuritySchemeGuess($name, $object, $variable, $object->getType());
+        $securitySchemeGuess = new SecuritySchemeGuess($name, $object, $variable, $object->type ?? null);
 
         switch ($securitySchemeGuess->getType()) {
             case SecuritySchemeGuess::TYPE_HTTP:
                 $scheme = SecuritySchemeGuess::SCHEME_BEARER;
-                if ($object instanceof EnrichedSecurityScheme && null !== $object->getScheme()) {
-                    $scheme = $object->getScheme();
+                if ($object instanceof EnrichedSecurityScheme && null !== ($object->scheme ?? null)) {
+                    $scheme = ($object->scheme ?? null);
                 }
                 $scheme = ucfirst(mb_strtolower($scheme));
                 $securitySchemeGuess->setScheme($scheme);
                 break;
             case SecuritySchemeGuess::TYPE_API_KEY:
                 if ($object instanceof EnrichedSecurityScheme) {
-                    $securitySchemeGuess->setIn($object->getIn());
+                    $securitySchemeGuess->setIn($object->in ?? null);
                 }
                 break;
         }

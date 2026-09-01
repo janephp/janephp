@@ -8,37 +8,11 @@ class BusinessProcessCancellationRequestedEvent extends ApplicationEvent impleme
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string|null
      */
-    protected $businessProcessId;
-    /**
-     * @return string|null
-     */
-    public function getBusinessProcessId(): ?string
-    {
-        return $this->businessProcessId;
-    }
-    /**
-     * @param string|null $businessProcessId
-     *
-     * @return self
-     */
-    public function setBusinessProcessId(?string $businessProcessId): self
-    {
-        $this->initialized['businessProcessId'] = true;
-        $this->businessProcessId = $businessProcessId;
-        return $this;
-    }
+    public ?string $businessProcessId;
     public function definedProperties(): array
     {
-        return ['businessProcessId' => ['businessProcessId', 'getBusinessProcessId', 'setBusinessProcessId']];
+        return ['businessProcessId' => 'businessProcessId'];
     }
 }

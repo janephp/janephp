@@ -42,14 +42,14 @@ class DisplayPatternNormalizer implements DenormalizerInterface, NormalizerInter
             if (is_string($data['templateEngine'])) {
                 $value = $data['templateEngine'];
             }
-            $object->setTemplateEngine($value);
+            $object->templateEngine = $value;
         }
         if (\array_key_exists('displayPatternType', $data)) {
             $value_1 = $data['displayPatternType'];
             if (is_string($data['displayPatternType'])) {
                 $value_1 = $data['displayPatternType'];
             }
-            $object->setDisplayPatternType($value_1);
+            $object->displayPatternType = $value_1;
         }
         if (\array_key_exists('templates', $data) && $data['templates'] !== null) {
             $value_2 = $data['templates'];
@@ -60,31 +60,31 @@ class DisplayPatternNormalizer implements DenormalizerInterface, NormalizerInter
                 }
                 $value_2 = $values;
             }
-            $object->setTemplates($value_2);
+            $object->templates = $value_2;
         }
         elseif (\array_key_exists('templates', $data) && $data['templates'] === null) {
-            $object->setTemplates(null);
+            $object->templates = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getTemplateEngine();
-        if (is_string($data->getTemplateEngine())) {
-            $value = $data->getTemplateEngine();
+        $value = $data->templateEngine ?? null;
+        if (is_string($data->templateEngine ?? null)) {
+            $value = $data->templateEngine ?? null;
         }
         $dataArray['templateEngine'] = $value;
-        $value_1 = $data->getDisplayPatternType();
-        if (is_string($data->getDisplayPatternType())) {
-            $value_1 = $data->getDisplayPatternType();
+        $value_1 = $data->displayPatternType ?? null;
+        if (is_string($data->displayPatternType ?? null)) {
+            $value_1 = $data->displayPatternType ?? null;
         }
         $dataArray['displayPatternType'] = $value_1;
-        if ($data->isInitialized('templates') && null !== $data->getTemplates()) {
-            $value_2 = $data->getTemplates();
-            if (is_object($data->getTemplates())) {
+        if (array_key_exists('templates', get_object_vars($data)) && null !== ($data->templates ?? null)) {
+            $value_2 = $data->templates ?? null;
+            if (is_object($data->templates ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getTemplates() as $key => $value_3) {
+                foreach ($data->templates ?? null as $key => $value_3) {
                     $values[$key] = $value_3;
                 }
                 $value_2 = $values;

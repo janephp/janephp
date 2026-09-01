@@ -8,74 +8,20 @@ class GeoPointWithinPolygonCondition extends BusinessRuleCondition implements Ad
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * JSON path to the field
      *
      * @var string|null
      */
-    protected $fieldPath;
+    public ?string $fieldPath;
     /**
      * List of points that form the polygon for the geo fence.
      * Must include at least 3 points.
      *
      * @var list<LatLon>|null
      */
-    protected $polygon;
-    /**
-     * JSON path to the field
-     *
-     * @return string|null
-     */
-    public function getFieldPath(): ?string
-    {
-        return $this->fieldPath;
-    }
-    /**
-     * JSON path to the field
-     *
-     * @param string|null $fieldPath
-     *
-     * @return self
-     */
-    public function setFieldPath(?string $fieldPath): self
-    {
-        $this->initialized['fieldPath'] = true;
-        $this->fieldPath = $fieldPath;
-        return $this;
-    }
-    /**
-     * List of points that form the polygon for the geo fence.
-     * Must include at least 3 points.
-     *
-     * @return list<LatLon>|null
-     */
-    public function getPolygon(): ?array
-    {
-        return $this->polygon;
-    }
-    /**
-    * List of points that form the polygon for the geo fence.
-    Must include at least 3 points.
-    *
-    * @param list<LatLon>|null $polygon
-    *
-    * @return self
-    */
-    public function setPolygon(?array $polygon): self
-    {
-        $this->initialized['polygon'] = true;
-        $this->polygon = $polygon;
-        return $this;
-    }
+    public ?array $polygon;
     public function definedProperties(): array
     {
-        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath'], 'polygon' => ['polygon', 'getPolygon', 'setPolygon']];
+        return ['fieldPath' => 'fieldPath', 'polygon' => 'polygon'];
     }
 }

@@ -38,15 +38,15 @@ class PollOptionNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('position', $data)) {
-            $object->setPosition($data['position']);
+            $object->position = $data['position'];
             unset($data['position']);
         }
         if (\array_key_exists('label', $data)) {
-            $object->setLabel($data['label']);
+            $object->label = $data['label'];
             unset($data['label']);
         }
         if (\array_key_exists('votes', $data)) {
-            $object->setVotes($data['votes']);
+            $object->votes = $data['votes'];
             unset($data['votes']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class PollOptionNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['position'] = $data->getPosition();
-        $dataArray['label'] = $data->getLabel();
-        $dataArray['votes'] = $data->getVotes();
+        $dataArray['position'] = $data->position ?? null;
+        $dataArray['label'] = $data->label ?? null;
+        $dataArray['votes'] = $data->votes ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

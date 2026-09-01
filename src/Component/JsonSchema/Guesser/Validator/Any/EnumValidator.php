@@ -16,7 +16,7 @@ class EnumValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && ((\is_array($object->getType()) ? \in_array('string', $object->getType()) : 'string' === $object->getType()) || null === $object->getType()) && null !== $object->getEnum();
+        return $this->checkObject($object) && ((\is_array($object->type ?? null) ? \in_array('string', $object->type ?? null) : 'string' === ($object->type ?? null)) || null === ($object->type ?? null)) && null !== ($object->enum ?? null);
     }
 
     /**
@@ -26,7 +26,7 @@ class EnumValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(Choice::class, [
-            'choices' => $object->getEnum(),
+            'choices' => ($object->enum ?? null),
             'message' => '"{{ value }}" is not part of the set of possible choices for this field: "{{ choices }}".',
         ]));
     }

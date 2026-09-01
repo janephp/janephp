@@ -41,15 +41,15 @@ class FirewallPendingChangesItemNormalizer implements DenormalizerInterface, Nor
             $data['removing'] = (bool) $data['removing'];
         }
         if (\array_key_exists('droplet_id', $data)) {
-            $object->setDropletId($data['droplet_id']);
+            $object->dropletId = $data['droplet_id'];
             unset($data['droplet_id']);
         }
         if (\array_key_exists('removing', $data)) {
-            $object->setRemoving($data['removing']);
+            $object->removing = $data['removing'];
             unset($data['removing']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         foreach ($data as $key => $value) {
@@ -62,14 +62,14 @@ class FirewallPendingChangesItemNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dropletId') && null !== $data->getDropletId()) {
-            $dataArray['droplet_id'] = $data->getDropletId();
+        if (array_key_exists('dropletId', get_object_vars($data)) && null !== ($data->dropletId ?? null)) {
+            $dataArray['droplet_id'] = $data->dropletId ?? null;
         }
-        if ($data->isInitialized('removing') && null !== $data->getRemoving()) {
-            $dataArray['removing'] = $data->getRemoving();
+        if (array_key_exists('removing', get_object_vars($data)) && null !== ($data->removing ?? null)) {
+            $dataArray['removing'] = $data->removing ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

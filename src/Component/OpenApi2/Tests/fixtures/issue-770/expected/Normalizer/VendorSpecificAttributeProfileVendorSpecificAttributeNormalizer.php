@@ -38,30 +38,30 @@ class VendorSpecificAttributeProfileVendorSpecificAttributeNormalizer implements
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('vendorId', $data)) {
-            $object->setVendorId($data['vendorId']);
+            $object->vendorId = $data['vendorId'];
         }
         if (\array_key_exists('keyId', $data)) {
-            $object->setKeyId($data['keyId']);
+            $object->keyId = $data['keyId'];
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('supportedRadiusProtocol', $data)) {
-            $object->setSupportedRadiusProtocol($data['supportedRadiusProtocol']);
+            $object->supportedRadiusProtocol = $data['supportedRadiusProtocol'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['vendorId'] = $data->getVendorId();
-        $dataArray['keyId'] = $data->getKeyId();
-        $dataArray['value'] = $data->getValue();
-        $dataArray['type'] = $data->getType();
-        $dataArray['supportedRadiusProtocol'] = $data->getSupportedRadiusProtocol();
+        $dataArray['vendorId'] = $data->vendorId ?? null;
+        $dataArray['keyId'] = $data->keyId ?? null;
+        $dataArray['value'] = $data->value ?? null;
+        $dataArray['type'] = $data->type ?? null;
+        $dataArray['supportedRadiusProtocol'] = $data->supportedRadiusProtocol ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

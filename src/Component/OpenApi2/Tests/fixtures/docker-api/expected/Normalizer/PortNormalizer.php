@@ -41,30 +41,30 @@ class PortNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $this->validate($data, new \Docker\Api\Validator\PortConstraint());
         }
         if (\array_key_exists('IP', $data)) {
-            $object->setIP($data['IP']);
+            $object->iP = $data['IP'];
         }
         if (\array_key_exists('PrivatePort', $data)) {
-            $object->setPrivatePort($data['PrivatePort']);
+            $object->privatePort = $data['PrivatePort'];
         }
         if (\array_key_exists('PublicPort', $data)) {
-            $object->setPublicPort($data['PublicPort']);
+            $object->publicPort = $data['PublicPort'];
         }
         if (\array_key_exists('Type', $data)) {
-            $object->setType($data['Type']);
+            $object->type = $data['Type'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iP') && null !== $data->getIP()) {
-            $dataArray['IP'] = $data->getIP();
+        if (array_key_exists('iP', get_object_vars($data)) && null !== ($data->iP ?? null)) {
+            $dataArray['IP'] = $data->iP ?? null;
         }
-        $dataArray['PrivatePort'] = $data->getPrivatePort();
-        if ($data->isInitialized('publicPort') && null !== $data->getPublicPort()) {
-            $dataArray['PublicPort'] = $data->getPublicPort();
+        $dataArray['PrivatePort'] = $data->privatePort ?? null;
+        if (array_key_exists('publicPort', get_object_vars($data)) && null !== ($data->publicPort ?? null)) {
+            $dataArray['PublicPort'] = $data->publicPort ?? null;
         }
-        $dataArray['Type'] = $data->getType();
+        $dataArray['Type'] = $data->type ?? null;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PortConstraint());
         }

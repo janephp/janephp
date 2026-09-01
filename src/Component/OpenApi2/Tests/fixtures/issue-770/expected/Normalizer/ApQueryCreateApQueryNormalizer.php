@@ -113,1073 +113,1073 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
             $data['isDual5gMode'] = (bool) $data['isDual5gMode'];
         }
         if (\array_key_exists('registrationTime', $data)) {
-            $object->setRegistrationTime($data['registrationTime']);
+            $object->registrationTime = $data['registrationTime'];
         }
         if (\array_key_exists('poePortStatus', $data)) {
-            $object->setPoePortStatus($data['poePortStatus']);
+            $object->poePortStatus = $data['poePortStatus'];
         }
         if (\array_key_exists('indoorMapId', $data)) {
-            $object->setIndoorMapId($data['indoorMapId']);
+            $object->indoorMapId = $data['indoorMapId'];
         }
         if (\array_key_exists('channel24G', $data)) {
-            $object->setChannel24G($data['channel24G']);
+            $object->channel24G = $data['channel24G'];
         }
         if (\array_key_exists('channel24gValue', $data)) {
-            $object->setChannel24gValue($data['channel24gValue']);
+            $object->channel24gValue = $data['channel24gValue'];
         }
         if (\array_key_exists('configOverride', $data)) {
-            $object->setConfigOverride($data['configOverride']);
+            $object->configOverride = $data['configOverride'];
         }
         if (\array_key_exists('deviceName', $data)) {
-            $object->setDeviceName($data['deviceName']);
+            $object->deviceName = $data['deviceName'];
         }
         if (\array_key_exists('enabledBonjourGateway', $data)) {
-            $object->setEnabledBonjourGateway($data['enabledBonjourGateway']);
+            $object->enabledBonjourGateway = $data['enabledBonjourGateway'];
         }
         if (\array_key_exists('numClients24G', $data)) {
-            $object->setNumClients24G($data['numClients24G']);
+            $object->numClients24G = $data['numClients24G'];
         }
         if (\array_key_exists('dataBladeName', $data)) {
-            $object->setDataBladeName($data['dataBladeName']);
+            $object->dataBladeName = $data['dataBladeName'];
         }
         if (\array_key_exists('retry24G', $data)) {
-            $object->setRetry24G($data['retry24G']);
+            $object->retry24G = $data['retry24G'];
         }
         if (\array_key_exists('airtime24G', $data)) {
-            $object->setAirtime24G($data['airtime24G']);
+            $object->airtime24G = $data['airtime24G'];
         }
         if (\array_key_exists('noise5G', $data)) {
-            $object->setNoise5G($data['noise5G']);
+            $object->noise5G = $data['noise5G'];
         }
         if (\array_key_exists('noise6G', $data)) {
-            $object->setNoise6G($data['noise6G']);
+            $object->noise6G = $data['noise6G'];
         }
         if (\array_key_exists('model', $data)) {
-            $object->setModel($data['model']);
+            $object->model = $data['model'];
         }
         if (\array_key_exists('numClients', $data)) {
-            $object->setNumClients($data['numClients']);
+            $object->numClients = $data['numClients'];
         }
         if (\array_key_exists('capacity24G', $data)) {
-            $object->setCapacity24G($data['capacity24G']);
+            $object->capacity24G = $data['capacity24G'];
         }
         if (\array_key_exists('firmwareVersion', $data)) {
-            $object->setFirmwareVersion($data['firmwareVersion']);
+            $object->firmwareVersion = $data['firmwareVersion'];
         }
         if (\array_key_exists('provisionMethod', $data)) {
-            $object->setProvisionMethod($data['provisionMethod']);
+            $object->provisionMethod = $data['provisionMethod'];
         }
         if (\array_key_exists('latency24G', $data)) {
-            $object->setLatency24G($data['latency24G']);
+            $object->latency24G = $data['latency24G'];
         }
         if (\array_key_exists('retry5G', $data)) {
-            $object->setRetry5G($data['retry5G']);
+            $object->retry5G = $data['retry5G'];
         }
         if (\array_key_exists('retry6G', $data)) {
-            $object->setRetry6G($data['retry6G']);
+            $object->retry6G = $data['retry6G'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('noise24G', $data)) {
-            $object->setNoise24G($data['noise24G']);
+            $object->noise24G = $data['noise24G'];
         }
         if (\array_key_exists('lastSeen', $data)) {
-            $object->setLastSeen($data['lastSeen']);
+            $object->lastSeen = $data['lastSeen'];
         }
         if (\array_key_exists('configurationStatus', $data)) {
-            $object->setConfigurationStatus($data['configurationStatus']);
+            $object->configurationStatus = $data['configurationStatus'];
         }
         if (\array_key_exists('airtime5G', $data)) {
-            $object->setAirtime5G($data['airtime5G']);
+            $object->airtime5G = $data['airtime5G'];
         }
         if (\array_key_exists('airtime6G', $data)) {
-            $object->setAirtime6G($data['airtime6G']);
+            $object->airtime6G = $data['airtime6G'];
         }
         if (\array_key_exists('alerts', $data)) {
-            $object->setAlerts($data['alerts']);
+            $object->alerts = $data['alerts'];
         }
         if (\array_key_exists('lbsStatus', $data)) {
-            $object->setLbsStatus($data['lbsStatus']);
+            $object->lbsStatus = $data['lbsStatus'];
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
         }
         if (\array_key_exists('numClients5G', $data)) {
-            $object->setNumClients5G($data['numClients5G']);
+            $object->numClients5G = $data['numClients5G'];
         }
         if (\array_key_exists('numClients6G', $data)) {
-            $object->setNumClients6G($data['numClients6G']);
+            $object->numClients6G = $data['numClients6G'];
         }
         if (\array_key_exists('ipv6Address', $data)) {
-            $object->setIpv6Address($data['ipv6Address']);
+            $object->ipv6Address = $data['ipv6Address'];
         }
         if (\array_key_exists('capacity50G', $data)) {
-            $object->setCapacity50G($data['capacity50G']);
+            $object->capacity50G = $data['capacity50G'];
         }
         if (\array_key_exists('capacity6G', $data)) {
-            $object->setCapacity6G($data['capacity6G']);
+            $object->capacity6G = $data['capacity6G'];
         }
         if (\array_key_exists('wlanGroup24Name', $data)) {
-            $object->setWlanGroup24Name($data['wlanGroup24Name']);
+            $object->wlanGroup24Name = $data['wlanGroup24Name'];
         }
         if (\array_key_exists('connectionFailure', $data)) {
-            $object->setConnectionFailure($data['connectionFailure']);
+            $object->connectionFailure = $data['connectionFailure'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('capacity', $data)) {
-            $object->setCapacity($data['capacity']);
+            $object->capacity = $data['capacity'];
         }
         if (\array_key_exists('meshRole', $data)) {
-            $object->setMeshRole($data['meshRole']);
+            $object->meshRole = $data['meshRole'];
         }
         if (\array_key_exists('channel5G', $data)) {
-            $object->setChannel5G($data['channel5G']);
+            $object->channel5G = $data['channel5G'];
         }
         if (\array_key_exists('channel50gValue', $data)) {
-            $object->setChannel50gValue($data['channel50gValue']);
+            $object->channel50gValue = $data['channel50gValue'];
         }
         if (\array_key_exists('channel6G', $data)) {
-            $object->setChannel6G($data['channel6G']);
+            $object->channel6G = $data['channel6G'];
         }
         if (\array_key_exists('channel6gValue', $data)) {
-            $object->setChannel6gValue($data['channel6gValue']);
+            $object->channel6gValue = $data['channel6gValue'];
         }
         if (\array_key_exists('managementVlan', $data)) {
-            $object->setManagementVlan($data['managementVlan']);
+            $object->managementVlan = $data['managementVlan'];
         }
         if (\array_key_exists('wlanGroup6gName', $data)) {
-            $object->setWlanGroup6gName($data['wlanGroup6gName']);
+            $object->wlanGroup6gName = $data['wlanGroup6gName'];
         }
         if (\array_key_exists('wlanGroup50Name', $data)) {
-            $object->setWlanGroup50Name($data['wlanGroup50Name']);
+            $object->wlanGroup50Name = $data['wlanGroup50Name'];
         }
         if (\array_key_exists('wlanGroup24Id', $data)) {
-            $object->setWlanGroup24Id($data['wlanGroup24Id']);
+            $object->wlanGroup24Id = $data['wlanGroup24Id'];
         }
         if (\array_key_exists('controlBladeName', $data)) {
-            $object->setControlBladeName($data['controlBladeName']);
+            $object->controlBladeName = $data['controlBladeName'];
         }
         if (\array_key_exists('zoneName', $data)) {
-            $object->setZoneName($data['zoneName']);
+            $object->zoneName = $data['zoneName'];
         }
         if (\array_key_exists('tx', $data)) {
-            $object->setTx($data['tx']);
+            $object->tx = $data['tx'];
         }
         if (\array_key_exists('rx', $data)) {
-            $object->setRx($data['rx']);
+            $object->rx = $data['rx'];
         }
         if (\array_key_exists('txRx', $data)) {
-            $object->setTxRx($data['txRx']);
+            $object->txRx = $data['txRx'];
         }
         if (\array_key_exists('tx24G', $data)) {
-            $object->setTx24G($data['tx24G']);
+            $object->tx24G = $data['tx24G'];
         }
         if (\array_key_exists('tx50G', $data)) {
-            $object->setTx50G($data['tx50G']);
+            $object->tx50G = $data['tx50G'];
         }
         if (\array_key_exists('tx6G', $data)) {
-            $object->setTx6G($data['tx6G']);
+            $object->tx6G = $data['tx6G'];
         }
         if (\array_key_exists('rx24G', $data)) {
-            $object->setRx24G($data['rx24G']);
+            $object->rx24G = $data['rx24G'];
         }
         if (\array_key_exists('rx50G', $data)) {
-            $object->setRx50G($data['rx50G']);
+            $object->rx50G = $data['rx50G'];
         }
         if (\array_key_exists('rx6G', $data)) {
-            $object->setRx6G($data['rx6G']);
+            $object->rx6G = $data['rx6G'];
         }
         if (\array_key_exists('txRx24G', $data)) {
-            $object->setTxRx24G($data['txRx24G']);
+            $object->txRx24G = $data['txRx24G'];
         }
         if (\array_key_exists('txRx50G', $data)) {
-            $object->setTxRx50G($data['txRx50G']);
+            $object->txRx50G = $data['txRx50G'];
         }
         if (\array_key_exists('txRx6G', $data)) {
-            $object->setTxRx6G($data['txRx6G']);
+            $object->txRx6G = $data['txRx6G'];
         }
         if (\array_key_exists('meshMode', $data)) {
-            $object->setMeshMode($data['meshMode']);
+            $object->meshMode = $data['meshMode'];
         }
         if (\array_key_exists('extPort', $data)) {
-            $object->setExtPort($data['extPort']);
+            $object->extPort = $data['extPort'];
         }
         if (\array_key_exists('administrativeState', $data)) {
-            $object->setAdministrativeState($data['administrativeState']);
+            $object->administrativeState = $data['administrativeState'];
         }
         if (\array_key_exists('apGroupName', $data)) {
-            $object->setApGroupName($data['apGroupName']);
+            $object->apGroupName = $data['apGroupName'];
         }
         if (\array_key_exists('latency50G', $data)) {
-            $object->setLatency50G($data['latency50G']);
+            $object->latency50G = $data['latency50G'];
         }
         if (\array_key_exists('latency6G', $data)) {
-            $object->setLatency6G($data['latency6G']);
+            $object->latency6G = $data['latency6G'];
         }
         if (\array_key_exists('indoorMapXy', $data)) {
-            $object->setIndoorMapXy($this->denormalizer->denormalize($data['indoorMapXy'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQueryIndoorMapXy::class, 'json', $context));
+            $object->indoorMapXy = $this->denormalizer->denormalize($data['indoorMapXy'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQueryIndoorMapXy::class, 'json', $context);
         }
         if (\array_key_exists('apGroupId', $data)) {
-            $object->setApGroupId($data['apGroupId']);
+            $object->apGroupId = $data['apGroupId'];
         }
         if (\array_key_exists('extIp', $data)) {
-            $object->setExtIp($data['extIp']);
+            $object->extIp = $data['extIp'];
         }
         if (\array_key_exists('airtime', $data)) {
-            $object->setAirtime($data['airtime']);
+            $object->airtime = $data['airtime'];
         }
         if (\array_key_exists('provisionStage', $data)) {
-            $object->setProvisionStage($data['provisionStage']);
+            $object->provisionStage = $data['provisionStage'];
         }
         if (\array_key_exists('indoorMapName', $data)) {
-            $object->setIndoorMapName($data['indoorMapName']);
+            $object->indoorMapName = $data['indoorMapName'];
         }
         if (\array_key_exists('indoorMapLocation', $data)) {
-            $object->setIndoorMapLocation($data['indoorMapLocation']);
+            $object->indoorMapLocation = $data['indoorMapLocation'];
         }
         if (\array_key_exists('deviceGps', $data)) {
-            $object->setDeviceGps($data['deviceGps']);
+            $object->deviceGps = $data['deviceGps'];
         }
         if (\array_key_exists('serial', $data)) {
-            $object->setSerial($data['serial']);
+            $object->serial = $data['serial'];
         }
         if (\array_key_exists('location', $data)) {
-            $object->setLocation($data['location']);
+            $object->location = $data['location'];
         }
         if (\array_key_exists('wlanGroup50Id', $data)) {
-            $object->setWlanGroup50Id($data['wlanGroup50Id']);
+            $object->wlanGroup50Id = $data['wlanGroup50Id'];
         }
         if (\array_key_exists('wlanGroup6gId', $data)) {
-            $object->setWlanGroup6gId($data['wlanGroup6gId']);
+            $object->wlanGroup6gId = $data['wlanGroup6gId'];
         }
         if (\array_key_exists('registrationState', $data)) {
-            $object->setRegistrationState($data['registrationState']);
+            $object->registrationState = $data['registrationState'];
         }
         if (\array_key_exists('zoneId', $data)) {
-            $object->setZoneId($data['zoneId']);
+            $object->zoneId = $data['zoneId'];
         }
         if (\array_key_exists('zoneFirmwareVersion', $data)) {
-            $object->setZoneFirmwareVersion($data['zoneFirmwareVersion']);
+            $object->zoneFirmwareVersion = $data['zoneFirmwareVersion'];
         }
         if (\array_key_exists('zoneAffinityProfileName', $data)) {
-            $object->setZoneAffinityProfileName($data['zoneAffinityProfileName']);
+            $object->zoneAffinityProfileName = $data['zoneAffinityProfileName'];
         }
         if (\array_key_exists('connectionStatus', $data)) {
-            $object->setConnectionStatus($data['connectionStatus']);
+            $object->connectionStatus = $data['connectionStatus'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('domainName', $data)) {
-            $object->setDomainName($data['domainName']);
+            $object->domainName = $data['domainName'];
         }
         if (\array_key_exists('partnerDomainId', $data)) {
-            $object->setPartnerDomainId($data['partnerDomainId']);
+            $object->partnerDomainId = $data['partnerDomainId'];
         }
         if (\array_key_exists('dpIp', $data)) {
-            $object->setDpIp($data['dpIp']);
+            $object->dpIp = $data['dpIp'];
         }
         if (\array_key_exists('controlBladeId', $data)) {
-            $object->setControlBladeId($data['controlBladeId']);
+            $object->controlBladeId = $data['controlBladeId'];
         }
         if (\array_key_exists('isCriticalAp', $data)) {
-            $object->setIsCriticalAp($data['isCriticalAp']);
+            $object->isCriticalAp = $data['isCriticalAp'];
         }
         if (\array_key_exists('crashDump', $data)) {
-            $object->setCrashDump($data['crashDump']);
+            $object->crashDump = $data['crashDump'];
         }
         if (\array_key_exists('cableModemSupported', $data)) {
-            $object->setCableModemSupported($data['cableModemSupported']);
+            $object->cableModemSupported = $data['cableModemSupported'];
         }
         if (\array_key_exists('cableModemResetSupported', $data)) {
-            $object->setCableModemResetSupported($data['cableModemResetSupported']);
+            $object->cableModemResetSupported = $data['cableModemResetSupported'];
         }
         if (\array_key_exists('swapInMac', $data)) {
-            $object->setSwapInMac($data['swapInMac']);
+            $object->swapInMac = $data['swapInMac'];
         }
         if (\array_key_exists('swapOutMac', $data)) {
-            $object->setSwapOutMac($data['swapOutMac']);
+            $object->swapOutMac = $data['swapOutMac'];
         }
         if (\array_key_exists('packetCaptureState', $data)) {
-            $object->setPacketCaptureState($data['packetCaptureState']);
+            $object->packetCaptureState = $data['packetCaptureState'];
         }
         if (\array_key_exists('isOverallHealthStatusFlagged', $data)) {
-            $object->setIsOverallHealthStatusFlagged($data['isOverallHealthStatusFlagged']);
+            $object->isOverallHealthStatusFlagged = $data['isOverallHealthStatusFlagged'];
         }
         if (\array_key_exists('isLatency24GFlagged', $data)) {
-            $object->setIsLatency24GFlagged($data['isLatency24GFlagged']);
+            $object->isLatency24GFlagged = $data['isLatency24GFlagged'];
         }
         if (\array_key_exists('isCapacity24GFlagged', $data)) {
-            $object->setIsCapacity24GFlagged($data['isCapacity24GFlagged']);
+            $object->isCapacity24GFlagged = $data['isCapacity24GFlagged'];
         }
         if (\array_key_exists('isConnectionFailure24GFlagged', $data)) {
-            $object->setIsConnectionFailure24GFlagged($data['isConnectionFailure24GFlagged']);
+            $object->isConnectionFailure24GFlagged = $data['isConnectionFailure24GFlagged'];
         }
         if (\array_key_exists('isLatency50GFlagged', $data)) {
-            $object->setIsLatency50GFlagged($data['isLatency50GFlagged']);
+            $object->isLatency50GFlagged = $data['isLatency50GFlagged'];
         }
         if (\array_key_exists('isCapacity50GFlagged', $data)) {
-            $object->setIsCapacity50GFlagged($data['isCapacity50GFlagged']);
+            $object->isCapacity50GFlagged = $data['isCapacity50GFlagged'];
         }
         if (\array_key_exists('isConnectionFailure50GFlagged', $data)) {
-            $object->setIsConnectionFailure50GFlagged($data['isConnectionFailure50GFlagged']);
+            $object->isConnectionFailure50GFlagged = $data['isConnectionFailure50GFlagged'];
         }
         if (\array_key_exists('isLatency6GFlagged', $data)) {
-            $object->setIsLatency6GFlagged($data['isLatency6GFlagged']);
+            $object->isLatency6GFlagged = $data['isLatency6GFlagged'];
         }
         if (\array_key_exists('isCapacity6GFlagged', $data)) {
-            $object->setIsCapacity6GFlagged($data['isCapacity6GFlagged']);
+            $object->isCapacity6GFlagged = $data['isCapacity6GFlagged'];
         }
         if (\array_key_exists('isConnectionFailure6GFlagged', $data)) {
-            $object->setIsConnectionFailure6GFlagged($data['isConnectionFailure6GFlagged']);
+            $object->isConnectionFailure6GFlagged = $data['isConnectionFailure6GFlagged'];
         }
         if (\array_key_exists('isConnectionTotalCountFlagged', $data)) {
-            $object->setIsConnectionTotalCountFlagged($data['isConnectionTotalCountFlagged']);
+            $object->isConnectionTotalCountFlagged = $data['isConnectionTotalCountFlagged'];
         }
         if (\array_key_exists('isConnectionFailureFlagged', $data)) {
-            $object->setIsConnectionFailureFlagged($data['isConnectionFailureFlagged']);
+            $object->isConnectionFailureFlagged = $data['isConnectionFailureFlagged'];
         }
         if (\array_key_exists('isAirtimeUtilization24GFlagged', $data)) {
-            $object->setIsAirtimeUtilization24GFlagged($data['isAirtimeUtilization24GFlagged']);
+            $object->isAirtimeUtilization24GFlagged = $data['isAirtimeUtilization24GFlagged'];
         }
         if (\array_key_exists('isAirtimeUtilization50GFlagged', $data)) {
-            $object->setIsAirtimeUtilization50GFlagged($data['isAirtimeUtilization50GFlagged']);
+            $object->isAirtimeUtilization50GFlagged = $data['isAirtimeUtilization50GFlagged'];
         }
         if (\array_key_exists('isAirtimeUtilization6GFlagged', $data)) {
-            $object->setIsAirtimeUtilization6GFlagged($data['isAirtimeUtilization6GFlagged']);
+            $object->isAirtimeUtilization6GFlagged = $data['isAirtimeUtilization6GFlagged'];
         }
         if (\array_key_exists('eirp24G', $data)) {
-            $object->setEirp24G($data['eirp24G']);
+            $object->eirp24G = $data['eirp24G'];
         }
         if (\array_key_exists('eirp50G', $data)) {
-            $object->setEirp50G($data['eirp50G']);
+            $object->eirp50G = $data['eirp50G'];
         }
         if (\array_key_exists('eirp6G', $data)) {
-            $object->setEirp6G($data['eirp6G']);
+            $object->eirp6G = $data['eirp6G'];
         }
         if (\array_key_exists('supportFips', $data)) {
-            $object->setSupportFips($data['supportFips']);
+            $object->supportFips = $data['supportFips'];
         }
         if (\array_key_exists('fipsEnabled', $data)) {
-            $object->setFipsEnabled($data['fipsEnabled']);
+            $object->fipsEnabled = $data['fipsEnabled'];
         }
         if (\array_key_exists('uptime', $data)) {
-            $object->setUptime($data['uptime']);
+            $object->uptime = $data['uptime'];
         }
         if (\array_key_exists('ipsecSessionTime', $data)) {
-            $object->setIpsecSessionTime($data['ipsecSessionTime']);
+            $object->ipsecSessionTime = $data['ipsecSessionTime'];
         }
         if (\array_key_exists('ipsecTxPkts', $data)) {
-            $object->setIpsecTxPkts($data['ipsecTxPkts']);
+            $object->ipsecTxPkts = $data['ipsecTxPkts'];
         }
         if (\array_key_exists('ipsecRxPkts', $data)) {
-            $object->setIpsecRxPkts($data['ipsecRxPkts']);
+            $object->ipsecRxPkts = $data['ipsecRxPkts'];
         }
         if (\array_key_exists('ipsecTxBytes', $data)) {
-            $object->setIpsecTxBytes($data['ipsecTxBytes']);
+            $object->ipsecTxBytes = $data['ipsecTxBytes'];
         }
         if (\array_key_exists('ipsecRxBytes', $data)) {
-            $object->setIpsecRxBytes($data['ipsecRxBytes']);
+            $object->ipsecRxBytes = $data['ipsecRxBytes'];
         }
         if (\array_key_exists('ipsecTxDropPkts', $data)) {
-            $object->setIpsecTxDropPkts($data['ipsecTxDropPkts']);
+            $object->ipsecTxDropPkts = $data['ipsecTxDropPkts'];
         }
         if (\array_key_exists('ipsecRxDropPkts', $data)) {
-            $object->setIpsecRxDropPkts($data['ipsecRxDropPkts']);
+            $object->ipsecRxDropPkts = $data['ipsecRxDropPkts'];
         }
         if (\array_key_exists('ipsecTxIdleTime', $data)) {
-            $object->setIpsecTxIdleTime($data['ipsecTxIdleTime']);
+            $object->ipsecTxIdleTime = $data['ipsecTxIdleTime'];
         }
         if (\array_key_exists('ipsecRxIdleTime', $data)) {
-            $object->setIpsecRxIdleTime($data['ipsecRxIdleTime']);
+            $object->ipsecRxIdleTime = $data['ipsecRxIdleTime'];
         }
         if (\array_key_exists('ipType', $data)) {
-            $object->setIpType($data['ipType']);
+            $object->ipType = $data['ipType'];
         }
         if (\array_key_exists('ipv6Type', $data)) {
-            $object->setIpv6Type($data['ipv6Type']);
+            $object->ipv6Type = $data['ipv6Type'];
         }
         if (\array_key_exists('cellularWanInterface', $data)) {
-            $object->setCellularWanInterface($data['cellularWanInterface']);
+            $object->cellularWanInterface = $data['cellularWanInterface'];
         }
         if (\array_key_exists('cellularConnectionStatus', $data)) {
-            $object->setCellularConnectionStatus($data['cellularConnectionStatus']);
+            $object->cellularConnectionStatus = $data['cellularConnectionStatus'];
         }
         if (\array_key_exists('cellularSignalStrength', $data)) {
-            $object->setCellularSignalStrength($data['cellularSignalStrength']);
+            $object->cellularSignalStrength = $data['cellularSignalStrength'];
         }
         if (\array_key_exists('cellularIMSISIM0', $data)) {
-            $object->setCellularIMSISIM0($data['cellularIMSISIM0']);
+            $object->cellularIMSISIM0 = $data['cellularIMSISIM0'];
         }
         if (\array_key_exists('cellularIMSISIM1', $data)) {
-            $object->setCellularIMSISIM1($data['cellularIMSISIM1']);
+            $object->cellularIMSISIM1 = $data['cellularIMSISIM1'];
         }
         if (\array_key_exists('cellularICCIDSIM0', $data)) {
-            $object->setCellularICCIDSIM0($data['cellularICCIDSIM0']);
+            $object->cellularICCIDSIM0 = $data['cellularICCIDSIM0'];
         }
         if (\array_key_exists('cellularICCIDSIM1', $data)) {
-            $object->setCellularICCIDSIM1($data['cellularICCIDSIM1']);
+            $object->cellularICCIDSIM1 = $data['cellularICCIDSIM1'];
         }
         if (\array_key_exists('cellularIsSIM0Present', $data)) {
-            $object->setCellularIsSIM0Present($data['cellularIsSIM0Present']);
+            $object->cellularIsSIM0Present = $data['cellularIsSIM0Present'];
         }
         if (\array_key_exists('cellularIsSIM1Present', $data)) {
-            $object->setCellularIsSIM1Present($data['cellularIsSIM1Present']);
+            $object->cellularIsSIM1Present = $data['cellularIsSIM1Present'];
         }
         if (\array_key_exists('cellularTxBytesSIM0', $data)) {
-            $object->setCellularTxBytesSIM0($data['cellularTxBytesSIM0']);
+            $object->cellularTxBytesSIM0 = $data['cellularTxBytesSIM0'];
         }
         if (\array_key_exists('cellularTxBytesSIM1', $data)) {
-            $object->setCellularTxBytesSIM1($data['cellularTxBytesSIM1']);
+            $object->cellularTxBytesSIM1 = $data['cellularTxBytesSIM1'];
         }
         if (\array_key_exists('cellularRxBytesSIM0', $data)) {
-            $object->setCellularRxBytesSIM0($data['cellularRxBytesSIM0']);
+            $object->cellularRxBytesSIM0 = $data['cellularRxBytesSIM0'];
         }
         if (\array_key_exists('cellularRxBytesSIM1', $data)) {
-            $object->setCellularRxBytesSIM1($data['cellularRxBytesSIM1']);
+            $object->cellularRxBytesSIM1 = $data['cellularRxBytesSIM1'];
         }
         if (\array_key_exists('cellularActiveSim', $data)) {
-            $object->setCellularActiveSim($data['cellularActiveSim']);
+            $object->cellularActiveSim = $data['cellularActiveSim'];
         }
         if (\array_key_exists('cellularIPaddress', $data)) {
-            $object->setCellularIPaddress($data['cellularIPaddress']);
+            $object->cellularIPaddress = $data['cellularIPaddress'];
         }
         if (\array_key_exists('cellularSubnetMask', $data)) {
-            $object->setCellularSubnetMask($data['cellularSubnetMask']);
+            $object->cellularSubnetMask = $data['cellularSubnetMask'];
         }
         if (\array_key_exists('cellularDefaultGateway', $data)) {
-            $object->setCellularDefaultGateway($data['cellularDefaultGateway']);
+            $object->cellularDefaultGateway = $data['cellularDefaultGateway'];
         }
         if (\array_key_exists('cellularOperator', $data)) {
-            $object->setCellularOperator($data['cellularOperator']);
+            $object->cellularOperator = $data['cellularOperator'];
         }
         if (\array_key_exists('cellular3G4GChannel', $data)) {
-            $object->setCellular3G4GChannel($data['cellular3G4GChannel']);
+            $object->cellular3G4GChannel = $data['cellular3G4GChannel'];
         }
         if (\array_key_exists('cellularCountry', $data)) {
-            $object->setCellularCountry($data['cellularCountry']);
+            $object->cellularCountry = $data['cellularCountry'];
         }
         if (\array_key_exists('cellularRadioUptime', $data)) {
-            $object->setCellularRadioUptime($data['cellularRadioUptime']);
+            $object->cellularRadioUptime = $data['cellularRadioUptime'];
         }
         if (\array_key_exists('cellularGpsHistory', $data)) {
             $values = [];
             foreach ($data['cellularGpsHistory'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQueryCellularGpsHistoryItem::class, 'json', $context);
             }
-            $object->setCellularGpsHistory($values);
+            $object->cellularGpsHistory = $values;
         }
         if (\array_key_exists('medianTxRadioMCSRate24G', $data)) {
-            $object->setMedianTxRadioMCSRate24G($data['medianTxRadioMCSRate24G']);
+            $object->medianTxRadioMCSRate24G = $data['medianTxRadioMCSRate24G'];
         }
         if (\array_key_exists('medianTxRadioMCSRate50G', $data)) {
-            $object->setMedianTxRadioMCSRate50G($data['medianTxRadioMCSRate50G']);
+            $object->medianTxRadioMCSRate50G = $data['medianTxRadioMCSRate50G'];
         }
         if (\array_key_exists('medianTxRadioMCSRate6G', $data)) {
-            $object->setMedianTxRadioMCSRate6G($data['medianTxRadioMCSRate6G']);
+            $object->medianTxRadioMCSRate6G = $data['medianTxRadioMCSRate6G'];
         }
         if (\array_key_exists('medianRxRadioMCSRate24G', $data)) {
-            $object->setMedianRxRadioMCSRate24G($data['medianRxRadioMCSRate24G']);
+            $object->medianRxRadioMCSRate24G = $data['medianRxRadioMCSRate24G'];
         }
         if (\array_key_exists('medianRxRadioMCSRate50G', $data)) {
-            $object->setMedianRxRadioMCSRate50G($data['medianRxRadioMCSRate50G']);
+            $object->medianRxRadioMCSRate50G = $data['medianRxRadioMCSRate50G'];
         }
         if (\array_key_exists('medianRxRadioMCSRate6G', $data)) {
-            $object->setMedianRxRadioMCSRate6G($data['medianRxRadioMCSRate6G']);
+            $object->medianRxRadioMCSRate6G = $data['medianRxRadioMCSRate6G'];
         }
         if (\array_key_exists('monitoringEnabled', $data)) {
-            $object->setMonitoringEnabled($data['monitoringEnabled']);
+            $object->monitoringEnabled = $data['monitoringEnabled'];
         }
         if (\array_key_exists('txPowerOffset24G', $data)) {
-            $object->setTxPowerOffset24G($data['txPowerOffset24G']);
+            $object->txPowerOffset24G = $data['txPowerOffset24G'];
         }
         if (\array_key_exists('txPowerOffset5G', $data)) {
-            $object->setTxPowerOffset5G($data['txPowerOffset5G']);
+            $object->txPowerOffset5G = $data['txPowerOffset5G'];
         }
         if (\array_key_exists('txPowerOffset6G', $data)) {
-            $object->setTxPowerOffset6G($data['txPowerOffset6G']);
+            $object->txPowerOffset6G = $data['txPowerOffset6G'];
         }
         if (\array_key_exists('rxDesense24G', $data)) {
-            $object->setRxDesense24G($data['rxDesense24G']);
+            $object->rxDesense24G = $data['rxDesense24G'];
         }
         if (\array_key_exists('rxDesense5G', $data)) {
-            $object->setRxDesense5G($data['rxDesense5G']);
+            $object->rxDesense5G = $data['rxDesense5G'];
         }
         if (\array_key_exists('rxDesense6G', $data)) {
-            $object->setRxDesense6G($data['rxDesense6G']);
+            $object->rxDesense6G = $data['rxDesense6G'];
         }
         if (\array_key_exists('cumulativeTx24G', $data)) {
-            $object->setCumulativeTx24G($data['cumulativeTx24G']);
+            $object->cumulativeTx24G = $data['cumulativeTx24G'];
         }
         if (\array_key_exists('cumulativeRx24G', $data)) {
-            $object->setCumulativeRx24G($data['cumulativeRx24G']);
+            $object->cumulativeRx24G = $data['cumulativeRx24G'];
         }
         if (\array_key_exists('cumulativeTxRx24G', $data)) {
-            $object->setCumulativeTxRx24G($data['cumulativeTxRx24G']);
+            $object->cumulativeTxRx24G = $data['cumulativeTxRx24G'];
         }
         if (\array_key_exists('cumulativeTx5G', $data)) {
-            $object->setCumulativeTx5G($data['cumulativeTx5G']);
+            $object->cumulativeTx5G = $data['cumulativeTx5G'];
         }
         if (\array_key_exists('cumulativeRx5G', $data)) {
-            $object->setCumulativeRx5G($data['cumulativeRx5G']);
+            $object->cumulativeRx5G = $data['cumulativeRx5G'];
         }
         if (\array_key_exists('cumulativeTxRx5G', $data)) {
-            $object->setCumulativeTxRx5G($data['cumulativeTxRx5G']);
+            $object->cumulativeTxRx5G = $data['cumulativeTxRx5G'];
         }
         if (\array_key_exists('cumulativeTx6G', $data)) {
-            $object->setCumulativeTx6G($data['cumulativeTx6G']);
+            $object->cumulativeTx6G = $data['cumulativeTx6G'];
         }
         if (\array_key_exists('cumulativeRx6G', $data)) {
-            $object->setCumulativeRx6G($data['cumulativeRx6G']);
+            $object->cumulativeRx6G = $data['cumulativeRx6G'];
         }
         if (\array_key_exists('cumulativeTxRx6G', $data)) {
-            $object->setCumulativeTxRx6G($data['cumulativeTxRx6G']);
+            $object->cumulativeTxRx6G = $data['cumulativeTxRx6G'];
         }
         if (\array_key_exists('isDual5gMode', $data)) {
-            $object->setIsDual5gMode($data['isDual5gMode']);
+            $object->isDual5gMode = $data['isDual5gMode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('registrationTime') && null !== $data->getRegistrationTime()) {
-            $dataArray['registrationTime'] = $data->getRegistrationTime();
+        if (array_key_exists('registrationTime', get_object_vars($data)) && null !== ($data->registrationTime ?? null)) {
+            $dataArray['registrationTime'] = $data->registrationTime ?? null;
         }
-        if ($data->isInitialized('poePortStatus') && null !== $data->getPoePortStatus()) {
-            $dataArray['poePortStatus'] = $data->getPoePortStatus();
+        if (array_key_exists('poePortStatus', get_object_vars($data)) && null !== ($data->poePortStatus ?? null)) {
+            $dataArray['poePortStatus'] = $data->poePortStatus ?? null;
         }
-        if ($data->isInitialized('indoorMapId') && null !== $data->getIndoorMapId()) {
-            $dataArray['indoorMapId'] = $data->getIndoorMapId();
+        if (array_key_exists('indoorMapId', get_object_vars($data)) && null !== ($data->indoorMapId ?? null)) {
+            $dataArray['indoorMapId'] = $data->indoorMapId ?? null;
         }
-        if ($data->isInitialized('channel24G') && null !== $data->getChannel24G()) {
-            $dataArray['channel24G'] = $data->getChannel24G();
+        if (array_key_exists('channel24G', get_object_vars($data)) && null !== ($data->channel24G ?? null)) {
+            $dataArray['channel24G'] = $data->channel24G ?? null;
         }
-        if ($data->isInitialized('channel24gValue') && null !== $data->getChannel24gValue()) {
-            $dataArray['channel24gValue'] = $data->getChannel24gValue();
+        if (array_key_exists('channel24gValue', get_object_vars($data)) && null !== ($data->channel24gValue ?? null)) {
+            $dataArray['channel24gValue'] = $data->channel24gValue ?? null;
         }
-        if ($data->isInitialized('configOverride') && null !== $data->getConfigOverride()) {
-            $dataArray['configOverride'] = $data->getConfigOverride();
+        if (array_key_exists('configOverride', get_object_vars($data)) && null !== ($data->configOverride ?? null)) {
+            $dataArray['configOverride'] = $data->configOverride ?? null;
         }
-        if ($data->isInitialized('deviceName') && null !== $data->getDeviceName()) {
-            $dataArray['deviceName'] = $data->getDeviceName();
+        if (array_key_exists('deviceName', get_object_vars($data)) && null !== ($data->deviceName ?? null)) {
+            $dataArray['deviceName'] = $data->deviceName ?? null;
         }
-        if ($data->isInitialized('enabledBonjourGateway') && null !== $data->getEnabledBonjourGateway()) {
-            $dataArray['enabledBonjourGateway'] = $data->getEnabledBonjourGateway();
+        if (array_key_exists('enabledBonjourGateway', get_object_vars($data)) && null !== ($data->enabledBonjourGateway ?? null)) {
+            $dataArray['enabledBonjourGateway'] = $data->enabledBonjourGateway ?? null;
         }
-        if ($data->isInitialized('numClients24G') && null !== $data->getNumClients24G()) {
-            $dataArray['numClients24G'] = $data->getNumClients24G();
+        if (array_key_exists('numClients24G', get_object_vars($data)) && null !== ($data->numClients24G ?? null)) {
+            $dataArray['numClients24G'] = $data->numClients24G ?? null;
         }
-        if ($data->isInitialized('dataBladeName') && null !== $data->getDataBladeName()) {
-            $dataArray['dataBladeName'] = $data->getDataBladeName();
+        if (array_key_exists('dataBladeName', get_object_vars($data)) && null !== ($data->dataBladeName ?? null)) {
+            $dataArray['dataBladeName'] = $data->dataBladeName ?? null;
         }
-        if ($data->isInitialized('retry24G') && null !== $data->getRetry24G()) {
-            $dataArray['retry24G'] = $data->getRetry24G();
+        if (array_key_exists('retry24G', get_object_vars($data)) && null !== ($data->retry24G ?? null)) {
+            $dataArray['retry24G'] = $data->retry24G ?? null;
         }
-        if ($data->isInitialized('airtime24G') && null !== $data->getAirtime24G()) {
-            $dataArray['airtime24G'] = $data->getAirtime24G();
+        if (array_key_exists('airtime24G', get_object_vars($data)) && null !== ($data->airtime24G ?? null)) {
+            $dataArray['airtime24G'] = $data->airtime24G ?? null;
         }
-        if ($data->isInitialized('noise5G') && null !== $data->getNoise5G()) {
-            $dataArray['noise5G'] = $data->getNoise5G();
+        if (array_key_exists('noise5G', get_object_vars($data)) && null !== ($data->noise5G ?? null)) {
+            $dataArray['noise5G'] = $data->noise5G ?? null;
         }
-        if ($data->isInitialized('noise6G') && null !== $data->getNoise6G()) {
-            $dataArray['noise6G'] = $data->getNoise6G();
+        if (array_key_exists('noise6G', get_object_vars($data)) && null !== ($data->noise6G ?? null)) {
+            $dataArray['noise6G'] = $data->noise6G ?? null;
         }
-        if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $data->getModel();
+        if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
+            $dataArray['model'] = $data->model ?? null;
         }
-        if ($data->isInitialized('numClients') && null !== $data->getNumClients()) {
-            $dataArray['numClients'] = $data->getNumClients();
+        if (array_key_exists('numClients', get_object_vars($data)) && null !== ($data->numClients ?? null)) {
+            $dataArray['numClients'] = $data->numClients ?? null;
         }
-        if ($data->isInitialized('capacity24G') && null !== $data->getCapacity24G()) {
-            $dataArray['capacity24G'] = $data->getCapacity24G();
+        if (array_key_exists('capacity24G', get_object_vars($data)) && null !== ($data->capacity24G ?? null)) {
+            $dataArray['capacity24G'] = $data->capacity24G ?? null;
         }
-        if ($data->isInitialized('firmwareVersion') && null !== $data->getFirmwareVersion()) {
-            $dataArray['firmwareVersion'] = $data->getFirmwareVersion();
+        if (array_key_exists('firmwareVersion', get_object_vars($data)) && null !== ($data->firmwareVersion ?? null)) {
+            $dataArray['firmwareVersion'] = $data->firmwareVersion ?? null;
         }
-        if ($data->isInitialized('provisionMethod') && null !== $data->getProvisionMethod()) {
-            $dataArray['provisionMethod'] = $data->getProvisionMethod();
+        if (array_key_exists('provisionMethod', get_object_vars($data)) && null !== ($data->provisionMethod ?? null)) {
+            $dataArray['provisionMethod'] = $data->provisionMethod ?? null;
         }
-        if ($data->isInitialized('latency24G') && null !== $data->getLatency24G()) {
-            $dataArray['latency24G'] = $data->getLatency24G();
+        if (array_key_exists('latency24G', get_object_vars($data)) && null !== ($data->latency24G ?? null)) {
+            $dataArray['latency24G'] = $data->latency24G ?? null;
         }
-        if ($data->isInitialized('retry5G') && null !== $data->getRetry5G()) {
-            $dataArray['retry5G'] = $data->getRetry5G();
+        if (array_key_exists('retry5G', get_object_vars($data)) && null !== ($data->retry5G ?? null)) {
+            $dataArray['retry5G'] = $data->retry5G ?? null;
         }
-        if ($data->isInitialized('retry6G') && null !== $data->getRetry6G()) {
-            $dataArray['retry6G'] = $data->getRetry6G();
+        if (array_key_exists('retry6G', get_object_vars($data)) && null !== ($data->retry6G ?? null)) {
+            $dataArray['retry6G'] = $data->retry6G ?? null;
         }
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('noise24G') && null !== $data->getNoise24G()) {
-            $dataArray['noise24G'] = $data->getNoise24G();
+        if (array_key_exists('noise24G', get_object_vars($data)) && null !== ($data->noise24G ?? null)) {
+            $dataArray['noise24G'] = $data->noise24G ?? null;
         }
-        if ($data->isInitialized('lastSeen') && null !== $data->getLastSeen()) {
-            $dataArray['lastSeen'] = $data->getLastSeen();
+        if (array_key_exists('lastSeen', get_object_vars($data)) && null !== ($data->lastSeen ?? null)) {
+            $dataArray['lastSeen'] = $data->lastSeen ?? null;
         }
-        if ($data->isInitialized('configurationStatus') && null !== $data->getConfigurationStatus()) {
-            $dataArray['configurationStatus'] = $data->getConfigurationStatus();
+        if (array_key_exists('configurationStatus', get_object_vars($data)) && null !== ($data->configurationStatus ?? null)) {
+            $dataArray['configurationStatus'] = $data->configurationStatus ?? null;
         }
-        if ($data->isInitialized('airtime5G') && null !== $data->getAirtime5G()) {
-            $dataArray['airtime5G'] = $data->getAirtime5G();
+        if (array_key_exists('airtime5G', get_object_vars($data)) && null !== ($data->airtime5G ?? null)) {
+            $dataArray['airtime5G'] = $data->airtime5G ?? null;
         }
-        if ($data->isInitialized('airtime6G') && null !== $data->getAirtime6G()) {
-            $dataArray['airtime6G'] = $data->getAirtime6G();
+        if (array_key_exists('airtime6G', get_object_vars($data)) && null !== ($data->airtime6G ?? null)) {
+            $dataArray['airtime6G'] = $data->airtime6G ?? null;
         }
-        if ($data->isInitialized('alerts') && null !== $data->getAlerts()) {
-            $dataArray['alerts'] = $data->getAlerts();
+        if (array_key_exists('alerts', get_object_vars($data)) && null !== ($data->alerts ?? null)) {
+            $dataArray['alerts'] = $data->alerts ?? null;
         }
-        if ($data->isInitialized('lbsStatus') && null !== $data->getLbsStatus()) {
-            $dataArray['lbsStatus'] = $data->getLbsStatus();
+        if (array_key_exists('lbsStatus', get_object_vars($data)) && null !== ($data->lbsStatus ?? null)) {
+            $dataArray['lbsStatus'] = $data->lbsStatus ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('numClients5G') && null !== $data->getNumClients5G()) {
-            $dataArray['numClients5G'] = $data->getNumClients5G();
+        if (array_key_exists('numClients5G', get_object_vars($data)) && null !== ($data->numClients5G ?? null)) {
+            $dataArray['numClients5G'] = $data->numClients5G ?? null;
         }
-        if ($data->isInitialized('numClients6G') && null !== $data->getNumClients6G()) {
-            $dataArray['numClients6G'] = $data->getNumClients6G();
+        if (array_key_exists('numClients6G', get_object_vars($data)) && null !== ($data->numClients6G ?? null)) {
+            $dataArray['numClients6G'] = $data->numClients6G ?? null;
         }
-        if ($data->isInitialized('ipv6Address') && null !== $data->getIpv6Address()) {
-            $dataArray['ipv6Address'] = $data->getIpv6Address();
+        if (array_key_exists('ipv6Address', get_object_vars($data)) && null !== ($data->ipv6Address ?? null)) {
+            $dataArray['ipv6Address'] = $data->ipv6Address ?? null;
         }
-        if ($data->isInitialized('capacity50G') && null !== $data->getCapacity50G()) {
-            $dataArray['capacity50G'] = $data->getCapacity50G();
+        if (array_key_exists('capacity50G', get_object_vars($data)) && null !== ($data->capacity50G ?? null)) {
+            $dataArray['capacity50G'] = $data->capacity50G ?? null;
         }
-        if ($data->isInitialized('capacity6G') && null !== $data->getCapacity6G()) {
-            $dataArray['capacity6G'] = $data->getCapacity6G();
+        if (array_key_exists('capacity6G', get_object_vars($data)) && null !== ($data->capacity6G ?? null)) {
+            $dataArray['capacity6G'] = $data->capacity6G ?? null;
         }
-        if ($data->isInitialized('wlanGroup24Name') && null !== $data->getWlanGroup24Name()) {
-            $dataArray['wlanGroup24Name'] = $data->getWlanGroup24Name();
+        if (array_key_exists('wlanGroup24Name', get_object_vars($data)) && null !== ($data->wlanGroup24Name ?? null)) {
+            $dataArray['wlanGroup24Name'] = $data->wlanGroup24Name ?? null;
         }
-        if ($data->isInitialized('connectionFailure') && null !== $data->getConnectionFailure()) {
-            $dataArray['connectionFailure'] = $data->getConnectionFailure();
+        if (array_key_exists('connectionFailure', get_object_vars($data)) && null !== ($data->connectionFailure ?? null)) {
+            $dataArray['connectionFailure'] = $data->connectionFailure ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('capacity') && null !== $data->getCapacity()) {
-            $dataArray['capacity'] = $data->getCapacity();
+        if (array_key_exists('capacity', get_object_vars($data)) && null !== ($data->capacity ?? null)) {
+            $dataArray['capacity'] = $data->capacity ?? null;
         }
-        if ($data->isInitialized('meshRole') && null !== $data->getMeshRole()) {
-            $dataArray['meshRole'] = $data->getMeshRole();
+        if (array_key_exists('meshRole', get_object_vars($data)) && null !== ($data->meshRole ?? null)) {
+            $dataArray['meshRole'] = $data->meshRole ?? null;
         }
-        if ($data->isInitialized('channel5G') && null !== $data->getChannel5G()) {
-            $dataArray['channel5G'] = $data->getChannel5G();
+        if (array_key_exists('channel5G', get_object_vars($data)) && null !== ($data->channel5G ?? null)) {
+            $dataArray['channel5G'] = $data->channel5G ?? null;
         }
-        if ($data->isInitialized('channel50gValue') && null !== $data->getChannel50gValue()) {
-            $dataArray['channel50gValue'] = $data->getChannel50gValue();
+        if (array_key_exists('channel50gValue', get_object_vars($data)) && null !== ($data->channel50gValue ?? null)) {
+            $dataArray['channel50gValue'] = $data->channel50gValue ?? null;
         }
-        if ($data->isInitialized('channel6G') && null !== $data->getChannel6G()) {
-            $dataArray['channel6G'] = $data->getChannel6G();
+        if (array_key_exists('channel6G', get_object_vars($data)) && null !== ($data->channel6G ?? null)) {
+            $dataArray['channel6G'] = $data->channel6G ?? null;
         }
-        if ($data->isInitialized('channel6gValue') && null !== $data->getChannel6gValue()) {
-            $dataArray['channel6gValue'] = $data->getChannel6gValue();
+        if (array_key_exists('channel6gValue', get_object_vars($data)) && null !== ($data->channel6gValue ?? null)) {
+            $dataArray['channel6gValue'] = $data->channel6gValue ?? null;
         }
-        if ($data->isInitialized('managementVlan') && null !== $data->getManagementVlan()) {
-            $dataArray['managementVlan'] = $data->getManagementVlan();
+        if (array_key_exists('managementVlan', get_object_vars($data)) && null !== ($data->managementVlan ?? null)) {
+            $dataArray['managementVlan'] = $data->managementVlan ?? null;
         }
-        if ($data->isInitialized('wlanGroup6gName') && null !== $data->getWlanGroup6gName()) {
-            $dataArray['wlanGroup6gName'] = $data->getWlanGroup6gName();
+        if (array_key_exists('wlanGroup6gName', get_object_vars($data)) && null !== ($data->wlanGroup6gName ?? null)) {
+            $dataArray['wlanGroup6gName'] = $data->wlanGroup6gName ?? null;
         }
-        if ($data->isInitialized('wlanGroup50Name') && null !== $data->getWlanGroup50Name()) {
-            $dataArray['wlanGroup50Name'] = $data->getWlanGroup50Name();
+        if (array_key_exists('wlanGroup50Name', get_object_vars($data)) && null !== ($data->wlanGroup50Name ?? null)) {
+            $dataArray['wlanGroup50Name'] = $data->wlanGroup50Name ?? null;
         }
-        if ($data->isInitialized('wlanGroup24Id') && null !== $data->getWlanGroup24Id()) {
-            $dataArray['wlanGroup24Id'] = $data->getWlanGroup24Id();
+        if (array_key_exists('wlanGroup24Id', get_object_vars($data)) && null !== ($data->wlanGroup24Id ?? null)) {
+            $dataArray['wlanGroup24Id'] = $data->wlanGroup24Id ?? null;
         }
-        if ($data->isInitialized('controlBladeName') && null !== $data->getControlBladeName()) {
-            $dataArray['controlBladeName'] = $data->getControlBladeName();
+        if (array_key_exists('controlBladeName', get_object_vars($data)) && null !== ($data->controlBladeName ?? null)) {
+            $dataArray['controlBladeName'] = $data->controlBladeName ?? null;
         }
-        if ($data->isInitialized('zoneName') && null !== $data->getZoneName()) {
-            $dataArray['zoneName'] = $data->getZoneName();
+        if (array_key_exists('zoneName', get_object_vars($data)) && null !== ($data->zoneName ?? null)) {
+            $dataArray['zoneName'] = $data->zoneName ?? null;
         }
-        if ($data->isInitialized('tx') && null !== $data->getTx()) {
-            $dataArray['tx'] = $data->getTx();
+        if (array_key_exists('tx', get_object_vars($data)) && null !== ($data->tx ?? null)) {
+            $dataArray['tx'] = $data->tx ?? null;
         }
-        if ($data->isInitialized('rx') && null !== $data->getRx()) {
-            $dataArray['rx'] = $data->getRx();
+        if (array_key_exists('rx', get_object_vars($data)) && null !== ($data->rx ?? null)) {
+            $dataArray['rx'] = $data->rx ?? null;
         }
-        if ($data->isInitialized('txRx') && null !== $data->getTxRx()) {
-            $dataArray['txRx'] = $data->getTxRx();
+        if (array_key_exists('txRx', get_object_vars($data)) && null !== ($data->txRx ?? null)) {
+            $dataArray['txRx'] = $data->txRx ?? null;
         }
-        if ($data->isInitialized('tx24G') && null !== $data->getTx24G()) {
-            $dataArray['tx24G'] = $data->getTx24G();
+        if (array_key_exists('tx24G', get_object_vars($data)) && null !== ($data->tx24G ?? null)) {
+            $dataArray['tx24G'] = $data->tx24G ?? null;
         }
-        if ($data->isInitialized('tx50G') && null !== $data->getTx50G()) {
-            $dataArray['tx50G'] = $data->getTx50G();
+        if (array_key_exists('tx50G', get_object_vars($data)) && null !== ($data->tx50G ?? null)) {
+            $dataArray['tx50G'] = $data->tx50G ?? null;
         }
-        if ($data->isInitialized('tx6G') && null !== $data->getTx6G()) {
-            $dataArray['tx6G'] = $data->getTx6G();
+        if (array_key_exists('tx6G', get_object_vars($data)) && null !== ($data->tx6G ?? null)) {
+            $dataArray['tx6G'] = $data->tx6G ?? null;
         }
-        if ($data->isInitialized('rx24G') && null !== $data->getRx24G()) {
-            $dataArray['rx24G'] = $data->getRx24G();
+        if (array_key_exists('rx24G', get_object_vars($data)) && null !== ($data->rx24G ?? null)) {
+            $dataArray['rx24G'] = $data->rx24G ?? null;
         }
-        if ($data->isInitialized('rx50G') && null !== $data->getRx50G()) {
-            $dataArray['rx50G'] = $data->getRx50G();
+        if (array_key_exists('rx50G', get_object_vars($data)) && null !== ($data->rx50G ?? null)) {
+            $dataArray['rx50G'] = $data->rx50G ?? null;
         }
-        if ($data->isInitialized('rx6G') && null !== $data->getRx6G()) {
-            $dataArray['rx6G'] = $data->getRx6G();
+        if (array_key_exists('rx6G', get_object_vars($data)) && null !== ($data->rx6G ?? null)) {
+            $dataArray['rx6G'] = $data->rx6G ?? null;
         }
-        if ($data->isInitialized('txRx24G') && null !== $data->getTxRx24G()) {
-            $dataArray['txRx24G'] = $data->getTxRx24G();
+        if (array_key_exists('txRx24G', get_object_vars($data)) && null !== ($data->txRx24G ?? null)) {
+            $dataArray['txRx24G'] = $data->txRx24G ?? null;
         }
-        if ($data->isInitialized('txRx50G') && null !== $data->getTxRx50G()) {
-            $dataArray['txRx50G'] = $data->getTxRx50G();
+        if (array_key_exists('txRx50G', get_object_vars($data)) && null !== ($data->txRx50G ?? null)) {
+            $dataArray['txRx50G'] = $data->txRx50G ?? null;
         }
-        if ($data->isInitialized('txRx6G') && null !== $data->getTxRx6G()) {
-            $dataArray['txRx6G'] = $data->getTxRx6G();
+        if (array_key_exists('txRx6G', get_object_vars($data)) && null !== ($data->txRx6G ?? null)) {
+            $dataArray['txRx6G'] = $data->txRx6G ?? null;
         }
-        if ($data->isInitialized('meshMode') && null !== $data->getMeshMode()) {
-            $dataArray['meshMode'] = $data->getMeshMode();
+        if (array_key_exists('meshMode', get_object_vars($data)) && null !== ($data->meshMode ?? null)) {
+            $dataArray['meshMode'] = $data->meshMode ?? null;
         }
-        if ($data->isInitialized('extPort') && null !== $data->getExtPort()) {
-            $dataArray['extPort'] = $data->getExtPort();
+        if (array_key_exists('extPort', get_object_vars($data)) && null !== ($data->extPort ?? null)) {
+            $dataArray['extPort'] = $data->extPort ?? null;
         }
-        if ($data->isInitialized('administrativeState') && null !== $data->getAdministrativeState()) {
-            $dataArray['administrativeState'] = $data->getAdministrativeState();
+        if (array_key_exists('administrativeState', get_object_vars($data)) && null !== ($data->administrativeState ?? null)) {
+            $dataArray['administrativeState'] = $data->administrativeState ?? null;
         }
-        if ($data->isInitialized('apGroupName') && null !== $data->getApGroupName()) {
-            $dataArray['apGroupName'] = $data->getApGroupName();
+        if (array_key_exists('apGroupName', get_object_vars($data)) && null !== ($data->apGroupName ?? null)) {
+            $dataArray['apGroupName'] = $data->apGroupName ?? null;
         }
-        if ($data->isInitialized('latency50G') && null !== $data->getLatency50G()) {
-            $dataArray['latency50G'] = $data->getLatency50G();
+        if (array_key_exists('latency50G', get_object_vars($data)) && null !== ($data->latency50G ?? null)) {
+            $dataArray['latency50G'] = $data->latency50G ?? null;
         }
-        if ($data->isInitialized('latency6G') && null !== $data->getLatency6G()) {
-            $dataArray['latency6G'] = $data->getLatency6G();
+        if (array_key_exists('latency6G', get_object_vars($data)) && null !== ($data->latency6G ?? null)) {
+            $dataArray['latency6G'] = $data->latency6G ?? null;
         }
-        if ($data->isInitialized('indoorMapXy') && null !== $data->getIndoorMapXy()) {
-            $dataArray['indoorMapXy'] = $data->getIndoorMapXy() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIndoorMapXy(), 'json', $context));
+        if (array_key_exists('indoorMapXy', get_object_vars($data)) && null !== ($data->indoorMapXy ?? null)) {
+            $dataArray['indoorMapXy'] = ($data->indoorMapXy ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->indoorMapXy ?? null, 'json', $context));
         }
-        if ($data->isInitialized('apGroupId') && null !== $data->getApGroupId()) {
-            $dataArray['apGroupId'] = $data->getApGroupId();
+        if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
+            $dataArray['apGroupId'] = $data->apGroupId ?? null;
         }
-        if ($data->isInitialized('extIp') && null !== $data->getExtIp()) {
-            $dataArray['extIp'] = $data->getExtIp();
+        if (array_key_exists('extIp', get_object_vars($data)) && null !== ($data->extIp ?? null)) {
+            $dataArray['extIp'] = $data->extIp ?? null;
         }
-        if ($data->isInitialized('airtime') && null !== $data->getAirtime()) {
-            $dataArray['airtime'] = $data->getAirtime();
+        if (array_key_exists('airtime', get_object_vars($data)) && null !== ($data->airtime ?? null)) {
+            $dataArray['airtime'] = $data->airtime ?? null;
         }
-        if ($data->isInitialized('provisionStage') && null !== $data->getProvisionStage()) {
-            $dataArray['provisionStage'] = $data->getProvisionStage();
+        if (array_key_exists('provisionStage', get_object_vars($data)) && null !== ($data->provisionStage ?? null)) {
+            $dataArray['provisionStage'] = $data->provisionStage ?? null;
         }
-        if ($data->isInitialized('indoorMapName') && null !== $data->getIndoorMapName()) {
-            $dataArray['indoorMapName'] = $data->getIndoorMapName();
+        if (array_key_exists('indoorMapName', get_object_vars($data)) && null !== ($data->indoorMapName ?? null)) {
+            $dataArray['indoorMapName'] = $data->indoorMapName ?? null;
         }
-        if ($data->isInitialized('indoorMapLocation') && null !== $data->getIndoorMapLocation()) {
-            $dataArray['indoorMapLocation'] = $data->getIndoorMapLocation();
+        if (array_key_exists('indoorMapLocation', get_object_vars($data)) && null !== ($data->indoorMapLocation ?? null)) {
+            $dataArray['indoorMapLocation'] = $data->indoorMapLocation ?? null;
         }
-        if ($data->isInitialized('deviceGps') && null !== $data->getDeviceGps()) {
-            $dataArray['deviceGps'] = $data->getDeviceGps();
+        if (array_key_exists('deviceGps', get_object_vars($data)) && null !== ($data->deviceGps ?? null)) {
+            $dataArray['deviceGps'] = $data->deviceGps ?? null;
         }
-        if ($data->isInitialized('serial') && null !== $data->getSerial()) {
-            $dataArray['serial'] = $data->getSerial();
+        if (array_key_exists('serial', get_object_vars($data)) && null !== ($data->serial ?? null)) {
+            $dataArray['serial'] = $data->serial ?? null;
         }
-        if ($data->isInitialized('location') && null !== $data->getLocation()) {
-            $dataArray['location'] = $data->getLocation();
+        if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
+            $dataArray['location'] = $data->location ?? null;
         }
-        if ($data->isInitialized('wlanGroup50Id') && null !== $data->getWlanGroup50Id()) {
-            $dataArray['wlanGroup50Id'] = $data->getWlanGroup50Id();
+        if (array_key_exists('wlanGroup50Id', get_object_vars($data)) && null !== ($data->wlanGroup50Id ?? null)) {
+            $dataArray['wlanGroup50Id'] = $data->wlanGroup50Id ?? null;
         }
-        if ($data->isInitialized('wlanGroup6gId') && null !== $data->getWlanGroup6gId()) {
-            $dataArray['wlanGroup6gId'] = $data->getWlanGroup6gId();
+        if (array_key_exists('wlanGroup6gId', get_object_vars($data)) && null !== ($data->wlanGroup6gId ?? null)) {
+            $dataArray['wlanGroup6gId'] = $data->wlanGroup6gId ?? null;
         }
-        if ($data->isInitialized('registrationState') && null !== $data->getRegistrationState()) {
-            $dataArray['registrationState'] = $data->getRegistrationState();
+        if (array_key_exists('registrationState', get_object_vars($data)) && null !== ($data->registrationState ?? null)) {
+            $dataArray['registrationState'] = $data->registrationState ?? null;
         }
-        if ($data->isInitialized('zoneId') && null !== $data->getZoneId()) {
-            $dataArray['zoneId'] = $data->getZoneId();
+        if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
+            $dataArray['zoneId'] = $data->zoneId ?? null;
         }
-        if ($data->isInitialized('zoneFirmwareVersion') && null !== $data->getZoneFirmwareVersion()) {
-            $dataArray['zoneFirmwareVersion'] = $data->getZoneFirmwareVersion();
+        if (array_key_exists('zoneFirmwareVersion', get_object_vars($data)) && null !== ($data->zoneFirmwareVersion ?? null)) {
+            $dataArray['zoneFirmwareVersion'] = $data->zoneFirmwareVersion ?? null;
         }
-        if ($data->isInitialized('zoneAffinityProfileName') && null !== $data->getZoneAffinityProfileName()) {
-            $dataArray['zoneAffinityProfileName'] = $data->getZoneAffinityProfileName();
+        if (array_key_exists('zoneAffinityProfileName', get_object_vars($data)) && null !== ($data->zoneAffinityProfileName ?? null)) {
+            $dataArray['zoneAffinityProfileName'] = $data->zoneAffinityProfileName ?? null;
         }
-        if ($data->isInitialized('connectionStatus') && null !== $data->getConnectionStatus()) {
-            $dataArray['connectionStatus'] = $data->getConnectionStatus();
+        if (array_key_exists('connectionStatus', get_object_vars($data)) && null !== ($data->connectionStatus ?? null)) {
+            $dataArray['connectionStatus'] = $data->connectionStatus ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('domainName') && null !== $data->getDomainName()) {
-            $dataArray['domainName'] = $data->getDomainName();
+        if (array_key_exists('domainName', get_object_vars($data)) && null !== ($data->domainName ?? null)) {
+            $dataArray['domainName'] = $data->domainName ?? null;
         }
-        if ($data->isInitialized('partnerDomainId') && null !== $data->getPartnerDomainId()) {
-            $dataArray['partnerDomainId'] = $data->getPartnerDomainId();
+        if (array_key_exists('partnerDomainId', get_object_vars($data)) && null !== ($data->partnerDomainId ?? null)) {
+            $dataArray['partnerDomainId'] = $data->partnerDomainId ?? null;
         }
-        if ($data->isInitialized('dpIp') && null !== $data->getDpIp()) {
-            $dataArray['dpIp'] = $data->getDpIp();
+        if (array_key_exists('dpIp', get_object_vars($data)) && null !== ($data->dpIp ?? null)) {
+            $dataArray['dpIp'] = $data->dpIp ?? null;
         }
-        if ($data->isInitialized('controlBladeId') && null !== $data->getControlBladeId()) {
-            $dataArray['controlBladeId'] = $data->getControlBladeId();
+        if (array_key_exists('controlBladeId', get_object_vars($data)) && null !== ($data->controlBladeId ?? null)) {
+            $dataArray['controlBladeId'] = $data->controlBladeId ?? null;
         }
-        if ($data->isInitialized('isCriticalAp') && null !== $data->getIsCriticalAp()) {
-            $dataArray['isCriticalAp'] = $data->getIsCriticalAp();
+        if (array_key_exists('isCriticalAp', get_object_vars($data)) && null !== ($data->isCriticalAp ?? null)) {
+            $dataArray['isCriticalAp'] = $data->isCriticalAp ?? null;
         }
-        if ($data->isInitialized('crashDump') && null !== $data->getCrashDump()) {
-            $dataArray['crashDump'] = $data->getCrashDump();
+        if (array_key_exists('crashDump', get_object_vars($data)) && null !== ($data->crashDump ?? null)) {
+            $dataArray['crashDump'] = $data->crashDump ?? null;
         }
-        if ($data->isInitialized('cableModemSupported') && null !== $data->getCableModemSupported()) {
-            $dataArray['cableModemSupported'] = $data->getCableModemSupported();
+        if (array_key_exists('cableModemSupported', get_object_vars($data)) && null !== ($data->cableModemSupported ?? null)) {
+            $dataArray['cableModemSupported'] = $data->cableModemSupported ?? null;
         }
-        if ($data->isInitialized('cableModemResetSupported') && null !== $data->getCableModemResetSupported()) {
-            $dataArray['cableModemResetSupported'] = $data->getCableModemResetSupported();
+        if (array_key_exists('cableModemResetSupported', get_object_vars($data)) && null !== ($data->cableModemResetSupported ?? null)) {
+            $dataArray['cableModemResetSupported'] = $data->cableModemResetSupported ?? null;
         }
-        if ($data->isInitialized('swapInMac') && null !== $data->getSwapInMac()) {
-            $dataArray['swapInMac'] = $data->getSwapInMac();
+        if (array_key_exists('swapInMac', get_object_vars($data)) && null !== ($data->swapInMac ?? null)) {
+            $dataArray['swapInMac'] = $data->swapInMac ?? null;
         }
-        if ($data->isInitialized('swapOutMac') && null !== $data->getSwapOutMac()) {
-            $dataArray['swapOutMac'] = $data->getSwapOutMac();
+        if (array_key_exists('swapOutMac', get_object_vars($data)) && null !== ($data->swapOutMac ?? null)) {
+            $dataArray['swapOutMac'] = $data->swapOutMac ?? null;
         }
-        if ($data->isInitialized('packetCaptureState') && null !== $data->getPacketCaptureState()) {
-            $dataArray['packetCaptureState'] = $data->getPacketCaptureState();
+        if (array_key_exists('packetCaptureState', get_object_vars($data)) && null !== ($data->packetCaptureState ?? null)) {
+            $dataArray['packetCaptureState'] = $data->packetCaptureState ?? null;
         }
-        if ($data->isInitialized('isOverallHealthStatusFlagged') && null !== $data->getIsOverallHealthStatusFlagged()) {
-            $dataArray['isOverallHealthStatusFlagged'] = $data->getIsOverallHealthStatusFlagged();
+        if (array_key_exists('isOverallHealthStatusFlagged', get_object_vars($data)) && null !== ($data->isOverallHealthStatusFlagged ?? null)) {
+            $dataArray['isOverallHealthStatusFlagged'] = $data->isOverallHealthStatusFlagged ?? null;
         }
-        if ($data->isInitialized('isLatency24GFlagged') && null !== $data->getIsLatency24GFlagged()) {
-            $dataArray['isLatency24GFlagged'] = $data->getIsLatency24GFlagged();
+        if (array_key_exists('isLatency24GFlagged', get_object_vars($data)) && null !== ($data->isLatency24GFlagged ?? null)) {
+            $dataArray['isLatency24GFlagged'] = $data->isLatency24GFlagged ?? null;
         }
-        if ($data->isInitialized('isCapacity24GFlagged') && null !== $data->getIsCapacity24GFlagged()) {
-            $dataArray['isCapacity24GFlagged'] = $data->getIsCapacity24GFlagged();
+        if (array_key_exists('isCapacity24GFlagged', get_object_vars($data)) && null !== ($data->isCapacity24GFlagged ?? null)) {
+            $dataArray['isCapacity24GFlagged'] = $data->isCapacity24GFlagged ?? null;
         }
-        if ($data->isInitialized('isConnectionFailure24GFlagged') && null !== $data->getIsConnectionFailure24GFlagged()) {
-            $dataArray['isConnectionFailure24GFlagged'] = $data->getIsConnectionFailure24GFlagged();
+        if (array_key_exists('isConnectionFailure24GFlagged', get_object_vars($data)) && null !== ($data->isConnectionFailure24GFlagged ?? null)) {
+            $dataArray['isConnectionFailure24GFlagged'] = $data->isConnectionFailure24GFlagged ?? null;
         }
-        if ($data->isInitialized('isLatency50GFlagged') && null !== $data->getIsLatency50GFlagged()) {
-            $dataArray['isLatency50GFlagged'] = $data->getIsLatency50GFlagged();
+        if (array_key_exists('isLatency50GFlagged', get_object_vars($data)) && null !== ($data->isLatency50GFlagged ?? null)) {
+            $dataArray['isLatency50GFlagged'] = $data->isLatency50GFlagged ?? null;
         }
-        if ($data->isInitialized('isCapacity50GFlagged') && null !== $data->getIsCapacity50GFlagged()) {
-            $dataArray['isCapacity50GFlagged'] = $data->getIsCapacity50GFlagged();
+        if (array_key_exists('isCapacity50GFlagged', get_object_vars($data)) && null !== ($data->isCapacity50GFlagged ?? null)) {
+            $dataArray['isCapacity50GFlagged'] = $data->isCapacity50GFlagged ?? null;
         }
-        if ($data->isInitialized('isConnectionFailure50GFlagged') && null !== $data->getIsConnectionFailure50GFlagged()) {
-            $dataArray['isConnectionFailure50GFlagged'] = $data->getIsConnectionFailure50GFlagged();
+        if (array_key_exists('isConnectionFailure50GFlagged', get_object_vars($data)) && null !== ($data->isConnectionFailure50GFlagged ?? null)) {
+            $dataArray['isConnectionFailure50GFlagged'] = $data->isConnectionFailure50GFlagged ?? null;
         }
-        if ($data->isInitialized('isLatency6GFlagged') && null !== $data->getIsLatency6GFlagged()) {
-            $dataArray['isLatency6GFlagged'] = $data->getIsLatency6GFlagged();
+        if (array_key_exists('isLatency6GFlagged', get_object_vars($data)) && null !== ($data->isLatency6GFlagged ?? null)) {
+            $dataArray['isLatency6GFlagged'] = $data->isLatency6GFlagged ?? null;
         }
-        if ($data->isInitialized('isCapacity6GFlagged') && null !== $data->getIsCapacity6GFlagged()) {
-            $dataArray['isCapacity6GFlagged'] = $data->getIsCapacity6GFlagged();
+        if (array_key_exists('isCapacity6GFlagged', get_object_vars($data)) && null !== ($data->isCapacity6GFlagged ?? null)) {
+            $dataArray['isCapacity6GFlagged'] = $data->isCapacity6GFlagged ?? null;
         }
-        if ($data->isInitialized('isConnectionFailure6GFlagged') && null !== $data->getIsConnectionFailure6GFlagged()) {
-            $dataArray['isConnectionFailure6GFlagged'] = $data->getIsConnectionFailure6GFlagged();
+        if (array_key_exists('isConnectionFailure6GFlagged', get_object_vars($data)) && null !== ($data->isConnectionFailure6GFlagged ?? null)) {
+            $dataArray['isConnectionFailure6GFlagged'] = $data->isConnectionFailure6GFlagged ?? null;
         }
-        if ($data->isInitialized('isConnectionTotalCountFlagged') && null !== $data->getIsConnectionTotalCountFlagged()) {
-            $dataArray['isConnectionTotalCountFlagged'] = $data->getIsConnectionTotalCountFlagged();
+        if (array_key_exists('isConnectionTotalCountFlagged', get_object_vars($data)) && null !== ($data->isConnectionTotalCountFlagged ?? null)) {
+            $dataArray['isConnectionTotalCountFlagged'] = $data->isConnectionTotalCountFlagged ?? null;
         }
-        if ($data->isInitialized('isConnectionFailureFlagged') && null !== $data->getIsConnectionFailureFlagged()) {
-            $dataArray['isConnectionFailureFlagged'] = $data->getIsConnectionFailureFlagged();
+        if (array_key_exists('isConnectionFailureFlagged', get_object_vars($data)) && null !== ($data->isConnectionFailureFlagged ?? null)) {
+            $dataArray['isConnectionFailureFlagged'] = $data->isConnectionFailureFlagged ?? null;
         }
-        if ($data->isInitialized('isAirtimeUtilization24GFlagged') && null !== $data->getIsAirtimeUtilization24GFlagged()) {
-            $dataArray['isAirtimeUtilization24GFlagged'] = $data->getIsAirtimeUtilization24GFlagged();
+        if (array_key_exists('isAirtimeUtilization24GFlagged', get_object_vars($data)) && null !== ($data->isAirtimeUtilization24GFlagged ?? null)) {
+            $dataArray['isAirtimeUtilization24GFlagged'] = $data->isAirtimeUtilization24GFlagged ?? null;
         }
-        if ($data->isInitialized('isAirtimeUtilization50GFlagged') && null !== $data->getIsAirtimeUtilization50GFlagged()) {
-            $dataArray['isAirtimeUtilization50GFlagged'] = $data->getIsAirtimeUtilization50GFlagged();
+        if (array_key_exists('isAirtimeUtilization50GFlagged', get_object_vars($data)) && null !== ($data->isAirtimeUtilization50GFlagged ?? null)) {
+            $dataArray['isAirtimeUtilization50GFlagged'] = $data->isAirtimeUtilization50GFlagged ?? null;
         }
-        if ($data->isInitialized('isAirtimeUtilization6GFlagged') && null !== $data->getIsAirtimeUtilization6GFlagged()) {
-            $dataArray['isAirtimeUtilization6GFlagged'] = $data->getIsAirtimeUtilization6GFlagged();
+        if (array_key_exists('isAirtimeUtilization6GFlagged', get_object_vars($data)) && null !== ($data->isAirtimeUtilization6GFlagged ?? null)) {
+            $dataArray['isAirtimeUtilization6GFlagged'] = $data->isAirtimeUtilization6GFlagged ?? null;
         }
-        if ($data->isInitialized('eirp24G') && null !== $data->getEirp24G()) {
-            $dataArray['eirp24G'] = $data->getEirp24G();
+        if (array_key_exists('eirp24G', get_object_vars($data)) && null !== ($data->eirp24G ?? null)) {
+            $dataArray['eirp24G'] = $data->eirp24G ?? null;
         }
-        if ($data->isInitialized('eirp50G') && null !== $data->getEirp50G()) {
-            $dataArray['eirp50G'] = $data->getEirp50G();
+        if (array_key_exists('eirp50G', get_object_vars($data)) && null !== ($data->eirp50G ?? null)) {
+            $dataArray['eirp50G'] = $data->eirp50G ?? null;
         }
-        if ($data->isInitialized('eirp6G') && null !== $data->getEirp6G()) {
-            $dataArray['eirp6G'] = $data->getEirp6G();
+        if (array_key_exists('eirp6G', get_object_vars($data)) && null !== ($data->eirp6G ?? null)) {
+            $dataArray['eirp6G'] = $data->eirp6G ?? null;
         }
-        if ($data->isInitialized('supportFips') && null !== $data->getSupportFips()) {
-            $dataArray['supportFips'] = $data->getSupportFips();
+        if (array_key_exists('supportFips', get_object_vars($data)) && null !== ($data->supportFips ?? null)) {
+            $dataArray['supportFips'] = $data->supportFips ?? null;
         }
-        if ($data->isInitialized('fipsEnabled') && null !== $data->getFipsEnabled()) {
-            $dataArray['fipsEnabled'] = $data->getFipsEnabled();
+        if (array_key_exists('fipsEnabled', get_object_vars($data)) && null !== ($data->fipsEnabled ?? null)) {
+            $dataArray['fipsEnabled'] = $data->fipsEnabled ?? null;
         }
-        if ($data->isInitialized('uptime') && null !== $data->getUptime()) {
-            $dataArray['uptime'] = $data->getUptime();
+        if (array_key_exists('uptime', get_object_vars($data)) && null !== ($data->uptime ?? null)) {
+            $dataArray['uptime'] = $data->uptime ?? null;
         }
-        if ($data->isInitialized('ipsecSessionTime') && null !== $data->getIpsecSessionTime()) {
-            $dataArray['ipsecSessionTime'] = $data->getIpsecSessionTime();
+        if (array_key_exists('ipsecSessionTime', get_object_vars($data)) && null !== ($data->ipsecSessionTime ?? null)) {
+            $dataArray['ipsecSessionTime'] = $data->ipsecSessionTime ?? null;
         }
-        if ($data->isInitialized('ipsecTxPkts') && null !== $data->getIpsecTxPkts()) {
-            $dataArray['ipsecTxPkts'] = $data->getIpsecTxPkts();
+        if (array_key_exists('ipsecTxPkts', get_object_vars($data)) && null !== ($data->ipsecTxPkts ?? null)) {
+            $dataArray['ipsecTxPkts'] = $data->ipsecTxPkts ?? null;
         }
-        if ($data->isInitialized('ipsecRxPkts') && null !== $data->getIpsecRxPkts()) {
-            $dataArray['ipsecRxPkts'] = $data->getIpsecRxPkts();
+        if (array_key_exists('ipsecRxPkts', get_object_vars($data)) && null !== ($data->ipsecRxPkts ?? null)) {
+            $dataArray['ipsecRxPkts'] = $data->ipsecRxPkts ?? null;
         }
-        if ($data->isInitialized('ipsecTxBytes') && null !== $data->getIpsecTxBytes()) {
-            $dataArray['ipsecTxBytes'] = $data->getIpsecTxBytes();
+        if (array_key_exists('ipsecTxBytes', get_object_vars($data)) && null !== ($data->ipsecTxBytes ?? null)) {
+            $dataArray['ipsecTxBytes'] = $data->ipsecTxBytes ?? null;
         }
-        if ($data->isInitialized('ipsecRxBytes') && null !== $data->getIpsecRxBytes()) {
-            $dataArray['ipsecRxBytes'] = $data->getIpsecRxBytes();
+        if (array_key_exists('ipsecRxBytes', get_object_vars($data)) && null !== ($data->ipsecRxBytes ?? null)) {
+            $dataArray['ipsecRxBytes'] = $data->ipsecRxBytes ?? null;
         }
-        if ($data->isInitialized('ipsecTxDropPkts') && null !== $data->getIpsecTxDropPkts()) {
-            $dataArray['ipsecTxDropPkts'] = $data->getIpsecTxDropPkts();
+        if (array_key_exists('ipsecTxDropPkts', get_object_vars($data)) && null !== ($data->ipsecTxDropPkts ?? null)) {
+            $dataArray['ipsecTxDropPkts'] = $data->ipsecTxDropPkts ?? null;
         }
-        if ($data->isInitialized('ipsecRxDropPkts') && null !== $data->getIpsecRxDropPkts()) {
-            $dataArray['ipsecRxDropPkts'] = $data->getIpsecRxDropPkts();
+        if (array_key_exists('ipsecRxDropPkts', get_object_vars($data)) && null !== ($data->ipsecRxDropPkts ?? null)) {
+            $dataArray['ipsecRxDropPkts'] = $data->ipsecRxDropPkts ?? null;
         }
-        if ($data->isInitialized('ipsecTxIdleTime') && null !== $data->getIpsecTxIdleTime()) {
-            $dataArray['ipsecTxIdleTime'] = $data->getIpsecTxIdleTime();
+        if (array_key_exists('ipsecTxIdleTime', get_object_vars($data)) && null !== ($data->ipsecTxIdleTime ?? null)) {
+            $dataArray['ipsecTxIdleTime'] = $data->ipsecTxIdleTime ?? null;
         }
-        if ($data->isInitialized('ipsecRxIdleTime') && null !== $data->getIpsecRxIdleTime()) {
-            $dataArray['ipsecRxIdleTime'] = $data->getIpsecRxIdleTime();
+        if (array_key_exists('ipsecRxIdleTime', get_object_vars($data)) && null !== ($data->ipsecRxIdleTime ?? null)) {
+            $dataArray['ipsecRxIdleTime'] = $data->ipsecRxIdleTime ?? null;
         }
-        if ($data->isInitialized('ipType') && null !== $data->getIpType()) {
-            $dataArray['ipType'] = $data->getIpType();
+        if (array_key_exists('ipType', get_object_vars($data)) && null !== ($data->ipType ?? null)) {
+            $dataArray['ipType'] = $data->ipType ?? null;
         }
-        if ($data->isInitialized('ipv6Type') && null !== $data->getIpv6Type()) {
-            $dataArray['ipv6Type'] = $data->getIpv6Type();
+        if (array_key_exists('ipv6Type', get_object_vars($data)) && null !== ($data->ipv6Type ?? null)) {
+            $dataArray['ipv6Type'] = $data->ipv6Type ?? null;
         }
-        if ($data->isInitialized('cellularWanInterface') && null !== $data->getCellularWanInterface()) {
-            $dataArray['cellularWanInterface'] = $data->getCellularWanInterface();
+        if (array_key_exists('cellularWanInterface', get_object_vars($data)) && null !== ($data->cellularWanInterface ?? null)) {
+            $dataArray['cellularWanInterface'] = $data->cellularWanInterface ?? null;
         }
-        if ($data->isInitialized('cellularConnectionStatus') && null !== $data->getCellularConnectionStatus()) {
-            $dataArray['cellularConnectionStatus'] = $data->getCellularConnectionStatus();
+        if (array_key_exists('cellularConnectionStatus', get_object_vars($data)) && null !== ($data->cellularConnectionStatus ?? null)) {
+            $dataArray['cellularConnectionStatus'] = $data->cellularConnectionStatus ?? null;
         }
-        if ($data->isInitialized('cellularSignalStrength') && null !== $data->getCellularSignalStrength()) {
-            $dataArray['cellularSignalStrength'] = $data->getCellularSignalStrength();
+        if (array_key_exists('cellularSignalStrength', get_object_vars($data)) && null !== ($data->cellularSignalStrength ?? null)) {
+            $dataArray['cellularSignalStrength'] = $data->cellularSignalStrength ?? null;
         }
-        if ($data->isInitialized('cellularIMSISIM0') && null !== $data->getCellularIMSISIM0()) {
-            $dataArray['cellularIMSISIM0'] = $data->getCellularIMSISIM0();
+        if (array_key_exists('cellularIMSISIM0', get_object_vars($data)) && null !== ($data->cellularIMSISIM0 ?? null)) {
+            $dataArray['cellularIMSISIM0'] = $data->cellularIMSISIM0 ?? null;
         }
-        if ($data->isInitialized('cellularIMSISIM1') && null !== $data->getCellularIMSISIM1()) {
-            $dataArray['cellularIMSISIM1'] = $data->getCellularIMSISIM1();
+        if (array_key_exists('cellularIMSISIM1', get_object_vars($data)) && null !== ($data->cellularIMSISIM1 ?? null)) {
+            $dataArray['cellularIMSISIM1'] = $data->cellularIMSISIM1 ?? null;
         }
-        if ($data->isInitialized('cellularICCIDSIM0') && null !== $data->getCellularICCIDSIM0()) {
-            $dataArray['cellularICCIDSIM0'] = $data->getCellularICCIDSIM0();
+        if (array_key_exists('cellularICCIDSIM0', get_object_vars($data)) && null !== ($data->cellularICCIDSIM0 ?? null)) {
+            $dataArray['cellularICCIDSIM0'] = $data->cellularICCIDSIM0 ?? null;
         }
-        if ($data->isInitialized('cellularICCIDSIM1') && null !== $data->getCellularICCIDSIM1()) {
-            $dataArray['cellularICCIDSIM1'] = $data->getCellularICCIDSIM1();
+        if (array_key_exists('cellularICCIDSIM1', get_object_vars($data)) && null !== ($data->cellularICCIDSIM1 ?? null)) {
+            $dataArray['cellularICCIDSIM1'] = $data->cellularICCIDSIM1 ?? null;
         }
-        if ($data->isInitialized('cellularIsSIM0Present') && null !== $data->getCellularIsSIM0Present()) {
-            $dataArray['cellularIsSIM0Present'] = $data->getCellularIsSIM0Present();
+        if (array_key_exists('cellularIsSIM0Present', get_object_vars($data)) && null !== ($data->cellularIsSIM0Present ?? null)) {
+            $dataArray['cellularIsSIM0Present'] = $data->cellularIsSIM0Present ?? null;
         }
-        if ($data->isInitialized('cellularIsSIM1Present') && null !== $data->getCellularIsSIM1Present()) {
-            $dataArray['cellularIsSIM1Present'] = $data->getCellularIsSIM1Present();
+        if (array_key_exists('cellularIsSIM1Present', get_object_vars($data)) && null !== ($data->cellularIsSIM1Present ?? null)) {
+            $dataArray['cellularIsSIM1Present'] = $data->cellularIsSIM1Present ?? null;
         }
-        if ($data->isInitialized('cellularTxBytesSIM0') && null !== $data->getCellularTxBytesSIM0()) {
-            $dataArray['cellularTxBytesSIM0'] = $data->getCellularTxBytesSIM0();
+        if (array_key_exists('cellularTxBytesSIM0', get_object_vars($data)) && null !== ($data->cellularTxBytesSIM0 ?? null)) {
+            $dataArray['cellularTxBytesSIM0'] = $data->cellularTxBytesSIM0 ?? null;
         }
-        if ($data->isInitialized('cellularTxBytesSIM1') && null !== $data->getCellularTxBytesSIM1()) {
-            $dataArray['cellularTxBytesSIM1'] = $data->getCellularTxBytesSIM1();
+        if (array_key_exists('cellularTxBytesSIM1', get_object_vars($data)) && null !== ($data->cellularTxBytesSIM1 ?? null)) {
+            $dataArray['cellularTxBytesSIM1'] = $data->cellularTxBytesSIM1 ?? null;
         }
-        if ($data->isInitialized('cellularRxBytesSIM0') && null !== $data->getCellularRxBytesSIM0()) {
-            $dataArray['cellularRxBytesSIM0'] = $data->getCellularRxBytesSIM0();
+        if (array_key_exists('cellularRxBytesSIM0', get_object_vars($data)) && null !== ($data->cellularRxBytesSIM0 ?? null)) {
+            $dataArray['cellularRxBytesSIM0'] = $data->cellularRxBytesSIM0 ?? null;
         }
-        if ($data->isInitialized('cellularRxBytesSIM1') && null !== $data->getCellularRxBytesSIM1()) {
-            $dataArray['cellularRxBytesSIM1'] = $data->getCellularRxBytesSIM1();
+        if (array_key_exists('cellularRxBytesSIM1', get_object_vars($data)) && null !== ($data->cellularRxBytesSIM1 ?? null)) {
+            $dataArray['cellularRxBytesSIM1'] = $data->cellularRxBytesSIM1 ?? null;
         }
-        if ($data->isInitialized('cellularActiveSim') && null !== $data->getCellularActiveSim()) {
-            $dataArray['cellularActiveSim'] = $data->getCellularActiveSim();
+        if (array_key_exists('cellularActiveSim', get_object_vars($data)) && null !== ($data->cellularActiveSim ?? null)) {
+            $dataArray['cellularActiveSim'] = $data->cellularActiveSim ?? null;
         }
-        if ($data->isInitialized('cellularIPaddress') && null !== $data->getCellularIPaddress()) {
-            $dataArray['cellularIPaddress'] = $data->getCellularIPaddress();
+        if (array_key_exists('cellularIPaddress', get_object_vars($data)) && null !== ($data->cellularIPaddress ?? null)) {
+            $dataArray['cellularIPaddress'] = $data->cellularIPaddress ?? null;
         }
-        if ($data->isInitialized('cellularSubnetMask') && null !== $data->getCellularSubnetMask()) {
-            $dataArray['cellularSubnetMask'] = $data->getCellularSubnetMask();
+        if (array_key_exists('cellularSubnetMask', get_object_vars($data)) && null !== ($data->cellularSubnetMask ?? null)) {
+            $dataArray['cellularSubnetMask'] = $data->cellularSubnetMask ?? null;
         }
-        if ($data->isInitialized('cellularDefaultGateway') && null !== $data->getCellularDefaultGateway()) {
-            $dataArray['cellularDefaultGateway'] = $data->getCellularDefaultGateway();
+        if (array_key_exists('cellularDefaultGateway', get_object_vars($data)) && null !== ($data->cellularDefaultGateway ?? null)) {
+            $dataArray['cellularDefaultGateway'] = $data->cellularDefaultGateway ?? null;
         }
-        if ($data->isInitialized('cellularOperator') && null !== $data->getCellularOperator()) {
-            $dataArray['cellularOperator'] = $data->getCellularOperator();
+        if (array_key_exists('cellularOperator', get_object_vars($data)) && null !== ($data->cellularOperator ?? null)) {
+            $dataArray['cellularOperator'] = $data->cellularOperator ?? null;
         }
-        if ($data->isInitialized('cellular3G4GChannel') && null !== $data->getCellular3G4GChannel()) {
-            $dataArray['cellular3G4GChannel'] = $data->getCellular3G4GChannel();
+        if (array_key_exists('cellular3G4GChannel', get_object_vars($data)) && null !== ($data->cellular3G4GChannel ?? null)) {
+            $dataArray['cellular3G4GChannel'] = $data->cellular3G4GChannel ?? null;
         }
-        if ($data->isInitialized('cellularCountry') && null !== $data->getCellularCountry()) {
-            $dataArray['cellularCountry'] = $data->getCellularCountry();
+        if (array_key_exists('cellularCountry', get_object_vars($data)) && null !== ($data->cellularCountry ?? null)) {
+            $dataArray['cellularCountry'] = $data->cellularCountry ?? null;
         }
-        if ($data->isInitialized('cellularRadioUptime') && null !== $data->getCellularRadioUptime()) {
-            $dataArray['cellularRadioUptime'] = $data->getCellularRadioUptime();
+        if (array_key_exists('cellularRadioUptime', get_object_vars($data)) && null !== ($data->cellularRadioUptime ?? null)) {
+            $dataArray['cellularRadioUptime'] = $data->cellularRadioUptime ?? null;
         }
-        if ($data->isInitialized('cellularGpsHistory') && null !== $data->getCellularGpsHistory()) {
+        if (array_key_exists('cellularGpsHistory', get_object_vars($data)) && null !== ($data->cellularGpsHistory ?? null)) {
             $values = [];
-            foreach ($data->getCellularGpsHistory() as $value) {
+            foreach ($data->cellularGpsHistory ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['cellularGpsHistory'] = $values;
         }
-        if ($data->isInitialized('medianTxRadioMCSRate24G') && null !== $data->getMedianTxRadioMCSRate24G()) {
-            $dataArray['medianTxRadioMCSRate24G'] = $data->getMedianTxRadioMCSRate24G();
+        if (array_key_exists('medianTxRadioMCSRate24G', get_object_vars($data)) && null !== ($data->medianTxRadioMCSRate24G ?? null)) {
+            $dataArray['medianTxRadioMCSRate24G'] = $data->medianTxRadioMCSRate24G ?? null;
         }
-        if ($data->isInitialized('medianTxRadioMCSRate50G') && null !== $data->getMedianTxRadioMCSRate50G()) {
-            $dataArray['medianTxRadioMCSRate50G'] = $data->getMedianTxRadioMCSRate50G();
+        if (array_key_exists('medianTxRadioMCSRate50G', get_object_vars($data)) && null !== ($data->medianTxRadioMCSRate50G ?? null)) {
+            $dataArray['medianTxRadioMCSRate50G'] = $data->medianTxRadioMCSRate50G ?? null;
         }
-        if ($data->isInitialized('medianTxRadioMCSRate6G') && null !== $data->getMedianTxRadioMCSRate6G()) {
-            $dataArray['medianTxRadioMCSRate6G'] = $data->getMedianTxRadioMCSRate6G();
+        if (array_key_exists('medianTxRadioMCSRate6G', get_object_vars($data)) && null !== ($data->medianTxRadioMCSRate6G ?? null)) {
+            $dataArray['medianTxRadioMCSRate6G'] = $data->medianTxRadioMCSRate6G ?? null;
         }
-        if ($data->isInitialized('medianRxRadioMCSRate24G') && null !== $data->getMedianRxRadioMCSRate24G()) {
-            $dataArray['medianRxRadioMCSRate24G'] = $data->getMedianRxRadioMCSRate24G();
+        if (array_key_exists('medianRxRadioMCSRate24G', get_object_vars($data)) && null !== ($data->medianRxRadioMCSRate24G ?? null)) {
+            $dataArray['medianRxRadioMCSRate24G'] = $data->medianRxRadioMCSRate24G ?? null;
         }
-        if ($data->isInitialized('medianRxRadioMCSRate50G') && null !== $data->getMedianRxRadioMCSRate50G()) {
-            $dataArray['medianRxRadioMCSRate50G'] = $data->getMedianRxRadioMCSRate50G();
+        if (array_key_exists('medianRxRadioMCSRate50G', get_object_vars($data)) && null !== ($data->medianRxRadioMCSRate50G ?? null)) {
+            $dataArray['medianRxRadioMCSRate50G'] = $data->medianRxRadioMCSRate50G ?? null;
         }
-        if ($data->isInitialized('medianRxRadioMCSRate6G') && null !== $data->getMedianRxRadioMCSRate6G()) {
-            $dataArray['medianRxRadioMCSRate6G'] = $data->getMedianRxRadioMCSRate6G();
+        if (array_key_exists('medianRxRadioMCSRate6G', get_object_vars($data)) && null !== ($data->medianRxRadioMCSRate6G ?? null)) {
+            $dataArray['medianRxRadioMCSRate6G'] = $data->medianRxRadioMCSRate6G ?? null;
         }
-        if ($data->isInitialized('monitoringEnabled') && null !== $data->getMonitoringEnabled()) {
-            $dataArray['monitoringEnabled'] = $data->getMonitoringEnabled();
+        if (array_key_exists('monitoringEnabled', get_object_vars($data)) && null !== ($data->monitoringEnabled ?? null)) {
+            $dataArray['monitoringEnabled'] = $data->monitoringEnabled ?? null;
         }
-        if ($data->isInitialized('txPowerOffset24G') && null !== $data->getTxPowerOffset24G()) {
-            $dataArray['txPowerOffset24G'] = $data->getTxPowerOffset24G();
+        if (array_key_exists('txPowerOffset24G', get_object_vars($data)) && null !== ($data->txPowerOffset24G ?? null)) {
+            $dataArray['txPowerOffset24G'] = $data->txPowerOffset24G ?? null;
         }
-        if ($data->isInitialized('txPowerOffset5G') && null !== $data->getTxPowerOffset5G()) {
-            $dataArray['txPowerOffset5G'] = $data->getTxPowerOffset5G();
+        if (array_key_exists('txPowerOffset5G', get_object_vars($data)) && null !== ($data->txPowerOffset5G ?? null)) {
+            $dataArray['txPowerOffset5G'] = $data->txPowerOffset5G ?? null;
         }
-        if ($data->isInitialized('txPowerOffset6G') && null !== $data->getTxPowerOffset6G()) {
-            $dataArray['txPowerOffset6G'] = $data->getTxPowerOffset6G();
+        if (array_key_exists('txPowerOffset6G', get_object_vars($data)) && null !== ($data->txPowerOffset6G ?? null)) {
+            $dataArray['txPowerOffset6G'] = $data->txPowerOffset6G ?? null;
         }
-        if ($data->isInitialized('rxDesense24G') && null !== $data->getRxDesense24G()) {
-            $dataArray['rxDesense24G'] = $data->getRxDesense24G();
+        if (array_key_exists('rxDesense24G', get_object_vars($data)) && null !== ($data->rxDesense24G ?? null)) {
+            $dataArray['rxDesense24G'] = $data->rxDesense24G ?? null;
         }
-        if ($data->isInitialized('rxDesense5G') && null !== $data->getRxDesense5G()) {
-            $dataArray['rxDesense5G'] = $data->getRxDesense5G();
+        if (array_key_exists('rxDesense5G', get_object_vars($data)) && null !== ($data->rxDesense5G ?? null)) {
+            $dataArray['rxDesense5G'] = $data->rxDesense5G ?? null;
         }
-        if ($data->isInitialized('rxDesense6G') && null !== $data->getRxDesense6G()) {
-            $dataArray['rxDesense6G'] = $data->getRxDesense6G();
+        if (array_key_exists('rxDesense6G', get_object_vars($data)) && null !== ($data->rxDesense6G ?? null)) {
+            $dataArray['rxDesense6G'] = $data->rxDesense6G ?? null;
         }
-        if ($data->isInitialized('cumulativeTx24G') && null !== $data->getCumulativeTx24G()) {
-            $dataArray['cumulativeTx24G'] = $data->getCumulativeTx24G();
+        if (array_key_exists('cumulativeTx24G', get_object_vars($data)) && null !== ($data->cumulativeTx24G ?? null)) {
+            $dataArray['cumulativeTx24G'] = $data->cumulativeTx24G ?? null;
         }
-        if ($data->isInitialized('cumulativeRx24G') && null !== $data->getCumulativeRx24G()) {
-            $dataArray['cumulativeRx24G'] = $data->getCumulativeRx24G();
+        if (array_key_exists('cumulativeRx24G', get_object_vars($data)) && null !== ($data->cumulativeRx24G ?? null)) {
+            $dataArray['cumulativeRx24G'] = $data->cumulativeRx24G ?? null;
         }
-        if ($data->isInitialized('cumulativeTxRx24G') && null !== $data->getCumulativeTxRx24G()) {
-            $dataArray['cumulativeTxRx24G'] = $data->getCumulativeTxRx24G();
+        if (array_key_exists('cumulativeTxRx24G', get_object_vars($data)) && null !== ($data->cumulativeTxRx24G ?? null)) {
+            $dataArray['cumulativeTxRx24G'] = $data->cumulativeTxRx24G ?? null;
         }
-        if ($data->isInitialized('cumulativeTx5G') && null !== $data->getCumulativeTx5G()) {
-            $dataArray['cumulativeTx5G'] = $data->getCumulativeTx5G();
+        if (array_key_exists('cumulativeTx5G', get_object_vars($data)) && null !== ($data->cumulativeTx5G ?? null)) {
+            $dataArray['cumulativeTx5G'] = $data->cumulativeTx5G ?? null;
         }
-        if ($data->isInitialized('cumulativeRx5G') && null !== $data->getCumulativeRx5G()) {
-            $dataArray['cumulativeRx5G'] = $data->getCumulativeRx5G();
+        if (array_key_exists('cumulativeRx5G', get_object_vars($data)) && null !== ($data->cumulativeRx5G ?? null)) {
+            $dataArray['cumulativeRx5G'] = $data->cumulativeRx5G ?? null;
         }
-        if ($data->isInitialized('cumulativeTxRx5G') && null !== $data->getCumulativeTxRx5G()) {
-            $dataArray['cumulativeTxRx5G'] = $data->getCumulativeTxRx5G();
+        if (array_key_exists('cumulativeTxRx5G', get_object_vars($data)) && null !== ($data->cumulativeTxRx5G ?? null)) {
+            $dataArray['cumulativeTxRx5G'] = $data->cumulativeTxRx5G ?? null;
         }
-        if ($data->isInitialized('cumulativeTx6G') && null !== $data->getCumulativeTx6G()) {
-            $dataArray['cumulativeTx6G'] = $data->getCumulativeTx6G();
+        if (array_key_exists('cumulativeTx6G', get_object_vars($data)) && null !== ($data->cumulativeTx6G ?? null)) {
+            $dataArray['cumulativeTx6G'] = $data->cumulativeTx6G ?? null;
         }
-        if ($data->isInitialized('cumulativeRx6G') && null !== $data->getCumulativeRx6G()) {
-            $dataArray['cumulativeRx6G'] = $data->getCumulativeRx6G();
+        if (array_key_exists('cumulativeRx6G', get_object_vars($data)) && null !== ($data->cumulativeRx6G ?? null)) {
+            $dataArray['cumulativeRx6G'] = $data->cumulativeRx6G ?? null;
         }
-        if ($data->isInitialized('cumulativeTxRx6G') && null !== $data->getCumulativeTxRx6G()) {
-            $dataArray['cumulativeTxRx6G'] = $data->getCumulativeTxRx6G();
+        if (array_key_exists('cumulativeTxRx6G', get_object_vars($data)) && null !== ($data->cumulativeTxRx6G ?? null)) {
+            $dataArray['cumulativeTxRx6G'] = $data->cumulativeTxRx6G ?? null;
         }
-        if ($data->isInitialized('isDual5gMode') && null !== $data->getIsDual5gMode()) {
-            $dataArray['isDual5gMode'] = $data->getIsDual5gMode();
+        if (array_key_exists('isDual5gMode', get_object_vars($data)) && null !== ($data->isDual5gMode ?? null)) {
+            $dataArray['isDual5gMode'] = $data->isDual5gMode ?? null;
         }
         return $dataArray;
     }

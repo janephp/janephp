@@ -8,7 +8,7 @@ class GetMemberBySelector extends \Jane\Component\OpenApi31\Tests\Expected\Runti
     protected $accept;
     /**
      * @param string $selector
-     * @param array $accept Accept content header application/json;schema=member-details|application/json
+     * @param array $accept Accept content header application/json|application/json;schema=member-details
      */
     public function __construct(string $selector, array $accept = [])
     {
@@ -31,7 +31,7 @@ class GetMemberBySelector extends \Jane\Component\OpenApi31\Tests\Expected\Runti
     public function getExtraHeaders(): array
     {
         if (empty($this->accept)) {
-            return ['Accept' => ['application/json;schema=member-details', 'application/json']];
+            return ['Accept' => ['application/json', 'application/json;schema=member-details']];
         }
         return $this->accept;
     }

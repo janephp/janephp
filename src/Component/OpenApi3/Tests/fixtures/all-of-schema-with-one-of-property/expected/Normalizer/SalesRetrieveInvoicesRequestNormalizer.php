@@ -38,23 +38,23 @@ class SalesRetrieveInvoicesRequestNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($this->denormalizer->denormalize($data['filter'], \Jane\Component\OpenApi3\Tests\Expected\Model\SalesRetrieveInvoicesRequestFilter::class, 'json', $context));
+            $object->filter = $this->denormalizer->denormalize($data['filter'], \Jane\Component\OpenApi3\Tests\Expected\Model\SalesRetrieveInvoicesRequestFilter::class, 'json', $context);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
         }
         if (\array_key_exists('discriminator', $data)) {
-            $object->setDiscriminator($data['discriminator']);
+            $object->discriminator = $data['discriminator'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $dataArray['filter'] = ($data->filter ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
         }
-        $dataArray['discriminator'] = $data->getDiscriminator();
+        $dataArray['discriminator'] = $data->discriminator ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

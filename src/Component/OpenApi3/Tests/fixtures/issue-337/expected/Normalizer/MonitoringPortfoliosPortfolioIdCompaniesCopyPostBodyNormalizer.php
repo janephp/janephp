@@ -42,7 +42,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyNormalizer implements 
             foreach ($data['portfolios'] as $value) {
                 $values[] = $value;
             }
-            $object->setPortfolios($values);
+            $object->portfolios = $values;
             unset($data['portfolios']);
         }
         if (\array_key_exists('companies', $data)) {
@@ -50,7 +50,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyNormalizer implements 
             foreach ($data['companies'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem::class, 'json', $context);
             }
-            $object->setCompanies($values_1);
+            $object->companies = $values_1;
             unset($data['companies']);
         }
         foreach ($data as $key => $value_2) {
@@ -63,16 +63,16 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyNormalizer implements 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('portfolios') && null !== $data->getPortfolios()) {
+        if (array_key_exists('portfolios', get_object_vars($data)) && null !== ($data->portfolios ?? null)) {
             $values = [];
-            foreach ($data->getPortfolios() as $value) {
+            foreach ($data->portfolios ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['portfolios'] = $values;
         }
-        if ($data->isInitialized('companies') && null !== $data->getCompanies()) {
+        if (array_key_exists('companies', get_object_vars($data)) && null !== ($data->companies ?? null)) {
             $values_1 = [];
-            foreach ($data->getCompanies() as $value_1) {
+            foreach ($data->companies ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['companies'] = $values_1;

@@ -38,19 +38,19 @@ class NetworkV4Normalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ip_address', $data)) {
-            $object->setIpAddress($data['ip_address']);
+            $object->ipAddress = $data['ip_address'];
             unset($data['ip_address']);
         }
         if (\array_key_exists('netmask', $data)) {
-            $object->setNetmask($data['netmask']);
+            $object->netmask = $data['netmask'];
             unset($data['netmask']);
         }
         if (\array_key_exists('gateway', $data)) {
-            $object->setGateway($data['gateway']);
+            $object->gateway = $data['gateway'];
             unset($data['gateway']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class NetworkV4Normalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ipAddress') && null !== $data->getIpAddress()) {
-            $dataArray['ip_address'] = $data->getIpAddress();
+        if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
+            $dataArray['ip_address'] = $data->ipAddress ?? null;
         }
-        if ($data->isInitialized('netmask') && null !== $data->getNetmask()) {
-            $dataArray['netmask'] = $data->getNetmask();
+        if (array_key_exists('netmask', get_object_vars($data)) && null !== ($data->netmask ?? null)) {
+            $dataArray['netmask'] = $data->netmask ?? null;
         }
-        if ($data->isInitialized('gateway') && null !== $data->getGateway()) {
-            $dataArray['gateway'] = $data->getGateway();
+        if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
+            $dataArray['gateway'] = $data->gateway ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

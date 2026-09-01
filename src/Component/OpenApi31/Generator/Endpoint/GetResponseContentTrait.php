@@ -19,8 +19,8 @@ trait GetResponseContentTrait
         $produces = [];
         $documentOrigin = $context->getCurrentSchema()->getOrigin();
 
-        if ($operation->getOperation()->getResponses()) {
-            foreach ($operation->getOperation()->getResponses() as $response) {
+        if ($operation->getOperation()->responses ?? null) {
+            foreach ($operation->getOperation()->responses ?? null as $response) {
                 if ($response instanceof Reference) {
                     [, $response] = $guessClass->resolve($response, Response::class);
                 }
@@ -40,8 +40,8 @@ trait GetResponseContentTrait
                 }
 
                 /** @var Response $response */
-                if ($response->getContent()) {
-                    foreach ($response->getContent() as $contentType => $content) {
+                if ($response->content ?? null) {
+                    foreach (($response->content ?? null ?? []) as $contentType => $content) {
                         $trimmedContentType = trim($contentType);
                         if ($trimmedContentType !== '' && !\in_array($trimmedContentType, $produces)) {
                             $produces[] = $trimmedContentType;
@@ -50,8 +50,8 @@ trait GetResponseContentTrait
                 }
             }
 
-            if ($operation->getOperation()->getResponses()->getDefault()) {
-                $response = $operation->getOperation()->getResponses()->getDefault();
+            if ($operation->getOperation()->responses->default ?? null) {
+                $response = ($operation->getOperation()->responses->default ?? null);
 
                 if ($response instanceof Reference) {
                     [, $response] = $guessClass->resolve($response, Response::class);
@@ -73,8 +73,8 @@ trait GetResponseContentTrait
                 }
 
                 /** @var Response $response */
-                if ($response instanceof Response && $response->getContent()) {
-                    foreach ($response->getContent() as $contentType => $content) {
+                if ($response instanceof Response && ($response->content ?? null)) {
+                    foreach (($response->content ?? null ?? []) as $contentType => $content) {
                         $trimmedContentType = trim($contentType);
                         if ($trimmedContentType !== '' && !\in_array($trimmedContentType, $produces)) {
                             $produces[] = $trimmedContentType;

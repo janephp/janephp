@@ -59,39 +59,39 @@ class MetadataValuesChangeCommandBaseNormalizer implements DenormalizerInterface
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\MetadataValuesSchemaItemRemoveCommand', $format, $context);
         }
         if (\array_key_exists('schemaId', $data)) {
-            $object->setSchemaId($data['schemaId']);
+            $object->schemaId = $data['schemaId'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'MetadataValuesSchemaUpdateCommand' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'MetadataValuesSchemaUpdateCommand' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'MetadataValuesSchemaUpsertCommand' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'MetadataValuesSchemaUpsertCommand' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'MetadataValuesSchemaRemoveCommand' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'MetadataValuesSchemaRemoveCommand' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'MetadataValuesSchemaReplaceCommand' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'MetadataValuesSchemaReplaceCommand' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'MetadataValuesFieldRemoveCommand' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'MetadataValuesFieldRemoveCommand' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'MetadataValuesSchemaItemAddCommand' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'MetadataValuesSchemaItemAddCommand' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'MetadataValuesSchemaItemRemoveCommand' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'MetadataValuesSchemaItemRemoveCommand' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['schemaId'] = $data->getSchemaId();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['schemaId'] = $data->schemaId ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

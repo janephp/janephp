@@ -41,49 +41,49 @@ class AdministrationActiveDirectoryServerNormalizer implements DenormalizerInter
             $data['tlsEnabled'] = (bool) $data['tlsEnabled'];
         }
         if (\array_key_exists('realm', $data)) {
-            $object->setRealm($data['realm']);
+            $object->realm = $data['realm'];
         }
         if (\array_key_exists('tlsEnabled', $data)) {
-            $object->setTlsEnabled($data['tlsEnabled']);
+            $object->tlsEnabled = $data['tlsEnabled'];
         }
         if (\array_key_exists('cnIdentity', $data)) {
-            $object->setCnIdentity($data['cnIdentity']);
+            $object->cnIdentity = $data['cnIdentity'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('windowsDomainName', $data)) {
-            $object->setWindowsDomainName($data['windowsDomainName']);
+            $object->windowsDomainName = $data['windowsDomainName'];
         }
         if (\array_key_exists('proxyUserPrincipalName', $data)) {
-            $object->setProxyUserPrincipalName($data['proxyUserPrincipalName']);
+            $object->proxyUserPrincipalName = $data['proxyUserPrincipalName'];
         }
         if (\array_key_exists('proxyUserPassword', $data)) {
-            $object->setProxyUserPassword($data['proxyUserPassword']);
+            $object->proxyUserPassword = $data['proxyUserPassword'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['realm'] = $data->getRealm();
-        if ($data->isInitialized('tlsEnabled') && null !== $data->getTlsEnabled()) {
-            $dataArray['tlsEnabled'] = $data->getTlsEnabled();
+        $dataArray['realm'] = $data->realm ?? null;
+        if (array_key_exists('tlsEnabled', get_object_vars($data)) && null !== ($data->tlsEnabled ?? null)) {
+            $dataArray['tlsEnabled'] = $data->tlsEnabled ?? null;
         }
-        if ($data->isInitialized('cnIdentity') && null !== $data->getCnIdentity()) {
-            $dataArray['cnIdentity'] = $data->getCnIdentity();
+        if (array_key_exists('cnIdentity', get_object_vars($data)) && null !== ($data->cnIdentity ?? null)) {
+            $dataArray['cnIdentity'] = $data->cnIdentity ?? null;
         }
-        $dataArray['ip'] = $data->getIp();
-        $dataArray['port'] = $data->getPort();
-        $dataArray['windowsDomainName'] = $data->getWindowsDomainName();
-        if ($data->isInitialized('proxyUserPrincipalName') && null !== $data->getProxyUserPrincipalName()) {
-            $dataArray['proxyUserPrincipalName'] = $data->getProxyUserPrincipalName();
+        $dataArray['ip'] = $data->ip ?? null;
+        $dataArray['port'] = $data->port ?? null;
+        $dataArray['windowsDomainName'] = $data->windowsDomainName ?? null;
+        if (array_key_exists('proxyUserPrincipalName', get_object_vars($data)) && null !== ($data->proxyUserPrincipalName ?? null)) {
+            $dataArray['proxyUserPrincipalName'] = $data->proxyUserPrincipalName ?? null;
         }
-        if ($data->isInitialized('proxyUserPassword') && null !== $data->getProxyUserPassword()) {
-            $dataArray['proxyUserPassword'] = $data->getProxyUserPassword();
+        if (array_key_exists('proxyUserPassword', get_object_vars($data)) && null !== ($data->proxyUserPassword ?? null)) {
+            $dataArray['proxyUserPassword'] = $data->proxyUserPassword ?? null;
         }
         return $dataArray;
     }

@@ -38,19 +38,19 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('unit', $data)) {
-            $object->setUnit($data['unit']);
+            $object->unit = $data['unit'];
             unset($data['unit']);
         }
         if (\array_key_exists('value', $data)) {
@@ -62,7 +62,7 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
             } elseif (is_string($data['value'])) {
                 $value = $data['value'];
             }
-            $object->setValue($value);
+            $object->value = $value;
             unset($data['value']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -70,7 +70,7 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -78,7 +78,7 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         foreach ($data as $key => $value_1) {
@@ -91,23 +91,23 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('unit') && null !== $data->getUnit()) {
-            $dataArray['unit'] = $data->getUnit();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('unit', get_object_vars($data)) && null !== ($data->unit ?? null)) {
+            $dataArray['unit'] = $data->unit ?? null;
         }
-        $value = $data->getValue();
-        if (is_string($data->getValue())) {
-            $value = $data->getValue();
-        } elseif (is_bool($data->getValue())) {
-            $value = $data->getValue();
-        } elseif (is_string($data->getValue())) {
-            $value = $data->getValue();
+        $value = $data->value ?? null;
+        if (is_string($data->value ?? null)) {
+            $value = $data->value ?? null;
+        } elseif (is_bool($data->value ?? null)) {
+            $value = $data->value ?? null;
+        } elseif (is_string($data->value ?? null)) {
+            $value = $data->value ?? null;
         }
         $dataArray['value'] = $value;
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

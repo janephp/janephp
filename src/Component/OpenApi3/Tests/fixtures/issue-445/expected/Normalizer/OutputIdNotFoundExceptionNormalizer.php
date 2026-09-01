@@ -38,79 +38,79 @@ class OutputIdNotFoundExceptionNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceLevel', $data)) {
-            $object->setTraceLevel($data['traceLevel']);
+            $object->traceLevel = $data['traceLevel'];
             unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
-            $object->setTraceId($data['traceId']);
+            $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
-            $object->setTraceId(null);
+            $object->traceId = null;
             unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
-            $object->setTraceJobId($data['traceJobId']);
+            $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
-            $object->setTraceJobId(null);
+            $object->traceJobId = null;
             unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
-            $object->setHttpStatusCode($data['httpStatusCode']);
+            $object->httpStatusCode = $data['httpStatusCode'];
             unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
-            $object->setExceptionMessage($data['exceptionMessage']);
+            $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
-            $object->setExceptionMessage(null);
+            $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
-            $object->setCustomerId($data['customerId']);
+            $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
-            $object->setCustomerId(null);
+            $object->customerId = null;
             unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
-            $object->setCustomerAlias($data['customerAlias']);
+            $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
-            $object->setCustomerAlias(null);
+            $object->customerAlias = null;
             unset($data['customerAlias']);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
-            $object->setUserId($data['userId']);
+            $object->userId = $data['userId'];
             unset($data['userId']);
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
-            $object->setUserId(null);
+            $object->userId = null;
             unset($data['userId']);
         }
         if (\array_key_exists('reference', $data) && $data['reference'] !== null) {
-            $object->setReference($data['reference']);
+            $object->reference = $data['reference'];
             unset($data['reference']);
         }
         elseif (\array_key_exists('reference', $data) && $data['reference'] === null) {
-            $object->setReference(null);
+            $object->reference = null;
             unset($data['reference']);
         }
         if (\array_key_exists('outputId', $data) && $data['outputId'] !== null) {
-            $object->setOutputId($data['outputId']);
+            $object->outputId = $data['outputId'];
             unset($data['outputId']);
         }
         elseif (\array_key_exists('outputId', $data) && $data['outputId'] === null) {
-            $object->setOutputId(null);
+            $object->outputId = null;
             unset($data['outputId']);
         }
         foreach ($data as $key => $value) {
@@ -123,36 +123,36 @@ class OutputIdNotFoundExceptionNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
-            $dataArray['traceLevel'] = $data->getTraceLevel();
+        if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
+            $dataArray['traceLevel'] = $data->traceLevel ?? null;
         }
-        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
-            $dataArray['traceId'] = $data->getTraceId();
+        if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
+            $dataArray['traceId'] = $data->traceId ?? null;
         }
-        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
-            $dataArray['traceJobId'] = $data->getTraceJobId();
+        if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
+            $dataArray['traceJobId'] = $data->traceJobId ?? null;
         }
-        if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
-            $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
+        if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
+            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
         }
-        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
-            $dataArray['exceptionMessage'] = $data->getExceptionMessage();
+        if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
+            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
-            $dataArray['customerId'] = $data->getCustomerId();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('customerId', get_object_vars($data)) && null !== ($data->customerId ?? null)) {
+            $dataArray['customerId'] = $data->customerId ?? null;
         }
-        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
-            $dataArray['customerAlias'] = $data->getCustomerAlias();
+        if (array_key_exists('customerAlias', get_object_vars($data)) && null !== ($data->customerAlias ?? null)) {
+            $dataArray['customerAlias'] = $data->customerAlias ?? null;
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['userId'] = $data->getUserId();
+        if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['userId'] = $data->userId ?? null;
         }
-        if ($data->isInitialized('reference') && null !== $data->getReference()) {
-            $dataArray['reference'] = $data->getReference();
+        if (array_key_exists('reference', get_object_vars($data)) && null !== ($data->reference ?? null)) {
+            $dataArray['reference'] = $data->reference ?? null;
         }
-        if ($data->isInitialized('outputId') && null !== $data->getOutputId()) {
-            $dataArray['outputId'] = $data->getOutputId();
+        if (array_key_exists('outputId', get_object_vars($data)) && null !== ($data->outputId ?? null)) {
+            $dataArray['outputId'] = $data->outputId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

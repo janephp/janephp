@@ -42,37 +42,37 @@ class OutputFormatRenderingSpecificationNormalizer implements DenormalizerInterf
             if (is_array($data['sourceOutputFormats'])) {
                 $value = $this->denormalizer->denormalize($data['sourceOutputFormats'], \PicturePark\API\Model\SourceOutputFormats::class, 'json', $context);
             }
-            $object->setSourceOutputFormats($value);
+            $object->sourceOutputFormats = $value;
         }
         elseif (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] === null) {
-            $object->setSourceOutputFormats(null);
+            $object->sourceOutputFormats = null;
         }
         if (\array_key_exists('format', $data) && $data['format'] !== null) {
             $value_1 = $data['format'];
             if (is_array($data['format']) and \array_key_exists('kind', $data['format'])) {
                 $value_1 = $this->denormalizer->denormalize($data['format'], \PicturePark\API\Model\FormatBase::class, 'json', $context);
             }
-            $object->setFormat($value_1);
+            $object->format = $value_1;
         }
         elseif (\array_key_exists('format', $data) && $data['format'] === null) {
-            $object->setFormat(null);
+            $object->format = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sourceOutputFormats') && null !== $data->getSourceOutputFormats()) {
-            $value = $data->getSourceOutputFormats();
-            if (is_object($data->getSourceOutputFormats())) {
-                $value = $data->getSourceOutputFormats() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getSourceOutputFormats(), 'json', $context));
+        if (array_key_exists('sourceOutputFormats', get_object_vars($data)) && null !== ($data->sourceOutputFormats ?? null)) {
+            $value = $data->sourceOutputFormats ?? null;
+            if (is_object($data->sourceOutputFormats ?? null)) {
+                $value = ($data->sourceOutputFormats ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->sourceOutputFormats ?? null, 'json', $context));
             }
             $dataArray['sourceOutputFormats'] = $value;
         }
-        if ($data->isInitialized('format') && null !== $data->getFormat()) {
-            $value_1 = $data->getFormat();
-            if (is_object($data->getFormat())) {
-                $value_1 = $data->getFormat() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFormat(), 'json', $context));
+        if (array_key_exists('format', get_object_vars($data)) && null !== ($data->format ?? null)) {
+            $value_1 = $data->format ?? null;
+            if (is_object($data->format ?? null)) {
+                $value_1 = ($data->format ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->format ?? null, 'json', $context));
             }
             $dataArray['format'] = $value_1;
         }

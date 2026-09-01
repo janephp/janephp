@@ -44,58 +44,58 @@ class ProfileCreateAuthenticationProfileNormalizer implements DenormalizerInterf
             $data['h20SuppportEnabled'] = (bool) $data['h20SuppportEnabled'];
         }
         if (\array_key_exists('mvnoId', $data)) {
-            $object->setMvnoId($data['mvnoId']);
+            $object->mvnoId = $data['mvnoId'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('gppSuppportEnabled', $data)) {
-            $object->setGppSuppportEnabled($data['gppSuppportEnabled']);
+            $object->gppSuppportEnabled = $data['gppSuppportEnabled'];
         }
         if (\array_key_exists('h20SuppportEnabled', $data)) {
-            $object->setH20SuppportEnabled($data['h20SuppportEnabled']);
+            $object->h20SuppportEnabled = $data['h20SuppportEnabled'];
         }
         if (\array_key_exists('ttgCommonSetting', $data)) {
-            $object->setTtgCommonSetting($this->denormalizer->denormalize($data['ttgCommonSetting'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileTtgCommonSetting::class, 'json', $context));
+            $object->ttgCommonSetting = $this->denormalizer->denormalize($data['ttgCommonSetting'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileTtgCommonSetting::class, 'json', $context);
         }
         if (\array_key_exists('realmMappings', $data)) {
             $values = [];
             foreach ($data['realmMappings'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRealmAuthServiceMapping::class, 'json', $context);
             }
-            $object->setRealmMappings($values);
+            $object->realmMappings = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mvnoId') && null !== $data->getMvnoId()) {
-            $dataArray['mvnoId'] = $data->getMvnoId();
+        if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
+            $dataArray['mvnoId'] = $data->mvnoId ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['gppSuppportEnabled'] = $data->getGppSuppportEnabled();
-        if ($data->isInitialized('h20SuppportEnabled') && null !== $data->getH20SuppportEnabled()) {
-            $dataArray['h20SuppportEnabled'] = $data->getH20SuppportEnabled();
+        $dataArray['gppSuppportEnabled'] = $data->gppSuppportEnabled ?? null;
+        if (array_key_exists('h20SuppportEnabled', get_object_vars($data)) && null !== ($data->h20SuppportEnabled ?? null)) {
+            $dataArray['h20SuppportEnabled'] = $data->h20SuppportEnabled ?? null;
         }
-        if ($data->isInitialized('ttgCommonSetting') && null !== $data->getTtgCommonSetting()) {
-            $dataArray['ttgCommonSetting'] = $data->getTtgCommonSetting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTtgCommonSetting(), 'json', $context));
+        if (array_key_exists('ttgCommonSetting', get_object_vars($data)) && null !== ($data->ttgCommonSetting ?? null)) {
+            $dataArray['ttgCommonSetting'] = ($data->ttgCommonSetting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ttgCommonSetting ?? null, 'json', $context));
         }
-        if ($data->isInitialized('realmMappings') && null !== $data->getRealmMappings()) {
+        if (array_key_exists('realmMappings', get_object_vars($data)) && null !== ($data->realmMappings ?? null)) {
             $values = [];
-            foreach ($data->getRealmMappings() as $value) {
+            foreach ($data->realmMappings ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['realmMappings'] = $values;

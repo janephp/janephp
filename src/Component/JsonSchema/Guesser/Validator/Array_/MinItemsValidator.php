@@ -16,7 +16,7 @@ class MinItemsValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && (\is_array($object->getType()) ? \in_array('array', $object->getType()) : 'array' === $object->getType()) && null !== $object->getMinItems();
+        return $this->checkObject($object) && (\is_array($object->type ?? null) ? \in_array('array', $object->type ?? null) : 'array' === ($object->type ?? null)) && null !== ($object->minItems ?? null);
     }
 
     /**
@@ -26,7 +26,7 @@ class MinItemsValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(Count::class, [
-            'min' => $object->getMinItems(),
+            'min' => ($object->minItems ?? null),
             'minMessage' => 'This array has not enough values. It should have {{ limit }} values or more.',
         ]));
     }

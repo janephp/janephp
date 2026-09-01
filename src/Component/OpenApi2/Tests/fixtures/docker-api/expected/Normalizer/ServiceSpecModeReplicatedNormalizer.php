@@ -41,15 +41,15 @@ class ServiceSpecModeReplicatedNormalizer implements DenormalizerInterface, Norm
             $this->validate($data, new \Docker\Api\Validator\ServiceSpecModeReplicatedConstraint());
         }
         if (\array_key_exists('Replicas', $data)) {
-            $object->setReplicas($data['Replicas']);
+            $object->replicas = $data['Replicas'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('replicas') && null !== $data->getReplicas()) {
-            $dataArray['Replicas'] = $data->getReplicas();
+        if (array_key_exists('replicas', get_object_vars($data)) && null !== ($data->replicas ?? null)) {
+            $dataArray['Replicas'] = $data->replicas ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceSpecModeReplicatedConstraint());

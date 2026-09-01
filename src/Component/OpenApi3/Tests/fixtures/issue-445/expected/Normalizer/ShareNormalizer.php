@@ -41,76 +41,76 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['isReadOnly'] = (bool) $data['isReadOnly'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+            $object->name = null;
         }
         if (\array_key_exists('contentIds', $data)) {
             $values = [];
             foreach ($data['contentIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setContentIds($values);
+            $object->contentIds = $values;
         }
         if (\array_key_exists('audit', $data)) {
             $value_1 = $data['audit'];
             if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
                 $value_1 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
             }
-            $object->setAudit($value_1);
+            $object->audit = $value_1;
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']);
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['expirationDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setExpirationDate($date);
+            $object->expirationDate = $date;
         }
         elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
-            $object->setExpirationDate(null);
+            $object->expirationDate = null;
         }
         if (\array_key_exists('shareType', $data)) {
             $value_2 = $data['shareType'];
             if (is_string($data['shareType'])) {
                 $value_2 = $data['shareType'];
             }
-            $object->setShareType($value_2);
+            $object->shareType = $value_2;
         }
         if (\array_key_exists('isReadOnly', $data)) {
-            $object->setIsReadOnly($data['isReadOnly']);
+            $object->isReadOnly = $data['isReadOnly'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        $dataArray['id'] = $data->id ?? null;
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
         $values = [];
-        foreach ($data->getContentIds() as $value) {
+        foreach ($data->contentIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;
-        $value_1 = $data->getAudit();
-        if (is_object($data->getAudit())) {
-            $value_1 = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+        $value_1 = $data->audit ?? null;
+        if (is_object($data->audit ?? null)) {
+            $value_1 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
         }
         $dataArray['audit'] = $value_1;
-        if ($data->isInitialized('expirationDate') && null !== $data->getExpirationDate()) {
-            $dataArray['expirationDate'] = $data->getExpirationDate()?->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {
+            $dataArray['expirationDate'] = ($data->expirationDate ?? null)?->format('Y-m-d\TH:i:sP');
         }
-        $value_2 = $data->getShareType();
-        if (is_string($data->getShareType())) {
-            $value_2 = $data->getShareType();
+        $value_2 = $data->shareType ?? null;
+        if (is_string($data->shareType ?? null)) {
+            $value_2 = $data->shareType ?? null;
         }
         $dataArray['shareType'] = $value_2;
-        $dataArray['isReadOnly'] = $data->getIsReadOnly();
+        $dataArray['isReadOnly'] = $data->isReadOnly ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

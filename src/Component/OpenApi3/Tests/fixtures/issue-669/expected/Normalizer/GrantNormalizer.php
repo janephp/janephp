@@ -38,11 +38,11 @@ class GrantNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('bucket', $data)) {
-            $object->setBucket($data['bucket']);
+            $object->bucket = $data['bucket'];
             unset($data['bucket']);
         }
         if (\array_key_exists('permission', $data)) {
-            $object->setPermission($data['permission']);
+            $object->permission = $data['permission'];
             unset($data['permission']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class GrantNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['bucket'] = $data->getBucket();
-        $dataArray['permission'] = $data->getPermission();
+        $dataArray['bucket'] = $data->bucket ?? null;
+        $dataArray['permission'] = $data->permission ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

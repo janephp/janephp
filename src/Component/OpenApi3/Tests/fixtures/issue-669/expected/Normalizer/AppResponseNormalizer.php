@@ -38,7 +38,7 @@ class AppResponseNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('app', $data)) {
-            $object->setApp($this->denormalizer->denormalize($data['app'], \Jane\Generated\DigitalOcean\Model\App::class, 'json', $context));
+            $object->app = $this->denormalizer->denormalize($data['app'], \Jane\Generated\DigitalOcean\Model\App::class, 'json', $context);
             unset($data['app']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppResponseNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('app') && null !== $data->getApp()) {
-            $dataArray['app'] = $data->getApp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getApp(), 'json', $context));
+        if (array_key_exists('app', get_object_vars($data)) && null !== ($data->app ?? null)) {
+            $dataArray['app'] = ($data->app ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->app ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

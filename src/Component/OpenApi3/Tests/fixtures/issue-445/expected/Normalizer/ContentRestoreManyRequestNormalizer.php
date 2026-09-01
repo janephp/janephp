@@ -45,10 +45,10 @@ class ContentRestoreManyRequestNormalizer implements DenormalizerInterface, Norm
             foreach ($data['contentIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setContentIds($values);
+            $object->contentIds = $values;
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
-            $object->setAllowMissingDependencies($data['allowMissingDependencies']);
+            $object->allowMissingDependencies = $data['allowMissingDependencies'];
         }
         return $object;
     }
@@ -56,11 +56,11 @@ class ContentRestoreManyRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getContentIds() as $value) {
+        foreach ($data->contentIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

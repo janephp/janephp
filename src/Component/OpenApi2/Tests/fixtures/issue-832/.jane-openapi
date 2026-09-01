@@ -31,7 +31,7 @@ return [
             {
                 // version detection: this naming only handles OpenAPI 2 specifications
                 $oa2Operation = $operation->getOperation();
-                if (!$oa2Operation instanceof Operation || null !== $oa2Operation->getOperationId()) {
+                if (!$oa2Operation instanceof Operation || null !== ($oa2Operation->operationId ?? null)) {
                     return ''; // defer operations carrying an operationId to the next namings of the chain
                 }
 

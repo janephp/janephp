@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApiCommon\Generator\Normalizer;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as JsonSchemaNormalizerGenerator;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
+use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
 use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
@@ -28,7 +29,10 @@ trait NormalizerGenerator
         if ($classGuess instanceof ParentClass) {
             foreach ($classGuess->getChildEntryKeys() as $discriminatorValue) {
                 $objectVar = new Expr\Variable('data');
-                $propertyVar = new Expr\MethodCall($objectVar, $this->getNaming()->getPrefixedMethodName('get', $classGuess->getDiscriminator()));
+                $propertyVar = new Expr\BinaryOp\Coalesce(
+                    new Expr\PropertyFetch($objectVar, $this->getDiscriminatorProperty($classGuess)->getPhpName()),
+                    new Expr\ConstFetch(new Name('null'))
+                );
 
                 $statements[] = new Stmt\If_(
                     new Expr\BinaryOp\LogicalAnd(
@@ -56,6 +60,20 @@ trait NormalizerGenerator
         }
 
         return $statements;
+    }
+
+    /**
+     * The property carrying the discriminator on the parent model, resolved by wire name.
+     */
+    private function getDiscriminatorProperty(ParentClass $classGuess): Property
+    {
+        foreach ($classGuess->getProperties() as $property) {
+            if ($property->getName() === $classGuess->getDiscriminator()) {
+                return $property;
+            }
+        }
+
+        throw new \RuntimeException(\sprintf('Discriminator property "%s" not found on "%s"', $classGuess->getDiscriminator(), $classGuess->getName()));
     }
 
     /**

@@ -38,39 +38,39 @@ class ThingNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         if (\array_key_exists('createdAt', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['createdAt']);
             if (false === $date) {
                 throw new \Jane\Component\OpenApi2\Tests\Client\Runtime\Normalizer\InvalidDateException($data['createdAt'], 'Y-m-d');
             }
-            $object->setCreatedAt($date->setTime(0, 0, 0));
+            $object->createdAt = $date->setTime(0, 0, 0);
         }
         if (\array_key_exists('tags', $data)) {
             $values = [];
             foreach ($data['tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setTags($values);
+            $object->tags = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['createdAt'] = $data->getCreatedAt()->format('Y-m-d');
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['createdAt'] = ($data->createdAt ?? null)->format('Y-m-d');
         $values = [];
-        foreach ($data->getTags() as $value) {
+        foreach ($data->tags ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['tags'] = $values;

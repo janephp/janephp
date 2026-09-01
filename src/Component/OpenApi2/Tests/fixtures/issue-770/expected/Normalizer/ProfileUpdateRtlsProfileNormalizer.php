@@ -44,39 +44,39 @@ class ProfileUpdateRtlsProfileNormalizer implements DenormalizerInterface, Norma
             $data['stanleyEnabled'] = (bool) $data['stanleyEnabled'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('ekahauEnabled', $data)) {
-            $object->setEkahauEnabled($data['ekahauEnabled']);
+            $object->ekahauEnabled = $data['ekahauEnabled'];
         }
         if (\array_key_exists('ekahauIp', $data)) {
-            $object->setEkahauIp($data['ekahauIp']);
+            $object->ekahauIp = $data['ekahauIp'];
         }
         if (\array_key_exists('ekahauPort', $data)) {
-            $object->setEkahauPort($data['ekahauPort']);
+            $object->ekahauPort = $data['ekahauPort'];
         }
         if (\array_key_exists('stanleyEnabled', $data)) {
-            $object->setStanleyEnabled($data['stanleyEnabled']);
+            $object->stanleyEnabled = $data['stanleyEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('ekahauEnabled') && null !== $data->getEkahauEnabled()) {
-            $dataArray['ekahauEnabled'] = $data->getEkahauEnabled();
+        if (array_key_exists('ekahauEnabled', get_object_vars($data)) && null !== ($data->ekahauEnabled ?? null)) {
+            $dataArray['ekahauEnabled'] = $data->ekahauEnabled ?? null;
         }
-        if ($data->isInitialized('ekahauIp') && null !== $data->getEkahauIp()) {
-            $dataArray['ekahauIp'] = $data->getEkahauIp();
+        if (array_key_exists('ekahauIp', get_object_vars($data)) && null !== ($data->ekahauIp ?? null)) {
+            $dataArray['ekahauIp'] = $data->ekahauIp ?? null;
         }
-        if ($data->isInitialized('ekahauPort') && null !== $data->getEkahauPort()) {
-            $dataArray['ekahauPort'] = $data->getEkahauPort();
+        if (array_key_exists('ekahauPort', get_object_vars($data)) && null !== ($data->ekahauPort ?? null)) {
+            $dataArray['ekahauPort'] = $data->ekahauPort ?? null;
         }
-        if ($data->isInitialized('stanleyEnabled') && null !== $data->getStanleyEnabled()) {
-            $dataArray['stanleyEnabled'] = $data->getStanleyEnabled();
+        if (array_key_exists('stanleyEnabled', get_object_vars($data)) && null !== ($data->stanleyEnabled ?? null)) {
+            $dataArray['stanleyEnabled'] = $data->stanleyEnabled ?? null;
         }
         return $dataArray;
     }

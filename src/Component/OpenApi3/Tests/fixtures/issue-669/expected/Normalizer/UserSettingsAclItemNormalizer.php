@@ -38,15 +38,15 @@ class UserSettingsAclItemNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('topic', $data)) {
-            $object->setTopic($data['topic']);
+            $object->topic = $data['topic'];
             unset($data['topic']);
         }
         if (\array_key_exists('permission', $data)) {
-            $object->setPermission($data['permission']);
+            $object->permission = $data['permission'];
             unset($data['permission']);
         }
         foreach ($data as $key => $value) {
@@ -59,11 +59,11 @@ class UserSettingsAclItemNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['topic'] = $data->getTopic();
-        $dataArray['permission'] = $data->getPermission();
+        $dataArray['topic'] = $data->topic ?? null;
+        $dataArray['permission'] = $data->permission ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

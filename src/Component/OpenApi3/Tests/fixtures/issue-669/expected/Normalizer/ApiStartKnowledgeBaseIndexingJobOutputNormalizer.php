@@ -38,7 +38,7 @@ class ApiStartKnowledgeBaseIndexingJobOutputNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('job', $data)) {
-            $object->setJob($this->denormalizer->denormalize($data['job'], \Jane\Generated\DigitalOcean\Model\ApiIndexingJob::class, 'json', $context));
+            $object->job = $this->denormalizer->denormalize($data['job'], \Jane\Generated\DigitalOcean\Model\ApiIndexingJob::class, 'json', $context);
             unset($data['job']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiStartKnowledgeBaseIndexingJobOutputNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('job') && null !== $data->getJob()) {
-            $dataArray['job'] = $data->getJob() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getJob(), 'json', $context));
+        if (array_key_exists('job', get_object_vars($data)) && null !== ($data->job ?? null)) {
+            $dataArray['job'] = ($data->job ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->job ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -41,7 +41,7 @@ class LinksSelfNormalizer implements DenormalizerInterface, NormalizerInterface,
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\LinksSelfConstraint());
         }
         if (\array_key_exists('self', $data)) {
-            $object->setSelf($data['self']);
+            $object->self = $data['self'];
             unset($data['self']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class LinksSelfNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('self') && null !== $data->getSelf()) {
-            $dataArray['self'] = $data->getSelf();
+        if (array_key_exists('self', get_object_vars($data)) && null !== ($data->self ?? null)) {
+            $dataArray['self'] = $data->self ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

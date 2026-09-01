@@ -44,96 +44,96 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['ignoreForSearch'] = (bool) $data['ignoreForSearch'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
         }
         if (\array_key_exists('fieldId', $data) && $data['fieldId'] !== null) {
-            $object->setFieldId($data['fieldId']);
+            $object->fieldId = $data['fieldId'];
         }
         elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
-            $object->setFieldId(null);
+            $object->fieldId = null;
         }
         if (\array_key_exists('type', $data) && $data['type'] !== null) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         elseif (\array_key_exists('type', $data) && $data['type'] === null) {
-            $object->setType(null);
+            $object->type = null;
         }
         if (\array_key_exists('indexFields', $data) && $data['indexFields'] !== null) {
             $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['indexFields'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setIndexFields($values);
+            $object->indexFields = $values;
         }
         elseif (\array_key_exists('indexFields', $data) && $data['indexFields'] === null) {
-            $object->setIndexFields(null);
+            $object->indexFields = null;
         }
         if (\array_key_exists('simpleSearchFields', $data) && $data['simpleSearchFields'] !== null) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['simpleSearchFields'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
-            $object->setSimpleSearchFields($values_1);
+            $object->simpleSearchFields = $values_1;
         }
         elseif (\array_key_exists('simpleSearchFields', $data) && $data['simpleSearchFields'] === null) {
-            $object->setSimpleSearchFields(null);
+            $object->simpleSearchFields = null;
         }
         if (\array_key_exists('boost', $data)) {
-            $object->setBoost($data['boost']);
+            $object->boost = $data['boost'];
         }
         if (\array_key_exists('ignoreForSearch', $data)) {
-            $object->setIgnoreForSearch($data['ignoreForSearch']);
+            $object->ignoreForSearch = $data['ignoreForSearch'];
         }
         if (\array_key_exists('nestedPath', $data) && $data['nestedPath'] !== null) {
-            $object->setNestedPath($data['nestedPath']);
+            $object->nestedPath = $data['nestedPath'];
         }
         elseif (\array_key_exists('nestedPath', $data) && $data['nestedPath'] === null) {
-            $object->setNestedPath(null);
+            $object->nestedPath = null;
         }
         if (\array_key_exists('sortField', $data) && $data['sortField'] !== null) {
-            $object->setSortField($data['sortField']);
+            $object->sortField = $data['sortField'];
         }
         elseif (\array_key_exists('sortField', $data) && $data['sortField'] === null) {
-            $object->setSortField(null);
+            $object->sortField = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('fieldId') && null !== $data->getFieldId()) {
-            $dataArray['fieldId'] = $data->getFieldId();
+        if (array_key_exists('fieldId', get_object_vars($data)) && null !== ($data->fieldId ?? null)) {
+            $dataArray['fieldId'] = $data->fieldId ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('indexFields') && null !== $data->getIndexFields()) {
+        if (array_key_exists('indexFields', get_object_vars($data)) && null !== ($data->indexFields ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getIndexFields() as $key => $value) {
+            foreach ($data->indexFields ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['indexFields'] = $values;
         }
-        if ($data->isInitialized('simpleSearchFields') && null !== $data->getSimpleSearchFields()) {
+        if (array_key_exists('simpleSearchFields', get_object_vars($data)) && null !== ($data->simpleSearchFields ?? null)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getSimpleSearchFields() as $key_1 => $value_1) {
+            foreach ($data->simpleSearchFields ?? null as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['simpleSearchFields'] = $values_1;
         }
-        $dataArray['boost'] = $data->getBoost();
-        $dataArray['ignoreForSearch'] = $data->getIgnoreForSearch();
-        if ($data->isInitialized('nestedPath') && null !== $data->getNestedPath()) {
-            $dataArray['nestedPath'] = $data->getNestedPath();
+        $dataArray['boost'] = $data->boost ?? null;
+        $dataArray['ignoreForSearch'] = $data->ignoreForSearch ?? null;
+        if (array_key_exists('nestedPath', get_object_vars($data)) && null !== ($data->nestedPath ?? null)) {
+            $dataArray['nestedPath'] = $data->nestedPath ?? null;
         }
-        if ($data->isInitialized('sortField') && null !== $data->getSortField()) {
-            $dataArray['sortField'] = $data->getSortField();
+        if (array_key_exists('sortField', get_object_vars($data)) && null !== ($data->sortField ?? null)) {
+            $dataArray['sortField'] = $data->sortField ?? null;
         }
         return $dataArray;
     }

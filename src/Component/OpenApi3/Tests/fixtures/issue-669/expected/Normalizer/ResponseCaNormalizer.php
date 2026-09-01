@@ -38,7 +38,7 @@ class ResponseCaNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ca', $data)) {
-            $object->setCa($this->denormalizer->denormalize($data['ca'], \Jane\Generated\DigitalOcean\Model\Ca::class, 'json', $context));
+            $object->ca = $this->denormalizer->denormalize($data['ca'], \Jane\Generated\DigitalOcean\Model\Ca::class, 'json', $context);
             unset($data['ca']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class ResponseCaNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ca'] = $data->getCa() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCa(), 'json', $context));
+        $dataArray['ca'] = ($data->ca ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->ca ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

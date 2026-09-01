@@ -50,7 +50,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
                 }
                 $values[] = $value_1;
             }
-            $object->setUsers($values);
+            $object->users = $values;
             unset($data['users']);
         }
         if (\array_key_exists('tweets', $data)) {
@@ -66,7 +66,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
                 }
                 $values_1[] = $value_3;
             }
-            $object->setTweets($values_1);
+            $object->tweets = $values_1;
             unset($data['tweets']);
         }
         if (\array_key_exists('places', $data)) {
@@ -82,7 +82,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
                 }
                 $values_2[] = $value_5;
             }
-            $object->setPlaces($values_2);
+            $object->places = $values_2;
             unset($data['places']);
         }
         if (\array_key_exists('media', $data)) {
@@ -98,7 +98,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
                 }
                 $values_3[] = $value_7;
             }
-            $object->setMedia($values_3);
+            $object->media = $values_3;
             unset($data['media']);
         }
         if (\array_key_exists('polls', $data)) {
@@ -106,7 +106,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['polls'] as $value_8) {
                 $values_4[] = $this->denormalizer->denormalize($value_8, \Jane\OpenApi3\Tests\Expected\Model\Poll::class, 'json', $context);
             }
-            $object->setPolls($values_4);
+            $object->polls = $values_4;
             unset($data['polls']);
         }
         foreach ($data as $key => $value_9) {
@@ -119,9 +119,9 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('users') && null !== $data->getUsers()) {
+        if (array_key_exists('users', get_object_vars($data)) && null !== ($data->users ?? null)) {
             $values = [];
-            foreach ($data->getUsers() as $value) {
+            foreach ($data->users ?? null as $value) {
                 $value_1 = $value;
                 if (is_object($value)) {
                     $value_1 = $value === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
@@ -134,9 +134,9 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $dataArray['users'] = $values;
         }
-        if ($data->isInitialized('tweets') && null !== $data->getTweets()) {
+        if (array_key_exists('tweets', get_object_vars($data)) && null !== ($data->tweets ?? null)) {
             $values_1 = [];
-            foreach ($data->getTweets() as $value_2) {
+            foreach ($data->tweets ?? null as $value_2) {
                 $value_3 = $value_2;
                 if (is_object($value_2)) {
                     $value_3 = $value_2 === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
@@ -149,9 +149,9 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $dataArray['tweets'] = $values_1;
         }
-        if ($data->isInitialized('places') && null !== $data->getPlaces()) {
+        if (array_key_exists('places', get_object_vars($data)) && null !== ($data->places ?? null)) {
             $values_2 = [];
-            foreach ($data->getPlaces() as $value_4) {
+            foreach ($data->places ?? null as $value_4) {
                 $value_5 = $value_4;
                 if (is_object($value_4)) {
                     $value_5 = $value_4 === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
@@ -164,9 +164,9 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $dataArray['places'] = $values_2;
         }
-        if ($data->isInitialized('media') && null !== $data->getMedia()) {
+        if (array_key_exists('media', get_object_vars($data)) && null !== ($data->media ?? null)) {
             $values_3 = [];
-            foreach ($data->getMedia() as $value_6) {
+            foreach ($data->media ?? null as $value_6) {
                 $value_7 = $value_6;
                 if (is_object($value_6)) {
                     $value_7 = $value_6 === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
@@ -179,9 +179,9 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $dataArray['media'] = $values_3;
         }
-        if ($data->isInitialized('polls') && null !== $data->getPolls()) {
+        if (array_key_exists('polls', get_object_vars($data)) && null !== ($data->polls ?? null)) {
             $values_4 = [];
-            foreach ($data->getPolls() as $value_8) {
+            foreach ($data->polls ?? null as $value_8) {
                 $values_4[] = $value_8 === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_8, 'json', $context));
             }
             $dataArray['polls'] = $values_4;

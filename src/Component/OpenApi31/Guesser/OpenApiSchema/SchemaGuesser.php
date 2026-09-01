@@ -14,13 +14,13 @@ class SchemaGuesser extends ObjectGuesser
     public function supportObject($object): bool
     {
         return ($object instanceof Schema)
-            && (\is_array($object->getType()) ? \in_array('object', $object->getType()) : ('object' === $object->getType() || null === $object->getType()))
-            && null !== $object->getProperties();
+            && (\is_array($object->type ?? null) ? \in_array('object', $object->type ?? null) : ('object' === ($object->type ?? null) || null === ($object->type ?? null)))
+            && null !== ($object->properties ?? null);
     }
 
     protected function isPropertyNullable($property): bool
     {
-        if (\is_array($property->getType()) && \in_array('null', $property->getType())) {
+        if (\is_array($property->type ?? null) && \in_array('null', $property->type ?? null)) {
             return true;
         }
 
@@ -32,14 +32,14 @@ class SchemaGuesser extends ObjectGuesser
      */
     protected function createClassGuess($object, $reference, $name, $extensions): BaseClassGuess
     {
-        $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated() ?? false);
+        $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, ($object->deprecated ?? null) ?? false);
 
-        $discriminator = $object->getDiscriminator();
+        $discriminator = ($object->discriminator ?? null);
         if ($discriminator instanceof Discriminator
-            && is_countable($discriminator->getMapping()) && \count($discriminator->getMapping()) > 0) {
-            $classGuess = new ParentClass($classGuess, $discriminator->getPropertyName());
+            && is_countable(($discriminator->mapping ?? []) ?? null) && \count(($discriminator->mapping ?? []) ?? null) > 0) {
+            $classGuess = new ParentClass($classGuess, $discriminator->propertyName ?? null);
 
-            foreach ($discriminator->getMapping() as $discriminatorValue => $entryReference) {
+            foreach ((($discriminator->mapping ?? []) ?? null) as $discriminatorValue => $entryReference) {
                 $subClassName = str_replace('#/components/schemas/', '', $entryReference);
                 $classGuess->addChildEntry(
                     $subClassName,
@@ -60,8 +60,8 @@ class SchemaGuesser extends ObjectGuesser
 
     protected function resolveAdditionalProperties($object, string $reference): array
     {
-        $unspecified = null === $object->getAdditionalProperties()
-            && (!method_exists($object, 'getPatternProperties') || null === $object->getPatternProperties());
+        $unspecified = null === ($object->additionalProperties ?? null)
+            && (!property_exists($object, 'patternProperties') || null === ($object->patternProperties ?? null));
 
         // OpenApi31 treats an unspecified additionalProperties as open (JSON
         // Schema 2020-12 default). The option can force it closed instead;

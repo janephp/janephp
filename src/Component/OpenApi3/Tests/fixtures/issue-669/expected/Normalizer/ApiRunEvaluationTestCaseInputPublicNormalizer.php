@@ -42,7 +42,7 @@ class ApiRunEvaluationTestCaseInputPublicNormalizer implements DenormalizerInter
             foreach ($data['agent_deployment_names'] as $value) {
                 $values[] = $value;
             }
-            $object->setAgentDeploymentNames($values);
+            $object->agentDeploymentNames = $values;
             unset($data['agent_deployment_names']);
         }
         if (\array_key_exists('agent_uuids', $data)) {
@@ -50,15 +50,15 @@ class ApiRunEvaluationTestCaseInputPublicNormalizer implements DenormalizerInter
             foreach ($data['agent_uuids'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setAgentUuids($values_1);
+            $object->agentUuids = $values_1;
             unset($data['agent_uuids']);
         }
         if (\array_key_exists('run_name', $data)) {
-            $object->setRunName($data['run_name']);
+            $object->runName = $data['run_name'];
             unset($data['run_name']);
         }
         if (\array_key_exists('test_case_uuid', $data)) {
-            $object->setTestCaseUuid($data['test_case_uuid']);
+            $object->testCaseUuid = $data['test_case_uuid'];
             unset($data['test_case_uuid']);
         }
         foreach ($data as $key => $value_2) {
@@ -71,25 +71,25 @@ class ApiRunEvaluationTestCaseInputPublicNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agentDeploymentNames') && null !== $data->getAgentDeploymentNames()) {
+        if (array_key_exists('agentDeploymentNames', get_object_vars($data)) && null !== ($data->agentDeploymentNames ?? null)) {
             $values = [];
-            foreach ($data->getAgentDeploymentNames() as $value) {
+            foreach ($data->agentDeploymentNames ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['agent_deployment_names'] = $values;
         }
-        if ($data->isInitialized('agentUuids') && null !== $data->getAgentUuids()) {
+        if (array_key_exists('agentUuids', get_object_vars($data)) && null !== ($data->agentUuids ?? null)) {
             $values_1 = [];
-            foreach ($data->getAgentUuids() as $value_1) {
+            foreach ($data->agentUuids ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['agent_uuids'] = $values_1;
         }
-        if ($data->isInitialized('runName') && null !== $data->getRunName()) {
-            $dataArray['run_name'] = $data->getRunName();
+        if (array_key_exists('runName', get_object_vars($data)) && null !== ($data->runName ?? null)) {
+            $dataArray['run_name'] = $data->runName ?? null;
         }
-        if ($data->isInitialized('testCaseUuid') && null !== $data->getTestCaseUuid()) {
-            $dataArray['test_case_uuid'] = $data->getTestCaseUuid();
+        if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
+            $dataArray['test_case_uuid'] = $data->testCaseUuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

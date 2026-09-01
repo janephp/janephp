@@ -38,11 +38,11 @@ class ApiGetKnowledgeBaseOutputNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('database_status', $data)) {
-            $object->setDatabaseStatus($data['database_status']);
+            $object->databaseStatus = $data['database_status'];
             unset($data['database_status']);
         }
         if (\array_key_exists('knowledge_base', $data)) {
-            $object->setKnowledgeBase($this->denormalizer->denormalize($data['knowledge_base'], \Jane\Generated\DigitalOcean\Model\ApiKnowledgeBase::class, 'json', $context));
+            $object->knowledgeBase = $this->denormalizer->denormalize($data['knowledge_base'], \Jane\Generated\DigitalOcean\Model\ApiKnowledgeBase::class, 'json', $context);
             unset($data['knowledge_base']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiGetKnowledgeBaseOutputNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('databaseStatus') && null !== $data->getDatabaseStatus()) {
-            $dataArray['database_status'] = $data->getDatabaseStatus();
+        if (array_key_exists('databaseStatus', get_object_vars($data)) && null !== ($data->databaseStatus ?? null)) {
+            $dataArray['database_status'] = $data->databaseStatus ?? null;
         }
-        if ($data->isInitialized('knowledgeBase') && null !== $data->getKnowledgeBase()) {
-            $dataArray['knowledge_base'] = $data->getKnowledgeBase() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKnowledgeBase(), 'json', $context));
+        if (array_key_exists('knowledgeBase', get_object_vars($data)) && null !== ($data->knowledgeBase ?? null)) {
+            $dataArray['knowledge_base'] = ($data->knowledgeBase ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->knowledgeBase ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

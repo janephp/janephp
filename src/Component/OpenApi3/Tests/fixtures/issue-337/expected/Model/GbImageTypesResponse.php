@@ -8,59 +8,15 @@ class GbImageTypesResponse implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string
      */
-    protected $country;
+    public string $country;
     /**
      * @var list<GbImageTypesResponseAvailableTypesItem>
      */
-    protected $availableTypes;
-    /**
-     * @return string
-     */
-    public function getCountry(): string
-    {
-        return $this->country;
-    }
-    /**
-     * @param string $country
-     *
-     * @return self
-     */
-    public function setCountry(string $country): self
-    {
-        $this->initialized['country'] = true;
-        $this->country = $country;
-        return $this;
-    }
-    /**
-     * @return list<GbImageTypesResponseAvailableTypesItem>
-     */
-    public function getAvailableTypes(): array
-    {
-        return $this->availableTypes;
-    }
-    /**
-     * @param list<GbImageTypesResponseAvailableTypesItem> $availableTypes
-     *
-     * @return self
-     */
-    public function setAvailableTypes(array $availableTypes): self
-    {
-        $this->initialized['availableTypes'] = true;
-        $this->availableTypes = $availableTypes;
-        return $this;
-    }
+    public array $availableTypes;
     public function definedProperties(): array
     {
-        return ['country' => ['country', 'getCountry', 'setCountry'], 'availableTypes' => ['availableTypes', 'getAvailableTypes', 'setAvailableTypes']];
+        return ['country' => 'country', 'availableTypes' => 'availableTypes'];
     }
 }

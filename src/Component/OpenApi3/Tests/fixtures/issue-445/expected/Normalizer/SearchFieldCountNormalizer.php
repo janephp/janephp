@@ -38,22 +38,22 @@ class SearchFieldCountNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('indexedField', $data)) {
-            $object->setIndexedField($data['indexedField']);
+            $object->indexedField = $data['indexedField'];
         }
         if (\array_key_exists('simpleSearchField', $data)) {
-            $object->setSimpleSearchField($data['simpleSearchField']);
+            $object->simpleSearchField = $data['simpleSearchField'];
         }
         if (\array_key_exists('sortableField', $data)) {
-            $object->setSortableField($data['sortableField']);
+            $object->sortableField = $data['sortableField'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['indexedField'] = $data->getIndexedField();
-        $dataArray['simpleSearchField'] = $data->getSimpleSearchField();
-        $dataArray['sortableField'] = $data->getSortableField();
+        $dataArray['indexedField'] = $data->indexedField ?? null;
+        $dataArray['simpleSearchField'] = $data->simpleSearchField ?? null;
+        $dataArray['sortableField'] = $data->sortableField ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

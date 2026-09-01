@@ -44,15 +44,15 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SpecialEventFieldsConstraint());
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('location', $data)) {
-            $object->setLocation($data['location']);
+            $object->location = $data['location'];
             unset($data['location']);
         }
         if (\array_key_exists('eventDescription', $data)) {
-            $object->setEventDescription($data['eventDescription']);
+            $object->eventDescription = $data['eventDescription'];
             unset($data['eventDescription']);
         }
         if (\array_key_exists('dates', $data)) {
@@ -64,11 +64,11 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
                 }
                 $values[] = $date->setTime(0, 0, 0);
             }
-            $object->setDates($values);
+            $object->dates = $values;
             unset($data['dates']);
         }
         if (\array_key_exists('price', $data)) {
-            $object->setPrice($data['price']);
+            $object->price = $data['price'];
             unset($data['price']);
         }
         foreach ($data as $key => $value_1) {
@@ -81,24 +81,24 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('location') && null !== $data->getLocation()) {
-            $dataArray['location'] = $data->getLocation();
+        if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
+            $dataArray['location'] = $data->location ?? null;
         }
-        if ($data->isInitialized('eventDescription') && null !== $data->getEventDescription()) {
-            $dataArray['eventDescription'] = $data->getEventDescription();
+        if (array_key_exists('eventDescription', get_object_vars($data)) && null !== ($data->eventDescription ?? null)) {
+            $dataArray['eventDescription'] = $data->eventDescription ?? null;
         }
-        if ($data->isInitialized('dates') && null !== $data->getDates()) {
+        if (array_key_exists('dates', get_object_vars($data)) && null !== ($data->dates ?? null)) {
             $values = [];
-            foreach ($data->getDates() as $value) {
+            foreach ($data->dates ?? null as $value) {
                 $values[] = $value->format('Y-m-d');
             }
             $dataArray['dates'] = $values;
         }
-        if ($data->isInitialized('price') && null !== $data->getPrice()) {
-            $dataArray['price'] = $data->getPrice();
+        if (array_key_exists('price', get_object_vars($data)) && null !== ($data->price ?? null)) {
+            $dataArray['price'] = $data->price ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

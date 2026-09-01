@@ -38,11 +38,11 @@ class ContentOwnershipTransferItemNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('transferUserId', $data)) {
-            $object->setTransferUserId($data['transferUserId']);
+            $object->transferUserId = $data['transferUserId'];
             unset($data['transferUserId']);
         }
         if (\array_key_exists('contentId', $data)) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
             unset($data['contentId']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class ContentOwnershipTransferItemNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['transferUserId'] = $data->getTransferUserId();
-        $dataArray['contentId'] = $data->getContentId();
+        $dataArray['transferUserId'] = $data->transferUserId ?? null;
+        $dataArray['contentId'] = $data->contentId ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

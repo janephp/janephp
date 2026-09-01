@@ -42,7 +42,7 @@ class ResponseDropletsSupportedBackupPoliciesNormalizer implements DenormalizerI
             foreach ($data['supported_policies'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\SupportedDropletBackupPolicy::class, 'json', $context);
             }
-            $object->setSupportedPolicies($values);
+            $object->supportedPolicies = $values;
             unset($data['supported_policies']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseDropletsSupportedBackupPoliciesNormalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('supportedPolicies') && null !== $data->getSupportedPolicies()) {
+        if (array_key_exists('supportedPolicies', get_object_vars($data)) && null !== ($data->supportedPolicies ?? null)) {
             $values = [];
-            foreach ($data->getSupportedPolicies() as $value) {
+            foreach ($data->supportedPolicies ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['supported_policies'] = $values;

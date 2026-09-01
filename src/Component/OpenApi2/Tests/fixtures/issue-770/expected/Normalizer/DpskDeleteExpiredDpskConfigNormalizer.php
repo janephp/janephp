@@ -38,15 +38,15 @@ class DpskDeleteExpiredDpskConfigNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('deleteExpiredDpsk', $data)) {
-            $object->setDeleteExpiredDpsk($data['deleteExpiredDpsk']);
+            $object->deleteExpiredDpsk = $data['deleteExpiredDpsk'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('deleteExpiredDpsk') && null !== $data->getDeleteExpiredDpsk()) {
-            $dataArray['deleteExpiredDpsk'] = $data->getDeleteExpiredDpsk();
+        if (array_key_exists('deleteExpiredDpsk', get_object_vars($data)) && null !== ($data->deleteExpiredDpsk ?? null)) {
+            $dataArray['deleteExpiredDpsk'] = $data->deleteExpiredDpsk ?? null;
         }
         return $dataArray;
     }

@@ -8,191 +8,39 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem implements 
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $id;
     /**
      * @var string
      */
-    protected $id;
+    public string $country;
     /**
      * @var string
      */
-    protected $country;
+    public string $safeNumber;
     /**
      * @var string
      */
-    protected $safeNumber;
+    public string $companyName;
     /**
      * @var string
      */
-    protected $companyName;
+    public string $registeredNumber;
     /**
      * @var string
      */
-    protected $registeredNumber;
-    /**
-     * @var string
-     */
-    protected $latestAnnualAccounts;
+    public string $latestAnnualAccounts;
     /**
      * @var float
      */
-    protected $level;
+    public float $level;
     /**
      * @var string
      */
-    protected $status;
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCountry(): string
-    {
-        return $this->country;
-    }
-    /**
-     * @param string $country
-     *
-     * @return self
-     */
-    public function setCountry(string $country): self
-    {
-        $this->initialized['country'] = true;
-        $this->country = $country;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getSafeNumber(): string
-    {
-        return $this->safeNumber;
-    }
-    /**
-     * @param string $safeNumber
-     *
-     * @return self
-     */
-    public function setSafeNumber(string $safeNumber): self
-    {
-        $this->initialized['safeNumber'] = true;
-        $this->safeNumber = $safeNumber;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCompanyName(): string
-    {
-        return $this->companyName;
-    }
-    /**
-     * @param string $companyName
-     *
-     * @return self
-     */
-    public function setCompanyName(string $companyName): self
-    {
-        $this->initialized['companyName'] = true;
-        $this->companyName = $companyName;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getRegisteredNumber(): string
-    {
-        return $this->registeredNumber;
-    }
-    /**
-     * @param string $registeredNumber
-     *
-     * @return self
-     */
-    public function setRegisteredNumber(string $registeredNumber): self
-    {
-        $this->initialized['registeredNumber'] = true;
-        $this->registeredNumber = $registeredNumber;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getLatestAnnualAccounts(): string
-    {
-        return $this->latestAnnualAccounts;
-    }
-    /**
-     * @param string $latestAnnualAccounts
-     *
-     * @return self
-     */
-    public function setLatestAnnualAccounts(string $latestAnnualAccounts): self
-    {
-        $this->initialized['latestAnnualAccounts'] = true;
-        $this->latestAnnualAccounts = $latestAnnualAccounts;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getLevel(): float
-    {
-        return $this->level;
-    }
-    /**
-     * @param float $level
-     *
-     * @return self
-     */
-    public function setLevel(float $level): self
-    {
-        $this->initialized['level'] = true;
-        $this->level = $level;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-    /**
-     * @param string $status
-     *
-     * @return self
-     */
-    public function setStatus(string $status): self
-    {
-        $this->initialized['status'] = true;
-        $this->status = $status;
-        return $this;
-    }
+    public string $status;
     public function definedProperties(): array
     {
-        return ['id' => ['id', 'getId', 'setId'], 'country' => ['country', 'getCountry', 'setCountry'], 'safeNumber' => ['safeNumber', 'getSafeNumber', 'setSafeNumber'], 'companyName' => ['companyName', 'getCompanyName', 'setCompanyName'], 'registeredNumber' => ['registeredNumber', 'getRegisteredNumber', 'setRegisteredNumber'], 'latestAnnualAccounts' => ['latestAnnualAccounts', 'getLatestAnnualAccounts', 'setLatestAnnualAccounts'], 'level' => ['level', 'getLevel', 'setLevel'], 'status' => ['status', 'getStatus', 'setStatus']];
+        return ['id' => 'id', 'country' => 'country', 'safeNumber' => 'safeNumber', 'companyName' => 'companyName', 'registeredNumber' => 'registeredNumber', 'latestAnnualAccounts' => 'latestAnnualAccounts', 'level' => 'level', 'status' => 'status'];
     }
 }

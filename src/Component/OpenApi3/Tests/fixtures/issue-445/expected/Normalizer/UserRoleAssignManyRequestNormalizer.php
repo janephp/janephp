@@ -42,7 +42,7 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
             foreach ($data['userIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setUserIds($values);
+            $object->userIds = $values;
             unset($data['userIds']);
         }
         if (\array_key_exists('userRoleIds', $data)) {
@@ -50,7 +50,7 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
             foreach ($data['userRoleIds'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setUserRoleIds($values_1);
+            $object->userRoleIds = $values_1;
             unset($data['userRoleIds']);
         }
         if (\array_key_exists('operation', $data)) {
@@ -58,7 +58,7 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
             if (is_string($data['operation'])) {
                 $value_2 = $data['operation'];
             }
-            $object->setOperation($value_2);
+            $object->operation = $value_2;
             unset($data['operation']);
         }
         foreach ($data as $key => $value_3) {
@@ -72,18 +72,18 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getUserIds() as $value) {
+        foreach ($data->userIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['userIds'] = $values;
         $values_1 = [];
-        foreach ($data->getUserRoleIds() as $value_1) {
+        foreach ($data->userRoleIds ?? null as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['userRoleIds'] = $values_1;
-        $value_2 = $data->getOperation();
-        if (is_string($data->getOperation())) {
-            $value_2 = $data->getOperation();
+        $value_2 = $data->operation ?? null;
+        if (is_string($data->operation ?? null)) {
+            $value_2 = $data->operation ?? null;
         }
         $dataArray['operation'] = $value_2;
         foreach ($data->additionalPropertyEntries() as $key => $value_3) {

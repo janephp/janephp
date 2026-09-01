@@ -8,125 +8,27 @@ class PeopleSearchSuccessResultDirectorsItemCompany implements AdditionalPropert
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $id;
     /**
      * @var string
      */
-    protected $id;
+    public string $companyName;
     /**
      * @var string
      */
-    protected $companyName;
+    public string $companyNumber;
     /**
      * @var string
      */
-    protected $companyNumber;
+    public string $type;
     /**
      * @var string
      */
-    protected $type;
-    /**
-     * @var string
-     */
-    protected $regNo;
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCompanyName(): string
-    {
-        return $this->companyName;
-    }
-    /**
-     * @param string $companyName
-     *
-     * @return self
-     */
-    public function setCompanyName(string $companyName): self
-    {
-        $this->initialized['companyName'] = true;
-        $this->companyName = $companyName;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCompanyNumber(): string
-    {
-        return $this->companyNumber;
-    }
-    /**
-     * @param string $companyNumber
-     *
-     * @return self
-     */
-    public function setCompanyNumber(string $companyNumber): self
-    {
-        $this->initialized['companyNumber'] = true;
-        $this->companyNumber = $companyNumber;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-    /**
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType(string $type): self
-    {
-        $this->initialized['type'] = true;
-        $this->type = $type;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getRegNo(): string
-    {
-        return $this->regNo;
-    }
-    /**
-     * @param string $regNo
-     *
-     * @return self
-     */
-    public function setRegNo(string $regNo): self
-    {
-        $this->initialized['regNo'] = true;
-        $this->regNo = $regNo;
-        return $this;
-    }
+    public string $regNo;
     public function definedProperties(): array
     {
-        return ['id' => ['id', 'getId', 'setId'], 'companyName' => ['companyName', 'getCompanyName', 'setCompanyName'], 'companyNumber' => ['companyNumber', 'getCompanyNumber', 'setCompanyNumber'], 'type' => ['type', 'getType', 'setType'], 'regNo' => ['regNo', 'getRegNo', 'setRegNo']];
+        return ['id' => 'id', 'companyName' => 'companyName', 'companyNumber' => 'companyNumber', 'type' => 'type', 'regNo' => 'regNo'];
     }
 }

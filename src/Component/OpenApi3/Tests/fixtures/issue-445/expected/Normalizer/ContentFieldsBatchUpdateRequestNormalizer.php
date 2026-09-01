@@ -48,19 +48,19 @@ class ContentFieldsBatchUpdateRequestNormalizer implements DenormalizerInterface
             foreach ($data['changeCommands'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\MetadataValuesChangeCommandBase::class, 'json', $context);
             }
-            $object->setChangeCommands($values);
+            $object->changeCommands = $values;
             unset($data['changeCommands']);
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
-            $object->setAllowMissingDependencies($data['allowMissingDependencies']);
+            $object->allowMissingDependencies = $data['allowMissingDependencies'];
             unset($data['allowMissingDependencies']);
         }
         if (\array_key_exists('notifyProgress', $data)) {
-            $object->setNotifyProgress($data['notifyProgress']);
+            $object->notifyProgress = $data['notifyProgress'];
             unset($data['notifyProgress']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('contentIds', $data)) {
@@ -68,7 +68,7 @@ class ContentFieldsBatchUpdateRequestNormalizer implements DenormalizerInterface
             foreach ($data['contentIds'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setContentIds($values_1);
+            $object->contentIds = $values_1;
             unset($data['contentIds']);
         }
         foreach ($data as $key => $value_2) {
@@ -82,15 +82,15 @@ class ContentFieldsBatchUpdateRequestNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getChangeCommands() as $value) {
+        foreach ($data->changeCommands ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['changeCommands'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();
-        $dataArray['notifyProgress'] = $data->getNotifyProgress();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
+        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         $values_1 = [];
-        foreach ($data->getContentIds() as $value_1) {
+        foreach ($data->contentIds ?? null as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['contentIds'] = $values_1;

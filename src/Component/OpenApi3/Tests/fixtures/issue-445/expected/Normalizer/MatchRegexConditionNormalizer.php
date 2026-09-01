@@ -38,39 +38,39 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('fieldPath', $data) && $data['fieldPath'] !== null) {
-            $object->setFieldPath($data['fieldPath']);
+            $object->fieldPath = $data['fieldPath'];
             unset($data['fieldPath']);
         }
         elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
-            $object->setFieldPath(null);
+            $object->fieldPath = null;
             unset($data['fieldPath']);
         }
         if (\array_key_exists('regex', $data) && $data['regex'] !== null) {
-            $object->setRegex($data['regex']);
+            $object->regex = $data['regex'];
             unset($data['regex']);
         }
         elseif (\array_key_exists('regex', $data) && $data['regex'] === null) {
-            $object->setRegex(null);
+            $object->regex = null;
             unset($data['regex']);
         }
         if (\array_key_exists('storeIn', $data) && $data['storeIn'] !== null) {
-            $object->setStoreIn($data['storeIn']);
+            $object->storeIn = $data['storeIn'];
             unset($data['storeIn']);
         }
         elseif (\array_key_exists('storeIn', $data) && $data['storeIn'] === null) {
-            $object->setStoreIn(null);
+            $object->storeIn = null;
             unset($data['storeIn']);
         }
         foreach ($data as $key => $value) {
@@ -83,18 +83,18 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('fieldPath') && null !== $data->getFieldPath()) {
-            $dataArray['fieldPath'] = $data->getFieldPath();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('fieldPath', get_object_vars($data)) && null !== ($data->fieldPath ?? null)) {
+            $dataArray['fieldPath'] = $data->fieldPath ?? null;
         }
-        if ($data->isInitialized('regex') && null !== $data->getRegex()) {
-            $dataArray['regex'] = $data->getRegex();
+        if (array_key_exists('regex', get_object_vars($data)) && null !== ($data->regex ?? null)) {
+            $dataArray['regex'] = $data->regex ?? null;
         }
-        if ($data->isInitialized('storeIn') && null !== $data->getStoreIn()) {
-            $dataArray['storeIn'] = $data->getStoreIn();
+        if (array_key_exists('storeIn', get_object_vars($data)) && null !== ($data->storeIn ?? null)) {
+            $dataArray['storeIn'] = $data->storeIn ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,7 +38,7 @@ class V2DatabasesDatabaseClusterUuidUsersUsernamePutBodyNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('settings', $data)) {
-            $object->setSettings($this->denormalizer->denormalize($data['settings'], \Jane\Generated\DigitalOcean\Model\UserSettings::class, 'json', $context));
+            $object->settings = $this->denormalizer->denormalize($data['settings'], \Jane\Generated\DigitalOcean\Model\UserSettings::class, 'json', $context);
             unset($data['settings']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class V2DatabasesDatabaseClusterUuidUsersUsernamePutBodyNormalizer implements De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('settings') && null !== $data->getSettings()) {
-            $dataArray['settings'] = $data->getSettings() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSettings(), 'json', $context));
+        if (array_key_exists('settings', get_object_vars($data)) && null !== ($data->settings ?? null)) {
+            $dataArray['settings'] = ($data->settings ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->settings ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

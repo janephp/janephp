@@ -45,15 +45,15 @@ class MultipartBooleanRuntimeTest extends TestCase
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
 
         $trueBody = new ExpectedMultiPartBoolean\Model\FileDepositPostBody();
-        $trueBody->setFichier('file-content');
-        $trueBody->setValid(true);
+        $trueBody->fichier = 'file-content';
+        $trueBody->valid = true;
         $trueResult = (new ExpectedMultiPartBoolean\Endpoint\PostFileDeposit($trueBody))->getBody($serializer, $streamFactory);
         $trueStreamContent = (string) $trueResult[1];
         $this->assertMatchesRegularExpression('/name="valid".*?\R\Rtrue\R/s', $trueStreamContent);
 
         $falseBody = new ExpectedMultiPartBoolean\Model\FileDepositPostBody();
-        $falseBody->setFichier('file-content');
-        $falseBody->setValid(false);
+        $falseBody->fichier = 'file-content';
+        $falseBody->valid = false;
         $falseResult = (new ExpectedMultiPartBoolean\Endpoint\PostFileDeposit($falseBody))->getBody($serializer, $streamFactory);
         $falseStreamContent = (string) $falseResult[1];
         $this->assertMatchesRegularExpression('/name="valid".*?\R\Rfalse\R/s', $falseStreamContent);

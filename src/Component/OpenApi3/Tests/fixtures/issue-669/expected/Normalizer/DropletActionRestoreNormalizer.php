@@ -38,11 +38,11 @@ class DropletActionRestoreNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('image', $data)) {
-            $object->setImage($data['image']);
+            $object->image = $data['image'];
             unset($data['image']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +55,9 @@ class DropletActionRestoreNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('image') && null !== $data->getImage()) {
-            $dataArray['image'] = $data->getImage();
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
+            $dataArray['image'] = $data->image ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

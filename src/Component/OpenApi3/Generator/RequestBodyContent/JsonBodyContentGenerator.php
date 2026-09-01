@@ -34,7 +34,7 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
         );
 
         $array = false;
-        $schema = $content->getSchema();
+        $schema = ($content->schema ?? null);
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         // A named-object payload normalized to an empty PHP array must be sent as a JSON object ('{}'),

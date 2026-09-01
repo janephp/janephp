@@ -41,7 +41,7 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
             $data['totalSize'] = (float) $data['totalSize'];
         }
         if (\array_key_exists('totalSize', $data)) {
-            $object->setTotalSize($data['totalSize']);
+            $object->totalSize = $data['totalSize'];
             unset($data['totalSize']);
         }
         if (\array_key_exists('companies', $data)) {
@@ -49,11 +49,11 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['companies'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setCompanies($values);
+            $object->companies = $values;
             unset($data['companies']);
         }
         if (\array_key_exists('messages', $data)) {
-            $object->setMessages($this->denormalizer->denormalize($data['messages'], \CreditSafe\API\Model\SearchNoResultsErrorMessages::class, 'json', $context));
+            $object->messages = $this->denormalizer->denormalize($data['messages'], \CreditSafe\API\Model\SearchNoResultsErrorMessages::class, 'json', $context);
             unset($data['messages']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -66,18 +66,18 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalSize') && null !== $data->getTotalSize()) {
-            $dataArray['totalSize'] = $data->getTotalSize();
+        if (array_key_exists('totalSize', get_object_vars($data)) && null !== ($data->totalSize ?? null)) {
+            $dataArray['totalSize'] = $data->totalSize ?? null;
         }
-        if ($data->isInitialized('companies') && null !== $data->getCompanies()) {
+        if (array_key_exists('companies', get_object_vars($data)) && null !== ($data->companies ?? null)) {
             $values = new \CreditSafe\API\Runtime\JsonObject();
-            foreach ($data->getCompanies() as $key => $value) {
+            foreach ($data->companies ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['companies'] = $values;
         }
-        if ($data->isInitialized('messages') && null !== $data->getMessages()) {
-            $dataArray['messages'] = $data->getMessages() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getMessages(), 'json', $context));
+        if (array_key_exists('messages', get_object_vars($data)) && null !== ($data->messages ?? null)) {
+            $dataArray['messages'] = ($data->messages ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->messages ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

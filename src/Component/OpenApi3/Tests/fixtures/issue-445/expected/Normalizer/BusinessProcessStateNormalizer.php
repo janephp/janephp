@@ -38,36 +38,36 @@ class BusinessProcessStateNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
         }
         if (\array_key_exists('timestamp', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
         }
         if (\array_key_exists('error', $data) && $data['error'] !== null) {
             $value = $data['error'];
             if (is_array($data['error'])) {
                 $value = $this->denormalizer->denormalize($data['error'], \PicturePark\API\Model\ErrorResponse::class, 'json', $context);
             }
-            $object->setError($value);
+            $object->error = $value;
         }
         elseif (\array_key_exists('error', $data) && $data['error'] === null) {
-            $object->setError(null);
+            $object->error = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['state'] = $data->getState();
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $value = $data->getError();
-            if (is_object($data->getError())) {
-                $value = $data->getError() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getError(), 'json', $context));
+        $dataArray['state'] = $data->state ?? null;
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $value = $data->error ?? null;
+            if (is_object($data->error ?? null)) {
+                $value = ($data->error ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error ?? null, 'json', $context));
             }
             $dataArray['error'] = $value;
         }

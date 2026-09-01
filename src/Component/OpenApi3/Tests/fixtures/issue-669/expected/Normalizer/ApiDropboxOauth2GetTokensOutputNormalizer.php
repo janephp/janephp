@@ -38,11 +38,11 @@ class ApiDropboxOauth2GetTokensOutputNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('refresh_token', $data)) {
-            $object->setRefreshToken($data['refresh_token']);
+            $object->refreshToken = $data['refresh_token'];
             unset($data['refresh_token']);
         }
         if (\array_key_exists('token', $data)) {
-            $object->setToken($data['token']);
+            $object->token = $data['token'];
             unset($data['token']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiDropboxOauth2GetTokensOutputNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('refreshToken') && null !== $data->getRefreshToken()) {
-            $dataArray['refresh_token'] = $data->getRefreshToken();
+        if (array_key_exists('refreshToken', get_object_vars($data)) && null !== ($data->refreshToken ?? null)) {
+            $dataArray['refresh_token'] = $data->refreshToken ?? null;
         }
-        if ($data->isInitialized('token') && null !== $data->getToken()) {
-            $dataArray['token'] = $data->getToken();
+        if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {
+            $dataArray['token'] = $data->token ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

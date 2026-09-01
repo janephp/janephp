@@ -38,7 +38,7 @@ class ResponseSubscriptionResponseNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('subscription', $data)) {
-            $object->setSubscription($this->denormalizer->denormalize($data['subscription'], \Jane\Generated\DigitalOcean\Model\Subscription::class, 'json', $context));
+            $object->subscription = $this->denormalizer->denormalize($data['subscription'], \Jane\Generated\DigitalOcean\Model\Subscription::class, 'json', $context);
             unset($data['subscription']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseSubscriptionResponseNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('subscription') && null !== $data->getSubscription()) {
-            $dataArray['subscription'] = $data->getSubscription() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSubscription(), 'json', $context));
+        if (array_key_exists('subscription', get_object_vars($data)) && null !== ($data->subscription ?? null)) {
+            $dataArray['subscription'] = ($data->subscription ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->subscription ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

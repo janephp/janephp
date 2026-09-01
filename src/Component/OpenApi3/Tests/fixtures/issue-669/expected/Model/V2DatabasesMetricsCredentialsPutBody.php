@@ -8,37 +8,11 @@ class V2DatabasesMetricsCredentialsPutBody implements AdditionalPropertiesInterf
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var DatabasesBasicAuthCredentials
      */
-    protected $credentials;
-    /**
-     * @return DatabasesBasicAuthCredentials
-     */
-    public function getCredentials(): DatabasesBasicAuthCredentials
-    {
-        return $this->credentials;
-    }
-    /**
-     * @param DatabasesBasicAuthCredentials $credentials
-     *
-     * @return self
-     */
-    public function setCredentials(DatabasesBasicAuthCredentials $credentials): self
-    {
-        $this->initialized['credentials'] = true;
-        $this->credentials = $credentials;
-        return $this;
-    }
+    public DatabasesBasicAuthCredentials $credentials;
     public function definedProperties(): array
     {
-        return ['credentials' => ['credentials', 'getCredentials', 'setCredentials']];
+        return ['credentials' => 'credentials'];
     }
 }

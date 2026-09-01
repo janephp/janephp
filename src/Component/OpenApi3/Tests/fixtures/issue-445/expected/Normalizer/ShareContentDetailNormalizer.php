@@ -38,51 +38,51 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('contentSchemaId', $data)) {
-            $object->setContentSchemaId($data['contentSchemaId']);
+            $object->contentSchemaId = $data['contentSchemaId'];
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values = [];
             foreach ($data['layerSchemaIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setLayerSchemaIds($values);
+            $object->layerSchemaIds = $values;
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
-            $object->setLayerSchemaIds(null);
+            $object->layerSchemaIds = null;
         }
         if (\array_key_exists('content', $data)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['content'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
-            $object->setContent($values_1);
+            $object->content = $values_1;
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['metadata'] as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
-            $object->setMetadata($values_2);
+            $object->metadata = $values_2;
         }
         elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
-            $object->setMetadata(null);
+            $object->metadata = null;
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('outputs', $data)) {
             $values_3 = [];
             foreach ($data['outputs'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\ShareOutputBase::class, 'json', $context);
             }
-            $object->setOutputs($values_3);
+            $object->outputs = $values_3;
         }
         if (\array_key_exists('contentType', $data)) {
             $value_4 = $data['contentType'];
             if (is_string($data['contentType'])) {
                 $value_4 = $data['contentType'];
             }
-            $object->setContentType($value_4);
+            $object->contentType = $value_4;
         }
         if (\array_key_exists('displayValues', $data)) {
             $value_5 = $data['displayValues'];
@@ -93,61 +93,61 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
                 }
                 $value_5 = $values_4;
             }
-            $object->setDisplayValues($value_5);
+            $object->displayValues = $value_5;
         }
         if (\array_key_exists('iconUrl', $data) && $data['iconUrl'] !== null) {
-            $object->setIconUrl($data['iconUrl']);
+            $object->iconUrl = $data['iconUrl'];
         }
         elseif (\array_key_exists('iconUrl', $data) && $data['iconUrl'] === null) {
-            $object->setIconUrl(null);
+            $object->iconUrl = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        $dataArray['contentSchemaId'] = $data->contentSchemaId ?? null;
+        if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values = [];
-            foreach ($data->getLayerSchemaIds() as $value) {
+            foreach ($data->layerSchemaIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
         $values_1 = new \PicturePark\API\Runtime\JsonObject();
-        foreach ($data->getContent() as $key => $value_1) {
+        foreach ($data->content ?? null as $key => $value_1) {
             $values_1[$key] = $value_1;
         }
         $dataArray['content'] = $values_1;
-        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+        if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getMetadata() as $key_1 => $value_2) {
+            foreach ($data->metadata ?? null as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
             $dataArray['metadata'] = $values_2;
         }
-        $dataArray['id'] = $data->getId();
+        $dataArray['id'] = $data->id ?? null;
         $values_3 = [];
-        foreach ($data->getOutputs() as $value_3) {
+        foreach ($data->outputs ?? null as $value_3) {
             $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
         }
         $dataArray['outputs'] = $values_3;
-        $value_4 = $data->getContentType();
-        if (is_string($data->getContentType())) {
-            $value_4 = $data->getContentType();
+        $value_4 = $data->contentType ?? null;
+        if (is_string($data->contentType ?? null)) {
+            $value_4 = $data->contentType ?? null;
         }
         $dataArray['contentType'] = $value_4;
-        $value_5 = $data->getDisplayValues();
-        if (is_object($data->getDisplayValues())) {
+        $value_5 = $data->displayValues ?? null;
+        if (is_object($data->displayValues ?? null)) {
             $values_4 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getDisplayValues() as $key_2 => $value_6) {
+            foreach ($data->displayValues ?? null as $key_2 => $value_6) {
                 $values_4[$key_2] = $value_6;
             }
             $value_5 = $values_4;
         }
         $dataArray['displayValues'] = $value_5;
-        if ($data->isInitialized('iconUrl') && null !== $data->getIconUrl()) {
-            $dataArray['iconUrl'] = $data->getIconUrl();
+        if (array_key_exists('iconUrl', get_object_vars($data)) && null !== ($data->iconUrl ?? null)) {
+            $dataArray['iconUrl'] = $data->iconUrl ?? null;
         }
         return $dataArray;
     }

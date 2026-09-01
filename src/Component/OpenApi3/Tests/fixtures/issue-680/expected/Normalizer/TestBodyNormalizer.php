@@ -42,11 +42,11 @@ class TestBodyNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['items'] as $value) {
                 $values[] = $value;
             }
-            $object->setItems($values);
+            $object->items = $values;
             unset($data['items']);
         }
         elseif (\array_key_exists('items', $data) && $data['items'] === null) {
-            $object->setItems(null);
+            $object->items = null;
             unset($data['items']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,9 +59,9 @@ class TestBodyNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('items') && null !== $data->getItems()) {
+        if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
             $values = [];
-            foreach ($data->getItems() as $value) {
+            foreach ($data->items ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['items'] = $values;

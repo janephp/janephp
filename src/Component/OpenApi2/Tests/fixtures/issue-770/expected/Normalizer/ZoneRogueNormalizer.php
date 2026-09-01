@@ -41,35 +41,35 @@ class ZoneRogueNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['protectionEnabled'] = (bool) $data['protectionEnabled'];
         }
         if (\array_key_exists('reportType', $data)) {
-            $object->setReportType($data['reportType']);
+            $object->reportType = $data['reportType'];
         }
         if (\array_key_exists('maliciousTypes', $data)) {
             $values = [];
             foreach ($data['maliciousTypes'] as $value) {
                 $values[] = $value;
             }
-            $object->setMaliciousTypes($values);
+            $object->maliciousTypes = $values;
         }
         if (\array_key_exists('protectionEnabled', $data)) {
-            $object->setProtectionEnabled($data['protectionEnabled']);
+            $object->protectionEnabled = $data['protectionEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('reportType') && null !== $data->getReportType()) {
-            $dataArray['reportType'] = $data->getReportType();
+        if (array_key_exists('reportType', get_object_vars($data)) && null !== ($data->reportType ?? null)) {
+            $dataArray['reportType'] = $data->reportType ?? null;
         }
-        if ($data->isInitialized('maliciousTypes') && null !== $data->getMaliciousTypes()) {
+        if (array_key_exists('maliciousTypes', get_object_vars($data)) && null !== ($data->maliciousTypes ?? null)) {
             $values = [];
-            foreach ($data->getMaliciousTypes() as $value) {
+            foreach ($data->maliciousTypes ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['maliciousTypes'] = $values;
         }
-        if ($data->isInitialized('protectionEnabled') && null !== $data->getProtectionEnabled()) {
-            $dataArray['protectionEnabled'] = $data->getProtectionEnabled();
+        if (array_key_exists('protectionEnabled', get_object_vars($data)) && null !== ($data->protectionEnabled ?? null)) {
+            $dataArray['protectionEnabled'] = $data->protectionEnabled ?? null;
         }
         return $dataArray;
     }

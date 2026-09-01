@@ -44,7 +44,7 @@ class ApiAgentGuardrailNormalizer implements DenormalizerInterface, NormalizerIn
             $data['is_default'] = (bool) $data['is_default'];
         }
         if (\array_key_exists('agent_uuid', $data)) {
-            $object->setAgentUuid($data['agent_uuid']);
+            $object->agentUuid = $data['agent_uuid'];
             unset($data['agent_uuid']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -52,27 +52,27 @@ class ApiAgentGuardrailNormalizer implements DenormalizerInterface, NormalizerIn
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('default_response', $data)) {
-            $object->setDefaultResponse($data['default_response']);
+            $object->defaultResponse = $data['default_response'];
             unset($data['default_response']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('guardrail_uuid', $data)) {
-            $object->setGuardrailUuid($data['guardrail_uuid']);
+            $object->guardrailUuid = $data['guardrail_uuid'];
             unset($data['guardrail_uuid']);
         }
         if (\array_key_exists('is_attached', $data)) {
-            $object->setIsAttached($data['is_attached']);
+            $object->isAttached = $data['is_attached'];
             unset($data['is_attached']);
         }
         if (\array_key_exists('is_default', $data)) {
-            $object->setIsDefault($data['is_default']);
+            $object->isDefault = $data['is_default'];
             unset($data['is_default']);
         }
         if (\array_key_exists('metadata', $data)) {
@@ -80,19 +80,19 @@ class ApiAgentGuardrailNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['metadata'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setMetadata($values);
+            $object->metadata = $values;
             unset($data['metadata']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
             unset($data['priority']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -100,11 +100,11 @@ class ApiAgentGuardrailNormalizer implements DenormalizerInterface, NormalizerIn
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -117,48 +117,48 @@ class ApiAgentGuardrailNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agentUuid') && null !== $data->getAgentUuid()) {
-            $dataArray['agent_uuid'] = $data->getAgentUuid();
+        if (array_key_exists('agentUuid', get_object_vars($data)) && null !== ($data->agentUuid ?? null)) {
+            $dataArray['agent_uuid'] = $data->agentUuid ?? null;
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('defaultResponse') && null !== $data->getDefaultResponse()) {
-            $dataArray['default_response'] = $data->getDefaultResponse();
+        if (array_key_exists('defaultResponse', get_object_vars($data)) && null !== ($data->defaultResponse ?? null)) {
+            $dataArray['default_response'] = $data->defaultResponse ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('guardrailUuid') && null !== $data->getGuardrailUuid()) {
-            $dataArray['guardrail_uuid'] = $data->getGuardrailUuid();
+        if (array_key_exists('guardrailUuid', get_object_vars($data)) && null !== ($data->guardrailUuid ?? null)) {
+            $dataArray['guardrail_uuid'] = $data->guardrailUuid ?? null;
         }
-        if ($data->isInitialized('isAttached') && null !== $data->getIsAttached()) {
-            $dataArray['is_attached'] = $data->getIsAttached();
+        if (array_key_exists('isAttached', get_object_vars($data)) && null !== ($data->isAttached ?? null)) {
+            $dataArray['is_attached'] = $data->isAttached ?? null;
         }
-        if ($data->isInitialized('isDefault') && null !== $data->getIsDefault()) {
-            $dataArray['is_default'] = $data->getIsDefault();
+        if (array_key_exists('isDefault', get_object_vars($data)) && null !== ($data->isDefault ?? null)) {
+            $dataArray['is_default'] = $data->isDefault ?? null;
         }
-        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+        if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getMetadata() as $key => $value) {
+            foreach ($data->metadata ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['metadata'] = $values;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority();
+        if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = $data->priority ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

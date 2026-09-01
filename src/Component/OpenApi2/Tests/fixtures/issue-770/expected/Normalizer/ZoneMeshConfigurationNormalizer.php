@@ -41,33 +41,33 @@ class ZoneMeshConfigurationNormalizer implements DenormalizerInterface, Normaliz
             $data['zeroTouchStatus'] = (bool) $data['zeroTouchStatus'];
         }
         if (\array_key_exists('ssid', $data)) {
-            $object->setSsid($data['ssid']);
+            $object->ssid = $data['ssid'];
         }
         if (\array_key_exists('passphrase', $data)) {
-            $object->setPassphrase($data['passphrase']);
+            $object->passphrase = $data['passphrase'];
         }
         if (\array_key_exists('meshRadioIdx', $data)) {
-            $object->setMeshRadioIdx($data['meshRadioIdx']);
+            $object->meshRadioIdx = $data['meshRadioIdx'];
         }
         if (\array_key_exists('zeroTouchStatus', $data)) {
-            $object->setZeroTouchStatus($data['zeroTouchStatus']);
+            $object->zeroTouchStatus = $data['zeroTouchStatus'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ssid') && null !== $data->getSsid()) {
-            $dataArray['ssid'] = $data->getSsid();
+        if (array_key_exists('ssid', get_object_vars($data)) && null !== ($data->ssid ?? null)) {
+            $dataArray['ssid'] = $data->ssid ?? null;
         }
-        if ($data->isInitialized('passphrase') && null !== $data->getPassphrase()) {
-            $dataArray['passphrase'] = $data->getPassphrase();
+        if (array_key_exists('passphrase', get_object_vars($data)) && null !== ($data->passphrase ?? null)) {
+            $dataArray['passphrase'] = $data->passphrase ?? null;
         }
-        if ($data->isInitialized('meshRadioIdx') && null !== $data->getMeshRadioIdx()) {
-            $dataArray['meshRadioIdx'] = $data->getMeshRadioIdx();
+        if (array_key_exists('meshRadioIdx', get_object_vars($data)) && null !== ($data->meshRadioIdx ?? null)) {
+            $dataArray['meshRadioIdx'] = $data->meshRadioIdx ?? null;
         }
-        if ($data->isInitialized('zeroTouchStatus') && null !== $data->getZeroTouchStatus()) {
-            $dataArray['zeroTouchStatus'] = $data->getZeroTouchStatus();
+        if (array_key_exists('zeroTouchStatus', get_object_vars($data)) && null !== ($data->zeroTouchStatus ?? null)) {
+            $dataArray['zeroTouchStatus'] = $data->zeroTouchStatus ?? null;
         }
         return $dataArray;
     }

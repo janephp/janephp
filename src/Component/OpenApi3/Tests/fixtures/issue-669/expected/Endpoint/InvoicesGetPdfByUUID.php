@@ -9,7 +9,7 @@ class InvoicesGetPdfByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     /**
      * To retrieve a PDF for an invoice, send a GET request to `/v2/customers/my/invoices/$INVOICE_UUID/pdf`.
      * @param string $invoiceUuid UUID of the invoice
-     * @param array $accept Accept content header application/pdf|application/json
+     * @param array $accept Accept content header application/json|application/pdf
      */
     public function __construct(string $invoiceUuid, array $accept = [])
     {
@@ -32,7 +32,7 @@ class InvoicesGetPdfByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     public function getExtraHeaders(): array
     {
         if (empty($this->accept)) {
-            return ['Accept' => ['application/pdf', 'application/json']];
+            return ['Accept' => ['application/json', 'application/pdf']];
         }
         return $this->accept;
     }

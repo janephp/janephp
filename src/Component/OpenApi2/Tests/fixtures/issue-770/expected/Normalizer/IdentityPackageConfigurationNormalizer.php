@@ -38,21 +38,21 @@ class IdentityPackageConfigurationNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('subscriberPackage', $data)) {
-            $object->setSubscriberPackage($this->denormalizer->denormalize($data['subscriberPackage'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->subscriberPackage = $this->denormalizer->denormalize($data['subscriberPackage'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('packageExpiration', $data)) {
-            $object->setPackageExpiration($data['packageExpiration']);
+            $object->packageExpiration = $data['packageExpiration'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('subscriberPackage') && null !== $data->getSubscriberPackage()) {
-            $dataArray['subscriberPackage'] = $data->getSubscriberPackage() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context));
+        if (array_key_exists('subscriberPackage', get_object_vars($data)) && null !== ($data->subscriberPackage ?? null)) {
+            $dataArray['subscriberPackage'] = ($data->subscriberPackage ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->subscriberPackage ?? null, 'json', $context));
         }
-        if ($data->isInitialized('packageExpiration') && null !== $data->getPackageExpiration()) {
-            $dataArray['packageExpiration'] = $data->getPackageExpiration();
+        if (array_key_exists('packageExpiration', get_object_vars($data)) && null !== ($data->packageExpiration ?? null)) {
+            $dataArray['packageExpiration'] = $data->packageExpiration ?? null;
         }
         return $dataArray;
     }

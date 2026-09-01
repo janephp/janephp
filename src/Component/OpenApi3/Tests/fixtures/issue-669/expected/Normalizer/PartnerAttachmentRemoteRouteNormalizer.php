@@ -38,7 +38,7 @@ class PartnerAttachmentRemoteRouteNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('cidr', $data)) {
-            $object->setCidr($data['cidr']);
+            $object->cidr = $data['cidr'];
             unset($data['cidr']);
         }
         foreach ($data as $key => $value) {

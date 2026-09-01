@@ -47,39 +47,39 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
             $this->validate($data, new \Docker\Api\Validator\ImagesSearchGetResponse200ItemConstraint());
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('is_official', $data)) {
-            $object->setIsOfficial($data['is_official']);
+            $object->isOfficial = $data['is_official'];
         }
         if (\array_key_exists('is_automated', $data)) {
-            $object->setIsAutomated($data['is_automated']);
+            $object->isAutomated = $data['is_automated'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('star_count', $data)) {
-            $object->setStarCount($data['star_count']);
+            $object->starCount = $data['star_count'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('isOfficial') && null !== $data->getIsOfficial()) {
-            $dataArray['is_official'] = $data->getIsOfficial();
+        if (array_key_exists('isOfficial', get_object_vars($data)) && null !== ($data->isOfficial ?? null)) {
+            $dataArray['is_official'] = $data->isOfficial ?? null;
         }
-        if ($data->isInitialized('isAutomated') && null !== $data->getIsAutomated()) {
-            $dataArray['is_automated'] = $data->getIsAutomated();
+        if (array_key_exists('isAutomated', get_object_vars($data)) && null !== ($data->isAutomated ?? null)) {
+            $dataArray['is_automated'] = $data->isAutomated ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('starCount') && null !== $data->getStarCount()) {
-            $dataArray['star_count'] = $data->getStarCount();
+        if (array_key_exists('starCount', get_object_vars($data)) && null !== ($data->starCount ?? null)) {
+            $dataArray['star_count'] = $data->starCount ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImagesSearchGetResponse200ItemConstraint());

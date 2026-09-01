@@ -38,21 +38,21 @@ class ServiceTicketLoginResponseNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('controllerVersion', $data)) {
-            $object->setControllerVersion($data['controllerVersion']);
+            $object->controllerVersion = $data['controllerVersion'];
         }
         if (\array_key_exists('serviceTicket', $data)) {
-            $object->setServiceTicket($data['serviceTicket']);
+            $object->serviceTicket = $data['serviceTicket'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('controllerVersion') && null !== $data->getControllerVersion()) {
-            $dataArray['controllerVersion'] = $data->getControllerVersion();
+        if (array_key_exists('controllerVersion', get_object_vars($data)) && null !== ($data->controllerVersion ?? null)) {
+            $dataArray['controllerVersion'] = $data->controllerVersion ?? null;
         }
-        if ($data->isInitialized('serviceTicket') && null !== $data->getServiceTicket()) {
-            $dataArray['serviceTicket'] = $data->getServiceTicket();
+        if (array_key_exists('serviceTicket', get_object_vars($data)) && null !== ($data->serviceTicket ?? null)) {
+            $dataArray['serviceTicket'] = $data->serviceTicket ?? null;
         }
         return $dataArray;
     }

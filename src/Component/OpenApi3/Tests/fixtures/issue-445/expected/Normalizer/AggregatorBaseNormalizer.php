@@ -59,7 +59,7 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\TermsEnumAggregator', $format, $context);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $value = $data['names'];
@@ -70,87 +70,87 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
             $values_1 = [];
             foreach ($data['aggregators'] as $value_2) {
                 $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregators($values_1);
+            $object->aggregators = $values_1;
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
-            $object->setAggregators(null);
+            $object->aggregators = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $value_3 = $data['filter'];
             if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
                 $value_3 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilter($value_3);
+            $object->filter = $value_3;
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'DateRangeAggregator' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'DateRangeAggregator' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'GeoDistanceAggregator' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'GeoDistanceAggregator' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'NestedAggregator' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'NestedAggregator' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'NumericRangeAggregator' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'NumericRangeAggregator' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'TermsAggregator' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'TermsAggregator' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'TermsRelationAggregator' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'TermsRelationAggregator' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'TermsEnumAggregator' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'TermsEnumAggregator' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_1) {
+                foreach ($data->names ?? null as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
             }
             $dataArray['names'] = $value;
         }
-        if ($data->isInitialized('aggregators') && null !== $data->getAggregators()) {
+        if (array_key_exists('aggregators', get_object_vars($data)) && null !== ($data->aggregators ?? null)) {
             $values_1 = [];
-            foreach ($data->getAggregators() as $value_2) {
+            foreach ($data->aggregators ?? null as $value_2) {
                 $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['aggregators'] = $values_1;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $value_3 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_3 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $value_3 = $data->filter ?? null;
+            if (is_object($data->filter ?? null)) {
+                $value_3 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
             }
             $dataArray['filter'] = $value_3;
         }
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

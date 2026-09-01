@@ -38,7 +38,7 @@ class ResponseByoipPrefixGetNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('byoip_prefix', $data)) {
-            $object->setByoipPrefix($this->denormalizer->denormalize($data['byoip_prefix'], \Jane\Generated\DigitalOcean\Model\ByoipPrefix::class, 'json', $context));
+            $object->byoipPrefix = $this->denormalizer->denormalize($data['byoip_prefix'], \Jane\Generated\DigitalOcean\Model\ByoipPrefix::class, 'json', $context);
             unset($data['byoip_prefix']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseByoipPrefixGetNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('byoipPrefix') && null !== $data->getByoipPrefix()) {
-            $dataArray['byoip_prefix'] = $data->getByoipPrefix() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getByoipPrefix(), 'json', $context));
+        if (array_key_exists('byoipPrefix', get_object_vars($data)) && null !== ($data->byoipPrefix ?? null)) {
+            $dataArray['byoip_prefix'] = ($data->byoipPrefix ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->byoipPrefix ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -42,11 +42,11 @@ class AppsGetLogsResponseNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['historic_urls'] as $value) {
                 $values[] = $value;
             }
-            $object->setHistoricUrls($values);
+            $object->historicUrls = $values;
             unset($data['historic_urls']);
         }
         if (\array_key_exists('live_url', $data)) {
-            $object->setLiveUrl($data['live_url']);
+            $object->liveUrl = $data['live_url'];
             unset($data['live_url']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,15 +59,15 @@ class AppsGetLogsResponseNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('historicUrls') && null !== $data->getHistoricUrls()) {
+        if (array_key_exists('historicUrls', get_object_vars($data)) && null !== ($data->historicUrls ?? null)) {
             $values = [];
-            foreach ($data->getHistoricUrls() as $value) {
+            foreach ($data->historicUrls ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['historic_urls'] = $values;
         }
-        if ($data->isInitialized('liveUrl') && null !== $data->getLiveUrl()) {
-            $dataArray['live_url'] = $data->getLiveUrl();
+        if (array_key_exists('liveUrl', get_object_vars($data)) && null !== ($data->liveUrl ?? null)) {
+            $dataArray['live_url'] = $data->liveUrl ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

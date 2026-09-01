@@ -38,63 +38,63 @@ class SystemSystemTimeSettingNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('currentSystemTimeString', $data)) {
-            $object->setCurrentSystemTimeString($data['currentSystemTimeString']);
+            $object->currentSystemTimeString = $data['currentSystemTimeString'];
         }
         if (\array_key_exists('currentSystemTimeUTCString', $data)) {
-            $object->setCurrentSystemTimeUTCString($data['currentSystemTimeUTCString']);
+            $object->currentSystemTimeUTCString = $data['currentSystemTimeUTCString'];
         }
         if (\array_key_exists('ntpServer', $data)) {
-            $object->setNtpServer($data['ntpServer']);
+            $object->ntpServer = $data['ntpServer'];
         }
         if (\array_key_exists('secondaryNtpServer', $data)) {
-            $object->setSecondaryNtpServer($data['secondaryNtpServer']);
+            $object->secondaryNtpServer = $data['secondaryNtpServer'];
         }
         if (\array_key_exists('thirdNtpServer', $data)) {
-            $object->setThirdNtpServer($data['thirdNtpServer']);
+            $object->thirdNtpServer = $data['thirdNtpServer'];
         }
         if (\array_key_exists('timezone', $data)) {
-            $object->setTimezone($data['timezone']);
+            $object->timezone = $data['timezone'];
         }
         if (\array_key_exists('authenticationKey', $data)) {
-            $object->setAuthenticationKey($this->denormalizer->denormalize($data['authenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context));
+            $object->authenticationKey = $this->denormalizer->denormalize($data['authenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context);
         }
         if (\array_key_exists('secondaryAuthenticationKey', $data)) {
-            $object->setSecondaryAuthenticationKey($this->denormalizer->denormalize($data['secondaryAuthenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context));
+            $object->secondaryAuthenticationKey = $this->denormalizer->denormalize($data['secondaryAuthenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context);
         }
         if (\array_key_exists('thirdAuthenticationKey', $data)) {
-            $object->setThirdAuthenticationKey($this->denormalizer->denormalize($data['thirdAuthenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context));
+            $object->thirdAuthenticationKey = $this->denormalizer->denormalize($data['thirdAuthenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('currentSystemTimeString') && null !== $data->getCurrentSystemTimeString()) {
-            $dataArray['currentSystemTimeString'] = $data->getCurrentSystemTimeString();
+        if (array_key_exists('currentSystemTimeString', get_object_vars($data)) && null !== ($data->currentSystemTimeString ?? null)) {
+            $dataArray['currentSystemTimeString'] = $data->currentSystemTimeString ?? null;
         }
-        if ($data->isInitialized('currentSystemTimeUTCString') && null !== $data->getCurrentSystemTimeUTCString()) {
-            $dataArray['currentSystemTimeUTCString'] = $data->getCurrentSystemTimeUTCString();
+        if (array_key_exists('currentSystemTimeUTCString', get_object_vars($data)) && null !== ($data->currentSystemTimeUTCString ?? null)) {
+            $dataArray['currentSystemTimeUTCString'] = $data->currentSystemTimeUTCString ?? null;
         }
-        if ($data->isInitialized('ntpServer') && null !== $data->getNtpServer()) {
-            $dataArray['ntpServer'] = $data->getNtpServer();
+        if (array_key_exists('ntpServer', get_object_vars($data)) && null !== ($data->ntpServer ?? null)) {
+            $dataArray['ntpServer'] = $data->ntpServer ?? null;
         }
-        if ($data->isInitialized('secondaryNtpServer') && null !== $data->getSecondaryNtpServer()) {
-            $dataArray['secondaryNtpServer'] = $data->getSecondaryNtpServer();
+        if (array_key_exists('secondaryNtpServer', get_object_vars($data)) && null !== ($data->secondaryNtpServer ?? null)) {
+            $dataArray['secondaryNtpServer'] = $data->secondaryNtpServer ?? null;
         }
-        if ($data->isInitialized('thirdNtpServer') && null !== $data->getThirdNtpServer()) {
-            $dataArray['thirdNtpServer'] = $data->getThirdNtpServer();
+        if (array_key_exists('thirdNtpServer', get_object_vars($data)) && null !== ($data->thirdNtpServer ?? null)) {
+            $dataArray['thirdNtpServer'] = $data->thirdNtpServer ?? null;
         }
-        if ($data->isInitialized('timezone') && null !== $data->getTimezone()) {
-            $dataArray['timezone'] = $data->getTimezone();
+        if (array_key_exists('timezone', get_object_vars($data)) && null !== ($data->timezone ?? null)) {
+            $dataArray['timezone'] = $data->timezone ?? null;
         }
-        if ($data->isInitialized('authenticationKey') && null !== $data->getAuthenticationKey()) {
-            $dataArray['authenticationKey'] = $data->getAuthenticationKey() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAuthenticationKey(), 'json', $context));
+        if (array_key_exists('authenticationKey', get_object_vars($data)) && null !== ($data->authenticationKey ?? null)) {
+            $dataArray['authenticationKey'] = ($data->authenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->authenticationKey ?? null, 'json', $context));
         }
-        if ($data->isInitialized('secondaryAuthenticationKey') && null !== $data->getSecondaryAuthenticationKey()) {
-            $dataArray['secondaryAuthenticationKey'] = $data->getSecondaryAuthenticationKey() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondaryAuthenticationKey(), 'json', $context));
+        if (array_key_exists('secondaryAuthenticationKey', get_object_vars($data)) && null !== ($data->secondaryAuthenticationKey ?? null)) {
+            $dataArray['secondaryAuthenticationKey'] = ($data->secondaryAuthenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->secondaryAuthenticationKey ?? null, 'json', $context));
         }
-        if ($data->isInitialized('thirdAuthenticationKey') && null !== $data->getThirdAuthenticationKey()) {
-            $dataArray['thirdAuthenticationKey'] = $data->getThirdAuthenticationKey() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getThirdAuthenticationKey(), 'json', $context));
+        if (array_key_exists('thirdAuthenticationKey', get_object_vars($data)) && null !== ($data->thirdAuthenticationKey ?? null)) {
+            $dataArray['thirdAuthenticationKey'] = ($data->thirdAuthenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->thirdAuthenticationKey ?? null, 'json', $context));
         }
         return $dataArray;
     }

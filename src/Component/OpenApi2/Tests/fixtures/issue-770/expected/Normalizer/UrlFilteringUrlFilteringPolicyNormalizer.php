@@ -47,165 +47,165 @@ class UrlFilteringUrlFilteringPolicyNormalizer implements DenormalizerInterface,
             $data['safeSearchBingEnabled'] = (bool) $data['safeSearchBingEnabled'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('tenantId', $data)) {
-            $object->setTenantId($data['tenantId']);
+            $object->tenantId = $data['tenantId'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('filteringLevel', $data)) {
-            $object->setFilteringLevel($data['filteringLevel']);
+            $object->filteringLevel = $data['filteringLevel'];
         }
         if (\array_key_exists('blockCategories', $data)) {
             $values = [];
             foreach ($data['blockCategories'] as $value) {
                 $values[] = $value;
             }
-            $object->setBlockCategories($values);
+            $object->blockCategories = $values;
         }
         if (\array_key_exists('safeSearchGoogleEnabled', $data)) {
-            $object->setSafeSearchGoogleEnabled($data['safeSearchGoogleEnabled']);
+            $object->safeSearchGoogleEnabled = $data['safeSearchGoogleEnabled'];
         }
         if (\array_key_exists('safeSearchGoogleDns', $data)) {
-            $object->setSafeSearchGoogleDns($data['safeSearchGoogleDns']);
+            $object->safeSearchGoogleDns = $data['safeSearchGoogleDns'];
         }
         if (\array_key_exists('safeSearchYouTubeEnabled', $data)) {
-            $object->setSafeSearchYouTubeEnabled($data['safeSearchYouTubeEnabled']);
+            $object->safeSearchYouTubeEnabled = $data['safeSearchYouTubeEnabled'];
         }
         if (\array_key_exists('safeSearchYouTubeDns', $data)) {
-            $object->setSafeSearchYouTubeDns($data['safeSearchYouTubeDns']);
+            $object->safeSearchYouTubeDns = $data['safeSearchYouTubeDns'];
         }
         if (\array_key_exists('safeSearchBingEnabled', $data)) {
-            $object->setSafeSearchBingEnabled($data['safeSearchBingEnabled']);
+            $object->safeSearchBingEnabled = $data['safeSearchBingEnabled'];
         }
         if (\array_key_exists('safeSearchBingDns', $data)) {
-            $object->setSafeSearchBingDns($data['safeSearchBingDns']);
+            $object->safeSearchBingDns = $data['safeSearchBingDns'];
         }
         if (\array_key_exists('whitelist', $data)) {
             $values_1 = [];
             foreach ($data['whitelist'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setWhitelist($values_1);
+            $object->whitelist = $values_1;
         }
         if (\array_key_exists('blacklist', $data)) {
             $values_2 = [];
             foreach ($data['blacklist'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setBlacklist($values_2);
+            $object->blacklist = $values_2;
         }
         if (\array_key_exists('blockByThreatLevelConfig', $data)) {
-            $object->setBlockByThreatLevelConfig($this->denormalizer->denormalize($data['blockByThreatLevelConfig'], \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringPolicyBlockByThreatLevelConfig::class, 'json', $context));
+            $object->blockByThreatLevelConfig = $this->denormalizer->denormalize($data['blockByThreatLevelConfig'], \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringPolicyBlockByThreatLevelConfig::class, 'json', $context);
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('creatorId', $data)) {
-            $object->setCreatorId($data['creatorId']);
+            $object->creatorId = $data['creatorId'];
         }
         if (\array_key_exists('modifierId', $data)) {
-            $object->setModifierId($data['modifierId']);
+            $object->modifierId = $data['modifierId'];
         }
         if (\array_key_exists('creatorUsername', $data)) {
-            $object->setCreatorUsername($data['creatorUsername']);
+            $object->creatorUsername = $data['creatorUsername'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('tenantId') && null !== $data->getTenantId()) {
-            $dataArray['tenantId'] = $data->getTenantId();
+        if (array_key_exists('tenantId', get_object_vars($data)) && null !== ($data->tenantId ?? null)) {
+            $dataArray['tenantId'] = $data->tenantId ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('filteringLevel') && null !== $data->getFilteringLevel()) {
-            $dataArray['filteringLevel'] = $data->getFilteringLevel();
+        if (array_key_exists('filteringLevel', get_object_vars($data)) && null !== ($data->filteringLevel ?? null)) {
+            $dataArray['filteringLevel'] = $data->filteringLevel ?? null;
         }
-        if ($data->isInitialized('blockCategories') && null !== $data->getBlockCategories()) {
+        if (array_key_exists('blockCategories', get_object_vars($data)) && null !== ($data->blockCategories ?? null)) {
             $values = [];
-            foreach ($data->getBlockCategories() as $value) {
+            foreach ($data->blockCategories ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['blockCategories'] = $values;
         }
-        if ($data->isInitialized('safeSearchGoogleEnabled') && null !== $data->getSafeSearchGoogleEnabled()) {
-            $dataArray['safeSearchGoogleEnabled'] = $data->getSafeSearchGoogleEnabled();
+        if (array_key_exists('safeSearchGoogleEnabled', get_object_vars($data)) && null !== ($data->safeSearchGoogleEnabled ?? null)) {
+            $dataArray['safeSearchGoogleEnabled'] = $data->safeSearchGoogleEnabled ?? null;
         }
-        if ($data->isInitialized('safeSearchGoogleDns') && null !== $data->getSafeSearchGoogleDns()) {
-            $dataArray['safeSearchGoogleDns'] = $data->getSafeSearchGoogleDns();
+        if (array_key_exists('safeSearchGoogleDns', get_object_vars($data)) && null !== ($data->safeSearchGoogleDns ?? null)) {
+            $dataArray['safeSearchGoogleDns'] = $data->safeSearchGoogleDns ?? null;
         }
-        if ($data->isInitialized('safeSearchYouTubeEnabled') && null !== $data->getSafeSearchYouTubeEnabled()) {
-            $dataArray['safeSearchYouTubeEnabled'] = $data->getSafeSearchYouTubeEnabled();
+        if (array_key_exists('safeSearchYouTubeEnabled', get_object_vars($data)) && null !== ($data->safeSearchYouTubeEnabled ?? null)) {
+            $dataArray['safeSearchYouTubeEnabled'] = $data->safeSearchYouTubeEnabled ?? null;
         }
-        if ($data->isInitialized('safeSearchYouTubeDns') && null !== $data->getSafeSearchYouTubeDns()) {
-            $dataArray['safeSearchYouTubeDns'] = $data->getSafeSearchYouTubeDns();
+        if (array_key_exists('safeSearchYouTubeDns', get_object_vars($data)) && null !== ($data->safeSearchYouTubeDns ?? null)) {
+            $dataArray['safeSearchYouTubeDns'] = $data->safeSearchYouTubeDns ?? null;
         }
-        if ($data->isInitialized('safeSearchBingEnabled') && null !== $data->getSafeSearchBingEnabled()) {
-            $dataArray['safeSearchBingEnabled'] = $data->getSafeSearchBingEnabled();
+        if (array_key_exists('safeSearchBingEnabled', get_object_vars($data)) && null !== ($data->safeSearchBingEnabled ?? null)) {
+            $dataArray['safeSearchBingEnabled'] = $data->safeSearchBingEnabled ?? null;
         }
-        if ($data->isInitialized('safeSearchBingDns') && null !== $data->getSafeSearchBingDns()) {
-            $dataArray['safeSearchBingDns'] = $data->getSafeSearchBingDns();
+        if (array_key_exists('safeSearchBingDns', get_object_vars($data)) && null !== ($data->safeSearchBingDns ?? null)) {
+            $dataArray['safeSearchBingDns'] = $data->safeSearchBingDns ?? null;
         }
-        if ($data->isInitialized('whitelist') && null !== $data->getWhitelist()) {
+        if (array_key_exists('whitelist', get_object_vars($data)) && null !== ($data->whitelist ?? null)) {
             $values_1 = [];
-            foreach ($data->getWhitelist() as $value_1) {
+            foreach ($data->whitelist ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['whitelist'] = $values_1;
         }
-        if ($data->isInitialized('blacklist') && null !== $data->getBlacklist()) {
+        if (array_key_exists('blacklist', get_object_vars($data)) && null !== ($data->blacklist ?? null)) {
             $values_2 = [];
-            foreach ($data->getBlacklist() as $value_2) {
+            foreach ($data->blacklist ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['blacklist'] = $values_2;
         }
-        if ($data->isInitialized('blockByThreatLevelConfig') && null !== $data->getBlockByThreatLevelConfig()) {
-            $dataArray['blockByThreatLevelConfig'] = $data->getBlockByThreatLevelConfig() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBlockByThreatLevelConfig(), 'json', $context));
+        if (array_key_exists('blockByThreatLevelConfig', get_object_vars($data)) && null !== ($data->blockByThreatLevelConfig ?? null)) {
+            $dataArray['blockByThreatLevelConfig'] = ($data->blockByThreatLevelConfig ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->blockByThreatLevelConfig ?? null, 'json', $context));
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
-            $dataArray['creatorId'] = $data->getCreatorId();
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
         }
-        if ($data->isInitialized('modifierId') && null !== $data->getModifierId()) {
-            $dataArray['modifierId'] = $data->getModifierId();
+        if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
+            $dataArray['modifierId'] = $data->modifierId ?? null;
         }
-        if ($data->isInitialized('creatorUsername') && null !== $data->getCreatorUsername()) {
-            $dataArray['creatorUsername'] = $data->getCreatorUsername();
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
         return $dataArray;
     }

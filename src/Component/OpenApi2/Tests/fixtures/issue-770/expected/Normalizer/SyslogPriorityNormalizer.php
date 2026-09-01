@@ -38,45 +38,45 @@ class SyslogPriorityNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('critical', $data)) {
-            $object->setCritical($data['critical']);
+            $object->critical = $data['critical'];
         }
         if (\array_key_exists('major', $data)) {
-            $object->setMajor($data['major']);
+            $object->major = $data['major'];
         }
         if (\array_key_exists('minor', $data)) {
-            $object->setMinor($data['minor']);
+            $object->minor = $data['minor'];
         }
         if (\array_key_exists('warning', $data)) {
-            $object->setWarning($data['warning']);
+            $object->warning = $data['warning'];
         }
         if (\array_key_exists('informational', $data)) {
-            $object->setInformational($data['informational']);
+            $object->informational = $data['informational'];
         }
         if (\array_key_exists('debug', $data)) {
-            $object->setDebug($data['debug']);
+            $object->debug = $data['debug'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('critical') && null !== $data->getCritical()) {
-            $dataArray['critical'] = $data->getCritical();
+        if (array_key_exists('critical', get_object_vars($data)) && null !== ($data->critical ?? null)) {
+            $dataArray['critical'] = $data->critical ?? null;
         }
-        if ($data->isInitialized('major') && null !== $data->getMajor()) {
-            $dataArray['major'] = $data->getMajor();
+        if (array_key_exists('major', get_object_vars($data)) && null !== ($data->major ?? null)) {
+            $dataArray['major'] = $data->major ?? null;
         }
-        if ($data->isInitialized('minor') && null !== $data->getMinor()) {
-            $dataArray['minor'] = $data->getMinor();
+        if (array_key_exists('minor', get_object_vars($data)) && null !== ($data->minor ?? null)) {
+            $dataArray['minor'] = $data->minor ?? null;
         }
-        if ($data->isInitialized('warning') && null !== $data->getWarning()) {
-            $dataArray['warning'] = $data->getWarning();
+        if (array_key_exists('warning', get_object_vars($data)) && null !== ($data->warning ?? null)) {
+            $dataArray['warning'] = $data->warning ?? null;
         }
-        if ($data->isInitialized('informational') && null !== $data->getInformational()) {
-            $dataArray['informational'] = $data->getInformational();
+        if (array_key_exists('informational', get_object_vars($data)) && null !== ($data->informational ?? null)) {
+            $dataArray['informational'] = $data->informational ?? null;
         }
-        if ($data->isInitialized('debug') && null !== $data->getDebug()) {
-            $dataArray['debug'] = $data->getDebug();
+        if (array_key_exists('debug', get_object_vars($data)) && null !== ($data->debug ?? null)) {
+            $dataArray['debug'] = $data->debug ?? null;
         }
         return $dataArray;
     }

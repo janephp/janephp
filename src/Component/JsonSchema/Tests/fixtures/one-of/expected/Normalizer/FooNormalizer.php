@@ -57,20 +57,20 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
                 }
                 $value = $values;
             }
-            $object->setFoo($value);
+            $object->foo = $value;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $value = $data->getFoo();
-            if (is_string($data->getFoo())) {
-                $value = $data->getFoo();
-            } elseif (!is_null($data->getFoo())) {
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $value = $data->foo ?? null;
+            if (is_string($data->foo ?? null)) {
+                $value = $data->foo ?? null;
+            } elseif (!is_null($data->foo ?? null)) {
                 $values = new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject();
-                foreach ($data->getFoo() as $key => $value_1) {
+                foreach ($data->foo ?? null as $key => $value_1) {
                     if (preg_match('/^[a-zA-Z0-9._-]+$/', (string) $key) && !is_null($value_1)) {
                         $value_2 = $value_1;
                         if (is_object($value_1)) {

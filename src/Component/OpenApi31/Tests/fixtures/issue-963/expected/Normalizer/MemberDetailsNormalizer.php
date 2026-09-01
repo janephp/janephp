@@ -41,31 +41,31 @@ class MemberDetailsNormalizer implements DenormalizerInterface, NormalizerInterf
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\MemberDetailsConstraint());
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('firstname', $data)) {
-            $object->setFirstname($data['firstname']);
+            $object->firstname = $data['firstname'];
             unset($data['firstname']);
         }
         if (\array_key_exists('lastname', $data)) {
-            $object->setLastname($data['lastname']);
+            $object->lastname = $data['lastname'];
             unset($data['lastname']);
         }
         if (\array_key_exists('surname', $data)) {
-            $object->setSurname($data['surname']);
+            $object->surname = $data['surname'];
             unset($data['surname']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
             unset($data['email']);
         }
         if (\array_key_exists('role', $data)) {
-            $object->setRole($data['role']);
+            $object->role = $data['role'];
             unset($data['role']);
         }
         foreach ($data as $key => $value) {
@@ -78,26 +78,26 @@ class MemberDetailsNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('firstname') && null !== $data->getFirstname()) {
-            $dataArray['firstname'] = $data->getFirstname();
+        if (array_key_exists('firstname', get_object_vars($data)) && null !== ($data->firstname ?? null)) {
+            $dataArray['firstname'] = $data->firstname ?? null;
         }
-        if ($data->isInitialized('lastname') && null !== $data->getLastname()) {
-            $dataArray['lastname'] = $data->getLastname();
+        if (array_key_exists('lastname', get_object_vars($data)) && null !== ($data->lastname ?? null)) {
+            $dataArray['lastname'] = $data->lastname ?? null;
         }
-        if ($data->isInitialized('surname') && null !== $data->getSurname()) {
-            $dataArray['surname'] = $data->getSurname();
+        if (array_key_exists('surname', get_object_vars($data)) && null !== ($data->surname ?? null)) {
+            $dataArray['surname'] = $data->surname ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email ?? null;
         }
-        if ($data->isInitialized('role') && null !== $data->getRole()) {
-            $dataArray['role'] = $data->getRole();
+        if (array_key_exists('role', get_object_vars($data)) && null !== ($data->role ?? null)) {
+            $dataArray['role'] = $data->role ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

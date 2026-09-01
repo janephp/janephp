@@ -38,7 +38,7 @@ class DropletActionRebuildNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('image', $data)) {
@@ -48,7 +48,7 @@ class DropletActionRebuildNormalizer implements DenormalizerInterface, Normalize
             } elseif (is_int($data['image'])) {
                 $value = $data['image'];
             }
-            $object->setImage($value);
+            $object->image = $value;
             unset($data['image']);
         }
         foreach ($data as $key => $value_1) {
@@ -61,13 +61,13 @@ class DropletActionRebuildNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('image') && null !== $data->getImage()) {
-            $value = $data->getImage();
-            if (is_string($data->getImage())) {
-                $value = $data->getImage();
-            } elseif (is_int($data->getImage())) {
-                $value = $data->getImage();
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
+            $value = $data->image ?? null;
+            if (is_string($data->image ?? null)) {
+                $value = $data->image ?? null;
+            } elseif (is_int($data->image ?? null)) {
+                $value = $data->image ?? null;
             }
             $dataArray['image'] = $value;
         }

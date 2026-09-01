@@ -8,103 +8,23 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string
      */
-    protected $category;
+    public string $category;
     /**
      * @var int
      */
-    protected $id;
+    public int $id;
     /**
      * @var ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItemName
      */
-    protected $name;
+    public ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItemName $name;
     /**
      * @var string
      */
-    protected $type;
-    /**
-     * @return string
-     */
-    public function getCategory(): string
-    {
-        return $this->category;
-    }
-    /**
-     * @param string $category
-     *
-     * @return self
-     */
-    public function setCategory(string $category): self
-    {
-        $this->initialized['category'] = true;
-        $this->category = $category;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
-    /**
-     * @param int $id
-     *
-     * @return self
-     */
-    public function setId(int $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * @return ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItemName
-     */
-    public function getName(): ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItemName
-    {
-        return $this->name;
-    }
-    /**
-     * @param ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItemName $name
-     *
-     * @return self
-     */
-    public function setName(ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItemName $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-    /**
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType(string $type): self
-    {
-        $this->initialized['type'] = true;
-        $this->type = $type;
-        return $this;
-    }
+    public string $type;
     public function definedProperties(): array
     {
-        return ['category' => ['category', 'getCategory', 'setCategory'], 'id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'type' => ['type', 'getType', 'setType']];
+        return ['category' => 'category', 'id' => 'id', 'name' => 'name', 'type' => 'type'];
     }
 }

@@ -87,8 +87,8 @@ class Issue588RegressionTest extends TestCase
                 'name' => 'ACME',
             ], $modelClass, 'json');
 
-            self::assertSame('inst-1', $object->getId());
-            self::assertSame('ACME', $object->getName());
+            self::assertSame('inst-1', $object->id);
+            self::assertSame('ACME', $object->name);
         } finally {
             $this->removeDirectory($fixtureDirectory);
         }

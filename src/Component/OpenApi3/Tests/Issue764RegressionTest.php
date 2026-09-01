@@ -113,9 +113,9 @@ class Issue764RegressionTest extends TestCase
                 'estimated_delivery_date' => '2026-08-25',
             ], $modelClass, 'json');
 
-            self::assertInstanceOf(\DateTime::class, $object->getEstimatedCollectionDate());
-            self::assertSame('00:00', $object->getEstimatedCollectionDate()->format('H:i'));
-            self::assertInstanceOf(\DateTime::class, $object->getEstimatedDeliveryDate());
+            self::assertInstanceOf(\DateTime::class, $object->estimatedCollectionDate);
+            self::assertSame('00:00', $object->estimatedCollectionDate->format('H:i'));
+            self::assertInstanceOf(\DateTime::class, $object->estimatedDeliveryDate);
         } finally {
             $this->removeDirectory($fixtureDirectory);
         }
@@ -230,8 +230,8 @@ class Issue764RegressionTest extends TestCase
                 'nullableDateField' => null,
             ], $modelClass, 'json');
 
-            self::assertInstanceOf(\DateTime::class, $object->getDateField());
-            self::assertNull($object->getNullableDateField());
+            self::assertInstanceOf(\DateTime::class, $object->dateField);
+            self::assertNull($object->nullableDateField);
         } finally {
             $this->removeDirectory($fixtureDirectory);
         }

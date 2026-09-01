@@ -38,15 +38,15 @@ class BadRequestErrorNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('correlationId', $data)) {
-            $object->setCorrelationId($data['correlationId']);
+            $object->correlationId = $data['correlationId'];
             unset($data['correlationId']);
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
             unset($data['message']);
         }
         if (\array_key_exists('details', $data)) {
-            $object->setDetails($data['details']);
+            $object->details = $data['details'];
             unset($data['details']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class BadRequestErrorNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('correlationId') && null !== $data->getCorrelationId()) {
-            $dataArray['correlationId'] = $data->getCorrelationId();
+        if (array_key_exists('correlationId', get_object_vars($data)) && null !== ($data->correlationId ?? null)) {
+            $dataArray['correlationId'] = $data->correlationId ?? null;
         }
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['message'] = $data->message ?? null;
         }
-        if ($data->isInitialized('details') && null !== $data->getDetails()) {
-            $dataArray['details'] = $data->getDetails();
+        if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
+            $dataArray['details'] = $data->details ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

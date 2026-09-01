@@ -11,18 +11,5 @@ class Schema extends \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema
     /**
      * @var \Jane\Component\OpenApi31\JsonSchema\Model\Discriminator|null
      */
-    protected $discriminator;
-
-    public function getDiscriminator(): ?Discriminator
-    {
-        return $this->discriminator;
-    }
-
-    public function setDiscriminator(?Discriminator $discriminator): self
-    {
-        $this->initialized['discriminator'] = true;
-        $this->discriminator = $discriminator;
-
-        return $this;
-    }
+    public ?\Jane\Component\OpenApi31\JsonSchema\Model\Discriminator $discriminator;
 }

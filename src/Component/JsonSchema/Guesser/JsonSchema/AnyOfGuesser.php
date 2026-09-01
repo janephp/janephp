@@ -18,20 +18,20 @@ class AnyOfGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuess
 
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        foreach ($object->getAnyOf() as $anyOfKey => $anyOfObject) {
+        foreach (($object->anyOf ?? null ?? []) as $anyOfKey => $anyOfObject) {
             $this->chainGuesser->guessClass($anyOfObject, $name . 'AnyOf', $reference . '/anyOf/' . $anyOfKey, $registry);
         }
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
-        if (1 == \count($object->getAnyOf())) {
-            return $this->chainGuesser->guessType($object->getAnyOf()[0], $name, $reference . '/anyOf/0', $registry);
+        if (1 == \count($object->anyOf ?? null)) {
+            return $this->chainGuesser->guessType(($object->anyOf ?? null)[0], $name, $reference . '/anyOf/0', $registry);
         }
 
         $type = new MultipleType($object);
 
-        foreach ($object->getAnyOf() as $anyOfKey => $anyOfObject) {
+        foreach (($object->anyOf ?? null ?? []) as $anyOfKey => $anyOfObject) {
             $type->addType($this->chainGuesser->guessType($anyOfObject, $name, $reference . '/anyOf/' . $anyOfKey, $registry));
         }
 
@@ -40,6 +40,6 @@ class AnyOfGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuess
 
     public function supportObject($object): bool
     {
-        return ($object instanceof JsonSchema) && \is_array($object->getAnyOf()) && \count($object->getAnyOf()) > 0;
+        return ($object instanceof JsonSchema) && \is_array($object->anyOf ?? null) && \count($object->anyOf ?? null) > 0;
     }
 }

@@ -41,18 +41,18 @@ class ContainersIdChangesGetResponse200ItemNormalizer implements DenormalizerInt
             $this->validate($data, new \Docker\Api\Validator\ContainersIdChangesGetResponse200ItemConstraint());
         }
         if (\array_key_exists('Path', $data)) {
-            $object->setPath($data['Path']);
+            $object->path = $data['Path'];
         }
         if (\array_key_exists('Kind', $data)) {
-            $object->setKind($data['Kind']);
+            $object->kind = $data['Kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Path'] = $data->getPath();
-        $dataArray['Kind'] = $data->getKind();
+        $dataArray['Path'] = $data->path ?? null;
+        $dataArray['Kind'] = $data->kind ?? null;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdChangesGetResponse200ItemConstraint());
         }

@@ -38,45 +38,45 @@ class AvcModifyUserDefinedProfileNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('destIp', $data)) {
-            $object->setDestIp($data['destIp']);
+            $object->destIp = $data['destIp'];
         }
         if (\array_key_exists('netmask', $data)) {
-            $object->setNetmask($data['netmask']);
+            $object->netmask = $data['netmask'];
         }
         if (\array_key_exists('destPort', $data)) {
-            $object->setDestPort($data['destPort']);
+            $object->destPort = $data['destPort'];
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('destIp') && null !== $data->getDestIp()) {
-            $dataArray['destIp'] = $data->getDestIp();
+        if (array_key_exists('destIp', get_object_vars($data)) && null !== ($data->destIp ?? null)) {
+            $dataArray['destIp'] = $data->destIp ?? null;
         }
-        if ($data->isInitialized('netmask') && null !== $data->getNetmask()) {
-            $dataArray['netmask'] = $data->getNetmask();
+        if (array_key_exists('netmask', get_object_vars($data)) && null !== ($data->netmask ?? null)) {
+            $dataArray['netmask'] = $data->netmask ?? null;
         }
-        if ($data->isInitialized('destPort') && null !== $data->getDestPort()) {
-            $dataArray['destPort'] = $data->getDestPort();
+        if (array_key_exists('destPort', get_object_vars($data)) && null !== ($data->destPort ?? null)) {
+            $dataArray['destPort'] = $data->destPort ?? null;
         }
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
         return $dataArray;
     }

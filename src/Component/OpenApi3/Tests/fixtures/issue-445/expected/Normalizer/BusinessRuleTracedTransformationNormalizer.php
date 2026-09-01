@@ -38,36 +38,36 @@ class BusinessRuleTracedTransformationNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
         }
         if (\array_key_exists('input', $data) && $data['input'] !== null) {
-            $object->setInput($data['input']);
+            $object->input = $data['input'];
         }
         elseif (\array_key_exists('input', $data) && $data['input'] === null) {
-            $object->setInput(null);
+            $object->input = null;
         }
         if (\array_key_exists('output', $data) && $data['output'] !== null) {
-            $object->setOutput($data['output']);
+            $object->output = $data['output'];
         }
         elseif (\array_key_exists('output', $data) && $data['output'] === null) {
-            $object->setOutput(null);
+            $object->output = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        if ($data->isInitialized('input') && null !== $data->getInput()) {
-            $dataArray['input'] = $data->getInput();
+        if (array_key_exists('input', get_object_vars($data)) && null !== ($data->input ?? null)) {
+            $dataArray['input'] = $data->input ?? null;
         }
-        if ($data->isInitialized('output') && null !== $data->getOutput()) {
-            $dataArray['output'] = $data->getOutput();
+        if (array_key_exists('output', get_object_vars($data)) && null !== ($data->output ?? null)) {
+            $dataArray['output'] = $data->output ?? null;
         }
         return $dataArray;
     }

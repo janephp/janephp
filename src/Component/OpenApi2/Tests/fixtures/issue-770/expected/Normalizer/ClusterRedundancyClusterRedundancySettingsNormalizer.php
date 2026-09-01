@@ -44,91 +44,91 @@ class ClusterRedundancyClusterRedundancySettingsNormalizer implements Denormaliz
             $data['scheduleSyncUpEnabled'] = (bool) $data['scheduleSyncUpEnabled'];
         }
         if (\array_key_exists('clusterRedundancyEnabled', $data)) {
-            $object->setClusterRedundancyEnabled($data['clusterRedundancyEnabled']);
+            $object->clusterRedundancyEnabled = $data['clusterRedundancyEnabled'];
         }
         if (\array_key_exists('clusterRedundancyType', $data)) {
-            $object->setClusterRedundancyType($data['clusterRedundancyType']);
+            $object->clusterRedundancyType = $data['clusterRedundancyType'];
         }
         if (\array_key_exists('standbyAdminPassword', $data)) {
-            $object->setStandbyAdminPassword($data['standbyAdminPassword']);
+            $object->standbyAdminPassword = $data['standbyAdminPassword'];
         }
         if (\array_key_exists('managementEntryList', $data)) {
             $values = [];
             foreach ($data['managementEntryList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyManagementEntry::class, 'json', $context);
             }
-            $object->setManagementEntryList($values);
+            $object->managementEntryList = $values;
         }
         if (\array_key_exists('activeClusterList', $data)) {
             $values_1 = [];
             foreach ($data['activeClusterList'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyActiveCluster::class, 'json', $context);
             }
-            $object->setActiveClusterList($values_1);
+            $object->activeClusterList = $values_1;
         }
         if (\array_key_exists('scheduleSyncUpEnabled', $data)) {
-            $object->setScheduleSyncUpEnabled($data['scheduleSyncUpEnabled']);
+            $object->scheduleSyncUpEnabled = $data['scheduleSyncUpEnabled'];
         }
         if (\array_key_exists('interval', $data)) {
-            $object->setInterval($data['interval']);
+            $object->interval = $data['interval'];
         }
         if (\array_key_exists('dateOfMonth', $data)) {
-            $object->setDateOfMonth($data['dateOfMonth']);
+            $object->dateOfMonth = $data['dateOfMonth'];
         }
         if (\array_key_exists('dayOfWeek', $data)) {
-            $object->setDayOfWeek($data['dayOfWeek']);
+            $object->dayOfWeek = $data['dayOfWeek'];
         }
         if (\array_key_exists('hour', $data)) {
-            $object->setHour($data['hour']);
+            $object->hour = $data['hour'];
         }
         if (\array_key_exists('minute', $data)) {
-            $object->setMinute($data['minute']);
+            $object->minute = $data['minute'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clusterRedundancyEnabled') && null !== $data->getClusterRedundancyEnabled()) {
-            $dataArray['clusterRedundancyEnabled'] = $data->getClusterRedundancyEnabled();
+        if (array_key_exists('clusterRedundancyEnabled', get_object_vars($data)) && null !== ($data->clusterRedundancyEnabled ?? null)) {
+            $dataArray['clusterRedundancyEnabled'] = $data->clusterRedundancyEnabled ?? null;
         }
-        if ($data->isInitialized('clusterRedundancyType') && null !== $data->getClusterRedundancyType()) {
-            $dataArray['clusterRedundancyType'] = $data->getClusterRedundancyType();
+        if (array_key_exists('clusterRedundancyType', get_object_vars($data)) && null !== ($data->clusterRedundancyType ?? null)) {
+            $dataArray['clusterRedundancyType'] = $data->clusterRedundancyType ?? null;
         }
-        if ($data->isInitialized('standbyAdminPassword') && null !== $data->getStandbyAdminPassword()) {
-            $dataArray['standbyAdminPassword'] = $data->getStandbyAdminPassword();
+        if (array_key_exists('standbyAdminPassword', get_object_vars($data)) && null !== ($data->standbyAdminPassword ?? null)) {
+            $dataArray['standbyAdminPassword'] = $data->standbyAdminPassword ?? null;
         }
-        if ($data->isInitialized('managementEntryList') && null !== $data->getManagementEntryList()) {
+        if (array_key_exists('managementEntryList', get_object_vars($data)) && null !== ($data->managementEntryList ?? null)) {
             $values = [];
-            foreach ($data->getManagementEntryList() as $value) {
+            foreach ($data->managementEntryList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['managementEntryList'] = $values;
         }
-        if ($data->isInitialized('activeClusterList') && null !== $data->getActiveClusterList()) {
+        if (array_key_exists('activeClusterList', get_object_vars($data)) && null !== ($data->activeClusterList ?? null)) {
             $values_1 = [];
-            foreach ($data->getActiveClusterList() as $value_1) {
+            foreach ($data->activeClusterList ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['activeClusterList'] = $values_1;
         }
-        if ($data->isInitialized('scheduleSyncUpEnabled') && null !== $data->getScheduleSyncUpEnabled()) {
-            $dataArray['scheduleSyncUpEnabled'] = $data->getScheduleSyncUpEnabled();
+        if (array_key_exists('scheduleSyncUpEnabled', get_object_vars($data)) && null !== ($data->scheduleSyncUpEnabled ?? null)) {
+            $dataArray['scheduleSyncUpEnabled'] = $data->scheduleSyncUpEnabled ?? null;
         }
-        if ($data->isInitialized('interval') && null !== $data->getInterval()) {
-            $dataArray['interval'] = $data->getInterval();
+        if (array_key_exists('interval', get_object_vars($data)) && null !== ($data->interval ?? null)) {
+            $dataArray['interval'] = $data->interval ?? null;
         }
-        if ($data->isInitialized('dateOfMonth') && null !== $data->getDateOfMonth()) {
-            $dataArray['dateOfMonth'] = $data->getDateOfMonth();
+        if (array_key_exists('dateOfMonth', get_object_vars($data)) && null !== ($data->dateOfMonth ?? null)) {
+            $dataArray['dateOfMonth'] = $data->dateOfMonth ?? null;
         }
-        if ($data->isInitialized('dayOfWeek') && null !== $data->getDayOfWeek()) {
-            $dataArray['dayOfWeek'] = $data->getDayOfWeek();
+        if (array_key_exists('dayOfWeek', get_object_vars($data)) && null !== ($data->dayOfWeek ?? null)) {
+            $dataArray['dayOfWeek'] = $data->dayOfWeek ?? null;
         }
-        if ($data->isInitialized('hour') && null !== $data->getHour()) {
-            $dataArray['hour'] = $data->getHour();
+        if (array_key_exists('hour', get_object_vars($data)) && null !== ($data->hour ?? null)) {
+            $dataArray['hour'] = $data->hour ?? null;
         }
-        if ($data->isInitialized('minute') && null !== $data->getMinute()) {
-            $dataArray['minute'] = $data->getMinute();
+        if (array_key_exists('minute', get_object_vars($data)) && null !== ($data->minute ?? null)) {
+            $dataArray['minute'] = $data->minute ?? null;
         }
         return $dataArray;
     }

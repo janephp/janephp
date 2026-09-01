@@ -42,7 +42,7 @@ class ResponseStatusMessagesNormalizer implements DenormalizerInterface, Normali
             foreach ($data['messages'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\StatusMessages::class, 'json', $context);
             }
-            $object->setMessages($values);
+            $object->messages = $values;
             unset($data['messages']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseStatusMessagesNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('messages') && null !== $data->getMessages()) {
+        if (array_key_exists('messages', get_object_vars($data)) && null !== ($data->messages ?? null)) {
             $values = [];
-            foreach ($data->getMessages() as $value) {
+            foreach ($data->messages ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['messages'] = $values;

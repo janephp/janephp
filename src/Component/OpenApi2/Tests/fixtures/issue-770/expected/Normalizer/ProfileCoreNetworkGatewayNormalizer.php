@@ -38,45 +38,45 @@ class ProfileCoreNetworkGatewayNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('primaryGateway', $data)) {
-            $object->setPrimaryGateway($data['primaryGateway']);
+            $object->primaryGateway = $data['primaryGateway'];
         }
         if (\array_key_exists('secondaryGateway', $data)) {
-            $object->setSecondaryGateway($data['secondaryGateway']);
+            $object->secondaryGateway = $data['secondaryGateway'];
         }
         if (\array_key_exists('tunnelMTU', $data)) {
-            $object->setTunnelMTU($data['tunnelMTU']);
+            $object->tunnelMTU = $data['tunnelMTU'];
         }
         if (\array_key_exists('tunnelMTUSize', $data)) {
-            $object->setTunnelMTUSize($data['tunnelMTUSize']);
+            $object->tunnelMTUSize = $data['tunnelMTUSize'];
         }
         if (\array_key_exists('keepAlivePeriod', $data)) {
-            $object->setKeepAlivePeriod($data['keepAlivePeriod']);
+            $object->keepAlivePeriod = $data['keepAlivePeriod'];
         }
         if (\array_key_exists('keepAliveRetry', $data)) {
-            $object->setKeepAliveRetry($data['keepAliveRetry']);
+            $object->keepAliveRetry = $data['keepAliveRetry'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('primaryGateway') && null !== $data->getPrimaryGateway()) {
-            $dataArray['primaryGateway'] = $data->getPrimaryGateway();
+        if (array_key_exists('primaryGateway', get_object_vars($data)) && null !== ($data->primaryGateway ?? null)) {
+            $dataArray['primaryGateway'] = $data->primaryGateway ?? null;
         }
-        if ($data->isInitialized('secondaryGateway') && null !== $data->getSecondaryGateway()) {
-            $dataArray['secondaryGateway'] = $data->getSecondaryGateway();
+        if (array_key_exists('secondaryGateway', get_object_vars($data)) && null !== ($data->secondaryGateway ?? null)) {
+            $dataArray['secondaryGateway'] = $data->secondaryGateway ?? null;
         }
-        if ($data->isInitialized('tunnelMTU') && null !== $data->getTunnelMTU()) {
-            $dataArray['tunnelMTU'] = $data->getTunnelMTU();
+        if (array_key_exists('tunnelMTU', get_object_vars($data)) && null !== ($data->tunnelMTU ?? null)) {
+            $dataArray['tunnelMTU'] = $data->tunnelMTU ?? null;
         }
-        if ($data->isInitialized('tunnelMTUSize') && null !== $data->getTunnelMTUSize()) {
-            $dataArray['tunnelMTUSize'] = $data->getTunnelMTUSize();
+        if (array_key_exists('tunnelMTUSize', get_object_vars($data)) && null !== ($data->tunnelMTUSize ?? null)) {
+            $dataArray['tunnelMTUSize'] = $data->tunnelMTUSize ?? null;
         }
-        if ($data->isInitialized('keepAlivePeriod') && null !== $data->getKeepAlivePeriod()) {
-            $dataArray['keepAlivePeriod'] = $data->getKeepAlivePeriod();
+        if (array_key_exists('keepAlivePeriod', get_object_vars($data)) && null !== ($data->keepAlivePeriod ?? null)) {
+            $dataArray['keepAlivePeriod'] = $data->keepAlivePeriod ?? null;
         }
-        if ($data->isInitialized('keepAliveRetry') && null !== $data->getKeepAliveRetry()) {
-            $dataArray['keepAliveRetry'] = $data->getKeepAliveRetry();
+        if (array_key_exists('keepAliveRetry', get_object_vars($data)) && null !== ($data->keepAliveRetry ?? null)) {
+            $dataArray['keepAliveRetry'] = $data->keepAliveRetry ?? null;
         }
         return $dataArray;
     }

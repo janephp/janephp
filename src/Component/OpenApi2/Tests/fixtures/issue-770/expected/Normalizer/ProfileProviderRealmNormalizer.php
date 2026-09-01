@@ -38,27 +38,27 @@ class ProfileProviderRealmNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('encoding', $data)) {
-            $object->setEncoding($data['encoding']);
+            $object->encoding = $data['encoding'];
         }
         if (\array_key_exists('eapMethods', $data)) {
             $values = [];
             foreach ($data['eapMethods'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderEAPMethod::class, 'json', $context);
             }
-            $object->setEapMethods($values);
+            $object->eapMethods = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['encoding'] = $data->getEncoding();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['encoding'] = $data->encoding ?? null;
         $values = [];
-        foreach ($data->getEapMethods() as $value) {
+        foreach ($data->eapMethods ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['eapMethods'] = $values;

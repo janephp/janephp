@@ -38,23 +38,23 @@ class AppIngressSpecRuleRoutingRedirectNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('uri', $data)) {
-            $object->setUri($data['uri']);
+            $object->uri = $data['uri'];
             unset($data['uri']);
         }
         if (\array_key_exists('authority', $data)) {
-            $object->setAuthority($data['authority']);
+            $object->authority = $data['authority'];
             unset($data['authority']);
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
             unset($data['port']);
         }
         if (\array_key_exists('scheme', $data)) {
-            $object->setScheme($data['scheme']);
+            $object->scheme = $data['scheme'];
             unset($data['scheme']);
         }
         if (\array_key_exists('redirect_code', $data)) {
-            $object->setRedirectCode($data['redirect_code']);
+            $object->redirectCode = $data['redirect_code'];
             unset($data['redirect_code']);
         }
         foreach ($data as $key => $value) {
@@ -67,20 +67,20 @@ class AppIngressSpecRuleRoutingRedirectNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('uri') && null !== $data->getUri()) {
-            $dataArray['uri'] = $data->getUri();
+        if (array_key_exists('uri', get_object_vars($data)) && null !== ($data->uri ?? null)) {
+            $dataArray['uri'] = $data->uri ?? null;
         }
-        if ($data->isInitialized('authority') && null !== $data->getAuthority()) {
-            $dataArray['authority'] = $data->getAuthority();
+        if (array_key_exists('authority', get_object_vars($data)) && null !== ($data->authority ?? null)) {
+            $dataArray['authority'] = $data->authority ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
-        if ($data->isInitialized('scheme') && null !== $data->getScheme()) {
-            $dataArray['scheme'] = $data->getScheme();
+        if (array_key_exists('scheme', get_object_vars($data)) && null !== ($data->scheme ?? null)) {
+            $dataArray['scheme'] = $data->scheme ?? null;
         }
-        if ($data->isInitialized('redirectCode') && null !== $data->getRedirectCode()) {
-            $dataArray['redirect_code'] = $data->getRedirectCode();
+        if (array_key_exists('redirectCode', get_object_vars($data)) && null !== ($data->redirectCode ?? null)) {
+            $dataArray['redirect_code'] = $data->redirectCode ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,11 +38,11 @@ class UserSettingsOpensearchAclItemNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('index', $data)) {
-            $object->setIndex($data['index']);
+            $object->index = $data['index'];
             unset($data['index']);
         }
         if (\array_key_exists('permission', $data)) {
-            $object->setPermission($data['permission']);
+            $object->permission = $data['permission'];
             unset($data['permission']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class UserSettingsOpensearchAclItemNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('index') && null !== $data->getIndex()) {
-            $dataArray['index'] = $data->getIndex();
+        if (array_key_exists('index', get_object_vars($data)) && null !== ($data->index ?? null)) {
+            $dataArray['index'] = $data->index ?? null;
         }
-        if ($data->isInitialized('permission') && null !== $data->getPermission()) {
-            $dataArray['permission'] = $data->getPermission();
+        if (array_key_exists('permission', get_object_vars($data)) && null !== ($data->permission ?? null)) {
+            $dataArray['permission'] = $data->permission ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

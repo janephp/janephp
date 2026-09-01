@@ -41,7 +41,7 @@ class LinksBookingNormalizer implements DenormalizerInterface, NormalizerInterfa
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\LinksBookingConstraint());
         }
         if (\array_key_exists('booking', $data)) {
-            $object->setBooking($data['booking']);
+            $object->booking = $data['booking'];
             unset($data['booking']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class LinksBookingNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('booking') && null !== $data->getBooking()) {
-            $dataArray['booking'] = $data->getBooking();
+        if (array_key_exists('booking', get_object_vars($data)) && null !== ($data->booking ?? null)) {
+            $dataArray['booking'] = $data->booking ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

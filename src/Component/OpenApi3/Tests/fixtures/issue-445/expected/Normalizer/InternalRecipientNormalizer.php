@@ -42,35 +42,35 @@ class InternalRecipientNormalizer implements DenormalizerInterface, NormalizerIn
             if (is_array($data['recipient']) and \array_key_exists('emailAddress', $data['recipient']) and \array_key_exists('isDeleted', $data['recipient'])) {
                 $value = $this->denormalizer->denormalize($data['recipient'], \PicturePark\API\Model\User::class, 'json', $context);
             }
-            $object->setRecipient($value);
+            $object->recipient = $value;
         }
         if (\array_key_exists('token', $data) && $data['token'] !== null) {
-            $object->setToken($data['token']);
+            $object->token = $data['token'];
         }
         elseif (\array_key_exists('token', $data) && $data['token'] === null) {
-            $object->setToken(null);
+            $object->token = null;
         }
         if (\array_key_exists('url', $data) && $data['url'] !== null) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
         }
         elseif (\array_key_exists('url', $data) && $data['url'] === null) {
-            $object->setUrl(null);
+            $object->url = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getRecipient();
-        if (is_object($data->getRecipient())) {
-            $value = $data->getRecipient() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getRecipient(), 'json', $context));
+        $value = $data->recipient ?? null;
+        if (is_object($data->recipient ?? null)) {
+            $value = ($data->recipient ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->recipient ?? null, 'json', $context));
         }
         $dataArray['recipient'] = $value;
-        if ($data->isInitialized('token') && null !== $data->getToken()) {
-            $dataArray['token'] = $data->getToken();
+        if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {
+            $dataArray['token'] = $data->token ?? null;
         }
-        if ($data->isInitialized('url') && null !== $data->getUrl()) {
-            $dataArray['url'] = $data->getUrl();
+        if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
+            $dataArray['url'] = $data->url ?? null;
         }
         return $dataArray;
     }

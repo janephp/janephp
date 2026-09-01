@@ -9,7 +9,7 @@ class InvoicesGetCsvByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     /**
      * To retrieve a CSV for an invoice, send a GET request to `/v2/customers/my/invoices/$INVOICE_UUID/csv`.
      * @param string $invoiceUuid UUID of the invoice
-     * @param array $accept Accept content header text/csv|application/json
+     * @param array $accept Accept content header application/json|text/csv
      */
     public function __construct(string $invoiceUuid, array $accept = [])
     {
@@ -32,7 +32,7 @@ class InvoicesGetCsvByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     public function getExtraHeaders(): array
     {
         if (empty($this->accept)) {
-            return ['Accept' => ['text/csv', 'application/json']];
+            return ['Accept' => ['application/json', 'text/csv']];
         }
         return $this->accept;
     }

@@ -47,63 +47,63 @@ class WlanWlanAuthenticationNormalizer implements DenormalizerInterface, Normali
             $data['locationDeliveryEnabled'] = (bool) $data['locationDeliveryEnabled'];
         }
         if (\array_key_exists('throughController', $data)) {
-            $object->setThroughController($data['throughController']);
+            $object->throughController = $data['throughController'];
         }
         if (\array_key_exists('realmBasedAuth', $data)) {
-            $object->setRealmBasedAuth($data['realmBasedAuth']);
+            $object->realmBasedAuth = $data['realmBasedAuth'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('authenticationOption', $data)) {
-            $object->setAuthenticationOption($data['authenticationOption']);
+            $object->authenticationOption = $data['authenticationOption'];
         }
         if (\array_key_exists('locationDeliveryEnabled', $data)) {
-            $object->setLocationDeliveryEnabled($data['locationDeliveryEnabled']);
+            $object->locationDeliveryEnabled = $data['locationDeliveryEnabled'];
         }
         if (\array_key_exists('backupAuthenticationId', $data)) {
-            $object->setBackupAuthenticationId($data['backupAuthenticationId']);
+            $object->backupAuthenticationId = $data['backupAuthenticationId'];
         }
         if (\array_key_exists('backupAuthenticationName', $data)) {
-            $object->setBackupAuthenticationName($data['backupAuthenticationName']);
+            $object->backupAuthenticationName = $data['backupAuthenticationName'];
         }
         if (\array_key_exists('backupAuthenticationOption', $data)) {
-            $object->setBackupAuthenticationOption($data['backupAuthenticationOption']);
+            $object->backupAuthenticationOption = $data['backupAuthenticationOption'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('throughController') && null !== $data->getThroughController()) {
-            $dataArray['throughController'] = $data->getThroughController();
+        if (array_key_exists('throughController', get_object_vars($data)) && null !== ($data->throughController ?? null)) {
+            $dataArray['throughController'] = $data->throughController ?? null;
         }
-        if ($data->isInitialized('realmBasedAuth') && null !== $data->getRealmBasedAuth()) {
-            $dataArray['realmBasedAuth'] = $data->getRealmBasedAuth();
+        if (array_key_exists('realmBasedAuth', get_object_vars($data)) && null !== ($data->realmBasedAuth ?? null)) {
+            $dataArray['realmBasedAuth'] = $data->realmBasedAuth ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('authenticationOption') && null !== $data->getAuthenticationOption()) {
-            $dataArray['authenticationOption'] = $data->getAuthenticationOption();
+        if (array_key_exists('authenticationOption', get_object_vars($data)) && null !== ($data->authenticationOption ?? null)) {
+            $dataArray['authenticationOption'] = $data->authenticationOption ?? null;
         }
-        if ($data->isInitialized('locationDeliveryEnabled') && null !== $data->getLocationDeliveryEnabled()) {
-            $dataArray['locationDeliveryEnabled'] = $data->getLocationDeliveryEnabled();
+        if (array_key_exists('locationDeliveryEnabled', get_object_vars($data)) && null !== ($data->locationDeliveryEnabled ?? null)) {
+            $dataArray['locationDeliveryEnabled'] = $data->locationDeliveryEnabled ?? null;
         }
-        if ($data->isInitialized('backupAuthenticationId') && null !== $data->getBackupAuthenticationId()) {
-            $dataArray['backupAuthenticationId'] = $data->getBackupAuthenticationId();
+        if (array_key_exists('backupAuthenticationId', get_object_vars($data)) && null !== ($data->backupAuthenticationId ?? null)) {
+            $dataArray['backupAuthenticationId'] = $data->backupAuthenticationId ?? null;
         }
-        if ($data->isInitialized('backupAuthenticationName') && null !== $data->getBackupAuthenticationName()) {
-            $dataArray['backupAuthenticationName'] = $data->getBackupAuthenticationName();
+        if (array_key_exists('backupAuthenticationName', get_object_vars($data)) && null !== ($data->backupAuthenticationName ?? null)) {
+            $dataArray['backupAuthenticationName'] = $data->backupAuthenticationName ?? null;
         }
-        if ($data->isInitialized('backupAuthenticationOption') && null !== $data->getBackupAuthenticationOption()) {
-            $dataArray['backupAuthenticationOption'] = $data->getBackupAuthenticationOption();
+        if (array_key_exists('backupAuthenticationOption', get_object_vars($data)) && null !== ($data->backupAuthenticationOption ?? null)) {
+            $dataArray['backupAuthenticationOption'] = $data->backupAuthenticationOption ?? null;
         }
         return $dataArray;
     }

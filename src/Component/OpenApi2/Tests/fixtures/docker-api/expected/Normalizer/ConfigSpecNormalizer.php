@@ -41,41 +41,41 @@ class ConfigSpecNormalizer implements DenormalizerInterface, NormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\ConfigSpecConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Labels', $data)) {
             $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setLabels($values);
+            $object->labels = $values;
         }
         if (\array_key_exists('Data', $data)) {
-            $object->setData($data['Data']);
+            $object->data = $data['Data'];
         }
         if (\array_key_exists('Templating', $data)) {
-            $object->setTemplating($this->denormalizer->denormalize($data['Templating'], \Docker\Api\Model\Driver::class, 'json', $context));
+            $object->templating = $this->denormalizer->denormalize($data['Templating'], \Docker\Api\Model\Driver::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('labels') && null !== $data->getLabels()) {
+        if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getLabels() as $key => $value) {
+            foreach ($data->labels ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Labels'] = $values;
         }
-        if ($data->isInitialized('data') && null !== $data->getData()) {
-            $dataArray['Data'] = $data->getData();
+        if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
+            $dataArray['Data'] = $data->data ?? null;
         }
-        if ($data->isInitialized('templating') && null !== $data->getTemplating()) {
-            $dataArray['Templating'] = $data->getTemplating() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTemplating(), 'json', $context));
+        if (array_key_exists('templating', get_object_vars($data)) && null !== ($data->templating ?? null)) {
+            $dataArray['Templating'] = ($data->templating ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->templating ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ConfigSpecConstraint());

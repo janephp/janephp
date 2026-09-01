@@ -38,11 +38,11 @@ class OptionsNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('options', $data)) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Generated\DigitalOcean\Model\OptionsOptions::class, 'json', $context));
+            $object->options = $this->denormalizer->denormalize($data['options'], \Jane\Generated\DigitalOcean\Model\OptionsOptions::class, 'json', $context);
             unset($data['options']);
         }
         if (\array_key_exists('version_availability', $data)) {
-            $object->setVersionAvailability($this->denormalizer->denormalize($data['version_availability'], \Jane\Generated\DigitalOcean\Model\OptionsVersionAvailability::class, 'json', $context));
+            $object->versionAvailability = $this->denormalizer->denormalize($data['version_availability'], \Jane\Generated\DigitalOcean\Model\OptionsVersionAvailability::class, 'json', $context);
             unset($data['version_availability']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class OptionsNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $dataArray['options'] = $data->getOptions() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
+            $dataArray['options'] = ($data->options ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->options ?? null, 'json', $context));
         }
-        if ($data->isInitialized('versionAvailability') && null !== $data->getVersionAvailability()) {
-            $dataArray['version_availability'] = $data->getVersionAvailability() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVersionAvailability(), 'json', $context));
+        if (array_key_exists('versionAvailability', get_object_vars($data)) && null !== ($data->versionAvailability ?? null)) {
+            $dataArray['version_availability'] = ($data->versionAvailability ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->versionAvailability ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

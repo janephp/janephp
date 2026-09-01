@@ -38,18 +38,18 @@ class VlanNameProfileVlanNameRuleNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('vlanName', $data)) {
-            $object->setVlanName($data['vlanName']);
+            $object->vlanName = $data['vlanName'];
         }
         if (\array_key_exists('vlanId', $data)) {
-            $object->setVlanId($data['vlanId']);
+            $object->vlanId = $data['vlanId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['vlanName'] = $data->getVlanName();
-        $dataArray['vlanId'] = $data->getVlanId();
+        $dataArray['vlanName'] = $data->vlanName ?? null;
+        $dataArray['vlanId'] = $data->vlanId ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

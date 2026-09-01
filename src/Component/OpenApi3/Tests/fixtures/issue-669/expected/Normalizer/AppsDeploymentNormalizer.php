@@ -38,11 +38,11 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('cause', $data)) {
-            $object->setCause($data['cause']);
+            $object->cause = $data['cause'];
             unset($data['cause']);
         }
         if (\array_key_exists('cloned_from', $data)) {
-            $object->setClonedFrom($data['cloned_from']);
+            $object->clonedFrom = $data['cloned_from'];
             unset($data['cloned_from']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -50,11 +50,11 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('jobs', $data)) {
@@ -62,7 +62,7 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['jobs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppsDeploymentJob::class, 'json', $context);
             }
-            $object->setJobs($values);
+            $object->jobs = $values;
             unset($data['jobs']);
         }
         if (\array_key_exists('functions', $data)) {
@@ -70,11 +70,11 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['functions'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\AppsDeploymentFunctions::class, 'json', $context);
             }
-            $object->setFunctions($values_1);
+            $object->functions = $values_1;
             unset($data['functions']);
         }
         if (\array_key_exists('phase', $data)) {
-            $object->setPhase($data['phase']);
+            $object->phase = $data['phase'];
             unset($data['phase']);
         }
         if (\array_key_exists('phase_last_updated_at', $data)) {
@@ -82,11 +82,11 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['phase_last_updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setPhaseLastUpdatedAt($date_1);
+            $object->phaseLastUpdatedAt = $date_1;
             unset($data['phase_last_updated_at']);
         }
         if (\array_key_exists('progress', $data)) {
-            $object->setProgress($this->denormalizer->denormalize($data['progress'], \Jane\Generated\DigitalOcean\Model\AppsDeploymentProgress::class, 'json', $context));
+            $object->progress = $this->denormalizer->denormalize($data['progress'], \Jane\Generated\DigitalOcean\Model\AppsDeploymentProgress::class, 'json', $context);
             unset($data['progress']);
         }
         if (\array_key_exists('services', $data)) {
@@ -94,11 +94,11 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['services'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\AppsDeploymentService::class, 'json', $context);
             }
-            $object->setServices($values_2);
+            $object->services = $values_2;
             unset($data['services']);
         }
         if (\array_key_exists('spec', $data)) {
-            $object->setSpec($this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context));
+            $object->spec = $this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context);
             unset($data['spec']);
         }
         if (\array_key_exists('static_sites', $data)) {
@@ -106,11 +106,11 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['static_sites'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Generated\DigitalOcean\Model\AppsDeploymentStaticSite::class, 'json', $context);
             }
-            $object->setStaticSites($values_3);
+            $object->staticSites = $values_3;
             unset($data['static_sites']);
         }
         if (\array_key_exists('tier_slug', $data)) {
-            $object->setTierSlug($data['tier_slug']);
+            $object->tierSlug = $data['tier_slug'];
             unset($data['tier_slug']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -118,7 +118,7 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date_2) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_2);
+            $object->updatedAt = $date_2;
             unset($data['updated_at']);
         }
         if (\array_key_exists('workers', $data)) {
@@ -126,7 +126,7 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['workers'] as $value_4) {
                 $values_4[] = $this->denormalizer->denormalize($value_4, \Jane\Generated\DigitalOcean\Model\AppsDeploymentWorker::class, 'json', $context);
             }
-            $object->setWorkers($values_4);
+            $object->workers = $values_4;
             unset($data['workers']);
         }
         foreach ($data as $key => $value_5) {
@@ -139,64 +139,64 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('cause') && null !== $data->getCause()) {
-            $dataArray['cause'] = $data->getCause();
+        if (array_key_exists('cause', get_object_vars($data)) && null !== ($data->cause ?? null)) {
+            $dataArray['cause'] = $data->cause ?? null;
         }
-        if ($data->isInitialized('clonedFrom') && null !== $data->getClonedFrom()) {
-            $dataArray['cloned_from'] = $data->getClonedFrom();
+        if (array_key_exists('clonedFrom', get_object_vars($data)) && null !== ($data->clonedFrom ?? null)) {
+            $dataArray['cloned_from'] = $data->clonedFrom ?? null;
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('jobs') && null !== $data->getJobs()) {
+        if (array_key_exists('jobs', get_object_vars($data)) && null !== ($data->jobs ?? null)) {
             $values = [];
-            foreach ($data->getJobs() as $value) {
+            foreach ($data->jobs ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['jobs'] = $values;
         }
-        if ($data->isInitialized('functions') && null !== $data->getFunctions()) {
+        if (array_key_exists('functions', get_object_vars($data)) && null !== ($data->functions ?? null)) {
             $values_1 = [];
-            foreach ($data->getFunctions() as $value_1) {
+            foreach ($data->functions ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['functions'] = $values_1;
         }
-        if ($data->isInitialized('phase') && null !== $data->getPhase()) {
-            $dataArray['phase'] = $data->getPhase();
+        if (array_key_exists('phase', get_object_vars($data)) && null !== ($data->phase ?? null)) {
+            $dataArray['phase'] = $data->phase ?? null;
         }
-        if ($data->isInitialized('phaseLastUpdatedAt') && null !== $data->getPhaseLastUpdatedAt()) {
-            $dataArray['phase_last_updated_at'] = $data->getPhaseLastUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('phaseLastUpdatedAt', get_object_vars($data)) && null !== ($data->phaseLastUpdatedAt ?? null)) {
+            $dataArray['phase_last_updated_at'] = ($data->phaseLastUpdatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('progress') && null !== $data->getProgress()) {
-            $dataArray['progress'] = $data->getProgress() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getProgress(), 'json', $context));
+        if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
+            $dataArray['progress'] = ($data->progress ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->progress ?? null, 'json', $context));
         }
-        if ($data->isInitialized('services') && null !== $data->getServices()) {
+        if (array_key_exists('services', get_object_vars($data)) && null !== ($data->services ?? null)) {
             $values_2 = [];
-            foreach ($data->getServices() as $value_2) {
+            foreach ($data->services ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['services'] = $values_2;
         }
-        if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['spec'] = $data->getSpec() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
+        if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
+            $dataArray['spec'] = ($data->spec ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
         }
-        if ($data->isInitialized('staticSites') && null !== $data->getStaticSites()) {
+        if (array_key_exists('staticSites', get_object_vars($data)) && null !== ($data->staticSites ?? null)) {
             $values_3 = [];
-            foreach ($data->getStaticSites() as $value_3) {
+            foreach ($data->staticSites ?? null as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['static_sites'] = $values_3;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('workers') && null !== $data->getWorkers()) {
+        if (array_key_exists('workers', get_object_vars($data)) && null !== ($data->workers ?? null)) {
             $values_4 = [];
-            foreach ($data->getWorkers() as $value_4) {
+            foreach ($data->workers ?? null as $value_4) {
                 $values_4[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['workers'] = $values_4;

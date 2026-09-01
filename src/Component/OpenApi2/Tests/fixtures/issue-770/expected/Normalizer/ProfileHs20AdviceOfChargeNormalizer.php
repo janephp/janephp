@@ -38,30 +38,30 @@ class ProfileHs20AdviceOfChargeNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('naiRealm', $data)) {
-            $object->setNaiRealm($this->denormalizer->denormalize($data['naiRealm'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20AdviceOfChargeNaiRealm::class, 'json', $context));
+            $object->naiRealm = $this->denormalizer->denormalize($data['naiRealm'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20AdviceOfChargeNaiRealm::class, 'json', $context);
         }
         if (\array_key_exists('planInformations', $data)) {
             $values = [];
             foreach ($data['planInformations'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20AdviceOfChargePlanInformationsItem::class, 'json', $context);
             }
-            $object->setPlanInformations($values);
+            $object->planInformations = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('naiRealm') && null !== $data->getNaiRealm()) {
-            $dataArray['naiRealm'] = $data->getNaiRealm() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getNaiRealm(), 'json', $context));
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('naiRealm', get_object_vars($data)) && null !== ($data->naiRealm ?? null)) {
+            $dataArray['naiRealm'] = ($data->naiRealm ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->naiRealm ?? null, 'json', $context));
         }
-        if ($data->isInitialized('planInformations') && null !== $data->getPlanInformations()) {
+        if (array_key_exists('planInformations', get_object_vars($data)) && null !== ($data->planInformations ?? null)) {
             $values = [];
-            foreach ($data->getPlanInformations() as $value) {
+            foreach ($data->planInformations ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['planInformations'] = $values;

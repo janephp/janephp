@@ -56,75 +56,75 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
             $this->validate($data, new \Docker\Api\Validator\ExecIdJsonGetResponse200Constraint());
         }
         if (\array_key_exists('CanRemove', $data)) {
-            $object->setCanRemove($data['CanRemove']);
+            $object->canRemove = $data['CanRemove'];
         }
         if (\array_key_exists('DetachKeys', $data)) {
-            $object->setDetachKeys($data['DetachKeys']);
+            $object->detachKeys = $data['DetachKeys'];
         }
         if (\array_key_exists('ID', $data)) {
-            $object->setID($data['ID']);
+            $object->iD = $data['ID'];
         }
         if (\array_key_exists('Running', $data)) {
-            $object->setRunning($data['Running']);
+            $object->running = $data['Running'];
         }
         if (\array_key_exists('ExitCode', $data)) {
-            $object->setExitCode($data['ExitCode']);
+            $object->exitCode = $data['ExitCode'];
         }
         if (\array_key_exists('ProcessConfig', $data)) {
-            $object->setProcessConfig($this->denormalizer->denormalize($data['ProcessConfig'], \Docker\Api\Model\ProcessConfig::class, 'json', $context));
+            $object->processConfig = $this->denormalizer->denormalize($data['ProcessConfig'], \Docker\Api\Model\ProcessConfig::class, 'json', $context);
         }
         if (\array_key_exists('OpenStdin', $data)) {
-            $object->setOpenStdin($data['OpenStdin']);
+            $object->openStdin = $data['OpenStdin'];
         }
         if (\array_key_exists('OpenStderr', $data)) {
-            $object->setOpenStderr($data['OpenStderr']);
+            $object->openStderr = $data['OpenStderr'];
         }
         if (\array_key_exists('OpenStdout', $data)) {
-            $object->setOpenStdout($data['OpenStdout']);
+            $object->openStdout = $data['OpenStdout'];
         }
         if (\array_key_exists('ContainerID', $data)) {
-            $object->setContainerID($data['ContainerID']);
+            $object->containerID = $data['ContainerID'];
         }
         if (\array_key_exists('Pid', $data)) {
-            $object->setPid($data['Pid']);
+            $object->pid = $data['Pid'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('canRemove') && null !== $data->getCanRemove()) {
-            $dataArray['CanRemove'] = $data->getCanRemove();
+        if (array_key_exists('canRemove', get_object_vars($data)) && null !== ($data->canRemove ?? null)) {
+            $dataArray['CanRemove'] = $data->canRemove ?? null;
         }
-        if ($data->isInitialized('detachKeys') && null !== $data->getDetachKeys()) {
-            $dataArray['DetachKeys'] = $data->getDetachKeys();
+        if (array_key_exists('detachKeys', get_object_vars($data)) && null !== ($data->detachKeys ?? null)) {
+            $dataArray['DetachKeys'] = $data->detachKeys ?? null;
         }
-        if ($data->isInitialized('iD') && null !== $data->getID()) {
-            $dataArray['ID'] = $data->getID();
+        if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
+            $dataArray['ID'] = $data->iD ?? null;
         }
-        if ($data->isInitialized('running') && null !== $data->getRunning()) {
-            $dataArray['Running'] = $data->getRunning();
+        if (array_key_exists('running', get_object_vars($data)) && null !== ($data->running ?? null)) {
+            $dataArray['Running'] = $data->running ?? null;
         }
-        if ($data->isInitialized('exitCode') && null !== $data->getExitCode()) {
-            $dataArray['ExitCode'] = $data->getExitCode();
+        if (array_key_exists('exitCode', get_object_vars($data)) && null !== ($data->exitCode ?? null)) {
+            $dataArray['ExitCode'] = $data->exitCode ?? null;
         }
-        if ($data->isInitialized('processConfig') && null !== $data->getProcessConfig()) {
-            $dataArray['ProcessConfig'] = $data->getProcessConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getProcessConfig(), 'json', $context));
+        if (array_key_exists('processConfig', get_object_vars($data)) && null !== ($data->processConfig ?? null)) {
+            $dataArray['ProcessConfig'] = ($data->processConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->processConfig ?? null, 'json', $context));
         }
-        if ($data->isInitialized('openStdin') && null !== $data->getOpenStdin()) {
-            $dataArray['OpenStdin'] = $data->getOpenStdin();
+        if (array_key_exists('openStdin', get_object_vars($data)) && null !== ($data->openStdin ?? null)) {
+            $dataArray['OpenStdin'] = $data->openStdin ?? null;
         }
-        if ($data->isInitialized('openStderr') && null !== $data->getOpenStderr()) {
-            $dataArray['OpenStderr'] = $data->getOpenStderr();
+        if (array_key_exists('openStderr', get_object_vars($data)) && null !== ($data->openStderr ?? null)) {
+            $dataArray['OpenStderr'] = $data->openStderr ?? null;
         }
-        if ($data->isInitialized('openStdout') && null !== $data->getOpenStdout()) {
-            $dataArray['OpenStdout'] = $data->getOpenStdout();
+        if (array_key_exists('openStdout', get_object_vars($data)) && null !== ($data->openStdout ?? null)) {
+            $dataArray['OpenStdout'] = $data->openStdout ?? null;
         }
-        if ($data->isInitialized('containerID') && null !== $data->getContainerID()) {
-            $dataArray['ContainerID'] = $data->getContainerID();
+        if (array_key_exists('containerID', get_object_vars($data)) && null !== ($data->containerID ?? null)) {
+            $dataArray['ContainerID'] = $data->containerID ?? null;
         }
-        if ($data->isInitialized('pid') && null !== $data->getPid()) {
-            $dataArray['Pid'] = $data->getPid();
+        if (array_key_exists('pid', get_object_vars($data)) && null !== ($data->pid ?? null)) {
+            $dataArray['Pid'] = $data->pid ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ExecIdJsonGetResponse200Constraint());

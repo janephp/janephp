@@ -42,16 +42,16 @@ class ClientDisconnectClientListNormalizer implements DenormalizerInterface, Nor
             foreach ($data['clientList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ClientDisconnectClient::class, 'json', $context);
             }
-            $object->setClientList($values);
+            $object->clientList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clientList') && null !== $data->getClientList()) {
+        if (array_key_exists('clientList', get_object_vars($data)) && null !== ($data->clientList ?? null)) {
             $values = [];
-            foreach ($data->getClientList() as $value) {
+            foreach ($data->clientList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['clientList'] = $values;

@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationL
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationL
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -41,10 +41,10 @@ class PermissionSetNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['exclusive'] = (bool) $data['exclusive'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('exclusive', $data)) {
-            $object->setExclusive($data['exclusive']);
+            $object->exclusive = $data['exclusive'];
         }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];
@@ -55,19 +55,19 @@ class PermissionSetNormalizer implements DenormalizerInterface, NormalizerInterf
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['exclusive'] = $data->getExclusive();
-        $value = $data->getNames();
-        if (is_object($data->getNames())) {
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['exclusive'] = $data->exclusive ?? null;
+        $value = $data->names ?? null;
+        if (is_object($data->names ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getNames() as $key => $value_1) {
+            foreach ($data->names ?? null as $key => $value_1) {
                 $values[$key] = $value_1;
             }
             $value = $values;

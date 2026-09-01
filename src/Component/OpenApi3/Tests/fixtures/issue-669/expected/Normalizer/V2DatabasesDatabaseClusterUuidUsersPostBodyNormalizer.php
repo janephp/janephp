@@ -41,35 +41,35 @@ class V2DatabasesDatabaseClusterUuidUsersPostBodyNormalizer implements Denormali
             $data['readonly'] = (bool) $data['readonly'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('role', $data)) {
-            $object->setRole($data['role']);
+            $object->role = $data['role'];
             unset($data['role']);
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
             unset($data['password']);
         }
         if (\array_key_exists('access_cert', $data)) {
-            $object->setAccessCert($data['access_cert']);
+            $object->accessCert = $data['access_cert'];
             unset($data['access_cert']);
         }
         if (\array_key_exists('access_key', $data)) {
-            $object->setAccessKey($data['access_key']);
+            $object->accessKey = $data['access_key'];
             unset($data['access_key']);
         }
         if (\array_key_exists('mysql_settings', $data)) {
-            $object->setMysqlSettings($this->denormalizer->denormalize($data['mysql_settings'], \Jane\Generated\DigitalOcean\Model\MysqlSettings::class, 'json', $context));
+            $object->mysqlSettings = $this->denormalizer->denormalize($data['mysql_settings'], \Jane\Generated\DigitalOcean\Model\MysqlSettings::class, 'json', $context);
             unset($data['mysql_settings']);
         }
         if (\array_key_exists('settings', $data)) {
-            $object->setSettings($this->denormalizer->denormalize($data['settings'], \Jane\Generated\DigitalOcean\Model\UserSettings::class, 'json', $context));
+            $object->settings = $this->denormalizer->denormalize($data['settings'], \Jane\Generated\DigitalOcean\Model\UserSettings::class, 'json', $context);
             unset($data['settings']);
         }
         if (\array_key_exists('readonly', $data)) {
-            $object->setReadonly($data['readonly']);
+            $object->readonly = $data['readonly'];
             unset($data['readonly']);
         }
         foreach ($data as $key => $value) {
@@ -82,15 +82,15 @@ class V2DatabasesDatabaseClusterUuidUsersPostBodyNormalizer implements Denormali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('mysqlSettings') && null !== $data->getMysqlSettings()) {
-            $dataArray['mysql_settings'] = $data->getMysqlSettings() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMysqlSettings(), 'json', $context));
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('mysqlSettings', get_object_vars($data)) && null !== ($data->mysqlSettings ?? null)) {
+            $dataArray['mysql_settings'] = ($data->mysqlSettings ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlSettings ?? null, 'json', $context));
         }
-        if ($data->isInitialized('settings') && null !== $data->getSettings()) {
-            $dataArray['settings'] = $data->getSettings() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSettings(), 'json', $context));
+        if (array_key_exists('settings', get_object_vars($data)) && null !== ($data->settings ?? null)) {
+            $dataArray['settings'] = ($data->settings ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->settings ?? null, 'json', $context));
         }
-        if ($data->isInitialized('readonly') && null !== $data->getReadonly()) {
-            $dataArray['readonly'] = $data->getReadonly();
+        if (array_key_exists('readonly', get_object_vars($data)) && null !== ($data->readonly ?? null)) {
+            $dataArray['readonly'] = $data->readonly ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

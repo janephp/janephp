@@ -45,10 +45,10 @@ class ListItemRestoreManyRequestNormalizer implements DenormalizerInterface, Nor
             foreach ($data['listItemIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setListItemIds($values);
+            $object->listItemIds = $values;
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
-            $object->setAllowMissingDependencies($data['allowMissingDependencies']);
+            $object->allowMissingDependencies = $data['allowMissingDependencies'];
         }
         return $object;
     }
@@ -56,11 +56,11 @@ class ListItemRestoreManyRequestNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getListItemIds() as $value) {
+        foreach ($data->listItemIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['listItemIds'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

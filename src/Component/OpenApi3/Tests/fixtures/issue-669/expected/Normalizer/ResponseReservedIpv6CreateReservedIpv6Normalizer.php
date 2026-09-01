@@ -38,11 +38,11 @@ class ResponseReservedIpv6CreateReservedIpv6Normalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
             unset($data['ip']);
         }
         if (\array_key_exists('region_slug', $data)) {
-            $object->setRegionSlug($data['region_slug']);
+            $object->regionSlug = $data['region_slug'];
             unset($data['region_slug']);
         }
         if (\array_key_exists('reserved_at', $data)) {
@@ -50,7 +50,7 @@ class ResponseReservedIpv6CreateReservedIpv6Normalizer implements DenormalizerIn
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['reserved_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setReservedAt($date);
+            $object->reservedAt = $date;
             unset($data['reserved_at']);
         }
         foreach ($data as $key => $value) {
@@ -63,14 +63,14 @@ class ResponseReservedIpv6CreateReservedIpv6Normalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        if ($data->isInitialized('regionSlug') && null !== $data->getRegionSlug()) {
-            $dataArray['region_slug'] = $data->getRegionSlug();
+        if (array_key_exists('regionSlug', get_object_vars($data)) && null !== ($data->regionSlug ?? null)) {
+            $dataArray['region_slug'] = $data->regionSlug ?? null;
         }
-        if ($data->isInitialized('reservedAt') && null !== $data->getReservedAt()) {
-            $dataArray['reserved_at'] = $data->getReservedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('reservedAt', get_object_vars($data)) && null !== ($data->reservedAt ?? null)) {
+            $dataArray['reserved_at'] = ($data->reservedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

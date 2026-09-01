@@ -38,11 +38,11 @@ class TermsFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
-            $object->setField($data['field']);
+            $object->field = $data['field'];
             unset($data['field']);
         }
         if (\array_key_exists('terms', $data)) {
@@ -50,7 +50,7 @@ class TermsFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
             foreach ($data['terms'] as $value) {
                 $values[] = $value;
             }
-            $object->setTerms($values);
+            $object->terms = $values;
             unset($data['terms']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,10 +63,10 @@ class TermsFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['field'] = $data->getField();
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['field'] = $data->field ?? null;
         $values = [];
-        foreach ($data->getTerms() as $value) {
+        foreach ($data->terms ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['terms'] = $values;

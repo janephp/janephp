@@ -38,19 +38,19 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('statementDate', $data)) {
-            $object->setStatementDate($data['statementDate']);
+            $object->statementDate = $data['statementDate'];
             unset($data['statementDate']);
         }
         if (\array_key_exists('registrationNumber', $data)) {
-            $object->setRegistrationNumber($data['registrationNumber']);
+            $object->registrationNumber = $data['registrationNumber'];
             unset($data['registrationNumber']);
         }
         if (\array_key_exists('companyName', $data)) {
-            $object->setCompanyName($data['companyName']);
+            $object->companyName = $data['companyName'];
             unset($data['companyName']);
         }
         if (\array_key_exists('amount', $data)) {
-            $object->setAmount($this->denormalizer->denormalize($data['amount'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItemAmount::class, 'json', $context));
+            $object->amount = $this->denormalizer->denormalize($data['amount'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItemAmount::class, 'json', $context);
             unset($data['amount']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('statementDate') && null !== $data->getStatementDate()) {
-            $dataArray['statementDate'] = $data->getStatementDate();
+        if (array_key_exists('statementDate', get_object_vars($data)) && null !== ($data->statementDate ?? null)) {
+            $dataArray['statementDate'] = $data->statementDate ?? null;
         }
-        if ($data->isInitialized('registrationNumber') && null !== $data->getRegistrationNumber()) {
-            $dataArray['registrationNumber'] = $data->getRegistrationNumber();
+        if (array_key_exists('registrationNumber', get_object_vars($data)) && null !== ($data->registrationNumber ?? null)) {
+            $dataArray['registrationNumber'] = $data->registrationNumber ?? null;
         }
-        if ($data->isInitialized('companyName') && null !== $data->getCompanyName()) {
-            $dataArray['companyName'] = $data->getCompanyName();
+        if (array_key_exists('companyName', get_object_vars($data)) && null !== ($data->companyName ?? null)) {
+            $dataArray['companyName'] = $data->companyName ?? null;
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
-            $dataArray['amount'] = $data->getAmount() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAmount(), 'json', $context));
+        if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
+            $dataArray['amount'] = ($data->amount ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->amount ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -42,19 +42,19 @@ class SchemaIndexingInfoNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['fields'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\FieldIndexingInfo::class, 'json', $context);
             }
-            $object->setFields($values);
+            $object->fields = $values;
         }
         elseif (\array_key_exists('fields', $data) && $data['fields'] === null) {
-            $object->setFields(null);
+            $object->fields = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fields') && null !== $data->getFields()) {
+        if (array_key_exists('fields', get_object_vars($data)) && null !== ($data->fields ?? null)) {
             $values = [];
-            foreach ($data->getFields() as $value) {
+            foreach ($data->fields ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['fields'] = $values;

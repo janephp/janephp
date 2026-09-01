@@ -42,39 +42,39 @@ class ApiIndexedDataSourceNormalizer implements DenormalizerInterface, Normalize
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCompletedAt($date);
+            $object->completedAt = $date;
             unset($data['completed_at']);
         }
         if (\array_key_exists('data_source_uuid', $data)) {
-            $object->setDataSourceUuid($data['data_source_uuid']);
+            $object->dataSourceUuid = $data['data_source_uuid'];
             unset($data['data_source_uuid']);
         }
         if (\array_key_exists('error_details', $data)) {
-            $object->setErrorDetails($data['error_details']);
+            $object->errorDetails = $data['error_details'];
             unset($data['error_details']);
         }
         if (\array_key_exists('error_msg', $data)) {
-            $object->setErrorMsg($data['error_msg']);
+            $object->errorMsg = $data['error_msg'];
             unset($data['error_msg']);
         }
         if (\array_key_exists('failed_item_count', $data)) {
-            $object->setFailedItemCount($data['failed_item_count']);
+            $object->failedItemCount = $data['failed_item_count'];
             unset($data['failed_item_count']);
         }
         if (\array_key_exists('indexed_file_count', $data)) {
-            $object->setIndexedFileCount($data['indexed_file_count']);
+            $object->indexedFileCount = $data['indexed_file_count'];
             unset($data['indexed_file_count']);
         }
         if (\array_key_exists('indexed_item_count', $data)) {
-            $object->setIndexedItemCount($data['indexed_item_count']);
+            $object->indexedItemCount = $data['indexed_item_count'];
             unset($data['indexed_item_count']);
         }
         if (\array_key_exists('removed_item_count', $data)) {
-            $object->setRemovedItemCount($data['removed_item_count']);
+            $object->removedItemCount = $data['removed_item_count'];
             unset($data['removed_item_count']);
         }
         if (\array_key_exists('skipped_item_count', $data)) {
-            $object->setSkippedItemCount($data['skipped_item_count']);
+            $object->skippedItemCount = $data['skipped_item_count'];
             unset($data['skipped_item_count']);
         }
         if (\array_key_exists('started_at', $data)) {
@@ -82,23 +82,23 @@ class ApiIndexedDataSourceNormalizer implements DenormalizerInterface, Normalize
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStartedAt($date_1);
+            $object->startedAt = $date_1;
             unset($data['started_at']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('total_bytes', $data)) {
-            $object->setTotalBytes($data['total_bytes']);
+            $object->totalBytes = $data['total_bytes'];
             unset($data['total_bytes']);
         }
         if (\array_key_exists('total_bytes_indexed', $data)) {
-            $object->setTotalBytesIndexed($data['total_bytes_indexed']);
+            $object->totalBytesIndexed = $data['total_bytes_indexed'];
             unset($data['total_bytes_indexed']);
         }
         if (\array_key_exists('total_file_count', $data)) {
-            $object->setTotalFileCount($data['total_file_count']);
+            $object->totalFileCount = $data['total_file_count'];
             unset($data['total_file_count']);
         }
         foreach ($data as $key => $value) {
@@ -111,47 +111,47 @@ class ApiIndexedDataSourceNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('completedAt') && null !== $data->getCompletedAt()) {
-            $dataArray['completed_at'] = $data->getCompletedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
+            $dataArray['completed_at'] = ($data->completedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('dataSourceUuid') && null !== $data->getDataSourceUuid()) {
-            $dataArray['data_source_uuid'] = $data->getDataSourceUuid();
+        if (array_key_exists('dataSourceUuid', get_object_vars($data)) && null !== ($data->dataSourceUuid ?? null)) {
+            $dataArray['data_source_uuid'] = $data->dataSourceUuid ?? null;
         }
-        if ($data->isInitialized('errorDetails') && null !== $data->getErrorDetails()) {
-            $dataArray['error_details'] = $data->getErrorDetails();
+        if (array_key_exists('errorDetails', get_object_vars($data)) && null !== ($data->errorDetails ?? null)) {
+            $dataArray['error_details'] = $data->errorDetails ?? null;
         }
-        if ($data->isInitialized('errorMsg') && null !== $data->getErrorMsg()) {
-            $dataArray['error_msg'] = $data->getErrorMsg();
+        if (array_key_exists('errorMsg', get_object_vars($data)) && null !== ($data->errorMsg ?? null)) {
+            $dataArray['error_msg'] = $data->errorMsg ?? null;
         }
-        if ($data->isInitialized('failedItemCount') && null !== $data->getFailedItemCount()) {
-            $dataArray['failed_item_count'] = $data->getFailedItemCount();
+        if (array_key_exists('failedItemCount', get_object_vars($data)) && null !== ($data->failedItemCount ?? null)) {
+            $dataArray['failed_item_count'] = $data->failedItemCount ?? null;
         }
-        if ($data->isInitialized('indexedFileCount') && null !== $data->getIndexedFileCount()) {
-            $dataArray['indexed_file_count'] = $data->getIndexedFileCount();
+        if (array_key_exists('indexedFileCount', get_object_vars($data)) && null !== ($data->indexedFileCount ?? null)) {
+            $dataArray['indexed_file_count'] = $data->indexedFileCount ?? null;
         }
-        if ($data->isInitialized('indexedItemCount') && null !== $data->getIndexedItemCount()) {
-            $dataArray['indexed_item_count'] = $data->getIndexedItemCount();
+        if (array_key_exists('indexedItemCount', get_object_vars($data)) && null !== ($data->indexedItemCount ?? null)) {
+            $dataArray['indexed_item_count'] = $data->indexedItemCount ?? null;
         }
-        if ($data->isInitialized('removedItemCount') && null !== $data->getRemovedItemCount()) {
-            $dataArray['removed_item_count'] = $data->getRemovedItemCount();
+        if (array_key_exists('removedItemCount', get_object_vars($data)) && null !== ($data->removedItemCount ?? null)) {
+            $dataArray['removed_item_count'] = $data->removedItemCount ?? null;
         }
-        if ($data->isInitialized('skippedItemCount') && null !== $data->getSkippedItemCount()) {
-            $dataArray['skipped_item_count'] = $data->getSkippedItemCount();
+        if (array_key_exists('skippedItemCount', get_object_vars($data)) && null !== ($data->skippedItemCount ?? null)) {
+            $dataArray['skipped_item_count'] = $data->skippedItemCount ?? null;
         }
-        if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
-            $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
+            $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('totalBytes') && null !== $data->getTotalBytes()) {
-            $dataArray['total_bytes'] = $data->getTotalBytes();
+        if (array_key_exists('totalBytes', get_object_vars($data)) && null !== ($data->totalBytes ?? null)) {
+            $dataArray['total_bytes'] = $data->totalBytes ?? null;
         }
-        if ($data->isInitialized('totalBytesIndexed') && null !== $data->getTotalBytesIndexed()) {
-            $dataArray['total_bytes_indexed'] = $data->getTotalBytesIndexed();
+        if (array_key_exists('totalBytesIndexed', get_object_vars($data)) && null !== ($data->totalBytesIndexed ?? null)) {
+            $dataArray['total_bytes_indexed'] = $data->totalBytesIndexed ?? null;
         }
-        if ($data->isInitialized('totalFileCount') && null !== $data->getTotalFileCount()) {
-            $dataArray['total_file_count'] = $data->getTotalFileCount();
+        if (array_key_exists('totalFileCount', get_object_vars($data)) && null !== ($data->totalFileCount ?? null)) {
+            $dataArray['total_file_count'] = $data->totalFileCount ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

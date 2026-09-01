@@ -42,16 +42,16 @@ class CommonRbacMetadataNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['rbacMetadata'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRbacMetadataRbacMetadataItem::class, 'json', $context);
             }
-            $object->setRbacMetadata($values);
+            $object->rbacMetadata = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('rbacMetadata') && null !== $data->getRbacMetadata()) {
+        if (array_key_exists('rbacMetadata', get_object_vars($data)) && null !== ($data->rbacMetadata ?? null)) {
             $values = [];
-            foreach ($data->getRbacMetadata() as $value) {
+            foreach ($data->rbacMetadata ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rbacMetadata'] = $values;

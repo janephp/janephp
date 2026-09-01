@@ -8,59 +8,15 @@ class Model implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string|null
      */
-    protected $foo;
+    public ?string $foo;
     /**
      * @var list<mixed>|null
      */
-    protected $bar;
-    /**
-     * @return string|null
-     */
-    public function getFoo(): ?string
-    {
-        return $this->foo;
-    }
-    /**
-     * @param string|null $foo
-     *
-     * @return self
-     */
-    public function setFoo(?string $foo): self
-    {
-        $this->initialized['foo'] = true;
-        $this->foo = $foo;
-        return $this;
-    }
-    /**
-     * @return list<mixed>|null
-     */
-    public function getBar(): ?array
-    {
-        return $this->bar;
-    }
-    /**
-     * @param list<mixed>|null $bar
-     *
-     * @return self
-     */
-    public function setBar(?array $bar): self
-    {
-        $this->initialized['bar'] = true;
-        $this->bar = $bar;
-        return $this;
-    }
+    public ?array $bar;
     public function definedProperties(): array
     {
-        return ['foo' => ['foo', 'getFoo', 'setFoo'], 'bar' => ['bar', 'getBar', 'setBar']];
+        return ['foo' => 'foo', 'bar' => 'bar'];
     }
 }

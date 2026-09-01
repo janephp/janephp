@@ -38,27 +38,27 @@ class SystemIpv4AccessAndCoreSeparationNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('defaultGateway', $data)) {
-            $object->setDefaultGateway($data['defaultGateway']);
+            $object->defaultGateway = $data['defaultGateway'];
         }
         if (\array_key_exists('primaryDNSServer', $data)) {
-            $object->setPrimaryDNSServer($data['primaryDNSServer']);
+            $object->primaryDNSServer = $data['primaryDNSServer'];
         }
         if (\array_key_exists('secondaryDNSServer', $data)) {
-            $object->setSecondaryDNSServer($data['secondaryDNSServer']);
+            $object->secondaryDNSServer = $data['secondaryDNSServer'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('defaultGateway') && null !== $data->getDefaultGateway()) {
-            $dataArray['defaultGateway'] = $data->getDefaultGateway();
+        if (array_key_exists('defaultGateway', get_object_vars($data)) && null !== ($data->defaultGateway ?? null)) {
+            $dataArray['defaultGateway'] = $data->defaultGateway ?? null;
         }
-        if ($data->isInitialized('primaryDNSServer') && null !== $data->getPrimaryDNSServer()) {
-            $dataArray['primaryDNSServer'] = $data->getPrimaryDNSServer();
+        if (array_key_exists('primaryDNSServer', get_object_vars($data)) && null !== ($data->primaryDNSServer ?? null)) {
+            $dataArray['primaryDNSServer'] = $data->primaryDNSServer ?? null;
         }
-        if ($data->isInitialized('secondaryDNSServer') && null !== $data->getSecondaryDNSServer()) {
-            $dataArray['secondaryDNSServer'] = $data->getSecondaryDNSServer();
+        if (array_key_exists('secondaryDNSServer', get_object_vars($data)) && null !== ($data->secondaryDNSServer ?? null)) {
+            $dataArray['secondaryDNSServer'] = $data->secondaryDNSServer ?? null;
         }
         return $dataArray;
     }

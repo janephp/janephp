@@ -42,7 +42,7 @@ class DatabaseLayoutOptionsNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['layouts'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\DatabaseLayoutOption::class, 'json', $context);
             }
-            $object->setLayouts($values);
+            $object->layouts = $values;
             unset($data['layouts']);
         }
         foreach ($data as $key => $value_1) {

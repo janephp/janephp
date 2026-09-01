@@ -38,7 +38,7 @@ class ApiCreateEvaluationDatasetOutputNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('evaluation_dataset_uuid', $data)) {
-            $object->setEvaluationDatasetUuid($data['evaluation_dataset_uuid']);
+            $object->evaluationDatasetUuid = $data['evaluation_dataset_uuid'];
             unset($data['evaluation_dataset_uuid']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiCreateEvaluationDatasetOutputNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('evaluationDatasetUuid') && null !== $data->getEvaluationDatasetUuid()) {
-            $dataArray['evaluation_dataset_uuid'] = $data->getEvaluationDatasetUuid();
+        if (array_key_exists('evaluationDatasetUuid', get_object_vars($data)) && null !== ($data->evaluationDatasetUuid ?? null)) {
+            $dataArray['evaluation_dataset_uuid'] = $data->evaluationDatasetUuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

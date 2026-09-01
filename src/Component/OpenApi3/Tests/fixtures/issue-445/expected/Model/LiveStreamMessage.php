@@ -8,147 +8,31 @@ class LiveStreamMessage extends Message implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string|null
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public ?string $customerId;
     /**
      * @var string|null
      */
-    protected $customerId;
-    /**
-     * @var string|null
-     */
-    protected $customerAlias;
+    public ?string $customerAlias;
     /**
      * @var \DateTime
      */
-    protected $timestamp;
+    public \DateTime $timestamp;
     /**
      * @var string|null
      */
-    protected $scope;
+    public ?string $scope;
     /**
      * @var DocumentChange|null
      */
-    protected $documentChange;
+    public ?DocumentChange $documentChange;
     /**
      * @var ApplicationEvent|null
      */
-    protected $applicationEvent;
-    /**
-     * @return string|null
-     */
-    public function getCustomerId(): ?string
-    {
-        return $this->customerId;
-    }
-    /**
-     * @param string|null $customerId
-     *
-     * @return self
-     */
-    public function setCustomerId(?string $customerId): self
-    {
-        $this->initialized['customerId'] = true;
-        $this->customerId = $customerId;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getCustomerAlias(): ?string
-    {
-        return $this->customerAlias;
-    }
-    /**
-     * @param string|null $customerAlias
-     *
-     * @return self
-     */
-    public function setCustomerAlias(?string $customerAlias): self
-    {
-        $this->initialized['customerAlias'] = true;
-        $this->customerAlias = $customerAlias;
-        return $this;
-    }
-    /**
-     * @return \DateTime
-     */
-    public function getTimestamp(): \DateTime
-    {
-        return $this->timestamp;
-    }
-    /**
-     * @param \DateTime $timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp(\DateTime $timestamp): self
-    {
-        $this->initialized['timestamp'] = true;
-        $this->timestamp = $timestamp;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getScope(): ?string
-    {
-        return $this->scope;
-    }
-    /**
-     * @param string|null $scope
-     *
-     * @return self
-     */
-    public function setScope(?string $scope): self
-    {
-        $this->initialized['scope'] = true;
-        $this->scope = $scope;
-        return $this;
-    }
-    /**
-     * @return DocumentChange|null
-     */
-    public function getDocumentChange(): ?DocumentChange
-    {
-        return $this->documentChange;
-    }
-    /**
-     * @param DocumentChange|null $documentChange
-     *
-     * @return self
-     */
-    public function setDocumentChange(?DocumentChange $documentChange): self
-    {
-        $this->initialized['documentChange'] = true;
-        $this->documentChange = $documentChange;
-        return $this;
-    }
-    /**
-     * @return ApplicationEvent|null
-     */
-    public function getApplicationEvent(): ?ApplicationEvent
-    {
-        return $this->applicationEvent;
-    }
-    /**
-     * @param ApplicationEvent|null $applicationEvent
-     *
-     * @return self
-     */
-    public function setApplicationEvent(?ApplicationEvent $applicationEvent): self
-    {
-        $this->initialized['applicationEvent'] = true;
-        $this->applicationEvent = $applicationEvent;
-        return $this;
-    }
+    public ?ApplicationEvent $applicationEvent;
     public function definedProperties(): array
     {
-        return ['customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'timestamp' => ['timestamp', 'getTimestamp', 'setTimestamp'], 'scope' => ['scope', 'getScope', 'setScope'], 'documentChange' => ['documentChange', 'getDocumentChange', 'setDocumentChange'], 'applicationEvent' => ['applicationEvent', 'getApplicationEvent', 'setApplicationEvent']];
+        return ['customerId' => 'customerId', 'customerAlias' => 'customerAlias', 'timestamp' => 'timestamp', 'scope' => 'scope', 'documentChange' => 'documentChange', 'applicationEvent' => 'applicationEvent'];
     }
 }

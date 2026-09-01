@@ -42,7 +42,7 @@ class V2KubernetesClustersClusterIdNodePoolsNodePoolIdRecyclePostBodyNormalizer 
             foreach ($data['nodes'] as $value) {
                 $values[] = $value;
             }
-            $object->setNodes($values);
+            $object->nodes = $values;
             unset($data['nodes']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class V2KubernetesClustersClusterIdNodePoolsNodePoolIdRecyclePostBodyNormalizer 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nodes') && null !== $data->getNodes()) {
+        if (array_key_exists('nodes', get_object_vars($data)) && null !== ($data->nodes ?? null)) {
             $values = [];
-            foreach ($data->getNodes() as $value) {
+            foreach ($data->nodes ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['nodes'] = $values;

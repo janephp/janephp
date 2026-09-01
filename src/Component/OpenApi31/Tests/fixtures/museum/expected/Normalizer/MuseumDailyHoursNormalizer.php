@@ -45,15 +45,15 @@ class MuseumDailyHoursNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date) {
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d');
             }
-            $object->setDate($date->setTime(0, 0, 0));
+            $object->date = $date->setTime(0, 0, 0);
             unset($data['date']);
         }
         if (\array_key_exists('timeOpen', $data)) {
-            $object->setTimeOpen($data['timeOpen']);
+            $object->timeOpen = $data['timeOpen'];
             unset($data['timeOpen']);
         }
         if (\array_key_exists('timeClose', $data)) {
-            $object->setTimeClose($data['timeClose']);
+            $object->timeClose = $data['timeClose'];
             unset($data['timeClose']);
         }
         foreach ($data as $key => $value) {
@@ -66,9 +66,9 @@ class MuseumDailyHoursNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['date'] = $data->getDate()->format('Y-m-d');
-        $dataArray['timeOpen'] = $data->getTimeOpen();
-        $dataArray['timeClose'] = $data->getTimeClose();
+        $dataArray['date'] = ($data->date ?? null)->format('Y-m-d');
+        $dataArray['timeOpen'] = $data->timeOpen ?? null;
+        $dataArray['timeClose'] = $data->timeClose ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

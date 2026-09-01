@@ -38,15 +38,15 @@ class KubernetesNodePoolTaintNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('key', $data)) {
-            $object->setKey($data['key']);
+            $object->key = $data['key'];
             unset($data['key']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
             unset($data['value']);
         }
         if (\array_key_exists('effect', $data)) {
-            $object->setEffect($data['effect']);
+            $object->effect = $data['effect'];
             unset($data['effect']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class KubernetesNodePoolTaintNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('key') && null !== $data->getKey()) {
-            $dataArray['key'] = $data->getKey();
+        if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
+            $dataArray['key'] = $data->key ?? null;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+        if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['value'] = $data->value ?? null;
         }
-        if ($data->isInitialized('effect') && null !== $data->getEffect()) {
-            $dataArray['effect'] = $data->getEffect();
+        if (array_key_exists('effect', get_object_vars($data)) && null !== ($data->effect ?? null)) {
+            $dataArray['effect'] = $data->effect ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

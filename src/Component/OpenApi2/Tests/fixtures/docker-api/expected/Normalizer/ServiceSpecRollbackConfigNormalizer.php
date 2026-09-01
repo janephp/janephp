@@ -44,45 +44,45 @@ class ServiceSpecRollbackConfigNormalizer implements DenormalizerInterface, Norm
             $this->validate($data, new \Docker\Api\Validator\ServiceSpecRollbackConfigConstraint());
         }
         if (\array_key_exists('Parallelism', $data)) {
-            $object->setParallelism($data['Parallelism']);
+            $object->parallelism = $data['Parallelism'];
         }
         if (\array_key_exists('Delay', $data)) {
-            $object->setDelay($data['Delay']);
+            $object->delay = $data['Delay'];
         }
         if (\array_key_exists('FailureAction', $data)) {
-            $object->setFailureAction($data['FailureAction']);
+            $object->failureAction = $data['FailureAction'];
         }
         if (\array_key_exists('Monitor', $data)) {
-            $object->setMonitor($data['Monitor']);
+            $object->monitor = $data['Monitor'];
         }
         if (\array_key_exists('MaxFailureRatio', $data)) {
-            $object->setMaxFailureRatio($data['MaxFailureRatio']);
+            $object->maxFailureRatio = $data['MaxFailureRatio'];
         }
         if (\array_key_exists('Order', $data)) {
-            $object->setOrder($data['Order']);
+            $object->order = $data['Order'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('parallelism') && null !== $data->getParallelism()) {
-            $dataArray['Parallelism'] = $data->getParallelism();
+        if (array_key_exists('parallelism', get_object_vars($data)) && null !== ($data->parallelism ?? null)) {
+            $dataArray['Parallelism'] = $data->parallelism ?? null;
         }
-        if ($data->isInitialized('delay') && null !== $data->getDelay()) {
-            $dataArray['Delay'] = $data->getDelay();
+        if (array_key_exists('delay', get_object_vars($data)) && null !== ($data->delay ?? null)) {
+            $dataArray['Delay'] = $data->delay ?? null;
         }
-        if ($data->isInitialized('failureAction') && null !== $data->getFailureAction()) {
-            $dataArray['FailureAction'] = $data->getFailureAction();
+        if (array_key_exists('failureAction', get_object_vars($data)) && null !== ($data->failureAction ?? null)) {
+            $dataArray['FailureAction'] = $data->failureAction ?? null;
         }
-        if ($data->isInitialized('monitor') && null !== $data->getMonitor()) {
-            $dataArray['Monitor'] = $data->getMonitor();
+        if (array_key_exists('monitor', get_object_vars($data)) && null !== ($data->monitor ?? null)) {
+            $dataArray['Monitor'] = $data->monitor ?? null;
         }
-        if ($data->isInitialized('maxFailureRatio') && null !== $data->getMaxFailureRatio()) {
-            $dataArray['MaxFailureRatio'] = $data->getMaxFailureRatio();
+        if (array_key_exists('maxFailureRatio', get_object_vars($data)) && null !== ($data->maxFailureRatio ?? null)) {
+            $dataArray['MaxFailureRatio'] = $data->maxFailureRatio ?? null;
         }
-        if ($data->isInitialized('order') && null !== $data->getOrder()) {
-            $dataArray['Order'] = $data->getOrder();
+        if (array_key_exists('order', get_object_vars($data)) && null !== ($data->order ?? null)) {
+            $dataArray['Order'] = $data->order ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceSpecRollbackConfigConstraint());

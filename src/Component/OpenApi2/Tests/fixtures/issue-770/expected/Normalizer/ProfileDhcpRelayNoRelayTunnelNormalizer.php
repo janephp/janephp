@@ -44,39 +44,39 @@ class ProfileDhcpRelayNoRelayTunnelNormalizer implements DenormalizerInterface, 
             $data['relayBothEnabled'] = (bool) $data['relayBothEnabled'];
         }
         if (\array_key_exists('dhcpRelayEnabled', $data)) {
-            $object->setDhcpRelayEnabled($data['dhcpRelayEnabled']);
+            $object->dhcpRelayEnabled = $data['dhcpRelayEnabled'];
         }
         if (\array_key_exists('dhcpServer1', $data)) {
-            $object->setDhcpServer1($data['dhcpServer1']);
+            $object->dhcpServer1 = $data['dhcpServer1'];
         }
         if (\array_key_exists('dhcpServer2', $data)) {
-            $object->setDhcpServer2($data['dhcpServer2']);
+            $object->dhcpServer2 = $data['dhcpServer2'];
         }
         if (\array_key_exists('relayBothEnabled', $data)) {
-            $object->setRelayBothEnabled($data['relayBothEnabled']);
+            $object->relayBothEnabled = $data['relayBothEnabled'];
         }
         if (\array_key_exists('dhcpOption82', $data)) {
-            $object->setDhcpOption82($this->denormalizer->denormalize($data['dhcpOption82'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpOption82::class, 'json', $context));
+            $object->dhcpOption82 = $this->denormalizer->denormalize($data['dhcpOption82'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpOption82::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dhcpRelayEnabled') && null !== $data->getDhcpRelayEnabled()) {
-            $dataArray['dhcpRelayEnabled'] = $data->getDhcpRelayEnabled();
+        if (array_key_exists('dhcpRelayEnabled', get_object_vars($data)) && null !== ($data->dhcpRelayEnabled ?? null)) {
+            $dataArray['dhcpRelayEnabled'] = $data->dhcpRelayEnabled ?? null;
         }
-        if ($data->isInitialized('dhcpServer1') && null !== $data->getDhcpServer1()) {
-            $dataArray['dhcpServer1'] = $data->getDhcpServer1();
+        if (array_key_exists('dhcpServer1', get_object_vars($data)) && null !== ($data->dhcpServer1 ?? null)) {
+            $dataArray['dhcpServer1'] = $data->dhcpServer1 ?? null;
         }
-        if ($data->isInitialized('dhcpServer2') && null !== $data->getDhcpServer2()) {
-            $dataArray['dhcpServer2'] = $data->getDhcpServer2();
+        if (array_key_exists('dhcpServer2', get_object_vars($data)) && null !== ($data->dhcpServer2 ?? null)) {
+            $dataArray['dhcpServer2'] = $data->dhcpServer2 ?? null;
         }
-        if ($data->isInitialized('relayBothEnabled') && null !== $data->getRelayBothEnabled()) {
-            $dataArray['relayBothEnabled'] = $data->getRelayBothEnabled();
+        if (array_key_exists('relayBothEnabled', get_object_vars($data)) && null !== ($data->relayBothEnabled ?? null)) {
+            $dataArray['relayBothEnabled'] = $data->relayBothEnabled ?? null;
         }
-        if ($data->isInitialized('dhcpOption82') && null !== $data->getDhcpOption82()) {
-            $dataArray['dhcpOption82'] = $data->getDhcpOption82() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDhcpOption82(), 'json', $context));
+        if (array_key_exists('dhcpOption82', get_object_vars($data)) && null !== ($data->dhcpOption82 ?? null)) {
+            $dataArray['dhcpOption82'] = ($data->dhcpOption82 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->dhcpOption82 ?? null, 'json', $context));
         }
         return $dataArray;
     }

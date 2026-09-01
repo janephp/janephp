@@ -38,45 +38,45 @@ class IdentitySubscriptionPackageListListItemNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('expirationInterval', $data)) {
-            $object->setExpirationInterval($data['expirationInterval']);
+            $object->expirationInterval = $data['expirationInterval'];
         }
         if (\array_key_exists('expirationValue', $data)) {
-            $object->setExpirationValue($data['expirationValue']);
+            $object->expirationValue = $data['expirationValue'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('expirationInterval') && null !== $data->getExpirationInterval()) {
-            $dataArray['expirationInterval'] = $data->getExpirationInterval();
+        if (array_key_exists('expirationInterval', get_object_vars($data)) && null !== ($data->expirationInterval ?? null)) {
+            $dataArray['expirationInterval'] = $data->expirationInterval ?? null;
         }
-        if ($data->isInitialized('expirationValue') && null !== $data->getExpirationValue()) {
-            $dataArray['expirationValue'] = $data->getExpirationValue();
+        if (array_key_exists('expirationValue', get_object_vars($data)) && null !== ($data->expirationValue ?? null)) {
+            $dataArray['expirationValue'] = $data->expirationValue ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
         return $dataArray;
     }

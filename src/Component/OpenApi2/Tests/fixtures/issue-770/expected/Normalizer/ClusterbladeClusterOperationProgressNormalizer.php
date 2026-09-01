@@ -38,27 +38,27 @@ class ClusterbladeClusterOperationProgressNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('operation', $data)) {
-            $object->setOperation($data['operation']);
+            $object->operation = $data['operation'];
         }
         if (\array_key_exists('overallProgress', $data)) {
-            $object->setOverallProgress($data['overallProgress']);
+            $object->overallProgress = $data['overallProgress'];
         }
         if (\array_key_exists('previousOperationRecord', $data)) {
-            $object->setPreviousOperationRecord($this->denormalizer->denormalize($data['previousOperationRecord'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladePreviousOperationRecord::class, 'json', $context));
+            $object->previousOperationRecord = $this->denormalizer->denormalize($data['previousOperationRecord'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladePreviousOperationRecord::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('operation') && null !== $data->getOperation()) {
-            $dataArray['operation'] = $data->getOperation();
+        if (array_key_exists('operation', get_object_vars($data)) && null !== ($data->operation ?? null)) {
+            $dataArray['operation'] = $data->operation ?? null;
         }
-        if ($data->isInitialized('overallProgress') && null !== $data->getOverallProgress()) {
-            $dataArray['overallProgress'] = $data->getOverallProgress();
+        if (array_key_exists('overallProgress', get_object_vars($data)) && null !== ($data->overallProgress ?? null)) {
+            $dataArray['overallProgress'] = $data->overallProgress ?? null;
         }
-        if ($data->isInitialized('previousOperationRecord') && null !== $data->getPreviousOperationRecord()) {
-            $dataArray['previousOperationRecord'] = $data->getPreviousOperationRecord() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPreviousOperationRecord(), 'json', $context));
+        if (array_key_exists('previousOperationRecord', get_object_vars($data)) && null !== ($data->previousOperationRecord ?? null)) {
+            $dataArray['previousOperationRecord'] = ($data->previousOperationRecord ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->previousOperationRecord ?? null, 'json', $context));
         }
         return $dataArray;
     }

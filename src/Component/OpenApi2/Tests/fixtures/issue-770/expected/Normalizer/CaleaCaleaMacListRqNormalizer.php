@@ -42,16 +42,16 @@ class CaleaCaleaMacListRqNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['macList'] as $value) {
                 $values[] = $value;
             }
-            $object->setMacList($values);
+            $object->macList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('macList') && null !== $data->getMacList()) {
+        if (array_key_exists('macList', get_object_vars($data)) && null !== ($data->macList ?? null)) {
             $values = [];
-            foreach ($data->getMacList() as $value) {
+            foreach ($data->macList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['macList'] = $values;

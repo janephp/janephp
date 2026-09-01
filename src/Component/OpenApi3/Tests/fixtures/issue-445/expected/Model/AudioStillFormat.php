@@ -8,37 +8,11 @@ class AudioStillFormat extends FormatBase implements AdditionalPropertiesInterfa
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string|null
      */
-    protected $extension;
-    /**
-     * @return string|null
-     */
-    public function getExtension(): ?string
-    {
-        return $this->extension;
-    }
-    /**
-     * @param string|null $extension
-     *
-     * @return self
-     */
-    public function setExtension(?string $extension): self
-    {
-        $this->initialized['extension'] = true;
-        $this->extension = $extension;
-        return $this;
-    }
+    public ?string $extension;
     public function definedProperties(): array
     {
-        return ['extension' => ['extension', 'getExtension', 'setExtension']];
+        return ['extension' => 'extension'];
     }
 }

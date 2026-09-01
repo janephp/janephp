@@ -17,7 +17,7 @@ class MinLengthValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && ((\is_array($object->getType()) ? \in_array('string', $object->getType()) : 'string' === $object->getType()) || null === $object->getType()) && null !== $object->getMinLength() && $object->getMinLength() > 0;
+        return $this->checkObject($object) && ((\is_array($object->type ?? null) ? \in_array('string', $object->type ?? null) : 'string' === ($object->type ?? null)) || null === ($object->type ?? null)) && null !== ($object->minLength ?? null) && ($object->minLength ?? null) > 0;
     }
 
     /**
@@ -27,10 +27,10 @@ class MinLengthValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(Length::class, [
-            'min' => $object->getMinLength(),
+            'min' => ($object->minLength ?? null),
             'minMessage' => 'This value is too short. It should have {{ limit }} characters or more.',
         ]));
-        if ($object->getMinLength() > 0) {
+        if (($object->minLength ?? null) > 0) {
             $nullable = $this->isNullable($object);
 
             $options = [];

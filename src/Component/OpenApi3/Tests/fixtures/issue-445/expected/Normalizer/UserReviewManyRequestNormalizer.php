@@ -45,11 +45,11 @@ class UserReviewManyRequestNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['userIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setUserIds($values);
+            $object->userIds = $values;
             unset($data['userIds']);
         }
         if (\array_key_exists('reviewed', $data)) {
-            $object->setReviewed($data['reviewed']);
+            $object->reviewed = $data['reviewed'];
             unset($data['reviewed']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,11 +63,11 @@ class UserReviewManyRequestNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getUserIds() as $value) {
+        foreach ($data->userIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['userIds'] = $values;
-        $dataArray['reviewed'] = $data->getReviewed();
+        $dataArray['reviewed'] = $data->reviewed ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

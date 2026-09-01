@@ -27,11 +27,11 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
 
     public function getTypes(MediaType $content, string $reference, Context $context): array
     {
-        $schema = $content->getSchema();
+        $schema = ($content->schema ?? null);
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if ($classGuess === null) {
-            $types = $this->schemaTypeToPHP($schema?->getType(), $schema?->getFormat());
+            $types = $this->schemaTypeToPHP($schema?->type ?? null, $schema?->format ?? null);
 
             if ($array) {
                 $types = array_map(function ($type) {
@@ -53,11 +53,11 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
 
     public function getTypeCondition(MediaType $content, string $reference, Context $context): Node
     {
-        $schema = $content->getSchema();
+        $schema = ($content->schema ?? null);
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if (null === $classGuess) {
-            return $this->typeToCondition($schema?->getType(), $schema?->getFormat(), new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));
+            return $this->typeToCondition($schema?->type ?? null, $schema?->format ?? null, new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));
         }
 
         $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model' . XNamespaceResolver::subNamespaceSuffix($classGuess) . '\\' . $classGuess->getName();

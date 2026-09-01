@@ -41,69 +41,69 @@ class AdministrationRadiusServerNormalizer implements DenormalizerInterface, Nor
             $data['tlsEnabled'] = (bool) $data['tlsEnabled'];
         }
         if (\array_key_exists('realm', $data)) {
-            $object->setRealm($data['realm']);
+            $object->realm = $data['realm'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
         }
         if (\array_key_exists('sharedSecret', $data)) {
-            $object->setSharedSecret($data['sharedSecret']);
+            $object->sharedSecret = $data['sharedSecret'];
         }
         if (\array_key_exists('ipFqdn', $data)) {
-            $object->setIpFqdn($data['ipFqdn']);
+            $object->ipFqdn = $data['ipFqdn'];
         }
         if (\array_key_exists('secondaryRadiusServer', $data)) {
-            $object->setSecondaryRadiusServer($this->denormalizer->denormalize($data['secondaryRadiusServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationSecondaryRadiusServer::class, 'json', $context));
+            $object->secondaryRadiusServer = $this->denormalizer->denormalize($data['secondaryRadiusServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationSecondaryRadiusServer::class, 'json', $context);
         }
         if (\array_key_exists('tlsEnabled', $data)) {
-            $object->setTlsEnabled($data['tlsEnabled']);
+            $object->tlsEnabled = $data['tlsEnabled'];
         }
         if (\array_key_exists('clientCertId', $data)) {
-            $object->setClientCertId($data['clientCertId']);
+            $object->clientCertId = $data['clientCertId'];
         }
         if (\array_key_exists('cnSanIdentity', $data)) {
-            $object->setCnSanIdentity($data['cnSanIdentity']);
+            $object->cnSanIdentity = $data['cnSanIdentity'];
         }
         if (\array_key_exists('ocspUrl', $data)) {
-            $object->setOcspUrl($data['ocspUrl']);
+            $object->ocspUrl = $data['ocspUrl'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['realm'] = $data->getRealm();
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        $dataArray['realm'] = $data->realm ?? null;
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        $dataArray['port'] = $data->getPort();
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        $dataArray['port'] = $data->port ?? null;
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
-        if ($data->isInitialized('sharedSecret') && null !== $data->getSharedSecret()) {
-            $dataArray['sharedSecret'] = $data->getSharedSecret();
+        if (array_key_exists('sharedSecret', get_object_vars($data)) && null !== ($data->sharedSecret ?? null)) {
+            $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
         }
-        $dataArray['ipFqdn'] = $data->getIpFqdn();
-        if ($data->isInitialized('secondaryRadiusServer') && null !== $data->getSecondaryRadiusServer()) {
-            $dataArray['secondaryRadiusServer'] = $data->getSecondaryRadiusServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondaryRadiusServer(), 'json', $context));
+        $dataArray['ipFqdn'] = $data->ipFqdn ?? null;
+        if (array_key_exists('secondaryRadiusServer', get_object_vars($data)) && null !== ($data->secondaryRadiusServer ?? null)) {
+            $dataArray['secondaryRadiusServer'] = ($data->secondaryRadiusServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->secondaryRadiusServer ?? null, 'json', $context));
         }
-        if ($data->isInitialized('tlsEnabled') && null !== $data->getTlsEnabled()) {
-            $dataArray['tlsEnabled'] = $data->getTlsEnabled();
+        if (array_key_exists('tlsEnabled', get_object_vars($data)) && null !== ($data->tlsEnabled ?? null)) {
+            $dataArray['tlsEnabled'] = $data->tlsEnabled ?? null;
         }
-        if ($data->isInitialized('clientCertId') && null !== $data->getClientCertId()) {
-            $dataArray['clientCertId'] = $data->getClientCertId();
+        if (array_key_exists('clientCertId', get_object_vars($data)) && null !== ($data->clientCertId ?? null)) {
+            $dataArray['clientCertId'] = $data->clientCertId ?? null;
         }
-        if ($data->isInitialized('cnSanIdentity') && null !== $data->getCnSanIdentity()) {
-            $dataArray['cnSanIdentity'] = $data->getCnSanIdentity();
+        if (array_key_exists('cnSanIdentity', get_object_vars($data)) && null !== ($data->cnSanIdentity ?? null)) {
+            $dataArray['cnSanIdentity'] = $data->cnSanIdentity ?? null;
         }
-        if ($data->isInitialized('ocspUrl') && null !== $data->getOcspUrl()) {
-            $dataArray['ocspUrl'] = $data->getOcspUrl();
+        if (array_key_exists('ocspUrl', get_object_vars($data)) && null !== ($data->ocspUrl ?? null)) {
+            $dataArray['ocspUrl'] = $data->ocspUrl ?? null;
         }
         return $dataArray;
     }

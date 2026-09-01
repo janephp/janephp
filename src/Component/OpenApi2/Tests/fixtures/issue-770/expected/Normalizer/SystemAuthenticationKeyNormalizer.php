@@ -38,27 +38,27 @@ class SystemAuthenticationKeyNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('keyId', $data)) {
-            $object->setKeyId($data['keyId']);
+            $object->keyId = $data['keyId'];
         }
         if (\array_key_exists('key', $data)) {
-            $object->setKey($data['key']);
+            $object->key = $data['key'];
         }
         if (\array_key_exists('keyType', $data)) {
-            $object->setKeyType($data['keyType']);
+            $object->keyType = $data['keyType'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('keyId') && null !== $data->getKeyId()) {
-            $dataArray['keyId'] = $data->getKeyId();
+        if (array_key_exists('keyId', get_object_vars($data)) && null !== ($data->keyId ?? null)) {
+            $dataArray['keyId'] = $data->keyId ?? null;
         }
-        if ($data->isInitialized('key') && null !== $data->getKey()) {
-            $dataArray['key'] = $data->getKey();
+        if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
+            $dataArray['key'] = $data->key ?? null;
         }
-        if ($data->isInitialized('keyType') && null !== $data->getKeyType()) {
-            $dataArray['keyType'] = $data->getKeyType();
+        if (array_key_exists('keyType', get_object_vars($data)) && null !== ($data->keyType ?? null)) {
+            $dataArray['keyType'] = $data->keyType ?? null;
         }
         return $dataArray;
     }

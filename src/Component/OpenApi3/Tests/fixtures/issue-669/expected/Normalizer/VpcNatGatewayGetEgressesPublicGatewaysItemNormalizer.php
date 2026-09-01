@@ -38,7 +38,7 @@ class VpcNatGatewayGetEgressesPublicGatewaysItemNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ipv4', $data)) {
-            $object->setIpv4($data['ipv4']);
+            $object->ipv4 = $data['ipv4'];
             unset($data['ipv4']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class VpcNatGatewayGetEgressesPublicGatewaysItemNormalizer implements Denormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ipv4') && null !== $data->getIpv4()) {
-            $dataArray['ipv4'] = $data->getIpv4();
+        if (array_key_exists('ipv4', get_object_vars($data)) && null !== ($data->ipv4 ?? null)) {
+            $dataArray['ipv4'] = $data->ipv4 ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

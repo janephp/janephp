@@ -44,11 +44,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummaryNo
             $data['satisfied'] = (float) $data['satisfied'];
         }
         if (\array_key_exists('outstanding', $data)) {
-            $object->setOutstanding($data['outstanding']);
+            $object->outstanding = $data['outstanding'];
             unset($data['outstanding']);
         }
         if (\array_key_exists('satisfied', $data)) {
-            $object->setSatisfied($data['satisfied']);
+            $object->satisfied = $data['satisfied'];
             unset($data['satisfied']);
         }
         foreach ($data as $key => $value) {
@@ -61,11 +61,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummaryNo
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('outstanding') && null !== $data->getOutstanding()) {
-            $dataArray['outstanding'] = $data->getOutstanding();
+        if (array_key_exists('outstanding', get_object_vars($data)) && null !== ($data->outstanding ?? null)) {
+            $dataArray['outstanding'] = $data->outstanding ?? null;
         }
-        if ($data->isInitialized('satisfied') && null !== $data->getSatisfied()) {
-            $dataArray['satisfied'] = $data->getSatisfied();
+        if (array_key_exists('satisfied', get_object_vars($data)) && null !== ($data->satisfied ?? null)) {
+            $dataArray['satisfied'] = $data->satisfied ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

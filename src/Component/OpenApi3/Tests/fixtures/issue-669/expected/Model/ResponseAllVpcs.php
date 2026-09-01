@@ -8,81 +8,19 @@ class ResponseAllVpcs implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var list<array<string, mixed>>
      */
-    protected $vpcs;
+    public array $vpcs;
     /**
      * @var PageLinks
      */
-    protected $links;
+    public PageLinks $links;
     /**
      * @var MetaMeta
      */
-    protected $meta;
-    /**
-     * @return list<array<string, mixed>>
-     */
-    public function getVpcs(): array
-    {
-        return $this->vpcs;
-    }
-    /**
-     * @param list<array<string, mixed>> $vpcs
-     *
-     * @return self
-     */
-    public function setVpcs(array $vpcs): self
-    {
-        $this->initialized['vpcs'] = true;
-        $this->vpcs = $vpcs;
-        return $this;
-    }
-    /**
-     * @return PageLinks
-     */
-    public function getLinks(): PageLinks
-    {
-        return $this->links;
-    }
-    /**
-     * @param PageLinks $links
-     *
-     * @return self
-     */
-    public function setLinks(PageLinks $links): self
-    {
-        $this->initialized['links'] = true;
-        $this->links = $links;
-        return $this;
-    }
-    /**
-     * @return MetaMeta
-     */
-    public function getMeta(): MetaMeta
-    {
-        return $this->meta;
-    }
-    /**
-     * @param MetaMeta $meta
-     *
-     * @return self
-     */
-    public function setMeta(MetaMeta $meta): self
-    {
-        $this->initialized['meta'] = true;
-        $this->meta = $meta;
-        return $this;
-    }
+    public MetaMeta $meta;
     public function definedProperties(): array
     {
-        return ['vpcs' => ['vpcs', 'getVpcs', 'setVpcs'], 'links' => ['links', 'getLinks', 'setLinks'], 'meta' => ['meta', 'getMeta', 'setMeta']];
+        return ['vpcs' => 'vpcs', 'links' => 'links', 'meta' => 'meta'];
     }
 }

@@ -41,15 +41,15 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $data['testFloat'] = (float) $data['testFloat'];
         }
         if (\array_key_exists('testString', $data)) {
-            $object->setTestString($data['testString']);
+            $object->testString = $data['testString'];
             unset($data['testString']);
         }
         if (\array_key_exists('testInteger', $data)) {
-            $object->setTestInteger($data['testInteger']);
+            $object->testInteger = $data['testInteger'];
             unset($data['testInteger']);
         }
         if (\array_key_exists('testFloat', $data)) {
-            $object->setTestFloat($data['testFloat']);
+            $object->testFloat = $data['testFloat'];
             unset($data['testFloat']);
         }
         if (\array_key_exists('testArray', $data)) {
@@ -57,15 +57,15 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['testArray'] as $value) {
                 $values[] = $value;
             }
-            $object->setTestArray($values);
+            $object->testArray = $values;
             unset($data['testArray']);
         }
         if (\array_key_exists('testRequired', $data)) {
-            $object->setTestRequired($data['testRequired']);
+            $object->testRequired = $data['testRequired'];
             unset($data['testRequired']);
         }
         if (\array_key_exists('testDefault', $data)) {
-            $object->setTestDefault($data['testDefault']);
+            $object->testDefault = $data['testDefault'];
             unset($data['testDefault']);
         }
         foreach ($data as $key => $value_1) {
@@ -78,25 +78,25 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('testString') && null !== $data->getTestString()) {
-            $dataArray['testString'] = $data->getTestString();
+        if (array_key_exists('testString', get_object_vars($data)) && null !== ($data->testString ?? null)) {
+            $dataArray['testString'] = $data->testString ?? null;
         }
-        if ($data->isInitialized('testInteger') && null !== $data->getTestInteger()) {
-            $dataArray['testInteger'] = $data->getTestInteger();
+        if (array_key_exists('testInteger', get_object_vars($data)) && null !== ($data->testInteger ?? null)) {
+            $dataArray['testInteger'] = $data->testInteger ?? null;
         }
-        if ($data->isInitialized('testFloat') && null !== $data->getTestFloat()) {
-            $dataArray['testFloat'] = $data->getTestFloat();
+        if (array_key_exists('testFloat', get_object_vars($data)) && null !== ($data->testFloat ?? null)) {
+            $dataArray['testFloat'] = $data->testFloat ?? null;
         }
-        if ($data->isInitialized('testArray') && null !== $data->getTestArray()) {
+        if (array_key_exists('testArray', get_object_vars($data)) && null !== ($data->testArray ?? null)) {
             $values = [];
-            foreach ($data->getTestArray() as $value) {
+            foreach ($data->testArray ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['testArray'] = $values;
         }
-        $dataArray['testRequired'] = $data->getTestRequired();
-        if ($data->isInitialized('testDefault') && null !== $data->getTestDefault()) {
-            $dataArray['testDefault'] = $data->getTestDefault();
+        $dataArray['testRequired'] = $data->testRequired ?? null;
+        if (array_key_exists('testDefault', get_object_vars($data)) && null !== ($data->testDefault ?? null)) {
+            $dataArray['testDefault'] = $data->testDefault ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

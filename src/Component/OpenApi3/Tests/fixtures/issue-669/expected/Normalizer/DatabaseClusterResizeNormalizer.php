@@ -38,15 +38,15 @@ class DatabaseClusterResizeNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         if (\array_key_exists('num_nodes', $data)) {
-            $object->setNumNodes($data['num_nodes']);
+            $object->numNodes = $data['num_nodes'];
             unset($data['num_nodes']);
         }
         if (\array_key_exists('storage_size_mib', $data)) {
-            $object->setStorageSizeMib($data['storage_size_mib']);
+            $object->storageSizeMib = $data['storage_size_mib'];
             unset($data['storage_size_mib']);
         }
         foreach ($data as $key => $value) {
@@ -59,10 +59,10 @@ class DatabaseClusterResizeNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['size'] = $data->getSize();
-        $dataArray['num_nodes'] = $data->getNumNodes();
-        if ($data->isInitialized('storageSizeMib') && null !== $data->getStorageSizeMib()) {
-            $dataArray['storage_size_mib'] = $data->getStorageSizeMib();
+        $dataArray['size'] = $data->size ?? null;
+        $dataArray['num_nodes'] = $data->numNodes ?? null;
+        if (array_key_exists('storageSizeMib', get_object_vars($data)) && null !== ($data->storageSizeMib ?? null)) {
+            $dataArray['storage_size_mib'] = $data->storageSizeMib ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

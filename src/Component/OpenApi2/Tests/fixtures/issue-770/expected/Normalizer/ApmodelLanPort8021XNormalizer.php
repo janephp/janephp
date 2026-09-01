@@ -38,25 +38,25 @@ class ApmodelLanPort8021XNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('authenticator', $data)) {
-            $object->setAuthenticator($this->denormalizer->denormalize($data['authenticator'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPortAuthenticator::class, 'json', $context));
+            $object->authenticator = $this->denormalizer->denormalize($data['authenticator'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPortAuthenticator::class, 'json', $context);
         }
         if (\array_key_exists('supplicant', $data)) {
-            $object->setSupplicant($this->denormalizer->denormalize($data['supplicant'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPortSupplicant::class, 'json', $context));
+            $object->supplicant = $this->denormalizer->denormalize($data['supplicant'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPortSupplicant::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('authenticator') && null !== $data->getAuthenticator()) {
-            $dataArray['authenticator'] = $data->getAuthenticator() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAuthenticator(), 'json', $context));
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('authenticator', get_object_vars($data)) && null !== ($data->authenticator ?? null)) {
+            $dataArray['authenticator'] = ($data->authenticator ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->authenticator ?? null, 'json', $context));
         }
-        if ($data->isInitialized('supplicant') && null !== $data->getSupplicant()) {
-            $dataArray['supplicant'] = $data->getSupplicant() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSupplicant(), 'json', $context));
+        if (array_key_exists('supplicant', get_object_vars($data)) && null !== ($data->supplicant ?? null)) {
+            $dataArray['supplicant'] = ($data->supplicant ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->supplicant ?? null, 'json', $context));
         }
         return $dataArray;
     }

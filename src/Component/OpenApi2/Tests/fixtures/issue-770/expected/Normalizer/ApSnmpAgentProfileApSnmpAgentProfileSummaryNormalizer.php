@@ -38,58 +38,58 @@ class ApSnmpAgentProfileApSnmpAgentProfileSummaryNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('snmpV2Agent', $data)) {
             $values = [];
             foreach ($data['snmpV2Agent'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileApSnmpCommunity::class, 'json', $context);
             }
-            $object->setSnmpV2Agent($values);
+            $object->snmpV2Agent = $values;
         }
         if (\array_key_exists('snmpV3Agent', $data)) {
             $values_1 = [];
             foreach ($data['snmpV3Agent'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileApSnmpUser::class, 'json', $context);
             }
-            $object->setSnmpV3Agent($values_1);
+            $object->snmpV3Agent = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('snmpV2Agent') && null !== $data->getSnmpV2Agent()) {
+        if (array_key_exists('snmpV2Agent', get_object_vars($data)) && null !== ($data->snmpV2Agent ?? null)) {
             $values = [];
-            foreach ($data->getSnmpV2Agent() as $value) {
+            foreach ($data->snmpV2Agent ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['snmpV2Agent'] = $values;
         }
-        if ($data->isInitialized('snmpV3Agent') && null !== $data->getSnmpV3Agent()) {
+        if (array_key_exists('snmpV3Agent', get_object_vars($data)) && null !== ($data->snmpV3Agent ?? null)) {
             $values_1 = [];
-            foreach ($data->getSnmpV3Agent() as $value_1) {
+            foreach ($data->snmpV3Agent ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['snmpV3Agent'] = $values_1;

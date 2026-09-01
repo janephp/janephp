@@ -38,63 +38,63 @@ class InvalidMetadataExceptionNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceLevel', $data)) {
-            $object->setTraceLevel($data['traceLevel']);
+            $object->traceLevel = $data['traceLevel'];
             unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
-            $object->setTraceId($data['traceId']);
+            $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
-            $object->setTraceId(null);
+            $object->traceId = null;
             unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
-            $object->setTraceJobId($data['traceJobId']);
+            $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
-            $object->setTraceJobId(null);
+            $object->traceJobId = null;
             unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
-            $object->setHttpStatusCode($data['httpStatusCode']);
+            $object->httpStatusCode = $data['httpStatusCode'];
             unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
-            $object->setExceptionMessage($data['exceptionMessage']);
+            $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
-            $object->setExceptionMessage(null);
+            $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
-            $object->setCustomerId($data['customerId']);
+            $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
-            $object->setCustomerId(null);
+            $object->customerId = null;
             unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
-            $object->setCustomerAlias($data['customerAlias']);
+            $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
-            $object->setCustomerAlias(null);
+            $object->customerAlias = null;
             unset($data['customerAlias']);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
-            $object->setUserId($data['userId']);
+            $object->userId = $data['userId'];
             unset($data['userId']);
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
-            $object->setUserId(null);
+            $object->userId = null;
             unset($data['userId']);
         }
         if (\array_key_exists('metadataErrors', $data) && $data['metadataErrors'] !== null) {
@@ -102,11 +102,11 @@ class InvalidMetadataExceptionNormalizer implements DenormalizerInterface, Norma
             foreach ($data['metadataErrors'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\MetadataError::class, 'json', $context);
             }
-            $object->setMetadataErrors($values);
+            $object->metadataErrors = $values;
             unset($data['metadataErrors']);
         }
         elseif (\array_key_exists('metadataErrors', $data) && $data['metadataErrors'] === null) {
-            $object->setMetadataErrors(null);
+            $object->metadataErrors = null;
             unset($data['metadataErrors']);
         }
         if (\array_key_exists('validationErrors', $data) && $data['validationErrors'] !== null) {
@@ -114,11 +114,11 @@ class InvalidMetadataExceptionNormalizer implements DenormalizerInterface, Norma
             foreach ($data['validationErrors'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\PictureparkBusinessException::class, 'json', $context);
             }
-            $object->setValidationErrors($values_1);
+            $object->validationErrors = $values_1;
             unset($data['validationErrors']);
         }
         elseif (\array_key_exists('validationErrors', $data) && $data['validationErrors'] === null) {
-            $object->setValidationErrors(null);
+            $object->validationErrors = null;
             unset($data['validationErrors']);
         }
         foreach ($data as $key => $value_2) {
@@ -131,41 +131,41 @@ class InvalidMetadataExceptionNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
-            $dataArray['traceLevel'] = $data->getTraceLevel();
+        if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
+            $dataArray['traceLevel'] = $data->traceLevel ?? null;
         }
-        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
-            $dataArray['traceId'] = $data->getTraceId();
+        if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
+            $dataArray['traceId'] = $data->traceId ?? null;
         }
-        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
-            $dataArray['traceJobId'] = $data->getTraceJobId();
+        if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
+            $dataArray['traceJobId'] = $data->traceJobId ?? null;
         }
-        if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
-            $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
+        if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
+            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
         }
-        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
-            $dataArray['exceptionMessage'] = $data->getExceptionMessage();
+        if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
+            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
-            $dataArray['customerId'] = $data->getCustomerId();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('customerId', get_object_vars($data)) && null !== ($data->customerId ?? null)) {
+            $dataArray['customerId'] = $data->customerId ?? null;
         }
-        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
-            $dataArray['customerAlias'] = $data->getCustomerAlias();
+        if (array_key_exists('customerAlias', get_object_vars($data)) && null !== ($data->customerAlias ?? null)) {
+            $dataArray['customerAlias'] = $data->customerAlias ?? null;
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['userId'] = $data->getUserId();
+        if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['userId'] = $data->userId ?? null;
         }
-        if ($data->isInitialized('metadataErrors') && null !== $data->getMetadataErrors()) {
+        if (array_key_exists('metadataErrors', get_object_vars($data)) && null !== ($data->metadataErrors ?? null)) {
             $values = [];
-            foreach ($data->getMetadataErrors() as $value) {
+            foreach ($data->metadataErrors ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['metadataErrors'] = $values;
         }
-        if ($data->isInitialized('validationErrors') && null !== $data->getValidationErrors()) {
+        if (array_key_exists('validationErrors', get_object_vars($data)) && null !== ($data->validationErrors ?? null)) {
             $values_1 = [];
-            foreach ($data->getValidationErrors() as $value_1) {
+            foreach ($data->validationErrors ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['validationErrors'] = $values_1;

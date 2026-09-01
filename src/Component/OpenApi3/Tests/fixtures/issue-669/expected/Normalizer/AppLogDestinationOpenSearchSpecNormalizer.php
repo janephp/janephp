@@ -38,19 +38,19 @@ class AppLogDestinationOpenSearchSpecNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('endpoint', $data)) {
-            $object->setEndpoint($data['endpoint']);
+            $object->endpoint = $data['endpoint'];
             unset($data['endpoint']);
         }
         if (\array_key_exists('basic_auth', $data)) {
-            $object->setBasicAuth($this->denormalizer->denormalize($data['basic_auth'], \Jane\Generated\DigitalOcean\Model\AppLogDestinationOpenSearchSpecBasicAuth::class, 'json', $context));
+            $object->basicAuth = $this->denormalizer->denormalize($data['basic_auth'], \Jane\Generated\DigitalOcean\Model\AppLogDestinationOpenSearchSpecBasicAuth::class, 'json', $context);
             unset($data['basic_auth']);
         }
         if (\array_key_exists('index_name', $data)) {
-            $object->setIndexName($data['index_name']);
+            $object->indexName = $data['index_name'];
             unset($data['index_name']);
         }
         if (\array_key_exists('cluster_name', $data)) {
-            $object->setClusterName($data['cluster_name']);
+            $object->clusterName = $data['cluster_name'];
             unset($data['cluster_name']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class AppLogDestinationOpenSearchSpecNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('endpoint') && null !== $data->getEndpoint()) {
-            $dataArray['endpoint'] = $data->getEndpoint();
+        if (array_key_exists('endpoint', get_object_vars($data)) && null !== ($data->endpoint ?? null)) {
+            $dataArray['endpoint'] = $data->endpoint ?? null;
         }
-        if ($data->isInitialized('basicAuth') && null !== $data->getBasicAuth()) {
-            $dataArray['basic_auth'] = $data->getBasicAuth() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBasicAuth(), 'json', $context));
+        if (array_key_exists('basicAuth', get_object_vars($data)) && null !== ($data->basicAuth ?? null)) {
+            $dataArray['basic_auth'] = ($data->basicAuth ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->basicAuth ?? null, 'json', $context));
         }
-        if ($data->isInitialized('indexName') && null !== $data->getIndexName()) {
-            $dataArray['index_name'] = $data->getIndexName();
+        if (array_key_exists('indexName', get_object_vars($data)) && null !== ($data->indexName ?? null)) {
+            $dataArray['index_name'] = $data->indexName ?? null;
         }
-        if ($data->isInitialized('clusterName') && null !== $data->getClusterName()) {
-            $dataArray['cluster_name'] = $data->getClusterName();
+        if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
+            $dataArray['cluster_name'] = $data->clusterName ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

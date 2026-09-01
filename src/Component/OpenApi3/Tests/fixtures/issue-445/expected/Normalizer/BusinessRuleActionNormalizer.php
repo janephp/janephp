@@ -68,53 +68,53 @@ class BusinessRuleActionNormalizer implements DenormalizerInterface, NormalizerI
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\EnqueueTaggingAction', $format, $context);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'AssignLayerAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'AssignLayerAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'UnassignLayerAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'UnassignLayerAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'AssignValueAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'AssignValueAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'AssignTagboxItemsAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'AssignTagboxItemsAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'UnassignTagboxItemsAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'UnassignTagboxItemsAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'AssignContentPermissionSetsAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'AssignContentPermissionSetsAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'UnassignContentPermissionSetsAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'UnassignContentPermissionSetsAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ProduceMessageAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ProduceMessageAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'AssignTagboxItemsInLayerAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'AssignTagboxItemsInLayerAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'EnqueueTaggingAction' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'EnqueueTaggingAction' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -38,11 +38,11 @@ class AppJobInvocationTriggerScheduledScheduleNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('cron', $data)) {
-            $object->setCron($data['cron']);
+            $object->cron = $data['cron'];
             unset($data['cron']);
         }
         if (\array_key_exists('time_zone', $data)) {
-            $object->setTimeZone($data['time_zone']);
+            $object->timeZone = $data['time_zone'];
             unset($data['time_zone']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class AppJobInvocationTriggerScheduledScheduleNormalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('cron') && null !== $data->getCron()) {
-            $dataArray['cron'] = $data->getCron();
+        if (array_key_exists('cron', get_object_vars($data)) && null !== ($data->cron ?? null)) {
+            $dataArray['cron'] = $data->cron ?? null;
         }
-        if ($data->isInitialized('timeZone') && null !== $data->getTimeZone()) {
-            $dataArray['time_zone'] = $data->getTimeZone();
+        if (array_key_exists('timeZone', get_object_vars($data)) && null !== ($data->timeZone ?? null)) {
+            $dataArray['time_zone'] = $data->timeZone ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

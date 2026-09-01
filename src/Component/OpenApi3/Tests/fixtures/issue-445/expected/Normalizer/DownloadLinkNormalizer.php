@@ -38,18 +38,18 @@ class DownloadLinkNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('downloadToken', $data)) {
-            $object->setDownloadToken($data['downloadToken']);
+            $object->downloadToken = $data['downloadToken'];
         }
         if (\array_key_exists('downloadUrl', $data)) {
-            $object->setDownloadUrl($data['downloadUrl']);
+            $object->downloadUrl = $data['downloadUrl'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['downloadToken'] = $data->getDownloadToken();
-        $dataArray['downloadUrl'] = $data->getDownloadUrl();
+        $dataArray['downloadToken'] = $data->downloadToken ?? null;
+        $dataArray['downloadUrl'] = $data->downloadUrl ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

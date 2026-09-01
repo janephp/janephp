@@ -41,43 +41,43 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $data['deduplicate'] = (bool) $data['deduplicate'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
             unset($data['id']);
         }
         if (\array_key_exists('retries', $data)) {
-            $object->setRetries($data['retries']);
+            $object->retries = $data['retries'];
             unset($data['retries']);
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
             unset($data['priority']);
         }
         if (\array_key_exists('deduplicate', $data)) {
-            $object->setDeduplicate($data['deduplicate']);
+            $object->deduplicate = $data['deduplicate'];
             unset($data['deduplicate']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('nodeId', $data) && $data['nodeId'] !== null) {
-            $object->setNodeId($data['nodeId']);
+            $object->nodeId = $data['nodeId'];
             unset($data['nodeId']);
         }
         elseif (\array_key_exists('nodeId', $data) && $data['nodeId'] === null) {
-            $object->setNodeId(null);
+            $object->nodeId = null;
             unset($data['nodeId']);
         }
         if (\array_key_exists('hostName', $data) && $data['hostName'] !== null) {
-            $object->setHostName($data['hostName']);
+            $object->hostName = $data['hostName'];
             unset($data['hostName']);
         }
         elseif (\array_key_exists('hostName', $data) && $data['hostName'] === null) {
-            $object->setHostName(null);
+            $object->hostName = null;
             unset($data['hostName']);
         }
         if (\array_key_exists('lastResponseTime', $data)) {
@@ -85,47 +85,47 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastResponseTime'], 'Y-m-d\TH:i:sP');
             }
-            $object->setLastResponseTime($date);
+            $object->lastResponseTime = $date;
             unset($data['lastResponseTime']);
         }
         if (\array_key_exists('serviceName', $data) && $data['serviceName'] !== null) {
-            $object->setServiceName($data['serviceName']);
+            $object->serviceName = $data['serviceName'];
             unset($data['serviceName']);
         }
         elseif (\array_key_exists('serviceName', $data) && $data['serviceName'] === null) {
-            $object->setServiceName(null);
+            $object->serviceName = null;
             unset($data['serviceName']);
         }
         if (\array_key_exists('fileVersion', $data) && $data['fileVersion'] !== null) {
-            $object->setFileVersion($data['fileVersion']);
+            $object->fileVersion = $data['fileVersion'];
             unset($data['fileVersion']);
         }
         elseif (\array_key_exists('fileVersion', $data) && $data['fileVersion'] === null) {
-            $object->setFileVersion(null);
+            $object->fileVersion = null;
             unset($data['fileVersion']);
         }
         if (\array_key_exists('productVersion', $data) && $data['productVersion'] !== null) {
-            $object->setProductVersion($data['productVersion']);
+            $object->productVersion = $data['productVersion'];
             unset($data['productVersion']);
         }
         elseif (\array_key_exists('productVersion', $data) && $data['productVersion'] === null) {
-            $object->setProductVersion(null);
+            $object->productVersion = null;
             unset($data['productVersion']);
         }
         if (\array_key_exists('release', $data) && $data['release'] !== null) {
-            $object->setRelease($data['release']);
+            $object->release = $data['release'];
             unset($data['release']);
         }
         elseif (\array_key_exists('release', $data) && $data['release'] === null) {
-            $object->setRelease(null);
+            $object->release = null;
             unset($data['release']);
         }
         if (\array_key_exists('logLevel', $data) && $data['logLevel'] !== null) {
-            $object->setLogLevel($data['logLevel']);
+            $object->logLevel = $data['logLevel'];
             unset($data['logLevel']);
         }
         elseif (\array_key_exists('logLevel', $data) && $data['logLevel'] === null) {
-            $object->setLogLevel(null);
+            $object->logLevel = null;
             unset($data['logLevel']);
         }
         foreach ($data as $key => $value) {
@@ -138,36 +138,36 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['retries'] = $data->getRetries();
-        $dataArray['priority'] = $data->getPriority();
-        $dataArray['deduplicate'] = $data->getDeduplicate();
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('nodeId') && null !== $data->getNodeId()) {
-            $dataArray['nodeId'] = $data->getNodeId();
+        $dataArray['retries'] = $data->retries ?? null;
+        $dataArray['priority'] = $data->priority ?? null;
+        $dataArray['deduplicate'] = $data->deduplicate ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('nodeId', get_object_vars($data)) && null !== ($data->nodeId ?? null)) {
+            $dataArray['nodeId'] = $data->nodeId ?? null;
         }
-        if ($data->isInitialized('hostName') && null !== $data->getHostName()) {
-            $dataArray['hostName'] = $data->getHostName();
+        if (array_key_exists('hostName', get_object_vars($data)) && null !== ($data->hostName ?? null)) {
+            $dataArray['hostName'] = $data->hostName ?? null;
         }
-        if ($data->isInitialized('lastResponseTime') && null !== $data->getLastResponseTime()) {
-            $dataArray['lastResponseTime'] = $data->getLastResponseTime()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('lastResponseTime', get_object_vars($data)) && null !== ($data->lastResponseTime ?? null)) {
+            $dataArray['lastResponseTime'] = ($data->lastResponseTime ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('serviceName') && null !== $data->getServiceName()) {
-            $dataArray['serviceName'] = $data->getServiceName();
+        if (array_key_exists('serviceName', get_object_vars($data)) && null !== ($data->serviceName ?? null)) {
+            $dataArray['serviceName'] = $data->serviceName ?? null;
         }
-        if ($data->isInitialized('fileVersion') && null !== $data->getFileVersion()) {
-            $dataArray['fileVersion'] = $data->getFileVersion();
+        if (array_key_exists('fileVersion', get_object_vars($data)) && null !== ($data->fileVersion ?? null)) {
+            $dataArray['fileVersion'] = $data->fileVersion ?? null;
         }
-        if ($data->isInitialized('productVersion') && null !== $data->getProductVersion()) {
-            $dataArray['productVersion'] = $data->getProductVersion();
+        if (array_key_exists('productVersion', get_object_vars($data)) && null !== ($data->productVersion ?? null)) {
+            $dataArray['productVersion'] = $data->productVersion ?? null;
         }
-        if ($data->isInitialized('release') && null !== $data->getRelease()) {
-            $dataArray['release'] = $data->getRelease();
+        if (array_key_exists('release', get_object_vars($data)) && null !== ($data->release ?? null)) {
+            $dataArray['release'] = $data->release ?? null;
         }
-        if ($data->isInitialized('logLevel') && null !== $data->getLogLevel()) {
-            $dataArray['logLevel'] = $data->getLogLevel();
+        if (array_key_exists('logLevel', get_object_vars($data)) && null !== ($data->logLevel ?? null)) {
+            $dataArray['logLevel'] = $data->logLevel ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

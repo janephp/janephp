@@ -38,26 +38,26 @@ class WlanWlanAdvancedUserRoleAccessNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('allowedRoleOption', $data)) {
-            $object->setAllowedRoleOption($data['allowedRoleOption']);
+            $object->allowedRoleOption = $data['allowedRoleOption'];
         }
         if (\array_key_exists('allowedSpecificRoles', $data)) {
             $values = [];
             foreach ($data['allowedSpecificRoles'] as $value) {
                 $values[] = $value;
             }
-            $object->setAllowedSpecificRoles($values);
+            $object->allowedSpecificRoles = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('allowedRoleOption') && null !== $data->getAllowedRoleOption()) {
-            $dataArray['allowedRoleOption'] = $data->getAllowedRoleOption();
+        if (array_key_exists('allowedRoleOption', get_object_vars($data)) && null !== ($data->allowedRoleOption ?? null)) {
+            $dataArray['allowedRoleOption'] = $data->allowedRoleOption ?? null;
         }
-        if ($data->isInitialized('allowedSpecificRoles') && null !== $data->getAllowedSpecificRoles()) {
+        if (array_key_exists('allowedSpecificRoles', get_object_vars($data)) && null !== ($data->allowedSpecificRoles ?? null)) {
             $values = [];
-            foreach ($data->getAllowedSpecificRoles() as $value) {
+            foreach ($data->allowedSpecificRoles ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['allowedSpecificRoles'] = $values;

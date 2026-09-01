@@ -44,23 +44,23 @@ class BookingPaymentNormalizer implements DenormalizerInterface, NormalizerInter
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\BookingPaymentConstraint());
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('amount', $data)) {
-            $object->setAmount($data['amount']);
+            $object->amount = $data['amount'];
             unset($data['amount']);
         }
         if (\array_key_exists('currency', $data)) {
-            $object->setCurrency($data['currency']);
+            $object->currency = $data['currency'];
             unset($data['currency']);
         }
         if (\array_key_exists('source', $data)) {
-            $object->setSource($data['source']);
+            $object->source = $data['source'];
             unset($data['source']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         foreach ($data as $key => $value) {
@@ -73,14 +73,14 @@ class BookingPaymentNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
-            $dataArray['amount'] = $data->getAmount();
+        if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
+            $dataArray['amount'] = $data->amount ?? null;
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
-            $dataArray['currency'] = $data->getCurrency();
+        if (array_key_exists('currency', get_object_vars($data)) && null !== ($data->currency ?? null)) {
+            $dataArray['currency'] = $data->currency ?? null;
         }
-        if ($data->isInitialized('source') && null !== $data->getSource()) {
-            $dataArray['source'] = $data->getSource();
+        if (array_key_exists('source', get_object_vars($data)) && null !== ($data->source ?? null)) {
+            $dataArray['source'] = $data->source ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

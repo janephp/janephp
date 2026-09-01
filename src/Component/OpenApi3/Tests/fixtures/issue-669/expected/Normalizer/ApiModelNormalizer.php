@@ -44,7 +44,7 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['upload_complete'] = (bool) $data['upload_complete'];
         }
         if (\array_key_exists('agreement', $data)) {
-            $object->setAgreement($this->denormalizer->denormalize($data['agreement'], \Jane\Generated\DigitalOcean\Model\ApiAgreement::class, 'json', $context));
+            $object->agreement = $this->denormalizer->denormalize($data['agreement'], \Jane\Generated\DigitalOcean\Model\ApiAgreement::class, 'json', $context);
             unset($data['agreement']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -52,31 +52,31 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('inference_name', $data)) {
-            $object->setInferenceName($data['inference_name']);
+            $object->inferenceName = $data['inference_name'];
             unset($data['inference_name']);
         }
         if (\array_key_exists('inference_version', $data)) {
-            $object->setInferenceVersion($data['inference_version']);
+            $object->inferenceVersion = $data['inference_version'];
             unset($data['inference_version']);
         }
         if (\array_key_exists('is_foundational', $data)) {
-            $object->setIsFoundational($data['is_foundational']);
+            $object->isFoundational = $data['is_foundational'];
             unset($data['is_foundational']);
         }
         if (\array_key_exists('kb_default_chunk_size', $data)) {
-            $object->setKbDefaultChunkSize($data['kb_default_chunk_size']);
+            $object->kbDefaultChunkSize = $data['kb_default_chunk_size'];
             unset($data['kb_default_chunk_size']);
         }
         if (\array_key_exists('kb_max_chunk_size', $data)) {
-            $object->setKbMaxChunkSize($data['kb_max_chunk_size']);
+            $object->kbMaxChunkSize = $data['kb_max_chunk_size'];
             unset($data['kb_max_chunk_size']);
         }
         if (\array_key_exists('kb_min_chunk_size', $data)) {
-            $object->setKbMinChunkSize($data['kb_min_chunk_size']);
+            $object->kbMinChunkSize = $data['kb_min_chunk_size'];
             unset($data['kb_min_chunk_size']);
         }
         if (\array_key_exists('metadata', $data)) {
@@ -84,19 +84,19 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['metadata'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setMetadata($values);
+            $object->metadata = $values;
             unset($data['metadata']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('parent_uuid', $data)) {
-            $object->setParentUuid($data['parent_uuid']);
+            $object->parentUuid = $data['parent_uuid'];
             unset($data['parent_uuid']);
         }
         if (\array_key_exists('provider', $data)) {
-            $object->setProvider($data['provider']);
+            $object->provider = $data['provider'];
             unset($data['provider']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -104,15 +104,15 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         if (\array_key_exists('upload_complete', $data)) {
-            $object->setUploadComplete($data['upload_complete']);
+            $object->uploadComplete = $data['upload_complete'];
             unset($data['upload_complete']);
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
             unset($data['url']);
         }
         if (\array_key_exists('usecases', $data)) {
@@ -120,15 +120,15 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['usecases'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setUsecases($values_1);
+            $object->usecases = $values_1;
             unset($data['usecases']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($this->denormalizer->denormalize($data['version'], \Jane\Generated\DigitalOcean\Model\ApiModelVersion::class, 'json', $context));
+            $object->version = $this->denormalizer->denormalize($data['version'], \Jane\Generated\DigitalOcean\Model\ApiModelVersion::class, 'json', $context);
             unset($data['version']);
         }
         foreach ($data as $key_1 => $value_2) {
@@ -141,67 +141,67 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agreement') && null !== $data->getAgreement()) {
-            $dataArray['agreement'] = $data->getAgreement() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAgreement(), 'json', $context));
+        if (array_key_exists('agreement', get_object_vars($data)) && null !== ($data->agreement ?? null)) {
+            $dataArray['agreement'] = ($data->agreement ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->agreement ?? null, 'json', $context));
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('inferenceName') && null !== $data->getInferenceName()) {
-            $dataArray['inference_name'] = $data->getInferenceName();
+        if (array_key_exists('inferenceName', get_object_vars($data)) && null !== ($data->inferenceName ?? null)) {
+            $dataArray['inference_name'] = $data->inferenceName ?? null;
         }
-        if ($data->isInitialized('inferenceVersion') && null !== $data->getInferenceVersion()) {
-            $dataArray['inference_version'] = $data->getInferenceVersion();
+        if (array_key_exists('inferenceVersion', get_object_vars($data)) && null !== ($data->inferenceVersion ?? null)) {
+            $dataArray['inference_version'] = $data->inferenceVersion ?? null;
         }
-        if ($data->isInitialized('isFoundational') && null !== $data->getIsFoundational()) {
-            $dataArray['is_foundational'] = $data->getIsFoundational();
+        if (array_key_exists('isFoundational', get_object_vars($data)) && null !== ($data->isFoundational ?? null)) {
+            $dataArray['is_foundational'] = $data->isFoundational ?? null;
         }
-        if ($data->isInitialized('kbDefaultChunkSize') && null !== $data->getKbDefaultChunkSize()) {
-            $dataArray['kb_default_chunk_size'] = $data->getKbDefaultChunkSize();
+        if (array_key_exists('kbDefaultChunkSize', get_object_vars($data)) && null !== ($data->kbDefaultChunkSize ?? null)) {
+            $dataArray['kb_default_chunk_size'] = $data->kbDefaultChunkSize ?? null;
         }
-        if ($data->isInitialized('kbMaxChunkSize') && null !== $data->getKbMaxChunkSize()) {
-            $dataArray['kb_max_chunk_size'] = $data->getKbMaxChunkSize();
+        if (array_key_exists('kbMaxChunkSize', get_object_vars($data)) && null !== ($data->kbMaxChunkSize ?? null)) {
+            $dataArray['kb_max_chunk_size'] = $data->kbMaxChunkSize ?? null;
         }
-        if ($data->isInitialized('kbMinChunkSize') && null !== $data->getKbMinChunkSize()) {
-            $dataArray['kb_min_chunk_size'] = $data->getKbMinChunkSize();
+        if (array_key_exists('kbMinChunkSize', get_object_vars($data)) && null !== ($data->kbMinChunkSize ?? null)) {
+            $dataArray['kb_min_chunk_size'] = $data->kbMinChunkSize ?? null;
         }
-        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+        if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getMetadata() as $key => $value) {
+            foreach ($data->metadata ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['metadata'] = $values;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('parentUuid') && null !== $data->getParentUuid()) {
-            $dataArray['parent_uuid'] = $data->getParentUuid();
+        if (array_key_exists('parentUuid', get_object_vars($data)) && null !== ($data->parentUuid ?? null)) {
+            $dataArray['parent_uuid'] = $data->parentUuid ?? null;
         }
-        if ($data->isInitialized('provider') && null !== $data->getProvider()) {
-            $dataArray['provider'] = $data->getProvider();
+        if (array_key_exists('provider', get_object_vars($data)) && null !== ($data->provider ?? null)) {
+            $dataArray['provider'] = $data->provider ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('uploadComplete') && null !== $data->getUploadComplete()) {
-            $dataArray['upload_complete'] = $data->getUploadComplete();
+        if (array_key_exists('uploadComplete', get_object_vars($data)) && null !== ($data->uploadComplete ?? null)) {
+            $dataArray['upload_complete'] = $data->uploadComplete ?? null;
         }
-        if ($data->isInitialized('url') && null !== $data->getUrl()) {
-            $dataArray['url'] = $data->getUrl();
+        if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
+            $dataArray['url'] = $data->url ?? null;
         }
-        if ($data->isInitialized('usecases') && null !== $data->getUsecases()) {
+        if (array_key_exists('usecases', get_object_vars($data)) && null !== ($data->usecases ?? null)) {
             $values_1 = [];
-            foreach ($data->getUsecases() as $value_1) {
+            foreach ($data->usecases ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['usecases'] = $values_1;
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVersion(), 'json', $context));
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = ($data->version ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->version ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

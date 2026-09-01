@@ -41,117 +41,117 @@ class PermissionSetSearchRequestNormalizer implements DenormalizerInterface, Nor
             $data['debugMode'] = (bool) $data['debugMode'];
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
-            $object->setSearchString($data['searchString']);
+            $object->searchString = $data['searchString'];
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
-            $object->setSearchString(null);
+            $object->searchString = null;
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
             $values = [];
             foreach ($data['searchBehaviors'] as $value) {
                 $values[] = $value;
             }
-            $object->setSearchBehaviors($values);
+            $object->searchBehaviors = $values;
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
-            $object->setSearchBehaviors(null);
+            $object->searchBehaviors = null;
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
             $values_1 = [];
             foreach ($data['sort'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\SortInfo::class, 'json', $context);
             }
-            $object->setSort($values_1);
+            $object->sort = $values_1;
         }
         elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
-            $object->setSort(null);
+            $object->sort = null;
         }
         if (\array_key_exists('limit', $data)) {
-            $object->setLimit($data['limit']);
+            $object->limit = $data['limit'];
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-            $object->setPageToken($data['pageToken']);
+            $object->pageToken = $data['pageToken'];
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-            $object->setPageToken(null);
+            $object->pageToken = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $value_2 = $data['filter'];
             if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
                 $value_2 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilter($value_2);
+            $object->filter = $value_2;
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
         }
         if (\array_key_exists('rightFilter', $data) && $data['rightFilter'] !== null) {
             $value_3 = $data['rightFilter'];
             if (is_string($data['rightFilter'])) {
                 $value_3 = $data['rightFilter'];
             }
-            $object->setRightFilter($value_3);
+            $object->rightFilter = $value_3;
         }
         elseif (\array_key_exists('rightFilter', $data) && $data['rightFilter'] === null) {
-            $object->setRightFilter(null);
+            $object->rightFilter = null;
         }
         if (\array_key_exists('debugMode', $data)) {
-            $object->setDebugMode($data['debugMode']);
+            $object->debugMode = $data['debugMode'];
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_2 = [];
             foreach ($data['searchLanguages'] as $value_4) {
                 $values_2[] = $value_4;
             }
-            $object->setSearchLanguages($values_2);
+            $object->searchLanguages = $values_2;
         }
         elseif (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] === null) {
-            $object->setSearchLanguages(null);
+            $object->searchLanguages = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
-            $dataArray['searchString'] = $data->getSearchString();
+        if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
+            $dataArray['searchString'] = $data->searchString ?? null;
         }
-        if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
+        if (array_key_exists('searchBehaviors', get_object_vars($data)) && null !== ($data->searchBehaviors ?? null)) {
             $values = [];
-            foreach ($data->getSearchBehaviors() as $value) {
+            foreach ($data->searchBehaviors ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }
-        if ($data->isInitialized('sort') && null !== $data->getSort()) {
+        if (array_key_exists('sort', get_object_vars($data)) && null !== ($data->sort ?? null)) {
             $values_1 = [];
-            foreach ($data->getSort() as $value_1) {
+            foreach ($data->sort ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['sort'] = $values_1;
         }
-        $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
-            $dataArray['pageToken'] = $data->getPageToken();
+        $dataArray['limit'] = $data->limit ?? null;
+        if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
+            $dataArray['pageToken'] = $data->pageToken ?? null;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $value_2 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_2 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $value_2 = $data->filter ?? null;
+            if (is_object($data->filter ?? null)) {
+                $value_2 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
             }
             $dataArray['filter'] = $value_2;
         }
-        if ($data->isInitialized('rightFilter') && null !== $data->getRightFilter()) {
-            $value_3 = $data->getRightFilter();
-            if (is_string($data->getRightFilter())) {
-                $value_3 = $data->getRightFilter();
+        if (array_key_exists('rightFilter', get_object_vars($data)) && null !== ($data->rightFilter ?? null)) {
+            $value_3 = $data->rightFilter ?? null;
+            if (is_string($data->rightFilter ?? null)) {
+                $value_3 = $data->rightFilter ?? null;
             }
             $dataArray['rightFilter'] = $value_3;
         }
-        $dataArray['debugMode'] = $data->getDebugMode();
-        if ($data->isInitialized('searchLanguages') && null !== $data->getSearchLanguages()) {
+        $dataArray['debugMode'] = $data->debugMode ?? null;
+        if (array_key_exists('searchLanguages', get_object_vars($data)) && null !== ($data->searchLanguages ?? null)) {
             $values_2 = [];
-            foreach ($data->getSearchLanguages() as $value_4) {
+            foreach ($data->searchLanguages ?? null as $value_4) {
                 $values_2[] = $value_4;
             }
             $dataArray['searchLanguages'] = $values_2;

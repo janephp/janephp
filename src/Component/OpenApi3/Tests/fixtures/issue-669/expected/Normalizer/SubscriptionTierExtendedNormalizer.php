@@ -41,7 +41,7 @@ class SubscriptionTierExtendedNormalizer implements DenormalizerInterface, Norma
             $data['eligible'] = (bool) $data['eligible'];
         }
         if (\array_key_exists('eligible', $data)) {
-            $object->setEligible($data['eligible']);
+            $object->eligible = $data['eligible'];
             unset($data['eligible']);
         }
         if (\array_key_exists('eligibility_reasons', $data)) {
@@ -49,7 +49,7 @@ class SubscriptionTierExtendedNormalizer implements DenormalizerInterface, Norma
             foreach ($data['eligibility_reasons'] as $value) {
                 $values[] = $value;
             }
-            $object->setEligibilityReasons($values);
+            $object->eligibilityReasons = $values;
             unset($data['eligibility_reasons']);
         }
         foreach ($data as $key => $value_1) {
@@ -62,12 +62,12 @@ class SubscriptionTierExtendedNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('eligible') && null !== $data->getEligible()) {
-            $dataArray['eligible'] = $data->getEligible();
+        if (array_key_exists('eligible', get_object_vars($data)) && null !== ($data->eligible ?? null)) {
+            $dataArray['eligible'] = $data->eligible ?? null;
         }
-        if ($data->isInitialized('eligibilityReasons') && null !== $data->getEligibilityReasons()) {
+        if (array_key_exists('eligibilityReasons', get_object_vars($data)) && null !== ($data->eligibilityReasons ?? null)) {
             $values = [];
-            foreach ($data->getEligibilityReasons() as $value) {
+            foreach ($data->eligibilityReasons ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['eligibility_reasons'] = $values;

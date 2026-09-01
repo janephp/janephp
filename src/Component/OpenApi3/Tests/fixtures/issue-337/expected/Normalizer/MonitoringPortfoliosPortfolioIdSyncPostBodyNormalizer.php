@@ -38,11 +38,11 @@ class MonitoringPortfoliosPortfolioIdSyncPostBodyNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('importCsv', $data)) {
-            $object->setImportCsv($data['importCsv']);
+            $object->importCsv = $data['importCsv'];
             unset($data['importCsv']);
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
             unset($data['email']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +55,9 @@ class MonitoringPortfoliosPortfolioIdSyncPostBodyNormalizer implements Denormali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['importCsv'] = $data->getImportCsv();
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        $dataArray['importCsv'] = $data->importCsv ?? null;
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

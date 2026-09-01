@@ -17,16 +17,16 @@ class NotNullValidator implements ValidatorInterface
     public function supports($object): bool
     {
         if (\get_class($object) === JsonSchema::class) {
-            return \is_array($object->getType()) ? !\in_array('null', $object->getType()) : 'null' !== $object->getType();
+            return \is_array($object->type ?? null) ? !\in_array('null', $object->type ?? null) : 'null' !== ($object->type ?? null);
         }
         if (\get_class($object) === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema') {
             return $object->offsetExists('x-nullable') && \is_bool($object->offsetGet('x-nullable')) && $object->offsetGet('x-nullable');
         }
         if (\get_class($object) === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema') {
-            return method_exists($object, 'getNullable') && !($object->getNullable() ?? false);
+            return property_exists($object, 'nullable') && !(($object->nullable ?? null) ?? false);
         }
         if (\get_class($object) === 'Jane\\Component\\OpenApi31\\JsonSchema\\Model\\Schema') {
-            return \is_array($object->getType()) ? !\in_array('null', $object->getType()) : 'null' !== $object->getType();
+            return \is_array($object->type ?? null) ? !\in_array('null', $object->type ?? null) : 'null' !== ($object->type ?? null);
         }
 
         return false;

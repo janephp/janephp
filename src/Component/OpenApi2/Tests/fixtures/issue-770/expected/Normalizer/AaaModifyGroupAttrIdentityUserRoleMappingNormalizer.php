@@ -38,18 +38,18 @@ class AaaModifyGroupAttrIdentityUserRoleMappingNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('groupAttr', $data)) {
-            $object->setGroupAttr($data['groupAttr']);
+            $object->groupAttr = $data['groupAttr'];
         }
         if (\array_key_exists('userRole', $data)) {
-            $object->setUserRole($this->denormalizer->denormalize($data['userRole'], \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyGroupAttrIdentityUserRoleMappingUserRole::class, 'json', $context));
+            $object->userRole = $this->denormalizer->denormalize($data['userRole'], \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyGroupAttrIdentityUserRoleMappingUserRole::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['groupAttr'] = $data->getGroupAttr();
-        $dataArray['userRole'] = $data->getUserRole() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserRole(), 'json', $context));
+        $dataArray['groupAttr'] = $data->groupAttr ?? null;
+        $dataArray['userRole'] = ($data->userRole ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->userRole ?? null, 'json', $context));
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

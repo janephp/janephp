@@ -38,39 +38,39 @@ class AdministrationLicensesNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
         }
         if (\array_key_exists('createTime', $data)) {
-            $object->setCreateTime($data['createTime']);
+            $object->createTime = $data['createTime'];
         }
         if (\array_key_exists('expireDate', $data)) {
-            $object->setExpireDate($data['expireDate']);
+            $object->expireDate = $data['expireDate'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count ?? null;
         }
-        if ($data->isInitialized('createTime') && null !== $data->getCreateTime()) {
-            $dataArray['createTime'] = $data->getCreateTime();
+        if (array_key_exists('createTime', get_object_vars($data)) && null !== ($data->createTime ?? null)) {
+            $dataArray['createTime'] = $data->createTime ?? null;
         }
-        if ($data->isInitialized('expireDate') && null !== $data->getExpireDate()) {
-            $dataArray['expireDate'] = $data->getExpireDate();
+        if (array_key_exists('expireDate', get_object_vars($data)) && null !== ($data->expireDate ?? null)) {
+            $dataArray['expireDate'] = $data->expireDate ?? null;
         }
         return $dataArray;
     }

@@ -8,59 +8,15 @@ class ComplianceSearchResultDataBodySearchResult implements AdditionalProperties
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItem>
      */
-    protected $records;
+    public array $records;
     /**
      * @var string
      */
-    protected $searchEngineVersion;
-    /**
-     * @return list<ComplianceSearchResultDataBodySearchResultRecordsItem>
-     */
-    public function getRecords(): array
-    {
-        return $this->records;
-    }
-    /**
-     * @param list<ComplianceSearchResultDataBodySearchResultRecordsItem> $records
-     *
-     * @return self
-     */
-    public function setRecords(array $records): self
-    {
-        $this->initialized['records'] = true;
-        $this->records = $records;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getSearchEngineVersion(): string
-    {
-        return $this->searchEngineVersion;
-    }
-    /**
-     * @param string $searchEngineVersion
-     *
-     * @return self
-     */
-    public function setSearchEngineVersion(string $searchEngineVersion): self
-    {
-        $this->initialized['searchEngineVersion'] = true;
-        $this->searchEngineVersion = $searchEngineVersion;
-        return $this;
-    }
+    public string $searchEngineVersion;
     public function definedProperties(): array
     {
-        return ['records' => ['records', 'getRecords', 'setRecords'], 'searchEngineVersion' => ['searchEngineVersion', 'getSearchEngineVersion', 'setSearchEngineVersion']];
+        return ['records' => 'records', 'searchEngineVersion' => 'searchEngineVersion'];
     }
 }

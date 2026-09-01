@@ -38,7 +38,7 @@ class DockerCredentialsNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('auths', $data)) {
-            $object->setAuths($this->denormalizer->denormalize($data['auths'], \Jane\Generated\DigitalOcean\Model\DockerCredentialsAuths::class, 'json', $context));
+            $object->auths = $this->denormalizer->denormalize($data['auths'], \Jane\Generated\DigitalOcean\Model\DockerCredentialsAuths::class, 'json', $context);
             unset($data['auths']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class DockerCredentialsNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('auths') && null !== $data->getAuths()) {
-            $dataArray['auths'] = $data->getAuths() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAuths(), 'json', $context));
+        if (array_key_exists('auths', get_object_vars($data)) && null !== ($data->auths ?? null)) {
+            $dataArray['auths'] = ($data->auths ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->auths ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

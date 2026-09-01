@@ -47,11 +47,11 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
             } elseif (is_null($data['users'])) {
                 $value = $data['users'];
             }
-            $object->setUsers($value);
+            $object->users = $value;
             unset($data['users']);
         }
         elseif (\array_key_exists('users', $data) && $data['users'] === null) {
-            $object->setUsers(null);
+            $object->users = null;
             unset($data['users']);
         }
         foreach ($data as $key => $value_1) {
@@ -64,12 +64,12 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('users') && null !== $data->getUsers()) {
-            $value = $data->getUsers();
-            if (is_object($data->getUsers())) {
-                $value = $data->getUsers() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUsers(), 'json', $context));
-            } elseif (is_null($data->getUsers())) {
-                $value = $data->getUsers();
+        if (array_key_exists('users', get_object_vars($data)) && null !== ($data->users ?? null)) {
+            $value = $data->users ?? null;
+            if (is_object($data->users ?? null)) {
+                $value = ($data->users ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->users ?? null, 'json', $context));
+            } elseif (is_null($data->users ?? null)) {
+                $value = $data->users ?? null;
             }
             $dataArray['users'] = $value;
         }

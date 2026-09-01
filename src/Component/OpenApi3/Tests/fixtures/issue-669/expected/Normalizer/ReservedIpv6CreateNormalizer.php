@@ -38,7 +38,7 @@ class ReservedIpv6CreateNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('region_slug', $data)) {
-            $object->setRegionSlug($data['region_slug']);
+            $object->regionSlug = $data['region_slug'];
             unset($data['region_slug']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class ReservedIpv6CreateNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['region_slug'] = $data->getRegionSlug();
+        $dataArray['region_slug'] = $data->regionSlug ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -38,7 +38,7 @@ class ResponseTagsExistingNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('tag', $data)) {
-            $object->setTag($this->denormalizer->denormalize($data['tag'], \Jane\Generated\DigitalOcean\Model\Tags::class, 'json', $context));
+            $object->tag = $this->denormalizer->denormalize($data['tag'], \Jane\Generated\DigitalOcean\Model\Tags::class, 'json', $context);
             unset($data['tag']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseTagsExistingNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('tag') && null !== $data->getTag()) {
-            $dataArray['tag'] = $data->getTag() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTag(), 'json', $context));
+        if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
+            $dataArray['tag'] = ($data->tag ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->tag ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

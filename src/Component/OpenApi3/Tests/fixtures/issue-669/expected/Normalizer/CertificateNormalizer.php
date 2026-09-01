@@ -38,11 +38,11 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('not_after', $data)) {
@@ -50,11 +50,11 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['not_after'], 'Y-m-d\TH:i:sP');
             }
-            $object->setNotAfter($date);
+            $object->notAfter = $date;
             unset($data['not_after']);
         }
         if (\array_key_exists('sha1_fingerprint', $data)) {
-            $object->setSha1Fingerprint($data['sha1_fingerprint']);
+            $object->sha1Fingerprint = $data['sha1_fingerprint'];
             unset($data['sha1_fingerprint']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -62,7 +62,7 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date_1);
+            $object->createdAt = $date_1;
             unset($data['created_at']);
         }
         if (\array_key_exists('dns_names', $data)) {
@@ -70,15 +70,15 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
             foreach ($data['dns_names'] as $value) {
                 $values[] = $value;
             }
-            $object->setDnsNames($values);
+            $object->dnsNames = $values;
             unset($data['dns_names']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
             unset($data['state']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value_1) {
@@ -91,18 +91,18 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('dnsNames') && null !== $data->getDnsNames()) {
+        if (array_key_exists('dnsNames', get_object_vars($data)) && null !== ($data->dnsNames ?? null)) {
             $values = [];
-            foreach ($data->getDnsNames() as $value) {
+            foreach ($data->dnsNames ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['dns_names'] = $values;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

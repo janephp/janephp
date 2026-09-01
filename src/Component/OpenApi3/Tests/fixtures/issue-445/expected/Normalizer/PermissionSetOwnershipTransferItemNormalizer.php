@@ -38,15 +38,15 @@ class PermissionSetOwnershipTransferItemNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('transferUserId', $data)) {
-            $object->setTransferUserId($data['transferUserId']);
+            $object->transferUserId = $data['transferUserId'];
             unset($data['transferUserId']);
         }
         if (\array_key_exists('permissionSetId', $data) && $data['permissionSetId'] !== null) {
-            $object->setPermissionSetId($data['permissionSetId']);
+            $object->permissionSetId = $data['permissionSetId'];
             unset($data['permissionSetId']);
         }
         elseif (\array_key_exists('permissionSetId', $data) && $data['permissionSetId'] === null) {
-            $object->setPermissionSetId(null);
+            $object->permissionSetId = null;
             unset($data['permissionSetId']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class PermissionSetOwnershipTransferItemNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['transferUserId'] = $data->getTransferUserId();
-        if ($data->isInitialized('permissionSetId') && null !== $data->getPermissionSetId()) {
-            $dataArray['permissionSetId'] = $data->getPermissionSetId();
+        $dataArray['transferUserId'] = $data->transferUserId ?? null;
+        if (array_key_exists('permissionSetId', get_object_vars($data)) && null !== ($data->permissionSetId ?? null)) {
+            $dataArray['permissionSetId'] = $data->permissionSetId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

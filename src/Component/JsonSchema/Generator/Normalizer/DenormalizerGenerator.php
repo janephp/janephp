@@ -161,10 +161,9 @@ trait DenormalizerGenerator
             $fullCondition = $baseCondition;
 
             $mutatorStmt = array_merge($denormalizationStatements, [
-                new Stmt\Expression(new Expr\MethodCall(
-                    $objectVariable,
-                    $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
-                    [$outputVar],
+                new Stmt\Expression(new Expr\Assign(
+                    new Expr\PropertyFetch($objectVariable, $property->getPhpName()),
+                    $outputVar,
                 )),
             ], $unset ? [new Stmt\Unset_([$propertyVar])] : []);
 
@@ -192,10 +191,9 @@ trait DenormalizerGenerator
                 );
 
                 $statements[] = new Stmt\ElseIf_($invertCondition, [
-                    new Stmt\Expression(new Expr\MethodCall(
-                        $objectVariable,
-                        $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
-                        [new Arg(new Expr\ConstFetch(new Name('null')))],
+                    new Stmt\Expression(new Expr\Assign(
+                        new Expr\PropertyFetch($objectVariable, $property->getPhpName()),
+                        new Expr\ConstFetch(new Name('null')),
                     )),
                     ...($unset ? [new Stmt\Unset_([$propertyVar])] : []),
                 ]);

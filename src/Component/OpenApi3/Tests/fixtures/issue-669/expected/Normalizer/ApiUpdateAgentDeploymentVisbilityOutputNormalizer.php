@@ -38,7 +38,7 @@ class ApiUpdateAgentDeploymentVisbilityOutputNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('agent', $data)) {
-            $object->setAgent($this->denormalizer->denormalize($data['agent'], \Jane\Generated\DigitalOcean\Model\ApiAgent::class, 'json', $context));
+            $object->agent = $this->denormalizer->denormalize($data['agent'], \Jane\Generated\DigitalOcean\Model\ApiAgent::class, 'json', $context);
             unset($data['agent']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiUpdateAgentDeploymentVisbilityOutputNormalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agent') && null !== $data->getAgent()) {
-            $dataArray['agent'] = $data->getAgent() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAgent(), 'json', $context));
+        if (array_key_exists('agent', get_object_vars($data)) && null !== ($data->agent ?? null)) {
+            $dataArray['agent'] = ($data->agent ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->agent ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

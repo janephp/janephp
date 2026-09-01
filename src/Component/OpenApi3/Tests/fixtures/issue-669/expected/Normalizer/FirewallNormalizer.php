@@ -38,11 +38,11 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -50,7 +50,7 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('pending_changes', $data)) {
@@ -58,11 +58,11 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['pending_changes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\FirewallPendingChangesItem::class, 'json', $context);
             }
-            $object->setPendingChanges($values);
+            $object->pendingChanges = $values;
             unset($data['pending_changes']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] !== null) {
@@ -70,11 +70,11 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['droplet_ids'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setDropletIds($values_1);
+            $object->dropletIds = $values_1;
             unset($data['droplet_ids']);
         }
         elseif (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] === null) {
-            $object->setDropletIds(null);
+            $object->dropletIds = null;
             unset($data['droplet_ids']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -82,7 +82,7 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['tags'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setTags($values_2);
+            $object->tags = $values_2;
             unset($data['tags']);
         }
         if (\array_key_exists('inbound_rules', $data) && $data['inbound_rules'] !== null) {
@@ -90,11 +90,11 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['inbound_rules'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItem::class, 'json', $context);
             }
-            $object->setInboundRules($values_3);
+            $object->inboundRules = $values_3;
             unset($data['inbound_rules']);
         }
         elseif (\array_key_exists('inbound_rules', $data) && $data['inbound_rules'] === null) {
-            $object->setInboundRules(null);
+            $object->inboundRules = null;
             unset($data['inbound_rules']);
         }
         if (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] !== null) {
@@ -102,11 +102,11 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['outbound_rules'] as $value_4) {
                 $values_4[] = $this->denormalizer->denormalize($value_4, \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItem::class, 'json', $context);
             }
-            $object->setOutboundRules($values_4);
+            $object->outboundRules = $values_4;
             unset($data['outbound_rules']);
         }
         elseif (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] === null) {
-            $object->setOutboundRules(null);
+            $object->outboundRules = null;
             unset($data['outbound_rules']);
         }
         foreach ($data as $key => $value_5) {
@@ -119,33 +119,33 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('dropletIds') && null !== $data->getDropletIds()) {
+        if (array_key_exists('dropletIds', get_object_vars($data)) && null !== ($data->dropletIds ?? null)) {
             $values = [];
-            foreach ($data->getDropletIds() as $value) {
+            foreach ($data->dropletIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['droplet_ids'] = $values;
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_1 = [];
-            foreach ($data->getTags() as $value_1) {
+            foreach ($data->tags ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
-        if ($data->isInitialized('inboundRules') && null !== $data->getInboundRules()) {
+        if (array_key_exists('inboundRules', get_object_vars($data)) && null !== ($data->inboundRules ?? null)) {
             $values_2 = [];
-            foreach ($data->getInboundRules() as $value_2) {
+            foreach ($data->inboundRules ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['inbound_rules'] = $values_2;
         }
-        if ($data->isInitialized('outboundRules') && null !== $data->getOutboundRules()) {
+        if (array_key_exists('outboundRules', get_object_vars($data)) && null !== ($data->outboundRules ?? null)) {
             $values_3 = [];
-            foreach ($data->getOutboundRules() as $value_3) {
+            foreach ($data->outboundRules ?? null as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['outbound_rules'] = $values_3;

@@ -38,11 +38,11 @@ class AppIngressSpecRuleMatchNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('path', $data)) {
-            $object->setPath($this->denormalizer->denormalize($data['path'], \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleStringMatchPrefix::class, 'json', $context));
+            $object->path = $this->denormalizer->denormalize($data['path'], \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleStringMatchPrefix::class, 'json', $context);
             unset($data['path']);
         }
         if (\array_key_exists('authority', $data)) {
-            $object->setAuthority($this->denormalizer->denormalize($data['authority'], \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleStringMatchExact::class, 'json', $context));
+            $object->authority = $this->denormalizer->denormalize($data['authority'], \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleStringMatchExact::class, 'json', $context);
             unset($data['authority']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class AppIngressSpecRuleMatchNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('path') && null !== $data->getPath()) {
-            $dataArray['path'] = $data->getPath() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPath(), 'json', $context));
+        if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
+            $dataArray['path'] = ($data->path ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->path ?? null, 'json', $context));
         }
-        if ($data->isInitialized('authority') && null !== $data->getAuthority()) {
-            $dataArray['authority'] = $data->getAuthority() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAuthority(), 'json', $context));
+        if (array_key_exists('authority', get_object_vars($data)) && null !== ($data->authority ?? null)) {
+            $dataArray['authority'] = ($data->authority ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->authority ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

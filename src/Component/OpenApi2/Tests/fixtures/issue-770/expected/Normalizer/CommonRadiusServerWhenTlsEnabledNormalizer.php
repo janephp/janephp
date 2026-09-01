@@ -38,30 +38,30 @@ class CommonRadiusServerWhenTlsEnabledNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('sharedSecret', $data)) {
-            $object->setSharedSecret($data['sharedSecret']);
+            $object->sharedSecret = $data['sharedSecret'];
         }
         if (\array_key_exists('ipFqdn', $data)) {
-            $object->setIpFqdn($data['ipFqdn']);
+            $object->ipFqdn = $data['ipFqdn'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        $dataArray['port'] = $data->getPort();
-        if ($data->isInitialized('sharedSecret') && null !== $data->getSharedSecret()) {
-            $dataArray['sharedSecret'] = $data->getSharedSecret();
+        $dataArray['port'] = $data->port ?? null;
+        if (array_key_exists('sharedSecret', get_object_vars($data)) && null !== ($data->sharedSecret ?? null)) {
+            $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
         }
-        $dataArray['ipFqdn'] = $data->getIpFqdn();
+        $dataArray['ipFqdn'] = $data->ipFqdn ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

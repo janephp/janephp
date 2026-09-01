@@ -38,7 +38,7 @@ class ApiGetIndexingJobDetailsSignedURLOutputNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('signed_url', $data)) {
-            $object->setSignedUrl($data['signed_url']);
+            $object->signedUrl = $data['signed_url'];
             unset($data['signed_url']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiGetIndexingJobDetailsSignedURLOutputNormalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('signedUrl') && null !== $data->getSignedUrl()) {
-            $dataArray['signed_url'] = $data->getSignedUrl();
+        if (array_key_exists('signedUrl', get_object_vars($data)) && null !== ($data->signedUrl ?? null)) {
+            $dataArray['signed_url'] = $data->signedUrl ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

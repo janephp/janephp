@@ -41,11 +41,11 @@ class RegionNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['available'] = (bool) $data['available'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('slug', $data)) {
-            $object->setSlug($data['slug']);
+            $object->slug = $data['slug'];
             unset($data['slug']);
         }
         if (\array_key_exists('features', $data)) {
@@ -53,11 +53,11 @@ class RegionNormalizer implements DenormalizerInterface, NormalizerInterface, De
             foreach ($data['features'] as $value) {
                 $values[] = $value;
             }
-            $object->setFeatures($values);
+            $object->features = $values;
             unset($data['features']);
         }
         if (\array_key_exists('available', $data)) {
-            $object->setAvailable($data['available']);
+            $object->available = $data['available'];
             unset($data['available']);
         }
         if (\array_key_exists('sizes', $data)) {
@@ -65,7 +65,7 @@ class RegionNormalizer implements DenormalizerInterface, NormalizerInterface, De
             foreach ($data['sizes'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setSizes($values_1);
+            $object->sizes = $values_1;
             unset($data['sizes']);
         }
         foreach ($data as $key => $value_2) {
@@ -78,16 +78,16 @@ class RegionNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['slug'] = $data->getSlug();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['slug'] = $data->slug ?? null;
         $values = [];
-        foreach ($data->getFeatures() as $value) {
+        foreach ($data->features ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['features'] = $values;
-        $dataArray['available'] = $data->getAvailable();
+        $dataArray['available'] = $data->available ?? null;
         $values_1 = [];
-        foreach ($data->getSizes() as $value_1) {
+        foreach ($data->sizes ?? null as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['sizes'] = $values_1;

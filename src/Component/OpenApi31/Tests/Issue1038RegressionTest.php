@@ -104,15 +104,15 @@ class Issue1038RegressionTest extends TestCase
 
             // Valid RFC 3339 date-time and explicit null keep working.
             $object = $normalizer->denormalize(['starts_at' => '2026-01-02T15:04:05+00:00'], $modelClass, 'json');
-            self::assertInstanceOf(\DateTime::class, $object->getStartsAt());
+            self::assertInstanceOf(\DateTime::class, $object->startsAt);
 
             $object = $normalizer->denormalize(['starts_at' => null], $modelClass, 'json');
-            self::assertNull($object->getStartsAt());
+            self::assertNull($object->startsAt);
 
             // An empty string matches no anyOf branch: it used to reach setStartsAt(?\DateTime)
             // raw and TypeError; on a nullable date it now resolves to null.
             $object = $normalizer->denormalize(['starts_at' => ''], $modelClass, 'json');
-            self::assertNull($object->getStartsAt());
+            self::assertNull($object->startsAt);
 
             // Any other non-parsing string is reported with the clean InvalidDateException.
             try {

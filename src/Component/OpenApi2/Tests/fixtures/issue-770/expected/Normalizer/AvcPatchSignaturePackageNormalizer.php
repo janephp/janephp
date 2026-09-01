@@ -38,15 +38,15 @@ class AvcPatchSignaturePackageNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('checkLatestInstallableSettings', $data)) {
-            $object->setCheckLatestInstallableSettings($this->denormalizer->denormalize($data['checkLatestInstallableSettings'], \Jane\Component\OpenApi3\Tests\Expected\Model\AvcCheckLatestInstallableSignaturePackageSettings::class, 'json', $context));
+            $object->checkLatestInstallableSettings = $this->denormalizer->denormalize($data['checkLatestInstallableSettings'], \Jane\Component\OpenApi3\Tests\Expected\Model\AvcCheckLatestInstallableSignaturePackageSettings::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('checkLatestInstallableSettings') && null !== $data->getCheckLatestInstallableSettings()) {
-            $dataArray['checkLatestInstallableSettings'] = $data->getCheckLatestInstallableSettings() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCheckLatestInstallableSettings(), 'json', $context));
+        if (array_key_exists('checkLatestInstallableSettings', get_object_vars($data)) && null !== ($data->checkLatestInstallableSettings ?? null)) {
+            $dataArray['checkLatestInstallableSettings'] = ($data->checkLatestInstallableSettings ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->checkLatestInstallableSettings ?? null, 'json', $context));
         }
         return $dataArray;
     }

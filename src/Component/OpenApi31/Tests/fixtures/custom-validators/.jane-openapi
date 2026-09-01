@@ -18,7 +18,7 @@ return [
         new class implements ValidatorInterface {
             public function supports($object): bool
             {
-                return $object instanceof JsonSchema && 'decimal-two' === $object->getFormat();
+                return $object instanceof JsonSchema && 'decimal-two' === ($object->format ?? null);
             }
 
             public function guess($object, string $name, $guess): void
@@ -39,7 +39,7 @@ return [
 
             public function supports($object): bool
             {
-                return $object instanceof JsonSchema && 'currency-code' === $object->getFormat();
+                return $object instanceof JsonSchema && 'currency-code' === ($object->format ?? null);
             }
 
             public function guess($object, string $name, $guess): void
@@ -54,7 +54,7 @@ return [
         new class implements ValidatorInterface {
             public function supports($object): bool
             {
-                return $object instanceof JsonSchema && 'percentage' === $object->getFormat();
+                return $object instanceof JsonSchema && 'percentage' === ($object->format ?? null);
             }
 
             public function guess($object, string $name, $guess): void

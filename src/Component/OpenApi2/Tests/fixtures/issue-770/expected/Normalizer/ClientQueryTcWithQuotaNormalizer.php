@@ -38,27 +38,27 @@ class ClientQueryTcWithQuotaNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('tcName', $data)) {
-            $object->setTcName($data['tcName']);
+            $object->tcName = $data['tcName'];
         }
         if (\array_key_exists('tcMaxQuota', $data)) {
-            $object->setTcMaxQuota($data['tcMaxQuota']);
+            $object->tcMaxQuota = $data['tcMaxQuota'];
         }
         if (\array_key_exists('tcRemainingQuota', $data)) {
-            $object->setTcRemainingQuota($data['tcRemainingQuota']);
+            $object->tcRemainingQuota = $data['tcRemainingQuota'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('tcName') && null !== $data->getTcName()) {
-            $dataArray['tcName'] = $data->getTcName();
+        if (array_key_exists('tcName', get_object_vars($data)) && null !== ($data->tcName ?? null)) {
+            $dataArray['tcName'] = $data->tcName ?? null;
         }
-        if ($data->isInitialized('tcMaxQuota') && null !== $data->getTcMaxQuota()) {
-            $dataArray['tcMaxQuota'] = $data->getTcMaxQuota();
+        if (array_key_exists('tcMaxQuota', get_object_vars($data)) && null !== ($data->tcMaxQuota ?? null)) {
+            $dataArray['tcMaxQuota'] = $data->tcMaxQuota ?? null;
         }
-        if ($data->isInitialized('tcRemainingQuota') && null !== $data->getTcRemainingQuota()) {
-            $dataArray['tcRemainingQuota'] = $data->getTcRemainingQuota();
+        if (array_key_exists('tcRemainingQuota', get_object_vars($data)) && null !== ($data->tcRemainingQuota ?? null)) {
+            $dataArray['tcRemainingQuota'] = $data->tcRemainingQuota ?? null;
         }
         return $dataArray;
     }

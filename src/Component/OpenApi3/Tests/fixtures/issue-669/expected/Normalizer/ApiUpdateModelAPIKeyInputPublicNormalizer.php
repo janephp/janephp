@@ -38,11 +38,11 @@ class ApiUpdateModelAPIKeyInputPublicNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('api_key_uuid', $data)) {
-            $object->setApiKeyUuid($data['api_key_uuid']);
+            $object->apiKeyUuid = $data['api_key_uuid'];
             unset($data['api_key_uuid']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiUpdateModelAPIKeyInputPublicNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apiKeyUuid') && null !== $data->getApiKeyUuid()) {
-            $dataArray['api_key_uuid'] = $data->getApiKeyUuid();
+        if (array_key_exists('apiKeyUuid', get_object_vars($data)) && null !== ($data->apiKeyUuid ?? null)) {
+            $dataArray['api_key_uuid'] = $data->apiKeyUuid ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

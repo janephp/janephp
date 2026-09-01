@@ -8,59 +8,15 @@ class CompletedFreshInvestigationStatus implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $code;
     /**
      * @var string
      */
-    protected $code;
-    /**
-     * @var string
-     */
-    protected $description;
-    /**
-     * @return string
-     */
-    public function getCode(): string
-    {
-        return $this->code;
-    }
-    /**
-     * @param string $code
-     *
-     * @return self
-     */
-    public function setCode(string $code): self
-    {
-        $this->initialized['code'] = true;
-        $this->code = $code;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-    /**
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription(string $description): self
-    {
-        $this->initialized['description'] = true;
-        $this->description = $description;
-        return $this;
-    }
+    public string $description;
     public function definedProperties(): array
     {
-        return ['code' => ['code', 'getCode', 'setCode'], 'description' => ['description', 'getDescription', 'setDescription']];
+        return ['code' => 'code', 'description' => 'description'];
     }
 }

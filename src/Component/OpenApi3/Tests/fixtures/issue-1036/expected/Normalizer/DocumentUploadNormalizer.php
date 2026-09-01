@@ -38,15 +38,15 @@ class DocumentUploadNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('file', $data)) {
-            $object->setFile($data['file']);
+            $object->file = $data['file'];
             unset($data['file']);
         }
         if (\array_key_exists('preview', $data)) {
-            $object->setPreview($data['preview']);
+            $object->preview = $data['preview'];
             unset($data['preview']);
         }
         if (\array_key_exists('note', $data)) {
-            $object->setNote($data['note']);
+            $object->note = $data['note'];
             unset($data['note']);
         }
         foreach ($data as $key => $value) {
@@ -59,12 +59,12 @@ class DocumentUploadNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['file'] = $data->getFile();
-        if ($data->isInitialized('preview') && null !== $data->getPreview()) {
-            $dataArray['preview'] = $data->getPreview();
+        $dataArray['file'] = $data->file ?? null;
+        if (array_key_exists('preview', get_object_vars($data)) && null !== ($data->preview ?? null)) {
+            $dataArray['preview'] = $data->preview ?? null;
         }
-        if ($data->isInitialized('note') && null !== $data->getNote()) {
-            $dataArray['note'] = $data->getNote();
+        if (array_key_exists('note', get_object_vars($data)) && null !== ($data->note ?? null)) {
+            $dataArray['note'] = $data->note ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

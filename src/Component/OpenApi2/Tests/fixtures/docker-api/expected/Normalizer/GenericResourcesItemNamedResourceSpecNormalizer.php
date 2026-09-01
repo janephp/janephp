@@ -41,21 +41,21 @@ class GenericResourcesItemNamedResourceSpecNormalizer implements DenormalizerInt
             $this->validate($data, new \Docker\Api\Validator\GenericResourcesItemNamedResourceSpecConstraint());
         }
         if (\array_key_exists('Kind', $data)) {
-            $object->setKind($data['Kind']);
+            $object->kind = $data['Kind'];
         }
         if (\array_key_exists('Value', $data)) {
-            $object->setValue($data['Value']);
+            $object->value = $data['Value'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('kind') && null !== $data->getKind()) {
-            $dataArray['Kind'] = $data->getKind();
+        if (array_key_exists('kind', get_object_vars($data)) && null !== ($data->kind ?? null)) {
+            $dataArray['Kind'] = $data->kind ?? null;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['Value'] = $data->getValue();
+        if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['Value'] = $data->value ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\GenericResourcesItemNamedResourceSpecConstraint());

@@ -41,11 +41,11 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
             $this->validate($data, new \Jane\Component\OpenApi3\Tests\Expected\Validator\FilePostBodyConstraint());
         }
         if (\array_key_exists('fichier', $data)) {
-            $object->setFichier($data['fichier']);
+            $object->fichier = $data['fichier'];
             unset($data['fichier']);
         }
         if (\array_key_exists('item', $data)) {
-            $object->setItem($this->denormalizer->denormalize($data['item'], \Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBodyItem::class, 'json', $context));
+            $object->item = $this->denormalizer->denormalize($data['item'], \Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBodyItem::class, 'json', $context);
             unset($data['item']);
         }
         foreach ($data as $key => $value) {
@@ -58,11 +58,11 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fichier') && null !== $data->getFichier()) {
-            $dataArray['fichier'] = $data->getFichier();
+        if (array_key_exists('fichier', get_object_vars($data)) && null !== ($data->fichier ?? null)) {
+            $dataArray['fichier'] = $data->fichier ?? null;
         }
-        if ($data->isInitialized('item') && null !== $data->getItem()) {
-            $dataArray['item'] = $data->getItem() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getItem(), 'json', $context));
+        if (array_key_exists('item', get_object_vars($data)) && null !== ($data->item ?? null)) {
+            $dataArray['item'] = ($data->item ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->item ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

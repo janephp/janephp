@@ -38,19 +38,19 @@ class CompletedFreshInvestigationSectionsItemAnyOfNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('content', $data)) {
-            $object->setContent($data['content']);
+            $object->content = $data['content'];
             unset($data['content']);
         }
         if (\array_key_exists('contentType', $data)) {
-            $object->setContentType($data['contentType']);
+            $object->contentType = $data['contentType'];
             unset($data['contentType']);
         }
         if (\array_key_exists('creationDate', $data)) {
-            $object->setCreationDate($data['creationDate']);
+            $object->creationDate = $data['creationDate'];
             unset($data['creationDate']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class CompletedFreshInvestigationSectionsItemAnyOfNormalizer implements Denormal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
-            $dataArray['content'] = $data->getContent();
+        if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
+            $dataArray['content'] = $data->content ?? null;
         }
-        if ($data->isInitialized('contentType') && null !== $data->getContentType()) {
-            $dataArray['contentType'] = $data->getContentType();
+        if (array_key_exists('contentType', get_object_vars($data)) && null !== ($data->contentType ?? null)) {
+            $dataArray['contentType'] = $data->contentType ?? null;
         }
-        if ($data->isInitialized('creationDate') && null !== $data->getCreationDate()) {
-            $dataArray['creationDate'] = $data->getCreationDate();
+        if (array_key_exists('creationDate', get_object_vars($data)) && null !== ($data->creationDate ?? null)) {
+            $dataArray['creationDate'] = $data->creationDate ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

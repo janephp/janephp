@@ -38,7 +38,7 @@ class ResponseExistingClusterNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kubernetes_cluster', $data)) {
-            $object->setKubernetesCluster($this->denormalizer->denormalize($data['kubernetes_cluster'], \Jane\Generated\DigitalOcean\Model\ClusterRead::class, 'json', $context));
+            $object->kubernetesCluster = $this->denormalizer->denormalize($data['kubernetes_cluster'], \Jane\Generated\DigitalOcean\Model\ClusterRead::class, 'json', $context);
             unset($data['kubernetes_cluster']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseExistingClusterNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('kubernetesCluster') && null !== $data->getKubernetesCluster()) {
-            $dataArray['kubernetes_cluster'] = $data->getKubernetesCluster() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKubernetesCluster(), 'json', $context));
+        if (array_key_exists('kubernetesCluster', get_object_vars($data)) && null !== ($data->kubernetesCluster ?? null)) {
+            $dataArray['kubernetes_cluster'] = ($data->kubernetesCluster ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kubernetesCluster ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

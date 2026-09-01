@@ -41,51 +41,51 @@ class PluginMountNormalizer implements DenormalizerInterface, NormalizerInterfac
             $this->validate($data, new \Docker\Api\Validator\PluginMountConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Description', $data)) {
-            $object->setDescription($data['Description']);
+            $object->description = $data['Description'];
         }
         if (\array_key_exists('Settable', $data)) {
             $values = [];
             foreach ($data['Settable'] as $value) {
                 $values[] = $value;
             }
-            $object->setSettable($values);
+            $object->settable = $values;
         }
         if (\array_key_exists('Source', $data)) {
-            $object->setSource($data['Source']);
+            $object->source = $data['Source'];
         }
         if (\array_key_exists('Destination', $data)) {
-            $object->setDestination($data['Destination']);
+            $object->destination = $data['Destination'];
         }
         if (\array_key_exists('Type', $data)) {
-            $object->setType($data['Type']);
+            $object->type = $data['Type'];
         }
         if (\array_key_exists('Options', $data)) {
             $values_1 = [];
             foreach ($data['Options'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setOptions($values_1);
+            $object->options = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->getName();
-        $dataArray['Description'] = $data->getDescription();
+        $dataArray['Name'] = $data->name ?? null;
+        $dataArray['Description'] = $data->description ?? null;
         $values = [];
-        foreach ($data->getSettable() as $value) {
+        foreach ($data->settable ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['Settable'] = $values;
-        $dataArray['Source'] = $data->getSource();
-        $dataArray['Destination'] = $data->getDestination();
-        $dataArray['Type'] = $data->getType();
+        $dataArray['Source'] = $data->source ?? null;
+        $dataArray['Destination'] = $data->destination ?? null;
+        $dataArray['Type'] = $data->type ?? null;
         $values_1 = [];
-        foreach ($data->getOptions() as $value_1) {
+        foreach ($data->options ?? null as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['Options'] = $values_1;

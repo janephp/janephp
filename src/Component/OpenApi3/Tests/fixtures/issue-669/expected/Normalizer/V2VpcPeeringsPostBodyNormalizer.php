@@ -38,7 +38,7 @@ class V2VpcPeeringsPostBodyNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('vpc_ids', $data)) {
@@ -46,7 +46,7 @@ class V2VpcPeeringsPostBodyNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['vpc_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setVpcIds($values);
+            $object->vpcIds = $values;
             unset($data['vpc_ids']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class V2VpcPeeringsPostBodyNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('vpcIds') && null !== $data->getVpcIds()) {
+        if (array_key_exists('vpcIds', get_object_vars($data)) && null !== ($data->vpcIds ?? null)) {
             $values = [];
-            foreach ($data->getVpcIds() as $value) {
+            foreach ($data->vpcIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['vpc_ids'] = $values;

@@ -41,54 +41,54 @@ class AdministrationLdapServerNormalizer implements DenormalizerInterface, Norma
             $data['tlsEnabled'] = (bool) $data['tlsEnabled'];
         }
         if (\array_key_exists('realm', $data)) {
-            $object->setRealm($data['realm']);
+            $object->realm = $data['realm'];
         }
         if (\array_key_exists('tlsEnabled', $data)) {
-            $object->setTlsEnabled($data['tlsEnabled']);
+            $object->tlsEnabled = $data['tlsEnabled'];
         }
         if (\array_key_exists('cnIdentity', $data)) {
-            $object->setCnIdentity($data['cnIdentity']);
+            $object->cnIdentity = $data['cnIdentity'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('baseDomainName', $data)) {
-            $object->setBaseDomainName($data['baseDomainName']);
+            $object->baseDomainName = $data['baseDomainName'];
         }
         if (\array_key_exists('adminDomainName', $data)) {
-            $object->setAdminDomainName($data['adminDomainName']);
+            $object->adminDomainName = $data['adminDomainName'];
         }
         if (\array_key_exists('adminPassword', $data)) {
-            $object->setAdminPassword($data['adminPassword']);
+            $object->adminPassword = $data['adminPassword'];
         }
         if (\array_key_exists('keyAttribute', $data)) {
-            $object->setKeyAttribute($data['keyAttribute']);
+            $object->keyAttribute = $data['keyAttribute'];
         }
         if (\array_key_exists('searchFilter', $data)) {
-            $object->setSearchFilter($data['searchFilter']);
+            $object->searchFilter = $data['searchFilter'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['realm'] = $data->getRealm();
-        if ($data->isInitialized('tlsEnabled') && null !== $data->getTlsEnabled()) {
-            $dataArray['tlsEnabled'] = $data->getTlsEnabled();
+        $dataArray['realm'] = $data->realm ?? null;
+        if (array_key_exists('tlsEnabled', get_object_vars($data)) && null !== ($data->tlsEnabled ?? null)) {
+            $dataArray['tlsEnabled'] = $data->tlsEnabled ?? null;
         }
-        if ($data->isInitialized('cnIdentity') && null !== $data->getCnIdentity()) {
-            $dataArray['cnIdentity'] = $data->getCnIdentity();
+        if (array_key_exists('cnIdentity', get_object_vars($data)) && null !== ($data->cnIdentity ?? null)) {
+            $dataArray['cnIdentity'] = $data->cnIdentity ?? null;
         }
-        $dataArray['ip'] = $data->getIp();
-        $dataArray['port'] = $data->getPort();
-        $dataArray['baseDomainName'] = $data->getBaseDomainName();
-        $dataArray['adminDomainName'] = $data->getAdminDomainName();
-        $dataArray['adminPassword'] = $data->getAdminPassword();
-        $dataArray['keyAttribute'] = $data->getKeyAttribute();
-        $dataArray['searchFilter'] = $data->getSearchFilter();
+        $dataArray['ip'] = $data->ip ?? null;
+        $dataArray['port'] = $data->port ?? null;
+        $dataArray['baseDomainName'] = $data->baseDomainName ?? null;
+        $dataArray['adminDomainName'] = $data->adminDomainName ?? null;
+        $dataArray['adminPassword'] = $data->adminPassword ?? null;
+        $dataArray['keyAttribute'] = $data->keyAttribute ?? null;
+        $dataArray['searchFilter'] = $data->searchFilter ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

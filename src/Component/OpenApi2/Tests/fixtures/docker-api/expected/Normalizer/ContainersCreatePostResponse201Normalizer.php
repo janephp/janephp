@@ -41,23 +41,23 @@ class ContainersCreatePostResponse201Normalizer implements DenormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\ContainersCreatePostResponse201Constraint());
         }
         if (\array_key_exists('Id', $data)) {
-            $object->setId($data['Id']);
+            $object->id = $data['Id'];
         }
         if (\array_key_exists('Warnings', $data)) {
             $values = [];
             foreach ($data['Warnings'] as $value) {
                 $values[] = $value;
             }
-            $object->setWarnings($values);
+            $object->warnings = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Id'] = $data->getId();
+        $dataArray['Id'] = $data->id ?? null;
         $values = [];
-        foreach ($data->getWarnings() as $value) {
+        foreach ($data->warnings ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['Warnings'] = $values;

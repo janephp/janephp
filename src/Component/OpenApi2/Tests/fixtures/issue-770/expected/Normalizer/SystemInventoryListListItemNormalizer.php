@@ -41,165 +41,165 @@ class SystemInventoryListListItemNormalizer implements DenormalizerInterface, No
             $data['meshEnabled'] = (bool) $data['meshEnabled'];
         }
         if (\array_key_exists('zoneId', $data)) {
-            $object->setZoneId($data['zoneId']);
+            $object->zoneId = $data['zoneId'];
         }
         if (\array_key_exists('zoneName', $data)) {
-            $object->setZoneName($data['zoneName']);
+            $object->zoneName = $data['zoneName'];
         }
         if (\array_key_exists('meshSSID', $data)) {
-            $object->setMeshSSID($data['meshSSID']);
+            $object->meshSSID = $data['meshSSID'];
         }
         if (\array_key_exists('totalAPs', $data)) {
-            $object->setTotalAPs($data['totalAPs']);
+            $object->totalAPs = $data['totalAPs'];
         }
         if (\array_key_exists('discoveryAPs', $data)) {
-            $object->setDiscoveryAPs($data['discoveryAPs']);
+            $object->discoveryAPs = $data['discoveryAPs'];
         }
         if (\array_key_exists('provisionedAPs', $data)) {
-            $object->setProvisionedAPs($data['provisionedAPs']);
+            $object->provisionedAPs = $data['provisionedAPs'];
         }
         if (\array_key_exists('connectedAPs', $data)) {
-            $object->setConnectedAPs($data['connectedAPs']);
+            $object->connectedAPs = $data['connectedAPs'];
         }
         if (\array_key_exists('disconnectedAPs', $data)) {
-            $object->setDisconnectedAPs($data['disconnectedAPs']);
+            $object->disconnectedAPs = $data['disconnectedAPs'];
         }
         if (\array_key_exists('rebootingAPs', $data)) {
-            $object->setRebootingAPs($data['rebootingAPs']);
+            $object->rebootingAPs = $data['rebootingAPs'];
         }
         if (\array_key_exists('connectedRootAPs', $data)) {
-            $object->setConnectedRootAPs($data['connectedRootAPs']);
+            $object->connectedRootAPs = $data['connectedRootAPs'];
         }
         if (\array_key_exists('disconnectedRootAPs', $data)) {
-            $object->setDisconnectedRootAPs($data['disconnectedRootAPs']);
+            $object->disconnectedRootAPs = $data['disconnectedRootAPs'];
         }
         if (\array_key_exists('rebootingRootAPs', $data)) {
-            $object->setRebootingRootAPs($data['rebootingRootAPs']);
+            $object->rebootingRootAPs = $data['rebootingRootAPs'];
         }
         if (\array_key_exists('connectedMeshAPs', $data)) {
-            $object->setConnectedMeshAPs($data['connectedMeshAPs']);
+            $object->connectedMeshAPs = $data['connectedMeshAPs'];
         }
         if (\array_key_exists('disconnectedMeshAPs', $data)) {
-            $object->setDisconnectedMeshAPs($data['disconnectedMeshAPs']);
+            $object->disconnectedMeshAPs = $data['disconnectedMeshAPs'];
         }
         if (\array_key_exists('rebootingMeshAPs', $data)) {
-            $object->setRebootingMeshAPs($data['rebootingMeshAPs']);
+            $object->rebootingMeshAPs = $data['rebootingMeshAPs'];
         }
         if (\array_key_exists('connectedeMeshAPs', $data)) {
-            $object->setConnectedeMeshAPs($data['connectedeMeshAPs']);
+            $object->connectedeMeshAPs = $data['connectedeMeshAPs'];
         }
         if (\array_key_exists('disconnectedeMeshAPs', $data)) {
-            $object->setDisconnectedeMeshAPs($data['disconnectedeMeshAPs']);
+            $object->disconnectedeMeshAPs = $data['disconnectedeMeshAPs'];
         }
         if (\array_key_exists('rebootingeMeshAPs', $data)) {
-            $object->setRebootingeMeshAPs($data['rebootingeMeshAPs']);
+            $object->rebootingeMeshAPs = $data['rebootingeMeshAPs'];
         }
         if (\array_key_exists('connectedDownMeshAPs', $data)) {
-            $object->setConnectedDownMeshAPs($data['connectedDownMeshAPs']);
+            $object->connectedDownMeshAPs = $data['connectedDownMeshAPs'];
         }
         if (\array_key_exists('disconnectedDownMeshAPs', $data)) {
-            $object->setDisconnectedDownMeshAPs($data['disconnectedDownMeshAPs']);
+            $object->disconnectedDownMeshAPs = $data['disconnectedDownMeshAPs'];
         }
         if (\array_key_exists('rebootingDownMeshAPs', $data)) {
-            $object->setRebootingDownMeshAPs($data['rebootingDownMeshAPs']);
+            $object->rebootingDownMeshAPs = $data['rebootingDownMeshAPs'];
         }
         if (\array_key_exists('connectedMeshDisabledAPs', $data)) {
-            $object->setConnectedMeshDisabledAPs($data['connectedMeshDisabledAPs']);
+            $object->connectedMeshDisabledAPs = $data['connectedMeshDisabledAPs'];
         }
         if (\array_key_exists('disconnectedMeshDisabledAPs', $data)) {
-            $object->setDisconnectedMeshDisabledAPs($data['disconnectedMeshDisabledAPs']);
+            $object->disconnectedMeshDisabledAPs = $data['disconnectedMeshDisabledAPs'];
         }
         if (\array_key_exists('clients', $data)) {
-            $object->setClients($data['clients']);
+            $object->clients = $data['clients'];
         }
         if (\array_key_exists('apFirmwareVersion', $data)) {
-            $object->setApFirmwareVersion($data['apFirmwareVersion']);
+            $object->apFirmwareVersion = $data['apFirmwareVersion'];
         }
         if (\array_key_exists('meshEnabled', $data)) {
-            $object->setMeshEnabled($data['meshEnabled']);
+            $object->meshEnabled = $data['meshEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('zoneId') && null !== $data->getZoneId()) {
-            $dataArray['zoneId'] = $data->getZoneId();
+        if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
+            $dataArray['zoneId'] = $data->zoneId ?? null;
         }
-        if ($data->isInitialized('zoneName') && null !== $data->getZoneName()) {
-            $dataArray['zoneName'] = $data->getZoneName();
+        if (array_key_exists('zoneName', get_object_vars($data)) && null !== ($data->zoneName ?? null)) {
+            $dataArray['zoneName'] = $data->zoneName ?? null;
         }
-        if ($data->isInitialized('meshSSID') && null !== $data->getMeshSSID()) {
-            $dataArray['meshSSID'] = $data->getMeshSSID();
+        if (array_key_exists('meshSSID', get_object_vars($data)) && null !== ($data->meshSSID ?? null)) {
+            $dataArray['meshSSID'] = $data->meshSSID ?? null;
         }
-        if ($data->isInitialized('totalAPs') && null !== $data->getTotalAPs()) {
-            $dataArray['totalAPs'] = $data->getTotalAPs();
+        if (array_key_exists('totalAPs', get_object_vars($data)) && null !== ($data->totalAPs ?? null)) {
+            $dataArray['totalAPs'] = $data->totalAPs ?? null;
         }
-        if ($data->isInitialized('discoveryAPs') && null !== $data->getDiscoveryAPs()) {
-            $dataArray['discoveryAPs'] = $data->getDiscoveryAPs();
+        if (array_key_exists('discoveryAPs', get_object_vars($data)) && null !== ($data->discoveryAPs ?? null)) {
+            $dataArray['discoveryAPs'] = $data->discoveryAPs ?? null;
         }
-        if ($data->isInitialized('provisionedAPs') && null !== $data->getProvisionedAPs()) {
-            $dataArray['provisionedAPs'] = $data->getProvisionedAPs();
+        if (array_key_exists('provisionedAPs', get_object_vars($data)) && null !== ($data->provisionedAPs ?? null)) {
+            $dataArray['provisionedAPs'] = $data->provisionedAPs ?? null;
         }
-        if ($data->isInitialized('connectedAPs') && null !== $data->getConnectedAPs()) {
-            $dataArray['connectedAPs'] = $data->getConnectedAPs();
+        if (array_key_exists('connectedAPs', get_object_vars($data)) && null !== ($data->connectedAPs ?? null)) {
+            $dataArray['connectedAPs'] = $data->connectedAPs ?? null;
         }
-        if ($data->isInitialized('disconnectedAPs') && null !== $data->getDisconnectedAPs()) {
-            $dataArray['disconnectedAPs'] = $data->getDisconnectedAPs();
+        if (array_key_exists('disconnectedAPs', get_object_vars($data)) && null !== ($data->disconnectedAPs ?? null)) {
+            $dataArray['disconnectedAPs'] = $data->disconnectedAPs ?? null;
         }
-        if ($data->isInitialized('rebootingAPs') && null !== $data->getRebootingAPs()) {
-            $dataArray['rebootingAPs'] = $data->getRebootingAPs();
+        if (array_key_exists('rebootingAPs', get_object_vars($data)) && null !== ($data->rebootingAPs ?? null)) {
+            $dataArray['rebootingAPs'] = $data->rebootingAPs ?? null;
         }
-        if ($data->isInitialized('connectedRootAPs') && null !== $data->getConnectedRootAPs()) {
-            $dataArray['connectedRootAPs'] = $data->getConnectedRootAPs();
+        if (array_key_exists('connectedRootAPs', get_object_vars($data)) && null !== ($data->connectedRootAPs ?? null)) {
+            $dataArray['connectedRootAPs'] = $data->connectedRootAPs ?? null;
         }
-        if ($data->isInitialized('disconnectedRootAPs') && null !== $data->getDisconnectedRootAPs()) {
-            $dataArray['disconnectedRootAPs'] = $data->getDisconnectedRootAPs();
+        if (array_key_exists('disconnectedRootAPs', get_object_vars($data)) && null !== ($data->disconnectedRootAPs ?? null)) {
+            $dataArray['disconnectedRootAPs'] = $data->disconnectedRootAPs ?? null;
         }
-        if ($data->isInitialized('rebootingRootAPs') && null !== $data->getRebootingRootAPs()) {
-            $dataArray['rebootingRootAPs'] = $data->getRebootingRootAPs();
+        if (array_key_exists('rebootingRootAPs', get_object_vars($data)) && null !== ($data->rebootingRootAPs ?? null)) {
+            $dataArray['rebootingRootAPs'] = $data->rebootingRootAPs ?? null;
         }
-        if ($data->isInitialized('connectedMeshAPs') && null !== $data->getConnectedMeshAPs()) {
-            $dataArray['connectedMeshAPs'] = $data->getConnectedMeshAPs();
+        if (array_key_exists('connectedMeshAPs', get_object_vars($data)) && null !== ($data->connectedMeshAPs ?? null)) {
+            $dataArray['connectedMeshAPs'] = $data->connectedMeshAPs ?? null;
         }
-        if ($data->isInitialized('disconnectedMeshAPs') && null !== $data->getDisconnectedMeshAPs()) {
-            $dataArray['disconnectedMeshAPs'] = $data->getDisconnectedMeshAPs();
+        if (array_key_exists('disconnectedMeshAPs', get_object_vars($data)) && null !== ($data->disconnectedMeshAPs ?? null)) {
+            $dataArray['disconnectedMeshAPs'] = $data->disconnectedMeshAPs ?? null;
         }
-        if ($data->isInitialized('rebootingMeshAPs') && null !== $data->getRebootingMeshAPs()) {
-            $dataArray['rebootingMeshAPs'] = $data->getRebootingMeshAPs();
+        if (array_key_exists('rebootingMeshAPs', get_object_vars($data)) && null !== ($data->rebootingMeshAPs ?? null)) {
+            $dataArray['rebootingMeshAPs'] = $data->rebootingMeshAPs ?? null;
         }
-        if ($data->isInitialized('connectedeMeshAPs') && null !== $data->getConnectedeMeshAPs()) {
-            $dataArray['connectedeMeshAPs'] = $data->getConnectedeMeshAPs();
+        if (array_key_exists('connectedeMeshAPs', get_object_vars($data)) && null !== ($data->connectedeMeshAPs ?? null)) {
+            $dataArray['connectedeMeshAPs'] = $data->connectedeMeshAPs ?? null;
         }
-        if ($data->isInitialized('disconnectedeMeshAPs') && null !== $data->getDisconnectedeMeshAPs()) {
-            $dataArray['disconnectedeMeshAPs'] = $data->getDisconnectedeMeshAPs();
+        if (array_key_exists('disconnectedeMeshAPs', get_object_vars($data)) && null !== ($data->disconnectedeMeshAPs ?? null)) {
+            $dataArray['disconnectedeMeshAPs'] = $data->disconnectedeMeshAPs ?? null;
         }
-        if ($data->isInitialized('rebootingeMeshAPs') && null !== $data->getRebootingeMeshAPs()) {
-            $dataArray['rebootingeMeshAPs'] = $data->getRebootingeMeshAPs();
+        if (array_key_exists('rebootingeMeshAPs', get_object_vars($data)) && null !== ($data->rebootingeMeshAPs ?? null)) {
+            $dataArray['rebootingeMeshAPs'] = $data->rebootingeMeshAPs ?? null;
         }
-        if ($data->isInitialized('connectedDownMeshAPs') && null !== $data->getConnectedDownMeshAPs()) {
-            $dataArray['connectedDownMeshAPs'] = $data->getConnectedDownMeshAPs();
+        if (array_key_exists('connectedDownMeshAPs', get_object_vars($data)) && null !== ($data->connectedDownMeshAPs ?? null)) {
+            $dataArray['connectedDownMeshAPs'] = $data->connectedDownMeshAPs ?? null;
         }
-        if ($data->isInitialized('disconnectedDownMeshAPs') && null !== $data->getDisconnectedDownMeshAPs()) {
-            $dataArray['disconnectedDownMeshAPs'] = $data->getDisconnectedDownMeshAPs();
+        if (array_key_exists('disconnectedDownMeshAPs', get_object_vars($data)) && null !== ($data->disconnectedDownMeshAPs ?? null)) {
+            $dataArray['disconnectedDownMeshAPs'] = $data->disconnectedDownMeshAPs ?? null;
         }
-        if ($data->isInitialized('rebootingDownMeshAPs') && null !== $data->getRebootingDownMeshAPs()) {
-            $dataArray['rebootingDownMeshAPs'] = $data->getRebootingDownMeshAPs();
+        if (array_key_exists('rebootingDownMeshAPs', get_object_vars($data)) && null !== ($data->rebootingDownMeshAPs ?? null)) {
+            $dataArray['rebootingDownMeshAPs'] = $data->rebootingDownMeshAPs ?? null;
         }
-        if ($data->isInitialized('connectedMeshDisabledAPs') && null !== $data->getConnectedMeshDisabledAPs()) {
-            $dataArray['connectedMeshDisabledAPs'] = $data->getConnectedMeshDisabledAPs();
+        if (array_key_exists('connectedMeshDisabledAPs', get_object_vars($data)) && null !== ($data->connectedMeshDisabledAPs ?? null)) {
+            $dataArray['connectedMeshDisabledAPs'] = $data->connectedMeshDisabledAPs ?? null;
         }
-        if ($data->isInitialized('disconnectedMeshDisabledAPs') && null !== $data->getDisconnectedMeshDisabledAPs()) {
-            $dataArray['disconnectedMeshDisabledAPs'] = $data->getDisconnectedMeshDisabledAPs();
+        if (array_key_exists('disconnectedMeshDisabledAPs', get_object_vars($data)) && null !== ($data->disconnectedMeshDisabledAPs ?? null)) {
+            $dataArray['disconnectedMeshDisabledAPs'] = $data->disconnectedMeshDisabledAPs ?? null;
         }
-        if ($data->isInitialized('clients') && null !== $data->getClients()) {
-            $dataArray['clients'] = $data->getClients();
+        if (array_key_exists('clients', get_object_vars($data)) && null !== ($data->clients ?? null)) {
+            $dataArray['clients'] = $data->clients ?? null;
         }
-        if ($data->isInitialized('apFirmwareVersion') && null !== $data->getApFirmwareVersion()) {
-            $dataArray['apFirmwareVersion'] = $data->getApFirmwareVersion();
+        if (array_key_exists('apFirmwareVersion', get_object_vars($data)) && null !== ($data->apFirmwareVersion ?? null)) {
+            $dataArray['apFirmwareVersion'] = $data->apFirmwareVersion ?? null;
         }
-        if ($data->isInitialized('meshEnabled') && null !== $data->getMeshEnabled()) {
-            $dataArray['meshEnabled'] = $data->getMeshEnabled();
+        if (array_key_exists('meshEnabled', get_object_vars($data)) && null !== ($data->meshEnabled ?? null)) {
+            $dataArray['meshEnabled'] = $data->meshEnabled ?? null;
         }
         return $dataArray;
     }

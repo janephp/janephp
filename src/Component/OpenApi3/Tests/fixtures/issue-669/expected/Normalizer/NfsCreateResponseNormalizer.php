@@ -38,7 +38,7 @@ class NfsCreateResponseNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('share', $data)) {
-            $object->setShare($this->denormalizer->denormalize($data['share'], \Jane\Generated\DigitalOcean\Model\NfsResponse::class, 'json', $context));
+            $object->share = $this->denormalizer->denormalize($data['share'], \Jane\Generated\DigitalOcean\Model\NfsResponse::class, 'json', $context);
             unset($data['share']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class NfsCreateResponseNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('share') && null !== $data->getShare()) {
-            $dataArray['share'] = $data->getShare() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getShare(), 'json', $context));
+        if (array_key_exists('share', get_object_vars($data)) && null !== ($data->share ?? null)) {
+            $dataArray['share'] = ($data->share ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->share ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -44,38 +44,38 @@ class TaskSpecPluginSpecNormalizer implements DenormalizerInterface, NormalizerI
             $this->validate($data, new \Docker\Api\Validator\TaskSpecPluginSpecConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Remote', $data)) {
-            $object->setRemote($data['Remote']);
+            $object->remote = $data['Remote'];
         }
         if (\array_key_exists('Disabled', $data)) {
-            $object->setDisabled($data['Disabled']);
+            $object->disabled = $data['Disabled'];
         }
         if (\array_key_exists('PluginPrivilege', $data)) {
             $values = [];
             foreach ($data['PluginPrivilege'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\PluginPrivilege::class, 'json', $context);
             }
-            $object->setPluginPrivilege($values);
+            $object->pluginPrivilege = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('remote') && null !== $data->getRemote()) {
-            $dataArray['Remote'] = $data->getRemote();
+        if (array_key_exists('remote', get_object_vars($data)) && null !== ($data->remote ?? null)) {
+            $dataArray['Remote'] = $data->remote ?? null;
         }
-        if ($data->isInitialized('disabled') && null !== $data->getDisabled()) {
-            $dataArray['Disabled'] = $data->getDisabled();
+        if (array_key_exists('disabled', get_object_vars($data)) && null !== ($data->disabled ?? null)) {
+            $dataArray['Disabled'] = $data->disabled ?? null;
         }
-        if ($data->isInitialized('pluginPrivilege') && null !== $data->getPluginPrivilege()) {
+        if (array_key_exists('pluginPrivilege', get_object_vars($data)) && null !== ($data->pluginPrivilege ?? null)) {
             $values = [];
-            foreach ($data->getPluginPrivilege() as $value) {
+            foreach ($data->pluginPrivilege ?? null as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['PluginPrivilege'] = $values;

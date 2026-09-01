@@ -41,27 +41,27 @@ class OCIDescriptorNormalizer implements DenormalizerInterface, NormalizerInterf
             $this->validate($data, new \Docker\Api\Validator\OCIDescriptorConstraint());
         }
         if (\array_key_exists('mediaType', $data)) {
-            $object->setMediaType($data['mediaType']);
+            $object->mediaType = $data['mediaType'];
         }
         if (\array_key_exists('digest', $data)) {
-            $object->setDigest($data['digest']);
+            $object->digest = $data['digest'];
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mediaType') && null !== $data->getMediaType()) {
-            $dataArray['mediaType'] = $data->getMediaType();
+        if (array_key_exists('mediaType', get_object_vars($data)) && null !== ($data->mediaType ?? null)) {
+            $dataArray['mediaType'] = $data->mediaType ?? null;
         }
-        if ($data->isInitialized('digest') && null !== $data->getDigest()) {
-            $dataArray['digest'] = $data->getDigest();
+        if (array_key_exists('digest', get_object_vars($data)) && null !== ($data->digest ?? null)) {
+            $dataArray['digest'] = $data->digest ?? null;
         }
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['size'] = $data->getSize();
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['size'] = $data->size ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\OCIDescriptorConstraint());

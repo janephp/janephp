@@ -38,7 +38,7 @@ class LinkToNextPageNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('next', $data)) {
-            $object->setNext($data['next']);
+            $object->next = $data['next'];
             unset($data['next']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class LinkToNextPageNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('next') && null !== $data->getNext()) {
-            $dataArray['next'] = $data->getNext();
+        if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
+            $dataArray['next'] = $data->next ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,39 +38,39 @@ class DhcpMsgStatsDhcpMsgStatsDhcpMsgRecvdStatsNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('dhcpDiscover', $data)) {
-            $object->setDhcpDiscover($data['dhcpDiscover']);
+            $object->dhcpDiscover = $data['dhcpDiscover'];
         }
         if (\array_key_exists('dhcpRequest', $data)) {
-            $object->setDhcpRequest($data['dhcpRequest']);
+            $object->dhcpRequest = $data['dhcpRequest'];
         }
         if (\array_key_exists('dhcpDecline', $data)) {
-            $object->setDhcpDecline($data['dhcpDecline']);
+            $object->dhcpDecline = $data['dhcpDecline'];
         }
         if (\array_key_exists('dhcpRelease', $data)) {
-            $object->setDhcpRelease($data['dhcpRelease']);
+            $object->dhcpRelease = $data['dhcpRelease'];
         }
         if (\array_key_exists('dhcpInform', $data)) {
-            $object->setDhcpInform($data['dhcpInform']);
+            $object->dhcpInform = $data['dhcpInform'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dhcpDiscover') && null !== $data->getDhcpDiscover()) {
-            $dataArray['dhcpDiscover'] = $data->getDhcpDiscover();
+        if (array_key_exists('dhcpDiscover', get_object_vars($data)) && null !== ($data->dhcpDiscover ?? null)) {
+            $dataArray['dhcpDiscover'] = $data->dhcpDiscover ?? null;
         }
-        if ($data->isInitialized('dhcpRequest') && null !== $data->getDhcpRequest()) {
-            $dataArray['dhcpRequest'] = $data->getDhcpRequest();
+        if (array_key_exists('dhcpRequest', get_object_vars($data)) && null !== ($data->dhcpRequest ?? null)) {
+            $dataArray['dhcpRequest'] = $data->dhcpRequest ?? null;
         }
-        if ($data->isInitialized('dhcpDecline') && null !== $data->getDhcpDecline()) {
-            $dataArray['dhcpDecline'] = $data->getDhcpDecline();
+        if (array_key_exists('dhcpDecline', get_object_vars($data)) && null !== ($data->dhcpDecline ?? null)) {
+            $dataArray['dhcpDecline'] = $data->dhcpDecline ?? null;
         }
-        if ($data->isInitialized('dhcpRelease') && null !== $data->getDhcpRelease()) {
-            $dataArray['dhcpRelease'] = $data->getDhcpRelease();
+        if (array_key_exists('dhcpRelease', get_object_vars($data)) && null !== ($data->dhcpRelease ?? null)) {
+            $dataArray['dhcpRelease'] = $data->dhcpRelease ?? null;
         }
-        if ($data->isInitialized('dhcpInform') && null !== $data->getDhcpInform()) {
-            $dataArray['dhcpInform'] = $data->getDhcpInform();
+        if (array_key_exists('dhcpInform', get_object_vars($data)) && null !== ($data->dhcpInform ?? null)) {
+            $dataArray['dhcpInform'] = $data->dhcpInform ?? null;
         }
         return $dataArray;
     }

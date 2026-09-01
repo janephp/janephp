@@ -38,15 +38,15 @@ class ApiGetEvaluationRunResultsOutputNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('evaluation_run', $data)) {
-            $object->setEvaluationRun($this->denormalizer->denormalize($data['evaluation_run'], \Jane\Generated\DigitalOcean\Model\ApiEvaluationRun::class, 'json', $context));
+            $object->evaluationRun = $this->denormalizer->denormalize($data['evaluation_run'], \Jane\Generated\DigitalOcean\Model\ApiEvaluationRun::class, 'json', $context);
             unset($data['evaluation_run']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\ApiLinks::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\ApiLinks::class, 'json', $context);
             unset($data['links']);
         }
         if (\array_key_exists('meta', $data)) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\ApiMeta::class, 'json', $context));
+            $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\ApiMeta::class, 'json', $context);
             unset($data['meta']);
         }
         if (\array_key_exists('prompts', $data)) {
@@ -54,7 +54,7 @@ class ApiGetEvaluationRunResultsOutputNormalizer implements DenormalizerInterfac
             foreach ($data['prompts'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiPrompt::class, 'json', $context);
             }
-            $object->setPrompts($values);
+            $object->prompts = $values;
             unset($data['prompts']);
         }
         foreach ($data as $key => $value_1) {
@@ -67,18 +67,18 @@ class ApiGetEvaluationRunResultsOutputNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('evaluationRun') && null !== $data->getEvaluationRun()) {
-            $dataArray['evaluation_run'] = $data->getEvaluationRun() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getEvaluationRun(), 'json', $context));
+        if (array_key_exists('evaluationRun', get_object_vars($data)) && null !== ($data->evaluationRun ?? null)) {
+            $dataArray['evaluation_run'] = ($data->evaluationRun ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->evaluationRun ?? null, 'json', $context));
         }
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
-        if ($data->isInitialized('meta') && null !== $data->getMeta()) {
-            $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
+        if (array_key_exists('meta', get_object_vars($data)) && null !== ($data->meta ?? null)) {
+            $dataArray['meta'] = ($data->meta ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta ?? null, 'json', $context));
         }
-        if ($data->isInitialized('prompts') && null !== $data->getPrompts()) {
+        if (array_key_exists('prompts', get_object_vars($data)) && null !== ($data->prompts ?? null)) {
             $values = [];
-            foreach ($data->getPrompts() as $value) {
+            foreach ($data->prompts ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['prompts'] = $values;

@@ -38,7 +38,7 @@ class ApiAgentAPIKeyNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('api_key', $data)) {
-            $object->setApiKey($data['api_key']);
+            $object->apiKey = $data['api_key'];
             unset($data['api_key']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiAgentAPIKeyNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apiKey') && null !== $data->getApiKey()) {
-            $dataArray['api_key'] = $data->getApiKey();
+        if (array_key_exists('apiKey', get_object_vars($data)) && null !== ($data->apiKey ?? null)) {
+            $dataArray['api_key'] = $data->apiKey ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

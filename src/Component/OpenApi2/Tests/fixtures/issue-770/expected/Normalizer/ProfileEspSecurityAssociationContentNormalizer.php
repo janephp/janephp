@@ -38,26 +38,26 @@ class ProfileEspSecurityAssociationContentNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('espProposalType', $data)) {
-            $object->setEspProposalType($data['espProposalType']);
+            $object->espProposalType = $data['espProposalType'];
         }
         if (\array_key_exists('espProposals', $data)) {
             $values = [];
             foreach ($data['espProposals'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileEspProposal::class, 'json', $context);
             }
-            $object->setEspProposals($values);
+            $object->espProposals = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('espProposalType') && null !== $data->getEspProposalType()) {
-            $dataArray['espProposalType'] = $data->getEspProposalType();
+        if (array_key_exists('espProposalType', get_object_vars($data)) && null !== ($data->espProposalType ?? null)) {
+            $dataArray['espProposalType'] = $data->espProposalType ?? null;
         }
-        if ($data->isInitialized('espProposals') && null !== $data->getEspProposals()) {
+        if (array_key_exists('espProposals', get_object_vars($data)) && null !== ($data->espProposals ?? null)) {
             $values = [];
-            foreach ($data->getEspProposals() as $value) {
+            foreach ($data->espProposals ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['espProposals'] = $values;

@@ -38,18 +38,18 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($this->denormalizer->denormalize($data['id'], \Jane\Component\JsonSchema\Tests\Expected\Model\TestId::class, 'json', $context));
+            $object->id = $this->denormalizer->denormalize($data['id'], \Jane\Component\JsonSchema\Tests\Expected\Model\TestId::class, 'json', $context);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getId(), 'json', $context));
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = ($data->id ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->id ?? null, 'json', $context));
         }
         return $dataArray;
     }

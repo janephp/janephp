@@ -38,39 +38,39 @@ class ZoneBonjourGatewayPolicySummaryNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('lastModifiedBy', $data)) {
-            $object->setLastModifiedBy($data['lastModifiedBy']);
+            $object->lastModifiedBy = $data['lastModifiedBy'];
         }
         if (\array_key_exists('lastModifiedOn', $data)) {
-            $object->setLastModifiedOn($data['lastModifiedOn']);
+            $object->lastModifiedOn = $data['lastModifiedOn'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('lastModifiedBy') && null !== $data->getLastModifiedBy()) {
-            $dataArray['lastModifiedBy'] = $data->getLastModifiedBy();
+        if (array_key_exists('lastModifiedBy', get_object_vars($data)) && null !== ($data->lastModifiedBy ?? null)) {
+            $dataArray['lastModifiedBy'] = $data->lastModifiedBy ?? null;
         }
-        if ($data->isInitialized('lastModifiedOn') && null !== $data->getLastModifiedOn()) {
-            $dataArray['lastModifiedOn'] = $data->getLastModifiedOn();
+        if (array_key_exists('lastModifiedOn', get_object_vars($data)) && null !== ($data->lastModifiedOn ?? null)) {
+            $dataArray['lastModifiedOn'] = $data->lastModifiedOn ?? null;
         }
         return $dataArray;
     }

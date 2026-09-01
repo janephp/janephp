@@ -38,31 +38,31 @@ class GbPeopleReportReponseReportOtherAddressesItemNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('simpleValue', $data)) {
-            $object->setSimpleValue($data['simpleValue']);
+            $object->simpleValue = $data['simpleValue'];
             unset($data['simpleValue']);
         }
         if (\array_key_exists('street', $data)) {
-            $object->setStreet($data['street']);
+            $object->street = $data['street'];
             unset($data['street']);
         }
         if (\array_key_exists('city', $data)) {
-            $object->setCity($data['city']);
+            $object->city = $data['city'];
             unset($data['city']);
         }
         if (\array_key_exists('postalCode', $data)) {
-            $object->setPostalCode($data['postalCode']);
+            $object->postalCode = $data['postalCode'];
             unset($data['postalCode']);
         }
         if (\array_key_exists('province', $data)) {
-            $object->setProvince($data['province']);
+            $object->province = $data['province'];
             unset($data['province']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($data['country']);
+            $object->country = $data['country'];
             unset($data['country']);
         }
         foreach ($data as $key => $value) {
@@ -75,26 +75,26 @@ class GbPeopleReportReponseReportOtherAddressesItemNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('simpleValue') && null !== $data->getSimpleValue()) {
-            $dataArray['simpleValue'] = $data->getSimpleValue();
+        if (array_key_exists('simpleValue', get_object_vars($data)) && null !== ($data->simpleValue ?? null)) {
+            $dataArray['simpleValue'] = $data->simpleValue ?? null;
         }
-        if ($data->isInitialized('street') && null !== $data->getStreet()) {
-            $dataArray['street'] = $data->getStreet();
+        if (array_key_exists('street', get_object_vars($data)) && null !== ($data->street ?? null)) {
+            $dataArray['street'] = $data->street ?? null;
         }
-        if ($data->isInitialized('city') && null !== $data->getCity()) {
-            $dataArray['city'] = $data->getCity();
+        if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
+            $dataArray['city'] = $data->city ?? null;
         }
-        if ($data->isInitialized('postalCode') && null !== $data->getPostalCode()) {
-            $dataArray['postalCode'] = $data->getPostalCode();
+        if (array_key_exists('postalCode', get_object_vars($data)) && null !== ($data->postalCode ?? null)) {
+            $dataArray['postalCode'] = $data->postalCode ?? null;
         }
-        if ($data->isInitialized('province') && null !== $data->getProvince()) {
-            $dataArray['province'] = $data->getProvince();
+        if (array_key_exists('province', get_object_vars($data)) && null !== ($data->province ?? null)) {
+            $dataArray['province'] = $data->province ?? null;
         }
-        if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $data->getCountry();
+        if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
+            $dataArray['country'] = $data->country ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

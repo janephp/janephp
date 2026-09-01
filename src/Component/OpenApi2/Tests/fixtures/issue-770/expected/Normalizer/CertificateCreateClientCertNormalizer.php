@@ -38,48 +38,48 @@ class CertificateCreateClientCertNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('data', $data)) {
-            $object->setData($data['data']);
+            $object->data = $data['data'];
         }
         if (\array_key_exists('intermediateData', $data)) {
             $values = [];
             foreach ($data['intermediateData'] as $value) {
                 $values[] = $value;
             }
-            $object->setIntermediateData($values);
+            $object->intermediateData = $values;
         }
         if (\array_key_exists('rootData', $data)) {
-            $object->setRootData($data['rootData']);
+            $object->rootData = $data['rootData'];
         }
         if (\array_key_exists('privateKeyData', $data)) {
-            $object->setPrivateKeyData($data['privateKeyData']);
+            $object->privateKeyData = $data['privateKeyData'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['data'] = $data->getData();
-        if ($data->isInitialized('intermediateData') && null !== $data->getIntermediateData()) {
+        $dataArray['data'] = $data->data ?? null;
+        if (array_key_exists('intermediateData', get_object_vars($data)) && null !== ($data->intermediateData ?? null)) {
             $values = [];
-            foreach ($data->getIntermediateData() as $value) {
+            foreach ($data->intermediateData ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['intermediateData'] = $values;
         }
-        if ($data->isInitialized('rootData') && null !== $data->getRootData()) {
-            $dataArray['rootData'] = $data->getRootData();
+        if (array_key_exists('rootData', get_object_vars($data)) && null !== ($data->rootData ?? null)) {
+            $dataArray['rootData'] = $data->rootData ?? null;
         }
-        $dataArray['privateKeyData'] = $data->getPrivateKeyData();
+        $dataArray['privateKeyData'] = $data->privateKeyData ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

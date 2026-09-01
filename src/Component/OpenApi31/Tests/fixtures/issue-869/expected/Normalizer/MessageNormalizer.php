@@ -41,7 +41,7 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\MessageConstraint());
         }
         if (\array_key_exists('subject', $data)) {
-            $object->setSubject($data['subject']);
+            $object->subject = $data['subject'];
             unset($data['subject']);
         }
         if (\array_key_exists('body', $data) && $data['body'] !== null) {
@@ -51,11 +51,11 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
             } elseif (is_null($data['body'])) {
                 $value = $data['body'];
             }
-            $object->setBody($value);
+            $object->body = $value;
             unset($data['body']);
         }
         elseif (\array_key_exists('body', $data) && $data['body'] === null) {
-            $object->setBody(null);
+            $object->body = null;
             unset($data['body']);
         }
         foreach ($data as $key => $value_1) {
@@ -68,15 +68,15 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
-            $dataArray['subject'] = $data->getSubject();
+        if (array_key_exists('subject', get_object_vars($data)) && null !== ($data->subject ?? null)) {
+            $dataArray['subject'] = $data->subject ?? null;
         }
-        if ($data->isInitialized('body') && null !== $data->getBody()) {
-            $value = $data->getBody();
-            if (is_string($data->getBody())) {
-                $value = $data->getBody();
-            } elseif (is_null($data->getBody())) {
-                $value = $data->getBody();
+        if (array_key_exists('body', get_object_vars($data)) && null !== ($data->body ?? null)) {
+            $value = $data->body ?? null;
+            if (is_string($data->body ?? null)) {
+                $value = $data->body ?? null;
+            } elseif (is_null($data->body ?? null)) {
+                $value = $data->body ?? null;
             }
             $dataArray['body'] = $value;
         }

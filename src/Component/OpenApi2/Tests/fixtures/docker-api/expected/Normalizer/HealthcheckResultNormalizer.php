@@ -45,33 +45,33 @@ class HealthcheckResultNormalizer implements DenormalizerInterface, NormalizerIn
             if (false === $date) {
                 throw new \Docker\Api\Runtime\Normalizer\InvalidDateException($data['Start'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStart($date);
+            $object->start = $date;
         }
         if (\array_key_exists('End', $data)) {
-            $object->setEnd($data['End']);
+            $object->end = $data['End'];
         }
         if (\array_key_exists('ExitCode', $data)) {
-            $object->setExitCode($data['ExitCode']);
+            $object->exitCode = $data['ExitCode'];
         }
         if (\array_key_exists('Output', $data)) {
-            $object->setOutput($data['Output']);
+            $object->output = $data['Output'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('start') && null !== $data->getStart()) {
-            $dataArray['Start'] = $data->getStart()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
+            $dataArray['Start'] = ($data->start ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('end') && null !== $data->getEnd()) {
-            $dataArray['End'] = $data->getEnd();
+        if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
+            $dataArray['End'] = $data->end ?? null;
         }
-        if ($data->isInitialized('exitCode') && null !== $data->getExitCode()) {
-            $dataArray['ExitCode'] = $data->getExitCode();
+        if (array_key_exists('exitCode', get_object_vars($data)) && null !== ($data->exitCode ?? null)) {
+            $dataArray['ExitCode'] = $data->exitCode ?? null;
         }
-        if ($data->isInitialized('output') && null !== $data->getOutput()) {
-            $dataArray['Output'] = $data->getOutput();
+        if (array_key_exists('output', get_object_vars($data)) && null !== ($data->output ?? null)) {
+            $dataArray['Output'] = $data->output ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\HealthcheckResultConstraint());

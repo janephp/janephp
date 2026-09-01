@@ -5,121 +5,23 @@ namespace Jane\Component\OpenApi2\Tests\Client\Model;
 class Thing
 {
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $id;
     /**
      * @var string
      */
-    protected $id;
+    public string $name;
     /**
      * @var string
      */
-    protected $name;
-    /**
-     * @var string
-     */
-    protected $kind;
+    public string $kind;
     /**
      * @var \DateTime
      */
-    protected $createdAt;
+    public \DateTime $createdAt;
     /**
      * @var list<string>
      */
-    protected $tags;
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getKind(): string
-    {
-        return $this->kind;
-    }
-    /**
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind): self
-    {
-        $this->initialized['kind'] = true;
-        $this->kind = $kind;
-        return $this;
-    }
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt(): \DateTime
-    {
-        return $this->createdAt;
-    }
-    /**
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt(\DateTime $createdAt): self
-    {
-        $this->initialized['createdAt'] = true;
-        $this->createdAt = $createdAt;
-        return $this;
-    }
-    /**
-     * @return list<string>
-     */
-    public function getTags(): array
-    {
-        return $this->tags;
-    }
-    /**
-     * @param list<string> $tags
-     *
-     * @return self
-     */
-    public function setTags(array $tags): self
-    {
-        $this->initialized['tags'] = true;
-        $this->tags = $tags;
-        return $this;
-    }
+    public array $tags;
 }

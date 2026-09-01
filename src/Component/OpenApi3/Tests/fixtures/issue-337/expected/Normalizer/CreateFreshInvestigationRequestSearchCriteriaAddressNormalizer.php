@@ -38,15 +38,15 @@ class CreateFreshInvestigationRequestSearchCriteriaAddressNormalizer implements 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('simple', $data)) {
-            $object->setSimple($data['simple']);
+            $object->simple = $data['simple'];
             unset($data['simple']);
         }
         if (\array_key_exists('postcode', $data)) {
-            $object->setPostcode($data['postcode']);
+            $object->postcode = $data['postcode'];
             unset($data['postcode']);
         }
         if (\array_key_exists('city', $data)) {
-            $object->setCity($data['city']);
+            $object->city = $data['city'];
             unset($data['city']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class CreateFreshInvestigationRequestSearchCriteriaAddressNormalizer implements 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('simple') && null !== $data->getSimple()) {
-            $dataArray['simple'] = $data->getSimple();
+        if (array_key_exists('simple', get_object_vars($data)) && null !== ($data->simple ?? null)) {
+            $dataArray['simple'] = $data->simple ?? null;
         }
-        if ($data->isInitialized('postcode') && null !== $data->getPostcode()) {
-            $dataArray['postcode'] = $data->getPostcode();
+        if (array_key_exists('postcode', get_object_vars($data)) && null !== ($data->postcode ?? null)) {
+            $dataArray['postcode'] = $data->postcode ?? null;
         }
-        if ($data->isInitialized('city') && null !== $data->getCity()) {
-            $dataArray['city'] = $data->getCity();
+        if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
+            $dataArray['city'] = $data->city ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

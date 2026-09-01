@@ -41,15 +41,15 @@ class ApiAgentLoggingConfigNormalizer implements DenormalizerInterface, Normaliz
             $data['insights_enabled'] = (bool) $data['insights_enabled'];
         }
         if (\array_key_exists('galileo_project_id', $data)) {
-            $object->setGalileoProjectId($data['galileo_project_id']);
+            $object->galileoProjectId = $data['galileo_project_id'];
             unset($data['galileo_project_id']);
         }
         if (\array_key_exists('galileo_project_name', $data)) {
-            $object->setGalileoProjectName($data['galileo_project_name']);
+            $object->galileoProjectName = $data['galileo_project_name'];
             unset($data['galileo_project_name']);
         }
         if (\array_key_exists('insights_enabled', $data)) {
-            $object->setInsightsEnabled($data['insights_enabled']);
+            $object->insightsEnabled = $data['insights_enabled'];
             unset($data['insights_enabled']);
         }
         if (\array_key_exists('insights_enabled_at', $data)) {
@@ -57,15 +57,15 @@ class ApiAgentLoggingConfigNormalizer implements DenormalizerInterface, Normaliz
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['insights_enabled_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setInsightsEnabledAt($date);
+            $object->insightsEnabledAt = $date;
             unset($data['insights_enabled_at']);
         }
         if (\array_key_exists('log_stream_id', $data)) {
-            $object->setLogStreamId($data['log_stream_id']);
+            $object->logStreamId = $data['log_stream_id'];
             unset($data['log_stream_id']);
         }
         if (\array_key_exists('log_stream_name', $data)) {
-            $object->setLogStreamName($data['log_stream_name']);
+            $object->logStreamName = $data['log_stream_name'];
             unset($data['log_stream_name']);
         }
         foreach ($data as $key => $value) {
@@ -78,23 +78,23 @@ class ApiAgentLoggingConfigNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('galileoProjectId') && null !== $data->getGalileoProjectId()) {
-            $dataArray['galileo_project_id'] = $data->getGalileoProjectId();
+        if (array_key_exists('galileoProjectId', get_object_vars($data)) && null !== ($data->galileoProjectId ?? null)) {
+            $dataArray['galileo_project_id'] = $data->galileoProjectId ?? null;
         }
-        if ($data->isInitialized('galileoProjectName') && null !== $data->getGalileoProjectName()) {
-            $dataArray['galileo_project_name'] = $data->getGalileoProjectName();
+        if (array_key_exists('galileoProjectName', get_object_vars($data)) && null !== ($data->galileoProjectName ?? null)) {
+            $dataArray['galileo_project_name'] = $data->galileoProjectName ?? null;
         }
-        if ($data->isInitialized('insightsEnabled') && null !== $data->getInsightsEnabled()) {
-            $dataArray['insights_enabled'] = $data->getInsightsEnabled();
+        if (array_key_exists('insightsEnabled', get_object_vars($data)) && null !== ($data->insightsEnabled ?? null)) {
+            $dataArray['insights_enabled'] = $data->insightsEnabled ?? null;
         }
-        if ($data->isInitialized('insightsEnabledAt') && null !== $data->getInsightsEnabledAt()) {
-            $dataArray['insights_enabled_at'] = $data->getInsightsEnabledAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('insightsEnabledAt', get_object_vars($data)) && null !== ($data->insightsEnabledAt ?? null)) {
+            $dataArray['insights_enabled_at'] = ($data->insightsEnabledAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('logStreamId') && null !== $data->getLogStreamId()) {
-            $dataArray['log_stream_id'] = $data->getLogStreamId();
+        if (array_key_exists('logStreamId', get_object_vars($data)) && null !== ($data->logStreamId ?? null)) {
+            $dataArray['log_stream_id'] = $data->logStreamId ?? null;
         }
-        if ($data->isInitialized('logStreamName') && null !== $data->getLogStreamName()) {
-            $dataArray['log_stream_name'] = $data->getLogStreamName();
+        if (array_key_exists('logStreamName', get_object_vars($data)) && null !== ($data->logStreamName ?? null)) {
+            $dataArray['log_stream_name'] = $data->logStreamName ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

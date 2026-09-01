@@ -48,19 +48,19 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
             foreach ($data['changeCommands'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\MetadataValuesChangeCommandBase::class, 'json', $context);
             }
-            $object->setChangeCommands($values);
+            $object->changeCommands = $values;
             unset($data['changeCommands']);
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
-            $object->setAllowMissingDependencies($data['allowMissingDependencies']);
+            $object->allowMissingDependencies = $data['allowMissingDependencies'];
             unset($data['allowMissingDependencies']);
         }
         if (\array_key_exists('notifyProgress', $data)) {
-            $object->setNotifyProgress($data['notifyProgress']);
+            $object->notifyProgress = $data['notifyProgress'];
             unset($data['notifyProgress']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('filterRequest', $data)) {
@@ -68,7 +68,7 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
             if (is_array($data['filterRequest']) and \array_key_exists('searchType', $data['filterRequest']) and \array_key_exists('lifeCycleFilter', $data['filterRequest']) and \array_key_exists('brokenDependenciesFilter', $data['filterRequest'])) {
                 $value_1 = $this->denormalizer->denormalize($data['filterRequest'], \PicturePark\API\Model\ContentFilterRequest::class, 'json', $context);
             }
-            $object->setFilterRequest($value_1);
+            $object->filterRequest = $value_1;
             unset($data['filterRequest']);
         }
         foreach ($data as $key => $value_2) {
@@ -82,16 +82,16 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getChangeCommands() as $value) {
+        foreach ($data->changeCommands ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['changeCommands'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();
-        $dataArray['notifyProgress'] = $data->getNotifyProgress();
-        $dataArray['kind'] = $data->getKind();
-        $value_1 = $data->getFilterRequest();
-        if (is_object($data->getFilterRequest())) {
-            $value_1 = $data->getFilterRequest() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilterRequest(), 'json', $context));
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
+        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        $value_1 = $data->filterRequest ?? null;
+        if (is_object($data->filterRequest ?? null)) {
+            $value_1 = ($data->filterRequest ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest ?? null, 'json', $context));
         }
         $dataArray['filterRequest'] = $value_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

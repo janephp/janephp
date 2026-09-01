@@ -42,7 +42,7 @@ class PurgeCacheNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['files'] as $value) {
                 $values[] = $value;
             }
-            $object->setFiles($values);
+            $object->files = $values;
             unset($data['files']);
         }
         foreach ($data as $key => $value_1) {
@@ -56,7 +56,7 @@ class PurgeCacheNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getFiles() as $value) {
+        foreach ($data->files ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['files'] = $values;

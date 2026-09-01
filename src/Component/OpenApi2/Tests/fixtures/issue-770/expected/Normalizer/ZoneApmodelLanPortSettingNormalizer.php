@@ -41,23 +41,23 @@ class ZoneApmodelLanPortSettingNormalizer implements DenormalizerInterface, Norm
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('portName', $data)) {
-            $object->setPortName($data['portName']);
+            $object->portName = $data['portName'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('ethPortProfile', $data)) {
-            $object->setEthPortProfile($this->denormalizer->denormalize($data['ethPortProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->ethPortProfile = $this->denormalizer->denormalize($data['ethPortProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['portName'] = $data->getPortName();
-        $dataArray['enabled'] = $data->getEnabled();
-        if ($data->isInitialized('ethPortProfile') && null !== $data->getEthPortProfile()) {
-            $dataArray['ethPortProfile'] = $data->getEthPortProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEthPortProfile(), 'json', $context));
+        $dataArray['portName'] = $data->portName ?? null;
+        $dataArray['enabled'] = $data->enabled ?? null;
+        if (array_key_exists('ethPortProfile', get_object_vars($data)) && null !== ($data->ethPortProfile ?? null)) {
+            $dataArray['ethPortProfile'] = ($data->ethPortProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ethPortProfile ?? null, 'json', $context));
         }
         return $dataArray;
     }

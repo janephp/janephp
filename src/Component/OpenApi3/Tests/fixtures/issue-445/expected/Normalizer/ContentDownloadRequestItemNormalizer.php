@@ -38,18 +38,18 @@ class ContentDownloadRequestItemNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('contentId', $data)) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
         }
         if (\array_key_exists('outputFormatId', $data)) {
-            $object->setOutputFormatId($data['outputFormatId']);
+            $object->outputFormatId = $data['outputFormatId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentId'] = $data->getContentId();
-        $dataArray['outputFormatId'] = $data->getOutputFormatId();
+        $dataArray['contentId'] = $data->contentId ?? null;
+        $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

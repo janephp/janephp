@@ -38,7 +38,7 @@ class V2DatabasesDatabaseClusterUuidMigratePutBodyNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class V2DatabasesDatabaseClusterUuidMigratePutBodyNormalizer implements Denormal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['region'] = $data->getRegion();
+        $dataArray['region'] = $data->region ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

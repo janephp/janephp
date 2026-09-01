@@ -32,26 +32,26 @@ class OperationUrlNaming implements OperationNamingInterface
     {
         $prefix = strtolower($operation->getMethod());
         $shouldSingularize = true;
-        $responses = $operation->getOperation()->getResponses();
+        $responses = $operation->getOperation()->responses ?? null;
 
         if (null !== $responses && isset($responses[200])) {
             $response = $responses[200];
 
-            if (class_exists(OA2Response::class) && $response instanceof OA2Response && $response->getSchema() instanceof OA2Schema && 'array' === $response->getSchema()->getType()) {
+            if (class_exists(OA2Response::class) && $response instanceof OA2Response && ($response->schema ?? null) instanceof OA2Schema && 'array' === ($response->schema ?? null)->type) {
                 $shouldSingularize = false;
             }
-            if (class_exists(OA3Response::class) && $response instanceof OA3Response && $response->getContent()) {
-                $firstContent = (new \ArrayIterator(iterator_to_array($response->getContent())))->current();
+            if (class_exists(OA3Response::class) && $response instanceof OA3Response && ($response->content ?? null)) {
+                $firstContent = (new \ArrayIterator(iterator_to_array($response->content ?? null)))->current();
 
-                if (null !== $firstContent && $firstContent->getSchema() instanceof OA3Schema && 'array' === $firstContent->getSchema()->getType()) {
+                if (null !== $firstContent && ($firstContent->schema ?? null) instanceof OA3Schema && 'array' === ($firstContent->schema ?? null)->type) {
                     $shouldSingularize = false;
                 }
             }
-            if (class_exists(OA31Response::class) && $response instanceof OA31Response && $response->getContent()) {
-                $firstContent = (new \ArrayIterator(iterator_to_array($response->getContent())))->current();
+            if (class_exists(OA31Response::class) && $response instanceof OA31Response && ($response->content ?? null)) {
+                $firstContent = (new \ArrayIterator(iterator_to_array($response->content ?? null)))->current();
 
-                if (null !== $firstContent && $firstContent->getSchema() instanceof OA31JsonSchema) {
-                    $schemaType = $firstContent->getSchema()->getType();
+                if (null !== $firstContent && ($firstContent->schema ?? null) instanceof OA31JsonSchema) {
+                    $schemaType = ($firstContent->schema ?? null)->type;
 
                     if (\is_array($schemaType) ? \in_array('array', $schemaType, true) : 'array' === $schemaType) {
                         $shouldSingularize = false;

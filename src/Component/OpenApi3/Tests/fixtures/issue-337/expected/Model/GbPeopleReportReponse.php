@@ -8,169 +8,35 @@ class GbPeopleReportReponse implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $correlationId;
     /**
      * @var string
      */
-    protected $correlationId;
+    public string $orderId;
     /**
      * @var string
      */
-    protected $orderId;
+    public string $directorId;
     /**
      * @var string
      */
-    protected $directorId;
+    public string $dateOfOrder;
     /**
      * @var string
      */
-    protected $dateOfOrder;
+    public string $language;
     /**
      * @var string
      */
-    protected $language;
-    /**
-     * @var string
-     */
-    protected $userId;
+    public string $userId;
     /**
      * @var GbPeopleReportReponseReport
      */
-    protected $report;
-    /**
-     * @return string
-     */
-    public function getCorrelationId(): string
-    {
-        return $this->correlationId;
-    }
-    /**
-     * @param string $correlationId
-     *
-     * @return self
-     */
-    public function setCorrelationId(string $correlationId): self
-    {
-        $this->initialized['correlationId'] = true;
-        $this->correlationId = $correlationId;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getOrderId(): string
-    {
-        return $this->orderId;
-    }
-    /**
-     * @param string $orderId
-     *
-     * @return self
-     */
-    public function setOrderId(string $orderId): self
-    {
-        $this->initialized['orderId'] = true;
-        $this->orderId = $orderId;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getDirectorId(): string
-    {
-        return $this->directorId;
-    }
-    /**
-     * @param string $directorId
-     *
-     * @return self
-     */
-    public function setDirectorId(string $directorId): self
-    {
-        $this->initialized['directorId'] = true;
-        $this->directorId = $directorId;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getDateOfOrder(): string
-    {
-        return $this->dateOfOrder;
-    }
-    /**
-     * @param string $dateOfOrder
-     *
-     * @return self
-     */
-    public function setDateOfOrder(string $dateOfOrder): self
-    {
-        $this->initialized['dateOfOrder'] = true;
-        $this->dateOfOrder = $dateOfOrder;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getLanguage(): string
-    {
-        return $this->language;
-    }
-    /**
-     * @param string $language
-     *
-     * @return self
-     */
-    public function setLanguage(string $language): self
-    {
-        $this->initialized['language'] = true;
-        $this->language = $language;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getUserId(): string
-    {
-        return $this->userId;
-    }
-    /**
-     * @param string $userId
-     *
-     * @return self
-     */
-    public function setUserId(string $userId): self
-    {
-        $this->initialized['userId'] = true;
-        $this->userId = $userId;
-        return $this;
-    }
-    /**
-     * @return GbPeopleReportReponseReport
-     */
-    public function getReport(): GbPeopleReportReponseReport
-    {
-        return $this->report;
-    }
-    /**
-     * @param GbPeopleReportReponseReport $report
-     *
-     * @return self
-     */
-    public function setReport(GbPeopleReportReponseReport $report): self
-    {
-        $this->initialized['report'] = true;
-        $this->report = $report;
-        return $this;
-    }
+    public GbPeopleReportReponseReport $report;
     public function definedProperties(): array
     {
-        return ['correlationId' => ['correlationId', 'getCorrelationId', 'setCorrelationId'], 'orderId' => ['orderId', 'getOrderId', 'setOrderId'], 'directorId' => ['directorId', 'getDirectorId', 'setDirectorId'], 'dateOfOrder' => ['dateOfOrder', 'getDateOfOrder', 'setDateOfOrder'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'report' => ['report', 'getReport', 'setReport']];
+        return ['correlationId' => 'correlationId', 'orderId' => 'orderId', 'directorId' => 'directorId', 'dateOfOrder' => 'dateOfOrder', 'language' => 'language', 'userId' => 'userId', 'report' => 'report'];
     }
 }

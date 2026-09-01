@@ -38,19 +38,19 @@ class CertificateServiceCertificateNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('service', $data)) {
-            $object->setService($data['service']);
+            $object->service = $data['service'];
         }
         if (\array_key_exists('certificate', $data)) {
-            $object->setCertificate($this->denormalizer->denormalize($data['certificate'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->certificate = $this->denormalizer->denormalize($data['certificate'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['service'] = $data->getService();
-        if ($data->isInitialized('certificate') && null !== $data->getCertificate()) {
-            $dataArray['certificate'] = $data->getCertificate() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCertificate(), 'json', $context));
+        $dataArray['service'] = $data->service ?? null;
+        if (array_key_exists('certificate', get_object_vars($data)) && null !== ($data->certificate ?? null)) {
+            $dataArray['certificate'] = ($data->certificate ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->certificate ?? null, 'json', $context));
         }
         return $dataArray;
     }

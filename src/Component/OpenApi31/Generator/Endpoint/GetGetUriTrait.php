@@ -36,20 +36,20 @@ trait GetGetUriTrait
                 $parameter = $guessClass->resolveParameter($parameter);
             }
 
-            if (!$parameter instanceof Parameter || EndpointGenerator::IN_PATH !== $parameter->getIn()) {
+            if (!$parameter instanceof Parameter || EndpointGenerator::IN_PATH !== ($parameter->in ?? null)) {
                 continue;
             }
 
-            $schema = $parameter->getSchema();
+            $schema = ($parameter->schema ?? null);
             if ($schema instanceof Reference) {
-                [, $schema] = $guessClass->resolve($parameter->getSchema(), JsonSchema::class);
+                [, $schema] = $guessClass->resolve($parameter->schema ?? null, JsonSchema::class);
             }
 
-            $placeholders[] = $parameter->getName();
-            $propertyNames[] = $this->normalizePathPropertyName($parameter->getName());
+            $placeholders[] = ($parameter->name ?? null);
+            $propertyNames[] = $this->normalizePathPropertyName($parameter->name ?? null);
             $schemaType = null;
             if ($schema instanceof JsonSchema) {
-                $schemaType = $schema->getType();
+                $schemaType = ($schema->type ?? null);
                 if (\is_array($schemaType)) {
                     $schemaType = array_filter($schemaType, fn ($t) => $t !== 'null');
                     $schemaType = reset($schemaType) ?: null;

@@ -8,103 +8,23 @@ class GbCompanyReportExampleResponseReportCreditScore implements AdditionalPrope
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating
      */
-    protected $currentCreditRating;
+    public GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating $currentCreditRating;
     /**
      * @var GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit
      */
-    protected $currentContractLimit;
+    public GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit $currentContractLimit;
     /**
      * @var GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating
      */
-    protected $previousCreditRating;
+    public GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating $previousCreditRating;
     /**
      * @var string
      */
-    protected $latestRatingChangeDate;
-    /**
-     * @return GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating
-     */
-    public function getCurrentCreditRating(): GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating
-    {
-        return $this->currentCreditRating;
-    }
-    /**
-     * @param GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating $currentCreditRating
-     *
-     * @return self
-     */
-    public function setCurrentCreditRating(GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating $currentCreditRating): self
-    {
-        $this->initialized['currentCreditRating'] = true;
-        $this->currentCreditRating = $currentCreditRating;
-        return $this;
-    }
-    /**
-     * @return GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit
-     */
-    public function getCurrentContractLimit(): GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit
-    {
-        return $this->currentContractLimit;
-    }
-    /**
-     * @param GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit $currentContractLimit
-     *
-     * @return self
-     */
-    public function setCurrentContractLimit(GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit $currentContractLimit): self
-    {
-        $this->initialized['currentContractLimit'] = true;
-        $this->currentContractLimit = $currentContractLimit;
-        return $this;
-    }
-    /**
-     * @return GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating
-     */
-    public function getPreviousCreditRating(): GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating
-    {
-        return $this->previousCreditRating;
-    }
-    /**
-     * @param GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating $previousCreditRating
-     *
-     * @return self
-     */
-    public function setPreviousCreditRating(GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating $previousCreditRating): self
-    {
-        $this->initialized['previousCreditRating'] = true;
-        $this->previousCreditRating = $previousCreditRating;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getLatestRatingChangeDate(): string
-    {
-        return $this->latestRatingChangeDate;
-    }
-    /**
-     * @param string $latestRatingChangeDate
-     *
-     * @return self
-     */
-    public function setLatestRatingChangeDate(string $latestRatingChangeDate): self
-    {
-        $this->initialized['latestRatingChangeDate'] = true;
-        $this->latestRatingChangeDate = $latestRatingChangeDate;
-        return $this;
-    }
+    public string $latestRatingChangeDate;
     public function definedProperties(): array
     {
-        return ['currentCreditRating' => ['currentCreditRating', 'getCurrentCreditRating', 'setCurrentCreditRating'], 'currentContractLimit' => ['currentContractLimit', 'getCurrentContractLimit', 'setCurrentContractLimit'], 'previousCreditRating' => ['previousCreditRating', 'getPreviousCreditRating', 'setPreviousCreditRating'], 'latestRatingChangeDate' => ['latestRatingChangeDate', 'getLatestRatingChangeDate', 'setLatestRatingChangeDate']];
+        return ['currentCreditRating' => 'currentCreditRating', 'currentContractLimit' => 'currentContractLimit', 'previousCreditRating' => 'previousCreditRating', 'latestRatingChangeDate' => 'latestRatingChangeDate'];
     }
 }

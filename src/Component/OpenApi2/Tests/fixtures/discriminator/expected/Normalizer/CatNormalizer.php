@@ -38,22 +38,22 @@ class CatNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('petType', $data)) {
-            $object->setPetType($data['petType']);
+            $object->petType = $data['petType'];
         }
         if (\array_key_exists('huntingSkill', $data)) {
-            $object->setHuntingSkill($data['huntingSkill']);
+            $object->huntingSkill = $data['huntingSkill'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['petType'] = $data->getPetType();
-        $dataArray['huntingSkill'] = $data->getHuntingSkill();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['petType'] = $data->petType ?? null;
+        $dataArray['huntingSkill'] = $data->huntingSkill ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

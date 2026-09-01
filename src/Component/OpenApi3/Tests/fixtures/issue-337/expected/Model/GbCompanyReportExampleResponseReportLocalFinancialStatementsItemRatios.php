@@ -8,323 +8,63 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios imp
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var float
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public float $preTaxProfitMargin;
     /**
      * @var float
      */
-    protected $preTaxProfitMargin;
+    public float $returnOnCapitalEmployed;
     /**
      * @var float
      */
-    protected $returnOnCapitalEmployed;
+    public float $returnOnTotalAssetsEmployed;
     /**
      * @var float
      */
-    protected $returnOnTotalAssetsEmployed;
+    public float $returnOnNetAssetsEmployed;
     /**
      * @var float
      */
-    protected $returnOnNetAssetsEmployed;
+    public float $salesOrNetWorkingCapital;
     /**
      * @var float
      */
-    protected $salesOrNetWorkingCapital;
+    public float $stocKTurnoverRatio;
     /**
      * @var float
      */
-    protected $stocKTurnoverRatio;
+    public float $debtorDays;
     /**
      * @var float
      */
-    protected $debtorDays;
+    public float $creditorDays;
     /**
      * @var float
      */
-    protected $creditorDays;
+    public float $currentRatio;
     /**
      * @var float
      */
-    protected $currentRatio;
+    public float $liquidityRatioOrAcidTest;
     /**
      * @var float
      */
-    protected $liquidityRatioOrAcidTest;
+    public float $currentDebtRatio;
     /**
      * @var float
      */
-    protected $currentDebtRatio;
+    public float $gearing;
     /**
      * @var float
      */
-    protected $gearing;
+    public float $equityInPercentage;
     /**
      * @var float
      */
-    protected $equityInPercentage;
-    /**
-     * @var float
-     */
-    protected $totalDebtRatio;
-    /**
-     * @return float
-     */
-    public function getPreTaxProfitMargin(): float
-    {
-        return $this->preTaxProfitMargin;
-    }
-    /**
-     * @param float $preTaxProfitMargin
-     *
-     * @return self
-     */
-    public function setPreTaxProfitMargin(float $preTaxProfitMargin): self
-    {
-        $this->initialized['preTaxProfitMargin'] = true;
-        $this->preTaxProfitMargin = $preTaxProfitMargin;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getReturnOnCapitalEmployed(): float
-    {
-        return $this->returnOnCapitalEmployed;
-    }
-    /**
-     * @param float $returnOnCapitalEmployed
-     *
-     * @return self
-     */
-    public function setReturnOnCapitalEmployed(float $returnOnCapitalEmployed): self
-    {
-        $this->initialized['returnOnCapitalEmployed'] = true;
-        $this->returnOnCapitalEmployed = $returnOnCapitalEmployed;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getReturnOnTotalAssetsEmployed(): float
-    {
-        return $this->returnOnTotalAssetsEmployed;
-    }
-    /**
-     * @param float $returnOnTotalAssetsEmployed
-     *
-     * @return self
-     */
-    public function setReturnOnTotalAssetsEmployed(float $returnOnTotalAssetsEmployed): self
-    {
-        $this->initialized['returnOnTotalAssetsEmployed'] = true;
-        $this->returnOnTotalAssetsEmployed = $returnOnTotalAssetsEmployed;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getReturnOnNetAssetsEmployed(): float
-    {
-        return $this->returnOnNetAssetsEmployed;
-    }
-    /**
-     * @param float $returnOnNetAssetsEmployed
-     *
-     * @return self
-     */
-    public function setReturnOnNetAssetsEmployed(float $returnOnNetAssetsEmployed): self
-    {
-        $this->initialized['returnOnNetAssetsEmployed'] = true;
-        $this->returnOnNetAssetsEmployed = $returnOnNetAssetsEmployed;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getSalesOrNetWorkingCapital(): float
-    {
-        return $this->salesOrNetWorkingCapital;
-    }
-    /**
-     * @param float $salesOrNetWorkingCapital
-     *
-     * @return self
-     */
-    public function setSalesOrNetWorkingCapital(float $salesOrNetWorkingCapital): self
-    {
-        $this->initialized['salesOrNetWorkingCapital'] = true;
-        $this->salesOrNetWorkingCapital = $salesOrNetWorkingCapital;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getStocKTurnoverRatio(): float
-    {
-        return $this->stocKTurnoverRatio;
-    }
-    /**
-     * @param float $stocKTurnoverRatio
-     *
-     * @return self
-     */
-    public function setStocKTurnoverRatio(float $stocKTurnoverRatio): self
-    {
-        $this->initialized['stocKTurnoverRatio'] = true;
-        $this->stocKTurnoverRatio = $stocKTurnoverRatio;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getDebtorDays(): float
-    {
-        return $this->debtorDays;
-    }
-    /**
-     * @param float $debtorDays
-     *
-     * @return self
-     */
-    public function setDebtorDays(float $debtorDays): self
-    {
-        $this->initialized['debtorDays'] = true;
-        $this->debtorDays = $debtorDays;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getCreditorDays(): float
-    {
-        return $this->creditorDays;
-    }
-    /**
-     * @param float $creditorDays
-     *
-     * @return self
-     */
-    public function setCreditorDays(float $creditorDays): self
-    {
-        $this->initialized['creditorDays'] = true;
-        $this->creditorDays = $creditorDays;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getCurrentRatio(): float
-    {
-        return $this->currentRatio;
-    }
-    /**
-     * @param float $currentRatio
-     *
-     * @return self
-     */
-    public function setCurrentRatio(float $currentRatio): self
-    {
-        $this->initialized['currentRatio'] = true;
-        $this->currentRatio = $currentRatio;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getLiquidityRatioOrAcidTest(): float
-    {
-        return $this->liquidityRatioOrAcidTest;
-    }
-    /**
-     * @param float $liquidityRatioOrAcidTest
-     *
-     * @return self
-     */
-    public function setLiquidityRatioOrAcidTest(float $liquidityRatioOrAcidTest): self
-    {
-        $this->initialized['liquidityRatioOrAcidTest'] = true;
-        $this->liquidityRatioOrAcidTest = $liquidityRatioOrAcidTest;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getCurrentDebtRatio(): float
-    {
-        return $this->currentDebtRatio;
-    }
-    /**
-     * @param float $currentDebtRatio
-     *
-     * @return self
-     */
-    public function setCurrentDebtRatio(float $currentDebtRatio): self
-    {
-        $this->initialized['currentDebtRatio'] = true;
-        $this->currentDebtRatio = $currentDebtRatio;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getGearing(): float
-    {
-        return $this->gearing;
-    }
-    /**
-     * @param float $gearing
-     *
-     * @return self
-     */
-    public function setGearing(float $gearing): self
-    {
-        $this->initialized['gearing'] = true;
-        $this->gearing = $gearing;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getEquityInPercentage(): float
-    {
-        return $this->equityInPercentage;
-    }
-    /**
-     * @param float $equityInPercentage
-     *
-     * @return self
-     */
-    public function setEquityInPercentage(float $equityInPercentage): self
-    {
-        $this->initialized['equityInPercentage'] = true;
-        $this->equityInPercentage = $equityInPercentage;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTotalDebtRatio(): float
-    {
-        return $this->totalDebtRatio;
-    }
-    /**
-     * @param float $totalDebtRatio
-     *
-     * @return self
-     */
-    public function setTotalDebtRatio(float $totalDebtRatio): self
-    {
-        $this->initialized['totalDebtRatio'] = true;
-        $this->totalDebtRatio = $totalDebtRatio;
-        return $this;
-    }
+    public float $totalDebtRatio;
     public function definedProperties(): array
     {
-        return ['preTaxProfitMargin' => ['preTaxProfitMargin', 'getPreTaxProfitMargin', 'setPreTaxProfitMargin'], 'returnOnCapitalEmployed' => ['returnOnCapitalEmployed', 'getReturnOnCapitalEmployed', 'setReturnOnCapitalEmployed'], 'returnOnTotalAssetsEmployed' => ['returnOnTotalAssetsEmployed', 'getReturnOnTotalAssetsEmployed', 'setReturnOnTotalAssetsEmployed'], 'returnOnNetAssetsEmployed' => ['returnOnNetAssetsEmployed', 'getReturnOnNetAssetsEmployed', 'setReturnOnNetAssetsEmployed'], 'salesOrNetWorkingCapital' => ['salesOrNetWorkingCapital', 'getSalesOrNetWorkingCapital', 'setSalesOrNetWorkingCapital'], 'stocKTurnoverRatio' => ['stocKTurnoverRatio', 'getStocKTurnoverRatio', 'setStocKTurnoverRatio'], 'debtorDays' => ['debtorDays', 'getDebtorDays', 'setDebtorDays'], 'creditorDays' => ['creditorDays', 'getCreditorDays', 'setCreditorDays'], 'currentRatio' => ['currentRatio', 'getCurrentRatio', 'setCurrentRatio'], 'liquidityRatioOrAcidTest' => ['liquidityRatioOrAcidTest', 'getLiquidityRatioOrAcidTest', 'setLiquidityRatioOrAcidTest'], 'currentDebtRatio' => ['currentDebtRatio', 'getCurrentDebtRatio', 'setCurrentDebtRatio'], 'gearing' => ['gearing', 'getGearing', 'setGearing'], 'equityInPercentage' => ['equityInPercentage', 'getEquityInPercentage', 'setEquityInPercentage'], 'totalDebtRatio' => ['totalDebtRatio', 'getTotalDebtRatio', 'setTotalDebtRatio']];
+        return ['preTaxProfitMargin' => 'preTaxProfitMargin', 'returnOnCapitalEmployed' => 'returnOnCapitalEmployed', 'returnOnTotalAssetsEmployed' => 'returnOnTotalAssetsEmployed', 'returnOnNetAssetsEmployed' => 'returnOnNetAssetsEmployed', 'salesOrNetWorkingCapital' => 'salesOrNetWorkingCapital', 'stocKTurnoverRatio' => 'stocKTurnoverRatio', 'debtorDays' => 'debtorDays', 'creditorDays' => 'creditorDays', 'currentRatio' => 'currentRatio', 'liquidityRatioOrAcidTest' => 'liquidityRatioOrAcidTest', 'currentDebtRatio' => 'currentDebtRatio', 'gearing' => 'gearing', 'equityInPercentage' => 'equityInPercentage', 'totalDebtRatio' => 'totalDebtRatio'];
     }
 }

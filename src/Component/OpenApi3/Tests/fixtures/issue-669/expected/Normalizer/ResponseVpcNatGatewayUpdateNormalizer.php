@@ -38,7 +38,7 @@ class ResponseVpcNatGatewayUpdateNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('vpc_nat_gateway', $data)) {
-            $object->setVpcNatGateway($this->denormalizer->denormalize($data['vpc_nat_gateway'], \Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdate::class, 'json', $context));
+            $object->vpcNatGateway = $this->denormalizer->denormalize($data['vpc_nat_gateway'], \Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdate::class, 'json', $context);
             unset($data['vpc_nat_gateway']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseVpcNatGatewayUpdateNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('vpcNatGateway') && null !== $data->getVpcNatGateway()) {
-            $dataArray['vpc_nat_gateway'] = $data->getVpcNatGateway() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVpcNatGateway(), 'json', $context));
+        if (array_key_exists('vpcNatGateway', get_object_vars($data)) && null !== ($data->vpcNatGateway ?? null)) {
+            $dataArray['vpc_nat_gateway'] = ($data->vpcNatGateway ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->vpcNatGateway ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

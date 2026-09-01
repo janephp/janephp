@@ -44,117 +44,117 @@ class MduSegmentationProfileEthernetPortProfileNormalizer implements Denormalize
             $data['userSidePortEnabled'] = (bool) $data['userSidePortEnabled'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('tunnelEnabled', $data)) {
-            $object->setTunnelEnabled($data['tunnelEnabled']);
+            $object->tunnelEnabled = $data['tunnelEnabled'];
         }
         if (\array_key_exists('tenantId', $data)) {
-            $object->setTenantId($data['tenantId']);
+            $object->tenantId = $data['tenantId'];
         }
         if (\array_key_exists('mduProfileId', $data)) {
-            $object->setMduProfileId($data['mduProfileId']);
+            $object->mduProfileId = $data['mduProfileId'];
         }
         if (\array_key_exists('accessNetworkType', $data)) {
-            $object->setAccessNetworkType($data['accessNetworkType']);
+            $object->accessNetworkType = $data['accessNetworkType'];
         }
         if (\array_key_exists('untagId', $data)) {
-            $object->setUntagId($data['untagId']);
+            $object->untagId = $data['untagId'];
         }
         if (\array_key_exists('arpRequestRateLimit', $data)) {
-            $object->setArpRequestRateLimit($data['arpRequestRateLimit']);
+            $object->arpRequestRateLimit = $data['arpRequestRateLimit'];
         }
         if (\array_key_exists('dhcpRequestRateLimit', $data)) {
-            $object->setDhcpRequestRateLimit($data['dhcpRequestRateLimit']);
+            $object->dhcpRequestRateLimit = $data['dhcpRequestRateLimit'];
         }
         if (\array_key_exists('userSidePortEnabled', $data)) {
-            $object->setUserSidePortEnabled($data['userSidePortEnabled']);
+            $object->userSidePortEnabled = $data['userSidePortEnabled'];
         }
         if (\array_key_exists('userSidePortMaxClient', $data)) {
-            $object->setUserSidePortMaxClient($data['userSidePortMaxClient']);
+            $object->userSidePortMaxClient = $data['userSidePortMaxClient'];
         }
         if (\array_key_exists('userSidePortUplinkLimit', $data)) {
-            $object->setUserSidePortUplinkLimit($data['userSidePortUplinkLimit']);
+            $object->userSidePortUplinkLimit = $data['userSidePortUplinkLimit'];
         }
         if (\array_key_exists('userSidePortDownlinkLimit', $data)) {
-            $object->setUserSidePortDownlinkLimit($data['userSidePortDownlinkLimit']);
+            $object->userSidePortDownlinkLimit = $data['userSidePortDownlinkLimit'];
         }
         if (\array_key_exists('_8021X', $data)) {
-            $object->set8021X($this->denormalizer->denormalize($data['_8021X'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPort8021X::class, 'json', $context));
+            $object->n8021X = $this->denormalizer->denormalize($data['_8021X'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPort8021X::class, 'json', $context);
         }
         if (\array_key_exists('tunnelProfile', $data)) {
-            $object->setTunnelProfile($this->denormalizer->denormalize($data['tunnelProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->tunnelProfile = $this->denormalizer->denormalize($data['tunnelProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('ipsecProfile', $data)) {
-            $object->setIpsecProfile($this->denormalizer->denormalize($data['ipsecProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->ipsecProfile = $this->denormalizer->denormalize($data['ipsecProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('tunnelEnabled') && null !== $data->getTunnelEnabled()) {
-            $dataArray['tunnelEnabled'] = $data->getTunnelEnabled();
+        if (array_key_exists('tunnelEnabled', get_object_vars($data)) && null !== ($data->tunnelEnabled ?? null)) {
+            $dataArray['tunnelEnabled'] = $data->tunnelEnabled ?? null;
         }
-        if ($data->isInitialized('tenantId') && null !== $data->getTenantId()) {
-            $dataArray['tenantId'] = $data->getTenantId();
+        if (array_key_exists('tenantId', get_object_vars($data)) && null !== ($data->tenantId ?? null)) {
+            $dataArray['tenantId'] = $data->tenantId ?? null;
         }
-        if ($data->isInitialized('mduProfileId') && null !== $data->getMduProfileId()) {
-            $dataArray['mduProfileId'] = $data->getMduProfileId();
+        if (array_key_exists('mduProfileId', get_object_vars($data)) && null !== ($data->mduProfileId ?? null)) {
+            $dataArray['mduProfileId'] = $data->mduProfileId ?? null;
         }
-        if ($data->isInitialized('accessNetworkType') && null !== $data->getAccessNetworkType()) {
-            $dataArray['accessNetworkType'] = $data->getAccessNetworkType();
+        if (array_key_exists('accessNetworkType', get_object_vars($data)) && null !== ($data->accessNetworkType ?? null)) {
+            $dataArray['accessNetworkType'] = $data->accessNetworkType ?? null;
         }
-        if ($data->isInitialized('untagId') && null !== $data->getUntagId()) {
-            $dataArray['untagId'] = $data->getUntagId();
+        if (array_key_exists('untagId', get_object_vars($data)) && null !== ($data->untagId ?? null)) {
+            $dataArray['untagId'] = $data->untagId ?? null;
         }
-        if ($data->isInitialized('arpRequestRateLimit') && null !== $data->getArpRequestRateLimit()) {
-            $dataArray['arpRequestRateLimit'] = $data->getArpRequestRateLimit();
+        if (array_key_exists('arpRequestRateLimit', get_object_vars($data)) && null !== ($data->arpRequestRateLimit ?? null)) {
+            $dataArray['arpRequestRateLimit'] = $data->arpRequestRateLimit ?? null;
         }
-        if ($data->isInitialized('dhcpRequestRateLimit') && null !== $data->getDhcpRequestRateLimit()) {
-            $dataArray['dhcpRequestRateLimit'] = $data->getDhcpRequestRateLimit();
+        if (array_key_exists('dhcpRequestRateLimit', get_object_vars($data)) && null !== ($data->dhcpRequestRateLimit ?? null)) {
+            $dataArray['dhcpRequestRateLimit'] = $data->dhcpRequestRateLimit ?? null;
         }
-        if ($data->isInitialized('userSidePortEnabled') && null !== $data->getUserSidePortEnabled()) {
-            $dataArray['userSidePortEnabled'] = $data->getUserSidePortEnabled();
+        if (array_key_exists('userSidePortEnabled', get_object_vars($data)) && null !== ($data->userSidePortEnabled ?? null)) {
+            $dataArray['userSidePortEnabled'] = $data->userSidePortEnabled ?? null;
         }
-        if ($data->isInitialized('userSidePortMaxClient') && null !== $data->getUserSidePortMaxClient()) {
-            $dataArray['userSidePortMaxClient'] = $data->getUserSidePortMaxClient();
+        if (array_key_exists('userSidePortMaxClient', get_object_vars($data)) && null !== ($data->userSidePortMaxClient ?? null)) {
+            $dataArray['userSidePortMaxClient'] = $data->userSidePortMaxClient ?? null;
         }
-        if ($data->isInitialized('userSidePortUplinkLimit') && null !== $data->getUserSidePortUplinkLimit()) {
-            $dataArray['userSidePortUplinkLimit'] = $data->getUserSidePortUplinkLimit();
+        if (array_key_exists('userSidePortUplinkLimit', get_object_vars($data)) && null !== ($data->userSidePortUplinkLimit ?? null)) {
+            $dataArray['userSidePortUplinkLimit'] = $data->userSidePortUplinkLimit ?? null;
         }
-        if ($data->isInitialized('userSidePortDownlinkLimit') && null !== $data->getUserSidePortDownlinkLimit()) {
-            $dataArray['userSidePortDownlinkLimit'] = $data->getUserSidePortDownlinkLimit();
+        if (array_key_exists('userSidePortDownlinkLimit', get_object_vars($data)) && null !== ($data->userSidePortDownlinkLimit ?? null)) {
+            $dataArray['userSidePortDownlinkLimit'] = $data->userSidePortDownlinkLimit ?? null;
         }
-        if ($data->isInitialized('n8021X') && null !== $data->get8021X()) {
-            $dataArray['_8021X'] = $data->get8021X() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->get8021X(), 'json', $context));
+        if (array_key_exists('n8021X', get_object_vars($data)) && null !== ($data->n8021X ?? null)) {
+            $dataArray['_8021X'] = ($data->n8021X ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->n8021X ?? null, 'json', $context));
         }
-        if ($data->isInitialized('tunnelProfile') && null !== $data->getTunnelProfile()) {
-            $dataArray['tunnelProfile'] = $data->getTunnelProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTunnelProfile(), 'json', $context));
+        if (array_key_exists('tunnelProfile', get_object_vars($data)) && null !== ($data->tunnelProfile ?? null)) {
+            $dataArray['tunnelProfile'] = ($data->tunnelProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->tunnelProfile ?? null, 'json', $context));
         }
-        if ($data->isInitialized('ipsecProfile') && null !== $data->getIpsecProfile()) {
-            $dataArray['ipsecProfile'] = $data->getIpsecProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpsecProfile(), 'json', $context));
+        if (array_key_exists('ipsecProfile', get_object_vars($data)) && null !== ($data->ipsecProfile ?? null)) {
+            $dataArray['ipsecProfile'] = ($data->ipsecProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ipsecProfile ?? null, 'json', $context));
         }
         return $dataArray;
     }

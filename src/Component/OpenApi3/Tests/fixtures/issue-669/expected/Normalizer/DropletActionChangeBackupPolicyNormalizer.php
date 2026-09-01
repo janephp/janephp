@@ -38,11 +38,11 @@ class DropletActionChangeBackupPolicyNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('backup_policy', $data)) {
-            $object->setBackupPolicy($this->denormalizer->denormalize($data['backup_policy'], \Jane\Generated\DigitalOcean\Model\DropletActionChangeBackupPolicyBackupPolicy::class, 'json', $context));
+            $object->backupPolicy = $this->denormalizer->denormalize($data['backup_policy'], \Jane\Generated\DigitalOcean\Model\DropletActionChangeBackupPolicyBackupPolicy::class, 'json', $context);
             unset($data['backup_policy']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +55,9 @@ class DropletActionChangeBackupPolicyNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('backupPolicy') && null !== $data->getBackupPolicy()) {
-            $dataArray['backup_policy'] = $data->getBackupPolicy() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBackupPolicy(), 'json', $context));
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('backupPolicy', get_object_vars($data)) && null !== ($data->backupPolicy ?? null)) {
+            $dataArray['backup_policy'] = ($data->backupPolicy ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

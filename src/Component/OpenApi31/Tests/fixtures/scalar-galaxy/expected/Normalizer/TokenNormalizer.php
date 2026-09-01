@@ -41,7 +41,7 @@ class TokenNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\TokenConstraint());
         }
         if (\array_key_exists('token', $data)) {
-            $object->setToken($data['token']);
+            $object->token = $data['token'];
             unset($data['token']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class TokenNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('token') && null !== $data->getToken()) {
-            $dataArray['token'] = $data->getToken();
+        if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {
+            $dataArray['token'] = $data->token ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

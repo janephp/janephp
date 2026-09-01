@@ -42,39 +42,39 @@ class UserAuditNormalizer implements DenormalizerInterface, NormalizerInterface,
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['creationDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreationDate($date);
+            $object->creationDate = $date;
         }
         if (\array_key_exists('modificationDate', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']);
             if (false === $date_1) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['modificationDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setModificationDate($date_1);
+            $object->modificationDate = $date_1;
         }
         if (\array_key_exists('createdByUser', $data) && $data['createdByUser'] !== null) {
-            $object->setCreatedByUser($data['createdByUser']);
+            $object->createdByUser = $data['createdByUser'];
         }
         elseif (\array_key_exists('createdByUser', $data) && $data['createdByUser'] === null) {
-            $object->setCreatedByUser(null);
+            $object->createdByUser = null;
         }
         if (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] !== null) {
-            $object->setModifiedByUser($data['modifiedByUser']);
+            $object->modifiedByUser = $data['modifiedByUser'];
         }
         elseif (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] === null) {
-            $object->setModifiedByUser(null);
+            $object->modifiedByUser = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['creationDate'] = $data->getCreationDate()->format('Y-m-d\TH:i:sP');
-        $dataArray['modificationDate'] = $data->getModificationDate()->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('createdByUser') && null !== $data->getCreatedByUser()) {
-            $dataArray['createdByUser'] = $data->getCreatedByUser();
+        $dataArray['creationDate'] = ($data->creationDate ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['modificationDate'] = ($data->modificationDate ?? null)->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdByUser', get_object_vars($data)) && null !== ($data->createdByUser ?? null)) {
+            $dataArray['createdByUser'] = $data->createdByUser ?? null;
         }
-        if ($data->isInitialized('modifiedByUser') && null !== $data->getModifiedByUser()) {
-            $dataArray['modifiedByUser'] = $data->getModifiedByUser();
+        if (array_key_exists('modifiedByUser', get_object_vars($data)) && null !== ($data->modifiedByUser ?? null)) {
+            $dataArray['modifiedByUser'] = $data->modifiedByUser ?? null;
         }
         return $dataArray;
     }

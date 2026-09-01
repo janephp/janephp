@@ -38,7 +38,7 @@ class AppComponentInstanceBaseAutoscalingMetricsCpuNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('percent', $data)) {
-            $object->setPercent($data['percent']);
+            $object->percent = $data['percent'];
             unset($data['percent']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppComponentInstanceBaseAutoscalingMetricsCpuNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('percent') && null !== $data->getPercent()) {
-            $dataArray['percent'] = $data->getPercent();
+        if (array_key_exists('percent', get_object_vars($data)) && null !== ($data->percent ?? null)) {
+            $dataArray['percent'] = $data->percent ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -8,543 +8,103 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceShe
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var float
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public float $tangibleAssets;
     /**
      * @var float
      */
-    protected $tangibleAssets;
+    public float $intangibleAssets;
     /**
      * @var float
      */
-    protected $intangibleAssets;
+    public float $totalFixedAssets;
     /**
      * @var float
      */
-    protected $totalFixedAssets;
+    public float $stock;
     /**
      * @var float
      */
-    protected $stock;
+    public float $tradeDebtors;
     /**
      * @var float
      */
-    protected $tradeDebtors;
+    public float $otherDebtors;
     /**
      * @var float
      */
-    protected $otherDebtors;
+    public float $cash;
     /**
      * @var float
      */
-    protected $cash;
+    public float $miscCurrentAssets;
     /**
      * @var float
      */
-    protected $miscCurrentAssets;
+    public float $totalCurrentAssets;
     /**
      * @var float
      */
-    protected $totalCurrentAssets;
+    public float $totalAssets;
     /**
      * @var float
      */
-    protected $totalAssets;
+    public float $tradeCreditors;
     /**
      * @var float
      */
-    protected $tradeCreditors;
+    public float $bankBorrowingsCurrent;
     /**
      * @var float
      */
-    protected $bankBorrowingsCurrent;
+    public float $otherShortTermFinance;
     /**
      * @var float
      */
-    protected $otherShortTermFinance;
+    public float $miscCurrentLiabilities;
     /**
      * @var float
      */
-    protected $miscCurrentLiabilities;
+    public float $totalCurrentLiabilities;
     /**
      * @var float
      */
-    protected $totalCurrentLiabilities;
+    public float $otherLongTermFinance;
     /**
      * @var float
      */
-    protected $otherLongTermFinance;
+    public float $totalLongTermLiabilities;
     /**
      * @var float
      */
-    protected $totalLongTermLiabilities;
+    public float $totalLiabilities;
     /**
      * @var float
      */
-    protected $totalLiabilities;
+    public float $netAssets;
     /**
      * @var float
      */
-    protected $netAssets;
+    public float $issuedShareCapital;
     /**
      * @var float
      */
-    protected $issuedShareCapital;
+    public float $revaluationReserve;
     /**
      * @var float
      */
-    protected $revaluationReserve;
+    public float $revenueReserves;
     /**
      * @var float
      */
-    protected $revenueReserves;
+    public float $otherReserves;
     /**
      * @var float
      */
-    protected $otherReserves;
-    /**
-     * @var float
-     */
-    protected $totalShareholdersEquity;
-    /**
-     * @return float
-     */
-    public function getTangibleAssets(): float
-    {
-        return $this->tangibleAssets;
-    }
-    /**
-     * @param float $tangibleAssets
-     *
-     * @return self
-     */
-    public function setTangibleAssets(float $tangibleAssets): self
-    {
-        $this->initialized['tangibleAssets'] = true;
-        $this->tangibleAssets = $tangibleAssets;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getIntangibleAssets(): float
-    {
-        return $this->intangibleAssets;
-    }
-    /**
-     * @param float $intangibleAssets
-     *
-     * @return self
-     */
-    public function setIntangibleAssets(float $intangibleAssets): self
-    {
-        $this->initialized['intangibleAssets'] = true;
-        $this->intangibleAssets = $intangibleAssets;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTotalFixedAssets(): float
-    {
-        return $this->totalFixedAssets;
-    }
-    /**
-     * @param float $totalFixedAssets
-     *
-     * @return self
-     */
-    public function setTotalFixedAssets(float $totalFixedAssets): self
-    {
-        $this->initialized['totalFixedAssets'] = true;
-        $this->totalFixedAssets = $totalFixedAssets;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getStock(): float
-    {
-        return $this->stock;
-    }
-    /**
-     * @param float $stock
-     *
-     * @return self
-     */
-    public function setStock(float $stock): self
-    {
-        $this->initialized['stock'] = true;
-        $this->stock = $stock;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTradeDebtors(): float
-    {
-        return $this->tradeDebtors;
-    }
-    /**
-     * @param float $tradeDebtors
-     *
-     * @return self
-     */
-    public function setTradeDebtors(float $tradeDebtors): self
-    {
-        $this->initialized['tradeDebtors'] = true;
-        $this->tradeDebtors = $tradeDebtors;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getOtherDebtors(): float
-    {
-        return $this->otherDebtors;
-    }
-    /**
-     * @param float $otherDebtors
-     *
-     * @return self
-     */
-    public function setOtherDebtors(float $otherDebtors): self
-    {
-        $this->initialized['otherDebtors'] = true;
-        $this->otherDebtors = $otherDebtors;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getCash(): float
-    {
-        return $this->cash;
-    }
-    /**
-     * @param float $cash
-     *
-     * @return self
-     */
-    public function setCash(float $cash): self
-    {
-        $this->initialized['cash'] = true;
-        $this->cash = $cash;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getMiscCurrentAssets(): float
-    {
-        return $this->miscCurrentAssets;
-    }
-    /**
-     * @param float $miscCurrentAssets
-     *
-     * @return self
-     */
-    public function setMiscCurrentAssets(float $miscCurrentAssets): self
-    {
-        $this->initialized['miscCurrentAssets'] = true;
-        $this->miscCurrentAssets = $miscCurrentAssets;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTotalCurrentAssets(): float
-    {
-        return $this->totalCurrentAssets;
-    }
-    /**
-     * @param float $totalCurrentAssets
-     *
-     * @return self
-     */
-    public function setTotalCurrentAssets(float $totalCurrentAssets): self
-    {
-        $this->initialized['totalCurrentAssets'] = true;
-        $this->totalCurrentAssets = $totalCurrentAssets;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTotalAssets(): float
-    {
-        return $this->totalAssets;
-    }
-    /**
-     * @param float $totalAssets
-     *
-     * @return self
-     */
-    public function setTotalAssets(float $totalAssets): self
-    {
-        $this->initialized['totalAssets'] = true;
-        $this->totalAssets = $totalAssets;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTradeCreditors(): float
-    {
-        return $this->tradeCreditors;
-    }
-    /**
-     * @param float $tradeCreditors
-     *
-     * @return self
-     */
-    public function setTradeCreditors(float $tradeCreditors): self
-    {
-        $this->initialized['tradeCreditors'] = true;
-        $this->tradeCreditors = $tradeCreditors;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getBankBorrowingsCurrent(): float
-    {
-        return $this->bankBorrowingsCurrent;
-    }
-    /**
-     * @param float $bankBorrowingsCurrent
-     *
-     * @return self
-     */
-    public function setBankBorrowingsCurrent(float $bankBorrowingsCurrent): self
-    {
-        $this->initialized['bankBorrowingsCurrent'] = true;
-        $this->bankBorrowingsCurrent = $bankBorrowingsCurrent;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getOtherShortTermFinance(): float
-    {
-        return $this->otherShortTermFinance;
-    }
-    /**
-     * @param float $otherShortTermFinance
-     *
-     * @return self
-     */
-    public function setOtherShortTermFinance(float $otherShortTermFinance): self
-    {
-        $this->initialized['otherShortTermFinance'] = true;
-        $this->otherShortTermFinance = $otherShortTermFinance;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getMiscCurrentLiabilities(): float
-    {
-        return $this->miscCurrentLiabilities;
-    }
-    /**
-     * @param float $miscCurrentLiabilities
-     *
-     * @return self
-     */
-    public function setMiscCurrentLiabilities(float $miscCurrentLiabilities): self
-    {
-        $this->initialized['miscCurrentLiabilities'] = true;
-        $this->miscCurrentLiabilities = $miscCurrentLiabilities;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTotalCurrentLiabilities(): float
-    {
-        return $this->totalCurrentLiabilities;
-    }
-    /**
-     * @param float $totalCurrentLiabilities
-     *
-     * @return self
-     */
-    public function setTotalCurrentLiabilities(float $totalCurrentLiabilities): self
-    {
-        $this->initialized['totalCurrentLiabilities'] = true;
-        $this->totalCurrentLiabilities = $totalCurrentLiabilities;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getOtherLongTermFinance(): float
-    {
-        return $this->otherLongTermFinance;
-    }
-    /**
-     * @param float $otherLongTermFinance
-     *
-     * @return self
-     */
-    public function setOtherLongTermFinance(float $otherLongTermFinance): self
-    {
-        $this->initialized['otherLongTermFinance'] = true;
-        $this->otherLongTermFinance = $otherLongTermFinance;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTotalLongTermLiabilities(): float
-    {
-        return $this->totalLongTermLiabilities;
-    }
-    /**
-     * @param float $totalLongTermLiabilities
-     *
-     * @return self
-     */
-    public function setTotalLongTermLiabilities(float $totalLongTermLiabilities): self
-    {
-        $this->initialized['totalLongTermLiabilities'] = true;
-        $this->totalLongTermLiabilities = $totalLongTermLiabilities;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTotalLiabilities(): float
-    {
-        return $this->totalLiabilities;
-    }
-    /**
-     * @param float $totalLiabilities
-     *
-     * @return self
-     */
-    public function setTotalLiabilities(float $totalLiabilities): self
-    {
-        $this->initialized['totalLiabilities'] = true;
-        $this->totalLiabilities = $totalLiabilities;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getNetAssets(): float
-    {
-        return $this->netAssets;
-    }
-    /**
-     * @param float $netAssets
-     *
-     * @return self
-     */
-    public function setNetAssets(float $netAssets): self
-    {
-        $this->initialized['netAssets'] = true;
-        $this->netAssets = $netAssets;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getIssuedShareCapital(): float
-    {
-        return $this->issuedShareCapital;
-    }
-    /**
-     * @param float $issuedShareCapital
-     *
-     * @return self
-     */
-    public function setIssuedShareCapital(float $issuedShareCapital): self
-    {
-        $this->initialized['issuedShareCapital'] = true;
-        $this->issuedShareCapital = $issuedShareCapital;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getRevaluationReserve(): float
-    {
-        return $this->revaluationReserve;
-    }
-    /**
-     * @param float $revaluationReserve
-     *
-     * @return self
-     */
-    public function setRevaluationReserve(float $revaluationReserve): self
-    {
-        $this->initialized['revaluationReserve'] = true;
-        $this->revaluationReserve = $revaluationReserve;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getRevenueReserves(): float
-    {
-        return $this->revenueReserves;
-    }
-    /**
-     * @param float $revenueReserves
-     *
-     * @return self
-     */
-    public function setRevenueReserves(float $revenueReserves): self
-    {
-        $this->initialized['revenueReserves'] = true;
-        $this->revenueReserves = $revenueReserves;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getOtherReserves(): float
-    {
-        return $this->otherReserves;
-    }
-    /**
-     * @param float $otherReserves
-     *
-     * @return self
-     */
-    public function setOtherReserves(float $otherReserves): self
-    {
-        $this->initialized['otherReserves'] = true;
-        $this->otherReserves = $otherReserves;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTotalShareholdersEquity(): float
-    {
-        return $this->totalShareholdersEquity;
-    }
-    /**
-     * @param float $totalShareholdersEquity
-     *
-     * @return self
-     */
-    public function setTotalShareholdersEquity(float $totalShareholdersEquity): self
-    {
-        $this->initialized['totalShareholdersEquity'] = true;
-        $this->totalShareholdersEquity = $totalShareholdersEquity;
-        return $this;
-    }
+    public float $totalShareholdersEquity;
     public function definedProperties(): array
     {
-        return ['tangibleAssets' => ['tangibleAssets', 'getTangibleAssets', 'setTangibleAssets'], 'intangibleAssets' => ['intangibleAssets', 'getIntangibleAssets', 'setIntangibleAssets'], 'totalFixedAssets' => ['totalFixedAssets', 'getTotalFixedAssets', 'setTotalFixedAssets'], 'stock' => ['stock', 'getStock', 'setStock'], 'tradeDebtors' => ['tradeDebtors', 'getTradeDebtors', 'setTradeDebtors'], 'otherDebtors' => ['otherDebtors', 'getOtherDebtors', 'setOtherDebtors'], 'cash' => ['cash', 'getCash', 'setCash'], 'miscCurrentAssets' => ['miscCurrentAssets', 'getMiscCurrentAssets', 'setMiscCurrentAssets'], 'totalCurrentAssets' => ['totalCurrentAssets', 'getTotalCurrentAssets', 'setTotalCurrentAssets'], 'totalAssets' => ['totalAssets', 'getTotalAssets', 'setTotalAssets'], 'tradeCreditors' => ['tradeCreditors', 'getTradeCreditors', 'setTradeCreditors'], 'bankBorrowingsCurrent' => ['bankBorrowingsCurrent', 'getBankBorrowingsCurrent', 'setBankBorrowingsCurrent'], 'otherShortTermFinance' => ['otherShortTermFinance', 'getOtherShortTermFinance', 'setOtherShortTermFinance'], 'miscCurrentLiabilities' => ['miscCurrentLiabilities', 'getMiscCurrentLiabilities', 'setMiscCurrentLiabilities'], 'totalCurrentLiabilities' => ['totalCurrentLiabilities', 'getTotalCurrentLiabilities', 'setTotalCurrentLiabilities'], 'otherLongTermFinance' => ['otherLongTermFinance', 'getOtherLongTermFinance', 'setOtherLongTermFinance'], 'totalLongTermLiabilities' => ['totalLongTermLiabilities', 'getTotalLongTermLiabilities', 'setTotalLongTermLiabilities'], 'totalLiabilities' => ['totalLiabilities', 'getTotalLiabilities', 'setTotalLiabilities'], 'netAssets' => ['netAssets', 'getNetAssets', 'setNetAssets'], 'issuedShareCapital' => ['issuedShareCapital', 'getIssuedShareCapital', 'setIssuedShareCapital'], 'revaluationReserve' => ['revaluationReserve', 'getRevaluationReserve', 'setRevaluationReserve'], 'revenueReserves' => ['revenueReserves', 'getRevenueReserves', 'setRevenueReserves'], 'otherReserves' => ['otherReserves', 'getOtherReserves', 'setOtherReserves'], 'totalShareholdersEquity' => ['totalShareholdersEquity', 'getTotalShareholdersEquity', 'setTotalShareholdersEquity']];
+        return ['tangibleAssets' => 'tangibleAssets', 'intangibleAssets' => 'intangibleAssets', 'totalFixedAssets' => 'totalFixedAssets', 'stock' => 'stock', 'tradeDebtors' => 'tradeDebtors', 'otherDebtors' => 'otherDebtors', 'cash' => 'cash', 'miscCurrentAssets' => 'miscCurrentAssets', 'totalCurrentAssets' => 'totalCurrentAssets', 'totalAssets' => 'totalAssets', 'tradeCreditors' => 'tradeCreditors', 'bankBorrowingsCurrent' => 'bankBorrowingsCurrent', 'otherShortTermFinance' => 'otherShortTermFinance', 'miscCurrentLiabilities' => 'miscCurrentLiabilities', 'totalCurrentLiabilities' => 'totalCurrentLiabilities', 'otherLongTermFinance' => 'otherLongTermFinance', 'totalLongTermLiabilities' => 'totalLongTermLiabilities', 'totalLiabilities' => 'totalLiabilities', 'netAssets' => 'netAssets', 'issuedShareCapital' => 'issuedShareCapital', 'revaluationReserve' => 'revaluationReserve', 'revenueReserves' => 'revenueReserves', 'otherReserves' => 'otherReserves', 'totalShareholdersEquity' => 'totalShareholdersEquity'];
     }
 }

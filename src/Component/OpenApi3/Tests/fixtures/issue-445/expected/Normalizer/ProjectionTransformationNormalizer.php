@@ -38,15 +38,15 @@ class ProjectionTransformationNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('transformations', $data) && $data['transformations'] !== null) {
@@ -54,11 +54,11 @@ class ProjectionTransformationNormalizer implements DenormalizerInterface, Norma
             foreach ($data['transformations'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BusinessRuleTransformation::class, 'json', $context);
             }
-            $object->setTransformations($values);
+            $object->transformations = $values;
             unset($data['transformations']);
         }
         elseif (\array_key_exists('transformations', $data) && $data['transformations'] === null) {
-            $object->setTransformations(null);
+            $object->transformations = null;
             unset($data['transformations']);
         }
         foreach ($data as $key => $value_1) {
@@ -71,13 +71,13 @@ class ProjectionTransformationNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('transformations') && null !== $data->getTransformations()) {
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('transformations', get_object_vars($data)) && null !== ($data->transformations ?? null)) {
             $values = [];
-            foreach ($data->getTransformations() as $value) {
+            foreach ($data->transformations ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['transformations'] = $values;

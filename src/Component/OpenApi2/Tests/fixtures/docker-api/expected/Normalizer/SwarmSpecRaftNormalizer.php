@@ -41,39 +41,39 @@ class SwarmSpecRaftNormalizer implements DenormalizerInterface, NormalizerInterf
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecRaftConstraint());
         }
         if (\array_key_exists('SnapshotInterval', $data)) {
-            $object->setSnapshotInterval($data['SnapshotInterval']);
+            $object->snapshotInterval = $data['SnapshotInterval'];
         }
         if (\array_key_exists('KeepOldSnapshots', $data)) {
-            $object->setKeepOldSnapshots($data['KeepOldSnapshots']);
+            $object->keepOldSnapshots = $data['KeepOldSnapshots'];
         }
         if (\array_key_exists('LogEntriesForSlowFollowers', $data)) {
-            $object->setLogEntriesForSlowFollowers($data['LogEntriesForSlowFollowers']);
+            $object->logEntriesForSlowFollowers = $data['LogEntriesForSlowFollowers'];
         }
         if (\array_key_exists('ElectionTick', $data)) {
-            $object->setElectionTick($data['ElectionTick']);
+            $object->electionTick = $data['ElectionTick'];
         }
         if (\array_key_exists('HeartbeatTick', $data)) {
-            $object->setHeartbeatTick($data['HeartbeatTick']);
+            $object->heartbeatTick = $data['HeartbeatTick'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('snapshotInterval') && null !== $data->getSnapshotInterval()) {
-            $dataArray['SnapshotInterval'] = $data->getSnapshotInterval();
+        if (array_key_exists('snapshotInterval', get_object_vars($data)) && null !== ($data->snapshotInterval ?? null)) {
+            $dataArray['SnapshotInterval'] = $data->snapshotInterval ?? null;
         }
-        if ($data->isInitialized('keepOldSnapshots') && null !== $data->getKeepOldSnapshots()) {
-            $dataArray['KeepOldSnapshots'] = $data->getKeepOldSnapshots();
+        if (array_key_exists('keepOldSnapshots', get_object_vars($data)) && null !== ($data->keepOldSnapshots ?? null)) {
+            $dataArray['KeepOldSnapshots'] = $data->keepOldSnapshots ?? null;
         }
-        if ($data->isInitialized('logEntriesForSlowFollowers') && null !== $data->getLogEntriesForSlowFollowers()) {
-            $dataArray['LogEntriesForSlowFollowers'] = $data->getLogEntriesForSlowFollowers();
+        if (array_key_exists('logEntriesForSlowFollowers', get_object_vars($data)) && null !== ($data->logEntriesForSlowFollowers ?? null)) {
+            $dataArray['LogEntriesForSlowFollowers'] = $data->logEntriesForSlowFollowers ?? null;
         }
-        if ($data->isInitialized('electionTick') && null !== $data->getElectionTick()) {
-            $dataArray['ElectionTick'] = $data->getElectionTick();
+        if (array_key_exists('electionTick', get_object_vars($data)) && null !== ($data->electionTick ?? null)) {
+            $dataArray['ElectionTick'] = $data->electionTick ?? null;
         }
-        if ($data->isInitialized('heartbeatTick') && null !== $data->getHeartbeatTick()) {
-            $dataArray['HeartbeatTick'] = $data->getHeartbeatTick();
+        if (array_key_exists('heartbeatTick', get_object_vars($data)) && null !== ($data->heartbeatTick ?? null)) {
+            $dataArray['HeartbeatTick'] = $data->heartbeatTick ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecRaftConstraint());

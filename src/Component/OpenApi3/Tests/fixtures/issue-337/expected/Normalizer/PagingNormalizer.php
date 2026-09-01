@@ -50,19 +50,19 @@ class PagingNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['last'] = (float) $data['last'];
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         if (\array_key_exists('prev', $data)) {
-            $object->setPrev($data['prev']);
+            $object->prev = $data['prev'];
             unset($data['prev']);
         }
         if (\array_key_exists('next', $data)) {
-            $object->setNext($data['next']);
+            $object->next = $data['next'];
             unset($data['next']);
         }
         if (\array_key_exists('last', $data)) {
-            $object->setLast($data['last']);
+            $object->last = $data['last'];
             unset($data['last']);
         }
         foreach ($data as $key => $value) {
@@ -75,17 +75,17 @@ class PagingNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['size'] = $data->getSize();
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['size'] = $data->size ?? null;
         }
-        if ($data->isInitialized('prev') && null !== $data->getPrev()) {
-            $dataArray['prev'] = $data->getPrev();
+        if (array_key_exists('prev', get_object_vars($data)) && null !== ($data->prev ?? null)) {
+            $dataArray['prev'] = $data->prev ?? null;
         }
-        if ($data->isInitialized('next') && null !== $data->getNext()) {
-            $dataArray['next'] = $data->getNext();
+        if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
+            $dataArray['next'] = $data->next ?? null;
         }
-        if ($data->isInitialized('last') && null !== $data->getLast()) {
-            $dataArray['last'] = $data->getLast();
+        if (array_key_exists('last', get_object_vars($data)) && null !== ($data->last ?? null)) {
+            $dataArray['last'] = $data->last ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

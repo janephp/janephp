@@ -38,15 +38,15 @@ class ScheduledDetailsNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('cron', $data)) {
-            $object->setCron($data['cron']);
+            $object->cron = $data['cron'];
             unset($data['cron']);
         }
         if (\array_key_exists('body', $data) && $data['body'] !== null) {
-            $object->setBody($this->denormalizer->denormalize($data['body'], \Jane\Generated\DigitalOcean\Model\ScheduledDetailsBody::class, 'json', $context));
+            $object->body = $this->denormalizer->denormalize($data['body'], \Jane\Generated\DigitalOcean\Model\ScheduledDetailsBody::class, 'json', $context);
             unset($data['body']);
         }
         elseif (\array_key_exists('body', $data) && $data['body'] === null) {
-            $object->setBody(null);
+            $object->body = null;
             unset($data['body']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class ScheduledDetailsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['cron'] = $data->getCron();
-        if ($data->isInitialized('body') && null !== $data->getBody()) {
-            $dataArray['body'] = $data->getBody() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBody(), 'json', $context));
+        $dataArray['cron'] = $data->cron ?? null;
+        if (array_key_exists('body', get_object_vars($data)) && null !== ($data->body ?? null)) {
+            $dataArray['body'] = ($data->body ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->body ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

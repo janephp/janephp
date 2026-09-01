@@ -37,19 +37,17 @@ class DiscriminatorNormalizer implements DenormalizerInterface, NormalizerInterf
             return $object;
         }
 
-        if (\array_key_exists('propertyName', $data) && null !== $data['propertyName']) {
-            $object->setPropertyName($data['propertyName']);
-        } elseif (\array_key_exists('propertyName', $data)) {
-            $object->setPropertyName(null);
+        if (\array_key_exists('propertyName', $data)) {
+            $object->propertyName = $data['propertyName'];
         }
         if (\array_key_exists('mapping', $data) && null !== $data['mapping']) {
             $mapping = [];
             foreach ($data['mapping'] as $key => $value) {
                 $mapping[$key] = $value;
             }
-            $object->setMapping($mapping);
+            $object->mapping = $mapping;
         } elseif (\array_key_exists('mapping', $data)) {
-            $object->setMapping(null);
+            $object->mapping = null;
         }
 
         return $object;
@@ -58,12 +56,12 @@ class DiscriminatorNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $data = [];
-        if (null !== $object->getPropertyName() || $object->isInitialized('propertyName')) {
-            $data['propertyName'] = $object->getPropertyName();
+        if (\array_key_exists('propertyName', get_object_vars($object)) && null !== $object->propertyName) {
+            $data['propertyName'] = $object->propertyName;
         }
-        if ($object->isInitialized('mapping') && null !== $object->getMapping()) {
+        if (\array_key_exists('mapping', get_object_vars($object)) && null !== $object->mapping) {
             $mapping = [];
-            foreach ($object->getMapping() as $key => $value) {
+            foreach ($object->mapping as $key => $value) {
                 $mapping[$key] = $value;
             }
             $data['mapping'] = $mapping;

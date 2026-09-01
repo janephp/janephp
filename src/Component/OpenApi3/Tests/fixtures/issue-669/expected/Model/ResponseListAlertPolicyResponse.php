@@ -8,81 +8,19 @@ class ResponseListAlertPolicyResponse implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var list<AlertPolicy>
      */
-    protected $policies;
+    public array $policies;
     /**
      * @var PageLinks
      */
-    protected $links;
+    public PageLinks $links;
     /**
      * @var MetaMeta
      */
-    protected $meta;
-    /**
-     * @return list<AlertPolicy>
-     */
-    public function getPolicies(): array
-    {
-        return $this->policies;
-    }
-    /**
-     * @param list<AlertPolicy> $policies
-     *
-     * @return self
-     */
-    public function setPolicies(array $policies): self
-    {
-        $this->initialized['policies'] = true;
-        $this->policies = $policies;
-        return $this;
-    }
-    /**
-     * @return PageLinks
-     */
-    public function getLinks(): PageLinks
-    {
-        return $this->links;
-    }
-    /**
-     * @param PageLinks $links
-     *
-     * @return self
-     */
-    public function setLinks(PageLinks $links): self
-    {
-        $this->initialized['links'] = true;
-        $this->links = $links;
-        return $this;
-    }
-    /**
-     * @return MetaMeta
-     */
-    public function getMeta(): MetaMeta
-    {
-        return $this->meta;
-    }
-    /**
-     * @param MetaMeta $meta
-     *
-     * @return self
-     */
-    public function setMeta(MetaMeta $meta): self
-    {
-        $this->initialized['meta'] = true;
-        $this->meta = $meta;
-        return $this;
-    }
+    public MetaMeta $meta;
     public function definedProperties(): array
     {
-        return ['policies' => ['policies', 'getPolicies', 'setPolicies'], 'links' => ['links', 'getLinks', 'setLinks'], 'meta' => ['meta', 'getMeta', 'setMeta']];
+        return ['policies' => 'policies', 'links' => 'links', 'meta' => 'meta'];
     }
 }

@@ -38,11 +38,11 @@ class GpuInfoVramNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('amount', $data)) {
-            $object->setAmount($data['amount']);
+            $object->amount = $data['amount'];
             unset($data['amount']);
         }
         if (\array_key_exists('unit', $data)) {
-            $object->setUnit($data['unit']);
+            $object->unit = $data['unit'];
             unset($data['unit']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class GpuInfoVramNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
-            $dataArray['amount'] = $data->getAmount();
+        if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
+            $dataArray['amount'] = $data->amount ?? null;
         }
-        if ($data->isInitialized('unit') && null !== $data->getUnit()) {
-            $dataArray['unit'] = $data->getUnit();
+        if (array_key_exists('unit', get_object_vars($data)) && null !== ($data->unit ?? null)) {
+            $dataArray['unit'] = $data->unit ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

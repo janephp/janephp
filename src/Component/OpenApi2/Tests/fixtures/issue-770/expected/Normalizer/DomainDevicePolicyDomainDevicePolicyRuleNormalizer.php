@@ -44,51 +44,51 @@ class DomainDevicePolicyDomainDevicePolicyRuleNormalizer implements Denormalizer
             $data['downlink'] = (float) $data['downlink'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('deviceType', $data)) {
-            $object->setDeviceType($data['deviceType']);
+            $object->deviceType = $data['deviceType'];
         }
         if (\array_key_exists('osVendor', $data)) {
-            $object->setOsVendor($data['osVendor']);
+            $object->osVendor = $data['osVendor'];
         }
         if (\array_key_exists('uplink', $data)) {
-            $object->setUplink($data['uplink']);
+            $object->uplink = $data['uplink'];
         }
         if (\array_key_exists('downlink', $data)) {
-            $object->setDownlink($data['downlink']);
+            $object->downlink = $data['downlink'];
         }
         if (\array_key_exists('vlan', $data)) {
-            $object->setVlan($data['vlan']);
+            $object->vlan = $data['vlan'];
         }
         if (\array_key_exists('action', $data)) {
-            $object->setAction($data['action']);
+            $object->action = $data['action'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('deviceType') && null !== $data->getDeviceType()) {
-            $dataArray['deviceType'] = $data->getDeviceType();
+        if (array_key_exists('deviceType', get_object_vars($data)) && null !== ($data->deviceType ?? null)) {
+            $dataArray['deviceType'] = $data->deviceType ?? null;
         }
-        if ($data->isInitialized('osVendor') && null !== $data->getOsVendor()) {
-            $dataArray['osVendor'] = $data->getOsVendor();
+        if (array_key_exists('osVendor', get_object_vars($data)) && null !== ($data->osVendor ?? null)) {
+            $dataArray['osVendor'] = $data->osVendor ?? null;
         }
-        if ($data->isInitialized('uplink') && null !== $data->getUplink()) {
-            $dataArray['uplink'] = $data->getUplink();
+        if (array_key_exists('uplink', get_object_vars($data)) && null !== ($data->uplink ?? null)) {
+            $dataArray['uplink'] = $data->uplink ?? null;
         }
-        if ($data->isInitialized('downlink') && null !== $data->getDownlink()) {
-            $dataArray['downlink'] = $data->getDownlink();
+        if (array_key_exists('downlink', get_object_vars($data)) && null !== ($data->downlink ?? null)) {
+            $dataArray['downlink'] = $data->downlink ?? null;
         }
-        if ($data->isInitialized('vlan') && null !== $data->getVlan()) {
-            $dataArray['vlan'] = $data->getVlan();
+        if (array_key_exists('vlan', get_object_vars($data)) && null !== ($data->vlan ?? null)) {
+            $dataArray['vlan'] = $data->vlan ?? null;
         }
-        if ($data->isInitialized('action') && null !== $data->getAction()) {
-            $dataArray['action'] = $data->getAction();
+        if (array_key_exists('action', get_object_vars($data)) && null !== ($data->action ?? null)) {
+            $dataArray['action'] = $data->action ?? null;
         }
         return $dataArray;
     }

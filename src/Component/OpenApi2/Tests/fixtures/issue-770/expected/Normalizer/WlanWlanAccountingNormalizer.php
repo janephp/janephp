@@ -47,57 +47,57 @@ class WlanWlanAccountingNormalizer implements DenormalizerInterface, NormalizerI
             $data['accountingDelayEnabled'] = (bool) $data['accountingDelayEnabled'];
         }
         if (\array_key_exists('throughController', $data)) {
-            $object->setThroughController($data['throughController']);
+            $object->throughController = $data['throughController'];
         }
         if (\array_key_exists('realmBasedAcct', $data)) {
-            $object->setRealmBasedAcct($data['realmBasedAcct']);
+            $object->realmBasedAcct = $data['realmBasedAcct'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('interimUpdateMin', $data)) {
-            $object->setInterimUpdateMin($data['interimUpdateMin']);
+            $object->interimUpdateMin = $data['interimUpdateMin'];
         }
         if (\array_key_exists('accountingDelayEnabled', $data)) {
-            $object->setAccountingDelayEnabled($data['accountingDelayEnabled']);
+            $object->accountingDelayEnabled = $data['accountingDelayEnabled'];
         }
         if (\array_key_exists('backupAccountingId', $data)) {
-            $object->setBackupAccountingId($data['backupAccountingId']);
+            $object->backupAccountingId = $data['backupAccountingId'];
         }
         if (\array_key_exists('backupAccountingName', $data)) {
-            $object->setBackupAccountingName($data['backupAccountingName']);
+            $object->backupAccountingName = $data['backupAccountingName'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('throughController') && null !== $data->getThroughController()) {
-            $dataArray['throughController'] = $data->getThroughController();
+        if (array_key_exists('throughController', get_object_vars($data)) && null !== ($data->throughController ?? null)) {
+            $dataArray['throughController'] = $data->throughController ?? null;
         }
-        if ($data->isInitialized('realmBasedAcct') && null !== $data->getRealmBasedAcct()) {
-            $dataArray['realmBasedAcct'] = $data->getRealmBasedAcct();
+        if (array_key_exists('realmBasedAcct', get_object_vars($data)) && null !== ($data->realmBasedAcct ?? null)) {
+            $dataArray['realmBasedAcct'] = $data->realmBasedAcct ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('interimUpdateMin') && null !== $data->getInterimUpdateMin()) {
-            $dataArray['interimUpdateMin'] = $data->getInterimUpdateMin();
+        if (array_key_exists('interimUpdateMin', get_object_vars($data)) && null !== ($data->interimUpdateMin ?? null)) {
+            $dataArray['interimUpdateMin'] = $data->interimUpdateMin ?? null;
         }
-        if ($data->isInitialized('accountingDelayEnabled') && null !== $data->getAccountingDelayEnabled()) {
-            $dataArray['accountingDelayEnabled'] = $data->getAccountingDelayEnabled();
+        if (array_key_exists('accountingDelayEnabled', get_object_vars($data)) && null !== ($data->accountingDelayEnabled ?? null)) {
+            $dataArray['accountingDelayEnabled'] = $data->accountingDelayEnabled ?? null;
         }
-        if ($data->isInitialized('backupAccountingId') && null !== $data->getBackupAccountingId()) {
-            $dataArray['backupAccountingId'] = $data->getBackupAccountingId();
+        if (array_key_exists('backupAccountingId', get_object_vars($data)) && null !== ($data->backupAccountingId ?? null)) {
+            $dataArray['backupAccountingId'] = $data->backupAccountingId ?? null;
         }
-        if ($data->isInitialized('backupAccountingName') && null !== $data->getBackupAccountingName()) {
-            $dataArray['backupAccountingName'] = $data->getBackupAccountingName();
+        if (array_key_exists('backupAccountingName', get_object_vars($data)) && null !== ($data->backupAccountingName ?? null)) {
+            $dataArray['backupAccountingName'] = $data->backupAccountingName ?? null;
         }
         return $dataArray;
     }

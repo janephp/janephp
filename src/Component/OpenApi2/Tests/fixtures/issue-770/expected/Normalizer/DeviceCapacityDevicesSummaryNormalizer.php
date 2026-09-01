@@ -38,111 +38,111 @@ class DeviceCapacityDevicesSummaryNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('maxApOfCluster', $data)) {
-            $object->setMaxApOfCluster($data['maxApOfCluster']);
+            $object->maxApOfCluster = $data['maxApOfCluster'];
         }
         if (\array_key_exists('maxSwitchOfCluster', $data)) {
-            $object->setMaxSwitchOfCluster($data['maxSwitchOfCluster']);
+            $object->maxSwitchOfCluster = $data['maxSwitchOfCluster'];
         }
         if (\array_key_exists('apCapacity', $data)) {
-            $object->setApCapacity($data['apCapacity']);
+            $object->apCapacity = $data['apCapacity'];
         }
         if (\array_key_exists('switchCapacity', $data)) {
-            $object->setSwitchCapacity($data['switchCapacity']);
+            $object->switchCapacity = $data['switchCapacity'];
         }
         if (\array_key_exists('totalApCapacity', $data)) {
-            $object->setTotalApCapacity($data['totalApCapacity']);
+            $object->totalApCapacity = $data['totalApCapacity'];
         }
         if (\array_key_exists('totalSwitchCapacity', $data)) {
-            $object->setTotalSwitchCapacity($data['totalSwitchCapacity']);
+            $object->totalSwitchCapacity = $data['totalSwitchCapacity'];
         }
         if (\array_key_exists('totalRemainingApCapacity', $data)) {
-            $object->setTotalRemainingApCapacity($data['totalRemainingApCapacity']);
+            $object->totalRemainingApCapacity = $data['totalRemainingApCapacity'];
         }
         if (\array_key_exists('totalRemainingSwitchCapacity', $data)) {
-            $object->setTotalRemainingSwitchCapacity($data['totalRemainingSwitchCapacity']);
+            $object->totalRemainingSwitchCapacity = $data['totalRemainingSwitchCapacity'];
         }
         if (\array_key_exists('aps', $data)) {
-            $object->setAps($data['aps']);
+            $object->aps = $data['aps'];
         }
         if (\array_key_exists('dualRadioAps', $data)) {
-            $object->setDualRadioAps($data['dualRadioAps']);
+            $object->dualRadioAps = $data['dualRadioAps'];
         }
         if (\array_key_exists('triRadioAps', $data)) {
-            $object->setTriRadioAps($data['triRadioAps']);
+            $object->triRadioAps = $data['triRadioAps'];
         }
         if (\array_key_exists('switches', $data)) {
-            $object->setSwitches($data['switches']);
+            $object->switches = $data['switches'];
         }
         if (\array_key_exists('totalAps', $data)) {
-            $object->setTotalAps($data['totalAps']);
+            $object->totalAps = $data['totalAps'];
         }
         if (\array_key_exists('totalSwitches', $data)) {
-            $object->setTotalSwitches($data['totalSwitches']);
+            $object->totalSwitches = $data['totalSwitches'];
         }
         if (\array_key_exists('totalRemainingDps', $data)) {
-            $object->setTotalRemainingDps($data['totalRemainingDps']);
+            $object->totalRemainingDps = $data['totalRemainingDps'];
         }
         if (\array_key_exists('totalConnectedDps', $data)) {
-            $object->setTotalConnectedDps($data['totalConnectedDps']);
+            $object->totalConnectedDps = $data['totalConnectedDps'];
         }
         if (\array_key_exists('totalDpCapacity', $data)) {
-            $object->setTotalDpCapacity($data['totalDpCapacity']);
+            $object->totalDpCapacity = $data['totalDpCapacity'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('maxApOfCluster') && null !== $data->getMaxApOfCluster()) {
-            $dataArray['maxApOfCluster'] = $data->getMaxApOfCluster();
+        if (array_key_exists('maxApOfCluster', get_object_vars($data)) && null !== ($data->maxApOfCluster ?? null)) {
+            $dataArray['maxApOfCluster'] = $data->maxApOfCluster ?? null;
         }
-        if ($data->isInitialized('maxSwitchOfCluster') && null !== $data->getMaxSwitchOfCluster()) {
-            $dataArray['maxSwitchOfCluster'] = $data->getMaxSwitchOfCluster();
+        if (array_key_exists('maxSwitchOfCluster', get_object_vars($data)) && null !== ($data->maxSwitchOfCluster ?? null)) {
+            $dataArray['maxSwitchOfCluster'] = $data->maxSwitchOfCluster ?? null;
         }
-        if ($data->isInitialized('apCapacity') && null !== $data->getApCapacity()) {
-            $dataArray['apCapacity'] = $data->getApCapacity();
+        if (array_key_exists('apCapacity', get_object_vars($data)) && null !== ($data->apCapacity ?? null)) {
+            $dataArray['apCapacity'] = $data->apCapacity ?? null;
         }
-        if ($data->isInitialized('switchCapacity') && null !== $data->getSwitchCapacity()) {
-            $dataArray['switchCapacity'] = $data->getSwitchCapacity();
+        if (array_key_exists('switchCapacity', get_object_vars($data)) && null !== ($data->switchCapacity ?? null)) {
+            $dataArray['switchCapacity'] = $data->switchCapacity ?? null;
         }
-        if ($data->isInitialized('totalApCapacity') && null !== $data->getTotalApCapacity()) {
-            $dataArray['totalApCapacity'] = $data->getTotalApCapacity();
+        if (array_key_exists('totalApCapacity', get_object_vars($data)) && null !== ($data->totalApCapacity ?? null)) {
+            $dataArray['totalApCapacity'] = $data->totalApCapacity ?? null;
         }
-        if ($data->isInitialized('totalSwitchCapacity') && null !== $data->getTotalSwitchCapacity()) {
-            $dataArray['totalSwitchCapacity'] = $data->getTotalSwitchCapacity();
+        if (array_key_exists('totalSwitchCapacity', get_object_vars($data)) && null !== ($data->totalSwitchCapacity ?? null)) {
+            $dataArray['totalSwitchCapacity'] = $data->totalSwitchCapacity ?? null;
         }
-        if ($data->isInitialized('totalRemainingApCapacity') && null !== $data->getTotalRemainingApCapacity()) {
-            $dataArray['totalRemainingApCapacity'] = $data->getTotalRemainingApCapacity();
+        if (array_key_exists('totalRemainingApCapacity', get_object_vars($data)) && null !== ($data->totalRemainingApCapacity ?? null)) {
+            $dataArray['totalRemainingApCapacity'] = $data->totalRemainingApCapacity ?? null;
         }
-        if ($data->isInitialized('totalRemainingSwitchCapacity') && null !== $data->getTotalRemainingSwitchCapacity()) {
-            $dataArray['totalRemainingSwitchCapacity'] = $data->getTotalRemainingSwitchCapacity();
+        if (array_key_exists('totalRemainingSwitchCapacity', get_object_vars($data)) && null !== ($data->totalRemainingSwitchCapacity ?? null)) {
+            $dataArray['totalRemainingSwitchCapacity'] = $data->totalRemainingSwitchCapacity ?? null;
         }
-        if ($data->isInitialized('aps') && null !== $data->getAps()) {
-            $dataArray['aps'] = $data->getAps();
+        if (array_key_exists('aps', get_object_vars($data)) && null !== ($data->aps ?? null)) {
+            $dataArray['aps'] = $data->aps ?? null;
         }
-        if ($data->isInitialized('dualRadioAps') && null !== $data->getDualRadioAps()) {
-            $dataArray['dualRadioAps'] = $data->getDualRadioAps();
+        if (array_key_exists('dualRadioAps', get_object_vars($data)) && null !== ($data->dualRadioAps ?? null)) {
+            $dataArray['dualRadioAps'] = $data->dualRadioAps ?? null;
         }
-        if ($data->isInitialized('triRadioAps') && null !== $data->getTriRadioAps()) {
-            $dataArray['triRadioAps'] = $data->getTriRadioAps();
+        if (array_key_exists('triRadioAps', get_object_vars($data)) && null !== ($data->triRadioAps ?? null)) {
+            $dataArray['triRadioAps'] = $data->triRadioAps ?? null;
         }
-        if ($data->isInitialized('switches') && null !== $data->getSwitches()) {
-            $dataArray['switches'] = $data->getSwitches();
+        if (array_key_exists('switches', get_object_vars($data)) && null !== ($data->switches ?? null)) {
+            $dataArray['switches'] = $data->switches ?? null;
         }
-        if ($data->isInitialized('totalAps') && null !== $data->getTotalAps()) {
-            $dataArray['totalAps'] = $data->getTotalAps();
+        if (array_key_exists('totalAps', get_object_vars($data)) && null !== ($data->totalAps ?? null)) {
+            $dataArray['totalAps'] = $data->totalAps ?? null;
         }
-        if ($data->isInitialized('totalSwitches') && null !== $data->getTotalSwitches()) {
-            $dataArray['totalSwitches'] = $data->getTotalSwitches();
+        if (array_key_exists('totalSwitches', get_object_vars($data)) && null !== ($data->totalSwitches ?? null)) {
+            $dataArray['totalSwitches'] = $data->totalSwitches ?? null;
         }
-        if ($data->isInitialized('totalRemainingDps') && null !== $data->getTotalRemainingDps()) {
-            $dataArray['totalRemainingDps'] = $data->getTotalRemainingDps();
+        if (array_key_exists('totalRemainingDps', get_object_vars($data)) && null !== ($data->totalRemainingDps ?? null)) {
+            $dataArray['totalRemainingDps'] = $data->totalRemainingDps ?? null;
         }
-        if ($data->isInitialized('totalConnectedDps') && null !== $data->getTotalConnectedDps()) {
-            $dataArray['totalConnectedDps'] = $data->getTotalConnectedDps();
+        if (array_key_exists('totalConnectedDps', get_object_vars($data)) && null !== ($data->totalConnectedDps ?? null)) {
+            $dataArray['totalConnectedDps'] = $data->totalConnectedDps ?? null;
         }
-        if ($data->isInitialized('totalDpCapacity') && null !== $data->getTotalDpCapacity()) {
-            $dataArray['totalDpCapacity'] = $data->getTotalDpCapacity();
+        if (array_key_exists('totalDpCapacity', get_object_vars($data)) && null !== ($data->totalDpCapacity ?? null)) {
+            $dataArray['totalDpCapacity'] = $data->totalDpCapacity ?? null;
         }
         return $dataArray;
     }

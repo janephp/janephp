@@ -8,183 +8,43 @@ class AlertUpdatable implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * A human-friendly display name.
      *
      * @var string
      */
-    protected $name;
+    public string $name;
     /**
      * The type of alert.
      *
      * @var string
      */
-    protected $type;
+    public string $type;
     /**
      * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      *
      * @var int
      */
-    protected $threshold;
+    public int $threshold;
     /**
      * The comparison operator used against the alert's threshold.
      *
      * @var string
      */
-    protected $comparison;
+    public string $comparison;
     /**
      * The notification settings for a trigger alert.
      *
      * @var Notification
      */
-    protected $notifications;
+    public Notification $notifications;
     /**
      * Period of time the threshold must be exceeded to trigger the alert.
      *
      * @var string
      */
-    protected $period;
-    /**
-     * A human-friendly display name.
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * A human-friendly display name.
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * The type of alert.
-     *
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-    /**
-     * The type of alert.
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType(string $type): self
-    {
-        $this->initialized['type'] = true;
-        $this->type = $type;
-        return $this;
-    }
-    /**
-     * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
-     *
-     * @return int
-     */
-    public function getThreshold(): int
-    {
-        return $this->threshold;
-    }
-    /**
-     * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
-     *
-     * @param int $threshold
-     *
-     * @return self
-     */
-    public function setThreshold(int $threshold): self
-    {
-        $this->initialized['threshold'] = true;
-        $this->threshold = $threshold;
-        return $this;
-    }
-    /**
-     * The comparison operator used against the alert's threshold.
-     *
-     * @return string
-     */
-    public function getComparison(): string
-    {
-        return $this->comparison;
-    }
-    /**
-     * The comparison operator used against the alert's threshold.
-     *
-     * @param string $comparison
-     *
-     * @return self
-     */
-    public function setComparison(string $comparison): self
-    {
-        $this->initialized['comparison'] = true;
-        $this->comparison = $comparison;
-        return $this;
-    }
-    /**
-     * The notification settings for a trigger alert.
-     *
-     * @return Notification
-     */
-    public function getNotifications(): Notification
-    {
-        return $this->notifications;
-    }
-    /**
-     * The notification settings for a trigger alert.
-     *
-     * @param Notification $notifications
-     *
-     * @return self
-     */
-    public function setNotifications(Notification $notifications): self
-    {
-        $this->initialized['notifications'] = true;
-        $this->notifications = $notifications;
-        return $this;
-    }
-    /**
-     * Period of time the threshold must be exceeded to trigger the alert.
-     *
-     * @return string
-     */
-    public function getPeriod(): string
-    {
-        return $this->period;
-    }
-    /**
-     * Period of time the threshold must be exceeded to trigger the alert.
-     *
-     * @param string $period
-     *
-     * @return self
-     */
-    public function setPeriod(string $period): self
-    {
-        $this->initialized['period'] = true;
-        $this->period = $period;
-        return $this;
-    }
+    public string $period;
     public function definedProperties(): array
     {
-        return ['name' => ['name', 'getName', 'setName'], 'type' => ['type', 'getType', 'setType'], 'threshold' => ['threshold', 'getThreshold', 'setThreshold'], 'comparison' => ['comparison', 'getComparison', 'setComparison'], 'notifications' => ['notifications', 'getNotifications', 'setNotifications'], 'period' => ['period', 'getPeriod', 'setPeriod']];
+        return ['name' => 'name', 'type' => 'type', 'threshold' => 'threshold', 'comparison' => 'comparison', 'notifications' => 'notifications', 'period' => 'period'];
     }
 }
