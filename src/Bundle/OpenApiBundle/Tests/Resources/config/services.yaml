@@ -1,3 +1,0 @@
-services:
-  Jane\Bundle\OpenApiBundle\Command\OpenApiGenerateCommand:
-    public: true

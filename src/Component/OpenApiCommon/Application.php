@@ -8,16 +8,20 @@ use Jane\Component\OpenApiCommon\Console\Command\GenerateCommand;
 use Jane\Component\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\Console\Loader\SchemaLoader;
+use Symfony\Component\Console\Command\Command;
 
 class Application extends JsonSchemaApplication
 {
-    protected function boot(): void
+    /**
+     * @return list<Command>
+     */
+    protected function getDefaultCommands(): array
     {
         $configLoader = new ConfigLoader();
 
-        $this->addCommands([
+        return [
             new GenerateCommand($configLoader, new SchemaLoader(), new OpenApiMatcher()),
             new DumpConfigCommand($configLoader),
-        ]);
+        ];
     }
 }

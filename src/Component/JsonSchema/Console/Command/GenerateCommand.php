@@ -9,12 +9,15 @@ use Jane\Component\JsonSchema\Printer;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Exception\JaneExceptionInterface;
 use PhpParser\PrettyPrinter\Standard;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand(name: 'generate', description: 'Generate a set of class and normalizers given a specific Json Schema file')]
 class GenerateCommand extends Command
 {
     public function __construct(
@@ -26,8 +29,6 @@ class GenerateCommand extends Command
 
     public function configure(): void
     {
-        $this->setName('generate');
-        $this->setDescription('Generate a set of class and normalizers given a specific Json Schema file');
         $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane configuration', '.jane');
     }
 
@@ -45,7 +46,7 @@ class GenerateCommand extends Command
 
     protected function executeGeneration(InputInterface $input, OutputInterface $output): int
     {
-        $options = $this->configLoader->load($input->getOption('config-file'));
+        $options = $this->configLoader->load($this->configFileOption($input));
         $registries = $this->registries($options);
 
         foreach ($registries as $registry) {
@@ -66,10 +67,21 @@ class GenerateCommand extends Command
             }
 
             $jane->generate($registry);
-            $printer->output($registry);
+            $printer->output($registry, $output);
         }
 
-        return 0;
+        return Command::SUCCESS;
+    }
+
+    protected function configFileOption(InputInterface $input): string
+    {
+        $configFile = $input->getOption('config-file');
+
+        if (!\is_string($configFile) || '' === $configFile) {
+            throw new InvalidArgumentException('The "--config-file" option must be a non-empty file path.');
+        }
+
+        return $configFile;
     }
 
     protected function registries(array $options): array
