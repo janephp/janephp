@@ -58,7 +58,7 @@ class GenerateCommand extends BaseGenerateCommand
             }
 
             $janeOpenApi->generate($registry);
-            $printer->output($registry);
+            $printer->output($registry, $output);
         }
 
         return Command::SUCCESS;

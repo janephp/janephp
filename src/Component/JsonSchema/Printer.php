@@ -6,19 +6,35 @@ use Jane\Component\JsonSchema\Registry\Registry;
 use PhpCsFixer\Console\Command\FixCommand;
 use PhpCsFixer\ToolInfo;
 use PhpParser\PrettyPrinterAbstract;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Filesystem\Filesystem;
 
 class Printer
 {
     private bool $useFixer = false;
     private bool $cleanGenerated = true;
+    private ?OutputInterface $output = null;
+
+    /** @var callable(): (Command|null) */
+    private $fixerFactory;
 
     public function __construct(
         private readonly PrettyPrinterAbstract $prettyPrinter,
         private readonly string $fixerConfig = '',
+        ?callable $fixerFactory = null,
     ) {
+        $this->fixerFactory = $fixerFactory ?? static function (): ?Command {
+            if (!class_exists(FixCommand::class)) {
+                return null;
+            }
+
+            return new FixCommand(new ToolInfo());
+        };
     }
 
     public function setUseFixer(bool $useFixer): void
@@ -31,8 +47,10 @@ class Printer
         $this->cleanGenerated = $cleanGenerated;
     }
 
-    public function output(Registry $registry): void
+    public function output(Registry $registry, ?OutputInterface $output = null): void
     {
+        $this->output = $output;
+
         if ($this->cleanGenerated) {
             $fs = new Filesystem();
             foreach ($registry->getOutputDirectories() as $directory) {
@@ -87,11 +105,12 @@ EOH
 
     protected function fix(string $path): void
     {
-        if (!class_exists(FixCommand::class)) {
+        $fixer = ($this->fixerFactory)();
+
+        if (null === $fixer) {
             return;
         }
 
-        $command = new FixCommand(new ToolInfo());
         $config = [
             'path' => [$path],
         ];
@@ -103,6 +122,22 @@ EOH
             $config['--rules'] = $this->getDefaultRules();
         }
 
-        $command->run(new ArrayInput($config, $command->getDefinition()), new NullOutput());
+        $fixerOutput = new BufferedOutput();
+        $returnCode = $fixer->run(new ArrayInput($config, $fixer->getDefinition()), $fixerOutput);
+
+        if (Command::SUCCESS !== $returnCode) {
+            // Surface the fixer output so the failure cause is visible, then fail loudly.
+            $output = $this->output ?? new NullOutput();
+            $output->write($fixerOutput->fetch());
+
+            $message = \sprintf('php-cs-fixer failed for directory "%s" with exit code "%s".', $path, $returnCode);
+            (new SymfonyStyle(new ArrayInput([]), $output))->warning($message);
+
+            throw new \RuntimeException($message);
+        }
+
+        if (null !== $this->output && $this->output->isVerbose()) {
+            $this->output->write($fixerOutput->fetch());
+        }
     }
 }

@@ -67,7 +67,7 @@ class GenerateCommand extends Command
             }
 
             $jane->generate($registry);
-            $printer->output($registry);
+            $printer->output($registry, $output);
         }
 
         return Command::SUCCESS;
