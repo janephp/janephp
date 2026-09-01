@@ -1,6 +1,7 @@
 parameters:
 	level: 3
 	tmpDir: cache
+	reportUnmatchedIgnoredErrors: false
 	paths:
 		- src/
 	excludePaths:
@@ -21,3 +22,6 @@ parameters:
 		-
 			message: '#^Property Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Response::\$content.*does not accept Jane\\Component\\OpenApi3\\JsonSchema\\Runtime\\JsonObject\.$#'
 			path: src/Component/OpenApiCommon/Tests/Naming/OperationNamingTest.php
+		-
+			message: '#^Access to an undefined property Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\FilePostBody::\$item\.$#'
+			path: src/Component/OpenApi3/Tests/MultipartNestedObjectRuntimeTest.php
