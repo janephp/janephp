@@ -19,7 +19,7 @@ class DeleteThing extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\B
     }
     public function getUri(): string
     {
-        return str_replace(['{thingId}'], [$this->thingId], '/things/{thingId}');
+        return str_replace(['{thingId}'], [rawurlencode($this->thingId)], '/things/{thingId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
