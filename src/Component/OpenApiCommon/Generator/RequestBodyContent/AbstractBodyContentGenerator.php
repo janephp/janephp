@@ -123,7 +123,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         $convertArray = [
             'string' => [
                 'default' => ['string'],
-                'binary' => ['string', 'resource', '\\' . StreamInterface::class],
+                'binary' => ['string', 'resource'],
             ],
             'number' => [
                 'default' => ['float'],
@@ -141,7 +141,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
                 'default' => ['\\stdClass'],
             ],
             'file' => [
-                'default' => ['string', 'resource', '\\' . StreamInterface::class],
+                'default' => ['string', 'resource'],
             ],
         ];
 

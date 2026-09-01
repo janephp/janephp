@@ -85,7 +85,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestFormFileParameters($requestBody));
     }
     /**
-     * @param string|resource|\Jane\Component\OpenApiCommon\Generator\RequestBodyContent\StreamInterface $requestBody
+     * @param string|resource $requestBody
      *
      * @return null
      */

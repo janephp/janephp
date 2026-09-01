@@ -174,7 +174,7 @@ final class MultipartStreamBuilder
             $contents = stream_get_contents($resource);
 
             if (false === $contents) {
-                throw new \InvalidArgumentException(sprintf('Could not read the stream provided for part "%s".', $name));
+                throw new \InvalidArgumentException(\sprintf('Could not read the stream provided for part "%s".', $name));
             }
 
             if (empty($options['filename']) && null !== $uri && 'php://' !== substr($uri, 0, 6) && 'data://' !== substr($uri, 0, 7)) {
@@ -183,17 +183,17 @@ final class MultipartStreamBuilder
         } elseif (\is_string($resource)) {
             $contents = $resource;
         } else {
-            throw new \InvalidArgumentException(sprintf('Value for part "%s" must be a string or a resource, "%s" given.', $name, get_debug_type($resource)));
+            throw new \InvalidArgumentException(\sprintf('Value for part "%s" must be a string or a resource, "%s" given.', $name, get_debug_type($resource)));
         }
 
         $filename = $options['filename'] ?? null;
         $hasFilename = '0' === $filename || $filename;
 
         if (!$this->hasHeader($headers, 'content-disposition')) {
-            $headers['Content-Disposition'] = sprintf('form-data; name="%s"', $name);
+            $headers['Content-Disposition'] = \sprintf('form-data; name="%s"', $name);
 
             if ($hasFilename) {
-                $headers['Content-Disposition'] .= sprintf('; filename="%s"', $this->basename($filename));
+                $headers['Content-Disposition'] .= \sprintf('; filename="%s"', $this->basename($filename));
             }
         }
 
@@ -218,16 +218,16 @@ final class MultipartStreamBuilder
         $body = '';
 
         foreach ($this->parts as $part) {
-            $body .= sprintf("--%s\r\n", $this->getBoundary());
+            $body .= \sprintf("--%s\r\n", $this->getBoundary());
 
             foreach ($part['headers'] as $name => $value) {
-                $body .= sprintf("%s: %s\r\n", $name, $value);
+                $body .= \sprintf("%s: %s\r\n", $name, $value);
             }
 
             $body .= "\r\n" . $part['contents'] . "\r\n";
         }
 
-        return $body . sprintf("--%s--\r\n", $this->getBoundary());
+        return $body . \sprintf("--%s--\r\n", $this->getBoundary());
     }
 
     private function hasHeader(array $headers, string $key): bool

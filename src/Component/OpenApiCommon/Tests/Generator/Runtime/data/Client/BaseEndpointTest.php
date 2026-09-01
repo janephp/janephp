@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Jane\Component\OpenApiCommon\Tests\Generator\Runtime\data\Client;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Contracts\HttpClient\ResponseInterface;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 // The real, namespace-less runtime templates are exercised directly: they are
 // the exact files copied into generated clients.

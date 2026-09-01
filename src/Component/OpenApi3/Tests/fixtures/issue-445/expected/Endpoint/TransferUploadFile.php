@@ -15,7 +15,7 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
      * To upload a file, split it into chunks of reasonable size (accepted range is 1MB-100MB). The last chunk may be smaller than 1MB.
      * @param string $transferId ID of transfer.
      * @param string $requestId Identifier of file.
-     * @param null|string|resource|\Jane\Component\OpenApiCommon\Generator\RequestBodyContent\StreamInterface $requestBody
+     * @param null|string|resource $requestBody
      * @param array{
      *    "ChunkNumber": int, //Information about chunk.
      *    "CurrentChunkSize": int, //Information about chunk.

@@ -26,7 +26,7 @@ final class ServerUrlHttpClient implements HttpClientInterface
         $parts = parse_url($serverUrl);
 
         if (!\is_array($parts) || !isset($parts['scheme'], $parts['host'])) {
-            throw new \InvalidArgumentException(sprintf('Invalid server URL "%s": an absolute URL with a scheme and a host is required.', $serverUrl));
+            throw new \InvalidArgumentException(\sprintf('Invalid server URL "%s": an absolute URL with a scheme and a host is required.', $serverUrl));
         }
     }
 
@@ -70,7 +70,7 @@ final class ServerUrlHttpClient implements HttpClientInterface
         }
 
         $parts = parse_url($this->serverUrl);
-        $resolved = sprintf(
+        $resolved = \sprintf(
             '%s://%s%s%s%s',
             $parts['scheme'],
             $parts['host'],
@@ -84,6 +84,6 @@ final class ServerUrlHttpClient implements HttpClientInterface
 
     private function inner(): HttpClientInterface
     {
-        return $this->httpClient ?? throw new \LogicException(sprintf('The "%s" decorator must be applied to a "%s" (via its __invoke method) before use.', self::class, HttpClientInterface::class));
+        return $this->httpClient ?? throw new \LogicException(\sprintf('The "%s" decorator must be applied to a "%s" (via its __invoke method) before use.', self::class, HttpClientInterface::class));
     }
 }

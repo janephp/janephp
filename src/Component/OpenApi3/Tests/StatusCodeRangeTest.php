@@ -11,11 +11,11 @@ use Jane\Component\OpenApi3\Tests\StatusCodeRange\Exception\GetFooServerErrorExc
 use Jane\Component\OpenApi3\Tests\StatusCodeRange\Exception\ServerErrorException;
 use Jane\Component\OpenApi3\Tests\StatusCodeRange\Exception\ServerException;
 use Jane\Component\OpenApi3\Tests\StatusCodeRange\Model\Message;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
-use Symfony\Contracts\HttpClient\ResponseInterface;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * @see https://github.com/janephp/janephp/issues/724

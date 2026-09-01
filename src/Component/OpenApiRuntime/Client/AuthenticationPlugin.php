@@ -11,10 +11,10 @@ interface AuthenticationPlugin
      *
      * @param string               $method  HTTP method of the request
      * @param string               $url     URL of the request
-     * @param array<string, mixed> $options Symfony HttpClient request options, passed by reference:
+     * @param array<string, mixed> $options symfony HttpClient request options, passed by reference:
      *                                      header based authentications should add data to the
      *                                      'headers' option, query parameter based ones to the
-     *                                      'query' option.
+     *                                      'query' option
      */
     public function decorate(string $method, string $url, array &$options): void;
 

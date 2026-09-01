@@ -4,11 +4,11 @@ namespace Jane\Component\OpenApi3\Tests;
 
 use Jane\Component\JsonSchemaRuntime\Exception\JaneExceptionInterface;
 use Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
-use Symfony\Contracts\HttpClient\ResponseInterface;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * Runtime test for generated endpoints returning a raw json_decode() of the

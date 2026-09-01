@@ -5,7 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
-     * @param string|resource|\Jane\Component\OpenApiCommon\Generator\RequestBodyContent\StreamInterface $requestBody
+     * @param string|resource $requestBody
      *
      * @return null
      */

@@ -72,6 +72,6 @@ final class AuthenticationRegistry implements HttpClientInterface
 
     private function inner(): HttpClientInterface
     {
-        return $this->httpClient ?? throw new \LogicException(sprintf('The "%s" decorator must be applied to a "%s" (via its __invoke method) before use.', self::class, HttpClientInterface::class));
+        return $this->httpClient ?? throw new \LogicException(\sprintf('The "%s" decorator must be applied to a "%s" (via its __invoke method) before use.', self::class, HttpClientInterface::class));
     }
 }

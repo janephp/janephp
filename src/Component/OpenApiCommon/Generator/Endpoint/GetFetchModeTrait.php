@@ -7,7 +7,6 @@ use Jane\Component\OpenApiRuntime\Client\FetchMode;
 use PhpParser\Modifiers;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
-use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 
 trait GetFetchModeTrait

@@ -2,13 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests;
 
-use Jane\Component\OpenApiRuntime\Client\Result;
 use Jane\Component\OpenApiRuntime\Client\FetchMode;
+use Jane\Component\OpenApiRuntime\Client\Result;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * Runtime coverage of the three fetch modes (ADR 0011): eager parses (and
@@ -33,7 +31,7 @@ class FetchModeRuntimeTest extends TestCase
                 'Jane\\Component\\OpenApi3\\Tests\\FetchModeDefault' => 'fetch-mode-default',
             ] as $prefix => $fixture) {
                 if (str_starts_with($class, $prefix . '\\')) {
-                    $file = __DIR__ . '/fixtures/' . $fixture . '/expected/' . str_replace('\\', '/', substr($class, strlen($prefix) + 1)) . '.php';
+                    $file = __DIR__ . '/fixtures/' . $fixture . '/expected/' . str_replace('\\', '/', substr($class, \strlen($prefix) + 1)) . '.php';
                     if (is_file($file)) {
                         require_once $file;
                     }
