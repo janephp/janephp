@@ -1,6 +1,12 @@
 <?php
 
+<<<<<<<< HEAD:src/Component/JsonSchema/Tests/fixtures/additional-properties/expected/Runtime/AdditionalAndPatternProperties.php
 namespace Jane\Component\JsonSchema\Tests\Expected\Runtime;
+|||||||| parent of caee1abb2 (feat: modernize emitted exception code and remove 8.x deprecations):src/Component/JsonSchema/Tests/fixtures/multi-namespace/expected/Schema1/Runtime/AdditionalAndPatternProperties.php
+namespace Jane\Component\JsonSchema\Tests\Expected\Schema1\Runtime;
+========
+namespace Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Runtime;
+>>>>>>>> caee1abb2 (feat: modernize emitted exception code and remove 8.x deprecations):src/Component/OpenApi3/Tests/fixtures/default-additional-properties-false/expected/Runtime/AdditionalAndPatternProperties.php
 
 trait AdditionalAndPatternProperties
 {

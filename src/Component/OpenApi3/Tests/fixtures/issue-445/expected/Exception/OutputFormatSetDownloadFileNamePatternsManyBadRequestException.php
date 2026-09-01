@@ -4,19 +4,18 @@ namespace PicturePark\API\Exception;
 
 class OutputFormatSetDownloadFileNamePatternsManyBadRequestException extends BadRequestException
 {
-    /**
-     * @var \PicturePark\API\Model\PictureparkValidationException
-     */
-    private $pictureparkValidationException;
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(\PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(
+        /**
+         * @var \PicturePark\API\Model\PictureparkValidationException
+         */
+        private readonly \PicturePark\API\Model\PictureparkValidationException $pictureparkValidationException,
+        /**
+         * @var \Psr\Http\Message\ResponseInterface
+         */
+        private readonly \Psr\Http\Message\ResponseInterface $response
+    )
     {
         parent::__construct('Validation exception');
-        $this->pictureparkValidationException = $pictureparkValidationException;
-        $this->response = $response;
     }
     public function getPictureparkValidationException(): \PicturePark\API\Model\PictureparkValidationException
     {

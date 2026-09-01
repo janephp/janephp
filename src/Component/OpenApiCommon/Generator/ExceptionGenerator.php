@@ -96,10 +96,9 @@ class ExceptionGenerator
         $exceptionName = $this->exceptionNaming->generateExceptionName($status, $functionName);
 
         if ($classGuess) {
-            $realPropertyName = $propertyName = lcfirst($classGuess->getName());
+            $propertyName = lcfirst($classGuess->getName());
             if ($isArray) {
                 $propertyName .= 'List';
-                $realPropertyName = $propertyName;
             }
 
             if (\in_array($propertyName, self::BANNED_VARIABLES)) {
@@ -119,37 +118,35 @@ EOD, '\\' . $classFqdn, $isArray ? '[]' : '');
                     [
                         'extends' => new Name($highLevelExceptionName),
                         'stmts' => [
-                            new Stmt\Property(Modifiers::PRIVATE, [
-                                new Stmt\PropertyProperty($propertyName),
-                            ], ['comments' => [new Doc($propertyComment)]]),
-                            new Stmt\Property(Modifiers::PRIVATE, [
-                                new Stmt\PropertyProperty('response'),
-                            ], ['comments' => [new Doc(<<<EOD
+                            new Stmt\ClassMethod('__construct', [
+                                'flags' => Modifiers::PUBLIC,
+                                'params' => [
+                                    new Param(
+                                        new Expr\Variable($propertyName),
+                                        null,
+                                        $isArray ? new Node\Identifier('array') : new Name('\\' . $classFqdn),
+                                        false,
+                                        false,
+                                        ['comments' => [new Doc($propertyComment)]],
+                                        Modifiers::PRIVATE | Modifiers::READONLY
+                                    ),
+                                    new Param(
+                                        new Expr\Variable('response'),
+                                        null,
+                                        new Name('\\Psr\\Http\\Message\\ResponseInterface'),
+                                        false,
+                                        false,
+                                        ['comments' => [new Doc(<<<EOD
 /**
  * @var \Psr\Http\Message\ResponseInterface
  */
 EOD
-                            )]]),
-                            new Stmt\ClassMethod('__construct', [
-                                'flags' => Modifiers::PUBLIC,
-                                'params' => [
-                                    new Param(new Expr\Variable($realPropertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
-                                    new Param(new Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
+                                        )]],
+                                        Modifiers::PRIVATE | Modifiers::READONLY
+                                    ),
                                 ],
                                 'stmts' => [
                                     new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [new Node\Arg(new Scalar\String_($description))])),
-                                    new Stmt\Expression(new Expr\Assign(
-                                        new Expr\PropertyFetch(
-                                            new Expr\Variable('this'),
-                                            $propertyName
-                                        ), new Expr\Variable($realPropertyName)
-                                    )),
-                                    new Stmt\Expression(new Expr\Assign(
-                                        new Expr\PropertyFetch(
-                                            new Expr\Variable('this'),
-                                            'response'
-                                        ), new Expr\Variable('response')
-                                    )),
                                 ],
                             ]),
                             new Stmt\ClassMethod($methodName, [
@@ -192,33 +189,28 @@ EOD
                 [
                     'extends' => new Name($highLevelExceptionName),
                     'stmts' => [
-                        new Stmt\Property(Modifiers::PRIVATE, [
-                            new Stmt\PropertyProperty('response'),
-                        ], ['comments' => [new Doc(<<<EOD
-/**
- * @var \Psr\Http\Message\ResponseInterface
- */
-EOD
-                        )]]),
                         new Stmt\ClassMethod('__construct', [
                             'flags' => Modifiers::PUBLIC,
                             'params' => [
                                 new Param(
                                     new Expr\Variable('response'),
                                     new Expr\ConstFetch(new Name('null')),
-                                    new Node\NullableType(new Name('\\Psr\\Http\\Message\\ResponseInterface'))
+                                    new Node\NullableType(new Name('\\Psr\\Http\\Message\\ResponseInterface')),
+                                    false,
+                                    false,
+                                    ['comments' => [new Doc(<<<EOD
+/**
+ * @var \Psr\Http\Message\ResponseInterface|null
+ */
+EOD
+                                    )]],
+                                    Modifiers::PRIVATE | Modifiers::READONLY
                                 ),
                             ],
                             'stmts' => [
                                 new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                     new Node\Arg(new Scalar\String_($description)),
                                 ])),
-                                new Stmt\Expression(new Expr\Assign(
-                                    new Expr\PropertyFetch(
-                                        new Expr\Variable('this'),
-                                        'response'
-                                    ), new Expr\Variable('response')
-                                )),
                             ],
                         ]),
                         new Stmt\ClassMethod('getResponse', [
