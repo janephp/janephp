@@ -74,127 +74,127 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $data['cost_budget_include_expenses'] = (bool) $data['cost_budget_include_expenses'];
         }
         if (\array_key_exists('client_id', $data)) {
-            $object->setClientId($data['client_id']);
+            $object->clientId = $data['client_id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('code', $data)) {
-            $object->setCode($data['code']);
+            $object->code = $data['code'];
         }
         if (\array_key_exists('is_active', $data)) {
-            $object->setIsActive($data['is_active']);
+            $object->isActive = $data['is_active'];
         }
         if (\array_key_exists('is_billable', $data)) {
-            $object->setIsBillable($data['is_billable']);
+            $object->isBillable = $data['is_billable'];
         }
         if (\array_key_exists('is_fixed_fee', $data)) {
-            $object->setIsFixedFee($data['is_fixed_fee']);
+            $object->isFixedFee = $data['is_fixed_fee'];
         }
         if (\array_key_exists('bill_by', $data)) {
-            $object->setBillBy($data['bill_by']);
+            $object->billBy = $data['bill_by'];
         }
         if (\array_key_exists('hourly_rate', $data)) {
-            $object->setHourlyRate($data['hourly_rate']);
+            $object->hourlyRate = $data['hourly_rate'];
         }
         if (\array_key_exists('budget', $data)) {
-            $object->setBudget($data['budget']);
+            $object->budget = $data['budget'];
         }
         if (\array_key_exists('budget_by', $data)) {
-            $object->setBudgetBy($data['budget_by']);
+            $object->budgetBy = $data['budget_by'];
         }
         if (\array_key_exists('budget_is_monthly', $data)) {
-            $object->setBudgetIsMonthly($data['budget_is_monthly']);
+            $object->budgetIsMonthly = $data['budget_is_monthly'];
         }
         if (\array_key_exists('notify_when_over_budget', $data)) {
-            $object->setNotifyWhenOverBudget($data['notify_when_over_budget']);
+            $object->notifyWhenOverBudget = $data['notify_when_over_budget'];
         }
         if (\array_key_exists('over_budget_notification_percentage', $data)) {
-            $object->setOverBudgetNotificationPercentage($data['over_budget_notification_percentage']);
+            $object->overBudgetNotificationPercentage = $data['over_budget_notification_percentage'];
         }
         if (\array_key_exists('show_budget_to_all', $data)) {
-            $object->setShowBudgetToAll($data['show_budget_to_all']);
+            $object->showBudgetToAll = $data['show_budget_to_all'];
         }
         if (\array_key_exists('cost_budget', $data)) {
-            $object->setCostBudget($data['cost_budget']);
+            $object->costBudget = $data['cost_budget'];
         }
         if (\array_key_exists('cost_budget_include_expenses', $data)) {
-            $object->setCostBudgetIncludeExpenses($data['cost_budget_include_expenses']);
+            $object->costBudgetIncludeExpenses = $data['cost_budget_include_expenses'];
         }
         if (\array_key_exists('fee', $data)) {
-            $object->setFee($data['fee']);
+            $object->fee = $data['fee'];
         }
         if (\array_key_exists('notes', $data)) {
-            $object->setNotes($data['notes']);
+            $object->notes = $data['notes'];
         }
         if (\array_key_exists('starts_on', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['starts_on']);
             if (false === $date) {
                 throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['starts_on'], 'Y-m-d');
             }
-            $object->setStartsOn($date->setTime(0, 0, 0));
+            $object->startsOn = $date->setTime(0, 0, 0);
         }
         if (\array_key_exists('ends_on', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d', $data['ends_on']);
             if (false === $date_1) {
                 throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['ends_on'], 'Y-m-d');
             }
-            $object->setEndsOn($date_1->setTime(0, 0, 0));
+            $object->endsOn = $date_1->setTime(0, 0, 0);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['client_id'] = $data->getClientId();
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('code') && null !== $data->getCode()) {
-            $dataArray['code'] = $data->getCode();
+        $dataArray['client_id'] = $data->clientId ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
+            $dataArray['code'] = $data->code ?? null;
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
-            $dataArray['is_active'] = $data->getIsActive();
+        if (array_key_exists('isActive', get_object_vars($data)) && null !== ($data->isActive ?? null)) {
+            $dataArray['is_active'] = $data->isActive ?? null;
         }
-        $dataArray['is_billable'] = $data->getIsBillable();
-        if ($data->isInitialized('isFixedFee') && null !== $data->getIsFixedFee()) {
-            $dataArray['is_fixed_fee'] = $data->getIsFixedFee();
+        $dataArray['is_billable'] = $data->isBillable ?? null;
+        if (array_key_exists('isFixedFee', get_object_vars($data)) && null !== ($data->isFixedFee ?? null)) {
+            $dataArray['is_fixed_fee'] = $data->isFixedFee ?? null;
         }
-        $dataArray['bill_by'] = $data->getBillBy();
-        if ($data->isInitialized('hourlyRate') && null !== $data->getHourlyRate()) {
-            $dataArray['hourly_rate'] = $data->getHourlyRate();
+        $dataArray['bill_by'] = $data->billBy ?? null;
+        if (array_key_exists('hourlyRate', get_object_vars($data)) && null !== ($data->hourlyRate ?? null)) {
+            $dataArray['hourly_rate'] = $data->hourlyRate ?? null;
         }
-        if ($data->isInitialized('budget') && null !== $data->getBudget()) {
-            $dataArray['budget'] = $data->getBudget();
+        if (array_key_exists('budget', get_object_vars($data)) && null !== ($data->budget ?? null)) {
+            $dataArray['budget'] = $data->budget ?? null;
         }
-        $dataArray['budget_by'] = $data->getBudgetBy();
-        if ($data->isInitialized('budgetIsMonthly') && null !== $data->getBudgetIsMonthly()) {
-            $dataArray['budget_is_monthly'] = $data->getBudgetIsMonthly();
+        $dataArray['budget_by'] = $data->budgetBy ?? null;
+        if (array_key_exists('budgetIsMonthly', get_object_vars($data)) && null !== ($data->budgetIsMonthly ?? null)) {
+            $dataArray['budget_is_monthly'] = $data->budgetIsMonthly ?? null;
         }
-        if ($data->isInitialized('notifyWhenOverBudget') && null !== $data->getNotifyWhenOverBudget()) {
-            $dataArray['notify_when_over_budget'] = $data->getNotifyWhenOverBudget();
+        if (array_key_exists('notifyWhenOverBudget', get_object_vars($data)) && null !== ($data->notifyWhenOverBudget ?? null)) {
+            $dataArray['notify_when_over_budget'] = $data->notifyWhenOverBudget ?? null;
         }
-        if ($data->isInitialized('overBudgetNotificationPercentage') && null !== $data->getOverBudgetNotificationPercentage()) {
-            $dataArray['over_budget_notification_percentage'] = $data->getOverBudgetNotificationPercentage();
+        if (array_key_exists('overBudgetNotificationPercentage', get_object_vars($data)) && null !== ($data->overBudgetNotificationPercentage ?? null)) {
+            $dataArray['over_budget_notification_percentage'] = $data->overBudgetNotificationPercentage ?? null;
         }
-        if ($data->isInitialized('showBudgetToAll') && null !== $data->getShowBudgetToAll()) {
-            $dataArray['show_budget_to_all'] = $data->getShowBudgetToAll();
+        if (array_key_exists('showBudgetToAll', get_object_vars($data)) && null !== ($data->showBudgetToAll ?? null)) {
+            $dataArray['show_budget_to_all'] = $data->showBudgetToAll ?? null;
         }
-        if ($data->isInitialized('costBudget') && null !== $data->getCostBudget()) {
-            $dataArray['cost_budget'] = $data->getCostBudget();
+        if (array_key_exists('costBudget', get_object_vars($data)) && null !== ($data->costBudget ?? null)) {
+            $dataArray['cost_budget'] = $data->costBudget ?? null;
         }
-        if ($data->isInitialized('costBudgetIncludeExpenses') && null !== $data->getCostBudgetIncludeExpenses()) {
-            $dataArray['cost_budget_include_expenses'] = $data->getCostBudgetIncludeExpenses();
+        if (array_key_exists('costBudgetIncludeExpenses', get_object_vars($data)) && null !== ($data->costBudgetIncludeExpenses ?? null)) {
+            $dataArray['cost_budget_include_expenses'] = $data->costBudgetIncludeExpenses ?? null;
         }
-        if ($data->isInitialized('fee') && null !== $data->getFee()) {
-            $dataArray['fee'] = $data->getFee();
+        if (array_key_exists('fee', get_object_vars($data)) && null !== ($data->fee ?? null)) {
+            $dataArray['fee'] = $data->fee ?? null;
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
-            $dataArray['notes'] = $data->getNotes();
+        if (array_key_exists('notes', get_object_vars($data)) && null !== ($data->notes ?? null)) {
+            $dataArray['notes'] = $data->notes ?? null;
         }
-        if ($data->isInitialized('startsOn') && null !== $data->getStartsOn()) {
-            $dataArray['starts_on'] = $data->getStartsOn()->format('Y-m-d');
+        if (array_key_exists('startsOn', get_object_vars($data)) && null !== ($data->startsOn ?? null)) {
+            $dataArray['starts_on'] = ($data->startsOn ?? null)->format('Y-m-d');
         }
-        if ($data->isInitialized('endsOn') && null !== $data->getEndsOn()) {
-            $dataArray['ends_on'] = $data->getEndsOn()->format('Y-m-d');
+        if (array_key_exists('endsOn', get_object_vars($data)) && null !== ($data->endsOn ?? null)) {
+            $dataArray['ends_on'] = ($data->endsOn ?? null)->format('Y-m-d');
         }
         return $dataArray;
     }

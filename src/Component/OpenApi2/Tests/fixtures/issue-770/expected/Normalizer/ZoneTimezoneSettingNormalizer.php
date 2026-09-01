@@ -38,21 +38,21 @@ class ZoneTimezoneSettingNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('systemTimezone', $data)) {
-            $object->setSystemTimezone($data['systemTimezone']);
+            $object->systemTimezone = $data['systemTimezone'];
         }
         if (\array_key_exists('customizedTimezone', $data)) {
-            $object->setCustomizedTimezone($this->denormalizer->denormalize($data['customizedTimezone'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneCustomizedTimeZone::class, 'json', $context));
+            $object->customizedTimezone = $this->denormalizer->denormalize($data['customizedTimezone'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneCustomizedTimeZone::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('systemTimezone') && null !== $data->getSystemTimezone()) {
-            $dataArray['systemTimezone'] = $data->getSystemTimezone();
+        if (array_key_exists('systemTimezone', get_object_vars($data)) && null !== ($data->systemTimezone ?? null)) {
+            $dataArray['systemTimezone'] = $data->systemTimezone ?? null;
         }
-        if ($data->isInitialized('customizedTimezone') && null !== $data->getCustomizedTimezone()) {
-            $dataArray['customizedTimezone'] = $data->getCustomizedTimezone() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCustomizedTimezone(), 'json', $context));
+        if (array_key_exists('customizedTimezone', get_object_vars($data)) && null !== ($data->customizedTimezone ?? null)) {
+            $dataArray['customizedTimezone'] = ($data->customizedTimezone ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->customizedTimezone ?? null, 'json', $context));
         }
         return $dataArray;
     }

@@ -42,7 +42,7 @@ class DatabaseRegionOptionsNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['regions'] as $value) {
                 $values[] = $value;
             }
-            $object->setRegions($values);
+            $object->regions = $values;
             unset($data['regions']);
         }
         foreach ($data as $key => $value_1) {

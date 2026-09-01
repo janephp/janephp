@@ -38,7 +38,7 @@ class SortFieldNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('path', $data)) {
-            $object->setPath($data['path']);
+            $object->path = $data['path'];
         }
         if (\array_key_exists('names', $data)) {
             $value = $data['names'];
@@ -49,18 +49,18 @@ class SortFieldNormalizer implements DenormalizerInterface, NormalizerInterface,
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['path'] = $data->getPath();
-        $value = $data->getNames();
-        if (is_object($data->getNames())) {
+        $dataArray['path'] = $data->path ?? null;
+        $value = $data->names ?? null;
+        if (is_object($data->names ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getNames() as $key => $value_1) {
+            foreach ($data->names ?? null as $key => $value_1) {
                 $values[$key] = $value_1;
             }
             $value = $values;

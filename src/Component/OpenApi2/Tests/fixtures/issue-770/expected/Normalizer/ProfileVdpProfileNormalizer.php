@@ -41,153 +41,153 @@ class ProfileVdpProfileNormalizer implements DenormalizerInterface, NormalizerIn
             $data['isSupport'] = (bool) $data['isSupport'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('mac', $data)) {
-            $object->setMac($data['mac']);
+            $object->mac = $data['mac'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('ipv6', $data)) {
-            $object->setIpv6($data['ipv6']);
+            $object->ipv6 = $data['ipv6'];
         }
         if (\array_key_exists('extIp', $data)) {
-            $object->setExtIp($data['extIp']);
+            $object->extIp = $data['extIp'];
         }
         if (\array_key_exists('dataVlan', $data)) {
-            $object->setDataVlan($data['dataVlan']);
+            $object->dataVlan = $data['dataVlan'];
         }
         if (\array_key_exists('mgmtIp', $data)) {
-            $object->setMgmtIp($data['mgmtIp']);
+            $object->mgmtIp = $data['mgmtIp'];
         }
         if (\array_key_exists('mgmtExtIp', $data)) {
-            $object->setMgmtExtIp($data['mgmtExtIp']);
+            $object->mgmtExtIp = $data['mgmtExtIp'];
         }
         if (\array_key_exists('mgmtVlan', $data)) {
-            $object->setMgmtVlan($data['mgmtVlan']);
+            $object->mgmtVlan = $data['mgmtVlan'];
         }
         if (\array_key_exists('managedBy', $data)) {
-            $object->setManagedBy($data['managedBy']);
+            $object->managedBy = $data['managedBy'];
         }
         if (\array_key_exists('model', $data)) {
-            $object->setModel($data['model']);
+            $object->model = $data['model'];
         }
         if (\array_key_exists('serialNumber', $data)) {
-            $object->setSerialNumber($data['serialNumber']);
+            $object->serialNumber = $data['serialNumber'];
         }
         if (\array_key_exists('fwVersion', $data)) {
-            $object->setFwVersion($data['fwVersion']);
+            $object->fwVersion = $data['fwVersion'];
         }
         if (\array_key_exists('isSupport', $data)) {
-            $object->setIsSupport($data['isSupport']);
+            $object->isSupport = $data['isSupport'];
         }
         if (\array_key_exists('lastSeenOn', $data)) {
-            $object->setLastSeenOn($data['lastSeenOn']);
+            $object->lastSeenOn = $data['lastSeenOn'];
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
         }
         if (\array_key_exists('registrationState', $data)) {
-            $object->setRegistrationState($data['registrationState']);
+            $object->registrationState = $data['registrationState'];
         }
         if (\array_key_exists('uptime', $data)) {
-            $object->setUptime($data['uptime']);
+            $object->uptime = $data['uptime'];
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('creatorId', $data)) {
-            $object->setCreatorId($data['creatorId']);
+            $object->creatorId = $data['creatorId'];
         }
         if (\array_key_exists('modifierId', $data)) {
-            $object->setModifierId($data['modifierId']);
+            $object->modifierId = $data['modifierId'];
         }
         if (\array_key_exists('creatorUsername', $data)) {
-            $object->setCreatorUsername($data['creatorUsername']);
+            $object->creatorUsername = $data['creatorUsername'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('mac') && null !== $data->getMac()) {
-            $dataArray['mac'] = $data->getMac();
+        if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
+            $dataArray['mac'] = $data->mac ?? null;
         }
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        if ($data->isInitialized('ipv6') && null !== $data->getIpv6()) {
-            $dataArray['ipv6'] = $data->getIpv6();
+        if (array_key_exists('ipv6', get_object_vars($data)) && null !== ($data->ipv6 ?? null)) {
+            $dataArray['ipv6'] = $data->ipv6 ?? null;
         }
-        if ($data->isInitialized('extIp') && null !== $data->getExtIp()) {
-            $dataArray['extIp'] = $data->getExtIp();
+        if (array_key_exists('extIp', get_object_vars($data)) && null !== ($data->extIp ?? null)) {
+            $dataArray['extIp'] = $data->extIp ?? null;
         }
-        if ($data->isInitialized('dataVlan') && null !== $data->getDataVlan()) {
-            $dataArray['dataVlan'] = $data->getDataVlan();
+        if (array_key_exists('dataVlan', get_object_vars($data)) && null !== ($data->dataVlan ?? null)) {
+            $dataArray['dataVlan'] = $data->dataVlan ?? null;
         }
-        if ($data->isInitialized('mgmtIp') && null !== $data->getMgmtIp()) {
-            $dataArray['mgmtIp'] = $data->getMgmtIp();
+        if (array_key_exists('mgmtIp', get_object_vars($data)) && null !== ($data->mgmtIp ?? null)) {
+            $dataArray['mgmtIp'] = $data->mgmtIp ?? null;
         }
-        if ($data->isInitialized('mgmtExtIp') && null !== $data->getMgmtExtIp()) {
-            $dataArray['mgmtExtIp'] = $data->getMgmtExtIp();
+        if (array_key_exists('mgmtExtIp', get_object_vars($data)) && null !== ($data->mgmtExtIp ?? null)) {
+            $dataArray['mgmtExtIp'] = $data->mgmtExtIp ?? null;
         }
-        if ($data->isInitialized('mgmtVlan') && null !== $data->getMgmtVlan()) {
-            $dataArray['mgmtVlan'] = $data->getMgmtVlan();
+        if (array_key_exists('mgmtVlan', get_object_vars($data)) && null !== ($data->mgmtVlan ?? null)) {
+            $dataArray['mgmtVlan'] = $data->mgmtVlan ?? null;
         }
-        if ($data->isInitialized('managedBy') && null !== $data->getManagedBy()) {
-            $dataArray['managedBy'] = $data->getManagedBy();
+        if (array_key_exists('managedBy', get_object_vars($data)) && null !== ($data->managedBy ?? null)) {
+            $dataArray['managedBy'] = $data->managedBy ?? null;
         }
-        if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $data->getModel();
+        if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
+            $dataArray['model'] = $data->model ?? null;
         }
-        if ($data->isInitialized('serialNumber') && null !== $data->getSerialNumber()) {
-            $dataArray['serialNumber'] = $data->getSerialNumber();
+        if (array_key_exists('serialNumber', get_object_vars($data)) && null !== ($data->serialNumber ?? null)) {
+            $dataArray['serialNumber'] = $data->serialNumber ?? null;
         }
-        if ($data->isInitialized('fwVersion') && null !== $data->getFwVersion()) {
-            $dataArray['fwVersion'] = $data->getFwVersion();
+        if (array_key_exists('fwVersion', get_object_vars($data)) && null !== ($data->fwVersion ?? null)) {
+            $dataArray['fwVersion'] = $data->fwVersion ?? null;
         }
-        if ($data->isInitialized('isSupport') && null !== $data->getIsSupport()) {
-            $dataArray['isSupport'] = $data->getIsSupport();
+        if (array_key_exists('isSupport', get_object_vars($data)) && null !== ($data->isSupport ?? null)) {
+            $dataArray['isSupport'] = $data->isSupport ?? null;
         }
-        if ($data->isInitialized('lastSeenOn') && null !== $data->getLastSeenOn()) {
-            $dataArray['lastSeenOn'] = $data->getLastSeenOn();
+        if (array_key_exists('lastSeenOn', get_object_vars($data)) && null !== ($data->lastSeenOn ?? null)) {
+            $dataArray['lastSeenOn'] = $data->lastSeenOn ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('registrationState') && null !== $data->getRegistrationState()) {
-            $dataArray['registrationState'] = $data->getRegistrationState();
+        if (array_key_exists('registrationState', get_object_vars($data)) && null !== ($data->registrationState ?? null)) {
+            $dataArray['registrationState'] = $data->registrationState ?? null;
         }
-        if ($data->isInitialized('uptime') && null !== $data->getUptime()) {
-            $dataArray['uptime'] = $data->getUptime();
+        if (array_key_exists('uptime', get_object_vars($data)) && null !== ($data->uptime ?? null)) {
+            $dataArray['uptime'] = $data->uptime ?? null;
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
-            $dataArray['creatorId'] = $data->getCreatorId();
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
         }
-        if ($data->isInitialized('modifierId') && null !== $data->getModifierId()) {
-            $dataArray['modifierId'] = $data->getModifierId();
+        if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
+            $dataArray['modifierId'] = $data->modifierId ?? null;
         }
-        if ($data->isInitialized('creatorUsername') && null !== $data->getCreatorUsername()) {
-            $dataArray['creatorUsername'] = $data->getCreatorUsername();
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
         return $dataArray;
     }

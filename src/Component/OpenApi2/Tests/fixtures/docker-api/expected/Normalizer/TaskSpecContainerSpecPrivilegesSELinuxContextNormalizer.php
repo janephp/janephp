@@ -44,39 +44,39 @@ class TaskSpecContainerSpecPrivilegesSELinuxContextNormalizer implements Denorma
             $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesSELinuxContextConstraint());
         }
         if (\array_key_exists('Disable', $data)) {
-            $object->setDisable($data['Disable']);
+            $object->disable = $data['Disable'];
         }
         if (\array_key_exists('User', $data)) {
-            $object->setUser($data['User']);
+            $object->user = $data['User'];
         }
         if (\array_key_exists('Role', $data)) {
-            $object->setRole($data['Role']);
+            $object->role = $data['Role'];
         }
         if (\array_key_exists('Type', $data)) {
-            $object->setType($data['Type']);
+            $object->type = $data['Type'];
         }
         if (\array_key_exists('Level', $data)) {
-            $object->setLevel($data['Level']);
+            $object->level = $data['Level'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('disable') && null !== $data->getDisable()) {
-            $dataArray['Disable'] = $data->getDisable();
+        if (array_key_exists('disable', get_object_vars($data)) && null !== ($data->disable ?? null)) {
+            $dataArray['Disable'] = $data->disable ?? null;
         }
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['User'] = $data->getUser();
+        if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
+            $dataArray['User'] = $data->user ?? null;
         }
-        if ($data->isInitialized('role') && null !== $data->getRole()) {
-            $dataArray['Role'] = $data->getRole();
+        if (array_key_exists('role', get_object_vars($data)) && null !== ($data->role ?? null)) {
+            $dataArray['Role'] = $data->role ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['Type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['Type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('level') && null !== $data->getLevel()) {
-            $dataArray['Level'] = $data->getLevel();
+        if (array_key_exists('level', get_object_vars($data)) && null !== ($data->level ?? null)) {
+            $dataArray['Level'] = $data->level ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesSELinuxContextConstraint());

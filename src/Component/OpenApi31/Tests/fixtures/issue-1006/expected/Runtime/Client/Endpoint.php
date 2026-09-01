@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApi31\Tests\Issue1006\Runtime\Client;
 
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 interface Endpoint
 {
@@ -12,7 +13,7 @@ interface Endpoint
      * Return value consist of an array where the first item will be a list of headers to add on the request (like the Content Type)
      * And the second value consist of the body object.
      */
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array;
+    public function getBody(SerializerInterface $serializer, ?StreamFactoryInterface $streamFactory = null): array;
     /**
      * Get the query string of an endpoint without the starting ? (like foo=foo&bar=bar).
      */

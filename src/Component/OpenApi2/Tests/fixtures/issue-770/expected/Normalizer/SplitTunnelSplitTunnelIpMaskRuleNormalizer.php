@@ -38,18 +38,18 @@ class SplitTunnelSplitTunnelIpMaskRuleNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('destinationIp', $data)) {
-            $object->setDestinationIp($data['destinationIp']);
+            $object->destinationIp = $data['destinationIp'];
         }
         if (\array_key_exists('destinationIpMask', $data)) {
-            $object->setDestinationIpMask($data['destinationIpMask']);
+            $object->destinationIpMask = $data['destinationIpMask'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['destinationIp'] = $data->getDestinationIp();
-        $dataArray['destinationIpMask'] = $data->getDestinationIpMask();
+        $dataArray['destinationIp'] = $data->destinationIp ?? null;
+        $dataArray['destinationIpMask'] = $data->destinationIpMask ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

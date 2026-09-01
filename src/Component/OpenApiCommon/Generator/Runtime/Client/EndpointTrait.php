@@ -5,6 +5,11 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait EndpointTrait
 {
+    /**
+     * Transform the response body into a value for the requested fetch mode.
+     *
+     * @return mixed
+     */
     abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, ?string $contentType = null);
 
     public function parseResponse(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)

@@ -38,21 +38,21 @@ class CaleaCaleaCommonSettingRspNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('caleaServerIp', $data)) {
-            $object->setCaleaServerIp($data['caleaServerIp']);
+            $object->caleaServerIp = $data['caleaServerIp'];
         }
         if (\array_key_exists('dc_ip', $data)) {
-            $object->setDcIp($data['dc_ip']);
+            $object->dcIp = $data['dc_ip'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('caleaServerIp') && null !== $data->getCaleaServerIp()) {
-            $dataArray['caleaServerIp'] = $data->getCaleaServerIp();
+        if (array_key_exists('caleaServerIp', get_object_vars($data)) && null !== ($data->caleaServerIp ?? null)) {
+            $dataArray['caleaServerIp'] = $data->caleaServerIp ?? null;
         }
-        if ($data->isInitialized('dcIp') && null !== $data->getDcIp()) {
-            $dataArray['dc_ip'] = $data->getDcIp();
+        if (array_key_exists('dcIp', get_object_vars($data)) && null !== ($data->dcIp ?? null)) {
+            $dataArray['dc_ip'] = $data->dcIp ?? null;
         }
         return $dataArray;
     }

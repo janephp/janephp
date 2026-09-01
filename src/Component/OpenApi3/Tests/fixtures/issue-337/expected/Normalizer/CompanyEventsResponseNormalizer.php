@@ -41,7 +41,7 @@ class CompanyEventsResponseNormalizer implements DenormalizerInterface, Normaliz
             $data['totalCount'] = (float) $data['totalCount'];
         }
         if (\array_key_exists('totalCount', $data)) {
-            $object->setTotalCount($data['totalCount']);
+            $object->totalCount = $data['totalCount'];
             unset($data['totalCount']);
         }
         if (\array_key_exists('data', $data)) {
@@ -49,11 +49,11 @@ class CompanyEventsResponseNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['data'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\Event::class, 'json', $context);
             }
-            $object->setData($values);
+            $object->data = $values;
             unset($data['data']);
         }
         if (\array_key_exists('paging', $data)) {
-            $object->setPaging($this->denormalizer->denormalize($data['paging'], \CreditSafe\API\Model\Paging::class, 'json', $context));
+            $object->paging = $this->denormalizer->denormalize($data['paging'], \CreditSafe\API\Model\Paging::class, 'json', $context);
             unset($data['paging']);
         }
         foreach ($data as $key => $value_1) {
@@ -66,18 +66,18 @@ class CompanyEventsResponseNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalCount') && null !== $data->getTotalCount()) {
-            $dataArray['totalCount'] = $data->getTotalCount();
+        if (array_key_exists('totalCount', get_object_vars($data)) && null !== ($data->totalCount ?? null)) {
+            $dataArray['totalCount'] = $data->totalCount ?? null;
         }
-        if ($data->isInitialized('data') && null !== $data->getData()) {
+        if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
-            foreach ($data->getData() as $value) {
+            foreach ($data->data ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data'] = $values;
         }
-        if ($data->isInitialized('paging') && null !== $data->getPaging()) {
-            $dataArray['paging'] = $data->getPaging() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getPaging(), 'json', $context));
+        if (array_key_exists('paging', get_object_vars($data)) && null !== ($data->paging ?? null)) {
+            $dataArray['paging'] = ($data->paging ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->paging ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

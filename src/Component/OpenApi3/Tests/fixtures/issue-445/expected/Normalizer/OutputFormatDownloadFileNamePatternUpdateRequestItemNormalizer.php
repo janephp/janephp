@@ -38,7 +38,7 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItemNormalizer implements 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('patterns', $data) && $data['patterns'] !== null) {
             $value = $data['patterns'];
@@ -49,22 +49,22 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItemNormalizer implements 
                 }
                 $value = $values;
             }
-            $object->setPatterns($value);
+            $object->patterns = $value;
         }
         elseif (\array_key_exists('patterns', $data) && $data['patterns'] === null) {
-            $object->setPatterns(null);
+            $object->patterns = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('patterns') && null !== $data->getPatterns()) {
-            $value = $data->getPatterns();
-            if (is_object($data->getPatterns())) {
+        $dataArray['id'] = $data->id ?? null;
+        if (array_key_exists('patterns', get_object_vars($data)) && null !== ($data->patterns ?? null)) {
+            $value = $data->patterns ?? null;
+            if (is_object($data->patterns ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getPatterns() as $key => $value_1) {
+                foreach ($data->patterns ?? null as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;

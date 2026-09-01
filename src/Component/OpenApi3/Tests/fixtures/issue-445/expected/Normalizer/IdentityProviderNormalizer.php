@@ -42,19 +42,19 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['claimMapping'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\IdpClaimToUserAttributeMapping::class, 'json', $context);
             }
-            $object->setClaimMapping($values);
+            $object->claimMapping = $values;
             unset($data['claimMapping']);
         }
         elseif (\array_key_exists('claimMapping', $data) && $data['claimMapping'] === null) {
-            $object->setClaimMapping(null);
+            $object->claimMapping = null;
             unset($data['claimMapping']);
         }
         if (\array_key_exists('groupClaimType', $data) && $data['groupClaimType'] !== null) {
-            $object->setGroupClaimType($data['groupClaimType']);
+            $object->groupClaimType = $data['groupClaimType'];
             unset($data['groupClaimType']);
         }
         elseif (\array_key_exists('groupClaimType', $data) && $data['groupClaimType'] === null) {
-            $object->setGroupClaimType(null);
+            $object->groupClaimType = null;
             unset($data['groupClaimType']);
         }
         if (\array_key_exists('groupMapping', $data) && $data['groupMapping'] !== null) {
@@ -62,43 +62,43 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['groupMapping'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\IdpGroupToUserRoleMapping::class, 'json', $context);
             }
-            $object->setGroupMapping($values_1);
+            $object->groupMapping = $values_1;
             unset($data['groupMapping']);
         }
         elseif (\array_key_exists('groupMapping', $data) && $data['groupMapping'] === null) {
-            $object->setGroupMapping(null);
+            $object->groupMapping = null;
             unset($data['groupMapping']);
         }
         if (\array_key_exists('fallbackUserRoleId', $data) && $data['fallbackUserRoleId'] !== null) {
-            $object->setFallbackUserRoleId($data['fallbackUserRoleId']);
+            $object->fallbackUserRoleId = $data['fallbackUserRoleId'];
             unset($data['fallbackUserRoleId']);
         }
         elseif (\array_key_exists('fallbackUserRoleId', $data) && $data['fallbackUserRoleId'] === null) {
-            $object->setFallbackUserRoleId(null);
+            $object->fallbackUserRoleId = null;
             unset($data['fallbackUserRoleId']);
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
             unset($data['id']);
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+            $object->name = null;
             unset($data['name']);
         }
         if (\array_key_exists('displayName', $data) && $data['displayName'] !== null) {
-            $object->setDisplayName($data['displayName']);
+            $object->displayName = $data['displayName'];
             unset($data['displayName']);
         }
         elseif (\array_key_exists('displayName', $data) && $data['displayName'] === null) {
-            $object->setDisplayName(null);
+            $object->displayName = null;
             unset($data['displayName']);
         }
         foreach ($data as $key => $value_2) {
@@ -111,34 +111,34 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('claimMapping') && null !== $data->getClaimMapping()) {
+        if (array_key_exists('claimMapping', get_object_vars($data)) && null !== ($data->claimMapping ?? null)) {
             $values = [];
-            foreach ($data->getClaimMapping() as $value) {
+            foreach ($data->claimMapping ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['claimMapping'] = $values;
         }
-        if ($data->isInitialized('groupClaimType') && null !== $data->getGroupClaimType()) {
-            $dataArray['groupClaimType'] = $data->getGroupClaimType();
+        if (array_key_exists('groupClaimType', get_object_vars($data)) && null !== ($data->groupClaimType ?? null)) {
+            $dataArray['groupClaimType'] = $data->groupClaimType ?? null;
         }
-        if ($data->isInitialized('groupMapping') && null !== $data->getGroupMapping()) {
+        if (array_key_exists('groupMapping', get_object_vars($data)) && null !== ($data->groupMapping ?? null)) {
             $values_1 = [];
-            foreach ($data->getGroupMapping() as $value_1) {
+            foreach ($data->groupMapping ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['groupMapping'] = $values_1;
         }
-        if ($data->isInitialized('fallbackUserRoleId') && null !== $data->getFallbackUserRoleId()) {
-            $dataArray['fallbackUserRoleId'] = $data->getFallbackUserRoleId();
+        if (array_key_exists('fallbackUserRoleId', get_object_vars($data)) && null !== ($data->fallbackUserRoleId ?? null)) {
+            $dataArray['fallbackUserRoleId'] = $data->fallbackUserRoleId ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('displayName') && null !== $data->getDisplayName()) {
-            $dataArray['displayName'] = $data->getDisplayName();
+        if (array_key_exists('displayName', get_object_vars($data)) && null !== ($data->displayName ?? null)) {
+            $dataArray['displayName'] = $data->displayName ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

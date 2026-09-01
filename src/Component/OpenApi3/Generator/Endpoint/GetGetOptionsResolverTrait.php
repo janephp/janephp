@@ -25,14 +25,14 @@ trait GetGetOptionsResolverTrait
                 $parameter = $guessClass->resolveParameter($parameter);
             }
 
-            if ($parameter instanceof Parameter && $parameterIn === $parameter->getIn()) {
+            if ($parameter instanceof Parameter && $parameterIn === ($parameter->in ?? null)) {
                 if ($parameter->offsetExists('x-jane-skip-validation') && $parameter->offsetGet('x-jane-skip-validation')) {
                     continue;
                 }
 
                 $parameters[] = $parameter;
-                if (\in_array($parameter->getName(), $customResolverKeys)) {
-                    $queryResolverNormalizerStms[] = $this->generateOptionResolverNormalizationStatement($parameter->getName(), $customResolver[$parameter->getName()]);
+                if (\in_array($parameter->name ?? null, $customResolverKeys)) {
+                    $queryResolverNormalizerStms[] = $this->generateOptionResolverNormalizationStatement($parameter->name ?? null, $customResolver[$parameter->name ?? null]);
                 }
             }
         }

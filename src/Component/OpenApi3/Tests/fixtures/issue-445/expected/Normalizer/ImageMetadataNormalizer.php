@@ -85,11 +85,11 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
             unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
@@ -101,187 +101,187 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
                 }
                 $value_2 = $values_1;
             }
-            $object->setDescriptions($value_2);
+            $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
-            $object->setDescriptions(null);
+            $object->descriptions = null;
             unset($data['descriptions']);
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
-            $object->setFileExtension($data['fileExtension']);
+            $object->fileExtension = $data['fileExtension'];
             unset($data['fileExtension']);
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
-            $object->setFileExtension(null);
+            $object->fileExtension = null;
             unset($data['fileExtension']);
         }
         if (\array_key_exists('fileName', $data) && $data['fileName'] !== null) {
-            $object->setFileName($data['fileName']);
+            $object->fileName = $data['fileName'];
             unset($data['fileName']);
         }
         elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
-            $object->setFileName(null);
+            $object->fileName = null;
             unset($data['fileName']);
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
-            $object->setFilePath($data['filePath']);
+            $object->filePath = $data['filePath'];
             unset($data['filePath']);
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
-            $object->setFilePath(null);
+            $object->filePath = null;
             unset($data['filePath']);
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
-            $object->setFileSizeInBytes($data['fileSizeInBytes']);
+            $object->fileSizeInBytes = $data['fileSizeInBytes'];
             unset($data['fileSizeInBytes']);
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
-            $object->setFileSizeInBytes(null);
+            $object->fileSizeInBytes = null;
             unset($data['fileSizeInBytes']);
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
-            $object->setSha1Hash($data['sha1Hash']);
+            $object->sha1Hash = $data['sha1Hash'];
             unset($data['sha1Hash']);
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
-            $object->setSha1Hash(null);
+            $object->sha1Hash = null;
             unset($data['sha1Hash']);
         }
         if (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] !== null) {
-            $object->setXmpMetadata($data['xmpMetadata']);
+            $object->xmpMetadata = $data['xmpMetadata'];
             unset($data['xmpMetadata']);
         }
         elseif (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] === null) {
-            $object->setXmpMetadata(null);
+            $object->xmpMetadata = null;
             unset($data['xmpMetadata']);
         }
         if (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] !== null) {
-            $object->setExifMetadata($data['exifMetadata']);
+            $object->exifMetadata = $data['exifMetadata'];
             unset($data['exifMetadata']);
         }
         elseif (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] === null) {
-            $object->setExifMetadata(null);
+            $object->exifMetadata = null;
             unset($data['exifMetadata']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
             unset($data['language']);
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
-            $object->setLanguage(null);
+            $object->language = null;
             unset($data['language']);
         }
         if (\array_key_exists('width', $data)) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
             unset($data['width']);
         }
         if (\array_key_exists('height', $data)) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
             unset($data['height']);
         }
         if (\array_key_exists('widthInInch', $data)) {
-            $object->setWidthInInch($data['widthInInch']);
+            $object->widthInInch = $data['widthInInch'];
             unset($data['widthInInch']);
         }
         if (\array_key_exists('heightInInch', $data)) {
-            $object->setHeightInInch($data['heightInInch']);
+            $object->heightInInch = $data['heightInInch'];
             unset($data['heightInInch']);
         }
         if (\array_key_exists('widthInCm', $data)) {
-            $object->setWidthInCm($data['widthInCm']);
+            $object->widthInCm = $data['widthInCm'];
             unset($data['widthInCm']);
         }
         if (\array_key_exists('heightInCm', $data)) {
-            $object->setHeightInCm($data['heightInCm']);
+            $object->heightInCm = $data['heightInCm'];
             unset($data['heightInCm']);
         }
         if (\array_key_exists('colorSpace', $data) && $data['colorSpace'] !== null) {
-            $object->setColorSpace($data['colorSpace']);
+            $object->colorSpace = $data['colorSpace'];
             unset($data['colorSpace']);
         }
         elseif (\array_key_exists('colorSpace', $data) && $data['colorSpace'] === null) {
-            $object->setColorSpace(null);
+            $object->colorSpace = null;
             unset($data['colorSpace']);
         }
         if (\array_key_exists('colorProfile', $data) && $data['colorProfile'] !== null) {
-            $object->setColorProfile($data['colorProfile']);
+            $object->colorProfile = $data['colorProfile'];
             unset($data['colorProfile']);
         }
         elseif (\array_key_exists('colorProfile', $data) && $data['colorProfile'] === null) {
-            $object->setColorProfile(null);
+            $object->colorProfile = null;
             unset($data['colorProfile']);
         }
         if (\array_key_exists('bitsPerPixel', $data)) {
-            $object->setBitsPerPixel($data['bitsPerPixel']);
+            $object->bitsPerPixel = $data['bitsPerPixel'];
             unset($data['bitsPerPixel']);
         }
         if (\array_key_exists('bitsPerChannel', $data)) {
-            $object->setBitsPerChannel($data['bitsPerChannel']);
+            $object->bitsPerChannel = $data['bitsPerChannel'];
             unset($data['bitsPerChannel']);
         }
         if (\array_key_exists('channels', $data) && $data['channels'] !== null) {
-            $object->setChannels($data['channels']);
+            $object->channels = $data['channels'];
             unset($data['channels']);
         }
         elseif (\array_key_exists('channels', $data) && $data['channels'] === null) {
-            $object->setChannels(null);
+            $object->channels = null;
             unset($data['channels']);
         }
         if (\array_key_exists('pixelFormat', $data) && $data['pixelFormat'] !== null) {
-            $object->setPixelFormat($data['pixelFormat']);
+            $object->pixelFormat = $data['pixelFormat'];
             unset($data['pixelFormat']);
         }
         elseif (\array_key_exists('pixelFormat', $data) && $data['pixelFormat'] === null) {
-            $object->setPixelFormat(null);
+            $object->pixelFormat = null;
             unset($data['pixelFormat']);
         }
         if (\array_key_exists('hasAlpha', $data)) {
-            $object->setHasAlpha($data['hasAlpha']);
+            $object->hasAlpha = $data['hasAlpha'];
             unset($data['hasAlpha']);
         }
         if (\array_key_exists('isIndexed', $data)) {
-            $object->setIsIndexed($data['isIndexed']);
+            $object->isIndexed = $data['isIndexed'];
             unset($data['isIndexed']);
         }
         if (\array_key_exists('isExtended', $data)) {
-            $object->setIsExtended($data['isExtended']);
+            $object->isExtended = $data['isExtended'];
             unset($data['isExtended']);
         }
         if (\array_key_exists('horizontalResolution', $data)) {
-            $object->setHorizontalResolution($data['horizontalResolution']);
+            $object->horizontalResolution = $data['horizontalResolution'];
             unset($data['horizontalResolution']);
         }
         if (\array_key_exists('verticalResolution', $data)) {
-            $object->setVerticalResolution($data['verticalResolution']);
+            $object->verticalResolution = $data['verticalResolution'];
             unset($data['verticalResolution']);
         }
         if (\array_key_exists('totalFrames', $data)) {
-            $object->setTotalFrames($data['totalFrames']);
+            $object->totalFrames = $data['totalFrames'];
             unset($data['totalFrames']);
         }
         if (\array_key_exists('totalUnspecifiedTiffExtraChannels', $data)) {
-            $object->setTotalUnspecifiedTiffExtraChannels($data['totalUnspecifiedTiffExtraChannels']);
+            $object->totalUnspecifiedTiffExtraChannels = $data['totalUnspecifiedTiffExtraChannels'];
             unset($data['totalUnspecifiedTiffExtraChannels']);
         }
         if (\array_key_exists('hasExifData', $data)) {
-            $object->setHasExifData($data['hasExifData']);
+            $object->hasExifData = $data['hasExifData'];
             unset($data['hasExifData']);
         }
         if (\array_key_exists('hasIptcData', $data)) {
-            $object->setHasIptcData($data['hasIptcData']);
+            $object->hasIptcData = $data['hasIptcData'];
             unset($data['hasIptcData']);
         }
         if (\array_key_exists('hasAdobeResourceData', $data)) {
-            $object->setHasAdobeResourceData($data['hasAdobeResourceData']);
+            $object->hasAdobeResourceData = $data['hasAdobeResourceData'];
             unset($data['hasAdobeResourceData']);
         }
         if (\array_key_exists('hasXmpData', $data)) {
-            $object->setHasXmpData($data['hasXmpData']);
+            $object->hasXmpData = $data['hasXmpData'];
             unset($data['hasXmpData']);
         }
         if (\array_key_exists('uncompressedSizeInBytes', $data)) {
-            $object->setUncompressedSizeInBytes($data['uncompressedSizeInBytes']);
+            $object->uncompressedSizeInBytes = $data['uncompressedSizeInBytes'];
             unset($data['uncompressedSizeInBytes']);
         }
         foreach ($data as $key_2 => $value_4) {
@@ -294,123 +294,123 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_1) {
+                foreach ($data->names ?? null as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
             }
             $dataArray['names'] = $value;
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $value_2 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
+        if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
+            $value_2 = $data->descriptions ?? null;
+            if (is_object($data->descriptions ?? null)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                foreach ($data->descriptions ?? null as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
                 }
                 $value_2 = $values_1;
             }
             $dataArray['descriptions'] = $value_2;
         }
-        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
-            $dataArray['fileExtension'] = $data->getFileExtension();
+        if (array_key_exists('fileExtension', get_object_vars($data)) && null !== ($data->fileExtension ?? null)) {
+            $dataArray['fileExtension'] = $data->fileExtension ?? null;
         }
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
-            $dataArray['fileName'] = $data->getFileName();
+        if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
+            $dataArray['fileName'] = $data->fileName ?? null;
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
-            $dataArray['filePath'] = $data->getFilePath();
+        if (array_key_exists('filePath', get_object_vars($data)) && null !== ($data->filePath ?? null)) {
+            $dataArray['filePath'] = $data->filePath ?? null;
         }
-        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
-            $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
+        if (array_key_exists('fileSizeInBytes', get_object_vars($data)) && null !== ($data->fileSizeInBytes ?? null)) {
+            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes ?? null;
         }
-        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
-            $dataArray['sha1Hash'] = $data->getSha1Hash();
+        if (array_key_exists('sha1Hash', get_object_vars($data)) && null !== ($data->sha1Hash ?? null)) {
+            $dataArray['sha1Hash'] = $data->sha1Hash ?? null;
         }
-        if ($data->isInitialized('xmpMetadata') && null !== $data->getXmpMetadata()) {
-            $dataArray['xmpMetadata'] = $data->getXmpMetadata();
+        if (array_key_exists('xmpMetadata', get_object_vars($data)) && null !== ($data->xmpMetadata ?? null)) {
+            $dataArray['xmpMetadata'] = $data->xmpMetadata ?? null;
         }
-        if ($data->isInitialized('exifMetadata') && null !== $data->getExifMetadata()) {
-            $dataArray['exifMetadata'] = $data->getExifMetadata();
+        if (array_key_exists('exifMetadata', get_object_vars($data)) && null !== ($data->exifMetadata ?? null)) {
+            $dataArray['exifMetadata'] = $data->exifMetadata ?? null;
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
-            $dataArray['language'] = $data->getLanguage();
+        if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
+            $dataArray['language'] = $data->language ?? null;
         }
-        if ($data->isInitialized('width') && null !== $data->getWidth()) {
-            $dataArray['width'] = $data->getWidth();
+        if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
+            $dataArray['width'] = $data->width ?? null;
         }
-        if ($data->isInitialized('height') && null !== $data->getHeight()) {
-            $dataArray['height'] = $data->getHeight();
+        if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
+            $dataArray['height'] = $data->height ?? null;
         }
-        if ($data->isInitialized('widthInInch') && null !== $data->getWidthInInch()) {
-            $dataArray['widthInInch'] = $data->getWidthInInch();
+        if (array_key_exists('widthInInch', get_object_vars($data)) && null !== ($data->widthInInch ?? null)) {
+            $dataArray['widthInInch'] = $data->widthInInch ?? null;
         }
-        if ($data->isInitialized('heightInInch') && null !== $data->getHeightInInch()) {
-            $dataArray['heightInInch'] = $data->getHeightInInch();
+        if (array_key_exists('heightInInch', get_object_vars($data)) && null !== ($data->heightInInch ?? null)) {
+            $dataArray['heightInInch'] = $data->heightInInch ?? null;
         }
-        if ($data->isInitialized('widthInCm') && null !== $data->getWidthInCm()) {
-            $dataArray['widthInCm'] = $data->getWidthInCm();
+        if (array_key_exists('widthInCm', get_object_vars($data)) && null !== ($data->widthInCm ?? null)) {
+            $dataArray['widthInCm'] = $data->widthInCm ?? null;
         }
-        if ($data->isInitialized('heightInCm') && null !== $data->getHeightInCm()) {
-            $dataArray['heightInCm'] = $data->getHeightInCm();
+        if (array_key_exists('heightInCm', get_object_vars($data)) && null !== ($data->heightInCm ?? null)) {
+            $dataArray['heightInCm'] = $data->heightInCm ?? null;
         }
-        if ($data->isInitialized('colorSpace') && null !== $data->getColorSpace()) {
-            $dataArray['colorSpace'] = $data->getColorSpace();
+        if (array_key_exists('colorSpace', get_object_vars($data)) && null !== ($data->colorSpace ?? null)) {
+            $dataArray['colorSpace'] = $data->colorSpace ?? null;
         }
-        if ($data->isInitialized('colorProfile') && null !== $data->getColorProfile()) {
-            $dataArray['colorProfile'] = $data->getColorProfile();
+        if (array_key_exists('colorProfile', get_object_vars($data)) && null !== ($data->colorProfile ?? null)) {
+            $dataArray['colorProfile'] = $data->colorProfile ?? null;
         }
-        if ($data->isInitialized('bitsPerPixel') && null !== $data->getBitsPerPixel()) {
-            $dataArray['bitsPerPixel'] = $data->getBitsPerPixel();
+        if (array_key_exists('bitsPerPixel', get_object_vars($data)) && null !== ($data->bitsPerPixel ?? null)) {
+            $dataArray['bitsPerPixel'] = $data->bitsPerPixel ?? null;
         }
-        if ($data->isInitialized('bitsPerChannel') && null !== $data->getBitsPerChannel()) {
-            $dataArray['bitsPerChannel'] = $data->getBitsPerChannel();
+        if (array_key_exists('bitsPerChannel', get_object_vars($data)) && null !== ($data->bitsPerChannel ?? null)) {
+            $dataArray['bitsPerChannel'] = $data->bitsPerChannel ?? null;
         }
-        if ($data->isInitialized('channels') && null !== $data->getChannels()) {
-            $dataArray['channels'] = $data->getChannels();
+        if (array_key_exists('channels', get_object_vars($data)) && null !== ($data->channels ?? null)) {
+            $dataArray['channels'] = $data->channels ?? null;
         }
-        if ($data->isInitialized('pixelFormat') && null !== $data->getPixelFormat()) {
-            $dataArray['pixelFormat'] = $data->getPixelFormat();
+        if (array_key_exists('pixelFormat', get_object_vars($data)) && null !== ($data->pixelFormat ?? null)) {
+            $dataArray['pixelFormat'] = $data->pixelFormat ?? null;
         }
-        if ($data->isInitialized('hasAlpha') && null !== $data->getHasAlpha()) {
-            $dataArray['hasAlpha'] = $data->getHasAlpha();
+        if (array_key_exists('hasAlpha', get_object_vars($data)) && null !== ($data->hasAlpha ?? null)) {
+            $dataArray['hasAlpha'] = $data->hasAlpha ?? null;
         }
-        if ($data->isInitialized('isIndexed') && null !== $data->getIsIndexed()) {
-            $dataArray['isIndexed'] = $data->getIsIndexed();
+        if (array_key_exists('isIndexed', get_object_vars($data)) && null !== ($data->isIndexed ?? null)) {
+            $dataArray['isIndexed'] = $data->isIndexed ?? null;
         }
-        if ($data->isInitialized('isExtended') && null !== $data->getIsExtended()) {
-            $dataArray['isExtended'] = $data->getIsExtended();
+        if (array_key_exists('isExtended', get_object_vars($data)) && null !== ($data->isExtended ?? null)) {
+            $dataArray['isExtended'] = $data->isExtended ?? null;
         }
-        if ($data->isInitialized('horizontalResolution') && null !== $data->getHorizontalResolution()) {
-            $dataArray['horizontalResolution'] = $data->getHorizontalResolution();
+        if (array_key_exists('horizontalResolution', get_object_vars($data)) && null !== ($data->horizontalResolution ?? null)) {
+            $dataArray['horizontalResolution'] = $data->horizontalResolution ?? null;
         }
-        if ($data->isInitialized('verticalResolution') && null !== $data->getVerticalResolution()) {
-            $dataArray['verticalResolution'] = $data->getVerticalResolution();
+        if (array_key_exists('verticalResolution', get_object_vars($data)) && null !== ($data->verticalResolution ?? null)) {
+            $dataArray['verticalResolution'] = $data->verticalResolution ?? null;
         }
-        if ($data->isInitialized('totalFrames') && null !== $data->getTotalFrames()) {
-            $dataArray['totalFrames'] = $data->getTotalFrames();
+        if (array_key_exists('totalFrames', get_object_vars($data)) && null !== ($data->totalFrames ?? null)) {
+            $dataArray['totalFrames'] = $data->totalFrames ?? null;
         }
-        if ($data->isInitialized('totalUnspecifiedTiffExtraChannels') && null !== $data->getTotalUnspecifiedTiffExtraChannels()) {
-            $dataArray['totalUnspecifiedTiffExtraChannels'] = $data->getTotalUnspecifiedTiffExtraChannels();
+        if (array_key_exists('totalUnspecifiedTiffExtraChannels', get_object_vars($data)) && null !== ($data->totalUnspecifiedTiffExtraChannels ?? null)) {
+            $dataArray['totalUnspecifiedTiffExtraChannels'] = $data->totalUnspecifiedTiffExtraChannels ?? null;
         }
-        if ($data->isInitialized('hasExifData') && null !== $data->getHasExifData()) {
-            $dataArray['hasExifData'] = $data->getHasExifData();
+        if (array_key_exists('hasExifData', get_object_vars($data)) && null !== ($data->hasExifData ?? null)) {
+            $dataArray['hasExifData'] = $data->hasExifData ?? null;
         }
-        if ($data->isInitialized('hasIptcData') && null !== $data->getHasIptcData()) {
-            $dataArray['hasIptcData'] = $data->getHasIptcData();
+        if (array_key_exists('hasIptcData', get_object_vars($data)) && null !== ($data->hasIptcData ?? null)) {
+            $dataArray['hasIptcData'] = $data->hasIptcData ?? null;
         }
-        if ($data->isInitialized('hasAdobeResourceData') && null !== $data->getHasAdobeResourceData()) {
-            $dataArray['hasAdobeResourceData'] = $data->getHasAdobeResourceData();
+        if (array_key_exists('hasAdobeResourceData', get_object_vars($data)) && null !== ($data->hasAdobeResourceData ?? null)) {
+            $dataArray['hasAdobeResourceData'] = $data->hasAdobeResourceData ?? null;
         }
-        if ($data->isInitialized('hasXmpData') && null !== $data->getHasXmpData()) {
-            $dataArray['hasXmpData'] = $data->getHasXmpData();
+        if (array_key_exists('hasXmpData', get_object_vars($data)) && null !== ($data->hasXmpData ?? null)) {
+            $dataArray['hasXmpData'] = $data->hasXmpData ?? null;
         }
-        if ($data->isInitialized('uncompressedSizeInBytes') && null !== $data->getUncompressedSizeInBytes()) {
-            $dataArray['uncompressedSizeInBytes'] = $data->getUncompressedSizeInBytes();
+        if (array_key_exists('uncompressedSizeInBytes', get_object_vars($data)) && null !== ($data->uncompressedSizeInBytes ?? null)) {
+            $dataArray['uncompressedSizeInBytes'] = $data->uncompressedSizeInBytes ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_4) {
             if (preg_match('/.*/', (string) $key_2)) {

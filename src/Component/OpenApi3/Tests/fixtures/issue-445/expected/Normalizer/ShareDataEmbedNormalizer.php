@@ -38,15 +38,15 @@ class ShareDataEmbedNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
             unset($data['url']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('token', $data)) {
-            $object->setToken($data['token']);
+            $object->token = $data['token'];
             unset($data['token']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class ShareDataEmbedNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['url'] = $data->getUrl();
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['token'] = $data->getToken();
+        $dataArray['url'] = $data->url ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['token'] = $data->token ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

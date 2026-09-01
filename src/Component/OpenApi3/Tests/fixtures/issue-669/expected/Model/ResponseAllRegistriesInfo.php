@@ -8,37 +8,11 @@ class ResponseAllRegistriesInfo implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var list<array<string, mixed>>
      */
-    protected $registries;
-    /**
-     * @return list<array<string, mixed>>
-     */
-    public function getRegistries(): array
-    {
-        return $this->registries;
-    }
-    /**
-     * @param list<array<string, mixed>> $registries
-     *
-     * @return self
-     */
-    public function setRegistries(array $registries): self
-    {
-        $this->initialized['registries'] = true;
-        $this->registries = $registries;
-        return $this;
-    }
+    public array $registries;
     public function definedProperties(): array
     {
-        return ['registries' => ['registries', 'getRegistries', 'setRegistries']];
+        return ['registries' => 'registries'];
     }
 }

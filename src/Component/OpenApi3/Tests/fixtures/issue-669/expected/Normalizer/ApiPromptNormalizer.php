@@ -42,27 +42,27 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
             foreach ($data['evaluation_trace_spans'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiEvaluationTraceSpan::class, 'json', $context);
             }
-            $object->setEvaluationTraceSpans($values);
+            $object->evaluationTraceSpans = $values;
             unset($data['evaluation_trace_spans']);
         }
         if (\array_key_exists('ground_truth', $data)) {
-            $object->setGroundTruth($data['ground_truth']);
+            $object->groundTruth = $data['ground_truth'];
             unset($data['ground_truth']);
         }
         if (\array_key_exists('input', $data)) {
-            $object->setInput($data['input']);
+            $object->input = $data['input'];
             unset($data['input']);
         }
         if (\array_key_exists('input_tokens', $data)) {
-            $object->setInputTokens($data['input_tokens']);
+            $object->inputTokens = $data['input_tokens'];
             unset($data['input_tokens']);
         }
         if (\array_key_exists('output', $data)) {
-            $object->setOutput($data['output']);
+            $object->output = $data['output'];
             unset($data['output']);
         }
         if (\array_key_exists('output_tokens', $data)) {
-            $object->setOutputTokens($data['output_tokens']);
+            $object->outputTokens = $data['output_tokens'];
             unset($data['output_tokens']);
         }
         if (\array_key_exists('prompt_chunks', $data)) {
@@ -70,11 +70,11 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
             foreach ($data['prompt_chunks'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\ApiPromptChunk::class, 'json', $context);
             }
-            $object->setPromptChunks($values_1);
+            $object->promptChunks = $values_1;
             unset($data['prompt_chunks']);
         }
         if (\array_key_exists('prompt_id', $data)) {
-            $object->setPromptId($data['prompt_id']);
+            $object->promptId = $data['prompt_id'];
             unset($data['prompt_id']);
         }
         if (\array_key_exists('prompt_level_metric_results', $data)) {
@@ -82,11 +82,11 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
             foreach ($data['prompt_level_metric_results'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\ApiEvaluationMetricResult::class, 'json', $context);
             }
-            $object->setPromptLevelMetricResults($values_2);
+            $object->promptLevelMetricResults = $values_2;
             unset($data['prompt_level_metric_results']);
         }
         if (\array_key_exists('trace_id', $data)) {
-            $object->setTraceId($data['trace_id']);
+            $object->traceId = $data['trace_id'];
             unset($data['trace_id']);
         }
         foreach ($data as $key => $value_3) {
@@ -99,47 +99,47 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('evaluationTraceSpans') && null !== $data->getEvaluationTraceSpans()) {
+        if (array_key_exists('evaluationTraceSpans', get_object_vars($data)) && null !== ($data->evaluationTraceSpans ?? null)) {
             $values = [];
-            foreach ($data->getEvaluationTraceSpans() as $value) {
+            foreach ($data->evaluationTraceSpans ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['evaluation_trace_spans'] = $values;
         }
-        if ($data->isInitialized('groundTruth') && null !== $data->getGroundTruth()) {
-            $dataArray['ground_truth'] = $data->getGroundTruth();
+        if (array_key_exists('groundTruth', get_object_vars($data)) && null !== ($data->groundTruth ?? null)) {
+            $dataArray['ground_truth'] = $data->groundTruth ?? null;
         }
-        if ($data->isInitialized('input') && null !== $data->getInput()) {
-            $dataArray['input'] = $data->getInput();
+        if (array_key_exists('input', get_object_vars($data)) && null !== ($data->input ?? null)) {
+            $dataArray['input'] = $data->input ?? null;
         }
-        if ($data->isInitialized('inputTokens') && null !== $data->getInputTokens()) {
-            $dataArray['input_tokens'] = $data->getInputTokens();
+        if (array_key_exists('inputTokens', get_object_vars($data)) && null !== ($data->inputTokens ?? null)) {
+            $dataArray['input_tokens'] = $data->inputTokens ?? null;
         }
-        if ($data->isInitialized('output') && null !== $data->getOutput()) {
-            $dataArray['output'] = $data->getOutput();
+        if (array_key_exists('output', get_object_vars($data)) && null !== ($data->output ?? null)) {
+            $dataArray['output'] = $data->output ?? null;
         }
-        if ($data->isInitialized('outputTokens') && null !== $data->getOutputTokens()) {
-            $dataArray['output_tokens'] = $data->getOutputTokens();
+        if (array_key_exists('outputTokens', get_object_vars($data)) && null !== ($data->outputTokens ?? null)) {
+            $dataArray['output_tokens'] = $data->outputTokens ?? null;
         }
-        if ($data->isInitialized('promptChunks') && null !== $data->getPromptChunks()) {
+        if (array_key_exists('promptChunks', get_object_vars($data)) && null !== ($data->promptChunks ?? null)) {
             $values_1 = [];
-            foreach ($data->getPromptChunks() as $value_1) {
+            foreach ($data->promptChunks ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['prompt_chunks'] = $values_1;
         }
-        if ($data->isInitialized('promptId') && null !== $data->getPromptId()) {
-            $dataArray['prompt_id'] = $data->getPromptId();
+        if (array_key_exists('promptId', get_object_vars($data)) && null !== ($data->promptId ?? null)) {
+            $dataArray['prompt_id'] = $data->promptId ?? null;
         }
-        if ($data->isInitialized('promptLevelMetricResults') && null !== $data->getPromptLevelMetricResults()) {
+        if (array_key_exists('promptLevelMetricResults', get_object_vars($data)) && null !== ($data->promptLevelMetricResults ?? null)) {
             $values_2 = [];
-            foreach ($data->getPromptLevelMetricResults() as $value_2) {
+            foreach ($data->promptLevelMetricResults ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['prompt_level_metric_results'] = $values_2;
         }
-        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
-            $dataArray['trace_id'] = $data->getTraceId();
+        if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
+            $dataArray['trace_id'] = $data->traceId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

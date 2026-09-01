@@ -19,7 +19,7 @@ class GetThingDetails extends \Jane\Component\OpenApi3\Tests\Client\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{thingId}'], [$this->thingId], '/things/{thingId}/details');
+        return str_replace(['{thingId}'], [rawurlencode($this->thingId)], '/things/{thingId}/details');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -39,7 +39,7 @@ class GetThingDetails extends \Jane\Component\OpenApi3\Tests\Client\Runtime\Clie
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Client\Model\ThingDetails', 'json');
         }
     }

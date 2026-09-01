@@ -41,43 +41,43 @@ class AssignValueActionNormalizer implements DenormalizerInterface, NormalizerIn
             $data['replace'] = (bool) $data['replace'];
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('path', $data) && $data['path'] !== null) {
-            $object->setPath($data['path']);
+            $object->path = $data['path'];
             unset($data['path']);
         }
         elseif (\array_key_exists('path', $data) && $data['path'] === null) {
-            $object->setPath(null);
+            $object->path = null;
             unset($data['path']);
         }
         if (\array_key_exists('fieldId', $data) && $data['fieldId'] !== null) {
-            $object->setFieldId($data['fieldId']);
+            $object->fieldId = $data['fieldId'];
             unset($data['fieldId']);
         }
         elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
-            $object->setFieldId(null);
+            $object->fieldId = null;
             unset($data['fieldId']);
         }
         if (\array_key_exists('value', $data) && $data['value'] !== null) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
             unset($data['value']);
         }
         elseif (\array_key_exists('value', $data) && $data['value'] === null) {
-            $object->setValue(null);
+            $object->value = null;
             unset($data['value']);
         }
         if (\array_key_exists('replace', $data)) {
-            $object->setReplace($data['replace']);
+            $object->replace = $data['replace'];
             unset($data['replace']);
         }
         foreach ($data as $key => $value) {
@@ -90,21 +90,21 @@ class AssignValueActionNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('path') && null !== $data->getPath()) {
-            $dataArray['path'] = $data->getPath();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
+            $dataArray['path'] = $data->path ?? null;
         }
-        if ($data->isInitialized('fieldId') && null !== $data->getFieldId()) {
-            $dataArray['fieldId'] = $data->getFieldId();
+        if (array_key_exists('fieldId', get_object_vars($data)) && null !== ($data->fieldId ?? null)) {
+            $dataArray['fieldId'] = $data->fieldId ?? null;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+        if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['value'] = $data->value ?? null;
         }
-        if ($data->isInitialized('replace') && null !== $data->getReplace()) {
-            $dataArray['replace'] = $data->getReplace();
+        if (array_key_exists('replace', get_object_vars($data)) && null !== ($data->replace ?? null)) {
+            $dataArray['replace'] = $data->replace ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

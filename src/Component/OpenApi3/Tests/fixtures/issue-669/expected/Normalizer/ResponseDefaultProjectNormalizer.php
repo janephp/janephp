@@ -38,7 +38,7 @@ class ResponseDefaultProjectNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('project', $data)) {
-            $object->setProject($this->denormalizer->denormalize($data['project'], \Jane\Generated\DigitalOcean\Model\Project::class, 'json', $context));
+            $object->project = $this->denormalizer->denormalize($data['project'], \Jane\Generated\DigitalOcean\Model\Project::class, 'json', $context);
             unset($data['project']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseDefaultProjectNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('project') && null !== $data->getProject()) {
-            $dataArray['project'] = $data->getProject() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getProject(), 'json', $context));
+        if (array_key_exists('project', get_object_vars($data)) && null !== ($data->project ?? null)) {
+            $dataArray['project'] = ($data->project ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->project ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

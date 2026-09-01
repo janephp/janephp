@@ -44,27 +44,27 @@ class ManagerStatusNormalizer implements DenormalizerInterface, NormalizerInterf
             $this->validate($data, new \Docker\Api\Validator\ManagerStatusConstraint());
         }
         if (\array_key_exists('Leader', $data)) {
-            $object->setLeader($data['Leader']);
+            $object->leader = $data['Leader'];
         }
         if (\array_key_exists('Reachability', $data)) {
-            $object->setReachability($data['Reachability']);
+            $object->reachability = $data['Reachability'];
         }
         if (\array_key_exists('Addr', $data)) {
-            $object->setAddr($data['Addr']);
+            $object->addr = $data['Addr'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('leader') && null !== $data->getLeader()) {
-            $dataArray['Leader'] = $data->getLeader();
+        if (array_key_exists('leader', get_object_vars($data)) && null !== ($data->leader ?? null)) {
+            $dataArray['Leader'] = $data->leader ?? null;
         }
-        if ($data->isInitialized('reachability') && null !== $data->getReachability()) {
-            $dataArray['Reachability'] = $data->getReachability();
+        if (array_key_exists('reachability', get_object_vars($data)) && null !== ($data->reachability ?? null)) {
+            $dataArray['Reachability'] = $data->reachability ?? null;
         }
-        if ($data->isInitialized('addr') && null !== $data->getAddr()) {
-            $dataArray['Addr'] = $data->getAddr();
+        if (array_key_exists('addr', get_object_vars($data)) && null !== ($data->addr ?? null)) {
+            $dataArray['Addr'] = $data->addr ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ManagerStatusConstraint());

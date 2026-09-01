@@ -41,35 +41,35 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
             $data['deduplicate'] = (bool) $data['deduplicate'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
             unset($data['id']);
         }
         if (\array_key_exists('retries', $data)) {
-            $object->setRetries($data['retries']);
+            $object->retries = $data['retries'];
             unset($data['retries']);
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
             unset($data['priority']);
         }
         if (\array_key_exists('deduplicate', $data)) {
-            $object->setDeduplicate($data['deduplicate']);
+            $object->deduplicate = $data['deduplicate'];
             unset($data['deduplicate']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('command', $data) && $data['command'] !== null) {
-            $object->setCommand($data['command']);
+            $object->command = $data['command'];
             unset($data['command']);
         }
         elseif (\array_key_exists('command', $data) && $data['command'] === null) {
-            $object->setCommand(null);
+            $object->command = null;
             unset($data['command']);
         }
         if (\array_key_exists('arguments', $data) && $data['arguments'] !== null) {
@@ -77,19 +77,19 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['arguments'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\TupleOfStringAndString::class, 'json', $context);
             }
-            $object->setArguments($values);
+            $object->arguments = $values;
             unset($data['arguments']);
         }
         elseif (\array_key_exists('arguments', $data) && $data['arguments'] === null) {
-            $object->setArguments(null);
+            $object->arguments = null;
             unset($data['arguments']);
         }
         if (\array_key_exists('targetQueue', $data) && $data['targetQueue'] !== null) {
-            $object->setTargetQueue($data['targetQueue']);
+            $object->targetQueue = $data['targetQueue'];
             unset($data['targetQueue']);
         }
         elseif (\array_key_exists('targetQueue', $data) && $data['targetQueue'] === null) {
-            $object->setTargetQueue(null);
+            $object->targetQueue = null;
             unset($data['targetQueue']);
         }
         foreach ($data as $key => $value_1) {
@@ -102,25 +102,25 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['retries'] = $data->getRetries();
-        $dataArray['priority'] = $data->getPriority();
-        $dataArray['deduplicate'] = $data->getDeduplicate();
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('command') && null !== $data->getCommand()) {
-            $dataArray['command'] = $data->getCommand();
+        $dataArray['retries'] = $data->retries ?? null;
+        $dataArray['priority'] = $data->priority ?? null;
+        $dataArray['deduplicate'] = $data->deduplicate ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('command', get_object_vars($data)) && null !== ($data->command ?? null)) {
+            $dataArray['command'] = $data->command ?? null;
         }
-        if ($data->isInitialized('arguments') && null !== $data->getArguments()) {
+        if (array_key_exists('arguments', get_object_vars($data)) && null !== ($data->arguments ?? null)) {
             $values = [];
-            foreach ($data->getArguments() as $value) {
+            foreach ($data->arguments ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['arguments'] = $values;
         }
-        if ($data->isInitialized('targetQueue') && null !== $data->getTargetQueue()) {
-            $dataArray['targetQueue'] = $data->getTargetQueue();
+        if (array_key_exists('targetQueue', get_object_vars($data)) && null !== ($data->targetQueue ?? null)) {
+            $dataArray['targetQueue'] = $data->targetQueue ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

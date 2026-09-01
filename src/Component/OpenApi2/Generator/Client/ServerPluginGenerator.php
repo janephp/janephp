@@ -16,9 +16,9 @@ trait ServerPluginGenerator
      */
     protected function discoverServer($openApi): array
     {
-        if (null !== ($host = $openApi->getHost())) {
+        if (null !== ($host = ($openApi->host ?? null))) {
             $scheme = 'https';
-            $schemes = $openApi->getSchemes() ?? [];
+            $schemes = ($openApi->schemes ?? null) ?? [];
 
             if (1 === \count($schemes)) {
                 $scheme = reset($schemes);
@@ -27,7 +27,7 @@ trait ServerPluginGenerator
             $baseUri = $scheme . '://' . trim($host, '/');
             $plugins[] = AddHostPlugin::class;
 
-            if (null !== ($basePath = $openApi->getBasePath())) {
+            if (null !== ($basePath = ($openApi->basePath ?? null))) {
                 $baseUri .= '/' . trim($basePath, '/');
                 $plugins[] = AddPathPlugin::class;
             }

@@ -41,11 +41,11 @@ class BuyMuseumTicketsNormalizer implements DenormalizerInterface, NormalizerInt
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\BuyMuseumTicketsConstraint());
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
             unset($data['email']);
         }
         if (\array_key_exists('ticketId', $data)) {
-            $object->setTicketId($data['ticketId']);
+            $object->ticketId = $data['ticketId'];
             unset($data['ticketId']);
         }
         if (\array_key_exists('ticketDate', $data)) {
@@ -53,15 +53,15 @@ class BuyMuseumTicketsNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date) {
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['ticketDate'], 'Y-m-d');
             }
-            $object->setTicketDate($date->setTime(0, 0, 0));
+            $object->ticketDate = $date->setTime(0, 0, 0);
             unset($data['ticketDate']);
         }
         if (\array_key_exists('ticketType', $data)) {
-            $object->setTicketType($data['ticketType']);
+            $object->ticketType = $data['ticketType'];
             unset($data['ticketType']);
         }
         if (\array_key_exists('eventId', $data)) {
-            $object->setEventId($data['eventId']);
+            $object->eventId = $data['eventId'];
             unset($data['eventId']);
         }
         foreach ($data as $key => $value) {
@@ -74,16 +74,16 @@ class BuyMuseumTicketsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email ?? null;
         }
-        if ($data->isInitialized('ticketId') && null !== $data->getTicketId()) {
-            $dataArray['ticketId'] = $data->getTicketId();
+        if (array_key_exists('ticketId', get_object_vars($data)) && null !== ($data->ticketId ?? null)) {
+            $dataArray['ticketId'] = $data->ticketId ?? null;
         }
-        $dataArray['ticketDate'] = $data->getTicketDate()->format('Y-m-d');
-        $dataArray['ticketType'] = $data->getTicketType();
-        if ($data->isInitialized('eventId') && null !== $data->getEventId()) {
-            $dataArray['eventId'] = $data->getEventId();
+        $dataArray['ticketDate'] = ($data->ticketDate ?? null)->format('Y-m-d');
+        $dataArray['ticketType'] = $data->ticketType ?? null;
+        if (array_key_exists('eventId', get_object_vars($data)) && null !== ($data->eventId ?? null)) {
+            $dataArray['eventId'] = $data->eventId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

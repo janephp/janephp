@@ -41,87 +41,87 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('appLogFacility', $data)) {
-            $object->setAppLogFacility($data['appLogFacility']);
+            $object->appLogFacility = $data['appLogFacility'];
         }
         if (\array_key_exists('auditLogFacility', $data)) {
-            $object->setAuditLogFacility($data['auditLogFacility']);
+            $object->auditLogFacility = $data['auditLogFacility'];
         }
         if (\array_key_exists('eventLogFacility', $data)) {
-            $object->setEventLogFacility($data['eventLogFacility']);
+            $object->eventLogFacility = $data['eventLogFacility'];
         }
         if (\array_key_exists('appLogSeverity', $data)) {
-            $object->setAppLogSeverity($data['appLogSeverity']);
+            $object->appLogSeverity = $data['appLogSeverity'];
         }
         if (\array_key_exists('auditLogSeverity', $data)) {
-            $object->setAuditLogSeverity($data['auditLogSeverity']);
+            $object->auditLogSeverity = $data['auditLogSeverity'];
         }
         if (\array_key_exists('otherLogSeverity', $data)) {
-            $object->setOtherLogSeverity($data['otherLogSeverity']);
+            $object->otherLogSeverity = $data['otherLogSeverity'];
         }
         if (\array_key_exists('forwardUEEventsMsgFormatType', $data)) {
-            $object->setForwardUEEventsMsgFormatType($data['forwardUEEventsMsgFormatType']);
+            $object->forwardUEEventsMsgFormatType = $data['forwardUEEventsMsgFormatType'];
         }
         if (\array_key_exists('primaryServer', $data)) {
-            $object->setPrimaryServer($this->denormalizer->denormalize($data['primaryServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogPrimaryServer::class, 'json', $context));
+            $object->primaryServer = $this->denormalizer->denormalize($data['primaryServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogPrimaryServer::class, 'json', $context);
         }
         if (\array_key_exists('secondaryServer', $data)) {
-            $object->setSecondaryServer($this->denormalizer->denormalize($data['secondaryServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogSecondaryServer::class, 'json', $context));
+            $object->secondaryServer = $this->denormalizer->denormalize($data['secondaryServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogSecondaryServer::class, 'json', $context);
         }
         if (\array_key_exists('eventFilter', $data)) {
-            $object->setEventFilter($data['eventFilter']);
+            $object->eventFilter = $data['eventFilter'];
         }
         if (\array_key_exists('eventFilterSeverity', $data)) {
-            $object->setEventFilterSeverity($data['eventFilterSeverity']);
+            $object->eventFilterSeverity = $data['eventFilterSeverity'];
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($this->denormalizer->denormalize($data['priority'], \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogPriority::class, 'json', $context));
+            $object->priority = $this->denormalizer->denormalize($data['priority'], \Jane\Component\OpenApi3\Tests\Expected\Model\SyslogPriority::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
-            $dataArray['enabled'] = $data->getEnabled();
+        if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
+            $dataArray['enabled'] = $data->enabled ?? null;
         }
-        if ($data->isInitialized('appLogFacility') && null !== $data->getAppLogFacility()) {
-            $dataArray['appLogFacility'] = $data->getAppLogFacility();
+        if (array_key_exists('appLogFacility', get_object_vars($data)) && null !== ($data->appLogFacility ?? null)) {
+            $dataArray['appLogFacility'] = $data->appLogFacility ?? null;
         }
-        if ($data->isInitialized('auditLogFacility') && null !== $data->getAuditLogFacility()) {
-            $dataArray['auditLogFacility'] = $data->getAuditLogFacility();
+        if (array_key_exists('auditLogFacility', get_object_vars($data)) && null !== ($data->auditLogFacility ?? null)) {
+            $dataArray['auditLogFacility'] = $data->auditLogFacility ?? null;
         }
-        if ($data->isInitialized('eventLogFacility') && null !== $data->getEventLogFacility()) {
-            $dataArray['eventLogFacility'] = $data->getEventLogFacility();
+        if (array_key_exists('eventLogFacility', get_object_vars($data)) && null !== ($data->eventLogFacility ?? null)) {
+            $dataArray['eventLogFacility'] = $data->eventLogFacility ?? null;
         }
-        if ($data->isInitialized('appLogSeverity') && null !== $data->getAppLogSeverity()) {
-            $dataArray['appLogSeverity'] = $data->getAppLogSeverity();
+        if (array_key_exists('appLogSeverity', get_object_vars($data)) && null !== ($data->appLogSeverity ?? null)) {
+            $dataArray['appLogSeverity'] = $data->appLogSeverity ?? null;
         }
-        if ($data->isInitialized('auditLogSeverity') && null !== $data->getAuditLogSeverity()) {
-            $dataArray['auditLogSeverity'] = $data->getAuditLogSeverity();
+        if (array_key_exists('auditLogSeverity', get_object_vars($data)) && null !== ($data->auditLogSeverity ?? null)) {
+            $dataArray['auditLogSeverity'] = $data->auditLogSeverity ?? null;
         }
-        if ($data->isInitialized('otherLogSeverity') && null !== $data->getOtherLogSeverity()) {
-            $dataArray['otherLogSeverity'] = $data->getOtherLogSeverity();
+        if (array_key_exists('otherLogSeverity', get_object_vars($data)) && null !== ($data->otherLogSeverity ?? null)) {
+            $dataArray['otherLogSeverity'] = $data->otherLogSeverity ?? null;
         }
-        if ($data->isInitialized('forwardUEEventsMsgFormatType') && null !== $data->getForwardUEEventsMsgFormatType()) {
-            $dataArray['forwardUEEventsMsgFormatType'] = $data->getForwardUEEventsMsgFormatType();
+        if (array_key_exists('forwardUEEventsMsgFormatType', get_object_vars($data)) && null !== ($data->forwardUEEventsMsgFormatType ?? null)) {
+            $dataArray['forwardUEEventsMsgFormatType'] = $data->forwardUEEventsMsgFormatType ?? null;
         }
-        if ($data->isInitialized('primaryServer') && null !== $data->getPrimaryServer()) {
-            $dataArray['primaryServer'] = $data->getPrimaryServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPrimaryServer(), 'json', $context));
+        if (array_key_exists('primaryServer', get_object_vars($data)) && null !== ($data->primaryServer ?? null)) {
+            $dataArray['primaryServer'] = ($data->primaryServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->primaryServer ?? null, 'json', $context));
         }
-        if ($data->isInitialized('secondaryServer') && null !== $data->getSecondaryServer()) {
-            $dataArray['secondaryServer'] = $data->getSecondaryServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondaryServer(), 'json', $context));
+        if (array_key_exists('secondaryServer', get_object_vars($data)) && null !== ($data->secondaryServer ?? null)) {
+            $dataArray['secondaryServer'] = ($data->secondaryServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->secondaryServer ?? null, 'json', $context));
         }
-        if ($data->isInitialized('eventFilter') && null !== $data->getEventFilter()) {
-            $dataArray['eventFilter'] = $data->getEventFilter();
+        if (array_key_exists('eventFilter', get_object_vars($data)) && null !== ($data->eventFilter ?? null)) {
+            $dataArray['eventFilter'] = $data->eventFilter ?? null;
         }
-        if ($data->isInitialized('eventFilterSeverity') && null !== $data->getEventFilterSeverity()) {
-            $dataArray['eventFilterSeverity'] = $data->getEventFilterSeverity();
+        if (array_key_exists('eventFilterSeverity', get_object_vars($data)) && null !== ($data->eventFilterSeverity ?? null)) {
+            $dataArray['eventFilterSeverity'] = $data->eventFilterSeverity ?? null;
         }
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPriority(), 'json', $context));
+        if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = ($data->priority ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->priority ?? null, 'json', $context));
         }
         return $dataArray;
     }

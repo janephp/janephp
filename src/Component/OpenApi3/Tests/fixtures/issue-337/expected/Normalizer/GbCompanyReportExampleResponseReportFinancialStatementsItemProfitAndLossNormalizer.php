@@ -83,63 +83,63 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLossNo
             $data['retainedProfit'] = (float) $data['retainedProfit'];
         }
         if (\array_key_exists('revenue', $data)) {
-            $object->setRevenue($data['revenue']);
+            $object->revenue = $data['revenue'];
             unset($data['revenue']);
         }
         if (\array_key_exists('operatingCosts', $data)) {
-            $object->setOperatingCosts($data['operatingCosts']);
+            $object->operatingCosts = $data['operatingCosts'];
             unset($data['operatingCosts']);
         }
         if (\array_key_exists('operatingProfit', $data)) {
-            $object->setOperatingProfit($data['operatingProfit']);
+            $object->operatingProfit = $data['operatingProfit'];
             unset($data['operatingProfit']);
         }
         if (\array_key_exists('wagesAndSalaries', $data)) {
-            $object->setWagesAndSalaries($data['wagesAndSalaries']);
+            $object->wagesAndSalaries = $data['wagesAndSalaries'];
             unset($data['wagesAndSalaries']);
         }
         if (\array_key_exists('pensionCosts', $data)) {
-            $object->setPensionCosts($data['pensionCosts']);
+            $object->pensionCosts = $data['pensionCosts'];
             unset($data['pensionCosts']);
         }
         if (\array_key_exists('depreciation', $data)) {
-            $object->setDepreciation($data['depreciation']);
+            $object->depreciation = $data['depreciation'];
             unset($data['depreciation']);
         }
         if (\array_key_exists('amortisation', $data)) {
-            $object->setAmortisation($data['amortisation']);
+            $object->amortisation = $data['amortisation'];
             unset($data['amortisation']);
         }
         if (\array_key_exists('financialExpenses', $data)) {
-            $object->setFinancialExpenses($data['financialExpenses']);
+            $object->financialExpenses = $data['financialExpenses'];
             unset($data['financialExpenses']);
         }
         if (\array_key_exists('profitBeforeTax', $data)) {
-            $object->setProfitBeforeTax($data['profitBeforeTax']);
+            $object->profitBeforeTax = $data['profitBeforeTax'];
             unset($data['profitBeforeTax']);
         }
         if (\array_key_exists('tax', $data)) {
-            $object->setTax($data['tax']);
+            $object->tax = $data['tax'];
             unset($data['tax']);
         }
         if (\array_key_exists('profitAfterTax', $data)) {
-            $object->setProfitAfterTax($data['profitAfterTax']);
+            $object->profitAfterTax = $data['profitAfterTax'];
             unset($data['profitAfterTax']);
         }
         if (\array_key_exists('dividends', $data)) {
-            $object->setDividends($data['dividends']);
+            $object->dividends = $data['dividends'];
             unset($data['dividends']);
         }
         if (\array_key_exists('minorityInterests', $data)) {
-            $object->setMinorityInterests($data['minorityInterests']);
+            $object->minorityInterests = $data['minorityInterests'];
             unset($data['minorityInterests']);
         }
         if (\array_key_exists('otherAppropriations', $data)) {
-            $object->setOtherAppropriations($data['otherAppropriations']);
+            $object->otherAppropriations = $data['otherAppropriations'];
             unset($data['otherAppropriations']);
         }
         if (\array_key_exists('retainedProfit', $data)) {
-            $object->setRetainedProfit($data['retainedProfit']);
+            $object->retainedProfit = $data['retainedProfit'];
             unset($data['retainedProfit']);
         }
         foreach ($data as $key => $value) {
@@ -152,50 +152,50 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLossNo
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('revenue') && null !== $data->getRevenue()) {
-            $dataArray['revenue'] = $data->getRevenue();
+        if (array_key_exists('revenue', get_object_vars($data)) && null !== ($data->revenue ?? null)) {
+            $dataArray['revenue'] = $data->revenue ?? null;
         }
-        if ($data->isInitialized('operatingCosts') && null !== $data->getOperatingCosts()) {
-            $dataArray['operatingCosts'] = $data->getOperatingCosts();
+        if (array_key_exists('operatingCosts', get_object_vars($data)) && null !== ($data->operatingCosts ?? null)) {
+            $dataArray['operatingCosts'] = $data->operatingCosts ?? null;
         }
-        if ($data->isInitialized('operatingProfit') && null !== $data->getOperatingProfit()) {
-            $dataArray['operatingProfit'] = $data->getOperatingProfit();
+        if (array_key_exists('operatingProfit', get_object_vars($data)) && null !== ($data->operatingProfit ?? null)) {
+            $dataArray['operatingProfit'] = $data->operatingProfit ?? null;
         }
-        if ($data->isInitialized('wagesAndSalaries') && null !== $data->getWagesAndSalaries()) {
-            $dataArray['wagesAndSalaries'] = $data->getWagesAndSalaries();
+        if (array_key_exists('wagesAndSalaries', get_object_vars($data)) && null !== ($data->wagesAndSalaries ?? null)) {
+            $dataArray['wagesAndSalaries'] = $data->wagesAndSalaries ?? null;
         }
-        if ($data->isInitialized('pensionCosts') && null !== $data->getPensionCosts()) {
-            $dataArray['pensionCosts'] = $data->getPensionCosts();
+        if (array_key_exists('pensionCosts', get_object_vars($data)) && null !== ($data->pensionCosts ?? null)) {
+            $dataArray['pensionCosts'] = $data->pensionCosts ?? null;
         }
-        if ($data->isInitialized('depreciation') && null !== $data->getDepreciation()) {
-            $dataArray['depreciation'] = $data->getDepreciation();
+        if (array_key_exists('depreciation', get_object_vars($data)) && null !== ($data->depreciation ?? null)) {
+            $dataArray['depreciation'] = $data->depreciation ?? null;
         }
-        if ($data->isInitialized('amortisation') && null !== $data->getAmortisation()) {
-            $dataArray['amortisation'] = $data->getAmortisation();
+        if (array_key_exists('amortisation', get_object_vars($data)) && null !== ($data->amortisation ?? null)) {
+            $dataArray['amortisation'] = $data->amortisation ?? null;
         }
-        if ($data->isInitialized('financialExpenses') && null !== $data->getFinancialExpenses()) {
-            $dataArray['financialExpenses'] = $data->getFinancialExpenses();
+        if (array_key_exists('financialExpenses', get_object_vars($data)) && null !== ($data->financialExpenses ?? null)) {
+            $dataArray['financialExpenses'] = $data->financialExpenses ?? null;
         }
-        if ($data->isInitialized('profitBeforeTax') && null !== $data->getProfitBeforeTax()) {
-            $dataArray['profitBeforeTax'] = $data->getProfitBeforeTax();
+        if (array_key_exists('profitBeforeTax', get_object_vars($data)) && null !== ($data->profitBeforeTax ?? null)) {
+            $dataArray['profitBeforeTax'] = $data->profitBeforeTax ?? null;
         }
-        if ($data->isInitialized('tax') && null !== $data->getTax()) {
-            $dataArray['tax'] = $data->getTax();
+        if (array_key_exists('tax', get_object_vars($data)) && null !== ($data->tax ?? null)) {
+            $dataArray['tax'] = $data->tax ?? null;
         }
-        if ($data->isInitialized('profitAfterTax') && null !== $data->getProfitAfterTax()) {
-            $dataArray['profitAfterTax'] = $data->getProfitAfterTax();
+        if (array_key_exists('profitAfterTax', get_object_vars($data)) && null !== ($data->profitAfterTax ?? null)) {
+            $dataArray['profitAfterTax'] = $data->profitAfterTax ?? null;
         }
-        if ($data->isInitialized('dividends') && null !== $data->getDividends()) {
-            $dataArray['dividends'] = $data->getDividends();
+        if (array_key_exists('dividends', get_object_vars($data)) && null !== ($data->dividends ?? null)) {
+            $dataArray['dividends'] = $data->dividends ?? null;
         }
-        if ($data->isInitialized('minorityInterests') && null !== $data->getMinorityInterests()) {
-            $dataArray['minorityInterests'] = $data->getMinorityInterests();
+        if (array_key_exists('minorityInterests', get_object_vars($data)) && null !== ($data->minorityInterests ?? null)) {
+            $dataArray['minorityInterests'] = $data->minorityInterests ?? null;
         }
-        if ($data->isInitialized('otherAppropriations') && null !== $data->getOtherAppropriations()) {
-            $dataArray['otherAppropriations'] = $data->getOtherAppropriations();
+        if (array_key_exists('otherAppropriations', get_object_vars($data)) && null !== ($data->otherAppropriations ?? null)) {
+            $dataArray['otherAppropriations'] = $data->otherAppropriations ?? null;
         }
-        if ($data->isInitialized('retainedProfit') && null !== $data->getRetainedProfit()) {
-            $dataArray['retainedProfit'] = $data->getRetainedProfit();
+        if (array_key_exists('retainedProfit', get_object_vars($data)) && null !== ($data->retainedProfit ?? null)) {
+            $dataArray['retainedProfit'] = $data->retainedProfit ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

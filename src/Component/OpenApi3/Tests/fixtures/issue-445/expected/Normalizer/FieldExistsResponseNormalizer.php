@@ -44,26 +44,26 @@ class FieldExistsResponseNormalizer implements DenormalizerInterface, Normalizer
             $data['previouslyUsed'] = (bool) $data['previouslyUsed'];
         }
         if (\array_key_exists('exists', $data)) {
-            $object->setExists($data['exists']);
+            $object->exists = $data['exists'];
         }
         if (\array_key_exists('previouslyUsed', $data)) {
-            $object->setPreviouslyUsed($data['previouslyUsed']);
+            $object->previouslyUsed = $data['previouslyUsed'];
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
-            $object->setSchemaId($data['schemaId']);
+            $object->schemaId = $data['schemaId'];
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
-            $object->setSchemaId(null);
+            $object->schemaId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['exists'] = $data->getExists();
-        $dataArray['previouslyUsed'] = $data->getPreviouslyUsed();
-        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
-            $dataArray['schemaId'] = $data->getSchemaId();
+        $dataArray['exists'] = $data->exists ?? null;
+        $dataArray['previouslyUsed'] = $data->previouslyUsed ?? null;
+        if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
+            $dataArray['schemaId'] = $data->schemaId ?? null;
         }
         return $dataArray;
     }

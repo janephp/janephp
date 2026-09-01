@@ -38,51 +38,51 @@ class ToolTestResultNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('wcid', $data)) {
-            $object->setWcid($data['wcid']);
+            $object->wcid = $data['wcid'];
         }
         if (\array_key_exists('resultId', $data)) {
-            $object->setResultId($data['resultId']);
+            $object->resultId = $data['resultId'];
         }
         if (\array_key_exists('uplink', $data)) {
-            $object->setUplink($data['uplink']);
+            $object->uplink = $data['uplink'];
         }
         if (\array_key_exists('downlink', $data)) {
-            $object->setDownlink($data['downlink']);
+            $object->downlink = $data['downlink'];
         }
         if (\array_key_exists('latency', $data)) {
-            $object->setLatency($data['latency']);
+            $object->latency = $data['latency'];
         }
         if (\array_key_exists('packetLoss', $data)) {
-            $object->setPacketLoss($data['packetLoss']);
+            $object->packetLoss = $data['packetLoss'];
         }
         if (\array_key_exists('etf', $data)) {
-            $object->setEtf($data['etf']);
+            $object->etf = $data['etf'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('wcid') && null !== $data->getWcid()) {
-            $dataArray['wcid'] = $data->getWcid();
+        if (array_key_exists('wcid', get_object_vars($data)) && null !== ($data->wcid ?? null)) {
+            $dataArray['wcid'] = $data->wcid ?? null;
         }
-        if ($data->isInitialized('resultId') && null !== $data->getResultId()) {
-            $dataArray['resultId'] = $data->getResultId();
+        if (array_key_exists('resultId', get_object_vars($data)) && null !== ($data->resultId ?? null)) {
+            $dataArray['resultId'] = $data->resultId ?? null;
         }
-        if ($data->isInitialized('uplink') && null !== $data->getUplink()) {
-            $dataArray['uplink'] = $data->getUplink();
+        if (array_key_exists('uplink', get_object_vars($data)) && null !== ($data->uplink ?? null)) {
+            $dataArray['uplink'] = $data->uplink ?? null;
         }
-        if ($data->isInitialized('downlink') && null !== $data->getDownlink()) {
-            $dataArray['downlink'] = $data->getDownlink();
+        if (array_key_exists('downlink', get_object_vars($data)) && null !== ($data->downlink ?? null)) {
+            $dataArray['downlink'] = $data->downlink ?? null;
         }
-        if ($data->isInitialized('latency') && null !== $data->getLatency()) {
-            $dataArray['latency'] = $data->getLatency();
+        if (array_key_exists('latency', get_object_vars($data)) && null !== ($data->latency ?? null)) {
+            $dataArray['latency'] = $data->latency ?? null;
         }
-        if ($data->isInitialized('packetLoss') && null !== $data->getPacketLoss()) {
-            $dataArray['packetLoss'] = $data->getPacketLoss();
+        if (array_key_exists('packetLoss', get_object_vars($data)) && null !== ($data->packetLoss ?? null)) {
+            $dataArray['packetLoss'] = $data->packetLoss ?? null;
         }
-        if ($data->isInitialized('etf') && null !== $data->getEtf()) {
-            $dataArray['etf'] = $data->getEtf();
+        if (array_key_exists('etf', get_object_vars($data)) && null !== ($data->etf ?? null)) {
+            $dataArray['etf'] = $data->etf ?? null;
         }
         return $dataArray;
     }

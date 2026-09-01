@@ -38,11 +38,11 @@ class AppAlertProgressStepNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('started_at', $data)) {
@@ -50,7 +50,7 @@ class AppAlertProgressStepNormalizer implements DenormalizerInterface, Normalize
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStartedAt($date);
+            $object->startedAt = $date;
             unset($data['started_at']);
         }
         if (\array_key_exists('ended_at', $data)) {
@@ -58,11 +58,11 @@ class AppAlertProgressStepNormalizer implements DenormalizerInterface, Normalize
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['ended_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setEndedAt($date_1);
+            $object->endedAt = $date_1;
             unset($data['ended_at']);
         }
         if (\array_key_exists('reason', $data)) {
-            $object->setReason($this->denormalizer->denormalize($data['reason'], \Jane\Generated\DigitalOcean\Model\AppAlertProgressStepReason::class, 'json', $context));
+            $object->reason = $this->denormalizer->denormalize($data['reason'], \Jane\Generated\DigitalOcean\Model\AppAlertProgressStepReason::class, 'json', $context);
             unset($data['reason']);
         }
         foreach ($data as $key => $value) {
@@ -75,20 +75,20 @@ class AppAlertProgressStepNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
-            $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
+            $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('endedAt') && null !== $data->getEndedAt()) {
-            $dataArray['ended_at'] = $data->getEndedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('endedAt', get_object_vars($data)) && null !== ($data->endedAt ?? null)) {
+            $dataArray['ended_at'] = ($data->endedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('reason') && null !== $data->getReason()) {
-            $dataArray['reason'] = $data->getReason() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getReason(), 'json', $context));
+        if (array_key_exists('reason', get_object_vars($data)) && null !== ($data->reason ?? null)) {
+            $dataArray['reason'] = ($data->reason ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reason ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -41,21 +41,21 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
             $this->validate($data, new \Docker\Api\Validator\TaskSpecResourcesConstraint());
         }
         if (\array_key_exists('Limits', $data)) {
-            $object->setLimits($this->denormalizer->denormalize($data['Limits'], \Docker\Api\Model\Limit::class, 'json', $context));
+            $object->limits = $this->denormalizer->denormalize($data['Limits'], \Docker\Api\Model\Limit::class, 'json', $context);
         }
         if (\array_key_exists('Reservation', $data)) {
-            $object->setReservation($this->denormalizer->denormalize($data['Reservation'], \Docker\Api\Model\ResourceObject::class, 'json', $context));
+            $object->reservation = $this->denormalizer->denormalize($data['Reservation'], \Docker\Api\Model\ResourceObject::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('limits') && null !== $data->getLimits()) {
-            $dataArray['Limits'] = $data->getLimits() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getLimits(), 'json', $context));
+        if (array_key_exists('limits', get_object_vars($data)) && null !== ($data->limits ?? null)) {
+            $dataArray['Limits'] = ($data->limits ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->limits ?? null, 'json', $context));
         }
-        if ($data->isInitialized('reservation') && null !== $data->getReservation()) {
-            $dataArray['Reservation'] = $data->getReservation() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getReservation(), 'json', $context));
+        if (array_key_exists('reservation', get_object_vars($data)) && null !== ($data->reservation ?? null)) {
+            $dataArray['Reservation'] = ($data->reservation ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->reservation ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecResourcesConstraint());

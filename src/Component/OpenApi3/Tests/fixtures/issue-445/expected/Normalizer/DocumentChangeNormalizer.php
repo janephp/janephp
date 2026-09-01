@@ -38,49 +38,49 @@ class DocumentChangeNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('documentName', $data) && $data['documentName'] !== null) {
-            $object->setDocumentName($data['documentName']);
+            $object->documentName = $data['documentName'];
         }
         elseif (\array_key_exists('documentName', $data) && $data['documentName'] === null) {
-            $object->setDocumentName(null);
+            $object->documentName = null;
         }
         if (\array_key_exists('documentId', $data) && $data['documentId'] !== null) {
-            $object->setDocumentId($data['documentId']);
+            $object->documentId = $data['documentId'];
         }
         elseif (\array_key_exists('documentId', $data) && $data['documentId'] === null) {
-            $object->setDocumentId(null);
+            $object->documentId = null;
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
         }
         if (\array_key_exists('action', $data) && $data['action'] !== null) {
-            $object->setAction($data['action']);
+            $object->action = $data['action'];
         }
         elseif (\array_key_exists('action', $data) && $data['action'] === null) {
-            $object->setAction(null);
+            $object->action = null;
         }
         if (\array_key_exists('timeStamp', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timeStamp']);
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timeStamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimeStamp($date);
+            $object->timeStamp = $date;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('documentName') && null !== $data->getDocumentName()) {
-            $dataArray['documentName'] = $data->getDocumentName();
+        if (array_key_exists('documentName', get_object_vars($data)) && null !== ($data->documentName ?? null)) {
+            $dataArray['documentName'] = $data->documentName ?? null;
         }
-        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
-            $dataArray['documentId'] = $data->getDocumentId();
+        if (array_key_exists('documentId', get_object_vars($data)) && null !== ($data->documentId ?? null)) {
+            $dataArray['documentId'] = $data->documentId ?? null;
         }
-        $dataArray['version'] = $data->getVersion();
-        if ($data->isInitialized('action') && null !== $data->getAction()) {
-            $dataArray['action'] = $data->getAction();
+        $dataArray['version'] = $data->version ?? null;
+        if (array_key_exists('action', get_object_vars($data)) && null !== ($data->action ?? null)) {
+            $dataArray['action'] = $data->action ?? null;
         }
-        $dataArray['timeStamp'] = $data->getTimeStamp()->format('Y-m-d\TH:i:sP');
+        $dataArray['timeStamp'] = ($data->timeStamp ?? null)->format('Y-m-d\TH:i:sP');
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

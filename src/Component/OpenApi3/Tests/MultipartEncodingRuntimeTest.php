@@ -57,9 +57,9 @@ class MultipartEncodingRuntimeTest extends TestCase
         $endpointClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Endpoint\UploadDocument');
 
         $body = new $modelClass();
-        $body->setFile('pdf-file-content');
-        $body->setPreview('preview-file-content');
-        $body->setNote('a note');
+        $body->file = 'pdf-file-content';
+        $body->preview = 'preview-file-content';
+        $body->note = 'a note';
 
         $result = (new $endpointClass($body))->getBody($serializer, $streamFactory);
 
@@ -102,7 +102,7 @@ class MultipartEncodingRuntimeTest extends TestCase
         try {
             // a resource backed by a real file keeps its derived filename (and extension based Content-Type guessing stays possible)
             $body = new $modelClass();
-            $body->setFile(fopen($realFile, 'r'));
+            $body->file = fopen($realFile, 'r');
             $result = (new $endpointClass($body))->getBody($serializer, $streamFactory);
             $streamContent = (string) $result[1];
             $this->assertMatchesRegularExpression('/name="file"; filename="jane-issue-1036-upload.pdf"\R/', $streamContent);
@@ -112,7 +112,7 @@ class MultipartEncodingRuntimeTest extends TestCase
             fwrite($inMemory, 'in-memory-content');
             rewind($inMemory);
             $body = new $modelClass();
-            $body->setFile($inMemory);
+            $body->file = $inMemory;
             $result = (new $endpointClass($body))->getBody($serializer, $streamFactory);
             $streamContent = (string) $result[1];
             $this->assertMatchesRegularExpression('/name="file"; filename="file"\R/', $streamContent);

@@ -38,81 +38,81 @@ class ApSyslogServerProfileCreateApSyslogServerProfileNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('primaryAddress', $data)) {
-            $object->setPrimaryAddress($data['primaryAddress']);
+            $object->primaryAddress = $data['primaryAddress'];
         }
         if (\array_key_exists('primaryPort', $data)) {
-            $object->setPrimaryPort($data['primaryPort']);
+            $object->primaryPort = $data['primaryPort'];
         }
         if (\array_key_exists('primaryProtocol', $data)) {
-            $object->setPrimaryProtocol($data['primaryProtocol']);
+            $object->primaryProtocol = $data['primaryProtocol'];
         }
         if (\array_key_exists('secondaryAddress', $data)) {
-            $object->setSecondaryAddress($data['secondaryAddress']);
+            $object->secondaryAddress = $data['secondaryAddress'];
         }
         if (\array_key_exists('secondaryPort', $data)) {
-            $object->setSecondaryPort($data['secondaryPort']);
+            $object->secondaryPort = $data['secondaryPort'];
         }
         if (\array_key_exists('secondaryProtocol', $data)) {
-            $object->setSecondaryProtocol($data['secondaryProtocol']);
+            $object->secondaryProtocol = $data['secondaryProtocol'];
         }
         if (\array_key_exists('redundancyMode', $data)) {
-            $object->setRedundancyMode($data['redundancyMode']);
+            $object->redundancyMode = $data['redundancyMode'];
         }
         if (\array_key_exists('flowLevel', $data)) {
-            $object->setFlowLevel($data['flowLevel']);
+            $object->flowLevel = $data['flowLevel'];
         }
         if (\array_key_exists('facility', $data)) {
-            $object->setFacility($data['facility']);
+            $object->facility = $data['facility'];
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domainId'] = $data->getDomainId();
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['domainId'] = $data->domainId ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['primaryAddress'] = $data->getPrimaryAddress();
-        if ($data->isInitialized('primaryPort') && null !== $data->getPrimaryPort()) {
-            $dataArray['primaryPort'] = $data->getPrimaryPort();
+        $dataArray['primaryAddress'] = $data->primaryAddress ?? null;
+        if (array_key_exists('primaryPort', get_object_vars($data)) && null !== ($data->primaryPort ?? null)) {
+            $dataArray['primaryPort'] = $data->primaryPort ?? null;
         }
-        if ($data->isInitialized('primaryProtocol') && null !== $data->getPrimaryProtocol()) {
-            $dataArray['primaryProtocol'] = $data->getPrimaryProtocol();
+        if (array_key_exists('primaryProtocol', get_object_vars($data)) && null !== ($data->primaryProtocol ?? null)) {
+            $dataArray['primaryProtocol'] = $data->primaryProtocol ?? null;
         }
-        if ($data->isInitialized('secondaryAddress') && null !== $data->getSecondaryAddress()) {
-            $dataArray['secondaryAddress'] = $data->getSecondaryAddress();
+        if (array_key_exists('secondaryAddress', get_object_vars($data)) && null !== ($data->secondaryAddress ?? null)) {
+            $dataArray['secondaryAddress'] = $data->secondaryAddress ?? null;
         }
-        if ($data->isInitialized('secondaryPort') && null !== $data->getSecondaryPort()) {
-            $dataArray['secondaryPort'] = $data->getSecondaryPort();
+        if (array_key_exists('secondaryPort', get_object_vars($data)) && null !== ($data->secondaryPort ?? null)) {
+            $dataArray['secondaryPort'] = $data->secondaryPort ?? null;
         }
-        if ($data->isInitialized('secondaryProtocol') && null !== $data->getSecondaryProtocol()) {
-            $dataArray['secondaryProtocol'] = $data->getSecondaryProtocol();
+        if (array_key_exists('secondaryProtocol', get_object_vars($data)) && null !== ($data->secondaryProtocol ?? null)) {
+            $dataArray['secondaryProtocol'] = $data->secondaryProtocol ?? null;
         }
-        if ($data->isInitialized('redundancyMode') && null !== $data->getRedundancyMode()) {
-            $dataArray['redundancyMode'] = $data->getRedundancyMode();
+        if (array_key_exists('redundancyMode', get_object_vars($data)) && null !== ($data->redundancyMode ?? null)) {
+            $dataArray['redundancyMode'] = $data->redundancyMode ?? null;
         }
-        if ($data->isInitialized('flowLevel') && null !== $data->getFlowLevel()) {
-            $dataArray['flowLevel'] = $data->getFlowLevel();
+        if (array_key_exists('flowLevel', get_object_vars($data)) && null !== ($data->flowLevel ?? null)) {
+            $dataArray['flowLevel'] = $data->flowLevel ?? null;
         }
-        if ($data->isInitialized('facility') && null !== $data->getFacility()) {
-            $dataArray['facility'] = $data->getFacility();
+        if (array_key_exists('facility', get_object_vars($data)) && null !== ($data->facility ?? null)) {
+            $dataArray['facility'] = $data->facility ?? null;
         }
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority();
+        if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = $data->priority ?? null;
         }
         return $dataArray;
     }

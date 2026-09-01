@@ -38,21 +38,21 @@ class AdministrationUpgradePatchInfoNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('clusterOperationProgress', $data)) {
-            $object->setClusterOperationProgress($this->denormalizer->denormalize($data['clusterOperationProgress'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterUpgradeProgress::class, 'json', $context));
+            $object->clusterOperationProgress = $this->denormalizer->denormalize($data['clusterOperationProgress'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterUpgradeProgress::class, 'json', $context);
         }
         if (\array_key_exists('uploadPatchInfo', $data)) {
-            $object->setUploadPatchInfo($this->denormalizer->denormalize($data['uploadPatchInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeUploadPatchInfo::class, 'json', $context));
+            $object->uploadPatchInfo = $this->denormalizer->denormalize($data['uploadPatchInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeUploadPatchInfo::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clusterOperationProgress') && null !== $data->getClusterOperationProgress()) {
-            $dataArray['clusterOperationProgress'] = $data->getClusterOperationProgress() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClusterOperationProgress(), 'json', $context));
+        if (array_key_exists('clusterOperationProgress', get_object_vars($data)) && null !== ($data->clusterOperationProgress ?? null)) {
+            $dataArray['clusterOperationProgress'] = ($data->clusterOperationProgress ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->clusterOperationProgress ?? null, 'json', $context));
         }
-        if ($data->isInitialized('uploadPatchInfo') && null !== $data->getUploadPatchInfo()) {
-            $dataArray['uploadPatchInfo'] = $data->getUploadPatchInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUploadPatchInfo(), 'json', $context));
+        if (array_key_exists('uploadPatchInfo', get_object_vars($data)) && null !== ($data->uploadPatchInfo ?? null)) {
+            $dataArray['uploadPatchInfo'] = ($data->uploadPatchInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->uploadPatchInfo ?? null, 'json', $context));
         }
         return $dataArray;
     }

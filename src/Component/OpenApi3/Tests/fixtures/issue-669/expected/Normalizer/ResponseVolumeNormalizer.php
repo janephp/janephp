@@ -42,7 +42,7 @@ class ResponseVolumeNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['volume'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setVolume($values);
+            $object->volume = $values;
             unset($data['volume']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -55,9 +55,9 @@ class ResponseVolumeNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('volume') && null !== $data->getVolume()) {
+        if (array_key_exists('volume', get_object_vars($data)) && null !== ($data->volume ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getVolume() as $key => $value) {
+            foreach ($data->volume ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['volume'] = $values;

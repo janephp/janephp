@@ -38,27 +38,27 @@ class ZoneLoadBalancingNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('loadBalancingMethod', $data)) {
-            $object->setLoadBalancingMethod($data['loadBalancingMethod']);
+            $object->loadBalancingMethod = $data['loadBalancingMethod'];
         }
         if (\array_key_exists('bandBalancing', $data)) {
-            $object->setBandBalancing($this->denormalizer->denormalize($data['bandBalancing'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneBandBalancing::class, 'json', $context));
+            $object->bandBalancing = $this->denormalizer->denormalize($data['bandBalancing'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneBandBalancing::class, 'json', $context);
         }
         if (\array_key_exists('steeringMode', $data)) {
-            $object->setSteeringMode($data['steeringMode']);
+            $object->steeringMode = $data['steeringMode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('loadBalancingMethod') && null !== $data->getLoadBalancingMethod()) {
-            $dataArray['loadBalancingMethod'] = $data->getLoadBalancingMethod();
+        if (array_key_exists('loadBalancingMethod', get_object_vars($data)) && null !== ($data->loadBalancingMethod ?? null)) {
+            $dataArray['loadBalancingMethod'] = $data->loadBalancingMethod ?? null;
         }
-        if ($data->isInitialized('bandBalancing') && null !== $data->getBandBalancing()) {
-            $dataArray['bandBalancing'] = $data->getBandBalancing() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBandBalancing(), 'json', $context));
+        if (array_key_exists('bandBalancing', get_object_vars($data)) && null !== ($data->bandBalancing ?? null)) {
+            $dataArray['bandBalancing'] = ($data->bandBalancing ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->bandBalancing ?? null, 'json', $context));
         }
-        if ($data->isInitialized('steeringMode') && null !== $data->getSteeringMode()) {
-            $dataArray['steeringMode'] = $data->getSteeringMode();
+        if (array_key_exists('steeringMode', get_object_vars($data)) && null !== ($data->steeringMode ?? null)) {
+            $dataArray['steeringMode'] = $data->steeringMode ?? null;
         }
         return $dataArray;
     }

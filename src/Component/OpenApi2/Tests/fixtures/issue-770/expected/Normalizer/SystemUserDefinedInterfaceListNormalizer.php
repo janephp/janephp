@@ -42,16 +42,16 @@ class SystemUserDefinedInterfaceListNormalizer implements DenormalizerInterface,
             foreach ($data['userDefinedInterface'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemCpUserDefinedInterface::class, 'json', $context);
             }
-            $object->setUserDefinedInterface($values);
+            $object->userDefinedInterface = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('userDefinedInterface') && null !== $data->getUserDefinedInterface()) {
+        if (array_key_exists('userDefinedInterface', get_object_vars($data)) && null !== ($data->userDefinedInterface ?? null)) {
             $values = [];
-            foreach ($data->getUserDefinedInterface() as $value) {
+            foreach ($data->userDefinedInterface ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['userDefinedInterface'] = $values;

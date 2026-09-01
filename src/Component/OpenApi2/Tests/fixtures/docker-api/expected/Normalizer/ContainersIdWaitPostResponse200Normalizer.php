@@ -41,19 +41,19 @@ class ContainersIdWaitPostResponse200Normalizer implements DenormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\ContainersIdWaitPostResponse200Constraint());
         }
         if (\array_key_exists('StatusCode', $data)) {
-            $object->setStatusCode($data['StatusCode']);
+            $object->statusCode = $data['StatusCode'];
         }
         if (\array_key_exists('Error', $data)) {
-            $object->setError($this->denormalizer->denormalize($data['Error'], \Docker\Api\Model\ContainersIdWaitPostResponse200Error::class, 'json', $context));
+            $object->error = $this->denormalizer->denormalize($data['Error'], \Docker\Api\Model\ContainersIdWaitPostResponse200Error::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['StatusCode'] = $data->getStatusCode();
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['Error'] = $data->getError() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getError(), 'json', $context));
+        $dataArray['StatusCode'] = $data->statusCode ?? null;
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $dataArray['Error'] = ($data->error ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->error ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdWaitPostResponse200Constraint());

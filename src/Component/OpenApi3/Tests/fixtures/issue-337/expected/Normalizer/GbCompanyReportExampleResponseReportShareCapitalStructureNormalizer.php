@@ -41,11 +41,11 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
             $data['numberOfSharesIssued'] = (float) $data['numberOfSharesIssued'];
         }
         if (\array_key_exists('issuedShareCapital', $data)) {
-            $object->setIssuedShareCapital($this->denormalizer->denormalize($data['issuedShareCapital'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital::class, 'json', $context));
+            $object->issuedShareCapital = $this->denormalizer->denormalize($data['issuedShareCapital'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital::class, 'json', $context);
             unset($data['issuedShareCapital']);
         }
         if (\array_key_exists('numberOfSharesIssued', $data)) {
-            $object->setNumberOfSharesIssued($data['numberOfSharesIssued']);
+            $object->numberOfSharesIssued = $data['numberOfSharesIssued'];
             unset($data['numberOfSharesIssued']);
         }
         if (\array_key_exists('shareHolders', $data)) {
@@ -53,7 +53,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
             foreach ($data['shareHolders'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem::class, 'json', $context);
             }
-            $object->setShareHolders($values);
+            $object->shareHolders = $values;
             unset($data['shareHolders']);
         }
         foreach ($data as $key => $value_1) {
@@ -66,15 +66,15 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('issuedShareCapital') && null !== $data->getIssuedShareCapital()) {
-            $dataArray['issuedShareCapital'] = $data->getIssuedShareCapital() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getIssuedShareCapital(), 'json', $context));
+        if (array_key_exists('issuedShareCapital', get_object_vars($data)) && null !== ($data->issuedShareCapital ?? null)) {
+            $dataArray['issuedShareCapital'] = ($data->issuedShareCapital ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->issuedShareCapital ?? null, 'json', $context));
         }
-        if ($data->isInitialized('numberOfSharesIssued') && null !== $data->getNumberOfSharesIssued()) {
-            $dataArray['numberOfSharesIssued'] = $data->getNumberOfSharesIssued();
+        if (array_key_exists('numberOfSharesIssued', get_object_vars($data)) && null !== ($data->numberOfSharesIssued ?? null)) {
+            $dataArray['numberOfSharesIssued'] = $data->numberOfSharesIssued ?? null;
         }
-        if ($data->isInitialized('shareHolders') && null !== $data->getShareHolders()) {
+        if (array_key_exists('shareHolders', get_object_vars($data)) && null !== ($data->shareHolders ?? null)) {
             $values = [];
-            foreach ($data->getShareHolders() as $value) {
+            foreach ($data->shareHolders ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['shareHolders'] = $values;

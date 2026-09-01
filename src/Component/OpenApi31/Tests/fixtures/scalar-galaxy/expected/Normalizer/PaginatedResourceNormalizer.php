@@ -41,7 +41,7 @@ class PaginatedResourceNormalizer implements DenormalizerInterface, NormalizerIn
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PaginatedResourceConstraint());
         }
         if (\array_key_exists('meta', $data)) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Jane\Component\OpenApi31\Tests\Expected\Model\PaginatedResourceMeta::class, 'json', $context));
+            $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Component\OpenApi31\Tests\Expected\Model\PaginatedResourceMeta::class, 'json', $context);
             unset($data['meta']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class PaginatedResourceNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('meta') && null !== $data->getMeta()) {
-            $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
+        if (array_key_exists('meta', get_object_vars($data)) && null !== ($data->meta ?? null)) {
+            $dataArray['meta'] = ($data->meta ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->meta ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

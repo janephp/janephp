@@ -44,83 +44,83 @@ class SwarmInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $this->validate($data, new \Docker\Api\Validator\SwarmInfoConstraint());
         }
         if (\array_key_exists('NodeID', $data)) {
-            $object->setNodeID($data['NodeID']);
+            $object->nodeID = $data['NodeID'];
         }
         if (\array_key_exists('NodeAddr', $data)) {
-            $object->setNodeAddr($data['NodeAddr']);
+            $object->nodeAddr = $data['NodeAddr'];
         }
         if (\array_key_exists('LocalNodeState', $data)) {
-            $object->setLocalNodeState($data['LocalNodeState']);
+            $object->localNodeState = $data['LocalNodeState'];
         }
         if (\array_key_exists('ControlAvailable', $data)) {
-            $object->setControlAvailable($data['ControlAvailable']);
+            $object->controlAvailable = $data['ControlAvailable'];
         }
         if (\array_key_exists('Error', $data)) {
-            $object->setError($data['Error']);
+            $object->error = $data['Error'];
         }
         if (\array_key_exists('RemoteManagers', $data) && $data['RemoteManagers'] !== null) {
             $values = [];
             foreach ($data['RemoteManagers'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\PeerNode::class, 'json', $context);
             }
-            $object->setRemoteManagers($values);
+            $object->remoteManagers = $values;
         }
         elseif (\array_key_exists('RemoteManagers', $data) && $data['RemoteManagers'] === null) {
-            $object->setRemoteManagers(null);
+            $object->remoteManagers = null;
         }
         if (\array_key_exists('Nodes', $data) && $data['Nodes'] !== null) {
-            $object->setNodes($data['Nodes']);
+            $object->nodes = $data['Nodes'];
         }
         elseif (\array_key_exists('Nodes', $data) && $data['Nodes'] === null) {
-            $object->setNodes(null);
+            $object->nodes = null;
         }
         if (\array_key_exists('Managers', $data) && $data['Managers'] !== null) {
-            $object->setManagers($data['Managers']);
+            $object->managers = $data['Managers'];
         }
         elseif (\array_key_exists('Managers', $data) && $data['Managers'] === null) {
-            $object->setManagers(null);
+            $object->managers = null;
         }
         if (\array_key_exists('Cluster', $data) && $data['Cluster'] !== null) {
-            $object->setCluster($this->denormalizer->denormalize($data['Cluster'], \Docker\Api\Model\ClusterInfo::class, 'json', $context));
+            $object->cluster = $this->denormalizer->denormalize($data['Cluster'], \Docker\Api\Model\ClusterInfo::class, 'json', $context);
         }
         elseif (\array_key_exists('Cluster', $data) && $data['Cluster'] === null) {
-            $object->setCluster(null);
+            $object->cluster = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nodeID') && null !== $data->getNodeID()) {
-            $dataArray['NodeID'] = $data->getNodeID();
+        if (array_key_exists('nodeID', get_object_vars($data)) && null !== ($data->nodeID ?? null)) {
+            $dataArray['NodeID'] = $data->nodeID ?? null;
         }
-        if ($data->isInitialized('nodeAddr') && null !== $data->getNodeAddr()) {
-            $dataArray['NodeAddr'] = $data->getNodeAddr();
+        if (array_key_exists('nodeAddr', get_object_vars($data)) && null !== ($data->nodeAddr ?? null)) {
+            $dataArray['NodeAddr'] = $data->nodeAddr ?? null;
         }
-        if ($data->isInitialized('localNodeState') && null !== $data->getLocalNodeState()) {
-            $dataArray['LocalNodeState'] = $data->getLocalNodeState();
+        if (array_key_exists('localNodeState', get_object_vars($data)) && null !== ($data->localNodeState ?? null)) {
+            $dataArray['LocalNodeState'] = $data->localNodeState ?? null;
         }
-        if ($data->isInitialized('controlAvailable') && null !== $data->getControlAvailable()) {
-            $dataArray['ControlAvailable'] = $data->getControlAvailable();
+        if (array_key_exists('controlAvailable', get_object_vars($data)) && null !== ($data->controlAvailable ?? null)) {
+            $dataArray['ControlAvailable'] = $data->controlAvailable ?? null;
         }
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['Error'] = $data->getError();
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $dataArray['Error'] = $data->error ?? null;
         }
-        if ($data->isInitialized('remoteManagers') && null !== $data->getRemoteManagers()) {
+        if (array_key_exists('remoteManagers', get_object_vars($data)) && null !== ($data->remoteManagers ?? null)) {
             $values = [];
-            foreach ($data->getRemoteManagers() as $value) {
+            foreach ($data->remoteManagers ?? null as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['RemoteManagers'] = $values;
         }
-        if ($data->isInitialized('nodes') && null !== $data->getNodes()) {
-            $dataArray['Nodes'] = $data->getNodes();
+        if (array_key_exists('nodes', get_object_vars($data)) && null !== ($data->nodes ?? null)) {
+            $dataArray['Nodes'] = $data->nodes ?? null;
         }
-        if ($data->isInitialized('managers') && null !== $data->getManagers()) {
-            $dataArray['Managers'] = $data->getManagers();
+        if (array_key_exists('managers', get_object_vars($data)) && null !== ($data->managers ?? null)) {
+            $dataArray['Managers'] = $data->managers ?? null;
         }
-        if ($data->isInitialized('cluster') && null !== $data->getCluster()) {
-            $dataArray['Cluster'] = $data->getCluster() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getCluster(), 'json', $context));
+        if (array_key_exists('cluster', get_object_vars($data)) && null !== ($data->cluster ?? null)) {
+            $dataArray['Cluster'] = ($data->cluster ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->cluster ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmInfoConstraint());

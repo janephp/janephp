@@ -38,31 +38,31 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mortgageType', $data)) {
-            $object->setMortgageType($data['mortgageType']);
+            $object->mortgageType = $data['mortgageType'];
             unset($data['mortgageType']);
         }
         if (\array_key_exists('dateChargeCreated', $data)) {
-            $object->setDateChargeCreated($data['dateChargeCreated']);
+            $object->dateChargeCreated = $data['dateChargeCreated'];
             unset($data['dateChargeCreated']);
         }
         if (\array_key_exists('dateChargeRegistered', $data)) {
-            $object->setDateChargeRegistered($data['dateChargeRegistered']);
+            $object->dateChargeRegistered = $data['dateChargeRegistered'];
             unset($data['dateChargeRegistered']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('personsEntitled', $data)) {
-            $object->setPersonsEntitled($data['personsEntitled']);
+            $object->personsEntitled = $data['personsEntitled'];
             unset($data['personsEntitled']);
         }
         if (\array_key_exists('amountSecured', $data)) {
-            $object->setAmountSecured($data['amountSecured']);
+            $object->amountSecured = $data['amountSecured'];
             unset($data['amountSecured']);
         }
         if (\array_key_exists('details', $data)) {
-            $object->setDetails($data['details']);
+            $object->details = $data['details'];
             unset($data['details']);
         }
         foreach ($data as $key => $value) {
@@ -75,26 +75,26 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mortgageType') && null !== $data->getMortgageType()) {
-            $dataArray['mortgageType'] = $data->getMortgageType();
+        if (array_key_exists('mortgageType', get_object_vars($data)) && null !== ($data->mortgageType ?? null)) {
+            $dataArray['mortgageType'] = $data->mortgageType ?? null;
         }
-        if ($data->isInitialized('dateChargeCreated') && null !== $data->getDateChargeCreated()) {
-            $dataArray['dateChargeCreated'] = $data->getDateChargeCreated();
+        if (array_key_exists('dateChargeCreated', get_object_vars($data)) && null !== ($data->dateChargeCreated ?? null)) {
+            $dataArray['dateChargeCreated'] = $data->dateChargeCreated ?? null;
         }
-        if ($data->isInitialized('dateChargeRegistered') && null !== $data->getDateChargeRegistered()) {
-            $dataArray['dateChargeRegistered'] = $data->getDateChargeRegistered();
+        if (array_key_exists('dateChargeRegistered', get_object_vars($data)) && null !== ($data->dateChargeRegistered ?? null)) {
+            $dataArray['dateChargeRegistered'] = $data->dateChargeRegistered ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('personsEntitled') && null !== $data->getPersonsEntitled()) {
-            $dataArray['personsEntitled'] = $data->getPersonsEntitled();
+        if (array_key_exists('personsEntitled', get_object_vars($data)) && null !== ($data->personsEntitled ?? null)) {
+            $dataArray['personsEntitled'] = $data->personsEntitled ?? null;
         }
-        if ($data->isInitialized('amountSecured') && null !== $data->getAmountSecured()) {
-            $dataArray['amountSecured'] = $data->getAmountSecured();
+        if (array_key_exists('amountSecured', get_object_vars($data)) && null !== ($data->amountSecured ?? null)) {
+            $dataArray['amountSecured'] = $data->amountSecured ?? null;
         }
-        if ($data->isInitialized('details') && null !== $data->getDetails()) {
-            $dataArray['details'] = $data->getDetails();
+        if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
+            $dataArray['details'] = $data->details ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

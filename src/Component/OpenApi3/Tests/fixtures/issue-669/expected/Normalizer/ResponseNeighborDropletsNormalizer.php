@@ -42,7 +42,7 @@ class ResponseNeighborDropletsNormalizer implements DenormalizerInterface, Norma
             foreach ($data['droplets'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\Droplet::class, 'json', $context);
             }
-            $object->setDroplets($values);
+            $object->droplets = $values;
             unset($data['droplets']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseNeighborDropletsNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('droplets') && null !== $data->getDroplets()) {
+        if (array_key_exists('droplets', get_object_vars($data)) && null !== ($data->droplets ?? null)) {
             $values = [];
-            foreach ($data->getDroplets() as $value) {
+            foreach ($data->droplets ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['droplets'] = $values;

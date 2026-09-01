@@ -38,43 +38,43 @@ class AaaTestAuthenticationServerNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('serverType', $data)) {
-            $object->setServerType($data['serverType']);
+            $object->serverType = $data['serverType'];
         }
         if (\array_key_exists('aaaType', $data)) {
-            $object->setAaaType($data['aaaType']);
+            $object->aaaType = $data['aaaType'];
         }
         if (\array_key_exists('aaaServer', $data)) {
-            $object->setAaaServer($this->denormalizer->denormalize($data['aaaServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->aaaServer = $this->denormalizer->denormalize($data['aaaServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('userName', $data)) {
-            $object->setUserName($data['userName']);
+            $object->userName = $data['userName'];
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
         }
         if (\array_key_exists('authProtocol', $data)) {
-            $object->setAuthProtocol($data['authProtocol']);
+            $object->authProtocol = $data['authProtocol'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('serverType') && null !== $data->getServerType()) {
-            $dataArray['serverType'] = $data->getServerType();
+        if (array_key_exists('serverType', get_object_vars($data)) && null !== ($data->serverType ?? null)) {
+            $dataArray['serverType'] = $data->serverType ?? null;
         }
-        if ($data->isInitialized('aaaType') && null !== $data->getAaaType()) {
-            $dataArray['aaaType'] = $data->getAaaType();
+        if (array_key_exists('aaaType', get_object_vars($data)) && null !== ($data->aaaType ?? null)) {
+            $dataArray['aaaType'] = $data->aaaType ?? null;
         }
-        $dataArray['aaaServer'] = $data->getAaaServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAaaServer(), 'json', $context));
-        if ($data->isInitialized('userName') && null !== $data->getUserName()) {
-            $dataArray['userName'] = $data->getUserName();
+        $dataArray['aaaServer'] = ($data->aaaServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->aaaServer ?? null, 'json', $context));
+        if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
+            $dataArray['userName'] = $data->userName ?? null;
         }
-        if ($data->isInitialized('password') && null !== $data->getPassword()) {
-            $dataArray['password'] = $data->getPassword();
+        if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
+            $dataArray['password'] = $data->password ?? null;
         }
-        if ($data->isInitialized('authProtocol') && null !== $data->getAuthProtocol()) {
-            $dataArray['authProtocol'] = $data->getAuthProtocol();
+        if (array_key_exists('authProtocol', get_object_vars($data)) && null !== ($data->authProtocol ?? null)) {
+            $dataArray['authProtocol'] = $data->authProtocol ?? null;
         }
         return $dataArray;
     }

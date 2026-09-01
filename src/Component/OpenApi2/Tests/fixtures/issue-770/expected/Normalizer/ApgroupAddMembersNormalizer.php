@@ -42,16 +42,16 @@ class ApgroupAddMembersNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['memberList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupApGroupMember::class, 'json', $context);
             }
-            $object->setMemberList($values);
+            $object->memberList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('memberList') && null !== $data->getMemberList()) {
+        if (array_key_exists('memberList', get_object_vars($data)) && null !== ($data->memberList ?? null)) {
             $values = [];
-            foreach ($data->getMemberList() as $value) {
+            foreach ($data->memberList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['memberList'] = $values;

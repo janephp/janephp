@@ -90,213 +90,213 @@ class ApmodelCommonAttributeNormalizer implements DenormalizerInterface, Normali
             foreach ($data['nonEditablePorts'] as $value) {
                 $values[] = $value;
             }
-            $object->setNonEditablePorts($values);
+            $object->nonEditablePorts = $values;
         }
         if (\array_key_exists('isAllowDisableExtAnt', $data)) {
-            $object->setIsAllowDisableExtAnt($data['isAllowDisableExtAnt']);
+            $object->isAllowDisableExtAnt = $data['isAllowDisableExtAnt'];
         }
         if (\array_key_exists('nonVisiblePorts', $data)) {
             $values_1 = [];
             foreach ($data['nonVisiblePorts'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setNonVisiblePorts($values_1);
+            $object->nonVisiblePorts = $values_1;
         }
         if (\array_key_exists('hasScanRadio', $data)) {
-            $object->setHasScanRadio($data['hasScanRadio']);
+            $object->hasScanRadio = $data['hasScanRadio'];
         }
         if (\array_key_exists('hasCablemodem', $data)) {
-            $object->setHasCablemodem($data['hasCablemodem']);
+            $object->hasCablemodem = $data['hasCablemodem'];
         }
         if (\array_key_exists('hasGps', $data)) {
-            $object->setHasGps($data['hasGps']);
+            $object->hasGps = $data['hasGps'];
         }
         if (\array_key_exists('isDualRadio', $data)) {
-            $object->setIsDualRadio($data['isDualRadio']);
+            $object->isDualRadio = $data['isDualRadio'];
         }
         if (\array_key_exists('isOutdoor', $data)) {
-            $object->setIsOutdoor($data['isOutdoor']);
+            $object->isOutdoor = $data['isOutdoor'];
         }
         if (\array_key_exists('maxChannelization24G', $data)) {
-            $object->setMaxChannelization24G($data['maxChannelization24G']);
+            $object->maxChannelization24G = $data['maxChannelization24G'];
         }
         if (\array_key_exists('maxChannelization5G', $data)) {
-            $object->setMaxChannelization5G($data['maxChannelization5G']);
+            $object->maxChannelization5G = $data['maxChannelization5G'];
         }
         if (\array_key_exists('maxClientsUpper', $data)) {
-            $object->setMaxClientsUpper($data['maxClientsUpper']);
+            $object->maxClientsUpper = $data['maxClientsUpper'];
         }
         if (\array_key_exists('maxWlanNum24G', $data)) {
-            $object->setMaxWlanNum24G($data['maxWlanNum24G']);
+            $object->maxWlanNum24G = $data['maxWlanNum24G'];
         }
         if (\array_key_exists('maxWlanNum5G', $data)) {
-            $object->setMaxWlanNum5G($data['maxWlanNum5G']);
+            $object->maxWlanNum5G = $data['maxWlanNum5G'];
         }
         if (\array_key_exists('noAvc', $data)) {
-            $object->setNoAvc($data['noAvc']);
+            $object->noAvc = $data['noAvc'];
         }
         if (\array_key_exists('noMesh', $data)) {
-            $object->setNoMesh($data['noMesh']);
+            $object->noMesh = $data['noMesh'];
         }
         if (\array_key_exists('meshRadioCaps', $data)) {
-            $object->setMeshRadioCaps($data['meshRadioCaps']);
+            $object->meshRadioCaps = $data['meshRadioCaps'];
         }
         if (\array_key_exists('reserved5GWlanForMesh', $data)) {
-            $object->setReserved5GWlanForMesh($data['reserved5GWlanForMesh']);
+            $object->reserved5GWlanForMesh = $data['reserved5GWlanForMesh'];
         }
         if (\array_key_exists('support11AC', $data)) {
-            $object->setSupport11AC($data['support11AC']);
+            $object->support11AC = $data['support11AC'];
         }
         if (\array_key_exists('supportChannelization160', $data)) {
-            $object->setSupportChannelization160($data['supportChannelization160']);
+            $object->supportChannelization160 = $data['supportChannelization160'];
         }
         if (\array_key_exists('supportAPUsbSoftwarePackage', $data)) {
-            $object->setSupportAPUsbSoftwarePackage($data['supportAPUsbSoftwarePackage']);
+            $object->supportAPUsbSoftwarePackage = $data['supportAPUsbSoftwarePackage'];
         }
         if (\array_key_exists('supportBandSwitch', $data)) {
-            $object->setSupportBandSwitch($data['supportBandSwitch']);
+            $object->supportBandSwitch = $data['supportBandSwitch'];
         }
         if (\array_key_exists('supportBonjour', $data)) {
-            $object->setSupportBonjour($data['supportBonjour']);
+            $object->supportBonjour = $data['supportBonjour'];
         }
         if (\array_key_exists('supportIpsec', $data)) {
-            $object->setSupportIpsec($data['supportIpsec']);
+            $object->supportIpsec = $data['supportIpsec'];
         }
         if (\array_key_exists('supportLBS', $data)) {
-            $object->setSupportLBS($data['supportLBS']);
+            $object->supportLBS = $data['supportLBS'];
         }
         if (\array_key_exists('supportResetCablemodem', $data)) {
-            $object->setSupportResetCablemodem($data['supportResetCablemodem']);
+            $object->supportResetCablemodem = $data['supportResetCablemodem'];
         }
         if (\array_key_exists('allowDfsCountry', $data)) {
-            $object->setAllowDfsCountry($data['allowDfsCountry']);
+            $object->allowDfsCountry = $data['allowDfsCountry'];
         }
         if (\array_key_exists('ram', $data)) {
-            $object->setRam($data['ram']);
+            $object->ram = $data['ram'];
         }
         if (\array_key_exists('numOfCores', $data)) {
-            $object->setNumOfCores($data['numOfCores']);
+            $object->numOfCores = $data['numOfCores'];
         }
         if (\array_key_exists('cpuFrequency', $data)) {
-            $object->setCpuFrequency($data['cpuFrequency']);
+            $object->cpuFrequency = $data['cpuFrequency'];
         }
         if (\array_key_exists('scalingFactor', $data)) {
-            $object->setScalingFactor($data['scalingFactor']);
+            $object->scalingFactor = $data['scalingFactor'];
         }
         if (\array_key_exists('capabilityScore', $data)) {
-            $object->setCapabilityScore($data['capabilityScore']);
+            $object->capabilityScore = $data['capabilityScore'];
         }
         if (\array_key_exists('poeModeCaps', $data)) {
-            $object->setPoeModeCaps($data['poeModeCaps']);
+            $object->poeModeCaps = $data['poeModeCaps'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nonEditablePorts') && null !== $data->getNonEditablePorts()) {
+        if (array_key_exists('nonEditablePorts', get_object_vars($data)) && null !== ($data->nonEditablePorts ?? null)) {
             $values = [];
-            foreach ($data->getNonEditablePorts() as $value) {
+            foreach ($data->nonEditablePorts ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['nonEditablePorts'] = $values;
         }
-        if ($data->isInitialized('isAllowDisableExtAnt') && null !== $data->getIsAllowDisableExtAnt()) {
-            $dataArray['isAllowDisableExtAnt'] = $data->getIsAllowDisableExtAnt();
+        if (array_key_exists('isAllowDisableExtAnt', get_object_vars($data)) && null !== ($data->isAllowDisableExtAnt ?? null)) {
+            $dataArray['isAllowDisableExtAnt'] = $data->isAllowDisableExtAnt ?? null;
         }
-        if ($data->isInitialized('nonVisiblePorts') && null !== $data->getNonVisiblePorts()) {
+        if (array_key_exists('nonVisiblePorts', get_object_vars($data)) && null !== ($data->nonVisiblePorts ?? null)) {
             $values_1 = [];
-            foreach ($data->getNonVisiblePorts() as $value_1) {
+            foreach ($data->nonVisiblePorts ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['nonVisiblePorts'] = $values_1;
         }
-        if ($data->isInitialized('hasScanRadio') && null !== $data->getHasScanRadio()) {
-            $dataArray['hasScanRadio'] = $data->getHasScanRadio();
+        if (array_key_exists('hasScanRadio', get_object_vars($data)) && null !== ($data->hasScanRadio ?? null)) {
+            $dataArray['hasScanRadio'] = $data->hasScanRadio ?? null;
         }
-        if ($data->isInitialized('hasCablemodem') && null !== $data->getHasCablemodem()) {
-            $dataArray['hasCablemodem'] = $data->getHasCablemodem();
+        if (array_key_exists('hasCablemodem', get_object_vars($data)) && null !== ($data->hasCablemodem ?? null)) {
+            $dataArray['hasCablemodem'] = $data->hasCablemodem ?? null;
         }
-        if ($data->isInitialized('hasGps') && null !== $data->getHasGps()) {
-            $dataArray['hasGps'] = $data->getHasGps();
+        if (array_key_exists('hasGps', get_object_vars($data)) && null !== ($data->hasGps ?? null)) {
+            $dataArray['hasGps'] = $data->hasGps ?? null;
         }
-        if ($data->isInitialized('isDualRadio') && null !== $data->getIsDualRadio()) {
-            $dataArray['isDualRadio'] = $data->getIsDualRadio();
+        if (array_key_exists('isDualRadio', get_object_vars($data)) && null !== ($data->isDualRadio ?? null)) {
+            $dataArray['isDualRadio'] = $data->isDualRadio ?? null;
         }
-        if ($data->isInitialized('isOutdoor') && null !== $data->getIsOutdoor()) {
-            $dataArray['isOutdoor'] = $data->getIsOutdoor();
+        if (array_key_exists('isOutdoor', get_object_vars($data)) && null !== ($data->isOutdoor ?? null)) {
+            $dataArray['isOutdoor'] = $data->isOutdoor ?? null;
         }
-        if ($data->isInitialized('maxChannelization24G') && null !== $data->getMaxChannelization24G()) {
-            $dataArray['maxChannelization24G'] = $data->getMaxChannelization24G();
+        if (array_key_exists('maxChannelization24G', get_object_vars($data)) && null !== ($data->maxChannelization24G ?? null)) {
+            $dataArray['maxChannelization24G'] = $data->maxChannelization24G ?? null;
         }
-        if ($data->isInitialized('maxChannelization5G') && null !== $data->getMaxChannelization5G()) {
-            $dataArray['maxChannelization5G'] = $data->getMaxChannelization5G();
+        if (array_key_exists('maxChannelization5G', get_object_vars($data)) && null !== ($data->maxChannelization5G ?? null)) {
+            $dataArray['maxChannelization5G'] = $data->maxChannelization5G ?? null;
         }
-        if ($data->isInitialized('maxClientsUpper') && null !== $data->getMaxClientsUpper()) {
-            $dataArray['maxClientsUpper'] = $data->getMaxClientsUpper();
+        if (array_key_exists('maxClientsUpper', get_object_vars($data)) && null !== ($data->maxClientsUpper ?? null)) {
+            $dataArray['maxClientsUpper'] = $data->maxClientsUpper ?? null;
         }
-        if ($data->isInitialized('maxWlanNum24G') && null !== $data->getMaxWlanNum24G()) {
-            $dataArray['maxWlanNum24G'] = $data->getMaxWlanNum24G();
+        if (array_key_exists('maxWlanNum24G', get_object_vars($data)) && null !== ($data->maxWlanNum24G ?? null)) {
+            $dataArray['maxWlanNum24G'] = $data->maxWlanNum24G ?? null;
         }
-        if ($data->isInitialized('maxWlanNum5G') && null !== $data->getMaxWlanNum5G()) {
-            $dataArray['maxWlanNum5G'] = $data->getMaxWlanNum5G();
+        if (array_key_exists('maxWlanNum5G', get_object_vars($data)) && null !== ($data->maxWlanNum5G ?? null)) {
+            $dataArray['maxWlanNum5G'] = $data->maxWlanNum5G ?? null;
         }
-        if ($data->isInitialized('noAvc') && null !== $data->getNoAvc()) {
-            $dataArray['noAvc'] = $data->getNoAvc();
+        if (array_key_exists('noAvc', get_object_vars($data)) && null !== ($data->noAvc ?? null)) {
+            $dataArray['noAvc'] = $data->noAvc ?? null;
         }
-        if ($data->isInitialized('noMesh') && null !== $data->getNoMesh()) {
-            $dataArray['noMesh'] = $data->getNoMesh();
+        if (array_key_exists('noMesh', get_object_vars($data)) && null !== ($data->noMesh ?? null)) {
+            $dataArray['noMesh'] = $data->noMesh ?? null;
         }
-        if ($data->isInitialized('meshRadioCaps') && null !== $data->getMeshRadioCaps()) {
-            $dataArray['meshRadioCaps'] = $data->getMeshRadioCaps();
+        if (array_key_exists('meshRadioCaps', get_object_vars($data)) && null !== ($data->meshRadioCaps ?? null)) {
+            $dataArray['meshRadioCaps'] = $data->meshRadioCaps ?? null;
         }
-        if ($data->isInitialized('reserved5GWlanForMesh') && null !== $data->getReserved5GWlanForMesh()) {
-            $dataArray['reserved5GWlanForMesh'] = $data->getReserved5GWlanForMesh();
+        if (array_key_exists('reserved5GWlanForMesh', get_object_vars($data)) && null !== ($data->reserved5GWlanForMesh ?? null)) {
+            $dataArray['reserved5GWlanForMesh'] = $data->reserved5GWlanForMesh ?? null;
         }
-        if ($data->isInitialized('support11AC') && null !== $data->getSupport11AC()) {
-            $dataArray['support11AC'] = $data->getSupport11AC();
+        if (array_key_exists('support11AC', get_object_vars($data)) && null !== ($data->support11AC ?? null)) {
+            $dataArray['support11AC'] = $data->support11AC ?? null;
         }
-        if ($data->isInitialized('supportChannelization160') && null !== $data->getSupportChannelization160()) {
-            $dataArray['supportChannelization160'] = $data->getSupportChannelization160();
+        if (array_key_exists('supportChannelization160', get_object_vars($data)) && null !== ($data->supportChannelization160 ?? null)) {
+            $dataArray['supportChannelization160'] = $data->supportChannelization160 ?? null;
         }
-        if ($data->isInitialized('supportAPUsbSoftwarePackage') && null !== $data->getSupportAPUsbSoftwarePackage()) {
-            $dataArray['supportAPUsbSoftwarePackage'] = $data->getSupportAPUsbSoftwarePackage();
+        if (array_key_exists('supportAPUsbSoftwarePackage', get_object_vars($data)) && null !== ($data->supportAPUsbSoftwarePackage ?? null)) {
+            $dataArray['supportAPUsbSoftwarePackage'] = $data->supportAPUsbSoftwarePackage ?? null;
         }
-        if ($data->isInitialized('supportBandSwitch') && null !== $data->getSupportBandSwitch()) {
-            $dataArray['supportBandSwitch'] = $data->getSupportBandSwitch();
+        if (array_key_exists('supportBandSwitch', get_object_vars($data)) && null !== ($data->supportBandSwitch ?? null)) {
+            $dataArray['supportBandSwitch'] = $data->supportBandSwitch ?? null;
         }
-        if ($data->isInitialized('supportBonjour') && null !== $data->getSupportBonjour()) {
-            $dataArray['supportBonjour'] = $data->getSupportBonjour();
+        if (array_key_exists('supportBonjour', get_object_vars($data)) && null !== ($data->supportBonjour ?? null)) {
+            $dataArray['supportBonjour'] = $data->supportBonjour ?? null;
         }
-        if ($data->isInitialized('supportIpsec') && null !== $data->getSupportIpsec()) {
-            $dataArray['supportIpsec'] = $data->getSupportIpsec();
+        if (array_key_exists('supportIpsec', get_object_vars($data)) && null !== ($data->supportIpsec ?? null)) {
+            $dataArray['supportIpsec'] = $data->supportIpsec ?? null;
         }
-        if ($data->isInitialized('supportLBS') && null !== $data->getSupportLBS()) {
-            $dataArray['supportLBS'] = $data->getSupportLBS();
+        if (array_key_exists('supportLBS', get_object_vars($data)) && null !== ($data->supportLBS ?? null)) {
+            $dataArray['supportLBS'] = $data->supportLBS ?? null;
         }
-        if ($data->isInitialized('supportResetCablemodem') && null !== $data->getSupportResetCablemodem()) {
-            $dataArray['supportResetCablemodem'] = $data->getSupportResetCablemodem();
+        if (array_key_exists('supportResetCablemodem', get_object_vars($data)) && null !== ($data->supportResetCablemodem ?? null)) {
+            $dataArray['supportResetCablemodem'] = $data->supportResetCablemodem ?? null;
         }
-        if ($data->isInitialized('allowDfsCountry') && null !== $data->getAllowDfsCountry()) {
-            $dataArray['allowDfsCountry'] = $data->getAllowDfsCountry();
+        if (array_key_exists('allowDfsCountry', get_object_vars($data)) && null !== ($data->allowDfsCountry ?? null)) {
+            $dataArray['allowDfsCountry'] = $data->allowDfsCountry ?? null;
         }
-        if ($data->isInitialized('ram') && null !== $data->getRam()) {
-            $dataArray['ram'] = $data->getRam();
+        if (array_key_exists('ram', get_object_vars($data)) && null !== ($data->ram ?? null)) {
+            $dataArray['ram'] = $data->ram ?? null;
         }
-        if ($data->isInitialized('numOfCores') && null !== $data->getNumOfCores()) {
-            $dataArray['numOfCores'] = $data->getNumOfCores();
+        if (array_key_exists('numOfCores', get_object_vars($data)) && null !== ($data->numOfCores ?? null)) {
+            $dataArray['numOfCores'] = $data->numOfCores ?? null;
         }
-        if ($data->isInitialized('cpuFrequency') && null !== $data->getCpuFrequency()) {
-            $dataArray['cpuFrequency'] = $data->getCpuFrequency();
+        if (array_key_exists('cpuFrequency', get_object_vars($data)) && null !== ($data->cpuFrequency ?? null)) {
+            $dataArray['cpuFrequency'] = $data->cpuFrequency ?? null;
         }
-        if ($data->isInitialized('scalingFactor') && null !== $data->getScalingFactor()) {
-            $dataArray['scalingFactor'] = $data->getScalingFactor();
+        if (array_key_exists('scalingFactor', get_object_vars($data)) && null !== ($data->scalingFactor ?? null)) {
+            $dataArray['scalingFactor'] = $data->scalingFactor ?? null;
         }
-        if ($data->isInitialized('capabilityScore') && null !== $data->getCapabilityScore()) {
-            $dataArray['capabilityScore'] = $data->getCapabilityScore();
+        if (array_key_exists('capabilityScore', get_object_vars($data)) && null !== ($data->capabilityScore ?? null)) {
+            $dataArray['capabilityScore'] = $data->capabilityScore ?? null;
         }
-        if ($data->isInitialized('poeModeCaps') && null !== $data->getPoeModeCaps()) {
-            $dataArray['poeModeCaps'] = $data->getPoeModeCaps();
+        if (array_key_exists('poeModeCaps', get_object_vars($data)) && null !== ($data->poeModeCaps ?? null)) {
+            $dataArray['poeModeCaps'] = $data->poeModeCaps ?? null;
         }
         return $dataArray;
     }

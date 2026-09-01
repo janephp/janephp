@@ -38,27 +38,27 @@ class IdpClaimToUserAttributeMappingNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('claimType', $data) && $data['claimType'] !== null) {
-            $object->setClaimType($data['claimType']);
+            $object->claimType = $data['claimType'];
         }
         elseif (\array_key_exists('claimType', $data) && $data['claimType'] === null) {
-            $object->setClaimType(null);
+            $object->claimType = null;
         }
         if (\array_key_exists('userAttributePath', $data) && $data['userAttributePath'] !== null) {
-            $object->setUserAttributePath($data['userAttributePath']);
+            $object->userAttributePath = $data['userAttributePath'];
         }
         elseif (\array_key_exists('userAttributePath', $data) && $data['userAttributePath'] === null) {
-            $object->setUserAttributePath(null);
+            $object->userAttributePath = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('claimType') && null !== $data->getClaimType()) {
-            $dataArray['claimType'] = $data->getClaimType();
+        if (array_key_exists('claimType', get_object_vars($data)) && null !== ($data->claimType ?? null)) {
+            $dataArray['claimType'] = $data->claimType ?? null;
         }
-        if ($data->isInitialized('userAttributePath') && null !== $data->getUserAttributePath()) {
-            $dataArray['userAttributePath'] = $data->getUserAttributePath();
+        if (array_key_exists('userAttributePath', get_object_vars($data)) && null !== ($data->userAttributePath ?? null)) {
+            $dataArray['userAttributePath'] = $data->userAttributePath ?? null;
         }
         return $dataArray;
     }

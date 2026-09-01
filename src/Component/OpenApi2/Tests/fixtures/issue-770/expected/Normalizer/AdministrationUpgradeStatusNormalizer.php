@@ -38,15 +38,15 @@ class AdministrationUpgradeStatusNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('clusterOperationProgress', $data)) {
-            $object->setClusterOperationProgress($this->denormalizer->denormalize($data['clusterOperationProgress'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterUpgradeProgress::class, 'json', $context));
+            $object->clusterOperationProgress = $this->denormalizer->denormalize($data['clusterOperationProgress'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterUpgradeProgress::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clusterOperationProgress') && null !== $data->getClusterOperationProgress()) {
-            $dataArray['clusterOperationProgress'] = $data->getClusterOperationProgress() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClusterOperationProgress(), 'json', $context));
+        if (array_key_exists('clusterOperationProgress', get_object_vars($data)) && null !== ($data->clusterOperationProgress ?? null)) {
+            $dataArray['clusterOperationProgress'] = ($data->clusterOperationProgress ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->clusterOperationProgress ?? null, 'json', $context));
         }
         return $dataArray;
     }

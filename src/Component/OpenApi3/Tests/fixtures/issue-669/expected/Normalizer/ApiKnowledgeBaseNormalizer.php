@@ -45,7 +45,7 @@ class ApiKnowledgeBaseNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['added_to_agent_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setAddedToAgentAt($date);
+            $object->addedToAgentAt = $date;
             unset($data['added_to_agent_at']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -53,35 +53,35 @@ class ApiKnowledgeBaseNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date_1);
+            $object->createdAt = $date_1;
             unset($data['created_at']);
         }
         if (\array_key_exists('database_id', $data)) {
-            $object->setDatabaseId($data['database_id']);
+            $object->databaseId = $data['database_id'];
             unset($data['database_id']);
         }
         if (\array_key_exists('embedding_model_uuid', $data)) {
-            $object->setEmbeddingModelUuid($data['embedding_model_uuid']);
+            $object->embeddingModelUuid = $data['embedding_model_uuid'];
             unset($data['embedding_model_uuid']);
         }
         if (\array_key_exists('is_public', $data)) {
-            $object->setIsPublic($data['is_public']);
+            $object->isPublic = $data['is_public'];
             unset($data['is_public']);
         }
         if (\array_key_exists('last_indexing_job', $data)) {
-            $object->setLastIndexingJob($this->denormalizer->denormalize($data['last_indexing_job'], \Jane\Generated\DigitalOcean\Model\ApiIndexingJob::class, 'json', $context));
+            $object->lastIndexingJob = $this->denormalizer->denormalize($data['last_indexing_job'], \Jane\Generated\DigitalOcean\Model\ApiIndexingJob::class, 'json', $context);
             unset($data['last_indexing_job']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('project_id', $data)) {
-            $object->setProjectId($data['project_id']);
+            $object->projectId = $data['project_id'];
             unset($data['project_id']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -89,7 +89,7 @@ class ApiKnowledgeBaseNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setTags($values);
+            $object->tags = $values;
             unset($data['tags']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -97,15 +97,15 @@ class ApiKnowledgeBaseNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date_2) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_2);
+            $object->updatedAt = $date_2;
             unset($data['updated_at']);
         }
         if (\array_key_exists('user_id', $data)) {
-            $object->setUserId($data['user_id']);
+            $object->userId = $data['user_id'];
             unset($data['user_id']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         foreach ($data as $key => $value_1) {
@@ -118,48 +118,48 @@ class ApiKnowledgeBaseNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('addedToAgentAt') && null !== $data->getAddedToAgentAt()) {
-            $dataArray['added_to_agent_at'] = $data->getAddedToAgentAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('addedToAgentAt', get_object_vars($data)) && null !== ($data->addedToAgentAt ?? null)) {
+            $dataArray['added_to_agent_at'] = ($data->addedToAgentAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('databaseId') && null !== $data->getDatabaseId()) {
-            $dataArray['database_id'] = $data->getDatabaseId();
+        if (array_key_exists('databaseId', get_object_vars($data)) && null !== ($data->databaseId ?? null)) {
+            $dataArray['database_id'] = $data->databaseId ?? null;
         }
-        if ($data->isInitialized('embeddingModelUuid') && null !== $data->getEmbeddingModelUuid()) {
-            $dataArray['embedding_model_uuid'] = $data->getEmbeddingModelUuid();
+        if (array_key_exists('embeddingModelUuid', get_object_vars($data)) && null !== ($data->embeddingModelUuid ?? null)) {
+            $dataArray['embedding_model_uuid'] = $data->embeddingModelUuid ?? null;
         }
-        if ($data->isInitialized('isPublic') && null !== $data->getIsPublic()) {
-            $dataArray['is_public'] = $data->getIsPublic();
+        if (array_key_exists('isPublic', get_object_vars($data)) && null !== ($data->isPublic ?? null)) {
+            $dataArray['is_public'] = $data->isPublic ?? null;
         }
-        if ($data->isInitialized('lastIndexingJob') && null !== $data->getLastIndexingJob()) {
-            $dataArray['last_indexing_job'] = $data->getLastIndexingJob() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLastIndexingJob(), 'json', $context));
+        if (array_key_exists('lastIndexingJob', get_object_vars($data)) && null !== ($data->lastIndexingJob ?? null)) {
+            $dataArray['last_indexing_job'] = ($data->lastIndexingJob ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->lastIndexingJob ?? null, 'json', $context));
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
-            $dataArray['project_id'] = $data->getProjectId();
+        if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
+            $dataArray['project_id'] = $data->projectId ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->getTags() as $value) {
+            foreach ($data->tags ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['user_id'] = $data->getUserId();
+        if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['user_id'] = $data->userId ?? null;
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

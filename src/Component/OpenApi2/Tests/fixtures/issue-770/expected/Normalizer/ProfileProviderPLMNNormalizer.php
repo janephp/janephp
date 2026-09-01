@@ -38,18 +38,18 @@ class ProfileProviderPLMNNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mcc', $data)) {
-            $object->setMcc($data['mcc']);
+            $object->mcc = $data['mcc'];
         }
         if (\array_key_exists('mnc', $data)) {
-            $object->setMnc($data['mnc']);
+            $object->mnc = $data['mnc'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['mcc'] = $data->getMcc();
-        $dataArray['mnc'] = $data->getMnc();
+        $dataArray['mcc'] = $data->mcc ?? null;
+        $dataArray['mnc'] = $data->mnc ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

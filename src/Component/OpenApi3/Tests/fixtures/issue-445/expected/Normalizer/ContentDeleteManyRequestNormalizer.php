@@ -48,13 +48,13 @@ class ContentDeleteManyRequestNormalizer implements DenormalizerInterface, Norma
             foreach ($data['contentIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setContentIds($values);
+            $object->contentIds = $values;
         }
         if (\array_key_exists('forceReferenceRemoval', $data)) {
-            $object->setForceReferenceRemoval($data['forceReferenceRemoval']);
+            $object->forceReferenceRemoval = $data['forceReferenceRemoval'];
         }
         if (\array_key_exists('notifyProgress', $data)) {
-            $object->setNotifyProgress($data['notifyProgress']);
+            $object->notifyProgress = $data['notifyProgress'];
         }
         return $object;
     }
@@ -62,12 +62,12 @@ class ContentDeleteManyRequestNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getContentIds() as $value) {
+        foreach ($data->contentIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;
-        $dataArray['forceReferenceRemoval'] = $data->getForceReferenceRemoval();
-        $dataArray['notifyProgress'] = $data->getNotifyProgress();
+        $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval ?? null;
+        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

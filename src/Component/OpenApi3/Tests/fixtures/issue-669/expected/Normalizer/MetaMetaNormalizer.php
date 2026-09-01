@@ -38,7 +38,7 @@ class MetaMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('total', $data)) {
-            $object->setTotal($data['total']);
+            $object->total = $data['total'];
             unset($data['total']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class MetaMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('total') && null !== $data->getTotal()) {
-            $dataArray['total'] = $data->getTotal();
+        if (array_key_exists('total', get_object_vars($data)) && null !== ($data->total ?? null)) {
+            $dataArray['total'] = $data->total ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

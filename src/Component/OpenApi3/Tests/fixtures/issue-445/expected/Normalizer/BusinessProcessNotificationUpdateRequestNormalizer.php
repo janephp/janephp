@@ -46,7 +46,7 @@ class BusinessProcessNotificationUpdateRequestNormalizer implements Denormalizer
                 }
                 $value = $values;
             }
-            $object->setTitle($value);
+            $object->title = $value;
             unset($data['title']);
         }
         if (\array_key_exists('message', $data)) {
@@ -58,15 +58,15 @@ class BusinessProcessNotificationUpdateRequestNormalizer implements Denormalizer
                 }
                 $value_2 = $values_1;
             }
-            $object->setMessage($value_2);
+            $object->message = $value_2;
             unset($data['message']);
         }
         if (\array_key_exists('navigationLink', $data) && $data['navigationLink'] !== null) {
-            $object->setNavigationLink($data['navigationLink']);
+            $object->navigationLink = $data['navigationLink'];
             unset($data['navigationLink']);
         }
         elseif (\array_key_exists('navigationLink', $data) && $data['navigationLink'] === null) {
-            $object->setNavigationLink(null);
+            $object->navigationLink = null;
             unset($data['navigationLink']);
         }
         if (\array_key_exists('eventType', $data)) {
@@ -74,7 +74,7 @@ class BusinessProcessNotificationUpdateRequestNormalizer implements Denormalizer
             if (is_string($data['eventType'])) {
                 $value_4 = $data['eventType'];
             }
-            $object->setEventType($value_4);
+            $object->eventType = $value_4;
             unset($data['eventType']);
         }
         foreach ($data as $key_2 => $value_5) {
@@ -87,30 +87,30 @@ class BusinessProcessNotificationUpdateRequestNormalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getTitle();
-        if (is_object($data->getTitle())) {
+        $value = $data->title ?? null;
+        if (is_object($data->title ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getTitle() as $key => $value_1) {
+            foreach ($data->title ?? null as $key => $value_1) {
                 $values[$key] = $value_1;
             }
             $value = $values;
         }
         $dataArray['title'] = $value;
-        $value_2 = $data->getMessage();
-        if (is_object($data->getMessage())) {
+        $value_2 = $data->message ?? null;
+        if (is_object($data->message ?? null)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getMessage() as $key_1 => $value_3) {
+            foreach ($data->message ?? null as $key_1 => $value_3) {
                 $values_1[$key_1] = $value_3;
             }
             $value_2 = $values_1;
         }
         $dataArray['message'] = $value_2;
-        if ($data->isInitialized('navigationLink') && null !== $data->getNavigationLink()) {
-            $dataArray['navigationLink'] = $data->getNavigationLink();
+        if (array_key_exists('navigationLink', get_object_vars($data)) && null !== ($data->navigationLink ?? null)) {
+            $dataArray['navigationLink'] = $data->navigationLink ?? null;
         }
-        $value_4 = $data->getEventType();
-        if (is_string($data->getEventType())) {
-            $value_4 = $data->getEventType();
+        $value_4 = $data->eventType ?? null;
+        if (is_string($data->eventType ?? null)) {
+            $value_4 = $data->eventType ?? null;
         }
         $dataArray['eventType'] = $value_4;
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_5) {

@@ -38,7 +38,7 @@ class ResponseExistingCheckStateNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($this->denormalizer->denormalize($data['state'], \Jane\Generated\DigitalOcean\Model\State::class, 'json', $context));
+            $object->state = $this->denormalizer->denormalize($data['state'], \Jane\Generated\DigitalOcean\Model\State::class, 'json', $context);
             unset($data['state']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseExistingCheckStateNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getState(), 'json', $context));
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = ($data->state ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->state ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

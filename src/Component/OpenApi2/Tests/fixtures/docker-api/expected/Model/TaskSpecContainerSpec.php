@@ -5,37 +5,29 @@ namespace Docker\Api\Model;
 class TaskSpecContainerSpec
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * The image name to use for the container
      *
      * @var string
      */
-    protected $image;
+    public string $image;
     /**
      * User-defined key/value data.
      *
      * @var array<string, string>
      */
-    protected $labels;
+    public iterable $labels;
     /**
      * The command to be run in the image.
      *
      * @var list<string>
      */
-    protected $command;
+    public array $command;
     /**
      * Arguments to the command.
      *
      * @var list<string>
      */
-    protected $args;
+    public array $args;
     /**
      * The hostname to use for the container, as a valid
      * [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
@@ -43,57 +35,57 @@ class TaskSpecContainerSpec
      *
      * @var string
      */
-    protected $hostname;
+    public string $hostname;
     /**
      * A list of environment variables in the form `VAR=value`.
      * 
      *
      * @var list<string>
      */
-    protected $env;
+    public array $env;
     /**
      * The working directory for commands to run in.
      *
      * @var string
      */
-    protected $dir;
+    public string $dir;
     /**
      * The user inside the container.
      *
      * @var string
      */
-    protected $user;
+    public string $user;
     /**
      * A list of additional groups that the container process will run as.
      * 
      *
      * @var list<string>
      */
-    protected $groups;
+    public array $groups;
     /**
      * Security options for the container
      *
      * @var TaskSpecContainerSpecPrivileges
      */
-    protected $privileges;
+    public TaskSpecContainerSpecPrivileges $privileges;
     /**
      * Whether a pseudo-TTY should be allocated.
      *
      * @var bool
      */
-    protected $tTY;
+    public bool $tTY;
     /**
      * Open `stdin`
      *
      * @var bool
      */
-    protected $openStdin;
+    public bool $openStdin;
     /**
      * Mount the container's root filesystem as read only.
      *
      * @var bool
      */
-    protected $readOnly;
+    public bool $readOnly;
     /**
      * Specification for mounts to be added to containers created as part
      * of the service.
@@ -101,13 +93,13 @@ class TaskSpecContainerSpec
      *
      * @var list<Mount>
      */
-    protected $mounts;
+    public array $mounts;
     /**
      * Signal to stop the container.
      *
      * @var string
      */
-    protected $stopSignal;
+    public string $stopSignal;
     /**
      * Amount of time to wait for the container to terminate before
      * forcefully killing it.
@@ -115,13 +107,13 @@ class TaskSpecContainerSpec
      *
      * @var int
      */
-    protected $stopGracePeriod;
+    public int $stopGracePeriod;
     /**
      * A test to perform to check that the container is healthy.
      *
      * @var HealthConfig
      */
-    protected $healthCheck;
+    public HealthConfig $healthCheck;
     /**
      * A list of hostname/IP mappings to add to the container's `hosts`
      * file. The format of extra hosts is specified in the
@@ -133,7 +125,7 @@ class TaskSpecContainerSpec
      *
      * @var list<string>
      */
-    protected $hosts;
+    public array $hosts;
     /**
      * Specification for DNS related configurations in resolver configuration
      * file (`resolv.conf`).
@@ -141,7 +133,7 @@ class TaskSpecContainerSpec
      *
      * @var TaskSpecContainerSpecDNSConfig
      */
-    protected $dNSConfig;
+    public TaskSpecContainerSpecDNSConfig $dNSConfig;
     /**
      * Secrets contains references to zero or more secrets that will be
      * exposed to the service.
@@ -149,7 +141,7 @@ class TaskSpecContainerSpec
      *
      * @var list<TaskSpecContainerSpecSecretsItem>
      */
-    protected $secrets;
+    public array $secrets;
     /**
      * Configs contains references to zero or more configs that will be
      * exposed to the service.
@@ -157,7 +149,7 @@ class TaskSpecContainerSpec
      *
      * @var list<TaskSpecContainerSpecConfigsItem>
      */
-    protected $configs;
+    public array $configs;
     /**
      * Isolation technology of the containers running the service.
      * (Windows only)
@@ -165,7 +157,7 @@ class TaskSpecContainerSpec
      *
      * @var string
      */
-    protected $isolation;
+    public string $isolation;
     /**
      * Run an init inside the container that forwards signals and reaps
      * processes. This field is omitted if empty, and the default (as
@@ -174,7 +166,7 @@ class TaskSpecContainerSpec
      *
      * @var bool|null
      */
-    protected $init;
+    public ?bool $init;
     /**
      * Set kernel namedspaced parameters (sysctls) in the container.
      * The Sysctls option on services accepts the same sysctls as the
@@ -187,7 +179,7 @@ class TaskSpecContainerSpec
      *
      * @var array<string, string>
      */
-    protected $sysctls;
+    public iterable $sysctls;
     /**
      * A list of kernel capabilities to add to the default set
      * for the container.
@@ -195,7 +187,7 @@ class TaskSpecContainerSpec
      *
      * @var list<string>
      */
-    protected $capabilityAdd;
+    public array $capabilityAdd;
     /**
      * A list of kernel capabilities to drop from the default set
      * for the container.
@@ -203,677 +195,12 @@ class TaskSpecContainerSpec
      *
      * @var list<string>
      */
-    protected $capabilityDrop;
+    public array $capabilityDrop;
     /**
      * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`"
      * 
      *
      * @var list<TaskSpecContainerSpecUlimitsItem>
      */
-    protected $ulimits;
-    /**
-     * The image name to use for the container
-     *
-     * @return string
-     */
-    public function getImage(): string
-    {
-        return $this->image;
-    }
-    /**
-     * The image name to use for the container
-     *
-     * @param string $image
-     *
-     * @return self
-     */
-    public function setImage(string $image): self
-    {
-        $this->initialized['image'] = true;
-        $this->image = $image;
-        return $this;
-    }
-    /**
-     * User-defined key/value data.
-     *
-     * @return array<string, string>
-     */
-    public function getLabels(): iterable
-    {
-        return $this->labels;
-    }
-    /**
-     * User-defined key/value data.
-     *
-     * @param array<string, string> $labels
-     *
-     * @return self
-     */
-    public function setLabels(iterable $labels): self
-    {
-        $this->initialized['labels'] = true;
-        $this->labels = $labels;
-        return $this;
-    }
-    /**
-     * The command to be run in the image.
-     *
-     * @return list<string>
-     */
-    public function getCommand(): array
-    {
-        return $this->command;
-    }
-    /**
-     * The command to be run in the image.
-     *
-     * @param list<string> $command
-     *
-     * @return self
-     */
-    public function setCommand(array $command): self
-    {
-        $this->initialized['command'] = true;
-        $this->command = $command;
-        return $this;
-    }
-    /**
-     * Arguments to the command.
-     *
-     * @return list<string>
-     */
-    public function getArgs(): array
-    {
-        return $this->args;
-    }
-    /**
-     * Arguments to the command.
-     *
-     * @param list<string> $args
-     *
-     * @return self
-     */
-    public function setArgs(array $args): self
-    {
-        $this->initialized['args'] = true;
-        $this->args = $args;
-        return $this;
-    }
-    /**
-     * The hostname to use for the container, as a valid
-     * [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
-     * 
-     *
-     * @return string
-     */
-    public function getHostname(): string
-    {
-        return $this->hostname;
-    }
-    /**
-    * The hostname to use for the container, as a valid
-    [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
-    
-    *
-    * @param string $hostname
-    *
-    * @return self
-    */
-    public function setHostname(string $hostname): self
-    {
-        $this->initialized['hostname'] = true;
-        $this->hostname = $hostname;
-        return $this;
-    }
-    /**
-     * A list of environment variables in the form `VAR=value`.
-     * 
-     *
-     * @return list<string>
-     */
-    public function getEnv(): array
-    {
-        return $this->env;
-    }
-    /**
-     * A list of environment variables in the form `VAR=value`.
-     *
-     * @param list<string> $env
-     *
-     * @return self
-     */
-    public function setEnv(array $env): self
-    {
-        $this->initialized['env'] = true;
-        $this->env = $env;
-        return $this;
-    }
-    /**
-     * The working directory for commands to run in.
-     *
-     * @return string
-     */
-    public function getDir(): string
-    {
-        return $this->dir;
-    }
-    /**
-     * The working directory for commands to run in.
-     *
-     * @param string $dir
-     *
-     * @return self
-     */
-    public function setDir(string $dir): self
-    {
-        $this->initialized['dir'] = true;
-        $this->dir = $dir;
-        return $this;
-    }
-    /**
-     * The user inside the container.
-     *
-     * @return string
-     */
-    public function getUser(): string
-    {
-        return $this->user;
-    }
-    /**
-     * The user inside the container.
-     *
-     * @param string $user
-     *
-     * @return self
-     */
-    public function setUser(string $user): self
-    {
-        $this->initialized['user'] = true;
-        $this->user = $user;
-        return $this;
-    }
-    /**
-     * A list of additional groups that the container process will run as.
-     * 
-     *
-     * @return list<string>
-     */
-    public function getGroups(): array
-    {
-        return $this->groups;
-    }
-    /**
-     * A list of additional groups that the container process will run as.
-     *
-     * @param list<string> $groups
-     *
-     * @return self
-     */
-    public function setGroups(array $groups): self
-    {
-        $this->initialized['groups'] = true;
-        $this->groups = $groups;
-        return $this;
-    }
-    /**
-     * Security options for the container
-     *
-     * @return TaskSpecContainerSpecPrivileges
-     */
-    public function getPrivileges(): TaskSpecContainerSpecPrivileges
-    {
-        return $this->privileges;
-    }
-    /**
-     * Security options for the container
-     *
-     * @param TaskSpecContainerSpecPrivileges $privileges
-     *
-     * @return self
-     */
-    public function setPrivileges(TaskSpecContainerSpecPrivileges $privileges): self
-    {
-        $this->initialized['privileges'] = true;
-        $this->privileges = $privileges;
-        return $this;
-    }
-    /**
-     * Whether a pseudo-TTY should be allocated.
-     *
-     * @return bool
-     */
-    public function getTTY(): bool
-    {
-        return $this->tTY;
-    }
-    /**
-     * Whether a pseudo-TTY should be allocated.
-     *
-     * @param bool $tTY
-     *
-     * @return self
-     */
-    public function setTTY(bool $tTY): self
-    {
-        $this->initialized['tTY'] = true;
-        $this->tTY = $tTY;
-        return $this;
-    }
-    /**
-     * Open `stdin`
-     *
-     * @return bool
-     */
-    public function getOpenStdin(): bool
-    {
-        return $this->openStdin;
-    }
-    /**
-     * Open `stdin`
-     *
-     * @param bool $openStdin
-     *
-     * @return self
-     */
-    public function setOpenStdin(bool $openStdin): self
-    {
-        $this->initialized['openStdin'] = true;
-        $this->openStdin = $openStdin;
-        return $this;
-    }
-    /**
-     * Mount the container's root filesystem as read only.
-     *
-     * @return bool
-     */
-    public function getReadOnly(): bool
-    {
-        return $this->readOnly;
-    }
-    /**
-     * Mount the container's root filesystem as read only.
-     *
-     * @param bool $readOnly
-     *
-     * @return self
-     */
-    public function setReadOnly(bool $readOnly): self
-    {
-        $this->initialized['readOnly'] = true;
-        $this->readOnly = $readOnly;
-        return $this;
-    }
-    /**
-     * Specification for mounts to be added to containers created as part
-     * of the service.
-     * 
-     *
-     * @return list<Mount>
-     */
-    public function getMounts(): array
-    {
-        return $this->mounts;
-    }
-    /**
-    * Specification for mounts to be added to containers created as part
-    of the service.
-    
-    *
-    * @param list<Mount> $mounts
-    *
-    * @return self
-    */
-    public function setMounts(array $mounts): self
-    {
-        $this->initialized['mounts'] = true;
-        $this->mounts = $mounts;
-        return $this;
-    }
-    /**
-     * Signal to stop the container.
-     *
-     * @return string
-     */
-    public function getStopSignal(): string
-    {
-        return $this->stopSignal;
-    }
-    /**
-     * Signal to stop the container.
-     *
-     * @param string $stopSignal
-     *
-     * @return self
-     */
-    public function setStopSignal(string $stopSignal): self
-    {
-        $this->initialized['stopSignal'] = true;
-        $this->stopSignal = $stopSignal;
-        return $this;
-    }
-    /**
-     * Amount of time to wait for the container to terminate before
-     * forcefully killing it.
-     * 
-     *
-     * @return int
-     */
-    public function getStopGracePeriod(): int
-    {
-        return $this->stopGracePeriod;
-    }
-    /**
-    * Amount of time to wait for the container to terminate before
-    forcefully killing it.
-    
-    *
-    * @param int $stopGracePeriod
-    *
-    * @return self
-    */
-    public function setStopGracePeriod(int $stopGracePeriod): self
-    {
-        $this->initialized['stopGracePeriod'] = true;
-        $this->stopGracePeriod = $stopGracePeriod;
-        return $this;
-    }
-    /**
-     * A test to perform to check that the container is healthy.
-     *
-     * @return HealthConfig
-     */
-    public function getHealthCheck(): HealthConfig
-    {
-        return $this->healthCheck;
-    }
-    /**
-     * A test to perform to check that the container is healthy.
-     *
-     * @param HealthConfig $healthCheck
-     *
-     * @return self
-     */
-    public function setHealthCheck(HealthConfig $healthCheck): self
-    {
-        $this->initialized['healthCheck'] = true;
-        $this->healthCheck = $healthCheck;
-        return $this;
-    }
-    /**
-     * A list of hostname/IP mappings to add to the container's `hosts`
-     * file. The format of extra hosts is specified in the
-     * [hosts(5)](http://man7.org/linux/man-pages/man5/hosts.5.html)
-     * man page:
-     * 
-     *     IP_address canonical_hostname [aliases...]
-     * 
-     *
-     * @return list<string>
-     */
-    public function getHosts(): array
-    {
-        return $this->hosts;
-    }
-    /**
-    * A list of hostname/IP mappings to add to the container's `hosts`
-    file. The format of extra hosts is specified in the
-    [hosts(5)](http://man7.org/linux/man-pages/man5/hosts.5.html)
-    man page:
-    
-       IP_address canonical_hostname [aliases...]
-    
-    *
-    * @param list<string> $hosts
-    *
-    * @return self
-    */
-    public function setHosts(array $hosts): self
-    {
-        $this->initialized['hosts'] = true;
-        $this->hosts = $hosts;
-        return $this;
-    }
-    /**
-     * Specification for DNS related configurations in resolver configuration
-     * file (`resolv.conf`).
-     * 
-     *
-     * @return TaskSpecContainerSpecDNSConfig
-     */
-    public function getDNSConfig(): TaskSpecContainerSpecDNSConfig
-    {
-        return $this->dNSConfig;
-    }
-    /**
-    * Specification for DNS related configurations in resolver configuration
-    file (`resolv.conf`).
-    
-    *
-    * @param TaskSpecContainerSpecDNSConfig $dNSConfig
-    *
-    * @return self
-    */
-    public function setDNSConfig(TaskSpecContainerSpecDNSConfig $dNSConfig): self
-    {
-        $this->initialized['dNSConfig'] = true;
-        $this->dNSConfig = $dNSConfig;
-        return $this;
-    }
-    /**
-     * Secrets contains references to zero or more secrets that will be
-     * exposed to the service.
-     * 
-     *
-     * @return list<TaskSpecContainerSpecSecretsItem>
-     */
-    public function getSecrets(): array
-    {
-        return $this->secrets;
-    }
-    /**
-    * Secrets contains references to zero or more secrets that will be
-    exposed to the service.
-    
-    *
-    * @param list<TaskSpecContainerSpecSecretsItem> $secrets
-    *
-    * @return self
-    */
-    public function setSecrets(array $secrets): self
-    {
-        $this->initialized['secrets'] = true;
-        $this->secrets = $secrets;
-        return $this;
-    }
-    /**
-     * Configs contains references to zero or more configs that will be
-     * exposed to the service.
-     * 
-     *
-     * @return list<TaskSpecContainerSpecConfigsItem>
-     */
-    public function getConfigs(): array
-    {
-        return $this->configs;
-    }
-    /**
-    * Configs contains references to zero or more configs that will be
-    exposed to the service.
-    
-    *
-    * @param list<TaskSpecContainerSpecConfigsItem> $configs
-    *
-    * @return self
-    */
-    public function setConfigs(array $configs): self
-    {
-        $this->initialized['configs'] = true;
-        $this->configs = $configs;
-        return $this;
-    }
-    /**
-     * Isolation technology of the containers running the service.
-     * (Windows only)
-     * 
-     *
-     * @return string
-     */
-    public function getIsolation(): string
-    {
-        return $this->isolation;
-    }
-    /**
-    * Isolation technology of the containers running the service.
-    (Windows only)
-    
-    *
-    * @param string $isolation
-    *
-    * @return self
-    */
-    public function setIsolation(string $isolation): self
-    {
-        $this->initialized['isolation'] = true;
-        $this->isolation = $isolation;
-        return $this;
-    }
-    /**
-     * Run an init inside the container that forwards signals and reaps
-     * processes. This field is omitted if empty, and the default (as
-     * configured on the daemon) is used.
-     * 
-     *
-     * @return bool|null
-     */
-    public function getInit(): ?bool
-    {
-        return $this->init;
-    }
-    /**
-    * Run an init inside the container that forwards signals and reaps
-    processes. This field is omitted if empty, and the default (as
-    configured on the daemon) is used.
-    
-    *
-    * @param bool|null $init
-    *
-    * @return self
-    */
-    public function setInit(?bool $init): self
-    {
-        $this->initialized['init'] = true;
-        $this->init = $init;
-        return $this;
-    }
-    /**
-     * Set kernel namedspaced parameters (sysctls) in the container.
-     * The Sysctls option on services accepts the same sysctls as the
-     * are supported on containers. Note that while the same sysctls are
-     * supported, no guarantees or checks are made about their
-     * suitability for a clustered environment, and it's up to the user
-     * to determine whether a given sysctl will work properly in a
-     * Service.
-     * 
-     *
-     * @return array<string, string>
-     */
-    public function getSysctls(): iterable
-    {
-        return $this->sysctls;
-    }
-    /**
-    * Set kernel namedspaced parameters (sysctls) in the container.
-    The Sysctls option on services accepts the same sysctls as the
-    are supported on containers. Note that while the same sysctls are
-    supported, no guarantees or checks are made about their
-    suitability for a clustered environment, and it's up to the user
-    to determine whether a given sysctl will work properly in a
-    Service.
-    
-    *
-    * @param array<string, string> $sysctls
-    *
-    * @return self
-    */
-    public function setSysctls(iterable $sysctls): self
-    {
-        $this->initialized['sysctls'] = true;
-        $this->sysctls = $sysctls;
-        return $this;
-    }
-    /**
-     * A list of kernel capabilities to add to the default set
-     * for the container.
-     * 
-     *
-     * @return list<string>
-     */
-    public function getCapabilityAdd(): array
-    {
-        return $this->capabilityAdd;
-    }
-    /**
-    * A list of kernel capabilities to add to the default set
-    for the container.
-    
-    *
-    * @param list<string> $capabilityAdd
-    *
-    * @return self
-    */
-    public function setCapabilityAdd(array $capabilityAdd): self
-    {
-        $this->initialized['capabilityAdd'] = true;
-        $this->capabilityAdd = $capabilityAdd;
-        return $this;
-    }
-    /**
-     * A list of kernel capabilities to drop from the default set
-     * for the container.
-     * 
-     *
-     * @return list<string>
-     */
-    public function getCapabilityDrop(): array
-    {
-        return $this->capabilityDrop;
-    }
-    /**
-    * A list of kernel capabilities to drop from the default set
-    for the container.
-    
-    *
-    * @param list<string> $capabilityDrop
-    *
-    * @return self
-    */
-    public function setCapabilityDrop(array $capabilityDrop): self
-    {
-        $this->initialized['capabilityDrop'] = true;
-        $this->capabilityDrop = $capabilityDrop;
-        return $this;
-    }
-    /**
-     * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`"
-     * 
-     *
-     * @return list<TaskSpecContainerSpecUlimitsItem>
-     */
-    public function getUlimits(): array
-    {
-        return $this->ulimits;
-    }
-    /**
-     * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`"
-     *
-     * @param list<TaskSpecContainerSpecUlimitsItem> $ulimits
-     *
-     * @return self
-     */
-    public function setUlimits(array $ulimits): self
-    {
-        $this->initialized['ulimits'] = true;
-        $this->ulimits = $ulimits;
-        return $this;
-    }
+    public array $ulimits;
 }

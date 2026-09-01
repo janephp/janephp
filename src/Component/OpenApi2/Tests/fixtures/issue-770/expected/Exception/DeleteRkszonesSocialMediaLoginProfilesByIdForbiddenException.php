@@ -4,14 +4,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
 
 class DeleteRkszonesSocialMediaLoginProfilesByIdForbiddenException extends ForbiddenException
 {
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(
+        /**
+         * @var \Psr\Http\Message\ResponseInterface|null
+         */
+        private readonly ?\Psr\Http\Message\ResponseInterface $response = null
+    )
     {
         parent::__construct('Forbidden - Lack of admin privilege');
-        $this->response = $response;
     }
     public function getResponse(): ?\Psr\Http\Message\ResponseInterface
     {

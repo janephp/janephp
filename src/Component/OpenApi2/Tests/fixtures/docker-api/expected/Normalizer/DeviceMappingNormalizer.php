@@ -41,27 +41,27 @@ class DeviceMappingNormalizer implements DenormalizerInterface, NormalizerInterf
             $this->validate($data, new \Docker\Api\Validator\DeviceMappingConstraint());
         }
         if (\array_key_exists('PathOnHost', $data)) {
-            $object->setPathOnHost($data['PathOnHost']);
+            $object->pathOnHost = $data['PathOnHost'];
         }
         if (\array_key_exists('PathInContainer', $data)) {
-            $object->setPathInContainer($data['PathInContainer']);
+            $object->pathInContainer = $data['PathInContainer'];
         }
         if (\array_key_exists('CgroupPermissions', $data)) {
-            $object->setCgroupPermissions($data['CgroupPermissions']);
+            $object->cgroupPermissions = $data['CgroupPermissions'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('pathOnHost') && null !== $data->getPathOnHost()) {
-            $dataArray['PathOnHost'] = $data->getPathOnHost();
+        if (array_key_exists('pathOnHost', get_object_vars($data)) && null !== ($data->pathOnHost ?? null)) {
+            $dataArray['PathOnHost'] = $data->pathOnHost ?? null;
         }
-        if ($data->isInitialized('pathInContainer') && null !== $data->getPathInContainer()) {
-            $dataArray['PathInContainer'] = $data->getPathInContainer();
+        if (array_key_exists('pathInContainer', get_object_vars($data)) && null !== ($data->pathInContainer ?? null)) {
+            $dataArray['PathInContainer'] = $data->pathInContainer ?? null;
         }
-        if ($data->isInitialized('cgroupPermissions') && null !== $data->getCgroupPermissions()) {
-            $dataArray['CgroupPermissions'] = $data->getCgroupPermissions();
+        if (array_key_exists('cgroupPermissions', get_object_vars($data)) && null !== ($data->cgroupPermissions ?? null)) {
+            $dataArray['CgroupPermissions'] = $data->cgroupPermissions ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\DeviceMappingConstraint());

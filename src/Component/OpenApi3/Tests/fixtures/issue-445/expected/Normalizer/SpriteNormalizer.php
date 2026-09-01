@@ -38,34 +38,34 @@ class SpriteNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('width', $data)) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
         }
         if (\array_key_exists('height', $data)) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
         }
         if (\array_key_exists('y', $data)) {
-            $object->setY($data['y']);
+            $object->y = $data['y'];
         }
         if (\array_key_exists('x', $data)) {
-            $object->setX($data['x']);
+            $object->x = $data['x'];
         }
         if (\array_key_exists('start', $data)) {
-            $object->setStart($data['start']);
+            $object->start = $data['start'];
         }
         if (\array_key_exists('end', $data)) {
-            $object->setEnd($data['end']);
+            $object->end = $data['end'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['width'] = $data->getWidth();
-        $dataArray['height'] = $data->getHeight();
-        $dataArray['y'] = $data->getY();
-        $dataArray['x'] = $data->getX();
-        $dataArray['start'] = $data->getStart();
-        $dataArray['end'] = $data->getEnd();
+        $dataArray['width'] = $data->width ?? null;
+        $dataArray['height'] = $data->height ?? null;
+        $dataArray['y'] = $data->y ?? null;
+        $dataArray['x'] = $data->x ?? null;
+        $dataArray['start'] = $data->start ?? null;
+        $dataArray['end'] = $data->end ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

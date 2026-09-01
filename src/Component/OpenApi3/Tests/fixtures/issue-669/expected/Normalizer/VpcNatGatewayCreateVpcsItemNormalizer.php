@@ -41,11 +41,11 @@ class VpcNatGatewayCreateVpcsItemNormalizer implements DenormalizerInterface, No
             $data['default_gateway'] = (bool) $data['default_gateway'];
         }
         if (\array_key_exists('vpc_uuid', $data)) {
-            $object->setVpcUuid($data['vpc_uuid']);
+            $object->vpcUuid = $data['vpc_uuid'];
             unset($data['vpc_uuid']);
         }
         if (\array_key_exists('default_gateway', $data)) {
-            $object->setDefaultGateway($data['default_gateway']);
+            $object->defaultGateway = $data['default_gateway'];
             unset($data['default_gateway']);
         }
         foreach ($data as $key => $value) {
@@ -58,9 +58,9 @@ class VpcNatGatewayCreateVpcsItemNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['vpc_uuid'] = $data->getVpcUuid();
-        if ($data->isInitialized('defaultGateway') && null !== $data->getDefaultGateway()) {
-            $dataArray['default_gateway'] = $data->getDefaultGateway();
+        $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
+        if (array_key_exists('defaultGateway', get_object_vars($data)) && null !== ($data->defaultGateway ?? null)) {
+            $dataArray['default_gateway'] = $data->defaultGateway ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

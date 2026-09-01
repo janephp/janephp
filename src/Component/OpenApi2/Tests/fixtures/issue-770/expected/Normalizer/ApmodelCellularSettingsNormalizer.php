@@ -38,56 +38,56 @@ class ApmodelCellularSettingsNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mobileAPName', $data)) {
-            $object->setMobileAPName($data['mobileAPName']);
+            $object->mobileAPName = $data['mobileAPName'];
         }
         if (\array_key_exists('mobileAPName2', $data)) {
-            $object->setMobileAPName2($data['mobileAPName2']);
+            $object->mobileAPName2 = $data['mobileAPName2'];
         }
         if (\array_key_exists('simCardUsage', $data)) {
-            $object->setSimCardUsage($data['simCardUsage']);
+            $object->simCardUsage = $data['simCardUsage'];
         }
         if (\array_key_exists('select3g4g', $data)) {
-            $object->setSelect3g4g($data['select3g4g']);
+            $object->select3g4g = $data['select3g4g'];
         }
         if (\array_key_exists('select3g4g2', $data)) {
-            $object->setSelect3g4g2($data['select3g4g2']);
+            $object->select3g4g2 = $data['select3g4g2'];
         }
         if (\array_key_exists('dataRoaming', $data)) {
-            $object->setDataRoaming($data['dataRoaming']);
+            $object->dataRoaming = $data['dataRoaming'];
         }
         if (\array_key_exists('dataRoaming2', $data)) {
-            $object->setDataRoaming2($data['dataRoaming2']);
+            $object->dataRoaming2 = $data['dataRoaming2'];
         }
         if (\array_key_exists('wanConnection', $data)) {
-            $object->setWanConnection($data['wanConnection']);
+            $object->wanConnection = $data['wanConnection'];
         }
         if (\array_key_exists('wanRecoveryTimer', $data)) {
-            $object->setWanRecoveryTimer($data['wanRecoveryTimer']);
+            $object->wanRecoveryTimer = $data['wanRecoveryTimer'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mobileAPName') && null !== $data->getMobileAPName()) {
-            $dataArray['mobileAPName'] = $data->getMobileAPName();
+        if (array_key_exists('mobileAPName', get_object_vars($data)) && null !== ($data->mobileAPName ?? null)) {
+            $dataArray['mobileAPName'] = $data->mobileAPName ?? null;
         }
-        if ($data->isInitialized('mobileAPName2') && null !== $data->getMobileAPName2()) {
-            $dataArray['mobileAPName2'] = $data->getMobileAPName2();
+        if (array_key_exists('mobileAPName2', get_object_vars($data)) && null !== ($data->mobileAPName2 ?? null)) {
+            $dataArray['mobileAPName2'] = $data->mobileAPName2 ?? null;
         }
-        if ($data->isInitialized('simCardUsage') && null !== $data->getSimCardUsage()) {
-            $dataArray['simCardUsage'] = $data->getSimCardUsage();
+        if (array_key_exists('simCardUsage', get_object_vars($data)) && null !== ($data->simCardUsage ?? null)) {
+            $dataArray['simCardUsage'] = $data->simCardUsage ?? null;
         }
-        $dataArray['select3g4g'] = $data->getSelect3g4g();
-        $dataArray['select3g4g2'] = $data->getSelect3g4g2();
-        if ($data->isInitialized('dataRoaming') && null !== $data->getDataRoaming()) {
-            $dataArray['dataRoaming'] = $data->getDataRoaming();
+        $dataArray['select3g4g'] = $data->select3g4g ?? null;
+        $dataArray['select3g4g2'] = $data->select3g4g2 ?? null;
+        if (array_key_exists('dataRoaming', get_object_vars($data)) && null !== ($data->dataRoaming ?? null)) {
+            $dataArray['dataRoaming'] = $data->dataRoaming ?? null;
         }
-        if ($data->isInitialized('dataRoaming2') && null !== $data->getDataRoaming2()) {
-            $dataArray['dataRoaming2'] = $data->getDataRoaming2();
+        if (array_key_exists('dataRoaming2', get_object_vars($data)) && null !== ($data->dataRoaming2 ?? null)) {
+            $dataArray['dataRoaming2'] = $data->dataRoaming2 ?? null;
         }
-        $dataArray['wanConnection'] = $data->getWanConnection();
-        $dataArray['wanRecoveryTimer'] = $data->getWanRecoveryTimer();
+        $dataArray['wanConnection'] = $data->wanConnection ?? null;
+        $dataArray['wanRecoveryTimer'] = $data->wanRecoveryTimer ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

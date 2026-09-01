@@ -38,27 +38,27 @@ class SystemNorthboundInterfaceNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('userName', $data)) {
-            $object->setUserName($data['userName']);
+            $object->userName = $data['userName'];
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
         }
         if (\array_key_exists('radiusAuthType', $data)) {
-            $object->setRadiusAuthType($data['radiusAuthType']);
+            $object->radiusAuthType = $data['radiusAuthType'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('userName') && null !== $data->getUserName()) {
-            $dataArray['userName'] = $data->getUserName();
+        if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
+            $dataArray['userName'] = $data->userName ?? null;
         }
-        if ($data->isInitialized('password') && null !== $data->getPassword()) {
-            $dataArray['password'] = $data->getPassword();
+        if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
+            $dataArray['password'] = $data->password ?? null;
         }
-        if ($data->isInitialized('radiusAuthType') && null !== $data->getRadiusAuthType()) {
-            $dataArray['radiusAuthType'] = $data->getRadiusAuthType();
+        if (array_key_exists('radiusAuthType', get_object_vars($data)) && null !== ($data->radiusAuthType ?? null)) {
+            $dataArray['radiusAuthType'] = $data->radiusAuthType ?? null;
         }
         return $dataArray;
     }

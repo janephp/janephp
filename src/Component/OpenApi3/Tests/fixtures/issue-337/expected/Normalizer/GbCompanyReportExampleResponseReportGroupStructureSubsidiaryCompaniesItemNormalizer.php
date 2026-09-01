@@ -38,31 +38,31 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItemN
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($data['country']);
+            $object->country = $data['country'];
             unset($data['country']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('safeNumber', $data)) {
-            $object->setSafeNumber($data['safeNumber']);
+            $object->safeNumber = $data['safeNumber'];
             unset($data['safeNumber']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('registrationNumber', $data)) {
-            $object->setRegistrationNumber($data['registrationNumber']);
+            $object->registrationNumber = $data['registrationNumber'];
             unset($data['registrationNumber']);
         }
         foreach ($data as $key => $value) {
@@ -75,26 +75,26 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItemN
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $data->getCountry();
+        if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
+            $dataArray['country'] = $data->country ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('safeNumber') && null !== $data->getSafeNumber()) {
-            $dataArray['safeNumber'] = $data->getSafeNumber();
+        if (array_key_exists('safeNumber', get_object_vars($data)) && null !== ($data->safeNumber ?? null)) {
+            $dataArray['safeNumber'] = $data->safeNumber ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('registrationNumber') && null !== $data->getRegistrationNumber()) {
-            $dataArray['registrationNumber'] = $data->getRegistrationNumber();
+        if (array_key_exists('registrationNumber', get_object_vars($data)) && null !== ($data->registrationNumber ?? null)) {
+            $dataArray['registrationNumber'] = $data->registrationNumber ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

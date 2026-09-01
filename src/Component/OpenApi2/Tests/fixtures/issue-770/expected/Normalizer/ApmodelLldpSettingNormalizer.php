@@ -44,31 +44,31 @@ class ApmodelLldpSettingNormalizer implements DenormalizerInterface, NormalizerI
             $data['managementIPTLVEnabled'] = (bool) $data['managementIPTLVEnabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('advertiseIntervalInSec', $data)) {
-            $object->setAdvertiseIntervalInSec($data['advertiseIntervalInSec']);
+            $object->advertiseIntervalInSec = $data['advertiseIntervalInSec'];
         }
         if (\array_key_exists('holdTimeInSec', $data)) {
-            $object->setHoldTimeInSec($data['holdTimeInSec']);
+            $object->holdTimeInSec = $data['holdTimeInSec'];
         }
         if (\array_key_exists('managementIPTLVEnabled', $data)) {
-            $object->setManagementIPTLVEnabled($data['managementIPTLVEnabled']);
+            $object->managementIPTLVEnabled = $data['managementIPTLVEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->getEnabled();
-        if ($data->isInitialized('advertiseIntervalInSec') && null !== $data->getAdvertiseIntervalInSec()) {
-            $dataArray['advertiseIntervalInSec'] = $data->getAdvertiseIntervalInSec();
+        $dataArray['enabled'] = $data->enabled ?? null;
+        if (array_key_exists('advertiseIntervalInSec', get_object_vars($data)) && null !== ($data->advertiseIntervalInSec ?? null)) {
+            $dataArray['advertiseIntervalInSec'] = $data->advertiseIntervalInSec ?? null;
         }
-        if ($data->isInitialized('holdTimeInSec') && null !== $data->getHoldTimeInSec()) {
-            $dataArray['holdTimeInSec'] = $data->getHoldTimeInSec();
+        if (array_key_exists('holdTimeInSec', get_object_vars($data)) && null !== ($data->holdTimeInSec ?? null)) {
+            $dataArray['holdTimeInSec'] = $data->holdTimeInSec ?? null;
         }
-        if ($data->isInitialized('managementIPTLVEnabled') && null !== $data->getManagementIPTLVEnabled()) {
-            $dataArray['managementIPTLVEnabled'] = $data->getManagementIPTLVEnabled();
+        if (array_key_exists('managementIPTLVEnabled', get_object_vars($data)) && null !== ($data->managementIPTLVEnabled ?? null)) {
+            $dataArray['managementIPTLVEnabled'] = $data->managementIPTLVEnabled ?? null;
         }
         return $dataArray;
     }

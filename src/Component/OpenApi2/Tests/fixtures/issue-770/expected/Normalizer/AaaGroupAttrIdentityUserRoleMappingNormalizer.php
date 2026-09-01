@@ -38,24 +38,24 @@ class AaaGroupAttrIdentityUserRoleMappingNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('groupAttr', $data)) {
-            $object->setGroupAttr($data['groupAttr']);
+            $object->groupAttr = $data['groupAttr'];
         }
         if (\array_key_exists('userRole', $data)) {
-            $object->setUserRole($this->denormalizer->denormalize($data['userRole'], \Jane\Component\OpenApi3\Tests\Expected\Model\AaaGroupAttrIdentityUserRoleMappingUserRole::class, 'json', $context));
+            $object->userRole = $this->denormalizer->denormalize($data['userRole'], \Jane\Component\OpenApi3\Tests\Expected\Model\AaaGroupAttrIdentityUserRoleMappingUserRole::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['groupAttr'] = $data->getGroupAttr();
-        $dataArray['userRole'] = $data->getUserRole() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserRole(), 'json', $context));
+        $dataArray['groupAttr'] = $data->groupAttr ?? null;
+        $dataArray['userRole'] = ($data->userRole ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->userRole ?? null, 'json', $context));
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -38,7 +38,7 @@ class ApiCreateKnowledgeBaseInputPublicNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('database_id', $data)) {
-            $object->setDatabaseId($data['database_id']);
+            $object->databaseId = $data['database_id'];
             unset($data['database_id']);
         }
         if (\array_key_exists('datasources', $data)) {
@@ -46,23 +46,23 @@ class ApiCreateKnowledgeBaseInputPublicNormalizer implements DenormalizerInterfa
             foreach ($data['datasources'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiKBDataSource::class, 'json', $context);
             }
-            $object->setDatasources($values);
+            $object->datasources = $values;
             unset($data['datasources']);
         }
         if (\array_key_exists('embedding_model_uuid', $data)) {
-            $object->setEmbeddingModelUuid($data['embedding_model_uuid']);
+            $object->embeddingModelUuid = $data['embedding_model_uuid'];
             unset($data['embedding_model_uuid']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('project_id', $data)) {
-            $object->setProjectId($data['project_id']);
+            $object->projectId = $data['project_id'];
             unset($data['project_id']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -70,11 +70,11 @@ class ApiCreateKnowledgeBaseInputPublicNormalizer implements DenormalizerInterfa
             foreach ($data['tags'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setTags($values_1);
+            $object->tags = $values_1;
             unset($data['tags']);
         }
         if (\array_key_exists('vpc_uuid', $data)) {
-            $object->setVpcUuid($data['vpc_uuid']);
+            $object->vpcUuid = $data['vpc_uuid'];
             unset($data['vpc_uuid']);
         }
         foreach ($data as $key => $value_2) {
@@ -87,37 +87,37 @@ class ApiCreateKnowledgeBaseInputPublicNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('databaseId') && null !== $data->getDatabaseId()) {
-            $dataArray['database_id'] = $data->getDatabaseId();
+        if (array_key_exists('databaseId', get_object_vars($data)) && null !== ($data->databaseId ?? null)) {
+            $dataArray['database_id'] = $data->databaseId ?? null;
         }
-        if ($data->isInitialized('datasources') && null !== $data->getDatasources()) {
+        if (array_key_exists('datasources', get_object_vars($data)) && null !== ($data->datasources ?? null)) {
             $values = [];
-            foreach ($data->getDatasources() as $value) {
+            foreach ($data->datasources ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['datasources'] = $values;
         }
-        if ($data->isInitialized('embeddingModelUuid') && null !== $data->getEmbeddingModelUuid()) {
-            $dataArray['embedding_model_uuid'] = $data->getEmbeddingModelUuid();
+        if (array_key_exists('embeddingModelUuid', get_object_vars($data)) && null !== ($data->embeddingModelUuid ?? null)) {
+            $dataArray['embedding_model_uuid'] = $data->embeddingModelUuid ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
-            $dataArray['project_id'] = $data->getProjectId();
+        if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
+            $dataArray['project_id'] = $data->projectId ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_1 = [];
-            foreach ($data->getTags() as $value_1) {
+            foreach ($data->tags ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
-        if ($data->isInitialized('vpcUuid') && null !== $data->getVpcUuid()) {
-            $dataArray['vpc_uuid'] = $data->getVpcUuid();
+        if (array_key_exists('vpcUuid', get_object_vars($data)) && null !== ($data->vpcUuid ?? null)) {
+            $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

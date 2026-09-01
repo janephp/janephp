@@ -38,7 +38,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     {
         $hasSubObject = false;
 
-        foreach ($object->getAllOf() as $allOf) {
+        foreach (($object->allOf ?? null ?? []) as $allOf) {
             if ($allOf instanceof Reference) {
                 $allOf = $this->resolve($allOf, $this->getSchemaClass());
             }
@@ -53,8 +53,8 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                 $extensions = $this->resolveAdditionalProperties($object, $reference);
 
                 $classGuess = $this->createClassGuess($object, $reference, $name, $extensions);
-                if (null !== $object->getRequired()) {
-                    $classGuess->setRequired($object->getRequired());
+                if (null !== ($object->required ?? null)) {
+                    $classGuess->setRequired($object->required ?? null);
                 }
 
                 if (($schema = $registry->getSchema($reference)) === null) {
@@ -63,10 +63,10 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                 $schema->addClass($reference, $classGuess);
             }
 
-            foreach ($object->getAllOf() as $allOfIndex => $allOf) {
+            foreach (($object->allOf ?? null ?? []) as $allOfIndex => $allOf) {
                 if (is_a($allOf, $this->getSchemaClass())) {
-                    if ($allOf->getProperties()) {
-                        foreach ($allOf->getProperties() as $key => $property) {
+                    if ($allOf->properties ?? null) {
+                        foreach (($allOf->properties ?? null ?? []) as $key => $property) {
                             $this->chainGuesser->guessClass($property, $name . ucfirst($key), $reference . '/allOf/' . $allOfIndex . '/properties/' . $key, $registry);
                         }
                     }
@@ -77,13 +77,13 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
 
     private function isObjectSchema($schema): bool
     {
-        $type = $schema->getType();
+        $type = ($schema->type ?? null);
 
         if (\is_array($type)) {
             return \in_array('object', $type, true);
         }
 
-        return 'object' === $type || (null === $type && null !== $schema->getProperties());
+        return 'object' === $type || (null === $type && null !== ($schema->properties ?? null));
     }
 
     protected function resolveAdditionalProperties($object, string $reference): array
@@ -102,8 +102,8 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                 'object' => $extensionObject,
                 'reference' => $reference . '/additionalProperties',
             ];
-        } elseif (method_exists($object, 'getPatternProperties') && $object->getPatternProperties() !== null) {
-            foreach ($object->getPatternProperties() as $pattern => $patternProperty) {
+        } elseif (property_exists($object, 'patternProperties') && ($object->patternProperties ?? null) !== null) {
+            foreach (($object->patternProperties ?? null ?? []) as $pattern => $patternProperty) {
                 $extensions[$pattern] = [
                     'object' => $patternProperty,
                     'reference' => $reference . '/patternProperties/' . $pattern,
@@ -131,7 +131,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             return new ObjectType($object, $class->getName(), $schema->getNamespace(), [], $class->getSubNamespace());
         }
 
-        foreach ($object->getAllOf() as $allOfIndex => $allOf) {
+        foreach (($object->allOf ?? null ?? []) as $allOfIndex => $allOf) {
             $allOfSchema = $allOf;
             $allOfReference = $reference . '/allOf/' . $allOfIndex;
 
@@ -145,12 +145,12 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                 $allOfSchema = $this->resolve($allOfSchema, $this->getSchemaClass());
             }
 
-            if (null !== $allOfSchema->getType()) {
-                if (null !== $type && $allOfType !== $allOfSchema->getType()) {
+            if (null !== ($allOfSchema->type ?? null)) {
+                if (null !== $type && $allOfType !== ($allOfSchema->type ?? null)) {
                     throw new \RuntimeException('an allOf instruction with 2 or more types is strictly impossible, check your schema');
                 }
 
-                $allOfType = $allOfSchema->getType();
+                $allOfType = ($allOfSchema->type ?? null);
                 $type = $this->chainGuesser->guessType($allOf, $name, $allOfReference, $registry);
             }
         }
@@ -166,13 +166,13 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     {
         $class = $this->getSchemaClass();
 
-        return ($object instanceof $class) && \is_array($object->getAllOf()) && \count($object->getAllOf()) > 0;
+        return ($object instanceof $class) && \is_array($object->allOf ?? null) && \count($object->allOf ?? null) > 0;
     }
 
     public function guessProperties($object, string $name, string $reference, Registry $registry): array
     {
         $properties = [];
-        foreach ($object->getAllOf() as $allOfIndex => $allOfSchema) {
+        foreach (($object->allOf ?? null ?? []) as $allOfIndex => $allOfSchema) {
             $allOfReference = $reference . '/allOf/' . $allOfIndex;
 
             if ($allOfSchema instanceof Reference) {

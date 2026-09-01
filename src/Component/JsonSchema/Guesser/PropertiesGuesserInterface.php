@@ -5,7 +5,7 @@ namespace Jane\Component\JsonSchema\Guesser;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Registry\Registry;
 
-interface PropertiesGuesserInterface
+interface PropertiesGuesserInterface extends GuesserInterface
 {
     /**
      * Return all properties guessed.

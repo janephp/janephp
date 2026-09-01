@@ -41,14 +41,14 @@ class UserReviewRequestNormalizer implements DenormalizerInterface, NormalizerIn
             $data['reviewed'] = (bool) $data['reviewed'];
         }
         if (\array_key_exists('reviewed', $data)) {
-            $object->setReviewed($data['reviewed']);
+            $object->reviewed = $data['reviewed'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['reviewed'] = $data->getReviewed();
+        $dataArray['reviewed'] = $data->reviewed ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

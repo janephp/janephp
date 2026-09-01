@@ -4,7 +4,6 @@ namespace Jane\Component\JsonSchema\Generator;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Model\ClassGenerator;
-use Jane\Component\JsonSchema\Generator\Model\GetterSetterGenerator;
 use Jane\Component\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
@@ -18,7 +17,6 @@ use PhpParser\Parser;
 class ModelGenerator implements GeneratorInterface
 {
     use ClassGenerator;
-    use GetterSetterGenerator;
     use PropertyGenerator;
 
     public const FILE_TYPE_MODEL = 'model';
@@ -76,11 +74,7 @@ class ModelGenerator implements GeneratorInterface
 
     protected function doCreateClassMethods(ClassGuess $classGuess, Property $property, string $namespace, bool $strict): array
     {
-        $methods = [];
-        $methods[] = $this->createGetter($property, $namespace, $strict);
-        $methods[] = $this->createSetter($property, $namespace, $strict);
-
-        return $methods;
+        return [];
     }
 
     /**
@@ -126,20 +120,16 @@ class ModelGenerator implements GeneratorInterface
     }
 
     /**
-     * Map of PHP property name => [wire name, getter method name, setter method name] for the properties declared by this class.
+     * Map of PHP property name => wire (serialized) name for the properties declared by this class.
      *
-     * @return array<string, array{0: string, 1: string, 2: string}>
+     * @return array<string, string>
      */
     protected function createDefinedPropertiesMap(ClassGuess $class): array
     {
         $map = [];
 
         foreach ($class->getLocalProperties() as $property) {
-            $map[$property->getPhpName()] = [
-                $property->getName(),
-                $this->getNaming()->getPrefixedMethodName('get', $property->getAccessorName()),
-                $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
-            ];
+            $map[$property->getPhpName()] = $property->getName();
         }
 
         return $map;

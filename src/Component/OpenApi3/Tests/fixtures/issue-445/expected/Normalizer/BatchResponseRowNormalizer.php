@@ -41,51 +41,51 @@ class BatchResponseRowNormalizer implements DenormalizerInterface, NormalizerInt
             $data['succeeded'] = (bool) $data['succeeded'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('succeeded', $data)) {
-            $object->setSucceeded($data['succeeded']);
+            $object->succeeded = $data['succeeded'];
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
         }
         if (\array_key_exists('error', $data) && $data['error'] !== null) {
             $value = $data['error'];
             if (is_array($data['error'])) {
                 $value = $this->denormalizer->denormalize($data['error'], \PicturePark\API\Model\ErrorResponse::class, 'json', $context);
             }
-            $object->setError($value);
+            $object->error = $value;
         }
         elseif (\array_key_exists('error', $data) && $data['error'] === null) {
-            $object->setError(null);
+            $object->error = null;
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
-            $object->setRequestId($data['requestId']);
+            $object->requestId = $data['requestId'];
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
-            $object->setRequestId(null);
+            $object->requestId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['succeeded'] = $data->getSucceeded();
-        $dataArray['status'] = $data->getStatus();
-        $dataArray['version'] = $data->getVersion();
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $value = $data->getError();
-            if (is_object($data->getError())) {
-                $value = $data->getError() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getError(), 'json', $context));
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['succeeded'] = $data->succeeded ?? null;
+        $dataArray['status'] = $data->status ?? null;
+        $dataArray['version'] = $data->version ?? null;
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $value = $data->error ?? null;
+            if (is_object($data->error ?? null)) {
+                $value = ($data->error ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error ?? null, 'json', $context));
             }
             $dataArray['error'] = $value;
         }
-        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
-            $dataArray['requestId'] = $data->getRequestId();
+        if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
+            $dataArray['requestId'] = $data->requestId ?? null;
         }
         return $dataArray;
     }

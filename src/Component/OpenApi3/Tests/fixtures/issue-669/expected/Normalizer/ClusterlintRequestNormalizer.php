@@ -42,7 +42,7 @@ class ClusterlintRequestNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['include_groups'] as $value) {
                 $values[] = $value;
             }
-            $object->setIncludeGroups($values);
+            $object->includeGroups = $values;
             unset($data['include_groups']);
         }
         if (\array_key_exists('include_checks', $data)) {
@@ -50,7 +50,7 @@ class ClusterlintRequestNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['include_checks'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setIncludeChecks($values_1);
+            $object->includeChecks = $values_1;
             unset($data['include_checks']);
         }
         if (\array_key_exists('exclude_groups', $data)) {
@@ -58,7 +58,7 @@ class ClusterlintRequestNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['exclude_groups'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setExcludeGroups($values_2);
+            $object->excludeGroups = $values_2;
             unset($data['exclude_groups']);
         }
         if (\array_key_exists('exclude_checks', $data)) {
@@ -66,7 +66,7 @@ class ClusterlintRequestNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['exclude_checks'] as $value_3) {
                 $values_3[] = $value_3;
             }
-            $object->setExcludeChecks($values_3);
+            $object->excludeChecks = $values_3;
             unset($data['exclude_checks']);
         }
         foreach ($data as $key => $value_4) {
@@ -79,30 +79,30 @@ class ClusterlintRequestNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('includeGroups') && null !== $data->getIncludeGroups()) {
+        if (array_key_exists('includeGroups', get_object_vars($data)) && null !== ($data->includeGroups ?? null)) {
             $values = [];
-            foreach ($data->getIncludeGroups() as $value) {
+            foreach ($data->includeGroups ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['include_groups'] = $values;
         }
-        if ($data->isInitialized('includeChecks') && null !== $data->getIncludeChecks()) {
+        if (array_key_exists('includeChecks', get_object_vars($data)) && null !== ($data->includeChecks ?? null)) {
             $values_1 = [];
-            foreach ($data->getIncludeChecks() as $value_1) {
+            foreach ($data->includeChecks ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['include_checks'] = $values_1;
         }
-        if ($data->isInitialized('excludeGroups') && null !== $data->getExcludeGroups()) {
+        if (array_key_exists('excludeGroups', get_object_vars($data)) && null !== ($data->excludeGroups ?? null)) {
             $values_2 = [];
-            foreach ($data->getExcludeGroups() as $value_2) {
+            foreach ($data->excludeGroups ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['exclude_groups'] = $values_2;
         }
-        if ($data->isInitialized('excludeChecks') && null !== $data->getExcludeChecks()) {
+        if (array_key_exists('excludeChecks', get_object_vars($data)) && null !== ($data->excludeChecks ?? null)) {
             $values_3 = [];
-            foreach ($data->getExcludeChecks() as $value_3) {
+            foreach ($data->excludeChecks ?? null as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['exclude_checks'] = $values_3;

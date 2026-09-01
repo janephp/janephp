@@ -38,15 +38,15 @@ class DpskDeleteDpskResultNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('resultCount', $data)) {
-            $object->setResultCount($data['resultCount']);
+            $object->resultCount = $data['resultCount'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('resultCount') && null !== $data->getResultCount()) {
-            $dataArray['resultCount'] = $data->getResultCount();
+        if (array_key_exists('resultCount', get_object_vars($data)) && null !== ($data->resultCount ?? null)) {
+            $dataArray['resultCount'] = $data->resultCount ?? null;
         }
         return $dataArray;
     }

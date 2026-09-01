@@ -38,21 +38,21 @@ class IdentityCountrySummaryNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('countryShortName', $data)) {
-            $object->setCountryShortName($data['countryShortName']);
+            $object->countryShortName = $data['countryShortName'];
         }
         if (\array_key_exists('countryName', $data)) {
-            $object->setCountryName($data['countryName']);
+            $object->countryName = $data['countryName'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('countryShortName') && null !== $data->getCountryShortName()) {
-            $dataArray['countryShortName'] = $data->getCountryShortName();
+        if (array_key_exists('countryShortName', get_object_vars($data)) && null !== ($data->countryShortName ?? null)) {
+            $dataArray['countryShortName'] = $data->countryShortName ?? null;
         }
-        if ($data->isInitialized('countryName') && null !== $data->getCountryName()) {
-            $dataArray['countryName'] = $data->getCountryName();
+        if (array_key_exists('countryName', get_object_vars($data)) && null !== ($data->countryName ?? null)) {
+            $dataArray['countryName'] = $data->countryName ?? null;
         }
         return $dataArray;
     }

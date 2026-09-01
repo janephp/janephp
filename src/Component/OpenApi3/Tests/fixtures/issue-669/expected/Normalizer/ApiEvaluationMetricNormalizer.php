@@ -50,47 +50,47 @@ class ApiEvaluationMetricNormalizer implements DenormalizerInterface, Normalizer
             $data['is_metric_goal'] = (bool) $data['is_metric_goal'];
         }
         if (\array_key_exists('category', $data)) {
-            $object->setCategory($data['category']);
+            $object->category = $data['category'];
             unset($data['category']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('inverted', $data)) {
-            $object->setInverted($data['inverted']);
+            $object->inverted = $data['inverted'];
             unset($data['inverted']);
         }
         if (\array_key_exists('is_metric_goal', $data)) {
-            $object->setIsMetricGoal($data['is_metric_goal']);
+            $object->isMetricGoal = $data['is_metric_goal'];
             unset($data['is_metric_goal']);
         }
         if (\array_key_exists('metric_name', $data)) {
-            $object->setMetricName($data['metric_name']);
+            $object->metricName = $data['metric_name'];
             unset($data['metric_name']);
         }
         if (\array_key_exists('metric_rank', $data)) {
-            $object->setMetricRank($data['metric_rank']);
+            $object->metricRank = $data['metric_rank'];
             unset($data['metric_rank']);
         }
         if (\array_key_exists('metric_type', $data)) {
-            $object->setMetricType($data['metric_type']);
+            $object->metricType = $data['metric_type'];
             unset($data['metric_type']);
         }
         if (\array_key_exists('metric_uuid', $data)) {
-            $object->setMetricUuid($data['metric_uuid']);
+            $object->metricUuid = $data['metric_uuid'];
             unset($data['metric_uuid']);
         }
         if (\array_key_exists('metric_value_type', $data)) {
-            $object->setMetricValueType($data['metric_value_type']);
+            $object->metricValueType = $data['metric_value_type'];
             unset($data['metric_value_type']);
         }
         if (\array_key_exists('range_max', $data)) {
-            $object->setRangeMax($data['range_max']);
+            $object->rangeMax = $data['range_max'];
             unset($data['range_max']);
         }
         if (\array_key_exists('range_min', $data)) {
-            $object->setRangeMin($data['range_min']);
+            $object->rangeMin = $data['range_min'];
             unset($data['range_min']);
         }
         foreach ($data as $key => $value) {
@@ -103,38 +103,38 @@ class ApiEvaluationMetricNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('category') && null !== $data->getCategory()) {
-            $dataArray['category'] = $data->getCategory();
+        if (array_key_exists('category', get_object_vars($data)) && null !== ($data->category ?? null)) {
+            $dataArray['category'] = $data->category ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('inverted') && null !== $data->getInverted()) {
-            $dataArray['inverted'] = $data->getInverted();
+        if (array_key_exists('inverted', get_object_vars($data)) && null !== ($data->inverted ?? null)) {
+            $dataArray['inverted'] = $data->inverted ?? null;
         }
-        if ($data->isInitialized('isMetricGoal') && null !== $data->getIsMetricGoal()) {
-            $dataArray['is_metric_goal'] = $data->getIsMetricGoal();
+        if (array_key_exists('isMetricGoal', get_object_vars($data)) && null !== ($data->isMetricGoal ?? null)) {
+            $dataArray['is_metric_goal'] = $data->isMetricGoal ?? null;
         }
-        if ($data->isInitialized('metricName') && null !== $data->getMetricName()) {
-            $dataArray['metric_name'] = $data->getMetricName();
+        if (array_key_exists('metricName', get_object_vars($data)) && null !== ($data->metricName ?? null)) {
+            $dataArray['metric_name'] = $data->metricName ?? null;
         }
-        if ($data->isInitialized('metricRank') && null !== $data->getMetricRank()) {
-            $dataArray['metric_rank'] = $data->getMetricRank();
+        if (array_key_exists('metricRank', get_object_vars($data)) && null !== ($data->metricRank ?? null)) {
+            $dataArray['metric_rank'] = $data->metricRank ?? null;
         }
-        if ($data->isInitialized('metricType') && null !== $data->getMetricType()) {
-            $dataArray['metric_type'] = $data->getMetricType();
+        if (array_key_exists('metricType', get_object_vars($data)) && null !== ($data->metricType ?? null)) {
+            $dataArray['metric_type'] = $data->metricType ?? null;
         }
-        if ($data->isInitialized('metricUuid') && null !== $data->getMetricUuid()) {
-            $dataArray['metric_uuid'] = $data->getMetricUuid();
+        if (array_key_exists('metricUuid', get_object_vars($data)) && null !== ($data->metricUuid ?? null)) {
+            $dataArray['metric_uuid'] = $data->metricUuid ?? null;
         }
-        if ($data->isInitialized('metricValueType') && null !== $data->getMetricValueType()) {
-            $dataArray['metric_value_type'] = $data->getMetricValueType();
+        if (array_key_exists('metricValueType', get_object_vars($data)) && null !== ($data->metricValueType ?? null)) {
+            $dataArray['metric_value_type'] = $data->metricValueType ?? null;
         }
-        if ($data->isInitialized('rangeMax') && null !== $data->getRangeMax()) {
-            $dataArray['range_max'] = $data->getRangeMax();
+        if (array_key_exists('rangeMax', get_object_vars($data)) && null !== ($data->rangeMax ?? null)) {
+            $dataArray['range_max'] = $data->rangeMax ?? null;
         }
-        if ($data->isInitialized('rangeMin') && null !== $data->getRangeMin()) {
-            $dataArray['range_min'] = $data->getRangeMin();
+        if (array_key_exists('rangeMin', get_object_vars($data)) && null !== ($data->rangeMin ?? null)) {
+            $dataArray['range_min'] = $data->rangeMin ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

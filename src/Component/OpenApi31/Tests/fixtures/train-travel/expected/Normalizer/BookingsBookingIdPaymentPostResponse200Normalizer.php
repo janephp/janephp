@@ -44,27 +44,27 @@ class BookingsBookingIdPaymentPostResponse200Normalizer implements DenormalizerI
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\BookingsBookingIdPaymentPostResponse200Constraint());
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('amount', $data)) {
-            $object->setAmount($data['amount']);
+            $object->amount = $data['amount'];
             unset($data['amount']);
         }
         if (\array_key_exists('currency', $data)) {
-            $object->setCurrency($data['currency']);
+            $object->currency = $data['currency'];
             unset($data['currency']);
         }
         if (\array_key_exists('source', $data)) {
-            $object->setSource($data['source']);
+            $object->source = $data['source'];
             unset($data['source']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Component\OpenApi31\Tests\Expected\Model\LinksBooking::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Component\OpenApi31\Tests\Expected\Model\LinksBooking::class, 'json', $context);
             unset($data['links']);
         }
         foreach ($data as $key => $value) {
@@ -77,17 +77,17 @@ class BookingsBookingIdPaymentPostResponse200Normalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
-            $dataArray['amount'] = $data->getAmount();
+        if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
+            $dataArray['amount'] = $data->amount ?? null;
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
-            $dataArray['currency'] = $data->getCurrency();
+        if (array_key_exists('currency', get_object_vars($data)) && null !== ($data->currency ?? null)) {
+            $dataArray['currency'] = $data->currency ?? null;
         }
-        if ($data->isInitialized('source') && null !== $data->getSource()) {
-            $dataArray['source'] = $data->getSource();
+        if (array_key_exists('source', get_object_vars($data)) && null !== ($data->source ?? null)) {
+            $dataArray['source'] = $data->source ?? null;
         }
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

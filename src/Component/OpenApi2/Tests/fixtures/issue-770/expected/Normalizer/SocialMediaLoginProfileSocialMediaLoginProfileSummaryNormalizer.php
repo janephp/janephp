@@ -50,104 +50,104 @@ class SocialMediaLoginProfileSocialMediaLoginProfileSummaryNormalizer implements
             $data['facebookEnabled'] = (bool) $data['facebookEnabled'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('linkedinEnabled', $data)) {
-            $object->setLinkedinEnabled($data['linkedinEnabled']);
+            $object->linkedinEnabled = $data['linkedinEnabled'];
         }
         if (\array_key_exists('linkedinClientId', $data)) {
-            $object->setLinkedinClientId($data['linkedinClientId']);
+            $object->linkedinClientId = $data['linkedinClientId'];
         }
         if (\array_key_exists('linkedinSecret', $data)) {
-            $object->setLinkedinSecret($data['linkedinSecret']);
+            $object->linkedinSecret = $data['linkedinSecret'];
         }
         if (\array_key_exists('googleEnabled', $data)) {
-            $object->setGoogleEnabled($data['googleEnabled']);
+            $object->googleEnabled = $data['googleEnabled'];
         }
         if (\array_key_exists('googleClientId', $data)) {
-            $object->setGoogleClientId($data['googleClientId']);
+            $object->googleClientId = $data['googleClientId'];
         }
         if (\array_key_exists('googleSecret', $data)) {
-            $object->setGoogleSecret($data['googleSecret']);
+            $object->googleSecret = $data['googleSecret'];
         }
         if (\array_key_exists('microsoftEnabled', $data)) {
-            $object->setMicrosoftEnabled($data['microsoftEnabled']);
+            $object->microsoftEnabled = $data['microsoftEnabled'];
         }
         if (\array_key_exists('microsoftClientId', $data)) {
-            $object->setMicrosoftClientId($data['microsoftClientId']);
+            $object->microsoftClientId = $data['microsoftClientId'];
         }
         if (\array_key_exists('microsoftSecret', $data)) {
-            $object->setMicrosoftSecret($data['microsoftSecret']);
+            $object->microsoftSecret = $data['microsoftSecret'];
         }
         if (\array_key_exists('facebookEnabled', $data)) {
-            $object->setFacebookEnabled($data['facebookEnabled']);
+            $object->facebookEnabled = $data['facebookEnabled'];
         }
         if (\array_key_exists('facebookClientId', $data)) {
-            $object->setFacebookClientId($data['facebookClientId']);
+            $object->facebookClientId = $data['facebookClientId'];
         }
         if (\array_key_exists('facebookSecret', $data)) {
-            $object->setFacebookSecret($data['facebookSecret']);
+            $object->facebookSecret = $data['facebookSecret'];
         }
         if (\array_key_exists('whitelistedDomains', $data)) {
             $values = [];
             foreach ($data['whitelistedDomains'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\SocialMediaLoginProfileWhitelistedDomain::class, 'json', $context);
             }
-            $object->setWhitelistedDomains($values);
+            $object->whitelistedDomains = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('linkedinEnabled') && null !== $data->getLinkedinEnabled()) {
-            $dataArray['linkedinEnabled'] = $data->getLinkedinEnabled();
+        if (array_key_exists('linkedinEnabled', get_object_vars($data)) && null !== ($data->linkedinEnabled ?? null)) {
+            $dataArray['linkedinEnabled'] = $data->linkedinEnabled ?? null;
         }
-        if ($data->isInitialized('linkedinClientId') && null !== $data->getLinkedinClientId()) {
-            $dataArray['linkedinClientId'] = $data->getLinkedinClientId();
+        if (array_key_exists('linkedinClientId', get_object_vars($data)) && null !== ($data->linkedinClientId ?? null)) {
+            $dataArray['linkedinClientId'] = $data->linkedinClientId ?? null;
         }
-        if ($data->isInitialized('linkedinSecret') && null !== $data->getLinkedinSecret()) {
-            $dataArray['linkedinSecret'] = $data->getLinkedinSecret();
+        if (array_key_exists('linkedinSecret', get_object_vars($data)) && null !== ($data->linkedinSecret ?? null)) {
+            $dataArray['linkedinSecret'] = $data->linkedinSecret ?? null;
         }
-        if ($data->isInitialized('googleEnabled') && null !== $data->getGoogleEnabled()) {
-            $dataArray['googleEnabled'] = $data->getGoogleEnabled();
+        if (array_key_exists('googleEnabled', get_object_vars($data)) && null !== ($data->googleEnabled ?? null)) {
+            $dataArray['googleEnabled'] = $data->googleEnabled ?? null;
         }
-        if ($data->isInitialized('googleClientId') && null !== $data->getGoogleClientId()) {
-            $dataArray['googleClientId'] = $data->getGoogleClientId();
+        if (array_key_exists('googleClientId', get_object_vars($data)) && null !== ($data->googleClientId ?? null)) {
+            $dataArray['googleClientId'] = $data->googleClientId ?? null;
         }
-        if ($data->isInitialized('googleSecret') && null !== $data->getGoogleSecret()) {
-            $dataArray['googleSecret'] = $data->getGoogleSecret();
+        if (array_key_exists('googleSecret', get_object_vars($data)) && null !== ($data->googleSecret ?? null)) {
+            $dataArray['googleSecret'] = $data->googleSecret ?? null;
         }
-        if ($data->isInitialized('microsoftEnabled') && null !== $data->getMicrosoftEnabled()) {
-            $dataArray['microsoftEnabled'] = $data->getMicrosoftEnabled();
+        if (array_key_exists('microsoftEnabled', get_object_vars($data)) && null !== ($data->microsoftEnabled ?? null)) {
+            $dataArray['microsoftEnabled'] = $data->microsoftEnabled ?? null;
         }
-        if ($data->isInitialized('microsoftClientId') && null !== $data->getMicrosoftClientId()) {
-            $dataArray['microsoftClientId'] = $data->getMicrosoftClientId();
+        if (array_key_exists('microsoftClientId', get_object_vars($data)) && null !== ($data->microsoftClientId ?? null)) {
+            $dataArray['microsoftClientId'] = $data->microsoftClientId ?? null;
         }
-        if ($data->isInitialized('microsoftSecret') && null !== $data->getMicrosoftSecret()) {
-            $dataArray['microsoftSecret'] = $data->getMicrosoftSecret();
+        if (array_key_exists('microsoftSecret', get_object_vars($data)) && null !== ($data->microsoftSecret ?? null)) {
+            $dataArray['microsoftSecret'] = $data->microsoftSecret ?? null;
         }
-        if ($data->isInitialized('facebookEnabled') && null !== $data->getFacebookEnabled()) {
-            $dataArray['facebookEnabled'] = $data->getFacebookEnabled();
+        if (array_key_exists('facebookEnabled', get_object_vars($data)) && null !== ($data->facebookEnabled ?? null)) {
+            $dataArray['facebookEnabled'] = $data->facebookEnabled ?? null;
         }
-        if ($data->isInitialized('facebookClientId') && null !== $data->getFacebookClientId()) {
-            $dataArray['facebookClientId'] = $data->getFacebookClientId();
+        if (array_key_exists('facebookClientId', get_object_vars($data)) && null !== ($data->facebookClientId ?? null)) {
+            $dataArray['facebookClientId'] = $data->facebookClientId ?? null;
         }
-        if ($data->isInitialized('facebookSecret') && null !== $data->getFacebookSecret()) {
-            $dataArray['facebookSecret'] = $data->getFacebookSecret();
+        if (array_key_exists('facebookSecret', get_object_vars($data)) && null !== ($data->facebookSecret ?? null)) {
+            $dataArray['facebookSecret'] = $data->facebookSecret ?? null;
         }
-        if ($data->isInitialized('whitelistedDomains') && null !== $data->getWhitelistedDomains()) {
+        if (array_key_exists('whitelistedDomains', get_object_vars($data)) && null !== ($data->whitelistedDomains ?? null)) {
             $values = [];
-            foreach ($data->getWhitelistedDomains() as $value) {
+            foreach ($data->whitelistedDomains ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['whitelistedDomains'] = $values;

@@ -38,38 +38,38 @@ class RadioAutoChannelSelectionNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('channelSelectMode', $data)) {
-            $object->setChannelSelectMode($data['channelSelectMode']);
+            $object->channelSelectMode = $data['channelSelectMode'];
         }
         if (\array_key_exists('channelFlyMtbc', $data)) {
-            $object->setChannelFlyMtbc($data['channelFlyMtbc']);
+            $object->channelFlyMtbc = $data['channelFlyMtbc'];
         }
         if (\array_key_exists('channelFlyChangeFrequency', $data)) {
-            $object->setChannelFlyChangeFrequency($data['channelFlyChangeFrequency']);
+            $object->channelFlyChangeFrequency = $data['channelFlyChangeFrequency'];
         }
         if (\array_key_exists('channelFlyOptimizationTimePeriod', $data)) {
             $values = [];
             foreach ($data['channelFlyOptimizationTimePeriod'] as $value) {
                 $values[] = $value;
             }
-            $object->setChannelFlyOptimizationTimePeriod($values);
+            $object->channelFlyOptimizationTimePeriod = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('channelSelectMode') && null !== $data->getChannelSelectMode()) {
-            $dataArray['channelSelectMode'] = $data->getChannelSelectMode();
+        if (array_key_exists('channelSelectMode', get_object_vars($data)) && null !== ($data->channelSelectMode ?? null)) {
+            $dataArray['channelSelectMode'] = $data->channelSelectMode ?? null;
         }
-        if ($data->isInitialized('channelFlyMtbc') && null !== $data->getChannelFlyMtbc()) {
-            $dataArray['channelFlyMtbc'] = $data->getChannelFlyMtbc();
+        if (array_key_exists('channelFlyMtbc', get_object_vars($data)) && null !== ($data->channelFlyMtbc ?? null)) {
+            $dataArray['channelFlyMtbc'] = $data->channelFlyMtbc ?? null;
         }
-        if ($data->isInitialized('channelFlyChangeFrequency') && null !== $data->getChannelFlyChangeFrequency()) {
-            $dataArray['channelFlyChangeFrequency'] = $data->getChannelFlyChangeFrequency();
+        if (array_key_exists('channelFlyChangeFrequency', get_object_vars($data)) && null !== ($data->channelFlyChangeFrequency ?? null)) {
+            $dataArray['channelFlyChangeFrequency'] = $data->channelFlyChangeFrequency ?? null;
         }
-        if ($data->isInitialized('channelFlyOptimizationTimePeriod') && null !== $data->getChannelFlyOptimizationTimePeriod()) {
+        if (array_key_exists('channelFlyOptimizationTimePeriod', get_object_vars($data)) && null !== ($data->channelFlyOptimizationTimePeriod ?? null)) {
             $values = [];
-            foreach ($data->getChannelFlyOptimizationTimePeriod() as $value) {
+            foreach ($data->channelFlyOptimizationTimePeriod ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['channelFlyOptimizationTimePeriod'] = $values;

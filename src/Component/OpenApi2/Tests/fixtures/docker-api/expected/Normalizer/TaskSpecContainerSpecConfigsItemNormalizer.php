@@ -41,33 +41,33 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
             $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecConfigsItemConstraint());
         }
         if (\array_key_exists('File', $data)) {
-            $object->setFile($this->denormalizer->denormalize($data['File'], \Docker\Api\Model\TaskSpecContainerSpecConfigsItemFile::class, 'json', $context));
+            $object->file = $this->denormalizer->denormalize($data['File'], \Docker\Api\Model\TaskSpecContainerSpecConfigsItemFile::class, 'json', $context);
         }
         if (\array_key_exists('Runtime', $data)) {
-            $object->setRuntime($data['Runtime']);
+            $object->runtime = $data['Runtime'];
         }
         if (\array_key_exists('ConfigID', $data)) {
-            $object->setConfigID($data['ConfigID']);
+            $object->configID = $data['ConfigID'];
         }
         if (\array_key_exists('ConfigName', $data)) {
-            $object->setConfigName($data['ConfigName']);
+            $object->configName = $data['ConfigName'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('file') && null !== $data->getFile()) {
-            $dataArray['File'] = $data->getFile() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
+        if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
+            $dataArray['File'] = ($data->file ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->file ?? null, 'json', $context));
         }
-        if ($data->isInitialized('runtime') && null !== $data->getRuntime()) {
-            $dataArray['Runtime'] = $data->getRuntime();
+        if (array_key_exists('runtime', get_object_vars($data)) && null !== ($data->runtime ?? null)) {
+            $dataArray['Runtime'] = $data->runtime ?? null;
         }
-        if ($data->isInitialized('configID') && null !== $data->getConfigID()) {
-            $dataArray['ConfigID'] = $data->getConfigID();
+        if (array_key_exists('configID', get_object_vars($data)) && null !== ($data->configID ?? null)) {
+            $dataArray['ConfigID'] = $data->configID ?? null;
         }
-        if ($data->isInitialized('configName') && null !== $data->getConfigName()) {
-            $dataArray['ConfigName'] = $data->getConfigName();
+        if (array_key_exists('configName', get_object_vars($data)) && null !== ($data->configName ?? null)) {
+            $dataArray['ConfigName'] = $data->configName ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecConfigsItemConstraint());

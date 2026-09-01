@@ -38,7 +38,7 @@ class CompliancePreDefinedSearchesNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('totalSize', $data)) {
-            $object->setTotalSize($data['totalSize']);
+            $object->totalSize = $data['totalSize'];
             unset($data['totalSize']);
         }
         if (\array_key_exists('predefinedSearches', $data)) {
@@ -46,7 +46,7 @@ class CompliancePreDefinedSearchesNormalizer implements DenormalizerInterface, N
             foreach ($data['predefinedSearches'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\CompliancePreDefinedSearchesPredefinedSearchesItem::class, 'json', $context);
             }
-            $object->setPredefinedSearches($values);
+            $object->predefinedSearches = $values;
             unset($data['predefinedSearches']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class CompliancePreDefinedSearchesNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalSize') && null !== $data->getTotalSize()) {
-            $dataArray['totalSize'] = $data->getTotalSize();
+        if (array_key_exists('totalSize', get_object_vars($data)) && null !== ($data->totalSize ?? null)) {
+            $dataArray['totalSize'] = $data->totalSize ?? null;
         }
-        if ($data->isInitialized('predefinedSearches') && null !== $data->getPredefinedSearches()) {
+        if (array_key_exists('predefinedSearches', get_object_vars($data)) && null !== ($data->predefinedSearches ?? null)) {
             $values = [];
-            foreach ($data->getPredefinedSearches() as $value) {
+            foreach ($data->predefinedSearches ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['predefinedSearches'] = $values;

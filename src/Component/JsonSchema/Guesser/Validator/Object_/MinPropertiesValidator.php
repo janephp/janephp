@@ -16,7 +16,7 @@ class MinPropertiesValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && ((\is_array($object->getType()) ? \in_array('object', $object->getType()) : 'object' === $object->getType()) || (null === $object->getType() && \is_array($object->getProperties()) && \count($object->getProperties()) > 0)) && \is_int($object->getMinProperties());
+        return $this->checkObject($object) && ((\is_array($object->type ?? null) ? \in_array('object', $object->type ?? null) : 'object' === ($object->type ?? null)) || (null === ($object->type ?? null) && \is_array($object->properties ?? null) && \count($object->properties ?? null) > 0)) && \is_int($object->minProperties ?? null);
     }
 
     /**
@@ -26,7 +26,7 @@ class MinPropertiesValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(Count::class, [
-            'min' => $object->getMinProperties(),
+            'min' => ($object->minProperties ?? null),
             'minMessage' => 'This array has not enough properties. It should have {{ limit }} properties or more.',
         ]));
     }

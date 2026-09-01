@@ -38,36 +38,36 @@ class AggregationResultNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('sumOtherDocCount', $data) && $data['sumOtherDocCount'] !== null) {
-            $object->setSumOtherDocCount($data['sumOtherDocCount']);
+            $object->sumOtherDocCount = $data['sumOtherDocCount'];
         }
         elseif (\array_key_exists('sumOtherDocCount', $data) && $data['sumOtherDocCount'] === null) {
-            $object->setSumOtherDocCount(null);
+            $object->sumOtherDocCount = null;
         }
         if (\array_key_exists('aggregationResultItems', $data) && $data['aggregationResultItems'] !== null) {
             $values = [];
             foreach ($data['aggregationResultItems'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\AggregationResultItem::class, 'json', $context);
             }
-            $object->setAggregationResultItems($values);
+            $object->aggregationResultItems = $values;
         }
         elseif (\array_key_exists('aggregationResultItems', $data) && $data['aggregationResultItems'] === null) {
-            $object->setAggregationResultItems(null);
+            $object->aggregationResultItems = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('sumOtherDocCount') && null !== $data->getSumOtherDocCount()) {
-            $dataArray['sumOtherDocCount'] = $data->getSumOtherDocCount();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('sumOtherDocCount', get_object_vars($data)) && null !== ($data->sumOtherDocCount ?? null)) {
+            $dataArray['sumOtherDocCount'] = $data->sumOtherDocCount ?? null;
         }
-        if ($data->isInitialized('aggregationResultItems') && null !== $data->getAggregationResultItems()) {
+        if (array_key_exists('aggregationResultItems', get_object_vars($data)) && null !== ($data->aggregationResultItems ?? null)) {
             $values = [];
-            foreach ($data->getAggregationResultItems() as $value) {
+            foreach ($data->aggregationResultItems ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['aggregationResultItems'] = $values;

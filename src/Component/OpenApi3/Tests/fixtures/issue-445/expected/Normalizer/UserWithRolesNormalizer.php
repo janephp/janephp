@@ -54,89 +54,89 @@ class UserWithRolesNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['userRoleIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setUserRoleIds($values);
+            $object->userRoleIds = $values;
         }
         elseif (\array_key_exists('userRoleIds', $data) && $data['userRoleIds'] === null) {
-            $object->setUserRoleIds(null);
+            $object->userRoleIds = null;
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
-            $object->setFirstName($data['firstName']);
+            $object->firstName = $data['firstName'];
         }
         elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
-            $object->setFirstName(null);
+            $object->firstName = null;
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
-            $object->setLastName($data['lastName']);
+            $object->lastName = $data['lastName'];
         }
         elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
-            $object->setLastName(null);
+            $object->lastName = null;
         }
         if (\array_key_exists('emailAddress', $data)) {
-            $object->setEmailAddress($data['emailAddress']);
+            $object->emailAddress = $data['emailAddress'];
         }
         if (\array_key_exists('authorizationState', $data)) {
             $value_1 = $data['authorizationState'];
             if (is_string($data['authorizationState'])) {
                 $value_1 = $data['authorizationState'];
             }
-            $object->setAuthorizationState($value_1);
+            $object->authorizationState = $value_1;
         }
         if (\array_key_exists('lifeCycle', $data)) {
             $value_2 = $data['lifeCycle'];
             if (is_string($data['lifeCycle'])) {
                 $value_2 = $data['lifeCycle'];
             }
-            $object->setLifeCycle($value_2);
+            $object->lifeCycle = $value_2;
         }
         if (\array_key_exists('isLocked', $data)) {
-            $object->setIsLocked($data['isLocked']);
+            $object->isLocked = $data['isLocked'];
         }
         if (\array_key_exists('isSupportUser', $data)) {
-            $object->setIsSupportUser($data['isSupportUser']);
+            $object->isSupportUser = $data['isSupportUser'];
         }
         if (\array_key_exists('isReadOnly', $data)) {
-            $object->setIsReadOnly($data['isReadOnly']);
+            $object->isReadOnly = $data['isReadOnly'];
         }
         if (\array_key_exists('isFederated', $data)) {
-            $object->setIsFederated($data['isFederated']);
+            $object->isFederated = $data['isFederated'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('userRoleIds') && null !== $data->getUserRoleIds()) {
+        if (array_key_exists('userRoleIds', get_object_vars($data)) && null !== ($data->userRoleIds ?? null)) {
             $values = [];
-            foreach ($data->getUserRoleIds() as $value) {
+            foreach ($data->userRoleIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['userRoleIds'] = $values;
         }
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $dataArray['firstName'] = $data->getFirstName();
+        $dataArray['id'] = $data->id ?? null;
+        if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
+            $dataArray['firstName'] = $data->firstName ?? null;
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
-            $dataArray['lastName'] = $data->getLastName();
+        if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
+            $dataArray['lastName'] = $data->lastName ?? null;
         }
-        $dataArray['emailAddress'] = $data->getEmailAddress();
-        $value_1 = $data->getAuthorizationState();
-        if (is_string($data->getAuthorizationState())) {
-            $value_1 = $data->getAuthorizationState();
+        $dataArray['emailAddress'] = $data->emailAddress ?? null;
+        $value_1 = $data->authorizationState ?? null;
+        if (is_string($data->authorizationState ?? null)) {
+            $value_1 = $data->authorizationState ?? null;
         }
         $dataArray['authorizationState'] = $value_1;
-        $value_2 = $data->getLifeCycle();
-        if (is_string($data->getLifeCycle())) {
-            $value_2 = $data->getLifeCycle();
+        $value_2 = $data->lifeCycle ?? null;
+        if (is_string($data->lifeCycle ?? null)) {
+            $value_2 = $data->lifeCycle ?? null;
         }
         $dataArray['lifeCycle'] = $value_2;
-        $dataArray['isLocked'] = $data->getIsLocked();
-        $dataArray['isSupportUser'] = $data->getIsSupportUser();
-        $dataArray['isReadOnly'] = $data->getIsReadOnly();
-        $dataArray['isFederated'] = $data->getIsFederated();
+        $dataArray['isLocked'] = $data->isLocked ?? null;
+        $dataArray['isSupportUser'] = $data->isSupportUser ?? null;
+        $dataArray['isReadOnly'] = $data->isReadOnly ?? null;
+        $dataArray['isFederated'] = $data->isFederated ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

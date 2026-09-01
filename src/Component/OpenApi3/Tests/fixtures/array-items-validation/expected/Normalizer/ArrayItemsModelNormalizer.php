@@ -45,7 +45,7 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['uuidArray'] as $value) {
                 $values[] = $value;
             }
-            $object->setUuidArray($values);
+            $object->uuidArray = $values;
             unset($data['uuidArray']);
         }
         if (\array_key_exists('emailArray', $data)) {
@@ -53,7 +53,7 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['emailArray'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setEmailArray($values_1);
+            $object->emailArray = $values_1;
             unset($data['emailArray']);
         }
         if (\array_key_exists('enumArray', $data)) {
@@ -61,7 +61,7 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['enumArray'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setEnumArray($values_2);
+            $object->enumArray = $values_2;
             unset($data['enumArray']);
         }
         if (\array_key_exists('integerArray', $data)) {
@@ -69,7 +69,7 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['integerArray'] as $value_3) {
                 $values_3[] = $value_3;
             }
-            $object->setIntegerArray($values_3);
+            $object->integerArray = $values_3;
             unset($data['integerArray']);
         }
         if (\array_key_exists('constrainedStringArray', $data)) {
@@ -77,7 +77,7 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['constrainedStringArray'] as $value_4) {
                 $values_4[] = $value_4;
             }
-            $object->setConstrainedStringArray($values_4);
+            $object->constrainedStringArray = $values_4;
             unset($data['constrainedStringArray']);
         }
         foreach ($data as $key => $value_5) {
@@ -90,37 +90,37 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('uuidArray') && null !== $data->getUuidArray()) {
+        if (array_key_exists('uuidArray', get_object_vars($data)) && null !== ($data->uuidArray ?? null)) {
             $values = [];
-            foreach ($data->getUuidArray() as $value) {
+            foreach ($data->uuidArray ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['uuidArray'] = $values;
         }
-        if ($data->isInitialized('emailArray') && null !== $data->getEmailArray()) {
+        if (array_key_exists('emailArray', get_object_vars($data)) && null !== ($data->emailArray ?? null)) {
             $values_1 = [];
-            foreach ($data->getEmailArray() as $value_1) {
+            foreach ($data->emailArray ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['emailArray'] = $values_1;
         }
-        if ($data->isInitialized('enumArray') && null !== $data->getEnumArray()) {
+        if (array_key_exists('enumArray', get_object_vars($data)) && null !== ($data->enumArray ?? null)) {
             $values_2 = [];
-            foreach ($data->getEnumArray() as $value_2) {
+            foreach ($data->enumArray ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['enumArray'] = $values_2;
         }
-        if ($data->isInitialized('integerArray') && null !== $data->getIntegerArray()) {
+        if (array_key_exists('integerArray', get_object_vars($data)) && null !== ($data->integerArray ?? null)) {
             $values_3 = [];
-            foreach ($data->getIntegerArray() as $value_3) {
+            foreach ($data->integerArray ?? null as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['integerArray'] = $values_3;
         }
-        if ($data->isInitialized('constrainedStringArray') && null !== $data->getConstrainedStringArray()) {
+        if (array_key_exists('constrainedStringArray', get_object_vars($data)) && null !== ($data->constrainedStringArray ?? null)) {
             $values_4 = [];
-            foreach ($data->getConstrainedStringArray() as $value_4) {
+            foreach ($data->constrainedStringArray ?? null as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['constrainedStringArray'] = $values_4;

@@ -18,7 +18,7 @@ class ArrayGuesser extends BaseArrayGuesser
             return false;
         }
 
-        $type = $object->getType();
+        $type = ($object->type ?? null);
 
         return \is_array($type) ? \in_array('array', $type, true) : 'array' === $type;
     }

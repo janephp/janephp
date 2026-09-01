@@ -8,71 +8,19 @@ class ApiGetAgentUsageOutput implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * Resource Usage Description
+     *
+     * @var ApiResourceUsage
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public ApiResourceUsage $logInsightsUsage;
     /**
      * Resource Usage Description
      *
      * @var ApiResourceUsage
      */
-    protected $logInsightsUsage;
-    /**
-     * Resource Usage Description
-     *
-     * @var ApiResourceUsage
-     */
-    protected $usage;
-    /**
-     * Resource Usage Description
-     *
-     * @return ApiResourceUsage
-     */
-    public function getLogInsightsUsage(): ApiResourceUsage
-    {
-        return $this->logInsightsUsage;
-    }
-    /**
-     * Resource Usage Description
-     *
-     * @param ApiResourceUsage $logInsightsUsage
-     *
-     * @return self
-     */
-    public function setLogInsightsUsage(ApiResourceUsage $logInsightsUsage): self
-    {
-        $this->initialized['logInsightsUsage'] = true;
-        $this->logInsightsUsage = $logInsightsUsage;
-        return $this;
-    }
-    /**
-     * Resource Usage Description
-     *
-     * @return ApiResourceUsage
-     */
-    public function getUsage(): ApiResourceUsage
-    {
-        return $this->usage;
-    }
-    /**
-     * Resource Usage Description
-     *
-     * @param ApiResourceUsage $usage
-     *
-     * @return self
-     */
-    public function setUsage(ApiResourceUsage $usage): self
-    {
-        $this->initialized['usage'] = true;
-        $this->usage = $usage;
-        return $this;
-    }
+    public ApiResourceUsage $usage;
     public function definedProperties(): array
     {
-        return ['logInsightsUsage' => ['log_insights_usage', 'getLogInsightsUsage', 'setLogInsightsUsage'], 'usage' => ['usage', 'getUsage', 'setUsage']];
+        return ['logInsightsUsage' => 'log_insights_usage', 'usage' => 'usage'];
     }
 }

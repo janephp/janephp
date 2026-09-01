@@ -41,11 +41,11 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
             $data['distance'] = (float) $data['distance'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
-            $object->setField($data['field']);
+            $object->field = $data['field'];
             unset($data['field']);
         }
         if (\array_key_exists('location', $data)) {
@@ -53,11 +53,11 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
             if (is_array($data['location'])) {
                 $value = $this->denormalizer->denormalize($data['location'], \PicturePark\API\Model\GeoLocation::class, 'json', $context);
             }
-            $object->setLocation($value);
+            $object->location = $value;
             unset($data['location']);
         }
         if (\array_key_exists('distance', $data)) {
-            $object->setDistance($data['distance']);
+            $object->distance = $data['distance'];
             unset($data['distance']);
         }
         foreach ($data as $key => $value_1) {
@@ -70,15 +70,15 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['field'] = $data->getField();
-        $value = $data->getLocation();
-        if (is_object($data->getLocation())) {
-            $value = $data->getLocation() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getLocation(), 'json', $context));
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['field'] = $data->field ?? null;
+        $value = $data->location ?? null;
+        if (is_object($data->location ?? null)) {
+            $value = ($data->location ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->location ?? null, 'json', $context));
         }
         $dataArray['location'] = $value;
-        if ($data->isInitialized('distance') && null !== $data->getDistance()) {
-            $dataArray['distance'] = $data->getDistance();
+        if (array_key_exists('distance', get_object_vars($data)) && null !== ($data->distance ?? null)) {
+            $dataArray['distance'] = $data->distance ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

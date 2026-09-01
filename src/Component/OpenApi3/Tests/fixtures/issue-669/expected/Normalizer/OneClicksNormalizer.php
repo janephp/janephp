@@ -38,11 +38,11 @@ class OneClicksNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('slug', $data)) {
-            $object->setSlug($data['slug']);
+            $object->slug = $data['slug'];
             unset($data['slug']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class OneClicksNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['slug'] = $data->getSlug();
-        $dataArray['type'] = $data->getType();
+        $dataArray['slug'] = $data->slug ?? null;
+        $dataArray['type'] = $data->type ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

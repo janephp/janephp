@@ -5,285 +5,61 @@ namespace PicturePark\API\Model;
 class Content
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Audit information.
      *
      * @var UserAudit|null
      */
-    protected $audit;
+    public ?UserAudit $audit;
     /**
      * The id of the schema with schema type content.
      *
      * @var string
      */
-    protected $contentSchemaId;
+    public string $contentSchemaId;
     /**
      * The content type of this content. All except Virtual are binary files.
      *
      * @var string
      */
-    protected $contentType;
+    public string $contentType;
     /**
      * An optional id list of schemas with schema type layer.
      *
      * @var list<string>|null
      */
-    protected $layerSchemaIds;
+    public ?array $layerSchemaIds;
     /**
      * Contains display values of the specified language, rendered according to the content schema's display pattern configuration.
      *
      * @var array<string, string>
      */
-    protected $displayValues;
+    public iterable $displayValues;
     /**
      * @var string
      */
-    protected $id;
+    public string $id;
     /**
      * All the ids of the broken references (tagboxes)
      *
      * @var list<string>|null
      */
-    protected $brokenReferenceIds;
+    public ?array $brokenReferenceIds;
     /**
      * All the ids of the broken indirect references (tagbox that has a property that reference a broken tagbox)
      *
      * @var list<string>|null
      */
-    protected $brokenIndirectReferenceIds;
+    public ?array $brokenIndirectReferenceIds;
     /**
      * All the target ids of the broken relations
      *
      * @var list<string>|null
      */
-    protected $brokenRelationTargetIds;
+    public ?array $brokenRelationTargetIds;
     /**
      * Life cycle of content
      *
      * @var string
      */
-    protected $lifeCycle;
-    /**
-     * Audit information.
-     *
-     * @return UserAudit|null
-     */
-    public function getAudit(): ?UserAudit
-    {
-        return $this->audit;
-    }
-    /**
-     * Audit information.
-     *
-     * @param UserAudit|null $audit
-     *
-     * @return self
-     */
-    public function setAudit(?UserAudit $audit): self
-    {
-        $this->initialized['audit'] = true;
-        $this->audit = $audit;
-        return $this;
-    }
-    /**
-     * The id of the schema with schema type content.
-     *
-     * @return string
-     */
-    public function getContentSchemaId(): string
-    {
-        return $this->contentSchemaId;
-    }
-    /**
-     * The id of the schema with schema type content.
-     *
-     * @param string $contentSchemaId
-     *
-     * @return self
-     */
-    public function setContentSchemaId(string $contentSchemaId): self
-    {
-        $this->initialized['contentSchemaId'] = true;
-        $this->contentSchemaId = $contentSchemaId;
-        return $this;
-    }
-    /**
-     * The content type of this content. All except Virtual are binary files.
-     *
-     * @return string
-     */
-    public function getContentType(): string
-    {
-        return $this->contentType;
-    }
-    /**
-     * The content type of this content. All except Virtual are binary files.
-     *
-     * @param string $contentType
-     *
-     * @return self
-     */
-    public function setContentType(string $contentType): self
-    {
-        $this->initialized['contentType'] = true;
-        $this->contentType = $contentType;
-        return $this;
-    }
-    /**
-     * An optional id list of schemas with schema type layer.
-     *
-     * @return list<string>|null
-     */
-    public function getLayerSchemaIds(): ?array
-    {
-        return $this->layerSchemaIds;
-    }
-    /**
-     * An optional id list of schemas with schema type layer.
-     *
-     * @param list<string>|null $layerSchemaIds
-     *
-     * @return self
-     */
-    public function setLayerSchemaIds(?array $layerSchemaIds): self
-    {
-        $this->initialized['layerSchemaIds'] = true;
-        $this->layerSchemaIds = $layerSchemaIds;
-        return $this;
-    }
-    /**
-     * Contains display values of the specified language, rendered according to the content schema's display pattern configuration.
-     *
-     * @return array<string, string>
-     */
-    public function getDisplayValues(): iterable
-    {
-        return $this->displayValues;
-    }
-    /**
-     * Contains display values of the specified language, rendered according to the content schema's display pattern configuration.
-     *
-     * @param array<string, string> $displayValues
-     *
-     * @return self
-     */
-    public function setDisplayValues(iterable $displayValues): self
-    {
-        $this->initialized['displayValues'] = true;
-        $this->displayValues = $displayValues;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * All the ids of the broken references (tagboxes)
-     *
-     * @return list<string>|null
-     */
-    public function getBrokenReferenceIds(): ?array
-    {
-        return $this->brokenReferenceIds;
-    }
-    /**
-     * All the ids of the broken references (tagboxes)
-     *
-     * @param list<string>|null $brokenReferenceIds
-     *
-     * @return self
-     */
-    public function setBrokenReferenceIds(?array $brokenReferenceIds): self
-    {
-        $this->initialized['brokenReferenceIds'] = true;
-        $this->brokenReferenceIds = $brokenReferenceIds;
-        return $this;
-    }
-    /**
-     * All the ids of the broken indirect references (tagbox that has a property that reference a broken tagbox)
-     *
-     * @return list<string>|null
-     */
-    public function getBrokenIndirectReferenceIds(): ?array
-    {
-        return $this->brokenIndirectReferenceIds;
-    }
-    /**
-     * All the ids of the broken indirect references (tagbox that has a property that reference a broken tagbox)
-     *
-     * @param list<string>|null $brokenIndirectReferenceIds
-     *
-     * @return self
-     */
-    public function setBrokenIndirectReferenceIds(?array $brokenIndirectReferenceIds): self
-    {
-        $this->initialized['brokenIndirectReferenceIds'] = true;
-        $this->brokenIndirectReferenceIds = $brokenIndirectReferenceIds;
-        return $this;
-    }
-    /**
-     * All the target ids of the broken relations
-     *
-     * @return list<string>|null
-     */
-    public function getBrokenRelationTargetIds(): ?array
-    {
-        return $this->brokenRelationTargetIds;
-    }
-    /**
-     * All the target ids of the broken relations
-     *
-     * @param list<string>|null $brokenRelationTargetIds
-     *
-     * @return self
-     */
-    public function setBrokenRelationTargetIds(?array $brokenRelationTargetIds): self
-    {
-        $this->initialized['brokenRelationTargetIds'] = true;
-        $this->brokenRelationTargetIds = $brokenRelationTargetIds;
-        return $this;
-    }
-    /**
-     * Life cycle of content
-     *
-     * @return string
-     */
-    public function getLifeCycle(): string
-    {
-        return $this->lifeCycle;
-    }
-    /**
-     * Life cycle of content
-     *
-     * @param string $lifeCycle
-     *
-     * @return self
-     */
-    public function setLifeCycle(string $lifeCycle): self
-    {
-        $this->initialized['lifeCycle'] = true;
-        $this->lifeCycle = $lifeCycle;
-        return $this;
-    }
+    public string $lifeCycle;
 }

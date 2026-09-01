@@ -41,15 +41,15 @@ class ContainersIdWaitPostResponse200ErrorNormalizer implements DenormalizerInte
             $this->validate($data, new \Docker\Api\Validator\ContainersIdWaitPostResponse200ErrorConstraint());
         }
         if (\array_key_exists('Message', $data)) {
-            $object->setMessage($data['Message']);
+            $object->message = $data['Message'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['Message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['Message'] = $data->message ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdWaitPostResponse200ErrorConstraint());

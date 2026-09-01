@@ -41,27 +41,27 @@ class TLSInfoNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $this->validate($data, new \Docker\Api\Validator\TLSInfoConstraint());
         }
         if (\array_key_exists('TrustRoot', $data)) {
-            $object->setTrustRoot($data['TrustRoot']);
+            $object->trustRoot = $data['TrustRoot'];
         }
         if (\array_key_exists('CertIssuerSubject', $data)) {
-            $object->setCertIssuerSubject($data['CertIssuerSubject']);
+            $object->certIssuerSubject = $data['CertIssuerSubject'];
         }
         if (\array_key_exists('CertIssuerPublicKey', $data)) {
-            $object->setCertIssuerPublicKey($data['CertIssuerPublicKey']);
+            $object->certIssuerPublicKey = $data['CertIssuerPublicKey'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('trustRoot') && null !== $data->getTrustRoot()) {
-            $dataArray['TrustRoot'] = $data->getTrustRoot();
+        if (array_key_exists('trustRoot', get_object_vars($data)) && null !== ($data->trustRoot ?? null)) {
+            $dataArray['TrustRoot'] = $data->trustRoot ?? null;
         }
-        if ($data->isInitialized('certIssuerSubject') && null !== $data->getCertIssuerSubject()) {
-            $dataArray['CertIssuerSubject'] = $data->getCertIssuerSubject();
+        if (array_key_exists('certIssuerSubject', get_object_vars($data)) && null !== ($data->certIssuerSubject ?? null)) {
+            $dataArray['CertIssuerSubject'] = $data->certIssuerSubject ?? null;
         }
-        if ($data->isInitialized('certIssuerPublicKey') && null !== $data->getCertIssuerPublicKey()) {
-            $dataArray['CertIssuerPublicKey'] = $data->getCertIssuerPublicKey();
+        if (array_key_exists('certIssuerPublicKey', get_object_vars($data)) && null !== ($data->certIssuerPublicKey ?? null)) {
+            $dataArray['CertIssuerPublicKey'] = $data->certIssuerPublicKey ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TLSInfoConstraint());

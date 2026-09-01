@@ -30,7 +30,7 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
 
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        foreach ($object->getOneOf() as $key => $oneOf) {
+        foreach (($object->oneOf ?? null ?? []) as $key => $oneOf) {
             $oneOfName = $name . 'Sub';
             $oneOfResolved = $oneOf;
 
@@ -49,7 +49,7 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
     {
         $type = new MultipleType($object);
 
-        foreach ($object->getOneOf() as $key => $oneOf) {
+        foreach (($object->oneOf ?? null ?? []) as $key => $oneOf) {
             $oneOfName = $name . 'Sub';
             $oneOfResolved = $oneOf;
 
@@ -68,6 +68,6 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
 
     public function supportObject($object): bool
     {
-        return ($object instanceof JsonSchema) && 'object' === $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;
+        return ($object instanceof JsonSchema) && 'object' === $object->type && \is_array($object->oneOf ?? null) && \count($object->oneOf ?? null) > 0;
     }
 }

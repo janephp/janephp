@@ -8,147 +8,31 @@ class GbCompanyReportExampleResponse implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $orderId;
     /**
      * @var string
      */
-    protected $orderId;
+    public string $companyId;
     /**
      * @var string
      */
-    protected $companyId;
+    public string $dateOfOrder;
     /**
      * @var string
      */
-    protected $dateOfOrder;
+    public string $language;
     /**
      * @var string
      */
-    protected $language;
-    /**
-     * @var string
-     */
-    protected $userId;
+    public string $userId;
     /**
      * @var GbCompanyReportExampleResponseReport
      */
-    protected $report;
-    /**
-     * @return string
-     */
-    public function getOrderId(): string
-    {
-        return $this->orderId;
-    }
-    /**
-     * @param string $orderId
-     *
-     * @return self
-     */
-    public function setOrderId(string $orderId): self
-    {
-        $this->initialized['orderId'] = true;
-        $this->orderId = $orderId;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCompanyId(): string
-    {
-        return $this->companyId;
-    }
-    /**
-     * @param string $companyId
-     *
-     * @return self
-     */
-    public function setCompanyId(string $companyId): self
-    {
-        $this->initialized['companyId'] = true;
-        $this->companyId = $companyId;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getDateOfOrder(): string
-    {
-        return $this->dateOfOrder;
-    }
-    /**
-     * @param string $dateOfOrder
-     *
-     * @return self
-     */
-    public function setDateOfOrder(string $dateOfOrder): self
-    {
-        $this->initialized['dateOfOrder'] = true;
-        $this->dateOfOrder = $dateOfOrder;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getLanguage(): string
-    {
-        return $this->language;
-    }
-    /**
-     * @param string $language
-     *
-     * @return self
-     */
-    public function setLanguage(string $language): self
-    {
-        $this->initialized['language'] = true;
-        $this->language = $language;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getUserId(): string
-    {
-        return $this->userId;
-    }
-    /**
-     * @param string $userId
-     *
-     * @return self
-     */
-    public function setUserId(string $userId): self
-    {
-        $this->initialized['userId'] = true;
-        $this->userId = $userId;
-        return $this;
-    }
-    /**
-     * @return GbCompanyReportExampleResponseReport
-     */
-    public function getReport(): GbCompanyReportExampleResponseReport
-    {
-        return $this->report;
-    }
-    /**
-     * @param GbCompanyReportExampleResponseReport $report
-     *
-     * @return self
-     */
-    public function setReport(GbCompanyReportExampleResponseReport $report): self
-    {
-        $this->initialized['report'] = true;
-        $this->report = $report;
-        return $this;
-    }
+    public GbCompanyReportExampleResponseReport $report;
     public function definedProperties(): array
     {
-        return ['orderId' => ['orderId', 'getOrderId', 'setOrderId'], 'companyId' => ['companyId', 'getCompanyId', 'setCompanyId'], 'dateOfOrder' => ['dateOfOrder', 'getDateOfOrder', 'setDateOfOrder'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'report' => ['report', 'getReport', 'setReport']];
+        return ['orderId' => 'orderId', 'companyId' => 'companyId', 'dateOfOrder' => 'dateOfOrder', 'language' => 'language', 'userId' => 'userId', 'report' => 'report'];
     }
 }

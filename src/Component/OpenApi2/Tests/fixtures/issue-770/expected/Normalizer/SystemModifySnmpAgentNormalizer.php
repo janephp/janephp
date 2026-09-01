@@ -41,38 +41,38 @@ class SystemModifySnmpAgentNormalizer implements DenormalizerInterface, Normaliz
             $data['snmpNotificationEnabled'] = (bool) $data['snmpNotificationEnabled'];
         }
         if (\array_key_exists('snmpNotificationEnabled', $data)) {
-            $object->setSnmpNotificationEnabled($data['snmpNotificationEnabled']);
+            $object->snmpNotificationEnabled = $data['snmpNotificationEnabled'];
         }
         if (\array_key_exists('snmpV2Agent', $data)) {
             $values = [];
             foreach ($data['snmpV2Agent'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonSnmpCommunity::class, 'json', $context);
             }
-            $object->setSnmpV2Agent($values);
+            $object->snmpV2Agent = $values;
         }
         if (\array_key_exists('snmpV3Agent', $data)) {
             $values_1 = [];
             foreach ($data['snmpV3Agent'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonSnmpUser::class, 'json', $context);
             }
-            $object->setSnmpV3Agent($values_1);
+            $object->snmpV3Agent = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['snmpNotificationEnabled'] = $data->getSnmpNotificationEnabled();
-        if ($data->isInitialized('snmpV2Agent') && null !== $data->getSnmpV2Agent()) {
+        $dataArray['snmpNotificationEnabled'] = $data->snmpNotificationEnabled ?? null;
+        if (array_key_exists('snmpV2Agent', get_object_vars($data)) && null !== ($data->snmpV2Agent ?? null)) {
             $values = [];
-            foreach ($data->getSnmpV2Agent() as $value) {
+            foreach ($data->snmpV2Agent ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['snmpV2Agent'] = $values;
         }
-        if ($data->isInitialized('snmpV3Agent') && null !== $data->getSnmpV3Agent()) {
+        if (array_key_exists('snmpV3Agent', get_object_vars($data)) && null !== ($data->snmpV3Agent ?? null)) {
             $values_1 = [];
-            foreach ($data->getSnmpV3Agent() as $value_1) {
+            foreach ($data->snmpV3Agent ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['snmpV3Agent'] = $values_1;

@@ -41,21 +41,21 @@ class ServicesCreatePostResponse201Normalizer implements DenormalizerInterface, 
             $this->validate($data, new \Docker\Api\Validator\ServicesCreatePostResponse201Constraint());
         }
         if (\array_key_exists('ID', $data)) {
-            $object->setID($data['ID']);
+            $object->iD = $data['ID'];
         }
         if (\array_key_exists('Warning', $data)) {
-            $object->setWarning($data['Warning']);
+            $object->warning = $data['Warning'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iD') && null !== $data->getID()) {
-            $dataArray['ID'] = $data->getID();
+        if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
+            $dataArray['ID'] = $data->iD ?? null;
         }
-        if ($data->isInitialized('warning') && null !== $data->getWarning()) {
-            $dataArray['Warning'] = $data->getWarning();
+        if (array_key_exists('warning', get_object_vars($data)) && null !== ($data->warning ?? null)) {
+            $dataArray['Warning'] = $data->warning ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServicesCreatePostResponse201Constraint());

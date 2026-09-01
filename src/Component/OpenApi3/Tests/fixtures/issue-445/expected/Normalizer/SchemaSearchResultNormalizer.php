@@ -41,7 +41,7 @@ class SchemaSearchResultNormalizer implements DenormalizerInterface, NormalizerI
             $data['isSearchStringRewritten'] = (bool) $data['isSearchStringRewritten'];
         }
         if (\array_key_exists('totalResults', $data)) {
-            $object->setTotalResults($data['totalResults']);
+            $object->totalResults = $data['totalResults'];
             unset($data['totalResults']);
         }
         if (\array_key_exists('results', $data)) {
@@ -49,31 +49,31 @@ class SchemaSearchResultNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['results'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\Schema::class, 'json', $context);
             }
-            $object->setResults($values);
+            $object->results = $values;
             unset($data['results']);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
-            $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
+            $object->elapsedMilliseconds = $data['elapsedMilliseconds'];
             unset($data['elapsedMilliseconds']);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-            $object->setPageToken($data['pageToken']);
+            $object->pageToken = $data['pageToken'];
             unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-            $object->setPageToken(null);
+            $object->pageToken = null;
             unset($data['pageToken']);
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
-            $object->setSearchString($data['searchString']);
+            $object->searchString = $data['searchString'];
             unset($data['searchString']);
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
-            $object->setSearchString(null);
+            $object->searchString = null;
             unset($data['searchString']);
         }
         if (\array_key_exists('isSearchStringRewritten', $data)) {
-            $object->setIsSearchStringRewritten($data['isSearchStringRewritten']);
+            $object->isSearchStringRewritten = $data['isSearchStringRewritten'];
             unset($data['isSearchStringRewritten']);
         }
         if (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] !== null) {
@@ -81,11 +81,11 @@ class SchemaSearchResultNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['queryDebugInformation'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\QueryDebugInformation::class, 'json', $context);
             }
-            $object->setQueryDebugInformation($values_1);
+            $object->queryDebugInformation = $values_1;
             unset($data['queryDebugInformation']);
         }
         elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
-            $object->setQueryDebugInformation(null);
+            $object->queryDebugInformation = null;
             unset($data['queryDebugInformation']);
         }
         foreach ($data as $key => $value_2) {
@@ -98,25 +98,25 @@ class SchemaSearchResultNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['totalResults'] = $data->getTotalResults();
+        $dataArray['totalResults'] = $data->totalResults ?? null;
         $values = [];
-        foreach ($data->getResults() as $value) {
+        foreach ($data->results ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['results'] = $values;
-        $dataArray['elapsedMilliseconds'] = $data->getElapsedMilliseconds();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
-            $dataArray['pageToken'] = $data->getPageToken();
+        $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds ?? null;
+        if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
+            $dataArray['pageToken'] = $data->pageToken ?? null;
         }
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
-            $dataArray['searchString'] = $data->getSearchString();
+        if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
+            $dataArray['searchString'] = $data->searchString ?? null;
         }
-        if ($data->isInitialized('isSearchStringRewritten') && null !== $data->getIsSearchStringRewritten()) {
-            $dataArray['isSearchStringRewritten'] = $data->getIsSearchStringRewritten();
+        if (array_key_exists('isSearchStringRewritten', get_object_vars($data)) && null !== ($data->isSearchStringRewritten ?? null)) {
+            $dataArray['isSearchStringRewritten'] = $data->isSearchStringRewritten ?? null;
         }
-        if ($data->isInitialized('queryDebugInformation') && null !== $data->getQueryDebugInformation()) {
+        if (array_key_exists('queryDebugInformation', get_object_vars($data)) && null !== ($data->queryDebugInformation ?? null)) {
             $values_1 = [];
-            foreach ($data->getQueryDebugInformation() as $value_1) {
+            foreach ($data->queryDebugInformation ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['queryDebugInformation'] = $values_1;

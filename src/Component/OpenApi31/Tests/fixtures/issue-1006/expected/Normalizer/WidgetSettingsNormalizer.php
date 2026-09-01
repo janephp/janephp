@@ -41,19 +41,19 @@ class WidgetSettingsNormalizer implements DenormalizerInterface, NormalizerInter
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Issue1006\Validator\WidgetSettingsConstraint());
         }
         if (\array_key_exists('color', $data)) {
-            $object->setColor($data['color']);
+            $object->color = $data['color'];
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['color'] = $data->getColor();
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['size'] = $data->getSize();
+        $dataArray['color'] = $data->color ?? null;
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['size'] = $data->size ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Issue1006\Validator\WidgetSettingsConstraint());

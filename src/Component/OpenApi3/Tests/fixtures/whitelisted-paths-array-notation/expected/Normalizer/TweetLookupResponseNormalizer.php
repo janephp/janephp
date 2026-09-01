@@ -50,11 +50,11 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
                 }
                 $values[] = $value_1;
             }
-            $object->setData($values);
+            $object->data = $values;
             unset($data['data']);
         }
         if (\array_key_exists('includes', $data)) {
-            $object->setIncludes($this->denormalizer->denormalize($data['includes'], \Jane\OpenApi3\Tests\Expected\Model\Expansions::class, 'json', $context));
+            $object->includes = $this->denormalizer->denormalize($data['includes'], \Jane\OpenApi3\Tests\Expected\Model\Expansions::class, 'json', $context);
             unset($data['includes']);
         }
         if (\array_key_exists('errors', $data)) {
@@ -90,7 +90,7 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
                 }
                 $values_1[] = $value_3;
             }
-            $object->setErrors($values_1);
+            $object->errors = $values_1;
             unset($data['errors']);
         }
         foreach ($data as $key => $value_4) {
@@ -103,9 +103,9 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('data') && null !== $data->getData()) {
+        if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
-            foreach ($data->getData() as $value) {
+            foreach ($data->data ?? null as $value) {
                 $value_1 = $value;
                 if (is_object($value)) {
                     $value_1 = $value === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
@@ -118,12 +118,12 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
             }
             $dataArray['data'] = $values;
         }
-        if ($data->isInitialized('includes') && null !== $data->getIncludes()) {
-            $dataArray['includes'] = $data->getIncludes() === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIncludes(), 'json', $context));
+        if (array_key_exists('includes', get_object_vars($data)) && null !== ($data->includes ?? null)) {
+            $dataArray['includes'] = ($data->includes ?? null) === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->includes ?? null, 'json', $context));
         }
-        if ($data->isInitialized('errors') && null !== $data->getErrors()) {
+        if (array_key_exists('errors', get_object_vars($data)) && null !== ($data->errors ?? null)) {
             $values_1 = [];
-            foreach ($data->getErrors() as $value_2) {
+            foreach ($data->errors ?? null as $value_2) {
                 $value_3 = $value_2;
                 if (is_object($value_2)) {
                     $value_3 = $value_2 === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));

@@ -38,105 +38,105 @@ class IdentityModifyUserNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('firstName', $data)) {
-            $object->setFirstName($data['firstName']);
+            $object->firstName = $data['firstName'];
         }
         if (\array_key_exists('lastName', $data)) {
-            $object->setLastName($data['lastName']);
+            $object->lastName = $data['lastName'];
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
         }
         if (\array_key_exists('phone', $data)) {
-            $object->setPhone($data['phone']);
+            $object->phone = $data['phone'];
         }
         if (\array_key_exists('address', $data)) {
-            $object->setAddress($data['address']);
+            $object->address = $data['address'];
         }
         if (\array_key_exists('city', $data)) {
-            $object->setCity($data['city']);
+            $object->city = $data['city'];
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
         }
         if (\array_key_exists('zipCode', $data)) {
-            $object->setZipCode($data['zipCode']);
+            $object->zipCode = $data['zipCode'];
         }
         if (\array_key_exists('countryName', $data)) {
-            $object->setCountryName($data['countryName']);
+            $object->countryName = $data['countryName'];
         }
         if (\array_key_exists('countryShortName', $data)) {
-            $object->setCountryShortName($data['countryShortName']);
+            $object->countryShortName = $data['countryShortName'];
         }
         if (\array_key_exists('isDisabled', $data)) {
-            $object->setIsDisabled($data['isDisabled']);
+            $object->isDisabled = $data['isDisabled'];
         }
         if (\array_key_exists('remark', $data)) {
-            $object->setRemark($data['remark']);
+            $object->remark = $data['remark'];
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
         }
         if (\array_key_exists('subscriberPackage', $data)) {
-            $object->setSubscriberPackage($this->denormalizer->denormalize($data['subscriberPackage'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->subscriberPackage = $this->denormalizer->denormalize($data['subscriberPackage'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $dataArray['firstName'] = $data->getFirstName();
+        if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
+            $dataArray['firstName'] = $data->firstName ?? null;
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
-            $dataArray['lastName'] = $data->getLastName();
+        if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
+            $dataArray['lastName'] = $data->lastName ?? null;
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email ?? null;
         }
-        if ($data->isInitialized('phone') && null !== $data->getPhone()) {
-            $dataArray['phone'] = $data->getPhone();
+        if (array_key_exists('phone', get_object_vars($data)) && null !== ($data->phone ?? null)) {
+            $dataArray['phone'] = $data->phone ?? null;
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $data->getAddress();
+        if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
+            $dataArray['address'] = $data->address ?? null;
         }
-        if ($data->isInitialized('city') && null !== $data->getCity()) {
-            $dataArray['city'] = $data->getCity();
+        if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
+            $dataArray['city'] = $data->city ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
-        if ($data->isInitialized('zipCode') && null !== $data->getZipCode()) {
-            $dataArray['zipCode'] = $data->getZipCode();
+        if (array_key_exists('zipCode', get_object_vars($data)) && null !== ($data->zipCode ?? null)) {
+            $dataArray['zipCode'] = $data->zipCode ?? null;
         }
-        if ($data->isInitialized('countryName') && null !== $data->getCountryName()) {
-            $dataArray['countryName'] = $data->getCountryName();
+        if (array_key_exists('countryName', get_object_vars($data)) && null !== ($data->countryName ?? null)) {
+            $dataArray['countryName'] = $data->countryName ?? null;
         }
-        if ($data->isInitialized('countryShortName') && null !== $data->getCountryShortName()) {
-            $dataArray['countryShortName'] = $data->getCountryShortName();
+        if (array_key_exists('countryShortName', get_object_vars($data)) && null !== ($data->countryShortName ?? null)) {
+            $dataArray['countryShortName'] = $data->countryShortName ?? null;
         }
-        if ($data->isInitialized('isDisabled') && null !== $data->getIsDisabled()) {
-            $dataArray['isDisabled'] = $data->getIsDisabled();
+        if (array_key_exists('isDisabled', get_object_vars($data)) && null !== ($data->isDisabled ?? null)) {
+            $dataArray['isDisabled'] = $data->isDisabled ?? null;
         }
-        if ($data->isInitialized('remark') && null !== $data->getRemark()) {
-            $dataArray['remark'] = $data->getRemark();
+        if (array_key_exists('remark', get_object_vars($data)) && null !== ($data->remark ?? null)) {
+            $dataArray['remark'] = $data->remark ?? null;
         }
-        if ($data->isInitialized('password') && null !== $data->getPassword()) {
-            $dataArray['password'] = $data->getPassword();
+        if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
+            $dataArray['password'] = $data->password ?? null;
         }
-        if ($data->isInitialized('subscriberPackage') && null !== $data->getSubscriberPackage()) {
-            $dataArray['subscriberPackage'] = $data->getSubscriberPackage() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context));
+        if (array_key_exists('subscriberPackage', get_object_vars($data)) && null !== ($data->subscriberPackage ?? null)) {
+            $dataArray['subscriberPackage'] = ($data->subscriberPackage ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->subscriberPackage ?? null, 'json', $context));
         }
         return $dataArray;
     }

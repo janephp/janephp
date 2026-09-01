@@ -38,11 +38,11 @@ class ApiUsageMeasurementNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('tokens', $data)) {
-            $object->setTokens($data['tokens']);
+            $object->tokens = $data['tokens'];
             unset($data['tokens']);
         }
         if (\array_key_exists('usage_type', $data)) {
-            $object->setUsageType($data['usage_type']);
+            $object->usageType = $data['usage_type'];
             unset($data['usage_type']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiUsageMeasurementNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('tokens') && null !== $data->getTokens()) {
-            $dataArray['tokens'] = $data->getTokens();
+        if (array_key_exists('tokens', get_object_vars($data)) && null !== ($data->tokens ?? null)) {
+            $dataArray['tokens'] = $data->tokens ?? null;
         }
-        if ($data->isInitialized('usageType') && null !== $data->getUsageType()) {
-            $dataArray['usage_type'] = $data->getUsageType();
+        if (array_key_exists('usageType', get_object_vars($data)) && null !== ($data->usageType ?? null)) {
+            $dataArray['usage_type'] = $data->usageType ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

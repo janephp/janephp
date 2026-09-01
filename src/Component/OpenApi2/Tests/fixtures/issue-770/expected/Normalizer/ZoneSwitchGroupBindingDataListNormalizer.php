@@ -41,38 +41,38 @@ class ZoneSwitchGroupBindingDataListNormalizer implements DenormalizerInterface,
             $data['hasMore'] = (bool) $data['hasMore'];
         }
         if (\array_key_exists('totalCount', $data)) {
-            $object->setTotalCount($data['totalCount']);
+            $object->totalCount = $data['totalCount'];
         }
         if (\array_key_exists('hasMore', $data)) {
-            $object->setHasMore($data['hasMore']);
+            $object->hasMore = $data['hasMore'];
         }
         if (\array_key_exists('rawDataTotalCount', $data)) {
-            $object->setRawDataTotalCount($data['rawDataTotalCount']);
+            $object->rawDataTotalCount = $data['rawDataTotalCount'];
         }
         if (\array_key_exists('list', $data)) {
             $values = [];
             foreach ($data['list'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneSwitchGroupBindingBindingRecord::class, 'json', $context);
             }
-            $object->setList($values);
+            $object->list = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalCount') && null !== $data->getTotalCount()) {
-            $dataArray['totalCount'] = $data->getTotalCount();
+        if (array_key_exists('totalCount', get_object_vars($data)) && null !== ($data->totalCount ?? null)) {
+            $dataArray['totalCount'] = $data->totalCount ?? null;
         }
-        if ($data->isInitialized('hasMore') && null !== $data->getHasMore()) {
-            $dataArray['hasMore'] = $data->getHasMore();
+        if (array_key_exists('hasMore', get_object_vars($data)) && null !== ($data->hasMore ?? null)) {
+            $dataArray['hasMore'] = $data->hasMore ?? null;
         }
-        if ($data->isInitialized('rawDataTotalCount') && null !== $data->getRawDataTotalCount()) {
-            $dataArray['rawDataTotalCount'] = $data->getRawDataTotalCount();
+        if (array_key_exists('rawDataTotalCount', get_object_vars($data)) && null !== ($data->rawDataTotalCount ?? null)) {
+            $dataArray['rawDataTotalCount'] = $data->rawDataTotalCount ?? null;
         }
-        if ($data->isInitialized('list') && null !== $data->getList()) {
+        if (array_key_exists('list', get_object_vars($data)) && null !== ($data->list ?? null)) {
             $values = [];
-            foreach ($data->getList() as $value) {
+            foreach ($data->list ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['list'] = $values;

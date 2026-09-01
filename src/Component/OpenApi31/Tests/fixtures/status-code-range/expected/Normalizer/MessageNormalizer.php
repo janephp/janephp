@@ -38,7 +38,7 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
             unset($data['message']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['message'] = $data->message ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

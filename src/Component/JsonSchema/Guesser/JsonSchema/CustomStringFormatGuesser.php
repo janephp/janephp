@@ -23,15 +23,15 @@ class CustomStringFormatGuesser implements GuesserInterface, TypeGuesserInterfac
     {
         $class = $this->getSchemaClass();
 
-        return ($object instanceof $class) && 'string' === $object->getType() && $object->getFormat() !== null && \array_key_exists(
-            $object->getFormat(),
+        return ($object instanceof $class) && 'string' === ($object->type ?? null) && ($object->format ?? null) !== null && \array_key_exists(
+            $object->format ?? null,
             $this->mapping
         );
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
-        return new CustomObjectType($object, $this->mapping[$object->getFormat()], []);
+        return new CustomObjectType($object, $this->mapping[$object->format ?? null], []);
     }
 
     protected function getSchemaClass(): string

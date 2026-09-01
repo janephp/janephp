@@ -8,7 +8,7 @@ use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\Console\Loader\SchemaLoader;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 class Issue588RegressionTest extends TestCase
 {
@@ -22,17 +22,21 @@ class Issue588RegressionTest extends TestCase
 
             $command = new GenerateCommand(new ConfigLoader(), new SchemaLoader(), new OpenApiMatcher());
             $input = new ArrayInput(['--config-file' => $configFile], $command->getDefinition());
+            $output = new BufferedOutput();
 
-            try {
-                $command->execute($input, new NullOutput());
-                self::fail('Generation should have been rejected: the response schema resolves outside the specification directory.');
-            } catch (\RuntimeException $e) {
-                self::assertStringContainsString('outside the allowed directories', $e->getMessage());
-                // The message must name the offending path...
-                self::assertStringContainsString('institution.yaml', $e->getMessage());
-                // ...and tell the user which configuration key unlocks this layout.
-                self::assertStringContainsString('allowed-local-ref-roots', $e->getMessage());
-            }
+            // ADR 0002: reference resolution policy failures are user-facing
+            // errors rendered by the command as an [ERROR] block, not thrown.
+            $exitCode = $command->execute($input, $output);
+
+            self::assertNotSame(0, $exitCode);
+            // The console may wrap the long absolute path mid-word at 80
+            // columns, so strip all whitespace before asserting on content.
+            $display = preg_replace('/\s+/', '', $output->fetch());
+            // The message must name the offending path...
+            self::assertStringContainsString('institution.yaml', $display);
+            self::assertStringContainsString('outsidethealloweddirectories', $display);
+            // ...and tell the user which configuration key unlocks this layout.
+            self::assertStringContainsString('allowed-local-ref-roots', $display);
 
             self::assertFileDoesNotExist($generatedDirectory . '/Endpoint/GetInstitutions.php');
             self::assertFileDoesNotExist($generatedDirectory . '/Model/InstitutionsGetResponse200.php');
@@ -54,7 +58,7 @@ class Issue588RegressionTest extends TestCase
             $command = new GenerateCommand(new ConfigLoader(), new SchemaLoader(), new OpenApiMatcher());
             $input = new ArrayInput(['--config-file' => $configFile], $command->getDefinition());
 
-            $exitCode = $command->execute($input, new NullOutput());
+            $exitCode = $command->execute($input, new BufferedOutput());
 
             self::assertSame(0, $exitCode);
             // Note: cross-document references are named after their response position
@@ -83,8 +87,8 @@ class Issue588RegressionTest extends TestCase
                 'name' => 'ACME',
             ], $modelClass, 'json');
 
-            self::assertSame('inst-1', $object->getId());
-            self::assertSame('ACME', $object->getName());
+            self::assertSame('inst-1', $object->id);
+            self::assertSame('ACME', $object->name);
         } finally {
             $this->removeDirectory($fixtureDirectory);
         }

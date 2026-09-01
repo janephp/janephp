@@ -38,28 +38,28 @@ class PortalserviceVenueNameNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('language', $data)) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('venueUrls', $data)) {
             $values = [];
             foreach ($data['venueUrls'] as $value) {
                 $values[] = $value;
             }
-            $object->setVenueUrls($values);
+            $object->venueUrls = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['language'] = $data->getLanguage();
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('venueUrls') && null !== $data->getVenueUrls()) {
+        $dataArray['language'] = $data->language ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('venueUrls', get_object_vars($data)) && null !== ($data->venueUrls ?? null)) {
             $values = [];
-            foreach ($data->getVenueUrls() as $value) {
+            foreach ($data->venueUrls ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['venueUrls'] = $values;

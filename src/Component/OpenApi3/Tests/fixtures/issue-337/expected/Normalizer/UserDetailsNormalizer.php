@@ -50,7 +50,7 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['isAutoTracker'] = (bool) $data['isAutoTracker'];
         }
         if (\array_key_exists('countryCode', $data)) {
-            $object->setCountryCode($data['countryCode']);
+            $object->countryCode = $data['countryCode'];
             unset($data['countryCode']);
         }
         if (\array_key_exists('createdDate', $data)) {
@@ -58,23 +58,23 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
             if (false === $date) {
                 throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['createdDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedDate($date);
+            $object->createdDate = $date;
             unset($data['createdDate']);
         }
         if (\array_key_exists('csCustomerId', $data)) {
-            $object->setCsCustomerId($data['csCustomerId']);
+            $object->csCustomerId = $data['csCustomerId'];
             unset($data['csCustomerId']);
         }
         if (\array_key_exists('csUserId', $data)) {
-            $object->setCsUserId($data['csUserId']);
+            $object->csUserId = $data['csUserId'];
             unset($data['csUserId']);
         }
         if (\array_key_exists('isAutoTracker', $data)) {
-            $object->setIsAutoTracker($data['isAutoTracker']);
+            $object->isAutoTracker = $data['isAutoTracker'];
             unset($data['isAutoTracker']);
         }
         if (\array_key_exists('languageCode', $data)) {
-            $object->setLanguageCode($data['languageCode']);
+            $object->languageCode = $data['languageCode'];
             unset($data['languageCode']);
         }
         if (\array_key_exists('lastAccessDate', $data)) {
@@ -82,7 +82,7 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
             if (false === $date_1) {
                 throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['lastAccessDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setLastAccessDate($date_1);
+            $object->lastAccessDate = $date_1;
             unset($data['lastAccessDate']);
         }
         if (\array_key_exists('modifiedDate', $data)) {
@@ -90,7 +90,7 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
             if (false === $date_2) {
                 throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['modifiedDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setModifiedDate($date_2);
+            $object->modifiedDate = $date_2;
             unset($data['modifiedDate']);
         }
         if (\array_key_exists('contractEndDate', $data)) {
@@ -98,11 +98,11 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
             if (false === $date_3) {
                 throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['contractEndDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setContractEndDate($date_3);
+            $object->contractEndDate = $date_3;
             unset($data['contractEndDate']);
         }
         if (\array_key_exists('userId', $data)) {
-            $object->setUserId($data['userId']);
+            $object->userId = $data['userId'];
             unset($data['userId']);
         }
         foreach ($data as $key => $value) {
@@ -115,35 +115,35 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('countryCode') && null !== $data->getCountryCode()) {
-            $dataArray['countryCode'] = $data->getCountryCode();
+        if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
+            $dataArray['countryCode'] = $data->countryCode ?? null;
         }
-        if ($data->isInitialized('createdDate') && null !== $data->getCreatedDate()) {
-            $dataArray['createdDate'] = $data->getCreatedDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdDate', get_object_vars($data)) && null !== ($data->createdDate ?? null)) {
+            $dataArray['createdDate'] = ($data->createdDate ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('csCustomerId') && null !== $data->getCsCustomerId()) {
-            $dataArray['csCustomerId'] = $data->getCsCustomerId();
+        if (array_key_exists('csCustomerId', get_object_vars($data)) && null !== ($data->csCustomerId ?? null)) {
+            $dataArray['csCustomerId'] = $data->csCustomerId ?? null;
         }
-        if ($data->isInitialized('csUserId') && null !== $data->getCsUserId()) {
-            $dataArray['csUserId'] = $data->getCsUserId();
+        if (array_key_exists('csUserId', get_object_vars($data)) && null !== ($data->csUserId ?? null)) {
+            $dataArray['csUserId'] = $data->csUserId ?? null;
         }
-        if ($data->isInitialized('isAutoTracker') && null !== $data->getIsAutoTracker()) {
-            $dataArray['isAutoTracker'] = $data->getIsAutoTracker();
+        if (array_key_exists('isAutoTracker', get_object_vars($data)) && null !== ($data->isAutoTracker ?? null)) {
+            $dataArray['isAutoTracker'] = $data->isAutoTracker ?? null;
         }
-        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
-            $dataArray['languageCode'] = $data->getLanguageCode();
+        if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {
+            $dataArray['languageCode'] = $data->languageCode ?? null;
         }
-        if ($data->isInitialized('lastAccessDate') && null !== $data->getLastAccessDate()) {
-            $dataArray['lastAccessDate'] = $data->getLastAccessDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('lastAccessDate', get_object_vars($data)) && null !== ($data->lastAccessDate ?? null)) {
+            $dataArray['lastAccessDate'] = ($data->lastAccessDate ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('modifiedDate') && null !== $data->getModifiedDate()) {
-            $dataArray['modifiedDate'] = $data->getModifiedDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('modifiedDate', get_object_vars($data)) && null !== ($data->modifiedDate ?? null)) {
+            $dataArray['modifiedDate'] = ($data->modifiedDate ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('contractEndDate') && null !== $data->getContractEndDate()) {
-            $dataArray['contractEndDate'] = $data->getContractEndDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('contractEndDate', get_object_vars($data)) && null !== ($data->contractEndDate ?? null)) {
+            $dataArray['contractEndDate'] = ($data->contractEndDate ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['userId'] = $data->getUserId();
+        if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['userId'] = $data->userId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

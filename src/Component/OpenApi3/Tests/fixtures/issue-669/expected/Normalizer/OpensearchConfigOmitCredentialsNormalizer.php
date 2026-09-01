@@ -38,27 +38,27 @@ class OpensearchConfigOmitCredentialsNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('endpoint', $data)) {
-            $object->setEndpoint($data['endpoint']);
+            $object->endpoint = $data['endpoint'];
             unset($data['endpoint']);
         }
         if (\array_key_exists('cluster_uuid', $data)) {
-            $object->setClusterUuid($data['cluster_uuid']);
+            $object->clusterUuid = $data['cluster_uuid'];
             unset($data['cluster_uuid']);
         }
         if (\array_key_exists('cluster_name', $data)) {
-            $object->setClusterName($data['cluster_name']);
+            $object->clusterName = $data['cluster_name'];
             unset($data['cluster_name']);
         }
         if (\array_key_exists('index_name', $data)) {
-            $object->setIndexName($data['index_name']);
+            $object->indexName = $data['index_name'];
             unset($data['index_name']);
         }
         if (\array_key_exists('retention_days', $data)) {
-            $object->setRetentionDays($data['retention_days']);
+            $object->retentionDays = $data['retention_days'];
             unset($data['retention_days']);
         }
         foreach ($data as $key => $value) {
@@ -71,23 +71,23 @@ class OpensearchConfigOmitCredentialsNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('endpoint') && null !== $data->getEndpoint()) {
-            $dataArray['endpoint'] = $data->getEndpoint();
+        if (array_key_exists('endpoint', get_object_vars($data)) && null !== ($data->endpoint ?? null)) {
+            $dataArray['endpoint'] = $data->endpoint ?? null;
         }
-        if ($data->isInitialized('clusterUuid') && null !== $data->getClusterUuid()) {
-            $dataArray['cluster_uuid'] = $data->getClusterUuid();
+        if (array_key_exists('clusterUuid', get_object_vars($data)) && null !== ($data->clusterUuid ?? null)) {
+            $dataArray['cluster_uuid'] = $data->clusterUuid ?? null;
         }
-        if ($data->isInitialized('clusterName') && null !== $data->getClusterName()) {
-            $dataArray['cluster_name'] = $data->getClusterName();
+        if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
+            $dataArray['cluster_name'] = $data->clusterName ?? null;
         }
-        if ($data->isInitialized('indexName') && null !== $data->getIndexName()) {
-            $dataArray['index_name'] = $data->getIndexName();
+        if (array_key_exists('indexName', get_object_vars($data)) && null !== ($data->indexName ?? null)) {
+            $dataArray['index_name'] = $data->indexName ?? null;
         }
-        if ($data->isInitialized('retentionDays') && null !== $data->getRetentionDays()) {
-            $dataArray['retention_days'] = $data->getRetentionDays();
+        if (array_key_exists('retentionDays', get_object_vars($data)) && null !== ($data->retentionDays ?? null)) {
+            $dataArray['retention_days'] = $data->retentionDays ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

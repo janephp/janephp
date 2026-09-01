@@ -38,33 +38,33 @@ class ZoneCustomizedTimeZoneNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('abbreviation', $data)) {
-            $object->setAbbreviation($data['abbreviation']);
+            $object->abbreviation = $data['abbreviation'];
         }
         if (\array_key_exists('gmtOffset', $data)) {
-            $object->setGmtOffset($data['gmtOffset']);
+            $object->gmtOffset = $data['gmtOffset'];
         }
         if (\array_key_exists('gmtOffsetMinute', $data)) {
-            $object->setGmtOffsetMinute($data['gmtOffsetMinute']);
+            $object->gmtOffsetMinute = $data['gmtOffsetMinute'];
         }
         if (\array_key_exists('start', $data)) {
-            $object->setStart($this->denormalizer->denormalize($data['start'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDaylightSavingTime::class, 'json', $context));
+            $object->start = $this->denormalizer->denormalize($data['start'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDaylightSavingTime::class, 'json', $context);
         }
         if (\array_key_exists('end', $data)) {
-            $object->setEnd($this->denormalizer->denormalize($data['end'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDaylightSavingTime::class, 'json', $context));
+            $object->end = $this->denormalizer->denormalize($data['end'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDaylightSavingTime::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['abbreviation'] = $data->getAbbreviation();
-        $dataArray['gmtOffset'] = $data->getGmtOffset();
-        $dataArray['gmtOffsetMinute'] = $data->getGmtOffsetMinute();
-        if ($data->isInitialized('start') && null !== $data->getStart()) {
-            $dataArray['start'] = $data->getStart() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getStart(), 'json', $context));
+        $dataArray['abbreviation'] = $data->abbreviation ?? null;
+        $dataArray['gmtOffset'] = $data->gmtOffset ?? null;
+        $dataArray['gmtOffsetMinute'] = $data->gmtOffsetMinute ?? null;
+        if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
+            $dataArray['start'] = ($data->start ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->start ?? null, 'json', $context));
         }
-        if ($data->isInitialized('end') && null !== $data->getEnd()) {
-            $dataArray['end'] = $data->getEnd() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEnd(), 'json', $context));
+        if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
+            $dataArray['end'] = ($data->end ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->end ?? null, 'json', $context));
         }
         return $dataArray;
     }

@@ -38,41 +38,41 @@ class DpProfileDpDhcpProfileOptionSpaceBONormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('spaceId', $data)) {
-            $object->setSpaceId($data['spaceId']);
+            $object->spaceId = $data['spaceId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('options', $data)) {
             $values = [];
             foreach ($data['options'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileOptionBO::class, 'json', $context);
             }
-            $object->setOptions($values);
+            $object->options = $values;
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('spaceId') && null !== $data->getSpaceId()) {
-            $dataArray['spaceId'] = $data->getSpaceId();
+        if (array_key_exists('spaceId', get_object_vars($data)) && null !== ($data->spaceId ?? null)) {
+            $dataArray['spaceId'] = $data->spaceId ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values = [];
-            foreach ($data->getOptions() as $value) {
+            foreach ($data->options ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['options'] = $values;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
         return $dataArray;
     }

@@ -41,27 +41,27 @@ class AdministrationLicenseServerNormalizer implements DenormalizerInterface, No
             $data['useCloud'] = (bool) $data['useCloud'];
         }
         if (\array_key_exists('useCloud', $data)) {
-            $object->setUseCloud($data['useCloud']);
+            $object->useCloud = $data['useCloud'];
         }
         if (\array_key_exists('ipAddress', $data)) {
-            $object->setIpAddress($data['ipAddress']);
+            $object->ipAddress = $data['ipAddress'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('useCloud') && null !== $data->getUseCloud()) {
-            $dataArray['useCloud'] = $data->getUseCloud();
+        if (array_key_exists('useCloud', get_object_vars($data)) && null !== ($data->useCloud ?? null)) {
+            $dataArray['useCloud'] = $data->useCloud ?? null;
         }
-        if ($data->isInitialized('ipAddress') && null !== $data->getIpAddress()) {
-            $dataArray['ipAddress'] = $data->getIpAddress();
+        if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
+            $dataArray['ipAddress'] = $data->ipAddress ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
         return $dataArray;
     }

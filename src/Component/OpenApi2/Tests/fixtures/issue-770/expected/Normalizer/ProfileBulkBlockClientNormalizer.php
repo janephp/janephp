@@ -42,25 +42,25 @@ class ProfileBulkBlockClientNormalizer implements DenormalizerInterface, Normali
             foreach ($data['blockClientList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBulkBlockClientBlockClientListItem::class, 'json', $context);
             }
-            $object->setBlockClientList($values);
+            $object->blockClientList = $values;
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('blockClientList') && null !== $data->getBlockClientList()) {
+        if (array_key_exists('blockClientList', get_object_vars($data)) && null !== ($data->blockClientList ?? null)) {
             $values = [];
-            foreach ($data->getBlockClientList() as $value) {
+            foreach ($data->blockClientList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['blockClientList'] = $values;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
         return $dataArray;
     }

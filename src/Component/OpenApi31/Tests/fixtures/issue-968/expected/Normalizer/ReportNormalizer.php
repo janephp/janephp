@@ -41,11 +41,11 @@ class ReportNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ReportConstraint());
         }
         if (\array_key_exists('period', $data) && $data['period'] !== null) {
-            $object->setPeriod($this->denormalizer->denormalize($data['period'], \Jane\Component\OpenApi31\Tests\Expected\Model\ReportPeriod::class, 'json', $context));
+            $object->period = $this->denormalizer->denormalize($data['period'], \Jane\Component\OpenApi31\Tests\Expected\Model\ReportPeriod::class, 'json', $context);
             unset($data['period']);
         }
         elseif (\array_key_exists('period', $data) && $data['period'] === null) {
-            $object->setPeriod(null);
+            $object->period = null;
             unset($data['period']);
         }
         foreach ($data as $key => $value) {
@@ -58,8 +58,8 @@ class ReportNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('period') && null !== $data->getPeriod()) {
-            $dataArray['period'] = $data->getPeriod() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPeriod(), 'json', $context));
+        if (array_key_exists('period', get_object_vars($data)) && null !== ($data->period ?? null)) {
+            $dataArray['period'] = ($data->period ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->period ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

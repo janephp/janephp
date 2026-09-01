@@ -26,9 +26,9 @@ class OneOfGuesser extends BaseOneOfGuesser
         $class = $this->getSchemaClass();
 
         return ($object instanceof $class)
-            && 'object' !== $object->getType()
-            && \is_array($object->getOneOf())
-            && \count($object->getOneOf()) > 0;
+            && 'object' !== ($object->type ?? null)
+            && \is_array($object->oneOf ?? null)
+            && \count($object->oneOf ?? null) > 0;
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
@@ -37,18 +37,18 @@ class OneOfGuesser extends BaseOneOfGuesser
         $mapping = null;
         $supportsDiscriminator = false;
 
-        if (method_exists($object, 'getDiscriminator') && $object->getDiscriminator()
-            && \is_object($object->getDiscriminator()) && method_exists($object->getDiscriminator(), 'getPropertyName')
-            && $object->getDiscriminator()->getPropertyName()) {
+        if (property_exists($object, 'discriminator') && ($object->discriminator ?? null)
+            && \is_object($object->discriminator ?? null) && property_exists($object->discriminator ?? null, 'propertyName')
+            && ($object->discriminator ?? null)->propertyName) {
             $supportsDiscriminator = true;
-            $type->setDiscriminatorProperty($object->getDiscriminator()->getPropertyName());
+            $type->setDiscriminatorProperty(($object->discriminator ?? null)->propertyName);
 
-            if (method_exists($object->getDiscriminator(), 'getMapping') && $object->getDiscriminator()->getMapping()) {
-                $mapping = array_flip((array) $object->getDiscriminator()->getMapping());
+            if (property_exists($object->discriminator ?? null, 'mapping') && ($object->discriminator ?? null)->mapping) {
+                $mapping = array_flip((array) ($object->discriminator ?? null)->mapping);
             }
         }
 
-        foreach ($object->getOneOf() as $oneOfKey => $oneOf) {
+        foreach (($object->oneOf ?? null ?? []) as $oneOfKey => $oneOf) {
             if (null === $oneOf) {
                 continue;
             }

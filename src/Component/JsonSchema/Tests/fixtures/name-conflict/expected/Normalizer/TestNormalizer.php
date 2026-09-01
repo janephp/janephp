@@ -38,19 +38,19 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('msgref', $data)) {
-            $object->setMsgref($data['msgref']);
+            $object->msgref = $data['msgref'];
         }
         if (\array_key_exists('msg_ref', $data)) {
-            $object->setMsgRef2($data['msg_ref']);
+            $object->msgRef2 = $data['msg_ref'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['msgref'] = $data->getMsgref();
-        if ($data->isInitialized('msgRef2') && null !== $data->getMsgRef2()) {
-            $dataArray['msg_ref'] = $data->getMsgRef2();
+        $dataArray['msgref'] = $data->msgref ?? null;
+        if (array_key_exists('msgRef2', get_object_vars($data)) && null !== ($data->msgRef2 ?? null)) {
+            $dataArray['msg_ref'] = $data->msgRef2 ?? null;
         }
         return $dataArray;
     }

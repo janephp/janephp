@@ -41,39 +41,39 @@ class SecretNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $this->validate($data, new \Docker\Api\Validator\SecretConstraint());
         }
         if (\array_key_exists('ID', $data)) {
-            $object->setID($data['ID']);
+            $object->iD = $data['ID'];
         }
         if (\array_key_exists('Version', $data)) {
-            $object->setVersion($this->denormalizer->denormalize($data['Version'], \Docker\Api\Model\ObjectVersion::class, 'json', $context));
+            $object->version = $this->denormalizer->denormalize($data['Version'], \Docker\Api\Model\ObjectVersion::class, 'json', $context);
         }
         if (\array_key_exists('CreatedAt', $data)) {
-            $object->setCreatedAt($data['CreatedAt']);
+            $object->createdAt = $data['CreatedAt'];
         }
         if (\array_key_exists('UpdatedAt', $data)) {
-            $object->setUpdatedAt($data['UpdatedAt']);
+            $object->updatedAt = $data['UpdatedAt'];
         }
         if (\array_key_exists('Spec', $data)) {
-            $object->setSpec($this->denormalizer->denormalize($data['Spec'], \Docker\Api\Model\SecretSpec::class, 'json', $context));
+            $object->spec = $this->denormalizer->denormalize($data['Spec'], \Docker\Api\Model\SecretSpec::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iD') && null !== $data->getID()) {
-            $dataArray['ID'] = $data->getID();
+        if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
+            $dataArray['ID'] = $data->iD ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['Version'] = $data->getVersion() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getVersion(), 'json', $context));
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['Version'] = ($data->version ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->version ?? null, 'json', $context));
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['CreatedAt'] = $data->getCreatedAt();
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['CreatedAt'] = $data->createdAt ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['UpdatedAt'] = $data->getUpdatedAt();
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['UpdatedAt'] = $data->updatedAt ?? null;
         }
-        if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['Spec'] = $data->getSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
+        if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
+            $dataArray['Spec'] = ($data->spec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SecretConstraint());

@@ -44,49 +44,49 @@ class SystemSystemSettingsNormalizer implements DenormalizerInterface, Normalize
             $data['apMacOUIEnabled'] = (bool) $data['apMacOUIEnabled'];
         }
         if (\array_key_exists('apNumberLimitEnabled', $data)) {
-            $object->setApNumberLimitEnabled($data['apNumberLimitEnabled']);
+            $object->apNumberLimitEnabled = $data['apNumberLimitEnabled'];
         }
         if (\array_key_exists('apNumberLimitSettingsOfDomain', $data)) {
             $values = [];
             foreach ($data['apNumberLimitSettingsOfDomain'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemApNumberLimitSettingOfDomain::class, 'json', $context);
             }
-            $object->setApNumberLimitSettingsOfDomain($values);
+            $object->apNumberLimitSettingsOfDomain = $values;
         }
         if (\array_key_exists('apNumberLimitSettingsOfZone', $data)) {
             $values_1 = [];
             foreach ($data['apNumberLimitSettingsOfZone'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemApNumberLimitSettingOfZone::class, 'json', $context);
             }
-            $object->setApNumberLimitSettingsOfZone($values_1);
+            $object->apNumberLimitSettingsOfZone = $values_1;
         }
         if (\array_key_exists('apMacOUIEnabled', $data)) {
-            $object->setApMacOUIEnabled($data['apMacOUIEnabled']);
+            $object->apMacOUIEnabled = $data['apMacOUIEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apNumberLimitEnabled') && null !== $data->getApNumberLimitEnabled()) {
-            $dataArray['apNumberLimitEnabled'] = $data->getApNumberLimitEnabled();
+        if (array_key_exists('apNumberLimitEnabled', get_object_vars($data)) && null !== ($data->apNumberLimitEnabled ?? null)) {
+            $dataArray['apNumberLimitEnabled'] = $data->apNumberLimitEnabled ?? null;
         }
-        if ($data->isInitialized('apNumberLimitSettingsOfDomain') && null !== $data->getApNumberLimitSettingsOfDomain()) {
+        if (array_key_exists('apNumberLimitSettingsOfDomain', get_object_vars($data)) && null !== ($data->apNumberLimitSettingsOfDomain ?? null)) {
             $values = [];
-            foreach ($data->getApNumberLimitSettingsOfDomain() as $value) {
+            foreach ($data->apNumberLimitSettingsOfDomain ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['apNumberLimitSettingsOfDomain'] = $values;
         }
-        if ($data->isInitialized('apNumberLimitSettingsOfZone') && null !== $data->getApNumberLimitSettingsOfZone()) {
+        if (array_key_exists('apNumberLimitSettingsOfZone', get_object_vars($data)) && null !== ($data->apNumberLimitSettingsOfZone ?? null)) {
             $values_1 = [];
-            foreach ($data->getApNumberLimitSettingsOfZone() as $value_1) {
+            foreach ($data->apNumberLimitSettingsOfZone ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['apNumberLimitSettingsOfZone'] = $values_1;
         }
-        if ($data->isInitialized('apMacOUIEnabled') && null !== $data->getApMacOUIEnabled()) {
-            $dataArray['apMacOUIEnabled'] = $data->getApMacOUIEnabled();
+        if (array_key_exists('apMacOUIEnabled', get_object_vars($data)) && null !== ($data->apMacOUIEnabled ?? null)) {
+            $dataArray['apMacOUIEnabled'] = $data->apMacOUIEnabled ?? null;
         }
         return $dataArray;
     }

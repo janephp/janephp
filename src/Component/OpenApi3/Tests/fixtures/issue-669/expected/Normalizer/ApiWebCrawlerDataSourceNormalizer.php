@@ -41,15 +41,15 @@ class ApiWebCrawlerDataSourceNormalizer implements DenormalizerInterface, Normal
             $data['embed_media'] = (bool) $data['embed_media'];
         }
         if (\array_key_exists('base_url', $data)) {
-            $object->setBaseUrl($data['base_url']);
+            $object->baseUrl = $data['base_url'];
             unset($data['base_url']);
         }
         if (\array_key_exists('crawling_option', $data)) {
-            $object->setCrawlingOption($data['crawling_option']);
+            $object->crawlingOption = $data['crawling_option'];
             unset($data['crawling_option']);
         }
         if (\array_key_exists('embed_media', $data)) {
-            $object->setEmbedMedia($data['embed_media']);
+            $object->embedMedia = $data['embed_media'];
             unset($data['embed_media']);
         }
         if (\array_key_exists('exclude_tags', $data)) {
@@ -57,7 +57,7 @@ class ApiWebCrawlerDataSourceNormalizer implements DenormalizerInterface, Normal
             foreach ($data['exclude_tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setExcludeTags($values);
+            $object->excludeTags = $values;
             unset($data['exclude_tags']);
         }
         foreach ($data as $key => $value_1) {
@@ -70,18 +70,18 @@ class ApiWebCrawlerDataSourceNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('baseUrl') && null !== $data->getBaseUrl()) {
-            $dataArray['base_url'] = $data->getBaseUrl();
+        if (array_key_exists('baseUrl', get_object_vars($data)) && null !== ($data->baseUrl ?? null)) {
+            $dataArray['base_url'] = $data->baseUrl ?? null;
         }
-        if ($data->isInitialized('crawlingOption') && null !== $data->getCrawlingOption()) {
-            $dataArray['crawling_option'] = $data->getCrawlingOption();
+        if (array_key_exists('crawlingOption', get_object_vars($data)) && null !== ($data->crawlingOption ?? null)) {
+            $dataArray['crawling_option'] = $data->crawlingOption ?? null;
         }
-        if ($data->isInitialized('embedMedia') && null !== $data->getEmbedMedia()) {
-            $dataArray['embed_media'] = $data->getEmbedMedia();
+        if (array_key_exists('embedMedia', get_object_vars($data)) && null !== ($data->embedMedia ?? null)) {
+            $dataArray['embed_media'] = $data->embedMedia ?? null;
         }
-        if ($data->isInitialized('excludeTags') && null !== $data->getExcludeTags()) {
+        if (array_key_exists('excludeTags', get_object_vars($data)) && null !== ($data->excludeTags ?? null)) {
             $values = [];
-            foreach ($data->getExcludeTags() as $value) {
+            foreach ($data->excludeTags ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['exclude_tags'] = $values;

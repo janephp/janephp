@@ -38,7 +38,7 @@ class AppIngressSpecRuleStringMatchExactNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('exact', $data)) {
-            $object->setExact($data['exact']);
+            $object->exact = $data['exact'];
             unset($data['exact']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class AppIngressSpecRuleStringMatchExactNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['exact'] = $data->getExact();
+        $dataArray['exact'] = $data->exact ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

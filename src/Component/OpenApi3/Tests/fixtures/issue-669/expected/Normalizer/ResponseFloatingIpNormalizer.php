@@ -38,7 +38,7 @@ class ResponseFloatingIpNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('floating_ip', $data)) {
-            $object->setFloatingIp($this->denormalizer->denormalize($data['floating_ip'], \Jane\Generated\DigitalOcean\Model\FloatingIp::class, 'json', $context));
+            $object->floatingIp = $this->denormalizer->denormalize($data['floating_ip'], \Jane\Generated\DigitalOcean\Model\FloatingIp::class, 'json', $context);
             unset($data['floating_ip']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseFloatingIpNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('floatingIp') && null !== $data->getFloatingIp()) {
-            $dataArray['floating_ip'] = $data->getFloatingIp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getFloatingIp(), 'json', $context));
+        if (array_key_exists('floatingIp', get_object_vars($data)) && null !== ($data->floatingIp ?? null)) {
+            $dataArray['floating_ip'] = ($data->floatingIp ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->floatingIp ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

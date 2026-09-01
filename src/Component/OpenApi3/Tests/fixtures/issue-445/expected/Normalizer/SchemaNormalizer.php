@@ -41,23 +41,23 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['system'] = (bool) $data['system'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('parentSchemaId', $data) && $data['parentSchemaId'] !== null) {
-            $object->setParentSchemaId($data['parentSchemaId']);
+            $object->parentSchemaId = $data['parentSchemaId'];
         }
         elseif (\array_key_exists('parentSchemaId', $data) && $data['parentSchemaId'] === null) {
-            $object->setParentSchemaId(null);
+            $object->parentSchemaId = null;
         }
         if (\array_key_exists('types', $data) && $data['types'] !== null) {
             $values = [];
             foreach ($data['types'] as $value) {
                 $values[] = $value;
             }
-            $object->setTypes($values);
+            $object->types = $values;
         }
         elseif (\array_key_exists('types', $data) && $data['types'] === null) {
-            $object->setTypes(null);
+            $object->types = null;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $value_1 = $data['names'];
@@ -68,10 +68,10 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 }
                 $value_1 = $values_1;
             }
-            $object->setNames($value_1);
+            $object->names = $value_1;
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $value_3 = $data['descriptions'];
@@ -82,82 +82,82 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 }
                 $value_3 = $values_2;
             }
-            $object->setDescriptions($value_3);
+            $object->descriptions = $value_3;
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
-            $object->setDescriptions(null);
+            $object->descriptions = null;
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values_3 = [];
             foreach ($data['layerSchemaIds'] as $value_5) {
                 $values_3[] = $value_5;
             }
-            $object->setLayerSchemaIds($values_3);
+            $object->layerSchemaIds = $values_3;
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
-            $object->setLayerSchemaIds(null);
+            $object->layerSchemaIds = null;
         }
         if (\array_key_exists('fieldCount', $data)) {
-            $object->setFieldCount($data['fieldCount']);
+            $object->fieldCount = $data['fieldCount'];
         }
         if (\array_key_exists('childCount', $data)) {
-            $object->setChildCount($data['childCount']);
+            $object->childCount = $data['childCount'];
         }
         if (\array_key_exists('level', $data)) {
-            $object->setLevel($data['level']);
+            $object->level = $data['level'];
         }
         if (\array_key_exists('system', $data)) {
-            $object->setSystem($data['system']);
+            $object->system = $data['system'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('parentSchemaId') && null !== $data->getParentSchemaId()) {
-            $dataArray['parentSchemaId'] = $data->getParentSchemaId();
+        $dataArray['id'] = $data->id ?? null;
+        if (array_key_exists('parentSchemaId', get_object_vars($data)) && null !== ($data->parentSchemaId ?? null)) {
+            $dataArray['parentSchemaId'] = $data->parentSchemaId ?? null;
         }
-        if ($data->isInitialized('types') && null !== $data->getTypes()) {
+        if (array_key_exists('types', get_object_vars($data)) && null !== ($data->types ?? null)) {
             $values = [];
-            foreach ($data->getTypes() as $value) {
+            foreach ($data->types ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['types'] = $values;
         }
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value_1 = $data->getNames();
-            if (is_object($data->getNames())) {
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value_1 = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_2) {
+                foreach ($data->names ?? null as $key => $value_2) {
                     $values_1[$key] = $value_2;
                 }
                 $value_1 = $values_1;
             }
             $dataArray['names'] = $value_1;
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $value_3 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
+        if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
+            $value_3 = $data->descriptions ?? null;
+            if (is_object($data->descriptions ?? null)) {
                 $values_2 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getDescriptions() as $key_1 => $value_4) {
+                foreach ($data->descriptions ?? null as $key_1 => $value_4) {
                     $values_2[$key_1] = $value_4;
                 }
                 $value_3 = $values_2;
             }
             $dataArray['descriptions'] = $value_3;
         }
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values_3 = [];
-            foreach ($data->getLayerSchemaIds() as $value_5) {
+            foreach ($data->layerSchemaIds ?? null as $value_5) {
                 $values_3[] = $value_5;
             }
             $dataArray['layerSchemaIds'] = $values_3;
         }
-        $dataArray['fieldCount'] = $data->getFieldCount();
-        $dataArray['childCount'] = $data->getChildCount();
-        $dataArray['level'] = $data->getLevel();
-        $dataArray['system'] = $data->getSystem();
+        $dataArray['fieldCount'] = $data->fieldCount ?? null;
+        $dataArray['childCount'] = $data->childCount ?? null;
+        $dataArray['level'] = $data->level ?? null;
+        $dataArray['system'] = $data->system ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

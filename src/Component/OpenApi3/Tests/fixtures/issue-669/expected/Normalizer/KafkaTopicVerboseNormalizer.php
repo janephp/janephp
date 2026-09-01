@@ -38,15 +38,15 @@ class KafkaTopicVerboseNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
             unset($data['state']);
         }
         if (\array_key_exists('replication_factor', $data)) {
-            $object->setReplicationFactor($data['replication_factor']);
+            $object->replicationFactor = $data['replication_factor'];
             unset($data['replication_factor']);
         }
         if (\array_key_exists('partitions', $data)) {
@@ -54,11 +54,11 @@ class KafkaTopicVerboseNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['partitions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\KafkaTopicPartition::class, 'json', $context);
             }
-            $object->setPartitions($values);
+            $object->partitions = $values;
             unset($data['partitions']);
         }
         if (\array_key_exists('config', $data)) {
-            $object->setConfig($this->denormalizer->denormalize($data['config'], \Jane\Generated\DigitalOcean\Model\KafkaTopicConfig::class, 'json', $context));
+            $object->config = $this->denormalizer->denormalize($data['config'], \Jane\Generated\DigitalOcean\Model\KafkaTopicConfig::class, 'json', $context);
             unset($data['config']);
         }
         foreach ($data as $key => $value_1) {
@@ -71,24 +71,24 @@ class KafkaTopicVerboseNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
-        if ($data->isInitialized('replicationFactor') && null !== $data->getReplicationFactor()) {
-            $dataArray['replication_factor'] = $data->getReplicationFactor();
+        if (array_key_exists('replicationFactor', get_object_vars($data)) && null !== ($data->replicationFactor ?? null)) {
+            $dataArray['replication_factor'] = $data->replicationFactor ?? null;
         }
-        if ($data->isInitialized('partitions') && null !== $data->getPartitions()) {
+        if (array_key_exists('partitions', get_object_vars($data)) && null !== ($data->partitions ?? null)) {
             $values = [];
-            foreach ($data->getPartitions() as $value) {
+            foreach ($data->partitions ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['partitions'] = $values;
         }
-        if ($data->isInitialized('config') && null !== $data->getConfig()) {
-            $dataArray['config'] = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
+        if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
+            $dataArray['config'] = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

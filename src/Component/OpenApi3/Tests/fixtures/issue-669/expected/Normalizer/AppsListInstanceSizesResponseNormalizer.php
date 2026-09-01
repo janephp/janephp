@@ -41,7 +41,7 @@ class AppsListInstanceSizesResponseNormalizer implements DenormalizerInterface, 
             $data['discount_percent'] = (float) $data['discount_percent'];
         }
         if (\array_key_exists('discount_percent', $data)) {
-            $object->setDiscountPercent($data['discount_percent']);
+            $object->discountPercent = $data['discount_percent'];
             unset($data['discount_percent']);
         }
         if (\array_key_exists('instance_sizes', $data)) {
@@ -49,7 +49,7 @@ class AppsListInstanceSizesResponseNormalizer implements DenormalizerInterface, 
             foreach ($data['instance_sizes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppsInstanceSize::class, 'json', $context);
             }
-            $object->setInstanceSizes($values);
+            $object->instanceSizes = $values;
             unset($data['instance_sizes']);
         }
         foreach ($data as $key => $value_1) {
@@ -62,12 +62,12 @@ class AppsListInstanceSizesResponseNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('discountPercent') && null !== $data->getDiscountPercent()) {
-            $dataArray['discount_percent'] = $data->getDiscountPercent();
+        if (array_key_exists('discountPercent', get_object_vars($data)) && null !== ($data->discountPercent ?? null)) {
+            $dataArray['discount_percent'] = $data->discountPercent ?? null;
         }
-        if ($data->isInitialized('instanceSizes') && null !== $data->getInstanceSizes()) {
+        if (array_key_exists('instanceSizes', get_object_vars($data)) && null !== ($data->instanceSizes ?? null)) {
             $values = [];
-            foreach ($data->getInstanceSizes() as $value) {
+            foreach ($data->instanceSizes ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['instance_sizes'] = $values;

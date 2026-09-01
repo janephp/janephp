@@ -41,23 +41,23 @@ class ThingCollectionNormalizer implements DenormalizerInterface, NormalizerInte
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ThingCollectionConstraint());
         }
         if (\array_key_exists('absent', $data)) {
-            $object->setAbsent($this->denormalizer->denormalize($data['absent'], \Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema::class, 'json', $context));
+            $object->absent = $this->denormalizer->denormalize($data['absent'], \Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema::class, 'json', $context);
             unset($data['absent']);
         }
         if (\array_key_exists('explicitOpen', $data)) {
-            $object->setExplicitOpen($this->denormalizer->denormalize($data['explicitOpen'], \Jane\Component\OpenApi31\Tests\Expected\Model\ExplicitOpenSchema::class, 'json', $context));
+            $object->explicitOpen = $this->denormalizer->denormalize($data['explicitOpen'], \Jane\Component\OpenApi31\Tests\Expected\Model\ExplicitOpenSchema::class, 'json', $context);
             unset($data['explicitOpen']);
         }
         if (\array_key_exists('closed', $data)) {
-            $object->setClosed($this->denormalizer->denormalize($data['closed'], \Jane\Component\OpenApi31\Tests\Expected\Model\ClosedSchema::class, 'json', $context));
+            $object->closed = $this->denormalizer->denormalize($data['closed'], \Jane\Component\OpenApi31\Tests\Expected\Model\ClosedSchema::class, 'json', $context);
             unset($data['closed']);
         }
         if (\array_key_exists('typedMap', $data)) {
-            $object->setTypedMap($this->denormalizer->denormalize($data['typedMap'], \Jane\Component\OpenApi31\Tests\Expected\Model\TypedMapSchema::class, 'json', $context));
+            $object->typedMap = $this->denormalizer->denormalize($data['typedMap'], \Jane\Component\OpenApi31\Tests\Expected\Model\TypedMapSchema::class, 'json', $context);
             unset($data['typedMap']);
         }
         if (\array_key_exists('patternOnly', $data)) {
-            $object->setPatternOnly($this->denormalizer->denormalize($data['patternOnly'], \Jane\Component\OpenApi31\Tests\Expected\Model\PatternOnlySchema::class, 'json', $context));
+            $object->patternOnly = $this->denormalizer->denormalize($data['patternOnly'], \Jane\Component\OpenApi31\Tests\Expected\Model\PatternOnlySchema::class, 'json', $context);
             unset($data['patternOnly']);
         }
         foreach ($data as $key => $value) {
@@ -70,20 +70,20 @@ class ThingCollectionNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('absent') && null !== $data->getAbsent()) {
-            $dataArray['absent'] = $data->getAbsent() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAbsent(), 'json', $context));
+        if (array_key_exists('absent', get_object_vars($data)) && null !== ($data->absent ?? null)) {
+            $dataArray['absent'] = ($data->absent ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->absent ?? null, 'json', $context));
         }
-        if ($data->isInitialized('explicitOpen') && null !== $data->getExplicitOpen()) {
-            $dataArray['explicitOpen'] = $data->getExplicitOpen() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getExplicitOpen(), 'json', $context));
+        if (array_key_exists('explicitOpen', get_object_vars($data)) && null !== ($data->explicitOpen ?? null)) {
+            $dataArray['explicitOpen'] = ($data->explicitOpen ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->explicitOpen ?? null, 'json', $context));
         }
-        if ($data->isInitialized('closed') && null !== $data->getClosed()) {
-            $dataArray['closed'] = $data->getClosed() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClosed(), 'json', $context));
+        if (array_key_exists('closed', get_object_vars($data)) && null !== ($data->closed ?? null)) {
+            $dataArray['closed'] = ($data->closed ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->closed ?? null, 'json', $context));
         }
-        if ($data->isInitialized('typedMap') && null !== $data->getTypedMap()) {
-            $dataArray['typedMap'] = $data->getTypedMap() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTypedMap(), 'json', $context));
+        if (array_key_exists('typedMap', get_object_vars($data)) && null !== ($data->typedMap ?? null)) {
+            $dataArray['typedMap'] = ($data->typedMap ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->typedMap ?? null, 'json', $context));
         }
-        if ($data->isInitialized('patternOnly') && null !== $data->getPatternOnly()) {
-            $dataArray['patternOnly'] = $data->getPatternOnly() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPatternOnly(), 'json', $context));
+        if (array_key_exists('patternOnly', get_object_vars($data)) && null !== ($data->patternOnly ?? null)) {
+            $dataArray['patternOnly'] = ($data->patternOnly ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->patternOnly ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

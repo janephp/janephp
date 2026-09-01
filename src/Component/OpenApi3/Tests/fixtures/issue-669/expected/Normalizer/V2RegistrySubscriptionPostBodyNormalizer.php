@@ -38,7 +38,7 @@ class V2RegistrySubscriptionPostBodyNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('tier_slug', $data)) {
-            $object->setTierSlug($data['tier_slug']);
+            $object->tierSlug = $data['tier_slug'];
             unset($data['tier_slug']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class V2RegistrySubscriptionPostBodyNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('tierSlug') && null !== $data->getTierSlug()) {
-            $dataArray['tier_slug'] = $data->getTierSlug();
+        if (array_key_exists('tierSlug', get_object_vars($data)) && null !== ($data->tierSlug ?? null)) {
+            $dataArray['tier_slug'] = $data->tierSlug ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

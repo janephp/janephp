@@ -42,7 +42,7 @@ class AppsRestartRequestNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['components'] as $value) {
                 $values[] = $value;
             }
-            $object->setComponents($values);
+            $object->components = $values;
             unset($data['components']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class AppsRestartRequestNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('components') && null !== $data->getComponents()) {
+        if (array_key_exists('components', get_object_vars($data)) && null !== ($data->components ?? null)) {
             $values = [];
-            foreach ($data->getComponents() as $value) {
+            foreach ($data->components ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['components'] = $values;

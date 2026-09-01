@@ -38,19 +38,19 @@ class ByoipPrefixResourceNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('byoip', $data)) {
-            $object->setByoip($data['byoip']);
+            $object->byoip = $data['byoip'];
             unset($data['byoip']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('resource', $data)) {
-            $object->setResource($data['resource']);
+            $object->resource = $data['resource'];
             unset($data['resource']);
         }
         if (\array_key_exists('assigned_at', $data)) {
@@ -58,7 +58,7 @@ class ByoipPrefixResourceNormalizer implements DenormalizerInterface, Normalizer
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['assigned_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setAssignedAt($date);
+            $object->assignedAt = $date;
             unset($data['assigned_at']);
         }
         foreach ($data as $key => $value) {
@@ -71,20 +71,20 @@ class ByoipPrefixResourceNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('byoip') && null !== $data->getByoip()) {
-            $dataArray['byoip'] = $data->getByoip();
+        if (array_key_exists('byoip', get_object_vars($data)) && null !== ($data->byoip ?? null)) {
+            $dataArray['byoip'] = $data->byoip ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        if ($data->isInitialized('resource') && null !== $data->getResource()) {
-            $dataArray['resource'] = $data->getResource();
+        if (array_key_exists('resource', get_object_vars($data)) && null !== ($data->resource ?? null)) {
+            $dataArray['resource'] = $data->resource ?? null;
         }
-        if ($data->isInitialized('assignedAt') && null !== $data->getAssignedAt()) {
-            $dataArray['assigned_at'] = $data->getAssignedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('assignedAt', get_object_vars($data)) && null !== ($data->assignedAt ?? null)) {
+            $dataArray['assigned_at'] = ($data->assignedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

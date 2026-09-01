@@ -38,15 +38,15 @@ class AddonsAppInfoNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('app_slug', $data)) {
-            $object->setAppSlug($data['app_slug']);
+            $object->appSlug = $data['app_slug'];
             unset($data['app_slug']);
         }
         if (\array_key_exists('tos', $data)) {
-            $object->setTos($data['tos']);
+            $object->tos = $data['tos'];
             unset($data['tos']);
         }
         if (\array_key_exists('eula', $data)) {
-            $object->setEula($data['eula']);
+            $object->eula = $data['eula'];
             unset($data['eula']);
         }
         if (\array_key_exists('plans', $data)) {
@@ -54,7 +54,7 @@ class AddonsAppInfoNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['plans'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AddonsPlan::class, 'json', $context);
             }
-            $object->setPlans($values);
+            $object->plans = $values;
             unset($data['plans']);
         }
         foreach ($data as $key => $value_1) {
@@ -67,11 +67,11 @@ class AddonsAppInfoNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['app_slug'] = $data->getAppSlug();
-        $dataArray['tos'] = $data->getTos();
-        $dataArray['eula'] = $data->getEula();
+        $dataArray['app_slug'] = $data->appSlug ?? null;
+        $dataArray['tos'] = $data->tos ?? null;
+        $dataArray['eula'] = $data->eula ?? null;
         $values = [];
-        foreach ($data->getPlans() as $value) {
+        foreach ($data->plans ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['plans'] = $values;

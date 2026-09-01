@@ -8,125 +8,27 @@ class GbPeopleReportReponseReport implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string
      */
-    protected $directorId;
+    public string $directorId;
     /**
      * @var GbPeopleReportReponseReportDirectorSummary
      */
-    protected $directorSummary;
+    public GbPeopleReportReponseReportDirectorSummary $directorSummary;
     /**
      * @var GbPeopleReportReponseReportDirectorDetails
      */
-    protected $directorDetails;
+    public GbPeopleReportReponseReportDirectorDetails $directorDetails;
     /**
      * @var list<GbPeopleReportReponseReportOtherAddressesItem>
      */
-    protected $otherAddresses;
+    public array $otherAddresses;
     /**
      * @var GbPeopleReportReponseReportDirectorships
      */
-    protected $directorships;
-    /**
-     * @return string
-     */
-    public function getDirectorId(): string
-    {
-        return $this->directorId;
-    }
-    /**
-     * @param string $directorId
-     *
-     * @return self
-     */
-    public function setDirectorId(string $directorId): self
-    {
-        $this->initialized['directorId'] = true;
-        $this->directorId = $directorId;
-        return $this;
-    }
-    /**
-     * @return GbPeopleReportReponseReportDirectorSummary
-     */
-    public function getDirectorSummary(): GbPeopleReportReponseReportDirectorSummary
-    {
-        return $this->directorSummary;
-    }
-    /**
-     * @param GbPeopleReportReponseReportDirectorSummary $directorSummary
-     *
-     * @return self
-     */
-    public function setDirectorSummary(GbPeopleReportReponseReportDirectorSummary $directorSummary): self
-    {
-        $this->initialized['directorSummary'] = true;
-        $this->directorSummary = $directorSummary;
-        return $this;
-    }
-    /**
-     * @return GbPeopleReportReponseReportDirectorDetails
-     */
-    public function getDirectorDetails(): GbPeopleReportReponseReportDirectorDetails
-    {
-        return $this->directorDetails;
-    }
-    /**
-     * @param GbPeopleReportReponseReportDirectorDetails $directorDetails
-     *
-     * @return self
-     */
-    public function setDirectorDetails(GbPeopleReportReponseReportDirectorDetails $directorDetails): self
-    {
-        $this->initialized['directorDetails'] = true;
-        $this->directorDetails = $directorDetails;
-        return $this;
-    }
-    /**
-     * @return list<GbPeopleReportReponseReportOtherAddressesItem>
-     */
-    public function getOtherAddresses(): array
-    {
-        return $this->otherAddresses;
-    }
-    /**
-     * @param list<GbPeopleReportReponseReportOtherAddressesItem> $otherAddresses
-     *
-     * @return self
-     */
-    public function setOtherAddresses(array $otherAddresses): self
-    {
-        $this->initialized['otherAddresses'] = true;
-        $this->otherAddresses = $otherAddresses;
-        return $this;
-    }
-    /**
-     * @return GbPeopleReportReponseReportDirectorships
-     */
-    public function getDirectorships(): GbPeopleReportReponseReportDirectorships
-    {
-        return $this->directorships;
-    }
-    /**
-     * @param GbPeopleReportReponseReportDirectorships $directorships
-     *
-     * @return self
-     */
-    public function setDirectorships(GbPeopleReportReponseReportDirectorships $directorships): self
-    {
-        $this->initialized['directorships'] = true;
-        $this->directorships = $directorships;
-        return $this;
-    }
+    public GbPeopleReportReponseReportDirectorships $directorships;
     public function definedProperties(): array
     {
-        return ['directorId' => ['directorId', 'getDirectorId', 'setDirectorId'], 'directorSummary' => ['directorSummary', 'getDirectorSummary', 'setDirectorSummary'], 'directorDetails' => ['directorDetails', 'getDirectorDetails', 'setDirectorDetails'], 'otherAddresses' => ['otherAddresses', 'getOtherAddresses', 'setOtherAddresses'], 'directorships' => ['directorships', 'getDirectorships', 'setDirectorships']];
+        return ['directorId' => 'directorId', 'directorSummary' => 'directorSummary', 'directorDetails' => 'directorDetails', 'otherAddresses' => 'otherAddresses', 'directorships' => 'directorships'];
     }
 }

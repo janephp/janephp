@@ -41,27 +41,27 @@ class ServiceServiceStatusNormalizer implements DenormalizerInterface, Normalize
             $this->validate($data, new \Docker\Api\Validator\ServiceServiceStatusConstraint());
         }
         if (\array_key_exists('RunningTasks', $data)) {
-            $object->setRunningTasks($data['RunningTasks']);
+            $object->runningTasks = $data['RunningTasks'];
         }
         if (\array_key_exists('DesiredTasks', $data)) {
-            $object->setDesiredTasks($data['DesiredTasks']);
+            $object->desiredTasks = $data['DesiredTasks'];
         }
         if (\array_key_exists('CompletedTasks', $data)) {
-            $object->setCompletedTasks($data['CompletedTasks']);
+            $object->completedTasks = $data['CompletedTasks'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('runningTasks') && null !== $data->getRunningTasks()) {
-            $dataArray['RunningTasks'] = $data->getRunningTasks();
+        if (array_key_exists('runningTasks', get_object_vars($data)) && null !== ($data->runningTasks ?? null)) {
+            $dataArray['RunningTasks'] = $data->runningTasks ?? null;
         }
-        if ($data->isInitialized('desiredTasks') && null !== $data->getDesiredTasks()) {
-            $dataArray['DesiredTasks'] = $data->getDesiredTasks();
+        if (array_key_exists('desiredTasks', get_object_vars($data)) && null !== ($data->desiredTasks ?? null)) {
+            $dataArray['DesiredTasks'] = $data->desiredTasks ?? null;
         }
-        if ($data->isInitialized('completedTasks') && null !== $data->getCompletedTasks()) {
-            $dataArray['CompletedTasks'] = $data->getCompletedTasks();
+        if (array_key_exists('completedTasks', get_object_vars($data)) && null !== ($data->completedTasks ?? null)) {
+            $dataArray['CompletedTasks'] = $data->completedTasks ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceServiceStatusConstraint());

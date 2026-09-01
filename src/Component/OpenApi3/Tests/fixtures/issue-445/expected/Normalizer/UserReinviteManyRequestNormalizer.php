@@ -42,7 +42,7 @@ class UserReinviteManyRequestNormalizer implements DenormalizerInterface, Normal
             foreach ($data['userIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setUserIds($values);
+            $object->userIds = $values;
             unset($data['userIds']);
         }
         foreach ($data as $key => $value_1) {
@@ -56,7 +56,7 @@ class UserReinviteManyRequestNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getUserIds() as $value) {
+        foreach ($data->userIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['userIds'] = $values;

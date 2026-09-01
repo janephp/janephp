@@ -38,15 +38,15 @@ class ProfileProviderOnlineSignupNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('externalOSU', $data)) {
-            $object->setExternalOSU($this->denormalizer->denormalize($data['externalOSU'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderExternalOSU::class, 'json', $context));
+            $object->externalOSU = $this->denormalizer->denormalize($data['externalOSU'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderExternalOSU::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('externalOSU') && null !== $data->getExternalOSU()) {
-            $dataArray['externalOSU'] = $data->getExternalOSU() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getExternalOSU(), 'json', $context));
+        if (array_key_exists('externalOSU', get_object_vars($data)) && null !== ($data->externalOSU ?? null)) {
+            $dataArray['externalOSU'] = ($data->externalOSU ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->externalOSU ?? null, 'json', $context));
         }
         return $dataArray;
     }

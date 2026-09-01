@@ -57,32 +57,32 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getSchemas())) {
-            foreach ($object->getComponents()->getSchemas() as $key => $definition) {
+        if (($object->components ?? null) instanceof Components && is_iterable(($object->components ?? null)->schemas ?? null)) {
+            foreach (($object->components ?? null)->schemas as $key => $definition) {
                 $definitionReference = $reference . '/components/schemas/' . $key;
                 $this->chainGuesser->guessClass($definition, $key, $definitionReference, $registry);
                 $this->xNamespaceResolver->stampClassGuess($registry, $definitionReference, $definition);
             }
         }
-        if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getSecuritySchemes())) {
-            foreach ($object->getComponents()->getSecuritySchemes() as $key => $definition) {
+        if (($object->components ?? null) instanceof Components && is_iterable(($object->components ?? null)->securitySchemes ?? null)) {
+            foreach (($object->components ?? null)->securitySchemes as $key => $definition) {
                 $this->chainGuesser->guessClass($definition, $key, $reference . '/components/securitySchemes/' . $key, $registry);
             }
         }
 
-        if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getResponses())) {
-            foreach ($object->getComponents()->getResponses() as $responseName => $response) {
+        if (($object->components ?? null) instanceof Components && is_iterable(($object->components ?? null)->responses ?? null)) {
+            foreach (($object->components ?? null)->responses as $responseName => $response) {
                 if (\is_array($response)) {
                     $response = $this->denormalizeResponseData($response, $reference . '/components/responses/' . $responseName);
                 }
 
-                if ($response instanceof Response && is_iterable($response->getContent())) {
-                    foreach ($response->getContent() as $contentType => $content) {
-                        if ($contentType === 'application/problem+json' && $content->getSchema() === null) {
-                            $content->setSchema($this->getApplicationProblemJsonDefaultSchema());
+                if ($response instanceof Response && is_iterable($response->content ?? null)) {
+                    foreach (($response->content ?? null ?? []) as $contentType => $content) {
+                        if ($contentType === 'application/problem+json' && $content->schema === null) {
+                            $content->schema = $this->getApplicationProblemJsonDefaultSchema();
                         }
 
-                        $this->chainGuesser->guessClass($content->getSchema(), 'Response' . ucfirst($responseName), $reference . '/components/responses/' . $responseName . '/content/' . $contentType . '/schema', $registry);
+                        $this->chainGuesser->guessClass($content->schema ?? null, 'Response' . ucfirst($responseName), $reference . '/components/responses/' . $responseName . '/content/' . $contentType . '/schema', $registry);
                     }
                 }
             }
@@ -91,10 +91,10 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $this->guessPaths($object, $reference, $registry);
         $this->guessWebhooks($object, $reference, $registry);
 
-        if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getParameters())) {
-            foreach ($object->getComponents()->getParameters() as $parameterName => $parameter) {
-                if ($parameter instanceof Parameter && self::IN_BODY === $parameter->getIn()) {
-                    $this->chainGuesser->guessClass($parameter->getSchema(), $parameterName, $reference . '/parameters/' . $parameterName, $registry);
+        if (($object->components ?? null) instanceof Components && is_iterable(($object->components ?? null)->parameters ?? null)) {
+            foreach (($object->components ?? null)->parameters as $parameterName => $parameter) {
+                if ($parameter instanceof Parameter && self::IN_BODY === ($parameter->in ?? null)) {
+                    $this->chainGuesser->guessClass($parameter->schema ?? null, $parameterName, $reference . '/parameters/' . $parameterName, $registry);
                 }
             }
         }
@@ -102,7 +102,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
     private function guessPaths(OpenApi $object, string $reference, OpenApiRegistry $registry): void
     {
-        if (!is_iterable($object->getPaths())) {
+        if (!is_iterable($object->paths ?? null)) {
             return;
         }
 
@@ -110,13 +110,13 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $checkWhitelistedPaths = \count($whitelistedPaths) > 0;
 
         $globalSecurityScopes = [];
-        foreach ($object->getSecurity() ?? [] as $securityItem) {
+        foreach (($object->security ?? null) ?? [] as $securityItem) {
             foreach ($securityItem as $scope => $_) {
                 $globalSecurityScopes[] = $scope;
             }
         }
 
-        foreach ($object->getPaths() as $pathName => $path) {
+        foreach (($object->paths ?? null ?? []) as $pathName => $path) {
             if ($checkWhitelistedPaths && null === ($allowedMethods = $this->isWhitelisted($pathName, $whitelistedPaths))) {
                 continue;
             }
@@ -124,40 +124,40 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             if ($path instanceof PathItem) {
                 if ($checkWhitelistedPaths) {
                     if (\in_array(OperationGuess::DELETE, $allowedMethods)) {
-                        $this->guessClassFromOperation($path, $path->getDelete(), $pathName, OperationGuess::DELETE, $reference, $globalSecurityScopes, $registry);
+                        $this->guessClassFromOperation($path, $path->delete ?? null, $pathName, OperationGuess::DELETE, $reference, $globalSecurityScopes, $registry);
                     }
                     if (\in_array(OperationGuess::GET, $allowedMethods)) {
-                        $this->guessClassFromOperation($path, $path->getGet(), $pathName, OperationGuess::GET, $reference, $globalSecurityScopes, $registry);
+                        $this->guessClassFromOperation($path, $path->get ?? null, $pathName, OperationGuess::GET, $reference, $globalSecurityScopes, $registry);
                     }
                     if (\in_array(OperationGuess::HEAD, $allowedMethods)) {
-                        $this->guessClassFromOperation($path, $path->getHead(), $pathName, OperationGuess::HEAD, $reference, $globalSecurityScopes, $registry);
+                        $this->guessClassFromOperation($path, $path->head ?? null, $pathName, OperationGuess::HEAD, $reference, $globalSecurityScopes, $registry);
                     }
                     if (\in_array(OperationGuess::OPTIONS, $allowedMethods)) {
-                        $this->guessClassFromOperation($path, $path->getOptions(), $pathName, OperationGuess::OPTIONS, $reference, $globalSecurityScopes, $registry);
+                        $this->guessClassFromOperation($path, $path->options ?? null, $pathName, OperationGuess::OPTIONS, $reference, $globalSecurityScopes, $registry);
                     }
                     if (\in_array(OperationGuess::PATCH, $allowedMethods)) {
-                        $this->guessClassFromOperation($path, $path->getPatch(), $pathName, OperationGuess::PATCH, $reference, $globalSecurityScopes, $registry);
+                        $this->guessClassFromOperation($path, $path->patch ?? null, $pathName, OperationGuess::PATCH, $reference, $globalSecurityScopes, $registry);
                     }
                     if (\in_array(OperationGuess::POST, $allowedMethods)) {
-                        $this->guessClassFromOperation($path, $path->getPost(), $pathName, OperationGuess::POST, $reference, $globalSecurityScopes, $registry);
+                        $this->guessClassFromOperation($path, $path->post ?? null, $pathName, OperationGuess::POST, $reference, $globalSecurityScopes, $registry);
                     }
                     if (\in_array(OperationGuess::PUT, $allowedMethods)) {
-                        $this->guessClassFromOperation($path, $path->getPut(), $pathName, OperationGuess::PUT, $reference, $globalSecurityScopes, $registry);
+                        $this->guessClassFromOperation($path, $path->put ?? null, $pathName, OperationGuess::PUT, $reference, $globalSecurityScopes, $registry);
                     }
                 } else {
-                    $this->guessClassFromOperation($path, $path->getDelete(), $pathName, OperationGuess::DELETE, $reference, $globalSecurityScopes, $registry);
-                    $this->guessClassFromOperation($path, $path->getGet(), $pathName, OperationGuess::GET, $reference, $globalSecurityScopes, $registry);
-                    $this->guessClassFromOperation($path, $path->getHead(), $pathName, OperationGuess::HEAD, $reference, $globalSecurityScopes, $registry);
-                    $this->guessClassFromOperation($path, $path->getOptions(), $pathName, OperationGuess::OPTIONS, $reference, $globalSecurityScopes, $registry);
-                    $this->guessClassFromOperation($path, $path->getPatch(), $pathName, OperationGuess::PATCH, $reference, $globalSecurityScopes, $registry);
-                    $this->guessClassFromOperation($path, $path->getPost(), $pathName, OperationGuess::POST, $reference, $globalSecurityScopes, $registry);
-                    $this->guessClassFromOperation($path, $path->getPut(), $pathName, OperationGuess::PUT, $reference, $globalSecurityScopes, $registry);
+                    $this->guessClassFromOperation($path, $path->delete ?? null, $pathName, OperationGuess::DELETE, $reference, $globalSecurityScopes, $registry);
+                    $this->guessClassFromOperation($path, $path->get ?? null, $pathName, OperationGuess::GET, $reference, $globalSecurityScopes, $registry);
+                    $this->guessClassFromOperation($path, $path->head ?? null, $pathName, OperationGuess::HEAD, $reference, $globalSecurityScopes, $registry);
+                    $this->guessClassFromOperation($path, $path->options ?? null, $pathName, OperationGuess::OPTIONS, $reference, $globalSecurityScopes, $registry);
+                    $this->guessClassFromOperation($path, $path->patch ?? null, $pathName, OperationGuess::PATCH, $reference, $globalSecurityScopes, $registry);
+                    $this->guessClassFromOperation($path, $path->post ?? null, $pathName, OperationGuess::POST, $reference, $globalSecurityScopes, $registry);
+                    $this->guessClassFromOperation($path, $path->put ?? null, $pathName, OperationGuess::PUT, $reference, $globalSecurityScopes, $registry);
                 }
 
-                if (is_iterable($path->getParameters())) {
-                    foreach ($path->getParameters() as $key => $parameter) {
-                        if ($parameter instanceof Parameter && self::IN_BODY === $parameter->getIn()) {
-                            $this->chainGuesser->guessClass($parameter->getSchema(), $pathName . 'Body' . $key, $reference . '/' . $pathName . '/parameters/' . $key, $registry);
+                if (is_iterable($path->parameters ?? null)) {
+                    foreach (($path->parameters ?? null ?? []) as $key => $parameter) {
+                        if ($parameter instanceof Parameter && self::IN_BODY === ($parameter->in ?? null)) {
+                            $this->chainGuesser->guessClass($parameter->schema ?? null, $pathName . 'Body' . $key, $reference . '/' . $pathName . '/parameters/' . $key, $registry);
                         }
                     }
                 }
@@ -167,31 +167,31 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
     private function guessWebhooks(OpenApi $object, string $reference, OpenApiRegistry $registry): void
     {
-        if (!is_iterable($object->getWebhooks())) {
+        if (!is_iterable($object->webhooks ?? null)) {
             return;
         }
 
         $globalSecurityScopes = [];
-        foreach ($object->getSecurity() ?? [] as $securityItem) {
+        foreach (($object->security ?? null) ?? [] as $securityItem) {
             foreach ($securityItem as $scope => $_) {
                 $globalSecurityScopes[] = $scope;
             }
         }
 
-        foreach ($object->getWebhooks() as $webhookName => $pathItem) {
+        foreach (($object->webhooks ?? null ?? []) as $webhookName => $pathItem) {
             if (!$pathItem instanceof PathItem) {
                 continue;
             }
 
             $webhookPath = '/webhooks/' . $webhookName;
 
-            $this->guessClassFromOperation($pathItem, $pathItem->getDelete(), $webhookPath, OperationGuess::DELETE, $reference, $globalSecurityScopes, $registry);
-            $this->guessClassFromOperation($pathItem, $pathItem->getGet(), $webhookPath, OperationGuess::GET, $reference, $globalSecurityScopes, $registry);
-            $this->guessClassFromOperation($pathItem, $pathItem->getHead(), $webhookPath, OperationGuess::HEAD, $reference, $globalSecurityScopes, $registry);
-            $this->guessClassFromOperation($pathItem, $pathItem->getOptions(), $webhookPath, OperationGuess::OPTIONS, $reference, $globalSecurityScopes, $registry);
-            $this->guessClassFromOperation($pathItem, $pathItem->getPatch(), $webhookPath, OperationGuess::PATCH, $reference, $globalSecurityScopes, $registry);
-            $this->guessClassFromOperation($pathItem, $pathItem->getPost(), $webhookPath, OperationGuess::POST, $reference, $globalSecurityScopes, $registry);
-            $this->guessClassFromOperation($pathItem, $pathItem->getPut(), $webhookPath, OperationGuess::PUT, $reference, $globalSecurityScopes, $registry);
+            $this->guessClassFromOperation($pathItem, $pathItem->delete ?? null, $webhookPath, OperationGuess::DELETE, $reference, $globalSecurityScopes, $registry);
+            $this->guessClassFromOperation($pathItem, $pathItem->get ?? null, $webhookPath, OperationGuess::GET, $reference, $globalSecurityScopes, $registry);
+            $this->guessClassFromOperation($pathItem, $pathItem->head ?? null, $webhookPath, OperationGuess::HEAD, $reference, $globalSecurityScopes, $registry);
+            $this->guessClassFromOperation($pathItem, $pathItem->options ?? null, $webhookPath, OperationGuess::OPTIONS, $reference, $globalSecurityScopes, $registry);
+            $this->guessClassFromOperation($pathItem, $pathItem->patch ?? null, $webhookPath, OperationGuess::PATCH, $reference, $globalSecurityScopes, $registry);
+            $this->guessClassFromOperation($pathItem, $pathItem->post ?? null, $webhookPath, OperationGuess::POST, $reference, $globalSecurityScopes, $registry);
+            $this->guessClassFromOperation($pathItem, $pathItem->put ?? null, $webhookPath, OperationGuess::PUT, $reference, $globalSecurityScopes, $registry);
         }
     }
 
@@ -238,7 +238,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $this->normalizeOperationInputs($operation, $reference);
 
         $securityScopes = $globalSecurityScopes;
-        foreach ($operation->getSecurity() ?? [] as $securityItem) {
+        foreach (($operation->security ?? null) ?? [] as $securityItem) {
             foreach ($securityItem as $scope => $_) {
                 $securityScopes[] = $scope;
             }
@@ -261,13 +261,13 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $operationSubNamespace = $this->xNamespaceResolver->resolveFromObject($operation);
         $operationGuess->setSubNamespace($operationSubNamespace);
 
-        if (null !== $operation->getParameters() && \count($operation->getParameters()) > 0) {
-            foreach ($operation->getParameters() as $key => $parameter) {
-                if ($parameter instanceof Parameter && self::IN_BODY === $parameter->getIn()) {
+        if (null !== ($operation->parameters ?? null) && \count($operation->parameters ?? null) > 0) {
+            foreach (($operation->parameters ?? null ?? []) as $key => $parameter) {
+                if ($parameter instanceof Parameter && self::IN_BODY === ($parameter->in ?? null)) {
                     $subReference = $reference . '/parameters/' . $key;
-                    $this->chainGuesser->guessClass($parameter->getSchema(), $name . 'Body', $subReference, $registry);
-                    if (null !== $parameter->getSchema()) {
-                        $this->xNamespaceResolver->stampClassGuess($registry, $subReference, $parameter->getSchema());
+                    $this->chainGuesser->guessClass($parameter->schema ?? null, $name . 'Body', $subReference, $registry);
+                    if (null !== ($parameter->schema ?? null)) {
+                        $this->xNamespaceResolver->stampClassGuess($registry, $subReference, $parameter->schema ?? null);
                     }
                     if (null !== ($guessClass = $schema->getClass($subReference))) {
                         $schema->addOperationRelation($operationName, $guessClass->getName());
@@ -276,17 +276,17 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             }
         }
 
-        if (($requestBody = $operation->getRequestBody()) instanceof Reference) {
+        if (($requestBody = ($operation->requestBody ?? null)) instanceof Reference) {
             $requestBody = $this->resolve($requestBody, RequestBody::class);
-            $operation->setRequestBody($requestBody);
+            $operation->requestBody = $requestBody;
         }
 
-        if ($operation->getRequestBody() instanceof RequestBody && is_iterable($operation->getRequestBody()->getContent())) {
-            foreach ($operation->getRequestBody()->getContent() as $contentType => $content) {
+        if (($operation->requestBody ?? null) instanceof RequestBody && is_iterable(($operation->requestBody ?? null)->content)) {
+            foreach (($operation->requestBody ?? null)->content as $contentType => $content) {
                 $subReference = $reference . '/requestBody/content/' . $contentType . '/schema';
-                $this->chainGuesser->guessClass($content->getSchema(), $name . 'Body', $subReference, $registry);
-                if (null !== $content->getSchema()) {
-                    $this->xNamespaceResolver->stampClassGuess($registry, $subReference, $content->getSchema());
+                $this->chainGuesser->guessClass($content->schema ?? null, $name . 'Body', $subReference, $registry);
+                if (null !== ($content->schema ?? null)) {
+                    $this->xNamespaceResolver->stampClassGuess($registry, $subReference, $content->schema ?? null);
                 }
                 if (null !== ($guessClass = $schema->getClass($subReference))) {
                     $schema->addOperationRelation($operationName, $guessClass->getName());
@@ -294,22 +294,22 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             }
         }
 
-        if (is_iterable($operation->getResponses())) {
-            foreach ($operation->getResponses() as $status => $response) {
+        if (is_iterable($operation->responses ?? null)) {
+            foreach (($operation->responses ?? null ?? []) as $status => $response) {
                 if (\is_array($response)) {
                     $response = $this->denormalizeResponseData($response, $reference . '/responses/' . $status);
                 }
 
-                if ($response instanceof Response && $response->getContent()) {
-                    $contentCount = \count($response->getContent());
-                    foreach ($response->getContent() as $contentType => $content) {
+                if ($response instanceof Response && ($response->content ?? null)) {
+                    $contentCount = \count($response->content ?? null);
+                    foreach (($response->content ?? null ?? []) as $contentType => $content) {
                         $responseName = $contentCount > 1
                             ? $name . $this->slugContentType($contentType) . 'Response' . $status
                             : $name . 'Response' . $status;
                         $subReference = $reference . '/responses/' . $status . '/content/' . $contentType . '/schema';
-                        $this->chainGuesser->guessClass($content->getSchema(), $responseName, $subReference, $registry);
-                        if (null !== $content->getSchema()) {
-                            $this->xNamespaceResolver->stampClassGuess($registry, $subReference, $content->getSchema());
+                        $this->chainGuesser->guessClass($content->schema ?? null, $responseName, $subReference, $registry);
+                        if (null !== ($content->schema ?? null)) {
+                            $this->xNamespaceResolver->stampClassGuess($registry, $subReference, $content->schema ?? null);
                         }
                         if (null !== ($guessClass = $schema->getClass($subReference))) {
                             $schema->addOperationRelation($operationName, $guessClass->getName());
@@ -348,7 +348,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
     private function normalizePathItemParameters(PathItem $pathItem, string $reference): void
     {
-        $parameters = $pathItem->getParameters();
+        $parameters = ($pathItem->parameters ?? null);
         if (!is_iterable($parameters)) {
             return;
         }
@@ -358,24 +358,24 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             $normalizedParameters[] = $this->coerceParameterValue($parameter, $reference . '/parameters/' . $key);
         }
 
-        $pathItem->setParameters($normalizedParameters);
+        $pathItem->parameters = $normalizedParameters;
     }
 
     private function normalizeOperationInputs(Operation $operation, string $reference): void
     {
-        $parameters = $operation->getParameters();
+        $parameters = ($operation->parameters ?? null);
         if (is_iterable($parameters)) {
             $normalizedParameters = [];
             foreach ($parameters as $key => $parameter) {
                 $normalizedParameters[] = $this->coerceParameterValue($parameter, $reference . '/parameters/' . $key);
             }
 
-            $operation->setParameters($normalizedParameters);
+            $operation->parameters = $normalizedParameters;
         }
 
-        $requestBody = $operation->getRequestBody();
+        $requestBody = ($operation->requestBody ?? null);
         if (\is_array($requestBody)) {
-            $operation->setRequestBody($this->coerceRequestBodyValue($requestBody, $reference . '/requestBody'));
+            $operation->requestBody = $this->coerceRequestBodyValue($requestBody, $reference . '/requestBody');
         }
     }
 
@@ -412,29 +412,29 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     private function getApplicationProblemJsonDefaultSchema(): Schema
     {
         $schema = new Schema();
-        $schema->setType('object');
+        $schema->type = 'object';
 
         $status = new Schema();
-        $status->setType('integer');
+        $status->type = 'integer';
 
         $title = new Schema();
-        $title->setType('string');
+        $title->type = 'string';
 
         $type = new Schema();
-        $type->setType('string');
-        $type->setDefault('about:blank');
+        $type->type = 'string';
+        $type->default = 'about:blank';
 
         $detail = new Schema();
-        $detail->setType('string');
+        $detail->type = 'string';
 
-        $schema->setProperties([
+        $schema->properties = [
             'status' => $status,
             'title' => $title,
             'type' => $type,
             'detail' => $detail,
-        ]);
-        $schema->setAdditionalProperties(true);
-        $schema->setRequired(['type']);
+        ];
+        $schema->additionalProperties = true;
+        $schema->required = ['type'];
 
         return $schema;
     }

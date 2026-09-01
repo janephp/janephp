@@ -82,25 +82,25 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
         if (200 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\TransferUploadFileUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileNotFoundException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\TransferUploadFileMethodNotAllowedException($response);
         }
-        if (is_null($contentType) === false && (409 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (409 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileConflictException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\TransferUploadFileTooManyRequestsException($response);
         }
-        if (is_null($contentType) === false && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
     }

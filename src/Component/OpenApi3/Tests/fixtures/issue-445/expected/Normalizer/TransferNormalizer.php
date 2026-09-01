@@ -38,63 +38,63 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('state', $data)) {
             $value = $data['state'];
             if (is_string($data['state'])) {
                 $value = $data['state'];
             }
-            $object->setState($value);
+            $object->state = $value;
         }
         if (\array_key_exists('transferType', $data)) {
             $value_1 = $data['transferType'];
             if (is_string($data['transferType'])) {
                 $value_1 = $data['transferType'];
             }
-            $object->setTransferType($value_1);
+            $object->transferType = $value_1;
         }
         if (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] !== null) {
-            $object->setBusinessProcessId($data['businessProcessId']);
+            $object->businessProcessId = $data['businessProcessId'];
         }
         elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
-            $object->setBusinessProcessId(null);
+            $object->businessProcessId = null;
         }
         if (\array_key_exists('fileTransferCount', $data)) {
-            $object->setFileTransferCount($data['fileTransferCount']);
+            $object->fileTransferCount = $data['fileTransferCount'];
         }
         if (\array_key_exists('collectionId', $data) && $data['collectionId'] !== null) {
-            $object->setCollectionId($data['collectionId']);
+            $object->collectionId = $data['collectionId'];
         }
         elseif (\array_key_exists('collectionId', $data) && $data['collectionId'] === null) {
-            $object->setCollectionId(null);
+            $object->collectionId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $value = $data->getState();
-        if (is_string($data->getState())) {
-            $value = $data->getState();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $value = $data->state ?? null;
+        if (is_string($data->state ?? null)) {
+            $value = $data->state ?? null;
         }
         $dataArray['state'] = $value;
-        $value_1 = $data->getTransferType();
-        if (is_string($data->getTransferType())) {
-            $value_1 = $data->getTransferType();
+        $value_1 = $data->transferType ?? null;
+        if (is_string($data->transferType ?? null)) {
+            $value_1 = $data->transferType ?? null;
         }
         $dataArray['transferType'] = $value_1;
-        if ($data->isInitialized('businessProcessId') && null !== $data->getBusinessProcessId()) {
-            $dataArray['businessProcessId'] = $data->getBusinessProcessId();
+        if (array_key_exists('businessProcessId', get_object_vars($data)) && null !== ($data->businessProcessId ?? null)) {
+            $dataArray['businessProcessId'] = $data->businessProcessId ?? null;
         }
-        $dataArray['fileTransferCount'] = $data->getFileTransferCount();
-        if ($data->isInitialized('collectionId') && null !== $data->getCollectionId()) {
-            $dataArray['collectionId'] = $data->getCollectionId();
+        $dataArray['fileTransferCount'] = $data->fileTransferCount ?? null;
+        if (array_key_exists('collectionId', get_object_vars($data)) && null !== ($data->collectionId ?? null)) {
+            $dataArray['collectionId'] = $data->collectionId ?? null;
         }
         return $dataArray;
     }

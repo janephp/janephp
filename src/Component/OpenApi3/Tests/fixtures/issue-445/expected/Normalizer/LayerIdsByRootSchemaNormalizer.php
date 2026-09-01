@@ -38,32 +38,32 @@ class LayerIdsByRootSchemaNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('rootSchemaId', $data) && $data['rootSchemaId'] !== null) {
-            $object->setRootSchemaId($data['rootSchemaId']);
+            $object->rootSchemaId = $data['rootSchemaId'];
         }
         elseif (\array_key_exists('rootSchemaId', $data) && $data['rootSchemaId'] === null) {
-            $object->setRootSchemaId(null);
+            $object->rootSchemaId = null;
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values = [];
             foreach ($data['layerSchemaIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setLayerSchemaIds($values);
+            $object->layerSchemaIds = $values;
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
-            $object->setLayerSchemaIds(null);
+            $object->layerSchemaIds = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('rootSchemaId') && null !== $data->getRootSchemaId()) {
-            $dataArray['rootSchemaId'] = $data->getRootSchemaId();
+        if (array_key_exists('rootSchemaId', get_object_vars($data)) && null !== ($data->rootSchemaId ?? null)) {
+            $dataArray['rootSchemaId'] = $data->rootSchemaId ?? null;
         }
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values = [];
-            foreach ($data->getLayerSchemaIds() as $value) {
+            foreach ($data->layerSchemaIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;

@@ -41,19 +41,19 @@ class AuthPostResponse200Normalizer implements DenormalizerInterface, Normalizer
             $this->validate($data, new \Docker\Api\Validator\AuthPostResponse200Constraint());
         }
         if (\array_key_exists('Status', $data)) {
-            $object->setStatus($data['Status']);
+            $object->status = $data['Status'];
         }
         if (\array_key_exists('IdentityToken', $data)) {
-            $object->setIdentityToken($data['IdentityToken']);
+            $object->identityToken = $data['IdentityToken'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Status'] = $data->getStatus();
-        if ($data->isInitialized('identityToken') && null !== $data->getIdentityToken()) {
-            $dataArray['IdentityToken'] = $data->getIdentityToken();
+        $dataArray['Status'] = $data->status ?? null;
+        if (array_key_exists('identityToken', get_object_vars($data)) && null !== ($data->identityToken ?? null)) {
+            $dataArray['IdentityToken'] = $data->identityToken ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\AuthPostResponse200Constraint());

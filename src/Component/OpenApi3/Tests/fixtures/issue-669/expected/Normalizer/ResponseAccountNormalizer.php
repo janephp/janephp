@@ -38,7 +38,7 @@ class ResponseAccountNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('account', $data)) {
-            $object->setAccount($this->denormalizer->denormalize($data['account'], \Jane\Generated\DigitalOcean\Model\Account::class, 'json', $context));
+            $object->account = $this->denormalizer->denormalize($data['account'], \Jane\Generated\DigitalOcean\Model\Account::class, 'json', $context);
             unset($data['account']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseAccountNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('account') && null !== $data->getAccount()) {
-            $dataArray['account'] = $data->getAccount() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAccount(), 'json', $context));
+        if (array_key_exists('account', get_object_vars($data)) && null !== ($data->account ?? null)) {
+            $dataArray['account'] = ($data->account ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->account ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

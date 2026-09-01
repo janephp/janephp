@@ -38,11 +38,11 @@ class RootNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('foo', $data) && $data['foo'] !== null) {
-            $object->setFoo($this->denormalizer->denormalize($data['foo'], \Jane\Component\OpenApi3\Tests\Expected\Model\RootFoo::class, 'json', $context));
+            $object->foo = $this->denormalizer->denormalize($data['foo'], \Jane\Component\OpenApi3\Tests\Expected\Model\RootFoo::class, 'json', $context);
             unset($data['foo']);
         }
         elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
-            $object->setFoo(null);
+            $object->foo = null;
             unset($data['foo']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class RootNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFoo(), 'json', $context));
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $dataArray['foo'] = ($data->foo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->foo ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

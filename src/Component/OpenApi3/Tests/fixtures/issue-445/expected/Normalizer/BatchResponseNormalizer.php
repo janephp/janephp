@@ -42,7 +42,7 @@ class BatchResponseNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['rows'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BatchResponseRow::class, 'json', $context);
             }
-            $object->setRows($values);
+            $object->rows = $values;
         }
         return $object;
     }
@@ -50,7 +50,7 @@ class BatchResponseNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getRows() as $value) {
+        foreach ($data->rows ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['rows'] = $values;

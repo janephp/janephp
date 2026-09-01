@@ -42,19 +42,19 @@ class BusinessProcessCancellationRequestedEventNormalizer implements Denormalize
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] !== null) {
-            $object->setBusinessProcessId($data['businessProcessId']);
+            $object->businessProcessId = $data['businessProcessId'];
             unset($data['businessProcessId']);
         }
         elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
-            $object->setBusinessProcessId(null);
+            $object->businessProcessId = null;
             unset($data['businessProcessId']);
         }
         foreach ($data as $key => $value) {
@@ -67,10 +67,10 @@ class BusinessProcessCancellationRequestedEventNormalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('businessProcessId') && null !== $data->getBusinessProcessId()) {
-            $dataArray['businessProcessId'] = $data->getBusinessProcessId();
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('businessProcessId', get_object_vars($data)) && null !== ($data->businessProcessId ?? null)) {
+            $dataArray['businessProcessId'] = $data->businessProcessId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

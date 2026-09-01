@@ -38,65 +38,65 @@ class ContentShareReferenceNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+            $object->name = null;
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
             $value = $data['audit'];
             if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
                 $value = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
             }
-            $object->setAudit($value);
+            $object->audit = $value;
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
-            $object->setAudit(null);
+            $object->audit = null;
         }
         if (\array_key_exists('shareType', $data)) {
             $value_1 = $data['shareType'];
             if (is_string($data['shareType'])) {
                 $value_1 = $data['shareType'];
             }
-            $object->setShareType($value_1);
+            $object->shareType = $value_1;
         }
         if (\array_key_exists('emailAddress', $data) && $data['emailAddress'] !== null) {
-            $object->setEmailAddress($data['emailAddress']);
+            $object->emailAddress = $data['emailAddress'];
         }
         elseif (\array_key_exists('emailAddress', $data) && $data['emailAddress'] === null) {
-            $object->setEmailAddress(null);
+            $object->emailAddress = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
-            $value = $data->getAudit();
-            if (is_object($data->getAudit())) {
-                $value = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+        if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
+            $value = $data->audit ?? null;
+            if (is_object($data->audit ?? null)) {
+                $value = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
             }
             $dataArray['audit'] = $value;
         }
-        $value_1 = $data->getShareType();
-        if (is_string($data->getShareType())) {
-            $value_1 = $data->getShareType();
+        $value_1 = $data->shareType ?? null;
+        if (is_string($data->shareType ?? null)) {
+            $value_1 = $data->shareType ?? null;
         }
         $dataArray['shareType'] = $value_1;
-        if ($data->isInitialized('emailAddress') && null !== $data->getEmailAddress()) {
-            $dataArray['emailAddress'] = $data->getEmailAddress();
+        if (array_key_exists('emailAddress', get_object_vars($data)) && null !== ($data->emailAddress ?? null)) {
+            $dataArray['emailAddress'] = $data->emailAddress ?? null;
         }
         return $dataArray;
     }

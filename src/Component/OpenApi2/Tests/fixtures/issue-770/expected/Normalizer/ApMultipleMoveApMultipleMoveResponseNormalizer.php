@@ -38,21 +38,21 @@ class ApMultipleMoveApMultipleMoveResponseNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('successApCount', $data)) {
-            $object->setSuccessApCount($data['successApCount']);
+            $object->successApCount = $data['successApCount'];
         }
         if (\array_key_exists('failAps', $data)) {
-            $object->setFailAps($this->denormalizer->denormalize($data['failAps'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApMultipleMoveApMultipleMoveResponseFailAps::class, 'json', $context));
+            $object->failAps = $this->denormalizer->denormalize($data['failAps'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApMultipleMoveApMultipleMoveResponseFailAps::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('successApCount') && null !== $data->getSuccessApCount()) {
-            $dataArray['successApCount'] = $data->getSuccessApCount();
+        if (array_key_exists('successApCount', get_object_vars($data)) && null !== ($data->successApCount ?? null)) {
+            $dataArray['successApCount'] = $data->successApCount ?? null;
         }
-        if ($data->isInitialized('failAps') && null !== $data->getFailAps()) {
-            $dataArray['failAps'] = $data->getFailAps() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFailAps(), 'json', $context));
+        if (array_key_exists('failAps', get_object_vars($data)) && null !== ($data->failAps ?? null)) {
+            $dataArray['failAps'] = ($data->failAps ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->failAps ?? null, 'json', $context));
         }
         return $dataArray;
     }

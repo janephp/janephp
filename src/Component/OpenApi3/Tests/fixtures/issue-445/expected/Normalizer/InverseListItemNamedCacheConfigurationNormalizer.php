@@ -44,35 +44,35 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
             $data['includeAllSchemaChildren'] = (bool) $data['includeAllSchemaChildren'];
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+            $object->name = null;
             unset($data['name']);
         }
         if (\array_key_exists('caseSensitive', $data)) {
-            $object->setCaseSensitive($data['caseSensitive']);
+            $object->caseSensitive = $data['caseSensitive'];
             unset($data['caseSensitive']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
-            $object->setSchemaId($data['schemaId']);
+            $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
-            $object->setSchemaId(null);
+            $object->schemaId = null;
             unset($data['schemaId']);
         }
         if (\array_key_exists('valueField', $data) && $data['valueField'] !== null) {
-            $object->setValueField($data['valueField']);
+            $object->valueField = $data['valueField'];
             unset($data['valueField']);
         }
         elseif (\array_key_exists('valueField', $data) && $data['valueField'] === null) {
-            $object->setValueField(null);
+            $object->valueField = null;
             unset($data['valueField']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
@@ -80,15 +80,15 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
             if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
                 $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilter($value);
+            $object->filter = $value;
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
             unset($data['filter']);
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
-            $object->setIncludeAllSchemaChildren($data['includeAllSchemaChildren']);
+            $object->includeAllSchemaChildren = $data['includeAllSchemaChildren'];
             unset($data['includeAllSchemaChildren']);
         }
         foreach ($data as $key => $value_1) {
@@ -101,26 +101,26 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        $dataArray['caseSensitive'] = $data->getCaseSensitive();
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
-            $dataArray['schemaId'] = $data->getSchemaId();
+        $dataArray['caseSensitive'] = $data->caseSensitive ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
+            $dataArray['schemaId'] = $data->schemaId ?? null;
         }
-        if ($data->isInitialized('valueField') && null !== $data->getValueField()) {
-            $dataArray['valueField'] = $data->getValueField();
+        if (array_key_exists('valueField', get_object_vars($data)) && null !== ($data->valueField ?? null)) {
+            $dataArray['valueField'] = $data->valueField ?? null;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $value = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $value = $data->filter ?? null;
+            if (is_object($data->filter ?? null)) {
+                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
-        if ($data->isInitialized('includeAllSchemaChildren') && null !== $data->getIncludeAllSchemaChildren()) {
-            $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
+        if (array_key_exists('includeAllSchemaChildren', get_object_vars($data)) && null !== ($data->includeAllSchemaChildren ?? null)) {
+            $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

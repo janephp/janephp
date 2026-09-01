@@ -47,28 +47,28 @@ class CdnPurgeJobBaseNormalizer implements DenormalizerInterface, NormalizerInte
             $data['success'] = (bool) $data['success'];
         }
         if (\array_key_exists('success', $data)) {
-            $object->setSuccess($data['success']);
+            $object->success = $data['success'];
         }
         if (\array_key_exists('retriesLeft', $data)) {
-            $object->setRetriesLeft($data['retriesLeft']);
+            $object->retriesLeft = $data['retriesLeft'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'CdnPurgeJobByTag' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'CdnPurgeJobByTag' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'CdnPurgeJobByUri' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'CdnPurgeJobByUri' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['success'] = $data->getSuccess();
-        $dataArray['retriesLeft'] = $data->getRetriesLeft();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['success'] = $data->success ?? null;
+        $dataArray['retriesLeft'] = $data->retriesLeft ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

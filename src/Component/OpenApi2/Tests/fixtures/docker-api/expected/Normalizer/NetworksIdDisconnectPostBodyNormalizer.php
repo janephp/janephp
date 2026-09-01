@@ -44,21 +44,21 @@ class NetworksIdDisconnectPostBodyNormalizer implements DenormalizerInterface, N
             $this->validate($data, new \Docker\Api\Validator\NetworksIdDisconnectPostBodyConstraint());
         }
         if (\array_key_exists('Container', $data)) {
-            $object->setContainer($data['Container']);
+            $object->container = $data['Container'];
         }
         if (\array_key_exists('Force', $data)) {
-            $object->setForce($data['Force']);
+            $object->force = $data['Force'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('container') && null !== $data->getContainer()) {
-            $dataArray['Container'] = $data->getContainer();
+        if (array_key_exists('container', get_object_vars($data)) && null !== ($data->container ?? null)) {
+            $dataArray['Container'] = $data->container ?? null;
         }
-        if ($data->isInitialized('force') && null !== $data->getForce()) {
-            $dataArray['Force'] = $data->getForce();
+        if (array_key_exists('force', get_object_vars($data)) && null !== ($data->force ?? null)) {
+            $dataArray['Force'] = $data->force ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NetworksIdDisconnectPostBodyConstraint());

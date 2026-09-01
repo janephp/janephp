@@ -38,11 +38,11 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
             unset($data['email']);
         }
         if (\array_key_exists('bar', $data)) {
-            $object->setBar($data['bar']);
+            $object->bar = $data['bar'];
             unset($data['bar']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email ?? null;
         }
-        if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $dataArray['bar'] = $data->getBar();
+        if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
+            $dataArray['bar'] = $data->bar ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

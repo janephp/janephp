@@ -41,21 +41,21 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $this->validate($data, new \Docker\Api\Validator\CommitConstraint());
         }
         if (\array_key_exists('ID', $data)) {
-            $object->setID($data['ID']);
+            $object->iD = $data['ID'];
         }
         if (\array_key_exists('Expected', $data)) {
-            $object->setExpected($data['Expected']);
+            $object->expected = $data['Expected'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iD') && null !== $data->getID()) {
-            $dataArray['ID'] = $data->getID();
+        if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
+            $dataArray['ID'] = $data->iD ?? null;
         }
-        if ($data->isInitialized('expected') && null !== $data->getExpected()) {
-            $dataArray['Expected'] = $data->getExpected();
+        if (array_key_exists('expected', get_object_vars($data)) && null !== ($data->expected ?? null)) {
+            $dataArray['Expected'] = $data->expected ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\CommitConstraint());

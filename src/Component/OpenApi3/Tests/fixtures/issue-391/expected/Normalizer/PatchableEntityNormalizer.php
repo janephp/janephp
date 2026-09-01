@@ -38,19 +38,19 @@ class PatchableEntityNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('nullable_property', $data) && $data['nullable_property'] !== null) {
-            $object->setNullableProperty($data['nullable_property']);
+            $object->nullableProperty = $data['nullable_property'];
             unset($data['nullable_property']);
         }
         elseif (\array_key_exists('nullable_property', $data) && $data['nullable_property'] === null) {
-            $object->setNullableProperty(null);
+            $object->nullableProperty = null;
             unset($data['nullable_property']);
         }
         if (\array_key_exists('nullable_and_required_property', $data) && $data['nullable_and_required_property'] !== null) {
-            $object->setNullableAndRequiredProperty($data['nullable_and_required_property']);
+            $object->nullableAndRequiredProperty = $data['nullable_and_required_property'];
             unset($data['nullable_and_required_property']);
         }
         elseif (\array_key_exists('nullable_and_required_property', $data) && $data['nullable_and_required_property'] === null) {
-            $object->setNullableAndRequiredProperty(null);
+            $object->nullableAndRequiredProperty = null;
             unset($data['nullable_and_required_property']);
         }
         foreach ($data as $key => $value) {
@@ -63,10 +63,10 @@ class PatchableEntityNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nullableProperty') && null !== $data->getNullableProperty()) {
-            $dataArray['nullable_property'] = $data->getNullableProperty();
+        if (array_key_exists('nullableProperty', get_object_vars($data)) && null !== ($data->nullableProperty ?? null)) {
+            $dataArray['nullable_property'] = $data->nullableProperty ?? null;
         }
-        $dataArray['nullable_and_required_property'] = $data->getNullableAndRequiredProperty();
+        $dataArray['nullable_and_required_property'] = $data->nullableAndRequiredProperty ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -38,31 +38,31 @@ class CreateFreshInvestigationRequestSearchCriteriaNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('additionalInfo', $data)) {
-            $object->setAdditionalInfo($data['additionalInfo']);
+            $object->additionalInfo = $data['additionalInfo'];
             unset($data['additionalInfo']);
         }
         if (\array_key_exists('telephoneNumber', $data)) {
-            $object->setTelephoneNumber($data['telephoneNumber']);
+            $object->telephoneNumber = $data['telephoneNumber'];
             unset($data['telephoneNumber']);
         }
         if (\array_key_exists('address', $data)) {
-            $object->setAddress($this->denormalizer->denormalize($data['address'], \CreditSafe\API\Model\CreateFreshInvestigationRequestSearchCriteriaAddress::class, 'json', $context));
+            $object->address = $this->denormalizer->denormalize($data['address'], \CreditSafe\API\Model\CreateFreshInvestigationRequestSearchCriteriaAddress::class, 'json', $context);
             unset($data['address']);
         }
         if (\array_key_exists('regNo', $data)) {
-            $object->setRegNo($data['regNo']);
+            $object->regNo = $data['regNo'];
             unset($data['regNo']);
         }
         if (\array_key_exists('vatNo', $data)) {
-            $object->setVatNo($data['vatNo']);
+            $object->vatNo = $data['vatNo'];
             unset($data['vatNo']);
         }
         if (\array_key_exists('countryCode', $data)) {
-            $object->setCountryCode($data['countryCode']);
+            $object->countryCode = $data['countryCode'];
             unset($data['countryCode']);
         }
         foreach ($data as $key => $value) {
@@ -75,26 +75,26 @@ class CreateFreshInvestigationRequestSearchCriteriaNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('additionalInfo') && null !== $data->getAdditionalInfo()) {
-            $dataArray['additionalInfo'] = $data->getAdditionalInfo();
+        if (array_key_exists('additionalInfo', get_object_vars($data)) && null !== ($data->additionalInfo ?? null)) {
+            $dataArray['additionalInfo'] = $data->additionalInfo ?? null;
         }
-        if ($data->isInitialized('telephoneNumber') && null !== $data->getTelephoneNumber()) {
-            $dataArray['telephoneNumber'] = $data->getTelephoneNumber();
+        if (array_key_exists('telephoneNumber', get_object_vars($data)) && null !== ($data->telephoneNumber ?? null)) {
+            $dataArray['telephoneNumber'] = $data->telephoneNumber ?? null;
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $data->getAddress() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAddress(), 'json', $context));
+        if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
+            $dataArray['address'] = ($data->address ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
         }
-        if ($data->isInitialized('regNo') && null !== $data->getRegNo()) {
-            $dataArray['regNo'] = $data->getRegNo();
+        if (array_key_exists('regNo', get_object_vars($data)) && null !== ($data->regNo ?? null)) {
+            $dataArray['regNo'] = $data->regNo ?? null;
         }
-        if ($data->isInitialized('vatNo') && null !== $data->getVatNo()) {
-            $dataArray['vatNo'] = $data->getVatNo();
+        if (array_key_exists('vatNo', get_object_vars($data)) && null !== ($data->vatNo ?? null)) {
+            $dataArray['vatNo'] = $data->vatNo ?? null;
         }
-        if ($data->isInitialized('countryCode') && null !== $data->getCountryCode()) {
-            $dataArray['countryCode'] = $data->getCountryCode();
+        if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
+            $dataArray['countryCode'] = $data->countryCode ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,19 +38,19 @@ class AddonsDimensionVolumeWithPriceNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('low_volume', $data)) {
-            $object->setLowVolume($data['low_volume']);
+            $object->lowVolume = $data['low_volume'];
             unset($data['low_volume']);
         }
         if (\array_key_exists('max_volume', $data)) {
-            $object->setMaxVolume($data['max_volume']);
+            $object->maxVolume = $data['max_volume'];
             unset($data['max_volume']);
         }
         if (\array_key_exists('price_per_unit', $data)) {
-            $object->setPricePerUnit($data['price_per_unit']);
+            $object->pricePerUnit = $data['price_per_unit'];
             unset($data['price_per_unit']);
         }
         foreach ($data as $key => $value) {
@@ -63,10 +63,10 @@ class AddonsDimensionVolumeWithPriceNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['low_volume'] = $data->getLowVolume();
-        $dataArray['max_volume'] = $data->getMaxVolume();
-        $dataArray['price_per_unit'] = $data->getPricePerUnit();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['low_volume'] = $data->lowVolume ?? null;
+        $dataArray['max_volume'] = $data->maxVolume ?? null;
+        $dataArray['price_per_unit'] = $data->pricePerUnit ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

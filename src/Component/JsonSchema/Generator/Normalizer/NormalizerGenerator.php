@@ -25,6 +25,19 @@ trait NormalizerGenerator
      */
     abstract protected function getNaming(): Naming;
 
+    /**
+     * Presence check replacing the former isInitialized(): get_object_vars() skips
+     * uninitialized typed properties but includes ones explicitly set to null, so the
+     * "never set" and "explicitly null" cases stay distinguishable.
+     */
+    private function isPropertyInitialized(Expr\Variable $objectVariable, Property $property): Expr
+    {
+        return new Expr\FuncCall(new Name('array_key_exists'), [
+            new Arg(new Scalar\String_($property->getPhpName())),
+            new Arg(new Expr\FuncCall(new Name('get_object_vars'), [new Arg($objectVariable)])),
+        ]);
+    }
+
     protected function createNormalizerClass($name, $methods, $useCacheableSupportsMethod = false): Stmt\Class_
     {
         $traits = [
@@ -86,111 +99,11 @@ trait NormalizerGenerator
         $objectVariable = new Expr\Variable('data');
         $statements = $this->normalizeMethodStatements($dataVariable, $classGuess, $context);
 
-        /** @var Property $property */
-        foreach ($classGuess->getProperties() as $property) {
-            if (!$property->isReadOnly()) {
-                $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getAccessorName()));
-
-                list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
-
-                $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), $outputVar));
-
-                if (!$skipRequiredFields && $property->isRequired()) {
-                    $statements = array_merge($statements, $normalizationStatements);
-
-                    continue;
-                }
-
-                if (!$includeNullValue) {
-                    if (!$property->isRequired()) {
-                        $statements[] = new Stmt\If_(
-                            new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
-                            ['stmts' => $normalizationStatements]
-                        );
-                    } else {
-                        $statements[] = new Stmt\If_(
-                            new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
-                            ['stmts' => $normalizationStatements]
-                        );
-                    }
-
-                    continue;
-                }
-
-                if (!$property->isRequired()) {
-                    if ($property->isNullable()) {
-                        $statements[] = new Stmt\If_(
-                            new Expr\BinaryOp\BooleanAnd(
-                                new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
-                                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
-                            ),
-                            ['stmts' => $normalizationStatements]
-                        );
-                    } else {
-                        $statements[] = new Stmt\If_(
-                            new Expr\BinaryOp\BooleanAnd(
-                                new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
-                                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
-                            ),
-                            ['stmts' => $normalizationStatements]
-                        );
-                    }
-                } else {
-                    $statements[] = new Stmt\If_(
-                        new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
-                        ['stmts' => $normalizationStatements]
-                    );
-                }
-
-                if ((!$context->isStrict() || $property->isNullable()
-                        || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1)
-                        || ($property->getType()->getName() === Type::TYPE_NULL)) && !$skipNullValues) {
-                    $statements[] = new Stmt\Else_(
-                        [new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), new Expr\ConstFetch(new Name('null'))))]
-                    );
-                }
-            }
-        }
-
-        $patternCondition = [];
-        $loopKeyVar = new Expr\Variable($context->getUniqueVariableName('key'));
-        $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
-
-        foreach ($classGuess->getExtensionsType() as $pattern => $type) {
-            list($denormalizationStatements, $outputVar) = $type->createNormalizationStatement($context, $loopValueVar);
-
-            $patternCondition[] = new Stmt\If_(
-                new Expr\FuncCall(new Name('preg_match'), [
-                    new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
-                    new Arg(new Expr\Cast\String_($loopKeyVar)),
-                ]),
-                [
-                    'stmts' => array_merge($denormalizationStatements, [
-                        new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, $loopKeyVar), $outputVar)),
-                    ]),
-                ]
-            );
-        }
-
-        if (\count($patternCondition) > 0) {
-            // Extension-container models iterate over their additional properties only: defined
-            // properties are already normalized above through their getters.
-            $statements[] = new Stmt\Foreach_(new Expr\MethodCall($objectVariable, 'additionalPropertyEntries'), $loopValueVar, [
-                'keyVar' => $loopKeyVar,
-                'stmts' => $patternCondition,
-            ]);
-        }
+        $statements = array_merge($statements, $this->createPropertyNormalizationStatements($classGuess, $context, $objectVariable, $dataVariable, $skipNullValues, $skipRequiredFields, $includeNullValue));
+        $statements = array_merge($statements, $this->createPatternPropertiesNormalizationStatements($classGuess, $context, $dataVariable, $objectVariable));
 
         if ($this->validation) {
-            $schema = $context->getCurrentSchema();
-            $contextVariable = new Expr\Variable('context');
-            $constraintFqdn = $this->naming->getValidatorNamespace($schema->getNamespace(), $classGuess->getSubNamespace()) . '\\' . $this->naming->getConstraintName($classGuess->getName());
-
-            $statements[] = new Stmt\If_(new Expr\BooleanNot(new Expr\BinaryOp\Coalesce(new Expr\ArrayDimFetch($contextVariable, new Scalar\String_('skip_validation')), new Expr\ConstFetch(new Name('false')))), ['stmts' => [
-                new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('this'), 'validate', [
-                    new Arg($dataVariable), new Arg(new Expr\New_(new Name('\\' . $constraintFqdn))),
-                ])),
-            ]]);
+            $statements[] = $this->createValidationStatement($context, $classGuess, $dataVariable);
         }
 
         $statements[] = new Stmt\Return_($dataVariable);
@@ -207,6 +120,134 @@ trait NormalizerGenerator
         ], [
             'comments' => [],
         ]);
+    }
+
+    /**
+     * Normalize each declared property through its backing property, honouring
+     * the skip-null / skip-required / include-null output policy.
+     *
+     * @return Stmt[]
+     */
+    private function createPropertyNormalizationStatements(ClassGuess $classGuess, Context $context, Expr\Variable $objectVariable, Expr\Variable $dataVariable, bool $skipNullValues, bool $skipRequiredFields, bool $includeNullValue): array
+    {
+        $statements = [];
+
+        /** @var Property $property */
+        foreach ($classGuess->getProperties() as $property) {
+            if ($property->isReadOnly()) {
+                continue;
+            }
+
+            $propertyVar = new Expr\BinaryOp\Coalesce(
+                new Expr\PropertyFetch($objectVariable, $property->getPhpName()),
+                new Expr\ConstFetch(new Name('null'))
+            );
+
+            list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
+
+            $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), $outputVar));
+
+            if (!$skipRequiredFields && $property->isRequired()) {
+                $statements = array_merge($statements, $normalizationStatements);
+
+                continue;
+            }
+
+            if (!$includeNullValue) {
+                $statements[] = $this->createIncludeNullDisabledStatement($objectVariable, $property, $propertyVar, $normalizationStatements);
+
+                continue;
+            }
+
+            $statements = array_merge($statements, $this->createRegularPropertyStatement($objectVariable, $property, $propertyVar, $normalizationStatements, $context, $skipNullValues, $dataVariable));
+        }
+
+        return $statements;
+    }
+
+    private function createIncludeNullDisabledStatement(Expr\Variable $objectVariable, Property $property, Expr $propertyVar, array $normalizationStatements): Stmt\If_
+    {
+        if (!$property->isRequired()) {
+            return new Stmt\If_(
+                $this->isPropertyInitialized($objectVariable, $property),
+                ['stmts' => $normalizationStatements]
+            );
+        }
+
+        return new Stmt\If_(
+            new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
+            ['stmts' => $normalizationStatements]
+        );
+    }
+
+    private function createRegularPropertyStatement(Expr\Variable $objectVariable, Property $property, Expr $propertyVar, array $normalizationStatements, Context $context, bool $skipNullValues, Expr\Variable $dataVariable): array
+    {
+        if (!$property->isRequired()) {
+            $statement = new Stmt\If_(
+                new Expr\BinaryOp\BooleanAnd(
+                    $this->isPropertyInitialized($objectVariable, $property),
+                    new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
+                ),
+                ['stmts' => $normalizationStatements]
+            );
+        } else {
+            $statement = new Stmt\If_(
+                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
+                ['stmts' => $normalizationStatements]
+            );
+        }
+
+        $statements = [$statement];
+
+        if ((!$context->isStrict() || $property->isNullable()
+                || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1)
+                || ($property->getType()->getName() === Type::TYPE_NULL)) && !$skipNullValues) {
+            $statements[] = new Stmt\Else_(
+                [new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), new Expr\ConstFetch(new Name('null'))))]
+            );
+        }
+
+        return $statements;
+    }
+
+    /**
+     * Fold additional / pattern matched properties into the normalized array,
+     * iterating the model's extension entries once when any pattern applies.
+     *
+     * @return Stmt[]
+     */
+    private function createPatternPropertiesNormalizationStatements(ClassGuess $classGuess, Context $context, Expr\Variable $dataVariable, Expr\Variable $objectVariable): array
+    {
+        $patternCondition = [];
+        $loopKeyVar = new Expr\Variable($context->getUniqueVariableName('key'));
+        $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
+
+        foreach ($classGuess->getExtensionsType() as $pattern => $type) {
+            list($normalizationStatements, $outputVar) = $type->createNormalizationStatement($context, $loopValueVar);
+
+            $patternCondition[] = new Stmt\If_(
+                new Expr\FuncCall(new Name('preg_match'), [
+                    new Arg(new Expr\ConstFetch(new Name("'/" . str_replace('/', '\/', $pattern) . "/'"))),
+                    new Arg(new Expr\Cast\String_($loopKeyVar)),
+                ]),
+                [
+                    'stmts' => array_merge($normalizationStatements, [
+                        new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, $loopKeyVar), $outputVar)),
+                    ]),
+                ]
+            );
+        }
+
+        if (\count($patternCondition) > 0) {
+            // Extension-container models iterate over their additional properties only: defined
+            // properties are already normalized above through their public properties.
+            return [new Stmt\Foreach_(new Expr\MethodCall($objectVariable, 'additionalPropertyEntries'), $loopValueVar, [
+                'keyVar' => $loopKeyVar,
+                'stmts' => $patternCondition,
+            ])];
+        }
+
+        return [];
     }
 
     /**

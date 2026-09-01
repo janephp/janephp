@@ -5,77 +5,15 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class ProfileCreateRogueApPolicy
 {
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $name;
     /**
      * @var string
      */
-    protected $name;
-    /**
-     * @var string
-     */
-    protected $description;
+    public string $description;
     /**
      * @var list<ProfileRogueApRuleList>
      */
-    protected $rules;
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-    /**
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription(string $description): self
-    {
-        $this->initialized['description'] = true;
-        $this->description = $description;
-        return $this;
-    }
-    /**
-     * @return list<ProfileRogueApRuleList>
-     */
-    public function getRules(): array
-    {
-        return $this->rules;
-    }
-    /**
-     * @param list<ProfileRogueApRuleList> $rules
-     *
-     * @return self
-     */
-    public function setRules(array $rules): self
-    {
-        $this->initialized['rules'] = true;
-        $this->rules = $rules;
-        return $this;
-    }
+    public array $rules;
 }

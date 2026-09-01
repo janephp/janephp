@@ -8,261 +8,59 @@ class ResponseReservedIpv6ActionAction implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * A unique numeric ID that can be used to identify and reference an action.
      *
      * @var int
      */
-    protected $id;
+    public int $id;
     /**
      * The current status of the action. This can be "in-progress", "completed", or "errored".
      *
      * @var string
      */
-    protected $status = 'in-progress';
+    public string $status = 'in-progress';
     /**
      * This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action.
      *
      * @var string
      */
-    protected $type;
+    public string $type;
     /**
      * A time value given in ISO8601 combined date and time format that represents when the action was initiated.
      *
      * @var \DateTime
      */
-    protected $startedAt;
+    public \DateTime $startedAt;
     /**
      * A time value given in ISO8601 combined date and time format that represents when the action was completed.
      *
      * @var \DateTime|null
      */
-    protected $completedAt;
+    public ?\DateTime $completedAt;
     /**
      * The ID of the resource that the action is being taken on.
      *
      * @var int
      */
-    protected $resourceId;
+    public int $resourceId;
     /**
      * The type of resource that the action is being taken on.
      *
      * @var string
      */
-    protected $resourceType;
+    public string $resourceType;
     /**
      * @var Region
      */
-    protected $region;
+    public Region $region;
     /**
      * The slug identifier for the region the resource is located in.
      *
      * @var string
      */
-    protected $regionSlug;
-    /**
-     * A unique numeric ID that can be used to identify and reference an action.
-     *
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
-    /**
-     * A unique numeric ID that can be used to identify and reference an action.
-     *
-     * @param int $id
-     *
-     * @return self
-     */
-    public function setId(int $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * The current status of the action. This can be "in-progress", "completed", or "errored".
-     *
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-    /**
-     * The current status of the action. This can be "in-progress", "completed", or "errored".
-     *
-     * @param string $status
-     *
-     * @return self
-     */
-    public function setStatus(string $status): self
-    {
-        $this->initialized['status'] = true;
-        $this->status = $status;
-        return $this;
-    }
-    /**
-     * This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action.
-     *
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-    /**
-     * This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action.
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType(string $type): self
-    {
-        $this->initialized['type'] = true;
-        $this->type = $type;
-        return $this;
-    }
-    /**
-     * A time value given in ISO8601 combined date and time format that represents when the action was initiated.
-     *
-     * @return \DateTime
-     */
-    public function getStartedAt(): \DateTime
-    {
-        return $this->startedAt;
-    }
-    /**
-     * A time value given in ISO8601 combined date and time format that represents when the action was initiated.
-     *
-     * @param \DateTime $startedAt
-     *
-     * @return self
-     */
-    public function setStartedAt(\DateTime $startedAt): self
-    {
-        $this->initialized['startedAt'] = true;
-        $this->startedAt = $startedAt;
-        return $this;
-    }
-    /**
-     * A time value given in ISO8601 combined date and time format that represents when the action was completed.
-     *
-     * @return \DateTime|null
-     */
-    public function getCompletedAt(): ?\DateTime
-    {
-        return $this->completedAt;
-    }
-    /**
-     * A time value given in ISO8601 combined date and time format that represents when the action was completed.
-     *
-     * @param \DateTime|null $completedAt
-     *
-     * @return self
-     */
-    public function setCompletedAt(?\DateTime $completedAt): self
-    {
-        $this->initialized['completedAt'] = true;
-        $this->completedAt = $completedAt;
-        return $this;
-    }
-    /**
-     * The ID of the resource that the action is being taken on.
-     *
-     * @return int
-     */
-    public function getResourceId(): int
-    {
-        return $this->resourceId;
-    }
-    /**
-     * The ID of the resource that the action is being taken on.
-     *
-     * @param int $resourceId
-     *
-     * @return self
-     */
-    public function setResourceId(int $resourceId): self
-    {
-        $this->initialized['resourceId'] = true;
-        $this->resourceId = $resourceId;
-        return $this;
-    }
-    /**
-     * The type of resource that the action is being taken on.
-     *
-     * @return string
-     */
-    public function getResourceType(): string
-    {
-        return $this->resourceType;
-    }
-    /**
-     * The type of resource that the action is being taken on.
-     *
-     * @param string $resourceType
-     *
-     * @return self
-     */
-    public function setResourceType(string $resourceType): self
-    {
-        $this->initialized['resourceType'] = true;
-        $this->resourceType = $resourceType;
-        return $this;
-    }
-    /**
-     * @return Region
-     */
-    public function getRegion(): Region
-    {
-        return $this->region;
-    }
-    /**
-     * @param Region $region
-     *
-     * @return self
-     */
-    public function setRegion(Region $region): self
-    {
-        $this->initialized['region'] = true;
-        $this->region = $region;
-        return $this;
-    }
-    /**
-     * The slug identifier for the region the resource is located in.
-     *
-     * @return string
-     */
-    public function getRegionSlug(): string
-    {
-        return $this->regionSlug;
-    }
-    /**
-     * The slug identifier for the region the resource is located in.
-     *
-     * @param string $regionSlug
-     *
-     * @return self
-     */
-    public function setRegionSlug(string $regionSlug): self
-    {
-        $this->initialized['regionSlug'] = true;
-        $this->regionSlug = $regionSlug;
-        return $this;
-    }
+    public string $regionSlug;
     public function definedProperties(): array
     {
-        return ['id' => ['id', 'getId', 'setId'], 'status' => ['status', 'getStatus', 'setStatus'], 'type' => ['type', 'getType', 'setType'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'completedAt' => ['completed_at', 'getCompletedAt', 'setCompletedAt'], 'resourceId' => ['resource_id', 'getResourceId', 'setResourceId'], 'resourceType' => ['resource_type', 'getResourceType', 'setResourceType'], 'region' => ['region', 'getRegion', 'setRegion'], 'regionSlug' => ['region_slug', 'getRegionSlug', 'setRegionSlug']];
+        return ['id' => 'id', 'status' => 'status', 'type' => 'type', 'startedAt' => 'started_at', 'completedAt' => 'completed_at', 'resourceId' => 'resource_id', 'resourceType' => 'resource_type', 'region' => 'region', 'regionSlug' => 'region_slug'];
     }
 }

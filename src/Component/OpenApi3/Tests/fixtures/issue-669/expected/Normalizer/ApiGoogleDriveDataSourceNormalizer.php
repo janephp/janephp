@@ -38,11 +38,11 @@ class ApiGoogleDriveDataSourceNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('folder_id', $data)) {
-            $object->setFolderId($data['folder_id']);
+            $object->folderId = $data['folder_id'];
             unset($data['folder_id']);
         }
         if (\array_key_exists('refresh_token', $data)) {
-            $object->setRefreshToken($data['refresh_token']);
+            $object->refreshToken = $data['refresh_token'];
             unset($data['refresh_token']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiGoogleDriveDataSourceNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('folderId') && null !== $data->getFolderId()) {
-            $dataArray['folder_id'] = $data->getFolderId();
+        if (array_key_exists('folderId', get_object_vars($data)) && null !== ($data->folderId ?? null)) {
+            $dataArray['folder_id'] = $data->folderId ?? null;
         }
-        if ($data->isInitialized('refreshToken') && null !== $data->getRefreshToken()) {
-            $dataArray['refresh_token'] = $data->getRefreshToken();
+        if (array_key_exists('refreshToken', get_object_vars($data)) && null !== ($data->refreshToken ?? null)) {
+            $dataArray['refresh_token'] = $data->refreshToken ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

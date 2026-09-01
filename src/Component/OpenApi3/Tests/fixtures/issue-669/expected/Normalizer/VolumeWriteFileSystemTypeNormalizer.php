@@ -38,7 +38,7 @@ class VolumeWriteFileSystemTypeNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('filesystem_type', $data)) {
-            $object->setFilesystemType($data['filesystem_type']);
+            $object->filesystemType = $data['filesystem_type'];
             unset($data['filesystem_type']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class VolumeWriteFileSystemTypeNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('filesystemType') && null !== $data->getFilesystemType()) {
-            $dataArray['filesystem_type'] = $data->getFilesystemType();
+        if (array_key_exists('filesystemType', get_object_vars($data)) && null !== ($data->filesystemType ?? null)) {
+            $dataArray['filesystem_type'] = $data->filesystemType ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

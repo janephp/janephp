@@ -38,33 +38,33 @@ class BondPortCreateBondPortProfileNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('untagId', $data)) {
-            $object->setUntagId($data['untagId']);
+            $object->untagId = $data['untagId'];
         }
         if (\array_key_exists('vlanMembers', $data)) {
-            $object->setVlanMembers($data['vlanMembers']);
+            $object->vlanMembers = $data['vlanMembers'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['type'] = $data->getType();
-        $dataArray['untagId'] = $data->getUntagId();
-        if ($data->isInitialized('vlanMembers') && null !== $data->getVlanMembers()) {
-            $dataArray['vlanMembers'] = $data->getVlanMembers();
+        $dataArray['type'] = $data->type ?? null;
+        $dataArray['untagId'] = $data->untagId ?? null;
+        if (array_key_exists('vlanMembers', get_object_vars($data)) && null !== ($data->vlanMembers ?? null)) {
+            $dataArray['vlanMembers'] = $data->vlanMembers ?? null;
         }
         return $dataArray;
     }

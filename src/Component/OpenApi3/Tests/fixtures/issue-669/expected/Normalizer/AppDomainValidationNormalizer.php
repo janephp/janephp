@@ -38,11 +38,11 @@ class AppDomainValidationNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('txt_name', $data)) {
-            $object->setTxtName($data['txt_name']);
+            $object->txtName = $data['txt_name'];
             unset($data['txt_name']);
         }
         if (\array_key_exists('txt_value', $data)) {
-            $object->setTxtValue($data['txt_value']);
+            $object->txtValue = $data['txt_value'];
             unset($data['txt_value']);
         }
         foreach ($data as $key => $value) {

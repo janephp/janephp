@@ -38,45 +38,45 @@ class LiveStreamTraceJobNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
-            $object->setTraceJobId($data['traceJobId']);
+            $object->traceJobId = $data['traceJobId'];
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
-            $object->setTraceJobId(null);
+            $object->traceJobId = null;
         }
         if (\array_key_exists('ipAddress', $data) && $data['ipAddress'] !== null) {
-            $object->setIpAddress($data['ipAddress']);
+            $object->ipAddress = $data['ipAddress'];
         }
         elseif (\array_key_exists('ipAddress', $data) && $data['ipAddress'] === null) {
-            $object->setIpAddress(null);
+            $object->ipAddress = null;
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
-            $object->setUserId($data['userId']);
+            $object->userId = $data['userId'];
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
-            $object->setUserId(null);
+            $object->userId = null;
         }
         if (\array_key_exists('apiClientId', $data) && $data['apiClientId'] !== null) {
-            $object->setApiClientId($data['apiClientId']);
+            $object->apiClientId = $data['apiClientId'];
         }
         elseif (\array_key_exists('apiClientId', $data) && $data['apiClientId'] === null) {
-            $object->setApiClientId(null);
+            $object->apiClientId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
-            $dataArray['traceJobId'] = $data->getTraceJobId();
+        if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
+            $dataArray['traceJobId'] = $data->traceJobId ?? null;
         }
-        if ($data->isInitialized('ipAddress') && null !== $data->getIpAddress()) {
-            $dataArray['ipAddress'] = $data->getIpAddress();
+        if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
+            $dataArray['ipAddress'] = $data->ipAddress ?? null;
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['userId'] = $data->getUserId();
+        if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['userId'] = $data->userId ?? null;
         }
-        if ($data->isInitialized('apiClientId') && null !== $data->getApiClientId()) {
-            $dataArray['apiClientId'] = $data->getApiClientId();
+        if (array_key_exists('apiClientId', get_object_vars($data)) && null !== ($data->apiClientId ?? null)) {
+            $dataArray['apiClientId'] = $data->apiClientId ?? null;
         }
         return $dataArray;
     }

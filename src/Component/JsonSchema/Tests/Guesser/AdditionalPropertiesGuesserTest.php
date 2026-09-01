@@ -30,7 +30,12 @@ class AdditionalPropertiesGuesserTest extends TestCase
 
     public function testSupportObjectWithAdditionalPropertiesSchema(): void
     {
-        $schema = $this->createObjectSchema((new JsonSchema())->setType('string'));
+        $schema = $this->createObjectSchema((function () {
+            $schema = new JsonSchema();
+            $schema->type = 'string';
+
+            return $schema;
+        })());
 
         self::assertTrue($this->guesser->supportObject($schema));
     }
@@ -46,13 +51,30 @@ class AdditionalPropertiesGuesserTest extends TestCase
     public static function unsupportedProvider(): iterable
     {
         yield 'null additional properties' => [
-            (new JsonSchema())->setType('object'),
+            (function () {
+                $schema = new JsonSchema();
+                $schema->type = 'object';
+
+                return $schema;
+            })(),
         ];
         yield 'false additional properties' => [
-            (new JsonSchema())->setType('object')->setAdditionalProperties(false),
+            (function () {
+                $schema = new JsonSchema();
+                $schema->type = 'object';
+                $schema->additionalProperties = false;
+
+                return $schema;
+            })(),
         ];
         yield 'not an object type' => [
-            (new JsonSchema())->setType('string')->setAdditionalProperties(true),
+            (function () {
+                $schema = new JsonSchema();
+                $schema->type = 'string';
+                $schema->additionalProperties = true;
+
+                return $schema;
+            })(),
         ];
     }
 
@@ -115,7 +137,12 @@ class AdditionalPropertiesGuesserTest extends TestCase
 
     public function testGuessTypeUsesSchemaObjectWhenProvided(): void
     {
-        $itemSchema = (new JsonSchema())->setType('string');
+        $itemSchema = (function () {
+            $schema = new JsonSchema();
+            $schema->type = 'string';
+
+            return $schema;
+        })();
         $type = $this->guesser->guessType($this->createObjectSchema($itemSchema), 'test', '#/', new Registry());
 
         self::assertInstanceOf(MapType::class, $type);
@@ -124,10 +151,15 @@ class AdditionalPropertiesGuesserTest extends TestCase
 
     private function createObjectSchema(JsonSchema|bool|null $additionalProperties): JsonSchema
     {
-        $schema = (new JsonSchema())->setType('object');
+        $schema = (function () {
+            $schema = new JsonSchema();
+            $schema->type = 'object';
+
+            return $schema;
+        })();
 
         if (null !== $additionalProperties) {
-            $schema->setAdditionalProperties($additionalProperties);
+            $schema->additionalProperties = $additionalProperties;
         }
 
         return $schema;

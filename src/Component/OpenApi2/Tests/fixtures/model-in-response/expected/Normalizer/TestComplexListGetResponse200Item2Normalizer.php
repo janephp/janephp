@@ -38,27 +38,27 @@ class TestComplexListGetResponse200Item2Normalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('image_32', $data)) {
-            $object->setImage32($data['image_32']);
+            $object->image32 = $data['image_32'];
         }
         if (\array_key_exists('image_64', $data)) {
-            $object->setImage64($data['image_64']);
+            $object->image64 = $data['image_64'];
         }
         if (\array_key_exists('image_128', $data)) {
-            $object->setImage128($data['image_128']);
+            $object->image128 = $data['image_128'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('image32') && null !== $data->getImage32()) {
-            $dataArray['image_32'] = $data->getImage32();
+        if (array_key_exists('image32', get_object_vars($data)) && null !== ($data->image32 ?? null)) {
+            $dataArray['image_32'] = $data->image32 ?? null;
         }
-        if ($data->isInitialized('image64') && null !== $data->getImage64()) {
-            $dataArray['image_64'] = $data->getImage64();
+        if (array_key_exists('image64', get_object_vars($data)) && null !== ($data->image64 ?? null)) {
+            $dataArray['image_64'] = $data->image64 ?? null;
         }
-        if ($data->isInitialized('image128') && null !== $data->getImage128()) {
-            $dataArray['image_128'] = $data->getImage128();
+        if (array_key_exists('image128', get_object_vars($data)) && null !== ($data->image128 ?? null)) {
+            $dataArray['image_128'] = $data->image128 ?? null;
         }
         return $dataArray;
     }

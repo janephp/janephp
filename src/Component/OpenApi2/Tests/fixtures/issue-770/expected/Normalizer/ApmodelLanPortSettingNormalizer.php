@@ -44,41 +44,41 @@ class ApmodelLanPortSettingNormalizer implements DenormalizerInterface, Normaliz
             $data['overwriteVlanEnabled'] = (bool) $data['overwriteVlanEnabled'];
         }
         if (\array_key_exists('portName', $data)) {
-            $object->setPortName($data['portName']);
+            $object->portName = $data['portName'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('overwriteVlanEnabled', $data)) {
-            $object->setOverwriteVlanEnabled($data['overwriteVlanEnabled']);
+            $object->overwriteVlanEnabled = $data['overwriteVlanEnabled'];
         }
         if (\array_key_exists('vlanUntagId', $data)) {
-            $object->setVlanUntagId($data['vlanUntagId']);
+            $object->vlanUntagId = $data['vlanUntagId'];
         }
         if (\array_key_exists('members', $data)) {
-            $object->setMembers($data['members']);
+            $object->members = $data['members'];
         }
         if (\array_key_exists('ethPortProfile', $data)) {
-            $object->setEthPortProfile($this->denormalizer->denormalize($data['ethPortProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->ethPortProfile = $this->denormalizer->denormalize($data['ethPortProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['portName'] = $data->getPortName();
-        $dataArray['enabled'] = $data->getEnabled();
-        if ($data->isInitialized('overwriteVlanEnabled') && null !== $data->getOverwriteVlanEnabled()) {
-            $dataArray['overwriteVlanEnabled'] = $data->getOverwriteVlanEnabled();
+        $dataArray['portName'] = $data->portName ?? null;
+        $dataArray['enabled'] = $data->enabled ?? null;
+        if (array_key_exists('overwriteVlanEnabled', get_object_vars($data)) && null !== ($data->overwriteVlanEnabled ?? null)) {
+            $dataArray['overwriteVlanEnabled'] = $data->overwriteVlanEnabled ?? null;
         }
-        if ($data->isInitialized('vlanUntagId') && null !== $data->getVlanUntagId()) {
-            $dataArray['vlanUntagId'] = $data->getVlanUntagId();
+        if (array_key_exists('vlanUntagId', get_object_vars($data)) && null !== ($data->vlanUntagId ?? null)) {
+            $dataArray['vlanUntagId'] = $data->vlanUntagId ?? null;
         }
-        if ($data->isInitialized('members') && null !== $data->getMembers()) {
-            $dataArray['members'] = $data->getMembers();
+        if (array_key_exists('members', get_object_vars($data)) && null !== ($data->members ?? null)) {
+            $dataArray['members'] = $data->members ?? null;
         }
-        if ($data->isInitialized('ethPortProfile') && null !== $data->getEthPortProfile()) {
-            $dataArray['ethPortProfile'] = $data->getEthPortProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEthPortProfile(), 'json', $context));
+        if (array_key_exists('ethPortProfile', get_object_vars($data)) && null !== ($data->ethPortProfile ?? null)) {
+            $dataArray['ethPortProfile'] = ($data->ethPortProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ethPortProfile ?? null, 'json', $context));
         }
         return $dataArray;
     }

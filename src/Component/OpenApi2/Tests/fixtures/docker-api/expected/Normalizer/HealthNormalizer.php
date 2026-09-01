@@ -41,32 +41,32 @@ class HealthNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $this->validate($data, new \Docker\Api\Validator\HealthConstraint());
         }
         if (\array_key_exists('Status', $data)) {
-            $object->setStatus($data['Status']);
+            $object->status = $data['Status'];
         }
         if (\array_key_exists('FailingStreak', $data)) {
-            $object->setFailingStreak($data['FailingStreak']);
+            $object->failingStreak = $data['FailingStreak'];
         }
         if (\array_key_exists('Log', $data)) {
             $values = [];
             foreach ($data['Log'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\HealthcheckResult::class, 'json', $context);
             }
-            $object->setLog($values);
+            $object->log = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['Status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['Status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('failingStreak') && null !== $data->getFailingStreak()) {
-            $dataArray['FailingStreak'] = $data->getFailingStreak();
+        if (array_key_exists('failingStreak', get_object_vars($data)) && null !== ($data->failingStreak ?? null)) {
+            $dataArray['FailingStreak'] = $data->failingStreak ?? null;
         }
-        if ($data->isInitialized('log') && null !== $data->getLog()) {
+        if (array_key_exists('log', get_object_vars($data)) && null !== ($data->log ?? null)) {
             $values = [];
-            foreach ($data->getLog() as $value) {
+            foreach ($data->log ?? null as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Log'] = $values;

@@ -41,21 +41,21 @@ class MountTmpfsOptionsNormalizer implements DenormalizerInterface, NormalizerIn
             $this->validate($data, new \Docker\Api\Validator\MountTmpfsOptionsConstraint());
         }
         if (\array_key_exists('SizeBytes', $data)) {
-            $object->setSizeBytes($data['SizeBytes']);
+            $object->sizeBytes = $data['SizeBytes'];
         }
         if (\array_key_exists('Mode', $data)) {
-            $object->setMode($data['Mode']);
+            $object->mode = $data['Mode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sizeBytes') && null !== $data->getSizeBytes()) {
-            $dataArray['SizeBytes'] = $data->getSizeBytes();
+        if (array_key_exists('sizeBytes', get_object_vars($data)) && null !== ($data->sizeBytes ?? null)) {
+            $dataArray['SizeBytes'] = $data->sizeBytes ?? null;
         }
-        if ($data->isInitialized('mode') && null !== $data->getMode()) {
-            $dataArray['Mode'] = $data->getMode();
+        if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
+            $dataArray['Mode'] = $data->mode ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\MountTmpfsOptionsConstraint());

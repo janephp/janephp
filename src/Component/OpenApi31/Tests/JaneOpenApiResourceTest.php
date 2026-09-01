@@ -95,14 +95,14 @@ class JaneOpenApiResourceTest extends TestCase
         // 4. Path and query parameters, enum, date format and array denormalization
         $thing = $client->getThing('thing-1', ['q' => 'search', 'page' => 2]);
         $this->assertInstanceOf(Thing::class, $thing);
-        $this->assertContains($thing->getKind(), ['created', 'updated', 'deleted']);
-        $this->assertInstanceOf(\DateTime::class, $thing->getCreatedAt());
-        $this->assertNotEmpty($thing->getTags());
+        $this->assertContains($thing->kind, ['created', 'updated', 'deleted']);
+        $this->assertInstanceOf(\DateTime::class, $thing->createdAt);
+        $this->assertNotEmpty($thing->tags);
 
         // 5. JSON request body
         $thingInput = new ThingInput();
-        $thingInput->setName('A thing');
-        $thingInput->setKind('created');
+        $thingInput->name = 'A thing';
+        $thingInput->kind = 'created';
         $createdThing = $client->createThing($thingInput);
         $this->assertInstanceOf(Thing::class, $createdThing);
 
@@ -113,7 +113,7 @@ class JaneOpenApiResourceTest extends TestCase
         // 7. allOf inheritance
         $thingDetails = $client->getThingDetails('thing-1');
         $this->assertInstanceOf(ThingDetails::class, $thingDetails);
-        $this->assertNotSame('', $thingDetails->getDescription());
+        $this->assertNotSame('', $thingDetails->description);
 
         // 8. 204 no content
         $this->assertNull($client->deleteThing('thing-1'));

@@ -41,27 +41,27 @@ class TaskStatusContainerStatusNormalizer implements DenormalizerInterface, Norm
             $this->validate($data, new \Docker\Api\Validator\TaskStatusContainerStatusConstraint());
         }
         if (\array_key_exists('ContainerID', $data)) {
-            $object->setContainerID($data['ContainerID']);
+            $object->containerID = $data['ContainerID'];
         }
         if (\array_key_exists('PID', $data)) {
-            $object->setPID($data['PID']);
+            $object->pID = $data['PID'];
         }
         if (\array_key_exists('ExitCode', $data)) {
-            $object->setExitCode($data['ExitCode']);
+            $object->exitCode = $data['ExitCode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('containerID') && null !== $data->getContainerID()) {
-            $dataArray['ContainerID'] = $data->getContainerID();
+        if (array_key_exists('containerID', get_object_vars($data)) && null !== ($data->containerID ?? null)) {
+            $dataArray['ContainerID'] = $data->containerID ?? null;
         }
-        if ($data->isInitialized('pID') && null !== $data->getPID()) {
-            $dataArray['PID'] = $data->getPID();
+        if (array_key_exists('pID', get_object_vars($data)) && null !== ($data->pID ?? null)) {
+            $dataArray['PID'] = $data->pID ?? null;
         }
-        if ($data->isInitialized('exitCode') && null !== $data->getExitCode()) {
-            $dataArray['ExitCode'] = $data->getExitCode();
+        if (array_key_exists('exitCode', get_object_vars($data)) && null !== ($data->exitCode ?? null)) {
+            $dataArray['ExitCode'] = $data->exitCode ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskStatusContainerStatusConstraint());

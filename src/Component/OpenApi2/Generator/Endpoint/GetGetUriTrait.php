@@ -33,8 +33,8 @@ trait GetGetUriTrait
 
             if ($parameter instanceof PathParameterSubSchema) {
                 // $url = str_replace('{param}', $param, $url)
-                $placeholders[] = $parameter->getName();
-                $propertyNames[] = $this->normalizePathPropertyName($parameter->getName());
+                $placeholders[] = $parameter->name;
+                $propertyNames[] = $this->normalizePathPropertyName($parameter->name);
             }
         }
 

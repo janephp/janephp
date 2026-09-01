@@ -38,15 +38,15 @@ class UpdateEndpointNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ttl', $data)) {
-            $object->setTtl($data['ttl']);
+            $object->ttl = $data['ttl'];
             unset($data['ttl']);
         }
         if (\array_key_exists('certificate_id', $data)) {
-            $object->setCertificateId($data['certificate_id']);
+            $object->certificateId = $data['certificate_id'];
             unset($data['certificate_id']);
         }
         if (\array_key_exists('custom_domain', $data)) {
-            $object->setCustomDomain($data['custom_domain']);
+            $object->customDomain = $data['custom_domain'];
             unset($data['custom_domain']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class UpdateEndpointNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ttl') && null !== $data->getTtl()) {
-            $dataArray['ttl'] = $data->getTtl();
+        if (array_key_exists('ttl', get_object_vars($data)) && null !== ($data->ttl ?? null)) {
+            $dataArray['ttl'] = $data->ttl ?? null;
         }
-        if ($data->isInitialized('certificateId') && null !== $data->getCertificateId()) {
-            $dataArray['certificate_id'] = $data->getCertificateId();
+        if (array_key_exists('certificateId', get_object_vars($data)) && null !== ($data->certificateId ?? null)) {
+            $dataArray['certificate_id'] = $data->certificateId ?? null;
         }
-        if ($data->isInitialized('customDomain') && null !== $data->getCustomDomain()) {
-            $dataArray['custom_domain'] = $data->getCustomDomain();
+        if (array_key_exists('customDomain', get_object_vars($data)) && null !== ($data->customDomain ?? null)) {
+            $dataArray['custom_domain'] = $data->customDomain ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

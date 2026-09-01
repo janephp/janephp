@@ -45,10 +45,10 @@ class SalesInvoiceFilterNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['invoiceIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setInvoiceIds($values);
+            $object->invoiceIds = $values;
         }
         elseif (\array_key_exists('invoiceIds', $data) && $data['invoiceIds'] === null) {
-            $object->setInvoiceIds(null);
+            $object->invoiceIds = null;
         }
         if (\array_key_exists('links', $data) && $data['links'] !== null) {
             $values_1 = [];
@@ -61,32 +61,32 @@ class SalesInvoiceFilterNormalizer implements DenormalizerInterface, NormalizerI
                 }
                 $values_1[] = $value_2;
             }
-            $object->setLinks($values_1);
+            $object->links = $values_1;
         }
         elseif (\array_key_exists('links', $data) && $data['links'] === null) {
-            $object->setLinks(null);
+            $object->links = null;
         }
         if (\array_key_exists('includePositions', $data) && $data['includePositions'] !== null) {
-            $object->setIncludePositions($data['includePositions']);
+            $object->includePositions = $data['includePositions'];
         }
         elseif (\array_key_exists('includePositions', $data) && $data['includePositions'] === null) {
-            $object->setIncludePositions(null);
+            $object->includePositions = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('invoiceIds') && null !== $data->getInvoiceIds()) {
+        if (array_key_exists('invoiceIds', get_object_vars($data)) && null !== ($data->invoiceIds ?? null)) {
             $values = [];
-            foreach ($data->getInvoiceIds() as $value) {
+            foreach ($data->invoiceIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['invoiceIds'] = $values;
         }
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
             $values_1 = [];
-            foreach ($data->getLinks() as $value_1) {
+            foreach ($data->links ?? null as $value_1) {
                 $value_2 = $value_1;
                 if (is_object($value_1)) {
                     $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
@@ -97,8 +97,8 @@ class SalesInvoiceFilterNormalizer implements DenormalizerInterface, NormalizerI
             }
             $dataArray['links'] = $values_1;
         }
-        if ($data->isInitialized('includePositions') && null !== $data->getIncludePositions()) {
-            $dataArray['includePositions'] = $data->getIncludePositions();
+        if (array_key_exists('includePositions', get_object_vars($data)) && null !== ($data->includePositions ?? null)) {
+            $dataArray['includePositions'] = $data->includePositions ?? null;
         }
         return $dataArray;
     }

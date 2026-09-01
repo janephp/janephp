@@ -41,131 +41,131 @@ class ScguserScgUserGroupNormalizer implements DenormalizerInterface, Normalizer
             $data['isFactoryDefault'] = (bool) $data['isFactoryDefault'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('tenantId', $data)) {
-            $object->setTenantId($data['tenantId']);
+            $object->tenantId = $data['tenantId'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('role', $data)) {
-            $object->setRole($data['role']);
+            $object->role = $data['role'];
         }
         if (\array_key_exists('accountSecurityProfileId', $data)) {
-            $object->setAccountSecurityProfileId($data['accountSecurityProfileId']);
+            $object->accountSecurityProfileId = $data['accountSecurityProfileId'];
         }
         if (\array_key_exists('accountSecurityProfileName', $data)) {
-            $object->setAccountSecurityProfileName($data['accountSecurityProfileName']);
+            $object->accountSecurityProfileName = $data['accountSecurityProfileName'];
         }
         if (\array_key_exists('permissions', $data)) {
             $values = [];
             foreach ($data['permissions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupPermissionWithoutDetailItems::class, 'json', $context);
             }
-            $object->setPermissions($values);
+            $object->permissions = $values;
         }
         if (\array_key_exists('resourceGroups', $data)) {
             $values_1 = [];
             foreach ($data['resourceGroups'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupResourceGroup::class, 'json', $context);
             }
-            $object->setResourceGroups($values_1);
+            $object->resourceGroups = $values_1;
         }
         if (\array_key_exists('isFactoryDefault', $data)) {
-            $object->setIsFactoryDefault($data['isFactoryDefault']);
+            $object->isFactoryDefault = $data['isFactoryDefault'];
         }
         if (\array_key_exists('users', $data)) {
             $values_2 = [];
             foreach ($data['users'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserGetScgUser::class, 'json', $context);
             }
-            $object->setUsers($values_2);
+            $object->users = $values_2;
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('creatorId', $data)) {
-            $object->setCreatorId($data['creatorId']);
+            $object->creatorId = $data['creatorId'];
         }
         if (\array_key_exists('modifierId', $data)) {
-            $object->setModifierId($data['modifierId']);
+            $object->modifierId = $data['modifierId'];
         }
         if (\array_key_exists('creatorUsername', $data)) {
-            $object->setCreatorUsername($data['creatorUsername']);
+            $object->creatorUsername = $data['creatorUsername'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('tenantId') && null !== $data->getTenantId()) {
-            $dataArray['tenantId'] = $data->getTenantId();
+        if (array_key_exists('tenantId', get_object_vars($data)) && null !== ($data->tenantId ?? null)) {
+            $dataArray['tenantId'] = $data->tenantId ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['role'] = $data->getRole();
-        $dataArray['accountSecurityProfileId'] = $data->getAccountSecurityProfileId();
-        if ($data->isInitialized('accountSecurityProfileName') && null !== $data->getAccountSecurityProfileName()) {
-            $dataArray['accountSecurityProfileName'] = $data->getAccountSecurityProfileName();
+        $dataArray['role'] = $data->role ?? null;
+        $dataArray['accountSecurityProfileId'] = $data->accountSecurityProfileId ?? null;
+        if (array_key_exists('accountSecurityProfileName', get_object_vars($data)) && null !== ($data->accountSecurityProfileName ?? null)) {
+            $dataArray['accountSecurityProfileName'] = $data->accountSecurityProfileName ?? null;
         }
         $values = [];
-        foreach ($data->getPermissions() as $value) {
+        foreach ($data->permissions ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['permissions'] = $values;
         $values_1 = [];
-        foreach ($data->getResourceGroups() as $value_1) {
+        foreach ($data->resourceGroups ?? null as $value_1) {
             $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['resourceGroups'] = $values_1;
-        if ($data->isInitialized('isFactoryDefault') && null !== $data->getIsFactoryDefault()) {
-            $dataArray['isFactoryDefault'] = $data->getIsFactoryDefault();
+        if (array_key_exists('isFactoryDefault', get_object_vars($data)) && null !== ($data->isFactoryDefault ?? null)) {
+            $dataArray['isFactoryDefault'] = $data->isFactoryDefault ?? null;
         }
-        if ($data->isInitialized('users') && null !== $data->getUsers()) {
+        if (array_key_exists('users', get_object_vars($data)) && null !== ($data->users ?? null)) {
             $values_2 = [];
-            foreach ($data->getUsers() as $value_2) {
+            foreach ($data->users ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['users'] = $values_2;
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
-            $dataArray['creatorId'] = $data->getCreatorId();
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
         }
-        if ($data->isInitialized('modifierId') && null !== $data->getModifierId()) {
-            $dataArray['modifierId'] = $data->getModifierId();
+        if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
+            $dataArray['modifierId'] = $data->modifierId ?? null;
         }
-        if ($data->isInitialized('creatorUsername') && null !== $data->getCreatorUsername()) {
-            $dataArray['creatorUsername'] = $data->getCreatorUsername();
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
         return $dataArray;
     }

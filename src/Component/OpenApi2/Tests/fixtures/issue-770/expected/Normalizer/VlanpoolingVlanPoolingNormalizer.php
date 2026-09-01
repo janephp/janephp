@@ -38,45 +38,45 @@ class VlanpoolingVlanPoolingNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('pool', $data)) {
-            $object->setPool($data['pool']);
+            $object->pool = $data['pool'];
         }
         if (\array_key_exists('algo', $data)) {
-            $object->setAlgo($data['algo']);
+            $object->algo = $data['algo'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('pool') && null !== $data->getPool()) {
-            $dataArray['pool'] = $data->getPool();
+        if (array_key_exists('pool', get_object_vars($data)) && null !== ($data->pool ?? null)) {
+            $dataArray['pool'] = $data->pool ?? null;
         }
-        if ($data->isInitialized('algo') && null !== $data->getAlgo()) {
-            $dataArray['algo'] = $data->getAlgo();
+        if (array_key_exists('algo', get_object_vars($data)) && null !== ($data->algo ?? null)) {
+            $dataArray['algo'] = $data->algo ?? null;
         }
         return $dataArray;
     }

@@ -41,21 +41,21 @@ class ImageDeleteResponseItemNormalizer implements DenormalizerInterface, Normal
             $this->validate($data, new \Docker\Api\Validator\ImageDeleteResponseItemConstraint());
         }
         if (\array_key_exists('Untagged', $data)) {
-            $object->setUntagged($data['Untagged']);
+            $object->untagged = $data['Untagged'];
         }
         if (\array_key_exists('Deleted', $data)) {
-            $object->setDeleted($data['Deleted']);
+            $object->deleted = $data['Deleted'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('untagged') && null !== $data->getUntagged()) {
-            $dataArray['Untagged'] = $data->getUntagged();
+        if (array_key_exists('untagged', get_object_vars($data)) && null !== ($data->untagged ?? null)) {
+            $dataArray['Untagged'] = $data->untagged ?? null;
         }
-        if ($data->isInitialized('deleted') && null !== $data->getDeleted()) {
-            $dataArray['Deleted'] = $data->getDeleted();
+        if (array_key_exists('deleted', get_object_vars($data)) && null !== ($data->deleted ?? null)) {
+            $dataArray['Deleted'] = $data->deleted ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImageDeleteResponseItemConstraint());

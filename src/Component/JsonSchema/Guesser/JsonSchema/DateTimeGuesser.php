@@ -30,7 +30,7 @@ class DateTimeGuesser implements GuesserInterface, TypeGuesserInterface
             return false;
         }
 
-        return $this->supportsType($object->getType()) && 'date-time' === $object->getFormat();
+        return $this->supportsType($object->type ?? null) && 'date-time' === ($object->format ?? null);
     }
 
     private function supportsType(mixed $type): bool

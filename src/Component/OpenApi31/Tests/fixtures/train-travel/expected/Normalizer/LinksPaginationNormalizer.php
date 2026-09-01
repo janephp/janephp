@@ -41,11 +41,11 @@ class LinksPaginationNormalizer implements DenormalizerInterface, NormalizerInte
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\LinksPaginationConstraint());
         }
         if (\array_key_exists('next', $data)) {
-            $object->setNext($data['next']);
+            $object->next = $data['next'];
             unset($data['next']);
         }
         if (\array_key_exists('prev', $data)) {
-            $object->setPrev($data['prev']);
+            $object->prev = $data['prev'];
             unset($data['prev']);
         }
         foreach ($data as $key => $value) {
@@ -58,11 +58,11 @@ class LinksPaginationNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('next') && null !== $data->getNext()) {
-            $dataArray['next'] = $data->getNext();
+        if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
+            $dataArray['next'] = $data->next ?? null;
         }
-        if ($data->isInitialized('prev') && null !== $data->getPrev()) {
-            $dataArray['prev'] = $data->getPrev();
+        if (array_key_exists('prev', get_object_vars($data)) && null !== ($data->prev ?? null)) {
+            $dataArray['prev'] = $data->prev ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

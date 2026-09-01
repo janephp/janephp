@@ -38,7 +38,7 @@ class GbImageTypesResponseNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($data['country']);
+            $object->country = $data['country'];
             unset($data['country']);
         }
         if (\array_key_exists('availableTypes', $data)) {
@@ -46,7 +46,7 @@ class GbImageTypesResponseNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['availableTypes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbImageTypesResponseAvailableTypesItem::class, 'json', $context);
             }
-            $object->setAvailableTypes($values);
+            $object->availableTypes = $values;
             unset($data['availableTypes']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class GbImageTypesResponseNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $data->getCountry();
+        if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
+            $dataArray['country'] = $data->country ?? null;
         }
-        if ($data->isInitialized('availableTypes') && null !== $data->getAvailableTypes()) {
+        if (array_key_exists('availableTypes', get_object_vars($data)) && null !== ($data->availableTypes ?? null)) {
             $values = [];
-            foreach ($data->getAvailableTypes() as $value) {
+            foreach ($data->availableTypes ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['availableTypes'] = $values;

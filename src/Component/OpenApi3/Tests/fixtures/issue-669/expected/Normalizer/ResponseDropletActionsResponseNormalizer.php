@@ -42,7 +42,7 @@ class ResponseDropletActionsResponseNormalizer implements DenormalizerInterface,
             foreach ($data['actions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\Action::class, 'json', $context);
             }
-            $object->setActions($values);
+            $object->actions = $values;
             unset($data['actions']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseDropletActionsResponseNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('actions') && null !== $data->getActions()) {
+        if (array_key_exists('actions', get_object_vars($data)) && null !== ($data->actions ?? null)) {
             $values = [];
-            foreach ($data->getActions() as $value) {
+            foreach ($data->actions ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['actions'] = $values;

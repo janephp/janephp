@@ -44,22 +44,22 @@ class SchemaImportRequestNormalizer implements DenormalizerInterface, Normalizer
             $data['importListItems'] = (bool) $data['importListItems'];
         }
         if (\array_key_exists('fileTransferId', $data)) {
-            $object->setFileTransferId($data['fileTransferId']);
+            $object->fileTransferId = $data['fileTransferId'];
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
-            $object->setAllowMissingDependencies($data['allowMissingDependencies']);
+            $object->allowMissingDependencies = $data['allowMissingDependencies'];
         }
         if (\array_key_exists('importListItems', $data)) {
-            $object->setImportListItems($data['importListItems']);
+            $object->importListItems = $data['importListItems'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['fileTransferId'] = $data->getFileTransferId();
-        $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();
-        $dataArray['importListItems'] = $data->getImportListItems();
+        $dataArray['fileTransferId'] = $data->fileTransferId ?? null;
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
+        $dataArray['importListItems'] = $data->importListItems ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

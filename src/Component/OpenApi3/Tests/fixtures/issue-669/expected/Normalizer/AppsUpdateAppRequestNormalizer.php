@@ -41,11 +41,11 @@ class AppsUpdateAppRequestNormalizer implements DenormalizerInterface, Normalize
             $data['update_all_source_versions'] = (bool) $data['update_all_source_versions'];
         }
         if (\array_key_exists('spec', $data)) {
-            $object->setSpec($this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context));
+            $object->spec = $this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context);
             unset($data['spec']);
         }
         if (\array_key_exists('update_all_source_versions', $data)) {
-            $object->setUpdateAllSourceVersions($data['update_all_source_versions']);
+            $object->updateAllSourceVersions = $data['update_all_source_versions'];
             unset($data['update_all_source_versions']);
         }
         foreach ($data as $key => $value) {
@@ -58,9 +58,9 @@ class AppsUpdateAppRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['spec'] = $data->getSpec() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
-        if ($data->isInitialized('updateAllSourceVersions') && null !== $data->getUpdateAllSourceVersions()) {
-            $dataArray['update_all_source_versions'] = $data->getUpdateAllSourceVersions();
+        $dataArray['spec'] = ($data->spec ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
+        if (array_key_exists('updateAllSourceVersions', get_object_vars($data)) && null !== ($data->updateAllSourceVersions ?? null)) {
+            $dataArray['update_all_source_versions'] = $data->updateAllSourceVersions ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

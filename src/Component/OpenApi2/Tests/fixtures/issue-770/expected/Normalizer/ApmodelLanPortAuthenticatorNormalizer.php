@@ -44,32 +44,32 @@ class ApmodelLanPortAuthenticatorNormalizer implements DenormalizerInterface, No
             $data['macAuthByPassEnabled'] = (bool) $data['macAuthByPassEnabled'];
         }
         if (\array_key_exists('authentication', $data)) {
-            $object->setAuthentication($this->denormalizer->denormalize($data['authentication'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelAuthenticatorAAAServer::class, 'json', $context));
+            $object->authentication = $this->denormalizer->denormalize($data['authentication'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelAuthenticatorAAAServer::class, 'json', $context);
         }
         if (\array_key_exists('disabledAccounting', $data)) {
-            $object->setDisabledAccounting($data['disabledAccounting']);
+            $object->disabledAccounting = $data['disabledAccounting'];
         }
         if (\array_key_exists('accounting', $data)) {
-            $object->setAccounting($this->denormalizer->denormalize($data['accounting'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelAuthenticatorAAAServer::class, 'json', $context));
+            $object->accounting = $this->denormalizer->denormalize($data['accounting'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelAuthenticatorAAAServer::class, 'json', $context);
         }
         if (\array_key_exists('macAuthByPassEnabled', $data)) {
-            $object->setMacAuthByPassEnabled($data['macAuthByPassEnabled']);
+            $object->macAuthByPassEnabled = $data['macAuthByPassEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('authentication') && null !== $data->getAuthentication()) {
-            $dataArray['authentication'] = $data->getAuthentication() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAuthentication(), 'json', $context));
+        if (array_key_exists('authentication', get_object_vars($data)) && null !== ($data->authentication ?? null)) {
+            $dataArray['authentication'] = ($data->authentication ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->authentication ?? null, 'json', $context));
         }
-        if ($data->isInitialized('disabledAccounting') && null !== $data->getDisabledAccounting()) {
-            $dataArray['disabledAccounting'] = $data->getDisabledAccounting();
+        if (array_key_exists('disabledAccounting', get_object_vars($data)) && null !== ($data->disabledAccounting ?? null)) {
+            $dataArray['disabledAccounting'] = $data->disabledAccounting ?? null;
         }
-        if ($data->isInitialized('accounting') && null !== $data->getAccounting()) {
-            $dataArray['accounting'] = $data->getAccounting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAccounting(), 'json', $context));
+        if (array_key_exists('accounting', get_object_vars($data)) && null !== ($data->accounting ?? null)) {
+            $dataArray['accounting'] = ($data->accounting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->accounting ?? null, 'json', $context));
         }
-        $dataArray['macAuthByPassEnabled'] = $data->getMacAuthByPassEnabled();
+        $dataArray['macAuthByPassEnabled'] = $data->macAuthByPassEnabled ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -38,7 +38,7 @@ class DatabaseLayoutOptionNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('num_nodes', $data)) {
-            $object->setNumNodes($data['num_nodes']);
+            $object->numNodes = $data['num_nodes'];
             unset($data['num_nodes']);
         }
         if (\array_key_exists('sizes', $data)) {
@@ -46,7 +46,7 @@ class DatabaseLayoutOptionNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['sizes'] as $value) {
                 $values[] = $value;
             }
-            $object->setSizes($values);
+            $object->sizes = $values;
             unset($data['sizes']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,8 +59,8 @@ class DatabaseLayoutOptionNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('numNodes') && null !== $data->getNumNodes()) {
-            $dataArray['num_nodes'] = $data->getNumNodes();
+        if (array_key_exists('numNodes', get_object_vars($data)) && null !== ($data->numNodes ?? null)) {
+            $dataArray['num_nodes'] = $data->numNodes ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

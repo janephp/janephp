@@ -41,43 +41,43 @@ class BulkResponseRowNormalizer implements DenormalizerInterface, NormalizerInte
             $data['succeeded'] = (bool) $data['succeeded'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
         }
         if (\array_key_exists('error', $data) && $data['error'] !== null) {
-            $object->setError($data['error']);
+            $object->error = $data['error'];
         }
         elseif (\array_key_exists('error', $data) && $data['error'] === null) {
-            $object->setError(null);
+            $object->error = null;
         }
         if (\array_key_exists('succeeded', $data)) {
-            $object->setSucceeded($data['succeeded']);
+            $object->succeeded = $data['succeeded'];
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
-            $object->setRequestId($data['requestId']);
+            $object->requestId = $data['requestId'];
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
-            $object->setRequestId(null);
+            $object->requestId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['version'] = $data->getVersion();
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['error'] = $data->getError();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['version'] = $data->version ?? null;
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $dataArray['error'] = $data->error ?? null;
         }
-        $dataArray['succeeded'] = $data->getSucceeded();
-        $dataArray['status'] = $data->getStatus();
-        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
-            $dataArray['requestId'] = $data->getRequestId();
+        $dataArray['succeeded'] = $data->succeeded ?? null;
+        $dataArray['status'] = $data->status ?? null;
+        if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
+            $dataArray['requestId'] = $data->requestId ?? null;
         }
         return $dataArray;
     }

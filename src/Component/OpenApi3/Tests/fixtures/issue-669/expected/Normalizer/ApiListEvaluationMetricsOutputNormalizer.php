@@ -42,7 +42,7 @@ class ApiListEvaluationMetricsOutputNormalizer implements DenormalizerInterface,
             foreach ($data['metrics'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiEvaluationMetric::class, 'json', $context);
             }
-            $object->setMetrics($values);
+            $object->metrics = $values;
             unset($data['metrics']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ApiListEvaluationMetricsOutputNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('metrics') && null !== $data->getMetrics()) {
+        if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
             $values = [];
-            foreach ($data->getMetrics() as $value) {
+            foreach ($data->metrics ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['metrics'] = $values;

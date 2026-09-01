@@ -38,15 +38,15 @@ class BalanceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('month_to_date_balance', $data)) {
-            $object->setMonthToDateBalance($data['month_to_date_balance']);
+            $object->monthToDateBalance = $data['month_to_date_balance'];
             unset($data['month_to_date_balance']);
         }
         if (\array_key_exists('account_balance', $data)) {
-            $object->setAccountBalance($data['account_balance']);
+            $object->accountBalance = $data['account_balance'];
             unset($data['account_balance']);
         }
         if (\array_key_exists('month_to_date_usage', $data)) {
-            $object->setMonthToDateUsage($data['month_to_date_usage']);
+            $object->monthToDateUsage = $data['month_to_date_usage'];
             unset($data['month_to_date_usage']);
         }
         if (\array_key_exists('generated_at', $data)) {
@@ -54,7 +54,7 @@ class BalanceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['generated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setGeneratedAt($date);
+            $object->generatedAt = $date;
             unset($data['generated_at']);
         }
         foreach ($data as $key => $value) {
@@ -67,17 +67,17 @@ class BalanceNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('monthToDateBalance') && null !== $data->getMonthToDateBalance()) {
-            $dataArray['month_to_date_balance'] = $data->getMonthToDateBalance();
+        if (array_key_exists('monthToDateBalance', get_object_vars($data)) && null !== ($data->monthToDateBalance ?? null)) {
+            $dataArray['month_to_date_balance'] = $data->monthToDateBalance ?? null;
         }
-        if ($data->isInitialized('accountBalance') && null !== $data->getAccountBalance()) {
-            $dataArray['account_balance'] = $data->getAccountBalance();
+        if (array_key_exists('accountBalance', get_object_vars($data)) && null !== ($data->accountBalance ?? null)) {
+            $dataArray['account_balance'] = $data->accountBalance ?? null;
         }
-        if ($data->isInitialized('monthToDateUsage') && null !== $data->getMonthToDateUsage()) {
-            $dataArray['month_to_date_usage'] = $data->getMonthToDateUsage();
+        if (array_key_exists('monthToDateUsage', get_object_vars($data)) && null !== ($data->monthToDateUsage ?? null)) {
+            $dataArray['month_to_date_usage'] = $data->monthToDateUsage ?? null;
         }
-        if ($data->isInitialized('generatedAt') && null !== $data->getGeneratedAt()) {
-            $dataArray['generated_at'] = $data->getGeneratedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('generatedAt', get_object_vars($data)) && null !== ($data->generatedAt ?? null)) {
+            $dataArray['generated_at'] = ($data->generatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

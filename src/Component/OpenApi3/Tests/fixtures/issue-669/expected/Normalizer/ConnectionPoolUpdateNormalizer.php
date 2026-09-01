@@ -38,19 +38,19 @@ class ConnectionPoolUpdateNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mode', $data)) {
-            $object->setMode($data['mode']);
+            $object->mode = $data['mode'];
             unset($data['mode']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         if (\array_key_exists('db', $data)) {
-            $object->setDb($data['db']);
+            $object->db = $data['db'];
             unset($data['db']);
         }
         if (\array_key_exists('user', $data)) {
-            $object->setUser($data['user']);
+            $object->user = $data['user'];
             unset($data['user']);
         }
         foreach ($data as $key => $value) {
@@ -63,11 +63,11 @@ class ConnectionPoolUpdateNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['mode'] = $data->getMode();
-        $dataArray['size'] = $data->getSize();
-        $dataArray['db'] = $data->getDb();
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['user'] = $data->getUser();
+        $dataArray['mode'] = $data->mode ?? null;
+        $dataArray['size'] = $data->size ?? null;
+        $dataArray['db'] = $data->db ?? null;
+        if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
+            $dataArray['user'] = $data->user ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

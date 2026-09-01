@@ -42,7 +42,7 @@ class ResponseFloatingIpCreatedLinksNormalizer implements DenormalizerInterface,
             foreach ($data['droplets'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ActionLink::class, 'json', $context);
             }
-            $object->setDroplets($values);
+            $object->droplets = $values;
             unset($data['droplets']);
         }
         if (\array_key_exists('actions', $data)) {
@@ -50,7 +50,7 @@ class ResponseFloatingIpCreatedLinksNormalizer implements DenormalizerInterface,
             foreach ($data['actions'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\ActionLink::class, 'json', $context);
             }
-            $object->setActions($values_1);
+            $object->actions = $values_1;
             unset($data['actions']);
         }
         foreach ($data as $key => $value_2) {
@@ -63,16 +63,16 @@ class ResponseFloatingIpCreatedLinksNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('droplets') && null !== $data->getDroplets()) {
+        if (array_key_exists('droplets', get_object_vars($data)) && null !== ($data->droplets ?? null)) {
             $values = [];
-            foreach ($data->getDroplets() as $value) {
+            foreach ($data->droplets ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['droplets'] = $values;
         }
-        if ($data->isInitialized('actions') && null !== $data->getActions()) {
+        if (array_key_exists('actions', get_object_vars($data)) && null !== ($data->actions ?? null)) {
             $values_1 = [];
-            foreach ($data->getActions() as $value_1) {
+            foreach ($data->actions ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['actions'] = $values_1;

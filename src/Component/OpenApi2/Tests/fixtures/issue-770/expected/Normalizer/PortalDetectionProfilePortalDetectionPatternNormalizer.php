@@ -38,33 +38,33 @@ class PortalDetectionProfilePortalDetectionPatternNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('patternType', $data)) {
-            $object->setPatternType($data['patternType']);
+            $object->patternType = $data['patternType'];
         }
         if (\array_key_exists('userAgentPattern', $data)) {
-            $object->setUserAgentPattern($data['userAgentPattern']);
+            $object->userAgentPattern = $data['userAgentPattern'];
         }
         if (\array_key_exists('httpCode', $data)) {
-            $object->setHttpCode($data['httpCode']);
+            $object->httpCode = $data['httpCode'];
         }
         if (\array_key_exists('httpResponseBody', $data)) {
-            $object->setHttpResponseBody($data['httpResponseBody']);
+            $object->httpResponseBody = $data['httpResponseBody'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('patternType') && null !== $data->getPatternType()) {
-            $dataArray['patternType'] = $data->getPatternType();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('patternType', get_object_vars($data)) && null !== ($data->patternType ?? null)) {
+            $dataArray['patternType'] = $data->patternType ?? null;
         }
-        $dataArray['userAgentPattern'] = $data->getUserAgentPattern();
-        $dataArray['httpCode'] = $data->getHttpCode();
-        if ($data->isInitialized('httpResponseBody') && null !== $data->getHttpResponseBody()) {
-            $dataArray['httpResponseBody'] = $data->getHttpResponseBody();
+        $dataArray['userAgentPattern'] = $data->userAgentPattern ?? null;
+        $dataArray['httpCode'] = $data->httpCode ?? null;
+        if (array_key_exists('httpResponseBody', get_object_vars($data)) && null !== ($data->httpResponseBody ?? null)) {
+            $dataArray['httpResponseBody'] = $data->httpResponseBody ?? null;
         }
         return $dataArray;
     }

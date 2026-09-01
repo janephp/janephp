@@ -45,16 +45,16 @@ class NetworksPrunePostResponse200Normalizer implements DenormalizerInterface, N
             foreach ($data['NetworksDeleted'] as $value) {
                 $values[] = $value;
             }
-            $object->setNetworksDeleted($values);
+            $object->networksDeleted = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('networksDeleted') && null !== $data->getNetworksDeleted()) {
+        if (array_key_exists('networksDeleted', get_object_vars($data)) && null !== ($data->networksDeleted ?? null)) {
             $values = [];
-            foreach ($data->getNetworksDeleted() as $value) {
+            foreach ($data->networksDeleted ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['NetworksDeleted'] = $values;

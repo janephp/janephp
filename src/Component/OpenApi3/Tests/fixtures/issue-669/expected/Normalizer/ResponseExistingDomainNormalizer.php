@@ -38,7 +38,7 @@ class ResponseExistingDomainNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('domain', $data)) {
-            $object->setDomain($this->denormalizer->denormalize($data['domain'], \Jane\Generated\DigitalOcean\Model\Domain::class, 'json', $context));
+            $object->domain = $this->denormalizer->denormalize($data['domain'], \Jane\Generated\DigitalOcean\Model\Domain::class, 'json', $context);
             unset($data['domain']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseExistingDomainNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('domain') && null !== $data->getDomain()) {
-            $dataArray['domain'] = $data->getDomain() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDomain(), 'json', $context));
+        if (array_key_exists('domain', get_object_vars($data)) && null !== ($data->domain ?? null)) {
+            $dataArray['domain'] = ($data->domain ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->domain ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,27 +38,27 @@ class PartnerAttachmentNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
             unset($data['state']);
         }
         if (\array_key_exists('connection_bandwidth_in_mbps', $data)) {
-            $object->setConnectionBandwidthInMbps($data['connection_bandwidth_in_mbps']);
+            $object->connectionBandwidthInMbps = $data['connection_bandwidth_in_mbps'];
             unset($data['connection_bandwidth_in_mbps']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('naas_provider', $data)) {
-            $object->setNaasProvider($data['naas_provider']);
+            $object->naasProvider = $data['naas_provider'];
             unset($data['naas_provider']);
         }
         if (\array_key_exists('vpc_ids', $data)) {
@@ -66,11 +66,11 @@ class PartnerAttachmentNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['vpc_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setVpcIds($values);
+            $object->vpcIds = $values;
             unset($data['vpc_ids']);
         }
         if (\array_key_exists('bgp', $data)) {
-            $object->setBgp($this->denormalizer->denormalize($data['bgp'], \Jane\Generated\DigitalOcean\Model\PartnerAttachmentBgp::class, 'json', $context));
+            $object->bgp = $this->denormalizer->denormalize($data['bgp'], \Jane\Generated\DigitalOcean\Model\PartnerAttachmentBgp::class, 'json', $context);
             unset($data['bgp']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -78,11 +78,11 @@ class PartnerAttachmentNormalizer implements DenormalizerInterface, NormalizerIn
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('parent_uuid', $data)) {
-            $object->setParentUuid($data['parent_uuid']);
+            $object->parentUuid = $data['parent_uuid'];
             unset($data['parent_uuid']);
         }
         if (\array_key_exists('children', $data)) {
@@ -90,7 +90,7 @@ class PartnerAttachmentNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['children'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setChildren($values_1);
+            $object->children = $values_1;
             unset($data['children']);
         }
         foreach ($data as $key => $value_2) {
@@ -103,27 +103,27 @@ class PartnerAttachmentNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('connectionBandwidthInMbps') && null !== $data->getConnectionBandwidthInMbps()) {
-            $dataArray['connection_bandwidth_in_mbps'] = $data->getConnectionBandwidthInMbps();
+        if (array_key_exists('connectionBandwidthInMbps', get_object_vars($data)) && null !== ($data->connectionBandwidthInMbps ?? null)) {
+            $dataArray['connection_bandwidth_in_mbps'] = $data->connectionBandwidthInMbps ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        if ($data->isInitialized('naasProvider') && null !== $data->getNaasProvider()) {
-            $dataArray['naas_provider'] = $data->getNaasProvider();
+        if (array_key_exists('naasProvider', get_object_vars($data)) && null !== ($data->naasProvider ?? null)) {
+            $dataArray['naas_provider'] = $data->naasProvider ?? null;
         }
-        if ($data->isInitialized('vpcIds') && null !== $data->getVpcIds()) {
+        if (array_key_exists('vpcIds', get_object_vars($data)) && null !== ($data->vpcIds ?? null)) {
             $values = [];
-            foreach ($data->getVpcIds() as $value) {
+            foreach ($data->vpcIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['vpc_ids'] = $values;
         }
-        if ($data->isInitialized('bgp') && null !== $data->getBgp()) {
-            $dataArray['bgp'] = $data->getBgp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBgp(), 'json', $context));
+        if (array_key_exists('bgp', get_object_vars($data)) && null !== ($data->bgp ?? null)) {
+            $dataArray['bgp'] = ($data->bgp ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bgp ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

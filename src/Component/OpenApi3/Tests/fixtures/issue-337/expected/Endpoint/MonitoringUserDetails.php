@@ -50,7 +50,7 @@ class MonitoringUserDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\API\Model\UserDetails', 'json');
         }
     }

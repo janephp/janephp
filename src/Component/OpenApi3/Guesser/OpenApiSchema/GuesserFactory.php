@@ -3,7 +3,9 @@
 namespace Jane\Component\OpenApi3\Guesser\OpenApiSchema;
 
 use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\JsonSchema\Generator\Options;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
+use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AdditionalPropertiesGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AllOfGuesser;
@@ -23,19 +25,20 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class GuesserFactory
 {
-    public static function create(DenormalizerInterface $denormalizer, array $options = []): ChainGuesser
+    public static function create(DenormalizerInterface $denormalizer, array $options = [], ?ChainValidatorFactory $chainValidatorFactory = null): ChainGuesser
     {
+        $options = Options::fromArray($options);
         $naming = new Naming();
-        $dateFormat = $options['full-date-format'] ?? 'Y-m-d';
-        $outputDateTimeFormat = $options['date-format'] ?? \DateTimeInterface::RFC3339;
-        $inputDateTimeFormat = $options['date-input-format'] ?? null;
-        $datePreferInterface = $options['date-prefer-interface'] ?? null;
-        $customStringFormatMapping = $options['custom-string-format-mapping'] ?? [];
-        $operationNaming = OperationNamingFactory::create($options['operation-namings'] ?? []);
-        $defaultAdditionalProperties = $options['default-additional-properties'] ?? null;
+        $dateFormat = $options->fullDateFormat;
+        $outputDateTimeFormat = $options->dateFormat;
+        $inputDateTimeFormat = $options->dateInputFormat;
+        $datePreferInterface = $options->datePreferInterface;
+        $customStringFormatMapping = $options->customStringFormatMapping;
+        $operationNaming = OperationNamingFactory::create($options->operationNamings);
+        $defaultAdditionalProperties = $options->defaultAdditionalProperties;
 
         $chainGuesser = new ChainGuesser();
-        if ($options['enums-as-objects'] ?? false) {
+        if ($options->enumsAsObjects) {
             $chainGuesser->addGuesser(new EnumGuesser(Schema::class, $naming));
         }
         $chainGuesser->addGuesser(new SecurityGuesser());
@@ -45,10 +48,10 @@ class GuesserFactory
         $chainGuesser->addGuesser(new BinaryStringFormatGuesser(Schema::class));
         $chainGuesser->addGuesser(new ReferenceGuesser($denormalizer, Schema::class));
         $chainGuesser->addGuesser(new OpenApiGuesser($denormalizer, $operationNaming));
-        $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming, $defaultAdditionalProperties));
+        $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming, $defaultAdditionalProperties, $chainValidatorFactory));
         $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(Schema::class, $defaultAdditionalProperties));
         $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, Schema::class, $defaultAdditionalProperties));
-        $chainGuesser->addGuesser(new AnyOfReferencefGuesser($denormalizer, $naming, Schema::class));
+        $chainGuesser->addGuesser(new AnyOfReferenceGuesser($denormalizer, $naming, Schema::class));
         $chainGuesser->addGuesser(new OneOfGuesser($denormalizer, Schema::class));
         $chainGuesser->addGuesser(new ArrayGuesser(Schema::class));
         $chainGuesser->addGuesser(new ItemsGuesser(Schema::class));

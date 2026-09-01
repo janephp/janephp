@@ -41,65 +41,65 @@ class RadioRadio24gZoneNormalizer implements DenormalizerInterface, NormalizerIn
             $data['autoCellSizing'] = (bool) $data['autoCellSizing'];
         }
         if (\array_key_exists('autoCellSizing', $data)) {
-            $object->setAutoCellSizing($data['autoCellSizing']);
+            $object->autoCellSizing = $data['autoCellSizing'];
         }
         if (\array_key_exists('txPower', $data)) {
-            $object->setTxPower($data['txPower']);
+            $object->txPower = $data['txPower'];
         }
         if (\array_key_exists('channelWidth', $data)) {
-            $object->setChannelWidth($data['channelWidth']);
+            $object->channelWidth = $data['channelWidth'];
         }
         if (\array_key_exists('channel', $data)) {
-            $object->setChannel($data['channel']);
+            $object->channel = $data['channel'];
         }
         if (\array_key_exists('channelRange', $data)) {
             $values = [];
             foreach ($data['channelRange'] as $value) {
                 $values[] = $value;
             }
-            $object->setChannelRange($values);
+            $object->channelRange = $values;
         }
         if (\array_key_exists('backgroundScanning', $data)) {
-            $object->setBackgroundScanning($this->denormalizer->denormalize($data['backgroundScanning'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioBackgroundScanning::class, 'json', $context));
+            $object->backgroundScanning = $this->denormalizer->denormalize($data['backgroundScanning'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioBackgroundScanning::class, 'json', $context);
         }
         if (\array_key_exists('protectionMode', $data)) {
-            $object->setProtectionMode($data['protectionMode']);
+            $object->protectionMode = $data['protectionMode'];
         }
         if (\array_key_exists('autoChannelSelection', $data)) {
-            $object->setAutoChannelSelection($this->denormalizer->denormalize($data['autoChannelSelection'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioAutoChannelSelection::class, 'json', $context));
+            $object->autoChannelSelection = $this->denormalizer->denormalize($data['autoChannelSelection'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioAutoChannelSelection::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('autoCellSizing') && null !== $data->getAutoCellSizing()) {
-            $dataArray['autoCellSizing'] = $data->getAutoCellSizing();
+        if (array_key_exists('autoCellSizing', get_object_vars($data)) && null !== ($data->autoCellSizing ?? null)) {
+            $dataArray['autoCellSizing'] = $data->autoCellSizing ?? null;
         }
-        if ($data->isInitialized('txPower') && null !== $data->getTxPower()) {
-            $dataArray['txPower'] = $data->getTxPower();
+        if (array_key_exists('txPower', get_object_vars($data)) && null !== ($data->txPower ?? null)) {
+            $dataArray['txPower'] = $data->txPower ?? null;
         }
-        if ($data->isInitialized('channelWidth') && null !== $data->getChannelWidth()) {
-            $dataArray['channelWidth'] = $data->getChannelWidth();
+        if (array_key_exists('channelWidth', get_object_vars($data)) && null !== ($data->channelWidth ?? null)) {
+            $dataArray['channelWidth'] = $data->channelWidth ?? null;
         }
-        if ($data->isInitialized('channel') && null !== $data->getChannel()) {
-            $dataArray['channel'] = $data->getChannel();
+        if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
+            $dataArray['channel'] = $data->channel ?? null;
         }
-        if ($data->isInitialized('channelRange') && null !== $data->getChannelRange()) {
+        if (array_key_exists('channelRange', get_object_vars($data)) && null !== ($data->channelRange ?? null)) {
             $values = [];
-            foreach ($data->getChannelRange() as $value) {
+            foreach ($data->channelRange ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['channelRange'] = $values;
         }
-        if ($data->isInitialized('backgroundScanning') && null !== $data->getBackgroundScanning()) {
-            $dataArray['backgroundScanning'] = $data->getBackgroundScanning() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBackgroundScanning(), 'json', $context));
+        if (array_key_exists('backgroundScanning', get_object_vars($data)) && null !== ($data->backgroundScanning ?? null)) {
+            $dataArray['backgroundScanning'] = ($data->backgroundScanning ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->backgroundScanning ?? null, 'json', $context));
         }
-        if ($data->isInitialized('protectionMode') && null !== $data->getProtectionMode()) {
-            $dataArray['protectionMode'] = $data->getProtectionMode();
+        if (array_key_exists('protectionMode', get_object_vars($data)) && null !== ($data->protectionMode ?? null)) {
+            $dataArray['protectionMode'] = $data->protectionMode ?? null;
         }
-        if ($data->isInitialized('autoChannelSelection') && null !== $data->getAutoChannelSelection()) {
-            $dataArray['autoChannelSelection'] = $data->getAutoChannelSelection() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAutoChannelSelection(), 'json', $context));
+        if (array_key_exists('autoChannelSelection', get_object_vars($data)) && null !== ($data->autoChannelSelection ?? null)) {
+            $dataArray['autoChannelSelection'] = ($data->autoChannelSelection ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->autoChannelSelection ?? null, 'json', $context));
         }
         return $dataArray;
     }

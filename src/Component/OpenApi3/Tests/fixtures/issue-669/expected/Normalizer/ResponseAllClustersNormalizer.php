@@ -42,15 +42,15 @@ class ResponseAllClustersNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['kubernetes_clusters'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ClusterRead::class, 'json', $context);
             }
-            $object->setKubernetesClusters($values);
+            $object->kubernetesClusters = $values;
             unset($data['kubernetes_clusters']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\PageLinks::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\PageLinks::class, 'json', $context);
             unset($data['links']);
         }
         if (\array_key_exists('meta', $data)) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\MetaMeta::class, 'json', $context));
+            $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\MetaMeta::class, 'json', $context);
             unset($data['meta']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,17 +63,17 @@ class ResponseAllClustersNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('kubernetesClusters') && null !== $data->getKubernetesClusters()) {
+        if (array_key_exists('kubernetesClusters', get_object_vars($data)) && null !== ($data->kubernetesClusters ?? null)) {
             $values = [];
-            foreach ($data->getKubernetesClusters() as $value) {
+            foreach ($data->kubernetesClusters ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['kubernetes_clusters'] = $values;
         }
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
-        $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
+        $dataArray['meta'] = ($data->meta ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

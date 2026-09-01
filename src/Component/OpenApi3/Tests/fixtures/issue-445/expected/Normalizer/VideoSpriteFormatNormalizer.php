@@ -38,7 +38,7 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('spriteResizeAction', $data) && $data['spriteResizeAction'] !== null) {
@@ -46,27 +46,27 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
             if (is_array($data['spriteResizeAction']) and \array_key_exists('width', $data['spriteResizeAction']) and \array_key_exists('height', $data['spriteResizeAction']) and \array_key_exists('resizeMode', $data['spriteResizeAction'])) {
                 $value = $this->denormalizer->denormalize($data['spriteResizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
             }
-            $object->setSpriteResizeAction($value);
+            $object->spriteResizeAction = $value;
             unset($data['spriteResizeAction']);
         }
         elseif (\array_key_exists('spriteResizeAction', $data) && $data['spriteResizeAction'] === null) {
-            $object->setSpriteResizeAction(null);
+            $object->spriteResizeAction = null;
             unset($data['spriteResizeAction']);
         }
         if (\array_key_exists('maxNumberOfSprites', $data)) {
-            $object->setMaxNumberOfSprites($data['maxNumberOfSprites']);
+            $object->maxNumberOfSprites = $data['maxNumberOfSprites'];
             unset($data['maxNumberOfSprites']);
         }
         if (\array_key_exists('quality', $data)) {
-            $object->setQuality($data['quality']);
+            $object->quality = $data['quality'];
             unset($data['quality']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
-            $object->setExtension($data['extension']);
+            $object->extension = $data['extension'];
             unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
-            $object->setExtension(null);
+            $object->extension = null;
             unset($data['extension']);
         }
         foreach ($data as $key => $value_1) {
@@ -79,22 +79,22 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('spriteResizeAction') && null !== $data->getSpriteResizeAction()) {
-            $value = $data->getSpriteResizeAction();
-            if (is_object($data->getSpriteResizeAction())) {
-                $value = $data->getSpriteResizeAction() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getSpriteResizeAction(), 'json', $context));
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('spriteResizeAction', get_object_vars($data)) && null !== ($data->spriteResizeAction ?? null)) {
+            $value = $data->spriteResizeAction ?? null;
+            if (is_object($data->spriteResizeAction ?? null)) {
+                $value = ($data->spriteResizeAction ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->spriteResizeAction ?? null, 'json', $context));
             }
             $dataArray['spriteResizeAction'] = $value;
         }
-        if ($data->isInitialized('maxNumberOfSprites') && null !== $data->getMaxNumberOfSprites()) {
-            $dataArray['maxNumberOfSprites'] = $data->getMaxNumberOfSprites();
+        if (array_key_exists('maxNumberOfSprites', get_object_vars($data)) && null !== ($data->maxNumberOfSprites ?? null)) {
+            $dataArray['maxNumberOfSprites'] = $data->maxNumberOfSprites ?? null;
         }
-        if ($data->isInitialized('quality') && null !== $data->getQuality()) {
-            $dataArray['quality'] = $data->getQuality();
+        if (array_key_exists('quality', get_object_vars($data)) && null !== ($data->quality ?? null)) {
+            $dataArray['quality'] = $data->quality ?? null;
         }
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
-            $dataArray['extension'] = $data->getExtension();
+        if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
+            $dataArray['extension'] = $data->extension ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

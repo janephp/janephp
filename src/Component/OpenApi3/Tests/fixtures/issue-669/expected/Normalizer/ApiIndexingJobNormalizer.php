@@ -41,7 +41,7 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             $data['is_report_available'] = (bool) $data['is_report_available'];
         }
         if (\array_key_exists('completed_datasources', $data)) {
-            $object->setCompletedDatasources($data['completed_datasources']);
+            $object->completedDatasources = $data['completed_datasources'];
             unset($data['completed_datasources']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -49,7 +49,7 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('data_source_jobs', $data)) {
@@ -57,7 +57,7 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['data_source_jobs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiIndexedDataSource::class, 'json', $context);
             }
-            $object->setDataSourceJobs($values);
+            $object->dataSourceJobs = $values;
             unset($data['data_source_jobs']);
         }
         if (\array_key_exists('data_source_uuids', $data)) {
@@ -65,7 +65,7 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['data_source_uuids'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setDataSourceUuids($values_1);
+            $object->dataSourceUuids = $values_1;
             unset($data['data_source_uuids']);
         }
         if (\array_key_exists('finished_at', $data)) {
@@ -73,19 +73,19 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['finished_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setFinishedAt($date_1);
+            $object->finishedAt = $date_1;
             unset($data['finished_at']);
         }
         if (\array_key_exists('is_report_available', $data)) {
-            $object->setIsReportAvailable($data['is_report_available']);
+            $object->isReportAvailable = $data['is_report_available'];
             unset($data['is_report_available']);
         }
         if (\array_key_exists('knowledge_base_uuid', $data)) {
-            $object->setKnowledgeBaseUuid($data['knowledge_base_uuid']);
+            $object->knowledgeBaseUuid = $data['knowledge_base_uuid'];
             unset($data['knowledge_base_uuid']);
         }
         if (\array_key_exists('phase', $data)) {
-            $object->setPhase($data['phase']);
+            $object->phase = $data['phase'];
             unset($data['phase']);
         }
         if (\array_key_exists('started_at', $data)) {
@@ -93,23 +93,23 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date_2) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStartedAt($date_2);
+            $object->startedAt = $date_2;
             unset($data['started_at']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('tokens', $data)) {
-            $object->setTokens($data['tokens']);
+            $object->tokens = $data['tokens'];
             unset($data['tokens']);
         }
         if (\array_key_exists('total_datasources', $data)) {
-            $object->setTotalDatasources($data['total_datasources']);
+            $object->totalDatasources = $data['total_datasources'];
             unset($data['total_datasources']);
         }
         if (\array_key_exists('total_tokens', $data)) {
-            $object->setTotalTokens($data['total_tokens']);
+            $object->totalTokens = $data['total_tokens'];
             unset($data['total_tokens']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -117,11 +117,11 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date_3) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_3);
+            $object->updatedAt = $date_3;
             unset($data['updated_at']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         foreach ($data as $key => $value_2) {
@@ -134,58 +134,58 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('completedDatasources') && null !== $data->getCompletedDatasources()) {
-            $dataArray['completed_datasources'] = $data->getCompletedDatasources();
+        if (array_key_exists('completedDatasources', get_object_vars($data)) && null !== ($data->completedDatasources ?? null)) {
+            $dataArray['completed_datasources'] = $data->completedDatasources ?? null;
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('dataSourceJobs') && null !== $data->getDataSourceJobs()) {
+        if (array_key_exists('dataSourceJobs', get_object_vars($data)) && null !== ($data->dataSourceJobs ?? null)) {
             $values = [];
-            foreach ($data->getDataSourceJobs() as $value) {
+            foreach ($data->dataSourceJobs ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data_source_jobs'] = $values;
         }
-        if ($data->isInitialized('dataSourceUuids') && null !== $data->getDataSourceUuids()) {
+        if (array_key_exists('dataSourceUuids', get_object_vars($data)) && null !== ($data->dataSourceUuids ?? null)) {
             $values_1 = [];
-            foreach ($data->getDataSourceUuids() as $value_1) {
+            foreach ($data->dataSourceUuids ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['data_source_uuids'] = $values_1;
         }
-        if ($data->isInitialized('finishedAt') && null !== $data->getFinishedAt()) {
-            $dataArray['finished_at'] = $data->getFinishedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('finishedAt', get_object_vars($data)) && null !== ($data->finishedAt ?? null)) {
+            $dataArray['finished_at'] = ($data->finishedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('isReportAvailable') && null !== $data->getIsReportAvailable()) {
-            $dataArray['is_report_available'] = $data->getIsReportAvailable();
+        if (array_key_exists('isReportAvailable', get_object_vars($data)) && null !== ($data->isReportAvailable ?? null)) {
+            $dataArray['is_report_available'] = $data->isReportAvailable ?? null;
         }
-        if ($data->isInitialized('knowledgeBaseUuid') && null !== $data->getKnowledgeBaseUuid()) {
-            $dataArray['knowledge_base_uuid'] = $data->getKnowledgeBaseUuid();
+        if (array_key_exists('knowledgeBaseUuid', get_object_vars($data)) && null !== ($data->knowledgeBaseUuid ?? null)) {
+            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid ?? null;
         }
-        if ($data->isInitialized('phase') && null !== $data->getPhase()) {
-            $dataArray['phase'] = $data->getPhase();
+        if (array_key_exists('phase', get_object_vars($data)) && null !== ($data->phase ?? null)) {
+            $dataArray['phase'] = $data->phase ?? null;
         }
-        if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
-            $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
+            $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('tokens') && null !== $data->getTokens()) {
-            $dataArray['tokens'] = $data->getTokens();
+        if (array_key_exists('tokens', get_object_vars($data)) && null !== ($data->tokens ?? null)) {
+            $dataArray['tokens'] = $data->tokens ?? null;
         }
-        if ($data->isInitialized('totalDatasources') && null !== $data->getTotalDatasources()) {
-            $dataArray['total_datasources'] = $data->getTotalDatasources();
+        if (array_key_exists('totalDatasources', get_object_vars($data)) && null !== ($data->totalDatasources ?? null)) {
+            $dataArray['total_datasources'] = $data->totalDatasources ?? null;
         }
-        if ($data->isInitialized('totalTokens') && null !== $data->getTotalTokens()) {
-            $dataArray['total_tokens'] = $data->getTotalTokens();
+        if (array_key_exists('totalTokens', get_object_vars($data)) && null !== ($data->totalTokens ?? null)) {
+            $dataArray['total_tokens'] = $data->totalTokens ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

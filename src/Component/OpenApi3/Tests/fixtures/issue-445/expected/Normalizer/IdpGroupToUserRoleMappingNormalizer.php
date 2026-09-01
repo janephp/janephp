@@ -38,27 +38,27 @@ class IdpGroupToUserRoleMappingNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('group', $data) && $data['group'] !== null) {
-            $object->setGroup($data['group']);
+            $object->group = $data['group'];
         }
         elseif (\array_key_exists('group', $data) && $data['group'] === null) {
-            $object->setGroup(null);
+            $object->group = null;
         }
         if (\array_key_exists('userRoleId', $data) && $data['userRoleId'] !== null) {
-            $object->setUserRoleId($data['userRoleId']);
+            $object->userRoleId = $data['userRoleId'];
         }
         elseif (\array_key_exists('userRoleId', $data) && $data['userRoleId'] === null) {
-            $object->setUserRoleId(null);
+            $object->userRoleId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('group') && null !== $data->getGroup()) {
-            $dataArray['group'] = $data->getGroup();
+        if (array_key_exists('group', get_object_vars($data)) && null !== ($data->group ?? null)) {
+            $dataArray['group'] = $data->group ?? null;
         }
-        if ($data->isInitialized('userRoleId') && null !== $data->getUserRoleId()) {
-            $dataArray['userRoleId'] = $data->getUserRoleId();
+        if (array_key_exists('userRoleId', get_object_vars($data)) && null !== ($data->userRoleId ?? null)) {
+            $dataArray['userRoleId'] = $data->userRoleId ?? null;
         }
         return $dataArray;
     }

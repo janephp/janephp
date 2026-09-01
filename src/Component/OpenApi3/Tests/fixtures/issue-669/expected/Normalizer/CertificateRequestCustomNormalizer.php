@@ -38,23 +38,23 @@ class CertificateRequestCustomNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('private_key', $data)) {
-            $object->setPrivateKey($data['private_key']);
+            $object->privateKey = $data['private_key'];
             unset($data['private_key']);
         }
         if (\array_key_exists('leaf_certificate', $data)) {
-            $object->setLeafCertificate($data['leaf_certificate']);
+            $object->leafCertificate = $data['leaf_certificate'];
             unset($data['leaf_certificate']);
         }
         if (\array_key_exists('certificate_chain', $data)) {
-            $object->setCertificateChain($data['certificate_chain']);
+            $object->certificateChain = $data['certificate_chain'];
             unset($data['certificate_chain']);
         }
         foreach ($data as $key => $value) {
@@ -67,14 +67,14 @@ class CertificateRequestCustomNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        $dataArray['private_key'] = $data->getPrivateKey();
-        $dataArray['leaf_certificate'] = $data->getLeafCertificate();
-        if ($data->isInitialized('certificateChain') && null !== $data->getCertificateChain()) {
-            $dataArray['certificate_chain'] = $data->getCertificateChain();
+        $dataArray['private_key'] = $data->privateKey ?? null;
+        $dataArray['leaf_certificate'] = $data->leafCertificate ?? null;
+        if (array_key_exists('certificateChain', get_object_vars($data)) && null !== ($data->certificateChain ?? null)) {
+            $dataArray['certificate_chain'] = $data->certificateChain ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

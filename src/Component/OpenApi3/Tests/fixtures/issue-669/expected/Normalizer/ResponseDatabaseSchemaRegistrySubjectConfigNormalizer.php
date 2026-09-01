@@ -38,11 +38,11 @@ class ResponseDatabaseSchemaRegistrySubjectConfigNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('subject_name', $data)) {
-            $object->setSubjectName($data['subject_name']);
+            $object->subjectName = $data['subject_name'];
             unset($data['subject_name']);
         }
         if (\array_key_exists('compatibility_level', $data)) {
-            $object->setCompatibilityLevel($data['compatibility_level']);
+            $object->compatibilityLevel = $data['compatibility_level'];
             unset($data['compatibility_level']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class ResponseDatabaseSchemaRegistrySubjectConfigNormalizer implements Denormali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['subject_name'] = $data->getSubjectName();
-        $dataArray['compatibility_level'] = $data->getCompatibilityLevel();
+        $dataArray['subject_name'] = $data->subjectName ?? null;
+        $dataArray['compatibility_level'] = $data->compatibilityLevel ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

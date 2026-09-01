@@ -42,7 +42,7 @@ class ResponseActiveVpcPeeringNormalizer implements DenormalizerInterface, Norma
             foreach ($data['vpc_peering'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setVpcPeering($values);
+            $object->vpcPeering = $values;
             unset($data['vpc_peering']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -55,9 +55,9 @@ class ResponseActiveVpcPeeringNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('vpcPeering') && null !== $data->getVpcPeering()) {
+        if (array_key_exists('vpcPeering', get_object_vars($data)) && null !== ($data->vpcPeering ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getVpcPeering() as $key => $value) {
+            foreach ($data->vpcPeering ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['vpc_peering'] = $values;

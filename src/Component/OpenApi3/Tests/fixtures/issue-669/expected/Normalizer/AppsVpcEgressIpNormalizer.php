@@ -38,7 +38,7 @@ class AppsVpcEgressIpNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
             unset($data['ip']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppsVpcEgressIpNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

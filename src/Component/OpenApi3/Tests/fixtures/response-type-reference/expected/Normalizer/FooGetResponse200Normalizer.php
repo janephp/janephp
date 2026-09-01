@@ -38,11 +38,11 @@ class FooGetResponse200Normalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('bar', $data)) {
-            $object->setBar($data['bar']);
+            $object->bar = $data['bar'];
             unset($data['bar']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class FooGetResponse200Normalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $dataArray['bar'] = $data->getBar();
+        if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
+            $dataArray['bar'] = $data->bar ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

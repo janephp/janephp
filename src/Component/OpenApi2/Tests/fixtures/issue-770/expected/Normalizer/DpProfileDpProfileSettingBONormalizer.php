@@ -38,57 +38,57 @@ class DpProfileDpProfileSettingBONormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('dpVersion', $data)) {
-            $object->setDpVersion($data['dpVersion']);
+            $object->dpVersion = $data['dpVersion'];
         }
         if (\array_key_exists('dhcpProfileId', $data)) {
-            $object->setDhcpProfileId($data['dhcpProfileId']);
+            $object->dhcpProfileId = $data['dhcpProfileId'];
         }
         if (\array_key_exists('dhcpProfileName', $data)) {
-            $object->setDhcpProfileName($data['dhcpProfileName']);
+            $object->dhcpProfileName = $data['dhcpProfileName'];
         }
         if (\array_key_exists('dpName', $data)) {
-            $object->setDpName($data['dpName']);
+            $object->dpName = $data['dpName'];
         }
         if (\array_key_exists('dpKey', $data)) {
-            $object->setDpKey($data['dpKey']);
+            $object->dpKey = $data['dpKey'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('natProfileId', $data)) {
-            $object->setNatProfileId($data['natProfileId']);
+            $object->natProfileId = $data['natProfileId'];
         }
         if (\array_key_exists('natProfileName', $data)) {
-            $object->setNatProfileName($data['natProfileName']);
+            $object->natProfileName = $data['natProfileName'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dpVersion') && null !== $data->getDpVersion()) {
-            $dataArray['dpVersion'] = $data->getDpVersion();
+        if (array_key_exists('dpVersion', get_object_vars($data)) && null !== ($data->dpVersion ?? null)) {
+            $dataArray['dpVersion'] = $data->dpVersion ?? null;
         }
-        if ($data->isInitialized('dhcpProfileId') && null !== $data->getDhcpProfileId()) {
-            $dataArray['dhcpProfileId'] = $data->getDhcpProfileId();
+        if (array_key_exists('dhcpProfileId', get_object_vars($data)) && null !== ($data->dhcpProfileId ?? null)) {
+            $dataArray['dhcpProfileId'] = $data->dhcpProfileId ?? null;
         }
-        if ($data->isInitialized('dhcpProfileName') && null !== $data->getDhcpProfileName()) {
-            $dataArray['dhcpProfileName'] = $data->getDhcpProfileName();
+        if (array_key_exists('dhcpProfileName', get_object_vars($data)) && null !== ($data->dhcpProfileName ?? null)) {
+            $dataArray['dhcpProfileName'] = $data->dhcpProfileName ?? null;
         }
-        if ($data->isInitialized('dpName') && null !== $data->getDpName()) {
-            $dataArray['dpName'] = $data->getDpName();
+        if (array_key_exists('dpName', get_object_vars($data)) && null !== ($data->dpName ?? null)) {
+            $dataArray['dpName'] = $data->dpName ?? null;
         }
-        if ($data->isInitialized('dpKey') && null !== $data->getDpKey()) {
-            $dataArray['dpKey'] = $data->getDpKey();
+        if (array_key_exists('dpKey', get_object_vars($data)) && null !== ($data->dpKey ?? null)) {
+            $dataArray['dpKey'] = $data->dpKey ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('natProfileId') && null !== $data->getNatProfileId()) {
-            $dataArray['natProfileId'] = $data->getNatProfileId();
+        if (array_key_exists('natProfileId', get_object_vars($data)) && null !== ($data->natProfileId ?? null)) {
+            $dataArray['natProfileId'] = $data->natProfileId ?? null;
         }
-        if ($data->isInitialized('natProfileName') && null !== $data->getNatProfileName()) {
-            $dataArray['natProfileName'] = $data->getNatProfileName();
+        if (array_key_exists('natProfileName', get_object_vars($data)) && null !== ($data->natProfileName ?? null)) {
+            $dataArray['natProfileName'] = $data->natProfileName ?? null;
         }
         return $dataArray;
     }

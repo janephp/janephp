@@ -38,32 +38,32 @@ class MduSegmentationProfileMduProfileApGroupInfoNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apGroupId', $data)) {
-            $object->setApGroupId($data['apGroupId']);
+            $object->apGroupId = $data['apGroupId'];
         }
         if (\array_key_exists('ethProfileId', $data)) {
-            $object->setEthProfileId($data['ethProfileId']);
+            $object->ethProfileId = $data['ethProfileId'];
         }
         if (\array_key_exists('wlanList', $data)) {
             $values = [];
             foreach ($data['wlanList'] as $value) {
                 $values[] = $value;
             }
-            $object->setWlanList($values);
+            $object->wlanList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apGroupId') && null !== $data->getApGroupId()) {
-            $dataArray['apGroupId'] = $data->getApGroupId();
+        if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
+            $dataArray['apGroupId'] = $data->apGroupId ?? null;
         }
-        if ($data->isInitialized('ethProfileId') && null !== $data->getEthProfileId()) {
-            $dataArray['ethProfileId'] = $data->getEthProfileId();
+        if (array_key_exists('ethProfileId', get_object_vars($data)) && null !== ($data->ethProfileId ?? null)) {
+            $dataArray['ethProfileId'] = $data->ethProfileId ?? null;
         }
-        if ($data->isInitialized('wlanList') && null !== $data->getWlanList()) {
+        if (array_key_exists('wlanList', get_object_vars($data)) && null !== ($data->wlanList ?? null)) {
             $values = [];
-            foreach ($data->getWlanList() as $value) {
+            foreach ($data->wlanList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['wlanList'] = $values;

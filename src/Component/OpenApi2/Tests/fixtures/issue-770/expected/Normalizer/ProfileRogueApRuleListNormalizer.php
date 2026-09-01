@@ -38,32 +38,32 @@ class ProfileRogueApRuleListNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         if (\array_key_exists('classification', $data)) {
-            $object->setClassification($data['classification']);
+            $object->classification = $data['classification'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['value'] = $data->value ?? null;
         }
-        $dataArray['priority'] = $data->getPriority();
-        $dataArray['classification'] = $data->getClassification();
+        $dataArray['priority'] = $data->priority ?? null;
+        $dataArray['classification'] = $data->classification ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

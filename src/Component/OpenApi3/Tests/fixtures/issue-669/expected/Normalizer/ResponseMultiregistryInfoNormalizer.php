@@ -42,7 +42,7 @@ class ResponseMultiregistryInfoNormalizer implements DenormalizerInterface, Norm
             foreach ($data['registry'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setRegistry($values);
+            $object->registry = $values;
             unset($data['registry']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -55,9 +55,9 @@ class ResponseMultiregistryInfoNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('registry') && null !== $data->getRegistry()) {
+        if (array_key_exists('registry', get_object_vars($data)) && null !== ($data->registry ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getRegistry() as $key => $value) {
+            foreach ($data->registry ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['registry'] = $values;

@@ -44,11 +44,11 @@ class FileDepositPostBodyNormalizer implements DenormalizerInterface, Normalizer
             $this->validate($data, new \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Validator\FileDepositPostBodyConstraint());
         }
         if (\array_key_exists('fichier', $data)) {
-            $object->setFichier($data['fichier']);
+            $object->fichier = $data['fichier'];
             unset($data['fichier']);
         }
         if (\array_key_exists('valid', $data)) {
-            $object->setValid($data['valid']);
+            $object->valid = $data['valid'];
             unset($data['valid']);
         }
         foreach ($data as $key => $value) {
@@ -61,11 +61,11 @@ class FileDepositPostBodyNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fichier') && null !== $data->getFichier()) {
-            $dataArray['fichier'] = $data->getFichier();
+        if (array_key_exists('fichier', get_object_vars($data)) && null !== ($data->fichier ?? null)) {
+            $dataArray['fichier'] = $data->fichier ?? null;
         }
-        if ($data->isInitialized('valid') && null !== $data->getValid()) {
-            $dataArray['valid'] = $data->getValid();
+        if (array_key_exists('valid', get_object_vars($data)) && null !== ($data->valid ?? null)) {
+            $dataArray['valid'] = $data->valid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

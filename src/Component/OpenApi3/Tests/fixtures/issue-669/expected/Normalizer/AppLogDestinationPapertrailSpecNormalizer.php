@@ -38,7 +38,7 @@ class AppLogDestinationPapertrailSpecNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('endpoint', $data)) {
-            $object->setEndpoint($data['endpoint']);
+            $object->endpoint = $data['endpoint'];
             unset($data['endpoint']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class AppLogDestinationPapertrailSpecNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['endpoint'] = $data->getEndpoint();
+        $dataArray['endpoint'] = $data->endpoint ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

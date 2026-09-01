@@ -41,21 +41,21 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $this->validate($data, new \Docker\Api\Validator\PeerNodeConstraint());
         }
         if (\array_key_exists('NodeID', $data)) {
-            $object->setNodeID($data['NodeID']);
+            $object->nodeID = $data['NodeID'];
         }
         if (\array_key_exists('Addr', $data)) {
-            $object->setAddr($data['Addr']);
+            $object->addr = $data['Addr'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nodeID') && null !== $data->getNodeID()) {
-            $dataArray['NodeID'] = $data->getNodeID();
+        if (array_key_exists('nodeID', get_object_vars($data)) && null !== ($data->nodeID ?? null)) {
+            $dataArray['NodeID'] = $data->nodeID ?? null;
         }
-        if ($data->isInitialized('addr') && null !== $data->getAddr()) {
-            $dataArray['Addr'] = $data->getAddr();
+        if (array_key_exists('addr', get_object_vars($data)) && null !== ($data->addr ?? null)) {
+            $dataArray['Addr'] = $data->addr ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PeerNodeConstraint());

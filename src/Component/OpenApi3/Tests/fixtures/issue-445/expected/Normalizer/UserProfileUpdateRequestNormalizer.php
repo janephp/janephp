@@ -38,69 +38,69 @@ class UserProfileUpdateRequestNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
         }
         if (\array_key_exists('emailAddress', $data) && $data['emailAddress'] !== null) {
-            $object->setEmailAddress($data['emailAddress']);
+            $object->emailAddress = $data['emailAddress'];
         }
         elseif (\array_key_exists('emailAddress', $data) && $data['emailAddress'] === null) {
-            $object->setEmailAddress(null);
+            $object->emailAddress = null;
         }
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
-            $object->setFirstName($data['firstName']);
+            $object->firstName = $data['firstName'];
         }
         elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
-            $object->setFirstName(null);
+            $object->firstName = null;
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
-            $object->setLastName($data['lastName']);
+            $object->lastName = $data['lastName'];
         }
         elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
-            $object->setLastName(null);
+            $object->lastName = null;
         }
         if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
-            $object->setLanguageCode($data['languageCode']);
+            $object->languageCode = $data['languageCode'];
         }
         elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
-            $object->setLanguageCode(null);
+            $object->languageCode = null;
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
             $value = $data['address'];
             if (is_array($data['address'])) {
                 $value = $this->denormalizer->denormalize($data['address'], \PicturePark\API\Model\UserAddress::class, 'json', $context);
             }
-            $object->setAddress($value);
+            $object->address = $value;
         }
         elseif (\array_key_exists('address', $data) && $data['address'] === null) {
-            $object->setAddress(null);
+            $object->address = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('emailAddress') && null !== $data->getEmailAddress()) {
-            $dataArray['emailAddress'] = $data->getEmailAddress();
+        if (array_key_exists('emailAddress', get_object_vars($data)) && null !== ($data->emailAddress ?? null)) {
+            $dataArray['emailAddress'] = $data->emailAddress ?? null;
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $dataArray['firstName'] = $data->getFirstName();
+        if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
+            $dataArray['firstName'] = $data->firstName ?? null;
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
-            $dataArray['lastName'] = $data->getLastName();
+        if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
+            $dataArray['lastName'] = $data->lastName ?? null;
         }
-        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
-            $dataArray['languageCode'] = $data->getLanguageCode();
+        if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {
+            $dataArray['languageCode'] = $data->languageCode ?? null;
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $value = $data->getAddress();
-            if (is_object($data->getAddress())) {
-                $value = $data->getAddress() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAddress(), 'json', $context));
+        if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
+            $value = $data->address ?? null;
+            if (is_object($data->address ?? null)) {
+                $value = ($data->address ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
             }
             $dataArray['address'] = $value;
         }

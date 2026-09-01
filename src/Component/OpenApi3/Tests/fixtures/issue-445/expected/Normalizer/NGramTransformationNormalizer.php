@@ -38,31 +38,31 @@ class NGramTransformationNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         if (\array_key_exists('minWordLength', $data)) {
-            $object->setMinWordLength($data['minWordLength']);
+            $object->minWordLength = $data['minWordLength'];
             unset($data['minWordLength']);
         }
         if (\array_key_exists('maxWordLength', $data) && $data['maxWordLength'] !== null) {
-            $object->setMaxWordLength($data['maxWordLength']);
+            $object->maxWordLength = $data['maxWordLength'];
             unset($data['maxWordLength']);
         }
         elseif (\array_key_exists('maxWordLength', $data) && $data['maxWordLength'] === null) {
-            $object->setMaxWordLength(null);
+            $object->maxWordLength = null;
             unset($data['maxWordLength']);
         }
         foreach ($data as $key => $value) {
@@ -75,18 +75,18 @@ class NGramTransformationNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['size'] = $data->getSize();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['size'] = $data->size ?? null;
         }
-        if ($data->isInitialized('minWordLength') && null !== $data->getMinWordLength()) {
-            $dataArray['minWordLength'] = $data->getMinWordLength();
+        if (array_key_exists('minWordLength', get_object_vars($data)) && null !== ($data->minWordLength ?? null)) {
+            $dataArray['minWordLength'] = $data->minWordLength ?? null;
         }
-        if ($data->isInitialized('maxWordLength') && null !== $data->getMaxWordLength()) {
-            $dataArray['maxWordLength'] = $data->getMaxWordLength();
+        if (array_key_exists('maxWordLength', get_object_vars($data)) && null !== ($data->maxWordLength ?? null)) {
+            $dataArray['maxWordLength'] = $data->maxWordLength ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

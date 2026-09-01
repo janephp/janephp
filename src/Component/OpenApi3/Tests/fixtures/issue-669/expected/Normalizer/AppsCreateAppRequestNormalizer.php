@@ -38,11 +38,11 @@ class AppsCreateAppRequestNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('spec', $data)) {
-            $object->setSpec($this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context));
+            $object->spec = $this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context);
             unset($data['spec']);
         }
         if (\array_key_exists('project_id', $data)) {
-            $object->setProjectId($data['project_id']);
+            $object->projectId = $data['project_id'];
             unset($data['project_id']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +55,9 @@ class AppsCreateAppRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['spec'] = $data->getSpec() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
-            $dataArray['project_id'] = $data->getProjectId();
+        $dataArray['spec'] = ($data->spec ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
+        if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
+            $dataArray['project_id'] = $data->projectId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

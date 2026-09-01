@@ -41,15 +41,15 @@ class V2UptimeChecksPostBodyNormalizer implements DenormalizerInterface, Normali
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('target', $data)) {
-            $object->setTarget($data['target']);
+            $object->target = $data['target'];
             unset($data['target']);
         }
         if (\array_key_exists('regions', $data)) {
@@ -57,11 +57,11 @@ class V2UptimeChecksPostBodyNormalizer implements DenormalizerInterface, Normali
             foreach ($data['regions'] as $value) {
                 $values[] = $value;
             }
-            $object->setRegions($values);
+            $object->regions = $values;
             unset($data['regions']);
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
             unset($data['enabled']);
         }
         foreach ($data as $key => $value_1) {
@@ -74,24 +74,24 @@ class V2UptimeChecksPostBodyNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('target') && null !== $data->getTarget()) {
-            $dataArray['target'] = $data->getTarget();
+        if (array_key_exists('target', get_object_vars($data)) && null !== ($data->target ?? null)) {
+            $dataArray['target'] = $data->target ?? null;
         }
-        if ($data->isInitialized('regions') && null !== $data->getRegions()) {
+        if (array_key_exists('regions', get_object_vars($data)) && null !== ($data->regions ?? null)) {
             $values = [];
-            foreach ($data->getRegions() as $value) {
+            foreach ($data->regions ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['regions'] = $values;
         }
-        if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
-            $dataArray['enabled'] = $data->getEnabled();
+        if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
+            $dataArray['enabled'] = $data->enabled ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,27 +38,27 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectDirectorReportsIt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('countryName', $data)) {
-            $object->setCountryName($data['countryName']);
+            $object->countryName = $data['countryName'];
             unset($data['countryName']);
         }
         if (\array_key_exists('countryIso2', $data)) {
-            $object->setCountryIso2($data['countryIso2']);
+            $object->countryIso2 = $data['countryIso2'];
             unset($data['countryIso2']);
         }
         if (\array_key_exists('startDate', $data)) {
-            $object->setStartDate($data['startDate']);
+            $object->startDate = $data['startDate'];
             unset($data['startDate']);
         }
         if (\array_key_exists('expireDate', $data)) {
-            $object->setExpireDate($data['expireDate']);
+            $object->expireDate = $data['expireDate'];
             unset($data['expireDate']);
         }
         if (\array_key_exists('paid', $data)) {
-            $object->setPaid($data['paid']);
+            $object->paid = $data['paid'];
             unset($data['paid']);
         }
         if (\array_key_exists('used', $data)) {
-            $object->setUsed($data['used']);
+            $object->used = $data['used'];
             unset($data['used']);
         }
         foreach ($data as $key => $value) {
@@ -71,23 +71,23 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectDirectorReportsIt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('countryName') && null !== $data->getCountryName()) {
-            $dataArray['countryName'] = $data->getCountryName();
+        if (array_key_exists('countryName', get_object_vars($data)) && null !== ($data->countryName ?? null)) {
+            $dataArray['countryName'] = $data->countryName ?? null;
         }
-        if ($data->isInitialized('countryIso2') && null !== $data->getCountryIso2()) {
-            $dataArray['countryIso2'] = $data->getCountryIso2();
+        if (array_key_exists('countryIso2', get_object_vars($data)) && null !== ($data->countryIso2 ?? null)) {
+            $dataArray['countryIso2'] = $data->countryIso2 ?? null;
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
-            $dataArray['startDate'] = $data->getStartDate();
+        if (array_key_exists('startDate', get_object_vars($data)) && null !== ($data->startDate ?? null)) {
+            $dataArray['startDate'] = $data->startDate ?? null;
         }
-        if ($data->isInitialized('expireDate') && null !== $data->getExpireDate()) {
-            $dataArray['expireDate'] = $data->getExpireDate();
+        if (array_key_exists('expireDate', get_object_vars($data)) && null !== ($data->expireDate ?? null)) {
+            $dataArray['expireDate'] = $data->expireDate ?? null;
         }
-        if ($data->isInitialized('paid') && null !== $data->getPaid()) {
-            $dataArray['paid'] = $data->getPaid();
+        if (array_key_exists('paid', get_object_vars($data)) && null !== ($data->paid ?? null)) {
+            $dataArray['paid'] = $data->paid ?? null;
         }
-        if ($data->isInitialized('used') && null !== $data->getUsed()) {
-            $dataArray['used'] = $data->getUsed();
+        if (array_key_exists('used', get_object_vars($data)) && null !== ($data->used ?? null)) {
+            $dataArray['used'] = $data->used ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

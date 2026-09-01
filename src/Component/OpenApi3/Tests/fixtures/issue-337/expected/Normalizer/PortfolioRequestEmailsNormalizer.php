@@ -38,15 +38,15 @@ class PortfolioRequestEmailsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('firstName', $data)) {
-            $object->setFirstName($data['firstName']);
+            $object->firstName = $data['firstName'];
             unset($data['firstName']);
         }
         if (\array_key_exists('lastName', $data)) {
-            $object->setLastName($data['lastName']);
+            $object->lastName = $data['lastName'];
             unset($data['lastName']);
         }
         if (\array_key_exists('emailAddress', $data)) {
-            $object->setEmailAddress($data['emailAddress']);
+            $object->emailAddress = $data['emailAddress'];
             unset($data['emailAddress']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class PortfolioRequestEmailsNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $dataArray['firstName'] = $data->getFirstName();
+        if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
+            $dataArray['firstName'] = $data->firstName ?? null;
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
-            $dataArray['lastName'] = $data->getLastName();
+        if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
+            $dataArray['lastName'] = $data->lastName ?? null;
         }
-        if ($data->isInitialized('emailAddress') && null !== $data->getEmailAddress()) {
-            $dataArray['emailAddress'] = $data->getEmailAddress();
+        if (array_key_exists('emailAddress', get_object_vars($data)) && null !== ($data->emailAddress ?? null)) {
+            $dataArray['emailAddress'] = $data->emailAddress ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -42,7 +42,7 @@ class ResponseAddonsGetAppNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['apps'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AddonsAppInfo::class, 'json', $context);
             }
-            $object->setApps($values);
+            $object->apps = $values;
             unset($data['apps']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseAddonsGetAppNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apps') && null !== $data->getApps()) {
+        if (array_key_exists('apps', get_object_vars($data)) && null !== ($data->apps ?? null)) {
             $values = [];
-            foreach ($data->getApps() as $value) {
+            foreach ($data->apps ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['apps'] = $values;

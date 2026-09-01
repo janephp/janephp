@@ -42,15 +42,15 @@ class ResponseDatabaseBackupsNormalizer implements DenormalizerInterface, Normal
             foreach ($data['backups'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\Backup::class, 'json', $context);
             }
-            $object->setBackups($values);
+            $object->backups = $values;
             unset($data['backups']);
         }
         if (\array_key_exists('scheduled_backup_time', $data)) {
-            $object->setScheduledBackupTime($this->denormalizer->denormalize($data['scheduled_backup_time'], \Jane\Generated\DigitalOcean\Model\ResponseDatabaseBackupsScheduledBackupTime::class, 'json', $context));
+            $object->scheduledBackupTime = $this->denormalizer->denormalize($data['scheduled_backup_time'], \Jane\Generated\DigitalOcean\Model\ResponseDatabaseBackupsScheduledBackupTime::class, 'json', $context);
             unset($data['scheduled_backup_time']);
         }
         if (\array_key_exists('backup_progress', $data)) {
-            $object->setBackupProgress($data['backup_progress']);
+            $object->backupProgress = $data['backup_progress'];
             unset($data['backup_progress']);
         }
         foreach ($data as $key => $value_1) {
@@ -64,15 +64,15 @@ class ResponseDatabaseBackupsNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getBackups() as $value) {
+        foreach ($data->backups ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['backups'] = $values;
-        if ($data->isInitialized('scheduledBackupTime') && null !== $data->getScheduledBackupTime()) {
-            $dataArray['scheduled_backup_time'] = $data->getScheduledBackupTime() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getScheduledBackupTime(), 'json', $context));
+        if (array_key_exists('scheduledBackupTime', get_object_vars($data)) && null !== ($data->scheduledBackupTime ?? null)) {
+            $dataArray['scheduled_backup_time'] = ($data->scheduledBackupTime ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduledBackupTime ?? null, 'json', $context));
         }
-        if ($data->isInitialized('backupProgress') && null !== $data->getBackupProgress()) {
-            $dataArray['backup_progress'] = $data->getBackupProgress();
+        if (array_key_exists('backupProgress', get_object_vars($data)) && null !== ($data->backupProgress ?? null)) {
+            $dataArray['backup_progress'] = $data->backupProgress ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

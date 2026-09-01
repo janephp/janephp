@@ -38,44 +38,44 @@ class AdministrationApplicationLogAndStatusNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('applicationName', $data)) {
-            $object->setApplicationName($data['applicationName']);
+            $object->applicationName = $data['applicationName'];
         }
         if (\array_key_exists('healthStatus', $data)) {
-            $object->setHealthStatus($data['healthStatus']);
+            $object->healthStatus = $data['healthStatus'];
         }
         if (\array_key_exists('logLevel', $data)) {
-            $object->setLogLevel($data['logLevel']);
+            $object->logLevel = $data['logLevel'];
         }
         if (\array_key_exists('numOfLogs', $data)) {
-            $object->setNumOfLogs($data['numOfLogs']);
+            $object->numOfLogs = $data['numOfLogs'];
         }
         if (\array_key_exists('logFileNames', $data)) {
             $values = [];
             foreach ($data['logFileNames'] as $value) {
                 $values[] = $value;
             }
-            $object->setLogFileNames($values);
+            $object->logFileNames = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('applicationName') && null !== $data->getApplicationName()) {
-            $dataArray['applicationName'] = $data->getApplicationName();
+        if (array_key_exists('applicationName', get_object_vars($data)) && null !== ($data->applicationName ?? null)) {
+            $dataArray['applicationName'] = $data->applicationName ?? null;
         }
-        if ($data->isInitialized('healthStatus') && null !== $data->getHealthStatus()) {
-            $dataArray['healthStatus'] = $data->getHealthStatus();
+        if (array_key_exists('healthStatus', get_object_vars($data)) && null !== ($data->healthStatus ?? null)) {
+            $dataArray['healthStatus'] = $data->healthStatus ?? null;
         }
-        if ($data->isInitialized('logLevel') && null !== $data->getLogLevel()) {
-            $dataArray['logLevel'] = $data->getLogLevel();
+        if (array_key_exists('logLevel', get_object_vars($data)) && null !== ($data->logLevel ?? null)) {
+            $dataArray['logLevel'] = $data->logLevel ?? null;
         }
-        if ($data->isInitialized('numOfLogs') && null !== $data->getNumOfLogs()) {
-            $dataArray['numOfLogs'] = $data->getNumOfLogs();
+        if (array_key_exists('numOfLogs', get_object_vars($data)) && null !== ($data->numOfLogs ?? null)) {
+            $dataArray['numOfLogs'] = $data->numOfLogs ?? null;
         }
-        if ($data->isInitialized('logFileNames') && null !== $data->getLogFileNames()) {
+        if (array_key_exists('logFileNames', get_object_vars($data)) && null !== ($data->logFileNames ?? null)) {
             $values = [];
-            foreach ($data->getLogFileNames() as $value) {
+            foreach ($data->logFileNames ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['logFileNames'] = $values;

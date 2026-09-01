@@ -50,88 +50,88 @@ class CommonDhcpSiteConfigListRefNormalizer implements DenormalizerInterface, No
             $data['manualSelect'] = (bool) $data['manualSelect'];
         }
         if (\array_key_exists('zoneName', $data)) {
-            $object->setZoneName($data['zoneName']);
+            $object->zoneName = $data['zoneName'];
         }
         if (\array_key_exists('zoneId', $data)) {
-            $object->setZoneId($data['zoneId']);
+            $object->zoneId = $data['zoneId'];
         }
         if (\array_key_exists('siteEnabled', $data)) {
-            $object->setSiteEnabled($data['siteEnabled']);
+            $object->siteEnabled = $data['siteEnabled'];
         }
         if (\array_key_exists('portSelectionEnabled', $data)) {
-            $object->setPortSelectionEnabled($data['portSelectionEnabled']);
+            $object->portSelectionEnabled = $data['portSelectionEnabled'];
         }
         if (\array_key_exists('dwpdEnabled', $data)) {
-            $object->setDwpdEnabled($data['dwpdEnabled']);
+            $object->dwpdEnabled = $data['dwpdEnabled'];
         }
         if (\array_key_exists('manualSelect', $data)) {
-            $object->setManualSelect($data['manualSelect']);
+            $object->manualSelect = $data['manualSelect'];
         }
         if (\array_key_exists('siteMode', $data)) {
-            $object->setSiteMode($data['siteMode']);
+            $object->siteMode = $data['siteMode'];
         }
         if (\array_key_exists('eth0ProfileId', $data)) {
-            $object->setEth0ProfileId($data['eth0ProfileId']);
+            $object->eth0ProfileId = $data['eth0ProfileId'];
         }
         if (\array_key_exists('eth1ProfileId', $data)) {
-            $object->setEth1ProfileId($data['eth1ProfileId']);
+            $object->eth1ProfileId = $data['eth1ProfileId'];
         }
         if (\array_key_exists('siteAps', $data)) {
             $values = [];
             foreach ($data['siteAps'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpSiteConfigListRefSiteApsItem::class, 'json', $context);
             }
-            $object->setSiteAps($values);
+            $object->siteAps = $values;
         }
         if (\array_key_exists('siteProfiles', $data)) {
             $values_1 = [];
             foreach ($data['siteProfiles'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpProfileRef::class, 'json', $context);
             }
-            $object->setSiteProfiles($values_1);
+            $object->siteProfiles = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('zoneName') && null !== $data->getZoneName()) {
-            $dataArray['zoneName'] = $data->getZoneName();
+        if (array_key_exists('zoneName', get_object_vars($data)) && null !== ($data->zoneName ?? null)) {
+            $dataArray['zoneName'] = $data->zoneName ?? null;
         }
-        if ($data->isInitialized('zoneId') && null !== $data->getZoneId()) {
-            $dataArray['zoneId'] = $data->getZoneId();
+        if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
+            $dataArray['zoneId'] = $data->zoneId ?? null;
         }
-        if ($data->isInitialized('siteEnabled') && null !== $data->getSiteEnabled()) {
-            $dataArray['siteEnabled'] = $data->getSiteEnabled();
+        if (array_key_exists('siteEnabled', get_object_vars($data)) && null !== ($data->siteEnabled ?? null)) {
+            $dataArray['siteEnabled'] = $data->siteEnabled ?? null;
         }
-        if ($data->isInitialized('portSelectionEnabled') && null !== $data->getPortSelectionEnabled()) {
-            $dataArray['portSelectionEnabled'] = $data->getPortSelectionEnabled();
+        if (array_key_exists('portSelectionEnabled', get_object_vars($data)) && null !== ($data->portSelectionEnabled ?? null)) {
+            $dataArray['portSelectionEnabled'] = $data->portSelectionEnabled ?? null;
         }
-        if ($data->isInitialized('dwpdEnabled') && null !== $data->getDwpdEnabled()) {
-            $dataArray['dwpdEnabled'] = $data->getDwpdEnabled();
+        if (array_key_exists('dwpdEnabled', get_object_vars($data)) && null !== ($data->dwpdEnabled ?? null)) {
+            $dataArray['dwpdEnabled'] = $data->dwpdEnabled ?? null;
         }
-        if ($data->isInitialized('manualSelect') && null !== $data->getManualSelect()) {
-            $dataArray['manualSelect'] = $data->getManualSelect();
+        if (array_key_exists('manualSelect', get_object_vars($data)) && null !== ($data->manualSelect ?? null)) {
+            $dataArray['manualSelect'] = $data->manualSelect ?? null;
         }
-        if ($data->isInitialized('siteMode') && null !== $data->getSiteMode()) {
-            $dataArray['siteMode'] = $data->getSiteMode();
+        if (array_key_exists('siteMode', get_object_vars($data)) && null !== ($data->siteMode ?? null)) {
+            $dataArray['siteMode'] = $data->siteMode ?? null;
         }
-        if ($data->isInitialized('eth0ProfileId') && null !== $data->getEth0ProfileId()) {
-            $dataArray['eth0ProfileId'] = $data->getEth0ProfileId();
+        if (array_key_exists('eth0ProfileId', get_object_vars($data)) && null !== ($data->eth0ProfileId ?? null)) {
+            $dataArray['eth0ProfileId'] = $data->eth0ProfileId ?? null;
         }
-        if ($data->isInitialized('eth1ProfileId') && null !== $data->getEth1ProfileId()) {
-            $dataArray['eth1ProfileId'] = $data->getEth1ProfileId();
+        if (array_key_exists('eth1ProfileId', get_object_vars($data)) && null !== ($data->eth1ProfileId ?? null)) {
+            $dataArray['eth1ProfileId'] = $data->eth1ProfileId ?? null;
         }
-        if ($data->isInitialized('siteAps') && null !== $data->getSiteAps()) {
+        if (array_key_exists('siteAps', get_object_vars($data)) && null !== ($data->siteAps ?? null)) {
             $values = [];
-            foreach ($data->getSiteAps() as $value) {
+            foreach ($data->siteAps ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['siteAps'] = $values;
         }
-        if ($data->isInitialized('siteProfiles') && null !== $data->getSiteProfiles()) {
+        if (array_key_exists('siteProfiles', get_object_vars($data)) && null !== ($data->siteProfiles ?? null)) {
             $values_1 = [];
-            foreach ($data->getSiteProfiles() as $value_1) {
+            foreach ($data->siteProfiles ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['siteProfiles'] = $values_1;

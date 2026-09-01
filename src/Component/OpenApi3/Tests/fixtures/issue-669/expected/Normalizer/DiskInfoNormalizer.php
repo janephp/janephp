@@ -38,11 +38,11 @@ class DiskInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($this->denormalizer->denormalize($data['size'], \Jane\Generated\DigitalOcean\Model\DiskInfoSize::class, 'json', $context));
+            $object->size = $this->denormalizer->denormalize($data['size'], \Jane\Generated\DigitalOcean\Model\DiskInfoSize::class, 'json', $context);
             unset($data['size']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class DiskInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['size'] = $data->getSize() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSize(), 'json', $context));
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['size'] = ($data->size ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->size ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

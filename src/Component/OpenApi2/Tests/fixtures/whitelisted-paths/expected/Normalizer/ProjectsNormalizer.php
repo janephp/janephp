@@ -42,28 +42,28 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['projects'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\OpenApi2\Tests\Expected\Model\Project::class, 'json', $context);
             }
-            $object->setProjects($values);
+            $object->projects = $values;
         }
         if (\array_key_exists('per_page', $data)) {
-            $object->setPerPage($data['per_page']);
+            $object->perPage = $data['per_page'];
         }
         if (\array_key_exists('total_pages', $data)) {
-            $object->setTotalPages($data['total_pages']);
+            $object->totalPages = $data['total_pages'];
         }
         if (\array_key_exists('total_entries', $data)) {
-            $object->setTotalEntries($data['total_entries']);
+            $object->totalEntries = $data['total_entries'];
         }
         if (\array_key_exists('next_page', $data)) {
-            $object->setNextPage($data['next_page']);
+            $object->nextPage = $data['next_page'];
         }
         if (\array_key_exists('previous_page', $data)) {
-            $object->setPreviousPage($data['previous_page']);
+            $object->previousPage = $data['previous_page'];
         }
         if (\array_key_exists('page', $data)) {
-            $object->setPage($data['page']);
+            $object->page = $data['page'];
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\OpenApi2\Tests\Expected\Model\PaginationLinks::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\OpenApi2\Tests\Expected\Model\PaginationLinks::class, 'json', $context);
         }
         return $object;
     }
@@ -71,17 +71,17 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getProjects() as $value) {
+        foreach ($data->projects ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['projects'] = $values;
-        $dataArray['per_page'] = $data->getPerPage();
-        $dataArray['total_pages'] = $data->getTotalPages();
-        $dataArray['total_entries'] = $data->getTotalEntries();
-        $dataArray['next_page'] = $data->getNextPage();
-        $dataArray['previous_page'] = $data->getPreviousPage();
-        $dataArray['page'] = $data->getPage();
-        $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        $dataArray['per_page'] = $data->perPage ?? null;
+        $dataArray['total_pages'] = $data->totalPages ?? null;
+        $dataArray['total_entries'] = $data->totalEntries ?? null;
+        $dataArray['next_page'] = $data->nextPage ?? null;
+        $dataArray['previous_page'] = $data->previousPage ?? null;
+        $dataArray['page'] = $data->page ?? null;
+        $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

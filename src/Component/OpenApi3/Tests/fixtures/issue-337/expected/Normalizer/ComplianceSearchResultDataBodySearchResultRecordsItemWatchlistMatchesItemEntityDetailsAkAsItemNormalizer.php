@@ -38,19 +38,19 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('category', $data)) {
-            $object->setCategory($data['category']);
+            $object->category = $data['category'];
             unset($data['category']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($this->denormalizer->denormalize($data['name'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItemName::class, 'json', $context));
+            $object->name = $this->denormalizer->denormalize($data['name'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItemName::class, 'json', $context);
             unset($data['name']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('category') && null !== $data->getCategory()) {
-            $dataArray['category'] = $data->getCategory();
+        if (array_key_exists('category', get_object_vars($data)) && null !== ($data->category ?? null)) {
+            $dataArray['category'] = $data->category ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getName(), 'json', $context));
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = ($data->name ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name ?? null, 'json', $context));
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

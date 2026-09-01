@@ -38,11 +38,11 @@ class ApiDropboxDataSourceNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('folder', $data)) {
-            $object->setFolder($data['folder']);
+            $object->folder = $data['folder'];
             unset($data['folder']);
         }
         if (\array_key_exists('refresh_token', $data)) {
-            $object->setRefreshToken($data['refresh_token']);
+            $object->refreshToken = $data['refresh_token'];
             unset($data['refresh_token']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiDropboxDataSourceNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('folder') && null !== $data->getFolder()) {
-            $dataArray['folder'] = $data->getFolder();
+        if (array_key_exists('folder', get_object_vars($data)) && null !== ($data->folder ?? null)) {
+            $dataArray['folder'] = $data->folder ?? null;
         }
-        if ($data->isInitialized('refreshToken') && null !== $data->getRefreshToken()) {
-            $dataArray['refresh_token'] = $data->getRefreshToken();
+        if (array_key_exists('refreshToken', get_object_vars($data)) && null !== ($data->refreshToken ?? null)) {
+            $dataArray['refresh_token'] = $data->refreshToken ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -33,14 +33,12 @@ class MultipartNestedObjectRuntimeTest extends TestCase
         require_once $expectedDir . '/Endpoint/PostFile.php';
 
         $item = new Expected\Model\FilePostBodyItem();
-        $item->setItemId(42);
-        $item->setItemType('document');
+        $item->itemId = 42;
+        $item->itemType = 'document';
 
         $body = new Expected\Model\FilePostBody();
-        $body->setFichier('file-content');
-        if (method_exists($body, 'setItem')) {
-            $body->setItem($item);
-        }
+        $body->fichier = 'file-content';
+        $body->item = $item;
 
         $normalizers = [
             new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),

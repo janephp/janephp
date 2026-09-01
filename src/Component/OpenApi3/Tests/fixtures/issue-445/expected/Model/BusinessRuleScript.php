@@ -8,43 +8,13 @@ class BusinessRuleScript extends BusinessRule implements AdditionalPropertiesInt
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Script
      *
      * @var string|null
      */
-    protected $script;
-    /**
-     * Script
-     *
-     * @return string|null
-     */
-    public function getScript(): ?string
-    {
-        return $this->script;
-    }
-    /**
-     * Script
-     *
-     * @param string|null $script
-     *
-     * @return self
-     */
-    public function setScript(?string $script): self
-    {
-        $this->initialized['script'] = true;
-        $this->script = $script;
-        return $this;
-    }
+    public ?string $script;
     public function definedProperties(): array
     {
-        return ['script' => ['script', 'getScript', 'setScript']];
+        return ['script' => 'script'];
     }
 }

@@ -47,72 +47,72 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\BuildCacheConstraint());
         }
         if (\array_key_exists('ID', $data)) {
-            $object->setID($data['ID']);
+            $object->iD = $data['ID'];
         }
         if (\array_key_exists('Parent', $data)) {
-            $object->setParent($data['Parent']);
+            $object->parent = $data['Parent'];
         }
         if (\array_key_exists('Type', $data)) {
-            $object->setType($data['Type']);
+            $object->type = $data['Type'];
         }
         if (\array_key_exists('Description', $data)) {
-            $object->setDescription($data['Description']);
+            $object->description = $data['Description'];
         }
         if (\array_key_exists('InUse', $data)) {
-            $object->setInUse($data['InUse']);
+            $object->inUse = $data['InUse'];
         }
         if (\array_key_exists('Shared', $data)) {
-            $object->setShared($data['Shared']);
+            $object->shared = $data['Shared'];
         }
         if (\array_key_exists('Size', $data)) {
-            $object->setSize($data['Size']);
+            $object->size = $data['Size'];
         }
         if (\array_key_exists('CreatedAt', $data)) {
-            $object->setCreatedAt($data['CreatedAt']);
+            $object->createdAt = $data['CreatedAt'];
         }
         if (\array_key_exists('LastUsedAt', $data) && $data['LastUsedAt'] !== null) {
-            $object->setLastUsedAt($data['LastUsedAt']);
+            $object->lastUsedAt = $data['LastUsedAt'];
         }
         elseif (\array_key_exists('LastUsedAt', $data) && $data['LastUsedAt'] === null) {
-            $object->setLastUsedAt(null);
+            $object->lastUsedAt = null;
         }
         if (\array_key_exists('UsageCount', $data)) {
-            $object->setUsageCount($data['UsageCount']);
+            $object->usageCount = $data['UsageCount'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iD') && null !== $data->getID()) {
-            $dataArray['ID'] = $data->getID();
+        if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
+            $dataArray['ID'] = $data->iD ?? null;
         }
-        if ($data->isInitialized('parent') && null !== $data->getParent()) {
-            $dataArray['Parent'] = $data->getParent();
+        if (array_key_exists('parent', get_object_vars($data)) && null !== ($data->parent ?? null)) {
+            $dataArray['Parent'] = $data->parent ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['Type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['Type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['Description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['Description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('inUse') && null !== $data->getInUse()) {
-            $dataArray['InUse'] = $data->getInUse();
+        if (array_key_exists('inUse', get_object_vars($data)) && null !== ($data->inUse ?? null)) {
+            $dataArray['InUse'] = $data->inUse ?? null;
         }
-        if ($data->isInitialized('shared') && null !== $data->getShared()) {
-            $dataArray['Shared'] = $data->getShared();
+        if (array_key_exists('shared', get_object_vars($data)) && null !== ($data->shared ?? null)) {
+            $dataArray['Shared'] = $data->shared ?? null;
         }
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['Size'] = $data->getSize();
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['Size'] = $data->size ?? null;
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['CreatedAt'] = $data->getCreatedAt();
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['CreatedAt'] = $data->createdAt ?? null;
         }
-        if ($data->isInitialized('lastUsedAt') && null !== $data->getLastUsedAt()) {
-            $dataArray['LastUsedAt'] = $data->getLastUsedAt();
+        if (array_key_exists('lastUsedAt', get_object_vars($data)) && null !== ($data->lastUsedAt ?? null)) {
+            $dataArray['LastUsedAt'] = $data->lastUsedAt ?? null;
         }
-        if ($data->isInitialized('usageCount') && null !== $data->getUsageCount()) {
-            $dataArray['UsageCount'] = $data->getUsageCount();
+        if (array_key_exists('usageCount', get_object_vars($data)) && null !== ($data->usageCount ?? null)) {
+            $dataArray['UsageCount'] = $data->usageCount ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\BuildCacheConstraint());

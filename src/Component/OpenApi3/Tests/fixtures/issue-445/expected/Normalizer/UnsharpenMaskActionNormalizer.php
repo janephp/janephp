@@ -47,19 +47,19 @@ class UnsharpenMaskActionNormalizer implements DenormalizerInterface, Normalizer
             $data['threshold'] = (float) $data['threshold'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('amount', $data)) {
-            $object->setAmount($data['amount']);
+            $object->amount = $data['amount'];
             unset($data['amount']);
         }
         if (\array_key_exists('radius', $data)) {
-            $object->setRadius($data['radius']);
+            $object->radius = $data['radius'];
             unset($data['radius']);
         }
         if (\array_key_exists('threshold', $data)) {
-            $object->setThreshold($data['threshold']);
+            $object->threshold = $data['threshold'];
             unset($data['threshold']);
         }
         foreach ($data as $key => $value) {
@@ -72,15 +72,15 @@ class UnsharpenMaskActionNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
-            $dataArray['amount'] = $data->getAmount();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
+            $dataArray['amount'] = $data->amount ?? null;
         }
-        if ($data->isInitialized('radius') && null !== $data->getRadius()) {
-            $dataArray['radius'] = $data->getRadius();
+        if (array_key_exists('radius', get_object_vars($data)) && null !== ($data->radius ?? null)) {
+            $dataArray['radius'] = $data->radius ?? null;
         }
-        if ($data->isInitialized('threshold') && null !== $data->getThreshold()) {
-            $dataArray['threshold'] = $data->getThreshold();
+        if (array_key_exists('threshold', get_object_vars($data)) && null !== ($data->threshold ?? null)) {
+            $dataArray['threshold'] = $data->threshold ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

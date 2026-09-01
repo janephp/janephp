@@ -69,25 +69,25 @@ class ListItemRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
         if (200 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemRestoreBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\ListItemRestoreUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemRestoreNotFoundException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\ListItemRestoreMethodNotAllowedException($response);
         }
-        if (is_null($contentType) === false && (409 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (409 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemRestoreConflictException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\ListItemRestoreTooManyRequestsException($response);
         }
-        if (is_null($contentType) === false && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemRestoreInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
     }

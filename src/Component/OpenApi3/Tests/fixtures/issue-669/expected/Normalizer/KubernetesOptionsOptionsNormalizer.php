@@ -42,7 +42,7 @@ class KubernetesOptionsOptionsNormalizer implements DenormalizerInterface, Norma
             foreach ($data['regions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\KubernetesRegion::class, 'json', $context);
             }
-            $object->setRegions($values);
+            $object->regions = $values;
             unset($data['regions']);
         }
         if (\array_key_exists('versions', $data)) {
@@ -50,7 +50,7 @@ class KubernetesOptionsOptionsNormalizer implements DenormalizerInterface, Norma
             foreach ($data['versions'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\KubernetesVersion::class, 'json', $context);
             }
-            $object->setVersions($values_1);
+            $object->versions = $values_1;
             unset($data['versions']);
         }
         if (\array_key_exists('sizes', $data)) {
@@ -58,7 +58,7 @@ class KubernetesOptionsOptionsNormalizer implements DenormalizerInterface, Norma
             foreach ($data['sizes'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\KubernetesSize::class, 'json', $context);
             }
-            $object->setSizes($values_2);
+            $object->sizes = $values_2;
             unset($data['sizes']);
         }
         foreach ($data as $key => $value_3) {
@@ -71,23 +71,23 @@ class KubernetesOptionsOptionsNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('regions') && null !== $data->getRegions()) {
+        if (array_key_exists('regions', get_object_vars($data)) && null !== ($data->regions ?? null)) {
             $values = [];
-            foreach ($data->getRegions() as $value) {
+            foreach ($data->regions ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['regions'] = $values;
         }
-        if ($data->isInitialized('versions') && null !== $data->getVersions()) {
+        if (array_key_exists('versions', get_object_vars($data)) && null !== ($data->versions ?? null)) {
             $values_1 = [];
-            foreach ($data->getVersions() as $value_1) {
+            foreach ($data->versions ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['versions'] = $values_1;
         }
-        if ($data->isInitialized('sizes') && null !== $data->getSizes()) {
+        if (array_key_exists('sizes', get_object_vars($data)) && null !== ($data->sizes ?? null)) {
             $values_2 = [];
-            foreach ($data->getSizes() as $value_2) {
+            foreach ($data->sizes ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['sizes'] = $values_2;

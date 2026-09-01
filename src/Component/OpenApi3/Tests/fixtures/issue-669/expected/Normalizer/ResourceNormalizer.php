@@ -38,7 +38,7 @@ class ResourceNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('urn', $data)) {
-            $object->setUrn($data['urn']);
+            $object->urn = $data['urn'];
             unset($data['urn']);
         }
         if (\array_key_exists('assigned_at', $data)) {
@@ -46,15 +46,15 @@ class ResourceNormalizer implements DenormalizerInterface, NormalizerInterface, 
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['assigned_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setAssignedAt($date);
+            $object->assignedAt = $date;
             unset($data['assigned_at']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\ResourceLinks::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\ResourceLinks::class, 'json', $context);
             unset($data['links']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         foreach ($data as $key => $value) {
@@ -67,17 +67,17 @@ class ResourceNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('urn') && null !== $data->getUrn()) {
-            $dataArray['urn'] = $data->getUrn();
+        if (array_key_exists('urn', get_object_vars($data)) && null !== ($data->urn ?? null)) {
+            $dataArray['urn'] = $data->urn ?? null;
         }
-        if ($data->isInitialized('assignedAt') && null !== $data->getAssignedAt()) {
-            $dataArray['assigned_at'] = $data->getAssignedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('assignedAt', get_object_vars($data)) && null !== ($data->assignedAt ?? null)) {
+            $dataArray['assigned_at'] = ($data->assignedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

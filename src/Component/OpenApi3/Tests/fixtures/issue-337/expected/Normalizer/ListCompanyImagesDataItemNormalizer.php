@@ -38,51 +38,51 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('imageId', $data)) {
-            $object->setImageId($data['imageId']);
+            $object->imageId = $data['imageId'];
             unset($data['imageId']);
         }
         if (\array_key_exists('company', $data)) {
-            $object->setCompany($this->denormalizer->denormalize($data['company'], \CreditSafe\API\Model\ListCompanyImagesDataItemCompany::class, 'json', $context));
+            $object->company = $this->denormalizer->denormalize($data['company'], \CreditSafe\API\Model\ListCompanyImagesDataItemCompany::class, 'json', $context);
             unset($data['company']);
         }
         if (\array_key_exists('document', $data)) {
-            $object->setDocument($this->denormalizer->denormalize($data['document'], \CreditSafe\API\Model\ListCompanyImagesDataItemDocument::class, 'json', $context));
+            $object->document = $this->denormalizer->denormalize($data['document'], \CreditSafe\API\Model\ListCompanyImagesDataItemDocument::class, 'json', $context);
             unset($data['document']);
         }
         if (\array_key_exists('format', $data)) {
-            $object->setFormat($data['format']);
+            $object->format = $data['format'];
             unset($data['format']);
         }
         if (\array_key_exists('source', $data)) {
-            $object->setSource($data['source']);
+            $object->source = $data['source'];
             unset($data['source']);
         }
         if (\array_key_exists('filingDate', $data)) {
-            $object->setFilingDate($data['filingDate']);
+            $object->filingDate = $data['filingDate'];
             unset($data['filingDate']);
         }
         if (\array_key_exists('uploadDate', $data)) {
-            $object->setUploadDate($data['uploadDate']);
+            $object->uploadDate = $data['uploadDate'];
             unset($data['uploadDate']);
         }
         if (\array_key_exists('accountingDate', $data)) {
-            $object->setAccountingDate($data['accountingDate']);
+            $object->accountingDate = $data['accountingDate'];
             unset($data['accountingDate']);
         }
         if (\array_key_exists('language', $data)) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
             unset($data['language']);
         }
         if (\array_key_exists('comments', $data)) {
-            $object->setComments($data['comments']);
+            $object->comments = $data['comments'];
             unset($data['comments']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('localProperties', $data)) {
-            $object->setLocalProperties($this->denormalizer->denormalize($data['localProperties'], \CreditSafe\API\Model\ListCompanyImagesDataItemLocalProperties::class, 'json', $context));
+            $object->localProperties = $this->denormalizer->denormalize($data['localProperties'], \CreditSafe\API\Model\ListCompanyImagesDataItemLocalProperties::class, 'json', $context);
             unset($data['localProperties']);
         }
         foreach ($data as $key => $value) {
@@ -95,41 +95,41 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('imageId') && null !== $data->getImageId()) {
-            $dataArray['imageId'] = $data->getImageId();
+        if (array_key_exists('imageId', get_object_vars($data)) && null !== ($data->imageId ?? null)) {
+            $dataArray['imageId'] = $data->imageId ?? null;
         }
-        if ($data->isInitialized('company') && null !== $data->getCompany()) {
-            $dataArray['company'] = $data->getCompany() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCompany(), 'json', $context));
+        if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
+            $dataArray['company'] = ($data->company ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company ?? null, 'json', $context));
         }
-        if ($data->isInitialized('document') && null !== $data->getDocument()) {
-            $dataArray['document'] = $data->getDocument() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getDocument(), 'json', $context));
+        if (array_key_exists('document', get_object_vars($data)) && null !== ($data->document ?? null)) {
+            $dataArray['document'] = ($data->document ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->document ?? null, 'json', $context));
         }
-        if ($data->isInitialized('format') && null !== $data->getFormat()) {
-            $dataArray['format'] = $data->getFormat();
+        if (array_key_exists('format', get_object_vars($data)) && null !== ($data->format ?? null)) {
+            $dataArray['format'] = $data->format ?? null;
         }
-        if ($data->isInitialized('source') && null !== $data->getSource()) {
-            $dataArray['source'] = $data->getSource();
+        if (array_key_exists('source', get_object_vars($data)) && null !== ($data->source ?? null)) {
+            $dataArray['source'] = $data->source ?? null;
         }
-        if ($data->isInitialized('filingDate') && null !== $data->getFilingDate()) {
-            $dataArray['filingDate'] = $data->getFilingDate();
+        if (array_key_exists('filingDate', get_object_vars($data)) && null !== ($data->filingDate ?? null)) {
+            $dataArray['filingDate'] = $data->filingDate ?? null;
         }
-        if ($data->isInitialized('uploadDate') && null !== $data->getUploadDate()) {
-            $dataArray['uploadDate'] = $data->getUploadDate();
+        if (array_key_exists('uploadDate', get_object_vars($data)) && null !== ($data->uploadDate ?? null)) {
+            $dataArray['uploadDate'] = $data->uploadDate ?? null;
         }
-        if ($data->isInitialized('accountingDate') && null !== $data->getAccountingDate()) {
-            $dataArray['accountingDate'] = $data->getAccountingDate();
+        if (array_key_exists('accountingDate', get_object_vars($data)) && null !== ($data->accountingDate ?? null)) {
+            $dataArray['accountingDate'] = $data->accountingDate ?? null;
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
-            $dataArray['language'] = $data->getLanguage();
+        if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
+            $dataArray['language'] = $data->language ?? null;
         }
-        if ($data->isInitialized('comments') && null !== $data->getComments()) {
-            $dataArray['comments'] = $data->getComments();
+        if (array_key_exists('comments', get_object_vars($data)) && null !== ($data->comments ?? null)) {
+            $dataArray['comments'] = $data->comments ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('localProperties') && null !== $data->getLocalProperties()) {
-            $dataArray['localProperties'] = $data->getLocalProperties() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getLocalProperties(), 'json', $context));
+        if (array_key_exists('localProperties', get_object_vars($data)) && null !== ($data->localProperties ?? null)) {
+            $dataArray['localProperties'] = ($data->localProperties ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->localProperties ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

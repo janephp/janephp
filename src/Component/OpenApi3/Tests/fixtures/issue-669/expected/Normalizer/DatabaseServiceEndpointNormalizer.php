@@ -38,11 +38,11 @@ class DatabaseServiceEndpointNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('host', $data)) {
-            $object->setHost($data['host']);
+            $object->host = $data['host'];
             unset($data['host']);
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
             unset($data['port']);
         }
         foreach ($data as $key => $value) {

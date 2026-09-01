@@ -42,7 +42,7 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['archived_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setArchivedAt($date);
+            $object->archivedAt = $date;
             unset($data['archived_at']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -50,35 +50,35 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date_1);
+            $object->createdAt = $date_1;
             unset($data['created_at']);
         }
         if (\array_key_exists('created_by_user_email', $data)) {
-            $object->setCreatedByUserEmail($data['created_by_user_email']);
+            $object->createdByUserEmail = $data['created_by_user_email'];
             unset($data['created_by_user_email']);
         }
         if (\array_key_exists('created_by_user_id', $data)) {
-            $object->setCreatedByUserId($data['created_by_user_id']);
+            $object->createdByUserId = $data['created_by_user_id'];
             unset($data['created_by_user_id']);
         }
         if (\array_key_exists('dataset', $data)) {
-            $object->setDataset($this->denormalizer->denormalize($data['dataset'], \Jane\Generated\DigitalOcean\Model\ApiEvaluationDataset::class, 'json', $context));
+            $object->dataset = $this->denormalizer->denormalize($data['dataset'], \Jane\Generated\DigitalOcean\Model\ApiEvaluationDataset::class, 'json', $context);
             unset($data['dataset']);
         }
         if (\array_key_exists('dataset_name', $data)) {
-            $object->setDatasetName($data['dataset_name']);
+            $object->datasetName = $data['dataset_name'];
             unset($data['dataset_name']);
         }
         if (\array_key_exists('dataset_uuid', $data)) {
-            $object->setDatasetUuid($data['dataset_uuid']);
+            $object->datasetUuid = $data['dataset_uuid'];
             unset($data['dataset_uuid']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('latest_version_number_of_runs', $data)) {
-            $object->setLatestVersionNumberOfRuns($data['latest_version_number_of_runs']);
+            $object->latestVersionNumberOfRuns = $data['latest_version_number_of_runs'];
             unset($data['latest_version_number_of_runs']);
         }
         if (\array_key_exists('metrics', $data)) {
@@ -86,23 +86,23 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['metrics'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiEvaluationMetric::class, 'json', $context);
             }
-            $object->setMetrics($values);
+            $object->metrics = $values;
             unset($data['metrics']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('star_metric', $data)) {
-            $object->setStarMetric($this->denormalizer->denormalize($data['star_metric'], \Jane\Generated\DigitalOcean\Model\ApiStarMetric::class, 'json', $context));
+            $object->starMetric = $this->denormalizer->denormalize($data['star_metric'], \Jane\Generated\DigitalOcean\Model\ApiStarMetric::class, 'json', $context);
             unset($data['star_metric']);
         }
         if (\array_key_exists('test_case_uuid', $data)) {
-            $object->setTestCaseUuid($data['test_case_uuid']);
+            $object->testCaseUuid = $data['test_case_uuid'];
             unset($data['test_case_uuid']);
         }
         if (\array_key_exists('total_runs', $data)) {
-            $object->setTotalRuns($data['total_runs']);
+            $object->totalRuns = $data['total_runs'];
             unset($data['total_runs']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -110,19 +110,19 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             if (false === $date_2) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_2);
+            $object->updatedAt = $date_2;
             unset($data['updated_at']);
         }
         if (\array_key_exists('updated_by_user_email', $data)) {
-            $object->setUpdatedByUserEmail($data['updated_by_user_email']);
+            $object->updatedByUserEmail = $data['updated_by_user_email'];
             unset($data['updated_by_user_email']);
         }
         if (\array_key_exists('updated_by_user_id', $data)) {
-            $object->setUpdatedByUserId($data['updated_by_user_id']);
+            $object->updatedByUserId = $data['updated_by_user_id'];
             unset($data['updated_by_user_id']);
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
             unset($data['version']);
         }
         foreach ($data as $key => $value_1) {
@@ -135,63 +135,63 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('archivedAt') && null !== $data->getArchivedAt()) {
-            $dataArray['archived_at'] = $data->getArchivedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('archivedAt', get_object_vars($data)) && null !== ($data->archivedAt ?? null)) {
+            $dataArray['archived_at'] = ($data->archivedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('createdByUserEmail') && null !== $data->getCreatedByUserEmail()) {
-            $dataArray['created_by_user_email'] = $data->getCreatedByUserEmail();
+        if (array_key_exists('createdByUserEmail', get_object_vars($data)) && null !== ($data->createdByUserEmail ?? null)) {
+            $dataArray['created_by_user_email'] = $data->createdByUserEmail ?? null;
         }
-        if ($data->isInitialized('createdByUserId') && null !== $data->getCreatedByUserId()) {
-            $dataArray['created_by_user_id'] = $data->getCreatedByUserId();
+        if (array_key_exists('createdByUserId', get_object_vars($data)) && null !== ($data->createdByUserId ?? null)) {
+            $dataArray['created_by_user_id'] = $data->createdByUserId ?? null;
         }
-        if ($data->isInitialized('dataset') && null !== $data->getDataset()) {
-            $dataArray['dataset'] = $data->getDataset() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDataset(), 'json', $context));
+        if (array_key_exists('dataset', get_object_vars($data)) && null !== ($data->dataset ?? null)) {
+            $dataArray['dataset'] = ($data->dataset ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dataset ?? null, 'json', $context));
         }
-        if ($data->isInitialized('datasetName') && null !== $data->getDatasetName()) {
-            $dataArray['dataset_name'] = $data->getDatasetName();
+        if (array_key_exists('datasetName', get_object_vars($data)) && null !== ($data->datasetName ?? null)) {
+            $dataArray['dataset_name'] = $data->datasetName ?? null;
         }
-        if ($data->isInitialized('datasetUuid') && null !== $data->getDatasetUuid()) {
-            $dataArray['dataset_uuid'] = $data->getDatasetUuid();
+        if (array_key_exists('datasetUuid', get_object_vars($data)) && null !== ($data->datasetUuid ?? null)) {
+            $dataArray['dataset_uuid'] = $data->datasetUuid ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('latestVersionNumberOfRuns') && null !== $data->getLatestVersionNumberOfRuns()) {
-            $dataArray['latest_version_number_of_runs'] = $data->getLatestVersionNumberOfRuns();
+        if (array_key_exists('latestVersionNumberOfRuns', get_object_vars($data)) && null !== ($data->latestVersionNumberOfRuns ?? null)) {
+            $dataArray['latest_version_number_of_runs'] = $data->latestVersionNumberOfRuns ?? null;
         }
-        if ($data->isInitialized('metrics') && null !== $data->getMetrics()) {
+        if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
             $values = [];
-            foreach ($data->getMetrics() as $value) {
+            foreach ($data->metrics ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['metrics'] = $values;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('starMetric') && null !== $data->getStarMetric()) {
-            $dataArray['star_metric'] = $data->getStarMetric() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStarMetric(), 'json', $context));
+        if (array_key_exists('starMetric', get_object_vars($data)) && null !== ($data->starMetric ?? null)) {
+            $dataArray['star_metric'] = ($data->starMetric ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric ?? null, 'json', $context));
         }
-        if ($data->isInitialized('testCaseUuid') && null !== $data->getTestCaseUuid()) {
-            $dataArray['test_case_uuid'] = $data->getTestCaseUuid();
+        if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
+            $dataArray['test_case_uuid'] = $data->testCaseUuid ?? null;
         }
-        if ($data->isInitialized('totalRuns') && null !== $data->getTotalRuns()) {
-            $dataArray['total_runs'] = $data->getTotalRuns();
+        if (array_key_exists('totalRuns', get_object_vars($data)) && null !== ($data->totalRuns ?? null)) {
+            $dataArray['total_runs'] = $data->totalRuns ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('updatedByUserEmail') && null !== $data->getUpdatedByUserEmail()) {
-            $dataArray['updated_by_user_email'] = $data->getUpdatedByUserEmail();
+        if (array_key_exists('updatedByUserEmail', get_object_vars($data)) && null !== ($data->updatedByUserEmail ?? null)) {
+            $dataArray['updated_by_user_email'] = $data->updatedByUserEmail ?? null;
         }
-        if ($data->isInitialized('updatedByUserId') && null !== $data->getUpdatedByUserId()) {
-            $dataArray['updated_by_user_id'] = $data->getUpdatedByUserId();
+        if (array_key_exists('updatedByUserId', get_object_vars($data)) && null !== ($data->updatedByUserId ?? null)) {
+            $dataArray['updated_by_user_id'] = $data->updatedByUserId ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion();
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = $data->version ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

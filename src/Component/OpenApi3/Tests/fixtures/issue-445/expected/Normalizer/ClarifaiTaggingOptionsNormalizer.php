@@ -38,71 +38,71 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] !== null) {
-            $object->setTagOutputFormatId($data['tagOutputFormatId']);
+            $object->tagOutputFormatId = $data['tagOutputFormatId'];
             unset($data['tagOutputFormatId']);
         }
         elseif (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] === null) {
-            $object->setTagOutputFormatId(null);
+            $object->tagOutputFormatId = null;
             unset($data['tagOutputFormatId']);
         }
         if (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] !== null) {
-            $object->setKeywordLookupCacheName($data['keywordLookupCacheName']);
+            $object->keywordLookupCacheName = $data['keywordLookupCacheName'];
             unset($data['keywordLookupCacheName']);
         }
         elseif (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] === null) {
-            $object->setKeywordLookupCacheName(null);
+            $object->keywordLookupCacheName = null;
             unset($data['keywordLookupCacheName']);
         }
         if (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] !== null) {
-            $object->setTaggingLayerId($data['taggingLayerId']);
+            $object->taggingLayerId = $data['taggingLayerId'];
             unset($data['taggingLayerId']);
         }
         elseif (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] === null) {
-            $object->setTaggingLayerId(null);
+            $object->taggingLayerId = null;
             unset($data['taggingLayerId']);
         }
         if (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] !== null) {
-            $object->setFoundTagsFieldId($data['foundTagsFieldId']);
+            $object->foundTagsFieldId = $data['foundTagsFieldId'];
             unset($data['foundTagsFieldId']);
         }
         elseif (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] === null) {
-            $object->setFoundTagsFieldId(null);
+            $object->foundTagsFieldId = null;
             unset($data['foundTagsFieldId']);
         }
         if (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] !== null) {
-            $object->setMissingKeywordsFieldId($data['missingKeywordsFieldId']);
+            $object->missingKeywordsFieldId = $data['missingKeywordsFieldId'];
             unset($data['missingKeywordsFieldId']);
         }
         elseif (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] === null) {
-            $object->setMissingKeywordsFieldId(null);
+            $object->missingKeywordsFieldId = null;
             unset($data['missingKeywordsFieldId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('model', $data) && $data['model'] !== null) {
-            $object->setModel($data['model']);
+            $object->model = $data['model'];
             unset($data['model']);
         }
         elseif (\array_key_exists('model', $data) && $data['model'] === null) {
-            $object->setModel(null);
+            $object->model = null;
             unset($data['model']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
             unset($data['language']);
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
-            $object->setLanguage(null);
+            $object->language = null;
             unset($data['language']);
         }
         if (\array_key_exists('minimumValue', $data) && $data['minimumValue'] !== null) {
-            $object->setMinimumValue($data['minimumValue']);
+            $object->minimumValue = $data['minimumValue'];
             unset($data['minimumValue']);
         }
         elseif (\array_key_exists('minimumValue', $data) && $data['minimumValue'] === null) {
-            $object->setMinimumValue(null);
+            $object->minimumValue = null;
             unset($data['minimumValue']);
         }
         foreach ($data as $key => $value) {
@@ -115,30 +115,30 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('tagOutputFormatId') && null !== $data->getTagOutputFormatId()) {
-            $dataArray['tagOutputFormatId'] = $data->getTagOutputFormatId();
+        if (array_key_exists('tagOutputFormatId', get_object_vars($data)) && null !== ($data->tagOutputFormatId ?? null)) {
+            $dataArray['tagOutputFormatId'] = $data->tagOutputFormatId ?? null;
         }
-        if ($data->isInitialized('keywordLookupCacheName') && null !== $data->getKeywordLookupCacheName()) {
-            $dataArray['keywordLookupCacheName'] = $data->getKeywordLookupCacheName();
+        if (array_key_exists('keywordLookupCacheName', get_object_vars($data)) && null !== ($data->keywordLookupCacheName ?? null)) {
+            $dataArray['keywordLookupCacheName'] = $data->keywordLookupCacheName ?? null;
         }
-        if ($data->isInitialized('taggingLayerId') && null !== $data->getTaggingLayerId()) {
-            $dataArray['taggingLayerId'] = $data->getTaggingLayerId();
+        if (array_key_exists('taggingLayerId', get_object_vars($data)) && null !== ($data->taggingLayerId ?? null)) {
+            $dataArray['taggingLayerId'] = $data->taggingLayerId ?? null;
         }
-        if ($data->isInitialized('foundTagsFieldId') && null !== $data->getFoundTagsFieldId()) {
-            $dataArray['foundTagsFieldId'] = $data->getFoundTagsFieldId();
+        if (array_key_exists('foundTagsFieldId', get_object_vars($data)) && null !== ($data->foundTagsFieldId ?? null)) {
+            $dataArray['foundTagsFieldId'] = $data->foundTagsFieldId ?? null;
         }
-        if ($data->isInitialized('missingKeywordsFieldId') && null !== $data->getMissingKeywordsFieldId()) {
-            $dataArray['missingKeywordsFieldId'] = $data->getMissingKeywordsFieldId();
+        if (array_key_exists('missingKeywordsFieldId', get_object_vars($data)) && null !== ($data->missingKeywordsFieldId ?? null)) {
+            $dataArray['missingKeywordsFieldId'] = $data->missingKeywordsFieldId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $data->getModel();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
+            $dataArray['model'] = $data->model ?? null;
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
-            $dataArray['language'] = $data->getLanguage();
+        if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
+            $dataArray['language'] = $data->language ?? null;
         }
-        if ($data->isInitialized('minimumValue') && null !== $data->getMinimumValue()) {
-            $dataArray['minimumValue'] = $data->getMinimumValue();
+        if (array_key_exists('minimumValue', get_object_vars($data)) && null !== ($data->minimumValue ?? null)) {
+            $dataArray['minimumValue'] = $data->minimumValue ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

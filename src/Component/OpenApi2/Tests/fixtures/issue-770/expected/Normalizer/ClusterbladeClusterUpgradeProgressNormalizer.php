@@ -44,65 +44,65 @@ class ClusterbladeClusterUpgradeProgressNormalizer implements DenormalizerInterf
             $data['clusterOperationBlockUI'] = (bool) $data['clusterOperationBlockUI'];
         }
         if (\array_key_exists('operation', $data)) {
-            $object->setOperation($data['operation']);
+            $object->operation = $data['operation'];
         }
         if (\array_key_exists('overallProgress', $data)) {
-            $object->setOverallProgress($data['overallProgress']);
+            $object->overallProgress = $data['overallProgress'];
         }
         if (\array_key_exists('previousOperationRecord', $data)) {
-            $object->setPreviousOperationRecord($this->denormalizer->denormalize($data['previousOperationRecord'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladePreviousOperationRecord::class, 'json', $context));
+            $object->previousOperationRecord = $this->denormalizer->denormalize($data['previousOperationRecord'], \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladePreviousOperationRecord::class, 'json', $context);
         }
         if (\array_key_exists('isSelfBladeRebooting', $data)) {
-            $object->setIsSelfBladeRebooting($data['isSelfBladeRebooting']);
+            $object->isSelfBladeRebooting = $data['isSelfBladeRebooting'];
         }
         if (\array_key_exists('bladeProgresss', $data)) {
             $values = [];
             foreach ($data['bladeProgresss'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeBladeProgress::class, 'json', $context);
             }
-            $object->setBladeProgresss($values);
+            $object->bladeProgresss = $values;
         }
         if (\array_key_exists('clusterSubTaskState', $data)) {
-            $object->setClusterSubTaskState($data['clusterSubTaskState']);
+            $object->clusterSubTaskState = $data['clusterSubTaskState'];
         }
         if (\array_key_exists('clusterOperationBlockUI', $data)) {
-            $object->setClusterOperationBlockUI($data['clusterOperationBlockUI']);
+            $object->clusterOperationBlockUI = $data['clusterOperationBlockUI'];
         }
         if (\array_key_exists('clusterOperationDisplayMsg', $data)) {
-            $object->setClusterOperationDisplayMsg($data['clusterOperationDisplayMsg']);
+            $object->clusterOperationDisplayMsg = $data['clusterOperationDisplayMsg'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('operation') && null !== $data->getOperation()) {
-            $dataArray['operation'] = $data->getOperation();
+        if (array_key_exists('operation', get_object_vars($data)) && null !== ($data->operation ?? null)) {
+            $dataArray['operation'] = $data->operation ?? null;
         }
-        if ($data->isInitialized('overallProgress') && null !== $data->getOverallProgress()) {
-            $dataArray['overallProgress'] = $data->getOverallProgress();
+        if (array_key_exists('overallProgress', get_object_vars($data)) && null !== ($data->overallProgress ?? null)) {
+            $dataArray['overallProgress'] = $data->overallProgress ?? null;
         }
-        if ($data->isInitialized('previousOperationRecord') && null !== $data->getPreviousOperationRecord()) {
-            $dataArray['previousOperationRecord'] = $data->getPreviousOperationRecord() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPreviousOperationRecord(), 'json', $context));
+        if (array_key_exists('previousOperationRecord', get_object_vars($data)) && null !== ($data->previousOperationRecord ?? null)) {
+            $dataArray['previousOperationRecord'] = ($data->previousOperationRecord ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->previousOperationRecord ?? null, 'json', $context));
         }
-        if ($data->isInitialized('isSelfBladeRebooting') && null !== $data->getIsSelfBladeRebooting()) {
-            $dataArray['isSelfBladeRebooting'] = $data->getIsSelfBladeRebooting();
+        if (array_key_exists('isSelfBladeRebooting', get_object_vars($data)) && null !== ($data->isSelfBladeRebooting ?? null)) {
+            $dataArray['isSelfBladeRebooting'] = $data->isSelfBladeRebooting ?? null;
         }
-        if ($data->isInitialized('bladeProgresss') && null !== $data->getBladeProgresss()) {
+        if (array_key_exists('bladeProgresss', get_object_vars($data)) && null !== ($data->bladeProgresss ?? null)) {
             $values = [];
-            foreach ($data->getBladeProgresss() as $value) {
+            foreach ($data->bladeProgresss ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['bladeProgresss'] = $values;
         }
-        if ($data->isInitialized('clusterSubTaskState') && null !== $data->getClusterSubTaskState()) {
-            $dataArray['clusterSubTaskState'] = $data->getClusterSubTaskState();
+        if (array_key_exists('clusterSubTaskState', get_object_vars($data)) && null !== ($data->clusterSubTaskState ?? null)) {
+            $dataArray['clusterSubTaskState'] = $data->clusterSubTaskState ?? null;
         }
-        if ($data->isInitialized('clusterOperationBlockUI') && null !== $data->getClusterOperationBlockUI()) {
-            $dataArray['clusterOperationBlockUI'] = $data->getClusterOperationBlockUI();
+        if (array_key_exists('clusterOperationBlockUI', get_object_vars($data)) && null !== ($data->clusterOperationBlockUI ?? null)) {
+            $dataArray['clusterOperationBlockUI'] = $data->clusterOperationBlockUI ?? null;
         }
-        if ($data->isInitialized('clusterOperationDisplayMsg') && null !== $data->getClusterOperationDisplayMsg()) {
-            $dataArray['clusterOperationDisplayMsg'] = $data->getClusterOperationDisplayMsg();
+        if (array_key_exists('clusterOperationDisplayMsg', get_object_vars($data)) && null !== ($data->clusterOperationDisplayMsg ?? null)) {
+            $dataArray['clusterOperationDisplayMsg'] = $data->clusterOperationDisplayMsg ?? null;
         }
         return $dataArray;
     }

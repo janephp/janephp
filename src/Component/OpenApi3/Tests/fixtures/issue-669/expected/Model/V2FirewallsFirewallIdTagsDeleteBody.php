@@ -8,37 +8,11 @@ class V2FirewallsFirewallIdTagsDeleteBody implements AdditionalPropertiesInterfa
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var list<string>
      */
-    protected $tags;
-    /**
-     * @return list<string>
-     */
-    public function getTags(): array
-    {
-        return $this->tags;
-    }
-    /**
-     * @param list<string> $tags
-     *
-     * @return self
-     */
-    public function setTags(array $tags): self
-    {
-        $this->initialized['tags'] = true;
-        $this->tags = $tags;
-        return $this;
-    }
+    public array $tags;
     public function definedProperties(): array
     {
-        return ['tags' => ['tags', 'getTags', 'setTags']];
+        return ['tags' => 'tags'];
     }
 }

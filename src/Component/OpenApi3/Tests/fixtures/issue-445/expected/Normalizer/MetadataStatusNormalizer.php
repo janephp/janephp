@@ -42,27 +42,27 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['contentOrLayerSchemaIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setContentOrLayerSchemaIds($values);
+            $object->contentOrLayerSchemaIds = $values;
         }
         elseif (\array_key_exists('contentOrLayerSchemaIds', $data) && $data['contentOrLayerSchemaIds'] === null) {
-            $object->setContentOrLayerSchemaIds(null);
+            $object->contentOrLayerSchemaIds = null;
         }
         if (\array_key_exists('listSchemaIds', $data) && $data['listSchemaIds'] !== null) {
             $values_1 = [];
             foreach ($data['listSchemaIds'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setListSchemaIds($values_1);
+            $object->listSchemaIds = $values_1;
         }
         elseif (\array_key_exists('listSchemaIds', $data) && $data['listSchemaIds'] === null) {
-            $object->setListSchemaIds(null);
+            $object->listSchemaIds = null;
         }
         if (\array_key_exists('state', $data)) {
             $value_2 = $data['state'];
             if (is_string($data['state'])) {
                 $value_2 = $data['state'];
             }
-            $object->setState($value_2);
+            $object->state = $value_2;
         }
         if (\array_key_exists('fieldIdsToCleanup', $data) && $data['fieldIdsToCleanup'] !== null) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
@@ -73,38 +73,38 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
                 }
                 $values_2[$key] = $values_3;
             }
-            $object->setFieldIdsToCleanup($values_2);
+            $object->fieldIdsToCleanup = $values_2;
         }
         elseif (\array_key_exists('fieldIdsToCleanup', $data) && $data['fieldIdsToCleanup'] === null) {
-            $object->setFieldIdsToCleanup(null);
+            $object->fieldIdsToCleanup = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('contentOrLayerSchemaIds') && null !== $data->getContentOrLayerSchemaIds()) {
+        if (array_key_exists('contentOrLayerSchemaIds', get_object_vars($data)) && null !== ($data->contentOrLayerSchemaIds ?? null)) {
             $values = [];
-            foreach ($data->getContentOrLayerSchemaIds() as $value) {
+            foreach ($data->contentOrLayerSchemaIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['contentOrLayerSchemaIds'] = $values;
         }
-        if ($data->isInitialized('listSchemaIds') && null !== $data->getListSchemaIds()) {
+        if (array_key_exists('listSchemaIds', get_object_vars($data)) && null !== ($data->listSchemaIds ?? null)) {
             $values_1 = [];
-            foreach ($data->getListSchemaIds() as $value_1) {
+            foreach ($data->listSchemaIds ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['listSchemaIds'] = $values_1;
         }
-        $value_2 = $data->getState();
-        if (is_string($data->getState())) {
-            $value_2 = $data->getState();
+        $value_2 = $data->state ?? null;
+        if (is_string($data->state ?? null)) {
+            $value_2 = $data->state ?? null;
         }
         $dataArray['state'] = $value_2;
-        if ($data->isInitialized('fieldIdsToCleanup') && null !== $data->getFieldIdsToCleanup()) {
+        if (array_key_exists('fieldIdsToCleanup', get_object_vars($data)) && null !== ($data->fieldIdsToCleanup ?? null)) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getFieldIdsToCleanup() as $key => $value_3) {
+            foreach ($data->fieldIdsToCleanup ?? null as $key => $value_3) {
                 $values_3 = [];
                 foreach ($value_3 as $value_4) {
                     $values_3[] = $value_4;

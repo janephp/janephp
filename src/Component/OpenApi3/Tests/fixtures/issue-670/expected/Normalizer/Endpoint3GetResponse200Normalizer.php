@@ -38,7 +38,7 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('field-3', $data)) {
-            $object->setField3($this->denormalizer->denormalize($data['field-3'], \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3GetResponse200Field3::class, 'json', $context));
+            $object->field3 = $this->denormalizer->denormalize($data['field-3'], \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3GetResponse200Field3::class, 'json', $context);
             unset($data['field-3']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('field3') && null !== $data->getField3()) {
-            $dataArray['field-3'] = $data->getField3() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getField3(), 'json', $context));
+        if (array_key_exists('field3', get_object_vars($data)) && null !== ($data->field3 ?? null)) {
+            $dataArray['field-3'] = ($data->field3 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->field3 ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

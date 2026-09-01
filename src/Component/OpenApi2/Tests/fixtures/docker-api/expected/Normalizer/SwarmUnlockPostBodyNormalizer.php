@@ -41,15 +41,15 @@ class SwarmUnlockPostBodyNormalizer implements DenormalizerInterface, Normalizer
             $this->validate($data, new \Docker\Api\Validator\SwarmUnlockPostBodyConstraint());
         }
         if (\array_key_exists('UnlockKey', $data)) {
-            $object->setUnlockKey($data['UnlockKey']);
+            $object->unlockKey = $data['UnlockKey'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('unlockKey') && null !== $data->getUnlockKey()) {
-            $dataArray['UnlockKey'] = $data->getUnlockKey();
+        if (array_key_exists('unlockKey', get_object_vars($data)) && null !== ($data->unlockKey ?? null)) {
+            $dataArray['UnlockKey'] = $data->unlockKey ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmUnlockPostBodyConstraint());

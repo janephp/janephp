@@ -8,183 +8,43 @@ class SpecialEvent implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Identifier for a special event.
      *
      * @var string
      */
-    protected $eventId;
+    public string $eventId;
     /**
      * Name of the special event.
      *
      * @var string
      */
-    protected $name;
+    public string $name;
     /**
      * Location where the special event is held.
      *
      * @var string
      */
-    protected $location;
+    public string $location;
     /**
      * Description of the special event.
      *
      * @var string
      */
-    protected $eventDescription;
+    public string $eventDescription;
     /**
      * List of planned dates for the special event.
      *
      * @var list<\DateTime>
      */
-    protected $dates;
+    public array $dates;
     /**
      * Price of a ticket for the special event.
      *
      * @var float
      */
-    protected $price;
-    /**
-     * Identifier for a special event.
-     *
-     * @return string
-     */
-    public function getEventId(): string
-    {
-        return $this->eventId;
-    }
-    /**
-     * Identifier for a special event.
-     *
-     * @param string $eventId
-     *
-     * @return self
-     */
-    public function setEventId(string $eventId): self
-    {
-        $this->initialized['eventId'] = true;
-        $this->eventId = $eventId;
-        return $this;
-    }
-    /**
-     * Name of the special event.
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * Name of the special event.
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * Location where the special event is held.
-     *
-     * @return string
-     */
-    public function getLocation(): string
-    {
-        return $this->location;
-    }
-    /**
-     * Location where the special event is held.
-     *
-     * @param string $location
-     *
-     * @return self
-     */
-    public function setLocation(string $location): self
-    {
-        $this->initialized['location'] = true;
-        $this->location = $location;
-        return $this;
-    }
-    /**
-     * Description of the special event.
-     *
-     * @return string
-     */
-    public function getEventDescription(): string
-    {
-        return $this->eventDescription;
-    }
-    /**
-     * Description of the special event.
-     *
-     * @param string $eventDescription
-     *
-     * @return self
-     */
-    public function setEventDescription(string $eventDescription): self
-    {
-        $this->initialized['eventDescription'] = true;
-        $this->eventDescription = $eventDescription;
-        return $this;
-    }
-    /**
-     * List of planned dates for the special event.
-     *
-     * @return list<\DateTime>
-     */
-    public function getDates(): array
-    {
-        return $this->dates;
-    }
-    /**
-     * List of planned dates for the special event.
-     *
-     * @param list<\DateTime> $dates
-     *
-     * @return self
-     */
-    public function setDates(array $dates): self
-    {
-        $this->initialized['dates'] = true;
-        $this->dates = $dates;
-        return $this;
-    }
-    /**
-     * Price of a ticket for the special event.
-     *
-     * @return float
-     */
-    public function getPrice(): float
-    {
-        return $this->price;
-    }
-    /**
-     * Price of a ticket for the special event.
-     *
-     * @param float $price
-     *
-     * @return self
-     */
-    public function setPrice(float $price): self
-    {
-        $this->initialized['price'] = true;
-        $this->price = $price;
-        return $this;
-    }
+    public float $price;
     public function definedProperties(): array
     {
-        return ['eventId' => ['eventId', 'getEventId', 'setEventId'], 'name' => ['name', 'getName', 'setName'], 'location' => ['location', 'getLocation', 'setLocation'], 'eventDescription' => ['eventDescription', 'getEventDescription', 'setEventDescription'], 'dates' => ['dates', 'getDates', 'setDates'], 'price' => ['price', 'getPrice', 'setPrice']];
+        return ['eventId' => 'eventId', 'name' => 'name', 'location' => 'location', 'eventDescription' => 'eventDescription', 'dates' => 'dates', 'price' => 'price'];
     }
 }

@@ -38,10 +38,10 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('onlyNull', $data) && $data['onlyNull'] !== null) {
-            $object->setOnlyNull($data['onlyNull']);
+            $object->onlyNull = $data['onlyNull'];
         }
         elseif (\array_key_exists('onlyNull', $data) && $data['onlyNull'] === null) {
-            $object->setOnlyNull(null);
+            $object->onlyNull = null;
         }
         if (\array_key_exists('nullOrString', $data) && $data['nullOrString'] !== null) {
             $value = $data['nullOrString'];
@@ -50,58 +50,58 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             } elseif (is_null($data['nullOrString'])) {
                 $value = $data['nullOrString'];
             }
-            $object->setNullOrString($value);
+            $object->nullOrString = $value;
         }
         elseif (\array_key_exists('nullOrString', $data) && $data['nullOrString'] === null) {
-            $object->setNullOrString(null);
+            $object->nullOrString = null;
         }
         if (\array_key_exists('array', $data) && $data['array'] !== null) {
             $values = [];
             foreach ($data['array'] as $value_1) {
                 $values[] = $value_1;
             }
-            $object->setArray($values);
+            $object->array = $values;
         }
         elseif (\array_key_exists('array', $data) && $data['array'] === null) {
-            $object->setArray(null);
+            $object->array = null;
         }
         if (\array_key_exists('object', $data) && $data['object'] !== null) {
             $values_1 = new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject();
             foreach ($data['object'] as $key => $value_2) {
                 $values_1[$key] = $value_2;
             }
-            $object->setObject($values_1);
+            $object->object = $values_1;
         }
         elseif (\array_key_exists('object', $data) && $data['object'] === null) {
-            $object->setObject(null);
+            $object->object = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('onlyNull') && null !== $data->getOnlyNull()) {
-            $dataArray['onlyNull'] = $data->getOnlyNull();
+        if (array_key_exists('onlyNull', get_object_vars($data)) && null !== ($data->onlyNull ?? null)) {
+            $dataArray['onlyNull'] = $data->onlyNull ?? null;
         }
-        if ($data->isInitialized('nullOrString') && null !== $data->getNullOrString()) {
-            $value = $data->getNullOrString();
-            if (is_string($data->getNullOrString())) {
-                $value = $data->getNullOrString();
-            } elseif (is_null($data->getNullOrString())) {
-                $value = $data->getNullOrString();
+        if (array_key_exists('nullOrString', get_object_vars($data)) && null !== ($data->nullOrString ?? null)) {
+            $value = $data->nullOrString ?? null;
+            if (is_string($data->nullOrString ?? null)) {
+                $value = $data->nullOrString ?? null;
+            } elseif (is_null($data->nullOrString ?? null)) {
+                $value = $data->nullOrString ?? null;
             }
             $dataArray['nullOrString'] = $value;
         }
-        if ($data->isInitialized('array') && null !== $data->getArray()) {
+        if (array_key_exists('array', get_object_vars($data)) && null !== ($data->array ?? null)) {
             $values = [];
-            foreach ($data->getArray() as $value_1) {
+            foreach ($data->array ?? null as $value_1) {
                 $values[] = $value_1;
             }
             $dataArray['array'] = $values;
         }
-        if ($data->isInitialized('object') && null !== $data->getObject()) {
+        if (array_key_exists('object', get_object_vars($data)) && null !== ($data->object ?? null)) {
             $values_1 = new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject();
-            foreach ($data->getObject() as $key => $value_2) {
+            foreach ($data->object ?? null as $key => $value_2) {
                 $values_1[$key] = $value_2;
             }
             $dataArray['object'] = $values_1;

@@ -41,11 +41,11 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $this->validate($data, new \Jane\Component\OpenApi3\Tests\Expected\Validator\ExampleConstraint());
         }
         if (\array_key_exists('property1', $data) && $data['property1'] !== null) {
-            $object->setProperty1($data['property1']);
+            $object->property1 = $data['property1'];
             unset($data['property1']);
         }
         elseif (\array_key_exists('property1', $data) && $data['property1'] === null) {
-            $object->setProperty1(null);
+            $object->property1 = null;
             unset($data['property1']);
         }
         foreach ($data as $key => $value) {
@@ -58,7 +58,7 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['property1'] = $data->getProperty1();
+        $dataArray['property1'] = $data->property1 ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

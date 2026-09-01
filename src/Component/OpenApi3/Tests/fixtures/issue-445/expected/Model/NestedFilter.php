@@ -8,71 +8,19 @@ class NestedFilter extends FilterBase implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * The path pointing to the nested document (i.e. personLayer.nestedAddress).
      *
      * @var string
      */
-    protected $path;
+    public string $path;
     /**
      * The filter to be applied on the nested documents.
      *
      * @var FilterBase
      */
-    protected $filter;
-    /**
-     * The path pointing to the nested document (i.e. personLayer.nestedAddress).
-     *
-     * @return string
-     */
-    public function getPath(): string
-    {
-        return $this->path;
-    }
-    /**
-     * The path pointing to the nested document (i.e. personLayer.nestedAddress).
-     *
-     * @param string $path
-     *
-     * @return self
-     */
-    public function setPath(string $path): self
-    {
-        $this->initialized['path'] = true;
-        $this->path = $path;
-        return $this;
-    }
-    /**
-     * The filter to be applied on the nested documents.
-     *
-     * @return FilterBase
-     */
-    public function getFilter(): FilterBase
-    {
-        return $this->filter;
-    }
-    /**
-     * The filter to be applied on the nested documents.
-     *
-     * @param FilterBase $filter
-     *
-     * @return self
-     */
-    public function setFilter(FilterBase $filter): self
-    {
-        $this->initialized['filter'] = true;
-        $this->filter = $filter;
-        return $this;
-    }
+    public FilterBase $filter;
     public function definedProperties(): array
     {
-        return ['path' => ['path', 'getPath', 'setPath'], 'filter' => ['filter', 'getFilter', 'setFilter']];
+        return ['path' => 'path', 'filter' => 'filter'];
     }
 }

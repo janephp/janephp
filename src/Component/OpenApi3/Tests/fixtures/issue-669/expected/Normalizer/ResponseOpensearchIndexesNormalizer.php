@@ -46,7 +46,7 @@ class ResponseOpensearchIndexesNormalizer implements DenormalizerInterface, Norm
                 }
                 $values[] = $values_1;
             }
-            $object->setIndexes($values);
+            $object->indexes = $values;
             unset($data['indexes']);
         }
         foreach ($data as $key_1 => $value_2) {
@@ -59,9 +59,9 @@ class ResponseOpensearchIndexesNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('indexes') && null !== $data->getIndexes()) {
+        if (array_key_exists('indexes', get_object_vars($data)) && null !== ($data->indexes ?? null)) {
             $values = [];
-            foreach ($data->getIndexes() as $value) {
+            foreach ($data->indexes ?? null as $value) {
                 $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;

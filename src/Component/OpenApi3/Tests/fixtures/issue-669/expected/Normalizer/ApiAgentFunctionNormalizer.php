@@ -38,7 +38,7 @@ class ApiAgentFunctionNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('api_key', $data)) {
-            $object->setApiKey($data['api_key']);
+            $object->apiKey = $data['api_key'];
             unset($data['api_key']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -46,23 +46,23 @@ class ApiAgentFunctionNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('created_by', $data)) {
-            $object->setCreatedBy($data['created_by']);
+            $object->createdBy = $data['created_by'];
             unset($data['created_by']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('faas_name', $data)) {
-            $object->setFaasName($data['faas_name']);
+            $object->faasName = $data['faas_name'];
             unset($data['faas_name']);
         }
         if (\array_key_exists('faas_namespace', $data)) {
-            $object->setFaasNamespace($data['faas_namespace']);
+            $object->faasNamespace = $data['faas_namespace'];
             unset($data['faas_namespace']);
         }
         if (\array_key_exists('input_schema', $data)) {
@@ -70,11 +70,11 @@ class ApiAgentFunctionNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['input_schema'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setInputSchema($values);
+            $object->inputSchema = $values;
             unset($data['input_schema']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('output_schema', $data)) {
@@ -82,7 +82,7 @@ class ApiAgentFunctionNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['output_schema'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
-            $object->setOutputSchema($values_1);
+            $object->outputSchema = $values_1;
             unset($data['output_schema']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -90,15 +90,15 @@ class ApiAgentFunctionNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
             unset($data['url']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         foreach ($data as $key_2 => $value_2) {
@@ -111,49 +111,49 @@ class ApiAgentFunctionNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apiKey') && null !== $data->getApiKey()) {
-            $dataArray['api_key'] = $data->getApiKey();
+        if (array_key_exists('apiKey', get_object_vars($data)) && null !== ($data->apiKey ?? null)) {
+            $dataArray['api_key'] = $data->apiKey ?? null;
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('createdBy') && null !== $data->getCreatedBy()) {
-            $dataArray['created_by'] = $data->getCreatedBy();
+        if (array_key_exists('createdBy', get_object_vars($data)) && null !== ($data->createdBy ?? null)) {
+            $dataArray['created_by'] = $data->createdBy ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('faasName') && null !== $data->getFaasName()) {
-            $dataArray['faas_name'] = $data->getFaasName();
+        if (array_key_exists('faasName', get_object_vars($data)) && null !== ($data->faasName ?? null)) {
+            $dataArray['faas_name'] = $data->faasName ?? null;
         }
-        if ($data->isInitialized('faasNamespace') && null !== $data->getFaasNamespace()) {
-            $dataArray['faas_namespace'] = $data->getFaasNamespace();
+        if (array_key_exists('faasNamespace', get_object_vars($data)) && null !== ($data->faasNamespace ?? null)) {
+            $dataArray['faas_namespace'] = $data->faasNamespace ?? null;
         }
-        if ($data->isInitialized('inputSchema') && null !== $data->getInputSchema()) {
+        if (array_key_exists('inputSchema', get_object_vars($data)) && null !== ($data->inputSchema ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getInputSchema() as $key => $value) {
+            foreach ($data->inputSchema ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['input_schema'] = $values;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('outputSchema') && null !== $data->getOutputSchema()) {
+        if (array_key_exists('outputSchema', get_object_vars($data)) && null !== ($data->outputSchema ?? null)) {
             $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getOutputSchema() as $key_1 => $value_1) {
+            foreach ($data->outputSchema ?? null as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['output_schema'] = $values_1;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('url') && null !== $data->getUrl()) {
-            $dataArray['url'] = $data->getUrl();
+        if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
+            $dataArray['url'] = $data->url ?? null;
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_2) {
             if (preg_match('/.*/', (string) $key_2)) {

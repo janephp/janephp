@@ -38,21 +38,21 @@ class ProfileTtgCommonSettingNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mobileCountryCode', $data)) {
-            $object->setMobileCountryCode($data['mobileCountryCode']);
+            $object->mobileCountryCode = $data['mobileCountryCode'];
         }
         if (\array_key_exists('mobileNetworkCode', $data)) {
-            $object->setMobileNetworkCode($data['mobileNetworkCode']);
+            $object->mobileNetworkCode = $data['mobileNetworkCode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mobileCountryCode') && null !== $data->getMobileCountryCode()) {
-            $dataArray['mobileCountryCode'] = $data->getMobileCountryCode();
+        if (array_key_exists('mobileCountryCode', get_object_vars($data)) && null !== ($data->mobileCountryCode ?? null)) {
+            $dataArray['mobileCountryCode'] = $data->mobileCountryCode ?? null;
         }
-        if ($data->isInitialized('mobileNetworkCode') && null !== $data->getMobileNetworkCode()) {
-            $dataArray['mobileNetworkCode'] = $data->getMobileNetworkCode();
+        if (array_key_exists('mobileNetworkCode', get_object_vars($data)) && null !== ($data->mobileNetworkCode ?? null)) {
+            $dataArray['mobileNetworkCode'] = $data->mobileNetworkCode ?? null;
         }
         return $dataArray;
     }

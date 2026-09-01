@@ -41,51 +41,51 @@ class OutputResolveResultNormalizer implements DenormalizerInterface, Normalizer
             $data['dynamicRendering'] = (bool) $data['dynamicRendering'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
         }
         if (\array_key_exists('outputFormatId', $data)) {
-            $object->setOutputFormatId($data['outputFormatId']);
+            $object->outputFormatId = $data['outputFormatId'];
         }
         if (\array_key_exists('contentId', $data)) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
         }
         if (\array_key_exists('renderingState', $data)) {
             $value = $data['renderingState'];
             if (is_string($data['renderingState'])) {
                 $value = $data['renderingState'];
             }
-            $object->setRenderingState($value);
+            $object->renderingState = $value;
         }
         if (\array_key_exists('dynamicRendering', $data)) {
-            $object->setDynamicRendering($data['dynamicRendering']);
+            $object->dynamicRendering = $data['dynamicRendering'];
         }
         if (\array_key_exists('fileSize', $data) && $data['fileSize'] !== null) {
-            $object->setFileSize($data['fileSize']);
+            $object->fileSize = $data['fileSize'];
         }
         elseif (\array_key_exists('fileSize', $data) && $data['fileSize'] === null) {
-            $object->setFileSize(null);
+            $object->fileSize = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['outputFormatId'] = $data->getOutputFormatId();
-        $dataArray['contentId'] = $data->getContentId();
-        $value = $data->getRenderingState();
-        if (is_string($data->getRenderingState())) {
-            $value = $data->getRenderingState();
+        $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
+        $dataArray['contentId'] = $data->contentId ?? null;
+        $value = $data->renderingState ?? null;
+        if (is_string($data->renderingState ?? null)) {
+            $value = $data->renderingState ?? null;
         }
         $dataArray['renderingState'] = $value;
-        $dataArray['dynamicRendering'] = $data->getDynamicRendering();
-        if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
-            $dataArray['fileSize'] = $data->getFileSize();
+        $dataArray['dynamicRendering'] = $data->dynamicRendering ?? null;
+        if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
+            $dataArray['fileSize'] = $data->fileSize ?? null;
         }
         return $dataArray;
     }

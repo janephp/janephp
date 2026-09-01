@@ -41,47 +41,47 @@ class SwarmSpecCAConfigNormalizer implements DenormalizerInterface, NormalizerIn
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecCAConfigConstraint());
         }
         if (\array_key_exists('NodeCertExpiry', $data)) {
-            $object->setNodeCertExpiry($data['NodeCertExpiry']);
+            $object->nodeCertExpiry = $data['NodeCertExpiry'];
         }
         if (\array_key_exists('ExternalCAs', $data)) {
             $values = [];
             foreach ($data['ExternalCAs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\SwarmSpecCAConfigExternalCAsItem::class, 'json', $context);
             }
-            $object->setExternalCAs($values);
+            $object->externalCAs = $values;
         }
         if (\array_key_exists('SigningCACert', $data)) {
-            $object->setSigningCACert($data['SigningCACert']);
+            $object->signingCACert = $data['SigningCACert'];
         }
         if (\array_key_exists('SigningCAKey', $data)) {
-            $object->setSigningCAKey($data['SigningCAKey']);
+            $object->signingCAKey = $data['SigningCAKey'];
         }
         if (\array_key_exists('ForceRotate', $data)) {
-            $object->setForceRotate($data['ForceRotate']);
+            $object->forceRotate = $data['ForceRotate'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nodeCertExpiry') && null !== $data->getNodeCertExpiry()) {
-            $dataArray['NodeCertExpiry'] = $data->getNodeCertExpiry();
+        if (array_key_exists('nodeCertExpiry', get_object_vars($data)) && null !== ($data->nodeCertExpiry ?? null)) {
+            $dataArray['NodeCertExpiry'] = $data->nodeCertExpiry ?? null;
         }
-        if ($data->isInitialized('externalCAs') && null !== $data->getExternalCAs()) {
+        if (array_key_exists('externalCAs', get_object_vars($data)) && null !== ($data->externalCAs ?? null)) {
             $values = [];
-            foreach ($data->getExternalCAs() as $value) {
+            foreach ($data->externalCAs ?? null as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ExternalCAs'] = $values;
         }
-        if ($data->isInitialized('signingCACert') && null !== $data->getSigningCACert()) {
-            $dataArray['SigningCACert'] = $data->getSigningCACert();
+        if (array_key_exists('signingCACert', get_object_vars($data)) && null !== ($data->signingCACert ?? null)) {
+            $dataArray['SigningCACert'] = $data->signingCACert ?? null;
         }
-        if ($data->isInitialized('signingCAKey') && null !== $data->getSigningCAKey()) {
-            $dataArray['SigningCAKey'] = $data->getSigningCAKey();
+        if (array_key_exists('signingCAKey', get_object_vars($data)) && null !== ($data->signingCAKey ?? null)) {
+            $dataArray['SigningCAKey'] = $data->signingCAKey ?? null;
         }
-        if ($data->isInitialized('forceRotate') && null !== $data->getForceRotate()) {
-            $dataArray['ForceRotate'] = $data->getForceRotate();
+        if (array_key_exists('forceRotate', get_object_vars($data)) && null !== ($data->forceRotate ?? null)) {
+            $dataArray['ForceRotate'] = $data->forceRotate ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecCAConfigConstraint());

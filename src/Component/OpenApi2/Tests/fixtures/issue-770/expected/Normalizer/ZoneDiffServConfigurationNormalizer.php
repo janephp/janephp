@@ -38,50 +38,50 @@ class ZoneDiffServConfigurationNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('uplinkDiffServ', $data)) {
-            $object->setUplinkDiffServ($this->denormalizer->denormalize($data['uplinkDiffServ'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneUplinkDiffServ::class, 'json', $context));
+            $object->uplinkDiffServ = $this->denormalizer->denormalize($data['uplinkDiffServ'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneUplinkDiffServ::class, 'json', $context);
         }
         if (\array_key_exists('downlinkDiffServ', $data)) {
-            $object->setDownlinkDiffServ($this->denormalizer->denormalize($data['downlinkDiffServ'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDownlinkDiffServ::class, 'json', $context));
+            $object->downlinkDiffServ = $this->denormalizer->denormalize($data['downlinkDiffServ'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDownlinkDiffServ::class, 'json', $context);
         }
         if (\array_key_exists('preservedList', $data)) {
             $values = [];
             foreach ($data['preservedList'] as $value) {
                 $values[] = $value;
             }
-            $object->setPreservedList($values);
+            $object->preservedList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('uplinkDiffServ') && null !== $data->getUplinkDiffServ()) {
-            $dataArray['uplinkDiffServ'] = $data->getUplinkDiffServ() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUplinkDiffServ(), 'json', $context));
+        if (array_key_exists('uplinkDiffServ', get_object_vars($data)) && null !== ($data->uplinkDiffServ ?? null)) {
+            $dataArray['uplinkDiffServ'] = ($data->uplinkDiffServ ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->uplinkDiffServ ?? null, 'json', $context));
         }
-        if ($data->isInitialized('downlinkDiffServ') && null !== $data->getDownlinkDiffServ()) {
-            $dataArray['downlinkDiffServ'] = $data->getDownlinkDiffServ() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDownlinkDiffServ(), 'json', $context));
+        if (array_key_exists('downlinkDiffServ', get_object_vars($data)) && null !== ($data->downlinkDiffServ ?? null)) {
+            $dataArray['downlinkDiffServ'] = ($data->downlinkDiffServ ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->downlinkDiffServ ?? null, 'json', $context));
         }
-        if ($data->isInitialized('preservedList') && null !== $data->getPreservedList()) {
+        if (array_key_exists('preservedList', get_object_vars($data)) && null !== ($data->preservedList ?? null)) {
             $values = [];
-            foreach ($data->getPreservedList() as $value) {
+            foreach ($data->preservedList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['preservedList'] = $values;

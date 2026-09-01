@@ -38,21 +38,21 @@ class ApgroupApGroupMemberNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('apSerial', $data)) {
-            $object->setApSerial($data['apSerial']);
+            $object->apSerial = $data['apSerial'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('apSerial') && null !== $data->getApSerial()) {
-            $dataArray['apSerial'] = $data->getApSerial();
+        if (array_key_exists('apSerial', get_object_vars($data)) && null !== ($data->apSerial ?? null)) {
+            $dataArray['apSerial'] = $data->apSerial ?? null;
         }
         return $dataArray;
     }

@@ -8,71 +8,19 @@ class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase 
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Serialized CDN configuration.
      *
      * @var string
      */
-    protected $serializedCdnConfiguration;
+    public string $serializedCdnConfiguration;
     /**
      * Jobs that were processed in the operation.
      *
      * @var list<CdnPurgeJobBase>
      */
-    protected $jobs;
-    /**
-     * Serialized CDN configuration.
-     *
-     * @return string
-     */
-    public function getSerializedCdnConfiguration(): string
-    {
-        return $this->serializedCdnConfiguration;
-    }
-    /**
-     * Serialized CDN configuration.
-     *
-     * @param string $serializedCdnConfiguration
-     *
-     * @return self
-     */
-    public function setSerializedCdnConfiguration(string $serializedCdnConfiguration): self
-    {
-        $this->initialized['serializedCdnConfiguration'] = true;
-        $this->serializedCdnConfiguration = $serializedCdnConfiguration;
-        return $this;
-    }
-    /**
-     * Jobs that were processed in the operation.
-     *
-     * @return list<CdnPurgeJobBase>
-     */
-    public function getJobs(): array
-    {
-        return $this->jobs;
-    }
-    /**
-     * Jobs that were processed in the operation.
-     *
-     * @param list<CdnPurgeJobBase> $jobs
-     *
-     * @return self
-     */
-    public function setJobs(array $jobs): self
-    {
-        $this->initialized['jobs'] = true;
-        $this->jobs = $jobs;
-        return $this;
-    }
+    public array $jobs;
     public function definedProperties(): array
     {
-        return ['serializedCdnConfiguration' => ['serializedCdnConfiguration', 'getSerializedCdnConfiguration', 'setSerializedCdnConfiguration'], 'jobs' => ['jobs', 'getJobs', 'setJobs']];
+        return ['serializedCdnConfiguration' => 'serializedCdnConfiguration', 'jobs' => 'jobs'];
     }
 }

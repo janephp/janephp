@@ -38,21 +38,21 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
         }
         if (\array_key_exists('foo', $data)) {
-            $object->setFoo($data['foo']);
+            $object->foo = $data['foo'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email ?? null;
         }
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo();
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $dataArray['foo'] = $data->foo ?? null;
         }
         return $dataArray;
     }

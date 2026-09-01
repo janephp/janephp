@@ -41,11 +41,11 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ErrorConstraint());
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('title', $data)) {
-            $object->setTitle($data['title']);
+            $object->title = $data['title'];
             unset($data['title']);
         }
         foreach ($data as $key => $value) {
@@ -58,11 +58,11 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
-            $dataArray['title'] = $data->getTitle();
+        if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -41,14 +41,14 @@ class AdministrationRestoreConfigurationBackupNormalizer implements Denormalizer
             $data['executeWarningValidate'] = (bool) $data['executeWarningValidate'];
         }
         if (\array_key_exists('executeWarningValidate', $data)) {
-            $object->setExecuteWarningValidate($data['executeWarningValidate']);
+            $object->executeWarningValidate = $data['executeWarningValidate'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['executeWarningValidate'] = $data->getExecuteWarningValidate();
+        $dataArray['executeWarningValidate'] = $data->executeWarningValidate ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

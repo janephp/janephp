@@ -38,19 +38,19 @@ class WhitelistedSchema implements WhitelistFetchInterface
 
         /** @var Operation $operation */
         $operation = $operationGuess->getOperation();
-        if (null !== $operation->getResponses() && \count($operation->getResponses()) > 0) {
-            foreach ($operation->getResponses() as $status => $response) {
+        if (null !== ($operation->responses ?? null) && \count($operation->responses ?? null) > 0) {
+            foreach (($operation->responses ?? null) as $status => $response) {
                 $reference = $operationGuess->getReference() . '/responses/' . $status;
                 if ($response instanceof Reference) {
                     [$reference, $response] = $this->guessClass->resolve($response, Response::class);
                 }
 
                 /** @var Response $response */
-                if (null === $response->getSchema()) {
+                if (null === ($response->schema ?? null)) {
                     continue;
                 }
 
-                $schema = $response->getSchema();
+                $schema = ($response->schema ?? null);
                 $classGuess = $this->guessClass->guessClass($schema, $reference, $registry);
                 if (null !== $classGuess) {
                     $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
@@ -58,11 +58,11 @@ class WhitelistedSchema implements WhitelistFetchInterface
             }
         }
 
-        if (null !== $operation->getParameters() && \count($operation->getParameters()) > 0) {
-            foreach ($operation->getParameters() as $key => $parameter) {
-                if ($parameter instanceof BodyParameter && null !== $parameter->getSchema()) {
+        if (($operation->parameters ?? null) !== null && \count($operation->parameters ?? null) > 0) {
+            foreach (($operation->parameters ?? null) as $key => $parameter) {
+                if ($parameter instanceof BodyParameter && null !== ($parameter->schema ?? null)) {
                     $reference = $operationGuess->getReference() . '/parameters/' . $key;
-                    $schema = $parameter->getSchema();
+                    $schema = ($parameter->schema ?? null);
                     $classGuess = $this->guessClass->guessClass($schema, $reference, $registry);
                     if (null !== $classGuess) {
                         $this->schema->addOperationRelation($baseOperation, $classGuess->getName());

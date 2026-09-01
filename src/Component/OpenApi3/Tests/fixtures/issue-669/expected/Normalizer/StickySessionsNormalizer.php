@@ -38,15 +38,15 @@ class StickySessionsNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('cookie_name', $data)) {
-            $object->setCookieName($data['cookie_name']);
+            $object->cookieName = $data['cookie_name'];
             unset($data['cookie_name']);
         }
         if (\array_key_exists('cookie_ttl_seconds', $data)) {
-            $object->setCookieTtlSeconds($data['cookie_ttl_seconds']);
+            $object->cookieTtlSeconds = $data['cookie_ttl_seconds'];
             unset($data['cookie_ttl_seconds']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class StickySessionsNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('cookieName') && null !== $data->getCookieName()) {
-            $dataArray['cookie_name'] = $data->getCookieName();
+        if (array_key_exists('cookieName', get_object_vars($data)) && null !== ($data->cookieName ?? null)) {
+            $dataArray['cookie_name'] = $data->cookieName ?? null;
         }
-        if ($data->isInitialized('cookieTtlSeconds') && null !== $data->getCookieTtlSeconds()) {
-            $dataArray['cookie_ttl_seconds'] = $data->getCookieTtlSeconds();
+        if (array_key_exists('cookieTtlSeconds', get_object_vars($data)) && null !== ($data->cookieTtlSeconds ?? null)) {
+            $dataArray['cookie_ttl_seconds'] = $data->cookieTtlSeconds ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

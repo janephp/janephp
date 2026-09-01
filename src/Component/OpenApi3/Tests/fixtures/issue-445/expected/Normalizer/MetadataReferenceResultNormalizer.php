@@ -41,7 +41,7 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
             $data['isReferencedByRestrictedItem'] = (bool) $data['isReferencedByRestrictedItem'];
         }
         if (\array_key_exists('totalResults', $data)) {
-            $object->setTotalResults($data['totalResults']);
+            $object->totalResults = $data['totalResults'];
             unset($data['totalResults']);
         }
         if (\array_key_exists('results', $data)) {
@@ -49,27 +49,27 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
             foreach ($data['results'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\MetadataReference::class, 'json', $context);
             }
-            $object->setResults($values);
+            $object->results = $values;
             unset($data['results']);
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
-            $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
+            $object->elapsedMilliseconds = $data['elapsedMilliseconds'];
             unset($data['elapsedMilliseconds']);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-            $object->setPageToken($data['pageToken']);
+            $object->pageToken = $data['pageToken'];
             unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-            $object->setPageToken(null);
+            $object->pageToken = null;
             unset($data['pageToken']);
         }
         if (\array_key_exists('isReferencedByRestrictedItem', $data) && $data['isReferencedByRestrictedItem'] !== null) {
-            $object->setIsReferencedByRestrictedItem($data['isReferencedByRestrictedItem']);
+            $object->isReferencedByRestrictedItem = $data['isReferencedByRestrictedItem'];
             unset($data['isReferencedByRestrictedItem']);
         }
         elseif (\array_key_exists('isReferencedByRestrictedItem', $data) && $data['isReferencedByRestrictedItem'] === null) {
-            $object->setIsReferencedByRestrictedItem(null);
+            $object->isReferencedByRestrictedItem = null;
             unset($data['isReferencedByRestrictedItem']);
         }
         foreach ($data as $key => $value_1) {
@@ -82,18 +82,18 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['totalResults'] = $data->getTotalResults();
+        $dataArray['totalResults'] = $data->totalResults ?? null;
         $values = [];
-        foreach ($data->getResults() as $value) {
+        foreach ($data->results ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['results'] = $values;
-        $dataArray['elapsedMilliseconds'] = $data->getElapsedMilliseconds();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
-            $dataArray['pageToken'] = $data->getPageToken();
+        $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds ?? null;
+        if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
+            $dataArray['pageToken'] = $data->pageToken ?? null;
         }
-        if ($data->isInitialized('isReferencedByRestrictedItem') && null !== $data->getIsReferencedByRestrictedItem()) {
-            $dataArray['isReferencedByRestrictedItem'] = $data->getIsReferencedByRestrictedItem();
+        if (array_key_exists('isReferencedByRestrictedItem', get_object_vars($data)) && null !== ($data->isReferencedByRestrictedItem ?? null)) {
+            $dataArray['isReferencedByRestrictedItem'] = $data->isReferencedByRestrictedItem ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

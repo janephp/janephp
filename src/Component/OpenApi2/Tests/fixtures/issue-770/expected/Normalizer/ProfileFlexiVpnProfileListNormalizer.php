@@ -41,77 +41,77 @@ class ProfileFlexiVpnProfileListNormalizer implements DenormalizerInterface, Nor
             $data['hasMore'] = (bool) $data['hasMore'];
         }
         if (\array_key_exists('totalCount', $data)) {
-            $object->setTotalCount($data['totalCount']);
+            $object->totalCount = $data['totalCount'];
         }
         if (\array_key_exists('hasMore', $data)) {
-            $object->setHasMore($data['hasMore']);
+            $object->hasMore = $data['hasMore'];
         }
         if (\array_key_exists('firstIndex', $data)) {
-            $object->setFirstIndex($data['firstIndex']);
+            $object->firstIndex = $data['firstIndex'];
         }
         if (\array_key_exists('list', $data)) {
             $values = [];
             foreach ($data['list'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFlexiVpnProfile::class, 'json', $context);
             }
-            $object->setList($values);
+            $object->list = $values;
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('creatorId', $data)) {
-            $object->setCreatorId($data['creatorId']);
+            $object->creatorId = $data['creatorId'];
         }
         if (\array_key_exists('modifierId', $data)) {
-            $object->setModifierId($data['modifierId']);
+            $object->modifierId = $data['modifierId'];
         }
         if (\array_key_exists('creatorUsername', $data)) {
-            $object->setCreatorUsername($data['creatorUsername']);
+            $object->creatorUsername = $data['creatorUsername'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalCount') && null !== $data->getTotalCount()) {
-            $dataArray['totalCount'] = $data->getTotalCount();
+        if (array_key_exists('totalCount', get_object_vars($data)) && null !== ($data->totalCount ?? null)) {
+            $dataArray['totalCount'] = $data->totalCount ?? null;
         }
-        if ($data->isInitialized('hasMore') && null !== $data->getHasMore()) {
-            $dataArray['hasMore'] = $data->getHasMore();
+        if (array_key_exists('hasMore', get_object_vars($data)) && null !== ($data->hasMore ?? null)) {
+            $dataArray['hasMore'] = $data->hasMore ?? null;
         }
-        if ($data->isInitialized('firstIndex') && null !== $data->getFirstIndex()) {
-            $dataArray['firstIndex'] = $data->getFirstIndex();
+        if (array_key_exists('firstIndex', get_object_vars($data)) && null !== ($data->firstIndex ?? null)) {
+            $dataArray['firstIndex'] = $data->firstIndex ?? null;
         }
-        if ($data->isInitialized('list') && null !== $data->getList()) {
+        if (array_key_exists('list', get_object_vars($data)) && null !== ($data->list ?? null)) {
             $values = [];
-            foreach ($data->getList() as $value) {
+            foreach ($data->list ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['list'] = $values;
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
-            $dataArray['creatorId'] = $data->getCreatorId();
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
         }
-        if ($data->isInitialized('modifierId') && null !== $data->getModifierId()) {
-            $dataArray['modifierId'] = $data->getModifierId();
+        if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
+            $dataArray['modifierId'] = $data->modifierId ?? null;
         }
-        if ($data->isInitialized('creatorUsername') && null !== $data->getCreatorUsername()) {
-            $dataArray['creatorUsername'] = $data->getCreatorUsername();
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
         return $dataArray;
     }

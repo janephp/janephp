@@ -38,23 +38,23 @@ class TakeDictionaryValueTransformationNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('key', $data) && $data['key'] !== null) {
-            $object->setKey($data['key']);
+            $object->key = $data['key'];
             unset($data['key']);
         }
         elseif (\array_key_exists('key', $data) && $data['key'] === null) {
-            $object->setKey(null);
+            $object->key = null;
             unset($data['key']);
         }
         foreach ($data as $key => $value) {
@@ -67,12 +67,12 @@ class TakeDictionaryValueTransformationNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('key') && null !== $data->getKey()) {
-            $dataArray['key'] = $data->getKey();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
+            $dataArray['key'] = $data->key ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

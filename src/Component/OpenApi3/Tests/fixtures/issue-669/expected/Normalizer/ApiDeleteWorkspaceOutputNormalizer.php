@@ -38,7 +38,7 @@ class ApiDeleteWorkspaceOutputNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('workspace_uuid', $data)) {
-            $object->setWorkspaceUuid($data['workspace_uuid']);
+            $object->workspaceUuid = $data['workspace_uuid'];
             unset($data['workspace_uuid']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiDeleteWorkspaceOutputNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('workspaceUuid') && null !== $data->getWorkspaceUuid()) {
-            $dataArray['workspace_uuid'] = $data->getWorkspaceUuid();
+        if (array_key_exists('workspaceUuid', get_object_vars($data)) && null !== ($data->workspaceUuid ?? null)) {
+            $dataArray['workspace_uuid'] = $data->workspaceUuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

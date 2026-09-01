@@ -41,21 +41,21 @@ class NetworksIdConnectPostBodyNormalizer implements DenormalizerInterface, Norm
             $this->validate($data, new \Docker\Api\Validator\NetworksIdConnectPostBodyConstraint());
         }
         if (\array_key_exists('Container', $data)) {
-            $object->setContainer($data['Container']);
+            $object->container = $data['Container'];
         }
         if (\array_key_exists('EndpointConfig', $data)) {
-            $object->setEndpointConfig($this->denormalizer->denormalize($data['EndpointConfig'], \Docker\Api\Model\EndpointSettings::class, 'json', $context));
+            $object->endpointConfig = $this->denormalizer->denormalize($data['EndpointConfig'], \Docker\Api\Model\EndpointSettings::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('container') && null !== $data->getContainer()) {
-            $dataArray['Container'] = $data->getContainer();
+        if (array_key_exists('container', get_object_vars($data)) && null !== ($data->container ?? null)) {
+            $dataArray['Container'] = $data->container ?? null;
         }
-        if ($data->isInitialized('endpointConfig') && null !== $data->getEndpointConfig()) {
-            $dataArray['EndpointConfig'] = $data->getEndpointConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getEndpointConfig(), 'json', $context));
+        if (array_key_exists('endpointConfig', get_object_vars($data)) && null !== ($data->endpointConfig ?? null)) {
+            $dataArray['EndpointConfig'] = ($data->endpointConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->endpointConfig ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NetworksIdConnectPostBodyConstraint());

@@ -41,19 +41,19 @@ class ApiUpdateLinkedAgentOutputNormalizer implements DenormalizerInterface, Nor
             $data['rollback'] = (bool) $data['rollback'];
         }
         if (\array_key_exists('child_agent_uuid', $data)) {
-            $object->setChildAgentUuid($data['child_agent_uuid']);
+            $object->childAgentUuid = $data['child_agent_uuid'];
             unset($data['child_agent_uuid']);
         }
         if (\array_key_exists('parent_agent_uuid', $data)) {
-            $object->setParentAgentUuid($data['parent_agent_uuid']);
+            $object->parentAgentUuid = $data['parent_agent_uuid'];
             unset($data['parent_agent_uuid']);
         }
         if (\array_key_exists('rollback', $data)) {
-            $object->setRollback($data['rollback']);
+            $object->rollback = $data['rollback'];
             unset($data['rollback']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         foreach ($data as $key => $value) {
@@ -66,17 +66,17 @@ class ApiUpdateLinkedAgentOutputNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('childAgentUuid') && null !== $data->getChildAgentUuid()) {
-            $dataArray['child_agent_uuid'] = $data->getChildAgentUuid();
+        if (array_key_exists('childAgentUuid', get_object_vars($data)) && null !== ($data->childAgentUuid ?? null)) {
+            $dataArray['child_agent_uuid'] = $data->childAgentUuid ?? null;
         }
-        if ($data->isInitialized('parentAgentUuid') && null !== $data->getParentAgentUuid()) {
-            $dataArray['parent_agent_uuid'] = $data->getParentAgentUuid();
+        if (array_key_exists('parentAgentUuid', get_object_vars($data)) && null !== ($data->parentAgentUuid ?? null)) {
+            $dataArray['parent_agent_uuid'] = $data->parentAgentUuid ?? null;
         }
-        if ($data->isInitialized('rollback') && null !== $data->getRollback()) {
-            $dataArray['rollback'] = $data->getRollback();
+        if (array_key_exists('rollback', get_object_vars($data)) && null !== ($data->rollback ?? null)) {
+            $dataArray['rollback'] = $data->rollback ?? null;
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -42,7 +42,7 @@ class ResponseMonitoringListDestinationsNormalizer implements DenormalizerInterf
             foreach ($data['destinations'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\DestinationOmitCredentials::class, 'json', $context);
             }
-            $object->setDestinations($values);
+            $object->destinations = $values;
             unset($data['destinations']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseMonitoringListDestinationsNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('destinations') && null !== $data->getDestinations()) {
+        if (array_key_exists('destinations', get_object_vars($data)) && null !== ($data->destinations ?? null)) {
             $values = [];
-            foreach ($data->getDestinations() as $value) {
+            foreach ($data->destinations ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['destinations'] = $values;

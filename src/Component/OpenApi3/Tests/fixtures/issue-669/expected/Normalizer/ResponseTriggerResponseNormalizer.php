@@ -38,7 +38,7 @@ class ResponseTriggerResponseNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('trigger', $data)) {
-            $object->setTrigger($this->denormalizer->denormalize($data['trigger'], \Jane\Generated\DigitalOcean\Model\TriggerInfo::class, 'json', $context));
+            $object->trigger = $this->denormalizer->denormalize($data['trigger'], \Jane\Generated\DigitalOcean\Model\TriggerInfo::class, 'json', $context);
             unset($data['trigger']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseTriggerResponseNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('trigger') && null !== $data->getTrigger()) {
-            $dataArray['trigger'] = $data->getTrigger() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTrigger(), 'json', $context));
+        if (array_key_exists('trigger', get_object_vars($data)) && null !== ($data->trigger ?? null)) {
+            $dataArray['trigger'] = ($data->trigger ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->trigger ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

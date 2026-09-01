@@ -41,21 +41,21 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\PriceConstraint());
         }
         if (\array_key_exists('amount', $data)) {
-            $object->setAmount($data['amount']);
+            $object->amount = $data['amount'];
         }
         if (\array_key_exists('comment', $data)) {
-            $object->setComment($data['comment']);
+            $object->comment = $data['comment'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
-            $dataArray['amount'] = $data->getAmount();
+        if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
+            $dataArray['amount'] = $data->amount ?? null;
         }
-        if ($data->isInitialized('comment') && null !== $data->getComment()) {
-            $dataArray['comment'] = $data->getComment();
+        if (array_key_exists('comment', get_object_vars($data)) && null !== ($data->comment ?? null)) {
+            $dataArray['comment'] = $data->comment ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\JsonSchema\Tests\Expected\Validator\PriceConstraint());

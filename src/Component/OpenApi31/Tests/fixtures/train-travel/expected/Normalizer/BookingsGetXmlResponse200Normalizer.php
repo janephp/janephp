@@ -45,11 +45,11 @@ class BookingsGetXmlResponse200Normalizer implements DenormalizerInterface, Norm
             foreach ($data['data'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi31\Tests\Expected\Model\Booking::class, 'json', $context);
             }
-            $object->setData($values);
+            $object->data = $values;
             unset($data['data']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetXmlResponse200Links::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetXmlResponse200Links::class, 'json', $context);
             unset($data['links']);
         }
         foreach ($data as $key => $value_1) {
@@ -62,15 +62,15 @@ class BookingsGetXmlResponse200Normalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('data') && null !== $data->getData()) {
+        if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
-            foreach ($data->getData() as $value) {
+            foreach ($data->data ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data'] = $values;
         }
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

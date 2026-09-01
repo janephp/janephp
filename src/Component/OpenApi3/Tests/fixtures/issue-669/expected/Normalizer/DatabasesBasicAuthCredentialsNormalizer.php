@@ -38,11 +38,11 @@ class DatabasesBasicAuthCredentialsNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('basic_auth_username', $data)) {
-            $object->setBasicAuthUsername($data['basic_auth_username']);
+            $object->basicAuthUsername = $data['basic_auth_username'];
             unset($data['basic_auth_username']);
         }
         if (\array_key_exists('basic_auth_password', $data)) {
-            $object->setBasicAuthPassword($data['basic_auth_password']);
+            $object->basicAuthPassword = $data['basic_auth_password'];
             unset($data['basic_auth_password']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class DatabasesBasicAuthCredentialsNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('basicAuthUsername') && null !== $data->getBasicAuthUsername()) {
-            $dataArray['basic_auth_username'] = $data->getBasicAuthUsername();
+        if (array_key_exists('basicAuthUsername', get_object_vars($data)) && null !== ($data->basicAuthUsername ?? null)) {
+            $dataArray['basic_auth_username'] = $data->basicAuthUsername ?? null;
         }
-        if ($data->isInitialized('basicAuthPassword') && null !== $data->getBasicAuthPassword()) {
-            $dataArray['basic_auth_password'] = $data->getBasicAuthPassword();
+        if (array_key_exists('basicAuthPassword', get_object_vars($data)) && null !== ($data->basicAuthPassword ?? null)) {
+            $dataArray['basic_auth_password'] = $data->basicAuthPassword ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

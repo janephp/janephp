@@ -44,19 +44,19 @@ class AlertPolicyNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('alerts', $data)) {
-            $object->setAlerts($this->denormalizer->denormalize($data['alerts'], \Jane\Generated\DigitalOcean\Model\Alerts::class, 'json', $context));
+            $object->alerts = $this->denormalizer->denormalize($data['alerts'], \Jane\Generated\DigitalOcean\Model\Alerts::class, 'json', $context);
             unset($data['alerts']);
         }
         if (\array_key_exists('compare', $data)) {
-            $object->setCompare($data['compare']);
+            $object->compare = $data['compare'];
             unset($data['compare']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
             unset($data['enabled']);
         }
         if (\array_key_exists('entities', $data)) {
@@ -64,7 +64,7 @@ class AlertPolicyNormalizer implements DenormalizerInterface, NormalizerInterfac
             foreach ($data['entities'] as $value) {
                 $values[] = $value;
             }
-            $object->setEntities($values);
+            $object->entities = $values;
             unset($data['entities']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -72,23 +72,23 @@ class AlertPolicyNormalizer implements DenormalizerInterface, NormalizerInterfac
             foreach ($data['tags'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setTags($values_1);
+            $object->tags = $values_1;
             unset($data['tags']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
             unset($data['value']);
         }
         if (\array_key_exists('window', $data)) {
-            $object->setWindow($data['window']);
+            $object->window = $data['window'];
             unset($data['window']);
         }
         foreach ($data as $key => $value_2) {
@@ -101,24 +101,24 @@ class AlertPolicyNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['alerts'] = $data->getAlerts() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAlerts(), 'json', $context));
-        $dataArray['compare'] = $data->getCompare();
-        $dataArray['description'] = $data->getDescription();
-        $dataArray['enabled'] = $data->getEnabled();
+        $dataArray['alerts'] = ($data->alerts ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->alerts ?? null, 'json', $context));
+        $dataArray['compare'] = $data->compare ?? null;
+        $dataArray['description'] = $data->description ?? null;
+        $dataArray['enabled'] = $data->enabled ?? null;
         $values = [];
-        foreach ($data->getEntities() as $value) {
+        foreach ($data->entities ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['entities'] = $values;
         $values_1 = [];
-        foreach ($data->getTags() as $value_1) {
+        foreach ($data->tags ?? null as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['tags'] = $values_1;
-        $dataArray['type'] = $data->getType();
-        $dataArray['uuid'] = $data->getUuid();
-        $dataArray['value'] = $data->getValue();
-        $dataArray['window'] = $data->getWindow();
+        $dataArray['type'] = $data->type ?? null;
+        $dataArray['uuid'] = $data->uuid ?? null;
+        $dataArray['value'] = $data->value ?? null;
+        $dataArray['window'] = $data->window ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;

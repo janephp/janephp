@@ -38,7 +38,7 @@ class AutoscalePoolStaticConfigNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('target_number_instances', $data)) {
-            $object->setTargetNumberInstances($data['target_number_instances']);
+            $object->targetNumberInstances = $data['target_number_instances'];
             unset($data['target_number_instances']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class AutoscalePoolStaticConfigNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['target_number_instances'] = $data->getTargetNumberInstances();
+        $dataArray['target_number_instances'] = $data->targetNumberInstances ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

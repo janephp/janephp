@@ -42,7 +42,7 @@ class ApiCreateDataSourceFileUploadPresignedUrlsInputPublicNormalizer implements
             foreach ($data['files'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiPresignedUrlFile::class, 'json', $context);
             }
-            $object->setFiles($values);
+            $object->files = $values;
             unset($data['files']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ApiCreateDataSourceFileUploadPresignedUrlsInputPublicNormalizer implements
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('files') && null !== $data->getFiles()) {
+        if (array_key_exists('files', get_object_vars($data)) && null !== ($data->files ?? null)) {
             $values = [];
-            foreach ($data->getFiles() as $value) {
+            foreach ($data->files ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['files'] = $values;

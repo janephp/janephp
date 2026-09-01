@@ -44,89 +44,89 @@ class RadioRadio6gApNormalizer implements DenormalizerInterface, NormalizerInter
             $data['wlanServiceEnabled'] = (bool) $data['wlanServiceEnabled'];
         }
         if (\array_key_exists('autoCellSizing', $data)) {
-            $object->setAutoCellSizing($data['autoCellSizing']);
+            $object->autoCellSizing = $data['autoCellSizing'];
         }
         if (\array_key_exists('txPower', $data)) {
-            $object->setTxPower($data['txPower']);
+            $object->txPower = $data['txPower'];
         }
         if (\array_key_exists('channelWidth', $data)) {
-            $object->setChannelWidth($data['channelWidth']);
+            $object->channelWidth = $data['channelWidth'];
         }
         if (\array_key_exists('channel', $data)) {
-            $object->setChannel($data['channel']);
+            $object->channel = $data['channel'];
         }
         if (\array_key_exists('channelRange', $data)) {
             $values = [];
             foreach ($data['channelRange'] as $value) {
                 $values[] = $value;
             }
-            $object->setChannelRange($values);
+            $object->channelRange = $values;
         }
         if (\array_key_exists('wlanGroupId', $data)) {
-            $object->setWlanGroupId($data['wlanGroupId']);
+            $object->wlanGroupId = $data['wlanGroupId'];
         }
         if (\array_key_exists('wlanServiceEnabled', $data)) {
-            $object->setWlanServiceEnabled($data['wlanServiceEnabled']);
+            $object->wlanServiceEnabled = $data['wlanServiceEnabled'];
         }
         if (\array_key_exists('autoChannelSelection', $data)) {
-            $object->setAutoChannelSelection($this->denormalizer->denormalize($data['autoChannelSelection'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioAutoChannelSelection::class, 'json', $context));
+            $object->autoChannelSelection = $this->denormalizer->denormalize($data['autoChannelSelection'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioAutoChannelSelection::class, 'json', $context);
         }
         if (\array_key_exists('bssMinRate', $data)) {
-            $object->setBssMinRate($data['bssMinRate']);
+            $object->bssMinRate = $data['bssMinRate'];
         }
         if (\array_key_exists('mgmtTxRate', $data)) {
-            $object->setMgmtTxRate($data['mgmtTxRate']);
+            $object->mgmtTxRate = $data['mgmtTxRate'];
         }
         if (\array_key_exists('multicastUplinkRateLimit', $data)) {
-            $object->setMulticastUplinkRateLimit($data['multicastUplinkRateLimit']);
+            $object->multicastUplinkRateLimit = $data['multicastUplinkRateLimit'];
         }
         if (\array_key_exists('multicastDownlinkRateLimit', $data)) {
-            $object->setMulticastDownlinkRateLimit($data['multicastDownlinkRateLimit']);
+            $object->multicastDownlinkRateLimit = $data['multicastDownlinkRateLimit'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('autoCellSizing') && null !== $data->getAutoCellSizing()) {
-            $dataArray['autoCellSizing'] = $data->getAutoCellSizing();
+        if (array_key_exists('autoCellSizing', get_object_vars($data)) && null !== ($data->autoCellSizing ?? null)) {
+            $dataArray['autoCellSizing'] = $data->autoCellSizing ?? null;
         }
-        if ($data->isInitialized('txPower') && null !== $data->getTxPower()) {
-            $dataArray['txPower'] = $data->getTxPower();
+        if (array_key_exists('txPower', get_object_vars($data)) && null !== ($data->txPower ?? null)) {
+            $dataArray['txPower'] = $data->txPower ?? null;
         }
-        if ($data->isInitialized('channelWidth') && null !== $data->getChannelWidth()) {
-            $dataArray['channelWidth'] = $data->getChannelWidth();
+        if (array_key_exists('channelWidth', get_object_vars($data)) && null !== ($data->channelWidth ?? null)) {
+            $dataArray['channelWidth'] = $data->channelWidth ?? null;
         }
-        if ($data->isInitialized('channel') && null !== $data->getChannel()) {
-            $dataArray['channel'] = $data->getChannel();
+        if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
+            $dataArray['channel'] = $data->channel ?? null;
         }
-        if ($data->isInitialized('channelRange') && null !== $data->getChannelRange()) {
+        if (array_key_exists('channelRange', get_object_vars($data)) && null !== ($data->channelRange ?? null)) {
             $values = [];
-            foreach ($data->getChannelRange() as $value) {
+            foreach ($data->channelRange ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['channelRange'] = $values;
         }
-        if ($data->isInitialized('wlanGroupId') && null !== $data->getWlanGroupId()) {
-            $dataArray['wlanGroupId'] = $data->getWlanGroupId();
+        if (array_key_exists('wlanGroupId', get_object_vars($data)) && null !== ($data->wlanGroupId ?? null)) {
+            $dataArray['wlanGroupId'] = $data->wlanGroupId ?? null;
         }
-        if ($data->isInitialized('wlanServiceEnabled') && null !== $data->getWlanServiceEnabled()) {
-            $dataArray['wlanServiceEnabled'] = $data->getWlanServiceEnabled();
+        if (array_key_exists('wlanServiceEnabled', get_object_vars($data)) && null !== ($data->wlanServiceEnabled ?? null)) {
+            $dataArray['wlanServiceEnabled'] = $data->wlanServiceEnabled ?? null;
         }
-        if ($data->isInitialized('autoChannelSelection') && null !== $data->getAutoChannelSelection()) {
-            $dataArray['autoChannelSelection'] = $data->getAutoChannelSelection() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAutoChannelSelection(), 'json', $context));
+        if (array_key_exists('autoChannelSelection', get_object_vars($data)) && null !== ($data->autoChannelSelection ?? null)) {
+            $dataArray['autoChannelSelection'] = ($data->autoChannelSelection ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->autoChannelSelection ?? null, 'json', $context));
         }
-        if ($data->isInitialized('bssMinRate') && null !== $data->getBssMinRate()) {
-            $dataArray['bssMinRate'] = $data->getBssMinRate();
+        if (array_key_exists('bssMinRate', get_object_vars($data)) && null !== ($data->bssMinRate ?? null)) {
+            $dataArray['bssMinRate'] = $data->bssMinRate ?? null;
         }
-        if ($data->isInitialized('mgmtTxRate') && null !== $data->getMgmtTxRate()) {
-            $dataArray['mgmtTxRate'] = $data->getMgmtTxRate();
+        if (array_key_exists('mgmtTxRate', get_object_vars($data)) && null !== ($data->mgmtTxRate ?? null)) {
+            $dataArray['mgmtTxRate'] = $data->mgmtTxRate ?? null;
         }
-        if ($data->isInitialized('multicastUplinkRateLimit') && null !== $data->getMulticastUplinkRateLimit()) {
-            $dataArray['multicastUplinkRateLimit'] = $data->getMulticastUplinkRateLimit();
+        if (array_key_exists('multicastUplinkRateLimit', get_object_vars($data)) && null !== ($data->multicastUplinkRateLimit ?? null)) {
+            $dataArray['multicastUplinkRateLimit'] = $data->multicastUplinkRateLimit ?? null;
         }
-        if ($data->isInitialized('multicastDownlinkRateLimit') && null !== $data->getMulticastDownlinkRateLimit()) {
-            $dataArray['multicastDownlinkRateLimit'] = $data->getMulticastDownlinkRateLimit();
+        if (array_key_exists('multicastDownlinkRateLimit', get_object_vars($data)) && null !== ($data->multicastDownlinkRateLimit ?? null)) {
+            $dataArray['multicastDownlinkRateLimit'] = $data->multicastDownlinkRateLimit ?? null;
         }
         return $dataArray;
     }

@@ -9,7 +9,7 @@ class InvoicesGetPdfByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     /**
      * To retrieve a PDF for an invoice, send a GET request to `/v2/customers/my/invoices/$INVOICE_UUID/pdf`.
      * @param string $invoiceUuid UUID of the invoice
-     * @param array $accept Accept content header application/pdf|application/json
+     * @param array $accept Accept content header application/json|application/pdf
      */
     public function __construct(string $invoiceUuid, array $accept = [])
     {
@@ -32,7 +32,7 @@ class InvoicesGetPdfByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     public function getExtraHeaders(): array
     {
         if (empty($this->accept)) {
-            return ['Accept' => ['application/pdf', 'application/json']];
+            return ['Accept' => ['application/json', 'application/pdf']];
         }
         return $this->accept;
     }
@@ -52,16 +52,16 @@ class InvoicesGetPdfByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\B
         $body = (string) $response->getBody();
         if (200 === $status) {
         }
-        if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDNotFoundException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (429 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (429 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDTooManyRequestsException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
         if (stripos(strtolower($contentType), 'application/json') !== false) {

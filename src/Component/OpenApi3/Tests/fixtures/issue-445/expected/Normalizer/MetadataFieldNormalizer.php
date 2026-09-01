@@ -41,43 +41,43 @@ class MetadataFieldNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['isWritable'] = (bool) $data['isWritable'];
         }
         if (\array_key_exists('path', $data)) {
-            $object->setPath($data['path']);
+            $object->path = $data['path'];
         }
         if (\array_key_exists('isWritable', $data)) {
-            $object->setIsWritable($data['isWritable']);
+            $object->isWritable = $data['isWritable'];
         }
         if (\array_key_exists('dataType', $data)) {
             $value = $data['dataType'];
             if (is_string($data['dataType'])) {
                 $value = $data['dataType'];
             }
-            $object->setDataType($value);
+            $object->dataType = $value;
         }
         if (\array_key_exists('availableKeyFields', $data) && $data['availableKeyFields'] !== null) {
             $values = [];
             foreach ($data['availableKeyFields'] as $value_1) {
                 $values[] = $value_1;
             }
-            $object->setAvailableKeyFields($values);
+            $object->availableKeyFields = $values;
         }
         elseif (\array_key_exists('availableKeyFields', $data) && $data['availableKeyFields'] === null) {
-            $object->setAvailableKeyFields(null);
+            $object->availableKeyFields = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['path'] = $data->getPath();
-        $dataArray['isWritable'] = $data->getIsWritable();
-        $value = $data->getDataType();
-        if (is_string($data->getDataType())) {
-            $value = $data->getDataType();
+        $dataArray['path'] = $data->path ?? null;
+        $dataArray['isWritable'] = $data->isWritable ?? null;
+        $value = $data->dataType ?? null;
+        if (is_string($data->dataType ?? null)) {
+            $value = $data->dataType ?? null;
         }
         $dataArray['dataType'] = $value;
-        if ($data->isInitialized('availableKeyFields') && null !== $data->getAvailableKeyFields()) {
+        if (array_key_exists('availableKeyFields', get_object_vars($data)) && null !== ($data->availableKeyFields ?? null)) {
             $values = [];
-            foreach ($data->getAvailableKeyFields() as $value_1) {
+            foreach ($data->availableKeyFields ?? null as $value_1) {
                 $values[] = $value_1;
             }
             $dataArray['availableKeyFields'] = $values;

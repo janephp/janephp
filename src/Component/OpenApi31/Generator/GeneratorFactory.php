@@ -4,12 +4,13 @@ namespace Jane\Component\OpenApi31\Generator;
 
 use Jane\Component\JsonSchema\Generator\GeneratorInterface;
 use Jane\Component\OpenApi31\Generator\Parameter\NonBodyParameterGenerator;
-use Jane\Component\OpenApi31\Generator\RequestBodyContent\DefaultBodyContentGenerator;
 use Jane\Component\OpenApi31\Generator\RequestBodyContent\FormBodyContentGenerator;
-use Jane\Component\OpenApi31\Generator\RequestBodyContent\JsonBodyContentGenerator;
+use Jane\Component\OpenApi31\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Generator\EndpointGeneratorInterface;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Generator\OperationGenerator;
+use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\DefaultBodyContentGenerator;
+use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\JsonBodyContentGenerator;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\Component\OpenApiCommon\Naming\UniqueOperationNaming;
@@ -27,9 +28,9 @@ class GeneratorFactory
         $operationNaming ??= OperationNamingFactory::create();
         $operationNaming = new UniqueOperationNaming($operationNaming);
 
-        $defaultContentGenerator = new DefaultBodyContentGenerator($serializer);
+        $defaultContentGenerator = new DefaultBodyContentGenerator($serializer, Schema::class);
         $requestBodyGenerator = new RequestBodyGenerator($defaultContentGenerator);
-        $requestBodyGenerator->addRequestBodyGenerator(JsonBodyContentGenerator::JSON_TYPES, new JsonBodyContentGenerator($serializer));
+        $requestBodyGenerator->addRequestBodyGenerator(JsonBodyContentGenerator::JSON_TYPES, new JsonBodyContentGenerator($serializer, Schema::class));
         $requestBodyGenerator->addRequestBodyGenerator(['application/x-www-form-urlencoded', 'multipart/form-data'], new FormBodyContentGenerator($serializer));
 
         if (!$endpointGenerator instanceof EndpointGeneratorInterface) {

@@ -41,27 +41,27 @@ class IdentitySessionDurationNormalizer implements DenormalizerInterface, Normal
             $data['requireLoginAgain'] = (bool) $data['requireLoginAgain'];
         }
         if (\array_key_exists('requireLoginAgain', $data)) {
-            $object->setRequireLoginAgain($data['requireLoginAgain']);
+            $object->requireLoginAgain = $data['requireLoginAgain'];
         }
         if (\array_key_exists('sessionValue', $data)) {
-            $object->setSessionValue($data['sessionValue']);
+            $object->sessionValue = $data['sessionValue'];
         }
         if (\array_key_exists('sessionUnit', $data)) {
-            $object->setSessionUnit($data['sessionUnit']);
+            $object->sessionUnit = $data['sessionUnit'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('requireLoginAgain') && null !== $data->getRequireLoginAgain()) {
-            $dataArray['requireLoginAgain'] = $data->getRequireLoginAgain();
+        if (array_key_exists('requireLoginAgain', get_object_vars($data)) && null !== ($data->requireLoginAgain ?? null)) {
+            $dataArray['requireLoginAgain'] = $data->requireLoginAgain ?? null;
         }
-        if ($data->isInitialized('sessionValue') && null !== $data->getSessionValue()) {
-            $dataArray['sessionValue'] = $data->getSessionValue();
+        if (array_key_exists('sessionValue', get_object_vars($data)) && null !== ($data->sessionValue ?? null)) {
+            $dataArray['sessionValue'] = $data->sessionValue ?? null;
         }
-        if ($data->isInitialized('sessionUnit') && null !== $data->getSessionUnit()) {
-            $dataArray['sessionUnit'] = $data->getSessionUnit();
+        if (array_key_exists('sessionUnit', get_object_vars($data)) && null !== ($data->sessionUnit ?? null)) {
+            $dataArray['sessionUnit'] = $data->sessionUnit ?? null;
         }
         return $dataArray;
     }

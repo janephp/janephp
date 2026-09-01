@@ -38,26 +38,26 @@ class ProfileIkeSecurityAssociationContentNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ikeProposalType', $data)) {
-            $object->setIkeProposalType($data['ikeProposalType']);
+            $object->ikeProposalType = $data['ikeProposalType'];
         }
         if (\array_key_exists('ikeProposals', $data)) {
             $values = [];
             foreach ($data['ikeProposals'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileIkeProposal::class, 'json', $context);
             }
-            $object->setIkeProposals($values);
+            $object->ikeProposals = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ikeProposalType') && null !== $data->getIkeProposalType()) {
-            $dataArray['ikeProposalType'] = $data->getIkeProposalType();
+        if (array_key_exists('ikeProposalType', get_object_vars($data)) && null !== ($data->ikeProposalType ?? null)) {
+            $dataArray['ikeProposalType'] = $data->ikeProposalType ?? null;
         }
-        if ($data->isInitialized('ikeProposals') && null !== $data->getIkeProposals()) {
+        if (array_key_exists('ikeProposals', get_object_vars($data)) && null !== ($data->ikeProposals ?? null)) {
             $values = [];
-            foreach ($data->getIkeProposals() as $value) {
+            foreach ($data->ikeProposals ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ikeProposals'] = $values;

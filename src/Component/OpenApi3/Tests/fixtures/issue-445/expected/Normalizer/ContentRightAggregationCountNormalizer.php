@@ -42,22 +42,22 @@ class ContentRightAggregationCountNormalizer implements DenormalizerInterface, N
             if (is_string($data['contentRight'])) {
                 $value = $data['contentRight'];
             }
-            $object->setContentRight($value);
+            $object->contentRight = $value;
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getContentRight();
-        if (is_string($data->getContentRight())) {
-            $value = $data->getContentRight();
+        $value = $data->contentRight ?? null;
+        if (is_string($data->contentRight ?? null)) {
+            $value = $data->contentRight ?? null;
         }
         $dataArray['contentRight'] = $value;
-        $dataArray['count'] = $data->getCount();
+        $dataArray['count'] = $data->count ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

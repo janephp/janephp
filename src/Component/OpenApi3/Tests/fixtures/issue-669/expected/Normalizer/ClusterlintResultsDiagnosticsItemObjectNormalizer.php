@@ -38,15 +38,15 @@ class ClusterlintResultsDiagnosticsItemObjectNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('namespace', $data)) {
-            $object->setNamespace($data['namespace']);
+            $object->namespace = $data['namespace'];
             unset($data['namespace']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class ClusterlintResultsDiagnosticsItemObjectNormalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('kind') && null !== $data->getKind()) {
-            $dataArray['kind'] = $data->getKind();
+        if (array_key_exists('kind', get_object_vars($data)) && null !== ($data->kind ?? null)) {
+            $dataArray['kind'] = $data->kind ?? null;
         }
-        if ($data->isInitialized('namespace') && null !== $data->getNamespace()) {
-            $dataArray['namespace'] = $data->getNamespace();
+        if (array_key_exists('namespace', get_object_vars($data)) && null !== ($data->namespace ?? null)) {
+            $dataArray['namespace'] = $data->namespace ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

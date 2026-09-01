@@ -38,15 +38,15 @@ class GbCompanyReportExampleResponseReportContactInformationMainAddressNormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('simpleValue', $data)) {
-            $object->setSimpleValue($data['simpleValue']);
+            $object->simpleValue = $data['simpleValue'];
             unset($data['simpleValue']);
         }
         if (\array_key_exists('postalCode', $data)) {
-            $object->setPostalCode($data['postalCode']);
+            $object->postalCode = $data['postalCode'];
             unset($data['postalCode']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class GbCompanyReportExampleResponseReportContactInformationMainAddressNormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('simpleValue') && null !== $data->getSimpleValue()) {
-            $dataArray['simpleValue'] = $data->getSimpleValue();
+        if (array_key_exists('simpleValue', get_object_vars($data)) && null !== ($data->simpleValue ?? null)) {
+            $dataArray['simpleValue'] = $data->simpleValue ?? null;
         }
-        if ($data->isInitialized('postalCode') && null !== $data->getPostalCode()) {
-            $dataArray['postalCode'] = $data->getPostalCode();
+        if (array_key_exists('postalCode', get_object_vars($data)) && null !== ($data->postalCode ?? null)) {
+            $dataArray['postalCode'] = $data->postalCode ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

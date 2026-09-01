@@ -38,11 +38,11 @@ class Endpoint2GetResponseNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('field-2', $data)) {
-            $object->setField2($this->denormalizer->denormalize($data['field-2'], \Jane\Component\OpenApi3\Tests\Expected\Model\SubLevel1::class, 'json', $context));
+            $object->field2 = $this->denormalizer->denormalize($data['field-2'], \Jane\Component\OpenApi3\Tests\Expected\Model\SubLevel1::class, 'json', $context);
             unset($data['field-2']);
         }
         if (\array_key_exists('field-2-bis', $data)) {
-            $object->setField2Bis($this->denormalizer->denormalize($data['field-2-bis'], \Jane\Component\OpenApi3\Tests\Expected\Model\SubLevel2::class, 'json', $context));
+            $object->field2Bis = $this->denormalizer->denormalize($data['field-2-bis'], \Jane\Component\OpenApi3\Tests\Expected\Model\SubLevel2::class, 'json', $context);
             unset($data['field-2-bis']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class Endpoint2GetResponseNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('field2') && null !== $data->getField2()) {
-            $dataArray['field-2'] = $data->getField2() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getField2(), 'json', $context));
+        if (array_key_exists('field2', get_object_vars($data)) && null !== ($data->field2 ?? null)) {
+            $dataArray['field-2'] = ($data->field2 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->field2 ?? null, 'json', $context));
         }
-        if ($data->isInitialized('field2Bis') && null !== $data->getField2Bis()) {
-            $dataArray['field-2-bis'] = $data->getField2Bis() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getField2Bis(), 'json', $context));
+        if (array_key_exists('field2Bis', get_object_vars($data)) && null !== ($data->field2Bis ?? null)) {
+            $dataArray['field-2-bis'] = ($data->field2Bis ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->field2Bis ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

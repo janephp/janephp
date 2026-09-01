@@ -44,11 +44,11 @@ class HybridNormalizer implements DenormalizerInterface, NormalizerInterface, De
             } elseif (is_null($data['name'])) {
                 $value = $data['name'];
             }
-            $object->setName($value);
+            $object->name = $value;
             unset($data['name']);
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+            $object->name = null;
             unset($data['name']);
         }
         if (\array_key_exists('_attachment', $data) && $data['_attachment'] !== null) {
@@ -58,11 +58,11 @@ class HybridNormalizer implements DenormalizerInterface, NormalizerInterface, De
             } elseif (is_null($data['_attachment'])) {
                 $value_1 = $data['_attachment'];
             }
-            $object->setAttachment($value_1);
+            $object->attachment = $value_1;
             unset($data['_attachment']);
         }
         elseif (\array_key_exists('_attachment', $data) && $data['_attachment'] === null) {
-            $object->setAttachment(null);
+            $object->attachment = null;
             unset($data['_attachment']);
         }
         foreach ($data as $key => $value_2) {
@@ -75,21 +75,21 @@ class HybridNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $value = $data->getName();
-            if (is_string($data->getName())) {
-                $value = $data->getName();
-            } elseif (is_null($data->getName())) {
-                $value = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $value = $data->name ?? null;
+            if (is_string($data->name ?? null)) {
+                $value = $data->name ?? null;
+            } elseif (is_null($data->name ?? null)) {
+                $value = $data->name ?? null;
             }
             $dataArray['name'] = $value;
         }
-        if ($data->isInitialized('attachment') && null !== $data->getAttachment()) {
-            $value_1 = $data->getAttachment();
-            if (is_string($data->getAttachment())) {
-                $value_1 = $data->getAttachment();
-            } elseif (is_null($data->getAttachment())) {
-                $value_1 = $data->getAttachment();
+        if (array_key_exists('attachment', get_object_vars($data)) && null !== ($data->attachment ?? null)) {
+            $value_1 = $data->attachment ?? null;
+            if (is_string($data->attachment ?? null)) {
+                $value_1 = $data->attachment ?? null;
+            } elseif (is_null($data->attachment ?? null)) {
+                $value_1 = $data->attachment ?? null;
             }
             $dataArray['_attachment'] = $value_1;
         }

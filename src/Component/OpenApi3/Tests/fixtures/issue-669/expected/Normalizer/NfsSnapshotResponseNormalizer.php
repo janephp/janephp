@@ -38,23 +38,23 @@ class NfsSnapshotResponseNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('size_gib', $data)) {
-            $object->setSizeGib($data['size_gib']);
+            $object->sizeGib = $data['size_gib'];
             unset($data['size_gib']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -62,11 +62,11 @@ class NfsSnapshotResponseNormalizer implements DenormalizerInterface, Normalizer
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('share_id', $data)) {
-            $object->setShareId($data['share_id']);
+            $object->shareId = $data['share_id'];
             unset($data['share_id']);
         }
         foreach ($data as $key => $value) {
@@ -79,13 +79,13 @@ class NfsSnapshotResponseNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $dataArray['size_gib'] = $data->getSizeGib();
-        $dataArray['region'] = $data->getRegion();
-        $dataArray['status'] = $data->getStatus();
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['share_id'] = $data->getShareId();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['size_gib'] = $data->sizeGib ?? null;
+        $dataArray['region'] = $data->region ?? null;
+        $dataArray['status'] = $data->status ?? null;
+        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['share_id'] = $data->shareId ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

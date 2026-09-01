@@ -38,7 +38,7 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('field-3', $data)) {
-            $object->setField3($data['field-3']);
+            $object->field3 = $data['field-3'];
             unset($data['field-3']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('field3') && null !== $data->getField3()) {
-            $dataArray['field-3'] = $data->getField3();
+        if (array_key_exists('field3', get_object_vars($data)) && null !== ($data->field3 ?? null)) {
+            $dataArray['field-3'] = $data->field3 ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

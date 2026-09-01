@@ -42,33 +42,33 @@ class BusinessProcessWaitForLifeCycleResultNormalizer implements DenormalizerInt
             if (is_string($data['lifeCycleHit'])) {
                 $value = $data['lifeCycleHit'];
             }
-            $object->setLifeCycleHit($value);
+            $object->lifeCycleHit = $value;
         }
         elseif (\array_key_exists('lifeCycleHit', $data) && $data['lifeCycleHit'] === null) {
-            $object->setLifeCycleHit(null);
+            $object->lifeCycleHit = null;
         }
         if (\array_key_exists('businessProcess', $data)) {
             $value_1 = $data['businessProcess'];
             if (is_array($data['businessProcess']) and \array_key_exists('id', $data['businessProcess']) and \array_key_exists('processDefinitionId', $data['businessProcess']) and \array_key_exists('supportsCancellation', $data['businessProcess']) and \array_key_exists('businessProcessScope', $data['businessProcess']) and \array_key_exists('lifeCycle', $data['businessProcess']) and \array_key_exists('startDate', $data['businessProcess']) and \array_key_exists('endDate', $data['businessProcess']) and \array_key_exists('finished', $data['businessProcess']) and \array_key_exists('kind', $data['businessProcess'])) {
                 $value_1 = $this->denormalizer->denormalize($data['businessProcess'], \PicturePark\API\Model\BusinessProcess::class, 'json', $context);
             }
-            $object->setBusinessProcess($value_1);
+            $object->businessProcess = $value_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('lifeCycleHit') && null !== $data->getLifeCycleHit()) {
-            $value = $data->getLifeCycleHit();
-            if (is_string($data->getLifeCycleHit())) {
-                $value = $data->getLifeCycleHit();
+        if (array_key_exists('lifeCycleHit', get_object_vars($data)) && null !== ($data->lifeCycleHit ?? null)) {
+            $value = $data->lifeCycleHit ?? null;
+            if (is_string($data->lifeCycleHit ?? null)) {
+                $value = $data->lifeCycleHit ?? null;
             }
             $dataArray['lifeCycleHit'] = $value;
         }
-        $value_1 = $data->getBusinessProcess();
-        if (is_object($data->getBusinessProcess())) {
-            $value_1 = $data->getBusinessProcess() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getBusinessProcess(), 'json', $context));
+        $value_1 = $data->businessProcess ?? null;
+        if (is_object($data->businessProcess ?? null)) {
+            $value_1 = ($data->businessProcess ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->businessProcess ?? null, 'json', $context));
         }
         $dataArray['businessProcess'] = $value_1;
         return $dataArray;

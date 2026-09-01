@@ -41,71 +41,71 @@ class ProfileCreateSoftGREProfileNormalizer implements DenormalizerInterface, No
             $data['forceDisassociateClient'] = (bool) $data['forceDisassociateClient'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('ipMode', $data)) {
-            $object->setIpMode($data['ipMode']);
+            $object->ipMode = $data['ipMode'];
         }
         if (\array_key_exists('primaryGateway', $data)) {
-            $object->setPrimaryGateway($data['primaryGateway']);
+            $object->primaryGateway = $data['primaryGateway'];
         }
         if (\array_key_exists('secondaryGateway', $data)) {
-            $object->setSecondaryGateway($data['secondaryGateway']);
+            $object->secondaryGateway = $data['secondaryGateway'];
         }
         if (\array_key_exists('tunnelMtuAutoEnabled', $data)) {
-            $object->setTunnelMtuAutoEnabled($data['tunnelMtuAutoEnabled']);
+            $object->tunnelMtuAutoEnabled = $data['tunnelMtuAutoEnabled'];
         }
         if (\array_key_exists('tunnelMtuSize', $data)) {
-            $object->setTunnelMtuSize($data['tunnelMtuSize']);
+            $object->tunnelMtuSize = $data['tunnelMtuSize'];
         }
         if (\array_key_exists('keepAlivePeriod', $data)) {
-            $object->setKeepAlivePeriod($data['keepAlivePeriod']);
+            $object->keepAlivePeriod = $data['keepAlivePeriod'];
         }
         if (\array_key_exists('keepAliveRetry', $data)) {
-            $object->setKeepAliveRetry($data['keepAliveRetry']);
+            $object->keepAliveRetry = $data['keepAliveRetry'];
         }
         if (\array_key_exists('forceDisassociateClient', $data)) {
-            $object->setForceDisassociateClient($data['forceDisassociateClient']);
+            $object->forceDisassociateClient = $data['forceDisassociateClient'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('ipMode') && null !== $data->getIpMode()) {
-            $dataArray['ipMode'] = $data->getIpMode();
+        if (array_key_exists('ipMode', get_object_vars($data)) && null !== ($data->ipMode ?? null)) {
+            $dataArray['ipMode'] = $data->ipMode ?? null;
         }
-        $dataArray['primaryGateway'] = $data->getPrimaryGateway();
-        if ($data->isInitialized('secondaryGateway') && null !== $data->getSecondaryGateway()) {
-            $dataArray['secondaryGateway'] = $data->getSecondaryGateway();
+        $dataArray['primaryGateway'] = $data->primaryGateway ?? null;
+        if (array_key_exists('secondaryGateway', get_object_vars($data)) && null !== ($data->secondaryGateway ?? null)) {
+            $dataArray['secondaryGateway'] = $data->secondaryGateway ?? null;
         }
-        $dataArray['tunnelMtuAutoEnabled'] = $data->getTunnelMtuAutoEnabled();
-        if ($data->isInitialized('tunnelMtuSize') && null !== $data->getTunnelMtuSize()) {
-            $dataArray['tunnelMtuSize'] = $data->getTunnelMtuSize();
+        $dataArray['tunnelMtuAutoEnabled'] = $data->tunnelMtuAutoEnabled ?? null;
+        if (array_key_exists('tunnelMtuSize', get_object_vars($data)) && null !== ($data->tunnelMtuSize ?? null)) {
+            $dataArray['tunnelMtuSize'] = $data->tunnelMtuSize ?? null;
         }
-        $dataArray['keepAlivePeriod'] = $data->getKeepAlivePeriod();
-        $dataArray['keepAliveRetry'] = $data->getKeepAliveRetry();
-        if ($data->isInitialized('forceDisassociateClient') && null !== $data->getForceDisassociateClient()) {
-            $dataArray['forceDisassociateClient'] = $data->getForceDisassociateClient();
+        $dataArray['keepAlivePeriod'] = $data->keepAlivePeriod ?? null;
+        $dataArray['keepAliveRetry'] = $data->keepAliveRetry ?? null;
+        if (array_key_exists('forceDisassociateClient', get_object_vars($data)) && null !== ($data->forceDisassociateClient ?? null)) {
+            $dataArray['forceDisassociateClient'] = $data->forceDisassociateClient ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
         return $dataArray;
     }

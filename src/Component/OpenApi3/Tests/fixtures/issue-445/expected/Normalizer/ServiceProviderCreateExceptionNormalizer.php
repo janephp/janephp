@@ -38,55 +38,55 @@ class ServiceProviderCreateExceptionNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceLevel', $data)) {
-            $object->setTraceLevel($data['traceLevel']);
+            $object->traceLevel = $data['traceLevel'];
             unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
-            $object->setTraceId($data['traceId']);
+            $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
-            $object->setTraceId(null);
+            $object->traceId = null;
             unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
-            $object->setTraceJobId($data['traceJobId']);
+            $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
-            $object->setTraceJobId(null);
+            $object->traceJobId = null;
             unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
-            $object->setHttpStatusCode($data['httpStatusCode']);
+            $object->httpStatusCode = $data['httpStatusCode'];
             unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
-            $object->setExceptionMessage($data['exceptionMessage']);
+            $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
-            $object->setExceptionMessage(null);
+            $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('externalId', $data) && $data['externalId'] !== null) {
-            $object->setExternalId($data['externalId']);
+            $object->externalId = $data['externalId'];
             unset($data['externalId']);
         }
         elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
-            $object->setExternalId(null);
+            $object->externalId = null;
             unset($data['externalId']);
         }
         if (\array_key_exists('detailErrorMessage', $data) && $data['detailErrorMessage'] !== null) {
-            $object->setDetailErrorMessage($data['detailErrorMessage']);
+            $object->detailErrorMessage = $data['detailErrorMessage'];
             unset($data['detailErrorMessage']);
         }
         elseif (\array_key_exists('detailErrorMessage', $data) && $data['detailErrorMessage'] === null) {
-            $object->setDetailErrorMessage(null);
+            $object->detailErrorMessage = null;
             unset($data['detailErrorMessage']);
         }
         foreach ($data as $key => $value) {
@@ -99,27 +99,27 @@ class ServiceProviderCreateExceptionNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
-            $dataArray['traceLevel'] = $data->getTraceLevel();
+        if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
+            $dataArray['traceLevel'] = $data->traceLevel ?? null;
         }
-        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
-            $dataArray['traceId'] = $data->getTraceId();
+        if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
+            $dataArray['traceId'] = $data->traceId ?? null;
         }
-        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
-            $dataArray['traceJobId'] = $data->getTraceJobId();
+        if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
+            $dataArray['traceJobId'] = $data->traceJobId ?? null;
         }
-        if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
-            $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
+        if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
+            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
         }
-        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
-            $dataArray['exceptionMessage'] = $data->getExceptionMessage();
+        if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
+            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('externalId') && null !== $data->getExternalId()) {
-            $dataArray['externalId'] = $data->getExternalId();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('externalId', get_object_vars($data)) && null !== ($data->externalId ?? null)) {
+            $dataArray['externalId'] = $data->externalId ?? null;
         }
-        if ($data->isInitialized('detailErrorMessage') && null !== $data->getDetailErrorMessage()) {
-            $dataArray['detailErrorMessage'] = $data->getDetailErrorMessage();
+        if (array_key_exists('detailErrorMessage', get_object_vars($data)) && null !== ($data->detailErrorMessage ?? null)) {
+            $dataArray['detailErrorMessage'] = $data->detailErrorMessage ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

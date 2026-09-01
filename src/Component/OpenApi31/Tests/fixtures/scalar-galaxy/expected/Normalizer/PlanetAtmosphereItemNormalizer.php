@@ -44,11 +44,11 @@ class PlanetAtmosphereItemNormalizer implements DenormalizerInterface, Normalize
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetAtmosphereItemConstraint());
         }
         if (\array_key_exists('compound', $data)) {
-            $object->setCompound($data['compound']);
+            $object->compound = $data['compound'];
             unset($data['compound']);
         }
         if (\array_key_exists('percentage', $data)) {
-            $object->setPercentage($data['percentage']);
+            $object->percentage = $data['percentage'];
             unset($data['percentage']);
         }
         foreach ($data as $key => $value) {
@@ -61,11 +61,11 @@ class PlanetAtmosphereItemNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('compound') && null !== $data->getCompound()) {
-            $dataArray['compound'] = $data->getCompound();
+        if (array_key_exists('compound', get_object_vars($data)) && null !== ($data->compound ?? null)) {
+            $dataArray['compound'] = $data->compound ?? null;
         }
-        if ($data->isInitialized('percentage') && null !== $data->getPercentage()) {
-            $dataArray['percentage'] = $data->getPercentage();
+        if (array_key_exists('percentage', get_object_vars($data)) && null !== ($data->percentage ?? null)) {
+            $dataArray['percentage'] = $data->percentage ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

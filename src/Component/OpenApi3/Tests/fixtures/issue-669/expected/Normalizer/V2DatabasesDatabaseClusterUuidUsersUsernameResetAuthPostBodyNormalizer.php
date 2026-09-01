@@ -38,7 +38,7 @@ class V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBodyNormalizer imp
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mysql_settings', $data)) {
-            $object->setMysqlSettings($this->denormalizer->denormalize($data['mysql_settings'], \Jane\Generated\DigitalOcean\Model\MysqlSettings::class, 'json', $context));
+            $object->mysqlSettings = $this->denormalizer->denormalize($data['mysql_settings'], \Jane\Generated\DigitalOcean\Model\MysqlSettings::class, 'json', $context);
             unset($data['mysql_settings']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBodyNormalizer imp
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mysqlSettings') && null !== $data->getMysqlSettings()) {
-            $dataArray['mysql_settings'] = $data->getMysqlSettings() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMysqlSettings(), 'json', $context));
+        if (array_key_exists('mysqlSettings', get_object_vars($data)) && null !== ($data->mysqlSettings ?? null)) {
+            $dataArray['mysql_settings'] = ($data->mysqlSettings ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysqlSettings ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

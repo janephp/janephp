@@ -42,7 +42,7 @@ class ApiRunEvaluationTestCaseOutputNormalizer implements DenormalizerInterface,
             foreach ($data['evaluation_run_uuids'] as $value) {
                 $values[] = $value;
             }
-            $object->setEvaluationRunUuids($values);
+            $object->evaluationRunUuids = $values;
             unset($data['evaluation_run_uuids']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ApiRunEvaluationTestCaseOutputNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('evaluationRunUuids') && null !== $data->getEvaluationRunUuids()) {
+        if (array_key_exists('evaluationRunUuids', get_object_vars($data)) && null !== ($data->evaluationRunUuids ?? null)) {
             $values = [];
-            foreach ($data->getEvaluationRunUuids() as $value) {
+            foreach ($data->evaluationRunUuids ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['evaluation_run_uuids'] = $values;

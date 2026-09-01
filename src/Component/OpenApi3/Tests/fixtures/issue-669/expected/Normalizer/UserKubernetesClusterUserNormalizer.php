@@ -38,7 +38,7 @@ class UserKubernetesClusterUserNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('username', $data)) {
-            $object->setUsername($data['username']);
+            $object->username = $data['username'];
             unset($data['username']);
         }
         if (\array_key_exists('groups', $data)) {
@@ -46,7 +46,7 @@ class UserKubernetesClusterUserNormalizer implements DenormalizerInterface, Norm
             foreach ($data['groups'] as $value) {
                 $values[] = $value;
             }
-            $object->setGroups($values);
+            $object->groups = $values;
             unset($data['groups']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class UserKubernetesClusterUserNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('username') && null !== $data->getUsername()) {
-            $dataArray['username'] = $data->getUsername();
+        if (array_key_exists('username', get_object_vars($data)) && null !== ($data->username ?? null)) {
+            $dataArray['username'] = $data->username ?? null;
         }
-        if ($data->isInitialized('groups') && null !== $data->getGroups()) {
+        if (array_key_exists('groups', get_object_vars($data)) && null !== ($data->groups ?? null)) {
             $values = [];
-            foreach ($data->getGroups() as $value) {
+            foreach ($data->groups ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['groups'] = $values;

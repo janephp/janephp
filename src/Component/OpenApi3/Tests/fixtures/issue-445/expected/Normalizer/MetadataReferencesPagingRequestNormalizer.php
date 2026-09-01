@@ -41,19 +41,19 @@ class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface
             $data['fetchReferencedByRestrictedItem'] = (bool) $data['fetchReferencedByRestrictedItem'];
         }
         if (\array_key_exists('limit', $data)) {
-            $object->setLimit($data['limit']);
+            $object->limit = $data['limit'];
             unset($data['limit']);
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-            $object->setPageToken($data['pageToken']);
+            $object->pageToken = $data['pageToken'];
             unset($data['pageToken']);
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-            $object->setPageToken(null);
+            $object->pageToken = null;
             unset($data['pageToken']);
         }
         if (\array_key_exists('fetchReferencedByRestrictedItem', $data)) {
-            $object->setFetchReferencedByRestrictedItem($data['fetchReferencedByRestrictedItem']);
+            $object->fetchReferencedByRestrictedItem = $data['fetchReferencedByRestrictedItem'];
             unset($data['fetchReferencedByRestrictedItem']);
         }
         foreach ($data as $key => $value) {
@@ -66,12 +66,12 @@ class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
-            $dataArray['pageToken'] = $data->getPageToken();
+        $dataArray['limit'] = $data->limit ?? null;
+        if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
+            $dataArray['pageToken'] = $data->pageToken ?? null;
         }
-        if ($data->isInitialized('fetchReferencedByRestrictedItem') && null !== $data->getFetchReferencedByRestrictedItem()) {
-            $dataArray['fetchReferencedByRestrictedItem'] = $data->getFetchReferencedByRestrictedItem();
+        if (array_key_exists('fetchReferencedByRestrictedItem', get_object_vars($data)) && null !== ($data->fetchReferencedByRestrictedItem ?? null)) {
+            $dataArray['fetchReferencedByRestrictedItem'] = $data->fetchReferencedByRestrictedItem ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -41,51 +41,51 @@ class ApInfoApInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['mainDetector'] = (bool) $data['mainDetector'];
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('apName', $data)) {
-            $object->setApName($data['apName']);
+            $object->apName = $data['apName'];
         }
         if (\array_key_exists('rssi', $data)) {
-            $object->setRssi($data['rssi']);
+            $object->rssi = $data['rssi'];
         }
         if (\array_key_exists('lastDetected', $data)) {
-            $object->setLastDetected($data['lastDetected']);
+            $object->lastDetected = $data['lastDetected'];
         }
         if (\array_key_exists('zoneName', $data)) {
-            $object->setZoneName($data['zoneName']);
+            $object->zoneName = $data['zoneName'];
         }
         if (\array_key_exists('rogueType', $data)) {
-            $object->setRogueType($data['rogueType']);
+            $object->rogueType = $data['rogueType'];
         }
         if (\array_key_exists('mainDetector', $data)) {
-            $object->setMainDetector($data['mainDetector']);
+            $object->mainDetector = $data['mainDetector'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('apName') && null !== $data->getApName()) {
-            $dataArray['apName'] = $data->getApName();
+        if (array_key_exists('apName', get_object_vars($data)) && null !== ($data->apName ?? null)) {
+            $dataArray['apName'] = $data->apName ?? null;
         }
-        if ($data->isInitialized('rssi') && null !== $data->getRssi()) {
-            $dataArray['rssi'] = $data->getRssi();
+        if (array_key_exists('rssi', get_object_vars($data)) && null !== ($data->rssi ?? null)) {
+            $dataArray['rssi'] = $data->rssi ?? null;
         }
-        if ($data->isInitialized('lastDetected') && null !== $data->getLastDetected()) {
-            $dataArray['lastDetected'] = $data->getLastDetected();
+        if (array_key_exists('lastDetected', get_object_vars($data)) && null !== ($data->lastDetected ?? null)) {
+            $dataArray['lastDetected'] = $data->lastDetected ?? null;
         }
-        if ($data->isInitialized('zoneName') && null !== $data->getZoneName()) {
-            $dataArray['zoneName'] = $data->getZoneName();
+        if (array_key_exists('zoneName', get_object_vars($data)) && null !== ($data->zoneName ?? null)) {
+            $dataArray['zoneName'] = $data->zoneName ?? null;
         }
-        if ($data->isInitialized('rogueType') && null !== $data->getRogueType()) {
-            $dataArray['rogueType'] = $data->getRogueType();
+        if (array_key_exists('rogueType', get_object_vars($data)) && null !== ($data->rogueType ?? null)) {
+            $dataArray['rogueType'] = $data->rogueType ?? null;
         }
-        if ($data->isInitialized('mainDetector') && null !== $data->getMainDetector()) {
-            $dataArray['mainDetector'] = $data->getMainDetector();
+        if (array_key_exists('mainDetector', get_object_vars($data)) && null !== ($data->mainDetector ?? null)) {
+            $dataArray['mainDetector'] = $data->mainDetector ?? null;
         }
         return $dataArray;
     }

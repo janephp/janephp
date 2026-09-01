@@ -78,7 +78,7 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 return $decodedBody;
@@ -86,7 +86,7 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioBadRequestException($response);
@@ -94,7 +94,7 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioUnauthorizedException($response);
@@ -102,7 +102,7 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioForbiddenException($response);
@@ -110,7 +110,7 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioNotFoundException($response);

@@ -38,32 +38,32 @@ class FileTransferOutputNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
-            $object->setFilePath($data['filePath']);
+            $object->filePath = $data['filePath'];
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
-            $object->setFilePath(null);
+            $object->filePath = null;
         }
         if (\array_key_exists('outputSource', $data)) {
-            $object->setOutputSource($data['outputSource']);
+            $object->outputSource = $data['outputSource'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
-            $dataArray['filePath'] = $data->getFilePath();
+        if (array_key_exists('filePath', get_object_vars($data)) && null !== ($data->filePath ?? null)) {
+            $dataArray['filePath'] = $data->filePath ?? null;
         }
-        $dataArray['outputSource'] = $data->getOutputSource();
+        $dataArray['outputSource'] = $data->outputSource ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

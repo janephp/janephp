@@ -41,27 +41,27 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
             $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesCredentialSpecConstraint());
         }
         if (\array_key_exists('Config', $data)) {
-            $object->setConfig($data['Config']);
+            $object->config = $data['Config'];
         }
         if (\array_key_exists('File', $data)) {
-            $object->setFile($data['File']);
+            $object->file = $data['File'];
         }
         if (\array_key_exists('Registry', $data)) {
-            $object->setRegistry($data['Registry']);
+            $object->registry = $data['Registry'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('config') && null !== $data->getConfig()) {
-            $dataArray['Config'] = $data->getConfig();
+        if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
+            $dataArray['Config'] = $data->config ?? null;
         }
-        if ($data->isInitialized('file') && null !== $data->getFile()) {
-            $dataArray['File'] = $data->getFile();
+        if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
+            $dataArray['File'] = $data->file ?? null;
         }
-        if ($data->isInitialized('registry') && null !== $data->getRegistry()) {
-            $dataArray['Registry'] = $data->getRegistry();
+        if (array_key_exists('registry', get_object_vars($data)) && null !== ($data->registry ?? null)) {
+            $dataArray['Registry'] = $data->registry ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesCredentialSpecConstraint());

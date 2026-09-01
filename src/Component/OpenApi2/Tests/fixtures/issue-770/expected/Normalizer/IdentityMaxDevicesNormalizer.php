@@ -38,21 +38,21 @@ class IdentityMaxDevicesNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('maxDevicesAllowed', $data)) {
-            $object->setMaxDevicesAllowed($data['maxDevicesAllowed']);
+            $object->maxDevicesAllowed = $data['maxDevicesAllowed'];
         }
         if (\array_key_exists('maxDevicesNumber', $data)) {
-            $object->setMaxDevicesNumber($data['maxDevicesNumber']);
+            $object->maxDevicesNumber = $data['maxDevicesNumber'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('maxDevicesAllowed') && null !== $data->getMaxDevicesAllowed()) {
-            $dataArray['maxDevicesAllowed'] = $data->getMaxDevicesAllowed();
+        if (array_key_exists('maxDevicesAllowed', get_object_vars($data)) && null !== ($data->maxDevicesAllowed ?? null)) {
+            $dataArray['maxDevicesAllowed'] = $data->maxDevicesAllowed ?? null;
         }
-        if ($data->isInitialized('maxDevicesNumber') && null !== $data->getMaxDevicesNumber()) {
-            $dataArray['maxDevicesNumber'] = $data->getMaxDevicesNumber();
+        if (array_key_exists('maxDevicesNumber', get_object_vars($data)) && null !== ($data->maxDevicesNumber ?? null)) {
+            $dataArray['maxDevicesNumber'] = $data->maxDevicesNumber ?? null;
         }
         return $dataArray;
     }

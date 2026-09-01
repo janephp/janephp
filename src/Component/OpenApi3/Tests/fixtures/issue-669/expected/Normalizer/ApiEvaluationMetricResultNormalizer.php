@@ -41,27 +41,27 @@ class ApiEvaluationMetricResultNormalizer implements DenormalizerInterface, Norm
             $data['number_value'] = (float) $data['number_value'];
         }
         if (\array_key_exists('error_description', $data)) {
-            $object->setErrorDescription($data['error_description']);
+            $object->errorDescription = $data['error_description'];
             unset($data['error_description']);
         }
         if (\array_key_exists('metric_name', $data)) {
-            $object->setMetricName($data['metric_name']);
+            $object->metricName = $data['metric_name'];
             unset($data['metric_name']);
         }
         if (\array_key_exists('metric_value_type', $data)) {
-            $object->setMetricValueType($data['metric_value_type']);
+            $object->metricValueType = $data['metric_value_type'];
             unset($data['metric_value_type']);
         }
         if (\array_key_exists('number_value', $data)) {
-            $object->setNumberValue($data['number_value']);
+            $object->numberValue = $data['number_value'];
             unset($data['number_value']);
         }
         if (\array_key_exists('reasoning', $data)) {
-            $object->setReasoning($data['reasoning']);
+            $object->reasoning = $data['reasoning'];
             unset($data['reasoning']);
         }
         if (\array_key_exists('string_value', $data)) {
-            $object->setStringValue($data['string_value']);
+            $object->stringValue = $data['string_value'];
             unset($data['string_value']);
         }
         foreach ($data as $key => $value) {
@@ -74,23 +74,23 @@ class ApiEvaluationMetricResultNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('errorDescription') && null !== $data->getErrorDescription()) {
-            $dataArray['error_description'] = $data->getErrorDescription();
+        if (array_key_exists('errorDescription', get_object_vars($data)) && null !== ($data->errorDescription ?? null)) {
+            $dataArray['error_description'] = $data->errorDescription ?? null;
         }
-        if ($data->isInitialized('metricName') && null !== $data->getMetricName()) {
-            $dataArray['metric_name'] = $data->getMetricName();
+        if (array_key_exists('metricName', get_object_vars($data)) && null !== ($data->metricName ?? null)) {
+            $dataArray['metric_name'] = $data->metricName ?? null;
         }
-        if ($data->isInitialized('metricValueType') && null !== $data->getMetricValueType()) {
-            $dataArray['metric_value_type'] = $data->getMetricValueType();
+        if (array_key_exists('metricValueType', get_object_vars($data)) && null !== ($data->metricValueType ?? null)) {
+            $dataArray['metric_value_type'] = $data->metricValueType ?? null;
         }
-        if ($data->isInitialized('numberValue') && null !== $data->getNumberValue()) {
-            $dataArray['number_value'] = $data->getNumberValue();
+        if (array_key_exists('numberValue', get_object_vars($data)) && null !== ($data->numberValue ?? null)) {
+            $dataArray['number_value'] = $data->numberValue ?? null;
         }
-        if ($data->isInitialized('reasoning') && null !== $data->getReasoning()) {
-            $dataArray['reasoning'] = $data->getReasoning();
+        if (array_key_exists('reasoning', get_object_vars($data)) && null !== ($data->reasoning ?? null)) {
+            $dataArray['reasoning'] = $data->reasoning ?? null;
         }
-        if ($data->isInitialized('stringValue') && null !== $data->getStringValue()) {
-            $dataArray['string_value'] = $data->getStringValue();
+        if (array_key_exists('stringValue', get_object_vars($data)) && null !== ($data->stringValue ?? null)) {
+            $dataArray['string_value'] = $data->stringValue ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

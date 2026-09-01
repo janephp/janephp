@@ -17,82 +17,12 @@ trait AuthenticationGenerator
     protected function createAuthentication(SecuritySchemeGuess $securityScheme): Stmt\ClassMethod
     {
         $requestVar = new Expr\Variable('request');
-        $stmts = [];
 
-        switch ($securityScheme->getType()) {
-            case SecuritySchemeGuess::TYPE_HTTP:
-                $fetchedValue = null;
-                switch ($securityScheme->getScheme()) {
-                    case SecuritySchemeGuess::SCHEME_BEARER:
-                        $fetchedValue = new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('token'));
-                        break;
-                    case SecuritySchemeGuess::SCHEME_BASIC:
-                        $fetchedValue = new Expr\FuncCall(new Name('base64_encode'), [
-                            new Node\Arg(new Expr\FuncCall(new Name('sprintf'), [
-                                new Node\Arg(new Scalar\String_('%s:%s')),
-                                new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('username'))),
-                                new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('password'))),
-                            ])),
-                        ]);
-                        break;
-                }
-
-                if (null !== $fetchedValue) {
-                    $stmts[] = new Stmt\Expression(new Expr\Assign(new Expr\Variable('header'), new Expr\FuncCall(new Name('sprintf'), [
-                        new Node\Arg(new Scalar\String_($securityScheme->getScheme() . ' %s')),
-                        new Node\Arg($fetchedValue),
-                    ])));
-                    $stmts[] = new Stmt\Expression(new Expr\Assign(new Expr\Variable('request'), new Expr\MethodCall(new Expr\Variable('request'), 'withHeader', [
-                        new Node\Arg(new Scalar\String_('Authorization')),
-                        new Node\Arg(new Expr\Variable('header')),
-                    ])));
-                }
-                break;
-            case SecuritySchemeGuess::TYPE_API_KEY:
-                if (null === $securityScheme->getIn()) {
-                    break;
-                }
-
-                switch ($securityScheme->getIn()) {
-                    case 'header':
-                        $stmts = [
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('request'), new Expr\MethodCall(new Expr\Variable('request'), 'withHeader', [
-                                new Node\Arg(new Scalar\String_($securityScheme->getVariable())),
-                                new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey'))),
-                            ]))),
-                        ];
-                        break;
-                    case 'query':
-                        $stmts = [
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\MethodCall(new Expr\Variable('request'), 'getUri'))),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('query'), new Expr\MethodCall(new Expr\Variable('uri'), 'getQuery'))),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('params'), new Expr\Array_())),
-                            new Stmt\Expression(new Expr\FuncCall(new Name('parse_str'), [
-                                new Node\Arg(new Expr\Variable('query')),
-                                new Node\Arg(new Expr\Variable('params')),
-                            ])),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('params'), new Expr\FuncCall(new Name('array_merge'), [
-                                new Node\Arg(new Expr\Variable('params')),
-                                new Node\Arg(new Expr\Array_([
-                                    new Expr\ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey')), new Scalar\String_($securityScheme->getVariable())),
-                                ])),
-                            ]))),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('query'), new Expr\FuncCall(new Name('http_build_query'), [
-                                new Node\Arg(new Expr\Variable('params')),
-                            ]))),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\MethodCall(new Expr\Variable('uri'), 'withQuery', [
-                                new Node\Arg(new Expr\Variable('query')),
-                            ]))),
-                            new Stmt\Expression(new Expr\Assign(new Expr\Variable('request'), new Expr\MethodCall(new Expr\Variable('request'), 'withUri', [
-                                new Node\Arg(new Expr\Variable('uri')),
-                            ]))),
-                        ];
-                        break;
-                }
-                break;
-            default:
-                throw new \Exception(\sprintf('Jane actually does not support Security type %s generation', $securityScheme->getType()));
-        }
+        $stmts = match ($securityScheme->getType()) {
+            SecuritySchemeGuess::TYPE_HTTP => $this->createHttpAuthenticationStatements($requestVar, $securityScheme),
+            SecuritySchemeGuess::TYPE_API_KEY => $this->createApiKeyAuthenticationStatements($requestVar, $securityScheme),
+            default => throw new \Exception(\sprintf('Jane actually does not support Security type %s generation', $securityScheme->getType())),
+        };
 
         $stmts[] = new Stmt\Return_($requestVar);
 
@@ -104,5 +34,98 @@ trait AuthenticationGenerator
             'stmts' => $stmts,
             'flags' => Modifiers::PUBLIC,
         ]);
+    }
+
+    /**
+     * @return Stmt[]
+     */
+    private function createHttpAuthenticationStatements(Expr\Variable $requestVar, SecuritySchemeGuess $securityScheme): array
+    {
+        $fetchedValue = match ($securityScheme->getScheme()) {
+            SecuritySchemeGuess::SCHEME_BEARER => new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('token')),
+            SecuritySchemeGuess::SCHEME_BASIC => new Expr\FuncCall(new Name('base64_encode'), [
+                new Node\Arg(new Expr\FuncCall(new Name('sprintf'), [
+                    new Node\Arg(new Scalar\String_('%s:%s')),
+                    new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('username'))),
+                    new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('password'))),
+                ])),
+            ]),
+            default => null,
+        };
+
+        if (null === $fetchedValue) {
+            return [];
+        }
+
+        return [
+            new Stmt\Expression(new Expr\Assign(new Expr\Variable('header'), new Expr\FuncCall(new Name('sprintf'), [
+                new Node\Arg(new Scalar\String_($securityScheme->getScheme() . ' %s')),
+                new Node\Arg($fetchedValue),
+            ]))),
+            new Stmt\Expression(new Expr\Assign($requestVar, new Expr\MethodCall(new Expr\Variable('request'), 'withHeader', [
+                new Node\Arg(new Scalar\String_('Authorization')),
+                new Node\Arg(new Expr\Variable('header')),
+            ]))),
+        ];
+    }
+
+    /**
+     * @return Stmt[]
+     */
+    private function createApiKeyAuthenticationStatements(Expr\Variable $requestVar, SecuritySchemeGuess $securityScheme): array
+    {
+        if (null === $securityScheme->getIn()) {
+            return [];
+        }
+
+        return match ($securityScheme->getIn()) {
+            'header' => $this->createApiKeyHeaderStatements($requestVar, $securityScheme),
+            'query' => $this->createApiKeyQueryStatements($requestVar, $securityScheme),
+            default => [],
+        };
+    }
+
+    /**
+     * @return Stmt[]
+     */
+    private function createApiKeyHeaderStatements(Expr\Variable $requestVar, SecuritySchemeGuess $securityScheme): array
+    {
+        return [
+            new Stmt\Expression(new Expr\Assign($requestVar, new Expr\MethodCall(new Expr\Variable('request'), 'withHeader', [
+                new Node\Arg(new Scalar\String_($securityScheme->getVariable())),
+                new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey'))),
+            ]))),
+        ];
+    }
+
+    /**
+     * @return Stmt[]
+     */
+    private function createApiKeyQueryStatements(Expr\Variable $requestVar, SecuritySchemeGuess $securityScheme): array
+    {
+        return [
+            new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\MethodCall(new Expr\Variable('request'), 'getUri'))),
+            new Stmt\Expression(new Expr\Assign(new Expr\Variable('query'), new Expr\MethodCall(new Expr\Variable('uri'), 'getQuery'))),
+            new Stmt\Expression(new Expr\Assign(new Expr\Variable('params'), new Expr\Array_())),
+            new Stmt\Expression(new Expr\FuncCall(new Name('parse_str'), [
+                new Node\Arg(new Expr\Variable('query')),
+                new Node\Arg(new Expr\Variable('params')),
+            ])),
+            new Stmt\Expression(new Expr\Assign(new Expr\Variable('params'), new Expr\FuncCall(new Name('array_merge'), [
+                new Node\Arg(new Expr\Variable('params')),
+                new Node\Arg(new Expr\Array_([
+                    new Expr\ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('apiKey')), new Scalar\String_($securityScheme->getVariable())),
+                ])),
+            ]))),
+            new Stmt\Expression(new Expr\Assign(new Expr\Variable('query'), new Expr\FuncCall(new Name('http_build_query'), [
+                new Node\Arg(new Expr\Variable('params')),
+            ]))),
+            new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\MethodCall(new Expr\Variable('uri'), 'withQuery', [
+                new Node\Arg(new Expr\Variable('query')),
+            ]))),
+            new Stmt\Expression(new Expr\Assign($requestVar, new Expr\MethodCall(new Expr\Variable('request'), 'withUri', [
+                new Node\Arg(new Expr\Variable('uri')),
+            ]))),
+        ];
     }
 }

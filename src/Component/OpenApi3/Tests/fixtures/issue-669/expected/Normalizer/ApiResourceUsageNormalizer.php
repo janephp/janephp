@@ -42,11 +42,11 @@ class ApiResourceUsageNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['measurements'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiUsageMeasurement::class, 'json', $context);
             }
-            $object->setMeasurements($values);
+            $object->measurements = $values;
             unset($data['measurements']);
         }
         if (\array_key_exists('resource_uuid', $data)) {
-            $object->setResourceUuid($data['resource_uuid']);
+            $object->resourceUuid = $data['resource_uuid'];
             unset($data['resource_uuid']);
         }
         if (\array_key_exists('start', $data)) {
@@ -54,7 +54,7 @@ class ApiResourceUsageNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStart($date);
+            $object->start = $date;
             unset($data['start']);
         }
         if (\array_key_exists('stop', $data)) {
@@ -62,7 +62,7 @@ class ApiResourceUsageNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['stop'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStop($date_1);
+            $object->stop = $date_1;
             unset($data['stop']);
         }
         foreach ($data as $key => $value_1) {
@@ -75,21 +75,21 @@ class ApiResourceUsageNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('measurements') && null !== $data->getMeasurements()) {
+        if (array_key_exists('measurements', get_object_vars($data)) && null !== ($data->measurements ?? null)) {
             $values = [];
-            foreach ($data->getMeasurements() as $value) {
+            foreach ($data->measurements ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['measurements'] = $values;
         }
-        if ($data->isInitialized('resourceUuid') && null !== $data->getResourceUuid()) {
-            $dataArray['resource_uuid'] = $data->getResourceUuid();
+        if (array_key_exists('resourceUuid', get_object_vars($data)) && null !== ($data->resourceUuid ?? null)) {
+            $dataArray['resource_uuid'] = $data->resourceUuid ?? null;
         }
-        if ($data->isInitialized('start') && null !== $data->getStart()) {
-            $dataArray['start'] = $data->getStart()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
+            $dataArray['start'] = ($data->start ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('stop') && null !== $data->getStop()) {
-            $dataArray['stop'] = $data->getStop()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('stop', get_object_vars($data)) && null !== ($data->stop ?? null)) {
+            $dataArray['stop'] = ($data->stop ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

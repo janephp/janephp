@@ -13,9 +13,9 @@ if (!trait_exists('AdditionalAndPatternProperties', false)) {
 
         public function offsetExists(mixed $offset): bool
         {
-            foreach ($this->definedProperties() as $phpName => $definition) {
-                if ($definition[0] === $offset) {
-                    return $this->isInitialized($phpName) || null !== $this->{$phpName};
+            foreach ($this->definedProperties() as $phpName => $wireName) {
+                if ($wireName === $offset) {
+                    return \array_key_exists($phpName, get_object_vars($this)) || null !== ($this->{$phpName} ?? null);
                 }
             }
             return \array_key_exists($offset, $this->extraProperties);
@@ -23,24 +23,24 @@ if (!trait_exists('AdditionalAndPatternProperties', false)) {
 
         public function offsetGet(mixed $offset): mixed
         {
-            foreach ($this->definedProperties() as $definition) {
-                if ($definition[0] === $offset) { return $this->{$definition[1]}(); }
+            foreach ($this->definedProperties() as $phpName => $wireName) {
+                if ($wireName === $offset) { return $this->{$phpName} ?? null; }
             }
             return $this->extraProperties[$offset] ?? null;
         }
 
         public function offsetSet(mixed $offset, mixed $value): void
         {
-            foreach ($this->definedProperties() as $definition) {
-                if ($definition[0] === $offset) { $this->{$definition[2]}($value); return; }
+            foreach ($this->definedProperties() as $phpName => $wireName) {
+                if ($wireName === $offset) { $this->{$phpName} = $value; return; }
             }
             $this->extraProperties[$offset] = $value;
         }
 
         public function offsetUnset(mixed $offset): void
         {
-            foreach ($this->definedProperties() as $definition) {
-                if ($definition[0] === $offset) { $this->{$definition[2]}(null); return; }
+            foreach ($this->definedProperties() as $phpName => $wireName) {
+                if ($wireName === $offset) { $this->{$phpName} = null; return; }
             }
             unset($this->extraProperties[$offset]);
         }
@@ -51,14 +51,16 @@ if (!trait_exists('AdditionalAndPatternProperties', false)) {
 
         public function toArray(): array
         {
+            $publicProperties = get_object_vars($this);
             $values = [];
-            foreach ($this->definedProperties() as $phpName => $definition) {
-                $value = $this->{$phpName};
-                if ($this->isInitialized($phpName) || null !== $value) {
-                    $values[$definition[0]] = $value;
+            foreach ($this->definedProperties() as $phpName => $wireName) {
+                if (\'extraProperties\' === $phpName) { continue; }
+                $value = $this->{$phpName} ?? null;
+                if (\array_key_exists($phpName, $publicProperties) || null !== $value) {
+                    $values[$wireName] = $value;
                 }
             }
-            return array_merge($values, $this->extraProperties);
+            return $values + $this->extraProperties;
         }
 
         public function getArrayCopy(): array { return $this->toArray(); }
@@ -93,15 +95,15 @@ class AdditionalAndPatternPropertiesTest extends TestCase
         self::assertInstanceOf(\AdditionalPropertiesInterface::class, $this->createModel());
     }
 
-    public function testWireNameArrayAccessRoutesToAccessors(): void
+    public function testWireNameArrayAccessRoutesToPublicProperties(): void
     {
         $model = $this->createModel();
 
         $model['_attachment'] = 'a';
         $model['name'] = 'n';
 
-        self::assertSame('a', $model->getAttachment());
-        self::assertSame('n', $model->getName());
+        self::assertSame('a', $model->attachment);
+        self::assertSame('n', $model->name);
         self::assertSame('a', $model['_attachment']);
         self::assertSame('n', $model['name']);
     }
@@ -114,7 +116,7 @@ class AdditionalAndPatternPropertiesTest extends TestCase
 
         self::assertSame('value', $model['x-custom']);
         self::assertTrue($model->offsetExists('x-custom'));
-        self::assertNull($model->getAttachment());
+        self::assertNull($model['_attachment']);
 
         unset($model['x-custom']);
 
@@ -129,28 +131,28 @@ class AdditionalAndPatternPropertiesTest extends TestCase
         self::assertFalse($model->offsetExists('_attachment'));
         self::assertFalse($model->offsetExists('name'));
 
-        $model->setAttachment(null);
+        $model->attachment = null;
 
-        self::assertTrue($model->offsetExists('_attachment'), 'initialized but null properties exist');
+        self::assertTrue($model->offsetExists('_attachment'), 'explicitly set to null properties exist');
     }
 
     public function testUnsetOnDefinedPropertyResetsItToNull(): void
     {
         $model = $this->createModel();
-        $model->setAttachment('a');
+        $model->attachment = 'a';
 
         unset($model['_attachment']);
 
-        self::assertNull($model->getAttachment());
+        self::assertNull($model->attachment);
         self::assertSame(['_attachment' => null], $model->toArray());
     }
 
     public function testIterationYieldsDefinedThenAdditionalProperties(): void
     {
         $model = $this->createModel();
-        $model->setName('n');
+        $model->name = 'n';
         $model['z-first'] = 1;
-        $model->setAttachment('a');
+        $model->attachment = 'a';
         $model['a-second'] = 2;
 
         self::assertSame(
@@ -164,8 +166,8 @@ class AdditionalAndPatternPropertiesTest extends TestCase
         $model = $this->createModel();
         self::assertSame([], $model->toArray());
 
-        $model->setAttachment(null);
-        $model->setName('n');
+        $model->attachment = null;
+        $model->name = 'n';
         $model['extra'] = 'e';
 
         self::assertSame(['_attachment' => null, 'name' => 'n', 'extra' => 'e'], $model->toArray());
@@ -177,7 +179,7 @@ class AdditionalAndPatternPropertiesTest extends TestCase
 
         self::assertCount(0, $model);
 
-        $model->setName('n');
+        $model->name = 'n';
         $model['extra'] = 'e';
 
         self::assertCount(2, $model);
@@ -186,8 +188,8 @@ class AdditionalAndPatternPropertiesTest extends TestCase
     public function testAdditionalPropertyEntriesYieldsOnlyAdditionalProperties(): void
     {
         $model = $this->createModel();
-        $model->setName('n');
-        $model->setAttachment('a');
+        $model->name = 'n';
+        $model->attachment = 'a';
         $model['extra'] = 'e';
 
         self::assertSame(['extra' => 'e'], iterator_to_array($model->additionalPropertyEntries()));
@@ -201,9 +203,9 @@ class AdditionalAndPatternPropertiesTest extends TestCase
     public function testFilledObjectEncodesDefinedThenAdditionalProperties(): void
     {
         $model = $this->createModel();
-        $model->setName('n');
+        $model->name = 'n';
         $model['extra'] = 'e';
-        $model->setAttachment('a');
+        $model->attachment = 'a';
 
         self::assertSame('{"_attachment":"a","name":"n","extra":"e"}', json_encode($model));
     }
@@ -211,7 +213,7 @@ class AdditionalAndPatternPropertiesTest extends TestCase
     public function testGetArrayCopyMirrorsToArray(): void
     {
         $model = $this->createModel();
-        $model->setName('n');
+        $model->name = 'n';
 
         self::assertSame(['name' => 'n'], $model->getArrayCopy());
         self::assertSame($model->toArray(), $model->getArrayCopy());
@@ -224,15 +226,15 @@ class AdditionalAndPatternPropertiesTest extends TestCase
         self::assertSame(0, $consume($this->createModel()));
 
         $model = $this->createModel();
-        $model->setName('n');
+        $model->name = 'n';
         $model['extra'] = 'e';
 
         self::assertSame(2, $consume($model));
     }
 
-    public function testUninitializedNonNullableGetterDoesNotBreakToArray(): void
+    public function testUninitializedNonNullablePropertyDoesNotBreakToArray(): void
     {
-        $model = new StubNonNullableGetterModel();
+        $model = new StubNonNullablePropertyModel();
         $model['extra'] = 'kept';
 
         self::assertSame(['status' => 'draft', 'extra' => 'kept'], $model->toArray());
@@ -243,11 +245,11 @@ class AdditionalAndPatternPropertiesTest extends TestCase
 
     public function testOffsetExistsOnUninitializedNonNullableProperty(): void
     {
-        $model = new StubNonNullableGetterModel();
+        $model = new StubNonNullablePropertyModel();
 
         self::assertFalse($model->offsetExists('id'));
 
-        $model->setId('i');
+        $model->id = 'i';
 
         self::assertTrue($model->offsetExists('id'));
         self::assertSame(['id' => 'i', 'status' => 'draft'], $model->toArray());
@@ -255,8 +257,8 @@ class AdditionalAndPatternPropertiesTest extends TestCase
 
     public function testUninitializedPropertyWithDefaultValueIsStillExposed(): void
     {
-        $model = new StubNonNullableGetterModel();
-        $model->setId('i');
+        $model = new StubNonNullablePropertyModel();
+        $model->id = 'i';
 
         self::assertTrue($model->offsetExists('status'));
         self::assertSame(['id' => 'i', 'status' => 'draft'], $model->toArray());
@@ -265,101 +267,43 @@ class AdditionalAndPatternPropertiesTest extends TestCase
 
 /**
  * Mirrors a generated extension-container model: the `_attachment` wire name is
- * mapped onto the `attachment` PHP property through its accessors.
+ * mapped onto the `attachment` public property.
  */
 class StubAdditionalPropertiesModel implements \AdditionalPropertiesInterface
 {
     use \AdditionalAndPatternProperties;
 
-    private array $initialized = [];
+    public ?string $attachment;
 
-    public ?string $attachment = null;
-
-    public ?string $name = null;
-
-    public function isInitialized(string $property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
+    public ?string $name;
 
     public function definedProperties(): array
     {
         return [
-            'attachment' => ['_attachment', 'getAttachment', 'setAttachment'],
-            'name' => ['name', 'getName', 'setName'],
+            'attachment' => '_attachment',
+            'name' => 'name',
         ];
-    }
-
-    public function getAttachment(): ?string
-    {
-        return $this->attachment;
-    }
-
-    public function setAttachment(?string $attachment): void
-    {
-        $this->initialized['attachment'] = true;
-        $this->attachment = $attachment;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(?string $name): void
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
     }
 }
 
 /**
- * Mirrors a generated model with a required property: the backing field is
- * untyped (defaults to null) while the getter is non-nullable, so calling the
- * getter before the property is initialized throws a TypeError (GH#1034).
+ * Mirrors a generated model with a required property: a non-nullable public typed
+ * property without a default. get_object_vars() skips uninitialized properties
+ * and `?? null` reads never throw, so toArray() stays safe.
  */
-class StubNonNullableGetterModel implements \AdditionalPropertiesInterface
+class StubNonNullablePropertyModel implements \AdditionalPropertiesInterface
 {
     use \AdditionalAndPatternProperties;
 
-    private array $initialized = [];
+    public string $id;
 
-    protected $id;
-
-    protected $status = 'draft';
-
-    public function isInitialized(string $property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
+    public string $status = 'draft';
 
     public function definedProperties(): array
     {
         return [
-            'id' => ['id', 'getId', 'setId'],
-            'status' => ['status', 'getStatus', 'setStatus'],
+            'id' => 'id',
+            'status' => 'status',
         ];
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function setId(string $id): void
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-    }
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    public function setStatus(string $status): void
-    {
-        $this->initialized['status'] = true;
-        $this->status = $status;
     }
 }

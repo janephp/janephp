@@ -48,15 +48,15 @@ class BackupNormalizer implements DenormalizerInterface, NormalizerInterface, De
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('size_gigabytes', $data)) {
-            $object->setSizeGigabytes($data['size_gigabytes']);
+            $object->sizeGigabytes = $data['size_gigabytes'];
             unset($data['size_gigabytes']);
         }
         if (\array_key_exists('incremental', $data)) {
-            $object->setIncremental($data['incremental']);
+            $object->incremental = $data['incremental'];
             unset($data['incremental']);
         }
         foreach ($data as $key => $value) {
@@ -69,10 +69,10 @@ class BackupNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['size_gigabytes'] = $data->getSizeGigabytes();
-        if ($data->isInitialized('incremental') && null !== $data->getIncremental()) {
-            $dataArray['incremental'] = $data->getIncremental();
+        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['size_gigabytes'] = $data->sizeGigabytes ?? null;
+        if (array_key_exists('incremental', get_object_vars($data)) && null !== ($data->incremental ?? null)) {
+            $dataArray['incremental'] = $data->incremental ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

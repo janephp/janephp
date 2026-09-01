@@ -41,11 +41,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
             $data['addedToAcceptList'] = (bool) $data['addedToAcceptList'];
         }
         if (\array_key_exists('addedToAcceptList', $data)) {
-            $object->setAddedToAcceptList($data['addedToAcceptList']);
+            $object->addedToAcceptList = $data['addedToAcceptList'];
             unset($data['addedToAcceptList']);
         }
         if (\array_key_exists('alertState', $data)) {
-            $object->setAlertState($data['alertState']);
+            $object->alertState = $data['alertState'];
             unset($data['alertState']);
         }
         if (\array_key_exists('assignedTo', $data)) {
@@ -53,15 +53,15 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
             foreach ($data['assignedTo'] as $value) {
                 $values[] = $value;
             }
-            $object->setAssignedTo($values);
+            $object->assignedTo = $values;
             unset($data['assignedTo']);
         }
         if (\array_key_exists('assignmentType', $data)) {
-            $object->setAssignmentType($data['assignmentType']);
+            $object->assignmentType = $data['assignmentType'];
             unset($data['assignmentType']);
         }
         if (\array_key_exists('division', $data)) {
-            $object->setDivision($data['division']);
+            $object->division = $data['division'];
             unset($data['division']);
         }
         if (\array_key_exists('history', $data)) {
@@ -69,7 +69,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
             foreach ($data['history'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem::class, 'json', $context);
             }
-            $object->setHistory($values_1);
+            $object->history = $values_1;
             unset($data['history']);
         }
         if (\array_key_exists('matchStates', $data)) {
@@ -77,7 +77,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
             foreach ($data['matchStates'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem::class, 'json', $context);
             }
-            $object->setMatchStates($values_2);
+            $object->matchStates = $values_2;
             unset($data['matchStates']);
         }
         foreach ($data as $key => $value_3) {
@@ -90,35 +90,35 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('addedToAcceptList') && null !== $data->getAddedToAcceptList()) {
-            $dataArray['addedToAcceptList'] = $data->getAddedToAcceptList();
+        if (array_key_exists('addedToAcceptList', get_object_vars($data)) && null !== ($data->addedToAcceptList ?? null)) {
+            $dataArray['addedToAcceptList'] = $data->addedToAcceptList ?? null;
         }
-        if ($data->isInitialized('alertState') && null !== $data->getAlertState()) {
-            $dataArray['alertState'] = $data->getAlertState();
+        if (array_key_exists('alertState', get_object_vars($data)) && null !== ($data->alertState ?? null)) {
+            $dataArray['alertState'] = $data->alertState ?? null;
         }
-        if ($data->isInitialized('assignedTo') && null !== $data->getAssignedTo()) {
+        if (array_key_exists('assignedTo', get_object_vars($data)) && null !== ($data->assignedTo ?? null)) {
             $values = [];
-            foreach ($data->getAssignedTo() as $value) {
+            foreach ($data->assignedTo ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['assignedTo'] = $values;
         }
-        if ($data->isInitialized('assignmentType') && null !== $data->getAssignmentType()) {
-            $dataArray['assignmentType'] = $data->getAssignmentType();
+        if (array_key_exists('assignmentType', get_object_vars($data)) && null !== ($data->assignmentType ?? null)) {
+            $dataArray['assignmentType'] = $data->assignmentType ?? null;
         }
-        if ($data->isInitialized('division') && null !== $data->getDivision()) {
-            $dataArray['division'] = $data->getDivision();
+        if (array_key_exists('division', get_object_vars($data)) && null !== ($data->division ?? null)) {
+            $dataArray['division'] = $data->division ?? null;
         }
-        if ($data->isInitialized('history') && null !== $data->getHistory()) {
+        if (array_key_exists('history', get_object_vars($data)) && null !== ($data->history ?? null)) {
             $values_1 = [];
-            foreach ($data->getHistory() as $value_1) {
+            foreach ($data->history ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['history'] = $values_1;
         }
-        if ($data->isInitialized('matchStates') && null !== $data->getMatchStates()) {
+        if (array_key_exists('matchStates', get_object_vars($data)) && null !== ($data->matchStates ?? null)) {
             $values_2 = [];
-            foreach ($data->getMatchStates() as $value_2) {
+            foreach ($data->matchStates ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['matchStates'] = $values_2;

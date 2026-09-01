@@ -38,7 +38,7 @@ class ResponseExistingDropletNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('droplet', $data)) {
-            $object->setDroplet($this->denormalizer->denormalize($data['droplet'], \Jane\Generated\DigitalOcean\Model\Droplet::class, 'json', $context));
+            $object->droplet = $this->denormalizer->denormalize($data['droplet'], \Jane\Generated\DigitalOcean\Model\Droplet::class, 'json', $context);
             unset($data['droplet']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseExistingDropletNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('droplet') && null !== $data->getDroplet()) {
-            $dataArray['droplet'] = $data->getDroplet() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDroplet(), 'json', $context));
+        if (array_key_exists('droplet', get_object_vars($data)) && null !== ($data->droplet ?? null)) {
+            $dataArray['droplet'] = ($data->droplet ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

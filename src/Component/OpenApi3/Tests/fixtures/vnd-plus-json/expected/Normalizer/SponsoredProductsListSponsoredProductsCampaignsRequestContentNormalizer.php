@@ -42,15 +42,15 @@ class SponsoredProductsListSponsoredProductsCampaignsRequestContentNormalizer im
             $data['includeExtendedDataFields'] = (bool) $data['includeExtendedDataFields'];
         }
         if (\array_key_exists('maxResults', $data)) {
-            $object->setMaxResults($data['maxResults']);
+            $object->maxResults = $data['maxResults'];
             unset($data['maxResults']);
         }
         if (\array_key_exists('nextToken', $data)) {
-            $object->setNextToken($data['nextToken']);
+            $object->nextToken = $data['nextToken'];
             unset($data['nextToken']);
         }
         if (\array_key_exists('includeExtendedDataFields', $data)) {
-            $object->setIncludeExtendedDataFields($data['includeExtendedDataFields']);
+            $object->includeExtendedDataFields = $data['includeExtendedDataFields'];
             unset($data['includeExtendedDataFields']);
         }
         foreach ($data as $key => $value) {
@@ -63,14 +63,14 @@ class SponsoredProductsListSponsoredProductsCampaignsRequestContentNormalizer im
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('maxResults') && null !== $data->getMaxResults()) {
-            $dataArray['maxResults'] = $data->getMaxResults();
+        if (array_key_exists('maxResults', get_object_vars($data)) && null !== ($data->maxResults ?? null)) {
+            $dataArray['maxResults'] = $data->maxResults ?? null;
         }
-        if ($data->isInitialized('nextToken') && null !== $data->getNextToken()) {
-            $dataArray['nextToken'] = $data->getNextToken();
+        if (array_key_exists('nextToken', get_object_vars($data)) && null !== ($data->nextToken ?? null)) {
+            $dataArray['nextToken'] = $data->nextToken ?? null;
         }
-        if ($data->isInitialized('includeExtendedDataFields') && null !== $data->getIncludeExtendedDataFields()) {
-            $dataArray['includeExtendedDataFields'] = $data->getIncludeExtendedDataFields();
+        if (array_key_exists('includeExtendedDataFields', get_object_vars($data)) && null !== ($data->includeExtendedDataFields ?? null)) {
+            $dataArray['includeExtendedDataFields'] = $data->includeExtendedDataFields ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

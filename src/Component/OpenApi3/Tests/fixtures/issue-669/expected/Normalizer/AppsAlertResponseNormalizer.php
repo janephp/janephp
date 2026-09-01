@@ -38,7 +38,7 @@ class AppsAlertResponseNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('alert', $data)) {
-            $object->setAlert($this->denormalizer->denormalize($data['alert'], \Jane\Generated\DigitalOcean\Model\AppAlert::class, 'json', $context));
+            $object->alert = $this->denormalizer->denormalize($data['alert'], \Jane\Generated\DigitalOcean\Model\AppAlert::class, 'json', $context);
             unset($data['alert']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppsAlertResponseNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('alert') && null !== $data->getAlert()) {
-            $dataArray['alert'] = $data->getAlert() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAlert(), 'json', $context));
+        if (array_key_exists('alert', get_object_vars($data)) && null !== ($data->alert ?? null)) {
+            $dataArray['alert'] = ($data->alert ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->alert ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

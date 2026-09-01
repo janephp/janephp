@@ -38,21 +38,21 @@ class ScguserScgUserGroupRoleLabelValueNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('label', $data)) {
-            $object->setLabel($data['label']);
+            $object->label = $data['label'];
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('label') && null !== $data->getLabel()) {
-            $dataArray['label'] = $data->getLabel();
+        if (array_key_exists('label', get_object_vars($data)) && null !== ($data->label ?? null)) {
+            $dataArray['label'] = $data->label ?? null;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+        if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['value'] = $data->value ?? null;
         }
         return $dataArray;
     }

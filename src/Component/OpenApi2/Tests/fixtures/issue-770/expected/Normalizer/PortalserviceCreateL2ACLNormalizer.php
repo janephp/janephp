@@ -38,34 +38,34 @@ class PortalserviceCreateL2ACLNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('restriction', $data)) {
-            $object->setRestriction($data['restriction']);
+            $object->restriction = $data['restriction'];
         }
         if (\array_key_exists('ruleMacs', $data)) {
             $values = [];
             foreach ($data['ruleMacs'] as $value) {
                 $values[] = $value;
             }
-            $object->setRuleMacs($values);
+            $object->ruleMacs = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['restriction'] = $data->getRestriction();
-        if ($data->isInitialized('ruleMacs') && null !== $data->getRuleMacs()) {
+        $dataArray['restriction'] = $data->restriction ?? null;
+        if (array_key_exists('ruleMacs', get_object_vars($data)) && null !== ($data->ruleMacs ?? null)) {
             $values = [];
-            foreach ($data->getRuleMacs() as $value) {
+            foreach ($data->ruleMacs ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['ruleMacs'] = $values;

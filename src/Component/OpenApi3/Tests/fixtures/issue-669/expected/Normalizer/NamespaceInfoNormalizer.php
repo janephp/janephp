@@ -38,35 +38,35 @@ class NamespaceInfoNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('api_host', $data)) {
-            $object->setApiHost($data['api_host']);
+            $object->apiHost = $data['api_host'];
             unset($data['api_host']);
         }
         if (\array_key_exists('namespace', $data)) {
-            $object->setNamespace($data['namespace']);
+            $object->namespace = $data['namespace'];
             unset($data['namespace']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt($data['created_at']);
+            $object->createdAt = $data['created_at'];
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt($data['updated_at']);
+            $object->updatedAt = $data['updated_at'];
             unset($data['updated_at']);
         }
         if (\array_key_exists('label', $data)) {
-            $object->setLabel($data['label']);
+            $object->label = $data['label'];
             unset($data['label']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('key', $data)) {
-            $object->setKey($data['key']);
+            $object->key = $data['key'];
             unset($data['key']);
         }
         foreach ($data as $key => $value) {
@@ -79,29 +79,29 @@ class NamespaceInfoNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apiHost') && null !== $data->getApiHost()) {
-            $dataArray['api_host'] = $data->getApiHost();
+        if (array_key_exists('apiHost', get_object_vars($data)) && null !== ($data->apiHost ?? null)) {
+            $dataArray['api_host'] = $data->apiHost ?? null;
         }
-        if ($data->isInitialized('namespace') && null !== $data->getNamespace()) {
-            $dataArray['namespace'] = $data->getNamespace();
+        if (array_key_exists('namespace', get_object_vars($data)) && null !== ($data->namespace ?? null)) {
+            $dataArray['namespace'] = $data->namespace ?? null;
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt();
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = $data->createdAt ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt();
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = $data->updatedAt ?? null;
         }
-        if ($data->isInitialized('label') && null !== $data->getLabel()) {
-            $dataArray['label'] = $data->getLabel();
+        if (array_key_exists('label', get_object_vars($data)) && null !== ($data->label ?? null)) {
+            $dataArray['label'] = $data->label ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
-        if ($data->isInitialized('key') && null !== $data->getKey()) {
-            $dataArray['key'] = $data->getKey();
+        if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
+            $dataArray['key'] = $data->key ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

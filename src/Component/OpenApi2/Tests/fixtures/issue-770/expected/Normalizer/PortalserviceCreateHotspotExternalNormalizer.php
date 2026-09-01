@@ -41,93 +41,93 @@ class PortalserviceCreateHotspotExternalNormalizer implements DenormalizerInterf
             $data['httpsRedirect'] = (bool) $data['httpsRedirect'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('smartClientSupport', $data)) {
-            $object->setSmartClientSupport($data['smartClientSupport']);
+            $object->smartClientSupport = $data['smartClientSupport'];
         }
         if (\array_key_exists('portalUrl', $data)) {
-            $object->setPortalUrl($data['portalUrl']);
+            $object->portalUrl = $data['portalUrl'];
         }
         if (\array_key_exists('backupPortalUrl', $data)) {
-            $object->setBackupPortalUrl($data['backupPortalUrl']);
+            $object->backupPortalUrl = $data['backupPortalUrl'];
         }
         if (\array_key_exists('location', $data)) {
-            $object->setLocation($this->denormalizer->denormalize($data['location'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalLocation::class, 'json', $context));
+            $object->location = $this->denormalizer->denormalize($data['location'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalLocation::class, 'json', $context);
         }
         if (\array_key_exists('redirect', $data)) {
-            $object->setRedirect($this->denormalizer->denormalize($data['redirect'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalRedirect::class, 'json', $context));
+            $object->redirect = $this->denormalizer->denormalize($data['redirect'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalRedirect::class, 'json', $context);
         }
         if (\array_key_exists('userSession', $data)) {
-            $object->setUserSession($this->denormalizer->denormalize($data['userSession'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceUserSession::class, 'json', $context));
+            $object->userSession = $this->denormalizer->denormalize($data['userSession'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceUserSession::class, 'json', $context);
         }
         if (\array_key_exists('walledGardens', $data)) {
             $values = [];
             foreach ($data['walledGardens'] as $value) {
                 $values[] = $value;
             }
-            $object->setWalledGardens($values);
+            $object->walledGardens = $values;
         }
         if (\array_key_exists('trafficClassProfileId', $data)) {
-            $object->setTrafficClassProfileId($data['trafficClassProfileId']);
+            $object->trafficClassProfileId = $data['trafficClassProfileId'];
         }
         if (\array_key_exists('signatureSigningKey', $data)) {
-            $object->setSignatureSigningKey($data['signatureSigningKey']);
+            $object->signatureSigningKey = $data['signatureSigningKey'];
         }
         if (\array_key_exists('internalNode', $data)) {
-            $object->setInternalNode($data['internalNode']);
+            $object->internalNode = $data['internalNode'];
         }
         if (\array_key_exists('macAddressFormat', $data)) {
-            $object->setMacAddressFormat($data['macAddressFormat']);
+            $object->macAddressFormat = $data['macAddressFormat'];
         }
         if (\array_key_exists('httpsRedirect', $data)) {
-            $object->setHttpsRedirect($data['httpsRedirect']);
+            $object->httpsRedirect = $data['httpsRedirect'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['smartClientSupport'] = $data->getSmartClientSupport();
-        $dataArray['portalUrl'] = $data->getPortalUrl();
-        if ($data->isInitialized('backupPortalUrl') && null !== $data->getBackupPortalUrl()) {
-            $dataArray['backupPortalUrl'] = $data->getBackupPortalUrl();
+        $dataArray['smartClientSupport'] = $data->smartClientSupport ?? null;
+        $dataArray['portalUrl'] = $data->portalUrl ?? null;
+        if (array_key_exists('backupPortalUrl', get_object_vars($data)) && null !== ($data->backupPortalUrl ?? null)) {
+            $dataArray['backupPortalUrl'] = $data->backupPortalUrl ?? null;
         }
-        if ($data->isInitialized('location') && null !== $data->getLocation()) {
-            $dataArray['location'] = $data->getLocation() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLocation(), 'json', $context));
+        if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
+            $dataArray['location'] = ($data->location ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->location ?? null, 'json', $context));
         }
-        if ($data->isInitialized('redirect') && null !== $data->getRedirect()) {
-            $dataArray['redirect'] = $data->getRedirect() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRedirect(), 'json', $context));
+        if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
+            $dataArray['redirect'] = ($data->redirect ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->redirect ?? null, 'json', $context));
         }
-        if ($data->isInitialized('userSession') && null !== $data->getUserSession()) {
-            $dataArray['userSession'] = $data->getUserSession() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserSession(), 'json', $context));
+        if (array_key_exists('userSession', get_object_vars($data)) && null !== ($data->userSession ?? null)) {
+            $dataArray['userSession'] = ($data->userSession ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->userSession ?? null, 'json', $context));
         }
-        if ($data->isInitialized('walledGardens') && null !== $data->getWalledGardens()) {
+        if (array_key_exists('walledGardens', get_object_vars($data)) && null !== ($data->walledGardens ?? null)) {
             $values = [];
-            foreach ($data->getWalledGardens() as $value) {
+            foreach ($data->walledGardens ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['walledGardens'] = $values;
         }
-        if ($data->isInitialized('trafficClassProfileId') && null !== $data->getTrafficClassProfileId()) {
-            $dataArray['trafficClassProfileId'] = $data->getTrafficClassProfileId();
+        if (array_key_exists('trafficClassProfileId', get_object_vars($data)) && null !== ($data->trafficClassProfileId ?? null)) {
+            $dataArray['trafficClassProfileId'] = $data->trafficClassProfileId ?? null;
         }
-        if ($data->isInitialized('signatureSigningKey') && null !== $data->getSignatureSigningKey()) {
-            $dataArray['signatureSigningKey'] = $data->getSignatureSigningKey();
+        if (array_key_exists('signatureSigningKey', get_object_vars($data)) && null !== ($data->signatureSigningKey ?? null)) {
+            $dataArray['signatureSigningKey'] = $data->signatureSigningKey ?? null;
         }
-        if ($data->isInitialized('internalNode') && null !== $data->getInternalNode()) {
-            $dataArray['internalNode'] = $data->getInternalNode();
+        if (array_key_exists('internalNode', get_object_vars($data)) && null !== ($data->internalNode ?? null)) {
+            $dataArray['internalNode'] = $data->internalNode ?? null;
         }
-        $dataArray['macAddressFormat'] = $data->getMacAddressFormat();
-        if ($data->isInitialized('httpsRedirect') && null !== $data->getHttpsRedirect()) {
-            $dataArray['httpsRedirect'] = $data->getHttpsRedirect();
+        $dataArray['macAddressFormat'] = $data->macAddressFormat ?? null;
+        if (array_key_exists('httpsRedirect', get_object_vars($data)) && null !== ($data->httpsRedirect ?? null)) {
+            $dataArray['httpsRedirect'] = $data->httpsRedirect ?? null;
         }
         return $dataArray;
     }

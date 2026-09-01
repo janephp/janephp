@@ -44,24 +44,24 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi2\Tests\Expected\Model\Dog', $format, $context);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('petType', $data)) {
-            $object->setPetType($data['petType']);
+            $object->petType = $data['petType'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getPetType() and 'Cat' === $data->getPetType()) {
+        if (null !== ($data->petType ?? null) and 'Cat' === ($data->petType ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getPetType() and 'Dog' === $data->getPetType()) {
+        if (null !== ($data->petType ?? null) and 'Dog' === ($data->petType ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['name'] = $data->getName();
-        $dataArray['petType'] = $data->getPetType();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['petType'] = $data->petType ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

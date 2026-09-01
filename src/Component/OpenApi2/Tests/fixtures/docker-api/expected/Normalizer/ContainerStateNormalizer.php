@@ -56,81 +56,81 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
             $this->validate($data, new \Docker\Api\Validator\ContainerStateConstraint());
         }
         if (\array_key_exists('Status', $data)) {
-            $object->setStatus($data['Status']);
+            $object->status = $data['Status'];
         }
         if (\array_key_exists('Running', $data)) {
-            $object->setRunning($data['Running']);
+            $object->running = $data['Running'];
         }
         if (\array_key_exists('Paused', $data)) {
-            $object->setPaused($data['Paused']);
+            $object->paused = $data['Paused'];
         }
         if (\array_key_exists('Restarting', $data)) {
-            $object->setRestarting($data['Restarting']);
+            $object->restarting = $data['Restarting'];
         }
         if (\array_key_exists('OOMKilled', $data)) {
-            $object->setOOMKilled($data['OOMKilled']);
+            $object->oOMKilled = $data['OOMKilled'];
         }
         if (\array_key_exists('Dead', $data)) {
-            $object->setDead($data['Dead']);
+            $object->dead = $data['Dead'];
         }
         if (\array_key_exists('Pid', $data)) {
-            $object->setPid($data['Pid']);
+            $object->pid = $data['Pid'];
         }
         if (\array_key_exists('ExitCode', $data)) {
-            $object->setExitCode($data['ExitCode']);
+            $object->exitCode = $data['ExitCode'];
         }
         if (\array_key_exists('Error', $data)) {
-            $object->setError($data['Error']);
+            $object->error = $data['Error'];
         }
         if (\array_key_exists('StartedAt', $data)) {
-            $object->setStartedAt($data['StartedAt']);
+            $object->startedAt = $data['StartedAt'];
         }
         if (\array_key_exists('FinishedAt', $data)) {
-            $object->setFinishedAt($data['FinishedAt']);
+            $object->finishedAt = $data['FinishedAt'];
         }
         if (\array_key_exists('Health', $data)) {
-            $object->setHealth($this->denormalizer->denormalize($data['Health'], \Docker\Api\Model\Health::class, 'json', $context));
+            $object->health = $this->denormalizer->denormalize($data['Health'], \Docker\Api\Model\Health::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['Status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['Status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('running') && null !== $data->getRunning()) {
-            $dataArray['Running'] = $data->getRunning();
+        if (array_key_exists('running', get_object_vars($data)) && null !== ($data->running ?? null)) {
+            $dataArray['Running'] = $data->running ?? null;
         }
-        if ($data->isInitialized('paused') && null !== $data->getPaused()) {
-            $dataArray['Paused'] = $data->getPaused();
+        if (array_key_exists('paused', get_object_vars($data)) && null !== ($data->paused ?? null)) {
+            $dataArray['Paused'] = $data->paused ?? null;
         }
-        if ($data->isInitialized('restarting') && null !== $data->getRestarting()) {
-            $dataArray['Restarting'] = $data->getRestarting();
+        if (array_key_exists('restarting', get_object_vars($data)) && null !== ($data->restarting ?? null)) {
+            $dataArray['Restarting'] = $data->restarting ?? null;
         }
-        if ($data->isInitialized('oOMKilled') && null !== $data->getOOMKilled()) {
-            $dataArray['OOMKilled'] = $data->getOOMKilled();
+        if (array_key_exists('oOMKilled', get_object_vars($data)) && null !== ($data->oOMKilled ?? null)) {
+            $dataArray['OOMKilled'] = $data->oOMKilled ?? null;
         }
-        if ($data->isInitialized('dead') && null !== $data->getDead()) {
-            $dataArray['Dead'] = $data->getDead();
+        if (array_key_exists('dead', get_object_vars($data)) && null !== ($data->dead ?? null)) {
+            $dataArray['Dead'] = $data->dead ?? null;
         }
-        if ($data->isInitialized('pid') && null !== $data->getPid()) {
-            $dataArray['Pid'] = $data->getPid();
+        if (array_key_exists('pid', get_object_vars($data)) && null !== ($data->pid ?? null)) {
+            $dataArray['Pid'] = $data->pid ?? null;
         }
-        if ($data->isInitialized('exitCode') && null !== $data->getExitCode()) {
-            $dataArray['ExitCode'] = $data->getExitCode();
+        if (array_key_exists('exitCode', get_object_vars($data)) && null !== ($data->exitCode ?? null)) {
+            $dataArray['ExitCode'] = $data->exitCode ?? null;
         }
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['Error'] = $data->getError();
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $dataArray['Error'] = $data->error ?? null;
         }
-        if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
-            $dataArray['StartedAt'] = $data->getStartedAt();
+        if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
+            $dataArray['StartedAt'] = $data->startedAt ?? null;
         }
-        if ($data->isInitialized('finishedAt') && null !== $data->getFinishedAt()) {
-            $dataArray['FinishedAt'] = $data->getFinishedAt();
+        if (array_key_exists('finishedAt', get_object_vars($data)) && null !== ($data->finishedAt ?? null)) {
+            $dataArray['FinishedAt'] = $data->finishedAt ?? null;
         }
-        if ($data->isInitialized('health') && null !== $data->getHealth()) {
-            $dataArray['Health'] = $data->getHealth() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getHealth(), 'json', $context));
+        if (array_key_exists('health', get_object_vars($data)) && null !== ($data->health ?? null)) {
+            $dataArray['Health'] = ($data->health ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->health ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainerStateConstraint());

@@ -38,69 +38,69 @@ class CertificateCertificatesSigningRequestNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('commonName', $data)) {
-            $object->setCommonName($data['commonName']);
+            $object->commonName = $data['commonName'];
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
         }
         if (\array_key_exists('organization', $data)) {
-            $object->setOrganization($data['organization']);
+            $object->organization = $data['organization'];
         }
         if (\array_key_exists('organizationUnit', $data)) {
-            $object->setOrganizationUnit($data['organizationUnit']);
+            $object->organizationUnit = $data['organizationUnit'];
         }
         if (\array_key_exists('city', $data)) {
-            $object->setCity($data['city']);
+            $object->city = $data['city'];
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
         }
         if (\array_key_exists('countryCode', $data)) {
-            $object->setCountryCode($data['countryCode']);
+            $object->countryCode = $data['countryCode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('commonName') && null !== $data->getCommonName()) {
-            $dataArray['commonName'] = $data->getCommonName();
+        if (array_key_exists('commonName', get_object_vars($data)) && null !== ($data->commonName ?? null)) {
+            $dataArray['commonName'] = $data->commonName ?? null;
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email ?? null;
         }
-        if ($data->isInitialized('organization') && null !== $data->getOrganization()) {
-            $dataArray['organization'] = $data->getOrganization();
+        if (array_key_exists('organization', get_object_vars($data)) && null !== ($data->organization ?? null)) {
+            $dataArray['organization'] = $data->organization ?? null;
         }
-        if ($data->isInitialized('organizationUnit') && null !== $data->getOrganizationUnit()) {
-            $dataArray['organizationUnit'] = $data->getOrganizationUnit();
+        if (array_key_exists('organizationUnit', get_object_vars($data)) && null !== ($data->organizationUnit ?? null)) {
+            $dataArray['organizationUnit'] = $data->organizationUnit ?? null;
         }
-        if ($data->isInitialized('city') && null !== $data->getCity()) {
-            $dataArray['city'] = $data->getCity();
+        if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
+            $dataArray['city'] = $data->city ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
-        if ($data->isInitialized('countryCode') && null !== $data->getCountryCode()) {
-            $dataArray['countryCode'] = $data->getCountryCode();
+        if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
+            $dataArray['countryCode'] = $data->countryCode ?? null;
         }
         return $dataArray;
     }

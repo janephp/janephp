@@ -38,39 +38,39 @@ class ApNetworkIpv6Normalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ipType', $data)) {
-            $object->setIpType($data['ipType']);
+            $object->ipType = $data['ipType'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('gateway', $data)) {
-            $object->setGateway($data['gateway']);
+            $object->gateway = $data['gateway'];
         }
         if (\array_key_exists('primaryDns', $data)) {
-            $object->setPrimaryDns($data['primaryDns']);
+            $object->primaryDns = $data['primaryDns'];
         }
         if (\array_key_exists('secondaryDns', $data)) {
-            $object->setSecondaryDns($data['secondaryDns']);
+            $object->secondaryDns = $data['secondaryDns'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ipType') && null !== $data->getIpType()) {
-            $dataArray['ipType'] = $data->getIpType();
+        if (array_key_exists('ipType', get_object_vars($data)) && null !== ($data->ipType ?? null)) {
+            $dataArray['ipType'] = $data->ipType ?? null;
         }
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        if ($data->isInitialized('gateway') && null !== $data->getGateway()) {
-            $dataArray['gateway'] = $data->getGateway();
+        if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
+            $dataArray['gateway'] = $data->gateway ?? null;
         }
-        if ($data->isInitialized('primaryDns') && null !== $data->getPrimaryDns()) {
-            $dataArray['primaryDns'] = $data->getPrimaryDns();
+        if (array_key_exists('primaryDns', get_object_vars($data)) && null !== ($data->primaryDns ?? null)) {
+            $dataArray['primaryDns'] = $data->primaryDns ?? null;
         }
-        if ($data->isInitialized('secondaryDns') && null !== $data->getSecondaryDns()) {
-            $dataArray['secondaryDns'] = $data->getSecondaryDns();
+        if (array_key_exists('secondaryDns', get_object_vars($data)) && null !== ($data->secondaryDns ?? null)) {
+            $dataArray['secondaryDns'] = $data->secondaryDns ?? null;
         }
         return $dataArray;
     }

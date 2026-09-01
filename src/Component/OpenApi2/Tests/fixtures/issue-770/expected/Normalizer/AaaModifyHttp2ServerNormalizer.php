@@ -38,70 +38,70 @@ class AaaModifyHttp2ServerNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('partnerName', $data)) {
-            $object->setPartnerName($data['partnerName']);
+            $object->partnerName = $data['partnerName'];
         }
         if (\array_key_exists('token', $data)) {
-            $object->setToken($data['token']);
+            $object->token = $data['token'];
         }
         if (\array_key_exists('authenticationApi', $data)) {
-            $object->setAuthenticationApi($data['authenticationApi']);
+            $object->authenticationApi = $data['authenticationApi'];
         }
         if (\array_key_exists('accountingApi', $data)) {
-            $object->setAccountingApi($data['accountingApi']);
+            $object->accountingApi = $data['accountingApi'];
         }
         if (\array_key_exists('coaResponseApi', $data)) {
-            $object->setCoaResponseApi($data['coaResponseApi']);
+            $object->coaResponseApi = $data['coaResponseApi'];
         }
         if (\array_key_exists('coaApi', $data)) {
-            $object->setCoaApi($data['coaApi']);
+            $object->coaApi = $data['coaApi'];
         }
         if (\array_key_exists('sseTimeout', $data)) {
-            $object->setSseTimeout($data['sseTimeout']);
+            $object->sseTimeout = $data['sseTimeout'];
         }
         if (\array_key_exists('mappings', $data)) {
             $values = [];
             foreach ($data['mappings'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyGroupAttrIdentityUserRoleMapping::class, 'json', $context);
             }
-            $object->setMappings($values);
+            $object->mappings = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('partnerName') && null !== $data->getPartnerName()) {
-            $dataArray['partnerName'] = $data->getPartnerName();
+        if (array_key_exists('partnerName', get_object_vars($data)) && null !== ($data->partnerName ?? null)) {
+            $dataArray['partnerName'] = $data->partnerName ?? null;
         }
-        $dataArray['token'] = $data->getToken();
-        if ($data->isInitialized('authenticationApi') && null !== $data->getAuthenticationApi()) {
-            $dataArray['authenticationApi'] = $data->getAuthenticationApi();
+        $dataArray['token'] = $data->token ?? null;
+        if (array_key_exists('authenticationApi', get_object_vars($data)) && null !== ($data->authenticationApi ?? null)) {
+            $dataArray['authenticationApi'] = $data->authenticationApi ?? null;
         }
-        if ($data->isInitialized('accountingApi') && null !== $data->getAccountingApi()) {
-            $dataArray['accountingApi'] = $data->getAccountingApi();
+        if (array_key_exists('accountingApi', get_object_vars($data)) && null !== ($data->accountingApi ?? null)) {
+            $dataArray['accountingApi'] = $data->accountingApi ?? null;
         }
-        if ($data->isInitialized('coaResponseApi') && null !== $data->getCoaResponseApi()) {
-            $dataArray['coaResponseApi'] = $data->getCoaResponseApi();
+        if (array_key_exists('coaResponseApi', get_object_vars($data)) && null !== ($data->coaResponseApi ?? null)) {
+            $dataArray['coaResponseApi'] = $data->coaResponseApi ?? null;
         }
-        if ($data->isInitialized('coaApi') && null !== $data->getCoaApi()) {
-            $dataArray['coaApi'] = $data->getCoaApi();
+        if (array_key_exists('coaApi', get_object_vars($data)) && null !== ($data->coaApi ?? null)) {
+            $dataArray['coaApi'] = $data->coaApi ?? null;
         }
-        if ($data->isInitialized('sseTimeout') && null !== $data->getSseTimeout()) {
-            $dataArray['sseTimeout'] = $data->getSseTimeout();
+        if (array_key_exists('sseTimeout', get_object_vars($data)) && null !== ($data->sseTimeout ?? null)) {
+            $dataArray['sseTimeout'] = $data->sseTimeout ?? null;
         }
-        if ($data->isInitialized('mappings') && null !== $data->getMappings()) {
+        if (array_key_exists('mappings', get_object_vars($data)) && null !== ($data->mappings ?? null)) {
             $values = [];
-            foreach ($data->getMappings() as $value) {
+            foreach ($data->mappings ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['mappings'] = $values;

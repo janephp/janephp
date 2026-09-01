@@ -2,8 +2,8 @@
 
 $finder = (new PhpCsFixer\Finder())
     ->exclude('Component/JsonSchema/JsonSchema')
-    ->exclude('Component/JsonSchema/Generator/Runtime/data')
-    ->exclude('Component/OpenApiCommon/Generator/Runtime/data')
+    ->exclude('Component/JsonSchema/Generator/Runtime')
+    ->exclude('Component/OpenApiCommon/Generator/Runtime')
     ->exclude('Component/JsonSchema/Tests/fixtures')
     ->exclude('Component/JsonSchema/Tests/generated')
     ->exclude('Component/JsonSchema/Tests/Validation/Generated')

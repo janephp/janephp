@@ -41,62 +41,62 @@ class ClusterbladeUploadPatchInfoNormalizer implements DenormalizerInterface, No
             $data['fileSize'] = (float) $data['fileSize'];
         }
         if (\array_key_exists('fileName', $data)) {
-            $object->setFileName($data['fileName']);
+            $object->fileName = $data['fileName'];
         }
         if (\array_key_exists('fileSize', $data)) {
-            $object->setFileSize($data['fileSize']);
+            $object->fileSize = $data['fileSize'];
         }
         if (\array_key_exists('fileUploadPath', $data)) {
-            $object->setFileUploadPath($data['fileUploadPath']);
+            $object->fileUploadPath = $data['fileUploadPath'];
         }
         if (\array_key_exists('controlbladeVersion', $data)) {
-            $object->setControlbladeVersion($data['controlbladeVersion']);
+            $object->controlbladeVersion = $data['controlbladeVersion'];
         }
         if (\array_key_exists('databladeVersion', $data)) {
-            $object->setDatabladeVersion($data['databladeVersion']);
+            $object->databladeVersion = $data['databladeVersion'];
         }
         if (\array_key_exists('apVersion', $data)) {
-            $object->setApVersion($data['apVersion']);
+            $object->apVersion = $data['apVersion'];
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
         }
         if (\array_key_exists('allowVersions', $data)) {
             $values = [];
             foreach ($data['allowVersions'] as $value) {
                 $values[] = $value;
             }
-            $object->setAllowVersions($values);
+            $object->allowVersions = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
-            $dataArray['fileName'] = $data->getFileName();
+        if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
+            $dataArray['fileName'] = $data->fileName ?? null;
         }
-        if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
-            $dataArray['fileSize'] = $data->getFileSize();
+        if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
+            $dataArray['fileSize'] = $data->fileSize ?? null;
         }
-        if ($data->isInitialized('fileUploadPath') && null !== $data->getFileUploadPath()) {
-            $dataArray['fileUploadPath'] = $data->getFileUploadPath();
+        if (array_key_exists('fileUploadPath', get_object_vars($data)) && null !== ($data->fileUploadPath ?? null)) {
+            $dataArray['fileUploadPath'] = $data->fileUploadPath ?? null;
         }
-        if ($data->isInitialized('controlbladeVersion') && null !== $data->getControlbladeVersion()) {
-            $dataArray['controlbladeVersion'] = $data->getControlbladeVersion();
+        if (array_key_exists('controlbladeVersion', get_object_vars($data)) && null !== ($data->controlbladeVersion ?? null)) {
+            $dataArray['controlbladeVersion'] = $data->controlbladeVersion ?? null;
         }
-        if ($data->isInitialized('databladeVersion') && null !== $data->getDatabladeVersion()) {
-            $dataArray['databladeVersion'] = $data->getDatabladeVersion();
+        if (array_key_exists('databladeVersion', get_object_vars($data)) && null !== ($data->databladeVersion ?? null)) {
+            $dataArray['databladeVersion'] = $data->databladeVersion ?? null;
         }
-        if ($data->isInitialized('apVersion') && null !== $data->getApVersion()) {
-            $dataArray['apVersion'] = $data->getApVersion();
+        if (array_key_exists('apVersion', get_object_vars($data)) && null !== ($data->apVersion ?? null)) {
+            $dataArray['apVersion'] = $data->apVersion ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion();
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = $data->version ?? null;
         }
-        if ($data->isInitialized('allowVersions') && null !== $data->getAllowVersions()) {
+        if (array_key_exists('allowVersions', get_object_vars($data)) && null !== ($data->allowVersions ?? null)) {
             $values = [];
-            foreach ($data->getAllowVersions() as $value) {
+            foreach ($data->allowVersions ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['allowVersions'] = $values;

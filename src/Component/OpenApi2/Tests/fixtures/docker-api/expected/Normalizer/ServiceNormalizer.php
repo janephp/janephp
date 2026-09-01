@@ -41,63 +41,63 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $this->validate($data, new \Docker\Api\Validator\ServiceConstraint());
         }
         if (\array_key_exists('ID', $data)) {
-            $object->setID($data['ID']);
+            $object->iD = $data['ID'];
         }
         if (\array_key_exists('Version', $data)) {
-            $object->setVersion($this->denormalizer->denormalize($data['Version'], \Docker\Api\Model\ObjectVersion::class, 'json', $context));
+            $object->version = $this->denormalizer->denormalize($data['Version'], \Docker\Api\Model\ObjectVersion::class, 'json', $context);
         }
         if (\array_key_exists('CreatedAt', $data)) {
-            $object->setCreatedAt($data['CreatedAt']);
+            $object->createdAt = $data['CreatedAt'];
         }
         if (\array_key_exists('UpdatedAt', $data)) {
-            $object->setUpdatedAt($data['UpdatedAt']);
+            $object->updatedAt = $data['UpdatedAt'];
         }
         if (\array_key_exists('Spec', $data)) {
-            $object->setSpec($this->denormalizer->denormalize($data['Spec'], \Docker\Api\Model\ServiceSpec::class, 'json', $context));
+            $object->spec = $this->denormalizer->denormalize($data['Spec'], \Docker\Api\Model\ServiceSpec::class, 'json', $context);
         }
         if (\array_key_exists('Endpoint', $data)) {
-            $object->setEndpoint($this->denormalizer->denormalize($data['Endpoint'], \Docker\Api\Model\ServiceEndpoint::class, 'json', $context));
+            $object->endpoint = $this->denormalizer->denormalize($data['Endpoint'], \Docker\Api\Model\ServiceEndpoint::class, 'json', $context);
         }
         if (\array_key_exists('UpdateStatus', $data)) {
-            $object->setUpdateStatus($this->denormalizer->denormalize($data['UpdateStatus'], \Docker\Api\Model\ServiceUpdateStatus::class, 'json', $context));
+            $object->updateStatus = $this->denormalizer->denormalize($data['UpdateStatus'], \Docker\Api\Model\ServiceUpdateStatus::class, 'json', $context);
         }
         if (\array_key_exists('ServiceStatus', $data)) {
-            $object->setServiceStatus($this->denormalizer->denormalize($data['ServiceStatus'], \Docker\Api\Model\ServiceServiceStatus::class, 'json', $context));
+            $object->serviceStatus = $this->denormalizer->denormalize($data['ServiceStatus'], \Docker\Api\Model\ServiceServiceStatus::class, 'json', $context);
         }
         if (\array_key_exists('JobStatus', $data)) {
-            $object->setJobStatus($this->denormalizer->denormalize($data['JobStatus'], \Docker\Api\Model\ServiceJobStatus::class, 'json', $context));
+            $object->jobStatus = $this->denormalizer->denormalize($data['JobStatus'], \Docker\Api\Model\ServiceJobStatus::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iD') && null !== $data->getID()) {
-            $dataArray['ID'] = $data->getID();
+        if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
+            $dataArray['ID'] = $data->iD ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['Version'] = $data->getVersion() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getVersion(), 'json', $context));
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['Version'] = ($data->version ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->version ?? null, 'json', $context));
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['CreatedAt'] = $data->getCreatedAt();
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['CreatedAt'] = $data->createdAt ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['UpdatedAt'] = $data->getUpdatedAt();
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['UpdatedAt'] = $data->updatedAt ?? null;
         }
-        if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['Spec'] = $data->getSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
+        if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
+            $dataArray['Spec'] = ($data->spec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
         }
-        if ($data->isInitialized('endpoint') && null !== $data->getEndpoint()) {
-            $dataArray['Endpoint'] = $data->getEndpoint() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getEndpoint(), 'json', $context));
+        if (array_key_exists('endpoint', get_object_vars($data)) && null !== ($data->endpoint ?? null)) {
+            $dataArray['Endpoint'] = ($data->endpoint ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->endpoint ?? null, 'json', $context));
         }
-        if ($data->isInitialized('updateStatus') && null !== $data->getUpdateStatus()) {
-            $dataArray['UpdateStatus'] = $data->getUpdateStatus() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUpdateStatus(), 'json', $context));
+        if (array_key_exists('updateStatus', get_object_vars($data)) && null !== ($data->updateStatus ?? null)) {
+            $dataArray['UpdateStatus'] = ($data->updateStatus ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->updateStatus ?? null, 'json', $context));
         }
-        if ($data->isInitialized('serviceStatus') && null !== $data->getServiceStatus()) {
-            $dataArray['ServiceStatus'] = $data->getServiceStatus() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getServiceStatus(), 'json', $context));
+        if (array_key_exists('serviceStatus', get_object_vars($data)) && null !== ($data->serviceStatus ?? null)) {
+            $dataArray['ServiceStatus'] = ($data->serviceStatus ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->serviceStatus ?? null, 'json', $context));
         }
-        if ($data->isInitialized('jobStatus') && null !== $data->getJobStatus()) {
-            $dataArray['JobStatus'] = $data->getJobStatus() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getJobStatus(), 'json', $context));
+        if (array_key_exists('jobStatus', get_object_vars($data)) && null !== ($data->jobStatus ?? null)) {
+            $dataArray['JobStatus'] = ($data->jobStatus ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->jobStatus ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceConstraint());

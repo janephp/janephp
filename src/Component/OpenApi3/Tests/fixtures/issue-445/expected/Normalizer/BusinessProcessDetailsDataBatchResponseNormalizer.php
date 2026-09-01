@@ -38,11 +38,11 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('docType', $data)) {
-            $object->setDocType($data['docType']);
+            $object->docType = $data['docType'];
             unset($data['docType']);
         }
         if (\array_key_exists('response', $data)) {
@@ -50,7 +50,7 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
             if (is_array($data['response']) and \array_key_exists('rows', $data['response'])) {
                 $value = $this->denormalizer->denormalize($data['response'], \PicturePark\API\Model\BatchResponse::class, 'json', $context);
             }
-            $object->setResponse($value);
+            $object->response = $value;
             unset($data['response']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,11 +63,11 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['docType'] = $data->getDocType();
-        $value = $data->getResponse();
-        if (is_object($data->getResponse())) {
-            $value = $data->getResponse() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getResponse(), 'json', $context));
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['docType'] = $data->docType ?? null;
+        $value = $data->response ?? null;
+        if (is_object($data->response ?? null)) {
+            $value = ($data->response ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->response ?? null, 'json', $context));
         }
         $dataArray['response'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

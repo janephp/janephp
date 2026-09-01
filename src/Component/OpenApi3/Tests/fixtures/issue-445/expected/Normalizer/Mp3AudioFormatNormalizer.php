@@ -38,31 +38,31 @@ class Mp3AudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
-            $object->setExtension($data['extension']);
+            $object->extension = $data['extension'];
             unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
-            $object->setExtension(null);
+            $object->extension = null;
             unset($data['extension']);
         }
         if (\array_key_exists('bitrate', $data) && $data['bitrate'] !== null) {
-            $object->setBitrate($data['bitrate']);
+            $object->bitrate = $data['bitrate'];
             unset($data['bitrate']);
         }
         elseif (\array_key_exists('bitrate', $data) && $data['bitrate'] === null) {
-            $object->setBitrate(null);
+            $object->bitrate = null;
             unset($data['bitrate']);
         }
         if (\array_key_exists('quality', $data) && $data['quality'] !== null) {
-            $object->setQuality($data['quality']);
+            $object->quality = $data['quality'];
             unset($data['quality']);
         }
         elseif (\array_key_exists('quality', $data) && $data['quality'] === null) {
-            $object->setQuality(null);
+            $object->quality = null;
             unset($data['quality']);
         }
         foreach ($data as $key => $value) {
@@ -75,15 +75,15 @@ class Mp3AudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
-            $dataArray['extension'] = $data->getExtension();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
+            $dataArray['extension'] = $data->extension ?? null;
         }
-        if ($data->isInitialized('bitrate') && null !== $data->getBitrate()) {
-            $dataArray['bitrate'] = $data->getBitrate();
+        if (array_key_exists('bitrate', get_object_vars($data)) && null !== ($data->bitrate ?? null)) {
+            $dataArray['bitrate'] = $data->bitrate ?? null;
         }
-        if ($data->isInitialized('quality') && null !== $data->getQuality()) {
-            $dataArray['quality'] = $data->getQuality();
+        if (array_key_exists('quality', get_object_vars($data)) && null !== ($data->quality ?? null)) {
+            $dataArray['quality'] = $data->quality ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

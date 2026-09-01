@@ -38,23 +38,23 @@ class AddonsAppMetadataNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('display_name', $data)) {
-            $object->setDisplayName($data['display_name']);
+            $object->displayName = $data['display_name'];
             unset($data['display_name']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('options', $data)) {
@@ -62,7 +62,7 @@ class AddonsAppMetadataNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['options'] as $value) {
                 $values[] = $value;
             }
-            $object->setOptions($values);
+            $object->options = $values;
             unset($data['options']);
         }
         foreach ($data as $key => $value_1) {
@@ -75,14 +75,14 @@ class AddonsAppMetadataNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $dataArray['display_name'] = $data->getDisplayName();
-        $dataArray['description'] = $data->getDescription();
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['display_name'] = $data->displayName ?? null;
+        $dataArray['description'] = $data->description ?? null;
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values = [];
-            foreach ($data->getOptions() as $value) {
+            foreach ($data->options ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['options'] = $values;

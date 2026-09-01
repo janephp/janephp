@@ -8,127 +8,31 @@ class OutputDataVideo extends OutputDataBase implements AdditionalPropertiesInte
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Duration of the video in seconds.
      *
      * @var float
      */
-    protected $durationInSeconds;
+    public float $durationInSeconds;
     /**
      * With of the video.
      *
      * @var int
      */
-    protected $width;
+    public int $width;
     /**
      * Height of the video.
      *
      * @var int
      */
-    protected $height;
+    public int $height;
     /**
      * The sprites making up the key frames of the video.
      *
      * @var list<Sprite>|null
      */
-    protected $sprites;
-    /**
-     * Duration of the video in seconds.
-     *
-     * @return float
-     */
-    public function getDurationInSeconds(): float
-    {
-        return $this->durationInSeconds;
-    }
-    /**
-     * Duration of the video in seconds.
-     *
-     * @param float $durationInSeconds
-     *
-     * @return self
-     */
-    public function setDurationInSeconds(float $durationInSeconds): self
-    {
-        $this->initialized['durationInSeconds'] = true;
-        $this->durationInSeconds = $durationInSeconds;
-        return $this;
-    }
-    /**
-     * With of the video.
-     *
-     * @return int
-     */
-    public function getWidth(): int
-    {
-        return $this->width;
-    }
-    /**
-     * With of the video.
-     *
-     * @param int $width
-     *
-     * @return self
-     */
-    public function setWidth(int $width): self
-    {
-        $this->initialized['width'] = true;
-        $this->width = $width;
-        return $this;
-    }
-    /**
-     * Height of the video.
-     *
-     * @return int
-     */
-    public function getHeight(): int
-    {
-        return $this->height;
-    }
-    /**
-     * Height of the video.
-     *
-     * @param int $height
-     *
-     * @return self
-     */
-    public function setHeight(int $height): self
-    {
-        $this->initialized['height'] = true;
-        $this->height = $height;
-        return $this;
-    }
-    /**
-     * The sprites making up the key frames of the video.
-     *
-     * @return list<Sprite>|null
-     */
-    public function getSprites(): ?array
-    {
-        return $this->sprites;
-    }
-    /**
-     * The sprites making up the key frames of the video.
-     *
-     * @param list<Sprite>|null $sprites
-     *
-     * @return self
-     */
-    public function setSprites(?array $sprites): self
-    {
-        $this->initialized['sprites'] = true;
-        $this->sprites = $sprites;
-        return $this;
-    }
+    public ?array $sprites;
     public function definedProperties(): array
     {
-        return ['durationInSeconds' => ['durationInSeconds', 'getDurationInSeconds', 'setDurationInSeconds'], 'width' => ['width', 'getWidth', 'setWidth'], 'height' => ['height', 'getHeight', 'setHeight'], 'sprites' => ['sprites', 'getSprites', 'setSprites']];
+        return ['durationInSeconds' => 'durationInSeconds', 'width' => 'width', 'height' => 'height', 'sprites' => 'sprites'];
     }
 }

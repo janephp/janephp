@@ -41,27 +41,27 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
             $data['custom'] = (bool) $data['custom'];
         }
         if (\array_key_exists('build', $data)) {
-            $object->setBuild($data['build']);
+            $object->build = $data['build'];
             unset($data['build']);
         }
         if (\array_key_exists('custom', $data)) {
-            $object->setCustom($data['custom']);
+            $object->custom = $data['custom'];
             unset($data['custom']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('published', $data)) {
-            $object->setPublished($data['published']);
+            $object->published = $data['published'];
             unset($data['published']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
@@ -74,23 +74,23 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('build') && null !== $data->getBuild()) {
-            $dataArray['build'] = $data->getBuild();
+        if (array_key_exists('build', get_object_vars($data)) && null !== ($data->build ?? null)) {
+            $dataArray['build'] = $data->build ?? null;
         }
-        if ($data->isInitialized('custom') && null !== $data->getCustom()) {
-            $dataArray['custom'] = $data->getCustom();
+        if (array_key_exists('custom', get_object_vars($data)) && null !== ($data->custom ?? null)) {
+            $dataArray['custom'] = $data->custom ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('published') && null !== $data->getPublished()) {
-            $dataArray['published'] = $data->getPublished();
+        if (array_key_exists('published', get_object_vars($data)) && null !== ($data->published ?? null)) {
+            $dataArray['published'] = $data->published ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,19 +38,19 @@ class AppIngressSpecRuleNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('match', $data)) {
-            $object->setMatch($this->denormalizer->denormalize($data['match'], \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleMatch::class, 'json', $context));
+            $object->match = $this->denormalizer->denormalize($data['match'], \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleMatch::class, 'json', $context);
             unset($data['match']);
         }
         if (\array_key_exists('cors', $data)) {
-            $object->setCors($this->denormalizer->denormalize($data['cors'], \Jane\Generated\DigitalOcean\Model\AppsCorsPolicy::class, 'json', $context));
+            $object->cors = $this->denormalizer->denormalize($data['cors'], \Jane\Generated\DigitalOcean\Model\AppsCorsPolicy::class, 'json', $context);
             unset($data['cors']);
         }
         if (\array_key_exists('component', $data)) {
-            $object->setComponent($this->denormalizer->denormalize($data['component'], \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleRoutingComponent::class, 'json', $context));
+            $object->component = $this->denormalizer->denormalize($data['component'], \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleRoutingComponent::class, 'json', $context);
             unset($data['component']);
         }
         if (\array_key_exists('redirect', $data)) {
-            $object->setRedirect($this->denormalizer->denormalize($data['redirect'], \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleRoutingRedirect::class, 'json', $context));
+            $object->redirect = $this->denormalizer->denormalize($data['redirect'], \Jane\Generated\DigitalOcean\Model\AppIngressSpecRuleRoutingRedirect::class, 'json', $context);
             unset($data['redirect']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class AppIngressSpecRuleNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('match') && null !== $data->getMatch()) {
-            $dataArray['match'] = $data->getMatch() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMatch(), 'json', $context));
+        if (array_key_exists('match', get_object_vars($data)) && null !== ($data->match ?? null)) {
+            $dataArray['match'] = ($data->match ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->match ?? null, 'json', $context));
         }
-        if ($data->isInitialized('cors') && null !== $data->getCors()) {
-            $dataArray['cors'] = $data->getCors() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCors(), 'json', $context));
+        if (array_key_exists('cors', get_object_vars($data)) && null !== ($data->cors ?? null)) {
+            $dataArray['cors'] = ($data->cors ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cors ?? null, 'json', $context));
         }
-        if ($data->isInitialized('component') && null !== $data->getComponent()) {
-            $dataArray['component'] = $data->getComponent() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getComponent(), 'json', $context));
+        if (array_key_exists('component', get_object_vars($data)) && null !== ($data->component ?? null)) {
+            $dataArray['component'] = ($data->component ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->component ?? null, 'json', $context));
         }
-        if ($data->isInitialized('redirect') && null !== $data->getRedirect()) {
-            $dataArray['redirect'] = $data->getRedirect() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRedirect(), 'json', $context));
+        if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
+            $dataArray['redirect'] = ($data->redirect ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->redirect ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

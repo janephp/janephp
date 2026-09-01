@@ -44,111 +44,111 @@ class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, N
             $data['INCLUDE_RBAC_METADATA'] = (bool) $data['INCLUDE_RBAC_METADATA'];
         }
         if (\array_key_exists('includeSharedResources', $data)) {
-            $object->setIncludeSharedResources($data['includeSharedResources']);
+            $object->includeSharedResources = $data['includeSharedResources'];
         }
         if (\array_key_exists('INCLUDE_RBAC_METADATA', $data)) {
-            $object->setINCLUDERBACMETADATA($data['INCLUDE_RBAC_METADATA']);
+            $object->iNCLUDERBACMETADATA = $data['INCLUDE_RBAC_METADATA'];
         }
         if (\array_key_exists('TENANT_ID', $data)) {
-            $object->setTENANTID($data['TENANT_ID']);
+            $object->tENANTID = $data['TENANT_ID'];
         }
         if (\array_key_exists('globalFilterId', $data)) {
-            $object->setGlobalFilterId($data['globalFilterId']);
+            $object->globalFilterId = $data['globalFilterId'];
         }
         if (\array_key_exists('localUser_auditTime', $data)) {
-            $object->setLocalUserAuditTime($this->denormalizer->denormalize($data['localUser_auditTime'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime::class, 'json', $context));
+            $object->localUserAuditTime = $this->denormalizer->denormalize($data['localUser_auditTime'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime::class, 'json', $context);
         }
         if (\array_key_exists('localUser_firstName', $data)) {
-            $object->setLocalUserFirstName($data['localUser_firstName']);
+            $object->localUserFirstName = $data['localUser_firstName'];
         }
         if (\array_key_exists('localUser_lastName', $data)) {
-            $object->setLocalUserLastName($data['localUser_lastName']);
+            $object->localUserLastName = $data['localUser_lastName'];
         }
         if (\array_key_exists('localUser_mailAddress', $data)) {
-            $object->setLocalUserMailAddress($data['localUser_mailAddress']);
+            $object->localUserMailAddress = $data['localUser_mailAddress'];
         }
         if (\array_key_exists('localUser_primaryPhoneNumber', $data)) {
-            $object->setLocalUserPrimaryPhoneNumber($data['localUser_primaryPhoneNumber']);
+            $object->localUserPrimaryPhoneNumber = $data['localUser_primaryPhoneNumber'];
         }
         if (\array_key_exists('localUser_displayName', $data)) {
-            $object->setLocalUserDisplayName($data['localUser_displayName']);
+            $object->localUserDisplayName = $data['localUser_displayName'];
         }
         if (\array_key_exists('localUser_userName', $data)) {
-            $object->setLocalUserUserName($data['localUser_userName']);
+            $object->localUserUserName = $data['localUser_userName'];
         }
         if (\array_key_exists('localUser_userSource', $data)) {
-            $object->setLocalUserUserSource($data['localUser_userSource']);
+            $object->localUserUserSource = $data['localUser_userSource'];
         }
         if (\array_key_exists('localUser_subscriberType', $data)) {
-            $object->setLocalUserSubscriberType($data['localUser_subscriberType']);
+            $object->localUserSubscriberType = $data['localUser_subscriberType'];
         }
         if (\array_key_exists('localUser_status', $data)) {
-            $object->setLocalUserStatus($data['localUser_status']);
+            $object->localUserStatus = $data['localUser_status'];
         }
         if (\array_key_exists('guestPass_displayName', $data)) {
-            $object->setGuestPassDisplayName($data['guestPass_displayName']);
+            $object->guestPassDisplayName = $data['guestPass_displayName'];
         }
         if (\array_key_exists('guestPass_expiration', $data)) {
-            $object->setGuestPassExpiration($this->denormalizer->denormalize($data['guestPass_expiration'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsGuestPassExpiration::class, 'json', $context));
+            $object->guestPassExpiration = $this->denormalizer->denormalize($data['guestPass_expiration'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsGuestPassExpiration::class, 'json', $context);
         }
         if (\array_key_exists('guestPass_wlan', $data)) {
-            $object->setGuestPassWlan($data['guestPass_wlan']);
+            $object->guestPassWlan = $data['guestPass_wlan'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('includeSharedResources') && null !== $data->getIncludeSharedResources()) {
-            $dataArray['includeSharedResources'] = $data->getIncludeSharedResources();
+        if (array_key_exists('includeSharedResources', get_object_vars($data)) && null !== ($data->includeSharedResources ?? null)) {
+            $dataArray['includeSharedResources'] = $data->includeSharedResources ?? null;
         }
-        if ($data->isInitialized('iNCLUDERBACMETADATA') && null !== $data->getINCLUDERBACMETADATA()) {
-            $dataArray['INCLUDE_RBAC_METADATA'] = $data->getINCLUDERBACMETADATA();
+        if (array_key_exists('iNCLUDERBACMETADATA', get_object_vars($data)) && null !== ($data->iNCLUDERBACMETADATA ?? null)) {
+            $dataArray['INCLUDE_RBAC_METADATA'] = $data->iNCLUDERBACMETADATA ?? null;
         }
-        if ($data->isInitialized('tENANTID') && null !== $data->getTENANTID()) {
-            $dataArray['TENANT_ID'] = $data->getTENANTID();
+        if (array_key_exists('tENANTID', get_object_vars($data)) && null !== ($data->tENANTID ?? null)) {
+            $dataArray['TENANT_ID'] = $data->tENANTID ?? null;
         }
-        if ($data->isInitialized('globalFilterId') && null !== $data->getGlobalFilterId()) {
-            $dataArray['globalFilterId'] = $data->getGlobalFilterId();
+        if (array_key_exists('globalFilterId', get_object_vars($data)) && null !== ($data->globalFilterId ?? null)) {
+            $dataArray['globalFilterId'] = $data->globalFilterId ?? null;
         }
-        if ($data->isInitialized('localUserAuditTime') && null !== $data->getLocalUserAuditTime()) {
-            $dataArray['localUser_auditTime'] = $data->getLocalUserAuditTime() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLocalUserAuditTime(), 'json', $context));
+        if (array_key_exists('localUserAuditTime', get_object_vars($data)) && null !== ($data->localUserAuditTime ?? null)) {
+            $dataArray['localUser_auditTime'] = ($data->localUserAuditTime ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->localUserAuditTime ?? null, 'json', $context));
         }
-        if ($data->isInitialized('localUserFirstName') && null !== $data->getLocalUserFirstName()) {
-            $dataArray['localUser_firstName'] = $data->getLocalUserFirstName();
+        if (array_key_exists('localUserFirstName', get_object_vars($data)) && null !== ($data->localUserFirstName ?? null)) {
+            $dataArray['localUser_firstName'] = $data->localUserFirstName ?? null;
         }
-        if ($data->isInitialized('localUserLastName') && null !== $data->getLocalUserLastName()) {
-            $dataArray['localUser_lastName'] = $data->getLocalUserLastName();
+        if (array_key_exists('localUserLastName', get_object_vars($data)) && null !== ($data->localUserLastName ?? null)) {
+            $dataArray['localUser_lastName'] = $data->localUserLastName ?? null;
         }
-        if ($data->isInitialized('localUserMailAddress') && null !== $data->getLocalUserMailAddress()) {
-            $dataArray['localUser_mailAddress'] = $data->getLocalUserMailAddress();
+        if (array_key_exists('localUserMailAddress', get_object_vars($data)) && null !== ($data->localUserMailAddress ?? null)) {
+            $dataArray['localUser_mailAddress'] = $data->localUserMailAddress ?? null;
         }
-        if ($data->isInitialized('localUserPrimaryPhoneNumber') && null !== $data->getLocalUserPrimaryPhoneNumber()) {
-            $dataArray['localUser_primaryPhoneNumber'] = $data->getLocalUserPrimaryPhoneNumber();
+        if (array_key_exists('localUserPrimaryPhoneNumber', get_object_vars($data)) && null !== ($data->localUserPrimaryPhoneNumber ?? null)) {
+            $dataArray['localUser_primaryPhoneNumber'] = $data->localUserPrimaryPhoneNumber ?? null;
         }
-        if ($data->isInitialized('localUserDisplayName') && null !== $data->getLocalUserDisplayName()) {
-            $dataArray['localUser_displayName'] = $data->getLocalUserDisplayName();
+        if (array_key_exists('localUserDisplayName', get_object_vars($data)) && null !== ($data->localUserDisplayName ?? null)) {
+            $dataArray['localUser_displayName'] = $data->localUserDisplayName ?? null;
         }
-        if ($data->isInitialized('localUserUserName') && null !== $data->getLocalUserUserName()) {
-            $dataArray['localUser_userName'] = $data->getLocalUserUserName();
+        if (array_key_exists('localUserUserName', get_object_vars($data)) && null !== ($data->localUserUserName ?? null)) {
+            $dataArray['localUser_userName'] = $data->localUserUserName ?? null;
         }
-        if ($data->isInitialized('localUserUserSource') && null !== $data->getLocalUserUserSource()) {
-            $dataArray['localUser_userSource'] = $data->getLocalUserUserSource();
+        if (array_key_exists('localUserUserSource', get_object_vars($data)) && null !== ($data->localUserUserSource ?? null)) {
+            $dataArray['localUser_userSource'] = $data->localUserUserSource ?? null;
         }
-        if ($data->isInitialized('localUserSubscriberType') && null !== $data->getLocalUserSubscriberType()) {
-            $dataArray['localUser_subscriberType'] = $data->getLocalUserSubscriberType();
+        if (array_key_exists('localUserSubscriberType', get_object_vars($data)) && null !== ($data->localUserSubscriberType ?? null)) {
+            $dataArray['localUser_subscriberType'] = $data->localUserSubscriberType ?? null;
         }
-        if ($data->isInitialized('localUserStatus') && null !== $data->getLocalUserStatus()) {
-            $dataArray['localUser_status'] = $data->getLocalUserStatus();
+        if (array_key_exists('localUserStatus', get_object_vars($data)) && null !== ($data->localUserStatus ?? null)) {
+            $dataArray['localUser_status'] = $data->localUserStatus ?? null;
         }
-        if ($data->isInitialized('guestPassDisplayName') && null !== $data->getGuestPassDisplayName()) {
-            $dataArray['guestPass_displayName'] = $data->getGuestPassDisplayName();
+        if (array_key_exists('guestPassDisplayName', get_object_vars($data)) && null !== ($data->guestPassDisplayName ?? null)) {
+            $dataArray['guestPass_displayName'] = $data->guestPassDisplayName ?? null;
         }
-        if ($data->isInitialized('guestPassExpiration') && null !== $data->getGuestPassExpiration()) {
-            $dataArray['guestPass_expiration'] = $data->getGuestPassExpiration() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getGuestPassExpiration(), 'json', $context));
+        if (array_key_exists('guestPassExpiration', get_object_vars($data)) && null !== ($data->guestPassExpiration ?? null)) {
+            $dataArray['guestPass_expiration'] = ($data->guestPassExpiration ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->guestPassExpiration ?? null, 'json', $context));
         }
-        if ($data->isInitialized('guestPassWlan') && null !== $data->getGuestPassWlan()) {
-            $dataArray['guestPass_wlan'] = $data->getGuestPassWlan();
+        if (array_key_exists('guestPassWlan', get_object_vars($data)) && null !== ($data->guestPassWlan ?? null)) {
+            $dataArray['guestPass_wlan'] = $data->guestPassWlan ?? null;
         }
         return $dataArray;
     }

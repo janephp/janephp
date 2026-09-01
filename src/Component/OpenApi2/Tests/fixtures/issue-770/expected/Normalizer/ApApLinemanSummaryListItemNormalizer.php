@@ -44,51 +44,51 @@ class ApApLinemanSummaryListItemNormalizer implements DenormalizerInterface, Nor
             $data['longitude'] = (float) $data['longitude'];
         }
         if (\array_key_exists('mac', $data)) {
-            $object->setMac($data['mac']);
+            $object->mac = $data['mac'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('latitude', $data)) {
-            $object->setLatitude($data['latitude']);
+            $object->latitude = $data['latitude'];
         }
         if (\array_key_exists('longitude', $data)) {
-            $object->setLongitude($data['longitude']);
+            $object->longitude = $data['longitude'];
         }
         if (\array_key_exists('configState', $data)) {
-            $object->setConfigState($data['configState']);
+            $object->configState = $data['configState'];
         }
         if (\array_key_exists('location', $data)) {
-            $object->setLocation($data['location']);
+            $object->location = $data['location'];
         }
         if (\array_key_exists('alarms', $data)) {
-            $object->setAlarms($this->denormalizer->denormalize($data['alarms'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApAlarmSummary::class, 'json', $context));
+            $object->alarms = $this->denormalizer->denormalize($data['alarms'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApAlarmSummary::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mac') && null !== $data->getMac()) {
-            $dataArray['mac'] = $data->getMac();
+        if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
+            $dataArray['mac'] = $data->mac ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('latitude') && null !== $data->getLatitude()) {
-            $dataArray['latitude'] = $data->getLatitude();
+        if (array_key_exists('latitude', get_object_vars($data)) && null !== ($data->latitude ?? null)) {
+            $dataArray['latitude'] = $data->latitude ?? null;
         }
-        if ($data->isInitialized('longitude') && null !== $data->getLongitude()) {
-            $dataArray['longitude'] = $data->getLongitude();
+        if (array_key_exists('longitude', get_object_vars($data)) && null !== ($data->longitude ?? null)) {
+            $dataArray['longitude'] = $data->longitude ?? null;
         }
-        if ($data->isInitialized('configState') && null !== $data->getConfigState()) {
-            $dataArray['configState'] = $data->getConfigState();
+        if (array_key_exists('configState', get_object_vars($data)) && null !== ($data->configState ?? null)) {
+            $dataArray['configState'] = $data->configState ?? null;
         }
-        if ($data->isInitialized('location') && null !== $data->getLocation()) {
-            $dataArray['location'] = $data->getLocation();
+        if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
+            $dataArray['location'] = $data->location ?? null;
         }
-        if ($data->isInitialized('alarms') && null !== $data->getAlarms()) {
-            $dataArray['alarms'] = $data->getAlarms() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAlarms(), 'json', $context));
+        if (array_key_exists('alarms', get_object_vars($data)) && null !== ($data->alarms ?? null)) {
+            $dataArray['alarms'] = ($data->alarms ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->alarms ?? null, 'json', $context));
         }
         return $dataArray;
     }

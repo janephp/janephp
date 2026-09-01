@@ -38,19 +38,19 @@ class SystemNtpServerValidationNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ntpServer', $data)) {
-            $object->setNtpServer($data['ntpServer']);
+            $object->ntpServer = $data['ntpServer'];
         }
         if (\array_key_exists('authenticationKey', $data)) {
-            $object->setAuthenticationKey($this->denormalizer->denormalize($data['authenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context));
+            $object->authenticationKey = $this->denormalizer->denormalize($data['authenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ntpServer'] = $data->getNtpServer();
-        if ($data->isInitialized('authenticationKey') && null !== $data->getAuthenticationKey()) {
-            $dataArray['authenticationKey'] = $data->getAuthenticationKey() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAuthenticationKey(), 'json', $context));
+        $dataArray['ntpServer'] = $data->ntpServer ?? null;
+        if (array_key_exists('authenticationKey', get_object_vars($data)) && null !== ($data->authenticationKey ?? null)) {
+            $dataArray['authenticationKey'] = ($data->authenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->authenticationKey ?? null, 'json', $context));
         }
         return $dataArray;
     }

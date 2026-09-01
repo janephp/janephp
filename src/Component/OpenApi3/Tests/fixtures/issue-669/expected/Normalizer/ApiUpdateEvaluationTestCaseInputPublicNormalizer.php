@@ -38,27 +38,27 @@ class ApiUpdateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('dataset_uuid', $data)) {
-            $object->setDatasetUuid($data['dataset_uuid']);
+            $object->datasetUuid = $data['dataset_uuid'];
             unset($data['dataset_uuid']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('metrics', $data)) {
-            $object->setMetrics($this->denormalizer->denormalize($data['metrics'], \Jane\Generated\DigitalOcean\Model\ApiEvaluationTestCaseMetricList::class, 'json', $context));
+            $object->metrics = $this->denormalizer->denormalize($data['metrics'], \Jane\Generated\DigitalOcean\Model\ApiEvaluationTestCaseMetricList::class, 'json', $context);
             unset($data['metrics']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('star_metric', $data)) {
-            $object->setStarMetric($this->denormalizer->denormalize($data['star_metric'], \Jane\Generated\DigitalOcean\Model\ApiStarMetric::class, 'json', $context));
+            $object->starMetric = $this->denormalizer->denormalize($data['star_metric'], \Jane\Generated\DigitalOcean\Model\ApiStarMetric::class, 'json', $context);
             unset($data['star_metric']);
         }
         if (\array_key_exists('test_case_uuid', $data)) {
-            $object->setTestCaseUuid($data['test_case_uuid']);
+            $object->testCaseUuid = $data['test_case_uuid'];
             unset($data['test_case_uuid']);
         }
         foreach ($data as $key => $value) {
@@ -71,23 +71,23 @@ class ApiUpdateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('datasetUuid') && null !== $data->getDatasetUuid()) {
-            $dataArray['dataset_uuid'] = $data->getDatasetUuid();
+        if (array_key_exists('datasetUuid', get_object_vars($data)) && null !== ($data->datasetUuid ?? null)) {
+            $dataArray['dataset_uuid'] = $data->datasetUuid ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('metrics') && null !== $data->getMetrics()) {
-            $dataArray['metrics'] = $data->getMetrics() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMetrics(), 'json', $context));
+        if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
+            $dataArray['metrics'] = ($data->metrics ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->metrics ?? null, 'json', $context));
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('starMetric') && null !== $data->getStarMetric()) {
-            $dataArray['star_metric'] = $data->getStarMetric() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStarMetric(), 'json', $context));
+        if (array_key_exists('starMetric', get_object_vars($data)) && null !== ($data->starMetric ?? null)) {
+            $dataArray['star_metric'] = ($data->starMetric ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric ?? null, 'json', $context));
         }
-        if ($data->isInitialized('testCaseUuid') && null !== $data->getTestCaseUuid()) {
-            $dataArray['test_case_uuid'] = $data->getTestCaseUuid();
+        if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
+            $dataArray['test_case_uuid'] = $data->testCaseUuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

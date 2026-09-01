@@ -38,21 +38,21 @@ class ClusterRedundancyManagementEntryNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
         return $dataArray;
     }

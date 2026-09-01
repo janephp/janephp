@@ -38,7 +38,7 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('component_name', $data)) {
-            $object->setComponentName($data['component_name']);
+            $object->componentName = $data['component_name'];
             unset($data['component_name']);
         }
         if (\array_key_exists('ended_at', $data)) {
@@ -46,19 +46,19 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['ended_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setEndedAt($date);
+            $object->endedAt = $date;
             unset($data['ended_at']);
         }
         if (\array_key_exists('message_base', $data)) {
-            $object->setMessageBase($data['message_base']);
+            $object->messageBase = $data['message_base'];
             unset($data['message_base']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('reason', $data)) {
-            $object->setReason($this->denormalizer->denormalize($data['reason'], \Jane\Generated\DigitalOcean\Model\AppsDeploymentProgressStepReason::class, 'json', $context));
+            $object->reason = $this->denormalizer->denormalize($data['reason'], \Jane\Generated\DigitalOcean\Model\AppsDeploymentProgressStepReason::class, 'json', $context);
             unset($data['reason']);
         }
         if (\array_key_exists('started_at', $data)) {
@@ -66,11 +66,11 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStartedAt($date_1);
+            $object->startedAt = $date_1;
             unset($data['started_at']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('steps', $data)) {
@@ -82,7 +82,7 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
                 }
                 $values[] = $values_1;
             }
-            $object->setSteps($values);
+            $object->steps = $values;
             unset($data['steps']);
         }
         foreach ($data as $key_1 => $value_2) {
@@ -95,30 +95,30 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('componentName') && null !== $data->getComponentName()) {
-            $dataArray['component_name'] = $data->getComponentName();
+        if (array_key_exists('componentName', get_object_vars($data)) && null !== ($data->componentName ?? null)) {
+            $dataArray['component_name'] = $data->componentName ?? null;
         }
-        if ($data->isInitialized('endedAt') && null !== $data->getEndedAt()) {
-            $dataArray['ended_at'] = $data->getEndedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('endedAt', get_object_vars($data)) && null !== ($data->endedAt ?? null)) {
+            $dataArray['ended_at'] = ($data->endedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('messageBase') && null !== $data->getMessageBase()) {
-            $dataArray['message_base'] = $data->getMessageBase();
+        if (array_key_exists('messageBase', get_object_vars($data)) && null !== ($data->messageBase ?? null)) {
+            $dataArray['message_base'] = $data->messageBase ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('reason') && null !== $data->getReason()) {
-            $dataArray['reason'] = $data->getReason() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getReason(), 'json', $context));
+        if (array_key_exists('reason', get_object_vars($data)) && null !== ($data->reason ?? null)) {
+            $dataArray['reason'] = ($data->reason ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reason ?? null, 'json', $context));
         }
-        if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
-            $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
+            $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('steps') && null !== $data->getSteps()) {
+        if (array_key_exists('steps', get_object_vars($data)) && null !== ($data->steps ?? null)) {
             $values = [];
-            foreach ($data->getSteps() as $value) {
+            foreach ($data->steps ?? null as $value) {
                 $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;

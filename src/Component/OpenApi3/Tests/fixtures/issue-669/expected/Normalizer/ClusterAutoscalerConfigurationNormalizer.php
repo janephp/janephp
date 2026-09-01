@@ -41,11 +41,11 @@ class ClusterAutoscalerConfigurationNormalizer implements DenormalizerInterface,
             $data['scale_down_utilization_threshold'] = (float) $data['scale_down_utilization_threshold'];
         }
         if (\array_key_exists('scale_down_utilization_threshold', $data)) {
-            $object->setScaleDownUtilizationThreshold($data['scale_down_utilization_threshold']);
+            $object->scaleDownUtilizationThreshold = $data['scale_down_utilization_threshold'];
             unset($data['scale_down_utilization_threshold']);
         }
         if (\array_key_exists('scale_down_unneeded_time', $data)) {
-            $object->setScaleDownUnneededTime($data['scale_down_unneeded_time']);
+            $object->scaleDownUnneededTime = $data['scale_down_unneeded_time'];
             unset($data['scale_down_unneeded_time']);
         }
         if (\array_key_exists('expanders', $data)) {
@@ -53,7 +53,7 @@ class ClusterAutoscalerConfigurationNormalizer implements DenormalizerInterface,
             foreach ($data['expanders'] as $value) {
                 $values[] = $value;
             }
-            $object->setExpanders($values);
+            $object->expanders = $values;
             unset($data['expanders']);
         }
         foreach ($data as $key => $value_1) {
@@ -66,15 +66,15 @@ class ClusterAutoscalerConfigurationNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('scaleDownUtilizationThreshold') && null !== $data->getScaleDownUtilizationThreshold()) {
-            $dataArray['scale_down_utilization_threshold'] = $data->getScaleDownUtilizationThreshold();
+        if (array_key_exists('scaleDownUtilizationThreshold', get_object_vars($data)) && null !== ($data->scaleDownUtilizationThreshold ?? null)) {
+            $dataArray['scale_down_utilization_threshold'] = $data->scaleDownUtilizationThreshold ?? null;
         }
-        if ($data->isInitialized('scaleDownUnneededTime') && null !== $data->getScaleDownUnneededTime()) {
-            $dataArray['scale_down_unneeded_time'] = $data->getScaleDownUnneededTime();
+        if (array_key_exists('scaleDownUnneededTime', get_object_vars($data)) && null !== ($data->scaleDownUnneededTime ?? null)) {
+            $dataArray['scale_down_unneeded_time'] = $data->scaleDownUnneededTime ?? null;
         }
-        if ($data->isInitialized('expanders') && null !== $data->getExpanders()) {
+        if (array_key_exists('expanders', get_object_vars($data)) && null !== ($data->expanders ?? null)) {
             $values = [];
-            foreach ($data->getExpanders() as $value) {
+            foreach ($data->expanders ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['expanders'] = $values;

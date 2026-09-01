@@ -38,11 +38,11 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemPositionNormalizer impl
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('dateAppointed', $data)) {
-            $object->setDateAppointed($data['dateAppointed']);
+            $object->dateAppointed = $data['dateAppointed'];
             unset($data['dateAppointed']);
         }
         if (\array_key_exists('positionName', $data)) {
-            $object->setPositionName($data['positionName']);
+            $object->positionName = $data['positionName'];
             unset($data['positionName']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemPositionNormalizer impl
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dateAppointed') && null !== $data->getDateAppointed()) {
-            $dataArray['dateAppointed'] = $data->getDateAppointed();
+        if (array_key_exists('dateAppointed', get_object_vars($data)) && null !== ($data->dateAppointed ?? null)) {
+            $dataArray['dateAppointed'] = $data->dateAppointed ?? null;
         }
-        if ($data->isInitialized('positionName') && null !== $data->getPositionName()) {
-            $dataArray['positionName'] = $data->getPositionName();
+        if (array_key_exists('positionName', get_object_vars($data)) && null !== ($data->positionName ?? null)) {
+            $dataArray['positionName'] = $data->positionName ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

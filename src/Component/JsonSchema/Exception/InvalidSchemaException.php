@@ -2,6 +2,8 @@
 
 namespace Jane\Component\JsonSchema\Exception;
 
+use Jane\Component\JsonSchemaRuntime\Exception\JaneExceptionInterface;
+
 /**
  * Thrown when a schema uses features unsupported by the component handling it.
  *

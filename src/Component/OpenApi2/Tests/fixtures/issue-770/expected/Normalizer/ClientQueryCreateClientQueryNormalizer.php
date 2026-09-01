@@ -38,317 +38,317 @@ class ClientQueryCreateClientQueryNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('role', $data)) {
-            $object->setRole($data['role']);
+            $object->role = $data['role'];
         }
         if (\array_key_exists('ipv6Address', $data)) {
-            $object->setIpv6Address($data['ipv6Address']);
+            $object->ipv6Address = $data['ipv6Address'];
         }
         if (\array_key_exists('clientMac', $data)) {
-            $object->setClientMac($data['clientMac']);
+            $object->clientMac = $data['clientMac'];
         }
         if (\array_key_exists('dataPlaneName', $data)) {
-            $object->setDataPlaneName($data['dataPlaneName']);
+            $object->dataPlaneName = $data['dataPlaneName'];
         }
         if (\array_key_exists('channel', $data)) {
-            $object->setChannel($data['channel']);
+            $object->channel = $data['channel'];
         }
         if (\array_key_exists('ssid', $data)) {
-            $object->setSsid($data['ssid']);
+            $object->ssid = $data['ssid'];
         }
         if (\array_key_exists('encryptionMethod', $data)) {
-            $object->setEncryptionMethod($data['encryptionMethod']);
+            $object->encryptionMethod = $data['encryptionMethod'];
         }
         if (\array_key_exists('apName', $data)) {
-            $object->setApName($data['apName']);
+            $object->apName = $data['apName'];
         }
         if (\array_key_exists('traffic', $data)) {
-            $object->setTraffic($data['traffic']);
+            $object->traffic = $data['traffic'];
         }
         if (\array_key_exists('uplink', $data)) {
-            $object->setUplink($data['uplink']);
+            $object->uplink = $data['uplink'];
         }
         if (\array_key_exists('downlink', $data)) {
-            $object->setDownlink($data['downlink']);
+            $object->downlink = $data['downlink'];
         }
         if (\array_key_exists('txRxBytes', $data)) {
-            $object->setTxRxBytes($data['txRxBytes']);
+            $object->txRxBytes = $data['txRxBytes'];
         }
         if (\array_key_exists('txDropDataFrames', $data)) {
-            $object->setTxDropDataFrames($data['txDropDataFrames']);
+            $object->txDropDataFrames = $data['txDropDataFrames'];
         }
         if (\array_key_exists('txFrames', $data)) {
-            $object->setTxFrames($data['txFrames']);
+            $object->txFrames = $data['txFrames'];
         }
         if (\array_key_exists('hostname', $data)) {
-            $object->setHostname($data['hostname']);
+            $object->hostname = $data['hostname'];
         }
         if (\array_key_exists('vlan', $data)) {
-            $object->setVlan($data['vlan']);
+            $object->vlan = $data['vlan'];
         }
         if (\array_key_exists('vni', $data)) {
-            $object->setVni($data['vni']);
+            $object->vni = $data['vni'];
         }
         if (\array_key_exists('controlPlaneName', $data)) {
-            $object->setControlPlaneName($data['controlPlaneName']);
+            $object->controlPlaneName = $data['controlPlaneName'];
         }
         if (\array_key_exists('rxFrames', $data)) {
-            $object->setRxFrames($data['rxFrames']);
+            $object->rxFrames = $data['rxFrames'];
         }
         if (\array_key_exists('wlanType', $data)) {
-            $object->setWlanType($data['wlanType']);
+            $object->wlanType = $data['wlanType'];
         }
         if (\array_key_exists('osType', $data)) {
-            $object->setOsType($data['osType']);
+            $object->osType = $data['osType'];
         }
         if (\array_key_exists('deviceType', $data)) {
-            $object->setDeviceType($data['deviceType']);
+            $object->deviceType = $data['deviceType'];
         }
         if (\array_key_exists('osVendorType', $data)) {
-            $object->setOsVendorType($data['osVendorType']);
+            $object->osVendorType = $data['osVendorType'];
         }
         if (\array_key_exists('modelName', $data)) {
-            $object->setModelName($data['modelName']);
+            $object->modelName = $data['modelName'];
         }
         if (\array_key_exists('speedflex', $data)) {
-            $object->setSpeedflex($data['speedflex']);
+            $object->speedflex = $data['speedflex'];
         }
         if (\array_key_exists('rssi', $data)) {
-            $object->setRssi($data['rssi']);
+            $object->rssi = $data['rssi'];
         }
         if (\array_key_exists('rxBytes', $data)) {
-            $object->setRxBytes($data['rxBytes']);
+            $object->rxBytes = $data['rxBytes'];
         }
         if (\array_key_exists('ipAddress', $data)) {
-            $object->setIpAddress($data['ipAddress']);
+            $object->ipAddress = $data['ipAddress'];
         }
         if (\array_key_exists('sessionStartTime', $data)) {
-            $object->setSessionStartTime($data['sessionStartTime']);
+            $object->sessionStartTime = $data['sessionStartTime'];
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('userName', $data)) {
-            $object->setUserName($data['userName']);
+            $object->userName = $data['userName'];
         }
         if (\array_key_exists('userRoleId', $data)) {
-            $object->setUserRoleId($data['userRoleId']);
+            $object->userRoleId = $data['userRoleId'];
         }
         if (\array_key_exists('userRoleName', $data)) {
-            $object->setUserRoleName($data['userRoleName']);
+            $object->userRoleName = $data['userRoleName'];
         }
         if (\array_key_exists('alerts', $data)) {
-            $object->setAlerts($data['alerts']);
+            $object->alerts = $data['alerts'];
         }
         if (\array_key_exists('txBytes', $data)) {
-            $object->setTxBytes($data['txBytes']);
+            $object->txBytes = $data['txBytes'];
         }
         if (\array_key_exists('snr', $data)) {
-            $object->setSnr($data['snr']);
+            $object->snr = $data['snr'];
         }
         if (\array_key_exists('authMethod', $data)) {
-            $object->setAuthMethod($data['authMethod']);
+            $object->authMethod = $data['authMethod'];
         }
         if (\array_key_exists('radioType', $data)) {
-            $object->setRadioType($data['radioType']);
+            $object->radioType = $data['radioType'];
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
         }
         if (\array_key_exists('zoneVersion', $data)) {
-            $object->setZoneVersion($data['zoneVersion']);
+            $object->zoneVersion = $data['zoneVersion'];
         }
         if (\array_key_exists('authStatus', $data)) {
-            $object->setAuthStatus($data['authStatus']);
+            $object->authStatus = $data['authStatus'];
         }
         if (\array_key_exists('uplinkRate', $data)) {
-            $object->setUplinkRate($data['uplinkRate']);
+            $object->uplinkRate = $data['uplinkRate'];
         }
         if (\array_key_exists('downlinkRate', $data)) {
-            $object->setDownlinkRate($data['downlinkRate']);
+            $object->downlinkRate = $data['downlinkRate'];
         }
         if (\array_key_exists('txRatebps', $data)) {
-            $object->setTxRatebps($data['txRatebps']);
+            $object->txRatebps = $data['txRatebps'];
         }
         if (\array_key_exists('zoneId', $data)) {
-            $object->setZoneId($data['zoneId']);
+            $object->zoneId = $data['zoneId'];
         }
         if (\array_key_exists('bssid', $data)) {
-            $object->setBssid($data['bssid']);
+            $object->bssid = $data['bssid'];
         }
         if (\array_key_exists('tcWithQuotaList', $data)) {
             $values = [];
             foreach ($data['tcWithQuotaList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ClientQueryTcWithQuota::class, 'json', $context);
             }
-            $object->setTcWithQuotaList($values);
+            $object->tcWithQuotaList = $values;
         }
         if (\array_key_exists('cpeMac', $data)) {
-            $object->setCpeMac($data['cpeMac']);
+            $object->cpeMac = $data['cpeMac'];
         }
         if (\array_key_exists('medianTxMCSRate', $data)) {
-            $object->setMedianTxMCSRate($data['medianTxMCSRate']);
+            $object->medianTxMCSRate = $data['medianTxMCSRate'];
         }
         if (\array_key_exists('medianRxMCSRate', $data)) {
-            $object->setMedianRxMCSRate($data['medianRxMCSRate']);
+            $object->medianRxMCSRate = $data['medianRxMCSRate'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('role') && null !== $data->getRole()) {
-            $dataArray['role'] = $data->getRole();
+        if (array_key_exists('role', get_object_vars($data)) && null !== ($data->role ?? null)) {
+            $dataArray['role'] = $data->role ?? null;
         }
-        if ($data->isInitialized('ipv6Address') && null !== $data->getIpv6Address()) {
-            $dataArray['ipv6Address'] = $data->getIpv6Address();
+        if (array_key_exists('ipv6Address', get_object_vars($data)) && null !== ($data->ipv6Address ?? null)) {
+            $dataArray['ipv6Address'] = $data->ipv6Address ?? null;
         }
-        if ($data->isInitialized('clientMac') && null !== $data->getClientMac()) {
-            $dataArray['clientMac'] = $data->getClientMac();
+        if (array_key_exists('clientMac', get_object_vars($data)) && null !== ($data->clientMac ?? null)) {
+            $dataArray['clientMac'] = $data->clientMac ?? null;
         }
-        if ($data->isInitialized('dataPlaneName') && null !== $data->getDataPlaneName()) {
-            $dataArray['dataPlaneName'] = $data->getDataPlaneName();
+        if (array_key_exists('dataPlaneName', get_object_vars($data)) && null !== ($data->dataPlaneName ?? null)) {
+            $dataArray['dataPlaneName'] = $data->dataPlaneName ?? null;
         }
-        if ($data->isInitialized('channel') && null !== $data->getChannel()) {
-            $dataArray['channel'] = $data->getChannel();
+        if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
+            $dataArray['channel'] = $data->channel ?? null;
         }
-        if ($data->isInitialized('ssid') && null !== $data->getSsid()) {
-            $dataArray['ssid'] = $data->getSsid();
+        if (array_key_exists('ssid', get_object_vars($data)) && null !== ($data->ssid ?? null)) {
+            $dataArray['ssid'] = $data->ssid ?? null;
         }
-        if ($data->isInitialized('encryptionMethod') && null !== $data->getEncryptionMethod()) {
-            $dataArray['encryptionMethod'] = $data->getEncryptionMethod();
+        if (array_key_exists('encryptionMethod', get_object_vars($data)) && null !== ($data->encryptionMethod ?? null)) {
+            $dataArray['encryptionMethod'] = $data->encryptionMethod ?? null;
         }
-        if ($data->isInitialized('apName') && null !== $data->getApName()) {
-            $dataArray['apName'] = $data->getApName();
+        if (array_key_exists('apName', get_object_vars($data)) && null !== ($data->apName ?? null)) {
+            $dataArray['apName'] = $data->apName ?? null;
         }
-        if ($data->isInitialized('traffic') && null !== $data->getTraffic()) {
-            $dataArray['traffic'] = $data->getTraffic();
+        if (array_key_exists('traffic', get_object_vars($data)) && null !== ($data->traffic ?? null)) {
+            $dataArray['traffic'] = $data->traffic ?? null;
         }
-        if ($data->isInitialized('uplink') && null !== $data->getUplink()) {
-            $dataArray['uplink'] = $data->getUplink();
+        if (array_key_exists('uplink', get_object_vars($data)) && null !== ($data->uplink ?? null)) {
+            $dataArray['uplink'] = $data->uplink ?? null;
         }
-        if ($data->isInitialized('downlink') && null !== $data->getDownlink()) {
-            $dataArray['downlink'] = $data->getDownlink();
+        if (array_key_exists('downlink', get_object_vars($data)) && null !== ($data->downlink ?? null)) {
+            $dataArray['downlink'] = $data->downlink ?? null;
         }
-        if ($data->isInitialized('txRxBytes') && null !== $data->getTxRxBytes()) {
-            $dataArray['txRxBytes'] = $data->getTxRxBytes();
+        if (array_key_exists('txRxBytes', get_object_vars($data)) && null !== ($data->txRxBytes ?? null)) {
+            $dataArray['txRxBytes'] = $data->txRxBytes ?? null;
         }
-        if ($data->isInitialized('txDropDataFrames') && null !== $data->getTxDropDataFrames()) {
-            $dataArray['txDropDataFrames'] = $data->getTxDropDataFrames();
+        if (array_key_exists('txDropDataFrames', get_object_vars($data)) && null !== ($data->txDropDataFrames ?? null)) {
+            $dataArray['txDropDataFrames'] = $data->txDropDataFrames ?? null;
         }
-        if ($data->isInitialized('txFrames') && null !== $data->getTxFrames()) {
-            $dataArray['txFrames'] = $data->getTxFrames();
+        if (array_key_exists('txFrames', get_object_vars($data)) && null !== ($data->txFrames ?? null)) {
+            $dataArray['txFrames'] = $data->txFrames ?? null;
         }
-        if ($data->isInitialized('hostname') && null !== $data->getHostname()) {
-            $dataArray['hostname'] = $data->getHostname();
+        if (array_key_exists('hostname', get_object_vars($data)) && null !== ($data->hostname ?? null)) {
+            $dataArray['hostname'] = $data->hostname ?? null;
         }
-        if ($data->isInitialized('vlan') && null !== $data->getVlan()) {
-            $dataArray['vlan'] = $data->getVlan();
+        if (array_key_exists('vlan', get_object_vars($data)) && null !== ($data->vlan ?? null)) {
+            $dataArray['vlan'] = $data->vlan ?? null;
         }
-        if ($data->isInitialized('vni') && null !== $data->getVni()) {
-            $dataArray['vni'] = $data->getVni();
+        if (array_key_exists('vni', get_object_vars($data)) && null !== ($data->vni ?? null)) {
+            $dataArray['vni'] = $data->vni ?? null;
         }
-        if ($data->isInitialized('controlPlaneName') && null !== $data->getControlPlaneName()) {
-            $dataArray['controlPlaneName'] = $data->getControlPlaneName();
+        if (array_key_exists('controlPlaneName', get_object_vars($data)) && null !== ($data->controlPlaneName ?? null)) {
+            $dataArray['controlPlaneName'] = $data->controlPlaneName ?? null;
         }
-        if ($data->isInitialized('rxFrames') && null !== $data->getRxFrames()) {
-            $dataArray['rxFrames'] = $data->getRxFrames();
+        if (array_key_exists('rxFrames', get_object_vars($data)) && null !== ($data->rxFrames ?? null)) {
+            $dataArray['rxFrames'] = $data->rxFrames ?? null;
         }
-        if ($data->isInitialized('wlanType') && null !== $data->getWlanType()) {
-            $dataArray['wlanType'] = $data->getWlanType();
+        if (array_key_exists('wlanType', get_object_vars($data)) && null !== ($data->wlanType ?? null)) {
+            $dataArray['wlanType'] = $data->wlanType ?? null;
         }
-        if ($data->isInitialized('osType') && null !== $data->getOsType()) {
-            $dataArray['osType'] = $data->getOsType();
+        if (array_key_exists('osType', get_object_vars($data)) && null !== ($data->osType ?? null)) {
+            $dataArray['osType'] = $data->osType ?? null;
         }
-        if ($data->isInitialized('deviceType') && null !== $data->getDeviceType()) {
-            $dataArray['deviceType'] = $data->getDeviceType();
+        if (array_key_exists('deviceType', get_object_vars($data)) && null !== ($data->deviceType ?? null)) {
+            $dataArray['deviceType'] = $data->deviceType ?? null;
         }
-        if ($data->isInitialized('osVendorType') && null !== $data->getOsVendorType()) {
-            $dataArray['osVendorType'] = $data->getOsVendorType();
+        if (array_key_exists('osVendorType', get_object_vars($data)) && null !== ($data->osVendorType ?? null)) {
+            $dataArray['osVendorType'] = $data->osVendorType ?? null;
         }
-        if ($data->isInitialized('modelName') && null !== $data->getModelName()) {
-            $dataArray['modelName'] = $data->getModelName();
+        if (array_key_exists('modelName', get_object_vars($data)) && null !== ($data->modelName ?? null)) {
+            $dataArray['modelName'] = $data->modelName ?? null;
         }
-        if ($data->isInitialized('speedflex') && null !== $data->getSpeedflex()) {
-            $dataArray['speedflex'] = $data->getSpeedflex();
+        if (array_key_exists('speedflex', get_object_vars($data)) && null !== ($data->speedflex ?? null)) {
+            $dataArray['speedflex'] = $data->speedflex ?? null;
         }
-        if ($data->isInitialized('rssi') && null !== $data->getRssi()) {
-            $dataArray['rssi'] = $data->getRssi();
+        if (array_key_exists('rssi', get_object_vars($data)) && null !== ($data->rssi ?? null)) {
+            $dataArray['rssi'] = $data->rssi ?? null;
         }
-        if ($data->isInitialized('rxBytes') && null !== $data->getRxBytes()) {
-            $dataArray['rxBytes'] = $data->getRxBytes();
+        if (array_key_exists('rxBytes', get_object_vars($data)) && null !== ($data->rxBytes ?? null)) {
+            $dataArray['rxBytes'] = $data->rxBytes ?? null;
         }
-        if ($data->isInitialized('ipAddress') && null !== $data->getIpAddress()) {
-            $dataArray['ipAddress'] = $data->getIpAddress();
+        if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
+            $dataArray['ipAddress'] = $data->ipAddress ?? null;
         }
-        if ($data->isInitialized('sessionStartTime') && null !== $data->getSessionStartTime()) {
-            $dataArray['sessionStartTime'] = $data->getSessionStartTime();
+        if (array_key_exists('sessionStartTime', get_object_vars($data)) && null !== ($data->sessionStartTime ?? null)) {
+            $dataArray['sessionStartTime'] = $data->sessionStartTime ?? null;
         }
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('userName') && null !== $data->getUserName()) {
-            $dataArray['userName'] = $data->getUserName();
+        if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
+            $dataArray['userName'] = $data->userName ?? null;
         }
-        if ($data->isInitialized('userRoleId') && null !== $data->getUserRoleId()) {
-            $dataArray['userRoleId'] = $data->getUserRoleId();
+        if (array_key_exists('userRoleId', get_object_vars($data)) && null !== ($data->userRoleId ?? null)) {
+            $dataArray['userRoleId'] = $data->userRoleId ?? null;
         }
-        if ($data->isInitialized('userRoleName') && null !== $data->getUserRoleName()) {
-            $dataArray['userRoleName'] = $data->getUserRoleName();
+        if (array_key_exists('userRoleName', get_object_vars($data)) && null !== ($data->userRoleName ?? null)) {
+            $dataArray['userRoleName'] = $data->userRoleName ?? null;
         }
-        if ($data->isInitialized('alerts') && null !== $data->getAlerts()) {
-            $dataArray['alerts'] = $data->getAlerts();
+        if (array_key_exists('alerts', get_object_vars($data)) && null !== ($data->alerts ?? null)) {
+            $dataArray['alerts'] = $data->alerts ?? null;
         }
-        if ($data->isInitialized('txBytes') && null !== $data->getTxBytes()) {
-            $dataArray['txBytes'] = $data->getTxBytes();
+        if (array_key_exists('txBytes', get_object_vars($data)) && null !== ($data->txBytes ?? null)) {
+            $dataArray['txBytes'] = $data->txBytes ?? null;
         }
-        if ($data->isInitialized('snr') && null !== $data->getSnr()) {
-            $dataArray['snr'] = $data->getSnr();
+        if (array_key_exists('snr', get_object_vars($data)) && null !== ($data->snr ?? null)) {
+            $dataArray['snr'] = $data->snr ?? null;
         }
-        if ($data->isInitialized('authMethod') && null !== $data->getAuthMethod()) {
-            $dataArray['authMethod'] = $data->getAuthMethod();
+        if (array_key_exists('authMethod', get_object_vars($data)) && null !== ($data->authMethod ?? null)) {
+            $dataArray['authMethod'] = $data->authMethod ?? null;
         }
-        if ($data->isInitialized('radioType') && null !== $data->getRadioType()) {
-            $dataArray['radioType'] = $data->getRadioType();
+        if (array_key_exists('radioType', get_object_vars($data)) && null !== ($data->radioType ?? null)) {
+            $dataArray['radioType'] = $data->radioType ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('zoneVersion') && null !== $data->getZoneVersion()) {
-            $dataArray['zoneVersion'] = $data->getZoneVersion();
+        if (array_key_exists('zoneVersion', get_object_vars($data)) && null !== ($data->zoneVersion ?? null)) {
+            $dataArray['zoneVersion'] = $data->zoneVersion ?? null;
         }
-        if ($data->isInitialized('authStatus') && null !== $data->getAuthStatus()) {
-            $dataArray['authStatus'] = $data->getAuthStatus();
+        if (array_key_exists('authStatus', get_object_vars($data)) && null !== ($data->authStatus ?? null)) {
+            $dataArray['authStatus'] = $data->authStatus ?? null;
         }
-        if ($data->isInitialized('uplinkRate') && null !== $data->getUplinkRate()) {
-            $dataArray['uplinkRate'] = $data->getUplinkRate();
+        if (array_key_exists('uplinkRate', get_object_vars($data)) && null !== ($data->uplinkRate ?? null)) {
+            $dataArray['uplinkRate'] = $data->uplinkRate ?? null;
         }
-        if ($data->isInitialized('downlinkRate') && null !== $data->getDownlinkRate()) {
-            $dataArray['downlinkRate'] = $data->getDownlinkRate();
+        if (array_key_exists('downlinkRate', get_object_vars($data)) && null !== ($data->downlinkRate ?? null)) {
+            $dataArray['downlinkRate'] = $data->downlinkRate ?? null;
         }
-        if ($data->isInitialized('txRatebps') && null !== $data->getTxRatebps()) {
-            $dataArray['txRatebps'] = $data->getTxRatebps();
+        if (array_key_exists('txRatebps', get_object_vars($data)) && null !== ($data->txRatebps ?? null)) {
+            $dataArray['txRatebps'] = $data->txRatebps ?? null;
         }
-        if ($data->isInitialized('zoneId') && null !== $data->getZoneId()) {
-            $dataArray['zoneId'] = $data->getZoneId();
+        if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
+            $dataArray['zoneId'] = $data->zoneId ?? null;
         }
-        if ($data->isInitialized('bssid') && null !== $data->getBssid()) {
-            $dataArray['bssid'] = $data->getBssid();
+        if (array_key_exists('bssid', get_object_vars($data)) && null !== ($data->bssid ?? null)) {
+            $dataArray['bssid'] = $data->bssid ?? null;
         }
-        if ($data->isInitialized('tcWithQuotaList') && null !== $data->getTcWithQuotaList()) {
+        if (array_key_exists('tcWithQuotaList', get_object_vars($data)) && null !== ($data->tcWithQuotaList ?? null)) {
             $values = [];
-            foreach ($data->getTcWithQuotaList() as $value) {
+            foreach ($data->tcWithQuotaList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['tcWithQuotaList'] = $values;
         }
-        if ($data->isInitialized('cpeMac') && null !== $data->getCpeMac()) {
-            $dataArray['cpeMac'] = $data->getCpeMac();
+        if (array_key_exists('cpeMac', get_object_vars($data)) && null !== ($data->cpeMac ?? null)) {
+            $dataArray['cpeMac'] = $data->cpeMac ?? null;
         }
-        if ($data->isInitialized('medianTxMCSRate') && null !== $data->getMedianTxMCSRate()) {
-            $dataArray['medianTxMCSRate'] = $data->getMedianTxMCSRate();
+        if (array_key_exists('medianTxMCSRate', get_object_vars($data)) && null !== ($data->medianTxMCSRate ?? null)) {
+            $dataArray['medianTxMCSRate'] = $data->medianTxMCSRate ?? null;
         }
-        if ($data->isInitialized('medianRxMCSRate') && null !== $data->getMedianRxMCSRate()) {
-            $dataArray['medianRxMCSRate'] = $data->getMedianRxMCSRate();
+        if (array_key_exists('medianRxMCSRate', get_object_vars($data)) && null !== ($data->medianRxMCSRate ?? null)) {
+            $dataArray['medianRxMCSRate'] = $data->medianRxMCSRate ?? null;
         }
         return $dataArray;
     }

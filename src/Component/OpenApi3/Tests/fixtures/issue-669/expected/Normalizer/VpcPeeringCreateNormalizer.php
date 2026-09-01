@@ -42,7 +42,7 @@ class VpcPeeringCreateNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['vpc_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setVpcIds($values);
+            $object->vpcIds = $values;
             unset($data['vpc_ids']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class VpcPeeringCreateNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('vpcIds') && null !== $data->getVpcIds()) {
+        if (array_key_exists('vpcIds', get_object_vars($data)) && null !== ($data->vpcIds ?? null)) {
             $values = [];
-            foreach ($data->getVpcIds() as $value) {
+            foreach ($data->vpcIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['vpc_ids'] = $values;

@@ -41,39 +41,39 @@ class SystemSecuritySettingNormalizer implements DenormalizerInterface, Normaliz
             $data['captchaEnabled'] = (bool) $data['captchaEnabled'];
         }
         if (\array_key_exists('captchaEnabled', $data)) {
-            $object->setCaptchaEnabled($data['captchaEnabled']);
+            $object->captchaEnabled = $data['captchaEnabled'];
         }
         if (\array_key_exists('maxInteractiveConcurrentSessions', $data)) {
-            $object->setMaxInteractiveConcurrentSessions($data['maxInteractiveConcurrentSessions']);
+            $object->maxInteractiveConcurrentSessions = $data['maxInteractiveConcurrentSessions'];
         }
         if (\array_key_exists('maxPublicApiConcurrentSessions', $data)) {
-            $object->setMaxPublicApiConcurrentSessions($data['maxPublicApiConcurrentSessions']);
+            $object->maxPublicApiConcurrentSessions = $data['maxPublicApiConcurrentSessions'];
         }
         if (\array_key_exists('absoluteSessionTimeout', $data)) {
-            $object->setAbsoluteSessionTimeout($data['absoluteSessionTimeout']);
+            $object->absoluteSessionTimeout = $data['absoluteSessionTimeout'];
         }
         if (\array_key_exists('sshAuthMethod', $data)) {
-            $object->setSshAuthMethod($data['sshAuthMethod']);
+            $object->sshAuthMethod = $data['sshAuthMethod'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('captchaEnabled') && null !== $data->getCaptchaEnabled()) {
-            $dataArray['captchaEnabled'] = $data->getCaptchaEnabled();
+        if (array_key_exists('captchaEnabled', get_object_vars($data)) && null !== ($data->captchaEnabled ?? null)) {
+            $dataArray['captchaEnabled'] = $data->captchaEnabled ?? null;
         }
-        if ($data->isInitialized('maxInteractiveConcurrentSessions') && null !== $data->getMaxInteractiveConcurrentSessions()) {
-            $dataArray['maxInteractiveConcurrentSessions'] = $data->getMaxInteractiveConcurrentSessions();
+        if (array_key_exists('maxInteractiveConcurrentSessions', get_object_vars($data)) && null !== ($data->maxInteractiveConcurrentSessions ?? null)) {
+            $dataArray['maxInteractiveConcurrentSessions'] = $data->maxInteractiveConcurrentSessions ?? null;
         }
-        if ($data->isInitialized('maxPublicApiConcurrentSessions') && null !== $data->getMaxPublicApiConcurrentSessions()) {
-            $dataArray['maxPublicApiConcurrentSessions'] = $data->getMaxPublicApiConcurrentSessions();
+        if (array_key_exists('maxPublicApiConcurrentSessions', get_object_vars($data)) && null !== ($data->maxPublicApiConcurrentSessions ?? null)) {
+            $dataArray['maxPublicApiConcurrentSessions'] = $data->maxPublicApiConcurrentSessions ?? null;
         }
-        if ($data->isInitialized('absoluteSessionTimeout') && null !== $data->getAbsoluteSessionTimeout()) {
-            $dataArray['absoluteSessionTimeout'] = $data->getAbsoluteSessionTimeout();
+        if (array_key_exists('absoluteSessionTimeout', get_object_vars($data)) && null !== ($data->absoluteSessionTimeout ?? null)) {
+            $dataArray['absoluteSessionTimeout'] = $data->absoluteSessionTimeout ?? null;
         }
-        if ($data->isInitialized('sshAuthMethod') && null !== $data->getSshAuthMethod()) {
-            $dataArray['sshAuthMethod'] = $data->getSshAuthMethod();
+        if (array_key_exists('sshAuthMethod', get_object_vars($data)) && null !== ($data->sshAuthMethod ?? null)) {
+            $dataArray['sshAuthMethod'] = $data->sshAuthMethod ?? null;
         }
         return $dataArray;
     }

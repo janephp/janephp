@@ -38,23 +38,23 @@ class ZoneQueryCriteriaExtraFiltersItemNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
         }
         if (\array_key_exists('operator', $data)) {
-            $object->setOperator($data['operator']);
+            $object->operator = $data['operator'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        $dataArray['value'] = $data->getValue();
-        if ($data->isInitialized('operator') && null !== $data->getOperator()) {
-            $dataArray['operator'] = $data->getOperator();
+        $dataArray['type'] = $data->type ?? null;
+        $dataArray['value'] = $data->value ?? null;
+        if (array_key_exists('operator', get_object_vars($data)) && null !== ($data->operator ?? null)) {
+            $dataArray['operator'] = $data->operator ?? null;
         }
         return $dataArray;
     }

@@ -41,130 +41,130 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
             $data['includeAllSchemaChildren'] = (bool) $data['includeAllSchemaChildren'];
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
-            $object->setSearchString($data['searchString']);
+            $object->searchString = $data['searchString'];
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
-            $object->setSearchString(null);
+            $object->searchString = null;
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
             $values = [];
             foreach ($data['searchBehaviors'] as $value) {
                 $values[] = $value;
             }
-            $object->setSearchBehaviors($values);
+            $object->searchBehaviors = $values;
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
-            $object->setSearchBehaviors(null);
+            $object->searchBehaviors = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $value_1 = $data['filter'];
             if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
                 $value_1 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilter($value_1);
+            $object->filter = $value_1;
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_1 = [];
             foreach ($data['aggregationFilters'] as $value_2) {
                 $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
             }
-            $object->setAggregationFilters($values_1);
+            $object->aggregationFilters = $values_1;
         }
         elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
-            $object->setAggregationFilters(null);
+            $object->aggregationFilters = null;
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
-            $object->setIncludeAllSchemaChildren($data['includeAllSchemaChildren']);
+            $object->includeAllSchemaChildren = $data['includeAllSchemaChildren'];
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
             $value_3 = $data['brokenDependenciesFilter'];
             if (is_string($data['brokenDependenciesFilter'])) {
                 $value_3 = $data['brokenDependenciesFilter'];
             }
-            $object->setBrokenDependenciesFilter($value_3);
+            $object->brokenDependenciesFilter = $value_3;
         }
         if (\array_key_exists('schemaIds', $data) && $data['schemaIds'] !== null) {
             $values_2 = [];
             foreach ($data['schemaIds'] as $value_4) {
                 $values_2[] = $value_4;
             }
-            $object->setSchemaIds($values_2);
+            $object->schemaIds = $values_2;
         }
         elseif (\array_key_exists('schemaIds', $data) && $data['schemaIds'] === null) {
-            $object->setSchemaIds(null);
+            $object->schemaIds = null;
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_3 = [];
             foreach ($data['searchLanguages'] as $value_5) {
                 $values_3[] = $value_5;
             }
-            $object->setSearchLanguages($values_3);
+            $object->searchLanguages = $values_3;
         }
         elseif (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] === null) {
-            $object->setSearchLanguages(null);
+            $object->searchLanguages = null;
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $value_6 = $data['lifeCycleFilter'];
             if (is_string($data['lifeCycleFilter'])) {
                 $value_6 = $data['lifeCycleFilter'];
             }
-            $object->setLifeCycleFilter($value_6);
+            $object->lifeCycleFilter = $value_6;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
-            $dataArray['searchString'] = $data->getSearchString();
+        if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
+            $dataArray['searchString'] = $data->searchString ?? null;
         }
-        if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
+        if (array_key_exists('searchBehaviors', get_object_vars($data)) && null !== ($data->searchBehaviors ?? null)) {
             $values = [];
-            foreach ($data->getSearchBehaviors() as $value) {
+            foreach ($data->searchBehaviors ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $value_1 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_1 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $value_1 = $data->filter ?? null;
+            if (is_object($data->filter ?? null)) {
+                $value_1 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
             }
             $dataArray['filter'] = $value_1;
         }
-        if ($data->isInitialized('aggregationFilters') && null !== $data->getAggregationFilters()) {
+        if (array_key_exists('aggregationFilters', get_object_vars($data)) && null !== ($data->aggregationFilters ?? null)) {
             $values_1 = [];
-            foreach ($data->getAggregationFilters() as $value_2) {
+            foreach ($data->aggregationFilters ?? null as $value_2) {
                 $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
-        $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
-        $value_3 = $data->getBrokenDependenciesFilter();
-        if (is_string($data->getBrokenDependenciesFilter())) {
-            $value_3 = $data->getBrokenDependenciesFilter();
+        $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren ?? null;
+        $value_3 = $data->brokenDependenciesFilter ?? null;
+        if (is_string($data->brokenDependenciesFilter ?? null)) {
+            $value_3 = $data->brokenDependenciesFilter ?? null;
         }
         $dataArray['brokenDependenciesFilter'] = $value_3;
-        if ($data->isInitialized('schemaIds') && null !== $data->getSchemaIds()) {
+        if (array_key_exists('schemaIds', get_object_vars($data)) && null !== ($data->schemaIds ?? null)) {
             $values_2 = [];
-            foreach ($data->getSchemaIds() as $value_4) {
+            foreach ($data->schemaIds ?? null as $value_4) {
                 $values_2[] = $value_4;
             }
             $dataArray['schemaIds'] = $values_2;
         }
-        if ($data->isInitialized('searchLanguages') && null !== $data->getSearchLanguages()) {
+        if (array_key_exists('searchLanguages', get_object_vars($data)) && null !== ($data->searchLanguages ?? null)) {
             $values_3 = [];
-            foreach ($data->getSearchLanguages() as $value_5) {
+            foreach ($data->searchLanguages ?? null as $value_5) {
                 $values_3[] = $value_5;
             }
             $dataArray['searchLanguages'] = $values_3;
         }
-        $value_6 = $data->getLifeCycleFilter();
-        if (is_string($data->getLifeCycleFilter())) {
-            $value_6 = $data->getLifeCycleFilter();
+        $value_6 = $data->lifeCycleFilter ?? null;
+        if (is_string($data->lifeCycleFilter ?? null)) {
+            $value_6 = $data->lifeCycleFilter ?? null;
         }
         $dataArray['lifeCycleFilter'] = $value_6;
         return $dataArray;

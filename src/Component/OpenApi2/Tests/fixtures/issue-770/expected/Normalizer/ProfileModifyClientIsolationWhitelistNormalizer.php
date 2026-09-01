@@ -41,41 +41,41 @@ class ProfileModifyClientIsolationWhitelistNormalizer implements DenormalizerInt
             $data['clientIsolationAutoEnabled'] = (bool) $data['clientIsolationAutoEnabled'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('whitelist', $data)) {
             $values = [];
             foreach ($data['whitelist'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileClientIsolationEntry::class, 'json', $context);
             }
-            $object->setWhitelist($values);
+            $object->whitelist = $values;
         }
         if (\array_key_exists('clientIsolationAutoEnabled', $data)) {
-            $object->setClientIsolationAutoEnabled($data['clientIsolationAutoEnabled']);
+            $object->clientIsolationAutoEnabled = $data['clientIsolationAutoEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('whitelist') && null !== $data->getWhitelist()) {
+        if (array_key_exists('whitelist', get_object_vars($data)) && null !== ($data->whitelist ?? null)) {
             $values = [];
-            foreach ($data->getWhitelist() as $value) {
+            foreach ($data->whitelist ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['whitelist'] = $values;
         }
-        if ($data->isInitialized('clientIsolationAutoEnabled') && null !== $data->getClientIsolationAutoEnabled()) {
-            $dataArray['clientIsolationAutoEnabled'] = $data->getClientIsolationAutoEnabled();
+        if (array_key_exists('clientIsolationAutoEnabled', get_object_vars($data)) && null !== ($data->clientIsolationAutoEnabled ?? null)) {
+            $dataArray['clientIsolationAutoEnabled'] = $data->clientIsolationAutoEnabled ?? null;
         }
         return $dataArray;
     }

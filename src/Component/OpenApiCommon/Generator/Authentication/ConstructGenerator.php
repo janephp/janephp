@@ -2,7 +2,6 @@
 
 namespace Jane\Component\OpenApiCommon\Generator\Authentication;
 
-use Jane\Component\OpenApi3\JsonSchema\Model\HTTPSecurityScheme;
 use Jane\Component\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 use PhpParser\Modifiers;
 use PhpParser\Node\Expr;
@@ -18,9 +17,8 @@ trait ConstructGenerator
         $needs = [];
         switch ($securityScheme->getType()) {
             case SecuritySchemeGuess::TYPE_HTTP:
-                /** @var HTTPSecurityScheme $object */
                 $object = $securityScheme->getObject();
-                $scheme = $object->getScheme() ?? 'Bearer';
+                $scheme = \is_object($object) ? (($object->scheme ?? null) ?? 'Bearer') : 'Bearer';
                 $scheme = ucfirst(mb_strtolower($scheme));
 
                 switch ($scheme) {

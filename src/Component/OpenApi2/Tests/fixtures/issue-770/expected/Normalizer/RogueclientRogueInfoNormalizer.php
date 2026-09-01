@@ -42,79 +42,79 @@ class RogueclientRogueInfoNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['detectedByAP'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApInfoApInfo::class, 'json', $context);
             }
-            $object->setDetectedByAP($values);
+            $object->detectedByAP = $values;
         }
         if (\array_key_exists('channel', $data)) {
-            $object->setChannel($data['channel']);
+            $object->channel = $data['channel'];
         }
         if (\array_key_exists('rogueMac', $data)) {
-            $object->setRogueMac($data['rogueMac']);
+            $object->rogueMac = $data['rogueMac'];
         }
         if (\array_key_exists('encryption', $data)) {
-            $object->setEncryption($data['encryption']);
+            $object->encryption = $data['encryption'];
         }
         if (\array_key_exists('radio', $data)) {
-            $object->setRadio($data['radio']);
+            $object->radio = $data['radio'];
         }
         if (\array_key_exists('lastDetected', $data)) {
-            $object->setLastDetected($data['lastDetected']);
+            $object->lastDetected = $data['lastDetected'];
         }
         if (\array_key_exists('ssid', $data)) {
-            $object->setSsid($data['ssid']);
+            $object->ssid = $data['ssid'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('rogueAPMac', $data)) {
-            $object->setRogueAPMac($data['rogueAPMac']);
+            $object->rogueAPMac = $data['rogueAPMac'];
         }
         if (\array_key_exists('classification', $data)) {
-            $object->setClassification($data['classification']);
+            $object->classification = $data['classification'];
         }
         if (\array_key_exists('matchResult', $data)) {
-            $object->setMatchResult($data['matchResult']);
+            $object->matchResult = $data['matchResult'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('detectedByAP') && null !== $data->getDetectedByAP()) {
+        if (array_key_exists('detectedByAP', get_object_vars($data)) && null !== ($data->detectedByAP ?? null)) {
             $values = [];
-            foreach ($data->getDetectedByAP() as $value) {
+            foreach ($data->detectedByAP ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['detectedByAP'] = $values;
         }
-        if ($data->isInitialized('channel') && null !== $data->getChannel()) {
-            $dataArray['channel'] = $data->getChannel();
+        if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
+            $dataArray['channel'] = $data->channel ?? null;
         }
-        if ($data->isInitialized('rogueMac') && null !== $data->getRogueMac()) {
-            $dataArray['rogueMac'] = $data->getRogueMac();
+        if (array_key_exists('rogueMac', get_object_vars($data)) && null !== ($data->rogueMac ?? null)) {
+            $dataArray['rogueMac'] = $data->rogueMac ?? null;
         }
-        if ($data->isInitialized('encryption') && null !== $data->getEncryption()) {
-            $dataArray['encryption'] = $data->getEncryption();
+        if (array_key_exists('encryption', get_object_vars($data)) && null !== ($data->encryption ?? null)) {
+            $dataArray['encryption'] = $data->encryption ?? null;
         }
-        if ($data->isInitialized('radio') && null !== $data->getRadio()) {
-            $dataArray['radio'] = $data->getRadio();
+        if (array_key_exists('radio', get_object_vars($data)) && null !== ($data->radio ?? null)) {
+            $dataArray['radio'] = $data->radio ?? null;
         }
-        if ($data->isInitialized('lastDetected') && null !== $data->getLastDetected()) {
-            $dataArray['lastDetected'] = $data->getLastDetected();
+        if (array_key_exists('lastDetected', get_object_vars($data)) && null !== ($data->lastDetected ?? null)) {
+            $dataArray['lastDetected'] = $data->lastDetected ?? null;
         }
-        if ($data->isInitialized('ssid') && null !== $data->getSsid()) {
-            $dataArray['ssid'] = $data->getSsid();
+        if (array_key_exists('ssid', get_object_vars($data)) && null !== ($data->ssid ?? null)) {
+            $dataArray['ssid'] = $data->ssid ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('rogueAPMac') && null !== $data->getRogueAPMac()) {
-            $dataArray['rogueAPMac'] = $data->getRogueAPMac();
+        if (array_key_exists('rogueAPMac', get_object_vars($data)) && null !== ($data->rogueAPMac ?? null)) {
+            $dataArray['rogueAPMac'] = $data->rogueAPMac ?? null;
         }
-        if ($data->isInitialized('classification') && null !== $data->getClassification()) {
-            $dataArray['classification'] = $data->getClassification();
+        if (array_key_exists('classification', get_object_vars($data)) && null !== ($data->classification ?? null)) {
+            $dataArray['classification'] = $data->classification ?? null;
         }
-        if ($data->isInitialized('matchResult') && null !== $data->getMatchResult()) {
-            $dataArray['matchResult'] = $data->getMatchResult();
+        if (array_key_exists('matchResult', get_object_vars($data)) && null !== ($data->matchResult ?? null)) {
+            $dataArray['matchResult'] = $data->matchResult ?? null;
         }
         return $dataArray;
     }

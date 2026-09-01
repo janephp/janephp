@@ -41,11 +41,11 @@ class ResponseAppsValidateRollbackNormalizer implements DenormalizerInterface, N
             $data['valid'] = (bool) $data['valid'];
         }
         if (\array_key_exists('valid', $data)) {
-            $object->setValid($data['valid']);
+            $object->valid = $data['valid'];
             unset($data['valid']);
         }
         if (\array_key_exists('error', $data)) {
-            $object->setError($this->denormalizer->denormalize($data['error'], \Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollbackError::class, 'json', $context));
+            $object->error = $this->denormalizer->denormalize($data['error'], \Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollbackError::class, 'json', $context);
             unset($data['error']);
         }
         if (\array_key_exists('warnings', $data)) {
@@ -53,7 +53,7 @@ class ResponseAppsValidateRollbackNormalizer implements DenormalizerInterface, N
             foreach ($data['warnings'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppRollbackValidationCondition::class, 'json', $context);
             }
-            $object->setWarnings($values);
+            $object->warnings = $values;
             unset($data['warnings']);
         }
         foreach ($data as $key => $value_1) {
@@ -66,15 +66,15 @@ class ResponseAppsValidateRollbackNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('valid') && null !== $data->getValid()) {
-            $dataArray['valid'] = $data->getValid();
+        if (array_key_exists('valid', get_object_vars($data)) && null !== ($data->valid ?? null)) {
+            $dataArray['valid'] = $data->valid ?? null;
         }
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['error'] = $data->getError() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getError(), 'json', $context));
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $dataArray['error'] = ($data->error ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->error ?? null, 'json', $context));
         }
-        if ($data->isInitialized('warnings') && null !== $data->getWarnings()) {
+        if (array_key_exists('warnings', get_object_vars($data)) && null !== ($data->warnings ?? null)) {
             $values = [];
-            foreach ($data->getWarnings() as $value) {
+            foreach ($data->warnings ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['warnings'] = $values;

@@ -38,7 +38,7 @@ class TimescaledbAdvancedConfigNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('max_background_workers', $data)) {
-            $object->setMaxBackgroundWorkers($data['max_background_workers']);
+            $object->maxBackgroundWorkers = $data['max_background_workers'];
             unset($data['max_background_workers']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class TimescaledbAdvancedConfigNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('maxBackgroundWorkers') && null !== $data->getMaxBackgroundWorkers()) {
-            $dataArray['max_background_workers'] = $data->getMaxBackgroundWorkers();
+        if (array_key_exists('maxBackgroundWorkers', get_object_vars($data)) && null !== ($data->maxBackgroundWorkers ?? null)) {
+            $dataArray['max_background_workers'] = $data->maxBackgroundWorkers ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

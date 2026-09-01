@@ -38,7 +38,7 @@ class V2MonitoringSinksPostBodyNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('destination_uuid', $data)) {
-            $object->setDestinationUuid($data['destination_uuid']);
+            $object->destinationUuid = $data['destination_uuid'];
             unset($data['destination_uuid']);
         }
         if (\array_key_exists('resources', $data)) {
@@ -46,7 +46,7 @@ class V2MonitoringSinksPostBodyNormalizer implements DenormalizerInterface, Norm
             foreach ($data['resources'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\SinkResource::class, 'json', $context);
             }
-            $object->setResources($values);
+            $object->resources = $values;
             unset($data['resources']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class V2MonitoringSinksPostBodyNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('destinationUuid') && null !== $data->getDestinationUuid()) {
-            $dataArray['destination_uuid'] = $data->getDestinationUuid();
+        if (array_key_exists('destinationUuid', get_object_vars($data)) && null !== ($data->destinationUuid ?? null)) {
+            $dataArray['destination_uuid'] = $data->destinationUuid ?? null;
         }
-        if ($data->isInitialized('resources') && null !== $data->getResources()) {
+        if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
             $values = [];
-            foreach ($data->getResources() as $value) {
+            foreach ($data->resources ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['resources'] = $values;

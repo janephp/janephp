@@ -53,23 +53,23 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
             $data['contingentLiabilities'] = (bool) $data['contingentLiabilities'];
         }
         if (\array_key_exists('contingentLiabilities', $data)) {
-            $object->setContingentLiabilities($data['contingentLiabilities']);
+            $object->contingentLiabilities = $data['contingentLiabilities'];
             unset($data['contingentLiabilities']);
         }
         if (\array_key_exists('bankOverdraftAndLTL', $data)) {
-            $object->setBankOverdraftAndLTL($data['bankOverdraftAndLTL']);
+            $object->bankOverdraftAndLTL = $data['bankOverdraftAndLTL'];
             unset($data['bankOverdraftAndLTL']);
         }
         if (\array_key_exists('workingCapital', $data)) {
-            $object->setWorkingCapital($data['workingCapital']);
+            $object->workingCapital = $data['workingCapital'];
             unset($data['workingCapital']);
         }
         if (\array_key_exists('capitalEmployed', $data)) {
-            $object->setCapitalEmployed($data['capitalEmployed']);
+            $object->capitalEmployed = $data['capitalEmployed'];
             unset($data['capitalEmployed']);
         }
         if (\array_key_exists('netWorth', $data)) {
-            $object->setNetWorth($data['netWorth']);
+            $object->netWorth = $data['netWorth'];
             unset($data['netWorth']);
         }
         foreach ($data as $key => $value) {
@@ -82,20 +82,20 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('contingentLiabilities') && null !== $data->getContingentLiabilities()) {
-            $dataArray['contingentLiabilities'] = $data->getContingentLiabilities();
+        if (array_key_exists('contingentLiabilities', get_object_vars($data)) && null !== ($data->contingentLiabilities ?? null)) {
+            $dataArray['contingentLiabilities'] = $data->contingentLiabilities ?? null;
         }
-        if ($data->isInitialized('bankOverdraftAndLTL') && null !== $data->getBankOverdraftAndLTL()) {
-            $dataArray['bankOverdraftAndLTL'] = $data->getBankOverdraftAndLTL();
+        if (array_key_exists('bankOverdraftAndLTL', get_object_vars($data)) && null !== ($data->bankOverdraftAndLTL ?? null)) {
+            $dataArray['bankOverdraftAndLTL'] = $data->bankOverdraftAndLTL ?? null;
         }
-        if ($data->isInitialized('workingCapital') && null !== $data->getWorkingCapital()) {
-            $dataArray['workingCapital'] = $data->getWorkingCapital();
+        if (array_key_exists('workingCapital', get_object_vars($data)) && null !== ($data->workingCapital ?? null)) {
+            $dataArray['workingCapital'] = $data->workingCapital ?? null;
         }
-        if ($data->isInitialized('capitalEmployed') && null !== $data->getCapitalEmployed()) {
-            $dataArray['capitalEmployed'] = $data->getCapitalEmployed();
+        if (array_key_exists('capitalEmployed', get_object_vars($data)) && null !== ($data->capitalEmployed ?? null)) {
+            $dataArray['capitalEmployed'] = $data->capitalEmployed ?? null;
         }
-        if ($data->isInitialized('netWorth') && null !== $data->getNetWorth()) {
-            $dataArray['netWorth'] = $data->getNetWorth();
+        if (array_key_exists('netWorth', get_object_vars($data)) && null !== ($data->netWorth ?? null)) {
+            $dataArray['netWorth'] = $data->netWorth ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

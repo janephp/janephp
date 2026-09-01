@@ -41,35 +41,35 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
             $data['addedToAcceptList'] = (bool) $data['addedToAcceptList'];
         }
         if (\array_key_exists('acceptListID', $data)) {
-            $object->setAcceptListID($data['acceptListID']);
+            $object->acceptListID = $data['acceptListID'];
             unset($data['acceptListID']);
         }
         if (\array_key_exists('addedToAcceptList', $data)) {
-            $object->setAddedToAcceptList($data['addedToAcceptList']);
+            $object->addedToAcceptList = $data['addedToAcceptList'];
             unset($data['addedToAcceptList']);
         }
         if (\array_key_exists('division', $data)) {
-            $object->setDivision($data['division']);
+            $object->division = $data['division'];
             unset($data['division']);
         }
         if (\array_key_exists('dppa', $data)) {
-            $object->setDppa($data['dppa']);
+            $object->dppa = $data['dppa'];
             unset($data['dppa']);
         }
         if (\array_key_exists('eftType', $data)) {
-            $object->setEftType($data['eftType']);
+            $object->eftType = $data['eftType'];
             unset($data['eftType']);
         }
         if (\array_key_exists('entityType', $data)) {
-            $object->setEntityType($data['entityType']);
+            $object->entityType = $data['entityType'];
             unset($data['entityType']);
         }
         if (\array_key_exists('gender', $data)) {
-            $object->setGender($data['gender']);
+            $object->gender = $data['gender'];
             unset($data['gender']);
         }
         if (\array_key_exists('glb', $data)) {
-            $object->setGlb($data['glb']);
+            $object->glb = $data['glb'];
             unset($data['glb']);
         }
         if (\array_key_exists('iDs', $data)) {
@@ -77,23 +77,23 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
             foreach ($data['iDs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem::class, 'json', $context);
             }
-            $object->setIDs($values);
+            $object->iDs = $values;
             unset($data['iDs']);
         }
         if (\array_key_exists('lastUpdatedDate', $data)) {
-            $object->setLastUpdatedDate($data['lastUpdatedDate']);
+            $object->lastUpdatedDate = $data['lastUpdatedDate'];
             unset($data['lastUpdatedDate']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($this->denormalizer->denormalize($data['name'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName::class, 'json', $context));
+            $object->name = $this->denormalizer->denormalize($data['name'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName::class, 'json', $context);
             unset($data['name']);
         }
         if (\array_key_exists('recordState', $data)) {
-            $object->setRecordState($this->denormalizer->denormalize($data['recordState'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState::class, 'json', $context));
+            $object->recordState = $this->denormalizer->denormalize($data['recordState'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState::class, 'json', $context);
             unset($data['recordState']);
         }
         if (\array_key_exists('searchDate', $data)) {
-            $object->setSearchDate($data['searchDate']);
+            $object->searchDate = $data['searchDate'];
             unset($data['searchDate']);
         }
         foreach ($data as $key => $value_1) {
@@ -106,48 +106,48 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('acceptListID') && null !== $data->getAcceptListID()) {
-            $dataArray['acceptListID'] = $data->getAcceptListID();
+        if (array_key_exists('acceptListID', get_object_vars($data)) && null !== ($data->acceptListID ?? null)) {
+            $dataArray['acceptListID'] = $data->acceptListID ?? null;
         }
-        if ($data->isInitialized('addedToAcceptList') && null !== $data->getAddedToAcceptList()) {
-            $dataArray['addedToAcceptList'] = $data->getAddedToAcceptList();
+        if (array_key_exists('addedToAcceptList', get_object_vars($data)) && null !== ($data->addedToAcceptList ?? null)) {
+            $dataArray['addedToAcceptList'] = $data->addedToAcceptList ?? null;
         }
-        if ($data->isInitialized('division') && null !== $data->getDivision()) {
-            $dataArray['division'] = $data->getDivision();
+        if (array_key_exists('division', get_object_vars($data)) && null !== ($data->division ?? null)) {
+            $dataArray['division'] = $data->division ?? null;
         }
-        if ($data->isInitialized('dppa') && null !== $data->getDppa()) {
-            $dataArray['dppa'] = $data->getDppa();
+        if (array_key_exists('dppa', get_object_vars($data)) && null !== ($data->dppa ?? null)) {
+            $dataArray['dppa'] = $data->dppa ?? null;
         }
-        if ($data->isInitialized('eftType') && null !== $data->getEftType()) {
-            $dataArray['eftType'] = $data->getEftType();
+        if (array_key_exists('eftType', get_object_vars($data)) && null !== ($data->eftType ?? null)) {
+            $dataArray['eftType'] = $data->eftType ?? null;
         }
-        if ($data->isInitialized('entityType') && null !== $data->getEntityType()) {
-            $dataArray['entityType'] = $data->getEntityType();
+        if (array_key_exists('entityType', get_object_vars($data)) && null !== ($data->entityType ?? null)) {
+            $dataArray['entityType'] = $data->entityType ?? null;
         }
-        if ($data->isInitialized('gender') && null !== $data->getGender()) {
-            $dataArray['gender'] = $data->getGender();
+        if (array_key_exists('gender', get_object_vars($data)) && null !== ($data->gender ?? null)) {
+            $dataArray['gender'] = $data->gender ?? null;
         }
-        if ($data->isInitialized('glb') && null !== $data->getGlb()) {
-            $dataArray['glb'] = $data->getGlb();
+        if (array_key_exists('glb', get_object_vars($data)) && null !== ($data->glb ?? null)) {
+            $dataArray['glb'] = $data->glb ?? null;
         }
-        if ($data->isInitialized('iDs') && null !== $data->getIDs()) {
+        if (array_key_exists('iDs', get_object_vars($data)) && null !== ($data->iDs ?? null)) {
             $values = [];
-            foreach ($data->getIDs() as $value) {
+            foreach ($data->iDs ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['iDs'] = $values;
         }
-        if ($data->isInitialized('lastUpdatedDate') && null !== $data->getLastUpdatedDate()) {
-            $dataArray['lastUpdatedDate'] = $data->getLastUpdatedDate();
+        if (array_key_exists('lastUpdatedDate', get_object_vars($data)) && null !== ($data->lastUpdatedDate ?? null)) {
+            $dataArray['lastUpdatedDate'] = $data->lastUpdatedDate ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getName(), 'json', $context));
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = ($data->name ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name ?? null, 'json', $context));
         }
-        if ($data->isInitialized('recordState') && null !== $data->getRecordState()) {
-            $dataArray['recordState'] = $data->getRecordState() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getRecordState(), 'json', $context));
+        if (array_key_exists('recordState', get_object_vars($data)) && null !== ($data->recordState ?? null)) {
+            $dataArray['recordState'] = ($data->recordState ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->recordState ?? null, 'json', $context));
         }
-        if ($data->isInitialized('searchDate') && null !== $data->getSearchDate()) {
-            $dataArray['searchDate'] = $data->getSearchDate();
+        if (array_key_exists('searchDate', get_object_vars($data)) && null !== ($data->searchDate ?? null)) {
+            $dataArray['searchDate'] = $data->searchDate ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

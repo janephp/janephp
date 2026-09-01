@@ -38,15 +38,15 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBodyNormalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('personalReference', $data)) {
-            $object->setPersonalReference($data['personalReference']);
+            $object->personalReference = $data['personalReference'];
             unset($data['personalReference']);
         }
         if (\array_key_exists('freeText', $data)) {
-            $object->setFreeText($data['freeText']);
+            $object->freeText = $data['freeText'];
             unset($data['freeText']);
         }
         if (\array_key_exists('personalLimit', $data)) {
-            $object->setPersonalLimit($data['personalLimit']);
+            $object->personalLimit = $data['personalLimit'];
             unset($data['personalLimit']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBodyNormalizer implements D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['personalReference'] = $data->getPersonalReference();
-        $dataArray['freeText'] = $data->getFreeText();
-        $dataArray['personalLimit'] = $data->getPersonalLimit();
+        $dataArray['personalReference'] = $data->personalReference ?? null;
+        $dataArray['freeText'] = $data->freeText ?? null;
+        $dataArray['personalLimit'] = $data->personalLimit ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

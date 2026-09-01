@@ -42,33 +42,33 @@ class IndexFieldsSearchBySchemaIdsRequestNormalizer implements DenormalizerInter
             foreach ($data['schemaIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setSchemaIds($values);
+            $object->schemaIds = $values;
         }
         elseif (\array_key_exists('schemaIds', $data) && $data['schemaIds'] === null) {
-            $object->setSchemaIds(null);
+            $object->schemaIds = null;
         }
         if (\array_key_exists('searchMode', $data)) {
             $value_1 = $data['searchMode'];
             if (is_string($data['searchMode'])) {
                 $value_1 = $data['searchMode'];
             }
-            $object->setSearchMode($value_1);
+            $object->searchMode = $value_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('schemaIds') && null !== $data->getSchemaIds()) {
+        if (array_key_exists('schemaIds', get_object_vars($data)) && null !== ($data->schemaIds ?? null)) {
             $values = [];
-            foreach ($data->getSchemaIds() as $value) {
+            foreach ($data->schemaIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['schemaIds'] = $values;
         }
-        $value_1 = $data->getSearchMode();
-        if (is_string($data->getSearchMode())) {
-            $value_1 = $data->getSearchMode();
+        $value_1 = $data->searchMode ?? null;
+        if (is_string($data->searchMode ?? null)) {
+            $value_1 = $data->searchMode ?? null;
         }
         $dataArray['searchMode'] = $value_1;
         return $dataArray;

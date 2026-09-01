@@ -38,11 +38,11 @@ class AppLogDestinationDatadogSpecNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('endpoint', $data)) {
-            $object->setEndpoint($data['endpoint']);
+            $object->endpoint = $data['endpoint'];
             unset($data['endpoint']);
         }
         if (\array_key_exists('api_key', $data)) {
-            $object->setApiKey($data['api_key']);
+            $object->apiKey = $data['api_key'];
             unset($data['api_key']);
         }
         foreach ($data as $key => $value) {
@@ -55,10 +55,10 @@ class AppLogDestinationDatadogSpecNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('endpoint') && null !== $data->getEndpoint()) {
-            $dataArray['endpoint'] = $data->getEndpoint();
+        if (array_key_exists('endpoint', get_object_vars($data)) && null !== ($data->endpoint ?? null)) {
+            $dataArray['endpoint'] = $data->endpoint ?? null;
         }
-        $dataArray['api_key'] = $data->getApiKey();
+        $dataArray['api_key'] = $data->apiKey ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

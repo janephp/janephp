@@ -41,15 +41,15 @@ class AppsGitlabSourceSpecNormalizer implements DenormalizerInterface, Normalize
             $data['deploy_on_push'] = (bool) $data['deploy_on_push'];
         }
         if (\array_key_exists('branch', $data)) {
-            $object->setBranch($data['branch']);
+            $object->branch = $data['branch'];
             unset($data['branch']);
         }
         if (\array_key_exists('deploy_on_push', $data)) {
-            $object->setDeployOnPush($data['deploy_on_push']);
+            $object->deployOnPush = $data['deploy_on_push'];
             unset($data['deploy_on_push']);
         }
         if (\array_key_exists('repo', $data)) {
-            $object->setRepo($data['repo']);
+            $object->repo = $data['repo'];
             unset($data['repo']);
         }
         foreach ($data as $key => $value) {
@@ -62,14 +62,14 @@ class AppsGitlabSourceSpecNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('branch') && null !== $data->getBranch()) {
-            $dataArray['branch'] = $data->getBranch();
+        if (array_key_exists('branch', get_object_vars($data)) && null !== ($data->branch ?? null)) {
+            $dataArray['branch'] = $data->branch ?? null;
         }
-        if ($data->isInitialized('deployOnPush') && null !== $data->getDeployOnPush()) {
-            $dataArray['deploy_on_push'] = $data->getDeployOnPush();
+        if (array_key_exists('deployOnPush', get_object_vars($data)) && null !== ($data->deployOnPush ?? null)) {
+            $dataArray['deploy_on_push'] = $data->deployOnPush ?? null;
         }
-        if ($data->isInitialized('repo') && null !== $data->getRepo()) {
-            $dataArray['repo'] = $data->getRepo();
+        if (array_key_exists('repo', get_object_vars($data)) && null !== ($data->repo ?? null)) {
+            $dataArray['repo'] = $data->repo ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,15 +38,15 @@ class ByoipPrefixCreateNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('prefix', $data)) {
-            $object->setPrefix($data['prefix']);
+            $object->prefix = $data['prefix'];
             unset($data['prefix']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('signature', $data)) {
-            $object->setSignature($data['signature']);
+            $object->signature = $data['signature'];
             unset($data['signature']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class ByoipPrefixCreateNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['prefix'] = $data->getPrefix();
-        $dataArray['region'] = $data->getRegion();
-        $dataArray['signature'] = $data->getSignature();
+        $dataArray['prefix'] = $data->prefix ?? null;
+        $dataArray['region'] = $data->region ?? null;
+        $dataArray['signature'] = $data->signature ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

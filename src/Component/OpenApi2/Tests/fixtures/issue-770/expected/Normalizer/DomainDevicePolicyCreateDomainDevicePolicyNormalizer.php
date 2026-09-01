@@ -38,41 +38,41 @@ class DomainDevicePolicyCreateDomainDevicePolicyNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('defaultAction', $data)) {
-            $object->setDefaultAction($data['defaultAction']);
+            $object->defaultAction = $data['defaultAction'];
         }
         if (\array_key_exists('rule', $data)) {
             $values = [];
             foreach ($data['rule'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyDomainDevicePolicyRule::class, 'json', $context);
             }
-            $object->setRule($values);
+            $object->rule = $values;
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['defaultAction'] = $data->getDefaultAction();
+        $dataArray['defaultAction'] = $data->defaultAction ?? null;
         $values = [];
-        foreach ($data->getRule() as $value) {
+        foreach ($data->rule ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['rule'] = $values;
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
         return $dataArray;
     }

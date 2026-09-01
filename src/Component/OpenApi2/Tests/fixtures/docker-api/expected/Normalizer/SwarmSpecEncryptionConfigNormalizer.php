@@ -44,15 +44,15 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecEncryptionConfigConstraint());
         }
         if (\array_key_exists('AutoLockManagers', $data)) {
-            $object->setAutoLockManagers($data['AutoLockManagers']);
+            $object->autoLockManagers = $data['AutoLockManagers'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('autoLockManagers') && null !== $data->getAutoLockManagers()) {
-            $dataArray['AutoLockManagers'] = $data->getAutoLockManagers();
+        if (array_key_exists('autoLockManagers', get_object_vars($data)) && null !== ($data->autoLockManagers ?? null)) {
+            $dataArray['AutoLockManagers'] = $data->autoLockManagers ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecEncryptionConfigConstraint());

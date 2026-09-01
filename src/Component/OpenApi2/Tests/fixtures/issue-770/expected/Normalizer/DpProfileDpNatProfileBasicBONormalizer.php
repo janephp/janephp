@@ -38,57 +38,57 @@ class DpProfileDpNatProfileBasicBONormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('profileName', $data)) {
-            $object->setProfileName($data['profileName']);
+            $object->profileName = $data['profileName'];
         }
         if (\array_key_exists('natPublicVlanId', $data)) {
-            $object->setNatPublicVlanId($data['natPublicVlanId']);
+            $object->natPublicVlanId = $data['natPublicVlanId'];
         }
         if (\array_key_exists('profileId', $data)) {
-            $object->setProfileId($data['profileId']);
+            $object->profileId = $data['profileId'];
         }
         if (\array_key_exists('appliedDpKey', $data)) {
-            $object->setAppliedDpKey($data['appliedDpKey']);
+            $object->appliedDpKey = $data['appliedDpKey'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('secondaryNatDefaultRouteGateway', $data)) {
-            $object->setSecondaryNatDefaultRouteGateway($data['secondaryNatDefaultRouteGateway']);
+            $object->secondaryNatDefaultRouteGateway = $data['secondaryNatDefaultRouteGateway'];
         }
         if (\array_key_exists('primaryNatDefaultRouteGateway', $data)) {
-            $object->setPrimaryNatDefaultRouteGateway($data['primaryNatDefaultRouteGateway']);
+            $object->primaryNatDefaultRouteGateway = $data['primaryNatDefaultRouteGateway'];
         }
         if (\array_key_exists('natPublicSubnetId', $data)) {
-            $object->setNatPublicSubnetId($this->denormalizer->denormalize($data['natPublicSubnetId'], \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePublicSubnetIdBO::class, 'json', $context));
+            $object->natPublicSubnetId = $this->denormalizer->denormalize($data['natPublicSubnetId'], \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePublicSubnetIdBO::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('profileName') && null !== $data->getProfileName()) {
-            $dataArray['profileName'] = $data->getProfileName();
+        if (array_key_exists('profileName', get_object_vars($data)) && null !== ($data->profileName ?? null)) {
+            $dataArray['profileName'] = $data->profileName ?? null;
         }
-        if ($data->isInitialized('natPublicVlanId') && null !== $data->getNatPublicVlanId()) {
-            $dataArray['natPublicVlanId'] = $data->getNatPublicVlanId();
+        if (array_key_exists('natPublicVlanId', get_object_vars($data)) && null !== ($data->natPublicVlanId ?? null)) {
+            $dataArray['natPublicVlanId'] = $data->natPublicVlanId ?? null;
         }
-        if ($data->isInitialized('profileId') && null !== $data->getProfileId()) {
-            $dataArray['profileId'] = $data->getProfileId();
+        if (array_key_exists('profileId', get_object_vars($data)) && null !== ($data->profileId ?? null)) {
+            $dataArray['profileId'] = $data->profileId ?? null;
         }
-        if ($data->isInitialized('appliedDpKey') && null !== $data->getAppliedDpKey()) {
-            $dataArray['appliedDpKey'] = $data->getAppliedDpKey();
+        if (array_key_exists('appliedDpKey', get_object_vars($data)) && null !== ($data->appliedDpKey ?? null)) {
+            $dataArray['appliedDpKey'] = $data->appliedDpKey ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('secondaryNatDefaultRouteGateway') && null !== $data->getSecondaryNatDefaultRouteGateway()) {
-            $dataArray['secondaryNatDefaultRouteGateway'] = $data->getSecondaryNatDefaultRouteGateway();
+        if (array_key_exists('secondaryNatDefaultRouteGateway', get_object_vars($data)) && null !== ($data->secondaryNatDefaultRouteGateway ?? null)) {
+            $dataArray['secondaryNatDefaultRouteGateway'] = $data->secondaryNatDefaultRouteGateway ?? null;
         }
-        if ($data->isInitialized('primaryNatDefaultRouteGateway') && null !== $data->getPrimaryNatDefaultRouteGateway()) {
-            $dataArray['primaryNatDefaultRouteGateway'] = $data->getPrimaryNatDefaultRouteGateway();
+        if (array_key_exists('primaryNatDefaultRouteGateway', get_object_vars($data)) && null !== ($data->primaryNatDefaultRouteGateway ?? null)) {
+            $dataArray['primaryNatDefaultRouteGateway'] = $data->primaryNatDefaultRouteGateway ?? null;
         }
-        if ($data->isInitialized('natPublicSubnetId') && null !== $data->getNatPublicSubnetId()) {
-            $dataArray['natPublicSubnetId'] = $data->getNatPublicSubnetId() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getNatPublicSubnetId(), 'json', $context));
+        if (array_key_exists('natPublicSubnetId', get_object_vars($data)) && null !== ($data->natPublicSubnetId ?? null)) {
+            $dataArray['natPublicSubnetId'] = ($data->natPublicSubnetId ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->natPublicSubnetId ?? null, 'json', $context));
         }
         return $dataArray;
     }

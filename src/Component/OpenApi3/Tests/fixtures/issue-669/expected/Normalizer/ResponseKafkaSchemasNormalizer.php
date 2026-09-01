@@ -42,7 +42,7 @@ class ResponseKafkaSchemasNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['subjects'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\KafkaSchemaVerbose::class, 'json', $context);
             }
-            $object->setSubjects($values);
+            $object->subjects = $values;
             unset($data['subjects']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseKafkaSchemasNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('subjects') && null !== $data->getSubjects()) {
+        if (array_key_exists('subjects', get_object_vars($data)) && null !== ($data->subjects ?? null)) {
             $values = [];
-            foreach ($data->getSubjects() as $value) {
+            foreach ($data->subjects ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['subjects'] = $values;

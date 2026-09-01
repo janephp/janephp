@@ -42,11 +42,11 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('details', $data) && $data['details'] !== null) {
@@ -54,11 +54,11 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
             foreach ($data['details'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BusinessRuleFiredEventDetail::class, 'json', $context);
             }
-            $object->setDetails($values);
+            $object->details = $values;
             unset($data['details']);
         }
         elseif (\array_key_exists('details', $data) && $data['details'] === null) {
-            $object->setDetails(null);
+            $object->details = null;
             unset($data['details']);
         }
         foreach ($data as $key => $value_1) {
@@ -71,11 +71,11 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('details') && null !== $data->getDetails()) {
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
             $values = [];
-            foreach ($data->getDetails() as $value) {
+            foreach ($data->details ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['details'] = $values;

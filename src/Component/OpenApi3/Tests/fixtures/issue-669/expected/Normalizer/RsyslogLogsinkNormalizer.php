@@ -41,39 +41,39 @@ class RsyslogLogsinkNormalizer implements DenormalizerInterface, NormalizerInter
             $data['tls'] = (bool) $data['tls'];
         }
         if (\array_key_exists('server', $data)) {
-            $object->setServer($data['server']);
+            $object->server = $data['server'];
             unset($data['server']);
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
             unset($data['port']);
         }
         if (\array_key_exists('tls', $data)) {
-            $object->setTls($data['tls']);
+            $object->tls = $data['tls'];
             unset($data['tls']);
         }
         if (\array_key_exists('format', $data)) {
-            $object->setFormat($data['format']);
+            $object->format = $data['format'];
             unset($data['format']);
         }
         if (\array_key_exists('logline', $data)) {
-            $object->setLogline($data['logline']);
+            $object->logline = $data['logline'];
             unset($data['logline']);
         }
         if (\array_key_exists('sd', $data)) {
-            $object->setSd($data['sd']);
+            $object->sd = $data['sd'];
             unset($data['sd']);
         }
         if (\array_key_exists('ca', $data)) {
-            $object->setCa($data['ca']);
+            $object->ca = $data['ca'];
             unset($data['ca']);
         }
         if (\array_key_exists('key', $data)) {
-            $object->setKey($data['key']);
+            $object->key = $data['key'];
             unset($data['key']);
         }
         if (\array_key_exists('cert', $data)) {
-            $object->setCert($data['cert']);
+            $object->cert = $data['cert'];
             unset($data['cert']);
         }
         foreach ($data as $key => $value) {
@@ -86,24 +86,24 @@ class RsyslogLogsinkNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['server'] = $data->getServer();
-        $dataArray['port'] = $data->getPort();
-        $dataArray['tls'] = $data->getTls();
-        $dataArray['format'] = $data->getFormat();
-        if ($data->isInitialized('logline') && null !== $data->getLogline()) {
-            $dataArray['logline'] = $data->getLogline();
+        $dataArray['server'] = $data->server ?? null;
+        $dataArray['port'] = $data->port ?? null;
+        $dataArray['tls'] = $data->tls ?? null;
+        $dataArray['format'] = $data->format ?? null;
+        if (array_key_exists('logline', get_object_vars($data)) && null !== ($data->logline ?? null)) {
+            $dataArray['logline'] = $data->logline ?? null;
         }
-        if ($data->isInitialized('sd') && null !== $data->getSd()) {
-            $dataArray['sd'] = $data->getSd();
+        if (array_key_exists('sd', get_object_vars($data)) && null !== ($data->sd ?? null)) {
+            $dataArray['sd'] = $data->sd ?? null;
         }
-        if ($data->isInitialized('ca') && null !== $data->getCa()) {
-            $dataArray['ca'] = $data->getCa();
+        if (array_key_exists('ca', get_object_vars($data)) && null !== ($data->ca ?? null)) {
+            $dataArray['ca'] = $data->ca ?? null;
         }
-        if ($data->isInitialized('key') && null !== $data->getKey()) {
-            $dataArray['key'] = $data->getKey();
+        if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
+            $dataArray['key'] = $data->key ?? null;
         }
-        if ($data->isInitialized('cert') && null !== $data->getCert()) {
-            $dataArray['cert'] = $data->getCert();
+        if (array_key_exists('cert', get_object_vars($data)) && null !== ($data->cert ?? null)) {
+            $dataArray['cert'] = $data->cert ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

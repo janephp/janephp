@@ -38,15 +38,15 @@ class FirewallRulesInboundRulesItemNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
             unset($data['protocol']);
         }
         if (\array_key_exists('ports', $data)) {
-            $object->setPorts($data['ports']);
+            $object->ports = $data['ports'];
             unset($data['ports']);
         }
         if (\array_key_exists('sources', $data)) {
-            $object->setSources($this->denormalizer->denormalize($data['sources'], \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItemSources::class, 'json', $context));
+            $object->sources = $this->denormalizer->denormalize($data['sources'], \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItemSources::class, 'json', $context);
             unset($data['sources']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class FirewallRulesInboundRulesItemNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['protocol'] = $data->getProtocol();
-        $dataArray['ports'] = $data->getPorts();
-        $dataArray['sources'] = $data->getSources() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSources(), 'json', $context));
+        $dataArray['protocol'] = $data->protocol ?? null;
+        $dataArray['ports'] = $data->ports ?? null;
+        $dataArray['sources'] = ($data->sources ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->sources ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

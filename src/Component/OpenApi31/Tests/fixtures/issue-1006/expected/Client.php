@@ -14,7 +14,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\Client\Cl
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Issue1006\Endpoint\CreateWidget($requestBody), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();

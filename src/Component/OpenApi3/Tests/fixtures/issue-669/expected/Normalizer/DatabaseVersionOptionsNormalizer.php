@@ -42,7 +42,7 @@ class DatabaseVersionOptionsNormalizer implements DenormalizerInterface, Normali
             foreach ($data['versions'] as $value) {
                 $values[] = $value;
             }
-            $object->setVersions($values);
+            $object->versions = $values;
             unset($data['versions']);
         }
         foreach ($data as $key => $value_1) {

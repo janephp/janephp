@@ -41,15 +41,15 @@ class AppFunctionsComponentHealthFunctionsComponentHealthMetricsItemNormalizer i
             $data['metric_value'] = (float) $data['metric_value'];
         }
         if (\array_key_exists('metric_label', $data)) {
-            $object->setMetricLabel($data['metric_label']);
+            $object->metricLabel = $data['metric_label'];
             unset($data['metric_label']);
         }
         if (\array_key_exists('metric_value', $data)) {
-            $object->setMetricValue($data['metric_value']);
+            $object->metricValue = $data['metric_value'];
             unset($data['metric_value']);
         }
         if (\array_key_exists('time_window', $data)) {
-            $object->setTimeWindow($data['time_window']);
+            $object->timeWindow = $data['time_window'];
             unset($data['time_window']);
         }
         foreach ($data as $key => $value) {
@@ -62,14 +62,14 @@ class AppFunctionsComponentHealthFunctionsComponentHealthMetricsItemNormalizer i
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('metricLabel') && null !== $data->getMetricLabel()) {
-            $dataArray['metric_label'] = $data->getMetricLabel();
+        if (array_key_exists('metricLabel', get_object_vars($data)) && null !== ($data->metricLabel ?? null)) {
+            $dataArray['metric_label'] = $data->metricLabel ?? null;
         }
-        if ($data->isInitialized('metricValue') && null !== $data->getMetricValue()) {
-            $dataArray['metric_value'] = $data->getMetricValue();
+        if (array_key_exists('metricValue', get_object_vars($data)) && null !== ($data->metricValue ?? null)) {
+            $dataArray['metric_value'] = $data->metricValue ?? null;
         }
-        if ($data->isInitialized('timeWindow') && null !== $data->getTimeWindow()) {
-            $dataArray['time_window'] = $data->getTimeWindow();
+        if (array_key_exists('timeWindow', get_object_vars($data)) && null !== ($data->timeWindow ?? null)) {
+            $dataArray['time_window'] = $data->timeWindow ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

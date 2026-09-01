@@ -41,131 +41,131 @@ class ProfileUserTrafficProfileNormalizer implements DenormalizerInterface, Norm
             $data['isFactoryDefault'] = (bool) $data['isFactoryDefault'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('defaultAction', $data)) {
-            $object->setDefaultAction($data['defaultAction']);
+            $object->defaultAction = $data['defaultAction'];
         }
         if (\array_key_exists('uplinkRateLimiting', $data)) {
-            $object->setUplinkRateLimiting($this->denormalizer->denormalize($data['uplinkRateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUplinkRateLimiting::class, 'json', $context));
+            $object->uplinkRateLimiting = $this->denormalizer->denormalize($data['uplinkRateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUplinkRateLimiting::class, 'json', $context);
         }
         if (\array_key_exists('downlinkRateLimiting', $data)) {
-            $object->setDownlinkRateLimiting($this->denormalizer->denormalize($data['downlinkRateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDownlinkRateLimiting::class, 'json', $context));
+            $object->downlinkRateLimiting = $this->denormalizer->denormalize($data['downlinkRateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDownlinkRateLimiting::class, 'json', $context);
         }
         if (\array_key_exists('ipAclRules', $data)) {
             $values = [];
             foreach ($data['ipAclRules'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileIpAclRules::class, 'json', $context);
             }
-            $object->setIpAclRules($values);
+            $object->ipAclRules = $values;
         }
         if (\array_key_exists('appPolicyId', $data)) {
-            $object->setAppPolicyId($data['appPolicyId']);
+            $object->appPolicyId = $data['appPolicyId'];
         }
         if (\array_key_exists('qmAppPolicyId', $data)) {
-            $object->setQmAppPolicyId($data['qmAppPolicyId']);
+            $object->qmAppPolicyId = $data['qmAppPolicyId'];
         }
         if (\array_key_exists('urlFilteringPolicyId', $data)) {
-            $object->setUrlFilteringPolicyId($data['urlFilteringPolicyId']);
+            $object->urlFilteringPolicyId = $data['urlFilteringPolicyId'];
         }
         if (\array_key_exists('mvnoId', $data)) {
-            $object->setMvnoId($data['mvnoId']);
+            $object->mvnoId = $data['mvnoId'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('isFactoryDefault', $data)) {
-            $object->setIsFactoryDefault($data['isFactoryDefault']);
+            $object->isFactoryDefault = $data['isFactoryDefault'];
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('creatorId', $data)) {
-            $object->setCreatorId($data['creatorId']);
+            $object->creatorId = $data['creatorId'];
         }
         if (\array_key_exists('modifierId', $data)) {
-            $object->setModifierId($data['modifierId']);
+            $object->modifierId = $data['modifierId'];
         }
         if (\array_key_exists('creatorUsername', $data)) {
-            $object->setCreatorUsername($data['creatorUsername']);
+            $object->creatorUsername = $data['creatorUsername'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('defaultAction') && null !== $data->getDefaultAction()) {
-            $dataArray['defaultAction'] = $data->getDefaultAction();
+        if (array_key_exists('defaultAction', get_object_vars($data)) && null !== ($data->defaultAction ?? null)) {
+            $dataArray['defaultAction'] = $data->defaultAction ?? null;
         }
-        if ($data->isInitialized('uplinkRateLimiting') && null !== $data->getUplinkRateLimiting()) {
-            $dataArray['uplinkRateLimiting'] = $data->getUplinkRateLimiting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUplinkRateLimiting(), 'json', $context));
+        if (array_key_exists('uplinkRateLimiting', get_object_vars($data)) && null !== ($data->uplinkRateLimiting ?? null)) {
+            $dataArray['uplinkRateLimiting'] = ($data->uplinkRateLimiting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->uplinkRateLimiting ?? null, 'json', $context));
         }
-        if ($data->isInitialized('downlinkRateLimiting') && null !== $data->getDownlinkRateLimiting()) {
-            $dataArray['downlinkRateLimiting'] = $data->getDownlinkRateLimiting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDownlinkRateLimiting(), 'json', $context));
+        if (array_key_exists('downlinkRateLimiting', get_object_vars($data)) && null !== ($data->downlinkRateLimiting ?? null)) {
+            $dataArray['downlinkRateLimiting'] = ($data->downlinkRateLimiting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->downlinkRateLimiting ?? null, 'json', $context));
         }
-        if ($data->isInitialized('ipAclRules') && null !== $data->getIpAclRules()) {
+        if (array_key_exists('ipAclRules', get_object_vars($data)) && null !== ($data->ipAclRules ?? null)) {
             $values = [];
-            foreach ($data->getIpAclRules() as $value) {
+            foreach ($data->ipAclRules ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ipAclRules'] = $values;
         }
-        if ($data->isInitialized('appPolicyId') && null !== $data->getAppPolicyId()) {
-            $dataArray['appPolicyId'] = $data->getAppPolicyId();
+        if (array_key_exists('appPolicyId', get_object_vars($data)) && null !== ($data->appPolicyId ?? null)) {
+            $dataArray['appPolicyId'] = $data->appPolicyId ?? null;
         }
-        if ($data->isInitialized('qmAppPolicyId') && null !== $data->getQmAppPolicyId()) {
-            $dataArray['qmAppPolicyId'] = $data->getQmAppPolicyId();
+        if (array_key_exists('qmAppPolicyId', get_object_vars($data)) && null !== ($data->qmAppPolicyId ?? null)) {
+            $dataArray['qmAppPolicyId'] = $data->qmAppPolicyId ?? null;
         }
-        if ($data->isInitialized('urlFilteringPolicyId') && null !== $data->getUrlFilteringPolicyId()) {
-            $dataArray['urlFilteringPolicyId'] = $data->getUrlFilteringPolicyId();
+        if (array_key_exists('urlFilteringPolicyId', get_object_vars($data)) && null !== ($data->urlFilteringPolicyId ?? null)) {
+            $dataArray['urlFilteringPolicyId'] = $data->urlFilteringPolicyId ?? null;
         }
-        if ($data->isInitialized('mvnoId') && null !== $data->getMvnoId()) {
-            $dataArray['mvnoId'] = $data->getMvnoId();
+        if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
+            $dataArray['mvnoId'] = $data->mvnoId ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('isFactoryDefault') && null !== $data->getIsFactoryDefault()) {
-            $dataArray['isFactoryDefault'] = $data->getIsFactoryDefault();
+        if (array_key_exists('isFactoryDefault', get_object_vars($data)) && null !== ($data->isFactoryDefault ?? null)) {
+            $dataArray['isFactoryDefault'] = $data->isFactoryDefault ?? null;
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
-            $dataArray['creatorId'] = $data->getCreatorId();
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
         }
-        if ($data->isInitialized('modifierId') && null !== $data->getModifierId()) {
-            $dataArray['modifierId'] = $data->getModifierId();
+        if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
+            $dataArray['modifierId'] = $data->modifierId ?? null;
         }
-        if ($data->isInitialized('creatorUsername') && null !== $data->getCreatorUsername()) {
-            $dataArray['creatorUsername'] = $data->getCreatorUsername();
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
         return $dataArray;
     }

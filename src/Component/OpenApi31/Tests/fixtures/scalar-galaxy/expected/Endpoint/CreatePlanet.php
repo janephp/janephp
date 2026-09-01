@@ -53,13 +53,13 @@ class CreatePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Planet', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\CreatePlanetBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\BadRequestError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\CreatePlanetForbiddenException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\ForbiddenError', 'json'), $response);
         }
     }

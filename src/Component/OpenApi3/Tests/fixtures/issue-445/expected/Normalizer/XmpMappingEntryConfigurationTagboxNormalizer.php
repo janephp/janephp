@@ -44,7 +44,7 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
             $data['includeAllSchemaChildren'] = (bool) $data['includeAllSchemaChildren'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('keyFieldIds', $data)) {
@@ -52,15 +52,15 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
             foreach ($data['keyFieldIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setKeyFieldIds($values);
+            $object->keyFieldIds = $values;
             unset($data['keyFieldIds']);
         }
         if (\array_key_exists('caseSensitive', $data)) {
-            $object->setCaseSensitive($data['caseSensitive']);
+            $object->caseSensitive = $data['caseSensitive'];
             unset($data['caseSensitive']);
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
-            $object->setIncludeAllSchemaChildren($data['includeAllSchemaChildren']);
+            $object->includeAllSchemaChildren = $data['includeAllSchemaChildren'];
             unset($data['includeAllSchemaChildren']);
         }
         foreach ($data as $key => $value_1) {
@@ -73,14 +73,14 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         $values = [];
-        foreach ($data->getKeyFieldIds() as $value) {
+        foreach ($data->keyFieldIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['keyFieldIds'] = $values;
-        $dataArray['caseSensitive'] = $data->getCaseSensitive();
-        $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
+        $dataArray['caseSensitive'] = $data->caseSensitive ?? null;
+        $dataArray['includeAllSchemaChildren'] = $data->includeAllSchemaChildren ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

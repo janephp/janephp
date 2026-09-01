@@ -38,31 +38,31 @@ class OptionsOptionsNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kafka', $data)) {
-            $object->setKafka($this->denormalizer->denormalize($data['kafka'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsKafka::class, 'json', $context));
+            $object->kafka = $this->denormalizer->denormalize($data['kafka'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsKafka::class, 'json', $context);
             unset($data['kafka']);
         }
         if (\array_key_exists('mongodb', $data)) {
-            $object->setMongodb($this->denormalizer->denormalize($data['mongodb'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsMongodb::class, 'json', $context));
+            $object->mongodb = $this->denormalizer->denormalize($data['mongodb'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsMongodb::class, 'json', $context);
             unset($data['mongodb']);
         }
         if (\array_key_exists('pg', $data)) {
-            $object->setPg($this->denormalizer->denormalize($data['pg'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsPg::class, 'json', $context));
+            $object->pg = $this->denormalizer->denormalize($data['pg'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsPg::class, 'json', $context);
             unset($data['pg']);
         }
         if (\array_key_exists('mysql', $data)) {
-            $object->setMysql($this->denormalizer->denormalize($data['mysql'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsMysql::class, 'json', $context));
+            $object->mysql = $this->denormalizer->denormalize($data['mysql'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsMysql::class, 'json', $context);
             unset($data['mysql']);
         }
         if (\array_key_exists('redis', $data)) {
-            $object->setRedis($this->denormalizer->denormalize($data['redis'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsRedis::class, 'json', $context));
+            $object->redis = $this->denormalizer->denormalize($data['redis'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsRedis::class, 'json', $context);
             unset($data['redis']);
         }
         if (\array_key_exists('valkey', $data)) {
-            $object->setValkey($this->denormalizer->denormalize($data['valkey'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsValkey::class, 'json', $context));
+            $object->valkey = $this->denormalizer->denormalize($data['valkey'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsValkey::class, 'json', $context);
             unset($data['valkey']);
         }
         if (\array_key_exists('opensearch', $data)) {
-            $object->setOpensearch($this->denormalizer->denormalize($data['opensearch'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsOpensearch::class, 'json', $context));
+            $object->opensearch = $this->denormalizer->denormalize($data['opensearch'], \Jane\Generated\DigitalOcean\Model\OptionsOptionsOpensearch::class, 'json', $context);
             unset($data['opensearch']);
         }
         foreach ($data as $key => $value) {
@@ -75,26 +75,26 @@ class OptionsOptionsNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('kafka') && null !== $data->getKafka()) {
-            $dataArray['kafka'] = $data->getKafka() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKafka(), 'json', $context));
+        if (array_key_exists('kafka', get_object_vars($data)) && null !== ($data->kafka ?? null)) {
+            $dataArray['kafka'] = ($data->kafka ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kafka ?? null, 'json', $context));
         }
-        if ($data->isInitialized('mongodb') && null !== $data->getMongodb()) {
-            $dataArray['mongodb'] = $data->getMongodb() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMongodb(), 'json', $context));
+        if (array_key_exists('mongodb', get_object_vars($data)) && null !== ($data->mongodb ?? null)) {
+            $dataArray['mongodb'] = ($data->mongodb ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mongodb ?? null, 'json', $context));
         }
-        if ($data->isInitialized('pg') && null !== $data->getPg()) {
-            $dataArray['pg'] = $data->getPg() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPg(), 'json', $context));
+        if (array_key_exists('pg', get_object_vars($data)) && null !== ($data->pg ?? null)) {
+            $dataArray['pg'] = ($data->pg ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pg ?? null, 'json', $context));
         }
-        if ($data->isInitialized('mysql') && null !== $data->getMysql()) {
-            $dataArray['mysql'] = $data->getMysql() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMysql(), 'json', $context));
+        if (array_key_exists('mysql', get_object_vars($data)) && null !== ($data->mysql ?? null)) {
+            $dataArray['mysql'] = ($data->mysql ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysql ?? null, 'json', $context));
         }
-        if ($data->isInitialized('redis') && null !== $data->getRedis()) {
-            $dataArray['redis'] = $data->getRedis() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRedis(), 'json', $context));
+        if (array_key_exists('redis', get_object_vars($data)) && null !== ($data->redis ?? null)) {
+            $dataArray['redis'] = ($data->redis ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->redis ?? null, 'json', $context));
         }
-        if ($data->isInitialized('valkey') && null !== $data->getValkey()) {
-            $dataArray['valkey'] = $data->getValkey() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getValkey(), 'json', $context));
+        if (array_key_exists('valkey', get_object_vars($data)) && null !== ($data->valkey ?? null)) {
+            $dataArray['valkey'] = ($data->valkey ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->valkey ?? null, 'json', $context));
         }
-        if ($data->isInitialized('opensearch') && null !== $data->getOpensearch()) {
-            $dataArray['opensearch'] = $data->getOpensearch() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getOpensearch(), 'json', $context));
+        if (array_key_exists('opensearch', get_object_vars($data)) && null !== ($data->opensearch ?? null)) {
+            $dataArray['opensearch'] = ($data->opensearch ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->opensearch ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

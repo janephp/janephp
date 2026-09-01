@@ -38,19 +38,19 @@ class KafkaTopicNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('replication_factor', $data)) {
-            $object->setReplicationFactor($data['replication_factor']);
+            $object->replicationFactor = $data['replication_factor'];
             unset($data['replication_factor']);
         }
         if (\array_key_exists('partition_count', $data)) {
-            $object->setPartitionCount($data['partition_count']);
+            $object->partitionCount = $data['partition_count'];
             unset($data['partition_count']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
             unset($data['state']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class KafkaTopicNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('replicationFactor') && null !== $data->getReplicationFactor()) {
-            $dataArray['replication_factor'] = $data->getReplicationFactor();
+        if (array_key_exists('replicationFactor', get_object_vars($data)) && null !== ($data->replicationFactor ?? null)) {
+            $dataArray['replication_factor'] = $data->replicationFactor ?? null;
         }
-        if ($data->isInitialized('partitionCount') && null !== $data->getPartitionCount()) {
-            $dataArray['partition_count'] = $data->getPartitionCount();
+        if (array_key_exists('partitionCount', get_object_vars($data)) && null !== ($data->partitionCount ?? null)) {
+            $dataArray['partition_count'] = $data->partitionCount ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

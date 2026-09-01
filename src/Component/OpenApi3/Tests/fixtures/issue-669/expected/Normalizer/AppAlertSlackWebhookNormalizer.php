@@ -38,11 +38,11 @@ class AppAlertSlackWebhookNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
             unset($data['url']);
         }
         if (\array_key_exists('channel', $data)) {
-            $object->setChannel($data['channel']);
+            $object->channel = $data['channel'];
             unset($data['channel']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class AppAlertSlackWebhookNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('url') && null !== $data->getUrl()) {
-            $dataArray['url'] = $data->getUrl();
+        if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
+            $dataArray['url'] = $data->url ?? null;
         }
-        if ($data->isInitialized('channel') && null !== $data->getChannel()) {
-            $dataArray['channel'] = $data->getChannel();
+        if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
+            $dataArray['channel'] = $data->channel ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
