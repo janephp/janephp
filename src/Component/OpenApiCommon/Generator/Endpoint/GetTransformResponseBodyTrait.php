@@ -1,20 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Generator\Endpoint;
+namespace Jane\Component\OpenApiCommon\Generator\Endpoint;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
-use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException;
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Generator\RequestBodyContent\JsonBodyContentGenerator;
-use Jane\Component\OpenApi31\Guesser\GuessClass;
-use Jane\Component\OpenApi31\JsonSchema\Model\Response;
-use Jane\Component\OpenApi31\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Generator\ContentType;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
+use Jane\Component\OpenApiCommon\Generator\RequestBodyContent\JsonBodyContentGenerator;
 use Jane\Component\OpenApiCommon\Generator\Traits\OpenApiNumberTypeResolverTrait;
 use Jane\Component\OpenApiCommon\Generator\Traits\StatusCodeRangeTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Guesser\GuessClass;
 use Jane\Component\OpenApiCommon\Naming\XNamespaceResolver;
 use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
@@ -30,6 +27,22 @@ trait GetTransformResponseBodyTrait
 {
     use OpenApiNumberTypeResolverTrait;
     use StatusCodeRangeTrait;
+
+    /**
+     * The version specific schema model class (e.g. OpenApi3 Schema or the
+     * JSON Schema based OpenApi31 Schema).
+     */
+    abstract protected function schemaClassName(): string;
+
+    /**
+     * The version specific Response model class.
+     */
+    abstract protected function responseClassName(): string;
+
+    /**
+     * The version specific Response normalizer class.
+     */
+    abstract protected function responseNormalizerClassName(): string;
 
     public function getTransformResponseBody(OperationGuess $operation, string $endpointName, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, Context $context): array
     {
@@ -59,24 +72,24 @@ trait GetTransformResponseBodyTrait
                 $reference = $operation->getReference() . '/responses/' . $status;
 
                 if ($response instanceof Reference) {
-                    [$reference, $response] = $guessClass->resolve($response, Response::class);
+                    [$reference, $response] = $guessClass->resolve($response, $this->responseClassName());
                 }
                 if (\is_array($response)) {
-                    $normalizer = new ResponseNormalizer();
+                    $normalizer = new ($this->responseNormalizerClassName())();
                     $normalizer->setDenormalizer($this->denormalizer);
                     $response = $normalizer->denormalize(
                         $response,
-                        Response::class,
+                        $this->responseClassName(),
                         'json',
                         ['document-origin' => $context->getCurrentSchema()->getOrigin()]
                     );
 
                     if ($response instanceof Reference) {
-                        [$reference, $response] = $guessClass->resolve($response, Response::class);
+                        [$reference, $response] = $guessClass->resolve($response, $this->responseClassName());
                     }
                 }
 
-                /* @var Response $response */
+                /* @var $response */
                 [$newOutputTypes, $newThrowTypes, $ifStatements] = $this->createResponseDenormalizationStatement(
                     $endpointName,
                     $status,
@@ -99,25 +112,25 @@ trait GetTransformResponseBodyTrait
                 $reference = $operation->getReference() . '/responses/default';
 
                 if ($response instanceof Reference) {
-                    [$reference, $response] = $guessClass->resolve($response, Response::class);
+                    [$reference, $response] = $guessClass->resolve($response, $this->responseClassName());
                 }
 
                 if (\is_array($response)) {
-                    $normalizer = new ResponseNormalizer();
+                    $normalizer = new ($this->responseNormalizerClassName())();
                     $normalizer->setDenormalizer($this->denormalizer);
                     $response = $normalizer->denormalize(
                         $response,
-                        Response::class,
+                        $this->responseClassName(),
                         'json',
                         ['document-origin' => $context->getCurrentSchema()->getOrigin()]
                     );
 
                     if ($response instanceof Reference) {
-                        [$reference, $response] = $guessClass->resolve($response, Response::class);
+                        [$reference, $response] = $guessClass->resolve($response, $this->responseClassName());
                     }
                 }
 
-                /* @var Response $response */
+                /* @var $response */
                 [$newOutputTypes, $newThrowTypes, $ifStatements] = $this->createResponseDenormalizationStatement(
                     $endpointName,
                     'default',
@@ -187,8 +200,9 @@ EOD
             ], ]), $outputTypes, $throwTypes];
     }
 
-    private function createResponseDenormalizationStatement(string $name, string $status, Response $response, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator): array
+    private function createResponseDenormalizationStatement(string $name, string $status, $response, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator): array
     {
+        // No content response
         if (!($response->content ?? null)) {
             [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                 $name,
@@ -303,6 +317,7 @@ EOD
             return [$returnTypes, $throwTypes, $statements];
         }
 
+        // Avoid useless imbrication of ifs
         if (\count($statements) === 1 && $statements[0] instanceof Stmt\If_) {
             return [$returnTypes, $throwTypes, [new Stmt\If_(
                 new Expr\BinaryOp\BooleanAnd(
@@ -364,7 +379,7 @@ EOD
                     new Node\Arg(new Scalar\String_($format)),
                 ]
             );
-        } elseif ($schema instanceof JsonSchema) {
+        } elseif ($schema instanceof ($schemaClassName = $this->schemaClassName())) {
             $isBareJsonDecode = true;
             $serializeStmt = new Expr\Variable('decodedBody');
 
@@ -440,9 +455,14 @@ EOD
         );
     }
 
-    private function convertResponseType(JsonSchema $schema): ?string
+    private function convertResponseType($schema): ?string
     {
+        if (!$schema instanceof ($schemaClassName = $this->schemaClassName())) {
+            return null;
+        }
+
         $type = ($schema->type ?? null);
+
         if (\is_array($type)) {
             $type = array_filter($type, fn ($t) => $t !== 'null');
             $type = reset($type) ?: null;

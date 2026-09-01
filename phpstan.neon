@@ -1,6 +1,7 @@
 parameters:
 	level: 3
 	tmpDir: cache
+	reportUnmatchedIgnoredErrors: false
 	paths:
 		- src/
 	excludePaths:

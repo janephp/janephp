@@ -4,19 +4,18 @@ namespace PicturePark\API\Exception;
 
 class BusinessProcessGetNotFoundException extends NotFoundException
 {
-    /**
-     * @var \PicturePark\API\Model\PictureparkNotFoundException
-     */
-    private $pictureparkNotFoundException;
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(\PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(
+        /**
+         * @var \PicturePark\API\Model\PictureparkNotFoundException
+         */
+        private readonly \PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException,
+        /**
+         * @var \Psr\Http\Message\ResponseInterface
+         */
+        private readonly \Psr\Http\Message\ResponseInterface $response
+    )
     {
         parent::__construct('Entity not found');
-        $this->pictureparkNotFoundException = $pictureparkNotFoundException;
-        $this->response = $response;
     }
     public function getPictureparkNotFoundException(): \PicturePark\API\Model\PictureparkNotFoundException
     {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Generator\RequestBodyContent;
+namespace Jane\Component\OpenApiCommon\Generator\RequestBodyContent;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
-use Jane\Component\OpenApi31\JsonSchema\Model\MediaType;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class JsonBodyContentGenerator extends AbstractBodyContentGenerator
 {
@@ -21,7 +21,12 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
         'application/problem+json',
     ];
 
-    public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
+    public function __construct(DenormalizerInterface $denormalizer, string $schemaClass)
+    {
+        parent::__construct($denormalizer, $schemaClass);
+    }
+
+    public function getSerializeStatements($content, string $contentType, string $reference, Context $context): array
     {
         $bodyExpr = new Expr\PropertyFetch(new Expr\Variable('this'), 'body');
         $serializeExpr = new Expr\MethodCall(

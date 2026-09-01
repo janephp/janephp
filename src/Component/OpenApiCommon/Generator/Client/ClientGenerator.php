@@ -39,6 +39,30 @@ trait ClientGenerator
 
     protected function getFactoryMethod(BaseSchema $schema, Context $context): Stmt
     {
+        $params = $this->getFactoryParams($context);
+
+        return new Stmt\ClassMethod(
+            'create', [
+                'flags' => Modifiers::STATIC | Modifiers::PUBLIC,
+                'params' => $params,
+                'stmts' => [
+                    ...$this->getHttpClientCreateExpr($context),
+                    $this->createRequestFactoryStatement(),
+                    $this->createStreamFactoryStatement(),
+                    $this->createNormalizersStatement($context),
+                    $this->createAdditionalNormalizersStatement(),
+                    $this->createSerializerStatement($context),
+                    $this->createReturnStatement(),
+                ],
+            ]
+        );
+    }
+
+    /**
+     * @return Node\Param[]
+     */
+    private function getFactoryParams(Context $context): array
+    {
         $params = [
             new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null')), new Node\NullableType(new Name\FullyQualified(ClientInterface::class))),
             new Node\Param(new Expr\Variable('additionalPlugins'), new Expr\Array_(), new Node\Identifier('array')),
@@ -53,88 +77,104 @@ trait ClientGenerator
             );
         }
 
-        return new Stmt\ClassMethod(
-            'create', [
-                'flags' => Modifiers::STATIC | Modifiers::PUBLIC,
-                'params' => $params,
+        return $params;
+    }
+
+    private function createRequestFactoryStatement(): Stmt\Expression
+    {
+        return new Stmt\Expression(new Expr\Assign(
+            new Expr\Variable('requestFactory'),
+            new Expr\StaticCall(
+                new Name\FullyQualified(Psr17FactoryDiscovery::class),
+                'findRequestFactory'
+            )
+        ));
+    }
+
+    private function createStreamFactoryStatement(): Stmt\Expression
+    {
+        return new Stmt\Expression(new Expr\Assign(
+            new Expr\Variable('streamFactory'),
+            new Expr\StaticCall(
+                new Name\FullyQualified(Psr17FactoryDiscovery::class),
+                'findStreamFactory'
+            )
+        ));
+    }
+
+    private function createNormalizersStatement(Context $context): Stmt\Expression
+    {
+        return new Stmt\Expression(new Expr\Assign(
+            new Expr\Variable('normalizers'),
+            new Expr\Array_([
+                new Expr\ArrayItem(new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Normalizer\\ArrayDenormalizer'))),
+                new Expr\ArrayItem(new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\JaneObjectNormalizer'))),
+            ])
+        ));
+    }
+
+    private function createAdditionalNormalizersStatement(): Stmt\If_
+    {
+        return new Stmt\If_(
+            new Expr\BinaryOp\Greater(
+                new Expr\FuncCall(new Name('count'), [new Node\Arg(new Expr\Variable('additionalNormalizers'))]),
+                new Expr\ConstFetch(new Name('0'))
+            ),
+            [
                 'stmts' => [
-                    ...$this->getHttpClientCreateExpr($context),
-                    new Stmt\Expression(new Expr\Assign(
-                        new Expr\Variable('requestFactory'),
-                        new Expr\StaticCall(
-                            new Name\FullyQualified(Psr17FactoryDiscovery::class),
-                            'findRequestFactory'
-                        )
-                    )),
-                    new Stmt\Expression(new Expr\Assign(
-                        new Expr\Variable('streamFactory'),
-                        new Expr\StaticCall(
-                            new Name\FullyQualified(Psr17FactoryDiscovery::class),
-                            'findStreamFactory'
-                        )
-                    )),
                     new Stmt\Expression(new Expr\Assign(
                         new Expr\Variable('normalizers'),
-                        new Expr\Array_([
-                            new Expr\ArrayItem(new Expr\New_(new Name('\\Symfony\\Component\\Serializer\\Normalizer\\ArrayDenormalizer'))),
-                            new Expr\ArrayItem(new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Normalizer\\JaneObjectNormalizer'))),
+                        new Expr\FuncCall(new Name('array_merge'), [
+                            new Node\Arg(new Expr\Variable('normalizers')),
+                            new Node\Arg(new Expr\Variable('additionalNormalizers')),
                         ])
                     )),
-                    new Stmt\If_(
-                        new Expr\BinaryOp\Greater(
-                            new Expr\FuncCall(new Name('count'), [new Node\Arg(new Expr\Variable('additionalNormalizers'))]),
-                            new Expr\ConstFetch(new Name('0'))
-                        ),
-                        [
-                            'stmts' => [
-                                new Stmt\Expression(new Expr\Assign(
-                                    new Expr\Variable('normalizers'),
-                                    new Expr\FuncCall(new Name('array_merge'), [
-                                        new Node\Arg(new Expr\Variable('normalizers')),
-                                        new Node\Arg(new Expr\Variable('additionalNormalizers')),
-                                    ])
-                                )),
-                            ],
-                        ]
-                    ),
-                    new Stmt\Expression(new Expr\Assign(
-                        new Expr\Variable('serializer'),
-                        new Expr\New_(
-                            new Name\FullyQualified(Serializer::class),
-                            [
-                                new Node\Arg(new Expr\Variable('normalizers')),
-                                new Node\Arg(
-                                    new Expr\Array_([
-                                        new Expr\ArrayItem(
-                                            new Expr\New_(new Name\FullyQualified(JsonEncoder::class), [
-                                                new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonEncode::class))),
-                                                new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonDecode::class), [
-                                                    new Node\Arg(new Expr\Array_([
-                                                        new Expr\ArrayItem(new Expr\ConstFetch(new Name('true')), new Scalar\String_('json_decode_associative')),
-                                                    ])),
-                                                ])),
-                                            ])
-                                        ),
-                                        new Expr\ArrayItem(
-                                            new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Runtime\\Client\\FormEncoder'))
-                                        ),
-                                    ])
-                                ),
-                            ]
-                        )
-                    )),
-                    new Stmt\Return_(
-                        new Expr\New_(
-                            new Name('static'), [
-                                new Node\Arg(new Expr\Variable('httpClient')),
-                                new Node\Arg(new Expr\Variable('requestFactory')),
-                                new Node\Arg(new Expr\Variable('serializer')),
-                                new Node\Arg(new Expr\Variable('streamFactory')),
-                            ]
-                        )
-                    ),
                 ],
             ]
+        );
+    }
+
+    private function createSerializerStatement(Context $context): Stmt\Expression
+    {
+        return new Stmt\Expression(new Expr\Assign(
+            new Expr\Variable('serializer'),
+            new Expr\New_(
+                new Name\FullyQualified(Serializer::class),
+                [
+                    new Node\Arg(new Expr\Variable('normalizers')),
+                    new Node\Arg(
+                        new Expr\Array_([
+                            new Expr\ArrayItem(
+                                new Expr\New_(new Name\FullyQualified(JsonEncoder::class), [
+                                    new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonEncode::class))),
+                                    new Node\Arg(new Expr\New_(new Name\FullyQualified(JsonDecode::class), [
+                                        new Node\Arg(new Expr\Array_([
+                                            new Expr\ArrayItem(new Expr\ConstFetch(new Name('true')), new Scalar\String_('json_decode_associative')),
+                                        ])),
+                                    ])),
+                                ])
+                            ),
+                            new Expr\ArrayItem(
+                                new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Runtime\\Client\\FormEncoder'))
+                            ),
+                        ])
+                    ),
+                ]
+            )
+        ));
+    }
+
+    private function createReturnStatement(): Stmt\Return_
+    {
+        return new Stmt\Return_(
+            new Expr\New_(
+                new Name('static'), [
+                    new Node\Arg(new Expr\Variable('httpClient')),
+                    new Node\Arg(new Expr\Variable('requestFactory')),
+                    new Node\Arg(new Expr\Variable('serializer')),
+                    new Node\Arg(new Expr\Variable('streamFactory')),
+                ]
+            )
         );
     }
 }

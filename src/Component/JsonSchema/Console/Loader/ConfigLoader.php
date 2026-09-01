@@ -2,6 +2,7 @@
 
 namespace Jane\Component\JsonSchema\Console\Loader;
 
+use Jane\Component\JsonSchema\Generator\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ConfigLoader implements ConfigLoaderInterface
@@ -61,29 +62,14 @@ class ConfigLoader implements ConfigLoaderInterface
 
     protected function resolveConfigurationDefaults(): array
     {
-        return [
+        $defaults = Options::defaults()->toArray();
+
+        // OpenAPI-specific options are not part of the JsonSchema vocabulary.
+        unset($defaults['whitelisted-paths'], $defaults['endpoint-generator'], $defaults['operation-namings'], $defaults['custom-query-resolver'], $defaults['throw-unexpected-status-code'], $defaults['generate-error-exceptions']);
+
+        // The console historically treats an unspecified 'reference' as true.
+        return array_merge($defaults, [
             'reference' => true,
-            'strict' => true,
-            'date-format' => \DateTime::RFC3339,
-            'full-date-format' => 'Y-m-d',
-            'date-prefer-interface' => null,
-            'date-input-format' => null,
-            'use-fixer' => false,
-            'fixer-config-file' => null,
-            'clean-generated' => true,
-            'use-cacheable-supports-method' => null,
-            'skip-null-values' => true,
-            'skip-required-fields' => false,
-            'custom-string-format-mapping' => [],
-            'validation' => false,
-            'validators' => [],
-            'include-null-value' => true,
-            'enums-as-objects' => false,
-            'default-additional-properties' => null,
-            'allow-external-refs' => false,
-            'external-ref-allowed-hosts' => [],
-            'external-ref-follow-redirects' => false,
-            'allowed-local-ref-roots' => [],
-        ];
+        ]);
     }
 }

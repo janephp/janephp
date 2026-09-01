@@ -30,13 +30,17 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
     protected ?ValidatorInterface $chainValidator = null;
 
+    private ?ChainValidatorFactory $chainValidatorFactory = null;
+
     public function __construct(
         DenormalizerInterface $denormalizer,
         protected Naming $naming,
         ?bool $defaultAdditionalProperties = null,
+        ?ChainValidatorFactory $chainValidatorFactory = null,
     ) {
         $this->denormalizer = $denormalizer;
         $this->defaultAdditionalProperties = $defaultAdditionalProperties;
+        $this->chainValidatorFactory = $chainValidatorFactory;
     }
 
     public function supportObject($object): bool
@@ -239,7 +243,8 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     private function initChainValidator(Registry $registry): void
     {
         if (null === $this->chainValidator) {
-            $this->chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->denormalizer);
+            $factory = $this->chainValidatorFactory ?? new ChainValidatorFactory();
+            $this->chainValidator = $factory->create($this->naming, $registry, $this->denormalizer);
         }
     }
 }

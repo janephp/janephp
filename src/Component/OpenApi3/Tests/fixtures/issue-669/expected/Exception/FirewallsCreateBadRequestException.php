@@ -4,19 +4,18 @@ namespace Jane\Generated\DigitalOcean\Exception;
 
 class FirewallsCreateBadRequestException extends BadRequestException
 {
-    /**
-     * @var \Jane\Generated\DigitalOcean\Model\Error
-     */
-    private $error;
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(\Jane\Generated\DigitalOcean\Model\Error $error, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(
+        /**
+         * @var \Jane\Generated\DigitalOcean\Model\Error
+         */
+        private readonly \Jane\Generated\DigitalOcean\Model\Error $error,
+        /**
+         * @var \Psr\Http\Message\ResponseInterface
+         */
+        private readonly \Psr\Http\Message\ResponseInterface $response
+    )
     {
         parent::__construct('There was an error parsing the request body.');
-        $this->error = $error;
-        $this->response = $response;
     }
     public function getError(): \Jane\Generated\DigitalOcean\Model\Error
     {

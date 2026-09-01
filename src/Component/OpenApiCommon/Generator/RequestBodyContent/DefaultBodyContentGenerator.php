@@ -1,16 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Generator\RequestBodyContent;
+namespace Jane\Component\OpenApiCommon\Generator\RequestBodyContent;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
-use Jane\Component\OpenApi3\JsonSchema\Model\MediaType;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class DefaultBodyContentGenerator extends AbstractBodyContentGenerator
 {
-    public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
+    public function __construct(DenormalizerInterface $denormalizer, string $schemaClass)
+    {
+        parent::__construct($denormalizer, $schemaClass);
+    }
+
+    public function getSerializeStatements($content, string $contentType, string $reference, Context $context): array
     {
         return [new Stmt\Return_(new Expr\Array_([
             new Expr\Array_([

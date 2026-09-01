@@ -20,15 +20,6 @@ use Symfony\Component\Yaml\Yaml;
  */
 class Reference
 {
-    private static array $fileCache = [];
-    private static array $pointerCache = [];
-    private static array $arrayCache = [];
-
-    private static bool $allowExternalRefs = false;
-    private static array $allowedExternalHosts = [];
-    private static bool $followRedirects = false;
-    private static array $allowedLocalRefRoots = [];
-
     /**
      * league/uri v7 static factories, detected once per process: composer
      * allows both ^6.7.2 and ^7.4, and method_exists() must not run on every
@@ -41,9 +32,11 @@ class Reference
     private Http $referenceUri;
     private Http $originUri;
     private Http $mergedUri;
+    private ReferenceResolver $resolver;
 
-    public function __construct(string $reference, string $origin)
+    public function __construct(string $reference, string $origin, ?ReferenceResolver $resolver = null)
     {
+        $this->resolver = $resolver ?? ReferenceResolver::default();
         $reference = $this->fixPath($reference);
         $origin = $this->fixPath($origin);
         $originParts = UriString::parse($origin);
@@ -64,39 +57,6 @@ class Reference
         } catch (\Throwable $exception) {
             throw new InvalidReferenceException(\sprintf('Unable to parse reference "%s" against origin "%s".', $reference, $origin), 0, $exception);
         }
-    }
-
-    public static function allowExternalRefs(bool $allow = true): void
-    {
-        self::$allowExternalRefs = $allow;
-    }
-
-    public static function setAllowedExternalHosts(array $hosts): void
-    {
-        self::$allowedExternalHosts = $hosts;
-    }
-
-    public static function setAllowedLocalRefRoots(array $roots): void
-    {
-        self::$allowedLocalRefRoots = $roots;
-    }
-
-    /**
-     * Allow (or forbid) following HTTP redirects when fetching external
-     * references. Disabled by default: an allowlisted host must not be able
-     * to bounce the fetch to an arbitrary, possibly non allowlisted host.
-     */
-    public static function setFollowRedirects(bool $allow = true): void
-    {
-        self::$followRedirects = $allow;
-    }
-
-    public static function resetConfig(): void
-    {
-        self::$allowExternalRefs = false;
-        self::$allowedExternalHosts = [];
-        self::$followRedirects = false;
-        self::$allowedLocalRefRoots = [];
     }
 
     /**
@@ -129,20 +89,20 @@ class Reference
 
         $this->validateReference($fragment);
 
-        if (!\array_key_exists($fragment, self::$fileCache)) {
-            self::$fileCache[$fragment] = $this->fetchAndNormalizeContents($fragment);
+        if (!$this->resolver->hasFile($fragment)) {
+            $this->resolver->setFile($fragment, $this->fetchAndNormalizeContents($fragment));
         }
 
-        if (!\array_key_exists($reference, self::$arrayCache)) {
+        if (!$this->resolver->hasArray($reference)) {
             if ('' === $this->mergedUri->getFragment()) {
-                $array = json_decode(self::$fileCache[$fragment], true);
+                $array = json_decode($this->resolver->getFile($fragment), true);
             } else {
                 try {
-                    if (!\array_key_exists($fragment, self::$pointerCache)) {
-                        self::$pointerCache[$fragment] = new Pointer(self::$fileCache[$fragment]);
+                    if (!$this->resolver->hasPointer($fragment)) {
+                        $this->resolver->setPointer($fragment, new Pointer($this->resolver->getFile($fragment)));
                     }
 
-                    $pointer = self::$pointerCache[$fragment]->get($this->mergedUri->getFragment());
+                    $pointer = $this->resolver->getPointer($fragment)->get($this->mergedUri->getFragment());
                 } catch (\Throwable $exception) {
                     throw new ReferencePointerException(\sprintf('Unable to resolve pointer "%s" in reference document "%s".', $this->mergedUri->getFragment(), $fragment), 0, $exception);
                 }
@@ -150,10 +110,10 @@ class Reference
                 $array = json_decode(json_encode($pointer), true);
             }
 
-            self::$arrayCache[$reference] = $array;
+            $this->resolver->setArray($reference, $array);
         }
 
-        return self::$arrayCache[$reference];
+        return $this->resolver->getArray($reference);
     }
 
     /**
@@ -169,7 +129,7 @@ class Reference
         // allowlisted host must not be able to bounce the fetch to an
         // arbitrary (possibly non allowlisted) host.
         $context = stream_context_create([
-            'http' => ['follow_location' => self::$followRedirects ? 1 : 0],
+            'http' => ['follow_location' => $this->resolver->followsRedirects() ? 1 : 0],
         ]);
 
         // $http_response_header is populated by the HTTP stream wrapper in
@@ -183,7 +143,7 @@ class Reference
             throw new ReferenceFetchException(\sprintf('Unable to fetch reference document "%s".', $fragment));
         }
 
-        if (!self::$followRedirects) {
+        if (!$this->resolver->followsRedirects()) {
             $statusCode = $this->lastHttpStatusCode($http_response_header);
 
             if (null !== $statusCode && $statusCode >= 300 && $statusCode < 400) {
@@ -338,7 +298,7 @@ class Reference
     {
         $bases = [$basePath];
 
-        foreach (self::$allowedLocalRefRoots as $root) {
+        foreach ($this->resolver->getAllowedLocalRefRoots() as $root) {
             if (!\is_string($root) || '' === $root) {
                 continue;
             }
@@ -360,15 +320,15 @@ class Reference
 
     private function validateRemoteRef(): void
     {
-        if (!self::$allowExternalRefs) {
+        if (!$this->resolver->allowsExternalRefs()) {
             throw new InvalidReferenceException('External (HTTP/HTTPS) references are not allowed. Set "allow-external-refs" to true in your Jane configuration to enable them, or use "external-ref-allowed-hosts" to restrict to specific hosts.');
         }
 
-        if ([] !== self::$allowedExternalHosts) {
+        if ([] !== $this->resolver->getAllowedExternalHosts()) {
             $host = $this->mergedUri->getHost();
             $allowed = false;
 
-            foreach (self::$allowedExternalHosts as $allowedHost) {
+            foreach ($this->resolver->getAllowedExternalHosts() as $allowedHost) {
                 if ($host === $allowedHost || str_ends_with($host, '.' . $allowedHost)) {
                     $allowed = true;
                     break;
@@ -376,7 +336,7 @@ class Reference
             }
 
             if (!$allowed) {
-                throw new InvalidReferenceException(\sprintf('Remote reference host "%s" is not allowed. Must be one of: %s.', $host, implode(', ', self::$allowedExternalHosts)));
+                throw new InvalidReferenceException(\sprintf('Remote reference host "%s" is not allowed. Must be one of: %s.', $host, implode(', ', $this->resolver->getAllowedExternalHosts())));
             }
         }
     }
