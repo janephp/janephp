@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-#[AsCommand(name: 'jane:generate', description: 'Generate a set of class and normalizers given a specific Json Schema file', aliases: ['generate'])]
+#[AsCommand(name: 'generate', description: 'Generate a set of class and normalizers given a specific Json Schema file')]
 class GenerateCommand extends Command
 {
     public function __construct(

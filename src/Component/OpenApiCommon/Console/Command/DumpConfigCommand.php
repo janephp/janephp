@@ -6,7 +6,7 @@ use Jane\Component\JsonSchema\Console\Command\DumpConfigCommand as BaseDumpConfi
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputOption;
 
-#[AsCommand(name: 'jane:open-api:dump-config', description: 'Dump Jane OpenAPI configuration for debugging purpose', aliases: ['dump-config'])]
+#[AsCommand(name: 'dump-config', description: 'Dump Jane OpenAPI configuration for debugging purpose')]
 class DumpConfigCommand extends BaseDumpConfigCommand
 {
     public function configure(): void

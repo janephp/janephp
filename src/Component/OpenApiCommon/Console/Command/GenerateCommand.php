@@ -16,7 +16,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-#[AsCommand(name: 'jane:open-api:generate', description: 'Generate an api client: class, normalizers and resources given a specific Json OpenApi file', aliases: ['generate'])]
+#[AsCommand(name: 'generate', description: 'Generate an api client: class, normalizers and resources given a specific Json OpenApi file')]
 class GenerateCommand extends BaseGenerateCommand
 {
     private OpenApiMatcher $matcher;

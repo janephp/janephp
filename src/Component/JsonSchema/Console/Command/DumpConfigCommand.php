@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\VarDumper\VarDumper;
 
-#[AsCommand(name: 'jane:dump-config', description: 'Dump Jane configuration for debugging purpose', aliases: ['dump-config'])]
+#[AsCommand(name: 'dump-config', description: 'Dump Jane configuration for debugging purpose')]
 class DumpConfigCommand extends Command
 {
     public function __construct(
