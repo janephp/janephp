@@ -14,7 +14,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\BadResponse\Runtime\Client\C
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\BadResponse\Endpoint\GetFoo(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();

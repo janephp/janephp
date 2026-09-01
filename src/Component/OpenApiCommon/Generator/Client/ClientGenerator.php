@@ -13,6 +13,7 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
+use Psr\Http\Client\ClientInterface;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -39,7 +40,7 @@ trait ClientGenerator
     protected function getFactoryMethod(BaseSchema $schema, Context $context): Stmt
     {
         $params = [
-            new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null'))),
+            new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null')), new Node\NullableType(new Name\FullyQualified(ClientInterface::class))),
             new Node\Param(new Expr\Variable('additionalPlugins'), new Expr\Array_(), new Node\Identifier('array')),
             new Node\Param(new Expr\Variable('additionalNormalizers'), new Expr\Array_(), new Node\Identifier('array')),
         ];

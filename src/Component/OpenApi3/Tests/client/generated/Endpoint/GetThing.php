@@ -55,10 +55,10 @@ class GetThing extends \Jane\Component\OpenApi3\Tests\Client\Runtime\Client\Base
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Client\Model\Thing', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\Client\Exception\GetThingNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Client\Model\Error', 'json'), $response);
         }
     }

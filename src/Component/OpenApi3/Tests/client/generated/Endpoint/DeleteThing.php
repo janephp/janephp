@@ -43,7 +43,7 @@ class DeleteThing extends \Jane\Component\OpenApi3\Tests\Client\Runtime\Client\B
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\Client\Exception\DeleteThingNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Client\Model\Error', 'json'), $response);
         }
     }
