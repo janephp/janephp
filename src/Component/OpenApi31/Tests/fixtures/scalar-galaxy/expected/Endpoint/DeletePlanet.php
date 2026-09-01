@@ -50,7 +50,7 @@ class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\DeletePlanetNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\NotFoundError', 'json'), $response);
         }
     }

@@ -38,21 +38,21 @@ class IndoorMapIndoorMapApNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mac', $data)) {
-            $object->setMac($data['mac']);
+            $object->mac = $data['mac'];
         }
         if (\array_key_exists('indoorMapXy', $data)) {
-            $object->setIndoorMapXy($this->denormalizer->denormalize($data['indoorMapXy'], \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapXy::class, 'json', $context));
+            $object->indoorMapXy = $this->denormalizer->denormalize($data['indoorMapXy'], \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapXy::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mac') && null !== $data->getMac()) {
-            $dataArray['mac'] = $data->getMac();
+        if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
+            $dataArray['mac'] = $data->mac ?? null;
         }
-        if ($data->isInitialized('indoorMapXy') && null !== $data->getIndoorMapXy()) {
-            $dataArray['indoorMapXy'] = $data->getIndoorMapXy() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIndoorMapXy(), 'json', $context));
+        if (array_key_exists('indoorMapXy', get_object_vars($data)) && null !== ($data->indoorMapXy ?? null)) {
+            $dataArray['indoorMapXy'] = ($data->indoorMapXy ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->indoorMapXy ?? null, 'json', $context));
         }
         return $dataArray;
     }

@@ -8,257 +8,51 @@ class RedisDatabaseExceededException implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $traceLevel;
+    /**
+     * @var string|null
+     */
+    public ?string $traceId;
+    /**
+     * @var string|null
+     */
+    public ?string $traceJobId;
+    /**
+     * @var int
+     */
+    public int $httpStatusCode;
+    /**
+     * @var string|null
+     */
+    public ?string $exceptionMessage;
     /**
      * @var string
      */
-    protected $traceLevel;
+    public string $kind;
     /**
      * @var string|null
      */
-    protected $traceId;
-    /**
-     * @var string|null
-     */
-    protected $traceJobId;
+    public ?string $customerId;
     /**
      * @var int
      */
-    protected $httpStatusCode;
-    /**
-     * @var string|null
-     */
-    protected $exceptionMessage;
-    /**
-     * @var string
-     */
-    protected $kind;
-    /**
-     * @var string|null
-     */
-    protected $customerId;
+    public int $customerCount;
     /**
      * @var int
      */
-    protected $customerCount;
+    public int $maxCount;
     /**
      * @var int
      */
-    protected $maxCount;
+    public int $startIndex;
     /**
      * @var int
      */
-    protected $startIndex;
-    /**
-     * @var int
-     */
-    protected $redisDatabaseCount;
-    /**
-     * @return string
-     */
-    public function getTraceLevel(): string
-    {
-        return $this->traceLevel;
-    }
-    /**
-     * @param string $traceLevel
-     *
-     * @return self
-     */
-    public function setTraceLevel(string $traceLevel): self
-    {
-        $this->initialized['traceLevel'] = true;
-        $this->traceLevel = $traceLevel;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getTraceId(): ?string
-    {
-        return $this->traceId;
-    }
-    /**
-     * @param string|null $traceId
-     *
-     * @return self
-     */
-    public function setTraceId(?string $traceId): self
-    {
-        $this->initialized['traceId'] = true;
-        $this->traceId = $traceId;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getTraceJobId(): ?string
-    {
-        return $this->traceJobId;
-    }
-    /**
-     * @param string|null $traceJobId
-     *
-     * @return self
-     */
-    public function setTraceJobId(?string $traceJobId): self
-    {
-        $this->initialized['traceJobId'] = true;
-        $this->traceJobId = $traceJobId;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getHttpStatusCode(): int
-    {
-        return $this->httpStatusCode;
-    }
-    /**
-     * @param int $httpStatusCode
-     *
-     * @return self
-     */
-    public function setHttpStatusCode(int $httpStatusCode): self
-    {
-        $this->initialized['httpStatusCode'] = true;
-        $this->httpStatusCode = $httpStatusCode;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getExceptionMessage(): ?string
-    {
-        return $this->exceptionMessage;
-    }
-    /**
-     * @param string|null $exceptionMessage
-     *
-     * @return self
-     */
-    public function setExceptionMessage(?string $exceptionMessage): self
-    {
-        $this->initialized['exceptionMessage'] = true;
-        $this->exceptionMessage = $exceptionMessage;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getKind(): string
-    {
-        return $this->kind;
-    }
-    /**
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind): self
-    {
-        $this->initialized['kind'] = true;
-        $this->kind = $kind;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getCustomerId(): ?string
-    {
-        return $this->customerId;
-    }
-    /**
-     * @param string|null $customerId
-     *
-     * @return self
-     */
-    public function setCustomerId(?string $customerId): self
-    {
-        $this->initialized['customerId'] = true;
-        $this->customerId = $customerId;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getCustomerCount(): int
-    {
-        return $this->customerCount;
-    }
-    /**
-     * @param int $customerCount
-     *
-     * @return self
-     */
-    public function setCustomerCount(int $customerCount): self
-    {
-        $this->initialized['customerCount'] = true;
-        $this->customerCount = $customerCount;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getMaxCount(): int
-    {
-        return $this->maxCount;
-    }
-    /**
-     * @param int $maxCount
-     *
-     * @return self
-     */
-    public function setMaxCount(int $maxCount): self
-    {
-        $this->initialized['maxCount'] = true;
-        $this->maxCount = $maxCount;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getStartIndex(): int
-    {
-        return $this->startIndex;
-    }
-    /**
-     * @param int $startIndex
-     *
-     * @return self
-     */
-    public function setStartIndex(int $startIndex): self
-    {
-        $this->initialized['startIndex'] = true;
-        $this->startIndex = $startIndex;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getRedisDatabaseCount(): int
-    {
-        return $this->redisDatabaseCount;
-    }
-    /**
-     * @param int $redisDatabaseCount
-     *
-     * @return self
-     */
-    public function setRedisDatabaseCount(int $redisDatabaseCount): self
-    {
-        $this->initialized['redisDatabaseCount'] = true;
-        $this->redisDatabaseCount = $redisDatabaseCount;
-        return $this;
-    }
+    public int $redisDatabaseCount;
     public function definedProperties(): array
     {
-        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerCount' => ['customerCount', 'getCustomerCount', 'setCustomerCount'], 'maxCount' => ['maxCount', 'getMaxCount', 'setMaxCount'], 'startIndex' => ['startIndex', 'getStartIndex', 'setStartIndex'], 'redisDatabaseCount' => ['redisDatabaseCount', 'getRedisDatabaseCount', 'setRedisDatabaseCount']];
+        return ['traceLevel' => 'traceLevel', 'traceId' => 'traceId', 'traceJobId' => 'traceJobId', 'httpStatusCode' => 'httpStatusCode', 'exceptionMessage' => 'exceptionMessage', 'kind' => 'kind', 'customerId' => 'customerId', 'customerCount' => 'customerCount', 'maxCount' => 'maxCount', 'startIndex' => 'startIndex', 'redisDatabaseCount' => 'redisDatabaseCount'];
     }
 }

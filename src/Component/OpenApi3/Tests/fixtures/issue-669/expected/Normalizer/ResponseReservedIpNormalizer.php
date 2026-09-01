@@ -38,7 +38,7 @@ class ResponseReservedIpNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('reserved_ip', $data)) {
-            $object->setReservedIp($this->denormalizer->denormalize($data['reserved_ip'], \Jane\Generated\DigitalOcean\Model\ReservedIp::class, 'json', $context));
+            $object->reservedIp = $this->denormalizer->denormalize($data['reserved_ip'], \Jane\Generated\DigitalOcean\Model\ReservedIp::class, 'json', $context);
             unset($data['reserved_ip']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseReservedIpNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('reservedIp') && null !== $data->getReservedIp()) {
-            $dataArray['reserved_ip'] = $data->getReservedIp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getReservedIp(), 'json', $context));
+        if (array_key_exists('reservedIp', get_object_vars($data)) && null !== ($data->reservedIp ?? null)) {
+            $dataArray['reserved_ip'] = ($data->reservedIp ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reservedIp ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

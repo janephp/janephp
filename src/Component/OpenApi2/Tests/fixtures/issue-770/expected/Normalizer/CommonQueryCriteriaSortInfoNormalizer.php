@@ -38,21 +38,21 @@ class CommonQueryCriteriaSortInfoNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('sortColumn', $data)) {
-            $object->setSortColumn($data['sortColumn']);
+            $object->sortColumn = $data['sortColumn'];
         }
         if (\array_key_exists('dir', $data)) {
-            $object->setDir($data['dir']);
+            $object->dir = $data['dir'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sortColumn') && null !== $data->getSortColumn()) {
-            $dataArray['sortColumn'] = $data->getSortColumn();
+        if (array_key_exists('sortColumn', get_object_vars($data)) && null !== ($data->sortColumn ?? null)) {
+            $dataArray['sortColumn'] = $data->sortColumn ?? null;
         }
-        if ($data->isInitialized('dir') && null !== $data->getDir()) {
-            $dataArray['dir'] = $data->getDir();
+        if (array_key_exists('dir', get_object_vars($data)) && null !== ($data->dir ?? null)) {
+            $dataArray['dir'] = $data->dir ?? null;
         }
         return $dataArray;
     }

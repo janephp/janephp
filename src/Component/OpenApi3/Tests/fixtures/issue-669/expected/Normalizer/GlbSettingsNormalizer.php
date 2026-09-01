@@ -38,15 +38,15 @@ class GlbSettingsNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('target_protocol', $data)) {
-            $object->setTargetProtocol($data['target_protocol']);
+            $object->targetProtocol = $data['target_protocol'];
             unset($data['target_protocol']);
         }
         if (\array_key_exists('target_port', $data)) {
-            $object->setTargetPort($data['target_port']);
+            $object->targetPort = $data['target_port'];
             unset($data['target_port']);
         }
         if (\array_key_exists('cdn', $data)) {
-            $object->setCdn($this->denormalizer->denormalize($data['cdn'], \Jane\Generated\DigitalOcean\Model\GlbSettingsCdn::class, 'json', $context));
+            $object->cdn = $this->denormalizer->denormalize($data['cdn'], \Jane\Generated\DigitalOcean\Model\GlbSettingsCdn::class, 'json', $context);
             unset($data['cdn']);
         }
         if (\array_key_exists('region_priorities', $data)) {
@@ -54,11 +54,11 @@ class GlbSettingsNormalizer implements DenormalizerInterface, NormalizerInterfac
             foreach ($data['region_priorities'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setRegionPriorities($values);
+            $object->regionPriorities = $values;
             unset($data['region_priorities']);
         }
         if (\array_key_exists('failover_threshold', $data)) {
-            $object->setFailoverThreshold($data['failover_threshold']);
+            $object->failoverThreshold = $data['failover_threshold'];
             unset($data['failover_threshold']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -71,24 +71,24 @@ class GlbSettingsNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('targetProtocol') && null !== $data->getTargetProtocol()) {
-            $dataArray['target_protocol'] = $data->getTargetProtocol();
+        if (array_key_exists('targetProtocol', get_object_vars($data)) && null !== ($data->targetProtocol ?? null)) {
+            $dataArray['target_protocol'] = $data->targetProtocol ?? null;
         }
-        if ($data->isInitialized('targetPort') && null !== $data->getTargetPort()) {
-            $dataArray['target_port'] = $data->getTargetPort();
+        if (array_key_exists('targetPort', get_object_vars($data)) && null !== ($data->targetPort ?? null)) {
+            $dataArray['target_port'] = $data->targetPort ?? null;
         }
-        if ($data->isInitialized('cdn') && null !== $data->getCdn()) {
-            $dataArray['cdn'] = $data->getCdn() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCdn(), 'json', $context));
+        if (array_key_exists('cdn', get_object_vars($data)) && null !== ($data->cdn ?? null)) {
+            $dataArray['cdn'] = ($data->cdn ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cdn ?? null, 'json', $context));
         }
-        if ($data->isInitialized('regionPriorities') && null !== $data->getRegionPriorities()) {
+        if (array_key_exists('regionPriorities', get_object_vars($data)) && null !== ($data->regionPriorities ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getRegionPriorities() as $key => $value) {
+            foreach ($data->regionPriorities ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['region_priorities'] = $values;
         }
-        if ($data->isInitialized('failoverThreshold') && null !== $data->getFailoverThreshold()) {
-            $dataArray['failover_threshold'] = $data->getFailoverThreshold();
+        if (array_key_exists('failoverThreshold', get_object_vars($data)) && null !== ($data->failoverThreshold ?? null)) {
+            $dataArray['failover_threshold'] = $data->failoverThreshold ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

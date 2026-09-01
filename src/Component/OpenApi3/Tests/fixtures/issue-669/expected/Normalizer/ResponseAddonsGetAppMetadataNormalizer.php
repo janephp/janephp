@@ -42,7 +42,7 @@ class ResponseAddonsGetAppMetadataNormalizer implements DenormalizerInterface, N
             foreach ($data['metadata'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AddonsAppMetadata::class, 'json', $context);
             }
-            $object->setMetadata($values);
+            $object->metadata = $values;
             unset($data['metadata']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseAddonsGetAppMetadataNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+        if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values = [];
-            foreach ($data->getMetadata() as $value) {
+            foreach ($data->metadata ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['metadata'] = $values;

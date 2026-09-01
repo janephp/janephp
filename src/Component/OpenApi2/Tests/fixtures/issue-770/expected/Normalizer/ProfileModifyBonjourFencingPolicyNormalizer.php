@@ -38,46 +38,46 @@ class ProfileModifyBonjourFencingPolicyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('bonjourFencingRuleList', $data)) {
             $values = [];
             foreach ($data['bonjourFencingRuleList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingRule::class, 'json', $context);
             }
-            $object->setBonjourFencingRuleList($values);
+            $object->bonjourFencingRuleList = $values;
         }
         if (\array_key_exists('bonjourFencingRuleMappingList', $data)) {
             $values_1 = [];
             foreach ($data['bonjourFencingRuleMappingList'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingRuleMapping::class, 'json', $context);
             }
-            $object->setBonjourFencingRuleMappingList($values_1);
+            $object->bonjourFencingRuleMappingList = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('bonjourFencingRuleList') && null !== $data->getBonjourFencingRuleList()) {
+        if (array_key_exists('bonjourFencingRuleList', get_object_vars($data)) && null !== ($data->bonjourFencingRuleList ?? null)) {
             $values = [];
-            foreach ($data->getBonjourFencingRuleList() as $value) {
+            foreach ($data->bonjourFencingRuleList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['bonjourFencingRuleList'] = $values;
         }
-        if ($data->isInitialized('bonjourFencingRuleMappingList') && null !== $data->getBonjourFencingRuleMappingList()) {
+        if (array_key_exists('bonjourFencingRuleMappingList', get_object_vars($data)) && null !== ($data->bonjourFencingRuleMappingList ?? null)) {
             $values_1 = [];
-            foreach ($data->getBonjourFencingRuleMappingList() as $value_1) {
+            foreach ($data->bonjourFencingRuleMappingList ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['bonjourFencingRuleMappingList'] = $values_1;

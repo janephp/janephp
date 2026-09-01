@@ -38,7 +38,7 @@ class DockerCredentialsAuthsRegistryDigitaloceanComNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('auth', $data)) {
-            $object->setAuth($data['auth']);
+            $object->auth = $data['auth'];
             unset($data['auth']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class DockerCredentialsAuthsRegistryDigitaloceanComNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('auth') && null !== $data->getAuth()) {
-            $dataArray['auth'] = $data->getAuth();
+        if (array_key_exists('auth', get_object_vars($data)) && null !== ($data->auth ?? null)) {
+            $dataArray['auth'] = $data->auth ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,11 +38,11 @@ class ApiListModelsOutputPublicNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\ApiLinks::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\ApiLinks::class, 'json', $context);
             unset($data['links']);
         }
         if (\array_key_exists('meta', $data)) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\ApiMeta::class, 'json', $context));
+            $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\ApiMeta::class, 'json', $context);
             unset($data['meta']);
         }
         if (\array_key_exists('models', $data)) {
@@ -50,7 +50,7 @@ class ApiListModelsOutputPublicNormalizer implements DenormalizerInterface, Norm
             foreach ($data['models'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiModelPublic::class, 'json', $context);
             }
-            $object->setModels($values);
+            $object->models = $values;
             unset($data['models']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,15 +63,15 @@ class ApiListModelsOutputPublicNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
-        if ($data->isInitialized('meta') && null !== $data->getMeta()) {
-            $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
+        if (array_key_exists('meta', get_object_vars($data)) && null !== ($data->meta ?? null)) {
+            $dataArray['meta'] = ($data->meta ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta ?? null, 'json', $context));
         }
-        if ($data->isInitialized('models') && null !== $data->getModels()) {
+        if (array_key_exists('models', get_object_vars($data)) && null !== ($data->models ?? null)) {
             $values = [];
-            foreach ($data->getModels() as $value) {
+            foreach ($data->models ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['models'] = $values;

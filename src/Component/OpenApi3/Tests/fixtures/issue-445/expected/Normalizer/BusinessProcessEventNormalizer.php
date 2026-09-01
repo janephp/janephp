@@ -42,19 +42,19 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] !== null) {
-            $object->setBusinessProcessId($data['businessProcessId']);
+            $object->businessProcessId = $data['businessProcessId'];
             unset($data['businessProcessId']);
         }
         elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
-            $object->setBusinessProcessId(null);
+            $object->businessProcessId = null;
             unset($data['businessProcessId']);
         }
         if (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] !== null) {
@@ -62,19 +62,19 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             if (is_string($data['lifeCycle'])) {
                 $value = $data['lifeCycle'];
             }
-            $object->setLifeCycle($value);
+            $object->lifeCycle = $value;
             unset($data['lifeCycle']);
         }
         elseif (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] === null) {
-            $object->setLifeCycle(null);
+            $object->lifeCycle = null;
             unset($data['lifeCycle']);
         }
         if (\array_key_exists('state', $data) && $data['state'] !== null) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
             unset($data['state']);
         }
         elseif (\array_key_exists('state', $data) && $data['state'] === null) {
-            $object->setState(null);
+            $object->state = null;
             unset($data['state']);
         }
         foreach ($data as $key => $value_1) {
@@ -87,20 +87,20 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('businessProcessId') && null !== $data->getBusinessProcessId()) {
-            $dataArray['businessProcessId'] = $data->getBusinessProcessId();
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('businessProcessId', get_object_vars($data)) && null !== ($data->businessProcessId ?? null)) {
+            $dataArray['businessProcessId'] = $data->businessProcessId ?? null;
         }
-        if ($data->isInitialized('lifeCycle') && null !== $data->getLifeCycle()) {
-            $value = $data->getLifeCycle();
-            if (is_string($data->getLifeCycle())) {
-                $value = $data->getLifeCycle();
+        if (array_key_exists('lifeCycle', get_object_vars($data)) && null !== ($data->lifeCycle ?? null)) {
+            $value = $data->lifeCycle ?? null;
+            if (is_string($data->lifeCycle ?? null)) {
+                $value = $data->lifeCycle ?? null;
             }
             $dataArray['lifeCycle'] = $value;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

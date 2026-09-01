@@ -38,27 +38,27 @@ class CdnEndpointNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('origin', $data)) {
-            $object->setOrigin($data['origin']);
+            $object->origin = $data['origin'];
             unset($data['origin']);
         }
         if (\array_key_exists('endpoint', $data)) {
-            $object->setEndpoint($data['endpoint']);
+            $object->endpoint = $data['endpoint'];
             unset($data['endpoint']);
         }
         if (\array_key_exists('ttl', $data)) {
-            $object->setTtl($data['ttl']);
+            $object->ttl = $data['ttl'];
             unset($data['ttl']);
         }
         if (\array_key_exists('certificate_id', $data)) {
-            $object->setCertificateId($data['certificate_id']);
+            $object->certificateId = $data['certificate_id'];
             unset($data['certificate_id']);
         }
         if (\array_key_exists('custom_domain', $data)) {
-            $object->setCustomDomain($data['custom_domain']);
+            $object->customDomain = $data['custom_domain'];
             unset($data['custom_domain']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -66,7 +66,7 @@ class CdnEndpointNormalizer implements DenormalizerInterface, NormalizerInterfac
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         foreach ($data as $key => $value) {
@@ -79,15 +79,15 @@ class CdnEndpointNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['origin'] = $data->getOrigin();
-        if ($data->isInitialized('ttl') && null !== $data->getTtl()) {
-            $dataArray['ttl'] = $data->getTtl();
+        $dataArray['origin'] = $data->origin ?? null;
+        if (array_key_exists('ttl', get_object_vars($data)) && null !== ($data->ttl ?? null)) {
+            $dataArray['ttl'] = $data->ttl ?? null;
         }
-        if ($data->isInitialized('certificateId') && null !== $data->getCertificateId()) {
-            $dataArray['certificate_id'] = $data->getCertificateId();
+        if (array_key_exists('certificateId', get_object_vars($data)) && null !== ($data->certificateId ?? null)) {
+            $dataArray['certificate_id'] = $data->certificateId ?? null;
         }
-        if ($data->isInitialized('customDomain') && null !== $data->getCustomDomain()) {
-            $dataArray['custom_domain'] = $data->getCustomDomain();
+        if (array_key_exists('customDomain', get_object_vars($data)) && null !== ($data->customDomain ?? null)) {
+            $dataArray['custom_domain'] = $data->customDomain ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

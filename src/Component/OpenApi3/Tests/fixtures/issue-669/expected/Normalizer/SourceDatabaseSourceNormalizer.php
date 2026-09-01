@@ -38,23 +38,23 @@ class SourceDatabaseSourceNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('host', $data)) {
-            $object->setHost($data['host']);
+            $object->host = $data['host'];
             unset($data['host']);
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
             unset($data['port']);
         }
         if (\array_key_exists('dbname', $data)) {
-            $object->setDbname($data['dbname']);
+            $object->dbname = $data['dbname'];
             unset($data['dbname']);
         }
         if (\array_key_exists('username', $data)) {
-            $object->setUsername($data['username']);
+            $object->username = $data['username'];
             unset($data['username']);
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
             unset($data['password']);
         }
         foreach ($data as $key => $value) {
@@ -67,20 +67,20 @@ class SourceDatabaseSourceNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('host') && null !== $data->getHost()) {
-            $dataArray['host'] = $data->getHost();
+        if (array_key_exists('host', get_object_vars($data)) && null !== ($data->host ?? null)) {
+            $dataArray['host'] = $data->host ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
-        if ($data->isInitialized('dbname') && null !== $data->getDbname()) {
-            $dataArray['dbname'] = $data->getDbname();
+        if (array_key_exists('dbname', get_object_vars($data)) && null !== ($data->dbname ?? null)) {
+            $dataArray['dbname'] = $data->dbname ?? null;
         }
-        if ($data->isInitialized('username') && null !== $data->getUsername()) {
-            $dataArray['username'] = $data->getUsername();
+        if (array_key_exists('username', get_object_vars($data)) && null !== ($data->username ?? null)) {
+            $dataArray['username'] = $data->username ?? null;
         }
-        if ($data->isInitialized('password') && null !== $data->getPassword()) {
-            $dataArray['password'] = $data->getPassword();
+        if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
+            $dataArray['password'] = $data->password ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

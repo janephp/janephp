@@ -41,21 +41,21 @@ class ResourcesBlkioWeightDeviceItemNormalizer implements DenormalizerInterface,
             $this->validate($data, new \Docker\Api\Validator\ResourcesBlkioWeightDeviceItemConstraint());
         }
         if (\array_key_exists('Path', $data)) {
-            $object->setPath($data['Path']);
+            $object->path = $data['Path'];
         }
         if (\array_key_exists('Weight', $data)) {
-            $object->setWeight($data['Weight']);
+            $object->weight = $data['Weight'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('path') && null !== $data->getPath()) {
-            $dataArray['Path'] = $data->getPath();
+        if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
+            $dataArray['Path'] = $data->path ?? null;
         }
-        if ($data->isInitialized('weight') && null !== $data->getWeight()) {
-            $dataArray['Weight'] = $data->getWeight();
+        if (array_key_exists('weight', get_object_vars($data)) && null !== ($data->weight ?? null)) {
+            $dataArray['Weight'] = $data->weight ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ResourcesBlkioWeightDeviceItemConstraint());

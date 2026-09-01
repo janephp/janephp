@@ -5,771 +5,153 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class ApgroupModifyAPGroup
 {
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $name;
     /**
      * @var string
      */
-    protected $name;
+    public string $description;
     /**
      * @var string
      */
-    protected $description;
+    public string $location;
     /**
      * @var string
      */
-    protected $location;
-    /**
-     * @var string
-     */
-    protected $locationAdditionalInfo;
+    public string $locationAdditionalInfo;
     /**
      * @var CommonAltitude
      */
-    protected $altitude;
+    public CommonAltitude $altitude;
     /**
      * @var float
      */
-    protected $latitude;
+    public float $latitude;
     /**
      * @var float
      */
-    protected $longitude;
+    public float $longitude;
     /**
      * @var CommonOverrideGenericRef
      */
-    protected $locationBasedService;
+    public CommonOverrideGenericRef $locationBasedService;
     /**
      * @var CommonOverrideClientAdmissionControl
      */
-    protected $clientAdmissionControl24;
+    public CommonOverrideClientAdmissionControl $clientAdmissionControl24;
     /**
      * @var CommonOverrideClientAdmissionControl
      */
-    protected $clientAdmissionControl50;
+    public CommonOverrideClientAdmissionControl $clientAdmissionControl50;
     /**
      * @var ZoneApSnmpOptions
      */
-    protected $snmpAgent;
+    public ZoneApSnmpOptions $snmpAgent;
     /**
      * @var CommonGenericRef
      */
-    protected $venueProfile;
+    public CommonGenericRef $venueProfile;
     /**
      * channel evaluation Interval of the ap group
      *
      * @var int
      */
-    protected $channelEvaluationInterval = 600;
+    public int $channelEvaluationInterval = 600;
     /**
      * @var CommonApManagementVlan
      */
-    protected $apMgmtVlan;
+    public CommonApManagementVlan $apMgmtVlan;
     /**
      * Venue Code
      *
      * @var string
      */
-    protected $awsVenue;
+    public string $awsVenue;
     /**
      * @var CommonRecoverySsid
      */
-    protected $recoverySsid;
+    public CommonRecoverySsid $recoverySsid;
     /**
      * Rogue AP report will leave out all entries that have signal strength lower than this threshold.
      *
      * @var int
      */
-    protected $rogueApReportThreshold;
+    public int $rogueApReportThreshold;
     /**
      * Adjust the frequency interval to de-authenticate rogue APs.
      *
      * @var int
      */
-    protected $rogueApAggressivenessMode;
+    public int $rogueApAggressivenessMode;
     /**
      * @var int
      */
-    protected $rogueApJammingThreshold;
+    public int $rogueApJammingThreshold;
     /**
      * Directed multicast from wired client to network.
      *
      * @var bool
      */
-    protected $directedMulticastFromWiredClientEnabled;
+    public bool $directedMulticastFromWiredClientEnabled;
     /**
      * Directed multicast from wireless client to network.
      *
      * @var bool
      */
-    protected $directedMulticastFromWirelessClientEnabled;
+    public bool $directedMulticastFromWirelessClientEnabled;
     /**
      * Directed multicast from network to wired / wireless client.
      *
      * @var bool
      */
-    protected $directedMulticastFromNetworkEnabled;
+    public bool $directedMulticastFromNetworkEnabled;
     /**
      * LTE band lock channels options
      *
      * @var list<CommonLteBandLockChannel>
      */
-    protected $lteBandLockChannels;
+    public array $lteBandLockChannels;
     /**
      * Set AP group as monitoring group.
      *
      * @var bool
      */
-    protected $monitoringEnabled;
+    public bool $monitoringEnabled;
     /**
      * Override Rogue AP policy ID (only for monitoring group).
      *
      * @var string
      */
-    protected $apGroupRoguePolicy;
+    public string $apGroupRoguePolicy;
     /**
      * Set rogue scan frequency (only for monitoring group).
      *
      * @var string
      */
-    protected $rogueScanFreq;
+    public string $rogueScanFreq;
     /**
      * @var bool
      */
-    protected $paloAltoFirewallProfileOverrided;
+    public bool $paloAltoFirewallProfileOverrided;
     /**
      * @var string
      */
-    protected $paloAltoFirewallProfileId;
+    public string $paloAltoFirewallProfileId;
     /**
      * Ruckus GRE tunnel broadcast packet forwarding
      *
      * @var bool
      */
-    protected $rksGreForwardBroadcast;
+    public bool $rksGreForwardBroadcast;
     /**
      * Turn on/off BSS coloring mechanism.
      *
      * @var bool
      */
-    protected $bssColoringEnable;
+    public bool $bssColoringEnable;
     /**
      * @var RadioRadioConfigApGroup
      */
-    protected $radioConfig;
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-    /**
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription(string $description): self
-    {
-        $this->initialized['description'] = true;
-        $this->description = $description;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getLocation(): string
-    {
-        return $this->location;
-    }
-    /**
-     * @param string $location
-     *
-     * @return self
-     */
-    public function setLocation(string $location): self
-    {
-        $this->initialized['location'] = true;
-        $this->location = $location;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getLocationAdditionalInfo(): string
-    {
-        return $this->locationAdditionalInfo;
-    }
-    /**
-     * @param string $locationAdditionalInfo
-     *
-     * @return self
-     */
-    public function setLocationAdditionalInfo(string $locationAdditionalInfo): self
-    {
-        $this->initialized['locationAdditionalInfo'] = true;
-        $this->locationAdditionalInfo = $locationAdditionalInfo;
-        return $this;
-    }
-    /**
-     * @return CommonAltitude
-     */
-    public function getAltitude(): CommonAltitude
-    {
-        return $this->altitude;
-    }
-    /**
-     * @param CommonAltitude $altitude
-     *
-     * @return self
-     */
-    public function setAltitude(CommonAltitude $altitude): self
-    {
-        $this->initialized['altitude'] = true;
-        $this->altitude = $altitude;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getLatitude(): float
-    {
-        return $this->latitude;
-    }
-    /**
-     * @param float $latitude
-     *
-     * @return self
-     */
-    public function setLatitude(float $latitude): self
-    {
-        $this->initialized['latitude'] = true;
-        $this->latitude = $latitude;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getLongitude(): float
-    {
-        return $this->longitude;
-    }
-    /**
-     * @param float $longitude
-     *
-     * @return self
-     */
-    public function setLongitude(float $longitude): self
-    {
-        $this->initialized['longitude'] = true;
-        $this->longitude = $longitude;
-        return $this;
-    }
-    /**
-     * @return CommonOverrideGenericRef
-     */
-    public function getLocationBasedService(): CommonOverrideGenericRef
-    {
-        return $this->locationBasedService;
-    }
-    /**
-     * @param CommonOverrideGenericRef $locationBasedService
-     *
-     * @return self
-     */
-    public function setLocationBasedService(CommonOverrideGenericRef $locationBasedService): self
-    {
-        $this->initialized['locationBasedService'] = true;
-        $this->locationBasedService = $locationBasedService;
-        return $this;
-    }
-    /**
-     * @return CommonOverrideClientAdmissionControl
-     */
-    public function getClientAdmissionControl24(): CommonOverrideClientAdmissionControl
-    {
-        return $this->clientAdmissionControl24;
-    }
-    /**
-     * @param CommonOverrideClientAdmissionControl $clientAdmissionControl24
-     *
-     * @return self
-     */
-    public function setClientAdmissionControl24(CommonOverrideClientAdmissionControl $clientAdmissionControl24): self
-    {
-        $this->initialized['clientAdmissionControl24'] = true;
-        $this->clientAdmissionControl24 = $clientAdmissionControl24;
-        return $this;
-    }
-    /**
-     * @return CommonOverrideClientAdmissionControl
-     */
-    public function getClientAdmissionControl50(): CommonOverrideClientAdmissionControl
-    {
-        return $this->clientAdmissionControl50;
-    }
-    /**
-     * @param CommonOverrideClientAdmissionControl $clientAdmissionControl50
-     *
-     * @return self
-     */
-    public function setClientAdmissionControl50(CommonOverrideClientAdmissionControl $clientAdmissionControl50): self
-    {
-        $this->initialized['clientAdmissionControl50'] = true;
-        $this->clientAdmissionControl50 = $clientAdmissionControl50;
-        return $this;
-    }
-    /**
-     * @return ZoneApSnmpOptions
-     */
-    public function getSnmpAgent(): ZoneApSnmpOptions
-    {
-        return $this->snmpAgent;
-    }
-    /**
-     * @param ZoneApSnmpOptions $snmpAgent
-     *
-     * @return self
-     */
-    public function setSnmpAgent(ZoneApSnmpOptions $snmpAgent): self
-    {
-        $this->initialized['snmpAgent'] = true;
-        $this->snmpAgent = $snmpAgent;
-        return $this;
-    }
-    /**
-     * @return CommonGenericRef
-     */
-    public function getVenueProfile(): CommonGenericRef
-    {
-        return $this->venueProfile;
-    }
-    /**
-     * @param CommonGenericRef $venueProfile
-     *
-     * @return self
-     */
-    public function setVenueProfile(CommonGenericRef $venueProfile): self
-    {
-        $this->initialized['venueProfile'] = true;
-        $this->venueProfile = $venueProfile;
-        return $this;
-    }
-    /**
-     * channel evaluation Interval of the ap group
-     *
-     * @return int
-     */
-    public function getChannelEvaluationInterval(): int
-    {
-        return $this->channelEvaluationInterval;
-    }
-    /**
-     * channel evaluation Interval of the ap group
-     *
-     * @param int $channelEvaluationInterval
-     *
-     * @return self
-     */
-    public function setChannelEvaluationInterval(int $channelEvaluationInterval): self
-    {
-        $this->initialized['channelEvaluationInterval'] = true;
-        $this->channelEvaluationInterval = $channelEvaluationInterval;
-        return $this;
-    }
-    /**
-     * @return CommonApManagementVlan
-     */
-    public function getApMgmtVlan(): CommonApManagementVlan
-    {
-        return $this->apMgmtVlan;
-    }
-    /**
-     * @param CommonApManagementVlan $apMgmtVlan
-     *
-     * @return self
-     */
-    public function setApMgmtVlan(CommonApManagementVlan $apMgmtVlan): self
-    {
-        $this->initialized['apMgmtVlan'] = true;
-        $this->apMgmtVlan = $apMgmtVlan;
-        return $this;
-    }
-    /**
-     * Venue Code
-     *
-     * @return string
-     */
-    public function getAwsVenue(): string
-    {
-        return $this->awsVenue;
-    }
-    /**
-     * Venue Code
-     *
-     * @param string $awsVenue
-     *
-     * @return self
-     */
-    public function setAwsVenue(string $awsVenue): self
-    {
-        $this->initialized['awsVenue'] = true;
-        $this->awsVenue = $awsVenue;
-        return $this;
-    }
-    /**
-     * @return CommonRecoverySsid
-     */
-    public function getRecoverySsid(): CommonRecoverySsid
-    {
-        return $this->recoverySsid;
-    }
-    /**
-     * @param CommonRecoverySsid $recoverySsid
-     *
-     * @return self
-     */
-    public function setRecoverySsid(CommonRecoverySsid $recoverySsid): self
-    {
-        $this->initialized['recoverySsid'] = true;
-        $this->recoverySsid = $recoverySsid;
-        return $this;
-    }
-    /**
-     * Rogue AP report will leave out all entries that have signal strength lower than this threshold.
-     *
-     * @return int
-     */
-    public function getRogueApReportThreshold(): int
-    {
-        return $this->rogueApReportThreshold;
-    }
-    /**
-     * Rogue AP report will leave out all entries that have signal strength lower than this threshold.
-     *
-     * @param int $rogueApReportThreshold
-     *
-     * @return self
-     */
-    public function setRogueApReportThreshold(int $rogueApReportThreshold): self
-    {
-        $this->initialized['rogueApReportThreshold'] = true;
-        $this->rogueApReportThreshold = $rogueApReportThreshold;
-        return $this;
-    }
-    /**
-     * Adjust the frequency interval to de-authenticate rogue APs.
-     *
-     * @return int
-     */
-    public function getRogueApAggressivenessMode(): int
-    {
-        return $this->rogueApAggressivenessMode;
-    }
-    /**
-     * Adjust the frequency interval to de-authenticate rogue APs.
-     *
-     * @param int $rogueApAggressivenessMode
-     *
-     * @return self
-     */
-    public function setRogueApAggressivenessMode(int $rogueApAggressivenessMode): self
-    {
-        $this->initialized['rogueApAggressivenessMode'] = true;
-        $this->rogueApAggressivenessMode = $rogueApAggressivenessMode;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getRogueApJammingThreshold(): int
-    {
-        return $this->rogueApJammingThreshold;
-    }
-    /**
-     * @param int $rogueApJammingThreshold
-     *
-     * @return self
-     */
-    public function setRogueApJammingThreshold(int $rogueApJammingThreshold): self
-    {
-        $this->initialized['rogueApJammingThreshold'] = true;
-        $this->rogueApJammingThreshold = $rogueApJammingThreshold;
-        return $this;
-    }
-    /**
-     * Directed multicast from wired client to network.
-     *
-     * @return bool
-     */
-    public function getDirectedMulticastFromWiredClientEnabled(): bool
-    {
-        return $this->directedMulticastFromWiredClientEnabled;
-    }
-    /**
-     * Directed multicast from wired client to network.
-     *
-     * @param bool $directedMulticastFromWiredClientEnabled
-     *
-     * @return self
-     */
-    public function setDirectedMulticastFromWiredClientEnabled(bool $directedMulticastFromWiredClientEnabled): self
-    {
-        $this->initialized['directedMulticastFromWiredClientEnabled'] = true;
-        $this->directedMulticastFromWiredClientEnabled = $directedMulticastFromWiredClientEnabled;
-        return $this;
-    }
-    /**
-     * Directed multicast from wireless client to network.
-     *
-     * @return bool
-     */
-    public function getDirectedMulticastFromWirelessClientEnabled(): bool
-    {
-        return $this->directedMulticastFromWirelessClientEnabled;
-    }
-    /**
-     * Directed multicast from wireless client to network.
-     *
-     * @param bool $directedMulticastFromWirelessClientEnabled
-     *
-     * @return self
-     */
-    public function setDirectedMulticastFromWirelessClientEnabled(bool $directedMulticastFromWirelessClientEnabled): self
-    {
-        $this->initialized['directedMulticastFromWirelessClientEnabled'] = true;
-        $this->directedMulticastFromWirelessClientEnabled = $directedMulticastFromWirelessClientEnabled;
-        return $this;
-    }
-    /**
-     * Directed multicast from network to wired / wireless client.
-     *
-     * @return bool
-     */
-    public function getDirectedMulticastFromNetworkEnabled(): bool
-    {
-        return $this->directedMulticastFromNetworkEnabled;
-    }
-    /**
-     * Directed multicast from network to wired / wireless client.
-     *
-     * @param bool $directedMulticastFromNetworkEnabled
-     *
-     * @return self
-     */
-    public function setDirectedMulticastFromNetworkEnabled(bool $directedMulticastFromNetworkEnabled): self
-    {
-        $this->initialized['directedMulticastFromNetworkEnabled'] = true;
-        $this->directedMulticastFromNetworkEnabled = $directedMulticastFromNetworkEnabled;
-        return $this;
-    }
-    /**
-     * LTE band lock channels options
-     *
-     * @return list<CommonLteBandLockChannel>
-     */
-    public function getLteBandLockChannels(): array
-    {
-        return $this->lteBandLockChannels;
-    }
-    /**
-     * LTE band lock channels options
-     *
-     * @param list<CommonLteBandLockChannel> $lteBandLockChannels
-     *
-     * @return self
-     */
-    public function setLteBandLockChannels(array $lteBandLockChannels): self
-    {
-        $this->initialized['lteBandLockChannels'] = true;
-        $this->lteBandLockChannels = $lteBandLockChannels;
-        return $this;
-    }
-    /**
-     * Set AP group as monitoring group.
-     *
-     * @return bool
-     */
-    public function getMonitoringEnabled(): bool
-    {
-        return $this->monitoringEnabled;
-    }
-    /**
-     * Set AP group as monitoring group.
-     *
-     * @param bool $monitoringEnabled
-     *
-     * @return self
-     */
-    public function setMonitoringEnabled(bool $monitoringEnabled): self
-    {
-        $this->initialized['monitoringEnabled'] = true;
-        $this->monitoringEnabled = $monitoringEnabled;
-        return $this;
-    }
-    /**
-     * Override Rogue AP policy ID (only for monitoring group).
-     *
-     * @return string
-     */
-    public function getApGroupRoguePolicy(): string
-    {
-        return $this->apGroupRoguePolicy;
-    }
-    /**
-     * Override Rogue AP policy ID (only for monitoring group).
-     *
-     * @param string $apGroupRoguePolicy
-     *
-     * @return self
-     */
-    public function setApGroupRoguePolicy(string $apGroupRoguePolicy): self
-    {
-        $this->initialized['apGroupRoguePolicy'] = true;
-        $this->apGroupRoguePolicy = $apGroupRoguePolicy;
-        return $this;
-    }
-    /**
-     * Set rogue scan frequency (only for monitoring group).
-     *
-     * @return string
-     */
-    public function getRogueScanFreq(): string
-    {
-        return $this->rogueScanFreq;
-    }
-    /**
-     * Set rogue scan frequency (only for monitoring group).
-     *
-     * @param string $rogueScanFreq
-     *
-     * @return self
-     */
-    public function setRogueScanFreq(string $rogueScanFreq): self
-    {
-        $this->initialized['rogueScanFreq'] = true;
-        $this->rogueScanFreq = $rogueScanFreq;
-        return $this;
-    }
-    /**
-     * @return bool
-     */
-    public function getPaloAltoFirewallProfileOverrided(): bool
-    {
-        return $this->paloAltoFirewallProfileOverrided;
-    }
-    /**
-     * @param bool $paloAltoFirewallProfileOverrided
-     *
-     * @return self
-     */
-    public function setPaloAltoFirewallProfileOverrided(bool $paloAltoFirewallProfileOverrided): self
-    {
-        $this->initialized['paloAltoFirewallProfileOverrided'] = true;
-        $this->paloAltoFirewallProfileOverrided = $paloAltoFirewallProfileOverrided;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getPaloAltoFirewallProfileId(): string
-    {
-        return $this->paloAltoFirewallProfileId;
-    }
-    /**
-     * @param string $paloAltoFirewallProfileId
-     *
-     * @return self
-     */
-    public function setPaloAltoFirewallProfileId(string $paloAltoFirewallProfileId): self
-    {
-        $this->initialized['paloAltoFirewallProfileId'] = true;
-        $this->paloAltoFirewallProfileId = $paloAltoFirewallProfileId;
-        return $this;
-    }
-    /**
-     * Ruckus GRE tunnel broadcast packet forwarding
-     *
-     * @return bool
-     */
-    public function getRksGreForwardBroadcast(): bool
-    {
-        return $this->rksGreForwardBroadcast;
-    }
-    /**
-     * Ruckus GRE tunnel broadcast packet forwarding
-     *
-     * @param bool $rksGreForwardBroadcast
-     *
-     * @return self
-     */
-    public function setRksGreForwardBroadcast(bool $rksGreForwardBroadcast): self
-    {
-        $this->initialized['rksGreForwardBroadcast'] = true;
-        $this->rksGreForwardBroadcast = $rksGreForwardBroadcast;
-        return $this;
-    }
-    /**
-     * Turn on/off BSS coloring mechanism.
-     *
-     * @return bool
-     */
-    public function getBssColoringEnable(): bool
-    {
-        return $this->bssColoringEnable;
-    }
-    /**
-     * Turn on/off BSS coloring mechanism.
-     *
-     * @param bool $bssColoringEnable
-     *
-     * @return self
-     */
-    public function setBssColoringEnable(bool $bssColoringEnable): self
-    {
-        $this->initialized['bssColoringEnable'] = true;
-        $this->bssColoringEnable = $bssColoringEnable;
-        return $this;
-    }
-    /**
-     * @return RadioRadioConfigApGroup
-     */
-    public function getRadioConfig(): RadioRadioConfigApGroup
-    {
-        return $this->radioConfig;
-    }
-    /**
-     * @param RadioRadioConfigApGroup $radioConfig
-     *
-     * @return self
-     */
-    public function setRadioConfig(RadioRadioConfigApGroup $radioConfig): self
-    {
-        $this->initialized['radioConfig'] = true;
-        $this->radioConfig = $radioConfig;
-        return $this;
-    }
+    public RadioRadioConfigApGroup $radioConfig;
 }

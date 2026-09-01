@@ -8,169 +8,35 @@ class ConfigurationIndexNotFoundException implements AdditionalPropertiesInterfa
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string
      */
-    protected $traceLevel;
+    public string $traceLevel;
     /**
      * @var string|null
      */
-    protected $traceId;
+    public ?string $traceId;
     /**
      * @var string|null
      */
-    protected $traceJobId;
+    public ?string $traceJobId;
     /**
      * @var int
      */
-    protected $httpStatusCode;
+    public int $httpStatusCode;
     /**
      * @var string|null
      */
-    protected $exceptionMessage;
+    public ?string $exceptionMessage;
     /**
      * @var string
      */
-    protected $kind;
+    public string $kind;
     /**
      * @var string|null
      */
-    protected $configurationIndex;
-    /**
-     * @return string
-     */
-    public function getTraceLevel(): string
-    {
-        return $this->traceLevel;
-    }
-    /**
-     * @param string $traceLevel
-     *
-     * @return self
-     */
-    public function setTraceLevel(string $traceLevel): self
-    {
-        $this->initialized['traceLevel'] = true;
-        $this->traceLevel = $traceLevel;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getTraceId(): ?string
-    {
-        return $this->traceId;
-    }
-    /**
-     * @param string|null $traceId
-     *
-     * @return self
-     */
-    public function setTraceId(?string $traceId): self
-    {
-        $this->initialized['traceId'] = true;
-        $this->traceId = $traceId;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getTraceJobId(): ?string
-    {
-        return $this->traceJobId;
-    }
-    /**
-     * @param string|null $traceJobId
-     *
-     * @return self
-     */
-    public function setTraceJobId(?string $traceJobId): self
-    {
-        $this->initialized['traceJobId'] = true;
-        $this->traceJobId = $traceJobId;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getHttpStatusCode(): int
-    {
-        return $this->httpStatusCode;
-    }
-    /**
-     * @param int $httpStatusCode
-     *
-     * @return self
-     */
-    public function setHttpStatusCode(int $httpStatusCode): self
-    {
-        $this->initialized['httpStatusCode'] = true;
-        $this->httpStatusCode = $httpStatusCode;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getExceptionMessage(): ?string
-    {
-        return $this->exceptionMessage;
-    }
-    /**
-     * @param string|null $exceptionMessage
-     *
-     * @return self
-     */
-    public function setExceptionMessage(?string $exceptionMessage): self
-    {
-        $this->initialized['exceptionMessage'] = true;
-        $this->exceptionMessage = $exceptionMessage;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getKind(): string
-    {
-        return $this->kind;
-    }
-    /**
-     * @param string $kind
-     *
-     * @return self
-     */
-    public function setKind(string $kind): self
-    {
-        $this->initialized['kind'] = true;
-        $this->kind = $kind;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getConfigurationIndex(): ?string
-    {
-        return $this->configurationIndex;
-    }
-    /**
-     * @param string|null $configurationIndex
-     *
-     * @return self
-     */
-    public function setConfigurationIndex(?string $configurationIndex): self
-    {
-        $this->initialized['configurationIndex'] = true;
-        $this->configurationIndex = $configurationIndex;
-        return $this;
-    }
+    public ?string $configurationIndex;
     public function definedProperties(): array
     {
-        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'configurationIndex' => ['configurationIndex', 'getConfigurationIndex', 'setConfigurationIndex']];
+        return ['traceLevel' => 'traceLevel', 'traceId' => 'traceId', 'traceJobId' => 'traceJobId', 'httpStatusCode' => 'httpStatusCode', 'exceptionMessage' => 'exceptionMessage', 'kind' => 'kind', 'configurationIndex' => 'configurationIndex'];
     }
 }

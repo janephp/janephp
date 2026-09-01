@@ -42,7 +42,7 @@ class ResponseEventsLogsNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['events'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\EventsLogs::class, 'json', $context);
             }
-            $object->setEvents($values);
+            $object->events = $values;
             unset($data['events']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseEventsLogsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('events') && null !== $data->getEvents()) {
+        if (array_key_exists('events', get_object_vars($data)) && null !== ($data->events ?? null)) {
             $values = [];
-            foreach ($data->getEvents() as $value) {
+            foreach ($data->events ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['events'] = $values;

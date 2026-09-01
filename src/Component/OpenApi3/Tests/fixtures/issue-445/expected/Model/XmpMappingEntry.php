@@ -8,205 +8,47 @@ class XmpMappingEntry implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Direction of the mapping.
      *
      * @var string
      */
-    protected $direction;
+    public string $direction;
     /**
      * Priority of the mapping.
      *
      * @var int
      */
-    protected $priority;
+    public int $priority;
     /**
      * Stop processing further mappings for the same field if a value was found.
      *
      * @var bool
      */
-    protected $stopProcessing;
+    public bool $stopProcessing;
     /**
      * Path to source property in XMP.
      *
      * @var string
      */
-    protected $xmpPath;
+    public string $xmpPath;
     /**
      * Path to target property in metadata.
      *
      * @var string
      */
-    protected $metadataPath;
+    public string $metadataPath;
     /**
      * Optional additional configuration for the mapping.
      *
      * @var XmpMappingEntryConfigurationBase|null
      */
-    protected $configuration;
+    public ?XmpMappingEntryConfigurationBase $configuration;
     /**
      * @var string
      */
-    protected $id;
-    /**
-     * Direction of the mapping.
-     *
-     * @return string
-     */
-    public function getDirection(): string
-    {
-        return $this->direction;
-    }
-    /**
-     * Direction of the mapping.
-     *
-     * @param string $direction
-     *
-     * @return self
-     */
-    public function setDirection(string $direction): self
-    {
-        $this->initialized['direction'] = true;
-        $this->direction = $direction;
-        return $this;
-    }
-    /**
-     * Priority of the mapping.
-     *
-     * @return int
-     */
-    public function getPriority(): int
-    {
-        return $this->priority;
-    }
-    /**
-     * Priority of the mapping.
-     *
-     * @param int $priority
-     *
-     * @return self
-     */
-    public function setPriority(int $priority): self
-    {
-        $this->initialized['priority'] = true;
-        $this->priority = $priority;
-        return $this;
-    }
-    /**
-     * Stop processing further mappings for the same field if a value was found.
-     *
-     * @return bool
-     */
-    public function getStopProcessing(): bool
-    {
-        return $this->stopProcessing;
-    }
-    /**
-     * Stop processing further mappings for the same field if a value was found.
-     *
-     * @param bool $stopProcessing
-     *
-     * @return self
-     */
-    public function setStopProcessing(bool $stopProcessing): self
-    {
-        $this->initialized['stopProcessing'] = true;
-        $this->stopProcessing = $stopProcessing;
-        return $this;
-    }
-    /**
-     * Path to source property in XMP.
-     *
-     * @return string
-     */
-    public function getXmpPath(): string
-    {
-        return $this->xmpPath;
-    }
-    /**
-     * Path to source property in XMP.
-     *
-     * @param string $xmpPath
-     *
-     * @return self
-     */
-    public function setXmpPath(string $xmpPath): self
-    {
-        $this->initialized['xmpPath'] = true;
-        $this->xmpPath = $xmpPath;
-        return $this;
-    }
-    /**
-     * Path to target property in metadata.
-     *
-     * @return string
-     */
-    public function getMetadataPath(): string
-    {
-        return $this->metadataPath;
-    }
-    /**
-     * Path to target property in metadata.
-     *
-     * @param string $metadataPath
-     *
-     * @return self
-     */
-    public function setMetadataPath(string $metadataPath): self
-    {
-        $this->initialized['metadataPath'] = true;
-        $this->metadataPath = $metadataPath;
-        return $this;
-    }
-    /**
-     * Optional additional configuration for the mapping.
-     *
-     * @return XmpMappingEntryConfigurationBase|null
-     */
-    public function getConfiguration(): ?XmpMappingEntryConfigurationBase
-    {
-        return $this->configuration;
-    }
-    /**
-     * Optional additional configuration for the mapping.
-     *
-     * @param XmpMappingEntryConfigurationBase|null $configuration
-     *
-     * @return self
-     */
-    public function setConfiguration(?XmpMappingEntryConfigurationBase $configuration): self
-    {
-        $this->initialized['configuration'] = true;
-        $this->configuration = $configuration;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
+    public string $id;
     public function definedProperties(): array
     {
-        return ['direction' => ['direction', 'getDirection', 'setDirection'], 'priority' => ['priority', 'getPriority', 'setPriority'], 'stopProcessing' => ['stopProcessing', 'getStopProcessing', 'setStopProcessing'], 'xmpPath' => ['xmpPath', 'getXmpPath', 'setXmpPath'], 'metadataPath' => ['metadataPath', 'getMetadataPath', 'setMetadataPath'], 'configuration' => ['configuration', 'getConfiguration', 'setConfiguration'], 'id' => ['id', 'getId', 'setId']];
+        return ['direction' => 'direction', 'priority' => 'priority', 'stopProcessing' => 'stopProcessing', 'xmpPath' => 'xmpPath', 'metadataPath' => 'metadataPath', 'configuration' => 'configuration', 'id' => 'id'];
     }
 }

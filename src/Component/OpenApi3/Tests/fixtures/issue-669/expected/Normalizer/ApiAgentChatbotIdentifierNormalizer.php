@@ -38,7 +38,7 @@ class ApiAgentChatbotIdentifierNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('agent_chatbot_identifier', $data)) {
-            $object->setAgentChatbotIdentifier($data['agent_chatbot_identifier']);
+            $object->agentChatbotIdentifier = $data['agent_chatbot_identifier'];
             unset($data['agent_chatbot_identifier']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiAgentChatbotIdentifierNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agentChatbotIdentifier') && null !== $data->getAgentChatbotIdentifier()) {
-            $dataArray['agent_chatbot_identifier'] = $data->getAgentChatbotIdentifier();
+        if (array_key_exists('agentChatbotIdentifier', get_object_vars($data)) && null !== ($data->agentChatbotIdentifier ?? null)) {
+            $dataArray['agent_chatbot_identifier'] = $data->agentChatbotIdentifier ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

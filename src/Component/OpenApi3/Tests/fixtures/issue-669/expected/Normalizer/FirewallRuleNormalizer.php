@@ -38,19 +38,19 @@ class FirewallRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('cluster_uuid', $data)) {
-            $object->setClusterUuid($data['cluster_uuid']);
+            $object->clusterUuid = $data['cluster_uuid'];
             unset($data['cluster_uuid']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
             unset($data['value']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -58,7 +58,7 @@ class FirewallRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         foreach ($data as $key => $value) {
@@ -71,11 +71,11 @@ class FirewallRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
-        $dataArray['type'] = $data->getType();
-        $dataArray['value'] = $data->getValue();
+        $dataArray['type'] = $data->type ?? null;
+        $dataArray['value'] = $data->value ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

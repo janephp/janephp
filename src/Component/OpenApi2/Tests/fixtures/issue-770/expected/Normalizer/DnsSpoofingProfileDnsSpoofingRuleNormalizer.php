@@ -38,23 +38,23 @@ class DnsSpoofingProfileDnsSpoofingRuleNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('domainName', $data)) {
-            $object->setDomainName($data['domainName']);
+            $object->domainName = $data['domainName'];
         }
         if (\array_key_exists('ipList', $data)) {
             $values = [];
             foreach ($data['ipList'] as $value) {
                 $values[] = $value;
             }
-            $object->setIpList($values);
+            $object->ipList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domainName'] = $data->getDomainName();
+        $dataArray['domainName'] = $data->domainName ?? null;
         $values = [];
-        foreach ($data->getIpList() as $value) {
+        foreach ($data->ipList ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['ipList'] = $values;

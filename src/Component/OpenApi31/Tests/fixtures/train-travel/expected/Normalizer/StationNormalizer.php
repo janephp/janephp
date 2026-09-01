@@ -41,23 +41,23 @@ class StationNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\StationConstraint());
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('address', $data)) {
-            $object->setAddress($data['address']);
+            $object->address = $data['address'];
             unset($data['address']);
         }
         if (\array_key_exists('country_code', $data)) {
-            $object->setCountryCode($data['country_code']);
+            $object->countryCode = $data['country_code'];
             unset($data['country_code']);
         }
         if (\array_key_exists('timezone', $data)) {
-            $object->setTimezone($data['timezone']);
+            $object->timezone = $data['timezone'];
             unset($data['timezone']);
         }
         foreach ($data as $key => $value) {
@@ -70,12 +70,12 @@ class StationNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $dataArray['address'] = $data->getAddress();
-        $dataArray['country_code'] = $data->getCountryCode();
-        if ($data->isInitialized('timezone') && null !== $data->getTimezone()) {
-            $dataArray['timezone'] = $data->getTimezone();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['address'] = $data->address ?? null;
+        $dataArray['country_code'] = $data->countryCode ?? null;
+        if (array_key_exists('timezone', get_object_vars($data)) && null !== ($data->timezone ?? null)) {
+            $dataArray['timezone'] = $data->timezone ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

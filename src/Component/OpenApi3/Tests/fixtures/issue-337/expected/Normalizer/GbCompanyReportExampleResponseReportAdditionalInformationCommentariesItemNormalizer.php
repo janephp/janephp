@@ -38,11 +38,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItemN
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('commentaryText', $data)) {
-            $object->setCommentaryText($data['commentaryText']);
+            $object->commentaryText = $data['commentaryText'];
             unset($data['commentaryText']);
         }
         if (\array_key_exists('positiveNegative', $data)) {
-            $object->setPositiveNegative($data['positiveNegative']);
+            $object->positiveNegative = $data['positiveNegative'];
             unset($data['positiveNegative']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItemN
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('commentaryText') && null !== $data->getCommentaryText()) {
-            $dataArray['commentaryText'] = $data->getCommentaryText();
+        if (array_key_exists('commentaryText', get_object_vars($data)) && null !== ($data->commentaryText ?? null)) {
+            $dataArray['commentaryText'] = $data->commentaryText ?? null;
         }
-        if ($data->isInitialized('positiveNegative') && null !== $data->getPositiveNegative()) {
-            $dataArray['positiveNegative'] = $data->getPositiveNegative();
+        if (array_key_exists('positiveNegative', get_object_vars($data)) && null !== ($data->positiveNegative ?? null)) {
+            $dataArray['positiveNegative'] = $data->positiveNegative ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

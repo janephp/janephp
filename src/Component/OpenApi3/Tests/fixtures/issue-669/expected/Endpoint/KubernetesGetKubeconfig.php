@@ -35,7 +35,7 @@ class KubernetesGetKubeconfig extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * @param array{
      *    "expiry_seconds"?: int, //The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
      * } $queryParameters
-     * @param array $accept Accept content header application/yaml|application/json
+     * @param array $accept Accept content header application/json|application/yaml
      */
     public function __construct(string $clusterId, array $queryParameters = [], array $accept = [])
     {
@@ -59,7 +59,7 @@ class KubernetesGetKubeconfig extends \Jane\Generated\DigitalOcean\Runtime\Clien
     public function getExtraHeaders(): array
     {
         if (empty($this->accept)) {
-            return ['Accept' => ['application/yaml', 'application/json']];
+            return ['Accept' => ['application/json', 'application/yaml']];
         }
         return $this->accept;
     }
@@ -88,16 +88,16 @@ class KubernetesGetKubeconfig extends \Jane\Generated\DigitalOcean\Runtime\Clien
         $body = (string) $response->getBody();
         if (200 === $status) {
         }
-        if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigNotFoundException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (429 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (429 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigTooManyRequestsException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
         if (stripos(strtolower($contentType), 'application/json') !== false) {

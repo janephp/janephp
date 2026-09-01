@@ -38,19 +38,19 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCredi
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('commonValue', $data)) {
-            $object->setCommonValue($data['commonValue']);
+            $object->commonValue = $data['commonValue'];
             unset($data['commonValue']);
         }
         if (\array_key_exists('commonDescription', $data)) {
-            $object->setCommonDescription($data['commonDescription']);
+            $object->commonDescription = $data['commonDescription'];
             unset($data['commonDescription']);
         }
         if (\array_key_exists('creditLimit', $data)) {
-            $object->setCreditLimit($this->denormalizer->denormalize($data['creditLimit'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRatingCreditLimit::class, 'json', $context));
+            $object->creditLimit = $this->denormalizer->denormalize($data['creditLimit'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRatingCreditLimit::class, 'json', $context);
             unset($data['creditLimit']);
         }
         if (\array_key_exists('providerValue', $data)) {
-            $object->setProviderValue($this->denormalizer->denormalize($data['providerValue'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRatingProviderValue::class, 'json', $context));
+            $object->providerValue = $this->denormalizer->denormalize($data['providerValue'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRatingProviderValue::class, 'json', $context);
             unset($data['providerValue']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCredi
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('commonValue') && null !== $data->getCommonValue()) {
-            $dataArray['commonValue'] = $data->getCommonValue();
+        if (array_key_exists('commonValue', get_object_vars($data)) && null !== ($data->commonValue ?? null)) {
+            $dataArray['commonValue'] = $data->commonValue ?? null;
         }
-        if ($data->isInitialized('commonDescription') && null !== $data->getCommonDescription()) {
-            $dataArray['commonDescription'] = $data->getCommonDescription();
+        if (array_key_exists('commonDescription', get_object_vars($data)) && null !== ($data->commonDescription ?? null)) {
+            $dataArray['commonDescription'] = $data->commonDescription ?? null;
         }
-        if ($data->isInitialized('creditLimit') && null !== $data->getCreditLimit()) {
-            $dataArray['creditLimit'] = $data->getCreditLimit() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCreditLimit(), 'json', $context));
+        if (array_key_exists('creditLimit', get_object_vars($data)) && null !== ($data->creditLimit ?? null)) {
+            $dataArray['creditLimit'] = ($data->creditLimit ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditLimit ?? null, 'json', $context));
         }
-        if ($data->isInitialized('providerValue') && null !== $data->getProviderValue()) {
-            $dataArray['providerValue'] = $data->getProviderValue() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getProviderValue(), 'json', $context));
+        if (array_key_exists('providerValue', get_object_vars($data)) && null !== ($data->providerValue ?? null)) {
+            $dataArray['providerValue'] = ($data->providerValue ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->providerValue ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

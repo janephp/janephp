@@ -45,27 +45,27 @@ class ApiEvaluationDatasetNormalizer implements DenormalizerInterface, Normalize
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('dataset_name', $data)) {
-            $object->setDatasetName($data['dataset_name']);
+            $object->datasetName = $data['dataset_name'];
             unset($data['dataset_name']);
         }
         if (\array_key_exists('dataset_uuid', $data)) {
-            $object->setDatasetUuid($data['dataset_uuid']);
+            $object->datasetUuid = $data['dataset_uuid'];
             unset($data['dataset_uuid']);
         }
         if (\array_key_exists('file_size', $data)) {
-            $object->setFileSize($data['file_size']);
+            $object->fileSize = $data['file_size'];
             unset($data['file_size']);
         }
         if (\array_key_exists('has_ground_truth', $data)) {
-            $object->setHasGroundTruth($data['has_ground_truth']);
+            $object->hasGroundTruth = $data['has_ground_truth'];
             unset($data['has_ground_truth']);
         }
         if (\array_key_exists('row_count', $data)) {
-            $object->setRowCount($data['row_count']);
+            $object->rowCount = $data['row_count'];
             unset($data['row_count']);
         }
         foreach ($data as $key => $value) {
@@ -78,23 +78,23 @@ class ApiEvaluationDatasetNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('datasetName') && null !== $data->getDatasetName()) {
-            $dataArray['dataset_name'] = $data->getDatasetName();
+        if (array_key_exists('datasetName', get_object_vars($data)) && null !== ($data->datasetName ?? null)) {
+            $dataArray['dataset_name'] = $data->datasetName ?? null;
         }
-        if ($data->isInitialized('datasetUuid') && null !== $data->getDatasetUuid()) {
-            $dataArray['dataset_uuid'] = $data->getDatasetUuid();
+        if (array_key_exists('datasetUuid', get_object_vars($data)) && null !== ($data->datasetUuid ?? null)) {
+            $dataArray['dataset_uuid'] = $data->datasetUuid ?? null;
         }
-        if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
-            $dataArray['file_size'] = $data->getFileSize();
+        if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
+            $dataArray['file_size'] = $data->fileSize ?? null;
         }
-        if ($data->isInitialized('hasGroundTruth') && null !== $data->getHasGroundTruth()) {
-            $dataArray['has_ground_truth'] = $data->getHasGroundTruth();
+        if (array_key_exists('hasGroundTruth', get_object_vars($data)) && null !== ($data->hasGroundTruth ?? null)) {
+            $dataArray['has_ground_truth'] = $data->hasGroundTruth ?? null;
         }
-        if ($data->isInitialized('rowCount') && null !== $data->getRowCount()) {
-            $dataArray['row_count'] = $data->getRowCount();
+        if (array_key_exists('rowCount', get_object_vars($data)) && null !== ($data->rowCount ?? null)) {
+            $dataArray['row_count'] = $data->rowCount ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

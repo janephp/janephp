@@ -46,15 +46,15 @@ class ResponseListFirewallsResponseNormalizer implements DenormalizerInterface, 
                 }
                 $values[] = $values_1;
             }
-            $object->setFirewalls($values);
+            $object->firewalls = $values;
             unset($data['firewalls']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\PageLinks::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\PageLinks::class, 'json', $context);
             unset($data['links']);
         }
         if (\array_key_exists('meta', $data)) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\MetaMeta::class, 'json', $context));
+            $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\MetaMeta::class, 'json', $context);
             unset($data['meta']);
         }
         foreach ($data as $key_1 => $value_2) {
@@ -67,9 +67,9 @@ class ResponseListFirewallsResponseNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('firewalls') && null !== $data->getFirewalls()) {
+        if (array_key_exists('firewalls', get_object_vars($data)) && null !== ($data->firewalls ?? null)) {
             $values = [];
-            foreach ($data->getFirewalls() as $value) {
+            foreach ($data->firewalls ?? null as $value) {
                 $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
@@ -78,10 +78,10 @@ class ResponseListFirewallsResponseNormalizer implements DenormalizerInterface, 
             }
             $dataArray['firewalls'] = $values;
         }
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
-        $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
+        $dataArray['meta'] = ($data->meta ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_2;

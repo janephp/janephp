@@ -50,19 +50,19 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetPhysicalPropertiesConstraint());
         }
         if (\array_key_exists('mass', $data)) {
-            $object->setMass($data['mass']);
+            $object->mass = $data['mass'];
             unset($data['mass']);
         }
         if (\array_key_exists('radius', $data)) {
-            $object->setRadius($data['radius']);
+            $object->radius = $data['radius'];
             unset($data['radius']);
         }
         if (\array_key_exists('gravity', $data)) {
-            $object->setGravity($data['gravity']);
+            $object->gravity = $data['gravity'];
             unset($data['gravity']);
         }
         if (\array_key_exists('temperature', $data)) {
-            $object->setTemperature($this->denormalizer->denormalize($data['temperature'], \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalPropertiesTemperature::class, 'json', $context));
+            $object->temperature = $this->denormalizer->denormalize($data['temperature'], \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalPropertiesTemperature::class, 'json', $context);
             unset($data['temperature']);
         }
         foreach ($data as $key => $value) {
@@ -75,17 +75,17 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mass') && null !== $data->getMass()) {
-            $dataArray['mass'] = $data->getMass();
+        if (array_key_exists('mass', get_object_vars($data)) && null !== ($data->mass ?? null)) {
+            $dataArray['mass'] = $data->mass ?? null;
         }
-        if ($data->isInitialized('radius') && null !== $data->getRadius()) {
-            $dataArray['radius'] = $data->getRadius();
+        if (array_key_exists('radius', get_object_vars($data)) && null !== ($data->radius ?? null)) {
+            $dataArray['radius'] = $data->radius ?? null;
         }
-        if ($data->isInitialized('gravity') && null !== $data->getGravity()) {
-            $dataArray['gravity'] = $data->getGravity();
+        if (array_key_exists('gravity', get_object_vars($data)) && null !== ($data->gravity ?? null)) {
+            $dataArray['gravity'] = $data->gravity ?? null;
         }
-        if ($data->isInitialized('temperature') && null !== $data->getTemperature()) {
-            $dataArray['temperature'] = $data->getTemperature() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTemperature(), 'json', $context));
+        if (array_key_exists('temperature', get_object_vars($data)) && null !== ($data->temperature ?? null)) {
+            $dataArray['temperature'] = ($data->temperature ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->temperature ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

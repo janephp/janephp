@@ -41,21 +41,21 @@ class JoinTokensNormalizer implements DenormalizerInterface, NormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\JoinTokensConstraint());
         }
         if (\array_key_exists('Worker', $data)) {
-            $object->setWorker($data['Worker']);
+            $object->worker = $data['Worker'];
         }
         if (\array_key_exists('Manager', $data)) {
-            $object->setManager($data['Manager']);
+            $object->manager = $data['Manager'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('worker') && null !== $data->getWorker()) {
-            $dataArray['Worker'] = $data->getWorker();
+        if (array_key_exists('worker', get_object_vars($data)) && null !== ($data->worker ?? null)) {
+            $dataArray['Worker'] = $data->worker ?? null;
         }
-        if ($data->isInitialized('manager') && null !== $data->getManager()) {
-            $dataArray['Manager'] = $data->getManager();
+        if (array_key_exists('manager', get_object_vars($data)) && null !== ($data->manager ?? null)) {
+            $dataArray['Manager'] = $data->manager ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\JoinTokensConstraint());

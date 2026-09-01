@@ -41,33 +41,33 @@ class TaskSpecRestartPolicyNormalizer implements DenormalizerInterface, Normaliz
             $this->validate($data, new \Docker\Api\Validator\TaskSpecRestartPolicyConstraint());
         }
         if (\array_key_exists('Condition', $data)) {
-            $object->setCondition($data['Condition']);
+            $object->condition = $data['Condition'];
         }
         if (\array_key_exists('Delay', $data)) {
-            $object->setDelay($data['Delay']);
+            $object->delay = $data['Delay'];
         }
         if (\array_key_exists('MaxAttempts', $data)) {
-            $object->setMaxAttempts($data['MaxAttempts']);
+            $object->maxAttempts = $data['MaxAttempts'];
         }
         if (\array_key_exists('Window', $data)) {
-            $object->setWindow($data['Window']);
+            $object->window = $data['Window'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('condition') && null !== $data->getCondition()) {
-            $dataArray['Condition'] = $data->getCondition();
+        if (array_key_exists('condition', get_object_vars($data)) && null !== ($data->condition ?? null)) {
+            $dataArray['Condition'] = $data->condition ?? null;
         }
-        if ($data->isInitialized('delay') && null !== $data->getDelay()) {
-            $dataArray['Delay'] = $data->getDelay();
+        if (array_key_exists('delay', get_object_vars($data)) && null !== ($data->delay ?? null)) {
+            $dataArray['Delay'] = $data->delay ?? null;
         }
-        if ($data->isInitialized('maxAttempts') && null !== $data->getMaxAttempts()) {
-            $dataArray['MaxAttempts'] = $data->getMaxAttempts();
+        if (array_key_exists('maxAttempts', get_object_vars($data)) && null !== ($data->maxAttempts ?? null)) {
+            $dataArray['MaxAttempts'] = $data->maxAttempts ?? null;
         }
-        if ($data->isInitialized('window') && null !== $data->getWindow()) {
-            $dataArray['Window'] = $data->getWindow();
+        if (array_key_exists('window', get_object_vars($data)) && null !== ($data->window ?? null)) {
+            $dataArray['Window'] = $data->window ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecRestartPolicyConstraint());

@@ -10,16 +10,27 @@ use PhpParser\Node\Stmt;
 
 trait ServerPluginGenerator
 {
-    abstract protected function discoverServer($openApi): array;
+    /**
+     * @param object $openApi
+     *
+     * @return array{0: string|null, 1: string[]}
+     */
+    abstract protected function discoverServer(mixed $openApi): array;
 
-    protected function needsServerPlugins($openApi): bool
+    /**
+     * @param object $openApi
+     */
+    protected function needsServerPlugins(mixed $openApi): bool
     {
         [$baseUri] = $this->discoverServer($openApi);
 
         return !(empty($baseUri) || $baseUri === '/');
     }
 
-    protected function getServerPluginsStatements($openApi): array
+    /**
+     * @param object $openApi
+     */
+    protected function getServerPluginsStatements(mixed $openApi): array
     {
         [$baseUri, $plugins] = $this->discoverServer($openApi);
 

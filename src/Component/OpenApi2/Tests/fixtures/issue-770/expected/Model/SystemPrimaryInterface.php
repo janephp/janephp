@@ -5,235 +5,51 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class SystemPrimaryInterface
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * IP mode
      *
      * @var string
      */
-    protected $ipMode;
+    public string $ipMode;
     /**
      * IP address
      *
      * @var string
      */
-    protected $ipAddress;
+    public string $ipAddress;
     /**
      * Subnet mask
      *
      * @var string
      */
-    protected $subnetMask;
+    public string $subnetMask;
     /**
      * Gateway
      *
      * @var string
      */
-    protected $gateway;
+    public string $gateway;
     /**
      * Primary DNS server
      *
      * @var string
      */
-    protected $primaryDNSServer;
+    public string $primaryDNSServer;
     /**
      * Secondary DNS server
      *
      * @var string
      */
-    protected $secondaryDNSServer;
+    public string $secondaryDNSServer;
     /**
      * Vlan
      *
      * @var string
      */
-    protected $vlan;
+    public string $vlan;
     /**
      * NAT IP
      *
      * @var string
      */
-    protected $natIp;
-    /**
-     * IP mode
-     *
-     * @return string
-     */
-    public function getIpMode(): string
-    {
-        return $this->ipMode;
-    }
-    /**
-     * IP mode
-     *
-     * @param string $ipMode
-     *
-     * @return self
-     */
-    public function setIpMode(string $ipMode): self
-    {
-        $this->initialized['ipMode'] = true;
-        $this->ipMode = $ipMode;
-        return $this;
-    }
-    /**
-     * IP address
-     *
-     * @return string
-     */
-    public function getIpAddress(): string
-    {
-        return $this->ipAddress;
-    }
-    /**
-     * IP address
-     *
-     * @param string $ipAddress
-     *
-     * @return self
-     */
-    public function setIpAddress(string $ipAddress): self
-    {
-        $this->initialized['ipAddress'] = true;
-        $this->ipAddress = $ipAddress;
-        return $this;
-    }
-    /**
-     * Subnet mask
-     *
-     * @return string
-     */
-    public function getSubnetMask(): string
-    {
-        return $this->subnetMask;
-    }
-    /**
-     * Subnet mask
-     *
-     * @param string $subnetMask
-     *
-     * @return self
-     */
-    public function setSubnetMask(string $subnetMask): self
-    {
-        $this->initialized['subnetMask'] = true;
-        $this->subnetMask = $subnetMask;
-        return $this;
-    }
-    /**
-     * Gateway
-     *
-     * @return string
-     */
-    public function getGateway(): string
-    {
-        return $this->gateway;
-    }
-    /**
-     * Gateway
-     *
-     * @param string $gateway
-     *
-     * @return self
-     */
-    public function setGateway(string $gateway): self
-    {
-        $this->initialized['gateway'] = true;
-        $this->gateway = $gateway;
-        return $this;
-    }
-    /**
-     * Primary DNS server
-     *
-     * @return string
-     */
-    public function getPrimaryDNSServer(): string
-    {
-        return $this->primaryDNSServer;
-    }
-    /**
-     * Primary DNS server
-     *
-     * @param string $primaryDNSServer
-     *
-     * @return self
-     */
-    public function setPrimaryDNSServer(string $primaryDNSServer): self
-    {
-        $this->initialized['primaryDNSServer'] = true;
-        $this->primaryDNSServer = $primaryDNSServer;
-        return $this;
-    }
-    /**
-     * Secondary DNS server
-     *
-     * @return string
-     */
-    public function getSecondaryDNSServer(): string
-    {
-        return $this->secondaryDNSServer;
-    }
-    /**
-     * Secondary DNS server
-     *
-     * @param string $secondaryDNSServer
-     *
-     * @return self
-     */
-    public function setSecondaryDNSServer(string $secondaryDNSServer): self
-    {
-        $this->initialized['secondaryDNSServer'] = true;
-        $this->secondaryDNSServer = $secondaryDNSServer;
-        return $this;
-    }
-    /**
-     * Vlan
-     *
-     * @return string
-     */
-    public function getVlan(): string
-    {
-        return $this->vlan;
-    }
-    /**
-     * Vlan
-     *
-     * @param string $vlan
-     *
-     * @return self
-     */
-    public function setVlan(string $vlan): self
-    {
-        $this->initialized['vlan'] = true;
-        $this->vlan = $vlan;
-        return $this;
-    }
-    /**
-     * NAT IP
-     *
-     * @return string
-     */
-    public function getNatIp(): string
-    {
-        return $this->natIp;
-    }
-    /**
-     * NAT IP
-     *
-     * @param string $natIp
-     *
-     * @return self
-     */
-    public function setNatIp(string $natIp): self
-    {
-        $this->initialized['natIp'] = true;
-        $this->natIp = $natIp;
-        return $this;
-    }
+    public string $natIp;
 }

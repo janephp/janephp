@@ -42,10 +42,10 @@ class CreateThing extends \Jane\Component\OpenApi31\Tests\Client\Runtime\Client\
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Client\Model\Thing', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Client\Exception\CreateThingBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Client\Model\Error', 'json'), $response);
         }
     }

@@ -44,15 +44,15 @@ class AppMaintenanceSpecNormalizer implements DenormalizerInterface, NormalizerI
             $data['archive'] = (bool) $data['archive'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
             unset($data['enabled']);
         }
         if (\array_key_exists('archive', $data)) {
-            $object->setArchive($data['archive']);
+            $object->archive = $data['archive'];
             unset($data['archive']);
         }
         if (\array_key_exists('offline_page_url', $data)) {
-            $object->setOfflinePageUrl($data['offline_page_url']);
+            $object->offlinePageUrl = $data['offline_page_url'];
             unset($data['offline_page_url']);
         }
         foreach ($data as $key => $value) {
@@ -65,14 +65,14 @@ class AppMaintenanceSpecNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
-            $dataArray['enabled'] = $data->getEnabled();
+        if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
+            $dataArray['enabled'] = $data->enabled ?? null;
         }
-        if ($data->isInitialized('archive') && null !== $data->getArchive()) {
-            $dataArray['archive'] = $data->getArchive();
+        if (array_key_exists('archive', get_object_vars($data)) && null !== ($data->archive ?? null)) {
+            $dataArray['archive'] = $data->archive ?? null;
         }
-        if ($data->isInitialized('offlinePageUrl') && null !== $data->getOfflinePageUrl()) {
-            $dataArray['offline_page_url'] = $data->getOfflinePageUrl();
+        if (array_key_exists('offlinePageUrl', get_object_vars($data)) && null !== ($data->offlinePageUrl ?? null)) {
+            $dataArray['offline_page_url'] = $data->offlinePageUrl ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

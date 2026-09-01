@@ -41,11 +41,11 @@ class ItemNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\EnumAsObjects\Validator\ItemConstraint());
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus(\Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\ItemStatus::from($data['status']));
+            $object->status = \Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\ItemStatus::from($data['status']);
             unset($data['status']);
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority(\Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\Priority::from($data['priority']));
+            $object->priority = \Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\Priority::from($data['priority']);
             unset($data['priority']);
         }
         foreach ($data as $key => $value) {
@@ -58,8 +58,8 @@ class ItemNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['status'] = $data->getStatus()->value;
-        $dataArray['priority'] = $data->getPriority()->value;
+        $dataArray['status'] = ($data->status ?? null)->value;
+        $dataArray['priority'] = ($data->priority ?? null)->value;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

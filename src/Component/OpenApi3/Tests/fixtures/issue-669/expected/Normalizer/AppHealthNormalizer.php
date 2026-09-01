@@ -42,7 +42,7 @@ class AppHealthNormalizer implements DenormalizerInterface, NormalizerInterface,
             foreach ($data['components'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppComponentHealth::class, 'json', $context);
             }
-            $object->setComponents($values);
+            $object->components = $values;
             unset($data['components']);
         }
         if (\array_key_exists('functions_components', $data)) {
@@ -50,7 +50,7 @@ class AppHealthNormalizer implements DenormalizerInterface, NormalizerInterface,
             foreach ($data['functions_components'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\AppFunctionsComponentHealth::class, 'json', $context);
             }
-            $object->setFunctionsComponents($values_1);
+            $object->functionsComponents = $values_1;
             unset($data['functions_components']);
         }
         foreach ($data as $key => $value_2) {
@@ -63,16 +63,16 @@ class AppHealthNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('components') && null !== $data->getComponents()) {
+        if (array_key_exists('components', get_object_vars($data)) && null !== ($data->components ?? null)) {
             $values = [];
-            foreach ($data->getComponents() as $value) {
+            foreach ($data->components ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['components'] = $values;
         }
-        if ($data->isInitialized('functionsComponents') && null !== $data->getFunctionsComponents()) {
+        if (array_key_exists('functionsComponents', get_object_vars($data)) && null !== ($data->functionsComponents ?? null)) {
             $values_1 = [];
-            foreach ($data->getFunctionsComponents() as $value_1) {
+            foreach ($data->functionsComponents ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['functions_components'] = $values_1;

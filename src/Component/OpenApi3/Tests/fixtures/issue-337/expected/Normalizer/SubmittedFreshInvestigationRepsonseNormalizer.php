@@ -38,19 +38,19 @@ class SubmittedFreshInvestigationRepsonseNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('correlationId', $data)) {
-            $object->setCorrelationId($data['correlationId']);
+            $object->correlationId = $data['correlationId'];
             unset($data['correlationId']);
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
             unset($data['message']);
         }
         if (\array_key_exists('orderID', $data)) {
-            $object->setOrderID($data['orderID']);
+            $object->orderID = $data['orderID'];
             unset($data['orderID']);
         }
         if (\array_key_exists('transactionID', $data)) {
-            $object->setTransactionID($data['transactionID']);
+            $object->transactionID = $data['transactionID'];
             unset($data['transactionID']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class SubmittedFreshInvestigationRepsonseNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('correlationId') && null !== $data->getCorrelationId()) {
-            $dataArray['correlationId'] = $data->getCorrelationId();
+        if (array_key_exists('correlationId', get_object_vars($data)) && null !== ($data->correlationId ?? null)) {
+            $dataArray['correlationId'] = $data->correlationId ?? null;
         }
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['message'] = $data->message ?? null;
         }
-        if ($data->isInitialized('orderID') && null !== $data->getOrderID()) {
-            $dataArray['orderID'] = $data->getOrderID();
+        if (array_key_exists('orderID', get_object_vars($data)) && null !== ($data->orderID ?? null)) {
+            $dataArray['orderID'] = $data->orderID ?? null;
         }
-        if ($data->isInitialized('transactionID') && null !== $data->getTransactionID()) {
-            $dataArray['transactionID'] = $data->getTransactionID();
+        if (array_key_exists('transactionID', get_object_vars($data)) && null !== ($data->transactionID ?? null)) {
+            $dataArray['transactionID'] = $data->transactionID ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

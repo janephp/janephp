@@ -41,11 +41,11 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['size_gigabytes'] = (float) $data['size_gigabytes'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -53,7 +53,7 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('regions', $data)) {
@@ -61,23 +61,23 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
             foreach ($data['regions'] as $value) {
                 $values[] = $value;
             }
-            $object->setRegions($values);
+            $object->regions = $values;
             unset($data['regions']);
         }
         if (\array_key_exists('min_disk_size', $data)) {
-            $object->setMinDiskSize($data['min_disk_size']);
+            $object->minDiskSize = $data['min_disk_size'];
             unset($data['min_disk_size']);
         }
         if (\array_key_exists('size_gigabytes', $data)) {
-            $object->setSizeGigabytes($data['size_gigabytes']);
+            $object->sizeGigabytes = $data['size_gigabytes'];
             unset($data['size_gigabytes']);
         }
         if (\array_key_exists('resource_id', $data)) {
-            $object->setResourceId($data['resource_id']);
+            $object->resourceId = $data['resource_id'];
             unset($data['resource_id']);
         }
         if (\array_key_exists('resource_type', $data)) {
-            $object->setResourceType($data['resource_type']);
+            $object->resourceType = $data['resource_type'];
             unset($data['resource_type']);
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
@@ -85,11 +85,11 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
             foreach ($data['tags'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setTags($values_1);
+            $object->tags = $values_1;
             unset($data['tags']);
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
-            $object->setTags(null);
+            $object->tags = null;
             unset($data['tags']);
         }
         foreach ($data as $key => $value_2) {
@@ -102,20 +102,20 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         $values = [];
-        foreach ($data->getRegions() as $value) {
+        foreach ($data->regions ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['regions'] = $values;
-        $dataArray['min_disk_size'] = $data->getMinDiskSize();
-        $dataArray['size_gigabytes'] = $data->getSizeGigabytes();
-        $dataArray['resource_id'] = $data->getResourceId();
-        $dataArray['resource_type'] = $data->getResourceType();
+        $dataArray['min_disk_size'] = $data->minDiskSize ?? null;
+        $dataArray['size_gigabytes'] = $data->sizeGigabytes ?? null;
+        $dataArray['resource_id'] = $data->resourceId ?? null;
+        $dataArray['resource_type'] = $data->resourceType ?? null;
         $values_1 = [];
-        foreach ($data->getTags() as $value_1) {
+        foreach ($data->tags ?? null as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['tags'] = $values_1;

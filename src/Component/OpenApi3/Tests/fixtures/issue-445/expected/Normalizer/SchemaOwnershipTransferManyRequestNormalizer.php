@@ -42,31 +42,31 @@ class SchemaOwnershipTransferManyRequestNormalizer implements DenormalizerInterf
             foreach ($data['schemaIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setSchemaIds($values);
+            $object->schemaIds = $values;
         }
         elseif (\array_key_exists('schemaIds', $data) && $data['schemaIds'] === null) {
-            $object->setSchemaIds(null);
+            $object->schemaIds = null;
         }
         if (\array_key_exists('transferUserId', $data) && $data['transferUserId'] !== null) {
-            $object->setTransferUserId($data['transferUserId']);
+            $object->transferUserId = $data['transferUserId'];
         }
         elseif (\array_key_exists('transferUserId', $data) && $data['transferUserId'] === null) {
-            $object->setTransferUserId(null);
+            $object->transferUserId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('schemaIds') && null !== $data->getSchemaIds()) {
+        if (array_key_exists('schemaIds', get_object_vars($data)) && null !== ($data->schemaIds ?? null)) {
             $values = [];
-            foreach ($data->getSchemaIds() as $value) {
+            foreach ($data->schemaIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['schemaIds'] = $values;
         }
-        if ($data->isInitialized('transferUserId') && null !== $data->getTransferUserId()) {
-            $dataArray['transferUserId'] = $data->getTransferUserId();
+        if (array_key_exists('transferUserId', get_object_vars($data)) && null !== ($data->transferUserId ?? null)) {
+            $dataArray['transferUserId'] = $data->transferUserId ?? null;
         }
         return $dataArray;
     }

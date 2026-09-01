@@ -41,34 +41,34 @@ class PluginDeviceNormalizer implements DenormalizerInterface, NormalizerInterfa
             $this->validate($data, new \Docker\Api\Validator\PluginDeviceConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Description', $data)) {
-            $object->setDescription($data['Description']);
+            $object->description = $data['Description'];
         }
         if (\array_key_exists('Settable', $data)) {
             $values = [];
             foreach ($data['Settable'] as $value) {
                 $values[] = $value;
             }
-            $object->setSettable($values);
+            $object->settable = $values;
         }
         if (\array_key_exists('Path', $data)) {
-            $object->setPath($data['Path']);
+            $object->path = $data['Path'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->getName();
-        $dataArray['Description'] = $data->getDescription();
+        $dataArray['Name'] = $data->name ?? null;
+        $dataArray['Description'] = $data->description ?? null;
         $values = [];
-        foreach ($data->getSettable() as $value) {
+        foreach ($data->settable ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['Settable'] = $values;
-        $dataArray['Path'] = $data->getPath();
+        $dataArray['Path'] = $data->path ?? null;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginDeviceConstraint());
         }

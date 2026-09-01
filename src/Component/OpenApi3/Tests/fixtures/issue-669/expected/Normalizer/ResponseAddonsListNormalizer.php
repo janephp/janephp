@@ -42,7 +42,7 @@ class ResponseAddonsListNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['resources'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AddonsResource::class, 'json', $context);
             }
-            $object->setResources($values);
+            $object->resources = $values;
             unset($data['resources']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseAddonsListNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('resources') && null !== $data->getResources()) {
+        if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
             $values = [];
-            foreach ($data->getResources() as $value) {
+            foreach ($data->resources ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['resources'] = $values;

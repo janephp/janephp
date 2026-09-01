@@ -41,27 +41,27 @@ class SchemaTagboxFilterLookupNamedCacheConfigurationNormalizer implements Denor
             $data['caseSensitive'] = (bool) $data['caseSensitive'];
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+            $object->name = null;
             unset($data['name']);
         }
         if (\array_key_exists('caseSensitive', $data)) {
-            $object->setCaseSensitive($data['caseSensitive']);
+            $object->caseSensitive = $data['caseSensitive'];
             unset($data['caseSensitive']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
-            $object->setSchemaId($data['schemaId']);
+            $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
-            $object->setSchemaId(null);
+            $object->schemaId = null;
             unset($data['schemaId']);
         }
         foreach ($data as $key => $value) {
@@ -74,13 +74,13 @@ class SchemaTagboxFilterLookupNamedCacheConfigurationNormalizer implements Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        $dataArray['caseSensitive'] = $data->getCaseSensitive();
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
-            $dataArray['schemaId'] = $data->getSchemaId();
+        $dataArray['caseSensitive'] = $data->caseSensitive ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
+            $dataArray['schemaId'] = $data->schemaId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

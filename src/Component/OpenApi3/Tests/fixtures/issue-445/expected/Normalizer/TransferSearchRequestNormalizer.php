@@ -41,70 +41,70 @@ class TransferSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             $data['debugMode'] = (bool) $data['debugMode'];
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
-            $object->setSearchString($data['searchString']);
+            $object->searchString = $data['searchString'];
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
-            $object->setSearchString(null);
+            $object->searchString = null;
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
             $values = [];
             foreach ($data['searchBehaviors'] as $value) {
                 $values[] = $value;
             }
-            $object->setSearchBehaviors($values);
+            $object->searchBehaviors = $values;
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
-            $object->setSearchBehaviors(null);
+            $object->searchBehaviors = null;
         }
         if (\array_key_exists('limit', $data)) {
-            $object->setLimit($data['limit']);
+            $object->limit = $data['limit'];
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-            $object->setPageToken($data['pageToken']);
+            $object->pageToken = $data['pageToken'];
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-            $object->setPageToken(null);
+            $object->pageToken = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $value_1 = $data['filter'];
             if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
                 $value_1 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilter($value_1);
+            $object->filter = $value_1;
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
         }
         if (\array_key_exists('debugMode', $data)) {
-            $object->setDebugMode($data['debugMode']);
+            $object->debugMode = $data['debugMode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
-            $dataArray['searchString'] = $data->getSearchString();
+        if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
+            $dataArray['searchString'] = $data->searchString ?? null;
         }
-        if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
+        if (array_key_exists('searchBehaviors', get_object_vars($data)) && null !== ($data->searchBehaviors ?? null)) {
             $values = [];
-            foreach ($data->getSearchBehaviors() as $value) {
+            foreach ($data->searchBehaviors ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }
-        $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
-            $dataArray['pageToken'] = $data->getPageToken();
+        $dataArray['limit'] = $data->limit ?? null;
+        if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
+            $dataArray['pageToken'] = $data->pageToken ?? null;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $value_1 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_1 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $value_1 = $data->filter ?? null;
+            if (is_object($data->filter ?? null)) {
+                $value_1 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
             }
             $dataArray['filter'] = $value_1;
         }
-        $dataArray['debugMode'] = $data->getDebugMode();
+        $dataArray['debugMode'] = $data->debugMode ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

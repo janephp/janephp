@@ -38,27 +38,27 @@ class WlangroupModifyWlanGroupMemberNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('accessVlan', $data)) {
-            $object->setAccessVlan($data['accessVlan']);
+            $object->accessVlan = $data['accessVlan'];
         }
         if (\array_key_exists('vlanPooling', $data)) {
-            $object->setVlanPooling($this->denormalizer->denormalize($data['vlanPooling'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->vlanPooling = $this->denormalizer->denormalize($data['vlanPooling'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('nasId', $data)) {
-            $object->setNasId($data['nasId']);
+            $object->nasId = $data['nasId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('accessVlan') && null !== $data->getAccessVlan()) {
-            $dataArray['accessVlan'] = $data->getAccessVlan();
+        if (array_key_exists('accessVlan', get_object_vars($data)) && null !== ($data->accessVlan ?? null)) {
+            $dataArray['accessVlan'] = $data->accessVlan ?? null;
         }
-        if ($data->isInitialized('vlanPooling') && null !== $data->getVlanPooling()) {
-            $dataArray['vlanPooling'] = $data->getVlanPooling() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getVlanPooling(), 'json', $context));
+        if (array_key_exists('vlanPooling', get_object_vars($data)) && null !== ($data->vlanPooling ?? null)) {
+            $dataArray['vlanPooling'] = ($data->vlanPooling ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling ?? null, 'json', $context));
         }
-        if ($data->isInitialized('nasId') && null !== $data->getNasId()) {
-            $dataArray['nasId'] = $data->getNasId();
+        if (array_key_exists('nasId', get_object_vars($data)) && null !== ($data->nasId ?? null)) {
+            $dataArray['nasId'] = $data->nasId ?? null;
         }
         return $dataArray;
     }

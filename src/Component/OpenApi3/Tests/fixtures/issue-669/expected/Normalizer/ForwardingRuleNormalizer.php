@@ -41,27 +41,27 @@ class ForwardingRuleNormalizer implements DenormalizerInterface, NormalizerInter
             $data['tls_passthrough'] = (bool) $data['tls_passthrough'];
         }
         if (\array_key_exists('entry_protocol', $data)) {
-            $object->setEntryProtocol($data['entry_protocol']);
+            $object->entryProtocol = $data['entry_protocol'];
             unset($data['entry_protocol']);
         }
         if (\array_key_exists('entry_port', $data)) {
-            $object->setEntryPort($data['entry_port']);
+            $object->entryPort = $data['entry_port'];
             unset($data['entry_port']);
         }
         if (\array_key_exists('target_protocol', $data)) {
-            $object->setTargetProtocol($data['target_protocol']);
+            $object->targetProtocol = $data['target_protocol'];
             unset($data['target_protocol']);
         }
         if (\array_key_exists('target_port', $data)) {
-            $object->setTargetPort($data['target_port']);
+            $object->targetPort = $data['target_port'];
             unset($data['target_port']);
         }
         if (\array_key_exists('certificate_id', $data)) {
-            $object->setCertificateId($data['certificate_id']);
+            $object->certificateId = $data['certificate_id'];
             unset($data['certificate_id']);
         }
         if (\array_key_exists('tls_passthrough', $data)) {
-            $object->setTlsPassthrough($data['tls_passthrough']);
+            $object->tlsPassthrough = $data['tls_passthrough'];
             unset($data['tls_passthrough']);
         }
         foreach ($data as $key => $value) {
@@ -74,15 +74,15 @@ class ForwardingRuleNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['entry_protocol'] = $data->getEntryProtocol();
-        $dataArray['entry_port'] = $data->getEntryPort();
-        $dataArray['target_protocol'] = $data->getTargetProtocol();
-        $dataArray['target_port'] = $data->getTargetPort();
-        if ($data->isInitialized('certificateId') && null !== $data->getCertificateId()) {
-            $dataArray['certificate_id'] = $data->getCertificateId();
+        $dataArray['entry_protocol'] = $data->entryProtocol ?? null;
+        $dataArray['entry_port'] = $data->entryPort ?? null;
+        $dataArray['target_protocol'] = $data->targetProtocol ?? null;
+        $dataArray['target_port'] = $data->targetPort ?? null;
+        if (array_key_exists('certificateId', get_object_vars($data)) && null !== ($data->certificateId ?? null)) {
+            $dataArray['certificate_id'] = $data->certificateId ?? null;
         }
-        if ($data->isInitialized('tlsPassthrough') && null !== $data->getTlsPassthrough()) {
-            $dataArray['tls_passthrough'] = $data->getTlsPassthrough();
+        if (array_key_exists('tlsPassthrough', get_object_vars($data)) && null !== ($data->tlsPassthrough ?? null)) {
+            $dataArray['tls_passthrough'] = $data->tlsPassthrough ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

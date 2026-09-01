@@ -38,7 +38,7 @@ class AppComponentInstanceBaseAutoscalingMetricsNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('cpu', $data)) {
-            $object->setCpu($this->denormalizer->denormalize($data['cpu'], \Jane\Generated\DigitalOcean\Model\AppComponentInstanceBaseAutoscalingMetricsCpu::class, 'json', $context));
+            $object->cpu = $this->denormalizer->denormalize($data['cpu'], \Jane\Generated\DigitalOcean\Model\AppComponentInstanceBaseAutoscalingMetricsCpu::class, 'json', $context);
             unset($data['cpu']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppComponentInstanceBaseAutoscalingMetricsNormalizer implements Denormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('cpu') && null !== $data->getCpu()) {
-            $dataArray['cpu'] = $data->getCpu() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCpu(), 'json', $context));
+        if (array_key_exists('cpu', get_object_vars($data)) && null !== ($data->cpu ?? null)) {
+            $dataArray['cpu'] = ($data->cpu ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cpu ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

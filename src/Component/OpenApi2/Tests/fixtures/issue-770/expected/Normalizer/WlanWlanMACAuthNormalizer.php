@@ -38,21 +38,21 @@ class WlanWlanMACAuthNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('macAuthMacFormat', $data)) {
-            $object->setMacAuthMacFormat($data['macAuthMacFormat']);
+            $object->macAuthMacFormat = $data['macAuthMacFormat'];
         }
         if (\array_key_exists('customizedPassword', $data)) {
-            $object->setCustomizedPassword($data['customizedPassword']);
+            $object->customizedPassword = $data['customizedPassword'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('macAuthMacFormat') && null !== $data->getMacAuthMacFormat()) {
-            $dataArray['macAuthMacFormat'] = $data->getMacAuthMacFormat();
+        if (array_key_exists('macAuthMacFormat', get_object_vars($data)) && null !== ($data->macAuthMacFormat ?? null)) {
+            $dataArray['macAuthMacFormat'] = $data->macAuthMacFormat ?? null;
         }
-        if ($data->isInitialized('customizedPassword') && null !== $data->getCustomizedPassword()) {
-            $dataArray['customizedPassword'] = $data->getCustomizedPassword();
+        if (array_key_exists('customizedPassword', get_object_vars($data)) && null !== ($data->customizedPassword ?? null)) {
+            $dataArray['customizedPassword'] = $data->customizedPassword ?? null;
         }
         return $dataArray;
     }

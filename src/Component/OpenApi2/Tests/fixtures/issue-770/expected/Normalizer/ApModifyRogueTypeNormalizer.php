@@ -42,16 +42,16 @@ class ApModifyRogueTypeNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['rogueMacList'] as $value) {
                 $values[] = $value;
             }
-            $object->setRogueMacList($values);
+            $object->rogueMacList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('rogueMacList') && null !== $data->getRogueMacList()) {
+        if (array_key_exists('rogueMacList', get_object_vars($data)) && null !== ($data->rogueMacList ?? null)) {
             $values = [];
-            foreach ($data->getRogueMacList() as $value) {
+            foreach ($data->rogueMacList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['rogueMacList'] = $values;

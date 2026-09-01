@@ -38,23 +38,23 @@ class MetadataValuesSchemaItemRemoveCommandNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('schemaId', $data)) {
-            $object->setSchemaId($data['schemaId']);
+            $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('fieldPath', $data)) {
-            $object->setFieldPath($data['fieldPath']);
+            $object->fieldPath = $data['fieldPath'];
             unset($data['fieldPath']);
         }
         if (\array_key_exists('fieldNamespace', $data)) {
-            $object->setFieldNamespace($data['fieldNamespace']);
+            $object->fieldNamespace = $data['fieldNamespace'];
             unset($data['fieldNamespace']);
         }
         if (\array_key_exists('referenceId', $data)) {
-            $object->setReferenceId($data['referenceId']);
+            $object->referenceId = $data['referenceId'];
             unset($data['referenceId']);
         }
         foreach ($data as $key => $value) {
@@ -67,11 +67,11 @@ class MetadataValuesSchemaItemRemoveCommandNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['schemaId'] = $data->getSchemaId();
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['fieldPath'] = $data->getFieldPath();
-        $dataArray['fieldNamespace'] = $data->getFieldNamespace();
-        $dataArray['referenceId'] = $data->getReferenceId();
+        $dataArray['schemaId'] = $data->schemaId ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['fieldPath'] = $data->fieldPath ?? null;
+        $dataArray['fieldNamespace'] = $data->fieldNamespace ?? null;
+        $dataArray['referenceId'] = $data->referenceId ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -30,18 +30,22 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
     protected ?ValidatorInterface $chainValidator = null;
 
+    private ?ChainValidatorFactory $chainValidatorFactory = null;
+
     public function __construct(
         DenormalizerInterface $denormalizer,
         protected Naming $naming,
         ?bool $defaultAdditionalProperties = null,
+        ?ChainValidatorFactory $chainValidatorFactory = null,
     ) {
         $this->denormalizer = $denormalizer;
         $this->defaultAdditionalProperties = $defaultAdditionalProperties;
+        $this->chainValidatorFactory = $chainValidatorFactory;
     }
 
     public function supportObject($object): bool
     {
-        return ($object instanceof JsonSchema) && (\is_array($object->getType()) ? \in_array('object', $object->getType()) : 'object' === $object->getType()) && null !== $object->getProperties();
+        return ($object instanceof JsonSchema) && (\is_array($object->type ?? null) ? \in_array('object', $object->type ?? null) : 'object' === ($object->type ?? null)) && null !== ($object->properties ?? null);
     }
 
     /**
@@ -54,8 +58,8 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             $extensions = $this->resolveAdditionalProperties($object, $reference);
 
             $classGuess = $this->createClassGuess($object, $reference, $name, $extensions);
-            if (null !== $object->getRequired()) {
-                $classGuess->setRequired($object->getRequired());
+            if (null !== ($object->required ?? null)) {
+                $classGuess->setRequired($object->required ?? null);
             }
 
             $schema = $registry->getSchema($reference);
@@ -64,7 +68,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             }
         }
 
-        foreach ($object->getProperties() as $key => $property) {
+        foreach (($object->properties ?? null ?? []) as $key => $property) {
             $this->chainGuesser->guessClass($property, $name . ucfirst($key), $reference . '/properties/' . $key, $registry);
         }
     }
@@ -85,8 +89,8 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
                 'object' => $extensionObject,
                 'reference' => $reference . '/additionalProperties',
             ];
-        } elseif (method_exists($object, 'getPatternProperties') && $object->getPatternProperties() !== null) {
-            foreach ($object->getPatternProperties() as $pattern => $patternProperty) {
+        } elseif (property_exists($object, 'patternProperties') && ($object->patternProperties ?? null) !== null) {
+            foreach (($object->patternProperties ?? null ?? []) as $pattern => $patternProperty) {
                 $extensions[$pattern] = [
                     'object' => $patternProperty,
                     'reference' => $reference . '/patternProperties/' . $pattern,
@@ -103,7 +107,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         $properties = [];
         $this->initChainValidator($registry);
 
-        foreach ($object->getProperties() as $key => $property) {
+        foreach (($object->properties ?? null ?? []) as $key => $property) {
             $propertyObj = $property;
 
             if ($propertyObj instanceof Reference) {
@@ -117,13 +121,13 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             $nullable = $this->isPropertyNullable($propertyObj);
 
             $required = false;
-            if (\is_array($object->getRequired())) {
-                $required = \in_array($key, $object->getRequired());
+            if (\is_array($object->required ?? null)) {
+                $required = \in_array($key, $object->required ?? null);
             }
 
-            $newProperty = new Property($property, $key, $reference . '/properties/' . $key, $nullable, $required, null, $propertyObj->getDescription(), $propertyObj->getDefault(), $propertyObj->getReadOnly());
-            if (method_exists($propertyObj, 'getDeprecated')) {
-                $newProperty->setDeprecated($propertyObj->getDeprecated());
+            $newProperty = new Property($property, $key, $reference . '/properties/' . $key, $nullable, $required, null, $propertyObj->description ?? null, $propertyObj->default ?? null, $propertyObj->readOnly ?? null);
+            if (property_exists($propertyObj, 'deprecated')) {
+                $newProperty->setDeprecated($propertyObj->deprecated ?? null);
             }
             $this->chainValidator->guess($propertyObj, $name, $newProperty);
             $properties[$key] = $newProperty;
@@ -134,11 +138,11 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
     protected function isPropertyNullable($property): bool
     {
-        if (!\is_object($property) || !method_exists($property, 'getOneOf')) {
+        if (!\is_object($property) || !property_exists($property, 'oneOf')) {
             return false;
         }
 
-        $oneOf = $property->getOneOf();
+        $oneOf = ($property->oneOf ?? null);
         if (!empty($oneOf)) {
             foreach ($oneOf as $oneOfProperty) {
                 if (!($oneOfProperty instanceof JsonSchema)) {
@@ -152,8 +156,8 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             return false;
         }
 
-        if (method_exists($property, 'getAnyOf')) {
-            if (\count($anyOf = ($property->getAnyOf() ?? [])) > 0) {
+        if (property_exists($property, 'anyOf')) {
+            if (\count($anyOf = (($property->anyOf ?? null) ?? [])) > 0) {
                 foreach ($anyOf as $anyOfProperty) {
                     if (!($anyOfProperty instanceof JsonSchema)) {
                         continue;
@@ -167,8 +171,8 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             }
         }
 
-        if (method_exists($property, 'getAllOf')) {
-            if (\count($allOf = ($property->getAllOf() ?? [])) > 0) {
+        if (property_exists($property, 'allOf')) {
+            if (\count($allOf = (($property->allOf ?? null) ?? [])) > 0) {
                 $schemaClass = $this->getSchemaClass();
                 foreach ($allOf as $allOfProperty) {
                     if (!($allOfProperty instanceof $schemaClass)) {
@@ -181,7 +185,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             }
         }
 
-        $type = $property->getType();
+        $type = ($property->type ?? null);
 
         return 'null' == $type || (\is_array($type) && \in_array('null', $type));
     }
@@ -189,9 +193,9 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $discriminants = [];
-        $required = $object->getRequired() ?: [];
+        $required = ($object->required ?? null) ?: [];
 
-        foreach ($object->getProperties() as $key => $property) {
+        foreach (($object->properties ?? null ?? []) as $key => $property) {
             if (!\in_array($key, $required)) {
                 continue;
             }
@@ -204,15 +208,15 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
                 continue;
             }
 
-            if (null !== $property->getEnum()) {
+            if (null !== ($property->enum ?? null)) {
                 $isSimple = true;
-                foreach ($property->getEnum() as $value) {
+                foreach (($property->enum ?? null ?? []) as $value) {
                     if (\is_array($value) || \is_object($value)) {
                         $isSimple = false;
                     }
                 }
                 if ($isSimple) {
-                    $discriminants[$key] = $property->getEnum();
+                    $discriminants[$key] = ($property->enum ?? null);
                 }
             } else {
                 $discriminants[$key] = null;
@@ -233,13 +237,14 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
     protected function createClassGuess($object, string $reference, string $name, array $extensions): ClassGuess
     {
-        return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated());
+        return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->deprecated ?? null);
     }
 
     private function initChainValidator(Registry $registry): void
     {
         if (null === $this->chainValidator) {
-            $this->chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->denormalizer);
+            $factory = $this->chainValidatorFactory ?? new ChainValidatorFactory();
+            $this->chainValidator = $factory->create($this->naming, $registry, $this->denormalizer);
         }
     }
 }

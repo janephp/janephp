@@ -44,11 +44,11 @@ class AdditionalPropertiesNormalizer implements DenormalizerInterface, Normalize
             } elseif (is_null($data['foo'])) {
                 $value = $data['foo'];
             }
-            $object->setFoo($value);
+            $object->foo = $value;
             unset($data['foo']);
         }
         elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
-            $object->setFoo(null);
+            $object->foo = null;
             unset($data['foo']);
         }
         foreach ($data as $key => $value_1) {
@@ -61,12 +61,12 @@ class AdditionalPropertiesNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $value = $data->getFoo();
-            if (is_string($data->getFoo())) {
-                $value = $data->getFoo();
-            } elseif (is_null($data->getFoo())) {
-                $value = $data->getFoo();
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $value = $data->foo ?? null;
+            if (is_string($data->foo ?? null)) {
+                $value = $data->foo ?? null;
+            } elseif (is_null($data->foo ?? null)) {
+                $value = $data->foo ?? null;
             }
             $dataArray['foo'] = $value;
         }

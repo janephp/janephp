@@ -38,18 +38,18 @@ class SchemaOwnershipTransferRequestNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('transferUserId', $data) && $data['transferUserId'] !== null) {
-            $object->setTransferUserId($data['transferUserId']);
+            $object->transferUserId = $data['transferUserId'];
         }
         elseif (\array_key_exists('transferUserId', $data) && $data['transferUserId'] === null) {
-            $object->setTransferUserId(null);
+            $object->transferUserId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('transferUserId') && null !== $data->getTransferUserId()) {
-            $dataArray['transferUserId'] = $data->getTransferUserId();
+        if (array_key_exists('transferUserId', get_object_vars($data)) && null !== ($data->transferUserId ?? null)) {
+            $dataArray['transferUserId'] = $data->transferUserId ?? null;
         }
         return $dataArray;
     }

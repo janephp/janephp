@@ -38,14 +38,14 @@ class SystemModifyIpSupportTypeNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ipMode', $data)) {
-            $object->setIpMode($data['ipMode']);
+            $object->ipMode = $data['ipMode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ipMode'] = $data->getIpMode();
+        $dataArray['ipMode'] = $data->ipMode ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -42,7 +42,7 @@ class GbCompanyReportExampleResponseReportDirectorsNormalizer implements Denorma
             foreach ($data['currentDirectors'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem::class, 'json', $context);
             }
-            $object->setCurrentDirectors($values);
+            $object->currentDirectors = $values;
             unset($data['currentDirectors']);
         }
         if (\array_key_exists('previousDirectors', $data)) {
@@ -50,7 +50,7 @@ class GbCompanyReportExampleResponseReportDirectorsNormalizer implements Denorma
             foreach ($data['previousDirectors'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem::class, 'json', $context);
             }
-            $object->setPreviousDirectors($values_1);
+            $object->previousDirectors = $values_1;
             unset($data['previousDirectors']);
         }
         foreach ($data as $key => $value_2) {
@@ -63,16 +63,16 @@ class GbCompanyReportExampleResponseReportDirectorsNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('currentDirectors') && null !== $data->getCurrentDirectors()) {
+        if (array_key_exists('currentDirectors', get_object_vars($data)) && null !== ($data->currentDirectors ?? null)) {
             $values = [];
-            foreach ($data->getCurrentDirectors() as $value) {
+            foreach ($data->currentDirectors ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['currentDirectors'] = $values;
         }
-        if ($data->isInitialized('previousDirectors') && null !== $data->getPreviousDirectors()) {
+        if (array_key_exists('previousDirectors', get_object_vars($data)) && null !== ($data->previousDirectors ?? null)) {
             $values_1 = [];
-            foreach ($data->getPreviousDirectors() as $value_1) {
+            foreach ($data->previousDirectors ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['previousDirectors'] = $values_1;

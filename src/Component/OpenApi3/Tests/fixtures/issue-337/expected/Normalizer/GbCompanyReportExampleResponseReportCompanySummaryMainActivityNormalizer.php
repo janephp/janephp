@@ -38,15 +38,15 @@ class GbCompanyReportExampleResponseReportCompanySummaryMainActivityNormalizer i
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('code', $data)) {
-            $object->setCode($data['code']);
+            $object->code = $data['code'];
             unset($data['code']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('classification', $data)) {
-            $object->setClassification($data['classification']);
+            $object->classification = $data['classification'];
             unset($data['classification']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class GbCompanyReportExampleResponseReportCompanySummaryMainActivityNormalizer i
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('code') && null !== $data->getCode()) {
-            $dataArray['code'] = $data->getCode();
+        if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
+            $dataArray['code'] = $data->code ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('classification') && null !== $data->getClassification()) {
-            $dataArray['classification'] = $data->getClassification();
+        if (array_key_exists('classification', get_object_vars($data)) && null !== ($data->classification ?? null)) {
+            $dataArray['classification'] = $data->classification ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

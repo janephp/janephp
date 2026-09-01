@@ -32,21 +32,21 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return $object;
         }
         if (\array_key_exists('string', $data)) {
-            $object->setString($data['string']);
+            $object->string = $data['string'];
         }
         if (\array_key_exists('subObject', $data)) {
-            $object->setSubObject($this->denormalizer->denormalize($data['subObject'], \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class, 'json', $context));
+            $object->subObject = $this->denormalizer->denormalize($data['subObject'], \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('string') && null !== $data->getString()) {
-            $dataArray['string'] = $data->getString();
+        if (array_key_exists('string', get_object_vars($data)) && null !== ($data->string ?? null)) {
+            $dataArray['string'] = $data->string ?? null;
         }
-        if ($data->isInitialized('subObject') && null !== $data->getSubObject()) {
-            $dataArray['subObject'] = $data->getSubObject() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubObject(), 'json', $context));
+        if (array_key_exists('subObject', get_object_vars($data)) && null !== ($data->subObject ?? null)) {
+            $dataArray['subObject'] = ($data->subObject ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->subObject ?? null, 'json', $context));
         }
         return $dataArray;
     }

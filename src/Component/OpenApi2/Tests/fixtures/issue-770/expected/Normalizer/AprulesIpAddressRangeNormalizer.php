@@ -38,21 +38,21 @@ class AprulesIpAddressRangeNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('fromIp', $data)) {
-            $object->setFromIp($data['fromIp']);
+            $object->fromIp = $data['fromIp'];
         }
         if (\array_key_exists('toIp', $data)) {
-            $object->setToIp($data['toIp']);
+            $object->toIp = $data['toIp'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fromIp') && null !== $data->getFromIp()) {
-            $dataArray['fromIp'] = $data->getFromIp();
+        if (array_key_exists('fromIp', get_object_vars($data)) && null !== ($data->fromIp ?? null)) {
+            $dataArray['fromIp'] = $data->fromIp ?? null;
         }
-        if ($data->isInitialized('toIp') && null !== $data->getToIp()) {
-            $dataArray['toIp'] = $data->getToIp();
+        if (array_key_exists('toIp', get_object_vars($data)) && null !== ($data->toIp ?? null)) {
+            $dataArray['toIp'] = $data->toIp ?? null;
         }
         return $dataArray;
     }

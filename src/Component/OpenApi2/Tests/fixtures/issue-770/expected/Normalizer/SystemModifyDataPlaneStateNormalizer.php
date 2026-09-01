@@ -41,15 +41,15 @@ class SystemModifyDataPlaneStateNormalizer implements DenormalizerInterface, Nor
             $data['isDataCenter'] = (bool) $data['isDataCenter'];
         }
         if (\array_key_exists('isDataCenter', $data)) {
-            $object->setIsDataCenter($data['isDataCenter']);
+            $object->isDataCenter = $data['isDataCenter'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isDataCenter') && null !== $data->getIsDataCenter()) {
-            $dataArray['isDataCenter'] = $data->getIsDataCenter();
+        if (array_key_exists('isDataCenter', get_object_vars($data)) && null !== ($data->isDataCenter ?? null)) {
+            $dataArray['isDataCenter'] = $data->isDataCenter ?? null;
         }
         return $dataArray;
     }

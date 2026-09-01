@@ -8,103 +8,23 @@ class ContentDownloadEvent extends ApplicationEvent implements AdditionalPropert
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var list<DownloadTrackingInfo>|null
      */
-    protected $downloadInfos;
+    public ?array $downloadInfos;
     /**
      * @var int
      */
-    protected $fileSize;
+    public int $fileSize;
     /**
      * @var string|null
      */
-    protected $shareToken;
+    public ?string $shareToken;
     /**
      * @var string|null
      */
-    protected $range;
-    /**
-     * @return list<DownloadTrackingInfo>|null
-     */
-    public function getDownloadInfos(): ?array
-    {
-        return $this->downloadInfos;
-    }
-    /**
-     * @param list<DownloadTrackingInfo>|null $downloadInfos
-     *
-     * @return self
-     */
-    public function setDownloadInfos(?array $downloadInfos): self
-    {
-        $this->initialized['downloadInfos'] = true;
-        $this->downloadInfos = $downloadInfos;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getFileSize(): int
-    {
-        return $this->fileSize;
-    }
-    /**
-     * @param int $fileSize
-     *
-     * @return self
-     */
-    public function setFileSize(int $fileSize): self
-    {
-        $this->initialized['fileSize'] = true;
-        $this->fileSize = $fileSize;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getShareToken(): ?string
-    {
-        return $this->shareToken;
-    }
-    /**
-     * @param string|null $shareToken
-     *
-     * @return self
-     */
-    public function setShareToken(?string $shareToken): self
-    {
-        $this->initialized['shareToken'] = true;
-        $this->shareToken = $shareToken;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getRange(): ?string
-    {
-        return $this->range;
-    }
-    /**
-     * @param string|null $range
-     *
-     * @return self
-     */
-    public function setRange(?string $range): self
-    {
-        $this->initialized['range'] = true;
-        $this->range = $range;
-        return $this;
-    }
+    public ?string $range;
     public function definedProperties(): array
     {
-        return ['downloadInfos' => ['downloadInfos', 'getDownloadInfos', 'setDownloadInfos'], 'fileSize' => ['fileSize', 'getFileSize', 'setFileSize'], 'shareToken' => ['shareToken', 'getShareToken', 'setShareToken'], 'range' => ['range', 'getRange', 'setRange']];
+        return ['downloadInfos' => 'downloadInfos', 'fileSize' => 'fileSize', 'shareToken' => 'shareToken', 'range' => 'range'];
     }
 }

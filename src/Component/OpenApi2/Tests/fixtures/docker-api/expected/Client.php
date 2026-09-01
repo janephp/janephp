@@ -2211,7 +2211,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\Session(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();

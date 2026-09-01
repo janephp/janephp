@@ -42,7 +42,7 @@ class ApiEvaluationTestCaseMetricListNormalizer implements DenormalizerInterface
             foreach ($data['metric_uuids'] as $value) {
                 $values[] = $value;
             }
-            $object->setMetricUuids($values);
+            $object->metricUuids = $values;
             unset($data['metric_uuids']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ApiEvaluationTestCaseMetricListNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('metricUuids') && null !== $data->getMetricUuids()) {
+        if (array_key_exists('metricUuids', get_object_vars($data)) && null !== ($data->metricUuids ?? null)) {
             $values = [];
-            foreach ($data->getMetricUuids() as $value) {
+            foreach ($data->metricUuids ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['metric_uuids'] = $values;

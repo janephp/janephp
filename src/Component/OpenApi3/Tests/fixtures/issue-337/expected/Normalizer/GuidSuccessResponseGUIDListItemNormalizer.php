@@ -38,19 +38,19 @@ class GuidSuccessResponseGUIDListItemNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('friendlyName', $data)) {
-            $object->setFriendlyName($data['friendlyName']);
+            $object->friendlyName = $data['friendlyName'];
             unset($data['friendlyName']);
         }
         if (\array_key_exists('GUID', $data)) {
-            $object->setGUID($data['GUID']);
+            $object->gUID = $data['GUID'];
             unset($data['GUID']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('serviceLine', $data)) {
-            $object->setServiceLine($data['serviceLine']);
+            $object->serviceLine = $data['serviceLine'];
             unset($data['serviceLine']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class GuidSuccessResponseGUIDListItemNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('friendlyName') && null !== $data->getFriendlyName()) {
-            $dataArray['friendlyName'] = $data->getFriendlyName();
+        if (array_key_exists('friendlyName', get_object_vars($data)) && null !== ($data->friendlyName ?? null)) {
+            $dataArray['friendlyName'] = $data->friendlyName ?? null;
         }
-        if ($data->isInitialized('gUID') && null !== $data->getGUID()) {
-            $dataArray['GUID'] = $data->getGUID();
+        if (array_key_exists('gUID', get_object_vars($data)) && null !== ($data->gUID ?? null)) {
+            $dataArray['GUID'] = $data->gUID ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('serviceLine') && null !== $data->getServiceLine()) {
-            $dataArray['serviceLine'] = $data->getServiceLine();
+        if (array_key_exists('serviceLine', get_object_vars($data)) && null !== ($data->serviceLine ?? null)) {
+            $dataArray['serviceLine'] = $data->serviceLine ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

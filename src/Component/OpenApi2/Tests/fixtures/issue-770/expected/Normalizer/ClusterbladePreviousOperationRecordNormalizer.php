@@ -41,27 +41,27 @@ class ClusterbladePreviousOperationRecordNormalizer implements DenormalizerInter
             $data['success'] = (bool) $data['success'];
         }
         if (\array_key_exists('operation', $data)) {
-            $object->setOperation($data['operation']);
+            $object->operation = $data['operation'];
         }
         if (\array_key_exists('success', $data)) {
-            $object->setSuccess($data['success']);
+            $object->success = $data['success'];
         }
         if (\array_key_exists('errorMsg', $data)) {
-            $object->setErrorMsg($data['errorMsg']);
+            $object->errorMsg = $data['errorMsg'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('operation') && null !== $data->getOperation()) {
-            $dataArray['operation'] = $data->getOperation();
+        if (array_key_exists('operation', get_object_vars($data)) && null !== ($data->operation ?? null)) {
+            $dataArray['operation'] = $data->operation ?? null;
         }
-        if ($data->isInitialized('success') && null !== $data->getSuccess()) {
-            $dataArray['success'] = $data->getSuccess();
+        if (array_key_exists('success', get_object_vars($data)) && null !== ($data->success ?? null)) {
+            $dataArray['success'] = $data->success ?? null;
         }
-        if ($data->isInitialized('errorMsg') && null !== $data->getErrorMsg()) {
-            $dataArray['errorMsg'] = $data->getErrorMsg();
+        if (array_key_exists('errorMsg', get_object_vars($data)) && null !== ($data->errorMsg ?? null)) {
+            $dataArray['errorMsg'] = $data->errorMsg ?? null;
         }
         return $dataArray;
     }

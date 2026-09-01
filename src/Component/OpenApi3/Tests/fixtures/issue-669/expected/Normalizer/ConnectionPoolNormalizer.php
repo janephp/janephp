@@ -38,39 +38,39 @@ class ConnectionPoolNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('mode', $data)) {
-            $object->setMode($data['mode']);
+            $object->mode = $data['mode'];
             unset($data['mode']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         if (\array_key_exists('db', $data)) {
-            $object->setDb($data['db']);
+            $object->db = $data['db'];
             unset($data['db']);
         }
         if (\array_key_exists('user', $data)) {
-            $object->setUser($data['user']);
+            $object->user = $data['user'];
             unset($data['user']);
         }
         if (\array_key_exists('connection', $data)) {
-            $object->setConnection($this->denormalizer->denormalize($data['connection'], \Jane\Generated\DigitalOcean\Model\ConnectionPoolConnection::class, 'json', $context));
+            $object->connection = $this->denormalizer->denormalize($data['connection'], \Jane\Generated\DigitalOcean\Model\ConnectionPoolConnection::class, 'json', $context);
             unset($data['connection']);
         }
         if (\array_key_exists('private_connection', $data)) {
-            $object->setPrivateConnection($this->denormalizer->denormalize($data['private_connection'], \Jane\Generated\DigitalOcean\Model\ConnectionPoolPrivateConnection::class, 'json', $context));
+            $object->privateConnection = $this->denormalizer->denormalize($data['private_connection'], \Jane\Generated\DigitalOcean\Model\ConnectionPoolPrivateConnection::class, 'json', $context);
             unset($data['private_connection']);
         }
         if (\array_key_exists('standby_connection', $data)) {
-            $object->setStandbyConnection($this->denormalizer->denormalize($data['standby_connection'], \Jane\Generated\DigitalOcean\Model\ConnectionPoolStandbyConnection::class, 'json', $context));
+            $object->standbyConnection = $this->denormalizer->denormalize($data['standby_connection'], \Jane\Generated\DigitalOcean\Model\ConnectionPoolStandbyConnection::class, 'json', $context);
             unset($data['standby_connection']);
         }
         if (\array_key_exists('standby_private_connection', $data)) {
-            $object->setStandbyPrivateConnection($this->denormalizer->denormalize($data['standby_private_connection'], \Jane\Generated\DigitalOcean\Model\ConnectionPoolStandbyPrivateConnection::class, 'json', $context));
+            $object->standbyPrivateConnection = $this->denormalizer->denormalize($data['standby_private_connection'], \Jane\Generated\DigitalOcean\Model\ConnectionPoolStandbyPrivateConnection::class, 'json', $context);
             unset($data['standby_private_connection']);
         }
         foreach ($data as $key => $value) {
@@ -83,24 +83,24 @@ class ConnectionPoolNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['mode'] = $data->getMode();
-        $dataArray['size'] = $data->getSize();
-        $dataArray['db'] = $data->getDb();
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['user'] = $data->getUser();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['mode'] = $data->mode ?? null;
+        $dataArray['size'] = $data->size ?? null;
+        $dataArray['db'] = $data->db ?? null;
+        if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
+            $dataArray['user'] = $data->user ?? null;
         }
-        if ($data->isInitialized('connection') && null !== $data->getConnection()) {
-            $dataArray['connection'] = $data->getConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConnection(), 'json', $context));
+        if (array_key_exists('connection', get_object_vars($data)) && null !== ($data->connection ?? null)) {
+            $dataArray['connection'] = ($data->connection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->connection ?? null, 'json', $context));
         }
-        if ($data->isInitialized('privateConnection') && null !== $data->getPrivateConnection()) {
-            $dataArray['private_connection'] = $data->getPrivateConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPrivateConnection(), 'json', $context));
+        if (array_key_exists('privateConnection', get_object_vars($data)) && null !== ($data->privateConnection ?? null)) {
+            $dataArray['private_connection'] = ($data->privateConnection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->privateConnection ?? null, 'json', $context));
         }
-        if ($data->isInitialized('standbyConnection') && null !== $data->getStandbyConnection()) {
-            $dataArray['standby_connection'] = $data->getStandbyConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyConnection(), 'json', $context));
+        if (array_key_exists('standbyConnection', get_object_vars($data)) && null !== ($data->standbyConnection ?? null)) {
+            $dataArray['standby_connection'] = ($data->standbyConnection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->standbyConnection ?? null, 'json', $context));
         }
-        if ($data->isInitialized('standbyPrivateConnection') && null !== $data->getStandbyPrivateConnection()) {
-            $dataArray['standby_private_connection'] = $data->getStandbyPrivateConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyPrivateConnection(), 'json', $context));
+        if (array_key_exists('standbyPrivateConnection', get_object_vars($data)) && null !== ($data->standbyPrivateConnection ?? null)) {
+            $dataArray['standby_private_connection'] = ($data->standbyPrivateConnection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->standbyPrivateConnection ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

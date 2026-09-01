@@ -41,69 +41,69 @@ class AdministrationBackupFileNormalizer implements DenormalizerInterface, Norma
             $data['createdOn'] = (float) $data['createdOn'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('createdOn', $data)) {
-            $object->setCreatedOn($data['createdOn']);
+            $object->createdOn = $data['createdOn'];
         }
         if (\array_key_exists('scgVersion', $data)) {
-            $object->setScgVersion($data['scgVersion']);
+            $object->scgVersion = $data['scgVersion'];
         }
         if (\array_key_exists('controlPlaneSoftwareVersion', $data)) {
-            $object->setControlPlaneSoftwareVersion($data['controlPlaneSoftwareVersion']);
+            $object->controlPlaneSoftwareVersion = $data['controlPlaneSoftwareVersion'];
         }
         if (\array_key_exists('dataPlaneSoftwareVersion', $data)) {
-            $object->setDataPlaneSoftwareVersion($data['dataPlaneSoftwareVersion']);
+            $object->dataPlaneSoftwareVersion = $data['dataPlaneSoftwareVersion'];
         }
         if (\array_key_exists('createdBy', $data)) {
-            $object->setCreatedBy($data['createdBy']);
+            $object->createdBy = $data['createdBy'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('backupElapsed', $data)) {
-            $object->setBackupElapsed($data['backupElapsed']);
+            $object->backupElapsed = $data['backupElapsed'];
         }
         if (\array_key_exists('fileSize', $data)) {
-            $object->setFileSize($data['fileSize']);
+            $object->fileSize = $data['fileSize'];
         }
         if (\array_key_exists('md5', $data)) {
-            $object->setMd5($data['md5']);
+            $object->md5 = $data['md5'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('createdOn') && null !== $data->getCreatedOn()) {
-            $dataArray['createdOn'] = $data->getCreatedOn();
+        if (array_key_exists('createdOn', get_object_vars($data)) && null !== ($data->createdOn ?? null)) {
+            $dataArray['createdOn'] = $data->createdOn ?? null;
         }
-        if ($data->isInitialized('scgVersion') && null !== $data->getScgVersion()) {
-            $dataArray['scgVersion'] = $data->getScgVersion();
+        if (array_key_exists('scgVersion', get_object_vars($data)) && null !== ($data->scgVersion ?? null)) {
+            $dataArray['scgVersion'] = $data->scgVersion ?? null;
         }
-        if ($data->isInitialized('controlPlaneSoftwareVersion') && null !== $data->getControlPlaneSoftwareVersion()) {
-            $dataArray['controlPlaneSoftwareVersion'] = $data->getControlPlaneSoftwareVersion();
+        if (array_key_exists('controlPlaneSoftwareVersion', get_object_vars($data)) && null !== ($data->controlPlaneSoftwareVersion ?? null)) {
+            $dataArray['controlPlaneSoftwareVersion'] = $data->controlPlaneSoftwareVersion ?? null;
         }
-        if ($data->isInitialized('dataPlaneSoftwareVersion') && null !== $data->getDataPlaneSoftwareVersion()) {
-            $dataArray['dataPlaneSoftwareVersion'] = $data->getDataPlaneSoftwareVersion();
+        if (array_key_exists('dataPlaneSoftwareVersion', get_object_vars($data)) && null !== ($data->dataPlaneSoftwareVersion ?? null)) {
+            $dataArray['dataPlaneSoftwareVersion'] = $data->dataPlaneSoftwareVersion ?? null;
         }
-        if ($data->isInitialized('createdBy') && null !== $data->getCreatedBy()) {
-            $dataArray['createdBy'] = $data->getCreatedBy();
+        if (array_key_exists('createdBy', get_object_vars($data)) && null !== ($data->createdBy ?? null)) {
+            $dataArray['createdBy'] = $data->createdBy ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('backupElapsed') && null !== $data->getBackupElapsed()) {
-            $dataArray['backupElapsed'] = $data->getBackupElapsed();
+        if (array_key_exists('backupElapsed', get_object_vars($data)) && null !== ($data->backupElapsed ?? null)) {
+            $dataArray['backupElapsed'] = $data->backupElapsed ?? null;
         }
-        if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
-            $dataArray['fileSize'] = $data->getFileSize();
+        if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
+            $dataArray['fileSize'] = $data->fileSize ?? null;
         }
-        if ($data->isInitialized('md5') && null !== $data->getMd5()) {
-            $dataArray['md5'] = $data->getMd5();
+        if (array_key_exists('md5', get_object_vars($data)) && null !== ($data->md5 ?? null)) {
+            $dataArray['md5'] = $data->md5 ?? null;
         }
         return $dataArray;
     }

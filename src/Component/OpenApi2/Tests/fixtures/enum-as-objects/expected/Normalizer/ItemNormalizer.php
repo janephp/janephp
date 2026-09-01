@@ -41,18 +41,18 @@ class ItemNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $this->validate($data, new \Jane\Component\OpenApi2\Tests\EnumAsObjects\Validator\ItemConstraint());
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus(\Jane\Component\OpenApi2\Tests\EnumAsObjects\Model\ItemStatus::from($data['status']));
+            $object->status = \Jane\Component\OpenApi2\Tests\EnumAsObjects\Model\ItemStatus::from($data['status']);
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority(\Jane\Component\OpenApi2\Tests\EnumAsObjects\Model\Priority::from($data['priority']));
+            $object->priority = \Jane\Component\OpenApi2\Tests\EnumAsObjects\Model\Priority::from($data['priority']);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['status'] = $data->getStatus()->value;
-        $dataArray['priority'] = $data->getPriority()->value;
+        $dataArray['status'] = ($data->status ?? null)->value;
+        $dataArray['priority'] = ($data->priority ?? null)->value;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi2\Tests\EnumAsObjects\Validator\ItemConstraint());
         }

@@ -47,11 +47,11 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
             $data['ruleCode'] = (float) $data['ruleCode'];
         }
         if (\array_key_exists('company', $data)) {
-            $object->setCompany($this->denormalizer->denormalize($data['company'], \CreditSafe\API\Model\Company::class, 'json', $context));
+            $object->company = $this->denormalizer->denormalize($data['company'], \CreditSafe\API\Model\Company::class, 'json', $context);
             unset($data['company']);
         }
         if (\array_key_exists('eventId', $data)) {
-            $object->setEventId($data['eventId']);
+            $object->eventId = $data['eventId'];
             unset($data['eventId']);
         }
         if (\array_key_exists('eventDate', $data)) {
@@ -59,27 +59,27 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
             if (false === $date) {
                 throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['eventDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setEventDate($date);
+            $object->eventDate = $date;
             unset($data['eventDate']);
         }
         if (\array_key_exists('newValue', $data)) {
-            $object->setNewValue($data['newValue']);
+            $object->newValue = $data['newValue'];
             unset($data['newValue']);
         }
         if (\array_key_exists('oldValue', $data)) {
-            $object->setOldValue($data['oldValue']);
+            $object->oldValue = $data['oldValue'];
             unset($data['oldValue']);
         }
         if (\array_key_exists('notificationEventId', $data)) {
-            $object->setNotificationEventId($data['notificationEventId']);
+            $object->notificationEventId = $data['notificationEventId'];
             unset($data['notificationEventId']);
         }
         if (\array_key_exists('ruleCode', $data)) {
-            $object->setRuleCode($data['ruleCode']);
+            $object->ruleCode = $data['ruleCode'];
             unset($data['ruleCode']);
         }
         if (\array_key_exists('ruleName', $data)) {
-            $object->setRuleName($data['ruleName']);
+            $object->ruleName = $data['ruleName'];
             unset($data['ruleName']);
         }
         foreach ($data as $key => $value) {
@@ -92,29 +92,29 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('company') && null !== $data->getCompany()) {
-            $dataArray['company'] = $data->getCompany() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCompany(), 'json', $context));
+        if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
+            $dataArray['company'] = ($data->company ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company ?? null, 'json', $context));
         }
-        if ($data->isInitialized('eventId') && null !== $data->getEventId()) {
-            $dataArray['eventId'] = $data->getEventId();
+        if (array_key_exists('eventId', get_object_vars($data)) && null !== ($data->eventId ?? null)) {
+            $dataArray['eventId'] = $data->eventId ?? null;
         }
-        if ($data->isInitialized('eventDate') && null !== $data->getEventDate()) {
-            $dataArray['eventDate'] = $data->getEventDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('eventDate', get_object_vars($data)) && null !== ($data->eventDate ?? null)) {
+            $dataArray['eventDate'] = ($data->eventDate ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('newValue') && null !== $data->getNewValue()) {
-            $dataArray['newValue'] = $data->getNewValue();
+        if (array_key_exists('newValue', get_object_vars($data)) && null !== ($data->newValue ?? null)) {
+            $dataArray['newValue'] = $data->newValue ?? null;
         }
-        if ($data->isInitialized('oldValue') && null !== $data->getOldValue()) {
-            $dataArray['oldValue'] = $data->getOldValue();
+        if (array_key_exists('oldValue', get_object_vars($data)) && null !== ($data->oldValue ?? null)) {
+            $dataArray['oldValue'] = $data->oldValue ?? null;
         }
-        if ($data->isInitialized('notificationEventId') && null !== $data->getNotificationEventId()) {
-            $dataArray['notificationEventId'] = $data->getNotificationEventId();
+        if (array_key_exists('notificationEventId', get_object_vars($data)) && null !== ($data->notificationEventId ?? null)) {
+            $dataArray['notificationEventId'] = $data->notificationEventId ?? null;
         }
-        if ($data->isInitialized('ruleCode') && null !== $data->getRuleCode()) {
-            $dataArray['ruleCode'] = $data->getRuleCode();
+        if (array_key_exists('ruleCode', get_object_vars($data)) && null !== ($data->ruleCode ?? null)) {
+            $dataArray['ruleCode'] = $data->ruleCode ?? null;
         }
-        if ($data->isInitialized('ruleName') && null !== $data->getRuleName()) {
-            $dataArray['ruleName'] = $data->getRuleName();
+        if (array_key_exists('ruleName', get_object_vars($data)) && null !== ($data->ruleName ?? null)) {
+            $dataArray['ruleName'] = $data->ruleName ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

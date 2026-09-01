@@ -8,131 +8,29 @@ class Poll implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Unique identifier of this poll.
      *
      * @var string
      */
-    protected $id;
+    public string $id;
     /**
      * @var list<PollOption>
      */
-    protected $options;
+    public array $options;
     /**
      * @var string
      */
-    protected $votingStatus;
+    public string $votingStatus;
     /**
      * @var \DateTime
      */
-    protected $endDatetime;
+    public \DateTime $endDatetime;
     /**
      * @var int
      */
-    protected $durationMinutes;
-    /**
-     * Unique identifier of this poll.
-     *
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * Unique identifier of this poll.
-     *
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * @return list<PollOption>
-     */
-    public function getOptions(): array
-    {
-        return $this->options;
-    }
-    /**
-     * @param list<PollOption> $options
-     *
-     * @return self
-     */
-    public function setOptions(array $options): self
-    {
-        $this->initialized['options'] = true;
-        $this->options = $options;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getVotingStatus(): string
-    {
-        return $this->votingStatus;
-    }
-    /**
-     * @param string $votingStatus
-     *
-     * @return self
-     */
-    public function setVotingStatus(string $votingStatus): self
-    {
-        $this->initialized['votingStatus'] = true;
-        $this->votingStatus = $votingStatus;
-        return $this;
-    }
-    /**
-     * @return \DateTime
-     */
-    public function getEndDatetime(): \DateTime
-    {
-        return $this->endDatetime;
-    }
-    /**
-     * @param \DateTime $endDatetime
-     *
-     * @return self
-     */
-    public function setEndDatetime(\DateTime $endDatetime): self
-    {
-        $this->initialized['endDatetime'] = true;
-        $this->endDatetime = $endDatetime;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getDurationMinutes(): int
-    {
-        return $this->durationMinutes;
-    }
-    /**
-     * @param int $durationMinutes
-     *
-     * @return self
-     */
-    public function setDurationMinutes(int $durationMinutes): self
-    {
-        $this->initialized['durationMinutes'] = true;
-        $this->durationMinutes = $durationMinutes;
-        return $this;
-    }
+    public int $durationMinutes;
     public function definedProperties(): array
     {
-        return ['id' => ['id', 'getId', 'setId'], 'options' => ['options', 'getOptions', 'setOptions'], 'votingStatus' => ['voting_status', 'getVotingStatus', 'setVotingStatus'], 'endDatetime' => ['end_datetime', 'getEndDatetime', 'setEndDatetime'], 'durationMinutes' => ['duration_minutes', 'getDurationMinutes', 'setDurationMinutes']];
+        return ['id' => 'id', 'options' => 'options', 'votingStatus' => 'voting_status', 'endDatetime' => 'end_datetime', 'durationMinutes' => 'duration_minutes'];
     }
 }

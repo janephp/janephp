@@ -24,14 +24,14 @@ trait DefaultAdditionalPropertiesTrait
      */
     protected function getEffectiveAdditionalProperties($object): mixed
     {
-        if (method_exists($object, 'isInitialized') && $object->isInitialized('additionalProperties')) {
-            return $object->getAdditionalProperties();
+        if (property_exists($object, 'additionalProperties') && ($object->additionalProperties ?? null) !== null) {
+            return $object->additionalProperties ?? null;
         }
 
         if (null !== $this->defaultAdditionalProperties) {
             return $this->defaultAdditionalProperties;
         }
 
-        return $object->getAdditionalProperties();
+        return $object->additionalProperties ?? null;
     }
 }

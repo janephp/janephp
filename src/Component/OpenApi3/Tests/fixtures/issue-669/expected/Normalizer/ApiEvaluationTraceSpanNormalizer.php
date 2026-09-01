@@ -42,7 +42,7 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('input', $data)) {
@@ -50,11 +50,11 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
             foreach ($data['input'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setInput($values);
+            $object->input = $values;
             unset($data['input']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('output', $data)) {
@@ -62,7 +62,7 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
             foreach ($data['output'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
-            $object->setOutput($values_1);
+            $object->output = $values_1;
             unset($data['output']);
         }
         if (\array_key_exists('retriever_chunks', $data)) {
@@ -70,7 +70,7 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
             foreach ($data['retriever_chunks'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\ApiPromptChunk::class, 'json', $context);
             }
-            $object->setRetrieverChunks($values_2);
+            $object->retrieverChunks = $values_2;
             unset($data['retriever_chunks']);
         }
         if (\array_key_exists('span_level_metric_results', $data)) {
@@ -78,11 +78,11 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
             foreach ($data['span_level_metric_results'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Generated\DigitalOcean\Model\ApiEvaluationMetricResult::class, 'json', $context);
             }
-            $object->setSpanLevelMetricResults($values_3);
+            $object->spanLevelMetricResults = $values_3;
             unset($data['span_level_metric_results']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key_2 => $value_4) {
@@ -95,42 +95,42 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('input') && null !== $data->getInput()) {
+        if (array_key_exists('input', get_object_vars($data)) && null !== ($data->input ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getInput() as $key => $value) {
+            foreach ($data->input ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['input'] = $values;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('output') && null !== $data->getOutput()) {
+        if (array_key_exists('output', get_object_vars($data)) && null !== ($data->output ?? null)) {
             $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getOutput() as $key_1 => $value_1) {
+            foreach ($data->output ?? null as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['output'] = $values_1;
         }
-        if ($data->isInitialized('retrieverChunks') && null !== $data->getRetrieverChunks()) {
+        if (array_key_exists('retrieverChunks', get_object_vars($data)) && null !== ($data->retrieverChunks ?? null)) {
             $values_2 = [];
-            foreach ($data->getRetrieverChunks() as $value_2) {
+            foreach ($data->retrieverChunks ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['retriever_chunks'] = $values_2;
         }
-        if ($data->isInitialized('spanLevelMetricResults') && null !== $data->getSpanLevelMetricResults()) {
+        if (array_key_exists('spanLevelMetricResults', get_object_vars($data)) && null !== ($data->spanLevelMetricResults ?? null)) {
             $values_3 = [];
-            foreach ($data->getSpanLevelMetricResults() as $value_3) {
+            foreach ($data->spanLevelMetricResults ?? null as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['span_level_metric_results'] = $values_3;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_4) {
             if (preg_match('/.*/', (string) $key_2)) {

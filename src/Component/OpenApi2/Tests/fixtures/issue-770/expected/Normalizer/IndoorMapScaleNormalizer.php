@@ -41,33 +41,33 @@ class IndoorMapScaleNormalizer implements DenormalizerInterface, NormalizerInter
             $data['distance'] = (float) $data['distance'];
         }
         if (\array_key_exists('a', $data)) {
-            $object->setA($this->denormalizer->denormalize($data['a'], \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapXy::class, 'json', $context));
+            $object->a = $this->denormalizer->denormalize($data['a'], \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapXy::class, 'json', $context);
         }
         if (\array_key_exists('b', $data)) {
-            $object->setB($this->denormalizer->denormalize($data['b'], \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapXy::class, 'json', $context));
+            $object->b = $this->denormalizer->denormalize($data['b'], \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapXy::class, 'json', $context);
         }
         if (\array_key_exists('distance', $data)) {
-            $object->setDistance($data['distance']);
+            $object->distance = $data['distance'];
         }
         if (\array_key_exists('unit', $data)) {
-            $object->setUnit($data['unit']);
+            $object->unit = $data['unit'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('a') && null !== $data->getA()) {
-            $dataArray['a'] = $data->getA() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getA(), 'json', $context));
+        if (array_key_exists('a', get_object_vars($data)) && null !== ($data->a ?? null)) {
+            $dataArray['a'] = ($data->a ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->a ?? null, 'json', $context));
         }
-        if ($data->isInitialized('b') && null !== $data->getB()) {
-            $dataArray['b'] = $data->getB() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getB(), 'json', $context));
+        if (array_key_exists('b', get_object_vars($data)) && null !== ($data->b ?? null)) {
+            $dataArray['b'] = ($data->b ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->b ?? null, 'json', $context));
         }
-        if ($data->isInitialized('distance') && null !== $data->getDistance()) {
-            $dataArray['distance'] = $data->getDistance();
+        if (array_key_exists('distance', get_object_vars($data)) && null !== ($data->distance ?? null)) {
+            $dataArray['distance'] = $data->distance ?? null;
         }
-        if ($data->isInitialized('unit') && null !== $data->getUnit()) {
-            $dataArray['unit'] = $data->getUnit();
+        if (array_key_exists('unit', get_object_vars($data)) && null !== ($data->unit ?? null)) {
+            $dataArray['unit'] = $data->unit ?? null;
         }
         return $dataArray;
     }

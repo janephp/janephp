@@ -38,32 +38,32 @@ class WlanQueryApWlanBssidNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('deviceName', $data)) {
-            $object->setDeviceName($data['deviceName']);
+            $object->deviceName = $data['deviceName'];
         }
         if (\array_key_exists('wlanBssids', $data)) {
             $values = [];
             foreach ($data['wlanBssids'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanQueryWlanBssid::class, 'json', $context);
             }
-            $object->setWlanBssids($values);
+            $object->wlanBssids = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('deviceName') && null !== $data->getDeviceName()) {
-            $dataArray['deviceName'] = $data->getDeviceName();
+        if (array_key_exists('deviceName', get_object_vars($data)) && null !== ($data->deviceName ?? null)) {
+            $dataArray['deviceName'] = $data->deviceName ?? null;
         }
-        if ($data->isInitialized('wlanBssids') && null !== $data->getWlanBssids()) {
+        if (array_key_exists('wlanBssids', get_object_vars($data)) && null !== ($data->wlanBssids ?? null)) {
             $values = [];
-            foreach ($data->getWlanBssids() as $value) {
+            foreach ($data->wlanBssids ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['wlanBssids'] = $values;

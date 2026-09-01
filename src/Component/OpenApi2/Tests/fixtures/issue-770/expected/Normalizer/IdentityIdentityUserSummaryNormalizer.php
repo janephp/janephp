@@ -38,57 +38,57 @@ class IdentityIdentityUserSummaryNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('displayName', $data)) {
-            $object->setDisplayName($data['displayName']);
+            $object->displayName = $data['displayName'];
         }
         if (\array_key_exists('userName', $data)) {
-            $object->setUserName($data['userName']);
+            $object->userName = $data['userName'];
         }
         if (\array_key_exists('userSource', $data)) {
-            $object->setUserSource($data['userSource']);
+            $object->userSource = $data['userSource'];
         }
         if (\array_key_exists('userType', $data)) {
-            $object->setUserType($data['userType']);
+            $object->userType = $data['userType'];
         }
         if (\array_key_exists('isDisabled', $data)) {
-            $object->setIsDisabled($data['isDisabled']);
+            $object->isDisabled = $data['isDisabled'];
         }
         if (\array_key_exists('createdOn', $data)) {
-            $object->setCreatedOn($data['createdOn']);
+            $object->createdOn = $data['createdOn'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('displayName') && null !== $data->getDisplayName()) {
-            $dataArray['displayName'] = $data->getDisplayName();
+        if (array_key_exists('displayName', get_object_vars($data)) && null !== ($data->displayName ?? null)) {
+            $dataArray['displayName'] = $data->displayName ?? null;
         }
-        if ($data->isInitialized('userName') && null !== $data->getUserName()) {
-            $dataArray['userName'] = $data->getUserName();
+        if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
+            $dataArray['userName'] = $data->userName ?? null;
         }
-        if ($data->isInitialized('userSource') && null !== $data->getUserSource()) {
-            $dataArray['userSource'] = $data->getUserSource();
+        if (array_key_exists('userSource', get_object_vars($data)) && null !== ($data->userSource ?? null)) {
+            $dataArray['userSource'] = $data->userSource ?? null;
         }
-        if ($data->isInitialized('userType') && null !== $data->getUserType()) {
-            $dataArray['userType'] = $data->getUserType();
+        if (array_key_exists('userType', get_object_vars($data)) && null !== ($data->userType ?? null)) {
+            $dataArray['userType'] = $data->userType ?? null;
         }
-        if ($data->isInitialized('isDisabled') && null !== $data->getIsDisabled()) {
-            $dataArray['isDisabled'] = $data->getIsDisabled();
+        if (array_key_exists('isDisabled', get_object_vars($data)) && null !== ($data->isDisabled ?? null)) {
+            $dataArray['isDisabled'] = $data->isDisabled ?? null;
         }
-        if ($data->isInitialized('createdOn') && null !== $data->getCreatedOn()) {
-            $dataArray['createdOn'] = $data->getCreatedOn();
+        if (array_key_exists('createdOn', get_object_vars($data)) && null !== ($data->createdOn ?? null)) {
+            $dataArray['createdOn'] = $data->createdOn ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
         return $dataArray;
     }

@@ -32,18 +32,18 @@ trait GetGetUriTrait
                 $parameter = $guessClass->resolveParameter($parameter);
             }
 
-            if (!$parameter instanceof Parameter || EndpointGenerator::IN_PATH !== $parameter->getIn()) {
+            if (!$parameter instanceof Parameter || EndpointGenerator::IN_PATH !== ($parameter->in ?? null)) {
                 continue;
             }
 
-            $schema = $parameter->getSchema();
+            $schema = ($parameter->schema ?? null);
             if ($schema instanceof Reference) {
-                [, $schema] = $guessClass->resolve($parameter->getSchema(), Schema::class);
+                [, $schema] = $guessClass->resolve($parameter->schema ?? null, Schema::class);
             }
 
-            $placeholders[] = $parameter->getName();
-            $propertyNames[] = $this->normalizePathPropertyName($parameter->getName());
-            $types[] = $schema instanceof Schema ? $schema->getType() : null;
+            $placeholders[] = ($parameter->name ?? null);
+            $propertyNames[] = $this->normalizePathPropertyName($parameter->name ?? null);
+            $types[] = $schema instanceof Schema ? ($schema->type ?? null) : null;
         }
 
         if (\count($placeholders) === 0) {

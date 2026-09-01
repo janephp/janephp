@@ -32,21 +32,21 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return $object;
         }
         if (\array_key_exists('foo', $data)) {
-            $object->setFoo($data['foo']);
+            $object->foo = $data['foo'];
         }
         if (\array_key_exists('bar', $data)) {
-            $object->setBar($this->denormalizer->denormalize($data['bar'], \Jane\Component\JsonSchema\Tests\Expected\Schema3\Model\Bar::class, 'json', $context));
+            $object->bar = $this->denormalizer->denormalize($data['bar'], \Jane\Component\JsonSchema\Tests\Expected\Schema3\Model\Bar::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo();
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $dataArray['foo'] = $data->foo ?? null;
         }
-        if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $dataArray['bar'] = $data->getBar() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Schema2\Runtime\JsonObject($this->normalizer->normalize($data->getBar(), 'json', $context));
+        if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
+            $dataArray['bar'] = ($data->bar ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Schema2\Runtime\JsonObject($this->normalizer->normalize($data->bar ?? null, 'json', $context));
         }
         return $dataArray;
     }

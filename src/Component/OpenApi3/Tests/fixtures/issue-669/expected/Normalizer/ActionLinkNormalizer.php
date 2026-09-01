@@ -38,15 +38,15 @@ class ActionLinkNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('rel', $data)) {
-            $object->setRel($data['rel']);
+            $object->rel = $data['rel'];
             unset($data['rel']);
         }
         if (\array_key_exists('href', $data)) {
-            $object->setHref($data['href']);
+            $object->href = $data['href'];
             unset($data['href']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class ActionLinkNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('rel') && null !== $data->getRel()) {
-            $dataArray['rel'] = $data->getRel();
+        if (array_key_exists('rel', get_object_vars($data)) && null !== ($data->rel ?? null)) {
+            $dataArray['rel'] = $data->rel ?? null;
         }
-        if ($data->isInitialized('href') && null !== $data->getHref()) {
-            $dataArray['href'] = $data->getHref();
+        if (array_key_exists('href', get_object_vars($data)) && null !== ($data->href ?? null)) {
+            $dataArray['href'] = $data->href ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

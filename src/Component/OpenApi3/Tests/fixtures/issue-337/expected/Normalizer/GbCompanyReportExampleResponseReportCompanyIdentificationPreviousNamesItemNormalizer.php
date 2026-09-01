@@ -38,11 +38,11 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('dateChanged', $data)) {
-            $object->setDateChanged($data['dateChanged']);
+            $object->dateChanged = $data['dateChanged'];
             unset($data['dateChanged']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('dateChanged') && null !== $data->getDateChanged()) {
-            $dataArray['dateChanged'] = $data->getDateChanged();
+        if (array_key_exists('dateChanged', get_object_vars($data)) && null !== ($data->dateChanged ?? null)) {
+            $dataArray['dateChanged'] = $data->dateChanged ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

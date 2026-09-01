@@ -38,11 +38,11 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('foo', $data) && $data['foo'] !== null) {
-            $object->setFoo($data['foo']);
+            $object->foo = $data['foo'];
             unset($data['foo']);
         }
         elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
-            $object->setFoo(null);
+            $object->foo = null;
             unset($data['foo']);
         }
         if (\array_key_exists('bar', $data) && $data['bar'] !== null) {
@@ -50,11 +50,11 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             foreach ($data['bar'] as $value) {
                 $values[] = $value;
             }
-            $object->setBar($values);
+            $object->bar = $values;
             unset($data['bar']);
         }
         elseif (\array_key_exists('bar', $data) && $data['bar'] === null) {
-            $object->setBar(null);
+            $object->bar = null;
             unset($data['bar']);
         }
         foreach ($data as $key => $value_1) {
@@ -67,12 +67,12 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo();
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $dataArray['foo'] = $data->foo ?? null;
         }
-        if ($data->isInitialized('bar') && null !== $data->getBar()) {
+        if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
             $values = [];
-            foreach ($data->getBar() as $value) {
+            foreach ($data->bar ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['bar'] = $values;

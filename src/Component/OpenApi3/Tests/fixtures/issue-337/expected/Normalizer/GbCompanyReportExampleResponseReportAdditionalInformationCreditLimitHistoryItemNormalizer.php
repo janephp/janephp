@@ -38,11 +38,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate($data['date']);
+            $object->date = $data['date'];
             unset($data['date']);
         }
         if (\array_key_exists('companyValue', $data)) {
-            $object->setCompanyValue($this->denormalizer->denormalize($data['companyValue'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItemCompanyValue::class, 'json', $context));
+            $object->companyValue = $this->denormalizer->denormalize($data['companyValue'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItemCompanyValue::class, 'json', $context);
             unset($data['companyValue']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate();
+        if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
+            $dataArray['date'] = $data->date ?? null;
         }
-        if ($data->isInitialized('companyValue') && null !== $data->getCompanyValue()) {
-            $dataArray['companyValue'] = $data->getCompanyValue() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCompanyValue(), 'json', $context));
+        if (array_key_exists('companyValue', get_object_vars($data)) && null !== ($data->companyValue ?? null)) {
+            $dataArray['companyValue'] = ($data->companyValue ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyValue ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -30,7 +30,7 @@ class BodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
-        $name = $this->getInflector()->camelize($parameter->getName());
+        $name = $this->getInflector()->camelize($parameter->name ?? null);
 
         $guessedType = $this->getClass($parameter, $context, $reference);
         if (false === $guessedType) {
@@ -59,7 +59,7 @@ class BodyParameterGenerator extends ParameterGenerator
             [$class] = $guessedType;
         }
 
-        return rtrim(\sprintf(' * @param %s $%s %s', implode('|', $class), str_replace('*/', '*\\/', $this->getInflector()->camelize($parameter->getName())), str_replace('*/', '*\\/', $parameter->getDescription() ?: '')));
+        return rtrim(\sprintf(' * @param %s $%s %s', implode('|', $class), str_replace('*/', '*\\/', $this->getInflector()->camelize($parameter->name ?? null)), str_replace('*/', '*\\/', ($parameter->description ?? null) ?: '')));
     }
 
     /**
@@ -69,14 +69,14 @@ class BodyParameterGenerator extends ParameterGenerator
     {
         $resolvedSchema = $jsonReference = null;
         $array = false;
-        $schema = $parameter->getSchema();
+        $schema = ($parameter->schema ?? null);
 
         if ($schema instanceof Reference) {
             list($jsonReference, $resolvedSchema) = $this->guessClass->resolve($schema, Schema::class);
         }
 
-        if ($schema instanceof Schema && 'array' === $schema->getType() && $schema->getItems() instanceof Reference) {
-            list($jsonReference, $resolvedSchema) = $this->guessClass->resolve($schema->getItems(), Schema::class);
+        if ($schema instanceof Schema && 'array' === $schema->type && $schema->items instanceof Reference) {
+            list($jsonReference, $resolvedSchema) = $this->guessClass->resolve($schema->items, Schema::class);
             $array = true;
         }
 
@@ -87,18 +87,18 @@ class BodyParameterGenerator extends ParameterGenerator
                 return [['\\' . $this->getModelNamespace($context, $reference, $classGuess) . $classGuess->getName()], false];
             }
 
-            return [$this->convertParameterType($schema->getType(), $schema->getFormat()), false];
+            return [$this->convertParameterType($schema->type, $schema->format ?? null), false];
         }
 
         $class = $context->getRegistry()->getClass($jsonReference);
 
         // Happens when reference resolve to a none object
         if (null === $class) {
-            if (null !== $resolvedSchema->getAllOf() && \count($resolvedSchema->getAllOf()) > 0) {
+            if ([] !== ($resolvedSchema->allOf ?? null ?? [])) {
                 return false;
             }
 
-            return [$this->convertParameterType($resolvedSchema->getType(), $resolvedSchema->getFormat()), false];
+            return [$this->convertParameterType($resolvedSchema->type, $resolvedSchema->format ?? null), false];
         }
 
         $class = '\\' . $this->getModelNamespace($context, $jsonReference, $class) . $class->getName();

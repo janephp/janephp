@@ -38,33 +38,33 @@ class DpskWlanExternalDpskEncryptionNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('method', $data)) {
-            $object->setMethod($data['method']);
+            $object->method = $data['method'];
         }
         if (\array_key_exists('algorithm', $data)) {
-            $object->setAlgorithm($data['algorithm']);
+            $object->algorithm = $data['algorithm'];
         }
         if (\array_key_exists('passphrase', $data)) {
-            $object->setPassphrase($data['passphrase']);
+            $object->passphrase = $data['passphrase'];
         }
         if (\array_key_exists('mfp', $data)) {
-            $object->setMfp($data['mfp']);
+            $object->mfp = $data['mfp'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('method') && null !== $data->getMethod()) {
-            $dataArray['method'] = $data->getMethod();
+        if (array_key_exists('method', get_object_vars($data)) && null !== ($data->method ?? null)) {
+            $dataArray['method'] = $data->method ?? null;
         }
-        if ($data->isInitialized('algorithm') && null !== $data->getAlgorithm()) {
-            $dataArray['algorithm'] = $data->getAlgorithm();
+        if (array_key_exists('algorithm', get_object_vars($data)) && null !== ($data->algorithm ?? null)) {
+            $dataArray['algorithm'] = $data->algorithm ?? null;
         }
-        if ($data->isInitialized('passphrase') && null !== $data->getPassphrase()) {
-            $dataArray['passphrase'] = $data->getPassphrase();
+        if (array_key_exists('passphrase', get_object_vars($data)) && null !== ($data->passphrase ?? null)) {
+            $dataArray['passphrase'] = $data->passphrase ?? null;
         }
-        if ($data->isInitialized('mfp') && null !== $data->getMfp()) {
-            $dataArray['mfp'] = $data->getMfp();
+        if (array_key_exists('mfp', get_object_vars($data)) && null !== ($data->mfp ?? null)) {
+            $dataArray['mfp'] = $data->mfp ?? null;
         }
         return $dataArray;
     }

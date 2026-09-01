@@ -42,11 +42,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistNormalizer i
             foreach ($data['matches'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem::class, 'json', $context);
             }
-            $object->setMatches($values);
+            $object->matches = $values;
             unset($data['matches']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,15 +59,15 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistNormalizer i
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('matches') && null !== $data->getMatches()) {
+        if (array_key_exists('matches', get_object_vars($data)) && null !== ($data->matches ?? null)) {
             $values = [];
-            foreach ($data->getMatches() as $value) {
+            foreach ($data->matches ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['matches'] = $values;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

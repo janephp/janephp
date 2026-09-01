@@ -42,19 +42,19 @@ class BulkResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
             foreach ($data['rows'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BulkResponseRow::class, 'json', $context);
             }
-            $object->setRows($values);
+            $object->rows = $values;
         }
         elseif (\array_key_exists('rows', $data) && $data['rows'] === null) {
-            $object->setRows(null);
+            $object->rows = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('rows') && null !== $data->getRows()) {
+        if (array_key_exists('rows', get_object_vars($data)) && null !== ($data->rows ?? null)) {
             $values = [];
-            foreach ($data->getRows() as $value) {
+            foreach ($data->rows ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rows'] = $values;

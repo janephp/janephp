@@ -44,88 +44,88 @@ class OutputNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['dynamicRendering'] = (bool) $data['dynamicRendering'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
         }
         if (\array_key_exists('outputFormatId', $data)) {
-            $object->setOutputFormatId($data['outputFormatId']);
+            $object->outputFormatId = $data['outputFormatId'];
         }
         if (\array_key_exists('contentId', $data)) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
         }
         if (\array_key_exists('renderingState', $data)) {
             $value = $data['renderingState'];
             if (is_string($data['renderingState'])) {
                 $value = $data['renderingState'];
             }
-            $object->setRenderingState($value);
+            $object->renderingState = $value;
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
             $value_1 = $data['detail'];
             if (is_array($data['detail']) and \array_key_exists('kind', $data['detail'])) {
                 $value_1 = $this->denormalizer->denormalize($data['detail'], \PicturePark\API\Model\OutputDataBase::class, 'json', $context);
             }
-            $object->setDetail($value_1);
+            $object->detail = $value_1;
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
-            $object->setDetail(null);
+            $object->detail = null;
         }
         if (\array_key_exists('backupTimestamp', $data) && $data['backupTimestamp'] !== null) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['backupTimestamp']);
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['backupTimestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setBackupTimestamp($date);
+            $object->backupTimestamp = $date;
         }
         elseif (\array_key_exists('backupTimestamp', $data) && $data['backupTimestamp'] === null) {
-            $object->setBackupTimestamp(null);
+            $object->backupTimestamp = null;
         }
         if (\array_key_exists('attemptsLeft', $data)) {
-            $object->setAttemptsLeft($data['attemptsLeft']);
+            $object->attemptsLeft = $data['attemptsLeft'];
         }
         if (\array_key_exists('fileVersion', $data)) {
-            $object->setFileVersion($data['fileVersion']);
+            $object->fileVersion = $data['fileVersion'];
         }
         if (\array_key_exists('dynamicRendering', $data)) {
-            $object->setDynamicRendering($data['dynamicRendering']);
+            $object->dynamicRendering = $data['dynamicRendering'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'OutputDetail' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'OutputDetail' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['outputFormatId'] = $data->getOutputFormatId();
-        $dataArray['contentId'] = $data->getContentId();
-        $value = $data->getRenderingState();
-        if (is_string($data->getRenderingState())) {
-            $value = $data->getRenderingState();
+        $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
+        $dataArray['contentId'] = $data->contentId ?? null;
+        $value = $data->renderingState ?? null;
+        if (is_string($data->renderingState ?? null)) {
+            $value = $data->renderingState ?? null;
         }
         $dataArray['renderingState'] = $value;
-        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
-            $value_1 = $data->getDetail();
-            if (is_object($data->getDetail())) {
-                $value_1 = $data->getDetail() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getDetail(), 'json', $context));
+        if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
+            $value_1 = $data->detail ?? null;
+            if (is_object($data->detail ?? null)) {
+                $value_1 = ($data->detail ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail ?? null, 'json', $context));
             }
             $dataArray['detail'] = $value_1;
         }
-        if ($data->isInitialized('backupTimestamp') && null !== $data->getBackupTimestamp()) {
-            $dataArray['backupTimestamp'] = $data->getBackupTimestamp()?->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('backupTimestamp', get_object_vars($data)) && null !== ($data->backupTimestamp ?? null)) {
+            $dataArray['backupTimestamp'] = ($data->backupTimestamp ?? null)?->format('Y-m-d\TH:i:sP');
         }
-        $dataArray['attemptsLeft'] = $data->getAttemptsLeft();
-        $dataArray['fileVersion'] = $data->getFileVersion();
-        $dataArray['dynamicRendering'] = $data->getDynamicRendering();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['attemptsLeft'] = $data->attemptsLeft ?? null;
+        $dataArray['fileVersion'] = $data->fileVersion ?? null;
+        $dataArray['dynamicRendering'] = $data->dynamicRendering ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

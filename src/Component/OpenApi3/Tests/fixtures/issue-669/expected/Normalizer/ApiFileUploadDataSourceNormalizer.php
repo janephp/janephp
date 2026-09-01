@@ -38,15 +38,15 @@ class ApiFileUploadDataSourceNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('original_file_name', $data)) {
-            $object->setOriginalFileName($data['original_file_name']);
+            $object->originalFileName = $data['original_file_name'];
             unset($data['original_file_name']);
         }
         if (\array_key_exists('size_in_bytes', $data)) {
-            $object->setSizeInBytes($data['size_in_bytes']);
+            $object->sizeInBytes = $data['size_in_bytes'];
             unset($data['size_in_bytes']);
         }
         if (\array_key_exists('stored_object_key', $data)) {
-            $object->setStoredObjectKey($data['stored_object_key']);
+            $object->storedObjectKey = $data['stored_object_key'];
             unset($data['stored_object_key']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class ApiFileUploadDataSourceNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('originalFileName') && null !== $data->getOriginalFileName()) {
-            $dataArray['original_file_name'] = $data->getOriginalFileName();
+        if (array_key_exists('originalFileName', get_object_vars($data)) && null !== ($data->originalFileName ?? null)) {
+            $dataArray['original_file_name'] = $data->originalFileName ?? null;
         }
-        if ($data->isInitialized('sizeInBytes') && null !== $data->getSizeInBytes()) {
-            $dataArray['size_in_bytes'] = $data->getSizeInBytes();
+        if (array_key_exists('sizeInBytes', get_object_vars($data)) && null !== ($data->sizeInBytes ?? null)) {
+            $dataArray['size_in_bytes'] = $data->sizeInBytes ?? null;
         }
-        if ($data->isInitialized('storedObjectKey') && null !== $data->getStoredObjectKey()) {
-            $dataArray['stored_object_key'] = $data->getStoredObjectKey();
+        if (array_key_exists('storedObjectKey', get_object_vars($data)) && null !== ($data->storedObjectKey ?? null)) {
+            $dataArray['stored_object_key'] = $data->storedObjectKey ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

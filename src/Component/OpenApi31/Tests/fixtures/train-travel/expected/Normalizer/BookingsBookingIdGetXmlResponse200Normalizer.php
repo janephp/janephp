@@ -47,27 +47,27 @@ class BookingsBookingIdGetXmlResponse200Normalizer implements DenormalizerInterf
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\BookingsBookingIdGetXmlResponse200Constraint());
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('trip_id', $data)) {
-            $object->setTripId($data['trip_id']);
+            $object->tripId = $data['trip_id'];
             unset($data['trip_id']);
         }
         if (\array_key_exists('passenger_name', $data)) {
-            $object->setPassengerName($data['passenger_name']);
+            $object->passengerName = $data['passenger_name'];
             unset($data['passenger_name']);
         }
         if (\array_key_exists('has_bicycle', $data)) {
-            $object->setHasBicycle($data['has_bicycle']);
+            $object->hasBicycle = $data['has_bicycle'];
             unset($data['has_bicycle']);
         }
         if (\array_key_exists('has_dog', $data)) {
-            $object->setHasDog($data['has_dog']);
+            $object->hasDog = $data['has_dog'];
             unset($data['has_dog']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Component\OpenApi31\Tests\Expected\Model\LinksSelf::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Component\OpenApi31\Tests\Expected\Model\LinksSelf::class, 'json', $context);
             unset($data['links']);
         }
         foreach ($data as $key => $value) {
@@ -80,20 +80,20 @@ class BookingsBookingIdGetXmlResponse200Normalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('tripId') && null !== $data->getTripId()) {
-            $dataArray['trip_id'] = $data->getTripId();
+        if (array_key_exists('tripId', get_object_vars($data)) && null !== ($data->tripId ?? null)) {
+            $dataArray['trip_id'] = $data->tripId ?? null;
         }
-        if ($data->isInitialized('passengerName') && null !== $data->getPassengerName()) {
-            $dataArray['passenger_name'] = $data->getPassengerName();
+        if (array_key_exists('passengerName', get_object_vars($data)) && null !== ($data->passengerName ?? null)) {
+            $dataArray['passenger_name'] = $data->passengerName ?? null;
         }
-        if ($data->isInitialized('hasBicycle') && null !== $data->getHasBicycle()) {
-            $dataArray['has_bicycle'] = $data->getHasBicycle();
+        if (array_key_exists('hasBicycle', get_object_vars($data)) && null !== ($data->hasBicycle ?? null)) {
+            $dataArray['has_bicycle'] = $data->hasBicycle ?? null;
         }
-        if ($data->isInitialized('hasDog') && null !== $data->getHasDog()) {
-            $dataArray['has_dog'] = $data->getHasDog();
+        if (array_key_exists('hasDog', get_object_vars($data)) && null !== ($data->hasDog ?? null)) {
+            $dataArray['has_dog'] = $data->hasDog ?? null;
         }
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

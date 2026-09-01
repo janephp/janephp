@@ -38,24 +38,24 @@ class DevicePolicyCreateDevicePolicyNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('defaultAction', $data)) {
-            $object->setDefaultAction($data['defaultAction']);
+            $object->defaultAction = $data['defaultAction'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['defaultAction'] = $data->getDefaultAction();
+        $dataArray['defaultAction'] = $data->defaultAction ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

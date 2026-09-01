@@ -23,8 +23,8 @@ trait GetGetQueryAllowReservedTrait
                 $parameter = $guessClass->resolveParameter($parameter);
             }
 
-            if ($parameter instanceof Parameter && EndpointGenerator::IN_QUERY === $parameter->getIn() && true === $parameter->getAllowReserved()) {
-                $queryAllowReservedParameters[] = $parameter->getName();
+            if ($parameter instanceof Parameter && EndpointGenerator::IN_QUERY === ($parameter->in ?? null) && true === ($parameter->allowReserved ?? null)) {
+                $queryAllowReservedParameters[] = ($parameter->name ?? null);
             }
         }
 

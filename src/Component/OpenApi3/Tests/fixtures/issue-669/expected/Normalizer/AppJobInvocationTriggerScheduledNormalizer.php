@@ -38,7 +38,7 @@ class AppJobInvocationTriggerScheduledNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('schedule', $data)) {
-            $object->setSchedule($this->denormalizer->denormalize($data['schedule'], \Jane\Generated\DigitalOcean\Model\AppJobInvocationTriggerScheduledSchedule::class, 'json', $context));
+            $object->schedule = $this->denormalizer->denormalize($data['schedule'], \Jane\Generated\DigitalOcean\Model\AppJobInvocationTriggerScheduledSchedule::class, 'json', $context);
             unset($data['schedule']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppJobInvocationTriggerScheduledNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('schedule') && null !== $data->getSchedule()) {
-            $dataArray['schedule'] = $data->getSchedule() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSchedule(), 'json', $context));
+        if (array_key_exists('schedule', get_object_vars($data)) && null !== ($data->schedule ?? null)) {
+            $dataArray['schedule'] = ($data->schedule ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->schedule ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

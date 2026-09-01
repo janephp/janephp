@@ -41,21 +41,21 @@ class GenericResourcesItemNormalizer implements DenormalizerInterface, Normalize
             $this->validate($data, new \Docker\Api\Validator\GenericResourcesItemConstraint());
         }
         if (\array_key_exists('NamedResourceSpec', $data)) {
-            $object->setNamedResourceSpec($this->denormalizer->denormalize($data['NamedResourceSpec'], \Docker\Api\Model\GenericResourcesItemNamedResourceSpec::class, 'json', $context));
+            $object->namedResourceSpec = $this->denormalizer->denormalize($data['NamedResourceSpec'], \Docker\Api\Model\GenericResourcesItemNamedResourceSpec::class, 'json', $context);
         }
         if (\array_key_exists('DiscreteResourceSpec', $data)) {
-            $object->setDiscreteResourceSpec($this->denormalizer->denormalize($data['DiscreteResourceSpec'], \Docker\Api\Model\GenericResourcesItemDiscreteResourceSpec::class, 'json', $context));
+            $object->discreteResourceSpec = $this->denormalizer->denormalize($data['DiscreteResourceSpec'], \Docker\Api\Model\GenericResourcesItemDiscreteResourceSpec::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('namedResourceSpec') && null !== $data->getNamedResourceSpec()) {
-            $dataArray['NamedResourceSpec'] = $data->getNamedResourceSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getNamedResourceSpec(), 'json', $context));
+        if (array_key_exists('namedResourceSpec', get_object_vars($data)) && null !== ($data->namedResourceSpec ?? null)) {
+            $dataArray['NamedResourceSpec'] = ($data->namedResourceSpec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->namedResourceSpec ?? null, 'json', $context));
         }
-        if ($data->isInitialized('discreteResourceSpec') && null !== $data->getDiscreteResourceSpec()) {
-            $dataArray['DiscreteResourceSpec'] = $data->getDiscreteResourceSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getDiscreteResourceSpec(), 'json', $context));
+        if (array_key_exists('discreteResourceSpec', get_object_vars($data)) && null !== ($data->discreteResourceSpec ?? null)) {
+            $dataArray['DiscreteResourceSpec'] = ($data->discreteResourceSpec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->discreteResourceSpec ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\GenericResourcesItemConstraint());

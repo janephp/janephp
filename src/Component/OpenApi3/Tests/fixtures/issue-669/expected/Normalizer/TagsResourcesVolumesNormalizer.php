@@ -38,11 +38,11 @@ class TagsResourcesVolumesNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
         }
         if (\array_key_exists('last_tagged_uri', $data)) {
-            $object->setLastTaggedUri($data['last_tagged_uri']);
+            $object->lastTaggedUri = $data['last_tagged_uri'];
             unset($data['last_tagged_uri']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class TagsResourcesVolumesNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count ?? null;
         }
-        if ($data->isInitialized('lastTaggedUri') && null !== $data->getLastTaggedUri()) {
-            $dataArray['last_tagged_uri'] = $data->getLastTaggedUri();
+        if (array_key_exists('lastTaggedUri', get_object_vars($data)) && null !== ($data->lastTaggedUri ?? null)) {
+            $dataArray['last_tagged_uri'] = $data->lastTaggedUri ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

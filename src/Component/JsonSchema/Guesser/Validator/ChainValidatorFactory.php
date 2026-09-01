@@ -9,40 +9,30 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 class ChainValidatorFactory
 {
     /** @var list<ValidatorInterface> */
-    private static array $customValidators = [];
+    private array $customValidators = [];
 
-    private static string $fullDateFormat = 'Y-m-d';
+    private readonly string $fullDateFormat;
 
-    private static string $dateTimeOutputFormat = \DateTimeInterface::RFC3339;
+    private readonly string $dateTimeOutputFormat;
 
-    private static ?string $dateTimeInputFormat = null;
+    private readonly ?string $dateTimeInputFormat;
 
-    public static function addValidator(ValidatorInterface $validator): void
-    {
-        self::$customValidators[] = $validator;
+    public function __construct(
+        string $fullDateFormat = 'Y-m-d',
+        string $dateTimeOutputFormat = \DateTimeInterface::RFC3339,
+        ?string $dateTimeInputFormat = null,
+    ) {
+        $this->fullDateFormat = $fullDateFormat;
+        $this->dateTimeOutputFormat = $dateTimeOutputFormat;
+        $this->dateTimeInputFormat = $dateTimeInputFormat;
     }
 
-    /**
-     * Configure the date formats used by the built-in date & date-time format
-     * validators. Must mirror the `full-date-format`, `date-format` and
-     * `date-input-format` options given to the type guessers.
-     */
-    public static function setDateFormats(string $fullDateFormat, string $dateTimeOutputFormat, ?string $dateTimeInputFormat): void
+    public function addValidator(ValidatorInterface $validator): void
     {
-        self::$fullDateFormat = $fullDateFormat;
-        self::$dateTimeOutputFormat = $dateTimeOutputFormat;
-        self::$dateTimeInputFormat = $dateTimeInputFormat;
+        $this->customValidators[] = $validator;
     }
 
-    public static function resetCustomValidators(): void
-    {
-        self::$customValidators = [];
-        self::$fullDateFormat = 'Y-m-d';
-        self::$dateTimeOutputFormat = \DateTimeInterface::RFC3339;
-        self::$dateTimeInputFormat = null;
-    }
-
-    public static function create(Naming $naming, Registry $registry, DenormalizerInterface $denormalizer): ValidatorInterface
+    public function create(Naming $naming, Registry $registry, DenormalizerInterface $denormalizer): ValidatorInterface
     {
         $chainValidator = new ChainValidator();
         // Numeric
@@ -65,8 +55,8 @@ class ChainValidatorFactory
         $chainValidator->addValidator(new Object_\MaxPropertiesValidator());
         $chainValidator->addValidator(new Object_\MinPropertiesValidator());
         // Format
-        $chainValidator->addValidator(new Format\DateValidator(self::$fullDateFormat));
-        $chainValidator->addValidator(new Format\DateTimeValidator(self::$dateTimeOutputFormat, self::$dateTimeInputFormat));
+        $chainValidator->addValidator(new Format\DateValidator($this->fullDateFormat));
+        $chainValidator->addValidator(new Format\DateTimeValidator($this->dateTimeOutputFormat, $this->dateTimeInputFormat));
         $chainValidator->addValidator(new Format\EmailValidator());
         $chainValidator->addValidator(new Format\HostnameValidator());
         $chainValidator->addValidator(new Format\IPv4Validator());
@@ -74,7 +64,7 @@ class ChainValidatorFactory
         $chainValidator->addValidator(new Format\UuidValidator());
 
         // Custom validators emit their constraints before the generic Type/NotNull fallbacks below
-        foreach (self::$customValidators as $validator) {
+        foreach ($this->customValidators as $validator) {
             $chainValidator->addValidator($validator);
         }
 

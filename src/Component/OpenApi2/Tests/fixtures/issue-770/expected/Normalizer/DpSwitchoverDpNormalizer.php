@@ -41,41 +41,41 @@ class DpSwitchoverDpNormalizer implements DenormalizerInterface, NormalizerInter
             $data['deleteRecord'] = (bool) $data['deleteRecord'];
         }
         if (\array_key_exists('ipOrFqdn', $data)) {
-            $object->setIpOrFqdn($data['ipOrFqdn']);
+            $object->ipOrFqdn = $data['ipOrFqdn'];
         }
         if (\array_key_exists('clusterName', $data)) {
-            $object->setClusterName($data['clusterName']);
+            $object->clusterName = $data['clusterName'];
         }
         if (\array_key_exists('dpIdList', $data)) {
             $values = [];
             foreach ($data['dpIdList'] as $value) {
                 $values[] = $value;
             }
-            $object->setDpIdList($values);
+            $object->dpIdList = $values;
         }
         if (\array_key_exists('deleteRecord', $data)) {
-            $object->setDeleteRecord($data['deleteRecord']);
+            $object->deleteRecord = $data['deleteRecord'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ipOrFqdn') && null !== $data->getIpOrFqdn()) {
-            $dataArray['ipOrFqdn'] = $data->getIpOrFqdn();
+        if (array_key_exists('ipOrFqdn', get_object_vars($data)) && null !== ($data->ipOrFqdn ?? null)) {
+            $dataArray['ipOrFqdn'] = $data->ipOrFqdn ?? null;
         }
-        if ($data->isInitialized('clusterName') && null !== $data->getClusterName()) {
-            $dataArray['clusterName'] = $data->getClusterName();
+        if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
+            $dataArray['clusterName'] = $data->clusterName ?? null;
         }
-        if ($data->isInitialized('dpIdList') && null !== $data->getDpIdList()) {
+        if (array_key_exists('dpIdList', get_object_vars($data)) && null !== ($data->dpIdList ?? null)) {
             $values = [];
-            foreach ($data->getDpIdList() as $value) {
+            foreach ($data->dpIdList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['dpIdList'] = $values;
         }
-        if ($data->isInitialized('deleteRecord') && null !== $data->getDeleteRecord()) {
-            $dataArray['deleteRecord'] = $data->getDeleteRecord();
+        if (array_key_exists('deleteRecord', get_object_vars($data)) && null !== ($data->deleteRecord ?? null)) {
+            $dataArray['deleteRecord'] = $data->deleteRecord ?? null;
         }
         return $dataArray;
     }

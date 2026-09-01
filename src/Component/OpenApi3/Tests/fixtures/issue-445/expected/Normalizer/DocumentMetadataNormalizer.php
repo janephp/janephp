@@ -46,11 +46,11 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
             unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
@@ -62,159 +62,159 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
                 }
                 $value_2 = $values_1;
             }
-            $object->setDescriptions($value_2);
+            $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
-            $object->setDescriptions(null);
+            $object->descriptions = null;
             unset($data['descriptions']);
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
-            $object->setFileExtension($data['fileExtension']);
+            $object->fileExtension = $data['fileExtension'];
             unset($data['fileExtension']);
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
-            $object->setFileExtension(null);
+            $object->fileExtension = null;
             unset($data['fileExtension']);
         }
         if (\array_key_exists('fileName', $data) && $data['fileName'] !== null) {
-            $object->setFileName($data['fileName']);
+            $object->fileName = $data['fileName'];
             unset($data['fileName']);
         }
         elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
-            $object->setFileName(null);
+            $object->fileName = null;
             unset($data['fileName']);
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
-            $object->setFilePath($data['filePath']);
+            $object->filePath = $data['filePath'];
             unset($data['filePath']);
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
-            $object->setFilePath(null);
+            $object->filePath = null;
             unset($data['filePath']);
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
-            $object->setFileSizeInBytes($data['fileSizeInBytes']);
+            $object->fileSizeInBytes = $data['fileSizeInBytes'];
             unset($data['fileSizeInBytes']);
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
-            $object->setFileSizeInBytes(null);
+            $object->fileSizeInBytes = null;
             unset($data['fileSizeInBytes']);
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
-            $object->setSha1Hash($data['sha1Hash']);
+            $object->sha1Hash = $data['sha1Hash'];
             unset($data['sha1Hash']);
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
-            $object->setSha1Hash(null);
+            $object->sha1Hash = null;
             unset($data['sha1Hash']);
         }
         if (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] !== null) {
-            $object->setXmpMetadata($data['xmpMetadata']);
+            $object->xmpMetadata = $data['xmpMetadata'];
             unset($data['xmpMetadata']);
         }
         elseif (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] === null) {
-            $object->setXmpMetadata(null);
+            $object->xmpMetadata = null;
             unset($data['xmpMetadata']);
         }
         if (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] !== null) {
-            $object->setExifMetadata($data['exifMetadata']);
+            $object->exifMetadata = $data['exifMetadata'];
             unset($data['exifMetadata']);
         }
         elseif (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] === null) {
-            $object->setExifMetadata(null);
+            $object->exifMetadata = null;
             unset($data['exifMetadata']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
             unset($data['language']);
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
-            $object->setLanguage(null);
+            $object->language = null;
             unset($data['language']);
         }
         if (\array_key_exists('applicationName', $data) && $data['applicationName'] !== null) {
-            $object->setApplicationName($data['applicationName']);
+            $object->applicationName = $data['applicationName'];
             unset($data['applicationName']);
         }
         elseif (\array_key_exists('applicationName', $data) && $data['applicationName'] === null) {
-            $object->setApplicationName(null);
+            $object->applicationName = null;
             unset($data['applicationName']);
         }
         if (\array_key_exists('applicationVersion', $data) && $data['applicationVersion'] !== null) {
-            $object->setApplicationVersion($data['applicationVersion']);
+            $object->applicationVersion = $data['applicationVersion'];
             unset($data['applicationVersion']);
         }
         elseif (\array_key_exists('applicationVersion', $data) && $data['applicationVersion'] === null) {
-            $object->setApplicationVersion(null);
+            $object->applicationVersion = null;
             unset($data['applicationVersion']);
         }
         if (\array_key_exists('author', $data) && $data['author'] !== null) {
-            $object->setAuthor($data['author']);
+            $object->author = $data['author'];
             unset($data['author']);
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
-            $object->setAuthor(null);
+            $object->author = null;
             unset($data['author']);
         }
         if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
-            $object->setCreator($data['creator']);
+            $object->creator = $data['creator'];
             unset($data['creator']);
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
-            $object->setCreator(null);
+            $object->creator = null;
             unset($data['creator']);
         }
         if (\array_key_exists('publisher', $data) && $data['publisher'] !== null) {
-            $object->setPublisher($data['publisher']);
+            $object->publisher = $data['publisher'];
             unset($data['publisher']);
         }
         elseif (\array_key_exists('publisher', $data) && $data['publisher'] === null) {
-            $object->setPublisher(null);
+            $object->publisher = null;
             unset($data['publisher']);
         }
         if (\array_key_exists('company', $data) && $data['company'] !== null) {
-            $object->setCompany($data['company']);
+            $object->company = $data['company'];
             unset($data['company']);
         }
         elseif (\array_key_exists('company', $data) && $data['company'] === null) {
-            $object->setCompany(null);
+            $object->company = null;
             unset($data['company']);
         }
         if (\array_key_exists('documentTitle', $data) && $data['documentTitle'] !== null) {
-            $object->setDocumentTitle($data['documentTitle']);
+            $object->documentTitle = $data['documentTitle'];
             unset($data['documentTitle']);
         }
         elseif (\array_key_exists('documentTitle', $data) && $data['documentTitle'] === null) {
-            $object->setDocumentTitle(null);
+            $object->documentTitle = null;
             unset($data['documentTitle']);
         }
         if (\array_key_exists('characterCount', $data)) {
-            $object->setCharacterCount($data['characterCount']);
+            $object->characterCount = $data['characterCount'];
             unset($data['characterCount']);
         }
         if (\array_key_exists('characterCountWithSpaces', $data)) {
-            $object->setCharacterCountWithSpaces($data['characterCountWithSpaces']);
+            $object->characterCountWithSpaces = $data['characterCountWithSpaces'];
             unset($data['characterCountWithSpaces']);
         }
         if (\array_key_exists('lineCount', $data)) {
-            $object->setLineCount($data['lineCount']);
+            $object->lineCount = $data['lineCount'];
             unset($data['lineCount']);
         }
         if (\array_key_exists('pageCount', $data)) {
-            $object->setPageCount($data['pageCount']);
+            $object->pageCount = $data['pageCount'];
             unset($data['pageCount']);
         }
         if (\array_key_exists('slideCount', $data)) {
-            $object->setSlideCount($data['slideCount']);
+            $object->slideCount = $data['slideCount'];
             unset($data['slideCount']);
         }
         if (\array_key_exists('paragraphCount', $data)) {
-            $object->setParagraphCount($data['paragraphCount']);
+            $object->paragraphCount = $data['paragraphCount'];
             unset($data['paragraphCount']);
         }
         if (\array_key_exists('revisionNumber', $data)) {
-            $object->setRevisionNumber($data['revisionNumber']);
+            $object->revisionNumber = $data['revisionNumber'];
             unset($data['revisionNumber']);
         }
         if (\array_key_exists('titles', $data) && $data['titles'] !== null) {
@@ -222,11 +222,11 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['titles'] as $value_4) {
                 $values_2[] = $value_4;
             }
-            $object->setTitles($values_2);
+            $object->titles = $values_2;
             unset($data['titles']);
         }
         elseif (\array_key_exists('titles', $data) && $data['titles'] === null) {
-            $object->setTitles(null);
+            $object->titles = null;
             unset($data['titles']);
         }
         if (\array_key_exists('imageTitles', $data) && $data['imageTitles'] !== null) {
@@ -234,11 +234,11 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['imageTitles'] as $value_5) {
                 $values_3[] = $value_5;
             }
-            $object->setImageTitles($values_3);
+            $object->imageTitles = $values_3;
             unset($data['imageTitles']);
         }
         elseif (\array_key_exists('imageTitles', $data) && $data['imageTitles'] === null) {
-            $object->setImageTitles(null);
+            $object->imageTitles = null;
             unset($data['imageTitles']);
         }
         if (\array_key_exists('epsInfo', $data) && $data['epsInfo'] !== null) {
@@ -246,11 +246,11 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             if (is_array($data['epsInfo']) and \array_key_exists('isRasterized', $data['epsInfo']) and \array_key_exists('widthInPoints', $data['epsInfo']) and \array_key_exists('heightInPoints', $data['epsInfo'])) {
                 $value_6 = $this->denormalizer->denormalize($data['epsInfo'], \PicturePark\API\Model\EpsMetadata::class, 'json', $context);
             }
-            $object->setEpsInfo($value_6);
+            $object->epsInfo = $value_6;
             unset($data['epsInfo']);
         }
         elseif (\array_key_exists('epsInfo', $data) && $data['epsInfo'] === null) {
-            $object->setEpsInfo(null);
+            $object->epsInfo = null;
             unset($data['epsInfo']);
         }
         foreach ($data as $key_2 => $value_7) {
@@ -263,112 +263,112 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_1) {
+                foreach ($data->names ?? null as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
             }
             $dataArray['names'] = $value;
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $value_2 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
+        if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
+            $value_2 = $data->descriptions ?? null;
+            if (is_object($data->descriptions ?? null)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                foreach ($data->descriptions ?? null as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
                 }
                 $value_2 = $values_1;
             }
             $dataArray['descriptions'] = $value_2;
         }
-        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
-            $dataArray['fileExtension'] = $data->getFileExtension();
+        if (array_key_exists('fileExtension', get_object_vars($data)) && null !== ($data->fileExtension ?? null)) {
+            $dataArray['fileExtension'] = $data->fileExtension ?? null;
         }
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
-            $dataArray['fileName'] = $data->getFileName();
+        if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
+            $dataArray['fileName'] = $data->fileName ?? null;
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
-            $dataArray['filePath'] = $data->getFilePath();
+        if (array_key_exists('filePath', get_object_vars($data)) && null !== ($data->filePath ?? null)) {
+            $dataArray['filePath'] = $data->filePath ?? null;
         }
-        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
-            $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
+        if (array_key_exists('fileSizeInBytes', get_object_vars($data)) && null !== ($data->fileSizeInBytes ?? null)) {
+            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes ?? null;
         }
-        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
-            $dataArray['sha1Hash'] = $data->getSha1Hash();
+        if (array_key_exists('sha1Hash', get_object_vars($data)) && null !== ($data->sha1Hash ?? null)) {
+            $dataArray['sha1Hash'] = $data->sha1Hash ?? null;
         }
-        if ($data->isInitialized('xmpMetadata') && null !== $data->getXmpMetadata()) {
-            $dataArray['xmpMetadata'] = $data->getXmpMetadata();
+        if (array_key_exists('xmpMetadata', get_object_vars($data)) && null !== ($data->xmpMetadata ?? null)) {
+            $dataArray['xmpMetadata'] = $data->xmpMetadata ?? null;
         }
-        if ($data->isInitialized('exifMetadata') && null !== $data->getExifMetadata()) {
-            $dataArray['exifMetadata'] = $data->getExifMetadata();
+        if (array_key_exists('exifMetadata', get_object_vars($data)) && null !== ($data->exifMetadata ?? null)) {
+            $dataArray['exifMetadata'] = $data->exifMetadata ?? null;
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
-            $dataArray['language'] = $data->getLanguage();
+        if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
+            $dataArray['language'] = $data->language ?? null;
         }
-        if ($data->isInitialized('applicationName') && null !== $data->getApplicationName()) {
-            $dataArray['applicationName'] = $data->getApplicationName();
+        if (array_key_exists('applicationName', get_object_vars($data)) && null !== ($data->applicationName ?? null)) {
+            $dataArray['applicationName'] = $data->applicationName ?? null;
         }
-        if ($data->isInitialized('applicationVersion') && null !== $data->getApplicationVersion()) {
-            $dataArray['applicationVersion'] = $data->getApplicationVersion();
+        if (array_key_exists('applicationVersion', get_object_vars($data)) && null !== ($data->applicationVersion ?? null)) {
+            $dataArray['applicationVersion'] = $data->applicationVersion ?? null;
         }
-        if ($data->isInitialized('author') && null !== $data->getAuthor()) {
-            $dataArray['author'] = $data->getAuthor();
+        if (array_key_exists('author', get_object_vars($data)) && null !== ($data->author ?? null)) {
+            $dataArray['author'] = $data->author ?? null;
         }
-        if ($data->isInitialized('creator') && null !== $data->getCreator()) {
-            $dataArray['creator'] = $data->getCreator();
+        if (array_key_exists('creator', get_object_vars($data)) && null !== ($data->creator ?? null)) {
+            $dataArray['creator'] = $data->creator ?? null;
         }
-        if ($data->isInitialized('publisher') && null !== $data->getPublisher()) {
-            $dataArray['publisher'] = $data->getPublisher();
+        if (array_key_exists('publisher', get_object_vars($data)) && null !== ($data->publisher ?? null)) {
+            $dataArray['publisher'] = $data->publisher ?? null;
         }
-        if ($data->isInitialized('company') && null !== $data->getCompany()) {
-            $dataArray['company'] = $data->getCompany();
+        if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
+            $dataArray['company'] = $data->company ?? null;
         }
-        if ($data->isInitialized('documentTitle') && null !== $data->getDocumentTitle()) {
-            $dataArray['documentTitle'] = $data->getDocumentTitle();
+        if (array_key_exists('documentTitle', get_object_vars($data)) && null !== ($data->documentTitle ?? null)) {
+            $dataArray['documentTitle'] = $data->documentTitle ?? null;
         }
-        if ($data->isInitialized('characterCount') && null !== $data->getCharacterCount()) {
-            $dataArray['characterCount'] = $data->getCharacterCount();
+        if (array_key_exists('characterCount', get_object_vars($data)) && null !== ($data->characterCount ?? null)) {
+            $dataArray['characterCount'] = $data->characterCount ?? null;
         }
-        if ($data->isInitialized('characterCountWithSpaces') && null !== $data->getCharacterCountWithSpaces()) {
-            $dataArray['characterCountWithSpaces'] = $data->getCharacterCountWithSpaces();
+        if (array_key_exists('characterCountWithSpaces', get_object_vars($data)) && null !== ($data->characterCountWithSpaces ?? null)) {
+            $dataArray['characterCountWithSpaces'] = $data->characterCountWithSpaces ?? null;
         }
-        if ($data->isInitialized('lineCount') && null !== $data->getLineCount()) {
-            $dataArray['lineCount'] = $data->getLineCount();
+        if (array_key_exists('lineCount', get_object_vars($data)) && null !== ($data->lineCount ?? null)) {
+            $dataArray['lineCount'] = $data->lineCount ?? null;
         }
-        if ($data->isInitialized('pageCount') && null !== $data->getPageCount()) {
-            $dataArray['pageCount'] = $data->getPageCount();
+        if (array_key_exists('pageCount', get_object_vars($data)) && null !== ($data->pageCount ?? null)) {
+            $dataArray['pageCount'] = $data->pageCount ?? null;
         }
-        if ($data->isInitialized('slideCount') && null !== $data->getSlideCount()) {
-            $dataArray['slideCount'] = $data->getSlideCount();
+        if (array_key_exists('slideCount', get_object_vars($data)) && null !== ($data->slideCount ?? null)) {
+            $dataArray['slideCount'] = $data->slideCount ?? null;
         }
-        if ($data->isInitialized('paragraphCount') && null !== $data->getParagraphCount()) {
-            $dataArray['paragraphCount'] = $data->getParagraphCount();
+        if (array_key_exists('paragraphCount', get_object_vars($data)) && null !== ($data->paragraphCount ?? null)) {
+            $dataArray['paragraphCount'] = $data->paragraphCount ?? null;
         }
-        if ($data->isInitialized('revisionNumber') && null !== $data->getRevisionNumber()) {
-            $dataArray['revisionNumber'] = $data->getRevisionNumber();
+        if (array_key_exists('revisionNumber', get_object_vars($data)) && null !== ($data->revisionNumber ?? null)) {
+            $dataArray['revisionNumber'] = $data->revisionNumber ?? null;
         }
-        if ($data->isInitialized('titles') && null !== $data->getTitles()) {
+        if (array_key_exists('titles', get_object_vars($data)) && null !== ($data->titles ?? null)) {
             $values_2 = [];
-            foreach ($data->getTitles() as $value_4) {
+            foreach ($data->titles ?? null as $value_4) {
                 $values_2[] = $value_4;
             }
             $dataArray['titles'] = $values_2;
         }
-        if ($data->isInitialized('imageTitles') && null !== $data->getImageTitles()) {
+        if (array_key_exists('imageTitles', get_object_vars($data)) && null !== ($data->imageTitles ?? null)) {
             $values_3 = [];
-            foreach ($data->getImageTitles() as $value_5) {
+            foreach ($data->imageTitles ?? null as $value_5) {
                 $values_3[] = $value_5;
             }
             $dataArray['imageTitles'] = $values_3;
         }
-        if ($data->isInitialized('epsInfo') && null !== $data->getEpsInfo()) {
-            $value_6 = $data->getEpsInfo();
-            if (is_object($data->getEpsInfo())) {
-                $value_6 = $data->getEpsInfo() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getEpsInfo(), 'json', $context));
+        if (array_key_exists('epsInfo', get_object_vars($data)) && null !== ($data->epsInfo ?? null)) {
+            $value_6 = $data->epsInfo ?? null;
+            if (is_object($data->epsInfo ?? null)) {
+                $value_6 = ($data->epsInfo ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->epsInfo ?? null, 'json', $context));
             }
             $dataArray['epsInfo'] = $value_6;
         }

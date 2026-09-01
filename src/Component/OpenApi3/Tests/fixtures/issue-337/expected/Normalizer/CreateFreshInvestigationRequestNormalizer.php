@@ -41,19 +41,19 @@ class CreateFreshInvestigationRequestNormalizer implements DenormalizerInterface
             $data['consent'] = (bool) $data['consent'];
         }
         if (\array_key_exists('consent', $data)) {
-            $object->setConsent($data['consent']);
+            $object->consent = $data['consent'];
             unset($data['consent']);
         }
         if (\array_key_exists('contactInfo', $data)) {
-            $object->setContactInfo($this->denormalizer->denormalize($data['contactInfo'], \CreditSafe\API\Model\CreateFreshInvestigationRequestContactInfo::class, 'json', $context));
+            $object->contactInfo = $this->denormalizer->denormalize($data['contactInfo'], \CreditSafe\API\Model\CreateFreshInvestigationRequestContactInfo::class, 'json', $context);
             unset($data['contactInfo']);
         }
         if (\array_key_exists('chargeReference', $data)) {
-            $object->setChargeReference($data['chargeReference']);
+            $object->chargeReference = $data['chargeReference'];
             unset($data['chargeReference']);
         }
         if (\array_key_exists('searchCriteria', $data)) {
-            $object->setSearchCriteria($this->denormalizer->denormalize($data['searchCriteria'], \CreditSafe\API\Model\CreateFreshInvestigationRequestSearchCriteria::class, 'json', $context));
+            $object->searchCriteria = $this->denormalizer->denormalize($data['searchCriteria'], \CreditSafe\API\Model\CreateFreshInvestigationRequestSearchCriteria::class, 'json', $context);
             unset($data['searchCriteria']);
         }
         foreach ($data as $key => $value) {
@@ -66,17 +66,17 @@ class CreateFreshInvestigationRequestNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('consent') && null !== $data->getConsent()) {
-            $dataArray['consent'] = $data->getConsent();
+        if (array_key_exists('consent', get_object_vars($data)) && null !== ($data->consent ?? null)) {
+            $dataArray['consent'] = $data->consent ?? null;
         }
-        if ($data->isInitialized('contactInfo') && null !== $data->getContactInfo()) {
-            $dataArray['contactInfo'] = $data->getContactInfo() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getContactInfo(), 'json', $context));
+        if (array_key_exists('contactInfo', get_object_vars($data)) && null !== ($data->contactInfo ?? null)) {
+            $dataArray['contactInfo'] = ($data->contactInfo ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->contactInfo ?? null, 'json', $context));
         }
-        if ($data->isInitialized('chargeReference') && null !== $data->getChargeReference()) {
-            $dataArray['chargeReference'] = $data->getChargeReference();
+        if (array_key_exists('chargeReference', get_object_vars($data)) && null !== ($data->chargeReference ?? null)) {
+            $dataArray['chargeReference'] = $data->chargeReference ?? null;
         }
-        if ($data->isInitialized('searchCriteria') && null !== $data->getSearchCriteria()) {
-            $dataArray['searchCriteria'] = $data->getSearchCriteria() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getSearchCriteria(), 'json', $context));
+        if (array_key_exists('searchCriteria', get_object_vars($data)) && null !== ($data->searchCriteria ?? null)) {
+            $dataArray['searchCriteria'] = ($data->searchCriteria ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->searchCriteria ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

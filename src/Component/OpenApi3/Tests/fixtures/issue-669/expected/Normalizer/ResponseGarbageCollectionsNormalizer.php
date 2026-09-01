@@ -42,7 +42,7 @@ class ResponseGarbageCollectionsNormalizer implements DenormalizerInterface, Nor
             foreach ($data['garbage_collections'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\GarbageCollection::class, 'json', $context);
             }
-            $object->setGarbageCollections($values);
+            $object->garbageCollections = $values;
             unset($data['garbage_collections']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseGarbageCollectionsNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('garbageCollections') && null !== $data->getGarbageCollections()) {
+        if (array_key_exists('garbageCollections', get_object_vars($data)) && null !== ($data->garbageCollections ?? null)) {
             $values = [];
-            foreach ($data->getGarbageCollections() as $value) {
+            foreach ($data->garbageCollections ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['garbage_collections'] = $values;

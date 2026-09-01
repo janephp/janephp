@@ -41,14 +41,14 @@ class MulticastForwardingSettingNormalizer implements DenormalizerInterface, Nor
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->getEnabled();
+        $dataArray['enabled'] = $data->enabled ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

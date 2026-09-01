@@ -38,7 +38,7 @@ class MemberNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('droplet_id', $data)) {
-            $object->setDropletId($data['droplet_id']);
+            $object->dropletId = $data['droplet_id'];
             unset($data['droplet_id']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -46,7 +46,7 @@ class MemberNormalizer implements DenormalizerInterface, NormalizerInterface, De
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -54,19 +54,19 @@ class MemberNormalizer implements DenormalizerInterface, NormalizerInterface, De
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         if (\array_key_exists('health_status', $data)) {
-            $object->setHealthStatus($data['health_status']);
+            $object->healthStatus = $data['health_status'];
             unset($data['health_status']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('current_utilization', $data)) {
-            $object->setCurrentUtilization($this->denormalizer->denormalize($data['current_utilization'], \Jane\Generated\DigitalOcean\Model\MemberCurrentUtilization::class, 'json', $context));
+            $object->currentUtilization = $this->denormalizer->denormalize($data['current_utilization'], \Jane\Generated\DigitalOcean\Model\MemberCurrentUtilization::class, 'json', $context);
             unset($data['current_utilization']);
         }
         foreach ($data as $key => $value) {
@@ -79,12 +79,12 @@ class MemberNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['droplet_id'] = $data->getDropletId();
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['health_status'] = $data->getHealthStatus();
-        $dataArray['status'] = $data->getStatus();
-        $dataArray['current_utilization'] = $data->getCurrentUtilization() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentUtilization(), 'json', $context));
+        $dataArray['droplet_id'] = $data->dropletId ?? null;
+        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['health_status'] = $data->healthStatus ?? null;
+        $dataArray['status'] = $data->status ?? null;
+        $dataArray['current_utilization'] = ($data->currentUtilization ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->currentUtilization ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

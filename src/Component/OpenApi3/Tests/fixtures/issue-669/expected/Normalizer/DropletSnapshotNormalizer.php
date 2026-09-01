@@ -41,11 +41,11 @@ class DropletSnapshotNormalizer implements DenormalizerInterface, NormalizerInte
             $data['size_gigabytes'] = (float) $data['size_gigabytes'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -53,7 +53,7 @@ class DropletSnapshotNormalizer implements DenormalizerInterface, NormalizerInte
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('regions', $data)) {
@@ -61,19 +61,19 @@ class DropletSnapshotNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['regions'] as $value) {
                 $values[] = $value;
             }
-            $object->setRegions($values);
+            $object->regions = $values;
             unset($data['regions']);
         }
         if (\array_key_exists('min_disk_size', $data)) {
-            $object->setMinDiskSize($data['min_disk_size']);
+            $object->minDiskSize = $data['min_disk_size'];
             unset($data['min_disk_size']);
         }
         if (\array_key_exists('size_gigabytes', $data)) {
-            $object->setSizeGigabytes($data['size_gigabytes']);
+            $object->sizeGigabytes = $data['size_gigabytes'];
             unset($data['size_gigabytes']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value_1) {
@@ -86,17 +86,17 @@ class DropletSnapshotNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         $values = [];
-        foreach ($data->getRegions() as $value) {
+        foreach ($data->regions ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['regions'] = $values;
-        $dataArray['min_disk_size'] = $data->getMinDiskSize();
-        $dataArray['size_gigabytes'] = $data->getSizeGigabytes();
-        $dataArray['type'] = $data->getType();
+        $dataArray['min_disk_size'] = $data->minDiskSize ?? null;
+        $dataArray['size_gigabytes'] = $data->sizeGigabytes ?? null;
+        $dataArray['type'] = $data->type ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

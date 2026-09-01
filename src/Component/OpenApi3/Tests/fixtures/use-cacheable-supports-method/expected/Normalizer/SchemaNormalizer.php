@@ -42,7 +42,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['floatProperty'] = (float) $data['floatProperty'];
         }
         if (\array_key_exists('stringProperty', $data)) {
-            $object->setStringProperty($data['stringProperty']);
+            $object->stringProperty = $data['stringProperty'];
             unset($data['stringProperty']);
         }
         if (\array_key_exists('dateProperty', $data)) {
@@ -50,15 +50,15 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             if (false === $date) {
                 throw new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateProperty'], 'Y-m-d\TH:i:sP');
             }
-            $object->setDateProperty($date);
+            $object->dateProperty = $date;
             unset($data['dateProperty']);
         }
         if (\array_key_exists('integerProperty', $data)) {
-            $object->setIntegerProperty($data['integerProperty']);
+            $object->integerProperty = $data['integerProperty'];
             unset($data['integerProperty']);
         }
         if (\array_key_exists('floatProperty', $data)) {
-            $object->setFloatProperty($data['floatProperty']);
+            $object->floatProperty = $data['floatProperty'];
             unset($data['floatProperty']);
         }
         if (\array_key_exists('arrayProperty', $data)) {
@@ -66,7 +66,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             foreach ($data['arrayProperty'] as $value) {
                 $values[] = $value;
             }
-            $object->setArrayProperty($values);
+            $object->arrayProperty = $values;
             unset($data['arrayProperty']);
         }
         if (\array_key_exists('mapProperty', $data)) {
@@ -74,15 +74,15 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             foreach ($data['mapProperty'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
-            $object->setMapProperty($values_1);
+            $object->mapProperty = $values_1;
             unset($data['mapProperty']);
         }
         if (\array_key_exists('objectProperty', $data)) {
-            $object->setObjectProperty($this->denormalizer->denormalize($data['objectProperty'], \Jane\Component\OpenApi3\Tests\Expected\Model\SchemaObjectProperty::class, 'json', $context));
+            $object->objectProperty = $this->denormalizer->denormalize($data['objectProperty'], \Jane\Component\OpenApi3\Tests\Expected\Model\SchemaObjectProperty::class, 'json', $context);
             unset($data['objectProperty']);
         }
         if (\array_key_exists('objectRefProperty', $data)) {
-            $object->setObjectRefProperty($this->denormalizer->denormalize($data['objectRefProperty'], \Jane\Component\OpenApi3\Tests\Expected\Model\Schema::class, 'json', $context));
+            $object->objectRefProperty = $this->denormalizer->denormalize($data['objectRefProperty'], \Jane\Component\OpenApi3\Tests\Expected\Model\Schema::class, 'json', $context);
             unset($data['objectRefProperty']);
         }
         foreach ($data as $key_1 => $value_2) {
@@ -95,37 +95,37 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('stringProperty') && null !== $data->getStringProperty()) {
-            $dataArray['stringProperty'] = $data->getStringProperty();
+        if (array_key_exists('stringProperty', get_object_vars($data)) && null !== ($data->stringProperty ?? null)) {
+            $dataArray['stringProperty'] = $data->stringProperty ?? null;
         }
-        if ($data->isInitialized('dateProperty') && null !== $data->getDateProperty()) {
-            $dataArray['dateProperty'] = $data->getDateProperty()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('dateProperty', get_object_vars($data)) && null !== ($data->dateProperty ?? null)) {
+            $dataArray['dateProperty'] = ($data->dateProperty ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('integerProperty') && null !== $data->getIntegerProperty()) {
-            $dataArray['integerProperty'] = $data->getIntegerProperty();
+        if (array_key_exists('integerProperty', get_object_vars($data)) && null !== ($data->integerProperty ?? null)) {
+            $dataArray['integerProperty'] = $data->integerProperty ?? null;
         }
-        if ($data->isInitialized('floatProperty') && null !== $data->getFloatProperty()) {
-            $dataArray['floatProperty'] = $data->getFloatProperty();
+        if (array_key_exists('floatProperty', get_object_vars($data)) && null !== ($data->floatProperty ?? null)) {
+            $dataArray['floatProperty'] = $data->floatProperty ?? null;
         }
-        if ($data->isInitialized('arrayProperty') && null !== $data->getArrayProperty()) {
+        if (array_key_exists('arrayProperty', get_object_vars($data)) && null !== ($data->arrayProperty ?? null)) {
             $values = [];
-            foreach ($data->getArrayProperty() as $value) {
+            foreach ($data->arrayProperty ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['arrayProperty'] = $values;
         }
-        if ($data->isInitialized('mapProperty') && null !== $data->getMapProperty()) {
+        if (array_key_exists('mapProperty', get_object_vars($data)) && null !== ($data->mapProperty ?? null)) {
             $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
-            foreach ($data->getMapProperty() as $key => $value_1) {
+            foreach ($data->mapProperty ?? null as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['mapProperty'] = $values_1;
         }
-        if ($data->isInitialized('objectProperty') && null !== $data->getObjectProperty()) {
-            $dataArray['objectProperty'] = $data->getObjectProperty() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getObjectProperty(), 'json', $context));
+        if (array_key_exists('objectProperty', get_object_vars($data)) && null !== ($data->objectProperty ?? null)) {
+            $dataArray['objectProperty'] = ($data->objectProperty ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty ?? null, 'json', $context));
         }
-        if ($data->isInitialized('objectRefProperty') && null !== $data->getObjectRefProperty()) {
-            $dataArray['objectRefProperty'] = $data->getObjectRefProperty() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getObjectRefProperty(), 'json', $context));
+        if (array_key_exists('objectRefProperty', get_object_vars($data)) && null !== ($data->objectRefProperty ?? null)) {
+            $dataArray['objectRefProperty'] = ($data->objectRefProperty ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

@@ -41,15 +41,15 @@ class RegionStateNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['thirty_day_uptime_percentage'] = (float) $data['thirty_day_uptime_percentage'];
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('status_changed_at', $data)) {
-            $object->setStatusChangedAt($data['status_changed_at']);
+            $object->statusChangedAt = $data['status_changed_at'];
             unset($data['status_changed_at']);
         }
         if (\array_key_exists('thirty_day_uptime_percentage', $data)) {
-            $object->setThirtyDayUptimePercentage($data['thirty_day_uptime_percentage']);
+            $object->thirtyDayUptimePercentage = $data['thirty_day_uptime_percentage'];
             unset($data['thirty_day_uptime_percentage']);
         }
         foreach ($data as $key => $value) {
@@ -62,14 +62,14 @@ class RegionStateNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('statusChangedAt') && null !== $data->getStatusChangedAt()) {
-            $dataArray['status_changed_at'] = $data->getStatusChangedAt();
+        if (array_key_exists('statusChangedAt', get_object_vars($data)) && null !== ($data->statusChangedAt ?? null)) {
+            $dataArray['status_changed_at'] = $data->statusChangedAt ?? null;
         }
-        if ($data->isInitialized('thirtyDayUptimePercentage') && null !== $data->getThirtyDayUptimePercentage()) {
-            $dataArray['thirty_day_uptime_percentage'] = $data->getThirtyDayUptimePercentage();
+        if (array_key_exists('thirtyDayUptimePercentage', get_object_vars($data)) && null !== ($data->thirtyDayUptimePercentage ?? null)) {
+            $dataArray['thirty_day_uptime_percentage'] = $data->thirtyDayUptimePercentage ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

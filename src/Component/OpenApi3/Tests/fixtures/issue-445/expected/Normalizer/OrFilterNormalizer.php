@@ -38,7 +38,7 @@ class OrFilterNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('filters', $data) && $data['filters'] !== null) {
@@ -46,11 +46,11 @@ class OrFilterNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['filters'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilters($values);
+            $object->filters = $values;
             unset($data['filters']);
         }
         elseif (\array_key_exists('filters', $data) && $data['filters'] === null) {
-            $object->setFilters(null);
+            $object->filters = null;
             unset($data['filters']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,10 +63,10 @@ class OrFilterNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('filters') && null !== $data->getFilters()) {
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('filters', get_object_vars($data)) && null !== ($data->filters ?? null)) {
             $values = [];
-            foreach ($data->getFilters() as $value) {
+            foreach ($data->filters ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['filters'] = $values;

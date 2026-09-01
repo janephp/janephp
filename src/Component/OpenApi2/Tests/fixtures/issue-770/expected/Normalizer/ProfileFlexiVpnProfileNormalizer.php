@@ -38,63 +38,63 @@ class ProfileFlexiVpnProfileNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('wlanId', $data)) {
-            $object->setWlanId($data['wlanId']);
+            $object->wlanId = $data['wlanId'];
         }
         if (\array_key_exists('wlanName', $data)) {
-            $object->setWlanName($data['wlanName']);
+            $object->wlanName = $data['wlanName'];
         }
         if (\array_key_exists('zoneId', $data)) {
-            $object->setZoneId($data['zoneId']);
+            $object->zoneId = $data['zoneId'];
         }
         if (\array_key_exists('zoneName', $data)) {
-            $object->setZoneName($data['zoneName']);
+            $object->zoneName = $data['zoneName'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('sourceDpGroupId', $data)) {
-            $object->setSourceDpGroupId($data['sourceDpGroupId']);
+            $object->sourceDpGroupId = $data['sourceDpGroupId'];
         }
         if (\array_key_exists('sourceDpGroupName', $data)) {
-            $object->setSourceDpGroupName($data['sourceDpGroupName']);
+            $object->sourceDpGroupName = $data['sourceDpGroupName'];
         }
         if (\array_key_exists('destinationDpGroupId', $data)) {
-            $object->setDestinationDpGroupId($data['destinationDpGroupId']);
+            $object->destinationDpGroupId = $data['destinationDpGroupId'];
         }
         if (\array_key_exists('destinationDpGroupName', $data)) {
-            $object->setDestinationDpGroupName($data['destinationDpGroupName']);
+            $object->destinationDpGroupName = $data['destinationDpGroupName'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('wlanId') && null !== $data->getWlanId()) {
-            $dataArray['wlanId'] = $data->getWlanId();
+        if (array_key_exists('wlanId', get_object_vars($data)) && null !== ($data->wlanId ?? null)) {
+            $dataArray['wlanId'] = $data->wlanId ?? null;
         }
-        if ($data->isInitialized('wlanName') && null !== $data->getWlanName()) {
-            $dataArray['wlanName'] = $data->getWlanName();
+        if (array_key_exists('wlanName', get_object_vars($data)) && null !== ($data->wlanName ?? null)) {
+            $dataArray['wlanName'] = $data->wlanName ?? null;
         }
-        if ($data->isInitialized('zoneId') && null !== $data->getZoneId()) {
-            $dataArray['zoneId'] = $data->getZoneId();
+        if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
+            $dataArray['zoneId'] = $data->zoneId ?? null;
         }
-        if ($data->isInitialized('zoneName') && null !== $data->getZoneName()) {
-            $dataArray['zoneName'] = $data->getZoneName();
+        if (array_key_exists('zoneName', get_object_vars($data)) && null !== ($data->zoneName ?? null)) {
+            $dataArray['zoneName'] = $data->zoneName ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('sourceDpGroupId') && null !== $data->getSourceDpGroupId()) {
-            $dataArray['sourceDpGroupId'] = $data->getSourceDpGroupId();
+        if (array_key_exists('sourceDpGroupId', get_object_vars($data)) && null !== ($data->sourceDpGroupId ?? null)) {
+            $dataArray['sourceDpGroupId'] = $data->sourceDpGroupId ?? null;
         }
-        if ($data->isInitialized('sourceDpGroupName') && null !== $data->getSourceDpGroupName()) {
-            $dataArray['sourceDpGroupName'] = $data->getSourceDpGroupName();
+        if (array_key_exists('sourceDpGroupName', get_object_vars($data)) && null !== ($data->sourceDpGroupName ?? null)) {
+            $dataArray['sourceDpGroupName'] = $data->sourceDpGroupName ?? null;
         }
-        if ($data->isInitialized('destinationDpGroupId') && null !== $data->getDestinationDpGroupId()) {
-            $dataArray['destinationDpGroupId'] = $data->getDestinationDpGroupId();
+        if (array_key_exists('destinationDpGroupId', get_object_vars($data)) && null !== ($data->destinationDpGroupId ?? null)) {
+            $dataArray['destinationDpGroupId'] = $data->destinationDpGroupId ?? null;
         }
-        if ($data->isInitialized('destinationDpGroupName') && null !== $data->getDestinationDpGroupName()) {
-            $dataArray['destinationDpGroupName'] = $data->getDestinationDpGroupName();
+        if (array_key_exists('destinationDpGroupName', get_object_vars($data)) && null !== ($data->destinationDpGroupName ?? null)) {
+            $dataArray['destinationDpGroupName'] = $data->destinationDpGroupName ?? null;
         }
         return $dataArray;
     }

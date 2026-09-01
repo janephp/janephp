@@ -8,59 +8,15 @@ class PeopleSearchSuccessResult implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var int
      */
-    protected $totalSize;
+    public int $totalSize;
     /**
      * @var list<PeopleSearchSuccessResultDirectorsItem>
      */
-    protected $directors;
-    /**
-     * @return int
-     */
-    public function getTotalSize(): int
-    {
-        return $this->totalSize;
-    }
-    /**
-     * @param int $totalSize
-     *
-     * @return self
-     */
-    public function setTotalSize(int $totalSize): self
-    {
-        $this->initialized['totalSize'] = true;
-        $this->totalSize = $totalSize;
-        return $this;
-    }
-    /**
-     * @return list<PeopleSearchSuccessResultDirectorsItem>
-     */
-    public function getDirectors(): array
-    {
-        return $this->directors;
-    }
-    /**
-     * @param list<PeopleSearchSuccessResultDirectorsItem> $directors
-     *
-     * @return self
-     */
-    public function setDirectors(array $directors): self
-    {
-        $this->initialized['directors'] = true;
-        $this->directors = $directors;
-        return $this;
-    }
+    public array $directors;
     public function definedProperties(): array
     {
-        return ['totalSize' => ['totalSize', 'getTotalSize', 'setTotalSize'], 'directors' => ['directors', 'getDirectors', 'setDirectors']];
+        return ['totalSize' => 'totalSize', 'directors' => 'directors'];
     }
 }

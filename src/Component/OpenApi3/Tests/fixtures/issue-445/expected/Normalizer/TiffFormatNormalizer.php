@@ -53,7 +53,7 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['includeUnspecifiedTiffExtraChannels'] = (bool) $data['includeUnspecifiedTiffExtraChannels'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('colorProfile', $data) && $data['colorProfile'] !== null) {
@@ -61,11 +61,11 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             if (is_string($data['colorProfile'])) {
                 $value = $data['colorProfile'];
             }
-            $object->setColorProfile($value);
+            $object->colorProfile = $value;
             unset($data['colorProfile']);
         }
         elseif (\array_key_exists('colorProfile', $data) && $data['colorProfile'] === null) {
-            $object->setColorProfile(null);
+            $object->colorProfile = null;
             unset($data['colorProfile']);
         }
         if (\array_key_exists('colorTransformationIntent', $data)) {
@@ -73,27 +73,27 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             if (is_string($data['colorTransformationIntent'])) {
                 $value_1 = $data['colorTransformationIntent'];
             }
-            $object->setColorTransformationIntent($value_1);
+            $object->colorTransformationIntent = $value_1;
             unset($data['colorTransformationIntent']);
         }
         if (\array_key_exists('horizontalResolution', $data) && $data['horizontalResolution'] !== null) {
-            $object->setHorizontalResolution($data['horizontalResolution']);
+            $object->horizontalResolution = $data['horizontalResolution'];
             unset($data['horizontalResolution']);
         }
         elseif (\array_key_exists('horizontalResolution', $data) && $data['horizontalResolution'] === null) {
-            $object->setHorizontalResolution(null);
+            $object->horizontalResolution = null;
             unset($data['horizontalResolution']);
         }
         if (\array_key_exists('verticalResolution', $data) && $data['verticalResolution'] !== null) {
-            $object->setVerticalResolution($data['verticalResolution']);
+            $object->verticalResolution = $data['verticalResolution'];
             unset($data['verticalResolution']);
         }
         elseif (\array_key_exists('verticalResolution', $data) && $data['verticalResolution'] === null) {
-            $object->setVerticalResolution(null);
+            $object->verticalResolution = null;
             unset($data['verticalResolution']);
         }
         if (\array_key_exists('keepClippingPath', $data)) {
-            $object->setKeepClippingPath($data['keepClippingPath']);
+            $object->keepClippingPath = $data['keepClippingPath'];
             unset($data['keepClippingPath']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
@@ -101,11 +101,11 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             if (is_array($data['resizeAction']) and \array_key_exists('width', $data['resizeAction']) and \array_key_exists('height', $data['resizeAction']) and \array_key_exists('resizeMode', $data['resizeAction'])) {
                 $value_2 = $this->denormalizer->denormalize($data['resizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
             }
-            $object->setResizeAction($value_2);
+            $object->resizeAction = $value_2;
             unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
-            $object->setResizeAction(null);
+            $object->resizeAction = null;
             unset($data['resizeAction']);
         }
         if (\array_key_exists('actions', $data) && $data['actions'] !== null) {
@@ -113,15 +113,15 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['actions'] as $value_3) {
                 $values[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\ImageActionBase::class, 'json', $context);
             }
-            $object->setActions($values);
+            $object->actions = $values;
             unset($data['actions']);
         }
         elseif (\array_key_exists('actions', $data) && $data['actions'] === null) {
-            $object->setActions(null);
+            $object->actions = null;
             unset($data['actions']);
         }
         if (\array_key_exists('alphaPremultiplied', $data)) {
-            $object->setAlphaPremultiplied($data['alphaPremultiplied']);
+            $object->alphaPremultiplied = $data['alphaPremultiplied'];
             unset($data['alphaPremultiplied']);
         }
         if (\array_key_exists('compressionType', $data)) {
@@ -129,19 +129,19 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             if (is_string($data['compressionType'])) {
                 $value_4 = $data['compressionType'];
             }
-            $object->setCompressionType($value_4);
+            $object->compressionType = $value_4;
             unset($data['compressionType']);
         }
         if (\array_key_exists('includeUnspecifiedTiffExtraChannels', $data)) {
-            $object->setIncludeUnspecifiedTiffExtraChannels($data['includeUnspecifiedTiffExtraChannels']);
+            $object->includeUnspecifiedTiffExtraChannels = $data['includeUnspecifiedTiffExtraChannels'];
             unset($data['includeUnspecifiedTiffExtraChannels']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
-            $object->setExtension($data['extension']);
+            $object->extension = $data['extension'];
             unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
-            $object->setExtension(null);
+            $object->extension = null;
             unset($data['extension']);
         }
         foreach ($data as $key => $value_5) {
@@ -154,59 +154,59 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('colorProfile') && null !== $data->getColorProfile()) {
-            $value = $data->getColorProfile();
-            if (is_string($data->getColorProfile())) {
-                $value = $data->getColorProfile();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('colorProfile', get_object_vars($data)) && null !== ($data->colorProfile ?? null)) {
+            $value = $data->colorProfile ?? null;
+            if (is_string($data->colorProfile ?? null)) {
+                $value = $data->colorProfile ?? null;
             }
             $dataArray['colorProfile'] = $value;
         }
-        if ($data->isInitialized('colorTransformationIntent') && null !== $data->getColorTransformationIntent()) {
-            $value_1 = $data->getColorTransformationIntent();
-            if (is_string($data->getColorTransformationIntent())) {
-                $value_1 = $data->getColorTransformationIntent();
+        if (array_key_exists('colorTransformationIntent', get_object_vars($data)) && null !== ($data->colorTransformationIntent ?? null)) {
+            $value_1 = $data->colorTransformationIntent ?? null;
+            if (is_string($data->colorTransformationIntent ?? null)) {
+                $value_1 = $data->colorTransformationIntent ?? null;
             }
             $dataArray['colorTransformationIntent'] = $value_1;
         }
-        if ($data->isInitialized('horizontalResolution') && null !== $data->getHorizontalResolution()) {
-            $dataArray['horizontalResolution'] = $data->getHorizontalResolution();
+        if (array_key_exists('horizontalResolution', get_object_vars($data)) && null !== ($data->horizontalResolution ?? null)) {
+            $dataArray['horizontalResolution'] = $data->horizontalResolution ?? null;
         }
-        if ($data->isInitialized('verticalResolution') && null !== $data->getVerticalResolution()) {
-            $dataArray['verticalResolution'] = $data->getVerticalResolution();
+        if (array_key_exists('verticalResolution', get_object_vars($data)) && null !== ($data->verticalResolution ?? null)) {
+            $dataArray['verticalResolution'] = $data->verticalResolution ?? null;
         }
-        if ($data->isInitialized('keepClippingPath') && null !== $data->getKeepClippingPath()) {
-            $dataArray['keepClippingPath'] = $data->getKeepClippingPath();
+        if (array_key_exists('keepClippingPath', get_object_vars($data)) && null !== ($data->keepClippingPath ?? null)) {
+            $dataArray['keepClippingPath'] = $data->keepClippingPath ?? null;
         }
-        if ($data->isInitialized('resizeAction') && null !== $data->getResizeAction()) {
-            $value_2 = $data->getResizeAction();
-            if (is_object($data->getResizeAction())) {
-                $value_2 = $data->getResizeAction() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getResizeAction(), 'json', $context));
+        if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
+            $value_2 = $data->resizeAction ?? null;
+            if (is_object($data->resizeAction ?? null)) {
+                $value_2 = ($data->resizeAction ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction ?? null, 'json', $context));
             }
             $dataArray['resizeAction'] = $value_2;
         }
-        if ($data->isInitialized('actions') && null !== $data->getActions()) {
+        if (array_key_exists('actions', get_object_vars($data)) && null !== ($data->actions ?? null)) {
             $values = [];
-            foreach ($data->getActions() as $value_3) {
+            foreach ($data->actions ?? null as $value_3) {
                 $values[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['actions'] = $values;
         }
-        if ($data->isInitialized('alphaPremultiplied') && null !== $data->getAlphaPremultiplied()) {
-            $dataArray['alphaPremultiplied'] = $data->getAlphaPremultiplied();
+        if (array_key_exists('alphaPremultiplied', get_object_vars($data)) && null !== ($data->alphaPremultiplied ?? null)) {
+            $dataArray['alphaPremultiplied'] = $data->alphaPremultiplied ?? null;
         }
-        if ($data->isInitialized('compressionType') && null !== $data->getCompressionType()) {
-            $value_4 = $data->getCompressionType();
-            if (is_string($data->getCompressionType())) {
-                $value_4 = $data->getCompressionType();
+        if (array_key_exists('compressionType', get_object_vars($data)) && null !== ($data->compressionType ?? null)) {
+            $value_4 = $data->compressionType ?? null;
+            if (is_string($data->compressionType ?? null)) {
+                $value_4 = $data->compressionType ?? null;
             }
             $dataArray['compressionType'] = $value_4;
         }
-        if ($data->isInitialized('includeUnspecifiedTiffExtraChannels') && null !== $data->getIncludeUnspecifiedTiffExtraChannels()) {
-            $dataArray['includeUnspecifiedTiffExtraChannels'] = $data->getIncludeUnspecifiedTiffExtraChannels();
+        if (array_key_exists('includeUnspecifiedTiffExtraChannels', get_object_vars($data)) && null !== ($data->includeUnspecifiedTiffExtraChannels ?? null)) {
+            $dataArray['includeUnspecifiedTiffExtraChannels'] = $data->includeUnspecifiedTiffExtraChannels ?? null;
         }
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
-            $dataArray['extension'] = $data->getExtension();
+        if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
+            $dataArray['extension'] = $data->extension ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {

@@ -41,29 +41,29 @@ class RuntimeNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $this->validate($data, new \Docker\Api\Validator\RuntimeConstraint());
         }
         if (\array_key_exists('path', $data)) {
-            $object->setPath($data['path']);
+            $object->path = $data['path'];
         }
         if (\array_key_exists('runtimeArgs', $data) && $data['runtimeArgs'] !== null) {
             $values = [];
             foreach ($data['runtimeArgs'] as $value) {
                 $values[] = $value;
             }
-            $object->setRuntimeArgs($values);
+            $object->runtimeArgs = $values;
         }
         elseif (\array_key_exists('runtimeArgs', $data) && $data['runtimeArgs'] === null) {
-            $object->setRuntimeArgs(null);
+            $object->runtimeArgs = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('path') && null !== $data->getPath()) {
-            $dataArray['path'] = $data->getPath();
+        if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
+            $dataArray['path'] = $data->path ?? null;
         }
-        if ($data->isInitialized('runtimeArgs') && null !== $data->getRuntimeArgs()) {
+        if (array_key_exists('runtimeArgs', get_object_vars($data)) && null !== ($data->runtimeArgs ?? null)) {
             $values = [];
-            foreach ($data->getRuntimeArgs() as $value) {
+            foreach ($data->runtimeArgs ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['runtimeArgs'] = $values;

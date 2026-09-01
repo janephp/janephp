@@ -44,23 +44,23 @@ class AutoscalePoolDynamicConfigNormalizer implements DenormalizerInterface, Nor
             $data['target_memory_utilization'] = (float) $data['target_memory_utilization'];
         }
         if (\array_key_exists('min_instances', $data)) {
-            $object->setMinInstances($data['min_instances']);
+            $object->minInstances = $data['min_instances'];
             unset($data['min_instances']);
         }
         if (\array_key_exists('max_instances', $data)) {
-            $object->setMaxInstances($data['max_instances']);
+            $object->maxInstances = $data['max_instances'];
             unset($data['max_instances']);
         }
         if (\array_key_exists('target_cpu_utilization', $data)) {
-            $object->setTargetCpuUtilization($data['target_cpu_utilization']);
+            $object->targetCpuUtilization = $data['target_cpu_utilization'];
             unset($data['target_cpu_utilization']);
         }
         if (\array_key_exists('target_memory_utilization', $data)) {
-            $object->setTargetMemoryUtilization($data['target_memory_utilization']);
+            $object->targetMemoryUtilization = $data['target_memory_utilization'];
             unset($data['target_memory_utilization']);
         }
         if (\array_key_exists('cooldown_minutes', $data)) {
-            $object->setCooldownMinutes($data['cooldown_minutes']);
+            $object->cooldownMinutes = $data['cooldown_minutes'];
             unset($data['cooldown_minutes']);
         }
         foreach ($data as $key => $value) {
@@ -73,16 +73,16 @@ class AutoscalePoolDynamicConfigNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['min_instances'] = $data->getMinInstances();
-        $dataArray['max_instances'] = $data->getMaxInstances();
-        if ($data->isInitialized('targetCpuUtilization') && null !== $data->getTargetCpuUtilization()) {
-            $dataArray['target_cpu_utilization'] = $data->getTargetCpuUtilization();
+        $dataArray['min_instances'] = $data->minInstances ?? null;
+        $dataArray['max_instances'] = $data->maxInstances ?? null;
+        if (array_key_exists('targetCpuUtilization', get_object_vars($data)) && null !== ($data->targetCpuUtilization ?? null)) {
+            $dataArray['target_cpu_utilization'] = $data->targetCpuUtilization ?? null;
         }
-        if ($data->isInitialized('targetMemoryUtilization') && null !== $data->getTargetMemoryUtilization()) {
-            $dataArray['target_memory_utilization'] = $data->getTargetMemoryUtilization();
+        if (array_key_exists('targetMemoryUtilization', get_object_vars($data)) && null !== ($data->targetMemoryUtilization ?? null)) {
+            $dataArray['target_memory_utilization'] = $data->targetMemoryUtilization ?? null;
         }
-        if ($data->isInitialized('cooldownMinutes') && null !== $data->getCooldownMinutes()) {
-            $dataArray['cooldown_minutes'] = $data->getCooldownMinutes();
+        if (array_key_exists('cooldownMinutes', get_object_vars($data)) && null !== ($data->cooldownMinutes ?? null)) {
+            $dataArray['cooldown_minutes'] = $data->cooldownMinutes ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

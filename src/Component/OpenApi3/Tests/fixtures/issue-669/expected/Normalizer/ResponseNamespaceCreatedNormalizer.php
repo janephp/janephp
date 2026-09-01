@@ -38,7 +38,7 @@ class ResponseNamespaceCreatedNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('namespace', $data)) {
-            $object->setNamespace($this->denormalizer->denormalize($data['namespace'], \Jane\Generated\DigitalOcean\Model\NamespaceInfo::class, 'json', $context));
+            $object->namespace = $this->denormalizer->denormalize($data['namespace'], \Jane\Generated\DigitalOcean\Model\NamespaceInfo::class, 'json', $context);
             unset($data['namespace']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseNamespaceCreatedNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('namespace') && null !== $data->getNamespace()) {
-            $dataArray['namespace'] = $data->getNamespace() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getNamespace(), 'json', $context));
+        if (array_key_exists('namespace', get_object_vars($data)) && null !== ($data->namespace ?? null)) {
+            $dataArray['namespace'] = ($data->namespace ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->namespace ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

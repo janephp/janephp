@@ -38,14 +38,14 @@ class ContentFileUpdateRequestNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('fileTransferId', $data)) {
-            $object->setFileTransferId($data['fileTransferId']);
+            $object->fileTransferId = $data['fileTransferId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['fileTransferId'] = $data->getFileTransferId();
+        $dataArray['fileTransferId'] = $data->fileTransferId ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

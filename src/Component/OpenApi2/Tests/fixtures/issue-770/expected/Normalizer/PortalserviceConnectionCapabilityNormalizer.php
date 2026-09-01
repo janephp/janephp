@@ -44,26 +44,26 @@ class PortalserviceConnectionCapabilityNormalizer implements DenormalizerInterfa
             $data['portNumber'] = (float) $data['portNumber'];
         }
         if (\array_key_exists('protocolName', $data)) {
-            $object->setProtocolName($data['protocolName']);
+            $object->protocolName = $data['protocolName'];
         }
         if (\array_key_exists('protocolNumber', $data)) {
-            $object->setProtocolNumber($data['protocolNumber']);
+            $object->protocolNumber = $data['protocolNumber'];
         }
         if (\array_key_exists('portNumber', $data)) {
-            $object->setPortNumber($data['portNumber']);
+            $object->portNumber = $data['portNumber'];
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['protocolName'] = $data->getProtocolName();
-        $dataArray['protocolNumber'] = $data->getProtocolNumber();
-        $dataArray['portNumber'] = $data->getPortNumber();
-        $dataArray['status'] = $data->getStatus();
+        $dataArray['protocolName'] = $data->protocolName ?? null;
+        $dataArray['protocolNumber'] = $data->protocolNumber ?? null;
+        $dataArray['portNumber'] = $data->portNumber ?? null;
+        $dataArray['status'] = $data->status ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

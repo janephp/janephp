@@ -38,19 +38,19 @@ class SshKeysNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('fingerprint', $data)) {
-            $object->setFingerprint($data['fingerprint']);
+            $object->fingerprint = $data['fingerprint'];
             unset($data['fingerprint']);
         }
         if (\array_key_exists('public_key', $data)) {
-            $object->setPublicKey($data['public_key']);
+            $object->publicKey = $data['public_key'];
             unset($data['public_key']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         foreach ($data as $key => $value) {
@@ -63,8 +63,8 @@ class SshKeysNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['public_key'] = $data->getPublicKey();
-        $dataArray['name'] = $data->getName();
+        $dataArray['public_key'] = $data->publicKey ?? null;
+        $dataArray['name'] = $data->name ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

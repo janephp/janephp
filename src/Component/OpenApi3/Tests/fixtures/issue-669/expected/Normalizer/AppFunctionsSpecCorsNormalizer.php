@@ -45,7 +45,7 @@ class AppFunctionsSpecCorsNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['allow_origins'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppsStringMatch::class, 'json', $context);
             }
-            $object->setAllowOrigins($values);
+            $object->allowOrigins = $values;
             unset($data['allow_origins']);
         }
         if (\array_key_exists('allow_methods', $data)) {
@@ -53,7 +53,7 @@ class AppFunctionsSpecCorsNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['allow_methods'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setAllowMethods($values_1);
+            $object->allowMethods = $values_1;
             unset($data['allow_methods']);
         }
         if (\array_key_exists('allow_headers', $data)) {
@@ -61,7 +61,7 @@ class AppFunctionsSpecCorsNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['allow_headers'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setAllowHeaders($values_2);
+            $object->allowHeaders = $values_2;
             unset($data['allow_headers']);
         }
         if (\array_key_exists('expose_headers', $data)) {
@@ -69,15 +69,15 @@ class AppFunctionsSpecCorsNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['expose_headers'] as $value_3) {
                 $values_3[] = $value_3;
             }
-            $object->setExposeHeaders($values_3);
+            $object->exposeHeaders = $values_3;
             unset($data['expose_headers']);
         }
         if (\array_key_exists('max_age', $data)) {
-            $object->setMaxAge($data['max_age']);
+            $object->maxAge = $data['max_age'];
             unset($data['max_age']);
         }
         if (\array_key_exists('allow_credentials', $data)) {
-            $object->setAllowCredentials($data['allow_credentials']);
+            $object->allowCredentials = $data['allow_credentials'];
             unset($data['allow_credentials']);
         }
         foreach ($data as $key => $value_4) {
@@ -90,39 +90,39 @@ class AppFunctionsSpecCorsNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('allowOrigins') && null !== $data->getAllowOrigins()) {
+        if (array_key_exists('allowOrigins', get_object_vars($data)) && null !== ($data->allowOrigins ?? null)) {
             $values = [];
-            foreach ($data->getAllowOrigins() as $value) {
+            foreach ($data->allowOrigins ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['allow_origins'] = $values;
         }
-        if ($data->isInitialized('allowMethods') && null !== $data->getAllowMethods()) {
+        if (array_key_exists('allowMethods', get_object_vars($data)) && null !== ($data->allowMethods ?? null)) {
             $values_1 = [];
-            foreach ($data->getAllowMethods() as $value_1) {
+            foreach ($data->allowMethods ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['allow_methods'] = $values_1;
         }
-        if ($data->isInitialized('allowHeaders') && null !== $data->getAllowHeaders()) {
+        if (array_key_exists('allowHeaders', get_object_vars($data)) && null !== ($data->allowHeaders ?? null)) {
             $values_2 = [];
-            foreach ($data->getAllowHeaders() as $value_2) {
+            foreach ($data->allowHeaders ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['allow_headers'] = $values_2;
         }
-        if ($data->isInitialized('exposeHeaders') && null !== $data->getExposeHeaders()) {
+        if (array_key_exists('exposeHeaders', get_object_vars($data)) && null !== ($data->exposeHeaders ?? null)) {
             $values_3 = [];
-            foreach ($data->getExposeHeaders() as $value_3) {
+            foreach ($data->exposeHeaders ?? null as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['expose_headers'] = $values_3;
         }
-        if ($data->isInitialized('maxAge') && null !== $data->getMaxAge()) {
-            $dataArray['max_age'] = $data->getMaxAge();
+        if (array_key_exists('maxAge', get_object_vars($data)) && null !== ($data->maxAge ?? null)) {
+            $dataArray['max_age'] = $data->maxAge ?? null;
         }
-        if ($data->isInitialized('allowCredentials') && null !== $data->getAllowCredentials()) {
-            $dataArray['allow_credentials'] = $data->getAllowCredentials();
+        if (array_key_exists('allowCredentials', get_object_vars($data)) && null !== ($data->allowCredentials ?? null)) {
+            $dataArray['allow_credentials'] = $data->allowCredentials ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {

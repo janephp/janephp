@@ -119,14 +119,11 @@ final class OperationNamingFactoryTest extends TestCase
             }
         };
         $operation = new class($operationId) {
-            public function __construct(
-                private readonly ?string $operationId,
-            ) {
-            }
+            public ?string $operationId;
 
-            public function getOperationId(): ?string
+            public function __construct(?string $operationId)
             {
-                return $this->operationId;
+                $this->operationId = $operationId;
             }
 
             public function getParameters(): ?array

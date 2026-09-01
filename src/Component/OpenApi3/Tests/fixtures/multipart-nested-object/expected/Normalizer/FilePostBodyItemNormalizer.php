@@ -41,11 +41,11 @@ class FilePostBodyItemNormalizer implements DenormalizerInterface, NormalizerInt
             $this->validate($data, new \Jane\Component\OpenApi3\Tests\Expected\Validator\FilePostBodyItemConstraint());
         }
         if (\array_key_exists('itemId', $data)) {
-            $object->setItemId($data['itemId']);
+            $object->itemId = $data['itemId'];
             unset($data['itemId']);
         }
         if (\array_key_exists('itemType', $data)) {
-            $object->setItemType($data['itemType']);
+            $object->itemType = $data['itemType'];
             unset($data['itemType']);
         }
         foreach ($data as $key => $value) {
@@ -58,11 +58,11 @@ class FilePostBodyItemNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('itemId') && null !== $data->getItemId()) {
-            $dataArray['itemId'] = $data->getItemId();
+        if (array_key_exists('itemId', get_object_vars($data)) && null !== ($data->itemId ?? null)) {
+            $dataArray['itemId'] = $data->itemId ?? null;
         }
-        if ($data->isInitialized('itemType') && null !== $data->getItemType()) {
-            $dataArray['itemType'] = $data->getItemType();
+        if (array_key_exists('itemType', get_object_vars($data)) && null !== ($data->itemType ?? null)) {
+            $dataArray['itemType'] = $data->itemType ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

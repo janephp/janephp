@@ -8,211 +8,49 @@ class TermsEnumAggregator extends AggregatorBase implements AdditionalProperties
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * The field's ID to execute the aggregation on. Only not analyzed fields are supported.
      *
      * @var string
      */
-    protected $field;
+    public string $field;
     /**
      * It defines how many term buckets should be returned out of the overall terms list.
      *
      * @var int|null
      */
-    protected $size;
+    public ?int $size;
     /**
      * Includes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
      *
      * @var list<string>|null
      */
-    protected $includes;
+    public ?array $includes;
     /**
      * Excludes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
      *
      * @var list<string>|null
      */
-    protected $excludes;
+    public ?array $excludes;
     /**
      * Limits the possible returned aggregation values by using a query string filter. The Lucene query string syntax is supported.
      *
      * @var string|null
      */
-    protected $searchString;
+    public ?string $searchString;
     /**
      * Search fields to be used to search the SearchString value into. If no search field is specified, the Field value is used.
      *
      * @var list<string>|null
      */
-    protected $searchFields;
+    public ?array $searchFields;
     /**
      * Type of the enum target of the relation. It is used to resolve the enum translation.
      *
      * @var string
      */
-    protected $enumType;
-    /**
-     * The field's ID to execute the aggregation on. Only not analyzed fields are supported.
-     *
-     * @return string
-     */
-    public function getField(): string
-    {
-        return $this->field;
-    }
-    /**
-     * The field's ID to execute the aggregation on. Only not analyzed fields are supported.
-     *
-     * @param string $field
-     *
-     * @return self
-     */
-    public function setField(string $field): self
-    {
-        $this->initialized['field'] = true;
-        $this->field = $field;
-        return $this;
-    }
-    /**
-     * It defines how many term buckets should be returned out of the overall terms list.
-     *
-     * @return int|null
-     */
-    public function getSize(): ?int
-    {
-        return $this->size;
-    }
-    /**
-     * It defines how many term buckets should be returned out of the overall terms list.
-     *
-     * @param int|null $size
-     *
-     * @return self
-     */
-    public function setSize(?int $size): self
-    {
-        $this->initialized['size'] = true;
-        $this->size = $size;
-        return $this;
-    }
-    /**
-     * Includes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
-     *
-     * @return list<string>|null
-     */
-    public function getIncludes(): ?array
-    {
-        return $this->includes;
-    }
-    /**
-     * Includes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
-     *
-     * @param list<string>|null $includes
-     *
-     * @return self
-     */
-    public function setIncludes(?array $includes): self
-    {
-        $this->initialized['includes'] = true;
-        $this->includes = $includes;
-        return $this;
-    }
-    /**
-     * Excludes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
-     *
-     * @return list<string>|null
-     */
-    public function getExcludes(): ?array
-    {
-        return $this->excludes;
-    }
-    /**
-     * Excludes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
-     *
-     * @param list<string>|null $excludes
-     *
-     * @return self
-     */
-    public function setExcludes(?array $excludes): self
-    {
-        $this->initialized['excludes'] = true;
-        $this->excludes = $excludes;
-        return $this;
-    }
-    /**
-     * Limits the possible returned aggregation values by using a query string filter. The Lucene query string syntax is supported.
-     *
-     * @return string|null
-     */
-    public function getSearchString(): ?string
-    {
-        return $this->searchString;
-    }
-    /**
-     * Limits the possible returned aggregation values by using a query string filter. The Lucene query string syntax is supported.
-     *
-     * @param string|null $searchString
-     *
-     * @return self
-     */
-    public function setSearchString(?string $searchString): self
-    {
-        $this->initialized['searchString'] = true;
-        $this->searchString = $searchString;
-        return $this;
-    }
-    /**
-     * Search fields to be used to search the SearchString value into. If no search field is specified, the Field value is used.
-     *
-     * @return list<string>|null
-     */
-    public function getSearchFields(): ?array
-    {
-        return $this->searchFields;
-    }
-    /**
-     * Search fields to be used to search the SearchString value into. If no search field is specified, the Field value is used.
-     *
-     * @param list<string>|null $searchFields
-     *
-     * @return self
-     */
-    public function setSearchFields(?array $searchFields): self
-    {
-        $this->initialized['searchFields'] = true;
-        $this->searchFields = $searchFields;
-        return $this;
-    }
-    /**
-     * Type of the enum target of the relation. It is used to resolve the enum translation.
-     *
-     * @return string
-     */
-    public function getEnumType(): string
-    {
-        return $this->enumType;
-    }
-    /**
-     * Type of the enum target of the relation. It is used to resolve the enum translation.
-     *
-     * @param string $enumType
-     *
-     * @return self
-     */
-    public function setEnumType(string $enumType): self
-    {
-        $this->initialized['enumType'] = true;
-        $this->enumType = $enumType;
-        return $this;
-    }
+    public string $enumType;
     public function definedProperties(): array
     {
-        return ['field' => ['field', 'getField', 'setField'], 'size' => ['size', 'getSize', 'setSize'], 'includes' => ['includes', 'getIncludes', 'setIncludes'], 'excludes' => ['excludes', 'getExcludes', 'setExcludes'], 'searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'searchFields' => ['searchFields', 'getSearchFields', 'setSearchFields'], 'enumType' => ['enumType', 'getEnumType', 'setEnumType']];
+        return ['field' => 'field', 'size' => 'size', 'includes' => 'includes', 'excludes' => 'excludes', 'searchString' => 'searchString', 'searchFields' => 'searchFields', 'enumType' => 'enumType'];
     }
 }

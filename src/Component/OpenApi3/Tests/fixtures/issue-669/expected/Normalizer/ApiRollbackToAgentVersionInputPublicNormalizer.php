@@ -38,11 +38,11 @@ class ApiRollbackToAgentVersionInputPublicNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('version_hash', $data)) {
-            $object->setVersionHash($data['version_hash']);
+            $object->versionHash = $data['version_hash'];
             unset($data['version_hash']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiRollbackToAgentVersionInputPublicNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
-        if ($data->isInitialized('versionHash') && null !== $data->getVersionHash()) {
-            $dataArray['version_hash'] = $data->getVersionHash();
+        if (array_key_exists('versionHash', get_object_vars($data)) && null !== ($data->versionHash ?? null)) {
+            $dataArray['version_hash'] = $data->versionHash ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,11 +38,11 @@ class VpcBaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('urn', $data)) {
-            $object->setUrn($data['urn']);
+            $object->urn = $data['urn'];
             unset($data['urn']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -50,7 +50,7 @@ class VpcBaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         foreach ($data as $key => $value) {
@@ -63,8 +63,8 @@ class VpcBaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('urn') && null !== $data->getUrn()) {
-            $dataArray['urn'] = $data->getUrn();
+        if (array_key_exists('urn', get_object_vars($data)) && null !== ($data->urn ?? null)) {
+            $dataArray['urn'] = $data->urn ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

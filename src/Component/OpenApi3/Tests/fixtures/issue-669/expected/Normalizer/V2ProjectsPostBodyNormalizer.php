@@ -38,31 +38,31 @@ class V2ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('owner_uuid', $data)) {
-            $object->setOwnerUuid($data['owner_uuid']);
+            $object->ownerUuid = $data['owner_uuid'];
             unset($data['owner_uuid']);
         }
         if (\array_key_exists('owner_id', $data)) {
-            $object->setOwnerId($data['owner_id']);
+            $object->ownerId = $data['owner_id'];
             unset($data['owner_id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('purpose', $data)) {
-            $object->setPurpose($data['purpose']);
+            $object->purpose = $data['purpose'];
             unset($data['purpose']);
         }
         if (\array_key_exists('environment', $data)) {
-            $object->setEnvironment($data['environment']);
+            $object->environment = $data['environment'];
             unset($data['environment']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -70,7 +70,7 @@ class V2ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerI
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -78,7 +78,7 @@ class V2ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerI
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         foreach ($data as $key => $value) {
@@ -91,17 +91,17 @@ class V2ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('purpose') && null !== $data->getPurpose()) {
-            $dataArray['purpose'] = $data->getPurpose();
+        if (array_key_exists('purpose', get_object_vars($data)) && null !== ($data->purpose ?? null)) {
+            $dataArray['purpose'] = $data->purpose ?? null;
         }
-        if ($data->isInitialized('environment') && null !== $data->getEnvironment()) {
-            $dataArray['environment'] = $data->getEnvironment();
+        if (array_key_exists('environment', get_object_vars($data)) && null !== ($data->environment ?? null)) {
+            $dataArray['environment'] = $data->environment ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

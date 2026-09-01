@@ -38,11 +38,11 @@ class ApiDropboxOauth2GetTokensInputNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('code', $data)) {
-            $object->setCode($data['code']);
+            $object->code = $data['code'];
             unset($data['code']);
         }
         if (\array_key_exists('redirect_url', $data)) {
-            $object->setRedirectUrl($data['redirect_url']);
+            $object->redirectUrl = $data['redirect_url'];
             unset($data['redirect_url']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiDropboxOauth2GetTokensInputNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('code') && null !== $data->getCode()) {
-            $dataArray['code'] = $data->getCode();
+        if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
+            $dataArray['code'] = $data->code ?? null;
         }
-        if ($data->isInitialized('redirectUrl') && null !== $data->getRedirectUrl()) {
-            $dataArray['redirect_url'] = $data->getRedirectUrl();
+        if (array_key_exists('redirectUrl', get_object_vars($data)) && null !== ($data->redirectUrl ?? null)) {
+            $dataArray['redirect_url'] = $data->redirectUrl ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -45,107 +45,107 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['filters'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaFiltersItem::class, 'json', $context);
             }
-            $object->setFilters($values);
+            $object->filters = $values;
         }
         if (\array_key_exists('extraFilters', $data)) {
             $values_1 = [];
             foreach ($data['extraFilters'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaExtraFiltersItem::class, 'json', $context);
             }
-            $object->setExtraFilters($values_1);
+            $object->extraFilters = $values_1;
         }
         if (\array_key_exists('extraNotFilters', $data)) {
-            $object->setExtraNotFilters($data['extraNotFilters']);
+            $object->extraNotFilters = $data['extraNotFilters'];
         }
         if (\array_key_exists('options', $data)) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaOptions::class, 'json', $context));
+            $object->options = $this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaOptions::class, 'json', $context);
         }
         if (\array_key_exists('extraTimeRange', $data)) {
-            $object->setExtraTimeRange($this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTimeRange::class, 'json', $context));
+            $object->extraTimeRange = $this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTimeRange::class, 'json', $context);
         }
         if (\array_key_exists('fullTextSearch', $data)) {
-            $object->setFullTextSearch($this->denormalizer->denormalize($data['fullTextSearch'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonFullTextSearch::class, 'json', $context));
+            $object->fullTextSearch = $this->denormalizer->denormalize($data['fullTextSearch'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonFullTextSearch::class, 'json', $context);
         }
         if (\array_key_exists('attributes', $data)) {
             $values_2 = [];
             foreach ($data['attributes'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setAttributes($values_2);
+            $object->attributes = $values_2;
         }
         if (\array_key_exists('sortInfo', $data)) {
-            $object->setSortInfo($this->denormalizer->denormalize($data['sortInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSortInfo::class, 'json', $context));
+            $object->sortInfo = $this->denormalizer->denormalize($data['sortInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSortInfo::class, 'json', $context);
         }
         if (\array_key_exists('page', $data)) {
-            $object->setPage($data['page']);
+            $object->page = $data['page'];
         }
         if (\array_key_exists('limit', $data)) {
-            $object->setLimit($data['limit']);
+            $object->limit = $data['limit'];
         }
         if (\array_key_exists('expandDomains', $data)) {
-            $object->setExpandDomains($data['expandDomains']);
+            $object->expandDomains = $data['expandDomains'];
         }
         if (\array_key_exists('criteria', $data)) {
-            $object->setCriteria($data['criteria']);
+            $object->criteria = $data['criteria'];
         }
         if (\array_key_exists('query', $data)) {
-            $object->setQuery($data['query']);
+            $object->query = $data['query'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('filters') && null !== $data->getFilters()) {
+        if (array_key_exists('filters', get_object_vars($data)) && null !== ($data->filters ?? null)) {
             $values = [];
-            foreach ($data->getFilters() as $value) {
+            foreach ($data->filters ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['filters'] = $values;
         }
-        if ($data->isInitialized('extraFilters') && null !== $data->getExtraFilters()) {
+        if (array_key_exists('extraFilters', get_object_vars($data)) && null !== ($data->extraFilters ?? null)) {
             $values_1 = [];
-            foreach ($data->getExtraFilters() as $value_1) {
+            foreach ($data->extraFilters ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['extraFilters'] = $values_1;
         }
-        if ($data->isInitialized('extraNotFilters') && null !== $data->getExtraNotFilters()) {
-            $dataArray['extraNotFilters'] = $data->getExtraNotFilters();
+        if (array_key_exists('extraNotFilters', get_object_vars($data)) && null !== ($data->extraNotFilters ?? null)) {
+            $dataArray['extraNotFilters'] = $data->extraNotFilters ?? null;
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $dataArray['options'] = $data->getOptions() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
+            $dataArray['options'] = ($data->options ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->options ?? null, 'json', $context));
         }
-        if ($data->isInitialized('extraTimeRange') && null !== $data->getExtraTimeRange()) {
-            $dataArray['extraTimeRange'] = $data->getExtraTimeRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getExtraTimeRange(), 'json', $context));
+        if (array_key_exists('extraTimeRange', get_object_vars($data)) && null !== ($data->extraTimeRange ?? null)) {
+            $dataArray['extraTimeRange'] = ($data->extraTimeRange ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->extraTimeRange ?? null, 'json', $context));
         }
-        if ($data->isInitialized('fullTextSearch') && null !== $data->getFullTextSearch()) {
-            $dataArray['fullTextSearch'] = $data->getFullTextSearch() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFullTextSearch(), 'json', $context));
+        if (array_key_exists('fullTextSearch', get_object_vars($data)) && null !== ($data->fullTextSearch ?? null)) {
+            $dataArray['fullTextSearch'] = ($data->fullTextSearch ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->fullTextSearch ?? null, 'json', $context));
         }
-        if ($data->isInitialized('attributes') && null !== $data->getAttributes()) {
+        if (array_key_exists('attributes', get_object_vars($data)) && null !== ($data->attributes ?? null)) {
             $values_2 = [];
-            foreach ($data->getAttributes() as $value_2) {
+            foreach ($data->attributes ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['attributes'] = $values_2;
         }
-        if ($data->isInitialized('sortInfo') && null !== $data->getSortInfo()) {
-            $dataArray['sortInfo'] = $data->getSortInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSortInfo(), 'json', $context));
+        if (array_key_exists('sortInfo', get_object_vars($data)) && null !== ($data->sortInfo ?? null)) {
+            $dataArray['sortInfo'] = ($data->sortInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->sortInfo ?? null, 'json', $context));
         }
-        if ($data->isInitialized('page') && null !== $data->getPage()) {
-            $dataArray['page'] = $data->getPage();
+        if (array_key_exists('page', get_object_vars($data)) && null !== ($data->page ?? null)) {
+            $dataArray['page'] = $data->page ?? null;
         }
-        if ($data->isInitialized('limit') && null !== $data->getLimit()) {
-            $dataArray['limit'] = $data->getLimit();
+        if (array_key_exists('limit', get_object_vars($data)) && null !== ($data->limit ?? null)) {
+            $dataArray['limit'] = $data->limit ?? null;
         }
-        if ($data->isInitialized('expandDomains') && null !== $data->getExpandDomains()) {
-            $dataArray['expandDomains'] = $data->getExpandDomains();
+        if (array_key_exists('expandDomains', get_object_vars($data)) && null !== ($data->expandDomains ?? null)) {
+            $dataArray['expandDomains'] = $data->expandDomains ?? null;
         }
-        if ($data->isInitialized('criteria') && null !== $data->getCriteria()) {
-            $dataArray['criteria'] = $data->getCriteria();
+        if (array_key_exists('criteria', get_object_vars($data)) && null !== ($data->criteria ?? null)) {
+            $dataArray['criteria'] = $data->criteria ?? null;
         }
-        if ($data->isInitialized('query') && null !== $data->getQuery()) {
-            $dataArray['query'] = $data->getQuery();
+        if (array_key_exists('query', get_object_vars($data)) && null !== ($data->query ?? null)) {
+            $dataArray['query'] = $data->query ?? null;
         }
         return $dataArray;
     }

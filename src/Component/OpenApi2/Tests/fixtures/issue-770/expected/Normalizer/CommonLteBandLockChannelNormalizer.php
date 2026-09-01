@@ -38,33 +38,33 @@ class CommonLteBandLockChannelNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('simCardId', $data)) {
-            $object->setSimCardId($data['simCardId']);
+            $object->simCardId = $data['simCardId'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('channel4g', $data)) {
-            $object->setChannel4g($data['channel4g']);
+            $object->channel4g = $data['channel4g'];
         }
         if (\array_key_exists('channel3g', $data)) {
-            $object->setChannel3g($data['channel3g']);
+            $object->channel3g = $data['channel3g'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('simCardId') && null !== $data->getSimCardId()) {
-            $dataArray['simCardId'] = $data->getSimCardId();
+        if (array_key_exists('simCardId', get_object_vars($data)) && null !== ($data->simCardId ?? null)) {
+            $dataArray['simCardId'] = $data->simCardId ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('channel4g') && null !== $data->getChannel4g()) {
-            $dataArray['channel4g'] = $data->getChannel4g();
+        if (array_key_exists('channel4g', get_object_vars($data)) && null !== ($data->channel4g ?? null)) {
+            $dataArray['channel4g'] = $data->channel4g ?? null;
         }
-        if ($data->isInitialized('channel3g') && null !== $data->getChannel3g()) {
-            $dataArray['channel3g'] = $data->getChannel3g();
+        if (array_key_exists('channel3g', get_object_vars($data)) && null !== ($data->channel3g ?? null)) {
+            $dataArray['channel3g'] = $data->channel3g ?? null;
         }
         return $dataArray;
     }

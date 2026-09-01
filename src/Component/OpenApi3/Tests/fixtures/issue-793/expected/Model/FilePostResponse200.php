@@ -8,37 +8,11 @@ class FilePostResponse200 implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var int
      */
-    protected $statusCode;
-    /**
-     * @return int
-     */
-    public function getStatusCode(): int
-    {
-        return $this->statusCode;
-    }
-    /**
-     * @param int $statusCode
-     *
-     * @return self
-     */
-    public function setStatusCode(int $statusCode): self
-    {
-        $this->initialized['statusCode'] = true;
-        $this->statusCode = $statusCode;
-        return $this;
-    }
+    public int $statusCode;
     public function definedProperties(): array
     {
-        return ['statusCode' => ['status_code', 'getStatusCode', 'setStatusCode']];
+        return ['statusCode' => 'status_code'];
     }
 }

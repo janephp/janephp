@@ -8,81 +8,19 @@ class GbPeopleReportReponseReportDirectorSummary implements AdditionalProperties
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var int
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public int $currentAppointments;
     /**
      * @var int
      */
-    protected $currentAppointments;
+    public int $inactiveAppointments;
     /**
      * @var int
      */
-    protected $inactiveAppointments;
-    /**
-     * @var int
-     */
-    protected $previousAppointments;
-    /**
-     * @return int
-     */
-    public function getCurrentAppointments(): int
-    {
-        return $this->currentAppointments;
-    }
-    /**
-     * @param int $currentAppointments
-     *
-     * @return self
-     */
-    public function setCurrentAppointments(int $currentAppointments): self
-    {
-        $this->initialized['currentAppointments'] = true;
-        $this->currentAppointments = $currentAppointments;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getInactiveAppointments(): int
-    {
-        return $this->inactiveAppointments;
-    }
-    /**
-     * @param int $inactiveAppointments
-     *
-     * @return self
-     */
-    public function setInactiveAppointments(int $inactiveAppointments): self
-    {
-        $this->initialized['inactiveAppointments'] = true;
-        $this->inactiveAppointments = $inactiveAppointments;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getPreviousAppointments(): int
-    {
-        return $this->previousAppointments;
-    }
-    /**
-     * @param int $previousAppointments
-     *
-     * @return self
-     */
-    public function setPreviousAppointments(int $previousAppointments): self
-    {
-        $this->initialized['previousAppointments'] = true;
-        $this->previousAppointments = $previousAppointments;
-        return $this;
-    }
+    public int $previousAppointments;
     public function definedProperties(): array
     {
-        return ['currentAppointments' => ['currentAppointments', 'getCurrentAppointments', 'setCurrentAppointments'], 'inactiveAppointments' => ['inactiveAppointments', 'getInactiveAppointments', 'setInactiveAppointments'], 'previousAppointments' => ['previousAppointments', 'getPreviousAppointments', 'setPreviousAppointments']];
+        return ['currentAppointments' => 'currentAppointments', 'inactiveAppointments' => 'inactiveAppointments', 'previousAppointments' => 'previousAppointments'];
     }
 }

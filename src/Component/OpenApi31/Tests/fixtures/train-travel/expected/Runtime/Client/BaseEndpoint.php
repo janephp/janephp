@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Runtime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
 abstract class BaseEndpoint implements Endpoint
@@ -13,9 +14,14 @@ abstract class BaseEndpoint implements Endpoint
     protected array $headerParameters = [];
     protected mixed $body;
     abstract public function getMethod(): string;
-    abstract public function getBody(SerializerInterface $serializer, $streamFactory = null): array;
+    abstract public function getBody(SerializerInterface $serializer, ?StreamFactoryInterface $streamFactory = null): array;
     abstract public function getUri(): string;
     abstract public function getAuthenticationScopes(): array;
+    /**
+     * Transform the response body into a value for the requested fetch mode.
+     *
+     * @return mixed
+     */
     abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, ?string $contentType = null);
     protected function getExtraHeaders(): array
     {
@@ -37,6 +43,11 @@ abstract class BaseEndpoint implements Endpoint
                 }
                 continue;
             }
+            // Unset optional parameters resolve to null, which is sent as an
+            // empty value ("?foo=") rather than being dropped: this keeps the
+            // emitted query string stable regardless of whether an optional
+            // parameter was provided. Parameters declaring an OpenAPI query
+            // style skip this mapping (see the $styles branch above).
             $value = $value ?? '';
             $allowReservedKey = \in_array($key, $allowReserved, true);
             $queryParameters[] = $this->encodeValue($key, $value, $allowReservedKey);
@@ -91,14 +102,14 @@ abstract class BaseEndpoint implements Endpoint
     {
         return [['Content-Type' => ['application/x-www-form-urlencoded']], http_build_query($this->getFormOptionsResolver()->resolve($this->formParameters))];
     }
-    protected function getMultipartBody($streamFactory = null): array
+    protected function getMultipartBody(?StreamFactoryInterface $streamFactory = null): array
     {
         $bodyBuilder = new MultipartStreamBuilder($streamFactory);
         $formParameters = $this->getFormOptionsResolver()->resolve($this->formParameters);
         foreach ($formParameters as $key => $value) {
             $bodyBuilder->addResource($key, $value);
         }
-        return [['Content-Type' => ['multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '"')]], $bodyBuilder->build()];
+        return [['Content-Type' => ['multipart/form-data; boundary="' . $bodyBuilder->getBoundary() . '"']], $bodyBuilder->build()];
     }
     protected function getFormOptionsResolver(): OptionsResolver
     {

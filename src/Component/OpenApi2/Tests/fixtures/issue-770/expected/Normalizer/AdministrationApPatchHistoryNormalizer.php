@@ -38,38 +38,38 @@ class AdministrationApPatchHistoryNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('startDateTime', $data)) {
-            $object->setStartDateTime($data['startDateTime']);
+            $object->startDateTime = $data['startDateTime'];
         }
         if (\array_key_exists('fileName', $data)) {
-            $object->setFileName($data['fileName']);
+            $object->fileName = $data['fileName'];
         }
         if (\array_key_exists('apFwVersion', $data)) {
-            $object->setApFwVersion($data['apFwVersion']);
+            $object->apFwVersion = $data['apFwVersion'];
         }
         if (\array_key_exists('apModelList', $data)) {
             $values = [];
             foreach ($data['apModelList'] as $value) {
                 $values[] = $value;
             }
-            $object->setApModelList($values);
+            $object->apModelList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('startDateTime') && null !== $data->getStartDateTime()) {
-            $dataArray['startDateTime'] = $data->getStartDateTime();
+        if (array_key_exists('startDateTime', get_object_vars($data)) && null !== ($data->startDateTime ?? null)) {
+            $dataArray['startDateTime'] = $data->startDateTime ?? null;
         }
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
-            $dataArray['fileName'] = $data->getFileName();
+        if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
+            $dataArray['fileName'] = $data->fileName ?? null;
         }
-        if ($data->isInitialized('apFwVersion') && null !== $data->getApFwVersion()) {
-            $dataArray['apFwVersion'] = $data->getApFwVersion();
+        if (array_key_exists('apFwVersion', get_object_vars($data)) && null !== ($data->apFwVersion ?? null)) {
+            $dataArray['apFwVersion'] = $data->apFwVersion ?? null;
         }
-        if ($data->isInitialized('apModelList') && null !== $data->getApModelList()) {
+        if (array_key_exists('apModelList', get_object_vars($data)) && null !== ($data->apModelList ?? null)) {
             $values = [];
-            foreach ($data->getApModelList() as $value) {
+            foreach ($data->apModelList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['apModelList'] = $values;

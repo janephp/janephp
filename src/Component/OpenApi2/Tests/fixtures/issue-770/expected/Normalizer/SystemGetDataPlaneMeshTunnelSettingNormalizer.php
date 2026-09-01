@@ -41,15 +41,15 @@ class SystemGetDataPlaneMeshTunnelSettingNormalizer implements DenormalizerInter
             $data['encrypted'] = (bool) $data['encrypted'];
         }
         if (\array_key_exists('encrypted', $data)) {
-            $object->setEncrypted($data['encrypted']);
+            $object->encrypted = $data['encrypted'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('encrypted') && null !== $data->getEncrypted()) {
-            $dataArray['encrypted'] = $data->getEncrypted();
+        if (array_key_exists('encrypted', get_object_vars($data)) && null !== ($data->encrypted ?? null)) {
+            $dataArray['encrypted'] = $data->encrypted ?? null;
         }
         return $dataArray;
     }

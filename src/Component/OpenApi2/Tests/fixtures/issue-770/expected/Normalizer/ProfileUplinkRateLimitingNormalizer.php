@@ -41,21 +41,21 @@ class ProfileUplinkRateLimitingNormalizer implements DenormalizerInterface, Norm
             $data['uplinkRateLimitingEnabled'] = (bool) $data['uplinkRateLimitingEnabled'];
         }
         if (\array_key_exists('uplinkRateLimitingEnabled', $data)) {
-            $object->setUplinkRateLimitingEnabled($data['uplinkRateLimitingEnabled']);
+            $object->uplinkRateLimitingEnabled = $data['uplinkRateLimitingEnabled'];
         }
         if (\array_key_exists('uplinkRateLimitingBps', $data)) {
-            $object->setUplinkRateLimitingBps($data['uplinkRateLimitingBps']);
+            $object->uplinkRateLimitingBps = $data['uplinkRateLimitingBps'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('uplinkRateLimitingEnabled') && null !== $data->getUplinkRateLimitingEnabled()) {
-            $dataArray['uplinkRateLimitingEnabled'] = $data->getUplinkRateLimitingEnabled();
+        if (array_key_exists('uplinkRateLimitingEnabled', get_object_vars($data)) && null !== ($data->uplinkRateLimitingEnabled ?? null)) {
+            $dataArray['uplinkRateLimitingEnabled'] = $data->uplinkRateLimitingEnabled ?? null;
         }
-        if ($data->isInitialized('uplinkRateLimitingBps') && null !== $data->getUplinkRateLimitingBps()) {
-            $dataArray['uplinkRateLimitingBps'] = $data->getUplinkRateLimitingBps();
+        if (array_key_exists('uplinkRateLimitingBps', get_object_vars($data)) && null !== ($data->uplinkRateLimitingBps ?? null)) {
+            $dataArray['uplinkRateLimitingBps'] = $data->uplinkRateLimitingBps ?? null;
         }
         return $dataArray;
     }

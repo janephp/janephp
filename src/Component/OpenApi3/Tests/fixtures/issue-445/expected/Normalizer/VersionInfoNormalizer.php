@@ -38,45 +38,45 @@ class VersionInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('fileVersion', $data) && $data['fileVersion'] !== null) {
-            $object->setFileVersion($data['fileVersion']);
+            $object->fileVersion = $data['fileVersion'];
         }
         elseif (\array_key_exists('fileVersion', $data) && $data['fileVersion'] === null) {
-            $object->setFileVersion(null);
+            $object->fileVersion = null;
         }
         if (\array_key_exists('fileProductVersion', $data) && $data['fileProductVersion'] !== null) {
-            $object->setFileProductVersion($data['fileProductVersion']);
+            $object->fileProductVersion = $data['fileProductVersion'];
         }
         elseif (\array_key_exists('fileProductVersion', $data) && $data['fileProductVersion'] === null) {
-            $object->setFileProductVersion(null);
+            $object->fileProductVersion = null;
         }
         if (\array_key_exists('contractVersion', $data) && $data['contractVersion'] !== null) {
-            $object->setContractVersion($data['contractVersion']);
+            $object->contractVersion = $data['contractVersion'];
         }
         elseif (\array_key_exists('contractVersion', $data) && $data['contractVersion'] === null) {
-            $object->setContractVersion(null);
+            $object->contractVersion = null;
         }
         if (\array_key_exists('release', $data) && $data['release'] !== null) {
-            $object->setRelease($data['release']);
+            $object->release = $data['release'];
         }
         elseif (\array_key_exists('release', $data) && $data['release'] === null) {
-            $object->setRelease(null);
+            $object->release = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fileVersion') && null !== $data->getFileVersion()) {
-            $dataArray['fileVersion'] = $data->getFileVersion();
+        if (array_key_exists('fileVersion', get_object_vars($data)) && null !== ($data->fileVersion ?? null)) {
+            $dataArray['fileVersion'] = $data->fileVersion ?? null;
         }
-        if ($data->isInitialized('fileProductVersion') && null !== $data->getFileProductVersion()) {
-            $dataArray['fileProductVersion'] = $data->getFileProductVersion();
+        if (array_key_exists('fileProductVersion', get_object_vars($data)) && null !== ($data->fileProductVersion ?? null)) {
+            $dataArray['fileProductVersion'] = $data->fileProductVersion ?? null;
         }
-        if ($data->isInitialized('contractVersion') && null !== $data->getContractVersion()) {
-            $dataArray['contractVersion'] = $data->getContractVersion();
+        if (array_key_exists('contractVersion', get_object_vars($data)) && null !== ($data->contractVersion ?? null)) {
+            $dataArray['contractVersion'] = $data->contractVersion ?? null;
         }
-        if ($data->isInitialized('release') && null !== $data->getRelease()) {
-            $dataArray['release'] = $data->getRelease();
+        if (array_key_exists('release', get_object_vars($data)) && null !== ($data->release ?? null)) {
+            $dataArray['release'] = $data->release ?? null;
         }
         return $dataArray;
     }

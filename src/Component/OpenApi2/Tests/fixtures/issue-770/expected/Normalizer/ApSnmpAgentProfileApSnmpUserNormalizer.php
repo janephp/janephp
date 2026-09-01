@@ -47,60 +47,60 @@ class ApSnmpAgentProfileApSnmpUserNormalizer implements DenormalizerInterface, N
             $data['notificationEnabled'] = (bool) $data['notificationEnabled'];
         }
         if (\array_key_exists('userName', $data)) {
-            $object->setUserName($data['userName']);
+            $object->userName = $data['userName'];
         }
         if (\array_key_exists('authProtocol', $data)) {
-            $object->setAuthProtocol($data['authProtocol']);
+            $object->authProtocol = $data['authProtocol'];
         }
         if (\array_key_exists('authPassword', $data)) {
-            $object->setAuthPassword($data['authPassword']);
+            $object->authPassword = $data['authPassword'];
         }
         if (\array_key_exists('privProtocol', $data)) {
-            $object->setPrivProtocol($data['privProtocol']);
+            $object->privProtocol = $data['privProtocol'];
         }
         if (\array_key_exists('privPassword', $data)) {
-            $object->setPrivPassword($data['privPassword']);
+            $object->privPassword = $data['privPassword'];
         }
         if (\array_key_exists('readEnabled', $data)) {
-            $object->setReadEnabled($data['readEnabled']);
+            $object->readEnabled = $data['readEnabled'];
         }
         if (\array_key_exists('writeEnabled', $data)) {
-            $object->setWriteEnabled($data['writeEnabled']);
+            $object->writeEnabled = $data['writeEnabled'];
         }
         if (\array_key_exists('notificationEnabled', $data)) {
-            $object->setNotificationEnabled($data['notificationEnabled']);
+            $object->notificationEnabled = $data['notificationEnabled'];
         }
         if (\array_key_exists('notificationType', $data)) {
-            $object->setNotificationType($data['notificationType']);
+            $object->notificationType = $data['notificationType'];
         }
         if (\array_key_exists('notificationTarget', $data)) {
             $values = [];
             foreach ($data['notificationTarget'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileTargetConfig::class, 'json', $context);
             }
-            $object->setNotificationTarget($values);
+            $object->notificationTarget = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['userName'] = $data->getUserName();
-        $dataArray['authProtocol'] = $data->getAuthProtocol();
-        $dataArray['authPassword'] = $data->getAuthPassword();
-        $dataArray['privProtocol'] = $data->getPrivProtocol();
-        if ($data->isInitialized('privPassword') && null !== $data->getPrivPassword()) {
-            $dataArray['privPassword'] = $data->getPrivPassword();
+        $dataArray['userName'] = $data->userName ?? null;
+        $dataArray['authProtocol'] = $data->authProtocol ?? null;
+        $dataArray['authPassword'] = $data->authPassword ?? null;
+        $dataArray['privProtocol'] = $data->privProtocol ?? null;
+        if (array_key_exists('privPassword', get_object_vars($data)) && null !== ($data->privPassword ?? null)) {
+            $dataArray['privPassword'] = $data->privPassword ?? null;
         }
-        $dataArray['readEnabled'] = $data->getReadEnabled();
-        $dataArray['writeEnabled'] = $data->getWriteEnabled();
-        $dataArray['notificationEnabled'] = $data->getNotificationEnabled();
-        if ($data->isInitialized('notificationType') && null !== $data->getNotificationType()) {
-            $dataArray['notificationType'] = $data->getNotificationType();
+        $dataArray['readEnabled'] = $data->readEnabled ?? null;
+        $dataArray['writeEnabled'] = $data->writeEnabled ?? null;
+        $dataArray['notificationEnabled'] = $data->notificationEnabled ?? null;
+        if (array_key_exists('notificationType', get_object_vars($data)) && null !== ($data->notificationType ?? null)) {
+            $dataArray['notificationType'] = $data->notificationType ?? null;
         }
-        if ($data->isInitialized('notificationTarget') && null !== $data->getNotificationTarget()) {
+        if (array_key_exists('notificationTarget', get_object_vars($data)) && null !== ($data->notificationTarget ?? null)) {
             $values = [];
-            foreach ($data->getNotificationTarget() as $value) {
+            foreach ($data->notificationTarget ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['notificationTarget'] = $values;

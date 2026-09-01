@@ -39,7 +39,7 @@ class PageLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('pages', $data)) {
             $value = $data['pages'];
-            $object->setPages($value);
+            $object->pages = $value;
             unset($data['pages']);
         }
         foreach ($data as $key => $value_1) {
@@ -52,8 +52,8 @@ class PageLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('pages') && null !== $data->getPages()) {
-            $value = $data->getPages();
+        if (array_key_exists('pages', get_object_vars($data)) && null !== ($data->pages ?? null)) {
+            $value = $data->pages ?? null;
             $dataArray['pages'] = $value;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

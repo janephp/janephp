@@ -41,7 +41,7 @@ class RequestErrorNormalizer implements DenormalizerInterface, NormalizerInterfa
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\RequestErrorConstraint());
         }
         if (\array_key_exists('reason', $data)) {
-            $object->setReason($data['reason']);
+            $object->reason = $data['reason'];
             unset($data['reason']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class RequestErrorNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('reason') && null !== $data->getReason()) {
-            $dataArray['reason'] = $data->getReason();
+        if (array_key_exists('reason', get_object_vars($data)) && null !== ($data->reason ?? null)) {
+            $dataArray['reason'] = $data->reason ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

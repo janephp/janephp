@@ -41,47 +41,47 @@ class OCIPlatformNormalizer implements DenormalizerInterface, NormalizerInterfac
             $this->validate($data, new \Docker\Api\Validator\OCIPlatformConstraint());
         }
         if (\array_key_exists('architecture', $data)) {
-            $object->setArchitecture($data['architecture']);
+            $object->architecture = $data['architecture'];
         }
         if (\array_key_exists('os', $data)) {
-            $object->setOs($data['os']);
+            $object->os = $data['os'];
         }
         if (\array_key_exists('os.version', $data)) {
-            $object->setOsVersion($data['os.version']);
+            $object->osVersion = $data['os.version'];
         }
         if (\array_key_exists('os.features', $data)) {
             $values = [];
             foreach ($data['os.features'] as $value) {
                 $values[] = $value;
             }
-            $object->setOsFeatures($values);
+            $object->osFeatures = $values;
         }
         if (\array_key_exists('variant', $data)) {
-            $object->setVariant($data['variant']);
+            $object->variant = $data['variant'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('architecture') && null !== $data->getArchitecture()) {
-            $dataArray['architecture'] = $data->getArchitecture();
+        if (array_key_exists('architecture', get_object_vars($data)) && null !== ($data->architecture ?? null)) {
+            $dataArray['architecture'] = $data->architecture ?? null;
         }
-        if ($data->isInitialized('os') && null !== $data->getOs()) {
-            $dataArray['os'] = $data->getOs();
+        if (array_key_exists('os', get_object_vars($data)) && null !== ($data->os ?? null)) {
+            $dataArray['os'] = $data->os ?? null;
         }
-        if ($data->isInitialized('osVersion') && null !== $data->getOsVersion()) {
-            $dataArray['os.version'] = $data->getOsVersion();
+        if (array_key_exists('osVersion', get_object_vars($data)) && null !== ($data->osVersion ?? null)) {
+            $dataArray['os.version'] = $data->osVersion ?? null;
         }
-        if ($data->isInitialized('osFeatures') && null !== $data->getOsFeatures()) {
+        if (array_key_exists('osFeatures', get_object_vars($data)) && null !== ($data->osFeatures ?? null)) {
             $values = [];
-            foreach ($data->getOsFeatures() as $value) {
+            foreach ($data->osFeatures ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['os.features'] = $values;
         }
-        if ($data->isInitialized('variant') && null !== $data->getVariant()) {
-            $dataArray['variant'] = $data->getVariant();
+        if (array_key_exists('variant', get_object_vars($data)) && null !== ($data->variant ?? null)) {
+            $dataArray['variant'] = $data->variant ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\OCIPlatformConstraint());

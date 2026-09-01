@@ -38,32 +38,32 @@ class PermissionSetUserPermissionRightsNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('permissionSetId', $data) && $data['permissionSetId'] !== null) {
-            $object->setPermissionSetId($data['permissionSetId']);
+            $object->permissionSetId = $data['permissionSetId'];
         }
         elseif (\array_key_exists('permissionSetId', $data) && $data['permissionSetId'] === null) {
-            $object->setPermissionSetId(null);
+            $object->permissionSetId = null;
         }
         if (\array_key_exists('permissionSetRights', $data) && $data['permissionSetRights'] !== null) {
             $values = [];
             foreach ($data['permissionSetRights'] as $value) {
                 $values[] = $value;
             }
-            $object->setPermissionSetRights($values);
+            $object->permissionSetRights = $values;
         }
         elseif (\array_key_exists('permissionSetRights', $data) && $data['permissionSetRights'] === null) {
-            $object->setPermissionSetRights(null);
+            $object->permissionSetRights = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('permissionSetId') && null !== $data->getPermissionSetId()) {
-            $dataArray['permissionSetId'] = $data->getPermissionSetId();
+        if (array_key_exists('permissionSetId', get_object_vars($data)) && null !== ($data->permissionSetId ?? null)) {
+            $dataArray['permissionSetId'] = $data->permissionSetId ?? null;
         }
-        if ($data->isInitialized('permissionSetRights') && null !== $data->getPermissionSetRights()) {
+        if (array_key_exists('permissionSetRights', get_object_vars($data)) && null !== ($data->permissionSetRights ?? null)) {
             $values = [];
-            foreach ($data->getPermissionSetRights() as $value) {
+            foreach ($data->permissionSetRights ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['permissionSetRights'] = $values;

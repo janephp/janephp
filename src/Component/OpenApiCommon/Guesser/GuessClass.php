@@ -24,12 +24,12 @@ class GuessClass
         }
 
         if ($schema instanceof $this->schemaClass) {
-            $type = $schema->getType();
+            $type = ($schema->type ?? null);
 
             if (\is_array($type) ? \in_array('array', $type, true) : 'array' === $type) {
                 $array = true;
                 $reference .= '/items';
-                $items = $schema->getItems();
+                $items = ($schema->items ?? null);
 
                 if ($items instanceof Reference) {
                     [$reference] = $this->resolve($items, $this->schemaClass);
@@ -64,13 +64,11 @@ class GuessClass
         $classGuesses = [];
 
         foreach (['anyOf', 'oneOf'] as $keyword) {
-            $getter = 'get' . ucfirst($keyword);
-
-            if (!method_exists($schema, $getter)) {
+            if (!property_exists($schema, $keyword)) {
                 continue;
             }
 
-            $branches = $schema->{$getter}();
+            $branches = $schema->{$keyword} ?? null;
 
             if (!\is_array($branches)) {
                 continue;

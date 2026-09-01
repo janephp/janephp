@@ -42,70 +42,70 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['from'], 'Y-m-d\TH:i:sP');
             }
-            $object->setFrom($date);
+            $object->from = $date;
         }
         if (\array_key_exists('to', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['to']);
             if (false === $date_1) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['to'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTo($date_1);
+            $object->to = $date_1;
         }
         if (\array_key_exists('limit', $data)) {
-            $object->setLimit($data['limit']);
+            $object->limit = $data['limit'];
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-            $object->setPageToken($data['pageToken']);
+            $object->pageToken = $data['pageToken'];
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-            $object->setPageToken(null);
+            $object->pageToken = null;
         }
         if (\array_key_exists('documentId', $data) && $data['documentId'] !== null) {
-            $object->setDocumentId($data['documentId']);
+            $object->documentId = $data['documentId'];
         }
         elseif (\array_key_exists('documentId', $data) && $data['documentId'] === null) {
-            $object->setDocumentId(null);
+            $object->documentId = null;
         }
         if (\array_key_exists('documentVersion', $data)) {
-            $object->setDocumentVersion($data['documentVersion']);
+            $object->documentVersion = $data['documentVersion'];
         }
         if (\array_key_exists('documentType', $data) && $data['documentType'] !== null) {
-            $object->setDocumentType($data['documentType']);
+            $object->documentType = $data['documentType'];
         }
         elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
-            $object->setDocumentType(null);
+            $object->documentType = null;
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
             $values = [];
             foreach ($data['sort'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\SortInfo::class, 'json', $context);
             }
-            $object->setSort($values);
+            $object->sort = $values;
         }
         elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
-            $object->setSort(null);
+            $object->sort = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['from'] = $data->getFrom()->format('Y-m-d\TH:i:sP');
-        $dataArray['to'] = $data->getTo()->format('Y-m-d\TH:i:sP');
-        $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
-            $dataArray['pageToken'] = $data->getPageToken();
+        $dataArray['from'] = ($data->from ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['to'] = ($data->to ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['limit'] = $data->limit ?? null;
+        if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
+            $dataArray['pageToken'] = $data->pageToken ?? null;
         }
-        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
-            $dataArray['documentId'] = $data->getDocumentId();
+        if (array_key_exists('documentId', get_object_vars($data)) && null !== ($data->documentId ?? null)) {
+            $dataArray['documentId'] = $data->documentId ?? null;
         }
-        $dataArray['documentVersion'] = $data->getDocumentVersion();
-        if ($data->isInitialized('documentType') && null !== $data->getDocumentType()) {
-            $dataArray['documentType'] = $data->getDocumentType();
+        $dataArray['documentVersion'] = $data->documentVersion ?? null;
+        if (array_key_exists('documentType', get_object_vars($data)) && null !== ($data->documentType ?? null)) {
+            $dataArray['documentType'] = $data->documentType ?? null;
         }
-        if ($data->isInitialized('sort') && null !== $data->getSort()) {
+        if (array_key_exists('sort', get_object_vars($data)) && null !== ($data->sort ?? null)) {
             $values = [];
-            foreach ($data->getSort() as $value) {
+            foreach ($data->sort ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['sort'] = $values;

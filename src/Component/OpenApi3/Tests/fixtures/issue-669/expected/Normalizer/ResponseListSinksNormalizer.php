@@ -42,7 +42,7 @@ class ResponseListSinksNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['sinks'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\SinksResponse::class, 'json', $context);
             }
-            $object->setSinks($values);
+            $object->sinks = $values;
             unset($data['sinks']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseListSinksNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sinks') && null !== $data->getSinks()) {
+        if (array_key_exists('sinks', get_object_vars($data)) && null !== ($data->sinks ?? null)) {
             $values = [];
-            foreach ($data->getSinks() as $value) {
+            foreach ($data->sinks ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['sinks'] = $values;

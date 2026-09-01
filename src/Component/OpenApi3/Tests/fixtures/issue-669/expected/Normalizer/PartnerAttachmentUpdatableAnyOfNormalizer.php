@@ -38,7 +38,7 @@ class PartnerAttachmentUpdatableAnyOfNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('bgp', $data)) {
-            $object->setBgp($this->denormalizer->denormalize($data['bgp'], \Jane\Generated\DigitalOcean\Model\PartnerAttachmentUpdatableAnyOfBgp::class, 'json', $context));
+            $object->bgp = $this->denormalizer->denormalize($data['bgp'], \Jane\Generated\DigitalOcean\Model\PartnerAttachmentUpdatableAnyOfBgp::class, 'json', $context);
             unset($data['bgp']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class PartnerAttachmentUpdatableAnyOfNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('bgp') && null !== $data->getBgp()) {
-            $dataArray['bgp'] = $data->getBgp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBgp(), 'json', $context));
+        if (array_key_exists('bgp', get_object_vars($data)) && null !== ($data->bgp ?? null)) {
+            $dataArray['bgp'] = ($data->bgp ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bgp ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,22 +38,22 @@ class CommonRateLimitingNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('maxOutstandingRequestsPerServer', $data)) {
-            $object->setMaxOutstandingRequestsPerServer($data['maxOutstandingRequestsPerServer']);
+            $object->maxOutstandingRequestsPerServer = $data['maxOutstandingRequestsPerServer'];
         }
         if (\array_key_exists('threshold', $data)) {
-            $object->setThreshold($data['threshold']);
+            $object->threshold = $data['threshold'];
         }
         if (\array_key_exists('sanityTimer', $data)) {
-            $object->setSanityTimer($data['sanityTimer']);
+            $object->sanityTimer = $data['sanityTimer'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['maxOutstandingRequestsPerServer'] = $data->getMaxOutstandingRequestsPerServer();
-        $dataArray['threshold'] = $data->getThreshold();
-        $dataArray['sanityTimer'] = $data->getSanityTimer();
+        $dataArray['maxOutstandingRequestsPerServer'] = $data->maxOutstandingRequestsPerServer ?? null;
+        $dataArray['threshold'] = $data->threshold ?? null;
+        $dataArray['sanityTimer'] = $data->sanityTimer ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

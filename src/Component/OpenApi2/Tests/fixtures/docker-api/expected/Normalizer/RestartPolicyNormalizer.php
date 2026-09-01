@@ -41,21 +41,21 @@ class RestartPolicyNormalizer implements DenormalizerInterface, NormalizerInterf
             $this->validate($data, new \Docker\Api\Validator\RestartPolicyConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('MaximumRetryCount', $data)) {
-            $object->setMaximumRetryCount($data['MaximumRetryCount']);
+            $object->maximumRetryCount = $data['MaximumRetryCount'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('maximumRetryCount') && null !== $data->getMaximumRetryCount()) {
-            $dataArray['MaximumRetryCount'] = $data->getMaximumRetryCount();
+        if (array_key_exists('maximumRetryCount', get_object_vars($data)) && null !== ($data->maximumRetryCount ?? null)) {
+            $dataArray['MaximumRetryCount'] = $data->maximumRetryCount ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\RestartPolicyConstraint());

@@ -38,7 +38,7 @@ class VolumeBaseReadNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] !== null) {
@@ -46,27 +46,27 @@ class VolumeBaseReadNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['droplet_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setDropletIds($values);
+            $object->dropletIds = $values;
             unset($data['droplet_ids']);
         }
         elseif (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] === null) {
-            $object->setDropletIds(null);
+            $object->dropletIds = null;
             unset($data['droplet_ids']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('size_gigabytes', $data)) {
-            $object->setSizeGigabytes($data['size_gigabytes']);
+            $object->sizeGigabytes = $data['size_gigabytes'];
             unset($data['size_gigabytes']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt($data['created_at']);
+            $object->createdAt = $data['created_at'];
             unset($data['created_at']);
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
@@ -74,11 +74,11 @@ class VolumeBaseReadNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['tags'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setTags($values_1);
+            $object->tags = $values_1;
             unset($data['tags']);
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
-            $object->setTags(null);
+            $object->tags = null;
             unset($data['tags']);
         }
         foreach ($data as $key => $value_2) {
@@ -91,18 +91,18 @@ class VolumeBaseReadNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('sizeGigabytes') && null !== $data->getSizeGigabytes()) {
-            $dataArray['size_gigabytes'] = $data->getSizeGigabytes();
+        if (array_key_exists('sizeGigabytes', get_object_vars($data)) && null !== ($data->sizeGigabytes ?? null)) {
+            $dataArray['size_gigabytes'] = $data->sizeGigabytes ?? null;
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->getTags() as $value) {
+            foreach ($data->tags ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;

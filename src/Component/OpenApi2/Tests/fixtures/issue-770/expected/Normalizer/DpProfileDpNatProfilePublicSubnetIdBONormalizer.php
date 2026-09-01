@@ -38,21 +38,21 @@ class DpProfileDpNatProfilePublicSubnetIdBONormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('prefixLength', $data)) {
-            $object->setPrefixLength($data['prefixLength']);
+            $object->prefixLength = $data['prefixLength'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('prefixLength') && null !== $data->getPrefixLength()) {
-            $dataArray['prefixLength'] = $data->getPrefixLength();
+        if (array_key_exists('prefixLength', get_object_vars($data)) && null !== ($data->prefixLength ?? null)) {
+            $dataArray['prefixLength'] = $data->prefixLength ?? null;
         }
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
         return $dataArray;
     }

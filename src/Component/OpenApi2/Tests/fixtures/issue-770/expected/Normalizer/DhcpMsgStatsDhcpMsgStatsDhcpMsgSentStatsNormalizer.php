@@ -38,27 +38,27 @@ class DhcpMsgStatsDhcpMsgStatsDhcpMsgSentStatsNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('dhcpOffer', $data)) {
-            $object->setDhcpOffer($data['dhcpOffer']);
+            $object->dhcpOffer = $data['dhcpOffer'];
         }
         if (\array_key_exists('dhcpAck', $data)) {
-            $object->setDhcpAck($data['dhcpAck']);
+            $object->dhcpAck = $data['dhcpAck'];
         }
         if (\array_key_exists('dhcpNak', $data)) {
-            $object->setDhcpNak($data['dhcpNak']);
+            $object->dhcpNak = $data['dhcpNak'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dhcpOffer') && null !== $data->getDhcpOffer()) {
-            $dataArray['dhcpOffer'] = $data->getDhcpOffer();
+        if (array_key_exists('dhcpOffer', get_object_vars($data)) && null !== ($data->dhcpOffer ?? null)) {
+            $dataArray['dhcpOffer'] = $data->dhcpOffer ?? null;
         }
-        if ($data->isInitialized('dhcpAck') && null !== $data->getDhcpAck()) {
-            $dataArray['dhcpAck'] = $data->getDhcpAck();
+        if (array_key_exists('dhcpAck', get_object_vars($data)) && null !== ($data->dhcpAck ?? null)) {
+            $dataArray['dhcpAck'] = $data->dhcpAck ?? null;
         }
-        if ($data->isInitialized('dhcpNak') && null !== $data->getDhcpNak()) {
-            $dataArray['dhcpNak'] = $data->getDhcpNak();
+        if (array_key_exists('dhcpNak', get_object_vars($data)) && null !== ($data->dhcpNak ?? null)) {
+            $dataArray['dhcpNak'] = $data->dhcpNak ?? null;
         }
         return $dataArray;
     }

@@ -8,59 +8,15 @@ class MonitoringPortfoliosPortfolioIdImportPostBody implements AdditionalPropert
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $importCsv;
     /**
      * @var string
      */
-    protected $importCsv;
-    /**
-     * @var string
-     */
-    protected $email;
-    /**
-     * @return string
-     */
-    public function getImportCsv(): string
-    {
-        return $this->importCsv;
-    }
-    /**
-     * @param string $importCsv
-     *
-     * @return self
-     */
-    public function setImportCsv(string $importCsv): self
-    {
-        $this->initialized['importCsv'] = true;
-        $this->importCsv = $importCsv;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-    /**
-     * @param string $email
-     *
-     * @return self
-     */
-    public function setEmail(string $email): self
-    {
-        $this->initialized['email'] = true;
-        $this->email = $email;
-        return $this;
-    }
+    public string $email;
     public function definedProperties(): array
     {
-        return ['importCsv' => ['importCsv', 'getImportCsv', 'setImportCsv'], 'email' => ['email', 'getEmail', 'setEmail']];
+        return ['importCsv' => 'importCsv', 'email' => 'email'];
     }
 }

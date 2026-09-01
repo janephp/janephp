@@ -38,19 +38,19 @@ class CreateFreshInvestigationRequestContactInfoNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('emailAddress', $data)) {
-            $object->setEmailAddress($data['emailAddress']);
+            $object->emailAddress = $data['emailAddress'];
             unset($data['emailAddress']);
         }
         if (\array_key_exists('telephoneNumber', $data)) {
-            $object->setTelephoneNumber($data['telephoneNumber']);
+            $object->telephoneNumber = $data['telephoneNumber'];
             unset($data['telephoneNumber']);
         }
         if (\array_key_exists('company', $data)) {
-            $object->setCompany($this->denormalizer->denormalize($data['company'], \CreditSafe\API\Model\CreateFreshInvestigationRequestContactInfoCompany::class, 'json', $context));
+            $object->company = $this->denormalizer->denormalize($data['company'], \CreditSafe\API\Model\CreateFreshInvestigationRequestContactInfoCompany::class, 'json', $context);
             unset($data['company']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class CreateFreshInvestigationRequestContactInfoNormalizer implements Denormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('emailAddress') && null !== $data->getEmailAddress()) {
-            $dataArray['emailAddress'] = $data->getEmailAddress();
+        if (array_key_exists('emailAddress', get_object_vars($data)) && null !== ($data->emailAddress ?? null)) {
+            $dataArray['emailAddress'] = $data->emailAddress ?? null;
         }
-        if ($data->isInitialized('telephoneNumber') && null !== $data->getTelephoneNumber()) {
-            $dataArray['telephoneNumber'] = $data->getTelephoneNumber();
+        if (array_key_exists('telephoneNumber', get_object_vars($data)) && null !== ($data->telephoneNumber ?? null)) {
+            $dataArray['telephoneNumber'] = $data->telephoneNumber ?? null;
         }
-        if ($data->isInitialized('company') && null !== $data->getCompany()) {
-            $dataArray['company'] = $data->getCompany() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCompany(), 'json', $context));
+        if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
+            $dataArray['company'] = ($data->company ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

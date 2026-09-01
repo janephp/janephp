@@ -48,26 +48,26 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             } elseif (is_null($data['attributes'])) {
                 $value = $data['attributes'];
             }
-            $object->setAttributes($value);
+            $object->attributes = $value;
         }
         elseif (\array_key_exists('attributes', $data) && $data['attributes'] === null) {
-            $object->setAttributes(null);
+            $object->attributes = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('attributes') && null !== $data->getAttributes()) {
-            $value = $data->getAttributes();
-            if (is_array($data->getAttributes())) {
+        if (array_key_exists('attributes', get_object_vars($data)) && null !== ($data->attributes ?? null)) {
+            $value = $data->attributes ?? null;
+            if (is_array($data->attributes ?? null)) {
                 $values = [];
-                foreach ($data->getAttributes() as $value_1) {
+                foreach ($data->attributes ?? null as $value_1) {
                     $values[] = $value_1 === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
                 }
                 $value = $values;
-            } elseif (is_null($data->getAttributes())) {
-                $value = $data->getAttributes();
+            } elseif (is_null($data->attributes ?? null)) {
+                $value = $data->attributes ?? null;
             }
             $dataArray['attributes'] = $value;
         }

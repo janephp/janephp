@@ -38,7 +38,7 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kubernetes_cluster_user', $data)) {
-            $object->setKubernetesClusterUser($this->denormalizer->denormalize($data['kubernetes_cluster_user'], \Jane\Generated\DigitalOcean\Model\UserKubernetesClusterUser::class, 'json', $context));
+            $object->kubernetesClusterUser = $this->denormalizer->denormalize($data['kubernetes_cluster_user'], \Jane\Generated\DigitalOcean\Model\UserKubernetesClusterUser::class, 'json', $context);
             unset($data['kubernetes_cluster_user']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('kubernetesClusterUser') && null !== $data->getKubernetesClusterUser()) {
-            $dataArray['kubernetes_cluster_user'] = $data->getKubernetesClusterUser() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKubernetesClusterUser(), 'json', $context));
+        if (array_key_exists('kubernetesClusterUser', get_object_vars($data)) && null !== ($data->kubernetesClusterUser ?? null)) {
+            $dataArray['kubernetes_cluster_user'] = ($data->kubernetesClusterUser ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kubernetesClusterUser ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

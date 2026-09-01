@@ -38,27 +38,27 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('city', $data)) {
-            $object->setCity($data['city']);
+            $object->city = $data['city'];
             unset($data['city']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($data['country']);
+            $object->country = $data['country'];
             unset($data['country']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('postalCode', $data)) {
-            $object->setPostalCode($data['postalCode']);
+            $object->postalCode = $data['postalCode'];
             unset($data['postalCode']);
         }
         if (\array_key_exists('street1', $data)) {
-            $object->setStreet1($data['street1']);
+            $object->street1 = $data['street1'];
             unset($data['street1']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
@@ -71,23 +71,23 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('city') && null !== $data->getCity()) {
-            $dataArray['city'] = $data->getCity();
+        if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
+            $dataArray['city'] = $data->city ?? null;
         }
-        if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $data->getCountry();
+        if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
+            $dataArray['country'] = $data->country ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('postalCode') && null !== $data->getPostalCode()) {
-            $dataArray['postalCode'] = $data->getPostalCode();
+        if (array_key_exists('postalCode', get_object_vars($data)) && null !== ($data->postalCode ?? null)) {
+            $dataArray['postalCode'] = $data->postalCode ?? null;
         }
-        if ($data->isInitialized('street1') && null !== $data->getStreet1()) {
-            $dataArray['street1'] = $data->getStreet1();
+        if (array_key_exists('street1', get_object_vars($data)) && null !== ($data->street1 ?? null)) {
+            $dataArray['street1'] = $data->street1 ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

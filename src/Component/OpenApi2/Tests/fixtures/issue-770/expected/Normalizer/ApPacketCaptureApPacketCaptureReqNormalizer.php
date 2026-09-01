@@ -38,36 +38,36 @@ class ApPacketCaptureApPacketCaptureReqNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('captureInterface', $data)) {
-            $object->setCaptureInterface($data['captureInterface']);
+            $object->captureInterface = $data['captureInterface'];
         }
         if (\array_key_exists('hostIp', $data)) {
-            $object->setHostIp($data['hostIp']);
+            $object->hostIp = $data['hostIp'];
         }
         if (\array_key_exists('includedMac', $data)) {
-            $object->setIncludedMac($data['includedMac']);
+            $object->includedMac = $data['includedMac'];
         }
         if (\array_key_exists('includedFrameTypes', $data)) {
             $values = [];
             foreach ($data['includedFrameTypes'] as $value) {
                 $values[] = $value;
             }
-            $object->setIncludedFrameTypes($values);
+            $object->includedFrameTypes = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['captureInterface'] = $data->getCaptureInterface();
-        if ($data->isInitialized('hostIp') && null !== $data->getHostIp()) {
-            $dataArray['hostIp'] = $data->getHostIp();
+        $dataArray['captureInterface'] = $data->captureInterface ?? null;
+        if (array_key_exists('hostIp', get_object_vars($data)) && null !== ($data->hostIp ?? null)) {
+            $dataArray['hostIp'] = $data->hostIp ?? null;
         }
-        if ($data->isInitialized('includedMac') && null !== $data->getIncludedMac()) {
-            $dataArray['includedMac'] = $data->getIncludedMac();
+        if (array_key_exists('includedMac', get_object_vars($data)) && null !== ($data->includedMac ?? null)) {
+            $dataArray['includedMac'] = $data->includedMac ?? null;
         }
-        if ($data->isInitialized('includedFrameTypes') && null !== $data->getIncludedFrameTypes()) {
+        if (array_key_exists('includedFrameTypes', get_object_vars($data)) && null !== ($data->includedFrameTypes ?? null)) {
             $values = [];
-            foreach ($data->getIncludedFrameTypes() as $value) {
+            foreach ($data->includedFrameTypes ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['includedFrameTypes'] = $values;

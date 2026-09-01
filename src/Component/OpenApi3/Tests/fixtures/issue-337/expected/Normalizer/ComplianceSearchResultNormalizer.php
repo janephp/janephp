@@ -38,7 +38,7 @@ class ComplianceSearchResultNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('data', $data)) {
-            $object->setData($this->denormalizer->denormalize($data['data'], \CreditSafe\API\Model\ComplianceSearchResultData::class, 'json', $context));
+            $object->data = $this->denormalizer->denormalize($data['data'], \CreditSafe\API\Model\ComplianceSearchResultData::class, 'json', $context);
             unset($data['data']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ComplianceSearchResultNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('data') && null !== $data->getData()) {
-            $dataArray['data'] = $data->getData() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getData(), 'json', $context));
+        if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
+            $dataArray['data'] = ($data->data ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->data ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

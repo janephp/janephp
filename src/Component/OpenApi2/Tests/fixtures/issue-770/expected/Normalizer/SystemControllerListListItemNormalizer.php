@@ -38,128 +38,128 @@ class SystemControllerListListItemNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('model', $data)) {
-            $object->setModel($data['model']);
+            $object->model = $data['model'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('hostName', $data)) {
-            $object->setHostName($data['hostName']);
+            $object->hostName = $data['hostName'];
         }
         if (\array_key_exists('mac', $data)) {
-            $object->setMac($data['mac']);
+            $object->mac = $data['mac'];
         }
         if (\array_key_exists('serialNumber', $data)) {
-            $object->setSerialNumber($data['serialNumber']);
+            $object->serialNumber = $data['serialNumber'];
         }
         if (\array_key_exists('clusterRole', $data)) {
-            $object->setClusterRole($data['clusterRole']);
+            $object->clusterRole = $data['clusterRole'];
         }
         if (\array_key_exists('controlNatIp', $data)) {
-            $object->setControlNatIp($data['controlNatIp']);
+            $object->controlNatIp = $data['controlNatIp'];
         }
         if (\array_key_exists('uptimeInSec', $data)) {
-            $object->setUptimeInSec($data['uptimeInSec']);
+            $object->uptimeInSec = $data['uptimeInSec'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
         }
         if (\array_key_exists('apVersion', $data)) {
-            $object->setApVersion($data['apVersion']);
+            $object->apVersion = $data['apVersion'];
         }
         if (\array_key_exists('controlIp', $data)) {
-            $object->setControlIp($data['controlIp']);
+            $object->controlIp = $data['controlIp'];
         }
         if (\array_key_exists('clusterIp', $data)) {
-            $object->setClusterIp($data['clusterIp']);
+            $object->clusterIp = $data['clusterIp'];
         }
         if (\array_key_exists('managementIp', $data)) {
-            $object->setManagementIp($data['managementIp']);
+            $object->managementIp = $data['managementIp'];
         }
         if (\array_key_exists('controlIpv6', $data)) {
-            $object->setControlIpv6($data['controlIpv6']);
+            $object->controlIpv6 = $data['controlIpv6'];
         }
         if (\array_key_exists('clusterIpv6', $data)) {
-            $object->setClusterIpv6($data['clusterIpv6']);
+            $object->clusterIpv6 = $data['clusterIpv6'];
         }
         if (\array_key_exists('managementIpv6', $data)) {
-            $object->setManagementIpv6($data['managementIpv6']);
+            $object->managementIpv6 = $data['managementIpv6'];
         }
         if (\array_key_exists('reservedPorts', $data)) {
             $values = [];
             foreach ($data['reservedPorts'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemReservedPort::class, 'json', $context);
             }
-            $object->setReservedPorts($values);
+            $object->reservedPorts = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $data->getModel();
+        if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
+            $dataArray['model'] = $data->model ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('hostName') && null !== $data->getHostName()) {
-            $dataArray['hostName'] = $data->getHostName();
+        if (array_key_exists('hostName', get_object_vars($data)) && null !== ($data->hostName ?? null)) {
+            $dataArray['hostName'] = $data->hostName ?? null;
         }
-        if ($data->isInitialized('mac') && null !== $data->getMac()) {
-            $dataArray['mac'] = $data->getMac();
+        if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
+            $dataArray['mac'] = $data->mac ?? null;
         }
-        if ($data->isInitialized('serialNumber') && null !== $data->getSerialNumber()) {
-            $dataArray['serialNumber'] = $data->getSerialNumber();
+        if (array_key_exists('serialNumber', get_object_vars($data)) && null !== ($data->serialNumber ?? null)) {
+            $dataArray['serialNumber'] = $data->serialNumber ?? null;
         }
-        if ($data->isInitialized('clusterRole') && null !== $data->getClusterRole()) {
-            $dataArray['clusterRole'] = $data->getClusterRole();
+        if (array_key_exists('clusterRole', get_object_vars($data)) && null !== ($data->clusterRole ?? null)) {
+            $dataArray['clusterRole'] = $data->clusterRole ?? null;
         }
-        if ($data->isInitialized('controlNatIp') && null !== $data->getControlNatIp()) {
-            $dataArray['controlNatIp'] = $data->getControlNatIp();
+        if (array_key_exists('controlNatIp', get_object_vars($data)) && null !== ($data->controlNatIp ?? null)) {
+            $dataArray['controlNatIp'] = $data->controlNatIp ?? null;
         }
-        if ($data->isInitialized('uptimeInSec') && null !== $data->getUptimeInSec()) {
-            $dataArray['uptimeInSec'] = $data->getUptimeInSec();
+        if (array_key_exists('uptimeInSec', get_object_vars($data)) && null !== ($data->uptimeInSec ?? null)) {
+            $dataArray['uptimeInSec'] = $data->uptimeInSec ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion();
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = $data->version ?? null;
         }
-        if ($data->isInitialized('apVersion') && null !== $data->getApVersion()) {
-            $dataArray['apVersion'] = $data->getApVersion();
+        if (array_key_exists('apVersion', get_object_vars($data)) && null !== ($data->apVersion ?? null)) {
+            $dataArray['apVersion'] = $data->apVersion ?? null;
         }
-        if ($data->isInitialized('controlIp') && null !== $data->getControlIp()) {
-            $dataArray['controlIp'] = $data->getControlIp();
+        if (array_key_exists('controlIp', get_object_vars($data)) && null !== ($data->controlIp ?? null)) {
+            $dataArray['controlIp'] = $data->controlIp ?? null;
         }
-        if ($data->isInitialized('clusterIp') && null !== $data->getClusterIp()) {
-            $dataArray['clusterIp'] = $data->getClusterIp();
+        if (array_key_exists('clusterIp', get_object_vars($data)) && null !== ($data->clusterIp ?? null)) {
+            $dataArray['clusterIp'] = $data->clusterIp ?? null;
         }
-        if ($data->isInitialized('managementIp') && null !== $data->getManagementIp()) {
-            $dataArray['managementIp'] = $data->getManagementIp();
+        if (array_key_exists('managementIp', get_object_vars($data)) && null !== ($data->managementIp ?? null)) {
+            $dataArray['managementIp'] = $data->managementIp ?? null;
         }
-        if ($data->isInitialized('controlIpv6') && null !== $data->getControlIpv6()) {
-            $dataArray['controlIpv6'] = $data->getControlIpv6();
+        if (array_key_exists('controlIpv6', get_object_vars($data)) && null !== ($data->controlIpv6 ?? null)) {
+            $dataArray['controlIpv6'] = $data->controlIpv6 ?? null;
         }
-        if ($data->isInitialized('clusterIpv6') && null !== $data->getClusterIpv6()) {
-            $dataArray['clusterIpv6'] = $data->getClusterIpv6();
+        if (array_key_exists('clusterIpv6', get_object_vars($data)) && null !== ($data->clusterIpv6 ?? null)) {
+            $dataArray['clusterIpv6'] = $data->clusterIpv6 ?? null;
         }
-        if ($data->isInitialized('managementIpv6') && null !== $data->getManagementIpv6()) {
-            $dataArray['managementIpv6'] = $data->getManagementIpv6();
+        if (array_key_exists('managementIpv6', get_object_vars($data)) && null !== ($data->managementIpv6 ?? null)) {
+            $dataArray['managementIpv6'] = $data->managementIpv6 ?? null;
         }
-        if ($data->isInitialized('reservedPorts') && null !== $data->getReservedPorts()) {
+        if (array_key_exists('reservedPorts', get_object_vars($data)) && null !== ($data->reservedPorts ?? null)) {
             $values = [];
-            foreach ($data->getReservedPorts() as $value) {
+            foreach ($data->reservedPorts ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['reservedPorts'] = $values;

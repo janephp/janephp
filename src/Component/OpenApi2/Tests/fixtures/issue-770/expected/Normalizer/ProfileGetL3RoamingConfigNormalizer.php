@@ -42,16 +42,16 @@ class ProfileGetL3RoamingConfigNormalizer implements DenormalizerInterface, Norm
             foreach ($data['dataPlanes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDataPlaneL3RoamingData::class, 'json', $context);
             }
-            $object->setDataPlanes($values);
+            $object->dataPlanes = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dataPlanes') && null !== $data->getDataPlanes()) {
+        if (array_key_exists('dataPlanes', get_object_vars($data)) && null !== ($data->dataPlanes ?? null)) {
             $values = [];
-            foreach ($data->getDataPlanes() as $value) {
+            foreach ($data->dataPlanes ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['dataPlanes'] = $values;

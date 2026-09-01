@@ -41,7 +41,7 @@ class CompanySearchSuccessResultNormalizer implements DenormalizerInterface, Nor
             $data['totalSize'] = (float) $data['totalSize'];
         }
         if (\array_key_exists('totalSize', $data)) {
-            $object->setTotalSize($data['totalSize']);
+            $object->totalSize = $data['totalSize'];
             unset($data['totalSize']);
         }
         if (\array_key_exists('companies', $data)) {
@@ -49,7 +49,7 @@ class CompanySearchSuccessResultNormalizer implements DenormalizerInterface, Nor
             foreach ($data['companies'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItem::class, 'json', $context);
             }
-            $object->setCompanies($values);
+            $object->companies = $values;
             unset($data['companies']);
         }
         foreach ($data as $key => $value_1) {
@@ -62,12 +62,12 @@ class CompanySearchSuccessResultNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalSize') && null !== $data->getTotalSize()) {
-            $dataArray['totalSize'] = $data->getTotalSize();
+        if (array_key_exists('totalSize', get_object_vars($data)) && null !== ($data->totalSize ?? null)) {
+            $dataArray['totalSize'] = $data->totalSize ?? null;
         }
-        if ($data->isInitialized('companies') && null !== $data->getCompanies()) {
+        if (array_key_exists('companies', get_object_vars($data)) && null !== ($data->companies ?? null)) {
             $values = [];
-            foreach ($data->getCompanies() as $value) {
+            foreach ($data->companies ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['companies'] = $values;

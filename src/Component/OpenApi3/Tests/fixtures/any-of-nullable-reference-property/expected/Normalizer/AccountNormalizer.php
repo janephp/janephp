@@ -38,15 +38,15 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('firstname', $data)) {
-            $object->setFirstname($data['firstname']);
+            $object->firstname = $data['firstname'];
             unset($data['firstname']);
         }
         if (\array_key_exists('lastname', $data)) {
-            $object->setLastname($data['lastname']);
+            $object->lastname = $data['lastname'];
             unset($data['lastname']);
         }
         if (\array_key_exists('countryOfBirth', $data) && $data['countryOfBirth'] !== null) {
@@ -54,15 +54,15 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
             if (is_array($data['countryOfBirth'])) {
                 $value = $this->denormalizer->denormalize($data['countryOfBirth'], \Jane\Component\OpenApi3\Tests\Expected\Model\Country::class, 'json', $context);
             }
-            $object->setCountryOfBirth($value);
+            $object->countryOfBirth = $value;
             unset($data['countryOfBirth']);
         }
         elseif (\array_key_exists('countryOfBirth', $data) && $data['countryOfBirth'] === null) {
-            $object->setCountryOfBirth(null);
+            $object->countryOfBirth = null;
             unset($data['countryOfBirth']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($this->denormalizer->denormalize($data['country'], \Jane\Component\OpenApi3\Tests\Expected\Model\Country::class, 'json', $context));
+            $object->country = $this->denormalizer->denormalize($data['country'], \Jane\Component\OpenApi3\Tests\Expected\Model\Country::class, 'json', $context);
             unset($data['country']);
         }
         if (\array_key_exists('nationality', $data) && $data['nationality'] !== null) {
@@ -76,11 +76,11 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 }
                 $value_1 = $values;
             }
-            $object->setNationality($value_1);
+            $object->nationality = $value_1;
             unset($data['nationality']);
         }
         elseif (\array_key_exists('nationality', $data) && $data['nationality'] === null) {
-            $object->setNationality(null);
+            $object->nationality = null;
             unset($data['nationality']);
         }
         foreach ($data as $key => $value_3) {
@@ -93,29 +93,29 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('firstname') && null !== $data->getFirstname()) {
-            $dataArray['firstname'] = $data->getFirstname();
+        if (array_key_exists('firstname', get_object_vars($data)) && null !== ($data->firstname ?? null)) {
+            $dataArray['firstname'] = $data->firstname ?? null;
         }
-        if ($data->isInitialized('lastname') && null !== $data->getLastname()) {
-            $dataArray['lastname'] = $data->getLastname();
+        if (array_key_exists('lastname', get_object_vars($data)) && null !== ($data->lastname ?? null)) {
+            $dataArray['lastname'] = $data->lastname ?? null;
         }
-        if ($data->isInitialized('countryOfBirth') && null !== $data->getCountryOfBirth()) {
-            $value = $data->getCountryOfBirth();
-            if (is_object($data->getCountryOfBirth())) {
-                $value = $data->getCountryOfBirth() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCountryOfBirth(), 'json', $context));
+        if (array_key_exists('countryOfBirth', get_object_vars($data)) && null !== ($data->countryOfBirth ?? null)) {
+            $value = $data->countryOfBirth ?? null;
+            if (is_object($data->countryOfBirth ?? null)) {
+                $value = ($data->countryOfBirth ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->countryOfBirth ?? null, 'json', $context));
             }
             $dataArray['countryOfBirth'] = $value;
         }
-        if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $data->getCountry() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCountry(), 'json', $context));
+        if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
+            $dataArray['country'] = ($data->country ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->country ?? null, 'json', $context));
         }
-        if ($data->isInitialized('nationality') && null !== $data->getNationality()) {
-            $value_1 = $data->getNationality();
-            if (is_object($data->getNationality())) {
-                $value_1 = $data->getNationality() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getNationality(), 'json', $context));
-            } elseif (is_array($data->getNationality())) {
+        if (array_key_exists('nationality', get_object_vars($data)) && null !== ($data->nationality ?? null)) {
+            $value_1 = $data->nationality ?? null;
+            if (is_object($data->nationality ?? null)) {
+                $value_1 = ($data->nationality ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->nationality ?? null, 'json', $context));
+            } elseif (is_array($data->nationality ?? null)) {
                 $values = [];
-                foreach ($data->getNationality() as $value_2) {
+                foreach ($data->nationality ?? null as $value_2) {
                     $values[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 }
                 $value_1 = $values;

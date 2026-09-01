@@ -38,15 +38,15 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCred
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('maxValue', $data)) {
-            $object->setMaxValue($data['maxValue']);
+            $object->maxValue = $data['maxValue'];
             unset($data['maxValue']);
         }
         if (\array_key_exists('minValue', $data)) {
-            $object->setMinValue($data['minValue']);
+            $object->minValue = $data['minValue'];
             unset($data['minValue']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
             unset($data['value']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCred
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('maxValue') && null !== $data->getMaxValue()) {
-            $dataArray['maxValue'] = $data->getMaxValue();
+        if (array_key_exists('maxValue', get_object_vars($data)) && null !== ($data->maxValue ?? null)) {
+            $dataArray['maxValue'] = $data->maxValue ?? null;
         }
-        if ($data->isInitialized('minValue') && null !== $data->getMinValue()) {
-            $dataArray['minValue'] = $data->getMinValue();
+        if (array_key_exists('minValue', get_object_vars($data)) && null !== ($data->minValue ?? null)) {
+            $dataArray['minValue'] = $data->minValue ?? null;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+        if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['value'] = $data->value ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

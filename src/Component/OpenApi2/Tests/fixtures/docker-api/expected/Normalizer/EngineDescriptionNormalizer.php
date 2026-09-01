@@ -41,40 +41,40 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
             $this->validate($data, new \Docker\Api\Validator\EngineDescriptionConstraint());
         }
         if (\array_key_exists('EngineVersion', $data)) {
-            $object->setEngineVersion($data['EngineVersion']);
+            $object->engineVersion = $data['EngineVersion'];
         }
         if (\array_key_exists('Labels', $data)) {
             $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setLabels($values);
+            $object->labels = $values;
         }
         if (\array_key_exists('Plugins', $data)) {
             $values_1 = [];
             foreach ($data['Plugins'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Docker\Api\Model\EngineDescriptionPluginsItem::class, 'json', $context);
             }
-            $object->setPlugins($values_1);
+            $object->plugins = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('engineVersion') && null !== $data->getEngineVersion()) {
-            $dataArray['EngineVersion'] = $data->getEngineVersion();
+        if (array_key_exists('engineVersion', get_object_vars($data)) && null !== ($data->engineVersion ?? null)) {
+            $dataArray['EngineVersion'] = $data->engineVersion ?? null;
         }
-        if ($data->isInitialized('labels') && null !== $data->getLabels()) {
+        if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getLabels() as $key => $value) {
+            foreach ($data->labels ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Labels'] = $values;
         }
-        if ($data->isInitialized('plugins') && null !== $data->getPlugins()) {
+        if (array_key_exists('plugins', get_object_vars($data)) && null !== ($data->plugins ?? null)) {
             $values_1 = [];
-            foreach ($data->getPlugins() as $value_1) {
+            foreach ($data->plugins ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['Plugins'] = $values_1;

@@ -38,11 +38,11 @@ class DatadogLogsinkNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('site', $data)) {
-            $object->setSite($data['site']);
+            $object->site = $data['site'];
             unset($data['site']);
         }
         if (\array_key_exists('datadog_api_key', $data)) {
-            $object->setDatadogApiKey($data['datadog_api_key']);
+            $object->datadogApiKey = $data['datadog_api_key'];
             unset($data['datadog_api_key']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class DatadogLogsinkNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['site'] = $data->getSite();
-        $dataArray['datadog_api_key'] = $data->getDatadogApiKey();
+        $dataArray['site'] = $data->site ?? null;
+        $dataArray['datadog_api_key'] = $data->datadogApiKey ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

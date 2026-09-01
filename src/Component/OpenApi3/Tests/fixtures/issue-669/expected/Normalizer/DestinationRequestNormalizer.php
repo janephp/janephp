@@ -38,15 +38,15 @@ class DestinationRequestNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('config', $data)) {
-            $object->setConfig($this->denormalizer->denormalize($data['config'], \Jane\Generated\DigitalOcean\Model\OpensearchConfigRequest::class, 'json', $context));
+            $object->config = $this->denormalizer->denormalize($data['config'], \Jane\Generated\DigitalOcean\Model\OpensearchConfigRequest::class, 'json', $context);
             unset($data['config']);
         }
         foreach ($data as $key => $value) {
@@ -59,11 +59,11 @@ class DestinationRequestNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        $dataArray['type'] = $data->getType();
-        $dataArray['config'] = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
+        $dataArray['type'] = $data->type ?? null;
+        $dataArray['config'] = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -56,111 +56,111 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['approval_feature'] = (bool) $data['approval_feature'];
         }
         if (\array_key_exists('base_uri', $data)) {
-            $object->setBaseUri($data['base_uri']);
+            $object->baseUri = $data['base_uri'];
         }
         if (\array_key_exists('full_domain', $data)) {
-            $object->setFullDomain($data['full_domain']);
+            $object->fullDomain = $data['full_domain'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('is_active', $data)) {
-            $object->setIsActive($data['is_active']);
+            $object->isActive = $data['is_active'];
         }
         if (\array_key_exists('week_start_day', $data)) {
-            $object->setWeekStartDay($data['week_start_day']);
+            $object->weekStartDay = $data['week_start_day'];
         }
         if (\array_key_exists('wants_timestamp_timers', $data)) {
-            $object->setWantsTimestampTimers($data['wants_timestamp_timers']);
+            $object->wantsTimestampTimers = $data['wants_timestamp_timers'];
         }
         if (\array_key_exists('time_format', $data)) {
-            $object->setTimeFormat($data['time_format']);
+            $object->timeFormat = $data['time_format'];
         }
         if (\array_key_exists('plan_type', $data)) {
-            $object->setPlanType($data['plan_type']);
+            $object->planType = $data['plan_type'];
         }
         if (\array_key_exists('clock', $data)) {
-            $object->setClock($data['clock']);
+            $object->clock = $data['clock'];
         }
         if (\array_key_exists('decimal_symbol', $data)) {
-            $object->setDecimalSymbol($data['decimal_symbol']);
+            $object->decimalSymbol = $data['decimal_symbol'];
         }
         if (\array_key_exists('thousands_separator', $data)) {
-            $object->setThousandsSeparator($data['thousands_separator']);
+            $object->thousandsSeparator = $data['thousands_separator'];
         }
         if (\array_key_exists('color_scheme', $data)) {
-            $object->setColorScheme($data['color_scheme']);
+            $object->colorScheme = $data['color_scheme'];
         }
         if (\array_key_exists('weekly_capacity', $data)) {
-            $object->setWeeklyCapacity($data['weekly_capacity']);
+            $object->weeklyCapacity = $data['weekly_capacity'];
         }
         if (\array_key_exists('expense_feature', $data)) {
-            $object->setExpenseFeature($data['expense_feature']);
+            $object->expenseFeature = $data['expense_feature'];
         }
         if (\array_key_exists('invoice_feature', $data)) {
-            $object->setInvoiceFeature($data['invoice_feature']);
+            $object->invoiceFeature = $data['invoice_feature'];
         }
         if (\array_key_exists('estimate_feature', $data)) {
-            $object->setEstimateFeature($data['estimate_feature']);
+            $object->estimateFeature = $data['estimate_feature'];
         }
         if (\array_key_exists('approval_feature', $data)) {
-            $object->setApprovalFeature($data['approval_feature']);
+            $object->approvalFeature = $data['approval_feature'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('baseUri') && null !== $data->getBaseUri()) {
-            $dataArray['base_uri'] = $data->getBaseUri();
+        if (array_key_exists('baseUri', get_object_vars($data)) && null !== ($data->baseUri ?? null)) {
+            $dataArray['base_uri'] = $data->baseUri ?? null;
         }
-        if ($data->isInitialized('fullDomain') && null !== $data->getFullDomain()) {
-            $dataArray['full_domain'] = $data->getFullDomain();
+        if (array_key_exists('fullDomain', get_object_vars($data)) && null !== ($data->fullDomain ?? null)) {
+            $dataArray['full_domain'] = $data->fullDomain ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
-            $dataArray['is_active'] = $data->getIsActive();
+        if (array_key_exists('isActive', get_object_vars($data)) && null !== ($data->isActive ?? null)) {
+            $dataArray['is_active'] = $data->isActive ?? null;
         }
-        if ($data->isInitialized('weekStartDay') && null !== $data->getWeekStartDay()) {
-            $dataArray['week_start_day'] = $data->getWeekStartDay();
+        if (array_key_exists('weekStartDay', get_object_vars($data)) && null !== ($data->weekStartDay ?? null)) {
+            $dataArray['week_start_day'] = $data->weekStartDay ?? null;
         }
-        if ($data->isInitialized('wantsTimestampTimers') && null !== $data->getWantsTimestampTimers()) {
-            $dataArray['wants_timestamp_timers'] = $data->getWantsTimestampTimers();
+        if (array_key_exists('wantsTimestampTimers', get_object_vars($data)) && null !== ($data->wantsTimestampTimers ?? null)) {
+            $dataArray['wants_timestamp_timers'] = $data->wantsTimestampTimers ?? null;
         }
-        if ($data->isInitialized('timeFormat') && null !== $data->getTimeFormat()) {
-            $dataArray['time_format'] = $data->getTimeFormat();
+        if (array_key_exists('timeFormat', get_object_vars($data)) && null !== ($data->timeFormat ?? null)) {
+            $dataArray['time_format'] = $data->timeFormat ?? null;
         }
-        if ($data->isInitialized('planType') && null !== $data->getPlanType()) {
-            $dataArray['plan_type'] = $data->getPlanType();
+        if (array_key_exists('planType', get_object_vars($data)) && null !== ($data->planType ?? null)) {
+            $dataArray['plan_type'] = $data->planType ?? null;
         }
-        if ($data->isInitialized('clock') && null !== $data->getClock()) {
-            $dataArray['clock'] = $data->getClock();
+        if (array_key_exists('clock', get_object_vars($data)) && null !== ($data->clock ?? null)) {
+            $dataArray['clock'] = $data->clock ?? null;
         }
-        if ($data->isInitialized('decimalSymbol') && null !== $data->getDecimalSymbol()) {
-            $dataArray['decimal_symbol'] = $data->getDecimalSymbol();
+        if (array_key_exists('decimalSymbol', get_object_vars($data)) && null !== ($data->decimalSymbol ?? null)) {
+            $dataArray['decimal_symbol'] = $data->decimalSymbol ?? null;
         }
-        if ($data->isInitialized('thousandsSeparator') && null !== $data->getThousandsSeparator()) {
-            $dataArray['thousands_separator'] = $data->getThousandsSeparator();
+        if (array_key_exists('thousandsSeparator', get_object_vars($data)) && null !== ($data->thousandsSeparator ?? null)) {
+            $dataArray['thousands_separator'] = $data->thousandsSeparator ?? null;
         }
-        if ($data->isInitialized('colorScheme') && null !== $data->getColorScheme()) {
-            $dataArray['color_scheme'] = $data->getColorScheme();
+        if (array_key_exists('colorScheme', get_object_vars($data)) && null !== ($data->colorScheme ?? null)) {
+            $dataArray['color_scheme'] = $data->colorScheme ?? null;
         }
-        if ($data->isInitialized('weeklyCapacity') && null !== $data->getWeeklyCapacity()) {
-            $dataArray['weekly_capacity'] = $data->getWeeklyCapacity();
+        if (array_key_exists('weeklyCapacity', get_object_vars($data)) && null !== ($data->weeklyCapacity ?? null)) {
+            $dataArray['weekly_capacity'] = $data->weeklyCapacity ?? null;
         }
-        if ($data->isInitialized('expenseFeature') && null !== $data->getExpenseFeature()) {
-            $dataArray['expense_feature'] = $data->getExpenseFeature();
+        if (array_key_exists('expenseFeature', get_object_vars($data)) && null !== ($data->expenseFeature ?? null)) {
+            $dataArray['expense_feature'] = $data->expenseFeature ?? null;
         }
-        if ($data->isInitialized('invoiceFeature') && null !== $data->getInvoiceFeature()) {
-            $dataArray['invoice_feature'] = $data->getInvoiceFeature();
+        if (array_key_exists('invoiceFeature', get_object_vars($data)) && null !== ($data->invoiceFeature ?? null)) {
+            $dataArray['invoice_feature'] = $data->invoiceFeature ?? null;
         }
-        if ($data->isInitialized('estimateFeature') && null !== $data->getEstimateFeature()) {
-            $dataArray['estimate_feature'] = $data->getEstimateFeature();
+        if (array_key_exists('estimateFeature', get_object_vars($data)) && null !== ($data->estimateFeature ?? null)) {
+            $dataArray['estimate_feature'] = $data->estimateFeature ?? null;
         }
-        if ($data->isInitialized('approvalFeature') && null !== $data->getApprovalFeature()) {
-            $dataArray['approval_feature'] = $data->getApprovalFeature();
+        if (array_key_exists('approvalFeature', get_object_vars($data)) && null !== ($data->approvalFeature ?? null)) {
+            $dataArray['approval_feature'] = $data->approvalFeature ?? null;
         }
         return $dataArray;
     }

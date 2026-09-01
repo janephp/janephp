@@ -38,11 +38,11 @@ class RegionalStateNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('us_east', $data)) {
-            $object->setUsEast($this->denormalizer->denormalize($data['us_east'], \Jane\Generated\DigitalOcean\Model\RegionState::class, 'json', $context));
+            $object->usEast = $this->denormalizer->denormalize($data['us_east'], \Jane\Generated\DigitalOcean\Model\RegionState::class, 'json', $context);
             unset($data['us_east']);
         }
         if (\array_key_exists('eu_west', $data)) {
-            $object->setEuWest($this->denormalizer->denormalize($data['eu_west'], \Jane\Generated\DigitalOcean\Model\RegionState::class, 'json', $context));
+            $object->euWest = $this->denormalizer->denormalize($data['eu_west'], \Jane\Generated\DigitalOcean\Model\RegionState::class, 'json', $context);
             unset($data['eu_west']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class RegionalStateNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('usEast') && null !== $data->getUsEast()) {
-            $dataArray['us_east'] = $data->getUsEast() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getUsEast(), 'json', $context));
+        if (array_key_exists('usEast', get_object_vars($data)) && null !== ($data->usEast ?? null)) {
+            $dataArray['us_east'] = ($data->usEast ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->usEast ?? null, 'json', $context));
         }
-        if ($data->isInitialized('euWest') && null !== $data->getEuWest()) {
-            $dataArray['eu_west'] = $data->getEuWest() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getEuWest(), 'json', $context));
+        if (array_key_exists('euWest', get_object_vars($data)) && null !== ($data->euWest ?? null)) {
+            $dataArray['eu_west'] = ($data->euWest ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->euWest ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

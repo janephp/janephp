@@ -38,11 +38,11 @@ class InvoiceSummaryProductChargesNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('amount', $data)) {
-            $object->setAmount($data['amount']);
+            $object->amount = $data['amount'];
             unset($data['amount']);
         }
         if (\array_key_exists('items', $data)) {
@@ -50,7 +50,7 @@ class InvoiceSummaryProductChargesNormalizer implements DenormalizerInterface, N
             foreach ($data['items'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ProductChargeItem::class, 'json', $context);
             }
-            $object->setItems($values);
+            $object->items = $values;
             unset($data['items']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,15 +63,15 @@ class InvoiceSummaryProductChargesNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
-            $dataArray['amount'] = $data->getAmount();
+        if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
+            $dataArray['amount'] = $data->amount ?? null;
         }
-        if ($data->isInitialized('items') && null !== $data->getItems()) {
+        if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
             $values = [];
-            foreach ($data->getItems() as $value) {
+            foreach ($data->items ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['items'] = $values;

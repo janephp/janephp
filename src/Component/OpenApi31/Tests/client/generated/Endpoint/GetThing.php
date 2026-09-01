@@ -24,7 +24,7 @@ class GetThing extends \Jane\Component\OpenApi31\Tests\Client\Runtime\Client\Bas
     }
     public function getUri(): string
     {
-        return str_replace(['{thingId}'], [$this->thingId], '/things/{thingId}');
+        return str_replace(['{thingId}'], [rawurlencode($this->thingId)], '/things/{thingId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -55,10 +55,10 @@ class GetThing extends \Jane\Component\OpenApi31\Tests\Client\Runtime\Client\Bas
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Client\Model\Thing', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Client\Exception\GetThingNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Client\Model\Error', 'json'), $response);
         }
     }

@@ -41,19 +41,19 @@ class CdnPurgeJobByTagNormalizer implements DenormalizerInterface, NormalizerInt
             $data['success'] = (bool) $data['success'];
         }
         if (\array_key_exists('success', $data)) {
-            $object->setSuccess($data['success']);
+            $object->success = $data['success'];
             unset($data['success']);
         }
         if (\array_key_exists('retriesLeft', $data)) {
-            $object->setRetriesLeft($data['retriesLeft']);
+            $object->retriesLeft = $data['retriesLeft'];
             unset($data['retriesLeft']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('tag', $data)) {
-            $object->setTag($data['tag']);
+            $object->tag = $data['tag'];
             unset($data['tag']);
         }
         foreach ($data as $key => $value) {
@@ -66,10 +66,10 @@ class CdnPurgeJobByTagNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['success'] = $data->getSuccess();
-        $dataArray['retriesLeft'] = $data->getRetriesLeft();
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['tag'] = $data->getTag();
+        $dataArray['success'] = $data->success ?? null;
+        $dataArray['retriesLeft'] = $data->retriesLeft ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['tag'] = $data->tag ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

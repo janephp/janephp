@@ -44,11 +44,11 @@ class CurrentUtilizationNormalizer implements DenormalizerInterface, NormalizerI
             $data['cpu'] = (float) $data['cpu'];
         }
         if (\array_key_exists('memory', $data)) {
-            $object->setMemory($data['memory']);
+            $object->memory = $data['memory'];
             unset($data['memory']);
         }
         if (\array_key_exists('cpu', $data)) {
-            $object->setCpu($data['cpu']);
+            $object->cpu = $data['cpu'];
             unset($data['cpu']);
         }
         foreach ($data as $key => $value) {
@@ -61,11 +61,11 @@ class CurrentUtilizationNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('memory') && null !== $data->getMemory()) {
-            $dataArray['memory'] = $data->getMemory();
+        if (array_key_exists('memory', get_object_vars($data)) && null !== ($data->memory ?? null)) {
+            $dataArray['memory'] = $data->memory ?? null;
         }
-        if ($data->isInitialized('cpu') && null !== $data->getCpu()) {
-            $dataArray['cpu'] = $data->getCpu();
+        if (array_key_exists('cpu', get_object_vars($data)) && null !== ($data->cpu ?? null)) {
+            $dataArray['cpu'] = $data->cpu ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

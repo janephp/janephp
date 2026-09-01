@@ -38,7 +38,7 @@ class ResponseDestinationNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('destination', $data)) {
-            $object->setDestination($this->denormalizer->denormalize($data['destination'], \Jane\Generated\DigitalOcean\Model\DestinationOmitCredentials::class, 'json', $context));
+            $object->destination = $this->denormalizer->denormalize($data['destination'], \Jane\Generated\DigitalOcean\Model\DestinationOmitCredentials::class, 'json', $context);
             unset($data['destination']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseDestinationNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('destination') && null !== $data->getDestination()) {
-            $dataArray['destination'] = $data->getDestination() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDestination(), 'json', $context));
+        if (array_key_exists('destination', get_object_vars($data)) && null !== ($data->destination ?? null)) {
+            $dataArray['destination'] = ($data->destination ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->destination ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

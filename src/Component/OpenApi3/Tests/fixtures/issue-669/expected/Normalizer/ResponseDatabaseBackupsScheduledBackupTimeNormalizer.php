@@ -38,15 +38,15 @@ class ResponseDatabaseBackupsScheduledBackupTimeNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('backup_hour', $data)) {
-            $object->setBackupHour($data['backup_hour']);
+            $object->backupHour = $data['backup_hour'];
             unset($data['backup_hour']);
         }
         if (\array_key_exists('backup_minute', $data)) {
-            $object->setBackupMinute($data['backup_minute']);
+            $object->backupMinute = $data['backup_minute'];
             unset($data['backup_minute']);
         }
         if (\array_key_exists('backup_interval_hours', $data)) {
-            $object->setBackupIntervalHours($data['backup_interval_hours']);
+            $object->backupIntervalHours = $data['backup_interval_hours'];
             unset($data['backup_interval_hours']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class ResponseDatabaseBackupsScheduledBackupTimeNormalizer implements Denormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('backupHour') && null !== $data->getBackupHour()) {
-            $dataArray['backup_hour'] = $data->getBackupHour();
+        if (array_key_exists('backupHour', get_object_vars($data)) && null !== ($data->backupHour ?? null)) {
+            $dataArray['backup_hour'] = $data->backupHour ?? null;
         }
-        if ($data->isInitialized('backupMinute') && null !== $data->getBackupMinute()) {
-            $dataArray['backup_minute'] = $data->getBackupMinute();
+        if (array_key_exists('backupMinute', get_object_vars($data)) && null !== ($data->backupMinute ?? null)) {
+            $dataArray['backup_minute'] = $data->backupMinute ?? null;
         }
-        if ($data->isInitialized('backupIntervalHours') && null !== $data->getBackupIntervalHours()) {
-            $dataArray['backup_interval_hours'] = $data->getBackupIntervalHours();
+        if (array_key_exists('backupIntervalHours', get_object_vars($data)) && null !== ($data->backupIntervalHours ?? null)) {
+            $dataArray['backup_interval_hours'] = $data->backupIntervalHours ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

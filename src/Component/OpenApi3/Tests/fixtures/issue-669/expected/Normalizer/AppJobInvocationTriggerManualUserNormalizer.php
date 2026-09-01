@@ -38,15 +38,15 @@ class AppJobInvocationTriggerManualUserNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
             unset($data['email']);
         }
         if (\array_key_exists('full_name', $data)) {
-            $object->setFullName($data['full_name']);
+            $object->fullName = $data['full_name'];
             unset($data['full_name']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class AppJobInvocationTriggerManualUserNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email ?? null;
         }
-        if ($data->isInitialized('fullName') && null !== $data->getFullName()) {
-            $dataArray['full_name'] = $data->getFullName();
+        if (array_key_exists('fullName', get_object_vars($data)) && null !== ($data->fullName ?? null)) {
+            $dataArray['full_name'] = $data->fullName ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,22 +38,22 @@ class ProfileEspProposalNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('encAlg', $data)) {
-            $object->setEncAlg($data['encAlg']);
+            $object->encAlg = $data['encAlg'];
         }
         if (\array_key_exists('authAlg', $data)) {
-            $object->setAuthAlg($data['authAlg']);
+            $object->authAlg = $data['authAlg'];
         }
         if (\array_key_exists('dhGroup', $data)) {
-            $object->setDhGroup($data['dhGroup']);
+            $object->dhGroup = $data['dhGroup'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['encAlg'] = $data->getEncAlg();
-        $dataArray['authAlg'] = $data->getAuthAlg();
-        $dataArray['dhGroup'] = $data->getDhGroup();
+        $dataArray['encAlg'] = $data->encAlg ?? null;
+        $dataArray['authAlg'] = $data->authAlg ?? null;
+        $dataArray['dhGroup'] = $data->dhGroup ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

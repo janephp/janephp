@@ -8,257 +8,51 @@ class AudioMetadata implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var array<string, string>|null
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public ?iterable $names;
     /**
      * @var array<string, string>|null
      */
-    protected $names;
-    /**
-     * @var array<string, string>|null
-     */
-    protected $descriptions;
+    public ?iterable $descriptions;
     /**
      * @var string|null
      */
-    protected $fileExtension;
+    public ?string $fileExtension;
     /**
      * @var string|null
      */
-    protected $fileName;
+    public ?string $fileName;
     /**
      * @var string|null
      */
-    protected $filePath;
+    public ?string $filePath;
     /**
      * @var int|null
      */
-    protected $fileSizeInBytes;
+    public ?int $fileSizeInBytes;
     /**
      * @var string|null
      */
-    protected $sha1Hash;
+    public ?string $sha1Hash;
     /**
      * @var mixed|null
      */
-    protected $xmpMetadata;
+    public $xmpMetadata;
     /**
      * @var mixed|null
      */
-    protected $exifMetadata;
+    public $exifMetadata;
     /**
      * @var string|null
      */
-    protected $language;
+    public ?string $language;
     /**
      * @var list<AudioStream>|null
      */
-    protected $audioStreams;
-    /**
-     * @return array<string, string>|null
-     */
-    public function getNames(): ?iterable
-    {
-        return $this->names;
-    }
-    /**
-     * @param array<string, string>|null $names
-     *
-     * @return self
-     */
-    public function setNames(?iterable $names): self
-    {
-        $this->initialized['names'] = true;
-        $this->names = $names;
-        return $this;
-    }
-    /**
-     * @return array<string, string>|null
-     */
-    public function getDescriptions(): ?iterable
-    {
-        return $this->descriptions;
-    }
-    /**
-     * @param array<string, string>|null $descriptions
-     *
-     * @return self
-     */
-    public function setDescriptions(?iterable $descriptions): self
-    {
-        $this->initialized['descriptions'] = true;
-        $this->descriptions = $descriptions;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getFileExtension(): ?string
-    {
-        return $this->fileExtension;
-    }
-    /**
-     * @param string|null $fileExtension
-     *
-     * @return self
-     */
-    public function setFileExtension(?string $fileExtension): self
-    {
-        $this->initialized['fileExtension'] = true;
-        $this->fileExtension = $fileExtension;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getFileName(): ?string
-    {
-        return $this->fileName;
-    }
-    /**
-     * @param string|null $fileName
-     *
-     * @return self
-     */
-    public function setFileName(?string $fileName): self
-    {
-        $this->initialized['fileName'] = true;
-        $this->fileName = $fileName;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getFilePath(): ?string
-    {
-        return $this->filePath;
-    }
-    /**
-     * @param string|null $filePath
-     *
-     * @return self
-     */
-    public function setFilePath(?string $filePath): self
-    {
-        $this->initialized['filePath'] = true;
-        $this->filePath = $filePath;
-        return $this;
-    }
-    /**
-     * @return int|null
-     */
-    public function getFileSizeInBytes(): ?int
-    {
-        return $this->fileSizeInBytes;
-    }
-    /**
-     * @param int|null $fileSizeInBytes
-     *
-     * @return self
-     */
-    public function setFileSizeInBytes(?int $fileSizeInBytes): self
-    {
-        $this->initialized['fileSizeInBytes'] = true;
-        $this->fileSizeInBytes = $fileSizeInBytes;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getSha1Hash(): ?string
-    {
-        return $this->sha1Hash;
-    }
-    /**
-     * @param string|null $sha1Hash
-     *
-     * @return self
-     */
-    public function setSha1Hash(?string $sha1Hash): self
-    {
-        $this->initialized['sha1Hash'] = true;
-        $this->sha1Hash = $sha1Hash;
-        return $this;
-    }
-    /**
-     * @return mixed
-     */
-    public function getXmpMetadata()
-    {
-        return $this->xmpMetadata;
-    }
-    /**
-     * @param mixed $xmpMetadata
-     *
-     * @return self
-     */
-    public function setXmpMetadata($xmpMetadata): self
-    {
-        $this->initialized['xmpMetadata'] = true;
-        $this->xmpMetadata = $xmpMetadata;
-        return $this;
-    }
-    /**
-     * @return mixed
-     */
-    public function getExifMetadata()
-    {
-        return $this->exifMetadata;
-    }
-    /**
-     * @param mixed $exifMetadata
-     *
-     * @return self
-     */
-    public function setExifMetadata($exifMetadata): self
-    {
-        $this->initialized['exifMetadata'] = true;
-        $this->exifMetadata = $exifMetadata;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getLanguage(): ?string
-    {
-        return $this->language;
-    }
-    /**
-     * @param string|null $language
-     *
-     * @return self
-     */
-    public function setLanguage(?string $language): self
-    {
-        $this->initialized['language'] = true;
-        $this->language = $language;
-        return $this;
-    }
-    /**
-     * @return list<AudioStream>|null
-     */
-    public function getAudioStreams(): ?array
-    {
-        return $this->audioStreams;
-    }
-    /**
-     * @param list<AudioStream>|null $audioStreams
-     *
-     * @return self
-     */
-    public function setAudioStreams(?array $audioStreams): self
-    {
-        $this->initialized['audioStreams'] = true;
-        $this->audioStreams = $audioStreams;
-        return $this;
-    }
+    public ?array $audioStreams;
     public function definedProperties(): array
     {
-        return ['names' => ['names', 'getNames', 'setNames'], 'descriptions' => ['descriptions', 'getDescriptions', 'setDescriptions'], 'fileExtension' => ['fileExtension', 'getFileExtension', 'setFileExtension'], 'fileName' => ['fileName', 'getFileName', 'setFileName'], 'filePath' => ['filePath', 'getFilePath', 'setFilePath'], 'fileSizeInBytes' => ['fileSizeInBytes', 'getFileSizeInBytes', 'setFileSizeInBytes'], 'sha1Hash' => ['sha1Hash', 'getSha1Hash', 'setSha1Hash'], 'xmpMetadata' => ['xmpMetadata', 'getXmpMetadata', 'setXmpMetadata'], 'exifMetadata' => ['exifMetadata', 'getExifMetadata', 'setExifMetadata'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'audioStreams' => ['audioStreams', 'getAudioStreams', 'setAudioStreams']];
+        return ['names' => 'names', 'descriptions' => 'descriptions', 'fileExtension' => 'fileExtension', 'fileName' => 'fileName', 'filePath' => 'filePath', 'fileSizeInBytes' => 'fileSizeInBytes', 'sha1Hash' => 'sha1Hash', 'xmpMetadata' => 'xmpMetadata', 'exifMetadata' => 'exifMetadata', 'language' => 'language', 'audioStreams' => 'audioStreams'];
     }
 }

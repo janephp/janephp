@@ -38,7 +38,7 @@ class Endpoint1PostBodyNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('post-field-1', $data)) {
-            $object->setPostField1($data['post-field-1']);
+            $object->postField1 = $data['post-field-1'];
             unset($data['post-field-1']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class Endpoint1PostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('postField1') && null !== $data->getPostField1()) {
-            $dataArray['post-field-1'] = $data->getPostField1();
+        if (array_key_exists('postField1', get_object_vars($data)) && null !== ($data->postField1 ?? null)) {
+            $dataArray['post-field-1'] = $data->postField1 ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

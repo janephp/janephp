@@ -38,45 +38,45 @@ class PortalserviceModifyWebAuthenticationNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('portalLanguage', $data)) {
-            $object->setPortalLanguage($data['portalLanguage']);
+            $object->portalLanguage = $data['portalLanguage'];
         }
         if (\array_key_exists('redirect', $data)) {
-            $object->setRedirect($this->denormalizer->denormalize($data['redirect'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalRedirect::class, 'json', $context));
+            $object->redirect = $this->denormalizer->denormalize($data['redirect'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalRedirect::class, 'json', $context);
         }
         if (\array_key_exists('userSession', $data)) {
-            $object->setUserSession($this->denormalizer->denormalize($data['userSession'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceUserSession::class, 'json', $context));
+            $object->userSession = $this->denormalizer->denormalize($data['userSession'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceUserSession::class, 'json', $context);
         }
         if (\array_key_exists('webAuthenticationPortalCustomization', $data)) {
-            $object->setWebAuthenticationPortalCustomization($this->denormalizer->denormalize($data['webAuthenticationPortalCustomization'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonWebAuthenticationPortalCustomization::class, 'json', $context));
+            $object->webAuthenticationPortalCustomization = $this->denormalizer->denormalize($data['webAuthenticationPortalCustomization'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonWebAuthenticationPortalCustomization::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('portalLanguage') && null !== $data->getPortalLanguage()) {
-            $dataArray['portalLanguage'] = $data->getPortalLanguage();
+        if (array_key_exists('portalLanguage', get_object_vars($data)) && null !== ($data->portalLanguage ?? null)) {
+            $dataArray['portalLanguage'] = $data->portalLanguage ?? null;
         }
-        if ($data->isInitialized('redirect') && null !== $data->getRedirect()) {
-            $dataArray['redirect'] = $data->getRedirect() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRedirect(), 'json', $context));
+        if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
+            $dataArray['redirect'] = ($data->redirect ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->redirect ?? null, 'json', $context));
         }
-        if ($data->isInitialized('userSession') && null !== $data->getUserSession()) {
-            $dataArray['userSession'] = $data->getUserSession() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserSession(), 'json', $context));
+        if (array_key_exists('userSession', get_object_vars($data)) && null !== ($data->userSession ?? null)) {
+            $dataArray['userSession'] = ($data->userSession ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->userSession ?? null, 'json', $context));
         }
-        if ($data->isInitialized('webAuthenticationPortalCustomization') && null !== $data->getWebAuthenticationPortalCustomization()) {
-            $dataArray['webAuthenticationPortalCustomization'] = $data->getWebAuthenticationPortalCustomization() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWebAuthenticationPortalCustomization(), 'json', $context));
+        if (array_key_exists('webAuthenticationPortalCustomization', get_object_vars($data)) && null !== ($data->webAuthenticationPortalCustomization ?? null)) {
+            $dataArray['webAuthenticationPortalCustomization'] = ($data->webAuthenticationPortalCustomization ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->webAuthenticationPortalCustomization ?? null, 'json', $context));
         }
         return $dataArray;
     }

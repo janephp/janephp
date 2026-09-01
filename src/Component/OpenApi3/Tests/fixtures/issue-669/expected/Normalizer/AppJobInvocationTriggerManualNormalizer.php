@@ -38,7 +38,7 @@ class AppJobInvocationTriggerManualNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('user', $data)) {
-            $object->setUser($this->denormalizer->denormalize($data['user'], \Jane\Generated\DigitalOcean\Model\AppJobInvocationTriggerManualUser::class, 'json', $context));
+            $object->user = $this->denormalizer->denormalize($data['user'], \Jane\Generated\DigitalOcean\Model\AppJobInvocationTriggerManualUser::class, 'json', $context);
             unset($data['user']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppJobInvocationTriggerManualNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['user'] = $data->getUser() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
+        if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
+            $dataArray['user'] = ($data->user ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->user ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

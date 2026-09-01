@@ -38,11 +38,11 @@ class NumericRangeFilterNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
-            $object->setField($data['field']);
+            $object->field = $data['field'];
             unset($data['field']);
         }
         if (\array_key_exists('range', $data)) {
@@ -50,7 +50,7 @@ class NumericRangeFilterNormalizer implements DenormalizerInterface, NormalizerI
             if (is_array($data['range'])) {
                 $value = $this->denormalizer->denormalize($data['range'], \PicturePark\API\Model\NumericRange::class, 'json', $context);
             }
-            $object->setRange($value);
+            $object->range = $value;
             unset($data['range']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,11 +63,11 @@ class NumericRangeFilterNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['field'] = $data->getField();
-        $value = $data->getRange();
-        if (is_object($data->getRange())) {
-            $value = $data->getRange() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getRange(), 'json', $context));
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['field'] = $data->field ?? null;
+        $value = $data->range ?? null;
+        if (is_object($data->range ?? null)) {
+            $value = ($data->range ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->range ?? null, 'json', $context));
         }
         $dataArray['range'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

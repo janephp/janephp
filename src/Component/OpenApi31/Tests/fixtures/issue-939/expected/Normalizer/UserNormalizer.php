@@ -41,7 +41,7 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\UserConstraint());
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

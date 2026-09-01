@@ -44,57 +44,57 @@ class MountPointNormalizer implements DenormalizerInterface, NormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\MountPointConstraint());
         }
         if (\array_key_exists('Type', $data)) {
-            $object->setType($data['Type']);
+            $object->type = $data['Type'];
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Source', $data)) {
-            $object->setSource($data['Source']);
+            $object->source = $data['Source'];
         }
         if (\array_key_exists('Destination', $data)) {
-            $object->setDestination($data['Destination']);
+            $object->destination = $data['Destination'];
         }
         if (\array_key_exists('Driver', $data)) {
-            $object->setDriver($data['Driver']);
+            $object->driver = $data['Driver'];
         }
         if (\array_key_exists('Mode', $data)) {
-            $object->setMode($data['Mode']);
+            $object->mode = $data['Mode'];
         }
         if (\array_key_exists('RW', $data)) {
-            $object->setRW($data['RW']);
+            $object->rW = $data['RW'];
         }
         if (\array_key_exists('Propagation', $data)) {
-            $object->setPropagation($data['Propagation']);
+            $object->propagation = $data['Propagation'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['Type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['Type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('source') && null !== $data->getSource()) {
-            $dataArray['Source'] = $data->getSource();
+        if (array_key_exists('source', get_object_vars($data)) && null !== ($data->source ?? null)) {
+            $dataArray['Source'] = $data->source ?? null;
         }
-        if ($data->isInitialized('destination') && null !== $data->getDestination()) {
-            $dataArray['Destination'] = $data->getDestination();
+        if (array_key_exists('destination', get_object_vars($data)) && null !== ($data->destination ?? null)) {
+            $dataArray['Destination'] = $data->destination ?? null;
         }
-        if ($data->isInitialized('driver') && null !== $data->getDriver()) {
-            $dataArray['Driver'] = $data->getDriver();
+        if (array_key_exists('driver', get_object_vars($data)) && null !== ($data->driver ?? null)) {
+            $dataArray['Driver'] = $data->driver ?? null;
         }
-        if ($data->isInitialized('mode') && null !== $data->getMode()) {
-            $dataArray['Mode'] = $data->getMode();
+        if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
+            $dataArray['Mode'] = $data->mode ?? null;
         }
-        if ($data->isInitialized('rW') && null !== $data->getRW()) {
-            $dataArray['RW'] = $data->getRW();
+        if (array_key_exists('rW', get_object_vars($data)) && null !== ($data->rW ?? null)) {
+            $dataArray['RW'] = $data->rW ?? null;
         }
-        if ($data->isInitialized('propagation') && null !== $data->getPropagation()) {
-            $dataArray['Propagation'] = $data->getPropagation();
+        if (array_key_exists('propagation', get_object_vars($data)) && null !== ($data->propagation ?? null)) {
+            $dataArray['Propagation'] = $data->propagation ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\MountPointConstraint());

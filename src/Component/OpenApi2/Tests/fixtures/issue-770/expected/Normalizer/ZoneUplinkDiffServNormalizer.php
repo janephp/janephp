@@ -41,21 +41,21 @@ class ZoneUplinkDiffServNormalizer implements DenormalizerInterface, NormalizerI
             $data['uplinkEnable'] = (bool) $data['uplinkEnable'];
         }
         if (\array_key_exists('uplinkEnable', $data)) {
-            $object->setUplinkEnable($data['uplinkEnable']);
+            $object->uplinkEnable = $data['uplinkEnable'];
         }
         if (\array_key_exists('uplink', $data)) {
-            $object->setUplink($data['uplink']);
+            $object->uplink = $data['uplink'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('uplinkEnable') && null !== $data->getUplinkEnable()) {
-            $dataArray['uplinkEnable'] = $data->getUplinkEnable();
+        if (array_key_exists('uplinkEnable', get_object_vars($data)) && null !== ($data->uplinkEnable ?? null)) {
+            $dataArray['uplinkEnable'] = $data->uplinkEnable ?? null;
         }
-        if ($data->isInitialized('uplink') && null !== $data->getUplink()) {
-            $dataArray['uplink'] = $data->getUplink();
+        if (array_key_exists('uplink', get_object_vars($data)) && null !== ($data->uplink ?? null)) {
+            $dataArray['uplink'] = $data->uplink ?? null;
         }
         return $dataArray;
     }

@@ -8,7 +8,6 @@ use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\PatternPropertiesGuesser;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\SimpleTypeGuesser;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
-use Jane\Component\JsonSchema\JsonSchema\Runtime\JsonObject;
 use Jane\Component\JsonSchema\Registry\Registry;
 use PHPUnit\Framework\TestCase;
 
@@ -41,30 +40,55 @@ class PatternPropertiesGuesserTest extends TestCase
     public static function unsupportedProvider(): iterable
     {
         yield 'properties set' => [
-            (new JsonSchema())
-                ->setType('object')
-                ->setProperties(new JsonObject([
-                    'foo' => (new JsonSchema())->setType('string'),
-                ]))
-                ->setPatternProperties(new JsonObject([
-                    '^a' => (new JsonSchema())->setType('string'),
-                ])),
+            (function () {
+                $s = new JsonSchema();
+                $s->type = 'object';
+                $s->properties = ['foo' => (function () {
+                    $s = new JsonSchema();
+                    $s->type = 'string';
+
+                    return $s;
+                })()];
+                $s->patternProperties = ['^a' => (function () {
+                    $s = new JsonSchema();
+                    $s->type = 'string';
+
+                    return $s;
+                })()];
+
+                return $s;
+            })(),
         ];
         yield 'not an object type' => [
-            (new JsonSchema())
-                ->setType('string')
-                ->setPatternProperties(new JsonObject([
-                    '^a' => (new JsonSchema())->setType('string'),
-                ])),
+            (function () {
+                $s = new JsonSchema();
+                $s->type = 'string';
+                $s->patternProperties = ['^a' => (function () {
+                    $s = new JsonSchema();
+                    $s->type = 'string';
+
+                    return $s;
+                })()];
+
+                return $s;
+            })(),
         ];
         yield 'null pattern properties' => [
-            (new JsonSchema())
-                ->setType('object'),
+            (function () {
+                $s = new JsonSchema();
+                $s->type = 'object';
+
+                return $s;
+            })(),
         ];
         yield 'empty pattern properties' => [
-            (new JsonSchema())
-                ->setType('object')
-                ->setPatternProperties(new JsonObject()),
+            (function () {
+                $s = new JsonSchema();
+                $s->type = 'object';
+                $s->patternProperties = [];
+
+                return $s;
+            })(),
         ];
     }
 
@@ -85,10 +109,17 @@ class PatternPropertiesGuesserTest extends TestCase
 
     private function createObjectSchema(): JsonSchema
     {
-        return (new JsonSchema())
-            ->setType('object')
-            ->setPatternProperties(new JsonObject([
-                '^a' => (new JsonSchema())->setType('string'),
-            ]));
+        return (function () {
+            $s = new JsonSchema();
+            $s->type = 'object';
+            $s->patternProperties = ['^a' => (function () {
+                $s = new JsonSchema();
+                $s->type = 'string';
+
+                return $s;
+            })()];
+
+            return $s;
+        })();
     }
 }

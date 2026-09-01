@@ -8,169 +8,35 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var bool
      */
-    protected $addedToAcceptList;
+    public bool $addedToAcceptList;
     /**
      * @var string
      */
-    protected $alertState;
+    public string $alertState;
     /**
      * @var list<string>
      */
-    protected $assignedTo;
+    public array $assignedTo;
     /**
      * @var string
      */
-    protected $assignmentType;
+    public string $assignmentType;
     /**
      * @var string
      */
-    protected $division;
+    public string $division;
     /**
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem>
      */
-    protected $history;
+    public array $history;
     /**
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem>
      */
-    protected $matchStates;
-    /**
-     * @return bool
-     */
-    public function getAddedToAcceptList(): bool
-    {
-        return $this->addedToAcceptList;
-    }
-    /**
-     * @param bool $addedToAcceptList
-     *
-     * @return self
-     */
-    public function setAddedToAcceptList(bool $addedToAcceptList): self
-    {
-        $this->initialized['addedToAcceptList'] = true;
-        $this->addedToAcceptList = $addedToAcceptList;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getAlertState(): string
-    {
-        return $this->alertState;
-    }
-    /**
-     * @param string $alertState
-     *
-     * @return self
-     */
-    public function setAlertState(string $alertState): self
-    {
-        $this->initialized['alertState'] = true;
-        $this->alertState = $alertState;
-        return $this;
-    }
-    /**
-     * @return list<string>
-     */
-    public function getAssignedTo(): array
-    {
-        return $this->assignedTo;
-    }
-    /**
-     * @param list<string> $assignedTo
-     *
-     * @return self
-     */
-    public function setAssignedTo(array $assignedTo): self
-    {
-        $this->initialized['assignedTo'] = true;
-        $this->assignedTo = $assignedTo;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getAssignmentType(): string
-    {
-        return $this->assignmentType;
-    }
-    /**
-     * @param string $assignmentType
-     *
-     * @return self
-     */
-    public function setAssignmentType(string $assignmentType): self
-    {
-        $this->initialized['assignmentType'] = true;
-        $this->assignmentType = $assignmentType;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getDivision(): string
-    {
-        return $this->division;
-    }
-    /**
-     * @param string $division
-     *
-     * @return self
-     */
-    public function setDivision(string $division): self
-    {
-        $this->initialized['division'] = true;
-        $this->division = $division;
-        return $this;
-    }
-    /**
-     * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem>
-     */
-    public function getHistory(): array
-    {
-        return $this->history;
-    }
-    /**
-     * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem> $history
-     *
-     * @return self
-     */
-    public function setHistory(array $history): self
-    {
-        $this->initialized['history'] = true;
-        $this->history = $history;
-        return $this;
-    }
-    /**
-     * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem>
-     */
-    public function getMatchStates(): array
-    {
-        return $this->matchStates;
-    }
-    /**
-     * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem> $matchStates
-     *
-     * @return self
-     */
-    public function setMatchStates(array $matchStates): self
-    {
-        $this->initialized['matchStates'] = true;
-        $this->matchStates = $matchStates;
-        return $this;
-    }
+    public array $matchStates;
     public function definedProperties(): array
     {
-        return ['addedToAcceptList' => ['addedToAcceptList', 'getAddedToAcceptList', 'setAddedToAcceptList'], 'alertState' => ['alertState', 'getAlertState', 'setAlertState'], 'assignedTo' => ['assignedTo', 'getAssignedTo', 'setAssignedTo'], 'assignmentType' => ['assignmentType', 'getAssignmentType', 'setAssignmentType'], 'division' => ['division', 'getDivision', 'setDivision'], 'history' => ['history', 'getHistory', 'setHistory'], 'matchStates' => ['matchStates', 'getMatchStates', 'setMatchStates']];
+        return ['addedToAcceptList' => 'addedToAcceptList', 'alertState' => 'alertState', 'assignedTo' => 'assignedTo', 'assignmentType' => 'assignmentType', 'division' => 'division', 'history' => 'history', 'matchStates' => 'matchStates'];
     }
 }

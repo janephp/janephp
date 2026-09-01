@@ -38,23 +38,23 @@ class GdprReportNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('clientMac', $data)) {
-            $object->setClientMac($data['clientMac']);
+            $object->clientMac = $data['clientMac'];
         }
         if (\array_key_exists('action', $data)) {
-            $object->setAction($data['action']);
+            $object->action = $data['action'];
         }
         if (\array_key_exists('ftp', $data)) {
-            $object->setFtp($this->denormalizer->denormalize($data['ftp'], \Jane\Component\OpenApi3\Tests\Expected\Model\GdprFtp::class, 'json', $context));
+            $object->ftp = $this->denormalizer->denormalize($data['ftp'], \Jane\Component\OpenApi3\Tests\Expected\Model\GdprFtp::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['clientMac'] = $data->getClientMac();
-        $dataArray['action'] = $data->getAction();
-        if ($data->isInitialized('ftp') && null !== $data->getFtp()) {
-            $dataArray['ftp'] = $data->getFtp() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFtp(), 'json', $context));
+        $dataArray['clientMac'] = $data->clientMac ?? null;
+        $dataArray['action'] = $data->action ?? null;
+        if (array_key_exists('ftp', get_object_vars($data)) && null !== ($data->ftp ?? null)) {
+            $dataArray['ftp'] = ($data->ftp ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ftp ?? null, 'json', $context));
         }
         return $dataArray;
     }

@@ -38,7 +38,7 @@ class RegistryBaseNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -46,15 +46,15 @@ class RegistryBaseNormalizer implements DenormalizerInterface, NormalizerInterfa
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('storage_usage_bytes', $data)) {
-            $object->setStorageUsageBytes($data['storage_usage_bytes']);
+            $object->storageUsageBytes = $data['storage_usage_bytes'];
             unset($data['storage_usage_bytes']);
         }
         if (\array_key_exists('storage_usage_bytes_updated_at', $data)) {
@@ -62,7 +62,7 @@ class RegistryBaseNormalizer implements DenormalizerInterface, NormalizerInterfa
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['storage_usage_bytes_updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStorageUsageBytesUpdatedAt($date_1);
+            $object->storageUsageBytesUpdatedAt = $date_1;
             unset($data['storage_usage_bytes_updated_at']);
         }
         foreach ($data as $key => $value) {
@@ -75,11 +75,11 @@ class RegistryBaseNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -47,35 +47,35 @@ class EventRulesResponseNormalizer implements DenormalizerInterface, NormalizerI
             $data['isActive'] = (bool) $data['isActive'];
         }
         if (\array_key_exists('isActive', $data)) {
-            $object->setIsActive($data['isActive']);
+            $object->isActive = $data['isActive'];
             unset($data['isActive']);
         }
         if (\array_key_exists('ruleCode', $data)) {
-            $object->setRuleCode($data['ruleCode']);
+            $object->ruleCode = $data['ruleCode'];
             unset($data['ruleCode']);
         }
         if (\array_key_exists('ruleCountryCode', $data)) {
-            $object->setRuleCountryCode($data['ruleCountryCode']);
+            $object->ruleCountryCode = $data['ruleCountryCode'];
             unset($data['ruleCountryCode']);
         }
         if (\array_key_exists('ruleType', $data)) {
-            $object->setRuleType($data['ruleType']);
+            $object->ruleType = $data['ruleType'];
             unset($data['ruleType']);
         }
         if (\array_key_exists('ruleTypeName', $data)) {
-            $object->setRuleTypeName($data['ruleTypeName']);
+            $object->ruleTypeName = $data['ruleTypeName'];
             unset($data['ruleTypeName']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('param0', $data)) {
-            $object->setParam0($data['param0']);
+            $object->param0 = $data['param0'];
             unset($data['param0']);
         }
         if (\array_key_exists('param1', $data)) {
-            $object->setParam1($data['param1']);
+            $object->param1 = $data['param1'];
             unset($data['param1']);
         }
         foreach ($data as $key => $value) {
@@ -88,29 +88,29 @@ class EventRulesResponseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
-            $dataArray['isActive'] = $data->getIsActive();
+        if (array_key_exists('isActive', get_object_vars($data)) && null !== ($data->isActive ?? null)) {
+            $dataArray['isActive'] = $data->isActive ?? null;
         }
-        if ($data->isInitialized('ruleCode') && null !== $data->getRuleCode()) {
-            $dataArray['ruleCode'] = $data->getRuleCode();
+        if (array_key_exists('ruleCode', get_object_vars($data)) && null !== ($data->ruleCode ?? null)) {
+            $dataArray['ruleCode'] = $data->ruleCode ?? null;
         }
-        if ($data->isInitialized('ruleCountryCode') && null !== $data->getRuleCountryCode()) {
-            $dataArray['ruleCountryCode'] = $data->getRuleCountryCode();
+        if (array_key_exists('ruleCountryCode', get_object_vars($data)) && null !== ($data->ruleCountryCode ?? null)) {
+            $dataArray['ruleCountryCode'] = $data->ruleCountryCode ?? null;
         }
-        if ($data->isInitialized('ruleType') && null !== $data->getRuleType()) {
-            $dataArray['ruleType'] = $data->getRuleType();
+        if (array_key_exists('ruleType', get_object_vars($data)) && null !== ($data->ruleType ?? null)) {
+            $dataArray['ruleType'] = $data->ruleType ?? null;
         }
-        if ($data->isInitialized('ruleTypeName') && null !== $data->getRuleTypeName()) {
-            $dataArray['ruleTypeName'] = $data->getRuleTypeName();
+        if (array_key_exists('ruleTypeName', get_object_vars($data)) && null !== ($data->ruleTypeName ?? null)) {
+            $dataArray['ruleTypeName'] = $data->ruleTypeName ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('param0') && null !== $data->getParam0()) {
-            $dataArray['param0'] = $data->getParam0();
+        if (array_key_exists('param0', get_object_vars($data)) && null !== ($data->param0 ?? null)) {
+            $dataArray['param0'] = $data->param0 ?? null;
         }
-        if ($data->isInitialized('param1') && null !== $data->getParam1()) {
-            $dataArray['param1'] = $data->getParam1();
+        if (array_key_exists('param1', get_object_vars($data)) && null !== ($data->param1 ?? null)) {
+            $dataArray['param1'] = $data->param1 ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

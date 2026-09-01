@@ -38,7 +38,7 @@ class ListCompanyImagesDataItemLocalPropertiesNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('accountRefNumber', $data)) {
-            $object->setAccountRefNumber($data['accountRefNumber']);
+            $object->accountRefNumber = $data['accountRefNumber'];
             unset($data['accountRefNumber']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ListCompanyImagesDataItemLocalPropertiesNormalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('accountRefNumber') && null !== $data->getAccountRefNumber()) {
-            $dataArray['accountRefNumber'] = $data->getAccountRefNumber();
+        if (array_key_exists('accountRefNumber', get_object_vars($data)) && null !== ($data->accountRefNumber ?? null)) {
+            $dataArray['accountRefNumber'] = $data->accountRefNumber ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

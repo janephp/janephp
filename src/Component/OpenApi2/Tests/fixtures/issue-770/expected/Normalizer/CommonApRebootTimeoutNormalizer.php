@@ -38,21 +38,21 @@ class CommonApRebootTimeoutNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('gatewayLossTimeoutInSec', $data)) {
-            $object->setGatewayLossTimeoutInSec($data['gatewayLossTimeoutInSec']);
+            $object->gatewayLossTimeoutInSec = $data['gatewayLossTimeoutInSec'];
         }
         if (\array_key_exists('serverLossTimeoutInSec', $data)) {
-            $object->setServerLossTimeoutInSec($data['serverLossTimeoutInSec']);
+            $object->serverLossTimeoutInSec = $data['serverLossTimeoutInSec'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('gatewayLossTimeoutInSec') && null !== $data->getGatewayLossTimeoutInSec()) {
-            $dataArray['gatewayLossTimeoutInSec'] = $data->getGatewayLossTimeoutInSec();
+        if (array_key_exists('gatewayLossTimeoutInSec', get_object_vars($data)) && null !== ($data->gatewayLossTimeoutInSec ?? null)) {
+            $dataArray['gatewayLossTimeoutInSec'] = $data->gatewayLossTimeoutInSec ?? null;
         }
-        if ($data->isInitialized('serverLossTimeoutInSec') && null !== $data->getServerLossTimeoutInSec()) {
-            $dataArray['serverLossTimeoutInSec'] = $data->getServerLossTimeoutInSec();
+        if (array_key_exists('serverLossTimeoutInSec', get_object_vars($data)) && null !== ($data->serverLossTimeoutInSec ?? null)) {
+            $dataArray['serverLossTimeoutInSec'] = $data->serverLossTimeoutInSec ?? null;
         }
         return $dataArray;
     }

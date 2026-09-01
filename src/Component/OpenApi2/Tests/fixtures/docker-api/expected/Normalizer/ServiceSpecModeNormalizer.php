@@ -41,33 +41,33 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
             $this->validate($data, new \Docker\Api\Validator\ServiceSpecModeConstraint());
         }
         if (\array_key_exists('Replicated', $data)) {
-            $object->setReplicated($this->denormalizer->denormalize($data['Replicated'], \Docker\Api\Model\ServiceSpecModeReplicated::class, 'json', $context));
+            $object->replicated = $this->denormalizer->denormalize($data['Replicated'], \Docker\Api\Model\ServiceSpecModeReplicated::class, 'json', $context);
         }
         if (\array_key_exists('Global', $data)) {
-            $object->setGlobal($data['Global']);
+            $object->global = $data['Global'];
         }
         if (\array_key_exists('ReplicatedJob', $data)) {
-            $object->setReplicatedJob($this->denormalizer->denormalize($data['ReplicatedJob'], \Docker\Api\Model\ServiceSpecModeReplicatedJob::class, 'json', $context));
+            $object->replicatedJob = $this->denormalizer->denormalize($data['ReplicatedJob'], \Docker\Api\Model\ServiceSpecModeReplicatedJob::class, 'json', $context);
         }
         if (\array_key_exists('GlobalJob', $data)) {
-            $object->setGlobalJob($data['GlobalJob']);
+            $object->globalJob = $data['GlobalJob'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('replicated') && null !== $data->getReplicated()) {
-            $dataArray['Replicated'] = $data->getReplicated() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getReplicated(), 'json', $context));
+        if (array_key_exists('replicated', get_object_vars($data)) && null !== ($data->replicated ?? null)) {
+            $dataArray['Replicated'] = ($data->replicated ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->replicated ?? null, 'json', $context));
         }
-        if ($data->isInitialized('global') && null !== $data->getGlobal()) {
-            $dataArray['Global'] = $data->getGlobal();
+        if (array_key_exists('global', get_object_vars($data)) && null !== ($data->global ?? null)) {
+            $dataArray['Global'] = $data->global ?? null;
         }
-        if ($data->isInitialized('replicatedJob') && null !== $data->getReplicatedJob()) {
-            $dataArray['ReplicatedJob'] = $data->getReplicatedJob() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getReplicatedJob(), 'json', $context));
+        if (array_key_exists('replicatedJob', get_object_vars($data)) && null !== ($data->replicatedJob ?? null)) {
+            $dataArray['ReplicatedJob'] = ($data->replicatedJob ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->replicatedJob ?? null, 'json', $context));
         }
-        if ($data->isInitialized('globalJob') && null !== $data->getGlobalJob()) {
-            $dataArray['GlobalJob'] = $data->getGlobalJob();
+        if (array_key_exists('globalJob', get_object_vars($data)) && null !== ($data->globalJob ?? null)) {
+            $dataArray['GlobalJob'] = $data->globalJob ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceSpecModeConstraint());

@@ -38,64 +38,64 @@ class ClusterbladeClusterStateNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('clusterName', $data)) {
-            $object->setClusterName($data['clusterName']);
+            $object->clusterName = $data['clusterName'];
         }
         if (\array_key_exists('clusterState', $data)) {
-            $object->setClusterState($data['clusterState']);
+            $object->clusterState = $data['clusterState'];
         }
         if (\array_key_exists('clusterRole', $data)) {
-            $object->setClusterRole($data['clusterRole']);
+            $object->clusterRole = $data['clusterRole'];
         }
         if (\array_key_exists('currentNodeId', $data)) {
-            $object->setCurrentNodeId($data['currentNodeId']);
+            $object->currentNodeId = $data['currentNodeId'];
         }
         if (\array_key_exists('currentNodeName', $data)) {
-            $object->setCurrentNodeName($data['currentNodeName']);
+            $object->currentNodeName = $data['currentNodeName'];
         }
         if (\array_key_exists('nodeStateList', $data)) {
             $values = [];
             foreach ($data['nodeStateList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterStateNodeStateListItem::class, 'json', $context);
             }
-            $object->setNodeStateList($values);
+            $object->nodeStateList = $values;
         }
         if (\array_key_exists('managementServiceStateList', $data)) {
             $values_1 = [];
             foreach ($data['managementServiceStateList'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterStateManagementServiceStateListItem::class, 'json', $context);
             }
-            $object->setManagementServiceStateList($values_1);
+            $object->managementServiceStateList = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clusterName') && null !== $data->getClusterName()) {
-            $dataArray['clusterName'] = $data->getClusterName();
+        if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
+            $dataArray['clusterName'] = $data->clusterName ?? null;
         }
-        if ($data->isInitialized('clusterState') && null !== $data->getClusterState()) {
-            $dataArray['clusterState'] = $data->getClusterState();
+        if (array_key_exists('clusterState', get_object_vars($data)) && null !== ($data->clusterState ?? null)) {
+            $dataArray['clusterState'] = $data->clusterState ?? null;
         }
-        if ($data->isInitialized('clusterRole') && null !== $data->getClusterRole()) {
-            $dataArray['clusterRole'] = $data->getClusterRole();
+        if (array_key_exists('clusterRole', get_object_vars($data)) && null !== ($data->clusterRole ?? null)) {
+            $dataArray['clusterRole'] = $data->clusterRole ?? null;
         }
-        if ($data->isInitialized('currentNodeId') && null !== $data->getCurrentNodeId()) {
-            $dataArray['currentNodeId'] = $data->getCurrentNodeId();
+        if (array_key_exists('currentNodeId', get_object_vars($data)) && null !== ($data->currentNodeId ?? null)) {
+            $dataArray['currentNodeId'] = $data->currentNodeId ?? null;
         }
-        if ($data->isInitialized('currentNodeName') && null !== $data->getCurrentNodeName()) {
-            $dataArray['currentNodeName'] = $data->getCurrentNodeName();
+        if (array_key_exists('currentNodeName', get_object_vars($data)) && null !== ($data->currentNodeName ?? null)) {
+            $dataArray['currentNodeName'] = $data->currentNodeName ?? null;
         }
-        if ($data->isInitialized('nodeStateList') && null !== $data->getNodeStateList()) {
+        if (array_key_exists('nodeStateList', get_object_vars($data)) && null !== ($data->nodeStateList ?? null)) {
             $values = [];
-            foreach ($data->getNodeStateList() as $value) {
+            foreach ($data->nodeStateList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['nodeStateList'] = $values;
         }
-        if ($data->isInitialized('managementServiceStateList') && null !== $data->getManagementServiceStateList()) {
+        if (array_key_exists('managementServiceStateList', get_object_vars($data)) && null !== ($data->managementServiceStateList ?? null)) {
             $values_1 = [];
-            foreach ($data->getManagementServiceStateList() as $value_1) {
+            foreach ($data->managementServiceStateList ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['managementServiceStateList'] = $values_1;

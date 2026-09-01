@@ -3922,7 +3922,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingDeleteMany($requestBody), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();

@@ -41,11 +41,11 @@ class ImageUploadedMessageNormalizer implements DenormalizerInterface, Normalize
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ImageUploadedMessageConstraint());
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
             unset($data['message']);
         }
         if (\array_key_exists('imageUrl', $data)) {
-            $object->setImageUrl($data['imageUrl']);
+            $object->imageUrl = $data['imageUrl'];
             unset($data['imageUrl']);
         }
         if (\array_key_exists('uploadedAt', $data)) {
@@ -53,15 +53,15 @@ class ImageUploadedMessageNormalizer implements DenormalizerInterface, Normalize
             if (false === $date) {
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['uploadedAt'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUploadedAt($date);
+            $object->uploadedAt = $date;
             unset($data['uploadedAt']);
         }
         if (\array_key_exists('fileSize', $data)) {
-            $object->setFileSize($data['fileSize']);
+            $object->fileSize = $data['fileSize'];
             unset($data['fileSize']);
         }
         if (\array_key_exists('mimeType', $data)) {
-            $object->setMimeType($data['mimeType']);
+            $object->mimeType = $data['mimeType'];
             unset($data['mimeType']);
         }
         foreach ($data as $key => $value) {
@@ -74,20 +74,20 @@ class ImageUploadedMessageNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['message'] = $data->message ?? null;
         }
-        if ($data->isInitialized('imageUrl') && null !== $data->getImageUrl()) {
-            $dataArray['imageUrl'] = $data->getImageUrl();
+        if (array_key_exists('imageUrl', get_object_vars($data)) && null !== ($data->imageUrl ?? null)) {
+            $dataArray['imageUrl'] = $data->imageUrl ?? null;
         }
-        if ($data->isInitialized('uploadedAt') && null !== $data->getUploadedAt()) {
-            $dataArray['uploadedAt'] = $data->getUploadedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('uploadedAt', get_object_vars($data)) && null !== ($data->uploadedAt ?? null)) {
+            $dataArray['uploadedAt'] = ($data->uploadedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
-            $dataArray['fileSize'] = $data->getFileSize();
+        if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
+            $dataArray['fileSize'] = $data->fileSize ?? null;
         }
-        if ($data->isInitialized('mimeType') && null !== $data->getMimeType()) {
-            $dataArray['mimeType'] = $data->getMimeType();
+        if (array_key_exists('mimeType', get_object_vars($data)) && null !== ($data->mimeType ?? null)) {
+            $dataArray['mimeType'] = $data->mimeType ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

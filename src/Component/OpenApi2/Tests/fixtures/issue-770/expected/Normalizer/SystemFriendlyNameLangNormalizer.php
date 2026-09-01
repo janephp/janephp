@@ -38,21 +38,21 @@ class SystemFriendlyNameLangNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('display', $data)) {
-            $object->setDisplay($data['display']);
+            $object->display = $data['display'];
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('display') && null !== $data->getDisplay()) {
-            $dataArray['display'] = $data->getDisplay();
+        if (array_key_exists('display', get_object_vars($data)) && null !== ($data->display ?? null)) {
+            $dataArray['display'] = $data->display ?? null;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+        if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['value'] = $data->value ?? null;
         }
         return $dataArray;
     }

@@ -41,52 +41,52 @@ class ObjectAggregationResultNormalizer implements DenormalizerInterface, Normal
             $data['isSearchStringRewritten'] = (bool) $data['isSearchStringRewritten'];
         }
         if (\array_key_exists('elapsedMilliseconds', $data)) {
-            $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
+            $object->elapsedMilliseconds = $data['elapsedMilliseconds'];
         }
         if (\array_key_exists('aggregationResults', $data)) {
             $values = [];
             foreach ($data['aggregationResults'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\AggregationResult::class, 'json', $context);
             }
-            $object->setAggregationResults($values);
+            $object->aggregationResults = $values;
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
-            $object->setSearchString($data['searchString']);
+            $object->searchString = $data['searchString'];
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
-            $object->setSearchString(null);
+            $object->searchString = null;
         }
         if (\array_key_exists('isSearchStringRewritten', $data)) {
-            $object->setIsSearchStringRewritten($data['isSearchStringRewritten']);
+            $object->isSearchStringRewritten = $data['isSearchStringRewritten'];
         }
         if (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] !== null) {
             $values_1 = [];
             foreach ($data['queryDebugInformation'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\QueryDebugInformation::class, 'json', $context);
             }
-            $object->setQueryDebugInformation($values_1);
+            $object->queryDebugInformation = $values_1;
         }
         elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
-            $object->setQueryDebugInformation(null);
+            $object->queryDebugInformation = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['elapsedMilliseconds'] = $data->getElapsedMilliseconds();
+        $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds ?? null;
         $values = [];
-        foreach ($data->getAggregationResults() as $value) {
+        foreach ($data->aggregationResults ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['aggregationResults'] = $values;
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
-            $dataArray['searchString'] = $data->getSearchString();
+        if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
+            $dataArray['searchString'] = $data->searchString ?? null;
         }
-        $dataArray['isSearchStringRewritten'] = $data->getIsSearchStringRewritten();
-        if ($data->isInitialized('queryDebugInformation') && null !== $data->getQueryDebugInformation()) {
+        $dataArray['isSearchStringRewritten'] = $data->isSearchStringRewritten ?? null;
+        if (array_key_exists('queryDebugInformation', get_object_vars($data)) && null !== ($data->queryDebugInformation ?? null)) {
             $values_1 = [];
-            foreach ($data->getQueryDebugInformation() as $value_1) {
+            foreach ($data->queryDebugInformation ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['queryDebugInformation'] = $values_1;

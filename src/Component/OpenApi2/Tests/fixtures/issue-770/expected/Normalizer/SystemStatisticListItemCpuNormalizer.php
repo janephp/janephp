@@ -47,27 +47,27 @@ class SystemStatisticListItemCpuNormalizer implements DenormalizerInterface, Nor
             $data['minPercent'] = (float) $data['minPercent'];
         }
         if (\array_key_exists('percent', $data)) {
-            $object->setPercent($data['percent']);
+            $object->percent = $data['percent'];
         }
         if (\array_key_exists('maxPercent', $data)) {
-            $object->setMaxPercent($data['maxPercent']);
+            $object->maxPercent = $data['maxPercent'];
         }
         if (\array_key_exists('minPercent', $data)) {
-            $object->setMinPercent($data['minPercent']);
+            $object->minPercent = $data['minPercent'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('percent') && null !== $data->getPercent()) {
-            $dataArray['percent'] = $data->getPercent();
+        if (array_key_exists('percent', get_object_vars($data)) && null !== ($data->percent ?? null)) {
+            $dataArray['percent'] = $data->percent ?? null;
         }
-        if ($data->isInitialized('maxPercent') && null !== $data->getMaxPercent()) {
-            $dataArray['maxPercent'] = $data->getMaxPercent();
+        if (array_key_exists('maxPercent', get_object_vars($data)) && null !== ($data->maxPercent ?? null)) {
+            $dataArray['maxPercent'] = $data->maxPercent ?? null;
         }
-        if ($data->isInitialized('minPercent') && null !== $data->getMinPercent()) {
-            $dataArray['minPercent'] = $data->getMinPercent();
+        if (array_key_exists('minPercent', get_object_vars($data)) && null !== ($data->minPercent ?? null)) {
+            $dataArray['minPercent'] = $data->minPercent ?? null;
         }
         return $dataArray;
     }

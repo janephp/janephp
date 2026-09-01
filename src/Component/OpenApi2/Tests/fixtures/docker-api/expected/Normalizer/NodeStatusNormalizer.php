@@ -41,27 +41,27 @@ class NodeStatusNormalizer implements DenormalizerInterface, NormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\NodeStatusConstraint());
         }
         if (\array_key_exists('State', $data)) {
-            $object->setState($data['State']);
+            $object->state = $data['State'];
         }
         if (\array_key_exists('Message', $data)) {
-            $object->setMessage($data['Message']);
+            $object->message = $data['Message'];
         }
         if (\array_key_exists('Addr', $data)) {
-            $object->setAddr($data['Addr']);
+            $object->addr = $data['Addr'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['State'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['State'] = $data->state ?? null;
         }
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['Message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['Message'] = $data->message ?? null;
         }
-        if ($data->isInitialized('addr') && null !== $data->getAddr()) {
-            $dataArray['Addr'] = $data->getAddr();
+        if (array_key_exists('addr', get_object_vars($data)) && null !== ($data->addr ?? null)) {
+            $dataArray['Addr'] = $data->addr ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NodeStatusConstraint());

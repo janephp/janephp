@@ -41,7 +41,7 @@ class VpcDefaultNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['default'] = (bool) $data['default'];
         }
         if (\array_key_exists('default', $data)) {
-            $object->setDefault($data['default']);
+            $object->default = $data['default'];
             unset($data['default']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class VpcDefaultNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('default') && null !== $data->getDefault()) {
-            $dataArray['default'] = $data->getDefault();
+        if (array_key_exists('default', get_object_vars($data)) && null !== ($data->default ?? null)) {
+            $dataArray['default'] = $data->default ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

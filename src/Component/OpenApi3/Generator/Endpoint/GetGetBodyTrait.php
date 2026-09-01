@@ -20,7 +20,7 @@ trait GetGetBodyTrait
     public function getGetBody(OperationGuess $operation, Context $context, GuessClass $guessClass, RequestBodyGenerator $requestBodyGenerator): Stmt\ClassMethod
     {
         $opRef = $operation->getReference() . '/requestBody';
-        $requestBody = $operation->getOperation()->getRequestBody();
+        $requestBody = $operation->getOperation()->requestBody ?? null;
 
         if ($requestBody instanceof Reference) {
             [, $requestBody] = $guessClass->resolve($requestBody, RequestBody::class);

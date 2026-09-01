@@ -42,7 +42,7 @@ class ClusterRegistryNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['cluster_uuids'] as $value) {
                 $values[] = $value;
             }
-            $object->setClusterUuids($values);
+            $object->clusterUuids = $values;
             unset($data['cluster_uuids']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ClusterRegistryNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clusterUuids') && null !== $data->getClusterUuids()) {
+        if (array_key_exists('clusterUuids', get_object_vars($data)) && null !== ($data->clusterUuids ?? null)) {
             $values = [];
-            foreach ($data->getClusterUuids() as $value) {
+            foreach ($data->clusterUuids ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['cluster_uuids'] = $values;

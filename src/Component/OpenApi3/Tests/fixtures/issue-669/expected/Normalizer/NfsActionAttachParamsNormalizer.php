@@ -38,7 +38,7 @@ class NfsActionAttachParamsNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('vpc_id', $data)) {
-            $object->setVpcId($data['vpc_id']);
+            $object->vpcId = $data['vpc_id'];
             unset($data['vpc_id']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class NfsActionAttachParamsNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['vpc_id'] = $data->getVpcId();
+        $dataArray['vpc_id'] = $data->vpcId ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

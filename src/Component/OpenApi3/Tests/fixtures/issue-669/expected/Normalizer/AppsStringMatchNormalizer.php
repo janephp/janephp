@@ -38,15 +38,15 @@ class AppsStringMatchNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('exact', $data)) {
-            $object->setExact($data['exact']);
+            $object->exact = $data['exact'];
             unset($data['exact']);
         }
         if (\array_key_exists('prefix', $data)) {
-            $object->setPrefix($data['prefix']);
+            $object->prefix = $data['prefix'];
             unset($data['prefix']);
         }
         if (\array_key_exists('regex', $data)) {
-            $object->setRegex($data['regex']);
+            $object->regex = $data['regex'];
             unset($data['regex']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class AppsStringMatchNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('exact') && null !== $data->getExact()) {
-            $dataArray['exact'] = $data->getExact();
+        if (array_key_exists('exact', get_object_vars($data)) && null !== ($data->exact ?? null)) {
+            $dataArray['exact'] = $data->exact ?? null;
         }
-        if ($data->isInitialized('prefix') && null !== $data->getPrefix()) {
-            $dataArray['prefix'] = $data->getPrefix();
+        if (array_key_exists('prefix', get_object_vars($data)) && null !== ($data->prefix ?? null)) {
+            $dataArray['prefix'] = $data->prefix ?? null;
         }
-        if ($data->isInitialized('regex') && null !== $data->getRegex()) {
-            $dataArray['regex'] = $data->getRegex();
+        if (array_key_exists('regex', get_object_vars($data)) && null !== ($data->regex ?? null)) {
+            $dataArray['regex'] = $data->regex ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

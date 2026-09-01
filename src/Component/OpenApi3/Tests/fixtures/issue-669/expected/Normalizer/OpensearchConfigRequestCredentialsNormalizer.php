@@ -38,11 +38,11 @@ class OpensearchConfigRequestCredentialsNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('username', $data)) {
-            $object->setUsername($data['username']);
+            $object->username = $data['username'];
             unset($data['username']);
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
             unset($data['password']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class OpensearchConfigRequestCredentialsNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('username') && null !== $data->getUsername()) {
-            $dataArray['username'] = $data->getUsername();
+        if (array_key_exists('username', get_object_vars($data)) && null !== ($data->username ?? null)) {
+            $dataArray['username'] = $data->username ?? null;
         }
-        if ($data->isInitialized('password') && null !== $data->getPassword()) {
-            $dataArray['password'] = $data->getPassword();
+        if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
+            $dataArray['password'] = $data->password ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

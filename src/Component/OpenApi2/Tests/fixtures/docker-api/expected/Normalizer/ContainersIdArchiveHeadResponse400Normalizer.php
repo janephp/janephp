@@ -41,15 +41,15 @@ class ContainersIdArchiveHeadResponse400Normalizer implements DenormalizerInterf
             $this->validate($data, new \Docker\Api\Validator\ContainersIdArchiveHeadResponse400Constraint());
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['message'] = $data->message ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdArchiveHeadResponse400Constraint());

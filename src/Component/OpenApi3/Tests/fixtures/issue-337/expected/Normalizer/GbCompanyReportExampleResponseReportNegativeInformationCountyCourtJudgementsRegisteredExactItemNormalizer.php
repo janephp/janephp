@@ -41,27 +41,27 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
             $data['ccjAmount'] = (float) $data['ccjAmount'];
         }
         if (\array_key_exists('ccjDate', $data)) {
-            $object->setCcjDate($data['ccjDate']);
+            $object->ccjDate = $data['ccjDate'];
             unset($data['ccjDate']);
         }
         if (\array_key_exists('court', $data)) {
-            $object->setCourt($data['court']);
+            $object->court = $data['court'];
             unset($data['court']);
         }
         if (\array_key_exists('ccjAmount', $data)) {
-            $object->setCcjAmount($data['ccjAmount']);
+            $object->ccjAmount = $data['ccjAmount'];
             unset($data['ccjAmount']);
         }
         if (\array_key_exists('caseNumber', $data)) {
-            $object->setCaseNumber($data['caseNumber']);
+            $object->caseNumber = $data['caseNumber'];
             unset($data['caseNumber']);
         }
         if (\array_key_exists('ccjStatus', $data)) {
-            $object->setCcjStatus($data['ccjStatus']);
+            $object->ccjStatus = $data['ccjStatus'];
             unset($data['ccjStatus']);
         }
         if (\array_key_exists('incomingRecordDetails', $data)) {
-            $object->setIncomingRecordDetails($data['incomingRecordDetails']);
+            $object->incomingRecordDetails = $data['incomingRecordDetails'];
             unset($data['incomingRecordDetails']);
         }
         foreach ($data as $key => $value) {
@@ -74,23 +74,23 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ccjDate') && null !== $data->getCcjDate()) {
-            $dataArray['ccjDate'] = $data->getCcjDate();
+        if (array_key_exists('ccjDate', get_object_vars($data)) && null !== ($data->ccjDate ?? null)) {
+            $dataArray['ccjDate'] = $data->ccjDate ?? null;
         }
-        if ($data->isInitialized('court') && null !== $data->getCourt()) {
-            $dataArray['court'] = $data->getCourt();
+        if (array_key_exists('court', get_object_vars($data)) && null !== ($data->court ?? null)) {
+            $dataArray['court'] = $data->court ?? null;
         }
-        if ($data->isInitialized('ccjAmount') && null !== $data->getCcjAmount()) {
-            $dataArray['ccjAmount'] = $data->getCcjAmount();
+        if (array_key_exists('ccjAmount', get_object_vars($data)) && null !== ($data->ccjAmount ?? null)) {
+            $dataArray['ccjAmount'] = $data->ccjAmount ?? null;
         }
-        if ($data->isInitialized('caseNumber') && null !== $data->getCaseNumber()) {
-            $dataArray['caseNumber'] = $data->getCaseNumber();
+        if (array_key_exists('caseNumber', get_object_vars($data)) && null !== ($data->caseNumber ?? null)) {
+            $dataArray['caseNumber'] = $data->caseNumber ?? null;
         }
-        if ($data->isInitialized('ccjStatus') && null !== $data->getCcjStatus()) {
-            $dataArray['ccjStatus'] = $data->getCcjStatus();
+        if (array_key_exists('ccjStatus', get_object_vars($data)) && null !== ($data->ccjStatus ?? null)) {
+            $dataArray['ccjStatus'] = $data->ccjStatus ?? null;
         }
-        if ($data->isInitialized('incomingRecordDetails') && null !== $data->getIncomingRecordDetails()) {
-            $dataArray['incomingRecordDetails'] = $data->getIncomingRecordDetails();
+        if (array_key_exists('incomingRecordDetails', get_object_vars($data)) && null !== ($data->incomingRecordDetails ?? null)) {
+            $dataArray['incomingRecordDetails'] = $data->incomingRecordDetails ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

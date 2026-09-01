@@ -38,15 +38,15 @@ class AppComponentInstanceBaseAutoscalingNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('min_instance_count', $data)) {
-            $object->setMinInstanceCount($data['min_instance_count']);
+            $object->minInstanceCount = $data['min_instance_count'];
             unset($data['min_instance_count']);
         }
         if (\array_key_exists('max_instance_count', $data)) {
-            $object->setMaxInstanceCount($data['max_instance_count']);
+            $object->maxInstanceCount = $data['max_instance_count'];
             unset($data['max_instance_count']);
         }
         if (\array_key_exists('metrics', $data)) {
-            $object->setMetrics($this->denormalizer->denormalize($data['metrics'], \Jane\Generated\DigitalOcean\Model\AppComponentInstanceBaseAutoscalingMetrics::class, 'json', $context));
+            $object->metrics = $this->denormalizer->denormalize($data['metrics'], \Jane\Generated\DigitalOcean\Model\AppComponentInstanceBaseAutoscalingMetrics::class, 'json', $context);
             unset($data['metrics']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class AppComponentInstanceBaseAutoscalingNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('minInstanceCount') && null !== $data->getMinInstanceCount()) {
-            $dataArray['min_instance_count'] = $data->getMinInstanceCount();
+        if (array_key_exists('minInstanceCount', get_object_vars($data)) && null !== ($data->minInstanceCount ?? null)) {
+            $dataArray['min_instance_count'] = $data->minInstanceCount ?? null;
         }
-        if ($data->isInitialized('maxInstanceCount') && null !== $data->getMaxInstanceCount()) {
-            $dataArray['max_instance_count'] = $data->getMaxInstanceCount();
+        if (array_key_exists('maxInstanceCount', get_object_vars($data)) && null !== ($data->maxInstanceCount ?? null)) {
+            $dataArray['max_instance_count'] = $data->maxInstanceCount ?? null;
         }
-        if ($data->isInitialized('metrics') && null !== $data->getMetrics()) {
-            $dataArray['metrics'] = $data->getMetrics() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMetrics(), 'json', $context));
+        if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
+            $dataArray['metrics'] = ($data->metrics ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->metrics ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

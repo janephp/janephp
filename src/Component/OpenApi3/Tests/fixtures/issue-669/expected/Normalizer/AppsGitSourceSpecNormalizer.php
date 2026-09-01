@@ -38,11 +38,11 @@ class AppsGitSourceSpecNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('branch', $data)) {
-            $object->setBranch($data['branch']);
+            $object->branch = $data['branch'];
             unset($data['branch']);
         }
         if (\array_key_exists('repo_clone_url', $data)) {
-            $object->setRepoCloneUrl($data['repo_clone_url']);
+            $object->repoCloneUrl = $data['repo_clone_url'];
             unset($data['repo_clone_url']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class AppsGitSourceSpecNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('branch') && null !== $data->getBranch()) {
-            $dataArray['branch'] = $data->getBranch();
+        if (array_key_exists('branch', get_object_vars($data)) && null !== ($data->branch ?? null)) {
+            $dataArray['branch'] = $data->branch ?? null;
         }
-        if ($data->isInitialized('repoCloneUrl') && null !== $data->getRepoCloneUrl()) {
-            $dataArray['repo_clone_url'] = $data->getRepoCloneUrl();
+        if (array_key_exists('repoCloneUrl', get_object_vars($data)) && null !== ($data->repoCloneUrl ?? null)) {
+            $dataArray['repo_clone_url'] = $data->repoCloneUrl ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

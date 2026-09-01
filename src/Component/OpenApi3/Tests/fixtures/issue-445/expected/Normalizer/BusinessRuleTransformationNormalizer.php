@@ -59,44 +59,44 @@ class BusinessRuleTransformationNormalizer implements DenormalizerInterface, Nor
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\SplitTransformation', $format, $context);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'TakeDictionaryValueTransformation' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'TakeDictionaryValueTransformation' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'TakeArrayValueTransformation' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'TakeArrayValueTransformation' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'JoinByTransformation' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'JoinByTransformation' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'LookupCacheTransformation' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'LookupCacheTransformation' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'NGramTransformation' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'NGramTransformation' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ProjectionTransformation' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ProjectionTransformation' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'SplitTransformation' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'SplitTransformation' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

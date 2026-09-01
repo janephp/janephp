@@ -38,23 +38,23 @@ class CropActionNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('x', $data)) {
-            $object->setX($data['x']);
+            $object->x = $data['x'];
             unset($data['x']);
         }
         if (\array_key_exists('y', $data)) {
-            $object->setY($data['y']);
+            $object->y = $data['y'];
             unset($data['y']);
         }
         if (\array_key_exists('width', $data)) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
             unset($data['width']);
         }
         if (\array_key_exists('height', $data)) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
             unset($data['height']);
         }
         foreach ($data as $key => $value) {
@@ -67,18 +67,18 @@ class CropActionNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('x') && null !== $data->getX()) {
-            $dataArray['x'] = $data->getX();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('x', get_object_vars($data)) && null !== ($data->x ?? null)) {
+            $dataArray['x'] = $data->x ?? null;
         }
-        if ($data->isInitialized('y') && null !== $data->getY()) {
-            $dataArray['y'] = $data->getY();
+        if (array_key_exists('y', get_object_vars($data)) && null !== ($data->y ?? null)) {
+            $dataArray['y'] = $data->y ?? null;
         }
-        if ($data->isInitialized('width') && null !== $data->getWidth()) {
-            $dataArray['width'] = $data->getWidth();
+        if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
+            $dataArray['width'] = $data->width ?? null;
         }
-        if ($data->isInitialized('height') && null !== $data->getHeight()) {
-            $dataArray['height'] = $data->getHeight();
+        if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
+            $dataArray['height'] = $data->height ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

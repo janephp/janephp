@@ -41,11 +41,11 @@ class AppRouteSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['preserve_path_prefix'] = (bool) $data['preserve_path_prefix'];
         }
         if (\array_key_exists('path', $data)) {
-            $object->setPath($data['path']);
+            $object->path = $data['path'];
             unset($data['path']);
         }
         if (\array_key_exists('preserve_path_prefix', $data)) {
-            $object->setPreservePathPrefix($data['preserve_path_prefix']);
+            $object->preservePathPrefix = $data['preserve_path_prefix'];
             unset($data['preserve_path_prefix']);
         }
         foreach ($data as $key => $value) {
@@ -58,11 +58,11 @@ class AppRouteSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('path') && null !== $data->getPath()) {
-            $dataArray['path'] = $data->getPath();
+        if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
+            $dataArray['path'] = $data->path ?? null;
         }
-        if ($data->isInitialized('preservePathPrefix') && null !== $data->getPreservePathPrefix()) {
-            $dataArray['preserve_path_prefix'] = $data->getPreservePathPrefix();
+        if (array_key_exists('preservePathPrefix', get_object_vars($data)) && null !== ($data->preservePathPrefix ?? null)) {
+            $dataArray['preserve_path_prefix'] = $data->preservePathPrefix ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

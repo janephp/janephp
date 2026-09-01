@@ -4,7 +4,7 @@ namespace Jane\Component\JsonSchema\Guesser;
 
 use Jane\Component\JsonSchema\Registry\Registry;
 
-interface ClassGuesserInterface
+interface ClassGuesserInterface extends GuesserInterface
 {
     /**
      * Guess model.

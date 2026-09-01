@@ -38,19 +38,19 @@ class PartnerAttachmentBgpNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('local_asn', $data)) {
-            $object->setLocalAsn($data['local_asn']);
+            $object->localAsn = $data['local_asn'];
             unset($data['local_asn']);
         }
         if (\array_key_exists('peer_asn', $data)) {
-            $object->setPeerAsn($data['peer_asn']);
+            $object->peerAsn = $data['peer_asn'];
             unset($data['peer_asn']);
         }
         if (\array_key_exists('local_router_ip', $data)) {
-            $object->setLocalRouterIp($data['local_router_ip']);
+            $object->localRouterIp = $data['local_router_ip'];
             unset($data['local_router_ip']);
         }
         if (\array_key_exists('peer_router_ip', $data)) {
-            $object->setPeerRouterIp($data['peer_router_ip']);
+            $object->peerRouterIp = $data['peer_router_ip'];
             unset($data['peer_router_ip']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class PartnerAttachmentBgpNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('localAsn') && null !== $data->getLocalAsn()) {
-            $dataArray['local_asn'] = $data->getLocalAsn();
+        if (array_key_exists('localAsn', get_object_vars($data)) && null !== ($data->localAsn ?? null)) {
+            $dataArray['local_asn'] = $data->localAsn ?? null;
         }
-        if ($data->isInitialized('peerAsn') && null !== $data->getPeerAsn()) {
-            $dataArray['peer_asn'] = $data->getPeerAsn();
+        if (array_key_exists('peerAsn', get_object_vars($data)) && null !== ($data->peerAsn ?? null)) {
+            $dataArray['peer_asn'] = $data->peerAsn ?? null;
         }
-        if ($data->isInitialized('localRouterIp') && null !== $data->getLocalRouterIp()) {
-            $dataArray['local_router_ip'] = $data->getLocalRouterIp();
+        if (array_key_exists('localRouterIp', get_object_vars($data)) && null !== ($data->localRouterIp ?? null)) {
+            $dataArray['local_router_ip'] = $data->localRouterIp ?? null;
         }
-        if ($data->isInitialized('peerRouterIp') && null !== $data->getPeerRouterIp()) {
-            $dataArray['peer_router_ip'] = $data->getPeerRouterIp();
+        if (array_key_exists('peerRouterIp', get_object_vars($data)) && null !== ($data->peerRouterIp ?? null)) {
+            $dataArray['peer_router_ip'] = $data->peerRouterIp ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

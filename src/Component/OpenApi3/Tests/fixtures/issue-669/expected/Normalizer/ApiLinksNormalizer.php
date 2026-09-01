@@ -38,7 +38,7 @@ class ApiLinksNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('pages', $data)) {
-            $object->setPages($this->denormalizer->denormalize($data['pages'], \Jane\Generated\DigitalOcean\Model\ApiPages::class, 'json', $context));
+            $object->pages = $this->denormalizer->denormalize($data['pages'], \Jane\Generated\DigitalOcean\Model\ApiPages::class, 'json', $context);
             unset($data['pages']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiLinksNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('pages') && null !== $data->getPages()) {
-            $dataArray['pages'] = $data->getPages() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPages(), 'json', $context));
+        if (array_key_exists('pages', get_object_vars($data)) && null !== ($data->pages ?? null)) {
+            $dataArray['pages'] = ($data->pages ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pages ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

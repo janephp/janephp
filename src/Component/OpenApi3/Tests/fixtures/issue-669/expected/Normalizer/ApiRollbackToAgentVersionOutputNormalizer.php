@@ -38,11 +38,11 @@ class ApiRollbackToAgentVersionOutputNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('audit_header', $data)) {
-            $object->setAuditHeader($this->denormalizer->denormalize($data['audit_header'], \Jane\Generated\DigitalOcean\Model\ApiAuditHeader::class, 'json', $context));
+            $object->auditHeader = $this->denormalizer->denormalize($data['audit_header'], \Jane\Generated\DigitalOcean\Model\ApiAuditHeader::class, 'json', $context);
             unset($data['audit_header']);
         }
         if (\array_key_exists('version_hash', $data)) {
-            $object->setVersionHash($data['version_hash']);
+            $object->versionHash = $data['version_hash'];
             unset($data['version_hash']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiRollbackToAgentVersionOutputNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('auditHeader') && null !== $data->getAuditHeader()) {
-            $dataArray['audit_header'] = $data->getAuditHeader() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAuditHeader(), 'json', $context));
+        if (array_key_exists('auditHeader', get_object_vars($data)) && null !== ($data->auditHeader ?? null)) {
+            $dataArray['audit_header'] = ($data->auditHeader ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->auditHeader ?? null, 'json', $context));
         }
-        if ($data->isInitialized('versionHash') && null !== $data->getVersionHash()) {
-            $dataArray['version_hash'] = $data->getVersionHash();
+        if (array_key_exists('versionHash', get_object_vars($data)) && null !== ($data->versionHash ?? null)) {
+            $dataArray['version_hash'] = $data->versionHash ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

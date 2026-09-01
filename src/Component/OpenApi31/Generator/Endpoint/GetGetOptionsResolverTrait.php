@@ -25,10 +25,10 @@ trait GetGetOptionsResolverTrait
                 $parameter = $guessClass->resolveParameter($parameter);
             }
 
-            if ($parameter instanceof Parameter && $parameterIn === $parameter->getIn()) {
+            if ($parameter instanceof Parameter && $parameterIn === ($parameter->in ?? null)) {
                 $parameters[] = $parameter;
-                if (\in_array($parameter->getName(), $customResolverKeys)) {
-                    $queryResolverNormalizerStms[] = $this->generateOptionResolverNormalizationStatement($parameter->getName(), $customResolver[$parameter->getName()]);
+                if (\in_array($parameter->name ?? null, $customResolverKeys)) {
+                    $queryResolverNormalizerStms[] = $this->generateOptionResolverNormalizationStatement($parameter->name ?? null, $customResolver[$parameter->name ?? null]);
                 }
             }
         }

@@ -42,11 +42,11 @@ class ApiStatisticsEventNormalizer implements DenormalizerInterface, NormalizerI
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('requestsPerClient', $data) && $data['requestsPerClient'] !== null) {
@@ -54,11 +54,11 @@ class ApiStatisticsEventNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['requestsPerClient'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setRequestsPerClient($values);
+            $object->requestsPerClient = $values;
             unset($data['requestsPerClient']);
         }
         elseif (\array_key_exists('requestsPerClient', $data) && $data['requestsPerClient'] === null) {
-            $object->setRequestsPerClient(null);
+            $object->requestsPerClient = null;
             unset($data['requestsPerClient']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -71,11 +71,11 @@ class ApiStatisticsEventNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('requestsPerClient') && null !== $data->getRequestsPerClient()) {
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('requestsPerClient', get_object_vars($data)) && null !== ($data->requestsPerClient ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getRequestsPerClient() as $key => $value) {
+            foreach ($data->requestsPerClient ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['requestsPerClient'] = $values;

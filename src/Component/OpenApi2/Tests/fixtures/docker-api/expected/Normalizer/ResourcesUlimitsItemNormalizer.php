@@ -41,27 +41,27 @@ class ResourcesUlimitsItemNormalizer implements DenormalizerInterface, Normalize
             $this->validate($data, new \Docker\Api\Validator\ResourcesUlimitsItemConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Soft', $data)) {
-            $object->setSoft($data['Soft']);
+            $object->soft = $data['Soft'];
         }
         if (\array_key_exists('Hard', $data)) {
-            $object->setHard($data['Hard']);
+            $object->hard = $data['Hard'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('soft') && null !== $data->getSoft()) {
-            $dataArray['Soft'] = $data->getSoft();
+        if (array_key_exists('soft', get_object_vars($data)) && null !== ($data->soft ?? null)) {
+            $dataArray['Soft'] = $data->soft ?? null;
         }
-        if ($data->isInitialized('hard') && null !== $data->getHard()) {
-            $dataArray['Hard'] = $data->getHard();
+        if (array_key_exists('hard', get_object_vars($data)) && null !== ($data->hard ?? null)) {
+            $dataArray['Hard'] = $data->hard ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ResourcesUlimitsItemConstraint());

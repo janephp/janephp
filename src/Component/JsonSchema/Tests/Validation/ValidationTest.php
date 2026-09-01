@@ -760,11 +760,11 @@ class ValidationTest extends TestCase
         $normalizer = new FormatObjectNormalizer();
 
         $object = new FormatObject();
-        $object->setEmailFormat('foo@google.com');
-        $object->setHostnameFormat('google.com');
-        $object->setIpv4Format('1.2.3.4');
-        $object->setIpv6Format('2001:db8:0:85a3:0:0:ac1f:8001');
-        $object->setUuidFormat('8309e3b3-0c6c-4ab8-b450-e7564f6d07fd');
+        $object->emailFormat = 'foo@google.com';
+        $object->hostnameFormat = 'google.com';
+        $object->ipv4Format = '1.2.3.4';
+        $object->ipv6Format = '2001:db8:0:85a3:0:0:ac1f:8001';
+        $object->uuidFormat = '8309e3b3-0c6c-4ab8-b450-e7564f6d07fd';
 
         $data = $normalizer->normalize($object, 'json');
         $this->assertIsArray($data);
@@ -776,7 +776,7 @@ class ValidationTest extends TestCase
 
         $caughtException = null;
         try {
-            $object->setEmailFormat('google.com');
+            $object->emailFormat = 'google.com';
             $normalizer->normalize($object, 'json');
         } catch (ValidationException $exception) {
             $caughtException = $exception;
@@ -838,12 +838,12 @@ class ValidationTest extends TestCase
         ], SimpleObject::class);
 
         $this->assertInstanceOf(SimpleObject::class, $simpleObject);
-        $this->assertEquals('Coucou', $simpleObject->getLabel());
-        $this->assertInstanceOf(Shop::class, $simpleObject->getSubModel());
-        $this->assertEquals('Appartement', $simpleObject->getSubModel()->getName());
-        $this->assertInstanceOf(SimpleObjectSubProperty::class, $simpleObject->getSubProperty());
-        $this->assertEquals('string', $simpleObject->getSubProperty()->getStringProperty());
-        $this->assertEquals(10, $simpleObject->getSubProperty()->getIntegerProperty());
+        $this->assertEquals('Coucou', $simpleObject->label);
+        $this->assertInstanceOf(Shop::class, $simpleObject->subModel);
+        $this->assertEquals('Appartement', $simpleObject->subModel->name);
+        $this->assertInstanceOf(SimpleObjectSubProperty::class, $simpleObject->subProperty);
+        $this->assertEquals('string', $simpleObject->subProperty->stringProperty);
+        $this->assertEquals(10, $simpleObject->subProperty->integerProperty);
 
         $caughtException = null;
         try {
@@ -881,7 +881,7 @@ class ValidationTest extends TestCase
         ], RootLevel::class);
 
         $this->assertInstanceOf(RootLevel::class, $rootLevelObject);
-        $this->assertEquals('finish', $rootLevelObject->getSubLevel1()->getSubLevel2()->getEnd());
+        $this->assertEquals('finish', $rootLevelObject->subLevel1->subLevel2->end);
 
         $caughtException = null;
         try {
@@ -951,7 +951,7 @@ class ValidationTest extends TestCase
         ], VerifyNullableStringPropertyWithMinLengthValidatesCorrectly::class);
 
         self::assertInstanceOf(VerifyNullableStringPropertyWithMinLengthValidatesCorrectly::class, $data);
-        self::assertNull($data->getName());
+        self::assertNull($data->name);
     }
 
     private function arrayItemsValidation(): void

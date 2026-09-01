@@ -42,16 +42,16 @@ class SystemControlPlaneInterfaceListNormalizer implements DenormalizerInterface
             foreach ($data['controlPlaneInterfaces'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemControlPlaneInterface::class, 'json', $context);
             }
-            $object->setControlPlaneInterfaces($values);
+            $object->controlPlaneInterfaces = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('controlPlaneInterfaces') && null !== $data->getControlPlaneInterfaces()) {
+        if (array_key_exists('controlPlaneInterfaces', get_object_vars($data)) && null !== ($data->controlPlaneInterfaces ?? null)) {
             $values = [];
-            foreach ($data->getControlPlaneInterfaces() as $value) {
+            foreach ($data->controlPlaneInterfaces ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['controlPlaneInterfaces'] = $values;

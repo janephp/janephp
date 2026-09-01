@@ -38,7 +38,7 @@ class ResponseDatabaseReplicaNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('replica', $data)) {
-            $object->setReplica($this->denormalizer->denormalize($data['replica'], \Jane\Generated\DigitalOcean\Model\DatabaseReplicaRead::class, 'json', $context));
+            $object->replica = $this->denormalizer->denormalize($data['replica'], \Jane\Generated\DigitalOcean\Model\DatabaseReplicaRead::class, 'json', $context);
             unset($data['replica']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseDatabaseReplicaNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('replica') && null !== $data->getReplica()) {
-            $dataArray['replica'] = $data->getReplica() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getReplica(), 'json', $context));
+        if (array_key_exists('replica', get_object_vars($data)) && null !== ($data->replica ?? null)) {
+            $dataArray['replica'] = ($data->replica ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->replica ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

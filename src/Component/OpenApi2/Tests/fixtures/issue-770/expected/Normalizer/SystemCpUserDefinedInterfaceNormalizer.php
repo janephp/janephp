@@ -38,51 +38,51 @@ class SystemCpUserDefinedInterfaceNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('physicalInterface', $data)) {
-            $object->setPhysicalInterface($data['physicalInterface']);
+            $object->physicalInterface = $data['physicalInterface'];
         }
         if (\array_key_exists('service', $data)) {
-            $object->setService($data['service']);
+            $object->service = $data['service'];
         }
         if (\array_key_exists('ipAddress', $data)) {
-            $object->setIpAddress($data['ipAddress']);
+            $object->ipAddress = $data['ipAddress'];
         }
         if (\array_key_exists('subnetMask', $data)) {
-            $object->setSubnetMask($data['subnetMask']);
+            $object->subnetMask = $data['subnetMask'];
         }
         if (\array_key_exists('gateway', $data)) {
-            $object->setGateway($data['gateway']);
+            $object->gateway = $data['gateway'];
         }
         if (\array_key_exists('vlan', $data)) {
-            $object->setVlan($data['vlan']);
+            $object->vlan = $data['vlan'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('physicalInterface') && null !== $data->getPhysicalInterface()) {
-            $dataArray['physicalInterface'] = $data->getPhysicalInterface();
+        if (array_key_exists('physicalInterface', get_object_vars($data)) && null !== ($data->physicalInterface ?? null)) {
+            $dataArray['physicalInterface'] = $data->physicalInterface ?? null;
         }
-        if ($data->isInitialized('service') && null !== $data->getService()) {
-            $dataArray['service'] = $data->getService();
+        if (array_key_exists('service', get_object_vars($data)) && null !== ($data->service ?? null)) {
+            $dataArray['service'] = $data->service ?? null;
         }
-        if ($data->isInitialized('ipAddress') && null !== $data->getIpAddress()) {
-            $dataArray['ipAddress'] = $data->getIpAddress();
+        if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
+            $dataArray['ipAddress'] = $data->ipAddress ?? null;
         }
-        if ($data->isInitialized('subnetMask') && null !== $data->getSubnetMask()) {
-            $dataArray['subnetMask'] = $data->getSubnetMask();
+        if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
+            $dataArray['subnetMask'] = $data->subnetMask ?? null;
         }
-        if ($data->isInitialized('gateway') && null !== $data->getGateway()) {
-            $dataArray['gateway'] = $data->getGateway();
+        if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
+            $dataArray['gateway'] = $data->gateway ?? null;
         }
-        if ($data->isInitialized('vlan') && null !== $data->getVlan()) {
-            $dataArray['vlan'] = $data->getVlan();
+        if (array_key_exists('vlan', get_object_vars($data)) && null !== ($data->vlan ?? null)) {
+            $dataArray['vlan'] = $data->vlan ?? null;
         }
         return $dataArray;
     }

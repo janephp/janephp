@@ -8,133 +8,33 @@ class FieldOverwriteSingleTagbox extends FieldOverwriteBase implements Additiona
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * An optional filter to limit the list items: this value will overwrite the existing Filter value specified in the parent schema  if
      * OverwriteFilter is set to true.
      *
      * @var FilterBase|null
      */
-    protected $filter;
+    public ?FilterBase $filter;
     /**
      * Enable the overwriting of the Filter property of the field specified by the Id property.
      *
      * @var bool
      */
-    protected $overwriteFilter;
+    public bool $overwriteFilter;
     /**
      * Json serialized template used for creating new list item: this value will overwrite the existing ListItemCreateTemplate value specified in the parent schema  if
      * OverwriteListItemCreateTemplate is set to true.
      *
      * @var string|null
      */
-    protected $listItemCreateTemplate;
+    public ?string $listItemCreateTemplate;
     /**
      * Enable the overwriting of the ListItemCreateTemplate property of the field specified by the Id property.
      *
      * @var bool
      */
-    protected $overwriteListItemCreateTemplate;
-    /**
-     * An optional filter to limit the list items: this value will overwrite the existing Filter value specified in the parent schema  if
-     * OverwriteFilter is set to true.
-     *
-     * @return FilterBase|null
-     */
-    public function getFilter(): ?FilterBase
-    {
-        return $this->filter;
-    }
-    /**
-    * An optional filter to limit the list items: this value will overwrite the existing Filter value specified in the parent schema  if
-    OverwriteFilter is set to true.
-    *
-    * @param FilterBase|null $filter
-    *
-    * @return self
-    */
-    public function setFilter(?FilterBase $filter): self
-    {
-        $this->initialized['filter'] = true;
-        $this->filter = $filter;
-        return $this;
-    }
-    /**
-     * Enable the overwriting of the Filter property of the field specified by the Id property.
-     *
-     * @return bool
-     */
-    public function getOverwriteFilter(): bool
-    {
-        return $this->overwriteFilter;
-    }
-    /**
-     * Enable the overwriting of the Filter property of the field specified by the Id property.
-     *
-     * @param bool $overwriteFilter
-     *
-     * @return self
-     */
-    public function setOverwriteFilter(bool $overwriteFilter): self
-    {
-        $this->initialized['overwriteFilter'] = true;
-        $this->overwriteFilter = $overwriteFilter;
-        return $this;
-    }
-    /**
-     * Json serialized template used for creating new list item: this value will overwrite the existing ListItemCreateTemplate value specified in the parent schema  if
-     * OverwriteListItemCreateTemplate is set to true.
-     *
-     * @return string|null
-     */
-    public function getListItemCreateTemplate(): ?string
-    {
-        return $this->listItemCreateTemplate;
-    }
-    /**
-    * Json serialized template used for creating new list item: this value will overwrite the existing ListItemCreateTemplate value specified in the parent schema  if
-    OverwriteListItemCreateTemplate is set to true.
-    *
-    * @param string|null $listItemCreateTemplate
-    *
-    * @return self
-    */
-    public function setListItemCreateTemplate(?string $listItemCreateTemplate): self
-    {
-        $this->initialized['listItemCreateTemplate'] = true;
-        $this->listItemCreateTemplate = $listItemCreateTemplate;
-        return $this;
-    }
-    /**
-     * Enable the overwriting of the ListItemCreateTemplate property of the field specified by the Id property.
-     *
-     * @return bool
-     */
-    public function getOverwriteListItemCreateTemplate(): bool
-    {
-        return $this->overwriteListItemCreateTemplate;
-    }
-    /**
-     * Enable the overwriting of the ListItemCreateTemplate property of the field specified by the Id property.
-     *
-     * @param bool $overwriteListItemCreateTemplate
-     *
-     * @return self
-     */
-    public function setOverwriteListItemCreateTemplate(bool $overwriteListItemCreateTemplate): self
-    {
-        $this->initialized['overwriteListItemCreateTemplate'] = true;
-        $this->overwriteListItemCreateTemplate = $overwriteListItemCreateTemplate;
-        return $this;
-    }
+    public bool $overwriteListItemCreateTemplate;
     public function definedProperties(): array
     {
-        return ['filter' => ['filter', 'getFilter', 'setFilter'], 'overwriteFilter' => ['overwriteFilter', 'getOverwriteFilter', 'setOverwriteFilter'], 'listItemCreateTemplate' => ['listItemCreateTemplate', 'getListItemCreateTemplate', 'setListItemCreateTemplate'], 'overwriteListItemCreateTemplate' => ['overwriteListItemCreateTemplate', 'getOverwriteListItemCreateTemplate', 'setOverwriteListItemCreateTemplate']];
+        return ['filter' => 'filter', 'overwriteFilter' => 'overwriteFilter', 'listItemCreateTemplate' => 'listItemCreateTemplate', 'overwriteListItemCreateTemplate' => 'overwriteListItemCreateTemplate'];
     }
 }

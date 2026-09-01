@@ -50,25 +50,25 @@ class ContentPermissionSetDelete extends \PicturePark\API\Runtime\Client\BaseEnd
         if (200 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetDeleteBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\ContentPermissionSetDeleteUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetDeleteNotFoundException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\ContentPermissionSetDeleteMethodNotAllowedException($response);
         }
-        if (is_null($contentType) === false && (409 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (409 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetDeleteConflictException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\ContentPermissionSetDeleteTooManyRequestsException($response);
         }
-        if (is_null($contentType) === false && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetDeleteInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
     }

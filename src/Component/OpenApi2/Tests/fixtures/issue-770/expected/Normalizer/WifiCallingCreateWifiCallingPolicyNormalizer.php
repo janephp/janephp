@@ -38,39 +38,39 @@ class WifiCallingCreateWifiCallingPolicyNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         if (\array_key_exists('epdgs', $data)) {
             $values = [];
             foreach ($data['epdgs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingEpdg::class, 'json', $context);
             }
-            $object->setEpdgs($values);
+            $object->epdgs = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['priority'] = $data->getPriority();
+        $dataArray['priority'] = $data->priority ?? null;
         $values = [];
-        foreach ($data->getEpdgs() as $value) {
+        foreach ($data->epdgs ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['epdgs'] = $values;

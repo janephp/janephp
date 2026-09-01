@@ -38,11 +38,11 @@ class GbCompanyReportExampleResponseReportNegativeInformationNormalizer implemen
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ccjSummary', $data)) {
-            $object->setCcjSummary($this->denormalizer->denormalize($data['ccjSummary'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCcjSummary::class, 'json', $context));
+            $object->ccjSummary = $this->denormalizer->denormalize($data['ccjSummary'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCcjSummary::class, 'json', $context);
             unset($data['ccjSummary']);
         }
         if (\array_key_exists('countyCourtJudgements', $data)) {
-            $object->setCountyCourtJudgements($this->denormalizer->denormalize($data['countyCourtJudgements'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgements::class, 'json', $context));
+            $object->countyCourtJudgements = $this->denormalizer->denormalize($data['countyCourtJudgements'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgements::class, 'json', $context);
             unset($data['countyCourtJudgements']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class GbCompanyReportExampleResponseReportNegativeInformationNormalizer implemen
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ccjSummary') && null !== $data->getCcjSummary()) {
-            $dataArray['ccjSummary'] = $data->getCcjSummary() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCcjSummary(), 'json', $context));
+        if (array_key_exists('ccjSummary', get_object_vars($data)) && null !== ($data->ccjSummary ?? null)) {
+            $dataArray['ccjSummary'] = ($data->ccjSummary ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->ccjSummary ?? null, 'json', $context));
         }
-        if ($data->isInitialized('countyCourtJudgements') && null !== $data->getCountyCourtJudgements()) {
-            $dataArray['countyCourtJudgements'] = $data->getCountyCourtJudgements() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCountyCourtJudgements(), 'json', $context));
+        if (array_key_exists('countyCourtJudgements', get_object_vars($data)) && null !== ($data->countyCourtJudgements ?? null)) {
+            $dataArray['countyCourtJudgements'] = ($data->countyCourtJudgements ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->countyCourtJudgements ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

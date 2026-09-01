@@ -44,65 +44,65 @@ class TaggingOptionsBaseNormalizer implements DenormalizerInterface, NormalizerI
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\SimulatedTaggingOptions', $format, $context);
         }
         if (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] !== null) {
-            $object->setTagOutputFormatId($data['tagOutputFormatId']);
+            $object->tagOutputFormatId = $data['tagOutputFormatId'];
         }
         elseif (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] === null) {
-            $object->setTagOutputFormatId(null);
+            $object->tagOutputFormatId = null;
         }
         if (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] !== null) {
-            $object->setKeywordLookupCacheName($data['keywordLookupCacheName']);
+            $object->keywordLookupCacheName = $data['keywordLookupCacheName'];
         }
         elseif (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] === null) {
-            $object->setKeywordLookupCacheName(null);
+            $object->keywordLookupCacheName = null;
         }
         if (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] !== null) {
-            $object->setTaggingLayerId($data['taggingLayerId']);
+            $object->taggingLayerId = $data['taggingLayerId'];
         }
         elseif (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] === null) {
-            $object->setTaggingLayerId(null);
+            $object->taggingLayerId = null;
         }
         if (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] !== null) {
-            $object->setFoundTagsFieldId($data['foundTagsFieldId']);
+            $object->foundTagsFieldId = $data['foundTagsFieldId'];
         }
         elseif (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] === null) {
-            $object->setFoundTagsFieldId(null);
+            $object->foundTagsFieldId = null;
         }
         if (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] !== null) {
-            $object->setMissingKeywordsFieldId($data['missingKeywordsFieldId']);
+            $object->missingKeywordsFieldId = $data['missingKeywordsFieldId'];
         }
         elseif (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] === null) {
-            $object->setMissingKeywordsFieldId(null);
+            $object->missingKeywordsFieldId = null;
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'ClarifaiTaggingOptions' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ClarifaiTaggingOptions' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'SimulatedTaggingOptions' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'SimulatedTaggingOptions' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('tagOutputFormatId') && null !== $data->getTagOutputFormatId()) {
-            $dataArray['tagOutputFormatId'] = $data->getTagOutputFormatId();
+        if (array_key_exists('tagOutputFormatId', get_object_vars($data)) && null !== ($data->tagOutputFormatId ?? null)) {
+            $dataArray['tagOutputFormatId'] = $data->tagOutputFormatId ?? null;
         }
-        if ($data->isInitialized('keywordLookupCacheName') && null !== $data->getKeywordLookupCacheName()) {
-            $dataArray['keywordLookupCacheName'] = $data->getKeywordLookupCacheName();
+        if (array_key_exists('keywordLookupCacheName', get_object_vars($data)) && null !== ($data->keywordLookupCacheName ?? null)) {
+            $dataArray['keywordLookupCacheName'] = $data->keywordLookupCacheName ?? null;
         }
-        if ($data->isInitialized('taggingLayerId') && null !== $data->getTaggingLayerId()) {
-            $dataArray['taggingLayerId'] = $data->getTaggingLayerId();
+        if (array_key_exists('taggingLayerId', get_object_vars($data)) && null !== ($data->taggingLayerId ?? null)) {
+            $dataArray['taggingLayerId'] = $data->taggingLayerId ?? null;
         }
-        if ($data->isInitialized('foundTagsFieldId') && null !== $data->getFoundTagsFieldId()) {
-            $dataArray['foundTagsFieldId'] = $data->getFoundTagsFieldId();
+        if (array_key_exists('foundTagsFieldId', get_object_vars($data)) && null !== ($data->foundTagsFieldId ?? null)) {
+            $dataArray['foundTagsFieldId'] = $data->foundTagsFieldId ?? null;
         }
-        if ($data->isInitialized('missingKeywordsFieldId') && null !== $data->getMissingKeywordsFieldId()) {
-            $dataArray['missingKeywordsFieldId'] = $data->getMissingKeywordsFieldId();
+        if (array_key_exists('missingKeywordsFieldId', get_object_vars($data)) && null !== ($data->missingKeywordsFieldId ?? null)) {
+            $dataArray['missingKeywordsFieldId'] = $data->missingKeywordsFieldId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

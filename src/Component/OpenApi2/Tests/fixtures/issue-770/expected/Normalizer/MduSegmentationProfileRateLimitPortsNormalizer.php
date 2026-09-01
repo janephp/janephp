@@ -38,21 +38,21 @@ class MduSegmentationProfileRateLimitPortsNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ports', $data)) {
-            $object->setPorts($data['ports']);
+            $object->ports = $data['ports'];
         }
         if (\array_key_exists('limit', $data)) {
-            $object->setLimit($data['limit']);
+            $object->limit = $data['limit'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ports') && null !== $data->getPorts()) {
-            $dataArray['ports'] = $data->getPorts();
+        if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
+            $dataArray['ports'] = $data->ports ?? null;
         }
-        if ($data->isInitialized('limit') && null !== $data->getLimit()) {
-            $dataArray['limit'] = $data->getLimit();
+        if (array_key_exists('limit', get_object_vars($data)) && null !== ($data->limit ?? null)) {
+            $dataArray['limit'] = $data->limit ?? null;
         }
         return $dataArray;
     }

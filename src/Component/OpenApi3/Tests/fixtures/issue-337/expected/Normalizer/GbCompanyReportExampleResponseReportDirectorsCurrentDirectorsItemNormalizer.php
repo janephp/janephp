@@ -38,39 +38,39 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemNormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('title', $data)) {
-            $object->setTitle($data['title']);
+            $object->title = $data['title'];
             unset($data['title']);
         }
         if (\array_key_exists('firstName', $data)) {
-            $object->setFirstName($data['firstName']);
+            $object->firstName = $data['firstName'];
             unset($data['firstName']);
         }
         if (\array_key_exists('surname', $data)) {
-            $object->setSurname($data['surname']);
+            $object->surname = $data['surname'];
             unset($data['surname']);
         }
         if (\array_key_exists('address', $data)) {
-            $object->setAddress($this->denormalizer->denormalize($data['address'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemAddress::class, 'json', $context));
+            $object->address = $this->denormalizer->denormalize($data['address'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemAddress::class, 'json', $context);
             unset($data['address']);
         }
         if (\array_key_exists('gender', $data)) {
-            $object->setGender($data['gender']);
+            $object->gender = $data['gender'];
             unset($data['gender']);
         }
         if (\array_key_exists('dateOfBirth', $data)) {
-            $object->setDateOfBirth($data['dateOfBirth']);
+            $object->dateOfBirth = $data['dateOfBirth'];
             unset($data['dateOfBirth']);
         }
         if (\array_key_exists('directorType', $data)) {
-            $object->setDirectorType($data['directorType']);
+            $object->directorType = $data['directorType'];
             unset($data['directorType']);
         }
         if (\array_key_exists('positions', $data)) {
@@ -78,7 +78,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemNormalize
             foreach ($data['positions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem::class, 'json', $context);
             }
-            $object->setPositions($values);
+            $object->positions = $values;
             unset($data['positions']);
         }
         foreach ($data as $key => $value_1) {
@@ -91,36 +91,36 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemNormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
-            $dataArray['title'] = $data->getTitle();
+        if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title ?? null;
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $dataArray['firstName'] = $data->getFirstName();
+        if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
+            $dataArray['firstName'] = $data->firstName ?? null;
         }
-        if ($data->isInitialized('surname') && null !== $data->getSurname()) {
-            $dataArray['surname'] = $data->getSurname();
+        if (array_key_exists('surname', get_object_vars($data)) && null !== ($data->surname ?? null)) {
+            $dataArray['surname'] = $data->surname ?? null;
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $data->getAddress() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAddress(), 'json', $context));
+        if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
+            $dataArray['address'] = ($data->address ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
         }
-        if ($data->isInitialized('gender') && null !== $data->getGender()) {
-            $dataArray['gender'] = $data->getGender();
+        if (array_key_exists('gender', get_object_vars($data)) && null !== ($data->gender ?? null)) {
+            $dataArray['gender'] = $data->gender ?? null;
         }
-        if ($data->isInitialized('dateOfBirth') && null !== $data->getDateOfBirth()) {
-            $dataArray['dateOfBirth'] = $data->getDateOfBirth();
+        if (array_key_exists('dateOfBirth', get_object_vars($data)) && null !== ($data->dateOfBirth ?? null)) {
+            $dataArray['dateOfBirth'] = $data->dateOfBirth ?? null;
         }
-        if ($data->isInitialized('directorType') && null !== $data->getDirectorType()) {
-            $dataArray['directorType'] = $data->getDirectorType();
+        if (array_key_exists('directorType', get_object_vars($data)) && null !== ($data->directorType ?? null)) {
+            $dataArray['directorType'] = $data->directorType ?? null;
         }
-        if ($data->isInitialized('positions') && null !== $data->getPositions()) {
+        if (array_key_exists('positions', get_object_vars($data)) && null !== ($data->positions ?? null)) {
             $values = [];
-            foreach ($data->getPositions() as $value) {
+            foreach ($data->positions ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['positions'] = $values;

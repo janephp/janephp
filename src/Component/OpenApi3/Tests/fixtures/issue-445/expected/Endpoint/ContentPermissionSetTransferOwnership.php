@@ -55,25 +55,25 @@ class ContentPermissionSetTransferOwnership extends \PicturePark\API\Runtime\Cli
         if (200 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipNotFoundException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipMethodNotAllowedException($response);
         }
-        if (is_null($contentType) === false && (409 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (409 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipConflictException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipTooManyRequestsException($response);
         }
-        if (is_null($contentType) === false && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
     }

@@ -38,7 +38,7 @@ class VectorFormatBaseNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class VectorFormatBaseNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

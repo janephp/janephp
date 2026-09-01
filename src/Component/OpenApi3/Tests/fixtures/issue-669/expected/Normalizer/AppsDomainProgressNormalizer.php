@@ -46,7 +46,7 @@ class AppsDomainProgressNormalizer implements DenormalizerInterface, NormalizerI
                 }
                 $values[] = $values_1;
             }
-            $object->setSteps($values);
+            $object->steps = $values;
             unset($data['steps']);
         }
         foreach ($data as $key_1 => $value_2) {
@@ -59,9 +59,9 @@ class AppsDomainProgressNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('steps') && null !== $data->getSteps()) {
+        if (array_key_exists('steps', get_object_vars($data)) && null !== ($data->steps ?? null)) {
             $values = [];
-            foreach ($data->getSteps() as $value) {
+            foreach ($data->steps ?? null as $value) {
                 $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;

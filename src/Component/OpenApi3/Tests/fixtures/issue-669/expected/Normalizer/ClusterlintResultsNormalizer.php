@@ -38,7 +38,7 @@ class ClusterlintResultsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('run_id', $data)) {
-            $object->setRunId($data['run_id']);
+            $object->runId = $data['run_id'];
             unset($data['run_id']);
         }
         if (\array_key_exists('requested_at', $data)) {
@@ -46,7 +46,7 @@ class ClusterlintResultsNormalizer implements DenormalizerInterface, NormalizerI
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['requested_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setRequestedAt($date);
+            $object->requestedAt = $date;
             unset($data['requested_at']);
         }
         if (\array_key_exists('completed_at', $data)) {
@@ -54,7 +54,7 @@ class ClusterlintResultsNormalizer implements DenormalizerInterface, NormalizerI
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCompletedAt($date_1);
+            $object->completedAt = $date_1;
             unset($data['completed_at']);
         }
         if (\array_key_exists('diagnostics', $data)) {
@@ -62,7 +62,7 @@ class ClusterlintResultsNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['diagnostics'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ClusterlintResultsDiagnosticsItem::class, 'json', $context);
             }
-            $object->setDiagnostics($values);
+            $object->diagnostics = $values;
             unset($data['diagnostics']);
         }
         foreach ($data as $key => $value_1) {
@@ -75,18 +75,18 @@ class ClusterlintResultsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('runId') && null !== $data->getRunId()) {
-            $dataArray['run_id'] = $data->getRunId();
+        if (array_key_exists('runId', get_object_vars($data)) && null !== ($data->runId ?? null)) {
+            $dataArray['run_id'] = $data->runId ?? null;
         }
-        if ($data->isInitialized('requestedAt') && null !== $data->getRequestedAt()) {
-            $dataArray['requested_at'] = $data->getRequestedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('requestedAt', get_object_vars($data)) && null !== ($data->requestedAt ?? null)) {
+            $dataArray['requested_at'] = ($data->requestedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('completedAt') && null !== $data->getCompletedAt()) {
-            $dataArray['completed_at'] = $data->getCompletedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
+            $dataArray['completed_at'] = ($data->completedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('diagnostics') && null !== $data->getDiagnostics()) {
+        if (array_key_exists('diagnostics', get_object_vars($data)) && null !== ($data->diagnostics ?? null)) {
             $values = [];
-            foreach ($data->getDiagnostics() as $value) {
+            foreach ($data->diagnostics ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['diagnostics'] = $values;

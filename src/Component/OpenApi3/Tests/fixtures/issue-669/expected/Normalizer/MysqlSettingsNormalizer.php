@@ -38,7 +38,7 @@ class MysqlSettingsNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('auth_plugin', $data)) {
-            $object->setAuthPlugin($data['auth_plugin']);
+            $object->authPlugin = $data['auth_plugin'];
             unset($data['auth_plugin']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class MysqlSettingsNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['auth_plugin'] = $data->getAuthPlugin();
+        $dataArray['auth_plugin'] = $data->authPlugin ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

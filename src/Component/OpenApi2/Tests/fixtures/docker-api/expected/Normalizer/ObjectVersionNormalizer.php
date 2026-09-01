@@ -41,15 +41,15 @@ class ObjectVersionNormalizer implements DenormalizerInterface, NormalizerInterf
             $this->validate($data, new \Docker\Api\Validator\ObjectVersionConstraint());
         }
         if (\array_key_exists('Index', $data)) {
-            $object->setIndex($data['Index']);
+            $object->index = $data['Index'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('index') && null !== $data->getIndex()) {
-            $dataArray['Index'] = $data->getIndex();
+        if (array_key_exists('index', get_object_vars($data)) && null !== ($data->index ?? null)) {
+            $dataArray['Index'] = $data->index ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ObjectVersionConstraint());

@@ -14,7 +14,7 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
 {
     public function supportObject($object): bool
     {
-        return ($object instanceof ApiKeySecurity || $object instanceof BasicAuthenticationSecurity) && \in_array($object->getType(), SecuritySchemeGuess::getAvailableTypes());
+        return ($object instanceof ApiKeySecurity || $object instanceof BasicAuthenticationSecurity) && \in_array($object->type ?? null, SecuritySchemeGuess::getAvailableTypes());
     }
 
     /**
@@ -22,9 +22,9 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        if (SecuritySchemeGuess::TYPE_API_KEY === $object->getType()) {
-            $securitySchemeGuess = new SecuritySchemeGuess($name, $object, $object->getName(), $object->getType());
-            $securitySchemeGuess->setIn($object->getIn());
+        if (SecuritySchemeGuess::TYPE_API_KEY === ($object->type ?? null)) {
+            $securitySchemeGuess = new SecuritySchemeGuess($name, $object, $object->name, $object->type ?? null);
+            $securitySchemeGuess->setIn($object->in ?? null);
 
             /** @var Schema $schema */
             $schema = $registry->getSchema($reference);

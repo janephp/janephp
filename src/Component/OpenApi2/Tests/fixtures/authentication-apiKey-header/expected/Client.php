@@ -13,7 +13,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\GetFoo(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];
         if (null === $httpClient) {

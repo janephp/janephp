@@ -38,15 +38,15 @@ class AudioStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
-            $object->setExtension($data['extension']);
+            $object->extension = $data['extension'];
             unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
-            $object->setExtension(null);
+            $object->extension = null;
             unset($data['extension']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class AudioStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
-            $dataArray['extension'] = $data->getExtension();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
+            $dataArray['extension'] = $data->extension ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

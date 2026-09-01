@@ -38,53 +38,53 @@ class ToolSpeedFlexNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('tool', $data)) {
-            $object->setTool($data['tool']);
+            $object->tool = $data['tool'];
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
         }
         if (\array_key_exists('model', $data)) {
-            $object->setModel($data['model']);
+            $object->model = $data['model'];
         }
         if (\array_key_exists('clientIp', $data)) {
-            $object->setClientIp($data['clientIp']);
+            $object->clientIp = $data['clientIp'];
         }
         if (\array_key_exists('clientMac', $data)) {
-            $object->setClientMac($data['clientMac']);
+            $object->clientMac = $data['clientMac'];
         }
         if (\array_key_exists('serverIp', $data)) {
-            $object->setServerIp($data['serverIp']);
+            $object->serverIp = $data['serverIp'];
         }
         if (\array_key_exists('serverMac', $data)) {
-            $object->setServerMac($data['serverMac']);
+            $object->serverMac = $data['serverMac'];
         }
         if (\array_key_exists('syspmtu', $data)) {
-            $object->setSyspmtu($data['syspmtu']);
+            $object->syspmtu = $data['syspmtu'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['tool'] = $data->getTool();
-        $dataArray['protocol'] = $data->getProtocol();
-        if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $data->getModel();
+        $dataArray['tool'] = $data->tool ?? null;
+        $dataArray['protocol'] = $data->protocol ?? null;
+        if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
+            $dataArray['model'] = $data->model ?? null;
         }
-        if ($data->isInitialized('clientIp') && null !== $data->getClientIp()) {
-            $dataArray['clientIp'] = $data->getClientIp();
+        if (array_key_exists('clientIp', get_object_vars($data)) && null !== ($data->clientIp ?? null)) {
+            $dataArray['clientIp'] = $data->clientIp ?? null;
         }
-        if ($data->isInitialized('clientMac') && null !== $data->getClientMac()) {
-            $dataArray['clientMac'] = $data->getClientMac();
+        if (array_key_exists('clientMac', get_object_vars($data)) && null !== ($data->clientMac ?? null)) {
+            $dataArray['clientMac'] = $data->clientMac ?? null;
         }
-        if ($data->isInitialized('serverIp') && null !== $data->getServerIp()) {
-            $dataArray['serverIp'] = $data->getServerIp();
+        if (array_key_exists('serverIp', get_object_vars($data)) && null !== ($data->serverIp ?? null)) {
+            $dataArray['serverIp'] = $data->serverIp ?? null;
         }
-        if ($data->isInitialized('serverMac') && null !== $data->getServerMac()) {
-            $dataArray['serverMac'] = $data->getServerMac();
+        if (array_key_exists('serverMac', get_object_vars($data)) && null !== ($data->serverMac ?? null)) {
+            $dataArray['serverMac'] = $data->serverMac ?? null;
         }
-        if ($data->isInitialized('syspmtu') && null !== $data->getSyspmtu()) {
-            $dataArray['syspmtu'] = $data->getSyspmtu();
+        if (array_key_exists('syspmtu', get_object_vars($data)) && null !== ($data->syspmtu ?? null)) {
+            $dataArray['syspmtu'] = $data->syspmtu ?? null;
         }
         return $dataArray;
     }

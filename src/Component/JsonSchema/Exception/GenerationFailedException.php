@@ -2,6 +2,8 @@
 
 namespace Jane\Component\JsonSchema\Exception;
 
+use Jane\Component\JsonSchemaRuntime\Exception\JaneExceptionInterface;
+
 /**
  * Safety net for unexpected errors raised during the generation phase.
  *

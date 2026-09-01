@@ -38,7 +38,7 @@ class AppWorkerSpecTerminationNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('grace_period_seconds', $data)) {
-            $object->setGracePeriodSeconds($data['grace_period_seconds']);
+            $object->gracePeriodSeconds = $data['grace_period_seconds'];
             unset($data['grace_period_seconds']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppWorkerSpecTerminationNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('gracePeriodSeconds') && null !== $data->getGracePeriodSeconds()) {
-            $dataArray['grace_period_seconds'] = $data->getGracePeriodSeconds();
+        if (array_key_exists('gracePeriodSeconds', get_object_vars($data)) && null !== ($data->gracePeriodSeconds ?? null)) {
+            $dataArray['grace_period_seconds'] = $data->gracePeriodSeconds ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

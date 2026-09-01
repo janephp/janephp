@@ -41,21 +41,21 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
             $this->validate($data, new \Docker\Api\Validator\ServiceJobStatusConstraint());
         }
         if (\array_key_exists('JobIteration', $data)) {
-            $object->setJobIteration($this->denormalizer->denormalize($data['JobIteration'], \Docker\Api\Model\ObjectVersion::class, 'json', $context));
+            $object->jobIteration = $this->denormalizer->denormalize($data['JobIteration'], \Docker\Api\Model\ObjectVersion::class, 'json', $context);
         }
         if (\array_key_exists('LastExecution', $data)) {
-            $object->setLastExecution($data['LastExecution']);
+            $object->lastExecution = $data['LastExecution'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('jobIteration') && null !== $data->getJobIteration()) {
-            $dataArray['JobIteration'] = $data->getJobIteration() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getJobIteration(), 'json', $context));
+        if (array_key_exists('jobIteration', get_object_vars($data)) && null !== ($data->jobIteration ?? null)) {
+            $dataArray['JobIteration'] = ($data->jobIteration ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->jobIteration ?? null, 'json', $context));
         }
-        if ($data->isInitialized('lastExecution') && null !== $data->getLastExecution()) {
-            $dataArray['LastExecution'] = $data->getLastExecution();
+        if (array_key_exists('lastExecution', get_object_vars($data)) && null !== ($data->lastExecution ?? null)) {
+            $dataArray['LastExecution'] = $data->lastExecution ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceJobStatusConstraint());

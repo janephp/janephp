@@ -38,39 +38,39 @@ class ProfileModifyBridgeProfileNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('dhcpRelay', $data)) {
-            $object->setDhcpRelay($this->denormalizer->denormalize($data['dhcpRelay'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpRelayNoRelayTunnel::class, 'json', $context));
+            $object->dhcpRelay = $this->denormalizer->denormalize($data['dhcpRelay'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpRelayNoRelayTunnel::class, 'json', $context);
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('dhcpRelay') && null !== $data->getDhcpRelay()) {
-            $dataArray['dhcpRelay'] = $data->getDhcpRelay() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDhcpRelay(), 'json', $context));
+        if (array_key_exists('dhcpRelay', get_object_vars($data)) && null !== ($data->dhcpRelay ?? null)) {
+            $dataArray['dhcpRelay'] = ($data->dhcpRelay ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->dhcpRelay ?? null, 'json', $context));
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
         return $dataArray;
     }

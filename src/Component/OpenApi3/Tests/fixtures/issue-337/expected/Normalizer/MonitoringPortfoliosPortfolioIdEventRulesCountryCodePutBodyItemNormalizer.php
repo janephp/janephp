@@ -38,23 +38,23 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ruleCode', $data)) {
-            $object->setRuleCode($data['ruleCode']);
+            $object->ruleCode = $data['ruleCode'];
             unset($data['ruleCode']);
         }
         if (\array_key_exists('isActive', $data)) {
-            $object->setIsActive($data['isActive']);
+            $object->isActive = $data['isActive'];
             unset($data['isActive']);
         }
         if (\array_key_exists('param0', $data)) {
-            $object->setParam0($data['param0']);
+            $object->param0 = $data['param0'];
             unset($data['param0']);
         }
         if (\array_key_exists('param1', $data)) {
-            $object->setParam1($data['param1']);
+            $object->param1 = $data['param1'];
             unset($data['param1']);
         }
         if (\array_key_exists('param2...', $data)) {
-            $object->setParam2($data['param2...']);
+            $object->param2 = $data['param2...'];
             unset($data['param2...']);
         }
         foreach ($data as $key => $value) {
@@ -67,16 +67,16 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ruleCode'] = $data->getRuleCode();
-        $dataArray['isActive'] = $data->getIsActive();
-        if ($data->isInitialized('param0') && null !== $data->getParam0()) {
-            $dataArray['param0'] = $data->getParam0();
+        $dataArray['ruleCode'] = $data->ruleCode ?? null;
+        $dataArray['isActive'] = $data->isActive ?? null;
+        if (array_key_exists('param0', get_object_vars($data)) && null !== ($data->param0 ?? null)) {
+            $dataArray['param0'] = $data->param0 ?? null;
         }
-        if ($data->isInitialized('param1') && null !== $data->getParam1()) {
-            $dataArray['param1'] = $data->getParam1();
+        if (array_key_exists('param1', get_object_vars($data)) && null !== ($data->param1 ?? null)) {
+            $dataArray['param1'] = $data->param1 ?? null;
         }
-        if ($data->isInitialized('param2') && null !== $data->getParam2()) {
-            $dataArray['param2...'] = $data->getParam2();
+        if (array_key_exists('param2', get_object_vars($data)) && null !== ($data->param2 ?? null)) {
+            $dataArray['param2...'] = $data->param2 ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

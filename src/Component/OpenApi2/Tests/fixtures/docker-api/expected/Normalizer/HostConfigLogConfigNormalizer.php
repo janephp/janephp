@@ -41,26 +41,26 @@ class HostConfigLogConfigNormalizer implements DenormalizerInterface, Normalizer
             $this->validate($data, new \Docker\Api\Validator\HostConfigLogConfigConstraint());
         }
         if (\array_key_exists('Type', $data)) {
-            $object->setType($data['Type']);
+            $object->type = $data['Type'];
         }
         if (\array_key_exists('Config', $data)) {
             $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Config'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setConfig($values);
+            $object->config = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['Type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['Type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('config') && null !== $data->getConfig()) {
+        if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getConfig() as $key => $value) {
+            foreach ($data->config ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Config'] = $values;

@@ -5,55 +5,11 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class ApLogin
 {
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $apLoginName;
     /**
      * @var string
      */
-    protected $apLoginName;
-    /**
-     * @var string
-     */
-    protected $apLoginPassword;
-    /**
-     * @return string
-     */
-    public function getApLoginName(): string
-    {
-        return $this->apLoginName;
-    }
-    /**
-     * @param string $apLoginName
-     *
-     * @return self
-     */
-    public function setApLoginName(string $apLoginName): self
-    {
-        $this->initialized['apLoginName'] = true;
-        $this->apLoginName = $apLoginName;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getApLoginPassword(): string
-    {
-        return $this->apLoginPassword;
-    }
-    /**
-     * @param string $apLoginPassword
-     *
-     * @return self
-     */
-    public function setApLoginPassword(string $apLoginPassword): self
-    {
-        $this->initialized['apLoginPassword'] = true;
-        $this->apLoginPassword = $apLoginPassword;
-        return $this;
-    }
+    public string $apLoginPassword;
 }

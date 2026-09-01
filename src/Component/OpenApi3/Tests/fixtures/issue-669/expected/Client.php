@@ -1159,7 +1159,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve a CSV for an invoice, send a GET request to `/v2/customers/my/invoices/$INVOICE_UUID/csv`.
      * @param string $invoiceUuid UUID of the invoice
-     * @param array $accept Accept content header text/csv|application/json
+     * @param array $accept Accept content header application/json|text/csv
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetCsvByUUIDUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetCsvByUUIDNotFoundException
@@ -1175,7 +1175,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve a PDF for an invoice, send a GET request to `/v2/customers/my/invoices/$INVOICE_UUID/pdf`.
      * @param string $invoiceUuid UUID of the invoice
-     * @param array $accept Accept content header application/pdf|application/json
+     * @param array $accept Accept content header application/json|application/pdf
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDNotFoundException
@@ -4347,7 +4347,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @param array{
      *    "expiry_seconds"?: int, //The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
      * } $queryParameters
-     * @param array $accept Accept content header application/yaml|application/json
+     * @param array $accept Accept content header application/json|application/yaml
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigNotFoundException
@@ -10321,7 +10321,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\GenaiListEvaluationTestCasesByWorkspace($workspaceUuid), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];
         if (null === $httpClient) {

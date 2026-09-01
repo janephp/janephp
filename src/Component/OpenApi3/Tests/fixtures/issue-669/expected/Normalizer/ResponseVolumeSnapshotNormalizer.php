@@ -38,7 +38,7 @@ class ResponseVolumeSnapshotNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('snapshot', $data)) {
-            $object->setSnapshot($this->denormalizer->denormalize($data['snapshot'], \Jane\Generated\DigitalOcean\Model\Snapshots::class, 'json', $context));
+            $object->snapshot = $this->denormalizer->denormalize($data['snapshot'], \Jane\Generated\DigitalOcean\Model\Snapshots::class, 'json', $context);
             unset($data['snapshot']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseVolumeSnapshotNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('snapshot') && null !== $data->getSnapshot()) {
-            $dataArray['snapshot'] = $data->getSnapshot() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSnapshot(), 'json', $context));
+        if (array_key_exists('snapshot', get_object_vars($data)) && null !== ($data->snapshot ?? null)) {
+            $dataArray['snapshot'] = ($data->snapshot ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->snapshot ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

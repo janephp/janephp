@@ -41,55 +41,55 @@ class OutputDataAudioNormalizer implements DenormalizerInterface, NormalizerInte
             $data['durationInSeconds'] = (float) $data['durationInSeconds'];
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
-            $object->setFileExtension($data['fileExtension']);
+            $object->fileExtension = $data['fileExtension'];
             unset($data['fileExtension']);
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
-            $object->setFileExtension(null);
+            $object->fileExtension = null;
             unset($data['fileExtension']);
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
-            $object->setFilePath($data['filePath']);
+            $object->filePath = $data['filePath'];
             unset($data['filePath']);
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
-            $object->setFilePath(null);
+            $object->filePath = null;
             unset($data['filePath']);
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
-            $object->setFileSizeInBytes($data['fileSizeInBytes']);
+            $object->fileSizeInBytes = $data['fileSizeInBytes'];
             unset($data['fileSizeInBytes']);
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
-            $object->setFileSizeInBytes(null);
+            $object->fileSizeInBytes = null;
             unset($data['fileSizeInBytes']);
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
-            $object->setSha1Hash($data['sha1Hash']);
+            $object->sha1Hash = $data['sha1Hash'];
             unset($data['sha1Hash']);
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
-            $object->setSha1Hash(null);
+            $object->sha1Hash = null;
             unset($data['sha1Hash']);
         }
         if (\array_key_exists('originalFileName', $data) && $data['originalFileName'] !== null) {
-            $object->setOriginalFileName($data['originalFileName']);
+            $object->originalFileName = $data['originalFileName'];
             unset($data['originalFileName']);
         }
         elseif (\array_key_exists('originalFileName', $data) && $data['originalFileName'] === null) {
-            $object->setOriginalFileName(null);
+            $object->originalFileName = null;
             unset($data['originalFileName']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('durationInSeconds', $data) && $data['durationInSeconds'] !== null) {
-            $object->setDurationInSeconds($data['durationInSeconds']);
+            $object->durationInSeconds = $data['durationInSeconds'];
             unset($data['durationInSeconds']);
         }
         elseif (\array_key_exists('durationInSeconds', $data) && $data['durationInSeconds'] === null) {
-            $object->setDurationInSeconds(null);
+            $object->durationInSeconds = null;
             unset($data['durationInSeconds']);
         }
         foreach ($data as $key => $value) {
@@ -102,24 +102,24 @@ class OutputDataAudioNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
-            $dataArray['fileExtension'] = $data->getFileExtension();
+        if (array_key_exists('fileExtension', get_object_vars($data)) && null !== ($data->fileExtension ?? null)) {
+            $dataArray['fileExtension'] = $data->fileExtension ?? null;
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
-            $dataArray['filePath'] = $data->getFilePath();
+        if (array_key_exists('filePath', get_object_vars($data)) && null !== ($data->filePath ?? null)) {
+            $dataArray['filePath'] = $data->filePath ?? null;
         }
-        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
-            $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
+        if (array_key_exists('fileSizeInBytes', get_object_vars($data)) && null !== ($data->fileSizeInBytes ?? null)) {
+            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes ?? null;
         }
-        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
-            $dataArray['sha1Hash'] = $data->getSha1Hash();
+        if (array_key_exists('sha1Hash', get_object_vars($data)) && null !== ($data->sha1Hash ?? null)) {
+            $dataArray['sha1Hash'] = $data->sha1Hash ?? null;
         }
-        if ($data->isInitialized('originalFileName') && null !== $data->getOriginalFileName()) {
-            $dataArray['originalFileName'] = $data->getOriginalFileName();
+        if (array_key_exists('originalFileName', get_object_vars($data)) && null !== ($data->originalFileName ?? null)) {
+            $dataArray['originalFileName'] = $data->originalFileName ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('durationInSeconds') && null !== $data->getDurationInSeconds()) {
-            $dataArray['durationInSeconds'] = $data->getDurationInSeconds();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('durationInSeconds', get_object_vars($data)) && null !== ($data->durationInSeconds ?? null)) {
+            $dataArray['durationInSeconds'] = $data->durationInSeconds ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

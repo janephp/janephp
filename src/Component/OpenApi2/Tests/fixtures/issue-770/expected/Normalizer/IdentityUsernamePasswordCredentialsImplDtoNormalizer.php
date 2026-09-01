@@ -38,69 +38,69 @@ class IdentityUsernamePasswordCredentialsImplDtoNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('loginName', $data)) {
-            $object->setLoginName($data['loginName']);
+            $object->loginName = $data['loginName'];
         }
         if (\array_key_exists('loginPassword', $data)) {
-            $object->setLoginPassword($data['loginPassword']);
+            $object->loginPassword = $data['loginPassword'];
         }
         if (\array_key_exists('key', $data)) {
-            $object->setKey($data['key']);
+            $object->key = $data['key'];
         }
         if (\array_key_exists('serviceProviderId', $data)) {
-            $object->setServiceProviderId($data['serviceProviderId']);
+            $object->serviceProviderId = $data['serviceProviderId'];
         }
         if (\array_key_exists('creationDate', $data)) {
-            $object->setCreationDate($data['creationDate']);
+            $object->creationDate = $data['creationDate'];
         }
         if (\array_key_exists('expirationDate', $data)) {
-            $object->setExpirationDate($data['expirationDate']);
+            $object->expirationDate = $data['expirationDate'];
         }
         if (\array_key_exists('authenticationMethod', $data)) {
-            $object->setAuthenticationMethod($data['authenticationMethod']);
+            $object->authenticationMethod = $data['authenticationMethod'];
         }
         if (\array_key_exists('authenticationServerConfig', $data)) {
-            $object->setAuthenticationServerConfig($this->denormalizer->denormalize($data['authenticationServerConfig'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityAuthenticationServerConfig::class, 'json', $context));
+            $object->authenticationServerConfig = $this->denormalizer->denormalize($data['authenticationServerConfig'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityAuthenticationServerConfig::class, 'json', $context);
         }
         if (\array_key_exists('passwordCreation', $data)) {
-            $object->setPasswordCreation($data['passwordCreation']);
+            $object->passwordCreation = $data['passwordCreation'];
         }
         if (\array_key_exists('passwordExpiration', $data)) {
-            $object->setPasswordExpiration($data['passwordExpiration']);
+            $object->passwordExpiration = $data['passwordExpiration'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('loginName') && null !== $data->getLoginName()) {
-            $dataArray['loginName'] = $data->getLoginName();
+        if (array_key_exists('loginName', get_object_vars($data)) && null !== ($data->loginName ?? null)) {
+            $dataArray['loginName'] = $data->loginName ?? null;
         }
-        if ($data->isInitialized('loginPassword') && null !== $data->getLoginPassword()) {
-            $dataArray['loginPassword'] = $data->getLoginPassword();
+        if (array_key_exists('loginPassword', get_object_vars($data)) && null !== ($data->loginPassword ?? null)) {
+            $dataArray['loginPassword'] = $data->loginPassword ?? null;
         }
-        if ($data->isInitialized('key') && null !== $data->getKey()) {
-            $dataArray['key'] = $data->getKey();
+        if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
+            $dataArray['key'] = $data->key ?? null;
         }
-        if ($data->isInitialized('serviceProviderId') && null !== $data->getServiceProviderId()) {
-            $dataArray['serviceProviderId'] = $data->getServiceProviderId();
+        if (array_key_exists('serviceProviderId', get_object_vars($data)) && null !== ($data->serviceProviderId ?? null)) {
+            $dataArray['serviceProviderId'] = $data->serviceProviderId ?? null;
         }
-        if ($data->isInitialized('creationDate') && null !== $data->getCreationDate()) {
-            $dataArray['creationDate'] = $data->getCreationDate();
+        if (array_key_exists('creationDate', get_object_vars($data)) && null !== ($data->creationDate ?? null)) {
+            $dataArray['creationDate'] = $data->creationDate ?? null;
         }
-        if ($data->isInitialized('expirationDate') && null !== $data->getExpirationDate()) {
-            $dataArray['expirationDate'] = $data->getExpirationDate();
+        if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {
+            $dataArray['expirationDate'] = $data->expirationDate ?? null;
         }
-        if ($data->isInitialized('authenticationMethod') && null !== $data->getAuthenticationMethod()) {
-            $dataArray['authenticationMethod'] = $data->getAuthenticationMethod();
+        if (array_key_exists('authenticationMethod', get_object_vars($data)) && null !== ($data->authenticationMethod ?? null)) {
+            $dataArray['authenticationMethod'] = $data->authenticationMethod ?? null;
         }
-        if ($data->isInitialized('authenticationServerConfig') && null !== $data->getAuthenticationServerConfig()) {
-            $dataArray['authenticationServerConfig'] = $data->getAuthenticationServerConfig() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAuthenticationServerConfig(), 'json', $context));
+        if (array_key_exists('authenticationServerConfig', get_object_vars($data)) && null !== ($data->authenticationServerConfig ?? null)) {
+            $dataArray['authenticationServerConfig'] = ($data->authenticationServerConfig ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->authenticationServerConfig ?? null, 'json', $context));
         }
-        if ($data->isInitialized('passwordCreation') && null !== $data->getPasswordCreation()) {
-            $dataArray['passwordCreation'] = $data->getPasswordCreation();
+        if (array_key_exists('passwordCreation', get_object_vars($data)) && null !== ($data->passwordCreation ?? null)) {
+            $dataArray['passwordCreation'] = $data->passwordCreation ?? null;
         }
-        if ($data->isInitialized('passwordExpiration') && null !== $data->getPasswordExpiration()) {
-            $dataArray['passwordExpiration'] = $data->getPasswordExpiration();
+        if (array_key_exists('passwordExpiration', get_object_vars($data)) && null !== ($data->passwordExpiration ?? null)) {
+            $dataArray['passwordExpiration'] = $data->passwordExpiration ?? null;
         }
         return $dataArray;
     }

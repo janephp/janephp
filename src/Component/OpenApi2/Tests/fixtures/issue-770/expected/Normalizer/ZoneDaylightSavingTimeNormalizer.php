@@ -38,26 +38,26 @@ class ZoneDaylightSavingTimeNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('month', $data)) {
-            $object->setMonth($data['month']);
+            $object->month = $data['month'];
         }
         if (\array_key_exists('week', $data)) {
-            $object->setWeek($data['week']);
+            $object->week = $data['week'];
         }
         if (\array_key_exists('day', $data)) {
-            $object->setDay($data['day']);
+            $object->day = $data['day'];
         }
         if (\array_key_exists('hour', $data)) {
-            $object->setHour($data['hour']);
+            $object->hour = $data['hour'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['month'] = $data->getMonth();
-        $dataArray['week'] = $data->getWeek();
-        $dataArray['day'] = $data->getDay();
-        $dataArray['hour'] = $data->getHour();
+        $dataArray['month'] = $data->month ?? null;
+        $dataArray['week'] = $data->week ?? null;
+        $dataArray['day'] = $data->day ?? null;
+        $dataArray['hour'] = $data->hour ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -38,51 +38,51 @@ class AprulesModifyApRuleNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('provisionTag', $data)) {
-            $object->setProvisionTag($data['provisionTag']);
+            $object->provisionTag = $data['provisionTag'];
         }
         if (\array_key_exists('mobilityZone', $data)) {
-            $object->setMobilityZone($this->denormalizer->denormalize($data['mobilityZone'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->mobilityZone = $this->denormalizer->denormalize($data['mobilityZone'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('ipAddressRange', $data)) {
-            $object->setIpAddressRange($this->denormalizer->denormalize($data['ipAddressRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesIpAddressRange::class, 'json', $context));
+            $object->ipAddressRange = $this->denormalizer->denormalize($data['ipAddressRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesIpAddressRange::class, 'json', $context);
         }
         if (\array_key_exists('subnet', $data)) {
-            $object->setSubnet($this->denormalizer->denormalize($data['subnet'], \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesSubnet::class, 'json', $context));
+            $object->subnet = $this->denormalizer->denormalize($data['subnet'], \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesSubnet::class, 'json', $context);
         }
         if (\array_key_exists('gpsCoordinates', $data)) {
-            $object->setGpsCoordinates($this->denormalizer->denormalize($data['gpsCoordinates'], \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesGpsCoordinates::class, 'json', $context));
+            $object->gpsCoordinates = $this->denormalizer->denormalize($data['gpsCoordinates'], \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesGpsCoordinates::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('provisionTag') && null !== $data->getProvisionTag()) {
-            $dataArray['provisionTag'] = $data->getProvisionTag();
+        if (array_key_exists('provisionTag', get_object_vars($data)) && null !== ($data->provisionTag ?? null)) {
+            $dataArray['provisionTag'] = $data->provisionTag ?? null;
         }
-        if ($data->isInitialized('mobilityZone') && null !== $data->getMobilityZone()) {
-            $dataArray['mobilityZone'] = $data->getMobilityZone() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMobilityZone(), 'json', $context));
+        if (array_key_exists('mobilityZone', get_object_vars($data)) && null !== ($data->mobilityZone ?? null)) {
+            $dataArray['mobilityZone'] = ($data->mobilityZone ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->mobilityZone ?? null, 'json', $context));
         }
-        if ($data->isInitialized('ipAddressRange') && null !== $data->getIpAddressRange()) {
-            $dataArray['ipAddressRange'] = $data->getIpAddressRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpAddressRange(), 'json', $context));
+        if (array_key_exists('ipAddressRange', get_object_vars($data)) && null !== ($data->ipAddressRange ?? null)) {
+            $dataArray['ipAddressRange'] = ($data->ipAddressRange ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ipAddressRange ?? null, 'json', $context));
         }
-        if ($data->isInitialized('subnet') && null !== $data->getSubnet()) {
-            $dataArray['subnet'] = $data->getSubnet() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubnet(), 'json', $context));
+        if (array_key_exists('subnet', get_object_vars($data)) && null !== ($data->subnet ?? null)) {
+            $dataArray['subnet'] = ($data->subnet ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->subnet ?? null, 'json', $context));
         }
-        if ($data->isInitialized('gpsCoordinates') && null !== $data->getGpsCoordinates()) {
-            $dataArray['gpsCoordinates'] = $data->getGpsCoordinates() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getGpsCoordinates(), 'json', $context));
+        if (array_key_exists('gpsCoordinates', get_object_vars($data)) && null !== ($data->gpsCoordinates ?? null)) {
+            $dataArray['gpsCoordinates'] = ($data->gpsCoordinates ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->gpsCoordinates ?? null, 'json', $context));
         }
         return $dataArray;
     }

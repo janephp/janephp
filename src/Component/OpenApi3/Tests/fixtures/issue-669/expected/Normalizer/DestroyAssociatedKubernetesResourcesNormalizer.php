@@ -42,7 +42,7 @@ class DestroyAssociatedKubernetesResourcesNormalizer implements DenormalizerInte
             foreach ($data['load_balancers'] as $value) {
                 $values[] = $value;
             }
-            $object->setLoadBalancers($values);
+            $object->loadBalancers = $values;
             unset($data['load_balancers']);
         }
         if (\array_key_exists('volumes', $data)) {
@@ -50,7 +50,7 @@ class DestroyAssociatedKubernetesResourcesNormalizer implements DenormalizerInte
             foreach ($data['volumes'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setVolumes($values_1);
+            $object->volumes = $values_1;
             unset($data['volumes']);
         }
         if (\array_key_exists('volume_snapshots', $data)) {
@@ -58,7 +58,7 @@ class DestroyAssociatedKubernetesResourcesNormalizer implements DenormalizerInte
             foreach ($data['volume_snapshots'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setVolumeSnapshots($values_2);
+            $object->volumeSnapshots = $values_2;
             unset($data['volume_snapshots']);
         }
         foreach ($data as $key => $value_3) {
@@ -71,23 +71,23 @@ class DestroyAssociatedKubernetesResourcesNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('loadBalancers') && null !== $data->getLoadBalancers()) {
+        if (array_key_exists('loadBalancers', get_object_vars($data)) && null !== ($data->loadBalancers ?? null)) {
             $values = [];
-            foreach ($data->getLoadBalancers() as $value) {
+            foreach ($data->loadBalancers ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['load_balancers'] = $values;
         }
-        if ($data->isInitialized('volumes') && null !== $data->getVolumes()) {
+        if (array_key_exists('volumes', get_object_vars($data)) && null !== ($data->volumes ?? null)) {
             $values_1 = [];
-            foreach ($data->getVolumes() as $value_1) {
+            foreach ($data->volumes ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['volumes'] = $values_1;
         }
-        if ($data->isInitialized('volumeSnapshots') && null !== $data->getVolumeSnapshots()) {
+        if (array_key_exists('volumeSnapshots', get_object_vars($data)) && null !== ($data->volumeSnapshots ?? null)) {
             $values_2 = [];
-            foreach ($data->getVolumeSnapshots() as $value_2) {
+            foreach ($data->volumeSnapshots ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['volume_snapshots'] = $values_2;

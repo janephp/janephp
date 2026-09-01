@@ -38,33 +38,33 @@ class ServiceTestingConfigLoginRequestNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
         }
         if (\array_key_exists('userName', $data)) {
-            $object->setUserName($data['userName']);
+            $object->userName = $data['userName'];
         }
         if (\array_key_exists('timeZoneUtcOffset', $data)) {
-            $object->setTimeZoneUtcOffset($data['timeZoneUtcOffset']);
+            $object->timeZoneUtcOffset = $data['timeZoneUtcOffset'];
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('password') && null !== $data->getPassword()) {
-            $dataArray['password'] = $data->getPassword();
+        if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
+            $dataArray['password'] = $data->password ?? null;
         }
-        if ($data->isInitialized('userName') && null !== $data->getUserName()) {
-            $dataArray['userName'] = $data->getUserName();
+        if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
+            $dataArray['userName'] = $data->userName ?? null;
         }
-        if ($data->isInitialized('timeZoneUtcOffset') && null !== $data->getTimeZoneUtcOffset()) {
-            $dataArray['timeZoneUtcOffset'] = $data->getTimeZoneUtcOffset();
+        if (array_key_exists('timeZoneUtcOffset', get_object_vars($data)) && null !== ($data->timeZoneUtcOffset ?? null)) {
+            $dataArray['timeZoneUtcOffset'] = $data->timeZoneUtcOffset ?? null;
         }
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
         return $dataArray;
     }

@@ -89,7 +89,7 @@ class StatusCodeRangeTest extends TestCase
     public function testServerErrorRangeCatchesAll5xxStatuses(): void
     {
         $payload = new Message();
-        $payload->setMessage('error');
+        $payload->message = 'error';
         $serializer = $this->createMock(SerializerInterface::class);
         $serializer->method('deserialize')->willReturn($payload);
 

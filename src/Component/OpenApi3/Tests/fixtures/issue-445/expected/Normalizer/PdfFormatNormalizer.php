@@ -47,31 +47,31 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['extractFullText'] = (bool) $data['extractFullText'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('jpegQuality', $data)) {
-            $object->setJpegQuality($data['jpegQuality']);
+            $object->jpegQuality = $data['jpegQuality'];
             unset($data['jpegQuality']);
         }
         if (\array_key_exists('fastWebView', $data)) {
-            $object->setFastWebView($data['fastWebView']);
+            $object->fastWebView = $data['fastWebView'];
             unset($data['fastWebView']);
         }
         if (\array_key_exists('reduceFileSize', $data)) {
-            $object->setReduceFileSize($data['reduceFileSize']);
+            $object->reduceFileSize = $data['reduceFileSize'];
             unset($data['reduceFileSize']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
-            $object->setExtension($data['extension']);
+            $object->extension = $data['extension'];
             unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
-            $object->setExtension(null);
+            $object->extension = null;
             unset($data['extension']);
         }
         if (\array_key_exists('extractFullText', $data)) {
-            $object->setExtractFullText($data['extractFullText']);
+            $object->extractFullText = $data['extractFullText'];
             unset($data['extractFullText']);
         }
         foreach ($data as $key => $value) {
@@ -84,21 +84,21 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('jpegQuality') && null !== $data->getJpegQuality()) {
-            $dataArray['jpegQuality'] = $data->getJpegQuality();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('jpegQuality', get_object_vars($data)) && null !== ($data->jpegQuality ?? null)) {
+            $dataArray['jpegQuality'] = $data->jpegQuality ?? null;
         }
-        if ($data->isInitialized('fastWebView') && null !== $data->getFastWebView()) {
-            $dataArray['fastWebView'] = $data->getFastWebView();
+        if (array_key_exists('fastWebView', get_object_vars($data)) && null !== ($data->fastWebView ?? null)) {
+            $dataArray['fastWebView'] = $data->fastWebView ?? null;
         }
-        if ($data->isInitialized('reduceFileSize') && null !== $data->getReduceFileSize()) {
-            $dataArray['reduceFileSize'] = $data->getReduceFileSize();
+        if (array_key_exists('reduceFileSize', get_object_vars($data)) && null !== ($data->reduceFileSize ?? null)) {
+            $dataArray['reduceFileSize'] = $data->reduceFileSize ?? null;
         }
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
-            $dataArray['extension'] = $data->getExtension();
+        if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
+            $dataArray['extension'] = $data->extension ?? null;
         }
-        if ($data->isInitialized('extractFullText') && null !== $data->getExtractFullText()) {
-            $dataArray['extractFullText'] = $data->getExtractFullText();
+        if (array_key_exists('extractFullText', get_object_vars($data)) && null !== ($data->extractFullText ?? null)) {
+            $dataArray['extractFullText'] = $data->extractFullText ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

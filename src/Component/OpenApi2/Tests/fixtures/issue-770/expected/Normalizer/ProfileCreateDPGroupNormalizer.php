@@ -38,29 +38,29 @@ class ProfileCreateDPGroupNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('dpGroupList', $data)) {
             $values = [];
             foreach ($data['dpGroupList'] as $value) {
                 $values[] = $value;
             }
-            $object->setDpGroupList($values);
+            $object->dpGroupList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
         $values = [];
-        foreach ($data->getDpGroupList() as $value) {
+        foreach ($data->dpGroupList ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['dpGroupList'] = $values;

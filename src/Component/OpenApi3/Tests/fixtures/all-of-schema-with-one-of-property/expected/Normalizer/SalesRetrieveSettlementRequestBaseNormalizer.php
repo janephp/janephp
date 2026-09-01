@@ -41,17 +41,17 @@ class SalesRetrieveSettlementRequestBaseNormalizer implements DenormalizerInterf
             return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi3\Tests\Expected\Model\SalesRetrieveInvoicesRequest', $format, $context);
         }
         if (\array_key_exists('discriminator', $data)) {
-            $object->setDiscriminator($data['discriminator']);
+            $object->discriminator = $data['discriminator'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getDiscriminator() and 'Sales_RetrieveInvoicesRequest' === $data->getDiscriminator()) {
+        if (null !== ($data->discriminator ?? null) and 'Sales_RetrieveInvoicesRequest' === ($data->discriminator ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['discriminator'] = $data->getDiscriminator();
+        $dataArray['discriminator'] = $data->discriminator ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

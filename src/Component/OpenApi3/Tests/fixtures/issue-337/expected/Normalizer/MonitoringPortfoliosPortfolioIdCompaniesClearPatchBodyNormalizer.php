@@ -42,7 +42,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyNormalizer implement
             foreach ($data['companies'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem::class, 'json', $context);
             }
-            $object->setCompanies($values);
+            $object->companies = $values;
             unset($data['companies']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyNormalizer implement
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('companies') && null !== $data->getCompanies()) {
+        if (array_key_exists('companies', get_object_vars($data)) && null !== ($data->companies ?? null)) {
             $values = [];
-            foreach ($data->getCompanies() as $value) {
+            foreach ($data->companies ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['companies'] = $values;

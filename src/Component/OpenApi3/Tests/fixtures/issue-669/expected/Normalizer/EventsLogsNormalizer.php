@@ -38,19 +38,19 @@ class EventsLogsNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('cluster_name', $data)) {
-            $object->setClusterName($data['cluster_name']);
+            $object->clusterName = $data['cluster_name'];
             unset($data['cluster_name']);
         }
         if (\array_key_exists('event_type', $data)) {
-            $object->setEventType($data['event_type']);
+            $object->eventType = $data['event_type'];
             unset($data['event_type']);
         }
         if (\array_key_exists('create_time', $data)) {
-            $object->setCreateTime($data['create_time']);
+            $object->createTime = $data['create_time'];
             unset($data['create_time']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class EventsLogsNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('clusterName') && null !== $data->getClusterName()) {
-            $dataArray['cluster_name'] = $data->getClusterName();
+        if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
+            $dataArray['cluster_name'] = $data->clusterName ?? null;
         }
-        if ($data->isInitialized('eventType') && null !== $data->getEventType()) {
-            $dataArray['event_type'] = $data->getEventType();
+        if (array_key_exists('eventType', get_object_vars($data)) && null !== ($data->eventType ?? null)) {
+            $dataArray['event_type'] = $data->eventType ?? null;
         }
-        if ($data->isInitialized('createTime') && null !== $data->getCreateTime()) {
-            $dataArray['create_time'] = $data->getCreateTime();
+        if (array_key_exists('createTime', get_object_vars($data)) && null !== ($data->createTime ?? null)) {
+            $dataArray['create_time'] = $data->createTime ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

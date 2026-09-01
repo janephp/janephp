@@ -42,7 +42,7 @@ class ResponseRegistryOptionsResponseOptionsNormalizer implements DenormalizerIn
             foreach ($data['available_regions'] as $value) {
                 $values[] = $value;
             }
-            $object->setAvailableRegions($values);
+            $object->availableRegions = $values;
             unset($data['available_regions']);
         }
         if (\array_key_exists('subscription_tiers', $data)) {
@@ -50,7 +50,7 @@ class ResponseRegistryOptionsResponseOptionsNormalizer implements DenormalizerIn
             foreach ($data['subscription_tiers'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponseOptionsSubscriptionTiersItem::class, 'json', $context);
             }
-            $object->setSubscriptionTiers($values_1);
+            $object->subscriptionTiers = $values_1;
             unset($data['subscription_tiers']);
         }
         foreach ($data as $key => $value_2) {
@@ -63,16 +63,16 @@ class ResponseRegistryOptionsResponseOptionsNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('availableRegions') && null !== $data->getAvailableRegions()) {
+        if (array_key_exists('availableRegions', get_object_vars($data)) && null !== ($data->availableRegions ?? null)) {
             $values = [];
-            foreach ($data->getAvailableRegions() as $value) {
+            foreach ($data->availableRegions ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['available_regions'] = $values;
         }
-        if ($data->isInitialized('subscriptionTiers') && null !== $data->getSubscriptionTiers()) {
+        if (array_key_exists('subscriptionTiers', get_object_vars($data)) && null !== ($data->subscriptionTiers ?? null)) {
             $values_1 = [];
-            foreach ($data->getSubscriptionTiers() as $value_1) {
+            foreach ($data->subscriptionTiers ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['subscription_tiers'] = $values_1;

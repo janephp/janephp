@@ -38,15 +38,15 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('foo', $data) && $data['foo'] !== null) {
-            $object->setFoo($data['foo']);
+            $object->foo = $data['foo'];
             unset($data['foo']);
         }
         elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
-            $object->setFoo(null);
+            $object->foo = null;
             unset($data['foo']);
         }
         if (\array_key_exists('bar', $data)) {
-            $object->setBar($data['bar']);
+            $object->bar = $data['bar'];
             unset($data['bar']);
         }
         if (\array_key_exists('date', $data) && $data['date'] !== null) {
@@ -54,11 +54,11 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             if (false === $date) {
                 throw new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
             }
-            $object->setDate($date);
+            $object->date = $date;
             unset($data['date']);
         }
         elseif (\array_key_exists('date', $data) && $data['date'] === null) {
-            $object->setDate(null);
+            $object->date = null;
             unset($data['date']);
         }
         foreach ($data as $key => $value) {
@@ -71,17 +71,17 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo();
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $dataArray['foo'] = $data->foo ?? null;
         }
         else {
             $dataArray['foo'] = null;
         }
-        if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $dataArray['bar'] = $data->getBar();
+        if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
+            $dataArray['bar'] = $data->bar ?? null;
         }
-        if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate()?->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
+            $dataArray['date'] = ($data->date ?? null)?->format('Y-m-d\TH:i:sP');
         }
         else {
             $dataArray['date'] = null;

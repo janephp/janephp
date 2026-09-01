@@ -41,14 +41,14 @@ class IdResponseNormalizer implements DenormalizerInterface, NormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\IdResponseConstraint());
         }
         if (\array_key_exists('Id', $data)) {
-            $object->setId($data['Id']);
+            $object->id = $data['Id'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Id'] = $data->getId();
+        $dataArray['Id'] = $data->id ?? null;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\IdResponseConstraint());
         }

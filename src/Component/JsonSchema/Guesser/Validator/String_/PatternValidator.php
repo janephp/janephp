@@ -17,7 +17,7 @@ class PatternValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && ((\is_array($object->getType()) ? \in_array('string', $object->getType()) : 'string' === $object->getType()) || null === $object->getType()) && null !== $object->getPattern();
+        return $this->checkObject($object) && ((\is_array($object->type ?? null) ? \in_array('string', $object->type ?? null) : 'string' === ($object->type ?? null)) || null === ($object->type ?? null)) && null !== ($object->pattern ?? null);
     }
 
     /**
@@ -27,7 +27,7 @@ class PatternValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(Regex::class, [
-            'pattern' => \sprintf('#%s#', $object->getPattern()),
+            'pattern' => \sprintf('#%s#', $object->pattern ?? null),
             'message' => 'This value is not valid.',
         ]));
 

@@ -44,11 +44,11 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummaryNormalize
             $data['possibleRegistered'] = (float) $data['possibleRegistered'];
         }
         if (\array_key_exists('exactRegistered', $data)) {
-            $object->setExactRegistered($data['exactRegistered']);
+            $object->exactRegistered = $data['exactRegistered'];
             unset($data['exactRegistered']);
         }
         if (\array_key_exists('possibleRegistered', $data)) {
-            $object->setPossibleRegistered($data['possibleRegistered']);
+            $object->possibleRegistered = $data['possibleRegistered'];
             unset($data['possibleRegistered']);
         }
         foreach ($data as $key => $value) {
@@ -61,11 +61,11 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummaryNormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('exactRegistered') && null !== $data->getExactRegistered()) {
-            $dataArray['exactRegistered'] = $data->getExactRegistered();
+        if (array_key_exists('exactRegistered', get_object_vars($data)) && null !== ($data->exactRegistered ?? null)) {
+            $dataArray['exactRegistered'] = $data->exactRegistered ?? null;
         }
-        if ($data->isInitialized('possibleRegistered') && null !== $data->getPossibleRegistered()) {
-            $dataArray['possibleRegistered'] = $data->getPossibleRegistered();
+        if (array_key_exists('possibleRegistered', get_object_vars($data)) && null !== ($data->possibleRegistered ?? null)) {
+            $dataArray['possibleRegistered'] = $data->possibleRegistered ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

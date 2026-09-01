@@ -42,33 +42,33 @@ class ProfileProviderExternalOSUNormalizer implements DenormalizerInterface, Nor
             foreach ($data['provisioningProtocals'] as $value) {
                 $values[] = $value;
             }
-            $object->setProvisioningProtocals($values);
+            $object->provisioningProtocals = $values;
         }
         if (\array_key_exists('osuServiceUrl', $data)) {
-            $object->setOsuServiceUrl($data['osuServiceUrl']);
+            $object->osuServiceUrl = $data['osuServiceUrl'];
         }
         if (\array_key_exists('osuNaiRealm', $data)) {
-            $object->setOsuNaiRealm($data['osuNaiRealm']);
+            $object->osuNaiRealm = $data['osuNaiRealm'];
         }
         if (\array_key_exists('singleSsidNai', $data)) {
-            $object->setSingleSsidNai($data['singleSsidNai']);
+            $object->singleSsidNai = $data['singleSsidNai'];
         }
         if (\array_key_exists('commonLanguageIcon', $data)) {
-            $object->setCommonLanguageIcon($data['commonLanguageIcon']);
+            $object->commonLanguageIcon = $data['commonLanguageIcon'];
         }
         if (\array_key_exists('subscriptionDescriptions', $data)) {
             $values_1 = [];
             foreach ($data['subscriptionDescriptions'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProviderSubscriptionDescription::class, 'json', $context);
             }
-            $object->setSubscriptionDescriptions($values_1);
+            $object->subscriptionDescriptions = $values_1;
         }
         if (\array_key_exists('whitelistedDomains', $data)) {
             $values_2 = [];
             foreach ($data['whitelistedDomains'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setWhitelistedDomains($values_2);
+            $object->whitelistedDomains = $values_2;
         }
         return $object;
     }
@@ -76,24 +76,24 @@ class ProfileProviderExternalOSUNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getProvisioningProtocals() as $value) {
+        foreach ($data->provisioningProtocals ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['provisioningProtocals'] = $values;
-        $dataArray['osuServiceUrl'] = $data->getOsuServiceUrl();
-        $dataArray['osuNaiRealm'] = $data->getOsuNaiRealm();
-        if ($data->isInitialized('singleSsidNai') && null !== $data->getSingleSsidNai()) {
-            $dataArray['singleSsidNai'] = $data->getSingleSsidNai();
+        $dataArray['osuServiceUrl'] = $data->osuServiceUrl ?? null;
+        $dataArray['osuNaiRealm'] = $data->osuNaiRealm ?? null;
+        if (array_key_exists('singleSsidNai', get_object_vars($data)) && null !== ($data->singleSsidNai ?? null)) {
+            $dataArray['singleSsidNai'] = $data->singleSsidNai ?? null;
         }
-        $dataArray['commonLanguageIcon'] = $data->getCommonLanguageIcon();
+        $dataArray['commonLanguageIcon'] = $data->commonLanguageIcon ?? null;
         $values_1 = [];
-        foreach ($data->getSubscriptionDescriptions() as $value_1) {
+        foreach ($data->subscriptionDescriptions ?? null as $value_1) {
             $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['subscriptionDescriptions'] = $values_1;
-        if ($data->isInitialized('whitelistedDomains') && null !== $data->getWhitelistedDomains()) {
+        if (array_key_exists('whitelistedDomains', get_object_vars($data)) && null !== ($data->whitelistedDomains ?? null)) {
             $values_2 = [];
-            foreach ($data->getWhitelistedDomains() as $value_2) {
+            foreach ($data->whitelistedDomains ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['whitelistedDomains'] = $values_2;

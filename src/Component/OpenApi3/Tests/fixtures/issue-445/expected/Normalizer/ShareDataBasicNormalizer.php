@@ -38,11 +38,11 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
             unset($data['url']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('mailRecipients', $data)) {
@@ -50,7 +50,7 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['mailRecipients'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\MailRecipient::class, 'json', $context);
             }
-            $object->setMailRecipients($values);
+            $object->mailRecipients = $values;
             unset($data['mailRecipients']);
         }
         if (\array_key_exists('internalRecipients', $data)) {
@@ -58,15 +58,15 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['internalRecipients'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\InternalRecipient::class, 'json', $context);
             }
-            $object->setInternalRecipients($values_1);
+            $object->internalRecipients = $values_1;
             unset($data['internalRecipients']);
         }
         if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
-            $object->setLanguageCode($data['languageCode']);
+            $object->languageCode = $data['languageCode'];
             unset($data['languageCode']);
         }
         elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
-            $object->setLanguageCode(null);
+            $object->languageCode = null;
             unset($data['languageCode']);
         }
         foreach ($data as $key => $value_2) {
@@ -79,20 +79,20 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['url'] = $data->getUrl();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['url'] = $data->url ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         $values = [];
-        foreach ($data->getMailRecipients() as $value) {
+        foreach ($data->mailRecipients ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['mailRecipients'] = $values;
         $values_1 = [];
-        foreach ($data->getInternalRecipients() as $value_1) {
+        foreach ($data->internalRecipients ?? null as $value_1) {
             $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['internalRecipients'] = $values_1;
-        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
-            $dataArray['languageCode'] = $data->getLanguageCode();
+        if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {
+            $dataArray['languageCode'] = $data->languageCode ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

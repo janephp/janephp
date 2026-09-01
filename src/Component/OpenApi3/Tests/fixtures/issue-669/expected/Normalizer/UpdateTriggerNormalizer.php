@@ -41,11 +41,11 @@ class UpdateTriggerNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['is_enabled'] = (bool) $data['is_enabled'];
         }
         if (\array_key_exists('is_enabled', $data)) {
-            $object->setIsEnabled($data['is_enabled']);
+            $object->isEnabled = $data['is_enabled'];
             unset($data['is_enabled']);
         }
         if (\array_key_exists('scheduled_details', $data)) {
-            $object->setScheduledDetails($this->denormalizer->denormalize($data['scheduled_details'], \Jane\Generated\DigitalOcean\Model\ScheduledDetails::class, 'json', $context));
+            $object->scheduledDetails = $this->denormalizer->denormalize($data['scheduled_details'], \Jane\Generated\DigitalOcean\Model\ScheduledDetails::class, 'json', $context);
             unset($data['scheduled_details']);
         }
         foreach ($data as $key => $value) {
@@ -58,11 +58,11 @@ class UpdateTriggerNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isEnabled') && null !== $data->getIsEnabled()) {
-            $dataArray['is_enabled'] = $data->getIsEnabled();
+        if (array_key_exists('isEnabled', get_object_vars($data)) && null !== ($data->isEnabled ?? null)) {
+            $dataArray['is_enabled'] = $data->isEnabled ?? null;
         }
-        if ($data->isInitialized('scheduledDetails') && null !== $data->getScheduledDetails()) {
-            $dataArray['scheduled_details'] = $data->getScheduledDetails() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getScheduledDetails(), 'json', $context));
+        if (array_key_exists('scheduledDetails', get_object_vars($data)) && null !== ($data->scheduledDetails ?? null)) {
+            $dataArray['scheduled_details'] = ($data->scheduledDetails ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduledDetails ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

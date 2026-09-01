@@ -38,7 +38,7 @@ class ResponseConnectionPoolNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('pool', $data)) {
-            $object->setPool($this->denormalizer->denormalize($data['pool'], \Jane\Generated\DigitalOcean\Model\ConnectionPool::class, 'json', $context));
+            $object->pool = $this->denormalizer->denormalize($data['pool'], \Jane\Generated\DigitalOcean\Model\ConnectionPool::class, 'json', $context);
             unset($data['pool']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class ResponseConnectionPoolNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['pool'] = $data->getPool() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPool(), 'json', $context));
+        $dataArray['pool'] = ($data->pool ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pool ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

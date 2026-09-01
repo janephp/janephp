@@ -38,21 +38,21 @@ class CommonQinqNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('cvlan', $data)) {
-            $object->setCvlan($data['cvlan']);
+            $object->cvlan = $data['cvlan'];
         }
         if (\array_key_exists('svlan', $data)) {
-            $object->setSvlan($data['svlan']);
+            $object->svlan = $data['svlan'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('cvlan') && null !== $data->getCvlan()) {
-            $dataArray['cvlan'] = $data->getCvlan();
+        if (array_key_exists('cvlan', get_object_vars($data)) && null !== ($data->cvlan ?? null)) {
+            $dataArray['cvlan'] = $data->cvlan ?? null;
         }
-        if ($data->isInitialized('svlan') && null !== $data->getSvlan()) {
-            $dataArray['svlan'] = $data->getSvlan();
+        if (array_key_exists('svlan', get_object_vars($data)) && null !== ($data->svlan ?? null)) {
+            $dataArray['svlan'] = $data->svlan ?? null;
         }
         return $dataArray;
     }

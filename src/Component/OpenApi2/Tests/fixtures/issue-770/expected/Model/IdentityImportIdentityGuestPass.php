@@ -5,205 +5,41 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class IdentityImportIdentityGuestPass
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Domain Id
      *
      * @var string
      */
-    protected $domainId;
+    public string $domainId;
     /**
      * @var CommonGenericRef
      */
-    protected $wlan;
+    public CommonGenericRef $wlan;
     /**
      * @var CommonGenericRef
      */
-    protected $zone;
+    public CommonGenericRef $zone;
     /**
      * @var IdentityPassValidFor
      */
-    protected $passValidFor;
+    public IdentityPassValidFor $passValidFor;
     /**
      * Pass effective since
      *
      * @var string
      */
-    protected $passEffectSince;
+    public string $passEffectSince;
     /**
      * Expire new guest pass if not used within
      *
      * @var int
      */
-    protected $passUseDays;
+    public int $passUseDays;
     /**
      * @var IdentityMaxDevices
      */
-    protected $maxDevices;
+    public IdentityMaxDevices $maxDevices;
     /**
      * @var IdentitySessionDuration
      */
-    protected $sessionDuration;
-    /**
-     * Domain Id
-     *
-     * @return string
-     */
-    public function getDomainId(): string
-    {
-        return $this->domainId;
-    }
-    /**
-     * Domain Id
-     *
-     * @param string $domainId
-     *
-     * @return self
-     */
-    public function setDomainId(string $domainId): self
-    {
-        $this->initialized['domainId'] = true;
-        $this->domainId = $domainId;
-        return $this;
-    }
-    /**
-     * @return CommonGenericRef
-     */
-    public function getWlan(): CommonGenericRef
-    {
-        return $this->wlan;
-    }
-    /**
-     * @param CommonGenericRef $wlan
-     *
-     * @return self
-     */
-    public function setWlan(CommonGenericRef $wlan): self
-    {
-        $this->initialized['wlan'] = true;
-        $this->wlan = $wlan;
-        return $this;
-    }
-    /**
-     * @return CommonGenericRef
-     */
-    public function getZone(): CommonGenericRef
-    {
-        return $this->zone;
-    }
-    /**
-     * @param CommonGenericRef $zone
-     *
-     * @return self
-     */
-    public function setZone(CommonGenericRef $zone): self
-    {
-        $this->initialized['zone'] = true;
-        $this->zone = $zone;
-        return $this;
-    }
-    /**
-     * @return IdentityPassValidFor
-     */
-    public function getPassValidFor(): IdentityPassValidFor
-    {
-        return $this->passValidFor;
-    }
-    /**
-     * @param IdentityPassValidFor $passValidFor
-     *
-     * @return self
-     */
-    public function setPassValidFor(IdentityPassValidFor $passValidFor): self
-    {
-        $this->initialized['passValidFor'] = true;
-        $this->passValidFor = $passValidFor;
-        return $this;
-    }
-    /**
-     * Pass effective since
-     *
-     * @return string
-     */
-    public function getPassEffectSince(): string
-    {
-        return $this->passEffectSince;
-    }
-    /**
-     * Pass effective since
-     *
-     * @param string $passEffectSince
-     *
-     * @return self
-     */
-    public function setPassEffectSince(string $passEffectSince): self
-    {
-        $this->initialized['passEffectSince'] = true;
-        $this->passEffectSince = $passEffectSince;
-        return $this;
-    }
-    /**
-     * Expire new guest pass if not used within
-     *
-     * @return int
-     */
-    public function getPassUseDays(): int
-    {
-        return $this->passUseDays;
-    }
-    /**
-     * Expire new guest pass if not used within
-     *
-     * @param int $passUseDays
-     *
-     * @return self
-     */
-    public function setPassUseDays(int $passUseDays): self
-    {
-        $this->initialized['passUseDays'] = true;
-        $this->passUseDays = $passUseDays;
-        return $this;
-    }
-    /**
-     * @return IdentityMaxDevices
-     */
-    public function getMaxDevices(): IdentityMaxDevices
-    {
-        return $this->maxDevices;
-    }
-    /**
-     * @param IdentityMaxDevices $maxDevices
-     *
-     * @return self
-     */
-    public function setMaxDevices(IdentityMaxDevices $maxDevices): self
-    {
-        $this->initialized['maxDevices'] = true;
-        $this->maxDevices = $maxDevices;
-        return $this;
-    }
-    /**
-     * @return IdentitySessionDuration
-     */
-    public function getSessionDuration(): IdentitySessionDuration
-    {
-        return $this->sessionDuration;
-    }
-    /**
-     * @param IdentitySessionDuration $sessionDuration
-     *
-     * @return self
-     */
-    public function setSessionDuration(IdentitySessionDuration $sessionDuration): self
-    {
-        $this->initialized['sessionDuration'] = true;
-        $this->sessionDuration = $sessionDuration;
-        return $this;
-    }
+    public IdentitySessionDuration $sessionDuration;
 }

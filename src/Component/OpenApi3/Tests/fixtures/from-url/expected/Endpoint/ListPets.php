@@ -49,7 +49,7 @@ class ListPets extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Pet[]', 'json');
         }
         if (stripos(strtolower($contentType), 'application/json') !== false) {

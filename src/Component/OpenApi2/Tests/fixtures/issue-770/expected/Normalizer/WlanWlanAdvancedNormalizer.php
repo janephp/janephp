@@ -173,533 +173,533 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $data['oceApChannelReportEnabled'] = (bool) $data['oceApChannelReportEnabled'];
         }
         if (\array_key_exists('clientIsolationEnabled', $data)) {
-            $object->setClientIsolationEnabled($data['clientIsolationEnabled']);
+            $object->clientIsolationEnabled = $data['clientIsolationEnabled'];
         }
         if (\array_key_exists('clientIsolationUnicastEnabled', $data)) {
-            $object->setClientIsolationUnicastEnabled($data['clientIsolationUnicastEnabled']);
+            $object->clientIsolationUnicastEnabled = $data['clientIsolationUnicastEnabled'];
         }
         if (\array_key_exists('clientIsolationMulticastEnabled', $data)) {
-            $object->setClientIsolationMulticastEnabled($data['clientIsolationMulticastEnabled']);
+            $object->clientIsolationMulticastEnabled = $data['clientIsolationMulticastEnabled'];
         }
         if (\array_key_exists('clientIsolationAutoVrrpEnabled', $data)) {
-            $object->setClientIsolationAutoVrrpEnabled($data['clientIsolationAutoVrrpEnabled']);
+            $object->clientIsolationAutoVrrpEnabled = $data['clientIsolationAutoVrrpEnabled'];
         }
         if (\array_key_exists('clientIsolationWhitelist', $data)) {
-            $object->setClientIsolationWhitelist($this->denormalizer->denormalize($data['clientIsolationWhitelist'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->clientIsolationWhitelist = $this->denormalizer->denormalize($data['clientIsolationWhitelist'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         if (\array_key_exists('hideSsidEnabled', $data)) {
-            $object->setHideSsidEnabled($data['hideSsidEnabled']);
+            $object->hideSsidEnabled = $data['hideSsidEnabled'];
         }
         if (\array_key_exists('hs20Onboarding', $data)) {
-            $object->setHs20Onboarding($data['hs20Onboarding']);
+            $object->hs20Onboarding = $data['hs20Onboarding'];
         }
         if (\array_key_exists('maxClientsPerRadio', $data)) {
-            $object->setMaxClientsPerRadio($data['maxClientsPerRadio']);
+            $object->maxClientsPerRadio = $data['maxClientsPerRadio'];
         }
         if (\array_key_exists('clientIdleTimeoutSec', $data)) {
-            $object->setClientIdleTimeoutSec($data['clientIdleTimeoutSec']);
+            $object->clientIdleTimeoutSec = $data['clientIdleTimeoutSec'];
         }
         if (\array_key_exists('gtkRekeyEnabled', $data)) {
-            $object->setGtkRekeyEnabled($data['gtkRekeyEnabled']);
+            $object->gtkRekeyEnabled = $data['gtkRekeyEnabled'];
         }
         if (\array_key_exists('wifi6Enabled', $data)) {
-            $object->setWifi6Enabled($data['wifi6Enabled']);
+            $object->wifi6Enabled = $data['wifi6Enabled'];
         }
         if (\array_key_exists('userSessionTimeout', $data)) {
-            $object->setUserSessionTimeout($data['userSessionTimeout']);
+            $object->userSessionTimeout = $data['userSessionTimeout'];
         }
         if (\array_key_exists('dgafEnabled', $data)) {
-            $object->setDgafEnabled($data['dgafEnabled']);
+            $object->dgafEnabled = $data['dgafEnabled'];
         }
         if (\array_key_exists('clientLoadBalancingEnabled', $data)) {
-            $object->setClientLoadBalancingEnabled($data['clientLoadBalancingEnabled']);
+            $object->clientLoadBalancingEnabled = $data['clientLoadBalancingEnabled'];
         }
         if (\array_key_exists('proxyARPEnabled', $data)) {
-            $object->setProxyARPEnabled($data['proxyARPEnabled']);
+            $object->proxyARPEnabled = $data['proxyARPEnabled'];
         }
         if (\array_key_exists('ndProxyEnabled', $data)) {
-            $object->setNdProxyEnabled($data['ndProxyEnabled']);
+            $object->ndProxyEnabled = $data['ndProxyEnabled'];
         }
         if (\array_key_exists('suppressNsEnabled', $data)) {
-            $object->setSuppressNsEnabled($data['suppressNsEnabled']);
+            $object->suppressNsEnabled = $data['suppressNsEnabled'];
         }
         if (\array_key_exists('raProxyEnabled', $data)) {
-            $object->setRaProxyEnabled($data['raProxyEnabled']);
+            $object->raProxyEnabled = $data['raProxyEnabled'];
         }
         if (\array_key_exists('rsraGuardEnabled', $data)) {
-            $object->setRsraGuardEnabled($data['rsraGuardEnabled']);
+            $object->rsraGuardEnabled = $data['rsraGuardEnabled'];
         }
         if (\array_key_exists('raThrottlingEnabled', $data)) {
-            $object->setRaThrottlingEnabled($data['raThrottlingEnabled']);
+            $object->raThrottlingEnabled = $data['raThrottlingEnabled'];
         }
         if (\array_key_exists('maxAllowedRA', $data)) {
-            $object->setMaxAllowedRA($data['maxAllowedRA']);
+            $object->maxAllowedRA = $data['maxAllowedRA'];
         }
         if (\array_key_exists('raInterval', $data)) {
-            $object->setRaInterval($data['raInterval']);
+            $object->raInterval = $data['raInterval'];
         }
         if (\array_key_exists('support80211dEnabled', $data)) {
-            $object->setSupport80211dEnabled($data['support80211dEnabled']);
+            $object->support80211dEnabled = $data['support80211dEnabled'];
         }
         if (\array_key_exists('support80211kEnabled', $data)) {
-            $object->setSupport80211kEnabled($data['support80211kEnabled']);
+            $object->support80211kEnabled = $data['support80211kEnabled'];
         }
         if (\array_key_exists('antiSpoofingEnabled', $data)) {
-            $object->setAntiSpoofingEnabled($data['antiSpoofingEnabled']);
+            $object->antiSpoofingEnabled = $data['antiSpoofingEnabled'];
         }
         if (\array_key_exists('arpRequestRateLimit', $data)) {
-            $object->setArpRequestRateLimit($data['arpRequestRateLimit']);
+            $object->arpRequestRateLimit = $data['arpRequestRateLimit'];
         }
         if (\array_key_exists('dhcpRequestRateLimit', $data)) {
-            $object->setDhcpRequestRateLimit($data['dhcpRequestRateLimit']);
+            $object->dhcpRequestRateLimit = $data['dhcpRequestRateLimit'];
         }
         if (\array_key_exists('forceClientDHCPTimeoutSec', $data)) {
-            $object->setForceClientDHCPTimeoutSec($data['forceClientDHCPTimeoutSec']);
+            $object->forceClientDHCPTimeoutSec = $data['forceClientDHCPTimeoutSec'];
         }
         if (\array_key_exists('dhcpOption82Enabled', $data)) {
-            $object->setDhcpOption82Enabled($data['dhcpOption82Enabled']);
+            $object->dhcpOption82Enabled = $data['dhcpOption82Enabled'];
         }
         if (\array_key_exists('dhcp82Format', $data)) {
-            $object->setDhcp82Format($data['dhcp82Format']);
+            $object->dhcp82Format = $data['dhcp82Format'];
         }
         if (\array_key_exists('dhcp82SubOpt1Format', $data)) {
-            $object->setDhcp82SubOpt1Format($data['dhcp82SubOpt1Format']);
+            $object->dhcp82SubOpt1Format = $data['dhcp82SubOpt1Format'];
         }
         if (\array_key_exists('dhcp82SubOpt2Format', $data)) {
-            $object->setDhcp82SubOpt2Format($data['dhcp82SubOpt2Format']);
+            $object->dhcp82SubOpt2Format = $data['dhcp82SubOpt2Format'];
         }
         if (\array_key_exists('dhcp82SubOpt150Format', $data)) {
-            $object->setDhcp82SubOpt150Format($data['dhcp82SubOpt150Format']);
+            $object->dhcp82SubOpt150Format = $data['dhcp82SubOpt150Format'];
         }
         if (\array_key_exists('dhcp82SubOpt151Format', $data)) {
-            $object->setDhcp82SubOpt151Format($data['dhcp82SubOpt151Format']);
+            $object->dhcp82SubOpt151Format = $data['dhcp82SubOpt151Format'];
         }
         if (\array_key_exists('dhcp82SubOpt151AreaName', $data)) {
-            $object->setDhcp82SubOpt151AreaName($data['dhcp82SubOpt151AreaName']);
+            $object->dhcp82SubOpt151AreaName = $data['dhcp82SubOpt151AreaName'];
         }
         if (\array_key_exists('dhcp82MacFormat', $data)) {
-            $object->setDhcp82MacFormat($data['dhcp82MacFormat']);
+            $object->dhcp82MacFormat = $data['dhcp82MacFormat'];
         }
         if (\array_key_exists('unauthClientStatsEnabled', $data)) {
-            $object->setUnauthClientStatsEnabled($data['unauthClientStatsEnabled']);
+            $object->unauthClientStatsEnabled = $data['unauthClientStatsEnabled'];
         }
         if (\array_key_exists('clientFingerprintingEnabled', $data)) {
-            $object->setClientFingerprintingEnabled($data['clientFingerprintingEnabled']);
+            $object->clientFingerprintingEnabled = $data['clientFingerprintingEnabled'];
         }
         if (\array_key_exists('multicastFilterDrop', $data)) {
-            $object->setMulticastFilterDrop($data['multicastFilterDrop']);
+            $object->multicastFilterDrop = $data['multicastFilterDrop'];
         }
         if (\array_key_exists('ofdmOnlyEnabled', $data)) {
-            $object->setOfdmOnlyEnabled($data['ofdmOnlyEnabled']);
+            $object->ofdmOnlyEnabled = $data['ofdmOnlyEnabled'];
         }
         if (\array_key_exists('bandBalancing', $data)) {
-            $object->setBandBalancing($data['bandBalancing']);
+            $object->bandBalancing = $data['bandBalancing'];
         }
         if (\array_key_exists('bssMinRateMbps', $data)) {
-            $object->setBssMinRateMbps($data['bssMinRateMbps']);
+            $object->bssMinRateMbps = $data['bssMinRateMbps'];
         }
         if (\array_key_exists('mgmtTxRateMbps', $data)) {
-            $object->setMgmtTxRateMbps($data['mgmtTxRateMbps']);
+            $object->mgmtTxRateMbps = $data['mgmtTxRateMbps'];
         }
         if (\array_key_exists('pmkCachingEnabled', $data)) {
-            $object->setPmkCachingEnabled($data['pmkCachingEnabled']);
+            $object->pmkCachingEnabled = $data['pmkCachingEnabled'];
         }
         if (\array_key_exists('okcEnabled', $data)) {
-            $object->setOkcEnabled($data['okcEnabled']);
+            $object->okcEnabled = $data['okcEnabled'];
         }
         if (\array_key_exists('avcEnabled', $data)) {
-            $object->setAvcEnabled($data['avcEnabled']);
+            $object->avcEnabled = $data['avcEnabled'];
         }
         if (\array_key_exists('clientVirtualIdExtractionEnabled', $data)) {
-            $object->setClientVirtualIdExtractionEnabled($data['clientVirtualIdExtractionEnabled']);
+            $object->clientVirtualIdExtractionEnabled = $data['clientVirtualIdExtractionEnabled'];
         }
         if (\array_key_exists('urlFilteringPolicyEnabled', $data)) {
-            $object->setUrlFilteringPolicyEnabled($data['urlFilteringPolicyEnabled']);
+            $object->urlFilteringPolicyEnabled = $data['urlFilteringPolicyEnabled'];
         }
         if (\array_key_exists('urlFilteringPolicyId', $data)) {
-            $object->setUrlFilteringPolicyId($data['urlFilteringPolicyId']);
+            $object->urlFilteringPolicyId = $data['urlFilteringPolicyId'];
         }
         if (\array_key_exists('wifiCallingPolicyEnabled', $data)) {
-            $object->setWifiCallingPolicyEnabled($data['wifiCallingPolicyEnabled']);
+            $object->wifiCallingPolicyEnabled = $data['wifiCallingPolicyEnabled'];
         }
         if (\array_key_exists('wifiCallingPolicyIds', $data)) {
             $values = [];
             foreach ($data['wifiCallingPolicyIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setWifiCallingPolicyIds($values);
+            $object->wifiCallingPolicyIds = $values;
         }
         if (\array_key_exists('uplinkEnabled', $data)) {
-            $object->setUplinkEnabled($data['uplinkEnabled']);
+            $object->uplinkEnabled = $data['uplinkEnabled'];
         }
         if (\array_key_exists('uplinkRate', $data)) {
-            $object->setUplinkRate($data['uplinkRate']);
+            $object->uplinkRate = $data['uplinkRate'];
         }
         if (\array_key_exists('downlinkEnabled', $data)) {
-            $object->setDownlinkEnabled($data['downlinkEnabled']);
+            $object->downlinkEnabled = $data['downlinkEnabled'];
         }
         if (\array_key_exists('downlinkRate', $data)) {
-            $object->setDownlinkRate($data['downlinkRate']);
+            $object->downlinkRate = $data['downlinkRate'];
         }
         if (\array_key_exists('multicastUplinkRateLimitEnabled', $data)) {
-            $object->setMulticastUplinkRateLimitEnabled($data['multicastUplinkRateLimitEnabled']);
+            $object->multicastUplinkRateLimitEnabled = $data['multicastUplinkRateLimitEnabled'];
         }
         if (\array_key_exists('multicastUplinkRateLimit', $data)) {
-            $object->setMulticastUplinkRateLimit($data['multicastUplinkRateLimit']);
+            $object->multicastUplinkRateLimit = $data['multicastUplinkRateLimit'];
         }
         if (\array_key_exists('multicastDownlinkRateLimitEnabled', $data)) {
-            $object->setMulticastDownlinkRateLimitEnabled($data['multicastDownlinkRateLimitEnabled']);
+            $object->multicastDownlinkRateLimitEnabled = $data['multicastDownlinkRateLimitEnabled'];
         }
         if (\array_key_exists('multicastDownlinkRateLimit', $data)) {
-            $object->setMulticastDownlinkRateLimit($data['multicastDownlinkRateLimit']);
+            $object->multicastDownlinkRateLimit = $data['multicastDownlinkRateLimit'];
         }
         if (\array_key_exists('multicastUplinkRateLimit6gEnabled', $data)) {
-            $object->setMulticastUplinkRateLimit6gEnabled($data['multicastUplinkRateLimit6gEnabled']);
+            $object->multicastUplinkRateLimit6gEnabled = $data['multicastUplinkRateLimit6gEnabled'];
         }
         if (\array_key_exists('multicastDownlinkRateLimit6gEnabled', $data)) {
-            $object->setMulticastDownlinkRateLimit6gEnabled($data['multicastDownlinkRateLimit6gEnabled']);
+            $object->multicastDownlinkRateLimit6gEnabled = $data['multicastDownlinkRateLimit6gEnabled'];
         }
         if (\array_key_exists('ratePerSTAUplink', $data)) {
-            $object->setRatePerSTAUplink($data['ratePerSTAUplink']);
+            $object->ratePerSTAUplink = $data['ratePerSTAUplink'];
         }
         if (\array_key_exists('ratePerSTADownlink', $data)) {
-            $object->setRatePerSTADownlink($data['ratePerSTADownlink']);
+            $object->ratePerSTADownlink = $data['ratePerSTADownlink'];
         }
         if (\array_key_exists('dtimInterval', $data)) {
-            $object->setDtimInterval($data['dtimInterval']);
+            $object->dtimInterval = $data['dtimInterval'];
         }
         if (\array_key_exists('directedThreshold', $data)) {
-            $object->setDirectedThreshold($data['directedThreshold']);
+            $object->directedThreshold = $data['directedThreshold'];
         }
         if (\array_key_exists('flowLogEnabled', $data)) {
-            $object->setFlowLogEnabled($data['flowLogEnabled']);
+            $object->flowLogEnabled = $data['flowLogEnabled'];
         }
         if (\array_key_exists('hdOverheadOptimizeEnable', $data)) {
-            $object->setHdOverheadOptimizeEnable($data['hdOverheadOptimizeEnable']);
+            $object->hdOverheadOptimizeEnable = $data['hdOverheadOptimizeEnable'];
         }
         if (\array_key_exists('probeRssiThr', $data)) {
-            $object->setProbeRssiThr($data['probeRssiThr']);
+            $object->probeRssiThr = $data['probeRssiThr'];
         }
         if (\array_key_exists('transientClientMgmtEnable', $data)) {
-            $object->setTransientClientMgmtEnable($data['transientClientMgmtEnable']);
+            $object->transientClientMgmtEnable = $data['transientClientMgmtEnable'];
         }
         if (\array_key_exists('joinIgnoreTimeout', $data)) {
-            $object->setJoinIgnoreTimeout($data['joinIgnoreTimeout']);
+            $object->joinIgnoreTimeout = $data['joinIgnoreTimeout'];
         }
         if (\array_key_exists('joinAcceptTimeout', $data)) {
-            $object->setJoinAcceptTimeout($data['joinAcceptTimeout']);
+            $object->joinAcceptTimeout = $data['joinAcceptTimeout'];
         }
         if (\array_key_exists('joinIgnoreThr', $data)) {
-            $object->setJoinIgnoreThr($data['joinIgnoreThr']);
+            $object->joinIgnoreThr = $data['joinIgnoreThr'];
         }
         if (\array_key_exists('dropRandomProbesEnabled', $data)) {
-            $object->setDropRandomProbesEnabled($data['dropRandomProbesEnabled']);
+            $object->dropRandomProbesEnabled = $data['dropRandomProbesEnabled'];
         }
         if (\array_key_exists('authRssiThr', $data)) {
-            $object->setAuthRssiThr($data['authRssiThr']);
+            $object->authRssiThr = $data['authRssiThr'];
         }
         if (\array_key_exists('assocRssiThr', $data)) {
-            $object->setAssocRssiThr($data['assocRssiThr']);
+            $object->assocRssiThr = $data['assocRssiThr'];
         }
         if (\array_key_exists('oceEnabled', $data)) {
-            $object->setOceEnabled($data['oceEnabled']);
+            $object->oceEnabled = $data['oceEnabled'];
         }
         if (\array_key_exists('oceBroadcastProbeResponseDelay', $data)) {
-            $object->setOceBroadcastProbeResponseDelay($data['oceBroadcastProbeResponseDelay']);
+            $object->oceBroadcastProbeResponseDelay = $data['oceBroadcastProbeResponseDelay'];
         }
         if (\array_key_exists('oceRssiBasedAssociationRejectionThreshold', $data)) {
-            $object->setOceRssiBasedAssociationRejectionThreshold($data['oceRssiBasedAssociationRejectionThreshold']);
+            $object->oceRssiBasedAssociationRejectionThreshold = $data['oceRssiBasedAssociationRejectionThreshold'];
         }
         if (\array_key_exists('oceReduceNeighborReportEnabled', $data)) {
-            $object->setOceReduceNeighborReportEnabled($data['oceReduceNeighborReportEnabled']);
+            $object->oceReduceNeighborReportEnabled = $data['oceReduceNeighborReportEnabled'];
         }
         if (\array_key_exists('oceApChannelReportEnabled', $data)) {
-            $object->setOceApChannelReportEnabled($data['oceApChannelReportEnabled']);
+            $object->oceApChannelReportEnabled = $data['oceApChannelReportEnabled'];
         }
         if (\array_key_exists('fils', $data)) {
-            $object->setFils($this->denormalizer->denormalize($data['fils'], \Jane\Component\OpenApi3\Tests\Expected\Model\WlanFastInitialLinkSetup::class, 'json', $context));
+            $object->fils = $this->denormalizer->denormalize($data['fils'], \Jane\Component\OpenApi3\Tests\Expected\Model\WlanFastInitialLinkSetup::class, 'json', $context);
         }
         if (\array_key_exists('dhcp82SubOptRadiusFormat', $data)) {
-            $object->setDhcp82SubOptRadiusFormat($data['dhcp82SubOptRadiusFormat']);
+            $object->dhcp82SubOptRadiusFormat = $data['dhcp82SubOptRadiusFormat'];
         }
         if (\array_key_exists('dnsSpoofingProfileId', $data)) {
-            $object->setDnsSpoofingProfileId($data['dnsSpoofingProfileId']);
+            $object->dnsSpoofingProfileId = $data['dnsSpoofingProfileId'];
         }
         if (\array_key_exists('vlanNameProfileId', $data)) {
-            $object->setVlanNameProfileId($data['vlanNameProfileId']);
+            $object->vlanNameProfileId = $data['vlanNameProfileId'];
         }
         if (\array_key_exists('userRoleAccess', $data)) {
-            $object->setUserRoleAccess($this->denormalizer->denormalize($data['userRoleAccess'], \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanAdvancedUserRoleAccess::class, 'json', $context));
+            $object->userRoleAccess = $this->denormalizer->denormalize($data['userRoleAccess'], \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanAdvancedUserRoleAccess::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clientIsolationEnabled') && null !== $data->getClientIsolationEnabled()) {
-            $dataArray['clientIsolationEnabled'] = $data->getClientIsolationEnabled();
+        if (array_key_exists('clientIsolationEnabled', get_object_vars($data)) && null !== ($data->clientIsolationEnabled ?? null)) {
+            $dataArray['clientIsolationEnabled'] = $data->clientIsolationEnabled ?? null;
         }
-        if ($data->isInitialized('clientIsolationUnicastEnabled') && null !== $data->getClientIsolationUnicastEnabled()) {
-            $dataArray['clientIsolationUnicastEnabled'] = $data->getClientIsolationUnicastEnabled();
+        if (array_key_exists('clientIsolationUnicastEnabled', get_object_vars($data)) && null !== ($data->clientIsolationUnicastEnabled ?? null)) {
+            $dataArray['clientIsolationUnicastEnabled'] = $data->clientIsolationUnicastEnabled ?? null;
         }
-        if ($data->isInitialized('clientIsolationMulticastEnabled') && null !== $data->getClientIsolationMulticastEnabled()) {
-            $dataArray['clientIsolationMulticastEnabled'] = $data->getClientIsolationMulticastEnabled();
+        if (array_key_exists('clientIsolationMulticastEnabled', get_object_vars($data)) && null !== ($data->clientIsolationMulticastEnabled ?? null)) {
+            $dataArray['clientIsolationMulticastEnabled'] = $data->clientIsolationMulticastEnabled ?? null;
         }
-        if ($data->isInitialized('clientIsolationAutoVrrpEnabled') && null !== $data->getClientIsolationAutoVrrpEnabled()) {
-            $dataArray['clientIsolationAutoVrrpEnabled'] = $data->getClientIsolationAutoVrrpEnabled();
+        if (array_key_exists('clientIsolationAutoVrrpEnabled', get_object_vars($data)) && null !== ($data->clientIsolationAutoVrrpEnabled ?? null)) {
+            $dataArray['clientIsolationAutoVrrpEnabled'] = $data->clientIsolationAutoVrrpEnabled ?? null;
         }
-        if ($data->isInitialized('clientIsolationWhitelist') && null !== $data->getClientIsolationWhitelist()) {
-            $dataArray['clientIsolationWhitelist'] = $data->getClientIsolationWhitelist() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClientIsolationWhitelist(), 'json', $context));
+        if (array_key_exists('clientIsolationWhitelist', get_object_vars($data)) && null !== ($data->clientIsolationWhitelist ?? null)) {
+            $dataArray['clientIsolationWhitelist'] = ($data->clientIsolationWhitelist ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->clientIsolationWhitelist ?? null, 'json', $context));
         }
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority();
+        if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = $data->priority ?? null;
         }
-        if ($data->isInitialized('hideSsidEnabled') && null !== $data->getHideSsidEnabled()) {
-            $dataArray['hideSsidEnabled'] = $data->getHideSsidEnabled();
+        if (array_key_exists('hideSsidEnabled', get_object_vars($data)) && null !== ($data->hideSsidEnabled ?? null)) {
+            $dataArray['hideSsidEnabled'] = $data->hideSsidEnabled ?? null;
         }
-        if ($data->isInitialized('hs20Onboarding') && null !== $data->getHs20Onboarding()) {
-            $dataArray['hs20Onboarding'] = $data->getHs20Onboarding();
+        if (array_key_exists('hs20Onboarding', get_object_vars($data)) && null !== ($data->hs20Onboarding ?? null)) {
+            $dataArray['hs20Onboarding'] = $data->hs20Onboarding ?? null;
         }
-        if ($data->isInitialized('maxClientsPerRadio') && null !== $data->getMaxClientsPerRadio()) {
-            $dataArray['maxClientsPerRadio'] = $data->getMaxClientsPerRadio();
+        if (array_key_exists('maxClientsPerRadio', get_object_vars($data)) && null !== ($data->maxClientsPerRadio ?? null)) {
+            $dataArray['maxClientsPerRadio'] = $data->maxClientsPerRadio ?? null;
         }
-        if ($data->isInitialized('clientIdleTimeoutSec') && null !== $data->getClientIdleTimeoutSec()) {
-            $dataArray['clientIdleTimeoutSec'] = $data->getClientIdleTimeoutSec();
+        if (array_key_exists('clientIdleTimeoutSec', get_object_vars($data)) && null !== ($data->clientIdleTimeoutSec ?? null)) {
+            $dataArray['clientIdleTimeoutSec'] = $data->clientIdleTimeoutSec ?? null;
         }
-        if ($data->isInitialized('gtkRekeyEnabled') && null !== $data->getGtkRekeyEnabled()) {
-            $dataArray['gtkRekeyEnabled'] = $data->getGtkRekeyEnabled();
+        if (array_key_exists('gtkRekeyEnabled', get_object_vars($data)) && null !== ($data->gtkRekeyEnabled ?? null)) {
+            $dataArray['gtkRekeyEnabled'] = $data->gtkRekeyEnabled ?? null;
         }
-        if ($data->isInitialized('wifi6Enabled') && null !== $data->getWifi6Enabled()) {
-            $dataArray['wifi6Enabled'] = $data->getWifi6Enabled();
+        if (array_key_exists('wifi6Enabled', get_object_vars($data)) && null !== ($data->wifi6Enabled ?? null)) {
+            $dataArray['wifi6Enabled'] = $data->wifi6Enabled ?? null;
         }
-        if ($data->isInitialized('userSessionTimeout') && null !== $data->getUserSessionTimeout()) {
-            $dataArray['userSessionTimeout'] = $data->getUserSessionTimeout();
+        if (array_key_exists('userSessionTimeout', get_object_vars($data)) && null !== ($data->userSessionTimeout ?? null)) {
+            $dataArray['userSessionTimeout'] = $data->userSessionTimeout ?? null;
         }
-        if ($data->isInitialized('dgafEnabled') && null !== $data->getDgafEnabled()) {
-            $dataArray['dgafEnabled'] = $data->getDgafEnabled();
+        if (array_key_exists('dgafEnabled', get_object_vars($data)) && null !== ($data->dgafEnabled ?? null)) {
+            $dataArray['dgafEnabled'] = $data->dgafEnabled ?? null;
         }
-        if ($data->isInitialized('clientLoadBalancingEnabled') && null !== $data->getClientLoadBalancingEnabled()) {
-            $dataArray['clientLoadBalancingEnabled'] = $data->getClientLoadBalancingEnabled();
+        if (array_key_exists('clientLoadBalancingEnabled', get_object_vars($data)) && null !== ($data->clientLoadBalancingEnabled ?? null)) {
+            $dataArray['clientLoadBalancingEnabled'] = $data->clientLoadBalancingEnabled ?? null;
         }
-        if ($data->isInitialized('proxyARPEnabled') && null !== $data->getProxyARPEnabled()) {
-            $dataArray['proxyARPEnabled'] = $data->getProxyARPEnabled();
+        if (array_key_exists('proxyARPEnabled', get_object_vars($data)) && null !== ($data->proxyARPEnabled ?? null)) {
+            $dataArray['proxyARPEnabled'] = $data->proxyARPEnabled ?? null;
         }
-        if ($data->isInitialized('ndProxyEnabled') && null !== $data->getNdProxyEnabled()) {
-            $dataArray['ndProxyEnabled'] = $data->getNdProxyEnabled();
+        if (array_key_exists('ndProxyEnabled', get_object_vars($data)) && null !== ($data->ndProxyEnabled ?? null)) {
+            $dataArray['ndProxyEnabled'] = $data->ndProxyEnabled ?? null;
         }
-        if ($data->isInitialized('suppressNsEnabled') && null !== $data->getSuppressNsEnabled()) {
-            $dataArray['suppressNsEnabled'] = $data->getSuppressNsEnabled();
+        if (array_key_exists('suppressNsEnabled', get_object_vars($data)) && null !== ($data->suppressNsEnabled ?? null)) {
+            $dataArray['suppressNsEnabled'] = $data->suppressNsEnabled ?? null;
         }
-        if ($data->isInitialized('raProxyEnabled') && null !== $data->getRaProxyEnabled()) {
-            $dataArray['raProxyEnabled'] = $data->getRaProxyEnabled();
+        if (array_key_exists('raProxyEnabled', get_object_vars($data)) && null !== ($data->raProxyEnabled ?? null)) {
+            $dataArray['raProxyEnabled'] = $data->raProxyEnabled ?? null;
         }
-        if ($data->isInitialized('rsraGuardEnabled') && null !== $data->getRsraGuardEnabled()) {
-            $dataArray['rsraGuardEnabled'] = $data->getRsraGuardEnabled();
+        if (array_key_exists('rsraGuardEnabled', get_object_vars($data)) && null !== ($data->rsraGuardEnabled ?? null)) {
+            $dataArray['rsraGuardEnabled'] = $data->rsraGuardEnabled ?? null;
         }
-        if ($data->isInitialized('raThrottlingEnabled') && null !== $data->getRaThrottlingEnabled()) {
-            $dataArray['raThrottlingEnabled'] = $data->getRaThrottlingEnabled();
+        if (array_key_exists('raThrottlingEnabled', get_object_vars($data)) && null !== ($data->raThrottlingEnabled ?? null)) {
+            $dataArray['raThrottlingEnabled'] = $data->raThrottlingEnabled ?? null;
         }
-        if ($data->isInitialized('maxAllowedRA') && null !== $data->getMaxAllowedRA()) {
-            $dataArray['maxAllowedRA'] = $data->getMaxAllowedRA();
+        if (array_key_exists('maxAllowedRA', get_object_vars($data)) && null !== ($data->maxAllowedRA ?? null)) {
+            $dataArray['maxAllowedRA'] = $data->maxAllowedRA ?? null;
         }
-        if ($data->isInitialized('raInterval') && null !== $data->getRaInterval()) {
-            $dataArray['raInterval'] = $data->getRaInterval();
+        if (array_key_exists('raInterval', get_object_vars($data)) && null !== ($data->raInterval ?? null)) {
+            $dataArray['raInterval'] = $data->raInterval ?? null;
         }
-        if ($data->isInitialized('support80211dEnabled') && null !== $data->getSupport80211dEnabled()) {
-            $dataArray['support80211dEnabled'] = $data->getSupport80211dEnabled();
+        if (array_key_exists('support80211dEnabled', get_object_vars($data)) && null !== ($data->support80211dEnabled ?? null)) {
+            $dataArray['support80211dEnabled'] = $data->support80211dEnabled ?? null;
         }
-        if ($data->isInitialized('support80211kEnabled') && null !== $data->getSupport80211kEnabled()) {
-            $dataArray['support80211kEnabled'] = $data->getSupport80211kEnabled();
+        if (array_key_exists('support80211kEnabled', get_object_vars($data)) && null !== ($data->support80211kEnabled ?? null)) {
+            $dataArray['support80211kEnabled'] = $data->support80211kEnabled ?? null;
         }
-        if ($data->isInitialized('antiSpoofingEnabled') && null !== $data->getAntiSpoofingEnabled()) {
-            $dataArray['antiSpoofingEnabled'] = $data->getAntiSpoofingEnabled();
+        if (array_key_exists('antiSpoofingEnabled', get_object_vars($data)) && null !== ($data->antiSpoofingEnabled ?? null)) {
+            $dataArray['antiSpoofingEnabled'] = $data->antiSpoofingEnabled ?? null;
         }
-        if ($data->isInitialized('arpRequestRateLimit') && null !== $data->getArpRequestRateLimit()) {
-            $dataArray['arpRequestRateLimit'] = $data->getArpRequestRateLimit();
+        if (array_key_exists('arpRequestRateLimit', get_object_vars($data)) && null !== ($data->arpRequestRateLimit ?? null)) {
+            $dataArray['arpRequestRateLimit'] = $data->arpRequestRateLimit ?? null;
         }
-        if ($data->isInitialized('dhcpRequestRateLimit') && null !== $data->getDhcpRequestRateLimit()) {
-            $dataArray['dhcpRequestRateLimit'] = $data->getDhcpRequestRateLimit();
+        if (array_key_exists('dhcpRequestRateLimit', get_object_vars($data)) && null !== ($data->dhcpRequestRateLimit ?? null)) {
+            $dataArray['dhcpRequestRateLimit'] = $data->dhcpRequestRateLimit ?? null;
         }
-        if ($data->isInitialized('forceClientDHCPTimeoutSec') && null !== $data->getForceClientDHCPTimeoutSec()) {
-            $dataArray['forceClientDHCPTimeoutSec'] = $data->getForceClientDHCPTimeoutSec();
+        if (array_key_exists('forceClientDHCPTimeoutSec', get_object_vars($data)) && null !== ($data->forceClientDHCPTimeoutSec ?? null)) {
+            $dataArray['forceClientDHCPTimeoutSec'] = $data->forceClientDHCPTimeoutSec ?? null;
         }
-        if ($data->isInitialized('dhcpOption82Enabled') && null !== $data->getDhcpOption82Enabled()) {
-            $dataArray['dhcpOption82Enabled'] = $data->getDhcpOption82Enabled();
+        if (array_key_exists('dhcpOption82Enabled', get_object_vars($data)) && null !== ($data->dhcpOption82Enabled ?? null)) {
+            $dataArray['dhcpOption82Enabled'] = $data->dhcpOption82Enabled ?? null;
         }
-        if ($data->isInitialized('dhcp82Format') && null !== $data->getDhcp82Format()) {
-            $dataArray['dhcp82Format'] = $data->getDhcp82Format();
+        if (array_key_exists('dhcp82Format', get_object_vars($data)) && null !== ($data->dhcp82Format ?? null)) {
+            $dataArray['dhcp82Format'] = $data->dhcp82Format ?? null;
         }
-        if ($data->isInitialized('dhcp82SubOpt1Format') && null !== $data->getDhcp82SubOpt1Format()) {
-            $dataArray['dhcp82SubOpt1Format'] = $data->getDhcp82SubOpt1Format();
+        if (array_key_exists('dhcp82SubOpt1Format', get_object_vars($data)) && null !== ($data->dhcp82SubOpt1Format ?? null)) {
+            $dataArray['dhcp82SubOpt1Format'] = $data->dhcp82SubOpt1Format ?? null;
         }
-        if ($data->isInitialized('dhcp82SubOpt2Format') && null !== $data->getDhcp82SubOpt2Format()) {
-            $dataArray['dhcp82SubOpt2Format'] = $data->getDhcp82SubOpt2Format();
+        if (array_key_exists('dhcp82SubOpt2Format', get_object_vars($data)) && null !== ($data->dhcp82SubOpt2Format ?? null)) {
+            $dataArray['dhcp82SubOpt2Format'] = $data->dhcp82SubOpt2Format ?? null;
         }
-        if ($data->isInitialized('dhcp82SubOpt150Format') && null !== $data->getDhcp82SubOpt150Format()) {
-            $dataArray['dhcp82SubOpt150Format'] = $data->getDhcp82SubOpt150Format();
+        if (array_key_exists('dhcp82SubOpt150Format', get_object_vars($data)) && null !== ($data->dhcp82SubOpt150Format ?? null)) {
+            $dataArray['dhcp82SubOpt150Format'] = $data->dhcp82SubOpt150Format ?? null;
         }
-        if ($data->isInitialized('dhcp82SubOpt151Format') && null !== $data->getDhcp82SubOpt151Format()) {
-            $dataArray['dhcp82SubOpt151Format'] = $data->getDhcp82SubOpt151Format();
+        if (array_key_exists('dhcp82SubOpt151Format', get_object_vars($data)) && null !== ($data->dhcp82SubOpt151Format ?? null)) {
+            $dataArray['dhcp82SubOpt151Format'] = $data->dhcp82SubOpt151Format ?? null;
         }
-        if ($data->isInitialized('dhcp82SubOpt151AreaName') && null !== $data->getDhcp82SubOpt151AreaName()) {
-            $dataArray['dhcp82SubOpt151AreaName'] = $data->getDhcp82SubOpt151AreaName();
+        if (array_key_exists('dhcp82SubOpt151AreaName', get_object_vars($data)) && null !== ($data->dhcp82SubOpt151AreaName ?? null)) {
+            $dataArray['dhcp82SubOpt151AreaName'] = $data->dhcp82SubOpt151AreaName ?? null;
         }
-        if ($data->isInitialized('dhcp82MacFormat') && null !== $data->getDhcp82MacFormat()) {
-            $dataArray['dhcp82MacFormat'] = $data->getDhcp82MacFormat();
+        if (array_key_exists('dhcp82MacFormat', get_object_vars($data)) && null !== ($data->dhcp82MacFormat ?? null)) {
+            $dataArray['dhcp82MacFormat'] = $data->dhcp82MacFormat ?? null;
         }
-        if ($data->isInitialized('unauthClientStatsEnabled') && null !== $data->getUnauthClientStatsEnabled()) {
-            $dataArray['unauthClientStatsEnabled'] = $data->getUnauthClientStatsEnabled();
+        if (array_key_exists('unauthClientStatsEnabled', get_object_vars($data)) && null !== ($data->unauthClientStatsEnabled ?? null)) {
+            $dataArray['unauthClientStatsEnabled'] = $data->unauthClientStatsEnabled ?? null;
         }
-        if ($data->isInitialized('clientFingerprintingEnabled') && null !== $data->getClientFingerprintingEnabled()) {
-            $dataArray['clientFingerprintingEnabled'] = $data->getClientFingerprintingEnabled();
+        if (array_key_exists('clientFingerprintingEnabled', get_object_vars($data)) && null !== ($data->clientFingerprintingEnabled ?? null)) {
+            $dataArray['clientFingerprintingEnabled'] = $data->clientFingerprintingEnabled ?? null;
         }
-        if ($data->isInitialized('multicastFilterDrop') && null !== $data->getMulticastFilterDrop()) {
-            $dataArray['multicastFilterDrop'] = $data->getMulticastFilterDrop();
+        if (array_key_exists('multicastFilterDrop', get_object_vars($data)) && null !== ($data->multicastFilterDrop ?? null)) {
+            $dataArray['multicastFilterDrop'] = $data->multicastFilterDrop ?? null;
         }
-        if ($data->isInitialized('ofdmOnlyEnabled') && null !== $data->getOfdmOnlyEnabled()) {
-            $dataArray['ofdmOnlyEnabled'] = $data->getOfdmOnlyEnabled();
+        if (array_key_exists('ofdmOnlyEnabled', get_object_vars($data)) && null !== ($data->ofdmOnlyEnabled ?? null)) {
+            $dataArray['ofdmOnlyEnabled'] = $data->ofdmOnlyEnabled ?? null;
         }
-        if ($data->isInitialized('bandBalancing') && null !== $data->getBandBalancing()) {
-            $dataArray['bandBalancing'] = $data->getBandBalancing();
+        if (array_key_exists('bandBalancing', get_object_vars($data)) && null !== ($data->bandBalancing ?? null)) {
+            $dataArray['bandBalancing'] = $data->bandBalancing ?? null;
         }
-        if ($data->isInitialized('bssMinRateMbps') && null !== $data->getBssMinRateMbps()) {
-            $dataArray['bssMinRateMbps'] = $data->getBssMinRateMbps();
+        if (array_key_exists('bssMinRateMbps', get_object_vars($data)) && null !== ($data->bssMinRateMbps ?? null)) {
+            $dataArray['bssMinRateMbps'] = $data->bssMinRateMbps ?? null;
         }
-        if ($data->isInitialized('mgmtTxRateMbps') && null !== $data->getMgmtTxRateMbps()) {
-            $dataArray['mgmtTxRateMbps'] = $data->getMgmtTxRateMbps();
+        if (array_key_exists('mgmtTxRateMbps', get_object_vars($data)) && null !== ($data->mgmtTxRateMbps ?? null)) {
+            $dataArray['mgmtTxRateMbps'] = $data->mgmtTxRateMbps ?? null;
         }
-        if ($data->isInitialized('pmkCachingEnabled') && null !== $data->getPmkCachingEnabled()) {
-            $dataArray['pmkCachingEnabled'] = $data->getPmkCachingEnabled();
+        if (array_key_exists('pmkCachingEnabled', get_object_vars($data)) && null !== ($data->pmkCachingEnabled ?? null)) {
+            $dataArray['pmkCachingEnabled'] = $data->pmkCachingEnabled ?? null;
         }
-        if ($data->isInitialized('okcEnabled') && null !== $data->getOkcEnabled()) {
-            $dataArray['okcEnabled'] = $data->getOkcEnabled();
+        if (array_key_exists('okcEnabled', get_object_vars($data)) && null !== ($data->okcEnabled ?? null)) {
+            $dataArray['okcEnabled'] = $data->okcEnabled ?? null;
         }
-        if ($data->isInitialized('avcEnabled') && null !== $data->getAvcEnabled()) {
-            $dataArray['avcEnabled'] = $data->getAvcEnabled();
+        if (array_key_exists('avcEnabled', get_object_vars($data)) && null !== ($data->avcEnabled ?? null)) {
+            $dataArray['avcEnabled'] = $data->avcEnabled ?? null;
         }
-        if ($data->isInitialized('clientVirtualIdExtractionEnabled') && null !== $data->getClientVirtualIdExtractionEnabled()) {
-            $dataArray['clientVirtualIdExtractionEnabled'] = $data->getClientVirtualIdExtractionEnabled();
+        if (array_key_exists('clientVirtualIdExtractionEnabled', get_object_vars($data)) && null !== ($data->clientVirtualIdExtractionEnabled ?? null)) {
+            $dataArray['clientVirtualIdExtractionEnabled'] = $data->clientVirtualIdExtractionEnabled ?? null;
         }
-        if ($data->isInitialized('urlFilteringPolicyEnabled') && null !== $data->getUrlFilteringPolicyEnabled()) {
-            $dataArray['urlFilteringPolicyEnabled'] = $data->getUrlFilteringPolicyEnabled();
+        if (array_key_exists('urlFilteringPolicyEnabled', get_object_vars($data)) && null !== ($data->urlFilteringPolicyEnabled ?? null)) {
+            $dataArray['urlFilteringPolicyEnabled'] = $data->urlFilteringPolicyEnabled ?? null;
         }
-        if ($data->isInitialized('urlFilteringPolicyId') && null !== $data->getUrlFilteringPolicyId()) {
-            $dataArray['urlFilteringPolicyId'] = $data->getUrlFilteringPolicyId();
+        if (array_key_exists('urlFilteringPolicyId', get_object_vars($data)) && null !== ($data->urlFilteringPolicyId ?? null)) {
+            $dataArray['urlFilteringPolicyId'] = $data->urlFilteringPolicyId ?? null;
         }
-        if ($data->isInitialized('wifiCallingPolicyEnabled') && null !== $data->getWifiCallingPolicyEnabled()) {
-            $dataArray['wifiCallingPolicyEnabled'] = $data->getWifiCallingPolicyEnabled();
+        if (array_key_exists('wifiCallingPolicyEnabled', get_object_vars($data)) && null !== ($data->wifiCallingPolicyEnabled ?? null)) {
+            $dataArray['wifiCallingPolicyEnabled'] = $data->wifiCallingPolicyEnabled ?? null;
         }
-        if ($data->isInitialized('wifiCallingPolicyIds') && null !== $data->getWifiCallingPolicyIds()) {
+        if (array_key_exists('wifiCallingPolicyIds', get_object_vars($data)) && null !== ($data->wifiCallingPolicyIds ?? null)) {
             $values = [];
-            foreach ($data->getWifiCallingPolicyIds() as $value) {
+            foreach ($data->wifiCallingPolicyIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['wifiCallingPolicyIds'] = $values;
         }
-        if ($data->isInitialized('uplinkEnabled') && null !== $data->getUplinkEnabled()) {
-            $dataArray['uplinkEnabled'] = $data->getUplinkEnabled();
+        if (array_key_exists('uplinkEnabled', get_object_vars($data)) && null !== ($data->uplinkEnabled ?? null)) {
+            $dataArray['uplinkEnabled'] = $data->uplinkEnabled ?? null;
         }
-        if ($data->isInitialized('uplinkRate') && null !== $data->getUplinkRate()) {
-            $dataArray['uplinkRate'] = $data->getUplinkRate();
+        if (array_key_exists('uplinkRate', get_object_vars($data)) && null !== ($data->uplinkRate ?? null)) {
+            $dataArray['uplinkRate'] = $data->uplinkRate ?? null;
         }
-        if ($data->isInitialized('downlinkEnabled') && null !== $data->getDownlinkEnabled()) {
-            $dataArray['downlinkEnabled'] = $data->getDownlinkEnabled();
+        if (array_key_exists('downlinkEnabled', get_object_vars($data)) && null !== ($data->downlinkEnabled ?? null)) {
+            $dataArray['downlinkEnabled'] = $data->downlinkEnabled ?? null;
         }
-        if ($data->isInitialized('downlinkRate') && null !== $data->getDownlinkRate()) {
-            $dataArray['downlinkRate'] = $data->getDownlinkRate();
+        if (array_key_exists('downlinkRate', get_object_vars($data)) && null !== ($data->downlinkRate ?? null)) {
+            $dataArray['downlinkRate'] = $data->downlinkRate ?? null;
         }
-        if ($data->isInitialized('multicastUplinkRateLimitEnabled') && null !== $data->getMulticastUplinkRateLimitEnabled()) {
-            $dataArray['multicastUplinkRateLimitEnabled'] = $data->getMulticastUplinkRateLimitEnabled();
+        if (array_key_exists('multicastUplinkRateLimitEnabled', get_object_vars($data)) && null !== ($data->multicastUplinkRateLimitEnabled ?? null)) {
+            $dataArray['multicastUplinkRateLimitEnabled'] = $data->multicastUplinkRateLimitEnabled ?? null;
         }
-        if ($data->isInitialized('multicastUplinkRateLimit') && null !== $data->getMulticastUplinkRateLimit()) {
-            $dataArray['multicastUplinkRateLimit'] = $data->getMulticastUplinkRateLimit();
+        if (array_key_exists('multicastUplinkRateLimit', get_object_vars($data)) && null !== ($data->multicastUplinkRateLimit ?? null)) {
+            $dataArray['multicastUplinkRateLimit'] = $data->multicastUplinkRateLimit ?? null;
         }
-        if ($data->isInitialized('multicastDownlinkRateLimitEnabled') && null !== $data->getMulticastDownlinkRateLimitEnabled()) {
-            $dataArray['multicastDownlinkRateLimitEnabled'] = $data->getMulticastDownlinkRateLimitEnabled();
+        if (array_key_exists('multicastDownlinkRateLimitEnabled', get_object_vars($data)) && null !== ($data->multicastDownlinkRateLimitEnabled ?? null)) {
+            $dataArray['multicastDownlinkRateLimitEnabled'] = $data->multicastDownlinkRateLimitEnabled ?? null;
         }
-        if ($data->isInitialized('multicastDownlinkRateLimit') && null !== $data->getMulticastDownlinkRateLimit()) {
-            $dataArray['multicastDownlinkRateLimit'] = $data->getMulticastDownlinkRateLimit();
+        if (array_key_exists('multicastDownlinkRateLimit', get_object_vars($data)) && null !== ($data->multicastDownlinkRateLimit ?? null)) {
+            $dataArray['multicastDownlinkRateLimit'] = $data->multicastDownlinkRateLimit ?? null;
         }
-        if ($data->isInitialized('multicastUplinkRateLimit6gEnabled') && null !== $data->getMulticastUplinkRateLimit6gEnabled()) {
-            $dataArray['multicastUplinkRateLimit6gEnabled'] = $data->getMulticastUplinkRateLimit6gEnabled();
+        if (array_key_exists('multicastUplinkRateLimit6gEnabled', get_object_vars($data)) && null !== ($data->multicastUplinkRateLimit6gEnabled ?? null)) {
+            $dataArray['multicastUplinkRateLimit6gEnabled'] = $data->multicastUplinkRateLimit6gEnabled ?? null;
         }
-        if ($data->isInitialized('multicastDownlinkRateLimit6gEnabled') && null !== $data->getMulticastDownlinkRateLimit6gEnabled()) {
-            $dataArray['multicastDownlinkRateLimit6gEnabled'] = $data->getMulticastDownlinkRateLimit6gEnabled();
+        if (array_key_exists('multicastDownlinkRateLimit6gEnabled', get_object_vars($data)) && null !== ($data->multicastDownlinkRateLimit6gEnabled ?? null)) {
+            $dataArray['multicastDownlinkRateLimit6gEnabled'] = $data->multicastDownlinkRateLimit6gEnabled ?? null;
         }
-        if ($data->isInitialized('ratePerSTAUplink') && null !== $data->getRatePerSTAUplink()) {
-            $dataArray['ratePerSTAUplink'] = $data->getRatePerSTAUplink();
+        if (array_key_exists('ratePerSTAUplink', get_object_vars($data)) && null !== ($data->ratePerSTAUplink ?? null)) {
+            $dataArray['ratePerSTAUplink'] = $data->ratePerSTAUplink ?? null;
         }
-        if ($data->isInitialized('ratePerSTADownlink') && null !== $data->getRatePerSTADownlink()) {
-            $dataArray['ratePerSTADownlink'] = $data->getRatePerSTADownlink();
+        if (array_key_exists('ratePerSTADownlink', get_object_vars($data)) && null !== ($data->ratePerSTADownlink ?? null)) {
+            $dataArray['ratePerSTADownlink'] = $data->ratePerSTADownlink ?? null;
         }
-        if ($data->isInitialized('dtimInterval') && null !== $data->getDtimInterval()) {
-            $dataArray['dtimInterval'] = $data->getDtimInterval();
+        if (array_key_exists('dtimInterval', get_object_vars($data)) && null !== ($data->dtimInterval ?? null)) {
+            $dataArray['dtimInterval'] = $data->dtimInterval ?? null;
         }
-        if ($data->isInitialized('directedThreshold') && null !== $data->getDirectedThreshold()) {
-            $dataArray['directedThreshold'] = $data->getDirectedThreshold();
+        if (array_key_exists('directedThreshold', get_object_vars($data)) && null !== ($data->directedThreshold ?? null)) {
+            $dataArray['directedThreshold'] = $data->directedThreshold ?? null;
         }
-        if ($data->isInitialized('flowLogEnabled') && null !== $data->getFlowLogEnabled()) {
-            $dataArray['flowLogEnabled'] = $data->getFlowLogEnabled();
+        if (array_key_exists('flowLogEnabled', get_object_vars($data)) && null !== ($data->flowLogEnabled ?? null)) {
+            $dataArray['flowLogEnabled'] = $data->flowLogEnabled ?? null;
         }
-        if ($data->isInitialized('hdOverheadOptimizeEnable') && null !== $data->getHdOverheadOptimizeEnable()) {
-            $dataArray['hdOverheadOptimizeEnable'] = $data->getHdOverheadOptimizeEnable();
+        if (array_key_exists('hdOverheadOptimizeEnable', get_object_vars($data)) && null !== ($data->hdOverheadOptimizeEnable ?? null)) {
+            $dataArray['hdOverheadOptimizeEnable'] = $data->hdOverheadOptimizeEnable ?? null;
         }
-        if ($data->isInitialized('probeRssiThr') && null !== $data->getProbeRssiThr()) {
-            $dataArray['probeRssiThr'] = $data->getProbeRssiThr();
+        if (array_key_exists('probeRssiThr', get_object_vars($data)) && null !== ($data->probeRssiThr ?? null)) {
+            $dataArray['probeRssiThr'] = $data->probeRssiThr ?? null;
         }
-        if ($data->isInitialized('transientClientMgmtEnable') && null !== $data->getTransientClientMgmtEnable()) {
-            $dataArray['transientClientMgmtEnable'] = $data->getTransientClientMgmtEnable();
+        if (array_key_exists('transientClientMgmtEnable', get_object_vars($data)) && null !== ($data->transientClientMgmtEnable ?? null)) {
+            $dataArray['transientClientMgmtEnable'] = $data->transientClientMgmtEnable ?? null;
         }
-        if ($data->isInitialized('joinIgnoreTimeout') && null !== $data->getJoinIgnoreTimeout()) {
-            $dataArray['joinIgnoreTimeout'] = $data->getJoinIgnoreTimeout();
+        if (array_key_exists('joinIgnoreTimeout', get_object_vars($data)) && null !== ($data->joinIgnoreTimeout ?? null)) {
+            $dataArray['joinIgnoreTimeout'] = $data->joinIgnoreTimeout ?? null;
         }
-        if ($data->isInitialized('joinAcceptTimeout') && null !== $data->getJoinAcceptTimeout()) {
-            $dataArray['joinAcceptTimeout'] = $data->getJoinAcceptTimeout();
+        if (array_key_exists('joinAcceptTimeout', get_object_vars($data)) && null !== ($data->joinAcceptTimeout ?? null)) {
+            $dataArray['joinAcceptTimeout'] = $data->joinAcceptTimeout ?? null;
         }
-        if ($data->isInitialized('joinIgnoreThr') && null !== $data->getJoinIgnoreThr()) {
-            $dataArray['joinIgnoreThr'] = $data->getJoinIgnoreThr();
+        if (array_key_exists('joinIgnoreThr', get_object_vars($data)) && null !== ($data->joinIgnoreThr ?? null)) {
+            $dataArray['joinIgnoreThr'] = $data->joinIgnoreThr ?? null;
         }
-        if ($data->isInitialized('dropRandomProbesEnabled') && null !== $data->getDropRandomProbesEnabled()) {
-            $dataArray['dropRandomProbesEnabled'] = $data->getDropRandomProbesEnabled();
+        if (array_key_exists('dropRandomProbesEnabled', get_object_vars($data)) && null !== ($data->dropRandomProbesEnabled ?? null)) {
+            $dataArray['dropRandomProbesEnabled'] = $data->dropRandomProbesEnabled ?? null;
         }
-        if ($data->isInitialized('authRssiThr') && null !== $data->getAuthRssiThr()) {
-            $dataArray['authRssiThr'] = $data->getAuthRssiThr();
+        if (array_key_exists('authRssiThr', get_object_vars($data)) && null !== ($data->authRssiThr ?? null)) {
+            $dataArray['authRssiThr'] = $data->authRssiThr ?? null;
         }
-        if ($data->isInitialized('assocRssiThr') && null !== $data->getAssocRssiThr()) {
-            $dataArray['assocRssiThr'] = $data->getAssocRssiThr();
+        if (array_key_exists('assocRssiThr', get_object_vars($data)) && null !== ($data->assocRssiThr ?? null)) {
+            $dataArray['assocRssiThr'] = $data->assocRssiThr ?? null;
         }
-        if ($data->isInitialized('oceEnabled') && null !== $data->getOceEnabled()) {
-            $dataArray['oceEnabled'] = $data->getOceEnabled();
+        if (array_key_exists('oceEnabled', get_object_vars($data)) && null !== ($data->oceEnabled ?? null)) {
+            $dataArray['oceEnabled'] = $data->oceEnabled ?? null;
         }
-        if ($data->isInitialized('oceBroadcastProbeResponseDelay') && null !== $data->getOceBroadcastProbeResponseDelay()) {
-            $dataArray['oceBroadcastProbeResponseDelay'] = $data->getOceBroadcastProbeResponseDelay();
+        if (array_key_exists('oceBroadcastProbeResponseDelay', get_object_vars($data)) && null !== ($data->oceBroadcastProbeResponseDelay ?? null)) {
+            $dataArray['oceBroadcastProbeResponseDelay'] = $data->oceBroadcastProbeResponseDelay ?? null;
         }
-        if ($data->isInitialized('oceRssiBasedAssociationRejectionThreshold') && null !== $data->getOceRssiBasedAssociationRejectionThreshold()) {
-            $dataArray['oceRssiBasedAssociationRejectionThreshold'] = $data->getOceRssiBasedAssociationRejectionThreshold();
+        if (array_key_exists('oceRssiBasedAssociationRejectionThreshold', get_object_vars($data)) && null !== ($data->oceRssiBasedAssociationRejectionThreshold ?? null)) {
+            $dataArray['oceRssiBasedAssociationRejectionThreshold'] = $data->oceRssiBasedAssociationRejectionThreshold ?? null;
         }
-        if ($data->isInitialized('oceReduceNeighborReportEnabled') && null !== $data->getOceReduceNeighborReportEnabled()) {
-            $dataArray['oceReduceNeighborReportEnabled'] = $data->getOceReduceNeighborReportEnabled();
+        if (array_key_exists('oceReduceNeighborReportEnabled', get_object_vars($data)) && null !== ($data->oceReduceNeighborReportEnabled ?? null)) {
+            $dataArray['oceReduceNeighborReportEnabled'] = $data->oceReduceNeighborReportEnabled ?? null;
         }
-        if ($data->isInitialized('oceApChannelReportEnabled') && null !== $data->getOceApChannelReportEnabled()) {
-            $dataArray['oceApChannelReportEnabled'] = $data->getOceApChannelReportEnabled();
+        if (array_key_exists('oceApChannelReportEnabled', get_object_vars($data)) && null !== ($data->oceApChannelReportEnabled ?? null)) {
+            $dataArray['oceApChannelReportEnabled'] = $data->oceApChannelReportEnabled ?? null;
         }
-        if ($data->isInitialized('fils') && null !== $data->getFils()) {
-            $dataArray['fils'] = $data->getFils() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFils(), 'json', $context));
+        if (array_key_exists('fils', get_object_vars($data)) && null !== ($data->fils ?? null)) {
+            $dataArray['fils'] = ($data->fils ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->fils ?? null, 'json', $context));
         }
-        if ($data->isInitialized('dhcp82SubOptRadiusFormat') && null !== $data->getDhcp82SubOptRadiusFormat()) {
-            $dataArray['dhcp82SubOptRadiusFormat'] = $data->getDhcp82SubOptRadiusFormat();
+        if (array_key_exists('dhcp82SubOptRadiusFormat', get_object_vars($data)) && null !== ($data->dhcp82SubOptRadiusFormat ?? null)) {
+            $dataArray['dhcp82SubOptRadiusFormat'] = $data->dhcp82SubOptRadiusFormat ?? null;
         }
-        if ($data->isInitialized('dnsSpoofingProfileId') && null !== $data->getDnsSpoofingProfileId()) {
-            $dataArray['dnsSpoofingProfileId'] = $data->getDnsSpoofingProfileId();
+        if (array_key_exists('dnsSpoofingProfileId', get_object_vars($data)) && null !== ($data->dnsSpoofingProfileId ?? null)) {
+            $dataArray['dnsSpoofingProfileId'] = $data->dnsSpoofingProfileId ?? null;
         }
-        if ($data->isInitialized('vlanNameProfileId') && null !== $data->getVlanNameProfileId()) {
-            $dataArray['vlanNameProfileId'] = $data->getVlanNameProfileId();
+        if (array_key_exists('vlanNameProfileId', get_object_vars($data)) && null !== ($data->vlanNameProfileId ?? null)) {
+            $dataArray['vlanNameProfileId'] = $data->vlanNameProfileId ?? null;
         }
-        if ($data->isInitialized('userRoleAccess') && null !== $data->getUserRoleAccess()) {
-            $dataArray['userRoleAccess'] = $data->getUserRoleAccess() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserRoleAccess(), 'json', $context));
+        if (array_key_exists('userRoleAccess', get_object_vars($data)) && null !== ($data->userRoleAccess ?? null)) {
+            $dataArray['userRoleAccess'] = ($data->userRoleAccess ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->userRoleAccess ?? null, 'json', $context));
         }
         return $dataArray;
     }

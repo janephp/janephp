@@ -41,19 +41,19 @@ class ApmodelAuthenticatorAAAServerNormalizer implements DenormalizerInterface, 
             $data['enableUseSCGasProxy'] = (bool) $data['enableUseSCGasProxy'];
         }
         if (\array_key_exists('enableUseSCGasProxy', $data)) {
-            $object->setEnableUseSCGasProxy($data['enableUseSCGasProxy']);
+            $object->enableUseSCGasProxy = $data['enableUseSCGasProxy'];
         }
         if (\array_key_exists('server', $data)) {
-            $object->setServer($this->denormalizer->denormalize($data['server'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->server = $this->denormalizer->denormalize($data['server'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enableUseSCGasProxy'] = $data->getEnableUseSCGasProxy();
-        if ($data->isInitialized('server') && null !== $data->getServer()) {
-            $dataArray['server'] = $data->getServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getServer(), 'json', $context));
+        $dataArray['enableUseSCGasProxy'] = $data->enableUseSCGasProxy ?? null;
+        if (array_key_exists('server', get_object_vars($data)) && null !== ($data->server ?? null)) {
+            $dataArray['server'] = ($data->server ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->server ?? null, 'json', $context));
         }
         return $dataArray;
     }

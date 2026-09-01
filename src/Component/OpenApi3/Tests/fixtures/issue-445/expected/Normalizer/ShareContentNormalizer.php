@@ -38,27 +38,27 @@ class ShareContentNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('contentId', $data)) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
         }
         if (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] !== null) {
             $values = [];
             foreach ($data['outputFormatIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setOutputFormatIds($values);
+            $object->outputFormatIds = $values;
         }
         elseif (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] === null) {
-            $object->setOutputFormatIds(null);
+            $object->outputFormatIds = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentId'] = $data->getContentId();
-        if ($data->isInitialized('outputFormatIds') && null !== $data->getOutputFormatIds()) {
+        $dataArray['contentId'] = $data->contentId ?? null;
+        if (array_key_exists('outputFormatIds', get_object_vars($data)) && null !== ($data->outputFormatIds ?? null)) {
             $values = [];
-            foreach ($data->getOutputFormatIds() as $value) {
+            foreach ($data->outputFormatIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['outputFormatIds'] = $values;

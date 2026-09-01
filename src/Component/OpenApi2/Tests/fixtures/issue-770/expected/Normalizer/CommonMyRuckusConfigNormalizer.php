@@ -41,14 +41,14 @@ class CommonMyRuckusConfigNormalizer implements DenormalizerInterface, Normalize
             $data['aclForTunnelWlanAndVlanEnable'] = (bool) $data['aclForTunnelWlanAndVlanEnable'];
         }
         if (\array_key_exists('aclForTunnelWlanAndVlanEnable', $data)) {
-            $object->setAclForTunnelWlanAndVlanEnable($data['aclForTunnelWlanAndVlanEnable']);
+            $object->aclForTunnelWlanAndVlanEnable = $data['aclForTunnelWlanAndVlanEnable'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['aclForTunnelWlanAndVlanEnable'] = $data->getAclForTunnelWlanAndVlanEnable();
+        $dataArray['aclForTunnelWlanAndVlanEnable'] = $data->aclForTunnelWlanAndVlanEnable ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

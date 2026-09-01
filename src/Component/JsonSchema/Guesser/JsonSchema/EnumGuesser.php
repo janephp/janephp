@@ -27,11 +27,11 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
             return false;
         }
 
-        if (!\is_string($object->getType()) || !\in_array($object->getType(), ['string', 'integer'], true)) {
+        if (!\is_string($object->type ?? null) || !\in_array($object->type ?? null, ['string', 'integer'], true)) {
             return false;
         }
 
-        return null !== $object->getEnum() && \count($object->getEnum()) > 0;
+        return null !== ($object->enum ?? null) && \count($object->enum ?? null) > 0;
     }
 
     /**
@@ -53,9 +53,9 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
             $object,
             $reference,
             $this->naming->getClassName($name),
-            $this->getBackingType($object->getType()),
-            $object->getEnum(),
-            method_exists($object, 'getDeprecated') && ($object->getDeprecated() ?? false)
+            $this->getBackingType($object->type ?? null),
+            $object->enum ?? null,
+            property_exists($object, 'deprecated') && (($object->deprecated ?? null) ?? false)
         ));
     }
 
@@ -65,7 +65,7 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
             return new Type($object, 'mixed');
         }
 
-        $backingType = $this->getBackingType($object->getType());
+        $backingType = $this->getBackingType($object->type ?? null);
         $schema = $registry->getSchema($reference);
         $classGuess = $registry->getClass($reference);
 

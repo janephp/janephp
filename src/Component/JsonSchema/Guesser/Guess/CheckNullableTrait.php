@@ -2,23 +2,37 @@
 
 namespace Jane\Component\JsonSchema\Guesser\Guess;
 
-use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
-
+/**
+ * Nullability detection for schema objects of every supported JSON Schema /
+ * OpenAPI dialect, without depending on version specific model classes.
+ */
 trait CheckNullableTrait
 {
     public function isNullable($schema): bool
     {
-        if (\get_class($schema) === JsonSchema::class) {
-            return \is_array($schema->getType()) ? \in_array('null', $schema->getType()) : 'null' === $schema->getType();
+        if (!\is_object($schema)) {
+            return false;
         }
-        if (\get_class($schema) === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema') {
-            return $schema->offsetExists('x-nullable') && \is_bool($schema->offsetGet('x-nullable')) && $schema->offsetGet('x-nullable');
+
+        // JSON Schema 2020-12 (and the OpenAPI 3.1 model extending it): the
+        // "null" keyword is part of the (possibly union) type.
+        if (property_exists($schema, 'type')) {
+            $type = ($schema->type ?? null);
+
+            if (\is_array($type) ? \in_array('null', $type, true) : 'null' === $type) {
+                return true;
+            }
         }
-        if (\get_class($schema) === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema') {
-            return method_exists($schema, 'getNullable') && $schema->getNullable() === true;
+
+        // OpenAPI 2.0: boolean vendor extension "x-nullable".
+        if (method_exists($schema, 'offsetExists') && method_exists($schema, 'offsetGet')
+            && $schema->offsetExists('x-nullable') && \is_bool($schema->offsetGet('x-nullable'))) {
+            return $schema->offsetGet('x-nullable');
         }
-        if (\get_class($schema) === 'Jane\\Component\\OpenApi31\\JsonSchema\\Model\\Schema') {
-            return \is_array($schema->getType()) ? \in_array('null', $schema->getType()) : 'null' === $schema->getType();
+
+        // OpenAPI 3.0: "nullable: true" keyword.
+        if (property_exists($schema, 'nullable')) {
+            return ($schema->nullable ?? null) === true;
         }
 
         return false;

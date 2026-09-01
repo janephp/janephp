@@ -41,11 +41,11 @@ class AppsRollbackAppRequestNormalizer implements DenormalizerInterface, Normali
             $data['skip_pin'] = (bool) $data['skip_pin'];
         }
         if (\array_key_exists('deployment_id', $data)) {
-            $object->setDeploymentId($data['deployment_id']);
+            $object->deploymentId = $data['deployment_id'];
             unset($data['deployment_id']);
         }
         if (\array_key_exists('skip_pin', $data)) {
-            $object->setSkipPin($data['skip_pin']);
+            $object->skipPin = $data['skip_pin'];
             unset($data['skip_pin']);
         }
         foreach ($data as $key => $value) {
@@ -58,11 +58,11 @@ class AppsRollbackAppRequestNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('deploymentId') && null !== $data->getDeploymentId()) {
-            $dataArray['deployment_id'] = $data->getDeploymentId();
+        if (array_key_exists('deploymentId', get_object_vars($data)) && null !== ($data->deploymentId ?? null)) {
+            $dataArray['deployment_id'] = $data->deploymentId ?? null;
         }
-        if ($data->isInitialized('skipPin') && null !== $data->getSkipPin()) {
-            $dataArray['skip_pin'] = $data->getSkipPin();
+        if (array_key_exists('skipPin', get_object_vars($data)) && null !== ($data->skipPin ?? null)) {
+            $dataArray['skip_pin'] = $data->skipPin ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

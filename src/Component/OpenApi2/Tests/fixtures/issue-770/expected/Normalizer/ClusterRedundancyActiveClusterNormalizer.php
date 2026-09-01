@@ -38,32 +38,32 @@ class ClusterRedundancyActiveClusterNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         if (\array_key_exists('targetClusterAdminPassword', $data)) {
-            $object->setTargetClusterAdminPassword($data['targetClusterAdminPassword']);
+            $object->targetClusterAdminPassword = $data['targetClusterAdminPassword'];
         }
         if (\array_key_exists('managementEntryList', $data)) {
             $values = [];
             foreach ($data['managementEntryList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyManagementEntry::class, 'json', $context);
             }
-            $object->setManagementEntryList($values);
+            $object->managementEntryList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority();
+        if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = $data->priority ?? null;
         }
-        if ($data->isInitialized('targetClusterAdminPassword') && null !== $data->getTargetClusterAdminPassword()) {
-            $dataArray['targetClusterAdminPassword'] = $data->getTargetClusterAdminPassword();
+        if (array_key_exists('targetClusterAdminPassword', get_object_vars($data)) && null !== ($data->targetClusterAdminPassword ?? null)) {
+            $dataArray['targetClusterAdminPassword'] = $data->targetClusterAdminPassword ?? null;
         }
-        if ($data->isInitialized('managementEntryList') && null !== $data->getManagementEntryList()) {
+        if (array_key_exists('managementEntryList', get_object_vars($data)) && null !== ($data->managementEntryList ?? null)) {
             $values = [];
-            foreach ($data->getManagementEntryList() as $value) {
+            foreach ($data->managementEntryList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['managementEntryList'] = $values;

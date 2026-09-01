@@ -48,8 +48,8 @@ class MultipartBinaryRuntimeTest extends TestCase
 
         // PSR-7 StreamInterface
         $body = new ExpectedIssue793\Model\FilePostBody();
-        $body->setFile(\Nyholm\Psr7\Stream::create('stream-file-content'));
-        $body->setDescription('description');
+        $body->file = \Nyholm\Psr7\Stream::create('stream-file-content');
+        $body->description = 'description';
         $result = (new ExpectedIssue793\Endpoint\UploadFile($body))->getBody($serializer, $streamFactory);
         $this->assertIsArray($result);
         $this->assertCount(2, $result);
@@ -64,14 +64,14 @@ class MultipartBinaryRuntimeTest extends TestCase
         fwrite($resource, 'resource-file-content');
         rewind($resource);
         $body = new ExpectedIssue793\Model\FilePostBody();
-        $body->setFile($resource);
+        $body->file = $resource;
         $result = (new ExpectedIssue793\Endpoint\UploadFile($body))->getBody($serializer, $streamFactory);
         $streamContent = (string) $result[1];
         $this->assertMatchesRegularExpression('/name="file".*?\R\Rresource-file-content\R/s', $streamContent);
 
         // Plain string still works
         $body = new ExpectedIssue793\Model\FilePostBody();
-        $body->setFile('string-file-content');
+        $body->file = 'string-file-content';
         $result = (new ExpectedIssue793\Endpoint\UploadFile($body))->getBody($serializer, $streamFactory);
         $streamContent = (string) $result[1];
         $this->assertMatchesRegularExpression('/name="file".*?\R\Rstring-file-content\R/s', $streamContent);

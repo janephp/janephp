@@ -38,11 +38,11 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('config', $data)) {
@@ -50,15 +50,15 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['config'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setConfig($values);
+            $object->config = $values;
             unset($data['config']);
         }
         if (\array_key_exists('droplet_template', $data)) {
-            $object->setDropletTemplate($this->denormalizer->denormalize($data['droplet_template'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class, 'json', $context));
+            $object->dropletTemplate = $this->denormalizer->denormalize($data['droplet_template'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class, 'json', $context);
             unset($data['droplet_template']);
         }
         if (\array_key_exists('current_utilization', $data)) {
-            $object->setCurrentUtilization($this->denormalizer->denormalize($data['current_utilization'], \Jane\Generated\DigitalOcean\Model\CurrentUtilization::class, 'json', $context));
+            $object->currentUtilization = $this->denormalizer->denormalize($data['current_utilization'], \Jane\Generated\DigitalOcean\Model\CurrentUtilization::class, 'json', $context);
             unset($data['current_utilization']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -66,7 +66,7 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -74,15 +74,15 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('active_resources_count', $data)) {
-            $object->setActiveResourcesCount($data['active_resources_count']);
+            $object->activeResourcesCount = $data['active_resources_count'];
             unset($data['active_resources_count']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -95,21 +95,21 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
         $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-        foreach ($data->getConfig() as $key => $value) {
+        foreach ($data->config ?? null as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['config'] = $values;
-        $dataArray['droplet_template'] = $data->getDropletTemplate() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDropletTemplate(), 'json', $context));
-        if ($data->isInitialized('currentUtilization') && null !== $data->getCurrentUtilization()) {
-            $dataArray['current_utilization'] = $data->getCurrentUtilization() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentUtilization(), 'json', $context));
+        $dataArray['droplet_template'] = ($data->dropletTemplate ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dropletTemplate ?? null, 'json', $context));
+        if (array_key_exists('currentUtilization', get_object_vars($data)) && null !== ($data->currentUtilization ?? null)) {
+            $dataArray['current_utilization'] = ($data->currentUtilization ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->currentUtilization ?? null, 'json', $context));
         }
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['status'] = $data->getStatus();
-        $dataArray['active_resources_count'] = $data->getActiveResourcesCount();
+        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['status'] = $data->status ?? null;
+        $dataArray['active_resources_count'] = $data->activeResourcesCount ?? null;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;

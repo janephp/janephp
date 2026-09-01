@@ -4,19 +4,18 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
 
 class CreateUserUnprocessableEntityException extends UnprocessableEntityException
 {
-    /**
-     * @var \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity
-     */
-    private $unprocessableEntity;
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(\Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity $unprocessableEntity, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(
+        /**
+         * @var \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity
+         */
+        private readonly \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity $unprocessableEntity,
+        /**
+         * @var \Psr\Http\Message\ResponseInterface
+         */
+        private readonly \Psr\Http\Message\ResponseInterface $response
+    )
     {
         parent::__construct('Unprocessable Entity');
-        $this->unprocessableEntity = $unprocessableEntity;
-        $this->response = $response;
     }
     public function getUnprocessableEntity(): \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity
     {

@@ -38,11 +38,11 @@ class AppMetricsBandwidthUsageDetailsNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('app_id', $data)) {
-            $object->setAppId($data['app_id']);
+            $object->appId = $data['app_id'];
             unset($data['app_id']);
         }
         if (\array_key_exists('bandwidth_bytes', $data)) {
-            $object->setBandwidthBytes($data['bandwidth_bytes']);
+            $object->bandwidthBytes = $data['bandwidth_bytes'];
             unset($data['bandwidth_bytes']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class AppMetricsBandwidthUsageDetailsNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('appId') && null !== $data->getAppId()) {
-            $dataArray['app_id'] = $data->getAppId();
+        if (array_key_exists('appId', get_object_vars($data)) && null !== ($data->appId ?? null)) {
+            $dataArray['app_id'] = $data->appId ?? null;
         }
-        if ($data->isInitialized('bandwidthBytes') && null !== $data->getBandwidthBytes()) {
-            $dataArray['bandwidth_bytes'] = $data->getBandwidthBytes();
+        if (array_key_exists('bandwidthBytes', get_object_vars($data)) && null !== ($data->bandwidthBytes ?? null)) {
+            $dataArray['bandwidth_bytes'] = $data->bandwidthBytes ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

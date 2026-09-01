@@ -41,14 +41,14 @@ class UserLockRequestNormalizer implements DenormalizerInterface, NormalizerInte
             $data['lock'] = (bool) $data['lock'];
         }
         if (\array_key_exists('lock', $data)) {
-            $object->setLock($data['lock']);
+            $object->lock = $data['lock'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['lock'] = $data->getLock();
+        $dataArray['lock'] = $data->lock ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

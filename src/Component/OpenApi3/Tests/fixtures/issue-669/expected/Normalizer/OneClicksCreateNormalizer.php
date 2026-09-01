@@ -42,11 +42,11 @@ class OneClicksCreateNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['addon_slugs'] as $value) {
                 $values[] = $value;
             }
-            $object->setAddonSlugs($values);
+            $object->addonSlugs = $values;
             unset($data['addon_slugs']);
         }
         if (\array_key_exists('cluster_uuid', $data)) {
-            $object->setClusterUuid($data['cluster_uuid']);
+            $object->clusterUuid = $data['cluster_uuid'];
             unset($data['cluster_uuid']);
         }
         foreach ($data as $key => $value_1) {
@@ -60,11 +60,11 @@ class OneClicksCreateNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getAddonSlugs() as $value) {
+        foreach ($data->addonSlugs ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['addon_slugs'] = $values;
-        $dataArray['cluster_uuid'] = $data->getClusterUuid();
+        $dataArray['cluster_uuid'] = $data->clusterUuid ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

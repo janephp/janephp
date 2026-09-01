@@ -62,23 +62,23 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['sortable'] = (bool) $data['sortable'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('indexId', $data) && $data['indexId'] !== null) {
-            $object->setIndexId($data['indexId']);
+            $object->indexId = $data['indexId'];
             unset($data['indexId']);
         }
         elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
-            $object->setIndexId(null);
+            $object->indexId = null;
             unset($data['indexId']);
         }
         if (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] !== null) {
-            $object->setFieldNamespace($data['fieldNamespace']);
+            $object->fieldNamespace = $data['fieldNamespace'];
             unset($data['fieldNamespace']);
         }
         elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
-            $object->setFieldNamespace(null);
+            $object->fieldNamespace = null;
             unset($data['fieldNamespace']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
@@ -90,11 +90,11 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
             unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
@@ -106,63 +106,63 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
                 }
                 $value_2 = $values_1;
             }
-            $object->setDescriptions($value_2);
+            $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
-            $object->setDescriptions(null);
+            $object->descriptions = null;
             unset($data['descriptions']);
         }
         if (\array_key_exists('required', $data)) {
-            $object->setRequired($data['required']);
+            $object->required = $data['required'];
             unset($data['required']);
         }
         if (\array_key_exists('fixed', $data)) {
-            $object->setFixed($data['fixed']);
+            $object->fixed = $data['fixed'];
             unset($data['fixed']);
         }
         if (\array_key_exists('index', $data)) {
-            $object->setIndex($data['index']);
+            $object->index = $data['index'];
             unset($data['index']);
         }
         if (\array_key_exists('simpleSearch', $data)) {
-            $object->setSimpleSearch($data['simpleSearch']);
+            $object->simpleSearch = $data['simpleSearch'];
             unset($data['simpleSearch']);
         }
         if (\array_key_exists('sortable', $data)) {
-            $object->setSortable($data['sortable']);
+            $object->sortable = $data['sortable'];
             unset($data['sortable']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('pattern', $data) && $data['pattern'] !== null) {
-            $object->setPattern($data['pattern']);
+            $object->pattern = $data['pattern'];
             unset($data['pattern']);
         }
         elseif (\array_key_exists('pattern', $data) && $data['pattern'] === null) {
-            $object->setPattern(null);
+            $object->pattern = null;
             unset($data['pattern']);
         }
         if (\array_key_exists('minimum', $data) && $data['minimum'] !== null) {
-            $object->setMinimum($data['minimum']);
+            $object->minimum = $data['minimum'];
             unset($data['minimum']);
         }
         elseif (\array_key_exists('minimum', $data) && $data['minimum'] === null) {
-            $object->setMinimum(null);
+            $object->minimum = null;
             unset($data['minimum']);
         }
         if (\array_key_exists('maximum', $data) && $data['maximum'] !== null) {
-            $object->setMaximum($data['maximum']);
+            $object->maximum = $data['maximum'];
             unset($data['maximum']);
         }
         elseif (\array_key_exists('maximum', $data) && $data['maximum'] === null) {
-            $object->setMaximum(null);
+            $object->maximum = null;
             unset($data['maximum']);
         }
         if (\array_key_exists('boost', $data)) {
-            $object->setBoost($data['boost']);
+            $object->boost = $data['boost'];
             unset($data['boost']);
         }
         foreach ($data as $key_2 => $value_4) {
@@ -175,52 +175,52 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
-            $dataArray['indexId'] = $data->getIndexId();
+        $dataArray['id'] = $data->id ?? null;
+        if (array_key_exists('indexId', get_object_vars($data)) && null !== ($data->indexId ?? null)) {
+            $dataArray['indexId'] = $data->indexId ?? null;
         }
-        if ($data->isInitialized('fieldNamespace') && null !== $data->getFieldNamespace()) {
-            $dataArray['fieldNamespace'] = $data->getFieldNamespace();
+        if (array_key_exists('fieldNamespace', get_object_vars($data)) && null !== ($data->fieldNamespace ?? null)) {
+            $dataArray['fieldNamespace'] = $data->fieldNamespace ?? null;
         }
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_1) {
+                foreach ($data->names ?? null as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
             }
             $dataArray['names'] = $value;
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $value_2 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
+        if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
+            $value_2 = $data->descriptions ?? null;
+            if (is_object($data->descriptions ?? null)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                foreach ($data->descriptions ?? null as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
                 }
                 $value_2 = $values_1;
             }
             $dataArray['descriptions'] = $value_2;
         }
-        $dataArray['required'] = $data->getRequired();
-        $dataArray['fixed'] = $data->getFixed();
-        $dataArray['index'] = $data->getIndex();
-        $dataArray['simpleSearch'] = $data->getSimpleSearch();
-        $dataArray['sortable'] = $data->getSortable();
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('pattern') && null !== $data->getPattern()) {
-            $dataArray['pattern'] = $data->getPattern();
+        $dataArray['required'] = $data->required ?? null;
+        $dataArray['fixed'] = $data->fixed ?? null;
+        $dataArray['index'] = $data->index ?? null;
+        $dataArray['simpleSearch'] = $data->simpleSearch ?? null;
+        $dataArray['sortable'] = $data->sortable ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('pattern', get_object_vars($data)) && null !== ($data->pattern ?? null)) {
+            $dataArray['pattern'] = $data->pattern ?? null;
         }
-        if ($data->isInitialized('minimum') && null !== $data->getMinimum()) {
-            $dataArray['minimum'] = $data->getMinimum();
+        if (array_key_exists('minimum', get_object_vars($data)) && null !== ($data->minimum ?? null)) {
+            $dataArray['minimum'] = $data->minimum ?? null;
         }
-        if ($data->isInitialized('maximum') && null !== $data->getMaximum()) {
-            $dataArray['maximum'] = $data->getMaximum();
+        if (array_key_exists('maximum', get_object_vars($data)) && null !== ($data->maximum ?? null)) {
+            $dataArray['maximum'] = $data->maximum ?? null;
         }
-        if ($data->isInitialized('boost') && null !== $data->getBoost()) {
-            $dataArray['boost'] = $data->getBoost();
+        if (array_key_exists('boost', get_object_vars($data)) && null !== ($data->boost ?? null)) {
+            $dataArray['boost'] = $data->boost ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_4) {
             if (preg_match('/.*/', (string) $key_2)) {

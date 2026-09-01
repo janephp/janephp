@@ -83,59 +83,59 @@ class FilterBaseNormalizer implements DenormalizerInterface, NormalizerInterface
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ParentFilter', $format, $context);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'AndFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'AndFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'OrFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'OrFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'NotFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'NotFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'DateRangeFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'DateRangeFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ExistsFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ExistsFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'GeoBoundingBoxFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'GeoBoundingBoxFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'GeoDistanceFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'GeoDistanceFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'NestedFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'NestedFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'NumericRangeFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'NumericRangeFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'PrefixFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'PrefixFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'TermFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'TermFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'TermsFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'TermsFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'AggregationFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'AggregationFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ChildFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ChildFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ParentFilter' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ParentFilter' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

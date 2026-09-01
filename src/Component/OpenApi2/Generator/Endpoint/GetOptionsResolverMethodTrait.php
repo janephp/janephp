@@ -30,8 +30,8 @@ trait GetOptionsResolverMethodTrait
                 }
 
                 $parameters[] = $parameter;
-                if (\in_array($parameter->getName(), $customResolverKeys)) {
-                    $queryResolverNormalizerStms[] = $this->generateOptionResolverNormalizationStatement($parameter->getName(), $customResolver[$parameter->getName()]);
+                if (\in_array($parameter->name, $customResolverKeys)) {
+                    $queryResolverNormalizerStms[] = $this->generateOptionResolverNormalizationStatement($parameter->name, $customResolver[$parameter->name]);
                 }
             }
         }

@@ -38,21 +38,21 @@ class AdministrationLicensesSummaryCapacityControlLicenseCountNormalizer impleme
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('totalCount', $data)) {
-            $object->setTotalCount($data['totalCount']);
+            $object->totalCount = $data['totalCount'];
         }
         if (\array_key_exists('usedCount', $data)) {
-            $object->setUsedCount($data['usedCount']);
+            $object->usedCount = $data['usedCount'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalCount') && null !== $data->getTotalCount()) {
-            $dataArray['totalCount'] = $data->getTotalCount();
+        if (array_key_exists('totalCount', get_object_vars($data)) && null !== ($data->totalCount ?? null)) {
+            $dataArray['totalCount'] = $data->totalCount ?? null;
         }
-        if ($data->isInitialized('usedCount') && null !== $data->getUsedCount()) {
-            $dataArray['usedCount'] = $data->getUsedCount();
+        if (array_key_exists('usedCount', get_object_vars($data)) && null !== ($data->usedCount ?? null)) {
+            $dataArray['usedCount'] = $data->usedCount ?? null;
         }
         return $dataArray;
     }

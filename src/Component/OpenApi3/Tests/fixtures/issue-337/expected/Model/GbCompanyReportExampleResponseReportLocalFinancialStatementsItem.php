@@ -8,257 +8,51 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem implement
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $type;
     /**
      * @var string
      */
-    protected $type;
-    /**
-     * @var string
-     */
-    protected $yearEndDate;
+    public string $yearEndDate;
     /**
      * @var float
      */
-    protected $numberOfWeeks;
+    public float $numberOfWeeks;
     /**
      * @var string
      */
-    protected $currency;
+    public string $currency;
     /**
      * @var bool
      */
-    protected $consolidatedAccounts;
+    public bool $consolidatedAccounts;
     /**
      * @var string
      */
-    protected $auditQualification;
+    public string $auditQualification;
     /**
      * @var GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndLoss
      */
-    protected $profitAndLoss;
+    public GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndLoss $profitAndLoss;
     /**
      * @var GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet
      */
-    protected $balanceSheet;
+    public GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet $balanceSheet;
     /**
      * @var GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow
      */
-    protected $cashFlow;
+    public GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow $cashFlow;
     /**
      * @var GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials
      */
-    protected $otherFinancials;
+    public GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials $otherFinancials;
     /**
      * @var GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios
      */
-    protected $ratios;
-    /**
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-    /**
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType(string $type): self
-    {
-        $this->initialized['type'] = true;
-        $this->type = $type;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getYearEndDate(): string
-    {
-        return $this->yearEndDate;
-    }
-    /**
-     * @param string $yearEndDate
-     *
-     * @return self
-     */
-    public function setYearEndDate(string $yearEndDate): self
-    {
-        $this->initialized['yearEndDate'] = true;
-        $this->yearEndDate = $yearEndDate;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getNumberOfWeeks(): float
-    {
-        return $this->numberOfWeeks;
-    }
-    /**
-     * @param float $numberOfWeeks
-     *
-     * @return self
-     */
-    public function setNumberOfWeeks(float $numberOfWeeks): self
-    {
-        $this->initialized['numberOfWeeks'] = true;
-        $this->numberOfWeeks = $numberOfWeeks;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCurrency(): string
-    {
-        return $this->currency;
-    }
-    /**
-     * @param string $currency
-     *
-     * @return self
-     */
-    public function setCurrency(string $currency): self
-    {
-        $this->initialized['currency'] = true;
-        $this->currency = $currency;
-        return $this;
-    }
-    /**
-     * @return bool
-     */
-    public function getConsolidatedAccounts(): bool
-    {
-        return $this->consolidatedAccounts;
-    }
-    /**
-     * @param bool $consolidatedAccounts
-     *
-     * @return self
-     */
-    public function setConsolidatedAccounts(bool $consolidatedAccounts): self
-    {
-        $this->initialized['consolidatedAccounts'] = true;
-        $this->consolidatedAccounts = $consolidatedAccounts;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getAuditQualification(): string
-    {
-        return $this->auditQualification;
-    }
-    /**
-     * @param string $auditQualification
-     *
-     * @return self
-     */
-    public function setAuditQualification(string $auditQualification): self
-    {
-        $this->initialized['auditQualification'] = true;
-        $this->auditQualification = $auditQualification;
-        return $this;
-    }
-    /**
-     * @return GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndLoss
-     */
-    public function getProfitAndLoss(): GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndLoss
-    {
-        return $this->profitAndLoss;
-    }
-    /**
-     * @param GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndLoss $profitAndLoss
-     *
-     * @return self
-     */
-    public function setProfitAndLoss(GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndLoss $profitAndLoss): self
-    {
-        $this->initialized['profitAndLoss'] = true;
-        $this->profitAndLoss = $profitAndLoss;
-        return $this;
-    }
-    /**
-     * @return GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet
-     */
-    public function getBalanceSheet(): GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet
-    {
-        return $this->balanceSheet;
-    }
-    /**
-     * @param GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet $balanceSheet
-     *
-     * @return self
-     */
-    public function setBalanceSheet(GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet $balanceSheet): self
-    {
-        $this->initialized['balanceSheet'] = true;
-        $this->balanceSheet = $balanceSheet;
-        return $this;
-    }
-    /**
-     * @return GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow
-     */
-    public function getCashFlow(): GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow
-    {
-        return $this->cashFlow;
-    }
-    /**
-     * @param GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow $cashFlow
-     *
-     * @return self
-     */
-    public function setCashFlow(GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow $cashFlow): self
-    {
-        $this->initialized['cashFlow'] = true;
-        $this->cashFlow = $cashFlow;
-        return $this;
-    }
-    /**
-     * @return GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials
-     */
-    public function getOtherFinancials(): GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials
-    {
-        return $this->otherFinancials;
-    }
-    /**
-     * @param GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials $otherFinancials
-     *
-     * @return self
-     */
-    public function setOtherFinancials(GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials $otherFinancials): self
-    {
-        $this->initialized['otherFinancials'] = true;
-        $this->otherFinancials = $otherFinancials;
-        return $this;
-    }
-    /**
-     * @return GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios
-     */
-    public function getRatios(): GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios
-    {
-        return $this->ratios;
-    }
-    /**
-     * @param GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios $ratios
-     *
-     * @return self
-     */
-    public function setRatios(GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios $ratios): self
-    {
-        $this->initialized['ratios'] = true;
-        $this->ratios = $ratios;
-        return $this;
-    }
+    public GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios $ratios;
     public function definedProperties(): array
     {
-        return ['type' => ['type', 'getType', 'setType'], 'yearEndDate' => ['yearEndDate', 'getYearEndDate', 'setYearEndDate'], 'numberOfWeeks' => ['numberOfWeeks', 'getNumberOfWeeks', 'setNumberOfWeeks'], 'currency' => ['currency', 'getCurrency', 'setCurrency'], 'consolidatedAccounts' => ['consolidatedAccounts', 'getConsolidatedAccounts', 'setConsolidatedAccounts'], 'auditQualification' => ['auditQualification', 'getAuditQualification', 'setAuditQualification'], 'profitAndLoss' => ['profitAndLoss', 'getProfitAndLoss', 'setProfitAndLoss'], 'balanceSheet' => ['balanceSheet', 'getBalanceSheet', 'setBalanceSheet'], 'cashFlow' => ['cashFlow', 'getCashFlow', 'setCashFlow'], 'otherFinancials' => ['otherFinancials', 'getOtherFinancials', 'setOtherFinancials'], 'ratios' => ['ratios', 'getRatios', 'setRatios']];
+        return ['type' => 'type', 'yearEndDate' => 'yearEndDate', 'numberOfWeeks' => 'numberOfWeeks', 'currency' => 'currency', 'consolidatedAccounts' => 'consolidatedAccounts', 'auditQualification' => 'auditQualification', 'profitAndLoss' => 'profitAndLoss', 'balanceSheet' => 'balanceSheet', 'cashFlow' => 'cashFlow', 'otherFinancials' => 'otherFinancials', 'ratios' => 'ratios'];
     }
 }

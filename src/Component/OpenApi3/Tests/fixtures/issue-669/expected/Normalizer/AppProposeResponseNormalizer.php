@@ -44,31 +44,31 @@ class AppProposeResponseNormalizer implements DenormalizerInterface, NormalizerI
             $data['app_name_available'] = (bool) $data['app_name_available'];
         }
         if (\array_key_exists('app_is_static', $data)) {
-            $object->setAppIsStatic($data['app_is_static']);
+            $object->appIsStatic = $data['app_is_static'];
             unset($data['app_is_static']);
         }
         if (\array_key_exists('app_name_available', $data)) {
-            $object->setAppNameAvailable($data['app_name_available']);
+            $object->appNameAvailable = $data['app_name_available'];
             unset($data['app_name_available']);
         }
         if (\array_key_exists('app_name_suggestion', $data)) {
-            $object->setAppNameSuggestion($data['app_name_suggestion']);
+            $object->appNameSuggestion = $data['app_name_suggestion'];
             unset($data['app_name_suggestion']);
         }
         if (\array_key_exists('existing_static_apps', $data)) {
-            $object->setExistingStaticApps($data['existing_static_apps']);
+            $object->existingStaticApps = $data['existing_static_apps'];
             unset($data['existing_static_apps']);
         }
         if (\array_key_exists('spec', $data)) {
-            $object->setSpec($this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context));
+            $object->spec = $this->denormalizer->denormalize($data['spec'], \Jane\Generated\DigitalOcean\Model\AppSpec::class, 'json', $context);
             unset($data['spec']);
         }
         if (\array_key_exists('app_cost', $data)) {
-            $object->setAppCost($data['app_cost']);
+            $object->appCost = $data['app_cost'];
             unset($data['app_cost']);
         }
         if (\array_key_exists('app_tier_downgrade_cost', $data)) {
-            $object->setAppTierDowngradeCost($data['app_tier_downgrade_cost']);
+            $object->appTierDowngradeCost = $data['app_tier_downgrade_cost'];
             unset($data['app_tier_downgrade_cost']);
         }
         foreach ($data as $key => $value) {
@@ -81,26 +81,26 @@ class AppProposeResponseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('appIsStatic') && null !== $data->getAppIsStatic()) {
-            $dataArray['app_is_static'] = $data->getAppIsStatic();
+        if (array_key_exists('appIsStatic', get_object_vars($data)) && null !== ($data->appIsStatic ?? null)) {
+            $dataArray['app_is_static'] = $data->appIsStatic ?? null;
         }
-        if ($data->isInitialized('appNameAvailable') && null !== $data->getAppNameAvailable()) {
-            $dataArray['app_name_available'] = $data->getAppNameAvailable();
+        if (array_key_exists('appNameAvailable', get_object_vars($data)) && null !== ($data->appNameAvailable ?? null)) {
+            $dataArray['app_name_available'] = $data->appNameAvailable ?? null;
         }
-        if ($data->isInitialized('appNameSuggestion') && null !== $data->getAppNameSuggestion()) {
-            $dataArray['app_name_suggestion'] = $data->getAppNameSuggestion();
+        if (array_key_exists('appNameSuggestion', get_object_vars($data)) && null !== ($data->appNameSuggestion ?? null)) {
+            $dataArray['app_name_suggestion'] = $data->appNameSuggestion ?? null;
         }
-        if ($data->isInitialized('existingStaticApps') && null !== $data->getExistingStaticApps()) {
-            $dataArray['existing_static_apps'] = $data->getExistingStaticApps();
+        if (array_key_exists('existingStaticApps', get_object_vars($data)) && null !== ($data->existingStaticApps ?? null)) {
+            $dataArray['existing_static_apps'] = $data->existingStaticApps ?? null;
         }
-        if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['spec'] = $data->getSpec() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
+        if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
+            $dataArray['spec'] = ($data->spec ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec ?? null, 'json', $context));
         }
-        if ($data->isInitialized('appCost') && null !== $data->getAppCost()) {
-            $dataArray['app_cost'] = $data->getAppCost();
+        if (array_key_exists('appCost', get_object_vars($data)) && null !== ($data->appCost ?? null)) {
+            $dataArray['app_cost'] = $data->appCost ?? null;
         }
-        if ($data->isInitialized('appTierDowngradeCost') && null !== $data->getAppTierDowngradeCost()) {
-            $dataArray['app_tier_downgrade_cost'] = $data->getAppTierDowngradeCost();
+        if (array_key_exists('appTierDowngradeCost', get_object_vars($data)) && null !== ($data->appTierDowngradeCost ?? null)) {
+            $dataArray['app_tier_downgrade_cost'] = $data->appTierDowngradeCost ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

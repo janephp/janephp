@@ -41,15 +41,15 @@ class TaskSpecPlacementPreferencesItemNormalizer implements DenormalizerInterfac
             $this->validate($data, new \Docker\Api\Validator\TaskSpecPlacementPreferencesItemConstraint());
         }
         if (\array_key_exists('Spread', $data)) {
-            $object->setSpread($this->denormalizer->denormalize($data['Spread'], \Docker\Api\Model\TaskSpecPlacementPreferencesItemSpread::class, 'json', $context));
+            $object->spread = $this->denormalizer->denormalize($data['Spread'], \Docker\Api\Model\TaskSpecPlacementPreferencesItemSpread::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('spread') && null !== $data->getSpread()) {
-            $dataArray['Spread'] = $data->getSpread() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSpread(), 'json', $context));
+        if (array_key_exists('spread', get_object_vars($data)) && null !== ($data->spread ?? null)) {
+            $dataArray['Spread'] = ($data->spread ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spread ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecPlacementPreferencesItemConstraint());

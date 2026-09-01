@@ -42,7 +42,7 @@ class AppInstancesNormalizer implements DenormalizerInterface, NormalizerInterfa
             foreach ($data['instances'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppInstance::class, 'json', $context);
             }
-            $object->setInstances($values);
+            $object->instances = $values;
             unset($data['instances']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class AppInstancesNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('instances') && null !== $data->getInstances()) {
+        if (array_key_exists('instances', get_object_vars($data)) && null !== ($data->instances ?? null)) {
             $values = [];
-            foreach ($data->getInstances() as $value) {
+            foreach ($data->instances ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['instances'] = $values;

@@ -41,25 +41,25 @@ class DpskWlanExternalDpskNormalizer implements DenormalizerInterface, Normalize
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('encryption', $data)) {
-            $object->setEncryption($this->denormalizer->denormalize($data['encryption'], \Jane\Component\OpenApi3\Tests\Expected\Model\DpskWlanExternalDpskEncryption::class, 'json', $context));
+            $object->encryption = $this->denormalizer->denormalize($data['encryption'], \Jane\Component\OpenApi3\Tests\Expected\Model\DpskWlanExternalDpskEncryption::class, 'json', $context);
         }
         if (\array_key_exists('authService', $data)) {
-            $object->setAuthService($this->denormalizer->denormalize($data['authService'], \Jane\Component\OpenApi3\Tests\Expected\Model\DpskWlanExternalDpskAuthService::class, 'json', $context));
+            $object->authService = $this->denormalizer->denormalize($data['authService'], \Jane\Component\OpenApi3\Tests\Expected\Model\DpskWlanExternalDpskAuthService::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->getEnabled();
-        if ($data->isInitialized('encryption') && null !== $data->getEncryption()) {
-            $dataArray['encryption'] = $data->getEncryption() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEncryption(), 'json', $context));
+        $dataArray['enabled'] = $data->enabled ?? null;
+        if (array_key_exists('encryption', get_object_vars($data)) && null !== ($data->encryption ?? null)) {
+            $dataArray['encryption'] = ($data->encryption ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->encryption ?? null, 'json', $context));
         }
-        if ($data->isInitialized('authService') && null !== $data->getAuthService()) {
-            $dataArray['authService'] = $data->getAuthService() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAuthService(), 'json', $context));
+        if (array_key_exists('authService', get_object_vars($data)) && null !== ($data->authService ?? null)) {
+            $dataArray['authService'] = ($data->authService ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->authService ?? null, 'json', $context));
         }
         return $dataArray;
     }

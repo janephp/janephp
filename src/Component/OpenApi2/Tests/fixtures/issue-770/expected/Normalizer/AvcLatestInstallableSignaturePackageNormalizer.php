@@ -38,35 +38,35 @@ class AvcLatestInstallableSignaturePackageNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
         }
         if (\array_key_exists('binariesInfo', $data)) {
             $values = [];
             foreach ($data['binariesInfo'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\AvcLatestInstallableSignaturePackageBinary::class, 'json', $context);
             }
-            $object->setBinariesInfo($values);
+            $object->binariesInfo = $values;
         }
         if (\array_key_exists('lastCheckedTime', $data)) {
-            $object->setLastCheckedTime($data['lastCheckedTime']);
+            $object->lastCheckedTime = $data['lastCheckedTime'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion();
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = $data->version ?? null;
         }
-        if ($data->isInitialized('binariesInfo') && null !== $data->getBinariesInfo()) {
+        if (array_key_exists('binariesInfo', get_object_vars($data)) && null !== ($data->binariesInfo ?? null)) {
             $values = [];
-            foreach ($data->getBinariesInfo() as $value) {
+            foreach ($data->binariesInfo ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['binariesInfo'] = $values;
         }
-        if ($data->isInitialized('lastCheckedTime') && null !== $data->getLastCheckedTime()) {
-            $dataArray['lastCheckedTime'] = $data->getLastCheckedTime();
+        if (array_key_exists('lastCheckedTime', get_object_vars($data)) && null !== ($data->lastCheckedTime ?? null)) {
+            $dataArray['lastCheckedTime'] = $data->lastCheckedTime ?? null;
         }
         return $dataArray;
     }

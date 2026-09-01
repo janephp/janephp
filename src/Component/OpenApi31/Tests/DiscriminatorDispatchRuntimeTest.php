@@ -66,8 +66,8 @@ class DiscriminatorDispatchRuntimeTest extends TestCase
         );
 
         self::assertInstanceOf(self::widenedClassName('Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Cat'), $pet);
-        self::assertSame('Felix', $pet->getName());
-        self::assertSame('adventurous', $pet->getHuntingSkill());
+        self::assertSame('Felix', $pet->name);
+        self::assertSame('adventurous', $pet->huntingSkill);
 
         $pet = $this->createSerializer()->deserialize(
             '{"name": "Rex", "petType": "dog", "packSize": 3}',
@@ -76,8 +76,8 @@ class DiscriminatorDispatchRuntimeTest extends TestCase
         );
 
         self::assertInstanceOf(self::widenedClassName('Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Dog'), $pet);
-        self::assertSame('Rex', $pet->getName());
-        self::assertSame(3, $pet->getPackSize());
+        self::assertSame('Rex', $pet->name);
+        self::assertSame(3, $pet->packSize);
     }
 
     public function testNormalizationOfChildThroughParentNormalizerDelegates(): void
@@ -110,9 +110,9 @@ class DiscriminatorDispatchRuntimeTest extends TestCase
         );
 
         self::assertInstanceOf(self::widenedClassName('Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\FooBar'), $fooBar);
-        self::assertInstanceOf(self::widenedClassName('Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Bar'), $fooBar->getWhat());
-        self::assertSame('bar', $fooBar->getWhat()->getType());
-        self::assertSame('hello', $fooBar->getWhat()->getTitle());
+        self::assertInstanceOf(self::widenedClassName('Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Bar'), $fooBar->what);
+        self::assertSame('bar', $fooBar->what->type);
+        self::assertSame('hello', $fooBar->what->title);
 
         $fooBar = $this->createSerializer()->deserialize(
             '{"what": {"type": "foo", "title": "world"}}',
@@ -120,6 +120,6 @@ class DiscriminatorDispatchRuntimeTest extends TestCase
             'json'
         );
 
-        self::assertInstanceOf(self::widenedClassName('Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Foo'), $fooBar->getWhat());
+        self::assertInstanceOf(self::widenedClassName('Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Foo'), $fooBar->what);
     }
 }

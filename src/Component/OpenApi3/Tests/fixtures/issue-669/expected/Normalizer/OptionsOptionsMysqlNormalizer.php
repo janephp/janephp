@@ -42,7 +42,7 @@ class OptionsOptionsMysqlNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['regions'] as $value) {
                 $values[] = $value;
             }
-            $object->setRegions($values);
+            $object->regions = $values;
             unset($data['regions']);
         }
         if (\array_key_exists('versions', $data)) {
@@ -50,7 +50,7 @@ class OptionsOptionsMysqlNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['versions'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setVersions($values_1);
+            $object->versions = $values_1;
             unset($data['versions']);
         }
         if (\array_key_exists('layouts', $data)) {
@@ -58,7 +58,7 @@ class OptionsOptionsMysqlNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['layouts'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\DatabaseLayoutOption::class, 'json', $context);
             }
-            $object->setLayouts($values_2);
+            $object->layouts = $values_2;
             unset($data['layouts']);
         }
         foreach ($data as $key => $value_3) {

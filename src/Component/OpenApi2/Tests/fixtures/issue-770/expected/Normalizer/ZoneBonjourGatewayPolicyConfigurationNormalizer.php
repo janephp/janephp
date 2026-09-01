@@ -38,32 +38,32 @@ class ZoneBonjourGatewayPolicyConfigurationNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('bonjourPolicyRuleList', $data)) {
             $values = [];
             foreach ($data['bonjourPolicyRuleList'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneBonjourPolicyRuleConfiguration::class, 'json', $context);
             }
-            $object->setBonjourPolicyRuleList($values);
+            $object->bonjourPolicyRuleList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('bonjourPolicyRuleList') && null !== $data->getBonjourPolicyRuleList()) {
+        if (array_key_exists('bonjourPolicyRuleList', get_object_vars($data)) && null !== ($data->bonjourPolicyRuleList ?? null)) {
             $values = [];
-            foreach ($data->getBonjourPolicyRuleList() as $value) {
+            foreach ($data->bonjourPolicyRuleList ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['bonjourPolicyRuleList'] = $values;

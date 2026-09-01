@@ -48,38 +48,38 @@ class ListItemFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerIn
             if (is_array($data['filterRequest']) and \array_key_exists('includeAllSchemaChildren', $data['filterRequest']) and \array_key_exists('brokenDependenciesFilter', $data['filterRequest'])) {
                 $value = $this->denormalizer->denormalize($data['filterRequest'], \PicturePark\API\Model\ListItemFilterRequest::class, 'json', $context);
             }
-            $object->setFilterRequest($value);
+            $object->filterRequest = $value;
         }
         if (\array_key_exists('changeCommands', $data)) {
             $values = [];
             foreach ($data['changeCommands'] as $value_1) {
                 $values[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\MetadataValuesChangeCommandBase::class, 'json', $context);
             }
-            $object->setChangeCommands($values);
+            $object->changeCommands = $values;
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
-            $object->setAllowMissingDependencies($data['allowMissingDependencies']);
+            $object->allowMissingDependencies = $data['allowMissingDependencies'];
         }
         if (\array_key_exists('notifyProgress', $data)) {
-            $object->setNotifyProgress($data['notifyProgress']);
+            $object->notifyProgress = $data['notifyProgress'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getFilterRequest();
-        if (is_object($data->getFilterRequest())) {
-            $value = $data->getFilterRequest() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilterRequest(), 'json', $context));
+        $value = $data->filterRequest ?? null;
+        if (is_object($data->filterRequest ?? null)) {
+            $value = ($data->filterRequest ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest ?? null, 'json', $context));
         }
         $dataArray['filterRequest'] = $value;
         $values = [];
-        foreach ($data->getChangeCommands() as $value_1) {
+        foreach ($data->changeCommands ?? null as $value_1) {
             $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['changeCommands'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();
-        $dataArray['notifyProgress'] = $data->getNotifyProgress();
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
+        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

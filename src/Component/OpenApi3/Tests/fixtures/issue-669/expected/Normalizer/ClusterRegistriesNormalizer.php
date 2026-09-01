@@ -42,7 +42,7 @@ class ClusterRegistriesNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['cluster_uuids'] as $value) {
                 $values[] = $value;
             }
-            $object->setClusterUuids($values);
+            $object->clusterUuids = $values;
             unset($data['cluster_uuids']);
         }
         if (\array_key_exists('registries', $data)) {
@@ -50,7 +50,7 @@ class ClusterRegistriesNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['registries'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setRegistries($values_1);
+            $object->registries = $values_1;
             unset($data['registries']);
         }
         foreach ($data as $key => $value_2) {
@@ -63,16 +63,16 @@ class ClusterRegistriesNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clusterUuids') && null !== $data->getClusterUuids()) {
+        if (array_key_exists('clusterUuids', get_object_vars($data)) && null !== ($data->clusterUuids ?? null)) {
             $values = [];
-            foreach ($data->getClusterUuids() as $value) {
+            foreach ($data->clusterUuids ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['cluster_uuids'] = $values;
         }
-        if ($data->isInitialized('registries') && null !== $data->getRegistries()) {
+        if (array_key_exists('registries', get_object_vars($data)) && null !== ($data->registries ?? null)) {
             $values_1 = [];
-            foreach ($data->getRegistries() as $value_1) {
+            foreach ($data->registries ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['registries'] = $values_1;

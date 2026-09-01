@@ -38,7 +38,7 @@ class Endpoint3PostBodyNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('post-field-3', $data)) {
-            $object->setPostField3($this->denormalizer->denormalize($data['post-field-3'], \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3PostBodyPostField3::class, 'json', $context));
+            $object->postField3 = $this->denormalizer->denormalize($data['post-field-3'], \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3PostBodyPostField3::class, 'json', $context);
             unset($data['post-field-3']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class Endpoint3PostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('postField3') && null !== $data->getPostField3()) {
-            $dataArray['post-field-3'] = $data->getPostField3() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPostField3(), 'json', $context));
+        if (array_key_exists('postField3', get_object_vars($data)) && null !== ($data->postField3 ?? null)) {
+            $dataArray['post-field-3'] = ($data->postField3 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->postField3 ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

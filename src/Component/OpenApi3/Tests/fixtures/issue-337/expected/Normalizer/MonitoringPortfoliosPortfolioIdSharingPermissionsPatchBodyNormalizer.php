@@ -38,7 +38,7 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyNormalizer imple
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('revokeAll', $data)) {
-            $object->setRevokeAll($data['revokeAll']);
+            $object->revokeAll = $data['revokeAll'];
             unset($data['revokeAll']);
         }
         if (\array_key_exists('companies', $data)) {
@@ -46,7 +46,7 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyNormalizer imple
             foreach ($data['companies'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem::class, 'json', $context);
             }
-            $object->setCompanies($values);
+            $object->companies = $values;
             unset($data['companies']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyNormalizer imple
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('revokeAll') && null !== $data->getRevokeAll()) {
-            $dataArray['revokeAll'] = $data->getRevokeAll();
+        if (array_key_exists('revokeAll', get_object_vars($data)) && null !== ($data->revokeAll ?? null)) {
+            $dataArray['revokeAll'] = $data->revokeAll ?? null;
         }
-        if ($data->isInitialized('companies') && null !== $data->getCompanies()) {
+        if (array_key_exists('companies', get_object_vars($data)) && null !== ($data->companies ?? null)) {
             $values = [];
-            foreach ($data->getCompanies() as $value) {
+            foreach ($data->companies ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['companies'] = $values;

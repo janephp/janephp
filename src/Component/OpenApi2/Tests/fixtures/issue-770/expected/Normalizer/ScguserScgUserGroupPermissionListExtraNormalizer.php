@@ -44,21 +44,21 @@ class ScguserScgUserGroupPermissionListExtraNormalizer implements DenormalizerIn
             $data['isSuperAdminOfDomain'] = (bool) $data['isSuperAdminOfDomain'];
         }
         if (\array_key_exists('isSuperAdmin', $data)) {
-            $object->setIsSuperAdmin($data['isSuperAdmin']);
+            $object->isSuperAdmin = $data['isSuperAdmin'];
         }
         if (\array_key_exists('isSuperAdminOfDomain', $data)) {
-            $object->setIsSuperAdminOfDomain($data['isSuperAdminOfDomain']);
+            $object->isSuperAdminOfDomain = $data['isSuperAdminOfDomain'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isSuperAdmin') && null !== $data->getIsSuperAdmin()) {
-            $dataArray['isSuperAdmin'] = $data->getIsSuperAdmin();
+        if (array_key_exists('isSuperAdmin', get_object_vars($data)) && null !== ($data->isSuperAdmin ?? null)) {
+            $dataArray['isSuperAdmin'] = $data->isSuperAdmin ?? null;
         }
-        if ($data->isInitialized('isSuperAdminOfDomain') && null !== $data->getIsSuperAdminOfDomain()) {
-            $dataArray['isSuperAdminOfDomain'] = $data->getIsSuperAdminOfDomain();
+        if (array_key_exists('isSuperAdminOfDomain', get_object_vars($data)) && null !== ($data->isSuperAdminOfDomain ?? null)) {
+            $dataArray['isSuperAdminOfDomain'] = $data->isSuperAdminOfDomain ?? null;
         }
         return $dataArray;
     }

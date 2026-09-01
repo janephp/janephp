@@ -41,37 +41,37 @@ class DomainCreateDomainNormalizer implements DenormalizerInterface, NormalizerI
             $data['zeroTouchStatus'] = (bool) $data['zeroTouchStatus'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('domainType', $data)) {
-            $object->setDomainType($data['domainType']);
+            $object->domainType = $data['domainType'];
         }
         if (\array_key_exists('parentDomainId', $data)) {
-            $object->setParentDomainId($data['parentDomainId']);
+            $object->parentDomainId = $data['parentDomainId'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('zeroTouchStatus', $data)) {
-            $object->setZeroTouchStatus($data['zeroTouchStatus']);
+            $object->zeroTouchStatus = $data['zeroTouchStatus'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('domainType') && null !== $data->getDomainType()) {
-            $dataArray['domainType'] = $data->getDomainType();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('domainType', get_object_vars($data)) && null !== ($data->domainType ?? null)) {
+            $dataArray['domainType'] = $data->domainType ?? null;
         }
-        if ($data->isInitialized('parentDomainId') && null !== $data->getParentDomainId()) {
-            $dataArray['parentDomainId'] = $data->getParentDomainId();
+        if (array_key_exists('parentDomainId', get_object_vars($data)) && null !== ($data->parentDomainId ?? null)) {
+            $dataArray['parentDomainId'] = $data->parentDomainId ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('zeroTouchStatus') && null !== $data->getZeroTouchStatus()) {
-            $dataArray['zeroTouchStatus'] = $data->getZeroTouchStatus();
+        if (array_key_exists('zeroTouchStatus', get_object_vars($data)) && null !== ($data->zeroTouchStatus ?? null)) {
+            $dataArray['zeroTouchStatus'] = $data->zeroTouchStatus ?? null;
         }
         return $dataArray;
     }

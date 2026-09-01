@@ -38,26 +38,26 @@ class ApMultipleMoveApMultipleMoveResponseFailApsNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
         }
         if (\array_key_exists('aps', $data)) {
             $values = [];
             foreach ($data['aps'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApMultipleMoveApMultipleMoveResponseFailApsApsItem::class, 'json', $context);
             }
-            $object->setAps($values);
+            $object->aps = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count ?? null;
         }
-        if ($data->isInitialized('aps') && null !== $data->getAps()) {
+        if (array_key_exists('aps', get_object_vars($data)) && null !== ($data->aps ?? null)) {
             $values = [];
-            foreach ($data->getAps() as $value) {
+            foreach ($data->aps ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['aps'] = $values;

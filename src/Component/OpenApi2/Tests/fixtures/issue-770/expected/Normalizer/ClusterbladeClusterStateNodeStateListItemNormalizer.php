@@ -38,27 +38,27 @@ class ClusterbladeClusterStateNodeStateListItemNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('nodeId', $data)) {
-            $object->setNodeId($data['nodeId']);
+            $object->nodeId = $data['nodeId'];
         }
         if (\array_key_exists('nodeName', $data)) {
-            $object->setNodeName($data['nodeName']);
+            $object->nodeName = $data['nodeName'];
         }
         if (\array_key_exists('nodeState', $data)) {
-            $object->setNodeState($data['nodeState']);
+            $object->nodeState = $data['nodeState'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nodeId') && null !== $data->getNodeId()) {
-            $dataArray['nodeId'] = $data->getNodeId();
+        if (array_key_exists('nodeId', get_object_vars($data)) && null !== ($data->nodeId ?? null)) {
+            $dataArray['nodeId'] = $data->nodeId ?? null;
         }
-        if ($data->isInitialized('nodeName') && null !== $data->getNodeName()) {
-            $dataArray['nodeName'] = $data->getNodeName();
+        if (array_key_exists('nodeName', get_object_vars($data)) && null !== ($data->nodeName ?? null)) {
+            $dataArray['nodeName'] = $data->nodeName ?? null;
         }
-        if ($data->isInitialized('nodeState') && null !== $data->getNodeState()) {
-            $dataArray['nodeState'] = $data->getNodeState();
+        if (array_key_exists('nodeState', get_object_vars($data)) && null !== ($data->nodeState ?? null)) {
+            $dataArray['nodeState'] = $data->nodeState ?? null;
         }
         return $dataArray;
     }

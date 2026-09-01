@@ -42,19 +42,19 @@ class XmpWritebackCompletedEventNormalizer implements DenormalizerInterface, Nor
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('outputDocId', $data) && $data['outputDocId'] !== null) {
-            $object->setOutputDocId($data['outputDocId']);
+            $object->outputDocId = $data['outputDocId'];
             unset($data['outputDocId']);
         }
         elseif (\array_key_exists('outputDocId', $data) && $data['outputDocId'] === null) {
-            $object->setOutputDocId(null);
+            $object->outputDocId = null;
             unset($data['outputDocId']);
         }
         foreach ($data as $key => $value) {
@@ -67,10 +67,10 @@ class XmpWritebackCompletedEventNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('outputDocId') && null !== $data->getOutputDocId()) {
-            $dataArray['outputDocId'] = $data->getOutputDocId();
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('outputDocId', get_object_vars($data)) && null !== ($data->outputDocId ?? null)) {
+            $dataArray['outputDocId'] = $data->outputDocId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

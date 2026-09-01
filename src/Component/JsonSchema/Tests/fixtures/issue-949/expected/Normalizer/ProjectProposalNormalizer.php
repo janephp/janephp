@@ -38,7 +38,7 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $value = $data['name'];
@@ -47,10 +47,10 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
             } elseif (is_null($data['name'])) {
                 $value = $data['name'];
             }
-            $object->setName($value);
+            $object->name = $value;
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+            $object->name = null;
         }
         if (\array_key_exists('ecoScore', $data) && $data['ecoScore'] !== null) {
             $value_1 = $data['ecoScore'];
@@ -59,29 +59,29 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
             } elseif (is_null($data['ecoScore'])) {
                 $value_1 = $data['ecoScore'];
             }
-            $object->setEcoScore($value_1);
+            $object->ecoScore = $value_1;
         }
         elseif (\array_key_exists('ecoScore', $data) && $data['ecoScore'] === null) {
-            $object->setEcoScore(null);
+            $object->ecoScore = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $value = $data->getName();
-        if (is_string($data->getName())) {
-            $value = $data->getName();
-        } elseif (is_null($data->getName())) {
-            $value = $data->getName();
+        $dataArray['id'] = $data->id ?? null;
+        $value = $data->name ?? null;
+        if (is_string($data->name ?? null)) {
+            $value = $data->name ?? null;
+        } elseif (is_null($data->name ?? null)) {
+            $value = $data->name ?? null;
         }
         $dataArray['name'] = $value;
-        $value_1 = $data->getEcoScore();
-        if (is_object($data->getEcoScore())) {
-            $value_1 = $data->getEcoScore() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEcoScore(), 'json', $context));
-        } elseif (is_null($data->getEcoScore())) {
-            $value_1 = $data->getEcoScore();
+        $value_1 = $data->ecoScore ?? null;
+        if (is_object($data->ecoScore ?? null)) {
+            $value_1 = ($data->ecoScore ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ecoScore ?? null, 'json', $context));
+        } elseif (is_null($data->ecoScore ?? null)) {
+            $value_1 = $data->ecoScore ?? null;
         }
         $dataArray['ecoScore'] = $value_1;
         return $dataArray;

@@ -38,7 +38,7 @@ class RegistrySubscriptionNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('tier', $data)) {
-            $object->setTier($this->denormalizer->denormalize($data['tier'], \Jane\Generated\DigitalOcean\Model\SubscriptionTierBase::class, 'json', $context));
+            $object->tier = $this->denormalizer->denormalize($data['tier'], \Jane\Generated\DigitalOcean\Model\SubscriptionTierBase::class, 'json', $context);
             unset($data['tier']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -46,7 +46,7 @@ class RegistrySubscriptionNormalizer implements DenormalizerInterface, Normalize
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -54,7 +54,7 @@ class RegistrySubscriptionNormalizer implements DenormalizerInterface, Normalize
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         foreach ($data as $key => $value) {
@@ -67,8 +67,8 @@ class RegistrySubscriptionNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('tier') && null !== $data->getTier()) {
-            $dataArray['tier'] = $data->getTier() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTier(), 'json', $context));
+        if (array_key_exists('tier', get_object_vars($data)) && null !== ($data->tier ?? null)) {
+            $dataArray['tier'] = ($data->tier ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->tier ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

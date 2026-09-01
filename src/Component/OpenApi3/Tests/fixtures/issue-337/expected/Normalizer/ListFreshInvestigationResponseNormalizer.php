@@ -38,7 +38,7 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('totalCount', $data)) {
-            $object->setTotalCount($data['totalCount']);
+            $object->totalCount = $data['totalCount'];
             unset($data['totalCount']);
         }
         if (\array_key_exists('orders', $data)) {
@@ -46,7 +46,7 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
             foreach ($data['orders'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\ListFreshInvestigationResponseOrdersItem::class, 'json', $context);
             }
-            $object->setOrders($values);
+            $object->orders = $values;
             unset($data['orders']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalCount') && null !== $data->getTotalCount()) {
-            $dataArray['totalCount'] = $data->getTotalCount();
+        if (array_key_exists('totalCount', get_object_vars($data)) && null !== ($data->totalCount ?? null)) {
+            $dataArray['totalCount'] = $data->totalCount ?? null;
         }
-        if ($data->isInitialized('orders') && null !== $data->getOrders()) {
+        if (array_key_exists('orders', get_object_vars($data)) && null !== ($data->orders ?? null)) {
             $values = [];
-            foreach ($data->getOrders() as $value) {
+            foreach ($data->orders ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['orders'] = $values;

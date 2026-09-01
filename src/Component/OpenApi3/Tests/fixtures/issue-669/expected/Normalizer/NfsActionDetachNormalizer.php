@@ -38,15 +38,15 @@ class NfsActionDetachNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('params', $data)) {
-            $object->setParams($this->denormalizer->denormalize($data['params'], \Jane\Generated\DigitalOcean\Model\NfsActionDetachParams::class, 'json', $context));
+            $object->params = $this->denormalizer->denormalize($data['params'], \Jane\Generated\DigitalOcean\Model\NfsActionDetachParams::class, 'json', $context);
             unset($data['params']);
         }
         foreach ($data as $key => $value) {
@@ -59,10 +59,10 @@ class NfsActionDetachNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        $dataArray['region'] = $data->getRegion();
-        if ($data->isInitialized('params') && null !== $data->getParams()) {
-            $dataArray['params'] = $data->getParams() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getParams(), 'json', $context));
+        $dataArray['type'] = $data->type ?? null;
+        $dataArray['region'] = $data->region ?? null;
+        if (array_key_exists('params', get_object_vars($data)) && null !== ($data->params ?? null)) {
+            $dataArray['params'] = ($data->params ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->params ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

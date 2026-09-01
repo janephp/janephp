@@ -44,49 +44,49 @@ class AvcCreateApplicationPolicyProfileNormalizer implements DenormalizerInterfa
             $data['avcEventEnable'] = (bool) $data['avcEventEnable'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('applicationRules', $data)) {
             $values = [];
             foreach ($data['applicationRules'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationRule::class, 'json', $context);
             }
-            $object->setApplicationRules($values);
+            $object->applicationRules = $values;
         }
         if (\array_key_exists('avcLogEnable', $data)) {
-            $object->setAvcLogEnable($data['avcLogEnable']);
+            $object->avcLogEnable = $data['avcLogEnable'];
         }
         if (\array_key_exists('avcEventEnable', $data)) {
-            $object->setAvcEventEnable($data['avcEventEnable']);
+            $object->avcEventEnable = $data['avcEventEnable'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
         $values = [];
-        foreach ($data->getApplicationRules() as $value) {
+        foreach ($data->applicationRules ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['applicationRules'] = $values;
-        if ($data->isInitialized('avcLogEnable') && null !== $data->getAvcLogEnable()) {
-            $dataArray['avcLogEnable'] = $data->getAvcLogEnable();
+        if (array_key_exists('avcLogEnable', get_object_vars($data)) && null !== ($data->avcLogEnable ?? null)) {
+            $dataArray['avcLogEnable'] = $data->avcLogEnable ?? null;
         }
-        if ($data->isInitialized('avcEventEnable') && null !== $data->getAvcEventEnable()) {
-            $dataArray['avcEventEnable'] = $data->getAvcEventEnable();
+        if (array_key_exists('avcEventEnable', get_object_vars($data)) && null !== ($data->avcEventEnable ?? null)) {
+            $dataArray['avcEventEnable'] = $data->avcEventEnable ?? null;
         }
         return $dataArray;
     }

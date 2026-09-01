@@ -41,40 +41,40 @@ class WlanWlanDSCPSettingNormalizer implements DenormalizerInterface, Normalizer
             $data['enable'] = (bool) $data['enable'];
         }
         if (\array_key_exists('enable', $data)) {
-            $object->setEnable($data['enable']);
+            $object->enable = $data['enable'];
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         if (\array_key_exists('low', $data)) {
-            $object->setLow($data['low']);
+            $object->low = $data['low'];
         }
         if (\array_key_exists('high', $data)) {
-            $object->setHigh($data['high']);
+            $object->high = $data['high'];
         }
         if (\array_key_exists('excepts', $data)) {
             $values = [];
             foreach ($data['excepts'] as $value) {
                 $values[] = $value;
             }
-            $object->setExcepts($values);
+            $object->excepts = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enable'] = $data->getEnable();
-        $dataArray['priority'] = $data->getPriority();
-        if ($data->isInitialized('low') && null !== $data->getLow()) {
-            $dataArray['low'] = $data->getLow();
+        $dataArray['enable'] = $data->enable ?? null;
+        $dataArray['priority'] = $data->priority ?? null;
+        if (array_key_exists('low', get_object_vars($data)) && null !== ($data->low ?? null)) {
+            $dataArray['low'] = $data->low ?? null;
         }
-        if ($data->isInitialized('high') && null !== $data->getHigh()) {
-            $dataArray['high'] = $data->getHigh();
+        if (array_key_exists('high', get_object_vars($data)) && null !== ($data->high ?? null)) {
+            $dataArray['high'] = $data->high ?? null;
         }
-        if ($data->isInitialized('excepts') && null !== $data->getExcepts()) {
+        if (array_key_exists('excepts', get_object_vars($data)) && null !== ($data->excepts ?? null)) {
             $values = [];
-            foreach ($data->getExcepts() as $value) {
+            foreach ($data->excepts ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['excepts'] = $values;

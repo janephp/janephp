@@ -62,11 +62,11 @@ final class OperationNamingTest extends TestCase
     public function testUrlNamingToleratesEmptyContentMapOn200Response(): void
     {
         $response = new OA3Response();
-        $response->setContent(new JsonObject([]));
+        $response->content = new JsonObject([]);
 
         $naming = new OperationUrlNaming();
         $responses = new OA3Responses();
-        $responses->offsetSet('200', $response);
+        $responses['200'] = $response;
         $operation = $this->createOperationGuess('irrelevant', '/api-url', 'GET', $responses);
 
         self::assertSame('getApiUrl', $naming->getFunctionName($operation));
@@ -82,23 +82,18 @@ final class OperationNamingTest extends TestCase
             }
         };
         $operation = new class($operationId, $responses) {
-            public function __construct(private readonly string $operationId, private readonly ?iterable $responses)
+            public string $operationId;
+            public ?iterable $responses;
+
+            public function __construct(string $operationId, ?iterable $responses)
             {
+                $this->operationId = $operationId;
+                $this->responses = $responses;
             }
 
             public function getParameters(): ?array
             {
                 return null;
-            }
-
-            public function getOperationId(): string
-            {
-                return $this->operationId;
-            }
-
-            public function getResponses(): ?iterable
-            {
-                return $this->responses;
             }
         };
 

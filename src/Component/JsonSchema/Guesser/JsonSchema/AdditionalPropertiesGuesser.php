@@ -25,8 +25,8 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
 
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        if (is_a($object->getAdditionalProperties(), $this->getSchemaClass())) {
-            $this->chainGuesser->guessClass($object->getAdditionalProperties(), $name . 'Item', $reference . '/additionalProperties', $registry);
+        if (is_a($object->additionalProperties ?? null, $this->getSchemaClass())) {
+            $this->chainGuesser->guessClass($object->additionalProperties ?? null, $name . 'Item', $reference . '/additionalProperties', $registry);
         }
     }
 
@@ -38,7 +38,7 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
             return false;
         }
 
-        if ('object' !== $object->getType()) {
+        if ('object' !== ($object->type ?? null)) {
             return false;
         }
 

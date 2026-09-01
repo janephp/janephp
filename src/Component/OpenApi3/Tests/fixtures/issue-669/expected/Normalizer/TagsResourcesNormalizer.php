@@ -38,31 +38,31 @@ class TagsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
         }
         if (\array_key_exists('last_tagged_uri', $data)) {
-            $object->setLastTaggedUri($data['last_tagged_uri']);
+            $object->lastTaggedUri = $data['last_tagged_uri'];
             unset($data['last_tagged_uri']);
         }
         if (\array_key_exists('droplets', $data)) {
-            $object->setDroplets($this->denormalizer->denormalize($data['droplets'], \Jane\Generated\DigitalOcean\Model\TagsResourcesDroplets::class, 'json', $context));
+            $object->droplets = $this->denormalizer->denormalize($data['droplets'], \Jane\Generated\DigitalOcean\Model\TagsResourcesDroplets::class, 'json', $context);
             unset($data['droplets']);
         }
         if (\array_key_exists('imgages', $data)) {
-            $object->setImgages($this->denormalizer->denormalize($data['imgages'], \Jane\Generated\DigitalOcean\Model\TagsResourcesImgages::class, 'json', $context));
+            $object->imgages = $this->denormalizer->denormalize($data['imgages'], \Jane\Generated\DigitalOcean\Model\TagsResourcesImgages::class, 'json', $context);
             unset($data['imgages']);
         }
         if (\array_key_exists('volumes', $data)) {
-            $object->setVolumes($this->denormalizer->denormalize($data['volumes'], \Jane\Generated\DigitalOcean\Model\TagsResourcesVolumes::class, 'json', $context));
+            $object->volumes = $this->denormalizer->denormalize($data['volumes'], \Jane\Generated\DigitalOcean\Model\TagsResourcesVolumes::class, 'json', $context);
             unset($data['volumes']);
         }
         if (\array_key_exists('volume_snapshots', $data)) {
-            $object->setVolumeSnapshots($this->denormalizer->denormalize($data['volume_snapshots'], \Jane\Generated\DigitalOcean\Model\TagsResourcesVolumeSnapshots::class, 'json', $context));
+            $object->volumeSnapshots = $this->denormalizer->denormalize($data['volume_snapshots'], \Jane\Generated\DigitalOcean\Model\TagsResourcesVolumeSnapshots::class, 'json', $context);
             unset($data['volume_snapshots']);
         }
         if (\array_key_exists('databases', $data)) {
-            $object->setDatabases($this->denormalizer->denormalize($data['databases'], \Jane\Generated\DigitalOcean\Model\TagsResourcesDatabases::class, 'json', $context));
+            $object->databases = $this->denormalizer->denormalize($data['databases'], \Jane\Generated\DigitalOcean\Model\TagsResourcesDatabases::class, 'json', $context);
             unset($data['databases']);
         }
         foreach ($data as $key => $value) {
@@ -75,26 +75,26 @@ class TagsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count ?? null;
         }
-        if ($data->isInitialized('lastTaggedUri') && null !== $data->getLastTaggedUri()) {
-            $dataArray['last_tagged_uri'] = $data->getLastTaggedUri();
+        if (array_key_exists('lastTaggedUri', get_object_vars($data)) && null !== ($data->lastTaggedUri ?? null)) {
+            $dataArray['last_tagged_uri'] = $data->lastTaggedUri ?? null;
         }
-        if ($data->isInitialized('droplets') && null !== $data->getDroplets()) {
-            $dataArray['droplets'] = $data->getDroplets() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDroplets(), 'json', $context));
+        if (array_key_exists('droplets', get_object_vars($data)) && null !== ($data->droplets ?? null)) {
+            $dataArray['droplets'] = ($data->droplets ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplets ?? null, 'json', $context));
         }
-        if ($data->isInitialized('imgages') && null !== $data->getImgages()) {
-            $dataArray['imgages'] = $data->getImgages() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getImgages(), 'json', $context));
+        if (array_key_exists('imgages', get_object_vars($data)) && null !== ($data->imgages ?? null)) {
+            $dataArray['imgages'] = ($data->imgages ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->imgages ?? null, 'json', $context));
         }
-        if ($data->isInitialized('volumes') && null !== $data->getVolumes()) {
-            $dataArray['volumes'] = $data->getVolumes() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVolumes(), 'json', $context));
+        if (array_key_exists('volumes', get_object_vars($data)) && null !== ($data->volumes ?? null)) {
+            $dataArray['volumes'] = ($data->volumes ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->volumes ?? null, 'json', $context));
         }
-        if ($data->isInitialized('volumeSnapshots') && null !== $data->getVolumeSnapshots()) {
-            $dataArray['volume_snapshots'] = $data->getVolumeSnapshots() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVolumeSnapshots(), 'json', $context));
+        if (array_key_exists('volumeSnapshots', get_object_vars($data)) && null !== ($data->volumeSnapshots ?? null)) {
+            $dataArray['volume_snapshots'] = ($data->volumeSnapshots ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->volumeSnapshots ?? null, 'json', $context));
         }
-        if ($data->isInitialized('databases') && null !== $data->getDatabases()) {
-            $dataArray['databases'] = $data->getDatabases() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDatabases(), 'json', $context));
+        if (array_key_exists('databases', get_object_vars($data)) && null !== ($data->databases ?? null)) {
+            $dataArray['databases'] = ($data->databases ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->databases ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

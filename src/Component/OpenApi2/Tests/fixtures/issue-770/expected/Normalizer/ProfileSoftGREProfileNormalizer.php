@@ -41,117 +41,117 @@ class ProfileSoftGREProfileNormalizer implements DenormalizerInterface, Normaliz
             $data['forceDisassociateClient'] = (bool) $data['forceDisassociateClient'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('ipMode', $data)) {
-            $object->setIpMode($data['ipMode']);
+            $object->ipMode = $data['ipMode'];
         }
         if (\array_key_exists('primaryGateway', $data)) {
-            $object->setPrimaryGateway($data['primaryGateway']);
+            $object->primaryGateway = $data['primaryGateway'];
         }
         if (\array_key_exists('secondaryGateway', $data)) {
-            $object->setSecondaryGateway($data['secondaryGateway']);
+            $object->secondaryGateway = $data['secondaryGateway'];
         }
         if (\array_key_exists('tunnelMtuAutoEnabled', $data)) {
-            $object->setTunnelMtuAutoEnabled($data['tunnelMtuAutoEnabled']);
+            $object->tunnelMtuAutoEnabled = $data['tunnelMtuAutoEnabled'];
         }
         if (\array_key_exists('tunnelMtuSize', $data)) {
-            $object->setTunnelMtuSize($data['tunnelMtuSize']);
+            $object->tunnelMtuSize = $data['tunnelMtuSize'];
         }
         if (\array_key_exists('keepAlivePeriod', $data)) {
-            $object->setKeepAlivePeriod($data['keepAlivePeriod']);
+            $object->keepAlivePeriod = $data['keepAlivePeriod'];
         }
         if (\array_key_exists('keepAliveRetry', $data)) {
-            $object->setKeepAliveRetry($data['keepAliveRetry']);
+            $object->keepAliveRetry = $data['keepAliveRetry'];
         }
         if (\array_key_exists('forceDisassociateClient', $data)) {
-            $object->setForceDisassociateClient($data['forceDisassociateClient']);
+            $object->forceDisassociateClient = $data['forceDisassociateClient'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('creatorId', $data)) {
-            $object->setCreatorId($data['creatorId']);
+            $object->creatorId = $data['creatorId'];
         }
         if (\array_key_exists('modifierId', $data)) {
-            $object->setModifierId($data['modifierId']);
+            $object->modifierId = $data['modifierId'];
         }
         if (\array_key_exists('creatorUsername', $data)) {
-            $object->setCreatorUsername($data['creatorUsername']);
+            $object->creatorUsername = $data['creatorUsername'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('ipMode') && null !== $data->getIpMode()) {
-            $dataArray['ipMode'] = $data->getIpMode();
+        if (array_key_exists('ipMode', get_object_vars($data)) && null !== ($data->ipMode ?? null)) {
+            $dataArray['ipMode'] = $data->ipMode ?? null;
         }
-        if ($data->isInitialized('primaryGateway') && null !== $data->getPrimaryGateway()) {
-            $dataArray['primaryGateway'] = $data->getPrimaryGateway();
+        if (array_key_exists('primaryGateway', get_object_vars($data)) && null !== ($data->primaryGateway ?? null)) {
+            $dataArray['primaryGateway'] = $data->primaryGateway ?? null;
         }
-        if ($data->isInitialized('secondaryGateway') && null !== $data->getSecondaryGateway()) {
-            $dataArray['secondaryGateway'] = $data->getSecondaryGateway();
+        if (array_key_exists('secondaryGateway', get_object_vars($data)) && null !== ($data->secondaryGateway ?? null)) {
+            $dataArray['secondaryGateway'] = $data->secondaryGateway ?? null;
         }
-        if ($data->isInitialized('tunnelMtuAutoEnabled') && null !== $data->getTunnelMtuAutoEnabled()) {
-            $dataArray['tunnelMtuAutoEnabled'] = $data->getTunnelMtuAutoEnabled();
+        if (array_key_exists('tunnelMtuAutoEnabled', get_object_vars($data)) && null !== ($data->tunnelMtuAutoEnabled ?? null)) {
+            $dataArray['tunnelMtuAutoEnabled'] = $data->tunnelMtuAutoEnabled ?? null;
         }
-        if ($data->isInitialized('tunnelMtuSize') && null !== $data->getTunnelMtuSize()) {
-            $dataArray['tunnelMtuSize'] = $data->getTunnelMtuSize();
+        if (array_key_exists('tunnelMtuSize', get_object_vars($data)) && null !== ($data->tunnelMtuSize ?? null)) {
+            $dataArray['tunnelMtuSize'] = $data->tunnelMtuSize ?? null;
         }
-        if ($data->isInitialized('keepAlivePeriod') && null !== $data->getKeepAlivePeriod()) {
-            $dataArray['keepAlivePeriod'] = $data->getKeepAlivePeriod();
+        if (array_key_exists('keepAlivePeriod', get_object_vars($data)) && null !== ($data->keepAlivePeriod ?? null)) {
+            $dataArray['keepAlivePeriod'] = $data->keepAlivePeriod ?? null;
         }
-        if ($data->isInitialized('keepAliveRetry') && null !== $data->getKeepAliveRetry()) {
-            $dataArray['keepAliveRetry'] = $data->getKeepAliveRetry();
+        if (array_key_exists('keepAliveRetry', get_object_vars($data)) && null !== ($data->keepAliveRetry ?? null)) {
+            $dataArray['keepAliveRetry'] = $data->keepAliveRetry ?? null;
         }
-        if ($data->isInitialized('forceDisassociateClient') && null !== $data->getForceDisassociateClient()) {
-            $dataArray['forceDisassociateClient'] = $data->getForceDisassociateClient();
+        if (array_key_exists('forceDisassociateClient', get_object_vars($data)) && null !== ($data->forceDisassociateClient ?? null)) {
+            $dataArray['forceDisassociateClient'] = $data->forceDisassociateClient ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
-            $dataArray['creatorId'] = $data->getCreatorId();
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
         }
-        if ($data->isInitialized('modifierId') && null !== $data->getModifierId()) {
-            $dataArray['modifierId'] = $data->getModifierId();
+        if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
+            $dataArray['modifierId'] = $data->modifierId ?? null;
         }
-        if ($data->isInitialized('creatorUsername') && null !== $data->getCreatorUsername()) {
-            $dataArray['creatorUsername'] = $data->getCreatorUsername();
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
         return $dataArray;
     }

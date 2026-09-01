@@ -16,7 +16,7 @@ class MaxItemsValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && (\is_array($object->getType()) ? \in_array('array', $object->getType()) : 'array' === $object->getType()) && null !== $object->getMaxItems();
+        return $this->checkObject($object) && (\is_array($object->type ?? null) ? \in_array('array', $object->type ?? null) : 'array' === ($object->type ?? null)) && null !== ($object->maxItems ?? null);
     }
 
     /**
@@ -26,7 +26,7 @@ class MaxItemsValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(Count::class, [
-            'max' => $object->getMaxItems(),
+            'max' => ($object->maxItems ?? null),
             'maxMessage' => 'This array has too much values. It should have {{ limit }} values or less.',
         ]));
     }

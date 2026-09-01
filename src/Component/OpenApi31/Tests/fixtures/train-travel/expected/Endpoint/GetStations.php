@@ -69,22 +69,22 @@ class GetStations extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetStationsBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
         }
-        if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
+        if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetStationsUnauthorizedException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
         }
-        if (is_null($contentType) === false && (403 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
+        if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetStationsForbiddenException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
         }
-        if (is_null($contentType) === false && (429 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
+        if ($contentType !== null && (429 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetStationsTooManyRequestsException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
         }
-        if (is_null($contentType) === false && (500 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
+        if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetStationsInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
         }
     }

@@ -38,7 +38,7 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('alphaHandling', $data)) {
@@ -46,15 +46,15 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
             if (is_string($data['alphaHandling'])) {
                 $value = $data['alphaHandling'];
             }
-            $object->setAlphaHandling($value);
+            $object->alphaHandling = $value;
             unset($data['alphaHandling']);
         }
         if (\array_key_exists('replacementRgbColorHexCode', $data) && $data['replacementRgbColorHexCode'] !== null) {
-            $object->setReplacementRgbColorHexCode($data['replacementRgbColorHexCode']);
+            $object->replacementRgbColorHexCode = $data['replacementRgbColorHexCode'];
             unset($data['replacementRgbColorHexCode']);
         }
         elseif (\array_key_exists('replacementRgbColorHexCode', $data) && $data['replacementRgbColorHexCode'] === null) {
-            $object->setReplacementRgbColorHexCode(null);
+            $object->replacementRgbColorHexCode = null;
             unset($data['replacementRgbColorHexCode']);
         }
         foreach ($data as $key => $value_1) {
@@ -67,16 +67,16 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('alphaHandling') && null !== $data->getAlphaHandling()) {
-            $value = $data->getAlphaHandling();
-            if (is_string($data->getAlphaHandling())) {
-                $value = $data->getAlphaHandling();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('alphaHandling', get_object_vars($data)) && null !== ($data->alphaHandling ?? null)) {
+            $value = $data->alphaHandling ?? null;
+            if (is_string($data->alphaHandling ?? null)) {
+                $value = $data->alphaHandling ?? null;
             }
             $dataArray['alphaHandling'] = $value;
         }
-        if ($data->isInitialized('replacementRgbColorHexCode') && null !== $data->getReplacementRgbColorHexCode()) {
-            $dataArray['replacementRgbColorHexCode'] = $data->getReplacementRgbColorHexCode();
+        if (array_key_exists('replacementRgbColorHexCode', get_object_vars($data)) && null !== ($data->replacementRgbColorHexCode ?? null)) {
+            $dataArray['replacementRgbColorHexCode'] = $data->replacementRgbColorHexCode ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

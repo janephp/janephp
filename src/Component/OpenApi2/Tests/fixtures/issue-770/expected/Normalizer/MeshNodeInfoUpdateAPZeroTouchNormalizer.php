@@ -38,33 +38,33 @@ class MeshNodeInfoUpdateAPZeroTouchNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
         }
         if (\array_key_exists('helperZoneId', $data)) {
-            $object->setHelperZoneId($data['helperZoneId']);
+            $object->helperZoneId = $data['helperZoneId'];
         }
         if (\array_key_exists('serialNumber', $data)) {
-            $object->setSerialNumber($data['serialNumber']);
+            $object->serialNumber = $data['serialNumber'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('helperZoneId') && null !== $data->getHelperZoneId()) {
-            $dataArray['helperZoneId'] = $data->getHelperZoneId();
+        if (array_key_exists('helperZoneId', get_object_vars($data)) && null !== ($data->helperZoneId ?? null)) {
+            $dataArray['helperZoneId'] = $data->helperZoneId ?? null;
         }
-        if ($data->isInitialized('serialNumber') && null !== $data->getSerialNumber()) {
-            $dataArray['serialNumber'] = $data->getSerialNumber();
+        if (array_key_exists('serialNumber', get_object_vars($data)) && null !== ($data->serialNumber ?? null)) {
+            $dataArray['serialNumber'] = $data->serialNumber ?? null;
         }
         return $dataArray;
     }

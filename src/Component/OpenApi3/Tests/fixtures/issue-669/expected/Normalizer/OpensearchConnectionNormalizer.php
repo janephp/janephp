@@ -41,27 +41,27 @@ class OpensearchConnectionNormalizer implements DenormalizerInterface, Normalize
             $data['ssl'] = (bool) $data['ssl'];
         }
         if (\array_key_exists('uri', $data)) {
-            $object->setUri($data['uri']);
+            $object->uri = $data['uri'];
             unset($data['uri']);
         }
         if (\array_key_exists('host', $data)) {
-            $object->setHost($data['host']);
+            $object->host = $data['host'];
             unset($data['host']);
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
             unset($data['port']);
         }
         if (\array_key_exists('user', $data)) {
-            $object->setUser($data['user']);
+            $object->user = $data['user'];
             unset($data['user']);
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
             unset($data['password']);
         }
         if (\array_key_exists('ssl', $data)) {
-            $object->setSsl($data['ssl']);
+            $object->ssl = $data['ssl'];
             unset($data['ssl']);
         }
         foreach ($data as $key => $value) {

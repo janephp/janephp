@@ -38,15 +38,15 @@ class VolumeActionPostAttachNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('droplet_id', $data)) {
-            $object->setDropletId($data['droplet_id']);
+            $object->dropletId = $data['droplet_id'];
             unset($data['droplet_id']);
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
@@ -54,11 +54,11 @@ class VolumeActionPostAttachNormalizer implements DenormalizerInterface, Normali
             foreach ($data['tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setTags($values);
+            $object->tags = $values;
             unset($data['tags']);
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
-            $object->setTags(null);
+            $object->tags = null;
             unset($data['tags']);
         }
         foreach ($data as $key => $value_1) {
@@ -71,14 +71,14 @@ class VolumeActionPostAttachNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        $dataArray['droplet_id'] = $data->getDropletId();
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        $dataArray['droplet_id'] = $data->dropletId ?? null;
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->getTags() as $value) {
+            foreach ($data->tags ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;

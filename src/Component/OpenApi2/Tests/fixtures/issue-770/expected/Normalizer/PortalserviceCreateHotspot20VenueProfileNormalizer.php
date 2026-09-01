@@ -44,53 +44,53 @@ class PortalserviceCreateHotspot20VenueProfileNormalizer implements Denormalizer
             $data['uplinkSpeedInKbps'] = (float) $data['uplinkSpeedInKbps'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('group', $data)) {
-            $object->setGroup($data['group']);
+            $object->group = $data['group'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('downlinkSpeedInKbps', $data)) {
-            $object->setDownlinkSpeedInKbps($data['downlinkSpeedInKbps']);
+            $object->downlinkSpeedInKbps = $data['downlinkSpeedInKbps'];
         }
         if (\array_key_exists('uplinkSpeedInKbps', $data)) {
-            $object->setUplinkSpeedInKbps($data['uplinkSpeedInKbps']);
+            $object->uplinkSpeedInKbps = $data['uplinkSpeedInKbps'];
         }
         if (\array_key_exists('venueNames', $data)) {
             $values = [];
             foreach ($data['venueNames'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceVenueName::class, 'json', $context);
             }
-            $object->setVenueNames($values);
+            $object->venueNames = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('group') && null !== $data->getGroup()) {
-            $dataArray['group'] = $data->getGroup();
+        if (array_key_exists('group', get_object_vars($data)) && null !== ($data->group ?? null)) {
+            $dataArray['group'] = $data->group ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('downlinkSpeedInKbps') && null !== $data->getDownlinkSpeedInKbps()) {
-            $dataArray['downlinkSpeedInKbps'] = $data->getDownlinkSpeedInKbps();
+        if (array_key_exists('downlinkSpeedInKbps', get_object_vars($data)) && null !== ($data->downlinkSpeedInKbps ?? null)) {
+            $dataArray['downlinkSpeedInKbps'] = $data->downlinkSpeedInKbps ?? null;
         }
-        if ($data->isInitialized('uplinkSpeedInKbps') && null !== $data->getUplinkSpeedInKbps()) {
-            $dataArray['uplinkSpeedInKbps'] = $data->getUplinkSpeedInKbps();
+        if (array_key_exists('uplinkSpeedInKbps', get_object_vars($data)) && null !== ($data->uplinkSpeedInKbps ?? null)) {
+            $dataArray['uplinkSpeedInKbps'] = $data->uplinkSpeedInKbps ?? null;
         }
         $values = [];
-        foreach ($data->getVenueNames() as $value) {
+        foreach ($data->venueNames ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['venueNames'] = $values;

@@ -38,45 +38,45 @@ class QueryDebugInformationNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('general', $data) && $data['general'] !== null) {
-            $object->setGeneral($data['general']);
+            $object->general = $data['general'];
         }
         elseif (\array_key_exists('general', $data) && $data['general'] === null) {
-            $object->setGeneral(null);
+            $object->general = null;
         }
         if (\array_key_exists('auditTrail', $data) && $data['auditTrail'] !== null) {
-            $object->setAuditTrail($data['auditTrail']);
+            $object->auditTrail = $data['auditTrail'];
         }
         elseif (\array_key_exists('auditTrail', $data) && $data['auditTrail'] === null) {
-            $object->setAuditTrail(null);
+            $object->auditTrail = null;
         }
         if (\array_key_exists('request', $data) && $data['request'] !== null) {
-            $object->setRequest($data['request']);
+            $object->request = $data['request'];
         }
         elseif (\array_key_exists('request', $data) && $data['request'] === null) {
-            $object->setRequest(null);
+            $object->request = null;
         }
         if (\array_key_exists('response', $data) && $data['response'] !== null) {
-            $object->setResponse($data['response']);
+            $object->response = $data['response'];
         }
         elseif (\array_key_exists('response', $data) && $data['response'] === null) {
-            $object->setResponse(null);
+            $object->response = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('general') && null !== $data->getGeneral()) {
-            $dataArray['general'] = $data->getGeneral();
+        if (array_key_exists('general', get_object_vars($data)) && null !== ($data->general ?? null)) {
+            $dataArray['general'] = $data->general ?? null;
         }
-        if ($data->isInitialized('auditTrail') && null !== $data->getAuditTrail()) {
-            $dataArray['auditTrail'] = $data->getAuditTrail();
+        if (array_key_exists('auditTrail', get_object_vars($data)) && null !== ($data->auditTrail ?? null)) {
+            $dataArray['auditTrail'] = $data->auditTrail ?? null;
         }
-        if ($data->isInitialized('request') && null !== $data->getRequest()) {
-            $dataArray['request'] = $data->getRequest();
+        if (array_key_exists('request', get_object_vars($data)) && null !== ($data->request ?? null)) {
+            $dataArray['request'] = $data->request ?? null;
         }
-        if ($data->isInitialized('response') && null !== $data->getResponse()) {
-            $dataArray['response'] = $data->getResponse();
+        if (array_key_exists('response', get_object_vars($data)) && null !== ($data->response ?? null)) {
+            $dataArray['response'] = $data->response ?? null;
         }
         return $dataArray;
     }

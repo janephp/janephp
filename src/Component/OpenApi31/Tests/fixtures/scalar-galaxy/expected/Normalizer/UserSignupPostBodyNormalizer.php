@@ -41,19 +41,19 @@ class UserSignupPostBodyNormalizer implements DenormalizerInterface, NormalizerI
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\UserSignupPostBodyConstraint());
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
             unset($data['email']);
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
             unset($data['password']);
         }
         foreach ($data as $key => $value) {
@@ -66,11 +66,11 @@ class UserSignupPostBodyNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        $dataArray['email'] = $data->getEmail();
-        $dataArray['password'] = $data->getPassword();
+        $dataArray['email'] = $data->email ?? null;
+        $dataArray['password'] = $data->password ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

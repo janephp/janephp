@@ -41,69 +41,69 @@ class WlanWlanRadiusNormalizer implements DenormalizerInterface, NormalizerInter
             $data['singleSessionIdAcctEnabled'] = (bool) $data['singleSessionIdAcctEnabled'];
         }
         if (\array_key_exists('nasIdType', $data)) {
-            $object->setNasIdType($data['nasIdType']);
+            $object->nasIdType = $data['nasIdType'];
         }
         if (\array_key_exists('customizedNasId', $data)) {
-            $object->setCustomizedNasId($data['customizedNasId']);
+            $object->customizedNasId = $data['customizedNasId'];
         }
         if (\array_key_exists('nasRequestTimeoutSec', $data)) {
-            $object->setNasRequestTimeoutSec($data['nasRequestTimeoutSec']);
+            $object->nasRequestTimeoutSec = $data['nasRequestTimeoutSec'];
         }
         if (\array_key_exists('nasMaxRetry', $data)) {
-            $object->setNasMaxRetry($data['nasMaxRetry']);
+            $object->nasMaxRetry = $data['nasMaxRetry'];
         }
         if (\array_key_exists('nasReconnectPrimaryMin', $data)) {
-            $object->setNasReconnectPrimaryMin($data['nasReconnectPrimaryMin']);
+            $object->nasReconnectPrimaryMin = $data['nasReconnectPrimaryMin'];
         }
         if (\array_key_exists('calledStaIdType', $data)) {
-            $object->setCalledStaIdType($data['calledStaIdType']);
+            $object->calledStaIdType = $data['calledStaIdType'];
         }
         if (\array_key_exists('nasIpType', $data)) {
-            $object->setNasIpType($data['nasIpType']);
+            $object->nasIpType = $data['nasIpType'];
         }
         if (\array_key_exists('nasIpUserDefined', $data)) {
-            $object->setNasIpUserDefined($data['nasIpUserDefined']);
+            $object->nasIpUserDefined = $data['nasIpUserDefined'];
         }
         if (\array_key_exists('singleSessionIdAcctEnabled', $data)) {
-            $object->setSingleSessionIdAcctEnabled($data['singleSessionIdAcctEnabled']);
+            $object->singleSessionIdAcctEnabled = $data['singleSessionIdAcctEnabled'];
         }
         if (\array_key_exists('vendorSpecificAttributeProfileId', $data)) {
-            $object->setVendorSpecificAttributeProfileId($data['vendorSpecificAttributeProfileId']);
+            $object->vendorSpecificAttributeProfileId = $data['vendorSpecificAttributeProfileId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nasIdType') && null !== $data->getNasIdType()) {
-            $dataArray['nasIdType'] = $data->getNasIdType();
+        if (array_key_exists('nasIdType', get_object_vars($data)) && null !== ($data->nasIdType ?? null)) {
+            $dataArray['nasIdType'] = $data->nasIdType ?? null;
         }
-        if ($data->isInitialized('customizedNasId') && null !== $data->getCustomizedNasId()) {
-            $dataArray['customizedNasId'] = $data->getCustomizedNasId();
+        if (array_key_exists('customizedNasId', get_object_vars($data)) && null !== ($data->customizedNasId ?? null)) {
+            $dataArray['customizedNasId'] = $data->customizedNasId ?? null;
         }
-        if ($data->isInitialized('nasRequestTimeoutSec') && null !== $data->getNasRequestTimeoutSec()) {
-            $dataArray['nasRequestTimeoutSec'] = $data->getNasRequestTimeoutSec();
+        if (array_key_exists('nasRequestTimeoutSec', get_object_vars($data)) && null !== ($data->nasRequestTimeoutSec ?? null)) {
+            $dataArray['nasRequestTimeoutSec'] = $data->nasRequestTimeoutSec ?? null;
         }
-        if ($data->isInitialized('nasMaxRetry') && null !== $data->getNasMaxRetry()) {
-            $dataArray['nasMaxRetry'] = $data->getNasMaxRetry();
+        if (array_key_exists('nasMaxRetry', get_object_vars($data)) && null !== ($data->nasMaxRetry ?? null)) {
+            $dataArray['nasMaxRetry'] = $data->nasMaxRetry ?? null;
         }
-        if ($data->isInitialized('nasReconnectPrimaryMin') && null !== $data->getNasReconnectPrimaryMin()) {
-            $dataArray['nasReconnectPrimaryMin'] = $data->getNasReconnectPrimaryMin();
+        if (array_key_exists('nasReconnectPrimaryMin', get_object_vars($data)) && null !== ($data->nasReconnectPrimaryMin ?? null)) {
+            $dataArray['nasReconnectPrimaryMin'] = $data->nasReconnectPrimaryMin ?? null;
         }
-        if ($data->isInitialized('calledStaIdType') && null !== $data->getCalledStaIdType()) {
-            $dataArray['calledStaIdType'] = $data->getCalledStaIdType();
+        if (array_key_exists('calledStaIdType', get_object_vars($data)) && null !== ($data->calledStaIdType ?? null)) {
+            $dataArray['calledStaIdType'] = $data->calledStaIdType ?? null;
         }
-        if ($data->isInitialized('nasIpType') && null !== $data->getNasIpType()) {
-            $dataArray['nasIpType'] = $data->getNasIpType();
+        if (array_key_exists('nasIpType', get_object_vars($data)) && null !== ($data->nasIpType ?? null)) {
+            $dataArray['nasIpType'] = $data->nasIpType ?? null;
         }
-        if ($data->isInitialized('nasIpUserDefined') && null !== $data->getNasIpUserDefined()) {
-            $dataArray['nasIpUserDefined'] = $data->getNasIpUserDefined();
+        if (array_key_exists('nasIpUserDefined', get_object_vars($data)) && null !== ($data->nasIpUserDefined ?? null)) {
+            $dataArray['nasIpUserDefined'] = $data->nasIpUserDefined ?? null;
         }
-        if ($data->isInitialized('singleSessionIdAcctEnabled') && null !== $data->getSingleSessionIdAcctEnabled()) {
-            $dataArray['singleSessionIdAcctEnabled'] = $data->getSingleSessionIdAcctEnabled();
+        if (array_key_exists('singleSessionIdAcctEnabled', get_object_vars($data)) && null !== ($data->singleSessionIdAcctEnabled ?? null)) {
+            $dataArray['singleSessionIdAcctEnabled'] = $data->singleSessionIdAcctEnabled ?? null;
         }
-        if ($data->isInitialized('vendorSpecificAttributeProfileId') && null !== $data->getVendorSpecificAttributeProfileId()) {
-            $dataArray['vendorSpecificAttributeProfileId'] = $data->getVendorSpecificAttributeProfileId();
+        if (array_key_exists('vendorSpecificAttributeProfileId', get_object_vars($data)) && null !== ($data->vendorSpecificAttributeProfileId ?? null)) {
+            $dataArray['vendorSpecificAttributeProfileId'] = $data->vendorSpecificAttributeProfileId ?? null;
         }
         return $dataArray;
     }

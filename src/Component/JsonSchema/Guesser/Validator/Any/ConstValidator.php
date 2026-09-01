@@ -16,7 +16,7 @@ class ConstValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && ((\is_array($object->getType()) ? \in_array('string', $object->getType()) : 'string' === $object->getType()) || null === $object->getType()) && (method_exists($object, 'getConst') && null !== $object->getConst());
+        return $this->checkObject($object) && ((\is_array($object->type ?? null) ? \in_array('string', $object->type ?? null) : 'string' === ($object->type ?? null)) || null === ($object->type ?? null)) && (property_exists($object, 'const') && null !== ($object->const ?? null));
     }
 
     /**
@@ -26,7 +26,7 @@ class ConstValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(EqualTo::class, [
-            'value' => $object->getConst(),
+            'value' => ($object->const ?? null),
             'message' => 'This value should be equal to "{{ compared_value }}".',
         ]));
     }

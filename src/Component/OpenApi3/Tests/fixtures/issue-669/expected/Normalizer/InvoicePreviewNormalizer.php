@@ -38,23 +38,23 @@ class InvoicePreviewNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('invoice_uuid', $data)) {
-            $object->setInvoiceUuid($data['invoice_uuid']);
+            $object->invoiceUuid = $data['invoice_uuid'];
             unset($data['invoice_uuid']);
         }
         if (\array_key_exists('invoice_id', $data)) {
-            $object->setInvoiceId($data['invoice_id']);
+            $object->invoiceId = $data['invoice_id'];
             unset($data['invoice_id']);
         }
         if (\array_key_exists('amount', $data)) {
-            $object->setAmount($data['amount']);
+            $object->amount = $data['amount'];
             unset($data['amount']);
         }
         if (\array_key_exists('invoice_period', $data)) {
-            $object->setInvoicePeriod($data['invoice_period']);
+            $object->invoicePeriod = $data['invoice_period'];
             unset($data['invoice_period']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt($data['updated_at']);
+            $object->updatedAt = $data['updated_at'];
             unset($data['updated_at']);
         }
         foreach ($data as $key => $value) {
@@ -67,20 +67,20 @@ class InvoicePreviewNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('invoiceUuid') && null !== $data->getInvoiceUuid()) {
-            $dataArray['invoice_uuid'] = $data->getInvoiceUuid();
+        if (array_key_exists('invoiceUuid', get_object_vars($data)) && null !== ($data->invoiceUuid ?? null)) {
+            $dataArray['invoice_uuid'] = $data->invoiceUuid ?? null;
         }
-        if ($data->isInitialized('invoiceId') && null !== $data->getInvoiceId()) {
-            $dataArray['invoice_id'] = $data->getInvoiceId();
+        if (array_key_exists('invoiceId', get_object_vars($data)) && null !== ($data->invoiceId ?? null)) {
+            $dataArray['invoice_id'] = $data->invoiceId ?? null;
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
-            $dataArray['amount'] = $data->getAmount();
+        if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
+            $dataArray['amount'] = $data->amount ?? null;
         }
-        if ($data->isInitialized('invoicePeriod') && null !== $data->getInvoicePeriod()) {
-            $dataArray['invoice_period'] = $data->getInvoicePeriod();
+        if (array_key_exists('invoicePeriod', get_object_vars($data)) && null !== ($data->invoicePeriod ?? null)) {
+            $dataArray['invoice_period'] = $data->invoicePeriod ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt();
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = $data->updatedAt ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

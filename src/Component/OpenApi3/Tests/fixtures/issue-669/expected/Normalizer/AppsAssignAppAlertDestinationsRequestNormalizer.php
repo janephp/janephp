@@ -42,7 +42,7 @@ class AppsAssignAppAlertDestinationsRequestNormalizer implements DenormalizerInt
             foreach ($data['emails'] as $value) {
                 $values[] = $value;
             }
-            $object->setEmails($values);
+            $object->emails = $values;
             unset($data['emails']);
         }
         if (\array_key_exists('slack_webhooks', $data)) {
@@ -50,7 +50,7 @@ class AppsAssignAppAlertDestinationsRequestNormalizer implements DenormalizerInt
             foreach ($data['slack_webhooks'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\AppAlertSlackWebhook::class, 'json', $context);
             }
-            $object->setSlackWebhooks($values_1);
+            $object->slackWebhooks = $values_1;
             unset($data['slack_webhooks']);
         }
         foreach ($data as $key => $value_2) {
@@ -63,16 +63,16 @@ class AppsAssignAppAlertDestinationsRequestNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('emails') && null !== $data->getEmails()) {
+        if (array_key_exists('emails', get_object_vars($data)) && null !== ($data->emails ?? null)) {
             $values = [];
-            foreach ($data->getEmails() as $value) {
+            foreach ($data->emails ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['emails'] = $values;
         }
-        if ($data->isInitialized('slackWebhooks') && null !== $data->getSlackWebhooks()) {
+        if (array_key_exists('slackWebhooks', get_object_vars($data)) && null !== ($data->slackWebhooks ?? null)) {
             $values_1 = [];
-            foreach ($data->getSlackWebhooks() as $value_1) {
+            foreach ($data->slackWebhooks ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['slack_webhooks'] = $values_1;

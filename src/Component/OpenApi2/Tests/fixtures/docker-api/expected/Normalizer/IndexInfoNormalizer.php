@@ -47,41 +47,41 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $this->validate($data, new \Docker\Api\Validator\IndexInfoConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Mirrors', $data)) {
             $values = [];
             foreach ($data['Mirrors'] as $value) {
                 $values[] = $value;
             }
-            $object->setMirrors($values);
+            $object->mirrors = $values;
         }
         if (\array_key_exists('Secure', $data)) {
-            $object->setSecure($data['Secure']);
+            $object->secure = $data['Secure'];
         }
         if (\array_key_exists('Official', $data)) {
-            $object->setOfficial($data['Official']);
+            $object->official = $data['Official'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('mirrors') && null !== $data->getMirrors()) {
+        if (array_key_exists('mirrors', get_object_vars($data)) && null !== ($data->mirrors ?? null)) {
             $values = [];
-            foreach ($data->getMirrors() as $value) {
+            foreach ($data->mirrors ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['Mirrors'] = $values;
         }
-        if ($data->isInitialized('secure') && null !== $data->getSecure()) {
-            $dataArray['Secure'] = $data->getSecure();
+        if (array_key_exists('secure', get_object_vars($data)) && null !== ($data->secure ?? null)) {
+            $dataArray['Secure'] = $data->secure ?? null;
         }
-        if ($data->isInitialized('official') && null !== $data->getOfficial()) {
-            $dataArray['Official'] = $data->getOfficial();
+        if (array_key_exists('official', get_object_vars($data)) && null !== ($data->official ?? null)) {
+            $dataArray['Official'] = $data->official ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\IndexInfoConstraint());

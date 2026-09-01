@@ -41,19 +41,19 @@ class ApiChunkingOptionsNormalizer implements DenormalizerInterface, NormalizerI
             $data['semantic_threshold'] = (float) $data['semantic_threshold'];
         }
         if (\array_key_exists('child_chunk_size', $data)) {
-            $object->setChildChunkSize($data['child_chunk_size']);
+            $object->childChunkSize = $data['child_chunk_size'];
             unset($data['child_chunk_size']);
         }
         if (\array_key_exists('max_chunk_size', $data)) {
-            $object->setMaxChunkSize($data['max_chunk_size']);
+            $object->maxChunkSize = $data['max_chunk_size'];
             unset($data['max_chunk_size']);
         }
         if (\array_key_exists('parent_chunk_size', $data)) {
-            $object->setParentChunkSize($data['parent_chunk_size']);
+            $object->parentChunkSize = $data['parent_chunk_size'];
             unset($data['parent_chunk_size']);
         }
         if (\array_key_exists('semantic_threshold', $data)) {
-            $object->setSemanticThreshold($data['semantic_threshold']);
+            $object->semanticThreshold = $data['semantic_threshold'];
             unset($data['semantic_threshold']);
         }
         foreach ($data as $key => $value) {
@@ -66,17 +66,17 @@ class ApiChunkingOptionsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('childChunkSize') && null !== $data->getChildChunkSize()) {
-            $dataArray['child_chunk_size'] = $data->getChildChunkSize();
+        if (array_key_exists('childChunkSize', get_object_vars($data)) && null !== ($data->childChunkSize ?? null)) {
+            $dataArray['child_chunk_size'] = $data->childChunkSize ?? null;
         }
-        if ($data->isInitialized('maxChunkSize') && null !== $data->getMaxChunkSize()) {
-            $dataArray['max_chunk_size'] = $data->getMaxChunkSize();
+        if (array_key_exists('maxChunkSize', get_object_vars($data)) && null !== ($data->maxChunkSize ?? null)) {
+            $dataArray['max_chunk_size'] = $data->maxChunkSize ?? null;
         }
-        if ($data->isInitialized('parentChunkSize') && null !== $data->getParentChunkSize()) {
-            $dataArray['parent_chunk_size'] = $data->getParentChunkSize();
+        if (array_key_exists('parentChunkSize', get_object_vars($data)) && null !== ($data->parentChunkSize ?? null)) {
+            $dataArray['parent_chunk_size'] = $data->parentChunkSize ?? null;
         }
-        if ($data->isInitialized('semanticThreshold') && null !== $data->getSemanticThreshold()) {
-            $dataArray['semantic_threshold'] = $data->getSemanticThreshold();
+        if (array_key_exists('semanticThreshold', get_object_vars($data)) && null !== ($data->semanticThreshold ?? null)) {
+            $dataArray['semantic_threshold'] = $data->semanticThreshold ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

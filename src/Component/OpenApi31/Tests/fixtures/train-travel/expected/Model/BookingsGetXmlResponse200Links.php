@@ -8,81 +8,19 @@ class BookingsGetXmlResponse200Links implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $self;
     /**
      * @var string
      */
-    protected $self;
+    public string $next;
     /**
      * @var string
      */
-    protected $next;
-    /**
-     * @var string
-     */
-    protected $prev;
-    /**
-     * @return string
-     */
-    public function getSelf(): string
-    {
-        return $this->self;
-    }
-    /**
-     * @param string $self
-     *
-     * @return self
-     */
-    public function setSelf(string $self): self
-    {
-        $this->initialized['self'] = true;
-        $this->self = $self;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getNext(): string
-    {
-        return $this->next;
-    }
-    /**
-     * @param string $next
-     *
-     * @return self
-     */
-    public function setNext(string $next): self
-    {
-        $this->initialized['next'] = true;
-        $this->next = $next;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getPrev(): string
-    {
-        return $this->prev;
-    }
-    /**
-     * @param string $prev
-     *
-     * @return self
-     */
-    public function setPrev(string $prev): self
-    {
-        $this->initialized['prev'] = true;
-        $this->prev = $prev;
-        return $this;
-    }
+    public string $prev;
     public function definedProperties(): array
     {
-        return ['self' => ['self', 'getSelf', 'setSelf'], 'next' => ['next', 'getNext', 'setNext'], 'prev' => ['prev', 'getPrev', 'setPrev']];
+        return ['self' => 'self', 'next' => 'next', 'prev' => 'prev'];
     }
 }

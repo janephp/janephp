@@ -41,15 +41,15 @@ class DatabaseStorageAutoscaleParamsNormalizer implements DenormalizerInterface,
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
             unset($data['enabled']);
         }
         if (\array_key_exists('threshold_percent', $data)) {
-            $object->setThresholdPercent($data['threshold_percent']);
+            $object->thresholdPercent = $data['threshold_percent'];
             unset($data['threshold_percent']);
         }
         if (\array_key_exists('increment_gib', $data)) {
-            $object->setIncrementGib($data['increment_gib']);
+            $object->incrementGib = $data['increment_gib'];
             unset($data['increment_gib']);
         }
         foreach ($data as $key => $value) {
@@ -62,12 +62,12 @@ class DatabaseStorageAutoscaleParamsNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->getEnabled();
-        if ($data->isInitialized('thresholdPercent') && null !== $data->getThresholdPercent()) {
-            $dataArray['threshold_percent'] = $data->getThresholdPercent();
+        $dataArray['enabled'] = $data->enabled ?? null;
+        if (array_key_exists('thresholdPercent', get_object_vars($data)) && null !== ($data->thresholdPercent ?? null)) {
+            $dataArray['threshold_percent'] = $data->thresholdPercent ?? null;
         }
-        if ($data->isInitialized('incrementGib') && null !== $data->getIncrementGib()) {
-            $dataArray['increment_gib'] = $data->getIncrementGib();
+        if (array_key_exists('incrementGib', get_object_vars($data)) && null !== ($data->incrementGib ?? null)) {
+            $dataArray['increment_gib'] = $data->incrementGib ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

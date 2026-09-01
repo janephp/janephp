@@ -41,39 +41,39 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['email_verified'] = (bool) $data['email_verified'];
         }
         if (\array_key_exists('droplet_limit', $data)) {
-            $object->setDropletLimit($data['droplet_limit']);
+            $object->dropletLimit = $data['droplet_limit'];
             unset($data['droplet_limit']);
         }
         if (\array_key_exists('floating_ip_limit', $data)) {
-            $object->setFloatingIpLimit($data['floating_ip_limit']);
+            $object->floatingIpLimit = $data['floating_ip_limit'];
             unset($data['floating_ip_limit']);
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
             unset($data['email']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('email_verified', $data)) {
-            $object->setEmailVerified($data['email_verified']);
+            $object->emailVerified = $data['email_verified'];
             unset($data['email_verified']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('status_message', $data)) {
-            $object->setStatusMessage($data['status_message']);
+            $object->statusMessage = $data['status_message'];
             unset($data['status_message']);
         }
         if (\array_key_exists('team', $data)) {
-            $object->setTeam($this->denormalizer->denormalize($data['team'], \Jane\Generated\DigitalOcean\Model\AccountTeam::class, 'json', $context));
+            $object->team = $this->denormalizer->denormalize($data['team'], \Jane\Generated\DigitalOcean\Model\AccountTeam::class, 'json', $context);
             unset($data['team']);
         }
         foreach ($data as $key => $value) {
@@ -86,18 +86,18 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['droplet_limit'] = $data->getDropletLimit();
-        $dataArray['floating_ip_limit'] = $data->getFloatingIpLimit();
-        $dataArray['email'] = $data->getEmail();
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        $dataArray['droplet_limit'] = $data->dropletLimit ?? null;
+        $dataArray['floating_ip_limit'] = $data->floatingIpLimit ?? null;
+        $dataArray['email'] = $data->email ?? null;
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        $dataArray['uuid'] = $data->getUuid();
-        $dataArray['email_verified'] = $data->getEmailVerified();
-        $dataArray['status'] = $data->getStatus();
-        $dataArray['status_message'] = $data->getStatusMessage();
-        if ($data->isInitialized('team') && null !== $data->getTeam()) {
-            $dataArray['team'] = $data->getTeam() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTeam(), 'json', $context));
+        $dataArray['uuid'] = $data->uuid ?? null;
+        $dataArray['email_verified'] = $data->emailVerified ?? null;
+        $dataArray['status'] = $data->status ?? null;
+        $dataArray['status_message'] = $data->statusMessage ?? null;
+        if (array_key_exists('team', get_object_vars($data)) && null !== ($data->team ?? null)) {
+            $dataArray['team'] = ($data->team ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->team ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

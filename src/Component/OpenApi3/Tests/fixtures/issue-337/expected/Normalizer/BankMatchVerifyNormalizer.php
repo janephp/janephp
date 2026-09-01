@@ -38,59 +38,59 @@ class BankMatchVerifyNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('companyNumber', $data)) {
-            $object->setCompanyNumber($data['companyNumber']);
+            $object->companyNumber = $data['companyNumber'];
             unset($data['companyNumber']);
         }
         if (\array_key_exists('accountNumber', $data)) {
-            $object->setAccountNumber($data['accountNumber']);
+            $object->accountNumber = $data['accountNumber'];
             unset($data['accountNumber']);
         }
         if (\array_key_exists('iban', $data)) {
-            $object->setIban($data['iban']);
+            $object->iban = $data['iban'];
             unset($data['iban']);
         }
         if (\array_key_exists('ibanResult', $data)) {
-            $object->setIbanResult($data['ibanResult']);
+            $object->ibanResult = $data['ibanResult'];
             unset($data['ibanResult']);
         }
         if (\array_key_exists('ibanText', $data)) {
-            $object->setIbanText($data['ibanText']);
+            $object->ibanText = $data['ibanText'];
             unset($data['ibanText']);
         }
         if (\array_key_exists('logDate', $data)) {
-            $object->setLogDate($data['logDate']);
+            $object->logDate = $data['logDate'];
             unset($data['logDate']);
         }
         if (\array_key_exists('safeNumber', $data)) {
-            $object->setSafeNumber($data['safeNumber']);
+            $object->safeNumber = $data['safeNumber'];
             unset($data['safeNumber']);
         }
         if (\array_key_exists('scanResult', $data)) {
-            $object->setScanResult($data['scanResult']);
+            $object->scanResult = $data['scanResult'];
             unset($data['scanResult']);
         }
         if (\array_key_exists('scanText', $data)) {
-            $object->setScanText($data['scanText']);
+            $object->scanText = $data['scanText'];
             unset($data['scanText']);
         }
         if (\array_key_exists('sortCode', $data)) {
-            $object->setSortCode($data['sortCode']);
+            $object->sortCode = $data['sortCode'];
             unset($data['sortCode']);
         }
         if (\array_key_exists('statusResult', $data)) {
-            $object->setStatusResult($data['statusResult']);
+            $object->statusResult = $data['statusResult'];
             unset($data['statusResult']);
         }
         if (\array_key_exists('statusText', $data)) {
-            $object->setStatusText($data['statusText']);
+            $object->statusText = $data['statusText'];
             unset($data['statusText']);
         }
         if (\array_key_exists('vatResult', $data)) {
-            $object->setVatResult($data['vatResult']);
+            $object->vatResult = $data['vatResult'];
             unset($data['vatResult']);
         }
         if (\array_key_exists('vatText', $data)) {
-            $object->setVatText($data['vatText']);
+            $object->vatText = $data['vatText'];
             unset($data['vatText']);
         }
         foreach ($data as $key => $value) {
@@ -103,47 +103,47 @@ class BankMatchVerifyNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('companyNumber') && null !== $data->getCompanyNumber()) {
-            $dataArray['companyNumber'] = $data->getCompanyNumber();
+        if (array_key_exists('companyNumber', get_object_vars($data)) && null !== ($data->companyNumber ?? null)) {
+            $dataArray['companyNumber'] = $data->companyNumber ?? null;
         }
-        if ($data->isInitialized('accountNumber') && null !== $data->getAccountNumber()) {
-            $dataArray['accountNumber'] = $data->getAccountNumber();
+        if (array_key_exists('accountNumber', get_object_vars($data)) && null !== ($data->accountNumber ?? null)) {
+            $dataArray['accountNumber'] = $data->accountNumber ?? null;
         }
-        if ($data->isInitialized('iban') && null !== $data->getIban()) {
-            $dataArray['iban'] = $data->getIban();
+        if (array_key_exists('iban', get_object_vars($data)) && null !== ($data->iban ?? null)) {
+            $dataArray['iban'] = $data->iban ?? null;
         }
-        if ($data->isInitialized('ibanResult') && null !== $data->getIbanResult()) {
-            $dataArray['ibanResult'] = $data->getIbanResult();
+        if (array_key_exists('ibanResult', get_object_vars($data)) && null !== ($data->ibanResult ?? null)) {
+            $dataArray['ibanResult'] = $data->ibanResult ?? null;
         }
-        if ($data->isInitialized('ibanText') && null !== $data->getIbanText()) {
-            $dataArray['ibanText'] = $data->getIbanText();
+        if (array_key_exists('ibanText', get_object_vars($data)) && null !== ($data->ibanText ?? null)) {
+            $dataArray['ibanText'] = $data->ibanText ?? null;
         }
-        if ($data->isInitialized('logDate') && null !== $data->getLogDate()) {
-            $dataArray['logDate'] = $data->getLogDate();
+        if (array_key_exists('logDate', get_object_vars($data)) && null !== ($data->logDate ?? null)) {
+            $dataArray['logDate'] = $data->logDate ?? null;
         }
-        if ($data->isInitialized('safeNumber') && null !== $data->getSafeNumber()) {
-            $dataArray['safeNumber'] = $data->getSafeNumber();
+        if (array_key_exists('safeNumber', get_object_vars($data)) && null !== ($data->safeNumber ?? null)) {
+            $dataArray['safeNumber'] = $data->safeNumber ?? null;
         }
-        if ($data->isInitialized('scanResult') && null !== $data->getScanResult()) {
-            $dataArray['scanResult'] = $data->getScanResult();
+        if (array_key_exists('scanResult', get_object_vars($data)) && null !== ($data->scanResult ?? null)) {
+            $dataArray['scanResult'] = $data->scanResult ?? null;
         }
-        if ($data->isInitialized('scanText') && null !== $data->getScanText()) {
-            $dataArray['scanText'] = $data->getScanText();
+        if (array_key_exists('scanText', get_object_vars($data)) && null !== ($data->scanText ?? null)) {
+            $dataArray['scanText'] = $data->scanText ?? null;
         }
-        if ($data->isInitialized('sortCode') && null !== $data->getSortCode()) {
-            $dataArray['sortCode'] = $data->getSortCode();
+        if (array_key_exists('sortCode', get_object_vars($data)) && null !== ($data->sortCode ?? null)) {
+            $dataArray['sortCode'] = $data->sortCode ?? null;
         }
-        if ($data->isInitialized('statusResult') && null !== $data->getStatusResult()) {
-            $dataArray['statusResult'] = $data->getStatusResult();
+        if (array_key_exists('statusResult', get_object_vars($data)) && null !== ($data->statusResult ?? null)) {
+            $dataArray['statusResult'] = $data->statusResult ?? null;
         }
-        if ($data->isInitialized('statusText') && null !== $data->getStatusText()) {
-            $dataArray['statusText'] = $data->getStatusText();
+        if (array_key_exists('statusText', get_object_vars($data)) && null !== ($data->statusText ?? null)) {
+            $dataArray['statusText'] = $data->statusText ?? null;
         }
-        if ($data->isInitialized('vatResult') && null !== $data->getVatResult()) {
-            $dataArray['vatResult'] = $data->getVatResult();
+        if (array_key_exists('vatResult', get_object_vars($data)) && null !== ($data->vatResult ?? null)) {
+            $dataArray['vatResult'] = $data->vatResult ?? null;
         }
-        if ($data->isInitialized('vatText') && null !== $data->getVatText()) {
-            $dataArray['vatText'] = $data->getVatText();
+        if (array_key_exists('vatText', get_object_vars($data)) && null !== ($data->vatText ?? null)) {
+            $dataArray['vatText'] = $data->vatText ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

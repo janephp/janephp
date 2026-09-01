@@ -41,83 +41,83 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
             $data['boost'] = (float) $data['boost'];
         }
         if (\array_key_exists('traceLevel', $data)) {
-            $object->setTraceLevel($data['traceLevel']);
+            $object->traceLevel = $data['traceLevel'];
             unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
-            $object->setTraceId($data['traceId']);
+            $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
-            $object->setTraceId(null);
+            $object->traceId = null;
             unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
-            $object->setTraceJobId($data['traceJobId']);
+            $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
-            $object->setTraceJobId(null);
+            $object->traceJobId = null;
             unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
-            $object->setHttpStatusCode($data['httpStatusCode']);
+            $object->httpStatusCode = $data['httpStatusCode'];
             unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
-            $object->setExceptionMessage($data['exceptionMessage']);
+            $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
-            $object->setExceptionMessage(null);
+            $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
-            $object->setCustomerId($data['customerId']);
+            $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
-            $object->setCustomerId(null);
+            $object->customerId = null;
             unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
-            $object->setCustomerAlias($data['customerAlias']);
+            $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
-            $object->setCustomerAlias(null);
+            $object->customerAlias = null;
             unset($data['customerAlias']);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
-            $object->setUserId($data['userId']);
+            $object->userId = $data['userId'];
             unset($data['userId']);
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
-            $object->setUserId(null);
+            $object->userId = null;
             unset($data['userId']);
         }
         if (\array_key_exists('fieldId', $data) && $data['fieldId'] !== null) {
-            $object->setFieldId($data['fieldId']);
+            $object->fieldId = $data['fieldId'];
             unset($data['fieldId']);
         }
         elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
-            $object->setFieldId(null);
+            $object->fieldId = null;
             unset($data['fieldId']);
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
-            $object->setSchemaId($data['schemaId']);
+            $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
-            $object->setSchemaId(null);
+            $object->schemaId = null;
             unset($data['schemaId']);
         }
         if (\array_key_exists('boost', $data)) {
-            $object->setBoost($data['boost']);
+            $object->boost = $data['boost'];
             unset($data['boost']);
         }
         if (\array_key_exists('allowedBoostValues', $data) && $data['allowedBoostValues'] !== null) {
@@ -125,11 +125,11 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
             foreach ($data['allowedBoostValues'] as $value) {
                 $values[] = $value;
             }
-            $object->setAllowedBoostValues($values);
+            $object->allowedBoostValues = $values;
             unset($data['allowedBoostValues']);
         }
         elseif (\array_key_exists('allowedBoostValues', $data) && $data['allowedBoostValues'] === null) {
-            $object->setAllowedBoostValues(null);
+            $object->allowedBoostValues = null;
             unset($data['allowedBoostValues']);
         }
         foreach ($data as $key => $value_1) {
@@ -142,43 +142,43 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
-            $dataArray['traceLevel'] = $data->getTraceLevel();
+        if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
+            $dataArray['traceLevel'] = $data->traceLevel ?? null;
         }
-        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
-            $dataArray['traceId'] = $data->getTraceId();
+        if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
+            $dataArray['traceId'] = $data->traceId ?? null;
         }
-        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
-            $dataArray['traceJobId'] = $data->getTraceJobId();
+        if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
+            $dataArray['traceJobId'] = $data->traceJobId ?? null;
         }
-        if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
-            $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
+        if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
+            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
         }
-        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
-            $dataArray['exceptionMessage'] = $data->getExceptionMessage();
+        if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
+            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
-            $dataArray['customerId'] = $data->getCustomerId();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('customerId', get_object_vars($data)) && null !== ($data->customerId ?? null)) {
+            $dataArray['customerId'] = $data->customerId ?? null;
         }
-        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
-            $dataArray['customerAlias'] = $data->getCustomerAlias();
+        if (array_key_exists('customerAlias', get_object_vars($data)) && null !== ($data->customerAlias ?? null)) {
+            $dataArray['customerAlias'] = $data->customerAlias ?? null;
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['userId'] = $data->getUserId();
+        if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['userId'] = $data->userId ?? null;
         }
-        if ($data->isInitialized('fieldId') && null !== $data->getFieldId()) {
-            $dataArray['fieldId'] = $data->getFieldId();
+        if (array_key_exists('fieldId', get_object_vars($data)) && null !== ($data->fieldId ?? null)) {
+            $dataArray['fieldId'] = $data->fieldId ?? null;
         }
-        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
-            $dataArray['schemaId'] = $data->getSchemaId();
+        if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
+            $dataArray['schemaId'] = $data->schemaId ?? null;
         }
-        if ($data->isInitialized('boost') && null !== $data->getBoost()) {
-            $dataArray['boost'] = $data->getBoost();
+        if (array_key_exists('boost', get_object_vars($data)) && null !== ($data->boost ?? null)) {
+            $dataArray['boost'] = $data->boost ?? null;
         }
-        if ($data->isInitialized('allowedBoostValues') && null !== $data->getAllowedBoostValues()) {
+        if (array_key_exists('allowedBoostValues', get_object_vars($data)) && null !== ($data->allowedBoostValues ?? null)) {
             $values = [];
-            foreach ($data->getAllowedBoostValues() as $value) {
+            foreach ($data->allowedBoostValues ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['allowedBoostValues'] = $values;

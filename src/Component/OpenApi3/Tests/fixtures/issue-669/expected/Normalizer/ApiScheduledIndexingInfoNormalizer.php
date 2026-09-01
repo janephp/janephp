@@ -45,7 +45,7 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('days', $data)) {
@@ -53,7 +53,7 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
             foreach ($data['days'] as $value) {
                 $values[] = $value;
             }
-            $object->setDays($values);
+            $object->days = $values;
             unset($data['days']);
         }
         if (\array_key_exists('deleted_at', $data)) {
@@ -61,15 +61,15 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['deleted_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setDeletedAt($date_1);
+            $object->deletedAt = $date_1;
             unset($data['deleted_at']);
         }
         if (\array_key_exists('is_active', $data)) {
-            $object->setIsActive($data['is_active']);
+            $object->isActive = $data['is_active'];
             unset($data['is_active']);
         }
         if (\array_key_exists('knowledge_base_uuid', $data)) {
-            $object->setKnowledgeBaseUuid($data['knowledge_base_uuid']);
+            $object->knowledgeBaseUuid = $data['knowledge_base_uuid'];
             unset($data['knowledge_base_uuid']);
         }
         if (\array_key_exists('last_ran_at', $data)) {
@@ -77,7 +77,7 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
             if (false === $date_2) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['last_ran_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setLastRanAt($date_2);
+            $object->lastRanAt = $date_2;
             unset($data['last_ran_at']);
         }
         if (\array_key_exists('next_run_at', $data)) {
@@ -85,11 +85,11 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
             if (false === $date_3) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['next_run_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setNextRunAt($date_3);
+            $object->nextRunAt = $date_3;
             unset($data['next_run_at']);
         }
         if (\array_key_exists('time', $data)) {
-            $object->setTime($data['time']);
+            $object->time = $data['time'];
             unset($data['time']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -97,11 +97,11 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
             if (false === $date_4) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_4);
+            $object->updatedAt = $date_4;
             unset($data['updated_at']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         foreach ($data as $key => $value_1) {
@@ -114,39 +114,39 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('days') && null !== $data->getDays()) {
+        if (array_key_exists('days', get_object_vars($data)) && null !== ($data->days ?? null)) {
             $values = [];
-            foreach ($data->getDays() as $value) {
+            foreach ($data->days ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['days'] = $values;
         }
-        if ($data->isInitialized('deletedAt') && null !== $data->getDeletedAt()) {
-            $dataArray['deleted_at'] = $data->getDeletedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('deletedAt', get_object_vars($data)) && null !== ($data->deletedAt ?? null)) {
+            $dataArray['deleted_at'] = ($data->deletedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('isActive') && null !== $data->getIsActive()) {
-            $dataArray['is_active'] = $data->getIsActive();
+        if (array_key_exists('isActive', get_object_vars($data)) && null !== ($data->isActive ?? null)) {
+            $dataArray['is_active'] = $data->isActive ?? null;
         }
-        if ($data->isInitialized('knowledgeBaseUuid') && null !== $data->getKnowledgeBaseUuid()) {
-            $dataArray['knowledge_base_uuid'] = $data->getKnowledgeBaseUuid();
+        if (array_key_exists('knowledgeBaseUuid', get_object_vars($data)) && null !== ($data->knowledgeBaseUuid ?? null)) {
+            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid ?? null;
         }
-        if ($data->isInitialized('lastRanAt') && null !== $data->getLastRanAt()) {
-            $dataArray['last_ran_at'] = $data->getLastRanAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('lastRanAt', get_object_vars($data)) && null !== ($data->lastRanAt ?? null)) {
+            $dataArray['last_ran_at'] = ($data->lastRanAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('nextRunAt') && null !== $data->getNextRunAt()) {
-            $dataArray['next_run_at'] = $data->getNextRunAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('nextRunAt', get_object_vars($data)) && null !== ($data->nextRunAt ?? null)) {
+            $dataArray['next_run_at'] = ($data->nextRunAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('time') && null !== $data->getTime()) {
-            $dataArray['time'] = $data->getTime();
+        if (array_key_exists('time', get_object_vars($data)) && null !== ($data->time ?? null)) {
+            $dataArray['time'] = $data->time ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

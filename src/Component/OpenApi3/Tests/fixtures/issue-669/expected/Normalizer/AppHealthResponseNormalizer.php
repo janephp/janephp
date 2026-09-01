@@ -38,7 +38,7 @@ class AppHealthResponseNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('app_health', $data)) {
-            $object->setAppHealth($this->denormalizer->denormalize($data['app_health'], \Jane\Generated\DigitalOcean\Model\AppHealth::class, 'json', $context));
+            $object->appHealth = $this->denormalizer->denormalize($data['app_health'], \Jane\Generated\DigitalOcean\Model\AppHealth::class, 'json', $context);
             unset($data['app_health']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppHealthResponseNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('appHealth') && null !== $data->getAppHealth()) {
-            $dataArray['app_health'] = $data->getAppHealth() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAppHealth(), 'json', $context));
+        if (array_key_exists('appHealth', get_object_vars($data)) && null !== ($data->appHealth ?? null)) {
+            $dataArray['app_health'] = ($data->appHealth ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->appHealth ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -8,99 +8,25 @@ class ContentPermissionSetUpdateRequest implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Language specific permission set names.
      *
      * @var array<string, string>
      */
-    protected $names;
+    public iterable $names;
     /**
      * A list of content or metadata rights authorizing operations on Content Items or List Items.
      *
      * @var list<UserRoleRightsOfContentRight>|null
      */
-    protected $userRolesRights;
+    public ?array $userRolesRights;
     /**
      * A list of permission set rights authorizing operations on this permission set.
      *
      * @var list<UserRoleRightsOfPermissionSetRight>|null
      */
-    protected $userRolesPermissionSetRights;
-    /**
-     * Language specific permission set names.
-     *
-     * @return array<string, string>
-     */
-    public function getNames(): iterable
-    {
-        return $this->names;
-    }
-    /**
-     * Language specific permission set names.
-     *
-     * @param array<string, string> $names
-     *
-     * @return self
-     */
-    public function setNames(iterable $names): self
-    {
-        $this->initialized['names'] = true;
-        $this->names = $names;
-        return $this;
-    }
-    /**
-     * A list of content or metadata rights authorizing operations on Content Items or List Items.
-     *
-     * @return list<UserRoleRightsOfContentRight>|null
-     */
-    public function getUserRolesRights(): ?array
-    {
-        return $this->userRolesRights;
-    }
-    /**
-     * A list of content or metadata rights authorizing operations on Content Items or List Items.
-     *
-     * @param list<UserRoleRightsOfContentRight>|null $userRolesRights
-     *
-     * @return self
-     */
-    public function setUserRolesRights(?array $userRolesRights): self
-    {
-        $this->initialized['userRolesRights'] = true;
-        $this->userRolesRights = $userRolesRights;
-        return $this;
-    }
-    /**
-     * A list of permission set rights authorizing operations on this permission set.
-     *
-     * @return list<UserRoleRightsOfPermissionSetRight>|null
-     */
-    public function getUserRolesPermissionSetRights(): ?array
-    {
-        return $this->userRolesPermissionSetRights;
-    }
-    /**
-     * A list of permission set rights authorizing operations on this permission set.
-     *
-     * @param list<UserRoleRightsOfPermissionSetRight>|null $userRolesPermissionSetRights
-     *
-     * @return self
-     */
-    public function setUserRolesPermissionSetRights(?array $userRolesPermissionSetRights): self
-    {
-        $this->initialized['userRolesPermissionSetRights'] = true;
-        $this->userRolesPermissionSetRights = $userRolesPermissionSetRights;
-        return $this;
-    }
+    public ?array $userRolesPermissionSetRights;
     public function definedProperties(): array
     {
-        return ['names' => ['names', 'getNames', 'setNames'], 'userRolesRights' => ['userRolesRights', 'getUserRolesRights', 'setUserRolesRights'], 'userRolesPermissionSetRights' => ['userRolesPermissionSetRights', 'getUserRolesPermissionSetRights', 'setUserRolesPermissionSetRights']];
+        return ['names' => 'names', 'userRolesRights' => 'userRolesRights', 'userRolesPermissionSetRights' => 'userRolesPermissionSetRights'];
     }
 }

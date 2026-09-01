@@ -42,48 +42,48 @@ class LanguageConfigurationNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['systemLanguages'] as $value) {
                 $values[] = $value;
             }
-            $object->setSystemLanguages($values);
+            $object->systemLanguages = $values;
         }
         elseif (\array_key_exists('systemLanguages', $data) && $data['systemLanguages'] === null) {
-            $object->setSystemLanguages(null);
+            $object->systemLanguages = null;
         }
         if (\array_key_exists('metadataLanguages', $data) && $data['metadataLanguages'] !== null) {
             $values_1 = [];
             foreach ($data['metadataLanguages'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setMetadataLanguages($values_1);
+            $object->metadataLanguages = $values_1;
         }
         elseif (\array_key_exists('metadataLanguages', $data) && $data['metadataLanguages'] === null) {
-            $object->setMetadataLanguages(null);
+            $object->metadataLanguages = null;
         }
         if (\array_key_exists('defaultLanguage', $data) && $data['defaultLanguage'] !== null) {
-            $object->setDefaultLanguage($data['defaultLanguage']);
+            $object->defaultLanguage = $data['defaultLanguage'];
         }
         elseif (\array_key_exists('defaultLanguage', $data) && $data['defaultLanguage'] === null) {
-            $object->setDefaultLanguage(null);
+            $object->defaultLanguage = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('systemLanguages') && null !== $data->getSystemLanguages()) {
+        if (array_key_exists('systemLanguages', get_object_vars($data)) && null !== ($data->systemLanguages ?? null)) {
             $values = [];
-            foreach ($data->getSystemLanguages() as $value) {
+            foreach ($data->systemLanguages ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['systemLanguages'] = $values;
         }
-        if ($data->isInitialized('metadataLanguages') && null !== $data->getMetadataLanguages()) {
+        if (array_key_exists('metadataLanguages', get_object_vars($data)) && null !== ($data->metadataLanguages ?? null)) {
             $values_1 = [];
-            foreach ($data->getMetadataLanguages() as $value_1) {
+            foreach ($data->metadataLanguages ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['metadataLanguages'] = $values_1;
         }
-        if ($data->isInitialized('defaultLanguage') && null !== $data->getDefaultLanguage()) {
-            $dataArray['defaultLanguage'] = $data->getDefaultLanguage();
+        if (array_key_exists('defaultLanguage', get_object_vars($data)) && null !== ($data->defaultLanguage ?? null)) {
+            $dataArray['defaultLanguage'] = $data->defaultLanguage ?? null;
         }
         return $dataArray;
     }

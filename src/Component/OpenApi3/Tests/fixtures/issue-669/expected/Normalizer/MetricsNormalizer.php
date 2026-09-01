@@ -38,11 +38,11 @@ class MetricsNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('data', $data)) {
-            $object->setData($this->denormalizer->denormalize($data['data'], \Jane\Generated\DigitalOcean\Model\MetricsData::class, 'json', $context));
+            $object->data = $this->denormalizer->denormalize($data['data'], \Jane\Generated\DigitalOcean\Model\MetricsData::class, 'json', $context);
             unset($data['data']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class MetricsNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['data'] = $data->getData() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getData(), 'json', $context));
-        $dataArray['status'] = $data->getStatus();
+        $dataArray['data'] = ($data->data ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->data ?? null, 'json', $context));
+        $dataArray['status'] = $data->status ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

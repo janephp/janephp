@@ -41,7 +41,7 @@ class CreateFormThing extends \Jane\Component\OpenApi31\Tests\Client\Runtime\Cli
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Client\Model\Thing', 'json');
         }
     }

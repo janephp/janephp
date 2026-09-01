@@ -59,7 +59,7 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
         if (200 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\CompanyImageBadRequestException($response);
@@ -67,7 +67,7 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\CompanyImageForbiddenException($response);
@@ -75,7 +75,7 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\CompanyImageNotFoundException($response);

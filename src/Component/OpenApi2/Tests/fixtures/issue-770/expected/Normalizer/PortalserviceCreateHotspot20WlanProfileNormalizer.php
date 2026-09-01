@@ -44,69 +44,69 @@ class PortalserviceCreateHotspot20WlanProfileNormalizer implements DenormalizerI
             $data['singleSsidEnabled'] = (bool) $data['singleSsidEnabled'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('operator', $data)) {
-            $object->setOperator($this->denormalizer->denormalize($data['operator'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->operator = $this->denormalizer->denormalize($data['operator'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('identityProviders', $data)) {
             $values = [];
             foreach ($data['identityProviders'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
             }
-            $object->setIdentityProviders($values);
+            $object->identityProviders = $values;
         }
         if (\array_key_exists('defaultIdentityProvider', $data)) {
-            $object->setDefaultIdentityProvider($this->denormalizer->denormalize($data['defaultIdentityProvider'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->defaultIdentityProvider = $this->denormalizer->denormalize($data['defaultIdentityProvider'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('signupSsid', $data)) {
-            $object->setSignupSsid($this->denormalizer->denormalize($data['signupSsid'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context));
+            $object->signupSsid = $this->denormalizer->denormalize($data['signupSsid'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('internetOption', $data)) {
-            $object->setInternetOption($data['internetOption']);
+            $object->internetOption = $data['internetOption'];
         }
         if (\array_key_exists('accessNetworkType', $data)) {
-            $object->setAccessNetworkType($data['accessNetworkType']);
+            $object->accessNetworkType = $data['accessNetworkType'];
         }
         if (\array_key_exists('ipv4AddressType', $data)) {
-            $object->setIpv4AddressType($data['ipv4AddressType']);
+            $object->ipv4AddressType = $data['ipv4AddressType'];
         }
         if (\array_key_exists('ipv6AddressType', $data)) {
-            $object->setIpv6AddressType($data['ipv6AddressType']);
+            $object->ipv6AddressType = $data['ipv6AddressType'];
         }
         if (\array_key_exists('singleSsidEnabled', $data)) {
-            $object->setSingleSsidEnabled($data['singleSsidEnabled']);
+            $object->singleSsidEnabled = $data['singleSsidEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['operator'] = $data->getOperator() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOperator(), 'json', $context));
-        if ($data->isInitialized('identityProviders') && null !== $data->getIdentityProviders()) {
+        $dataArray['operator'] = ($data->operator ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->operator ?? null, 'json', $context));
+        if (array_key_exists('identityProviders', get_object_vars($data)) && null !== ($data->identityProviders ?? null)) {
             $values = [];
-            foreach ($data->getIdentityProviders() as $value) {
+            foreach ($data->identityProviders ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['identityProviders'] = $values;
         }
-        $dataArray['defaultIdentityProvider'] = $data->getDefaultIdentityProvider() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDefaultIdentityProvider(), 'json', $context));
-        if ($data->isInitialized('signupSsid') && null !== $data->getSignupSsid()) {
-            $dataArray['signupSsid'] = $data->getSignupSsid() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSignupSsid(), 'json', $context));
+        $dataArray['defaultIdentityProvider'] = ($data->defaultIdentityProvider ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->defaultIdentityProvider ?? null, 'json', $context));
+        if (array_key_exists('signupSsid', get_object_vars($data)) && null !== ($data->signupSsid ?? null)) {
+            $dataArray['signupSsid'] = ($data->signupSsid ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->signupSsid ?? null, 'json', $context));
         }
-        $dataArray['internetOption'] = $data->getInternetOption();
-        $dataArray['accessNetworkType'] = $data->getAccessNetworkType();
-        $dataArray['ipv4AddressType'] = $data->getIpv4AddressType();
-        $dataArray['ipv6AddressType'] = $data->getIpv6AddressType();
-        if ($data->isInitialized('singleSsidEnabled') && null !== $data->getSingleSsidEnabled()) {
-            $dataArray['singleSsidEnabled'] = $data->getSingleSsidEnabled();
+        $dataArray['internetOption'] = $data->internetOption ?? null;
+        $dataArray['accessNetworkType'] = $data->accessNetworkType ?? null;
+        $dataArray['ipv4AddressType'] = $data->ipv4AddressType ?? null;
+        $dataArray['ipv6AddressType'] = $data->ipv6AddressType ?? null;
+        if (array_key_exists('singleSsidEnabled', get_object_vars($data)) && null !== ($data->singleSsidEnabled ?? null)) {
+            $dataArray['singleSsidEnabled'] = $data->singleSsidEnabled ?? null;
         }
         return $dataArray;
     }

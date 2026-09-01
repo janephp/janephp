@@ -38,66 +38,66 @@ class ScguserScgUserGroupPermissionNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('resource', $data)) {
-            $object->setResource($data['resource']);
+            $object->resource = $data['resource'];
         }
         if (\array_key_exists('access', $data)) {
-            $object->setAccess($data['access']);
+            $object->access = $data['access'];
         }
         if (\array_key_exists('display', $data)) {
-            $object->setDisplay($data['display']);
+            $object->display = $data['display'];
         }
         if (\array_key_exists('items', $data)) {
             $values = [];
             foreach ($data['items'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupPermissionItemsItem::class, 'json', $context);
             }
-            $object->setItems($values);
+            $object->items = $values;
         }
         if (\array_key_exists('itemsDescription', $data)) {
             $values_1 = [];
             foreach ($data['itemsDescription'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setItemsDescription($values_1);
+            $object->itemsDescription = $values_1;
         }
         if (\array_key_exists('ids', $data)) {
             $values_2 = [];
             foreach ($data['ids'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setIds($values_2);
+            $object->ids = $values_2;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('resource') && null !== $data->getResource()) {
-            $dataArray['resource'] = $data->getResource();
+        if (array_key_exists('resource', get_object_vars($data)) && null !== ($data->resource ?? null)) {
+            $dataArray['resource'] = $data->resource ?? null;
         }
-        if ($data->isInitialized('access') && null !== $data->getAccess()) {
-            $dataArray['access'] = $data->getAccess();
+        if (array_key_exists('access', get_object_vars($data)) && null !== ($data->access ?? null)) {
+            $dataArray['access'] = $data->access ?? null;
         }
-        if ($data->isInitialized('display') && null !== $data->getDisplay()) {
-            $dataArray['display'] = $data->getDisplay();
+        if (array_key_exists('display', get_object_vars($data)) && null !== ($data->display ?? null)) {
+            $dataArray['display'] = $data->display ?? null;
         }
-        if ($data->isInitialized('items') && null !== $data->getItems()) {
+        if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
             $values = [];
-            foreach ($data->getItems() as $value) {
+            foreach ($data->items ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['items'] = $values;
         }
-        if ($data->isInitialized('itemsDescription') && null !== $data->getItemsDescription()) {
+        if (array_key_exists('itemsDescription', get_object_vars($data)) && null !== ($data->itemsDescription ?? null)) {
             $values_1 = [];
-            foreach ($data->getItemsDescription() as $value_1) {
+            foreach ($data->itemsDescription ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['itemsDescription'] = $values_1;
         }
-        if ($data->isInitialized('ids') && null !== $data->getIds()) {
+        if (array_key_exists('ids', get_object_vars($data)) && null !== ($data->ids ?? null)) {
             $values_2 = [];
-            foreach ($data->getIds() as $value_2) {
+            foreach ($data->ids ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['ids'] = $values_2;

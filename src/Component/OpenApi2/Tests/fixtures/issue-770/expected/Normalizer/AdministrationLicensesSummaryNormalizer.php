@@ -38,21 +38,21 @@ class AdministrationLicensesSummaryNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('licenseTypeDescription', $data)) {
-            $object->setLicenseTypeDescription($data['licenseTypeDescription']);
+            $object->licenseTypeDescription = $data['licenseTypeDescription'];
         }
         if (\array_key_exists('capacityControlLicenseCount', $data)) {
-            $object->setCapacityControlLicenseCount($this->denormalizer->denormalize($data['capacityControlLicenseCount'], \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationLicensesSummaryCapacityControlLicenseCount::class, 'json', $context));
+            $object->capacityControlLicenseCount = $this->denormalizer->denormalize($data['capacityControlLicenseCount'], \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationLicensesSummaryCapacityControlLicenseCount::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('licenseTypeDescription') && null !== $data->getLicenseTypeDescription()) {
-            $dataArray['licenseTypeDescription'] = $data->getLicenseTypeDescription();
+        if (array_key_exists('licenseTypeDescription', get_object_vars($data)) && null !== ($data->licenseTypeDescription ?? null)) {
+            $dataArray['licenseTypeDescription'] = $data->licenseTypeDescription ?? null;
         }
-        if ($data->isInitialized('capacityControlLicenseCount') && null !== $data->getCapacityControlLicenseCount()) {
-            $dataArray['capacityControlLicenseCount'] = $data->getCapacityControlLicenseCount() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCapacityControlLicenseCount(), 'json', $context));
+        if (array_key_exists('capacityControlLicenseCount', get_object_vars($data)) && null !== ($data->capacityControlLicenseCount ?? null)) {
+            $dataArray['capacityControlLicenseCount'] = ($data->capacityControlLicenseCount ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->capacityControlLicenseCount ?? null, 'json', $context));
         }
         return $dataArray;
     }

@@ -38,15 +38,15 @@ class ThingDetailsNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('createdAt', $data)) {
@@ -54,7 +54,7 @@ class ThingDetailsNormalizer implements DenormalizerInterface, NormalizerInterfa
             if (false === $date) {
                 throw new \Jane\Component\OpenApi31\Tests\Client\Runtime\Normalizer\InvalidDateException($data['createdAt'], 'Y-m-d');
             }
-            $object->setCreatedAt($date->setTime(0, 0, 0));
+            $object->createdAt = $date->setTime(0, 0, 0);
             unset($data['createdAt']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -62,11 +62,11 @@ class ThingDetailsNormalizer implements DenormalizerInterface, NormalizerInterfa
             foreach ($data['tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setTags($values);
+            $object->tags = $values;
             unset($data['tags']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         foreach ($data as $key => $value_1) {
@@ -79,16 +79,16 @@ class ThingDetailsNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['createdAt'] = $data->getCreatedAt()->format('Y-m-d');
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['createdAt'] = ($data->createdAt ?? null)->format('Y-m-d');
         $values = [];
-        foreach ($data->getTags() as $value) {
+        foreach ($data->tags ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['tags'] = $values;
-        $dataArray['description'] = $data->getDescription();
+        $dataArray['description'] = $data->description ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

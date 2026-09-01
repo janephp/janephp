@@ -41,21 +41,21 @@ class AddressNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $this->validate($data, new \Docker\Api\Validator\AddressConstraint());
         }
         if (\array_key_exists('Addr', $data)) {
-            $object->setAddr($data['Addr']);
+            $object->addr = $data['Addr'];
         }
         if (\array_key_exists('PrefixLen', $data)) {
-            $object->setPrefixLen($data['PrefixLen']);
+            $object->prefixLen = $data['PrefixLen'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('addr') && null !== $data->getAddr()) {
-            $dataArray['Addr'] = $data->getAddr();
+        if (array_key_exists('addr', get_object_vars($data)) && null !== ($data->addr ?? null)) {
+            $dataArray['Addr'] = $data->addr ?? null;
         }
-        if ($data->isInitialized('prefixLen') && null !== $data->getPrefixLen()) {
-            $dataArray['PrefixLen'] = $data->getPrefixLen();
+        if (array_key_exists('prefixLen', get_object_vars($data)) && null !== ($data->prefixLen ?? null)) {
+            $dataArray['PrefixLen'] = $data->prefixLen ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\AddressConstraint());

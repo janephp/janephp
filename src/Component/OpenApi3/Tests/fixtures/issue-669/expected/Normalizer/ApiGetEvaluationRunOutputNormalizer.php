@@ -38,7 +38,7 @@ class ApiGetEvaluationRunOutputNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('evaluation_run', $data)) {
-            $object->setEvaluationRun($this->denormalizer->denormalize($data['evaluation_run'], \Jane\Generated\DigitalOcean\Model\ApiEvaluationRun::class, 'json', $context));
+            $object->evaluationRun = $this->denormalizer->denormalize($data['evaluation_run'], \Jane\Generated\DigitalOcean\Model\ApiEvaluationRun::class, 'json', $context);
             unset($data['evaluation_run']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiGetEvaluationRunOutputNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('evaluationRun') && null !== $data->getEvaluationRun()) {
-            $dataArray['evaluation_run'] = $data->getEvaluationRun() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getEvaluationRun(), 'json', $context));
+        if (array_key_exists('evaluationRun', get_object_vars($data)) && null !== ($data->evaluationRun ?? null)) {
+            $dataArray['evaluation_run'] = ($data->evaluationRun ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->evaluationRun ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -42,23 +42,23 @@ class TransferEventNormalizer implements DenormalizerInterface, NormalizerInterf
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('transferId', $data) && $data['transferId'] !== null) {
-            $object->setTransferId($data['transferId']);
+            $object->transferId = $data['transferId'];
             unset($data['transferId']);
         }
         elseif (\array_key_exists('transferId', $data) && $data['transferId'] === null) {
-            $object->setTransferId(null);
+            $object->transferId = null;
             unset($data['transferId']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
             unset($data['state']);
         }
         foreach ($data as $key => $value) {
@@ -71,13 +71,13 @@ class TransferEventNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('transferId') && null !== $data->getTransferId()) {
-            $dataArray['transferId'] = $data->getTransferId();
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('transferId', get_object_vars($data)) && null !== ($data->transferId ?? null)) {
+            $dataArray['transferId'] = $data->transferId ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

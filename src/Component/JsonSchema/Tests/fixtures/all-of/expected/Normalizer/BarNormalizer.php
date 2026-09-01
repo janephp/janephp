@@ -32,21 +32,21 @@ class BarNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return $object;
         }
         if (\array_key_exists('foo', $data)) {
-            $object->setFoo($data['foo']);
+            $object->foo = $data['foo'];
         }
         if (\array_key_exists('bar', $data)) {
-            $object->setBar($data['bar']);
+            $object->bar = $data['bar'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo();
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $dataArray['foo'] = $data->foo ?? null;
         }
-        if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $dataArray['bar'] = $data->getBar();
+        if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
+            $dataArray['bar'] = $data->bar ?? null;
         }
         return $dataArray;
     }

@@ -38,11 +38,11 @@ class ApiGetAgentUsageOutputNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('log_insights_usage', $data)) {
-            $object->setLogInsightsUsage($this->denormalizer->denormalize($data['log_insights_usage'], \Jane\Generated\DigitalOcean\Model\ApiResourceUsage::class, 'json', $context));
+            $object->logInsightsUsage = $this->denormalizer->denormalize($data['log_insights_usage'], \Jane\Generated\DigitalOcean\Model\ApiResourceUsage::class, 'json', $context);
             unset($data['log_insights_usage']);
         }
         if (\array_key_exists('usage', $data)) {
-            $object->setUsage($this->denormalizer->denormalize($data['usage'], \Jane\Generated\DigitalOcean\Model\ApiResourceUsage::class, 'json', $context));
+            $object->usage = $this->denormalizer->denormalize($data['usage'], \Jane\Generated\DigitalOcean\Model\ApiResourceUsage::class, 'json', $context);
             unset($data['usage']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiGetAgentUsageOutputNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('logInsightsUsage') && null !== $data->getLogInsightsUsage()) {
-            $dataArray['log_insights_usage'] = $data->getLogInsightsUsage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLogInsightsUsage(), 'json', $context));
+        if (array_key_exists('logInsightsUsage', get_object_vars($data)) && null !== ($data->logInsightsUsage ?? null)) {
+            $dataArray['log_insights_usage'] = ($data->logInsightsUsage ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->logInsightsUsage ?? null, 'json', $context));
         }
-        if ($data->isInitialized('usage') && null !== $data->getUsage()) {
-            $dataArray['usage'] = $data->getUsage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getUsage(), 'json', $context));
+        if (array_key_exists('usage', get_object_vars($data)) && null !== ($data->usage ?? null)) {
+            $dataArray['usage'] = ($data->usage ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->usage ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

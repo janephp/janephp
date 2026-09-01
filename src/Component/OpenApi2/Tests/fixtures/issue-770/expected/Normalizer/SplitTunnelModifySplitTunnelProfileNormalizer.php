@@ -38,41 +38,41 @@ class SplitTunnelModifySplitTunnelProfileNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('rules', $data)) {
             $values = [];
             foreach ($data['rules'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelIpMaskRule::class, 'json', $context);
             }
-            $object->setRules($values);
+            $object->rules = $values;
         }
         if (\array_key_exists('defaultAction', $data)) {
-            $object->setDefaultAction($data['defaultAction']);
+            $object->defaultAction = $data['defaultAction'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('rules') && null !== $data->getRules()) {
+        if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values = [];
-            foreach ($data->getRules() as $value) {
+            foreach ($data->rules ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;
         }
-        if ($data->isInitialized('defaultAction') && null !== $data->getDefaultAction()) {
-            $dataArray['defaultAction'] = $data->getDefaultAction();
+        if (array_key_exists('defaultAction', get_object_vars($data)) && null !== ($data->defaultAction ?? null)) {
+            $dataArray['defaultAction'] = $data->defaultAction ?? null;
         }
         return $dataArray;
     }
