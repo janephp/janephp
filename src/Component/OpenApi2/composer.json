@@ -36,7 +36,6 @@
         "jane-php/json-schema": "^7.5",
         "jane-php/open-api-common": "^7.5",
         "nikic/php-parser": "^4.19 || ^5.1",
-        "nyholm/psr7": "^1.8",
         "symfony/serializer": "^5.4 || ^6.4 || ^7.0 || ^8.0",
         "symfony/yaml": "^5.4 || ^6.4 || ^7.0 || ^8.0"
     },
@@ -57,10 +56,7 @@
     },
     "config": {
         "process-timeout": 1800,
-        "sort-packages": true,
-        "allow-plugins": {
-            "php-http/discovery": true
-        }
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true
