@@ -94,11 +94,11 @@ class BodyParameterGenerator extends ParameterGenerator
 
         // Happens when reference resolve to a none object
         if (null === $class) {
-            if (null !== $resolvedSchema->getAllOf() && \count($resolvedSchema->getAllOf()) > 0) {
+            if ([] !== ($resolvedSchema->allOf ?? null ?? [])) {
                 return false;
             }
 
-            return [$this->convertParameterType($resolvedSchema->getType(), $resolvedSchema->getFormat()), false];
+            return [$this->convertParameterType($resolvedSchema->type, $resolvedSchema->format ?? null), false];
         }
 
         $class = '\\' . $this->getModelNamespace($context, $jsonReference, $class) . $class->getName();

@@ -1,0 +1,272 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class ServiceLDAPServiceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    {
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPService::class;
+    }
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    {
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPService::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPService();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        if (\array_key_exists('tlsEnabled', $data) && \is_int($data['tlsEnabled'])) {
+            $data['tlsEnabled'] = (bool) $data['tlsEnabled'];
+        }
+        if (\array_key_exists('standbyServerEnabled', $data) && \is_int($data['standbyServerEnabled'])) {
+            $data['standbyServerEnabled'] = (bool) $data['standbyServerEnabled'];
+        }
+        if (\array_key_exists('standbyTlsEnabled', $data) && \is_int($data['standbyTlsEnabled'])) {
+            $data['standbyTlsEnabled'] = (bool) $data['standbyTlsEnabled'];
+        }
+        if (\array_key_exists('id', $data)) {
+            $object->id = $data['id'];
+        }
+        if (\array_key_exists('mvnoId', $data)) {
+            $object->mvnoId = $data['mvnoId'];
+        }
+        if (\array_key_exists('domainId', $data)) {
+            $object->domainId = $data['domainId'];
+        }
+        if (\array_key_exists('name', $data)) {
+            $object->name = $data['name'];
+        }
+        if (\array_key_exists('friendlyName', $data)) {
+            $object->friendlyName = $data['friendlyName'];
+        }
+        if (\array_key_exists('protocol', $data)) {
+            $object->protocol = $data['protocol'];
+        }
+        if (\array_key_exists('type', $data)) {
+            $object->type = $data['type'];
+        }
+        if (\array_key_exists('description', $data)) {
+            $object->description = $data['description'];
+        }
+        if (\array_key_exists('tlsEnabled', $data)) {
+            $object->tlsEnabled = $data['tlsEnabled'];
+        }
+        if (\array_key_exists('cnIdentity', $data)) {
+            $object->cnIdentity = $data['cnIdentity'];
+        }
+        if (\array_key_exists('ip', $data)) {
+            $object->ip = $data['ip'];
+        }
+        if (\array_key_exists('port', $data)) {
+            $object->port = $data['port'];
+        }
+        if (\array_key_exists('baseDomainName', $data)) {
+            $object->baseDomainName = $data['baseDomainName'];
+        }
+        if (\array_key_exists('adminDomainName', $data)) {
+            $object->adminDomainName = $data['adminDomainName'];
+        }
+        if (\array_key_exists('password', $data)) {
+            $object->password = $data['password'];
+        }
+        if (\array_key_exists('keyAttribute', $data)) {
+            $object->keyAttribute = $data['keyAttribute'];
+        }
+        if (\array_key_exists('searchFilter', $data)) {
+            $object->searchFilter = $data['searchFilter'];
+        }
+        if (\array_key_exists('mappings', $data)) {
+            $values = [];
+            foreach ($data['mappings'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceGroupAttrIdentityUserRoleMapping::class, 'json', $context);
+            }
+            $object->mappings = $values;
+        }
+        if (\array_key_exists('createDateTime', $data)) {
+            $object->createDateTime = $data['createDateTime'];
+        }
+        if (\array_key_exists('modifiedDateTime', $data)) {
+            $object->modifiedDateTime = $data['modifiedDateTime'];
+        }
+        if (\array_key_exists('creatorId', $data)) {
+            $object->creatorId = $data['creatorId'];
+        }
+        if (\array_key_exists('modifierId', $data)) {
+            $object->modifierId = $data['modifierId'];
+        }
+        if (\array_key_exists('creatorUsername', $data)) {
+            $object->creatorUsername = $data['creatorUsername'];
+        }
+        if (\array_key_exists('modifierUsername', $data)) {
+            $object->modifierUsername = $data['modifierUsername'];
+        }
+        if (\array_key_exists('standbyServerEnabled', $data)) {
+            $object->standbyServerEnabled = $data['standbyServerEnabled'];
+        }
+        if (\array_key_exists('standbyTlsEnabled', $data)) {
+            $object->standbyTlsEnabled = $data['standbyTlsEnabled'];
+        }
+        if (\array_key_exists('standbyCnIdentity', $data)) {
+            $object->standbyCnIdentity = $data['standbyCnIdentity'];
+        }
+        if (\array_key_exists('standbyIp', $data)) {
+            $object->standbyIp = $data['standbyIp'];
+        }
+        if (\array_key_exists('standbyPort', $data)) {
+            $object->standbyPort = $data['standbyPort'];
+        }
+        if (\array_key_exists('standbyBaseDomainName', $data)) {
+            $object->standbyBaseDomainName = $data['standbyBaseDomainName'];
+        }
+        if (\array_key_exists('standbyAdminDomainName', $data)) {
+            $object->standbyAdminDomainName = $data['standbyAdminDomainName'];
+        }
+        if (\array_key_exists('standbyPassword', $data)) {
+            $object->standbyPassword = $data['standbyPassword'];
+        }
+        if (\array_key_exists('standbyKeyAttribute', $data)) {
+            $object->standbyKeyAttribute = $data['standbyKeyAttribute'];
+        }
+        if (\array_key_exists('standbySearchFilter', $data)) {
+            $object->standbySearchFilter = $data['standbySearchFilter'];
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
+        }
+        if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
+            $dataArray['mvnoId'] = $data->mvnoId ?? null;
+        }
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
+        }
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
+        }
+        if (array_key_exists('friendlyName', get_object_vars($data)) && null !== ($data->friendlyName ?? null)) {
+            $dataArray['friendlyName'] = $data->friendlyName ?? null;
+        }
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
+        }
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
+        }
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
+        }
+        if (array_key_exists('tlsEnabled', get_object_vars($data)) && null !== ($data->tlsEnabled ?? null)) {
+            $dataArray['tlsEnabled'] = $data->tlsEnabled ?? null;
+        }
+        if (array_key_exists('cnIdentity', get_object_vars($data)) && null !== ($data->cnIdentity ?? null)) {
+            $dataArray['cnIdentity'] = $data->cnIdentity ?? null;
+        }
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
+        }
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
+        }
+        if (array_key_exists('baseDomainName', get_object_vars($data)) && null !== ($data->baseDomainName ?? null)) {
+            $dataArray['baseDomainName'] = $data->baseDomainName ?? null;
+        }
+        if (array_key_exists('adminDomainName', get_object_vars($data)) && null !== ($data->adminDomainName ?? null)) {
+            $dataArray['adminDomainName'] = $data->adminDomainName ?? null;
+        }
+        if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
+            $dataArray['password'] = $data->password ?? null;
+        }
+        if (array_key_exists('keyAttribute', get_object_vars($data)) && null !== ($data->keyAttribute ?? null)) {
+            $dataArray['keyAttribute'] = $data->keyAttribute ?? null;
+        }
+        if (array_key_exists('searchFilter', get_object_vars($data)) && null !== ($data->searchFilter ?? null)) {
+            $dataArray['searchFilter'] = $data->searchFilter ?? null;
+        }
+        if (array_key_exists('mappings', get_object_vars($data)) && null !== ($data->mappings ?? null)) {
+            $values = [];
+            foreach ($data->mappings ?? null as $value) {
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            }
+            $dataArray['mappings'] = $values;
+        }
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
+        }
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
+        }
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
+        }
+        if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
+            $dataArray['modifierId'] = $data->modifierId ?? null;
+        }
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
+        }
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
+        }
+        if (array_key_exists('standbyServerEnabled', get_object_vars($data)) && null !== ($data->standbyServerEnabled ?? null)) {
+            $dataArray['standbyServerEnabled'] = $data->standbyServerEnabled ?? null;
+        }
+        if (array_key_exists('standbyTlsEnabled', get_object_vars($data)) && null !== ($data->standbyTlsEnabled ?? null)) {
+            $dataArray['standbyTlsEnabled'] = $data->standbyTlsEnabled ?? null;
+        }
+        if (array_key_exists('standbyCnIdentity', get_object_vars($data)) && null !== ($data->standbyCnIdentity ?? null)) {
+            $dataArray['standbyCnIdentity'] = $data->standbyCnIdentity ?? null;
+        }
+        if (array_key_exists('standbyIp', get_object_vars($data)) && null !== ($data->standbyIp ?? null)) {
+            $dataArray['standbyIp'] = $data->standbyIp ?? null;
+        }
+        if (array_key_exists('standbyPort', get_object_vars($data)) && null !== ($data->standbyPort ?? null)) {
+            $dataArray['standbyPort'] = $data->standbyPort ?? null;
+        }
+        if (array_key_exists('standbyBaseDomainName', get_object_vars($data)) && null !== ($data->standbyBaseDomainName ?? null)) {
+            $dataArray['standbyBaseDomainName'] = $data->standbyBaseDomainName ?? null;
+        }
+        if (array_key_exists('standbyAdminDomainName', get_object_vars($data)) && null !== ($data->standbyAdminDomainName ?? null)) {
+            $dataArray['standbyAdminDomainName'] = $data->standbyAdminDomainName ?? null;
+        }
+        if (array_key_exists('standbyPassword', get_object_vars($data)) && null !== ($data->standbyPassword ?? null)) {
+            $dataArray['standbyPassword'] = $data->standbyPassword ?? null;
+        }
+        if (array_key_exists('standbyKeyAttribute', get_object_vars($data)) && null !== ($data->standbyKeyAttribute ?? null)) {
+            $dataArray['standbyKeyAttribute'] = $data->standbyKeyAttribute ?? null;
+        }
+        if (array_key_exists('standbySearchFilter', get_object_vars($data)) && null !== ($data->standbySearchFilter ?? null)) {
+            $dataArray['standbySearchFilter'] = $data->standbySearchFilter ?? null;
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPService::class => false];
+    }
+}

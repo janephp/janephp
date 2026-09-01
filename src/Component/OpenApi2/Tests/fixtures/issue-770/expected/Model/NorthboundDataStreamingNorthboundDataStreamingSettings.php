@@ -1,0 +1,31 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+
+class NorthboundDataStreamingNorthboundDataStreamingSettings
+{
+    /**
+     * Is Northbound Data Streaming enabled or disabled
+     *
+     * @var bool
+     */
+    public bool $northboundDataStreamingEnabled;
+    /**
+     * Is Northbound Data Streaming enabled by domain/zone settings
+     *
+     * @var bool
+     */
+    public bool $streamingByDomainZoneEnabled;
+    /**
+     * Domain Ids for 'streamingByDomainZoneEnabled' settings
+     *
+     * @var list<string>
+     */
+    public array $streamingDomainIds;
+    /**
+     * Zone Ids for 'streamingByDomainZoneEnabled' settings
+     *
+     * @var list<string>
+     */
+    public array $streamingZoneIds;
+}

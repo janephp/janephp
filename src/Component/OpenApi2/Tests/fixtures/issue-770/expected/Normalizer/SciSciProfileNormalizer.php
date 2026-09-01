@@ -1,0 +1,99 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class SciSciProfileNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    {
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\SciSciProfile::class;
+    }
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    {
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\SciSciProfile::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SciSciProfile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        if (\array_key_exists('id', $data)) {
+            $object->id = $data['id'];
+        }
+        if (\array_key_exists('sciPriority', $data)) {
+            $object->sciPriority = $data['sciPriority'];
+        }
+        if (\array_key_exists('sciProfile', $data)) {
+            $object->sciProfile = $data['sciProfile'];
+        }
+        if (\array_key_exists('sciSystemId', $data)) {
+            $object->sciSystemId = $data['sciSystemId'];
+        }
+        if (\array_key_exists('sciServerHost', $data)) {
+            $object->sciServerHost = $data['sciServerHost'];
+        }
+        if (\array_key_exists('sciServerPort', $data)) {
+            $object->sciServerPort = $data['sciServerPort'];
+        }
+        if (\array_key_exists('sciUser', $data)) {
+            $object->sciUser = $data['sciUser'];
+        }
+        if (\array_key_exists('sciPassword', $data)) {
+            $object->sciPassword = $data['sciPassword'];
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
+        }
+        if (array_key_exists('sciPriority', get_object_vars($data)) && null !== ($data->sciPriority ?? null)) {
+            $dataArray['sciPriority'] = $data->sciPriority ?? null;
+        }
+        if (array_key_exists('sciProfile', get_object_vars($data)) && null !== ($data->sciProfile ?? null)) {
+            $dataArray['sciProfile'] = $data->sciProfile ?? null;
+        }
+        if (array_key_exists('sciSystemId', get_object_vars($data)) && null !== ($data->sciSystemId ?? null)) {
+            $dataArray['sciSystemId'] = $data->sciSystemId ?? null;
+        }
+        if (array_key_exists('sciServerHost', get_object_vars($data)) && null !== ($data->sciServerHost ?? null)) {
+            $dataArray['sciServerHost'] = $data->sciServerHost ?? null;
+        }
+        if (array_key_exists('sciServerPort', get_object_vars($data)) && null !== ($data->sciServerPort ?? null)) {
+            $dataArray['sciServerPort'] = $data->sciServerPort ?? null;
+        }
+        if (array_key_exists('sciUser', get_object_vars($data)) && null !== ($data->sciUser ?? null)) {
+            $dataArray['sciUser'] = $data->sciUser ?? null;
+        }
+        if (array_key_exists('sciPassword', get_object_vars($data)) && null !== ($data->sciPassword ?? null)) {
+            $dataArray['sciPassword'] = $data->sciPassword ?? null;
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Jane\Component\OpenApi3\Tests\Expected\Model\SciSciProfile::class => false];
+    }
+}

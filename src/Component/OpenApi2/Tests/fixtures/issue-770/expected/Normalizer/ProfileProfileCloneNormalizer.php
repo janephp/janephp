@@ -1,0 +1,75 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class ProfileProfileCloneNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    {
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone::class;
+    }
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    {
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        if (\array_key_exists('oldName', $data)) {
+            $object->oldName = $data['oldName'];
+        }
+        if (\array_key_exists('oldId', $data)) {
+            $object->oldId = $data['oldId'];
+        }
+        if (\array_key_exists('newName', $data)) {
+            $object->newName = $data['newName'];
+        }
+        if (\array_key_exists('newId', $data)) {
+            $object->newId = $data['newId'];
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if (array_key_exists('oldName', get_object_vars($data)) && null !== ($data->oldName ?? null)) {
+            $dataArray['oldName'] = $data->oldName ?? null;
+        }
+        if (array_key_exists('oldId', get_object_vars($data)) && null !== ($data->oldId ?? null)) {
+            $dataArray['oldId'] = $data->oldId ?? null;
+        }
+        if (array_key_exists('newName', get_object_vars($data)) && null !== ($data->newName ?? null)) {
+            $dataArray['newName'] = $data->newName ?? null;
+        }
+        if (array_key_exists('newId', get_object_vars($data)) && null !== ($data->newId ?? null)) {
+            $dataArray['newId'] = $data->newId ?? null;
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone::class => false];
+    }
+}

@@ -1,0 +1,19 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+
+class ServiceGroupAttrIdentityUserRoleMappingUserRoleUserTrafficProfile
+{
+    /**
+     * User traffic profile UUID
+     *
+     * @var string
+     */
+    public string $id;
+    /**
+     * User traffic profile name
+     *
+     * @var string
+     */
+    public string $name;
+}

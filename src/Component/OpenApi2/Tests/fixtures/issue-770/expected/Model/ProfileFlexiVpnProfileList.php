@@ -1,0 +1,59 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+
+class ProfileFlexiVpnProfileList
+{
+    /**
+     * @var int
+     */
+    public int $totalCount;
+    /**
+     * @var bool
+     */
+    public bool $hasMore;
+    /**
+     * @var int
+     */
+    public int $firstIndex;
+    /**
+     * @var list<ProfileFlexiVpnProfile>
+     */
+    public array $list;
+    /**
+     * Timestamp of being created
+     *
+     * @var int
+     */
+    public int $createDateTime;
+    /**
+     * Timestamp of being modified
+     *
+     * @var int
+     */
+    public int $modifiedDateTime;
+    /**
+     * Creator ID
+     *
+     * @var string
+     */
+    public string $creatorId;
+    /**
+     * Modifier ID
+     *
+     * @var string
+     */
+    public string $modifierId;
+    /**
+     * Creator Name
+     *
+     * @var string
+     */
+    public string $creatorUsername;
+    /**
+     * Modifier Name
+     *
+     * @var string
+     */
+    public string $modifierUsername;
+}

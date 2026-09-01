@@ -1,0 +1,31 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+
+class SystemIpv4ManagementInterface
+{
+    /**
+     * IP mode
+     *
+     * @var string
+     */
+    public string $ipMode;
+    /**
+     * IP address
+     *
+     * @var string
+     */
+    public string $ipAddress;
+    /**
+     * Subnet mask
+     *
+     * @var string
+     */
+    public string $subnetMask;
+    /**
+     * Gateway
+     *
+     * @var string
+     */
+    public string $gateway;
+}

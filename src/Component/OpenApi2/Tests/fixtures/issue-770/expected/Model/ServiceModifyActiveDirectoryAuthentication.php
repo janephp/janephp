@@ -1,0 +1,131 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+
+class ServiceModifyActiveDirectoryAuthentication
+{
+    /**
+     * Identifier of the authentication service
+     *
+     * @var string
+     */
+    public string $id;
+    /**
+     * Domain Id
+     *
+     * @var string
+     */
+    public string $domainId;
+    /**
+     * @var string
+     */
+    public string $name;
+    /**
+     * @var string
+     */
+    public string $friendlyName;
+    /**
+     * @var string
+     */
+    public string $description;
+    /**
+     * Authentication protocol.
+     *
+     * @var string
+     */
+    public string $type;
+    /**
+     * @var string
+     */
+    public string $ip;
+    /**
+     * Port
+     *
+     * @var int
+     */
+    public int $port = 389;
+    /**
+     * @var string
+     */
+    public string $windowsDomainName;
+    /**
+     * @var string
+     */
+    public string $adminDomainName;
+    /**
+     * Admin password
+     *
+     * @var string
+     */
+    public string $password;
+    /**
+     * AD over TLS Enabled
+     *
+     * @var bool
+     */
+    public bool $tlsEnabled;
+    /**
+     * @var string
+     */
+    public string $cnIdentity;
+    /**
+     * Global catalog support enabled or disabled
+     *
+     * @var bool
+     */
+    public bool $globalCatalogEnabled;
+    /**
+     * Group attribute and user traffic profile mapping
+     *
+     * @var list<ServiceModifyGroupAttrIdentityUserRoleMapping>
+     */
+    public array $mappings;
+    /**
+     * StandbyCluster different AAA Settings Enabled
+     *
+     * @var bool
+     */
+    public bool $standbyServerEnabled;
+    /**
+     * @var string
+     */
+    public string $standbyIp;
+    /**
+     * Port standby cluster
+     *
+     * @var int
+     */
+    public int $standbyPort = 389;
+    /**
+     * @var string
+     */
+    public string $standbyWindowsDomainName;
+    /**
+     * @var string
+     */
+    public string $standbyAdminDomainName;
+    /**
+     * Admin password standby cluster
+     *
+     * @var string
+     */
+    public string $standbyPassword;
+    /**
+     * AD over TLS Enabled standby cluster
+     *
+     * @var bool
+     */
+    public bool $standbyTlsEnabled;
+    /**
+     * CN Identify for standby cluster
+     *
+     * @var string
+     */
+    public string $standbyCnIdentity;
+    /**
+     * Global catalog support enabled or disabled standby cluster
+     *
+     * @var bool
+     */
+    public bool $standbyGlobalCatalogEnabled;
+}

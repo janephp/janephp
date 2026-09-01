@@ -1,0 +1,65 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+
+class CommonDhcpSiteConfigListRef
+{
+    /**
+     * DHCP Service Zone Name
+     *
+     * @var string
+     */
+    public string $zoneName;
+    /**
+     * Zone UUID
+     *
+     * @var string
+     */
+    public string $zoneId;
+    /**
+     * DHCP Service Enabling Status
+     *
+     * @var bool
+     */
+    public bool $siteEnabled;
+    /**
+     * DHCP Port Selection Enabled
+     *
+     * @var bool
+     */
+    public bool $portSelectionEnabled;
+    /**
+     * DHCP Service Dynamic WAN Port Detection
+     *
+     * @var bool
+     */
+    public bool $dwpdEnabled;
+    /**
+     * DHCP Service AP Selection Mode
+     *
+     * @var bool
+     */
+    public bool $manualSelect;
+    /**
+     * DHCP Service mode
+     *
+     * @var string
+     */
+    public string $siteMode;
+    /**
+     * @var int
+     */
+    public int $eth0ProfileId;
+    /**
+     * @var int
+     */
+    public int $eth1ProfileId;
+    /**
+     * @var list<CommonDhcpSiteConfigListRefSiteApsItem>
+     */
+    public array $siteAps;
+    /**
+     * @var list<CommonDhcpProfileRef>
+     */
+    public array $siteProfiles;
+}
