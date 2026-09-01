@@ -57,13 +57,13 @@ class ListPortfolioEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\API\Model\EventRulesResponse', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ListPortfolioEventRulesBadRequestException($serializer->deserialize($body, 'CreditSafe\API\Model\BadRequestError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\ListPortfolioEventRulesUnauthorizedException($response);
@@ -71,7 +71,7 @@ class ListPortfolioEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoin
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\ListPortfolioEventRulesForbiddenException($response);
@@ -79,7 +79,7 @@ class ListPortfolioEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoin
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\ListPortfolioEventRulesNotFoundException($response);

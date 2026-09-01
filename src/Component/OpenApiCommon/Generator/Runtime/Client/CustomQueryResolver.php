@@ -4,5 +4,5 @@ use Symfony\Component\OptionsResolver\Options;
 
 interface CustomQueryResolver
 {
-    public function __invoke(Options $options, $value);
+    public function __invoke(Options $options, mixed $value);
 }

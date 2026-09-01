@@ -301,11 +301,9 @@ EOD
         if (\count($statements) === 1 && $statements[0] instanceof Stmt\If_) {
             return [$returnTypes, $throwTypes, [new Stmt\If_(
                 new Expr\BinaryOp\BooleanAnd(
-                    new Expr\BinaryOp\Identical(
-                        new Expr\FuncCall(new Name('is_null'), [
-                            new Node\Arg(new Expr\Variable('contentType')),
-                        ]),
-                        new Expr\ConstFetch(new Name('false'))
+                    new Expr\BinaryOp\NotIdentical(
+                        new Expr\Variable('contentType'),
+                        new Expr\ConstFetch(new Name('null'))
                     ),
                     new Expr\BinaryOp\BooleanAnd(
                         $this->createStatusCondition($status),

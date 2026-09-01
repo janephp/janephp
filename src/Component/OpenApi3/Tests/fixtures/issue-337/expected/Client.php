@@ -1195,7 +1195,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CustomReportParameters($country, $queryParameters, $headerParameters), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];
         if (null === $httpClient) {

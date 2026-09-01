@@ -22,9 +22,9 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
-    use PathParameterNameTrait;
     use OpenApiNumberTypeResolverTrait;
     use OptionResolverNormalizationTrait;
+    use PathParameterNameTrait;
 
     private GuessClass $guessClass;
 

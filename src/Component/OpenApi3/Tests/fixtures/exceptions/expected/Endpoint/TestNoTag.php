@@ -34,7 +34,7 @@ class TestNoTag extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\B
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Message', 'json'), $response);
         }
         if (404 === $status) {

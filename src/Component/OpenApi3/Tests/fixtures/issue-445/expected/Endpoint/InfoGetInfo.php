@@ -31,7 +31,7 @@ class InfoGetInfo extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\CustomerInfo', 'json');
         }
     }

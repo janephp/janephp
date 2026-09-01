@@ -61,7 +61,7 @@ class ListSponsoredProductsCampaigns extends \Jane\Component\OpenApi3\Tests\Expe
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/vnd.spcampaign.v3+json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/vnd.spcampaign.v3+json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent', 'json');
         }
     }
