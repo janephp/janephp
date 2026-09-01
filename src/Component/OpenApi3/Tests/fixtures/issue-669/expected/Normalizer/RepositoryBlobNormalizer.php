@@ -38,11 +38,11 @@ class RepositoryBlobNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('digest', $data)) {
-            $object->setDigest($data['digest']);
+            $object->digest = $data['digest'];
             unset($data['digest']);
         }
         if (\array_key_exists('compressed_size_bytes', $data)) {
-            $object->setCompressedSizeBytes($data['compressed_size_bytes']);
+            $object->compressedSizeBytes = $data['compressed_size_bytes'];
             unset($data['compressed_size_bytes']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class RepositoryBlobNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('digest') && null !== $data->getDigest()) {
-            $dataArray['digest'] = $data->getDigest();
+        if (array_key_exists('digest', get_object_vars($data)) && null !== ($data->digest ?? null)) {
+            $dataArray['digest'] = $data->digest ?? null;
         }
-        if ($data->isInitialized('compressedSizeBytes') && null !== $data->getCompressedSizeBytes()) {
-            $dataArray['compressed_size_bytes'] = $data->getCompressedSizeBytes();
+        if (array_key_exists('compressedSizeBytes', get_object_vars($data)) && null !== ($data->compressedSizeBytes ?? null)) {
+            $dataArray['compressed_size_bytes'] = $data->compressedSizeBytes ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

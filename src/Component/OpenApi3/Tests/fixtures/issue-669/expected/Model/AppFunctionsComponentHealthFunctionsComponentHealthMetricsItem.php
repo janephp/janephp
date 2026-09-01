@@ -8,81 +8,19 @@ class AppFunctionsComponentHealthFunctionsComponentHealthMetricsItem implements 
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string
      */
-    protected $metricLabel;
+    public string $metricLabel;
     /**
      * @var float
      */
-    protected $metricValue;
+    public float $metricValue;
     /**
      * @var string
      */
-    protected $timeWindow;
-    /**
-     * @return string
-     */
-    public function getMetricLabel(): string
-    {
-        return $this->metricLabel;
-    }
-    /**
-     * @param string $metricLabel
-     *
-     * @return self
-     */
-    public function setMetricLabel(string $metricLabel): self
-    {
-        $this->initialized['metricLabel'] = true;
-        $this->metricLabel = $metricLabel;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getMetricValue(): float
-    {
-        return $this->metricValue;
-    }
-    /**
-     * @param float $metricValue
-     *
-     * @return self
-     */
-    public function setMetricValue(float $metricValue): self
-    {
-        $this->initialized['metricValue'] = true;
-        $this->metricValue = $metricValue;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getTimeWindow(): string
-    {
-        return $this->timeWindow;
-    }
-    /**
-     * @param string $timeWindow
-     *
-     * @return self
-     */
-    public function setTimeWindow(string $timeWindow): self
-    {
-        $this->initialized['timeWindow'] = true;
-        $this->timeWindow = $timeWindow;
-        return $this;
-    }
+    public string $timeWindow;
     public function definedProperties(): array
     {
-        return ['metricLabel' => ['metric_label', 'getMetricLabel', 'setMetricLabel'], 'metricValue' => ['metric_value', 'getMetricValue', 'setMetricValue'], 'timeWindow' => ['time_window', 'getTimeWindow', 'setTimeWindow']];
+        return ['metricLabel' => 'metric_label', 'metricValue' => 'metric_value', 'timeWindow' => 'time_window'];
     }
 }

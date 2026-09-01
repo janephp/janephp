@@ -38,23 +38,23 @@ class RepositoryManifestNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('registry_name', $data)) {
-            $object->setRegistryName($data['registry_name']);
+            $object->registryName = $data['registry_name'];
             unset($data['registry_name']);
         }
         if (\array_key_exists('repository', $data)) {
-            $object->setRepository($data['repository']);
+            $object->repository = $data['repository'];
             unset($data['repository']);
         }
         if (\array_key_exists('digest', $data)) {
-            $object->setDigest($data['digest']);
+            $object->digest = $data['digest'];
             unset($data['digest']);
         }
         if (\array_key_exists('compressed_size_bytes', $data)) {
-            $object->setCompressedSizeBytes($data['compressed_size_bytes']);
+            $object->compressedSizeBytes = $data['compressed_size_bytes'];
             unset($data['compressed_size_bytes']);
         }
         if (\array_key_exists('size_bytes', $data)) {
-            $object->setSizeBytes($data['size_bytes']);
+            $object->sizeBytes = $data['size_bytes'];
             unset($data['size_bytes']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -62,7 +62,7 @@ class RepositoryManifestNormalizer implements DenormalizerInterface, NormalizerI
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date);
+            $object->updatedAt = $date;
             unset($data['updated_at']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -70,7 +70,7 @@ class RepositoryManifestNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setTags($values);
+            $object->tags = $values;
             unset($data['tags']);
         }
         if (\array_key_exists('blobs', $data)) {
@@ -78,7 +78,7 @@ class RepositoryManifestNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['blobs'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\RepositoryBlob::class, 'json', $context);
             }
-            $object->setBlobs($values_1);
+            $object->blobs = $values_1;
             unset($data['blobs']);
         }
         foreach ($data as $key => $value_2) {
@@ -91,34 +91,34 @@ class RepositoryManifestNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('registryName') && null !== $data->getRegistryName()) {
-            $dataArray['registry_name'] = $data->getRegistryName();
+        if (array_key_exists('registryName', get_object_vars($data)) && null !== ($data->registryName ?? null)) {
+            $dataArray['registry_name'] = $data->registryName ?? null;
         }
-        if ($data->isInitialized('repository') && null !== $data->getRepository()) {
-            $dataArray['repository'] = $data->getRepository();
+        if (array_key_exists('repository', get_object_vars($data)) && null !== ($data->repository ?? null)) {
+            $dataArray['repository'] = $data->repository ?? null;
         }
-        if ($data->isInitialized('digest') && null !== $data->getDigest()) {
-            $dataArray['digest'] = $data->getDigest();
+        if (array_key_exists('digest', get_object_vars($data)) && null !== ($data->digest ?? null)) {
+            $dataArray['digest'] = $data->digest ?? null;
         }
-        if ($data->isInitialized('compressedSizeBytes') && null !== $data->getCompressedSizeBytes()) {
-            $dataArray['compressed_size_bytes'] = $data->getCompressedSizeBytes();
+        if (array_key_exists('compressedSizeBytes', get_object_vars($data)) && null !== ($data->compressedSizeBytes ?? null)) {
+            $dataArray['compressed_size_bytes'] = $data->compressedSizeBytes ?? null;
         }
-        if ($data->isInitialized('sizeBytes') && null !== $data->getSizeBytes()) {
-            $dataArray['size_bytes'] = $data->getSizeBytes();
+        if (array_key_exists('sizeBytes', get_object_vars($data)) && null !== ($data->sizeBytes ?? null)) {
+            $dataArray['size_bytes'] = $data->sizeBytes ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->getTags() as $value) {
+            foreach ($data->tags ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;
         }
-        if ($data->isInitialized('blobs') && null !== $data->getBlobs()) {
+        if (array_key_exists('blobs', get_object_vars($data)) && null !== ($data->blobs ?? null)) {
             $values_1 = [];
-            foreach ($data->getBlobs() as $value_1) {
+            foreach ($data->blobs ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['blobs'] = $values_1;

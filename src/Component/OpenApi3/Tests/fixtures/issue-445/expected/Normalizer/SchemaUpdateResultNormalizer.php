@@ -42,20 +42,20 @@ class SchemaUpdateResultNormalizer implements DenormalizerInterface, NormalizerI
             if (is_array($data['schema']) and \array_key_exists('id', $data['schema']) and \array_key_exists('schemaNamespace', $data['schema']) and \array_key_exists('types', $data['schema']) and \array_key_exists('displayPatterns', $data['schema']) and \array_key_exists('system', $data['schema']) and \array_key_exists('ownerTokenId', $data['schema']) and \array_key_exists('viewForAll', $data['schema'])) {
                 $value = $this->denormalizer->denormalize($data['schema'], \PicturePark\API\Model\SchemaDetail::class, 'json', $context);
             }
-            $object->setSchema($value);
+            $object->schema = $value;
         }
         elseif (\array_key_exists('schema', $data) && $data['schema'] === null) {
-            $object->setSchema(null);
+            $object->schema = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('schema') && null !== $data->getSchema()) {
-            $value = $data->getSchema();
-            if (is_object($data->getSchema())) {
-                $value = $data->getSchema() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getSchema(), 'json', $context));
+        if (array_key_exists('schema', get_object_vars($data)) && null !== ($data->schema ?? null)) {
+            $value = $data->schema ?? null;
+            if (is_object($data->schema ?? null)) {
+                $value = ($data->schema ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schema ?? null, 'json', $context));
             }
             $dataArray['schema'] = $value;
         }

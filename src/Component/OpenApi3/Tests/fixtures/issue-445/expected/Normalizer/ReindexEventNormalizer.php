@@ -42,23 +42,23 @@ class ReindexEventNormalizer implements DenormalizerInterface, NormalizerInterfa
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('indexId', $data) && $data['indexId'] !== null) {
-            $object->setIndexId($data['indexId']);
+            $object->indexId = $data['indexId'];
             unset($data['indexId']);
         }
         elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
-            $object->setIndexId(null);
+            $object->indexId = null;
             unset($data['indexId']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
             unset($data['state']);
         }
         foreach ($data as $key => $value) {
@@ -71,13 +71,13 @@ class ReindexEventNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
-            $dataArray['indexId'] = $data->getIndexId();
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('indexId', get_object_vars($data)) && null !== ($data->indexId ?? null)) {
+            $dataArray['indexId'] = $data->indexId ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

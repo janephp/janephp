@@ -38,19 +38,19 @@ class PartnerAttachmentUpdatableAnyOfBgpNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('local_router_ip', $data)) {
-            $object->setLocalRouterIp($data['local_router_ip']);
+            $object->localRouterIp = $data['local_router_ip'];
             unset($data['local_router_ip']);
         }
         if (\array_key_exists('peer_router_ip', $data)) {
-            $object->setPeerRouterIp($data['peer_router_ip']);
+            $object->peerRouterIp = $data['peer_router_ip'];
             unset($data['peer_router_ip']);
         }
         if (\array_key_exists('peer_router_asn', $data)) {
-            $object->setPeerRouterAsn($data['peer_router_asn']);
+            $object->peerRouterAsn = $data['peer_router_asn'];
             unset($data['peer_router_asn']);
         }
         if (\array_key_exists('auth_key', $data)) {
-            $object->setAuthKey($data['auth_key']);
+            $object->authKey = $data['auth_key'];
             unset($data['auth_key']);
         }
         foreach ($data as $key => $value) {
@@ -63,10 +63,10 @@ class PartnerAttachmentUpdatableAnyOfBgpNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['local_router_ip'] = $data->getLocalRouterIp();
-        $dataArray['peer_router_ip'] = $data->getPeerRouterIp();
-        $dataArray['peer_router_asn'] = $data->getPeerRouterAsn();
-        $dataArray['auth_key'] = $data->getAuthKey();
+        $dataArray['local_router_ip'] = $data->localRouterIp ?? null;
+        $dataArray['peer_router_ip'] = $data->peerRouterIp ?? null;
+        $dataArray['peer_router_asn'] = $data->peerRouterAsn ?? null;
+        $dataArray['auth_key'] = $data->authKey ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

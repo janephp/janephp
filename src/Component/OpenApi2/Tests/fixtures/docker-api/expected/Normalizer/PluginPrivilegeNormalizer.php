@@ -41,32 +41,32 @@ class PluginPrivilegeNormalizer implements DenormalizerInterface, NormalizerInte
             $this->validate($data, new \Docker\Api\Validator\PluginPrivilegeConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Description', $data)) {
-            $object->setDescription($data['Description']);
+            $object->description = $data['Description'];
         }
         if (\array_key_exists('Value', $data)) {
             $values = [];
             foreach ($data['Value'] as $value) {
                 $values[] = $value;
             }
-            $object->setValue($values);
+            $object->value = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['Description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['Description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
+        if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
             $values = [];
-            foreach ($data->getValue() as $value) {
+            foreach ($data->value ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['Value'] = $values;

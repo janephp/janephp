@@ -7,6 +7,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
+use PhpParser\Node;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
 
@@ -35,11 +36,22 @@ trait PropertyGenerator
             $propertyStmt->default = $this->getDefaultAsExpr($default)->expr;
         }
 
-        return new Stmt\Property(Modifiers::PROTECTED, [
+        return new Stmt\Property(Modifiers::PUBLIC, [
             $propertyStmt,
         ], [
             'comments' => [$this->createPropertyDoc($property, $namespace, $strict)],
-        ]);
+        ], $this->getNativeType($property, $namespace, $strict));
+    }
+
+    private function getNativeType(Property $property, string $namespace, bool $strict): Node\ComplexType|Node\Identifier|Node\Name|null
+    {
+        $type = $property->getType()->getTypeHint($namespace);
+
+        if (null !== $type && (!$strict || $property->isNullable())) {
+            $type = new Node\NullableType($type);
+        }
+
+        return $type;
     }
 
     protected function createPropertyDoc(Property $property, $namespace, bool $strict): Doc

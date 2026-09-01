@@ -38,7 +38,7 @@ class BusinessProcessDetailsDataContentImportNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('items', $data) && $data['items'] !== null) {
@@ -46,11 +46,11 @@ class BusinessProcessDetailsDataContentImportNormalizer implements DenormalizerI
             foreach ($data['items'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ContentImportResult::class, 'json', $context);
             }
-            $object->setItems($values);
+            $object->items = $values;
             unset($data['items']);
         }
         elseif (\array_key_exists('items', $data) && $data['items'] === null) {
-            $object->setItems(null);
+            $object->items = null;
             unset($data['items']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,10 +63,10 @@ class BusinessProcessDetailsDataContentImportNormalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('items') && null !== $data->getItems()) {
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
             $values = [];
-            foreach ($data->getItems() as $value) {
+            foreach ($data->items ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['items'] = $values;

@@ -45,16 +45,16 @@ class NetworkingConfigNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['EndpointsConfig'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, \Docker\Api\Model\EndpointSettings::class, 'json', $context);
             }
-            $object->setEndpointsConfig($values);
+            $object->endpointsConfig = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('endpointsConfig') && null !== $data->getEndpointsConfig()) {
+        if (array_key_exists('endpointsConfig', get_object_vars($data)) && null !== ($data->endpointsConfig ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getEndpointsConfig() as $key => $value) {
+            foreach ($data->endpointsConfig ?? null as $key => $value) {
                 $values[$key] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['EndpointsConfig'] = $values;

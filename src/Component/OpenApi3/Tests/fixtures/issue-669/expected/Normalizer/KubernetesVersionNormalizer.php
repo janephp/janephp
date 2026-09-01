@@ -38,11 +38,11 @@ class KubernetesVersionNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('slug', $data)) {
-            $object->setSlug($data['slug']);
+            $object->slug = $data['slug'];
             unset($data['slug']);
         }
         if (\array_key_exists('kubernetes_version', $data)) {
-            $object->setKubernetesVersion($data['kubernetes_version']);
+            $object->kubernetesVersion = $data['kubernetes_version'];
             unset($data['kubernetes_version']);
         }
         if (\array_key_exists('supported_features', $data)) {
@@ -50,7 +50,7 @@ class KubernetesVersionNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['supported_features'] as $value) {
                 $values[] = $value;
             }
-            $object->setSupportedFeatures($values);
+            $object->supportedFeatures = $values;
             unset($data['supported_features']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,15 +63,15 @@ class KubernetesVersionNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('slug') && null !== $data->getSlug()) {
-            $dataArray['slug'] = $data->getSlug();
+        if (array_key_exists('slug', get_object_vars($data)) && null !== ($data->slug ?? null)) {
+            $dataArray['slug'] = $data->slug ?? null;
         }
-        if ($data->isInitialized('kubernetesVersion') && null !== $data->getKubernetesVersion()) {
-            $dataArray['kubernetes_version'] = $data->getKubernetesVersion();
+        if (array_key_exists('kubernetesVersion', get_object_vars($data)) && null !== ($data->kubernetesVersion ?? null)) {
+            $dataArray['kubernetes_version'] = $data->kubernetesVersion ?? null;
         }
-        if ($data->isInitialized('supportedFeatures') && null !== $data->getSupportedFeatures()) {
+        if (array_key_exists('supportedFeatures', get_object_vars($data)) && null !== ($data->supportedFeatures ?? null)) {
             $values = [];
-            foreach ($data->getSupportedFeatures() as $value) {
+            foreach ($data->supportedFeatures ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['supported_features'] = $values;

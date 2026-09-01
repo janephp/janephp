@@ -8,43 +8,13 @@ class ContentPermissionSetUnassignedCondition extends BusinessRuleCondition impl
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Permission set id to match on.
      *
      * @var string|null
      */
-    protected $permissionSetId;
-    /**
-     * Permission set id to match on.
-     *
-     * @return string|null
-     */
-    public function getPermissionSetId(): ?string
-    {
-        return $this->permissionSetId;
-    }
-    /**
-     * Permission set id to match on.
-     *
-     * @param string|null $permissionSetId
-     *
-     * @return self
-     */
-    public function setPermissionSetId(?string $permissionSetId): self
-    {
-        $this->initialized['permissionSetId'] = true;
-        $this->permissionSetId = $permissionSetId;
-        return $this;
-    }
+    public ?string $permissionSetId;
     public function definedProperties(): array
     {
-        return ['permissionSetId' => ['permissionSetId', 'getPermissionSetId', 'setPermissionSetId']];
+        return ['permissionSetId' => 'permissionSetId'];
     }
 }

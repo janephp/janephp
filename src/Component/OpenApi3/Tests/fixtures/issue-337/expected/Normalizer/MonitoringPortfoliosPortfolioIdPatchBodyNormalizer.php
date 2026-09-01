@@ -38,7 +38,7 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('emails', $data)) {
@@ -46,15 +46,15 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
             foreach ($data['emails'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem::class, 'json', $context);
             }
-            $object->setEmails($values);
+            $object->emails = $values;
             unset($data['emails']);
         }
         if (\array_key_exists('emailLanguage', $data)) {
-            $object->setEmailLanguage($data['emailLanguage']);
+            $object->emailLanguage = $data['emailLanguage'];
             unset($data['emailLanguage']);
         }
         if (\array_key_exists('emailSubject', $data)) {
-            $object->setEmailSubject($data['emailSubject']);
+            $object->emailSubject = $data['emailSubject'];
             unset($data['emailSubject']);
         }
         foreach ($data as $key => $value_1) {
@@ -67,21 +67,21 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('emails') && null !== $data->getEmails()) {
+        if (array_key_exists('emails', get_object_vars($data)) && null !== ($data->emails ?? null)) {
             $values = [];
-            foreach ($data->getEmails() as $value) {
+            foreach ($data->emails ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['emails'] = $values;
         }
-        if ($data->isInitialized('emailLanguage') && null !== $data->getEmailLanguage()) {
-            $dataArray['emailLanguage'] = $data->getEmailLanguage();
+        if (array_key_exists('emailLanguage', get_object_vars($data)) && null !== ($data->emailLanguage ?? null)) {
+            $dataArray['emailLanguage'] = $data->emailLanguage ?? null;
         }
-        if ($data->isInitialized('emailSubject') && null !== $data->getEmailSubject()) {
-            $dataArray['emailSubject'] = $data->getEmailSubject();
+        if (array_key_exists('emailSubject', get_object_vars($data)) && null !== ($data->emailSubject ?? null)) {
+            $dataArray['emailSubject'] = $data->emailSubject ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

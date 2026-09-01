@@ -38,11 +38,11 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('label', $data)) {
-            $object->setLabel($data['label']);
+            $object->label = $data['label'];
             unset($data['label']);
         }
         if (\array_key_exists('sub', $data)) {
-            $object->setSub($this->denormalizer->denormalize($data['sub'], \Jane\Component\OpenApi3\Tests\Expected\Model\SubBaz::class, 'json', $context));
+            $object->sub = $this->denormalizer->denormalize($data['sub'], \Jane\Component\OpenApi3\Tests\Expected\Model\SubBaz::class, 'json', $context);
             unset($data['sub']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('label') && null !== $data->getLabel()) {
-            $dataArray['label'] = $data->getLabel();
+        if (array_key_exists('label', get_object_vars($data)) && null !== ($data->label ?? null)) {
+            $dataArray['label'] = $data->label ?? null;
         }
-        if ($data->isInitialized('sub') && null !== $data->getSub()) {
-            $dataArray['sub'] = $data->getSub() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSub(), 'json', $context));
+        if (array_key_exists('sub', get_object_vars($data)) && null !== ($data->sub ?? null)) {
+            $dataArray['sub'] = ($data->sub ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->sub ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

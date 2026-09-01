@@ -53,7 +53,7 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
             $data['provide_citations'] = (bool) $data['provide_citations'];
         }
         if (\array_key_exists('agent_uuid', $data)) {
-            $object->setAgentUuid($data['agent_uuid']);
+            $object->agentUuid = $data['agent_uuid'];
             unset($data['agent_uuid']);
         }
         if (\array_key_exists('attached_child_agents', $data)) {
@@ -61,7 +61,7 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['attached_child_agents'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiAgentChildRelationshipVerion::class, 'json', $context);
             }
-            $object->setAttachedChildAgents($values);
+            $object->attachedChildAgents = $values;
             unset($data['attached_child_agents']);
         }
         if (\array_key_exists('attached_functions', $data)) {
@@ -69,7 +69,7 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['attached_functions'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\ApiAgentFunctionVersion::class, 'json', $context);
             }
-            $object->setAttachedFunctions($values_1);
+            $object->attachedFunctions = $values_1;
             unset($data['attached_functions']);
         }
         if (\array_key_exists('attached_guardrails', $data)) {
@@ -77,7 +77,7 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['attached_guardrails'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\ApiAgentGuardrailVersion::class, 'json', $context);
             }
-            $object->setAttachedGuardrails($values_2);
+            $object->attachedGuardrails = $values_2;
             unset($data['attached_guardrails']);
         }
         if (\array_key_exists('attached_knowledgebases', $data)) {
@@ -85,11 +85,11 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['attached_knowledgebases'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Generated\DigitalOcean\Model\ApiAgentKnowledgeBaseVersion::class, 'json', $context);
             }
-            $object->setAttachedKnowledgebases($values_3);
+            $object->attachedKnowledgebases = $values_3;
             unset($data['attached_knowledgebases']);
         }
         if (\array_key_exists('can_rollback', $data)) {
-            $object->setCanRollback($data['can_rollback']);
+            $object->canRollback = $data['can_rollback'];
             unset($data['can_rollback']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -97,51 +97,51 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('created_by_email', $data)) {
-            $object->setCreatedByEmail($data['created_by_email']);
+            $object->createdByEmail = $data['created_by_email'];
             unset($data['created_by_email']);
         }
         if (\array_key_exists('currently_applied', $data)) {
-            $object->setCurrentlyApplied($data['currently_applied']);
+            $object->currentlyApplied = $data['currently_applied'];
             unset($data['currently_applied']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('instruction', $data)) {
-            $object->setInstruction($data['instruction']);
+            $object->instruction = $data['instruction'];
             unset($data['instruction']);
         }
         if (\array_key_exists('k', $data)) {
-            $object->setK($data['k']);
+            $object->k = $data['k'];
             unset($data['k']);
         }
         if (\array_key_exists('max_tokens', $data)) {
-            $object->setMaxTokens($data['max_tokens']);
+            $object->maxTokens = $data['max_tokens'];
             unset($data['max_tokens']);
         }
         if (\array_key_exists('model_name', $data)) {
-            $object->setModelName($data['model_name']);
+            $object->modelName = $data['model_name'];
             unset($data['model_name']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('provide_citations', $data)) {
-            $object->setProvideCitations($data['provide_citations']);
+            $object->provideCitations = $data['provide_citations'];
             unset($data['provide_citations']);
         }
         if (\array_key_exists('retrieval_method', $data)) {
-            $object->setRetrievalMethod($data['retrieval_method']);
+            $object->retrievalMethod = $data['retrieval_method'];
             unset($data['retrieval_method']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -149,23 +149,23 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['tags'] as $value_4) {
                 $values_4[] = $value_4;
             }
-            $object->setTags($values_4);
+            $object->tags = $values_4;
             unset($data['tags']);
         }
         if (\array_key_exists('temperature', $data)) {
-            $object->setTemperature($data['temperature']);
+            $object->temperature = $data['temperature'];
             unset($data['temperature']);
         }
         if (\array_key_exists('top_p', $data)) {
-            $object->setTopP($data['top_p']);
+            $object->topP = $data['top_p'];
             unset($data['top_p']);
         }
         if (\array_key_exists('trigger_action', $data)) {
-            $object->setTriggerAction($data['trigger_action']);
+            $object->triggerAction = $data['trigger_action'];
             unset($data['trigger_action']);
         }
         if (\array_key_exists('version_hash', $data)) {
-            $object->setVersionHash($data['version_hash']);
+            $object->versionHash = $data['version_hash'];
             unset($data['version_hash']);
         }
         foreach ($data as $key => $value_5) {
@@ -178,94 +178,94 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agentUuid') && null !== $data->getAgentUuid()) {
-            $dataArray['agent_uuid'] = $data->getAgentUuid();
+        if (array_key_exists('agentUuid', get_object_vars($data)) && null !== ($data->agentUuid ?? null)) {
+            $dataArray['agent_uuid'] = $data->agentUuid ?? null;
         }
-        if ($data->isInitialized('attachedChildAgents') && null !== $data->getAttachedChildAgents()) {
+        if (array_key_exists('attachedChildAgents', get_object_vars($data)) && null !== ($data->attachedChildAgents ?? null)) {
             $values = [];
-            foreach ($data->getAttachedChildAgents() as $value) {
+            foreach ($data->attachedChildAgents ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['attached_child_agents'] = $values;
         }
-        if ($data->isInitialized('attachedFunctions') && null !== $data->getAttachedFunctions()) {
+        if (array_key_exists('attachedFunctions', get_object_vars($data)) && null !== ($data->attachedFunctions ?? null)) {
             $values_1 = [];
-            foreach ($data->getAttachedFunctions() as $value_1) {
+            foreach ($data->attachedFunctions ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['attached_functions'] = $values_1;
         }
-        if ($data->isInitialized('attachedGuardrails') && null !== $data->getAttachedGuardrails()) {
+        if (array_key_exists('attachedGuardrails', get_object_vars($data)) && null !== ($data->attachedGuardrails ?? null)) {
             $values_2 = [];
-            foreach ($data->getAttachedGuardrails() as $value_2) {
+            foreach ($data->attachedGuardrails ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['attached_guardrails'] = $values_2;
         }
-        if ($data->isInitialized('attachedKnowledgebases') && null !== $data->getAttachedKnowledgebases()) {
+        if (array_key_exists('attachedKnowledgebases', get_object_vars($data)) && null !== ($data->attachedKnowledgebases ?? null)) {
             $values_3 = [];
-            foreach ($data->getAttachedKnowledgebases() as $value_3) {
+            foreach ($data->attachedKnowledgebases ?? null as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['attached_knowledgebases'] = $values_3;
         }
-        if ($data->isInitialized('canRollback') && null !== $data->getCanRollback()) {
-            $dataArray['can_rollback'] = $data->getCanRollback();
+        if (array_key_exists('canRollback', get_object_vars($data)) && null !== ($data->canRollback ?? null)) {
+            $dataArray['can_rollback'] = $data->canRollback ?? null;
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('createdByEmail') && null !== $data->getCreatedByEmail()) {
-            $dataArray['created_by_email'] = $data->getCreatedByEmail();
+        if (array_key_exists('createdByEmail', get_object_vars($data)) && null !== ($data->createdByEmail ?? null)) {
+            $dataArray['created_by_email'] = $data->createdByEmail ?? null;
         }
-        if ($data->isInitialized('currentlyApplied') && null !== $data->getCurrentlyApplied()) {
-            $dataArray['currently_applied'] = $data->getCurrentlyApplied();
+        if (array_key_exists('currentlyApplied', get_object_vars($data)) && null !== ($data->currentlyApplied ?? null)) {
+            $dataArray['currently_applied'] = $data->currentlyApplied ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('instruction') && null !== $data->getInstruction()) {
-            $dataArray['instruction'] = $data->getInstruction();
+        if (array_key_exists('instruction', get_object_vars($data)) && null !== ($data->instruction ?? null)) {
+            $dataArray['instruction'] = $data->instruction ?? null;
         }
-        if ($data->isInitialized('k') && null !== $data->getK()) {
-            $dataArray['k'] = $data->getK();
+        if (array_key_exists('k', get_object_vars($data)) && null !== ($data->k ?? null)) {
+            $dataArray['k'] = $data->k ?? null;
         }
-        if ($data->isInitialized('maxTokens') && null !== $data->getMaxTokens()) {
-            $dataArray['max_tokens'] = $data->getMaxTokens();
+        if (array_key_exists('maxTokens', get_object_vars($data)) && null !== ($data->maxTokens ?? null)) {
+            $dataArray['max_tokens'] = $data->maxTokens ?? null;
         }
-        if ($data->isInitialized('modelName') && null !== $data->getModelName()) {
-            $dataArray['model_name'] = $data->getModelName();
+        if (array_key_exists('modelName', get_object_vars($data)) && null !== ($data->modelName ?? null)) {
+            $dataArray['model_name'] = $data->modelName ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('provideCitations') && null !== $data->getProvideCitations()) {
-            $dataArray['provide_citations'] = $data->getProvideCitations();
+        if (array_key_exists('provideCitations', get_object_vars($data)) && null !== ($data->provideCitations ?? null)) {
+            $dataArray['provide_citations'] = $data->provideCitations ?? null;
         }
-        if ($data->isInitialized('retrievalMethod') && null !== $data->getRetrievalMethod()) {
-            $dataArray['retrieval_method'] = $data->getRetrievalMethod();
+        if (array_key_exists('retrievalMethod', get_object_vars($data)) && null !== ($data->retrievalMethod ?? null)) {
+            $dataArray['retrieval_method'] = $data->retrievalMethod ?? null;
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_4 = [];
-            foreach ($data->getTags() as $value_4) {
+            foreach ($data->tags ?? null as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['tags'] = $values_4;
         }
-        if ($data->isInitialized('temperature') && null !== $data->getTemperature()) {
-            $dataArray['temperature'] = $data->getTemperature();
+        if (array_key_exists('temperature', get_object_vars($data)) && null !== ($data->temperature ?? null)) {
+            $dataArray['temperature'] = $data->temperature ?? null;
         }
-        if ($data->isInitialized('topP') && null !== $data->getTopP()) {
-            $dataArray['top_p'] = $data->getTopP();
+        if (array_key_exists('topP', get_object_vars($data)) && null !== ($data->topP ?? null)) {
+            $dataArray['top_p'] = $data->topP ?? null;
         }
-        if ($data->isInitialized('triggerAction') && null !== $data->getTriggerAction()) {
-            $dataArray['trigger_action'] = $data->getTriggerAction();
+        if (array_key_exists('triggerAction', get_object_vars($data)) && null !== ($data->triggerAction ?? null)) {
+            $dataArray['trigger_action'] = $data->triggerAction ?? null;
         }
-        if ($data->isInitialized('versionHash') && null !== $data->getVersionHash()) {
-            $dataArray['version_hash'] = $data->getVersionHash();
+        if (array_key_exists('versionHash', get_object_vars($data)) && null !== ($data->versionHash ?? null)) {
+            $dataArray['version_hash'] = $data->versionHash ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {

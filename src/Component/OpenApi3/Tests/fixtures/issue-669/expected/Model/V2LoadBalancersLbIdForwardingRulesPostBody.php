@@ -8,37 +8,11 @@ class V2LoadBalancersLbIdForwardingRulesPostBody implements AdditionalProperties
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var list<ForwardingRule>
      */
-    protected $forwardingRules;
-    /**
-     * @return list<ForwardingRule>
-     */
-    public function getForwardingRules(): array
-    {
-        return $this->forwardingRules;
-    }
-    /**
-     * @param list<ForwardingRule> $forwardingRules
-     *
-     * @return self
-     */
-    public function setForwardingRules(array $forwardingRules): self
-    {
-        $this->initialized['forwardingRules'] = true;
-        $this->forwardingRules = $forwardingRules;
-        return $this;
-    }
+    public array $forwardingRules;
     public function definedProperties(): array
     {
-        return ['forwardingRules' => ['forwarding_rules', 'getForwardingRules', 'setForwardingRules']];
+        return ['forwardingRules' => 'forwarding_rules'];
     }
 }

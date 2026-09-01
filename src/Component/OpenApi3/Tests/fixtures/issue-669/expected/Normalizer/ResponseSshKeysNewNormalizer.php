@@ -38,7 +38,7 @@ class ResponseSshKeysNewNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ssh_key', $data)) {
-            $object->setSshKey($this->denormalizer->denormalize($data['ssh_key'], \Jane\Generated\DigitalOcean\Model\SshKeys::class, 'json', $context));
+            $object->sshKey = $this->denormalizer->denormalize($data['ssh_key'], \Jane\Generated\DigitalOcean\Model\SshKeys::class, 'json', $context);
             unset($data['ssh_key']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseSshKeysNewNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sshKey') && null !== $data->getSshKey()) {
-            $dataArray['ssh_key'] = $data->getSshKey() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSshKey(), 'json', $context));
+        if (array_key_exists('sshKey', get_object_vars($data)) && null !== ($data->sshKey ?? null)) {
+            $dataArray['ssh_key'] = ($data->sshKey ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->sshKey ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

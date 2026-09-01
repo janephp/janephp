@@ -34,28 +34,28 @@ class SecuritySchemeDenormalizer implements DenormalizerInterface, DenormalizerA
         }
 
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('description', $data) && null !== $data['description']) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('in', $data)) {
-            $object->setIn($data['in']);
+            $object->in = $data['in'];
         }
         if (\array_key_exists('scheme', $data)) {
-            $object->setScheme($data['scheme']);
+            $object->scheme = $data['scheme'];
         }
         if (\array_key_exists('bearerFormat', $data)) {
-            $object->setBearerFormat($data['bearerFormat']);
+            $object->bearerFormat = $data['bearerFormat'];
         }
         if (\array_key_exists('flows', $data)) {
-            $object->setFlows($data['flows']);
+            $object->flows = $data['flows'];
         }
         if (\array_key_exists('openIdConnectUrl', $data)) {
-            $object->setOpenIdConnectUrl($data['openIdConnectUrl']);
+            $object->openIdConnectUrl = $data['openIdConnectUrl'];
         }
 
         return $object;

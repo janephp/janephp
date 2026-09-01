@@ -41,43 +41,43 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             $data['deduplicate'] = (bool) $data['deduplicate'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
             unset($data['id']);
         }
         if (\array_key_exists('retries', $data)) {
-            $object->setRetries($data['retries']);
+            $object->retries = $data['retries'];
             unset($data['retries']);
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
             unset($data['priority']);
         }
         if (\array_key_exists('deduplicate', $data)) {
-            $object->setDeduplicate($data['deduplicate']);
+            $object->deduplicate = $data['deduplicate'];
             unset($data['deduplicate']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
-            $object->setCustomerId($data['customerId']);
+            $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
-            $object->setCustomerId(null);
+            $object->customerId = null;
             unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
-            $object->setCustomerAlias($data['customerAlias']);
+            $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
-            $object->setCustomerAlias(null);
+            $object->customerAlias = null;
             unset($data['customerAlias']);
         }
         if (\array_key_exists('timestamp', $data)) {
@@ -85,15 +85,15 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('scope', $data) && $data['scope'] !== null) {
-            $object->setScope($data['scope']);
+            $object->scope = $data['scope'];
             unset($data['scope']);
         }
         elseif (\array_key_exists('scope', $data) && $data['scope'] === null) {
-            $object->setScope(null);
+            $object->scope = null;
             unset($data['scope']);
         }
         if (\array_key_exists('documentChange', $data) && $data['documentChange'] !== null) {
@@ -101,11 +101,11 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             if (is_array($data['documentChange']) and \array_key_exists('version', $data['documentChange']) and \array_key_exists('timeStamp', $data['documentChange'])) {
                 $value = $this->denormalizer->denormalize($data['documentChange'], \PicturePark\API\Model\DocumentChange::class, 'json', $context);
             }
-            $object->setDocumentChange($value);
+            $object->documentChange = $value;
             unset($data['documentChange']);
         }
         elseif (\array_key_exists('documentChange', $data) && $data['documentChange'] === null) {
-            $object->setDocumentChange(null);
+            $object->documentChange = null;
             unset($data['documentChange']);
         }
         if (\array_key_exists('applicationEvent', $data) && $data['applicationEvent'] !== null) {
@@ -113,11 +113,11 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             if (is_array($data['applicationEvent']) and \array_key_exists('timestamp', $data['applicationEvent']) and \array_key_exists('kind', $data['applicationEvent'])) {
                 $value_1 = $this->denormalizer->denormalize($data['applicationEvent'], \PicturePark\API\Model\ApplicationEvent::class, 'json', $context);
             }
-            $object->setApplicationEvent($value_1);
+            $object->applicationEvent = $value_1;
             unset($data['applicationEvent']);
         }
         elseif (\array_key_exists('applicationEvent', $data) && $data['applicationEvent'] === null) {
-            $object->setApplicationEvent(null);
+            $object->applicationEvent = null;
             unset($data['applicationEvent']);
         }
         foreach ($data as $key => $value_2) {
@@ -130,36 +130,36 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['retries'] = $data->getRetries();
-        $dataArray['priority'] = $data->getPriority();
-        $dataArray['deduplicate'] = $data->getDeduplicate();
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
-            $dataArray['customerId'] = $data->getCustomerId();
+        $dataArray['retries'] = $data->retries ?? null;
+        $dataArray['priority'] = $data->priority ?? null;
+        $dataArray['deduplicate'] = $data->deduplicate ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('customerId', get_object_vars($data)) && null !== ($data->customerId ?? null)) {
+            $dataArray['customerId'] = $data->customerId ?? null;
         }
-        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
-            $dataArray['customerAlias'] = $data->getCustomerAlias();
+        if (array_key_exists('customerAlias', get_object_vars($data)) && null !== ($data->customerAlias ?? null)) {
+            $dataArray['customerAlias'] = $data->customerAlias ?? null;
         }
-        if ($data->isInitialized('timestamp') && null !== $data->getTimestamp()) {
-            $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('timestamp', get_object_vars($data)) && null !== ($data->timestamp ?? null)) {
+            $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('scope') && null !== $data->getScope()) {
-            $dataArray['scope'] = $data->getScope();
+        if (array_key_exists('scope', get_object_vars($data)) && null !== ($data->scope ?? null)) {
+            $dataArray['scope'] = $data->scope ?? null;
         }
-        if ($data->isInitialized('documentChange') && null !== $data->getDocumentChange()) {
-            $value = $data->getDocumentChange();
-            if (is_object($data->getDocumentChange())) {
-                $value = $data->getDocumentChange() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getDocumentChange(), 'json', $context));
+        if (array_key_exists('documentChange', get_object_vars($data)) && null !== ($data->documentChange ?? null)) {
+            $value = $data->documentChange ?? null;
+            if (is_object($data->documentChange ?? null)) {
+                $value = ($data->documentChange ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->documentChange ?? null, 'json', $context));
             }
             $dataArray['documentChange'] = $value;
         }
-        if ($data->isInitialized('applicationEvent') && null !== $data->getApplicationEvent()) {
-            $value_1 = $data->getApplicationEvent();
-            if (is_object($data->getApplicationEvent())) {
-                $value_1 = $data->getApplicationEvent() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getApplicationEvent(), 'json', $context));
+        if (array_key_exists('applicationEvent', get_object_vars($data)) && null !== ($data->applicationEvent ?? null)) {
+            $value_1 = $data->applicationEvent ?? null;
+            if (is_object($data->applicationEvent ?? null)) {
+                $value_1 = ($data->applicationEvent ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->applicationEvent ?? null, 'json', $context));
             }
             $dataArray['applicationEvent'] = $value_1;
         }

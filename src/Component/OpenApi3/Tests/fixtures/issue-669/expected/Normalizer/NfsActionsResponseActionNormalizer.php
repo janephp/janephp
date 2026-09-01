@@ -38,15 +38,15 @@ class NfsActionsResponseActionNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('region_slug', $data)) {
-            $object->setRegionSlug($data['region_slug']);
+            $object->regionSlug = $data['region_slug'];
             unset($data['region_slug']);
         }
         if (\array_key_exists('resource_id', $data)) {
-            $object->setResourceId($data['resource_id']);
+            $object->resourceId = $data['resource_id'];
             unset($data['resource_id']);
         }
         if (\array_key_exists('resource_type', $data)) {
-            $object->setResourceType($data['resource_type']);
+            $object->resourceType = $data['resource_type'];
             unset($data['resource_type']);
         }
         if (\array_key_exists('started_at', $data)) {
@@ -54,15 +54,15 @@ class NfsActionsResponseActionNormalizer implements DenormalizerInterface, Norma
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStartedAt($date);
+            $object->startedAt = $date;
             unset($data['started_at']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
@@ -75,12 +75,12 @@ class NfsActionsResponseActionNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['region_slug'] = $data->getRegionSlug();
-        $dataArray['resource_id'] = $data->getResourceId();
-        $dataArray['resource_type'] = $data->getResourceType();
-        $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['status'] = $data->getStatus();
-        $dataArray['type'] = $data->getType();
+        $dataArray['region_slug'] = $data->regionSlug ?? null;
+        $dataArray['resource_id'] = $data->resourceId ?? null;
+        $dataArray['resource_type'] = $data->resourceType ?? null;
+        $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['status'] = $data->status ?? null;
+        $dataArray['type'] = $data->type ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

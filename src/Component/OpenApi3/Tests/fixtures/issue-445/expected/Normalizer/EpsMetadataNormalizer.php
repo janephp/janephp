@@ -47,22 +47,22 @@ class EpsMetadataNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['isRasterized'] = (bool) $data['isRasterized'];
         }
         if (\array_key_exists('isRasterized', $data)) {
-            $object->setIsRasterized($data['isRasterized']);
+            $object->isRasterized = $data['isRasterized'];
         }
         if (\array_key_exists('widthInPoints', $data)) {
-            $object->setWidthInPoints($data['widthInPoints']);
+            $object->widthInPoints = $data['widthInPoints'];
         }
         if (\array_key_exists('heightInPoints', $data)) {
-            $object->setHeightInPoints($data['heightInPoints']);
+            $object->heightInPoints = $data['heightInPoints'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['isRasterized'] = $data->getIsRasterized();
-        $dataArray['widthInPoints'] = $data->getWidthInPoints();
-        $dataArray['heightInPoints'] = $data->getHeightInPoints();
+        $dataArray['isRasterized'] = $data->isRasterized ?? null;
+        $dataArray['widthInPoints'] = $data->widthInPoints ?? null;
+        $dataArray['heightInPoints'] = $data->heightInPoints ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

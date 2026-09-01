@@ -113,19 +113,19 @@ class FieldBaseNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['sortable'] = (bool) $data['sortable'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('indexId', $data) && $data['indexId'] !== null) {
-            $object->setIndexId($data['indexId']);
+            $object->indexId = $data['indexId'];
         }
         elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
-            $object->setIndexId(null);
+            $object->indexId = null;
         }
         if (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] !== null) {
-            $object->setFieldNamespace($data['fieldNamespace']);
+            $object->fieldNamespace = $data['fieldNamespace'];
         }
         elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
-            $object->setFieldNamespace(null);
+            $object->fieldNamespace = null;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $value = $data['names'];
@@ -136,10 +136,10 @@ class FieldBaseNormalizer implements DenormalizerInterface, NormalizerInterface,
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $value_2 = $data['descriptions'];
@@ -150,129 +150,129 @@ class FieldBaseNormalizer implements DenormalizerInterface, NormalizerInterface,
                 }
                 $value_2 = $values_1;
             }
-            $object->setDescriptions($value_2);
+            $object->descriptions = $value_2;
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
-            $object->setDescriptions(null);
+            $object->descriptions = null;
         }
         if (\array_key_exists('required', $data)) {
-            $object->setRequired($data['required']);
+            $object->required = $data['required'];
         }
         if (\array_key_exists('fixed', $data)) {
-            $object->setFixed($data['fixed']);
+            $object->fixed = $data['fixed'];
         }
         if (\array_key_exists('index', $data)) {
-            $object->setIndex($data['index']);
+            $object->index = $data['index'];
         }
         if (\array_key_exists('simpleSearch', $data)) {
-            $object->setSimpleSearch($data['simpleSearch']);
+            $object->simpleSearch = $data['simpleSearch'];
         }
         if (\array_key_exists('sortable', $data)) {
-            $object->setSortable($data['sortable']);
+            $object->sortable = $data['sortable'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'FieldBoolean' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldBoolean' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldDate' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldDate' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldDateTime' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldDateTime' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldDateTimeArray' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldDateTimeArray' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldDecimal' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldDecimal' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldDictionary' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldDictionary' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldDictionaryArray' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldDictionaryArray' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldGeoPoint' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldGeoPoint' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldTrigger' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldTrigger' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldLong' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldLong' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldLongArray' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldLongArray' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldSingleFieldset' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldSingleFieldset' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldMultiFieldset' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldMultiFieldset' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldSingleTagbox' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldSingleTagbox' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldMultiTagbox' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldMultiTagbox' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldString' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldString' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldStringArray' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldStringArray' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldTranslatedString' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldTranslatedString' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldSingleRelation' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldSingleRelation' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldMultiRelation' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldMultiRelation' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
-            $dataArray['indexId'] = $data->getIndexId();
+        $dataArray['id'] = $data->id ?? null;
+        if (array_key_exists('indexId', get_object_vars($data)) && null !== ($data->indexId ?? null)) {
+            $dataArray['indexId'] = $data->indexId ?? null;
         }
-        if ($data->isInitialized('fieldNamespace') && null !== $data->getFieldNamespace()) {
-            $dataArray['fieldNamespace'] = $data->getFieldNamespace();
+        if (array_key_exists('fieldNamespace', get_object_vars($data)) && null !== ($data->fieldNamespace ?? null)) {
+            $dataArray['fieldNamespace'] = $data->fieldNamespace ?? null;
         }
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_1) {
+                foreach ($data->names ?? null as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
             }
             $dataArray['names'] = $value;
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $value_2 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
+        if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
+            $value_2 = $data->descriptions ?? null;
+            if (is_object($data->descriptions ?? null)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                foreach ($data->descriptions ?? null as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
                 }
                 $value_2 = $values_1;
             }
             $dataArray['descriptions'] = $value_2;
         }
-        $dataArray['required'] = $data->getRequired();
-        $dataArray['fixed'] = $data->getFixed();
-        $dataArray['index'] = $data->getIndex();
-        $dataArray['simpleSearch'] = $data->getSimpleSearch();
-        $dataArray['sortable'] = $data->getSortable();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['required'] = $data->required ?? null;
+        $dataArray['fixed'] = $data->fixed ?? null;
+        $dataArray['index'] = $data->index ?? null;
+        $dataArray['simpleSearch'] = $data->simpleSearch ?? null;
+        $dataArray['sortable'] = $data->sortable ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

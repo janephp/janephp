@@ -38,7 +38,7 @@ class ResponseAddonsUpdateNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('resource', $data)) {
-            $object->setResource($this->denormalizer->denormalize($data['resource'], \Jane\Generated\DigitalOcean\Model\AddonsResource::class, 'json', $context));
+            $object->resource = $this->denormalizer->denormalize($data['resource'], \Jane\Generated\DigitalOcean\Model\AddonsResource::class, 'json', $context);
             unset($data['resource']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseAddonsUpdateNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('resource') && null !== $data->getResource()) {
-            $dataArray['resource'] = $data->getResource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getResource(), 'json', $context));
+        if (array_key_exists('resource', get_object_vars($data)) && null !== ($data->resource ?? null)) {
+            $dataArray['resource'] = ($data->resource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->resource ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

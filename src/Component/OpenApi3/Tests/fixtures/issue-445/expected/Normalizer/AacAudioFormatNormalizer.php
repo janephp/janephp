@@ -38,15 +38,15 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
-            $object->setExtension($data['extension']);
+            $object->extension = $data['extension'];
             unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
-            $object->setExtension(null);
+            $object->extension = null;
             unset($data['extension']);
         }
         if (\array_key_exists('profile', $data)) {
@@ -54,7 +54,7 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
             if (is_string($data['profile'])) {
                 $value = $data['profile'];
             }
-            $object->setProfile($value);
+            $object->profile = $value;
             unset($data['profile']);
         }
         if (\array_key_exists('coder', $data)) {
@@ -62,23 +62,23 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
             if (is_string($data['coder'])) {
                 $value_1 = $data['coder'];
             }
-            $object->setCoder($value_1);
+            $object->coder = $value_1;
             unset($data['coder']);
         }
         if (\array_key_exists('bitrate', $data) && $data['bitrate'] !== null) {
-            $object->setBitrate($data['bitrate']);
+            $object->bitrate = $data['bitrate'];
             unset($data['bitrate']);
         }
         elseif (\array_key_exists('bitrate', $data) && $data['bitrate'] === null) {
-            $object->setBitrate(null);
+            $object->bitrate = null;
             unset($data['bitrate']);
         }
         if (\array_key_exists('variableBitRate', $data) && $data['variableBitRate'] !== null) {
-            $object->setVariableBitRate($data['variableBitRate']);
+            $object->variableBitRate = $data['variableBitRate'];
             unset($data['variableBitRate']);
         }
         elseif (\array_key_exists('variableBitRate', $data) && $data['variableBitRate'] === null) {
-            $object->setVariableBitRate(null);
+            $object->variableBitRate = null;
             unset($data['variableBitRate']);
         }
         foreach ($data as $key => $value_2) {
@@ -91,29 +91,29 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
-            $dataArray['extension'] = $data->getExtension();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
+            $dataArray['extension'] = $data->extension ?? null;
         }
-        if ($data->isInitialized('profile') && null !== $data->getProfile()) {
-            $value = $data->getProfile();
-            if (is_string($data->getProfile())) {
-                $value = $data->getProfile();
+        if (array_key_exists('profile', get_object_vars($data)) && null !== ($data->profile ?? null)) {
+            $value = $data->profile ?? null;
+            if (is_string($data->profile ?? null)) {
+                $value = $data->profile ?? null;
             }
             $dataArray['profile'] = $value;
         }
-        if ($data->isInitialized('coder') && null !== $data->getCoder()) {
-            $value_1 = $data->getCoder();
-            if (is_string($data->getCoder())) {
-                $value_1 = $data->getCoder();
+        if (array_key_exists('coder', get_object_vars($data)) && null !== ($data->coder ?? null)) {
+            $value_1 = $data->coder ?? null;
+            if (is_string($data->coder ?? null)) {
+                $value_1 = $data->coder ?? null;
             }
             $dataArray['coder'] = $value_1;
         }
-        if ($data->isInitialized('bitrate') && null !== $data->getBitrate()) {
-            $dataArray['bitrate'] = $data->getBitrate();
+        if (array_key_exists('bitrate', get_object_vars($data)) && null !== ($data->bitrate ?? null)) {
+            $dataArray['bitrate'] = $data->bitrate ?? null;
         }
-        if ($data->isInitialized('variableBitRate') && null !== $data->getVariableBitRate()) {
-            $dataArray['variableBitRate'] = $data->getVariableBitRate();
+        if (array_key_exists('variableBitRate', get_object_vars($data)) && null !== ($data->variableBitRate ?? null)) {
+            $dataArray['variableBitRate'] = $data->variableBitRate ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

@@ -26,10 +26,10 @@ class DateGuesserTest extends TestCase
     {
         $schema = new JsonSchema();
         if (null !== $type) {
-            $schema->setType($type);
+            $schema->type = $type;
         }
         if (null !== $format) {
-            $schema->setFormat($format);
+            $schema->format = $format;
         }
 
         self::assertSame($expected, $this->dateGuesser->supportObject($schema));
@@ -55,10 +55,10 @@ class DateGuesserTest extends TestCase
     {
         $schema = new JsonSchema();
         if (null !== $type) {
-            $schema->setType($type);
+            $schema->type = $type;
         }
         if (null !== $format) {
-            $schema->setFormat($format);
+            $schema->format = $format;
         }
 
         self::assertSame($expected, $this->dateTimeGuesser->supportObject($schema));

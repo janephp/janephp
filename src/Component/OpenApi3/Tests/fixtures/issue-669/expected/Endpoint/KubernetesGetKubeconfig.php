@@ -35,7 +35,7 @@ class KubernetesGetKubeconfig extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * @param array{
      *    "expiry_seconds"?: int, //The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
      * } $queryParameters
-     * @param array $accept Accept content header application/yaml|application/json
+     * @param array $accept Accept content header application/json|application/yaml
      */
     public function __construct(string $clusterId, array $queryParameters = [], array $accept = [])
     {
@@ -59,7 +59,7 @@ class KubernetesGetKubeconfig extends \Jane\Generated\DigitalOcean\Runtime\Clien
     public function getExtraHeaders(): array
     {
         if (empty($this->accept)) {
-            return ['Accept' => ['application/yaml', 'application/json']];
+            return ['Accept' => ['application/json', 'application/yaml']];
         }
         return $this->accept;
     }

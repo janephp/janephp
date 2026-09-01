@@ -41,7 +41,7 @@ class UserSettingsNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['pg_allow_replication'] = (bool) $data['pg_allow_replication'];
         }
         if (\array_key_exists('pg_allow_replication', $data)) {
-            $object->setPgAllowReplication($data['pg_allow_replication']);
+            $object->pgAllowReplication = $data['pg_allow_replication'];
             unset($data['pg_allow_replication']);
         }
         if (\array_key_exists('opensearch_acl', $data)) {
@@ -49,7 +49,7 @@ class UserSettingsNormalizer implements DenormalizerInterface, NormalizerInterfa
             foreach ($data['opensearch_acl'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\UserSettingsOpensearchAclItem::class, 'json', $context);
             }
-            $object->setOpensearchAcl($values);
+            $object->opensearchAcl = $values;
             unset($data['opensearch_acl']);
         }
         if (\array_key_exists('acl', $data)) {
@@ -57,11 +57,11 @@ class UserSettingsNormalizer implements DenormalizerInterface, NormalizerInterfa
             foreach ($data['acl'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\UserSettingsAclItem::class, 'json', $context);
             }
-            $object->setAcl($values_1);
+            $object->acl = $values_1;
             unset($data['acl']);
         }
         if (\array_key_exists('mongo_user_settings', $data)) {
-            $object->setMongoUserSettings($this->denormalizer->denormalize($data['mongo_user_settings'], \Jane\Generated\DigitalOcean\Model\UserSettingsMongoUserSettings::class, 'json', $context));
+            $object->mongoUserSettings = $this->denormalizer->denormalize($data['mongo_user_settings'], \Jane\Generated\DigitalOcean\Model\UserSettingsMongoUserSettings::class, 'json', $context);
             unset($data['mongo_user_settings']);
         }
         foreach ($data as $key => $value_2) {
@@ -74,25 +74,25 @@ class UserSettingsNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('pgAllowReplication') && null !== $data->getPgAllowReplication()) {
-            $dataArray['pg_allow_replication'] = $data->getPgAllowReplication();
+        if (array_key_exists('pgAllowReplication', get_object_vars($data)) && null !== ($data->pgAllowReplication ?? null)) {
+            $dataArray['pg_allow_replication'] = $data->pgAllowReplication ?? null;
         }
-        if ($data->isInitialized('opensearchAcl') && null !== $data->getOpensearchAcl()) {
+        if (array_key_exists('opensearchAcl', get_object_vars($data)) && null !== ($data->opensearchAcl ?? null)) {
             $values = [];
-            foreach ($data->getOpensearchAcl() as $value) {
+            foreach ($data->opensearchAcl ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['opensearch_acl'] = $values;
         }
-        if ($data->isInitialized('acl') && null !== $data->getAcl()) {
+        if (array_key_exists('acl', get_object_vars($data)) && null !== ($data->acl ?? null)) {
             $values_1 = [];
-            foreach ($data->getAcl() as $value_1) {
+            foreach ($data->acl ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['acl'] = $values_1;
         }
-        if ($data->isInitialized('mongoUserSettings') && null !== $data->getMongoUserSettings()) {
-            $dataArray['mongo_user_settings'] = $data->getMongoUserSettings() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMongoUserSettings(), 'json', $context));
+        if (array_key_exists('mongoUserSettings', get_object_vars($data)) && null !== ($data->mongoUserSettings ?? null)) {
+            $dataArray['mongo_user_settings'] = ($data->mongoUserSettings ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mongoUserSettings ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

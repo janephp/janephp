@@ -38,7 +38,7 @@ class BillingDataPointNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('usage_team_urn', $data)) {
-            $object->setUsageTeamUrn($data['usage_team_urn']);
+            $object->usageTeamUrn = $data['usage_team_urn'];
             unset($data['usage_team_urn']);
         }
         if (\array_key_exists('start_date', $data)) {
@@ -46,27 +46,27 @@ class BillingDataPointNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start_date'], 'Y-m-d');
             }
-            $object->setStartDate($date->setTime(0, 0, 0));
+            $object->startDate = $date->setTime(0, 0, 0);
             unset($data['start_date']);
         }
         if (\array_key_exists('total_amount', $data)) {
-            $object->setTotalAmount($data['total_amount']);
+            $object->totalAmount = $data['total_amount'];
             unset($data['total_amount']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('sku', $data)) {
-            $object->setSku($data['sku']);
+            $object->sku = $data['sku'];
             unset($data['sku']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('group_description', $data)) {
-            $object->setGroupDescription($data['group_description']);
+            $object->groupDescription = $data['group_description'];
             unset($data['group_description']);
         }
         foreach ($data as $key => $value) {
@@ -79,26 +79,26 @@ class BillingDataPointNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('usageTeamUrn') && null !== $data->getUsageTeamUrn()) {
-            $dataArray['usage_team_urn'] = $data->getUsageTeamUrn();
+        if (array_key_exists('usageTeamUrn', get_object_vars($data)) && null !== ($data->usageTeamUrn ?? null)) {
+            $dataArray['usage_team_urn'] = $data->usageTeamUrn ?? null;
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
-            $dataArray['start_date'] = $data->getStartDate()->format('Y-m-d');
+        if (array_key_exists('startDate', get_object_vars($data)) && null !== ($data->startDate ?? null)) {
+            $dataArray['start_date'] = ($data->startDate ?? null)->format('Y-m-d');
         }
-        if ($data->isInitialized('totalAmount') && null !== $data->getTotalAmount()) {
-            $dataArray['total_amount'] = $data->getTotalAmount();
+        if (array_key_exists('totalAmount', get_object_vars($data)) && null !== ($data->totalAmount ?? null)) {
+            $dataArray['total_amount'] = $data->totalAmount ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        if ($data->isInitialized('sku') && null !== $data->getSku()) {
-            $dataArray['sku'] = $data->getSku();
+        if (array_key_exists('sku', get_object_vars($data)) && null !== ($data->sku ?? null)) {
+            $dataArray['sku'] = $data->sku ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('groupDescription') && null !== $data->getGroupDescription()) {
-            $dataArray['group_description'] = $data->getGroupDescription();
+        if (array_key_exists('groupDescription', get_object_vars($data)) && null !== ($data->groupDescription ?? null)) {
+            $dataArray['group_description'] = $data->groupDescription ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

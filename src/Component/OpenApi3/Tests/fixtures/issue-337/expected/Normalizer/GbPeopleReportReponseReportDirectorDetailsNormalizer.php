@@ -38,51 +38,51 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('idType', $data)) {
-            $object->setIdType($data['idType']);
+            $object->idType = $data['idType'];
             unset($data['idType']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('title', $data)) {
-            $object->setTitle($data['title']);
+            $object->title = $data['title'];
             unset($data['title']);
         }
         if (\array_key_exists('firstName', $data)) {
-            $object->setFirstName($data['firstName']);
+            $object->firstName = $data['firstName'];
             unset($data['firstName']);
         }
         if (\array_key_exists('middleName', $data)) {
-            $object->setMiddleName($data['middleName']);
+            $object->middleName = $data['middleName'];
             unset($data['middleName']);
         }
         if (\array_key_exists('surname', $data)) {
-            $object->setSurname($data['surname']);
+            $object->surname = $data['surname'];
             unset($data['surname']);
         }
         if (\array_key_exists('address', $data)) {
-            $object->setAddress($this->denormalizer->denormalize($data['address'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorDetailsAddress::class, 'json', $context));
+            $object->address = $this->denormalizer->denormalize($data['address'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorDetailsAddress::class, 'json', $context);
             unset($data['address']);
         }
         if (\array_key_exists('gender', $data)) {
-            $object->setGender($data['gender']);
+            $object->gender = $data['gender'];
             unset($data['gender']);
         }
         if (\array_key_exists('dateOfBirth', $data)) {
-            $object->setDateOfBirth($data['dateOfBirth']);
+            $object->dateOfBirth = $data['dateOfBirth'];
             unset($data['dateOfBirth']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($data['country']);
+            $object->country = $data['country'];
             unset($data['country']);
         }
         if (\array_key_exists('directorType', $data)) {
-            $object->setDirectorType($data['directorType']);
+            $object->directorType = $data['directorType'];
             unset($data['directorType']);
         }
         if (\array_key_exists('positions', $data)) {
@@ -90,11 +90,11 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
             foreach ($data['positions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorDetailsPositionsItem::class, 'json', $context);
             }
-            $object->setPositions($values);
+            $object->positions = $values;
             unset($data['positions']);
         }
         if (\array_key_exists('additionalData', $data)) {
-            $object->setAdditionalData($this->denormalizer->denormalize($data['additionalData'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorDetailsAdditionalData::class, 'json', $context));
+            $object->additionalData = $this->denormalizer->denormalize($data['additionalData'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorDetailsAdditionalData::class, 'json', $context);
             unset($data['additionalData']);
         }
         foreach ($data as $key => $value_1) {
@@ -107,51 +107,51 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('idType') && null !== $data->getIdType()) {
-            $dataArray['idType'] = $data->getIdType();
+        if (array_key_exists('idType', get_object_vars($data)) && null !== ($data->idType ?? null)) {
+            $dataArray['idType'] = $data->idType ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
-            $dataArray['title'] = $data->getTitle();
+        if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title ?? null;
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $dataArray['firstName'] = $data->getFirstName();
+        if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
+            $dataArray['firstName'] = $data->firstName ?? null;
         }
-        if ($data->isInitialized('middleName') && null !== $data->getMiddleName()) {
-            $dataArray['middleName'] = $data->getMiddleName();
+        if (array_key_exists('middleName', get_object_vars($data)) && null !== ($data->middleName ?? null)) {
+            $dataArray['middleName'] = $data->middleName ?? null;
         }
-        if ($data->isInitialized('surname') && null !== $data->getSurname()) {
-            $dataArray['surname'] = $data->getSurname();
+        if (array_key_exists('surname', get_object_vars($data)) && null !== ($data->surname ?? null)) {
+            $dataArray['surname'] = $data->surname ?? null;
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $data->getAddress() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAddress(), 'json', $context));
+        if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
+            $dataArray['address'] = ($data->address ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
         }
-        if ($data->isInitialized('gender') && null !== $data->getGender()) {
-            $dataArray['gender'] = $data->getGender();
+        if (array_key_exists('gender', get_object_vars($data)) && null !== ($data->gender ?? null)) {
+            $dataArray['gender'] = $data->gender ?? null;
         }
-        if ($data->isInitialized('dateOfBirth') && null !== $data->getDateOfBirth()) {
-            $dataArray['dateOfBirth'] = $data->getDateOfBirth();
+        if (array_key_exists('dateOfBirth', get_object_vars($data)) && null !== ($data->dateOfBirth ?? null)) {
+            $dataArray['dateOfBirth'] = $data->dateOfBirth ?? null;
         }
-        if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $data->getCountry();
+        if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
+            $dataArray['country'] = $data->country ?? null;
         }
-        if ($data->isInitialized('directorType') && null !== $data->getDirectorType()) {
-            $dataArray['directorType'] = $data->getDirectorType();
+        if (array_key_exists('directorType', get_object_vars($data)) && null !== ($data->directorType ?? null)) {
+            $dataArray['directorType'] = $data->directorType ?? null;
         }
-        if ($data->isInitialized('positions') && null !== $data->getPositions()) {
+        if (array_key_exists('positions', get_object_vars($data)) && null !== ($data->positions ?? null)) {
             $values = [];
-            foreach ($data->getPositions() as $value) {
+            foreach ($data->positions ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['positions'] = $values;
         }
-        if ($data->isInitialized('additionalData') && null !== $data->getAdditionalData()) {
-            $dataArray['additionalData'] = $data->getAdditionalData() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAdditionalData(), 'json', $context));
+        if (array_key_exists('additionalData', get_object_vars($data)) && null !== ($data->additionalData ?? null)) {
+            $dataArray['additionalData'] = ($data->additionalData ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->additionalData ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

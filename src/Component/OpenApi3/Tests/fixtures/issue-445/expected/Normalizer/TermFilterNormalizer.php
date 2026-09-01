@@ -38,15 +38,15 @@ class TermFilterNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
-            $object->setField($data['field']);
+            $object->field = $data['field'];
             unset($data['field']);
         }
         if (\array_key_exists('term', $data)) {
-            $object->setTerm($data['term']);
+            $object->term = $data['term'];
             unset($data['term']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class TermFilterNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['field'] = $data->getField();
-        $dataArray['term'] = $data->getTerm();
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['field'] = $data->field ?? null;
+        $dataArray['term'] = $data->term ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

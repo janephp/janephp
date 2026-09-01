@@ -38,15 +38,15 @@ class ApiMetaNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('page', $data)) {
-            $object->setPage($data['page']);
+            $object->page = $data['page'];
             unset($data['page']);
         }
         if (\array_key_exists('pages', $data)) {
-            $object->setPages($data['pages']);
+            $object->pages = $data['pages'];
             unset($data['pages']);
         }
         if (\array_key_exists('total', $data)) {
-            $object->setTotal($data['total']);
+            $object->total = $data['total'];
             unset($data['total']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class ApiMetaNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('page') && null !== $data->getPage()) {
-            $dataArray['page'] = $data->getPage();
+        if (array_key_exists('page', get_object_vars($data)) && null !== ($data->page ?? null)) {
+            $dataArray['page'] = $data->page ?? null;
         }
-        if ($data->isInitialized('pages') && null !== $data->getPages()) {
-            $dataArray['pages'] = $data->getPages();
+        if (array_key_exists('pages', get_object_vars($data)) && null !== ($data->pages ?? null)) {
+            $dataArray['pages'] = $data->pages ?? null;
         }
-        if ($data->isInitialized('total') && null !== $data->getTotal()) {
-            $dataArray['total'] = $data->getTotal();
+        if (array_key_exists('total', get_object_vars($data)) && null !== ($data->total ?? null)) {
+            $dataArray['total'] = $data->total ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

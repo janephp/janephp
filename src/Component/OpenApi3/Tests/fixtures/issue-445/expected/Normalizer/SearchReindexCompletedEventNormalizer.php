@@ -42,23 +42,23 @@ class SearchReindexCompletedEventNormalizer implements DenormalizerInterface, No
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('searchIndex', $data)) {
-            $object->setSearchIndex($data['searchIndex']);
+            $object->searchIndex = $data['searchIndex'];
             unset($data['searchIndex']);
         }
         if (\array_key_exists('items', $data)) {
-            $object->setItems($data['items']);
+            $object->items = $data['items'];
             unset($data['items']);
         }
         if (\array_key_exists('duration', $data)) {
-            $object->setDuration($data['duration']);
+            $object->duration = $data['duration'];
             unset($data['duration']);
         }
         foreach ($data as $key => $value) {
@@ -71,16 +71,16 @@ class SearchReindexCompletedEventNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('searchIndex') && null !== $data->getSearchIndex()) {
-            $dataArray['searchIndex'] = $data->getSearchIndex();
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('searchIndex', get_object_vars($data)) && null !== ($data->searchIndex ?? null)) {
+            $dataArray['searchIndex'] = $data->searchIndex ?? null;
         }
-        if ($data->isInitialized('items') && null !== $data->getItems()) {
-            $dataArray['items'] = $data->getItems();
+        if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
+            $dataArray['items'] = $data->items ?? null;
         }
-        if ($data->isInitialized('duration') && null !== $data->getDuration()) {
-            $dataArray['duration'] = $data->getDuration();
+        if (array_key_exists('duration', get_object_vars($data)) && null !== ($data->duration ?? null)) {
+            $dataArray['duration'] = $data->duration ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

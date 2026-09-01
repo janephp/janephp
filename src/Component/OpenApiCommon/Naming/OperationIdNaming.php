@@ -23,12 +23,12 @@ class OperationIdNaming implements OperationNamingInterface
 
     public function getFunctionName(OperationGuess $operation): string
     {
-        return $this->getInflector()->camelize($this->slugger->slug((string) $operation->getOperation()->getOperationId()));
+        return $this->getInflector()->camelize($this->slugger->slug((string) ($operation->getOperation()->operationId ?? null)));
     }
 
     public function getEndpointName(OperationGuess $operation): string
     {
-        $operationId = (string) $operation->getOperation()->getOperationId();
+        $operationId = (string) ($operation->getOperation()->operationId ?? null);
         $operationId = $this->slugger->slug($operationId, '-');
 
         return $this->naming->fixReservedClassName($this->getInflector()->classify($operationId));

@@ -38,31 +38,31 @@ class HealthCheckNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
             unset($data['protocol']);
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
             unset($data['port']);
         }
         if (\array_key_exists('path', $data)) {
-            $object->setPath($data['path']);
+            $object->path = $data['path'];
             unset($data['path']);
         }
         if (\array_key_exists('check_interval_seconds', $data)) {
-            $object->setCheckIntervalSeconds($data['check_interval_seconds']);
+            $object->checkIntervalSeconds = $data['check_interval_seconds'];
             unset($data['check_interval_seconds']);
         }
         if (\array_key_exists('response_timeout_seconds', $data)) {
-            $object->setResponseTimeoutSeconds($data['response_timeout_seconds']);
+            $object->responseTimeoutSeconds = $data['response_timeout_seconds'];
             unset($data['response_timeout_seconds']);
         }
         if (\array_key_exists('unhealthy_threshold', $data)) {
-            $object->setUnhealthyThreshold($data['unhealthy_threshold']);
+            $object->unhealthyThreshold = $data['unhealthy_threshold'];
             unset($data['unhealthy_threshold']);
         }
         if (\array_key_exists('healthy_threshold', $data)) {
-            $object->setHealthyThreshold($data['healthy_threshold']);
+            $object->healthyThreshold = $data['healthy_threshold'];
             unset($data['healthy_threshold']);
         }
         foreach ($data as $key => $value) {
@@ -75,26 +75,26 @@ class HealthCheckNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
-        if ($data->isInitialized('path') && null !== $data->getPath()) {
-            $dataArray['path'] = $data->getPath();
+        if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
+            $dataArray['path'] = $data->path ?? null;
         }
-        if ($data->isInitialized('checkIntervalSeconds') && null !== $data->getCheckIntervalSeconds()) {
-            $dataArray['check_interval_seconds'] = $data->getCheckIntervalSeconds();
+        if (array_key_exists('checkIntervalSeconds', get_object_vars($data)) && null !== ($data->checkIntervalSeconds ?? null)) {
+            $dataArray['check_interval_seconds'] = $data->checkIntervalSeconds ?? null;
         }
-        if ($data->isInitialized('responseTimeoutSeconds') && null !== $data->getResponseTimeoutSeconds()) {
-            $dataArray['response_timeout_seconds'] = $data->getResponseTimeoutSeconds();
+        if (array_key_exists('responseTimeoutSeconds', get_object_vars($data)) && null !== ($data->responseTimeoutSeconds ?? null)) {
+            $dataArray['response_timeout_seconds'] = $data->responseTimeoutSeconds ?? null;
         }
-        if ($data->isInitialized('unhealthyThreshold') && null !== $data->getUnhealthyThreshold()) {
-            $dataArray['unhealthy_threshold'] = $data->getUnhealthyThreshold();
+        if (array_key_exists('unhealthyThreshold', get_object_vars($data)) && null !== ($data->unhealthyThreshold ?? null)) {
+            $dataArray['unhealthy_threshold'] = $data->unhealthyThreshold ?? null;
         }
-        if ($data->isInitialized('healthyThreshold') && null !== $data->getHealthyThreshold()) {
-            $dataArray['healthy_threshold'] = $data->getHealthyThreshold();
+        if (array_key_exists('healthyThreshold', get_object_vars($data)) && null !== ($data->healthyThreshold ?? null)) {
+            $dataArray['healthy_threshold'] = $data->healthyThreshold ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

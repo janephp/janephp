@@ -38,43 +38,43 @@ class PeopleSearchSuccessResultDirectorsItemNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('peopleId', $data)) {
-            $object->setPeopleId($data['peopleId']);
+            $object->peopleId = $data['peopleId'];
             unset($data['peopleId']);
         }
         if (\array_key_exists('firstName', $data)) {
-            $object->setFirstName($data['firstName']);
+            $object->firstName = $data['firstName'];
             unset($data['firstName']);
         }
         if (\array_key_exists('lastName', $data)) {
-            $object->setLastName($data['lastName']);
+            $object->lastName = $data['lastName'];
             unset($data['lastName']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($data['country']);
+            $object->country = $data['country'];
             unset($data['country']);
         }
         if (\array_key_exists('company', $data)) {
-            $object->setCompany($this->denormalizer->denormalize($data['company'], \CreditSafe\API\Model\PeopleSearchSuccessResultDirectorsItemCompany::class, 'json', $context));
+            $object->company = $this->denormalizer->denormalize($data['company'], \CreditSafe\API\Model\PeopleSearchSuccessResultDirectorsItemCompany::class, 'json', $context);
             unset($data['company']);
         }
         if (\array_key_exists('address', $data)) {
-            $object->setAddress($this->denormalizer->denormalize($data['address'], \CreditSafe\API\Model\PeopleSearchSuccessResultDirectorsItemAddress::class, 'json', $context));
+            $object->address = $this->denormalizer->denormalize($data['address'], \CreditSafe\API\Model\PeopleSearchSuccessResultDirectorsItemAddress::class, 'json', $context);
             unset($data['address']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('dateOfLatestChange', $data)) {
-            $object->setDateOfLatestChange($data['dateOfLatestChange']);
+            $object->dateOfLatestChange = $data['dateOfLatestChange'];
             unset($data['dateOfLatestChange']);
         }
         if (\array_key_exists('dateOfBirth', $data)) {
-            $object->setDateOfBirth($data['dateOfBirth']);
+            $object->dateOfBirth = $data['dateOfBirth'];
             unset($data['dateOfBirth']);
         }
         if (\array_key_exists('localDirectorNumber', $data)) {
-            $object->setLocalDirectorNumber($data['localDirectorNumber']);
+            $object->localDirectorNumber = $data['localDirectorNumber'];
             unset($data['localDirectorNumber']);
         }
         foreach ($data as $key => $value) {
@@ -87,35 +87,35 @@ class PeopleSearchSuccessResultDirectorsItemNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('peopleId') && null !== $data->getPeopleId()) {
-            $dataArray['peopleId'] = $data->getPeopleId();
+        if (array_key_exists('peopleId', get_object_vars($data)) && null !== ($data->peopleId ?? null)) {
+            $dataArray['peopleId'] = $data->peopleId ?? null;
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $dataArray['firstName'] = $data->getFirstName();
+        if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
+            $dataArray['firstName'] = $data->firstName ?? null;
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
-            $dataArray['lastName'] = $data->getLastName();
+        if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
+            $dataArray['lastName'] = $data->lastName ?? null;
         }
-        if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $data->getCountry();
+        if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
+            $dataArray['country'] = $data->country ?? null;
         }
-        if ($data->isInitialized('company') && null !== $data->getCompany()) {
-            $dataArray['company'] = $data->getCompany() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCompany(), 'json', $context));
+        if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
+            $dataArray['company'] = ($data->company ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company ?? null, 'json', $context));
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $data->getAddress() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAddress(), 'json', $context));
+        if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
+            $dataArray['address'] = ($data->address ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('dateOfLatestChange') && null !== $data->getDateOfLatestChange()) {
-            $dataArray['dateOfLatestChange'] = $data->getDateOfLatestChange();
+        if (array_key_exists('dateOfLatestChange', get_object_vars($data)) && null !== ($data->dateOfLatestChange ?? null)) {
+            $dataArray['dateOfLatestChange'] = $data->dateOfLatestChange ?? null;
         }
-        if ($data->isInitialized('dateOfBirth') && null !== $data->getDateOfBirth()) {
-            $dataArray['dateOfBirth'] = $data->getDateOfBirth();
+        if (array_key_exists('dateOfBirth', get_object_vars($data)) && null !== ($data->dateOfBirth ?? null)) {
+            $dataArray['dateOfBirth'] = $data->dateOfBirth ?? null;
         }
-        if ($data->isInitialized('localDirectorNumber') && null !== $data->getLocalDirectorNumber()) {
-            $dataArray['localDirectorNumber'] = $data->getLocalDirectorNumber();
+        if (array_key_exists('localDirectorNumber', get_object_vars($data)) && null !== ($data->localDirectorNumber ?? null)) {
+            $dataArray['localDirectorNumber'] = $data->localDirectorNumber ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

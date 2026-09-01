@@ -41,39 +41,39 @@ class AddonsResourceNormalizer implements DenormalizerInterface, NormalizerInter
             $data['has_config'] = (bool) $data['has_config'];
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
             unset($data['state']);
         }
         if (\array_key_exists('app_name', $data)) {
-            $object->setAppName($data['app_name']);
+            $object->appName = $data['app_name'];
             unset($data['app_name']);
         }
         if (\array_key_exists('app_slug', $data)) {
-            $object->setAppSlug($data['app_slug']);
+            $object->appSlug = $data['app_slug'];
             unset($data['app_slug']);
         }
         if (\array_key_exists('plan_name', $data)) {
-            $object->setPlanName($data['plan_name']);
+            $object->planName = $data['plan_name'];
             unset($data['plan_name']);
         }
         if (\array_key_exists('plan_slug', $data)) {
-            $object->setPlanSlug($data['plan_slug']);
+            $object->planSlug = $data['plan_slug'];
             unset($data['plan_slug']);
         }
         if (\array_key_exists('plan_price_per_month', $data)) {
-            $object->setPlanPricePerMonth($data['plan_price_per_month']);
+            $object->planPricePerMonth = $data['plan_price_per_month'];
             unset($data['plan_price_per_month']);
         }
         if (\array_key_exists('has_config', $data)) {
-            $object->setHasConfig($data['has_config']);
+            $object->hasConfig = $data['has_config'];
             unset($data['has_config']);
         }
         if (\array_key_exists('metadata', $data)) {
@@ -81,15 +81,15 @@ class AddonsResourceNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['metadata'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AddonsResourceMetadata::class, 'json', $context);
             }
-            $object->setMetadata($values);
+            $object->metadata = $values;
             unset($data['metadata']);
         }
         if (\array_key_exists('sso_url', $data)) {
-            $object->setSsoUrl($data['sso_url']);
+            $object->ssoUrl = $data['sso_url'];
             unset($data['sso_url']);
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
             unset($data['message']);
         }
         foreach ($data as $key => $value_1) {
@@ -102,33 +102,33 @@ class AddonsResourceNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['uuid'] = $data->getUuid();
-        $dataArray['name'] = $data->getName();
-        $dataArray['state'] = $data->getState();
-        if ($data->isInitialized('appName') && null !== $data->getAppName()) {
-            $dataArray['app_name'] = $data->getAppName();
+        $dataArray['uuid'] = $data->uuid ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['state'] = $data->state ?? null;
+        if (array_key_exists('appName', get_object_vars($data)) && null !== ($data->appName ?? null)) {
+            $dataArray['app_name'] = $data->appName ?? null;
         }
-        $dataArray['app_slug'] = $data->getAppSlug();
-        if ($data->isInitialized('planName') && null !== $data->getPlanName()) {
-            $dataArray['plan_name'] = $data->getPlanName();
+        $dataArray['app_slug'] = $data->appSlug ?? null;
+        if (array_key_exists('planName', get_object_vars($data)) && null !== ($data->planName ?? null)) {
+            $dataArray['plan_name'] = $data->planName ?? null;
         }
-        $dataArray['plan_slug'] = $data->getPlanSlug();
-        if ($data->isInitialized('planPricePerMonth') && null !== $data->getPlanPricePerMonth()) {
-            $dataArray['plan_price_per_month'] = $data->getPlanPricePerMonth();
+        $dataArray['plan_slug'] = $data->planSlug ?? null;
+        if (array_key_exists('planPricePerMonth', get_object_vars($data)) && null !== ($data->planPricePerMonth ?? null)) {
+            $dataArray['plan_price_per_month'] = $data->planPricePerMonth ?? null;
         }
-        $dataArray['has_config'] = $data->getHasConfig();
-        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+        $dataArray['has_config'] = $data->hasConfig ?? null;
+        if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values = [];
-            foreach ($data->getMetadata() as $value) {
+            foreach ($data->metadata ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['metadata'] = $values;
         }
-        if ($data->isInitialized('ssoUrl') && null !== $data->getSsoUrl()) {
-            $dataArray['sso_url'] = $data->getSsoUrl();
+        if (array_key_exists('ssoUrl', get_object_vars($data)) && null !== ($data->ssoUrl ?? null)) {
+            $dataArray['sso_url'] = $data->ssoUrl ?? null;
         }
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['message'] = $data->message ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

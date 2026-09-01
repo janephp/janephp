@@ -44,11 +44,11 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             $data['enableTracing'] = (bool) $data['enableTracing'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
             unset($data['id']);
         }
         if (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] !== null) {
@@ -56,15 +56,15 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             if (is_array($data['triggerPoint']) and \array_key_exists('executionScope', $data['triggerPoint']) and \array_key_exists('documentType', $data['triggerPoint']) and \array_key_exists('action', $data['triggerPoint'])) {
                 $value = $this->denormalizer->denormalize($data['triggerPoint'], \PicturePark\API\Model\BusinessRuleTriggerPoint::class, 'json', $context);
             }
-            $object->setTriggerPoint($value);
+            $object->triggerPoint = $value;
             unset($data['triggerPoint']);
         }
         elseif (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] === null) {
-            $object->setTriggerPoint(null);
+            $object->triggerPoint = null;
             unset($data['triggerPoint']);
         }
         if (\array_key_exists('isEnabled', $data)) {
-            $object->setIsEnabled($data['isEnabled']);
+            $object->isEnabled = $data['isEnabled'];
             unset($data['isEnabled']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
@@ -76,11 +76,11 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
                 }
                 $value_1 = $values;
             }
-            $object->setNames($value_1);
+            $object->names = $value_1;
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
             unset($data['names']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
@@ -92,27 +92,27 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
                 }
                 $value_3 = $values_1;
             }
-            $object->setDescription($value_3);
+            $object->description = $value_3;
             unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
-            $object->setDescription(null);
+            $object->description = null;
             unset($data['description']);
         }
         if (\array_key_exists('enableTracing', $data)) {
-            $object->setEnableTracing($data['enableTracing']);
+            $object->enableTracing = $data['enableTracing'];
             unset($data['enableTracing']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('script', $data) && $data['script'] !== null) {
-            $object->setScript($data['script']);
+            $object->script = $data['script'];
             unset($data['script']);
         }
         elseif (\array_key_exists('script', $data) && $data['script'] === null) {
-            $object->setScript(null);
+            $object->script = null;
             unset($data['script']);
         }
         foreach ($data as $key_2 => $value_5) {
@@ -125,43 +125,43 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('triggerPoint') && null !== $data->getTriggerPoint()) {
-            $value = $data->getTriggerPoint();
-            if (is_object($data->getTriggerPoint())) {
-                $value = $data->getTriggerPoint() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getTriggerPoint(), 'json', $context));
+        if (array_key_exists('triggerPoint', get_object_vars($data)) && null !== ($data->triggerPoint ?? null)) {
+            $value = $data->triggerPoint ?? null;
+            if (is_object($data->triggerPoint ?? null)) {
+                $value = ($data->triggerPoint ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->triggerPoint ?? null, 'json', $context));
             }
             $dataArray['triggerPoint'] = $value;
         }
-        $dataArray['isEnabled'] = $data->getIsEnabled();
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value_1 = $data->getNames();
-            if (is_object($data->getNames())) {
+        $dataArray['isEnabled'] = $data->isEnabled ?? null;
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value_1 = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_2) {
+                foreach ($data->names ?? null as $key => $value_2) {
                     $values[$key] = $value_2;
                 }
                 $value_1 = $values;
             }
             $dataArray['names'] = $value_1;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $value_3 = $data->getDescription();
-            if (is_object($data->getDescription())) {
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $value_3 = $data->description ?? null;
+            if (is_object($data->description ?? null)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getDescription() as $key_1 => $value_4) {
+                foreach ($data->description ?? null as $key_1 => $value_4) {
                     $values_1[$key_1] = $value_4;
                 }
                 $value_3 = $values_1;
             }
             $dataArray['description'] = $value_3;
         }
-        $dataArray['enableTracing'] = $data->getEnableTracing();
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('script') && null !== $data->getScript()) {
-            $dataArray['script'] = $data->getScript();
+        $dataArray['enableTracing'] = $data->enableTracing ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('script', get_object_vars($data)) && null !== ($data->script ?? null)) {
+            $dataArray['script'] = $data->script ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_5) {
             if (preg_match('/.*/', (string) $key_2)) {

@@ -38,19 +38,19 @@ class KafkaSchemaVerboseNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('schema_id', $data)) {
-            $object->setSchemaId($data['schema_id']);
+            $object->schemaId = $data['schema_id'];
             unset($data['schema_id']);
         }
         if (\array_key_exists('subject_name', $data)) {
-            $object->setSubjectName($data['subject_name']);
+            $object->subjectName = $data['subject_name'];
             unset($data['subject_name']);
         }
         if (\array_key_exists('schema_type', $data)) {
-            $object->setSchemaType($data['schema_type']);
+            $object->schemaType = $data['schema_type'];
             unset($data['schema_type']);
         }
         if (\array_key_exists('schema', $data)) {
-            $object->setSchema($data['schema']);
+            $object->schema = $data['schema'];
             unset($data['schema']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class KafkaSchemaVerboseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
-            $dataArray['schema_id'] = $data->getSchemaId();
+        if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
+            $dataArray['schema_id'] = $data->schemaId ?? null;
         }
-        if ($data->isInitialized('subjectName') && null !== $data->getSubjectName()) {
-            $dataArray['subject_name'] = $data->getSubjectName();
+        if (array_key_exists('subjectName', get_object_vars($data)) && null !== ($data->subjectName ?? null)) {
+            $dataArray['subject_name'] = $data->subjectName ?? null;
         }
-        if ($data->isInitialized('schemaType') && null !== $data->getSchemaType()) {
-            $dataArray['schema_type'] = $data->getSchemaType();
+        if (array_key_exists('schemaType', get_object_vars($data)) && null !== ($data->schemaType ?? null)) {
+            $dataArray['schema_type'] = $data->schemaType ?? null;
         }
-        if ($data->isInitialized('schema') && null !== $data->getSchema()) {
-            $dataArray['schema'] = $data->getSchema();
+        if (array_key_exists('schema', get_object_vars($data)) && null !== ($data->schema ?? null)) {
+            $dataArray['schema'] = $data->schema ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

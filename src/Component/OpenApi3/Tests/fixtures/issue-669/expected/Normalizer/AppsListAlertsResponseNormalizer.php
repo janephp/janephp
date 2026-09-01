@@ -42,7 +42,7 @@ class AppsListAlertsResponseNormalizer implements DenormalizerInterface, Normali
             foreach ($data['alerts'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppAlert::class, 'json', $context);
             }
-            $object->setAlerts($values);
+            $object->alerts = $values;
             unset($data['alerts']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class AppsListAlertsResponseNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('alerts') && null !== $data->getAlerts()) {
+        if (array_key_exists('alerts', get_object_vars($data)) && null !== ($data->alerts ?? null)) {
             $values = [];
-            foreach ($data->getAlerts() as $value) {
+            foreach ($data->alerts ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['alerts'] = $values;

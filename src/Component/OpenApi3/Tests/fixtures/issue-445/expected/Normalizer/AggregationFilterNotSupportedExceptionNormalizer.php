@@ -38,79 +38,79 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceLevel', $data)) {
-            $object->setTraceLevel($data['traceLevel']);
+            $object->traceLevel = $data['traceLevel'];
             unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
-            $object->setTraceId($data['traceId']);
+            $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
-            $object->setTraceId(null);
+            $object->traceId = null;
             unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
-            $object->setTraceJobId($data['traceJobId']);
+            $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
-            $object->setTraceJobId(null);
+            $object->traceJobId = null;
             unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
-            $object->setHttpStatusCode($data['httpStatusCode']);
+            $object->httpStatusCode = $data['httpStatusCode'];
             unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
-            $object->setExceptionMessage($data['exceptionMessage']);
+            $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
-            $object->setExceptionMessage(null);
+            $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
-            $object->setCustomerId($data['customerId']);
+            $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
-            $object->setCustomerId(null);
+            $object->customerId = null;
             unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
-            $object->setCustomerAlias($data['customerAlias']);
+            $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
-            $object->setCustomerAlias(null);
+            $object->customerAlias = null;
             unset($data['customerAlias']);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
-            $object->setUserId($data['userId']);
+            $object->userId = $data['userId'];
             unset($data['userId']);
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
-            $object->setUserId(null);
+            $object->userId = null;
             unset($data['userId']);
         }
         if (\array_key_exists('aggregationName', $data) && $data['aggregationName'] !== null) {
-            $object->setAggregationName($data['aggregationName']);
+            $object->aggregationName = $data['aggregationName'];
             unset($data['aggregationName']);
         }
         elseif (\array_key_exists('aggregationName', $data) && $data['aggregationName'] === null) {
-            $object->setAggregationName(null);
+            $object->aggregationName = null;
             unset($data['aggregationName']);
         }
         if (\array_key_exists('notSupportedFilterType', $data) && $data['notSupportedFilterType'] !== null) {
-            $object->setNotSupportedFilterType($data['notSupportedFilterType']);
+            $object->notSupportedFilterType = $data['notSupportedFilterType'];
             unset($data['notSupportedFilterType']);
         }
         elseif (\array_key_exists('notSupportedFilterType', $data) && $data['notSupportedFilterType'] === null) {
-            $object->setNotSupportedFilterType(null);
+            $object->notSupportedFilterType = null;
             unset($data['notSupportedFilterType']);
         }
         if (\array_key_exists('supportedFilterTypes', $data) && $data['supportedFilterTypes'] !== null) {
@@ -118,11 +118,11 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
             foreach ($data['supportedFilterTypes'] as $value) {
                 $values[] = $value;
             }
-            $object->setSupportedFilterTypes($values);
+            $object->supportedFilterTypes = $values;
             unset($data['supportedFilterTypes']);
         }
         elseif (\array_key_exists('supportedFilterTypes', $data) && $data['supportedFilterTypes'] === null) {
-            $object->setSupportedFilterTypes(null);
+            $object->supportedFilterTypes = null;
             unset($data['supportedFilterTypes']);
         }
         foreach ($data as $key => $value_1) {
@@ -135,40 +135,40 @@ class AggregationFilterNotSupportedExceptionNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
-            $dataArray['traceLevel'] = $data->getTraceLevel();
+        if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
+            $dataArray['traceLevel'] = $data->traceLevel ?? null;
         }
-        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
-            $dataArray['traceId'] = $data->getTraceId();
+        if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
+            $dataArray['traceId'] = $data->traceId ?? null;
         }
-        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
-            $dataArray['traceJobId'] = $data->getTraceJobId();
+        if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
+            $dataArray['traceJobId'] = $data->traceJobId ?? null;
         }
-        if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
-            $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
+        if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
+            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
         }
-        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
-            $dataArray['exceptionMessage'] = $data->getExceptionMessage();
+        if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
+            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
-            $dataArray['customerId'] = $data->getCustomerId();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('customerId', get_object_vars($data)) && null !== ($data->customerId ?? null)) {
+            $dataArray['customerId'] = $data->customerId ?? null;
         }
-        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
-            $dataArray['customerAlias'] = $data->getCustomerAlias();
+        if (array_key_exists('customerAlias', get_object_vars($data)) && null !== ($data->customerAlias ?? null)) {
+            $dataArray['customerAlias'] = $data->customerAlias ?? null;
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['userId'] = $data->getUserId();
+        if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['userId'] = $data->userId ?? null;
         }
-        if ($data->isInitialized('aggregationName') && null !== $data->getAggregationName()) {
-            $dataArray['aggregationName'] = $data->getAggregationName();
+        if (array_key_exists('aggregationName', get_object_vars($data)) && null !== ($data->aggregationName ?? null)) {
+            $dataArray['aggregationName'] = $data->aggregationName ?? null;
         }
-        if ($data->isInitialized('notSupportedFilterType') && null !== $data->getNotSupportedFilterType()) {
-            $dataArray['notSupportedFilterType'] = $data->getNotSupportedFilterType();
+        if (array_key_exists('notSupportedFilterType', get_object_vars($data)) && null !== ($data->notSupportedFilterType ?? null)) {
+            $dataArray['notSupportedFilterType'] = $data->notSupportedFilterType ?? null;
         }
-        if ($data->isInitialized('supportedFilterTypes') && null !== $data->getSupportedFilterTypes()) {
+        if (array_key_exists('supportedFilterTypes', get_object_vars($data)) && null !== ($data->supportedFilterTypes ?? null)) {
             $values = [];
-            foreach ($data->getSupportedFilterTypes() as $value) {
+            foreach ($data->supportedFilterTypes ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['supportedFilterTypes'] = $values;

@@ -42,11 +42,11 @@ class ApiOpenAIAPIKeyInfoNormalizer implements DenormalizerInterface, Normalizer
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('created_by', $data)) {
-            $object->setCreatedBy($data['created_by']);
+            $object->createdBy = $data['created_by'];
             unset($data['created_by']);
         }
         if (\array_key_exists('deleted_at', $data)) {
@@ -54,7 +54,7 @@ class ApiOpenAIAPIKeyInfoNormalizer implements DenormalizerInterface, Normalizer
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['deleted_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setDeletedAt($date_1);
+            $object->deletedAt = $date_1;
             unset($data['deleted_at']);
         }
         if (\array_key_exists('models', $data)) {
@@ -62,11 +62,11 @@ class ApiOpenAIAPIKeyInfoNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['models'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiModel::class, 'json', $context);
             }
-            $object->setModels($values);
+            $object->models = $values;
             unset($data['models']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -74,11 +74,11 @@ class ApiOpenAIAPIKeyInfoNormalizer implements DenormalizerInterface, Normalizer
             if (false === $date_2) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_2);
+            $object->updatedAt = $date_2;
             unset($data['updated_at']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         foreach ($data as $key => $value_1) {
@@ -91,30 +91,30 @@ class ApiOpenAIAPIKeyInfoNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('createdBy') && null !== $data->getCreatedBy()) {
-            $dataArray['created_by'] = $data->getCreatedBy();
+        if (array_key_exists('createdBy', get_object_vars($data)) && null !== ($data->createdBy ?? null)) {
+            $dataArray['created_by'] = $data->createdBy ?? null;
         }
-        if ($data->isInitialized('deletedAt') && null !== $data->getDeletedAt()) {
-            $dataArray['deleted_at'] = $data->getDeletedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('deletedAt', get_object_vars($data)) && null !== ($data->deletedAt ?? null)) {
+            $dataArray['deleted_at'] = ($data->deletedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('models') && null !== $data->getModels()) {
+        if (array_key_exists('models', get_object_vars($data)) && null !== ($data->models ?? null)) {
             $values = [];
-            foreach ($data->getModels() as $value) {
+            foreach ($data->models ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['models'] = $values;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

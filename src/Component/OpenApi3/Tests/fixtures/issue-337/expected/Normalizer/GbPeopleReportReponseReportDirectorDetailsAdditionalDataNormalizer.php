@@ -44,11 +44,11 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalDataNormalizer impleme
             $data['disqualifiedException'] = (bool) $data['disqualifiedException'];
         }
         if (\array_key_exists('disqualified', $data)) {
-            $object->setDisqualified($data['disqualified']);
+            $object->disqualified = $data['disqualified'];
             unset($data['disqualified']);
         }
         if (\array_key_exists('disqualifiedException', $data)) {
-            $object->setDisqualifiedException($data['disqualifiedException']);
+            $object->disqualifiedException = $data['disqualifiedException'];
             unset($data['disqualifiedException']);
         }
         foreach ($data as $key => $value) {
@@ -61,11 +61,11 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalDataNormalizer impleme
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('disqualified') && null !== $data->getDisqualified()) {
-            $dataArray['disqualified'] = $data->getDisqualified();
+        if (array_key_exists('disqualified', get_object_vars($data)) && null !== ($data->disqualified ?? null)) {
+            $dataArray['disqualified'] = $data->disqualified ?? null;
         }
-        if ($data->isInitialized('disqualifiedException') && null !== $data->getDisqualifiedException()) {
-            $dataArray['disqualifiedException'] = $data->getDisqualifiedException();
+        if (array_key_exists('disqualifiedException', get_object_vars($data)) && null !== ($data->disqualifiedException ?? null)) {
+            $dataArray['disqualifiedException'] = $data->disqualifiedException ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

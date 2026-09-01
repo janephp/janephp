@@ -41,7 +41,7 @@ class ContainerIconAnyOfAnyOfNormalizer implements DenormalizerInterface, Normal
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ContainerIconAnyOfAnyOfConstraint());
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
             unset($data['url']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class ContainerIconAnyOfAnyOfNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('url') && null !== $data->getUrl()) {
-            $dataArray['url'] = $data->getUrl();
+        if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
+            $dataArray['url'] = $data->url ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

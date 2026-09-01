@@ -41,26 +41,26 @@ class EndpointSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
             $this->validate($data, new \Docker\Api\Validator\EndpointSpecConstraint());
         }
         if (\array_key_exists('Mode', $data)) {
-            $object->setMode($data['Mode']);
+            $object->mode = $data['Mode'];
         }
         if (\array_key_exists('Ports', $data)) {
             $values = [];
             foreach ($data['Ports'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\EndpointPortConfig::class, 'json', $context);
             }
-            $object->setPorts($values);
+            $object->ports = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mode') && null !== $data->getMode()) {
-            $dataArray['Mode'] = $data->getMode();
+        if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
+            $dataArray['Mode'] = $data->mode ?? null;
         }
-        if ($data->isInitialized('ports') && null !== $data->getPorts()) {
+        if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
             $values = [];
-            foreach ($data->getPorts() as $value) {
+            foreach ($data->ports ?? null as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Ports'] = $values;

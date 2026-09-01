@@ -80,59 +80,59 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
             $data['retainedProfit'] = (float) $data['retainedProfit'];
         }
         if (\array_key_exists('turnover', $data)) {
-            $object->setTurnover($data['turnover']);
+            $object->turnover = $data['turnover'];
             unset($data['turnover']);
         }
         if (\array_key_exists('costOfSales', $data)) {
-            $object->setCostOfSales($data['costOfSales']);
+            $object->costOfSales = $data['costOfSales'];
             unset($data['costOfSales']);
         }
         if (\array_key_exists('grossProfit', $data)) {
-            $object->setGrossProfit($data['grossProfit']);
+            $object->grossProfit = $data['grossProfit'];
             unset($data['grossProfit']);
         }
         if (\array_key_exists('depreciation', $data)) {
-            $object->setDepreciation($data['depreciation']);
+            $object->depreciation = $data['depreciation'];
             unset($data['depreciation']);
         }
         if (\array_key_exists('auditFees', $data)) {
-            $object->setAuditFees($data['auditFees']);
+            $object->auditFees = $data['auditFees'];
             unset($data['auditFees']);
         }
         if (\array_key_exists('wagesAndSalaries', $data)) {
-            $object->setWagesAndSalaries($data['wagesAndSalaries']);
+            $object->wagesAndSalaries = $data['wagesAndSalaries'];
             unset($data['wagesAndSalaries']);
         }
         if (\array_key_exists('directorsRemuneration', $data)) {
-            $object->setDirectorsRemuneration($data['directorsRemuneration']);
+            $object->directorsRemuneration = $data['directorsRemuneration'];
             unset($data['directorsRemuneration']);
         }
         if (\array_key_exists('operatingProfit', $data)) {
-            $object->setOperatingProfit($data['operatingProfit']);
+            $object->operatingProfit = $data['operatingProfit'];
             unset($data['operatingProfit']);
         }
         if (\array_key_exists('interestExpense', $data)) {
-            $object->setInterestExpense($data['interestExpense']);
+            $object->interestExpense = $data['interestExpense'];
             unset($data['interestExpense']);
         }
         if (\array_key_exists('profitBeforeTax', $data)) {
-            $object->setProfitBeforeTax($data['profitBeforeTax']);
+            $object->profitBeforeTax = $data['profitBeforeTax'];
             unset($data['profitBeforeTax']);
         }
         if (\array_key_exists('taxation', $data)) {
-            $object->setTaxation($data['taxation']);
+            $object->taxation = $data['taxation'];
             unset($data['taxation']);
         }
         if (\array_key_exists('profitAfterTax', $data)) {
-            $object->setProfitAfterTax($data['profitAfterTax']);
+            $object->profitAfterTax = $data['profitAfterTax'];
             unset($data['profitAfterTax']);
         }
         if (\array_key_exists('dividends', $data)) {
-            $object->setDividends($data['dividends']);
+            $object->dividends = $data['dividends'];
             unset($data['dividends']);
         }
         if (\array_key_exists('retainedProfit', $data)) {
-            $object->setRetainedProfit($data['retainedProfit']);
+            $object->retainedProfit = $data['retainedProfit'];
             unset($data['retainedProfit']);
         }
         foreach ($data as $key => $value) {
@@ -145,47 +145,47 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('turnover') && null !== $data->getTurnover()) {
-            $dataArray['turnover'] = $data->getTurnover();
+        if (array_key_exists('turnover', get_object_vars($data)) && null !== ($data->turnover ?? null)) {
+            $dataArray['turnover'] = $data->turnover ?? null;
         }
-        if ($data->isInitialized('costOfSales') && null !== $data->getCostOfSales()) {
-            $dataArray['costOfSales'] = $data->getCostOfSales();
+        if (array_key_exists('costOfSales', get_object_vars($data)) && null !== ($data->costOfSales ?? null)) {
+            $dataArray['costOfSales'] = $data->costOfSales ?? null;
         }
-        if ($data->isInitialized('grossProfit') && null !== $data->getGrossProfit()) {
-            $dataArray['grossProfit'] = $data->getGrossProfit();
+        if (array_key_exists('grossProfit', get_object_vars($data)) && null !== ($data->grossProfit ?? null)) {
+            $dataArray['grossProfit'] = $data->grossProfit ?? null;
         }
-        if ($data->isInitialized('depreciation') && null !== $data->getDepreciation()) {
-            $dataArray['depreciation'] = $data->getDepreciation();
+        if (array_key_exists('depreciation', get_object_vars($data)) && null !== ($data->depreciation ?? null)) {
+            $dataArray['depreciation'] = $data->depreciation ?? null;
         }
-        if ($data->isInitialized('auditFees') && null !== $data->getAuditFees()) {
-            $dataArray['auditFees'] = $data->getAuditFees();
+        if (array_key_exists('auditFees', get_object_vars($data)) && null !== ($data->auditFees ?? null)) {
+            $dataArray['auditFees'] = $data->auditFees ?? null;
         }
-        if ($data->isInitialized('wagesAndSalaries') && null !== $data->getWagesAndSalaries()) {
-            $dataArray['wagesAndSalaries'] = $data->getWagesAndSalaries();
+        if (array_key_exists('wagesAndSalaries', get_object_vars($data)) && null !== ($data->wagesAndSalaries ?? null)) {
+            $dataArray['wagesAndSalaries'] = $data->wagesAndSalaries ?? null;
         }
-        if ($data->isInitialized('directorsRemuneration') && null !== $data->getDirectorsRemuneration()) {
-            $dataArray['directorsRemuneration'] = $data->getDirectorsRemuneration();
+        if (array_key_exists('directorsRemuneration', get_object_vars($data)) && null !== ($data->directorsRemuneration ?? null)) {
+            $dataArray['directorsRemuneration'] = $data->directorsRemuneration ?? null;
         }
-        if ($data->isInitialized('operatingProfit') && null !== $data->getOperatingProfit()) {
-            $dataArray['operatingProfit'] = $data->getOperatingProfit();
+        if (array_key_exists('operatingProfit', get_object_vars($data)) && null !== ($data->operatingProfit ?? null)) {
+            $dataArray['operatingProfit'] = $data->operatingProfit ?? null;
         }
-        if ($data->isInitialized('interestExpense') && null !== $data->getInterestExpense()) {
-            $dataArray['interestExpense'] = $data->getInterestExpense();
+        if (array_key_exists('interestExpense', get_object_vars($data)) && null !== ($data->interestExpense ?? null)) {
+            $dataArray['interestExpense'] = $data->interestExpense ?? null;
         }
-        if ($data->isInitialized('profitBeforeTax') && null !== $data->getProfitBeforeTax()) {
-            $dataArray['profitBeforeTax'] = $data->getProfitBeforeTax();
+        if (array_key_exists('profitBeforeTax', get_object_vars($data)) && null !== ($data->profitBeforeTax ?? null)) {
+            $dataArray['profitBeforeTax'] = $data->profitBeforeTax ?? null;
         }
-        if ($data->isInitialized('taxation') && null !== $data->getTaxation()) {
-            $dataArray['taxation'] = $data->getTaxation();
+        if (array_key_exists('taxation', get_object_vars($data)) && null !== ($data->taxation ?? null)) {
+            $dataArray['taxation'] = $data->taxation ?? null;
         }
-        if ($data->isInitialized('profitAfterTax') && null !== $data->getProfitAfterTax()) {
-            $dataArray['profitAfterTax'] = $data->getProfitAfterTax();
+        if (array_key_exists('profitAfterTax', get_object_vars($data)) && null !== ($data->profitAfterTax ?? null)) {
+            $dataArray['profitAfterTax'] = $data->profitAfterTax ?? null;
         }
-        if ($data->isInitialized('dividends') && null !== $data->getDividends()) {
-            $dataArray['dividends'] = $data->getDividends();
+        if (array_key_exists('dividends', get_object_vars($data)) && null !== ($data->dividends ?? null)) {
+            $dataArray['dividends'] = $data->dividends ?? null;
         }
-        if ($data->isInitialized('retainedProfit') && null !== $data->getRetainedProfit()) {
-            $dataArray['retainedProfit'] = $data->getRetainedProfit();
+        if (array_key_exists('retainedProfit', get_object_vars($data)) && null !== ($data->retainedProfit ?? null)) {
+            $dataArray['retainedProfit'] = $data->retainedProfit ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

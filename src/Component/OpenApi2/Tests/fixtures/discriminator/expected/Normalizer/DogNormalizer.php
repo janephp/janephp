@@ -38,22 +38,22 @@ class DogNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('petType', $data)) {
-            $object->setPetType($data['petType']);
+            $object->petType = $data['petType'];
         }
         if (\array_key_exists('packSize', $data)) {
-            $object->setPackSize($data['packSize']);
+            $object->packSize = $data['packSize'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['petType'] = $data->getPetType();
-        $dataArray['packSize'] = $data->getPackSize();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['petType'] = $data->petType ?? null;
+        $dataArray['packSize'] = $data->packSize ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

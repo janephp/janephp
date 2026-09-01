@@ -38,11 +38,11 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
-            $object->setField($data['field']);
+            $object->field = $data['field'];
             unset($data['field']);
         }
         if (\array_key_exists('topLeft', $data)) {
@@ -50,7 +50,7 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
             if (is_array($data['topLeft'])) {
                 $value = $this->denormalizer->denormalize($data['topLeft'], \PicturePark\API\Model\GeoLocation::class, 'json', $context);
             }
-            $object->setTopLeft($value);
+            $object->topLeft = $value;
             unset($data['topLeft']);
         }
         if (\array_key_exists('bottomRight', $data)) {
@@ -58,7 +58,7 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
             if (is_array($data['bottomRight'])) {
                 $value_1 = $this->denormalizer->denormalize($data['bottomRight'], \PicturePark\API\Model\GeoLocation::class, 'json', $context);
             }
-            $object->setBottomRight($value_1);
+            $object->bottomRight = $value_1;
             unset($data['bottomRight']);
         }
         foreach ($data as $key => $value_2) {
@@ -71,16 +71,16 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['field'] = $data->getField();
-        $value = $data->getTopLeft();
-        if (is_object($data->getTopLeft())) {
-            $value = $data->getTopLeft() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getTopLeft(), 'json', $context));
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['field'] = $data->field ?? null;
+        $value = $data->topLeft ?? null;
+        if (is_object($data->topLeft ?? null)) {
+            $value = ($data->topLeft ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->topLeft ?? null, 'json', $context));
         }
         $dataArray['topLeft'] = $value;
-        $value_1 = $data->getBottomRight();
-        if (is_object($data->getBottomRight())) {
-            $value_1 = $data->getBottomRight() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getBottomRight(), 'json', $context));
+        $value_1 = $data->bottomRight ?? null;
+        if (is_object($data->bottomRight ?? null)) {
+            $value_1 = ($data->bottomRight ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->bottomRight ?? null, 'json', $context));
         }
         $dataArray['bottomRight'] = $value_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

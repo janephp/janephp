@@ -22,8 +22,8 @@ class BinaryStringFormatGuesser implements GuesserInterface, TypeGuesserInterfac
         $class = $this->getSchemaClass();
 
         return ($object instanceof $class)
-            && 'string' === $object->getType()
-            && 'binary' === $object->getFormat()
+            && 'string' === ($object->type ?? null)
+            && 'binary' === ($object->format ?? null)
         ;
     }
 

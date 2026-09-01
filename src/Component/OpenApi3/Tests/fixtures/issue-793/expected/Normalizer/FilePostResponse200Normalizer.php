@@ -41,7 +41,7 @@ class FilePostResponse200Normalizer implements DenormalizerInterface, Normalizer
             $this->validate($data, new \Jane\Component\OpenApi3\Tests\ExpectedIssue793\Validator\FilePostResponse200Constraint());
         }
         if (\array_key_exists('status_code', $data)) {
-            $object->setStatusCode($data['status_code']);
+            $object->statusCode = $data['status_code'];
             unset($data['status_code']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class FilePostResponse200Normalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('statusCode') && null !== $data->getStatusCode()) {
-            $dataArray['status_code'] = $data->getStatusCode();
+        if (array_key_exists('statusCode', get_object_vars($data)) && null !== ($data->statusCode ?? null)) {
+            $dataArray['status_code'] = $data->statusCode ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

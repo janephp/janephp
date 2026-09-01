@@ -38,7 +38,7 @@ class SupportedDropletBackupPolicyNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('possible_window_starts', $data)) {
@@ -46,15 +46,15 @@ class SupportedDropletBackupPolicyNormalizer implements DenormalizerInterface, N
             foreach ($data['possible_window_starts'] as $value) {
                 $values[] = $value;
             }
-            $object->setPossibleWindowStarts($values);
+            $object->possibleWindowStarts = $values;
             unset($data['possible_window_starts']);
         }
         if (\array_key_exists('window_length_hours', $data)) {
-            $object->setWindowLengthHours($data['window_length_hours']);
+            $object->windowLengthHours = $data['window_length_hours'];
             unset($data['window_length_hours']);
         }
         if (\array_key_exists('retention_period_days', $data)) {
-            $object->setRetentionPeriodDays($data['retention_period_days']);
+            $object->retentionPeriodDays = $data['retention_period_days'];
             unset($data['retention_period_days']);
         }
         if (\array_key_exists('possible_days', $data)) {
@@ -62,7 +62,7 @@ class SupportedDropletBackupPolicyNormalizer implements DenormalizerInterface, N
             foreach ($data['possible_days'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setPossibleDays($values_1);
+            $object->possibleDays = $values_1;
             unset($data['possible_days']);
         }
         foreach ($data as $key => $value_2) {
@@ -75,25 +75,25 @@ class SupportedDropletBackupPolicyNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('possibleWindowStarts') && null !== $data->getPossibleWindowStarts()) {
+        if (array_key_exists('possibleWindowStarts', get_object_vars($data)) && null !== ($data->possibleWindowStarts ?? null)) {
             $values = [];
-            foreach ($data->getPossibleWindowStarts() as $value) {
+            foreach ($data->possibleWindowStarts ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['possible_window_starts'] = $values;
         }
-        if ($data->isInitialized('windowLengthHours') && null !== $data->getWindowLengthHours()) {
-            $dataArray['window_length_hours'] = $data->getWindowLengthHours();
+        if (array_key_exists('windowLengthHours', get_object_vars($data)) && null !== ($data->windowLengthHours ?? null)) {
+            $dataArray['window_length_hours'] = $data->windowLengthHours ?? null;
         }
-        if ($data->isInitialized('retentionPeriodDays') && null !== $data->getRetentionPeriodDays()) {
-            $dataArray['retention_period_days'] = $data->getRetentionPeriodDays();
+        if (array_key_exists('retentionPeriodDays', get_object_vars($data)) && null !== ($data->retentionPeriodDays ?? null)) {
+            $dataArray['retention_period_days'] = $data->retentionPeriodDays ?? null;
         }
-        if ($data->isInitialized('possibleDays') && null !== $data->getPossibleDays()) {
+        if (array_key_exists('possibleDays', get_object_vars($data)) && null !== ($data->possibleDays ?? null)) {
             $values_1 = [];
-            foreach ($data->getPossibleDays() as $value_1) {
+            foreach ($data->possibleDays ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['possible_days'] = $values_1;

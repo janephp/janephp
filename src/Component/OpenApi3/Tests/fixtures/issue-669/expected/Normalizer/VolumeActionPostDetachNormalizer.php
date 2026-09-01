@@ -38,15 +38,15 @@ class VolumeActionPostDetachNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('droplet_id', $data)) {
-            $object->setDropletId($data['droplet_id']);
+            $object->dropletId = $data['droplet_id'];
             unset($data['droplet_id']);
         }
         foreach ($data as $key => $value) {
@@ -59,11 +59,11 @@ class VolumeActionPostDetachNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        $dataArray['droplet_id'] = $data->getDropletId();
+        $dataArray['droplet_id'] = $data->dropletId ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -38,11 +38,11 @@ class VpcNatGatewayGetVpcsItemNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('vpc_uuid', $data)) {
-            $object->setVpcUuid($data['vpc_uuid']);
+            $object->vpcUuid = $data['vpc_uuid'];
             unset($data['vpc_uuid']);
         }
         if (\array_key_exists('gateway_ip', $data)) {
-            $object->setGatewayIp($data['gateway_ip']);
+            $object->gatewayIp = $data['gateway_ip'];
             unset($data['gateway_ip']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class VpcNatGatewayGetVpcsItemNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('vpcUuid') && null !== $data->getVpcUuid()) {
-            $dataArray['vpc_uuid'] = $data->getVpcUuid();
+        if (array_key_exists('vpcUuid', get_object_vars($data)) && null !== ($data->vpcUuid ?? null)) {
+            $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
         }
-        if ($data->isInitialized('gatewayIp') && null !== $data->getGatewayIp()) {
-            $dataArray['gateway_ip'] = $data->getGatewayIp();
+        if (array_key_exists('gatewayIp', get_object_vars($data)) && null !== ($data->gatewayIp ?? null)) {
+            $dataArray['gateway_ip'] = $data->gatewayIp ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

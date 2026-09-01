@@ -42,7 +42,7 @@ class ResponseSinglePartnerAttachmentBgpAuthKeyNormalizer implements Denormalize
             foreach ($data['bgp_auth_key'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setBgpAuthKey($values);
+            $object->bgpAuthKey = $values;
             unset($data['bgp_auth_key']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -55,9 +55,9 @@ class ResponseSinglePartnerAttachmentBgpAuthKeyNormalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('bgpAuthKey') && null !== $data->getBgpAuthKey()) {
+        if (array_key_exists('bgpAuthKey', get_object_vars($data)) && null !== ($data->bgpAuthKey ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getBgpAuthKey() as $key => $value) {
+            foreach ($data->bgpAuthKey ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['bgp_auth_key'] = $values;

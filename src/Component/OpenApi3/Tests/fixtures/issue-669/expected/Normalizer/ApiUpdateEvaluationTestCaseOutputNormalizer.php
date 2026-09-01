@@ -38,11 +38,11 @@ class ApiUpdateEvaluationTestCaseOutputNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('test_case_uuid', $data)) {
-            $object->setTestCaseUuid($data['test_case_uuid']);
+            $object->testCaseUuid = $data['test_case_uuid'];
             unset($data['test_case_uuid']);
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
             unset($data['version']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiUpdateEvaluationTestCaseOutputNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('testCaseUuid') && null !== $data->getTestCaseUuid()) {
-            $dataArray['test_case_uuid'] = $data->getTestCaseUuid();
+        if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
+            $dataArray['test_case_uuid'] = $data->testCaseUuid ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion();
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = $data->version ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

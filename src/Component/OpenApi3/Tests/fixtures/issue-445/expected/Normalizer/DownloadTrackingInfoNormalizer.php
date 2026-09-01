@@ -38,50 +38,50 @@ class DownloadTrackingInfoNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
-            $object->setContentId(null);
+            $object->contentId = null;
         }
         if (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] !== null) {
-            $object->setOutputFormatId($data['outputFormatId']);
+            $object->outputFormatId = $data['outputFormatId'];
         }
         elseif (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] === null) {
-            $object->setOutputFormatId(null);
+            $object->outputFormatId = null;
         }
         if (\array_key_exists('width', $data) && $data['width'] !== null) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
         }
         elseif (\array_key_exists('width', $data) && $data['width'] === null) {
-            $object->setWidth(null);
+            $object->width = null;
         }
         if (\array_key_exists('height', $data) && $data['height'] !== null) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
         }
         elseif (\array_key_exists('height', $data) && $data['height'] === null) {
-            $object->setHeight(null);
+            $object->height = null;
         }
         if (\array_key_exists('contentDisposition', $data)) {
-            $object->setContentDisposition($data['contentDisposition']);
+            $object->contentDisposition = $data['contentDisposition'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
-            $dataArray['contentId'] = $data->getContentId();
+        if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
+            $dataArray['contentId'] = $data->contentId ?? null;
         }
-        if ($data->isInitialized('outputFormatId') && null !== $data->getOutputFormatId()) {
-            $dataArray['outputFormatId'] = $data->getOutputFormatId();
+        if (array_key_exists('outputFormatId', get_object_vars($data)) && null !== ($data->outputFormatId ?? null)) {
+            $dataArray['outputFormatId'] = $data->outputFormatId ?? null;
         }
-        if ($data->isInitialized('width') && null !== $data->getWidth()) {
-            $dataArray['width'] = $data->getWidth();
+        if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
+            $dataArray['width'] = $data->width ?? null;
         }
-        if ($data->isInitialized('height') && null !== $data->getHeight()) {
-            $dataArray['height'] = $data->getHeight();
+        if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
+            $dataArray['height'] = $data->height ?? null;
         }
-        $dataArray['contentDisposition'] = $data->getContentDisposition();
+        $dataArray['contentDisposition'] = $data->contentDisposition ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

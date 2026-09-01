@@ -38,53 +38,53 @@ class MetadataErrorNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('errorType', $data) && $data['errorType'] !== null) {
-            $object->setErrorType($data['errorType']);
+            $object->errorType = $data['errorType'];
         }
         elseif (\array_key_exists('errorType', $data) && $data['errorType'] === null) {
-            $object->setErrorType(null);
+            $object->errorType = null;
         }
         if (\array_key_exists('lineNumber', $data)) {
-            $object->setLineNumber($data['lineNumber']);
+            $object->lineNumber = $data['lineNumber'];
         }
         if (\array_key_exists('linePosition', $data)) {
-            $object->setLinePosition($data['linePosition']);
+            $object->linePosition = $data['linePosition'];
         }
         if (\array_key_exists('path', $data) && $data['path'] !== null) {
-            $object->setPath($data['path']);
+            $object->path = $data['path'];
         }
         elseif (\array_key_exists('path', $data) && $data['path'] === null) {
-            $object->setPath(null);
+            $object->path = null;
         }
         if (\array_key_exists('message', $data) && $data['message'] !== null) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
         }
         elseif (\array_key_exists('message', $data) && $data['message'] === null) {
-            $object->setMessage(null);
+            $object->message = null;
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
-            $object->setSchemaId($data['schemaId']);
+            $object->schemaId = $data['schemaId'];
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
-            $object->setSchemaId(null);
+            $object->schemaId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('errorType') && null !== $data->getErrorType()) {
-            $dataArray['errorType'] = $data->getErrorType();
+        if (array_key_exists('errorType', get_object_vars($data)) && null !== ($data->errorType ?? null)) {
+            $dataArray['errorType'] = $data->errorType ?? null;
         }
-        $dataArray['lineNumber'] = $data->getLineNumber();
-        $dataArray['linePosition'] = $data->getLinePosition();
-        if ($data->isInitialized('path') && null !== $data->getPath()) {
-            $dataArray['path'] = $data->getPath();
+        $dataArray['lineNumber'] = $data->lineNumber ?? null;
+        $dataArray['linePosition'] = $data->linePosition ?? null;
+        if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
+            $dataArray['path'] = $data->path ?? null;
         }
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['message'] = $data->message ?? null;
         }
-        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
-            $dataArray['schemaId'] = $data->getSchemaId();
+        if (array_key_exists('schemaId', get_object_vars($data)) && null !== ($data->schemaId ?? null)) {
+            $dataArray['schemaId'] = $data->schemaId ?? null;
         }
         return $dataArray;
     }

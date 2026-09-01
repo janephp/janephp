@@ -8,37 +8,11 @@ class ResponseExistingAutoscalePool implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var AutoscalePool
      */
-    protected $autoscalePool;
-    /**
-     * @return AutoscalePool
-     */
-    public function getAutoscalePool(): AutoscalePool
-    {
-        return $this->autoscalePool;
-    }
-    /**
-     * @param AutoscalePool $autoscalePool
-     *
-     * @return self
-     */
-    public function setAutoscalePool(AutoscalePool $autoscalePool): self
-    {
-        $this->initialized['autoscalePool'] = true;
-        $this->autoscalePool = $autoscalePool;
-        return $this;
-    }
+    public AutoscalePool $autoscalePool;
     public function definedProperties(): array
     {
-        return ['autoscalePool' => ['autoscale_pool', 'getAutoscalePool', 'setAutoscalePool']];
+        return ['autoscalePool' => 'autoscale_pool'];
     }
 }

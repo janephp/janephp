@@ -41,11 +41,11 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\CredentialsConstraint());
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
             unset($data['email']);
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
             unset($data['password']);
         }
         foreach ($data as $key => $value) {
@@ -58,8 +58,8 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['email'] = $data->getEmail();
-        $dataArray['password'] = $data->getPassword();
+        $dataArray['email'] = $data->email ?? null;
+        $dataArray['password'] = $data->password ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

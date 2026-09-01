@@ -25,6 +25,19 @@ trait NormalizerGenerator
      */
     abstract protected function getNaming(): Naming;
 
+    /**
+     * Presence check replacing the former isInitialized(): get_object_vars() skips
+     * uninitialized typed properties but includes ones explicitly set to null, so the
+     * "never set" and "explicitly null" cases stay distinguishable.
+     */
+    private function isPropertyInitialized(Expr\Variable $objectVariable, Property $property): Expr
+    {
+        return new Expr\FuncCall(new Name('array_key_exists'), [
+            new Arg(new Scalar\String_($property->getPhpName())),
+            new Arg(new Expr\FuncCall(new Name('get_object_vars'), [new Arg($objectVariable)])),
+        ]);
+    }
+
     protected function createNormalizerClass($name, $methods, $useCacheableSupportsMethod = false): Stmt\Class_
     {
         $traits = [
@@ -89,7 +102,10 @@ trait NormalizerGenerator
         /** @var Property $property */
         foreach ($classGuess->getProperties() as $property) {
             if (!$property->isReadOnly()) {
-                $propertyVar = new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('get', $property->getAccessorName()));
+                $propertyVar = new Expr\BinaryOp\Coalesce(
+                    new Expr\PropertyFetch($objectVariable, $property->getPhpName()),
+                    new Expr\ConstFetch(new Name('null'))
+                );
 
                 list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
 
@@ -104,7 +120,7 @@ trait NormalizerGenerator
                 if (!$includeNullValue) {
                     if (!$property->isRequired()) {
                         $statements[] = new Stmt\If_(
-                            new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
+                            $this->isPropertyInitialized($objectVariable, $property),
                             ['stmts' => $normalizationStatements]
                         );
                     } else {
@@ -121,7 +137,7 @@ trait NormalizerGenerator
                     if ($property->isNullable()) {
                         $statements[] = new Stmt\If_(
                             new Expr\BinaryOp\BooleanAnd(
-                                new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
+                                $this->isPropertyInitialized($objectVariable, $property),
                                 new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
                             ),
                             ['stmts' => $normalizationStatements]
@@ -129,7 +145,7 @@ trait NormalizerGenerator
                     } else {
                         $statements[] = new Stmt\If_(
                             new Expr\BinaryOp\BooleanAnd(
-                                new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
+                                $this->isPropertyInitialized($objectVariable, $property),
                                 new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
                             ),
                             ['stmts' => $normalizationStatements]
@@ -174,7 +190,7 @@ trait NormalizerGenerator
 
         if (\count($patternCondition) > 0) {
             // Extension-container models iterate over their additional properties only: defined
-            // properties are already normalized above through their getters.
+            // properties are already normalized above through their public properties.
             $statements[] = new Stmt\Foreach_(new Expr\MethodCall($objectVariable, 'additionalPropertyEntries'), $loopValueVar, [
                 'keyVar' => $loopKeyVar,
                 'stmts' => $patternCondition,

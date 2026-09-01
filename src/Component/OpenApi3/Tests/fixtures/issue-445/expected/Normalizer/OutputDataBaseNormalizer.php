@@ -56,77 +56,77 @@ class OutputDataBaseNormalizer implements DenormalizerInterface, NormalizerInter
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\OutputDataDefault', $format, $context);
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
-            $object->setFileExtension($data['fileExtension']);
+            $object->fileExtension = $data['fileExtension'];
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
-            $object->setFileExtension(null);
+            $object->fileExtension = null;
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
-            $object->setFilePath($data['filePath']);
+            $object->filePath = $data['filePath'];
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
-            $object->setFilePath(null);
+            $object->filePath = null;
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
-            $object->setFileSizeInBytes($data['fileSizeInBytes']);
+            $object->fileSizeInBytes = $data['fileSizeInBytes'];
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
-            $object->setFileSizeInBytes(null);
+            $object->fileSizeInBytes = null;
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
-            $object->setSha1Hash($data['sha1Hash']);
+            $object->sha1Hash = $data['sha1Hash'];
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
-            $object->setSha1Hash(null);
+            $object->sha1Hash = null;
         }
         if (\array_key_exists('originalFileName', $data) && $data['originalFileName'] !== null) {
-            $object->setOriginalFileName($data['originalFileName']);
+            $object->originalFileName = $data['originalFileName'];
         }
         elseif (\array_key_exists('originalFileName', $data) && $data['originalFileName'] === null) {
-            $object->setOriginalFileName(null);
+            $object->originalFileName = null;
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'OutputDataImage' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'OutputDataImage' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'OutputDataAudio' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'OutputDataAudio' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'OutputDataVideo' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'OutputDataVideo' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'OutputDataDocument' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'OutputDataDocument' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'OutputDataVector' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'OutputDataVector' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'OutputDataDefault' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'OutputDataDefault' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
-            $dataArray['fileExtension'] = $data->getFileExtension();
+        if (array_key_exists('fileExtension', get_object_vars($data)) && null !== ($data->fileExtension ?? null)) {
+            $dataArray['fileExtension'] = $data->fileExtension ?? null;
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
-            $dataArray['filePath'] = $data->getFilePath();
+        if (array_key_exists('filePath', get_object_vars($data)) && null !== ($data->filePath ?? null)) {
+            $dataArray['filePath'] = $data->filePath ?? null;
         }
-        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
-            $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
+        if (array_key_exists('fileSizeInBytes', get_object_vars($data)) && null !== ($data->fileSizeInBytes ?? null)) {
+            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes ?? null;
         }
-        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
-            $dataArray['sha1Hash'] = $data->getSha1Hash();
+        if (array_key_exists('sha1Hash', get_object_vars($data)) && null !== ($data->sha1Hash ?? null)) {
+            $dataArray['sha1Hash'] = $data->sha1Hash ?? null;
         }
-        if ($data->isInitialized('originalFileName') && null !== $data->getOriginalFileName()) {
-            $dataArray['originalFileName'] = $data->getOriginalFileName();
+        if (array_key_exists('originalFileName', get_object_vars($data)) && null !== ($data->originalFileName ?? null)) {
+            $dataArray['originalFileName'] = $data->originalFileName ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

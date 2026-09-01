@@ -38,15 +38,15 @@ class GpuInfoNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
         }
         if (\array_key_exists('model', $data)) {
-            $object->setModel($data['model']);
+            $object->model = $data['model'];
             unset($data['model']);
         }
         if (\array_key_exists('vram', $data)) {
-            $object->setVram($this->denormalizer->denormalize($data['vram'], \Jane\Generated\DigitalOcean\Model\GpuInfoVram::class, 'json', $context));
+            $object->vram = $this->denormalizer->denormalize($data['vram'], \Jane\Generated\DigitalOcean\Model\GpuInfoVram::class, 'json', $context);
             unset($data['vram']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class GpuInfoNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count ?? null;
         }
-        if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $data->getModel();
+        if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
+            $dataArray['model'] = $data->model ?? null;
         }
-        if ($data->isInitialized('vram') && null !== $data->getVram()) {
-            $dataArray['vram'] = $data->getVram() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVram(), 'json', $context));
+        if (array_key_exists('vram', get_object_vars($data)) && null !== ($data->vram ?? null)) {
+            $dataArray['vram'] = ($data->vram ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->vram ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -45,25 +45,25 @@ class VolumesPrunePostResponse200Normalizer implements DenormalizerInterface, No
             foreach ($data['VolumesDeleted'] as $value) {
                 $values[] = $value;
             }
-            $object->setVolumesDeleted($values);
+            $object->volumesDeleted = $values;
         }
         if (\array_key_exists('SpaceReclaimed', $data)) {
-            $object->setSpaceReclaimed($data['SpaceReclaimed']);
+            $object->spaceReclaimed = $data['SpaceReclaimed'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('volumesDeleted') && null !== $data->getVolumesDeleted()) {
+        if (array_key_exists('volumesDeleted', get_object_vars($data)) && null !== ($data->volumesDeleted ?? null)) {
             $values = [];
-            foreach ($data->getVolumesDeleted() as $value) {
+            foreach ($data->volumesDeleted ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['VolumesDeleted'] = $values;
         }
-        if ($data->isInitialized('spaceReclaimed') && null !== $data->getSpaceReclaimed()) {
-            $dataArray['SpaceReclaimed'] = $data->getSpaceReclaimed();
+        if (array_key_exists('spaceReclaimed', get_object_vars($data)) && null !== ($data->spaceReclaimed ?? null)) {
+            $dataArray['SpaceReclaimed'] = $data->spaceReclaimed ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\VolumesPrunePostResponse200Constraint());

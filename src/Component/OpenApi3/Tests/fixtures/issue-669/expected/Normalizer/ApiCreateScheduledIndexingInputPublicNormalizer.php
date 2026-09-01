@@ -42,15 +42,15 @@ class ApiCreateScheduledIndexingInputPublicNormalizer implements DenormalizerInt
             foreach ($data['days'] as $value) {
                 $values[] = $value;
             }
-            $object->setDays($values);
+            $object->days = $values;
             unset($data['days']);
         }
         if (\array_key_exists('knowledge_base_uuid', $data)) {
-            $object->setKnowledgeBaseUuid($data['knowledge_base_uuid']);
+            $object->knowledgeBaseUuid = $data['knowledge_base_uuid'];
             unset($data['knowledge_base_uuid']);
         }
         if (\array_key_exists('time', $data)) {
-            $object->setTime($data['time']);
+            $object->time = $data['time'];
             unset($data['time']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,18 +63,18 @@ class ApiCreateScheduledIndexingInputPublicNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('days') && null !== $data->getDays()) {
+        if (array_key_exists('days', get_object_vars($data)) && null !== ($data->days ?? null)) {
             $values = [];
-            foreach ($data->getDays() as $value) {
+            foreach ($data->days ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['days'] = $values;
         }
-        if ($data->isInitialized('knowledgeBaseUuid') && null !== $data->getKnowledgeBaseUuid()) {
-            $dataArray['knowledge_base_uuid'] = $data->getKnowledgeBaseUuid();
+        if (array_key_exists('knowledgeBaseUuid', get_object_vars($data)) && null !== ($data->knowledgeBaseUuid ?? null)) {
+            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid ?? null;
         }
-        if ($data->isInitialized('time') && null !== $data->getTime()) {
-            $dataArray['time'] = $data->getTime();
+        if (array_key_exists('time', get_object_vars($data)) && null !== ($data->time ?? null)) {
+            $dataArray['time'] = $data->time ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

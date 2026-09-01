@@ -20,7 +20,7 @@ trait ConstructGenerator
             case SecuritySchemeGuess::TYPE_HTTP:
                 /** @var HTTPSecurityScheme $object */
                 $object = $securityScheme->getObject();
-                $scheme = $object->getScheme() ?? 'Bearer';
+                $scheme = ($object->scheme ?? null) ?? 'Bearer';
                 $scheme = ucfirst(mb_strtolower($scheme));
 
                 switch ($scheme) {

@@ -38,11 +38,11 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItemNor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('csUserId', $data)) {
-            $object->setCsUserId($data['csUserId']);
+            $object->csUserId = $data['csUserId'];
             unset($data['csUserId']);
         }
         if (\array_key_exists('permissions', $data)) {
-            $object->setPermissions($data['permissions']);
+            $object->permissions = $data['permissions'];
             unset($data['permissions']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItemNor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('csUserId') && null !== $data->getCsUserId()) {
-            $dataArray['csUserId'] = $data->getCsUserId();
+        if (array_key_exists('csUserId', get_object_vars($data)) && null !== ($data->csUserId ?? null)) {
+            $dataArray['csUserId'] = $data->csUserId ?? null;
         }
-        if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $data->getPermissions();
+        if (array_key_exists('permissions', get_object_vars($data)) && null !== ($data->permissions ?? null)) {
+            $dataArray['permissions'] = $data->permissions ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

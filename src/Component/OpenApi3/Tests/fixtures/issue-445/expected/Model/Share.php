@@ -5,207 +5,45 @@ namespace PicturePark\API\Model;
 class Share
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Share ID.
      *
      * @var string
      */
-    protected $id;
+    public string $id;
     /**
      * Name of share.
      *
      * @var string|null
      */
-    protected $name;
+    public ?string $name;
     /**
      * List of shared content IDs.
      *
      * @var list<string>
      */
-    protected $contentIds;
+    public array $contentIds;
     /**
      * Audit information.
      *
      * @var UserAudit
      */
-    protected $audit;
+    public UserAudit $audit;
     /**
      * Date when share expires and cannot be accessed anymore.
      *
      * @var \DateTime|null
      */
-    protected $expirationDate;
+    public ?\DateTime $expirationDate;
     /**
      * Type of share.
      *
      * @var string
      */
-    protected $shareType;
+    public string $shareType;
     /**
      * Share is readonly if the current user is not the creator but only the recipient.
      *
      * @var bool
      */
-    protected $isReadOnly;
-    /**
-     * Share ID.
-     *
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * Share ID.
-     *
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * Name of share.
-     *
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-    /**
-     * Name of share.
-     *
-     * @param string|null $name
-     *
-     * @return self
-     */
-    public function setName(?string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * List of shared content IDs.
-     *
-     * @return list<string>
-     */
-    public function getContentIds(): array
-    {
-        return $this->contentIds;
-    }
-    /**
-     * List of shared content IDs.
-     *
-     * @param list<string> $contentIds
-     *
-     * @return self
-     */
-    public function setContentIds(array $contentIds): self
-    {
-        $this->initialized['contentIds'] = true;
-        $this->contentIds = $contentIds;
-        return $this;
-    }
-    /**
-     * Audit information.
-     *
-     * @return UserAudit
-     */
-    public function getAudit(): UserAudit
-    {
-        return $this->audit;
-    }
-    /**
-     * Audit information.
-     *
-     * @param UserAudit $audit
-     *
-     * @return self
-     */
-    public function setAudit(UserAudit $audit): self
-    {
-        $this->initialized['audit'] = true;
-        $this->audit = $audit;
-        return $this;
-    }
-    /**
-     * Date when share expires and cannot be accessed anymore.
-     *
-     * @return \DateTime|null
-     */
-    public function getExpirationDate(): ?\DateTime
-    {
-        return $this->expirationDate;
-    }
-    /**
-     * Date when share expires and cannot be accessed anymore.
-     *
-     * @param \DateTime|null $expirationDate
-     *
-     * @return self
-     */
-    public function setExpirationDate(?\DateTime $expirationDate): self
-    {
-        $this->initialized['expirationDate'] = true;
-        $this->expirationDate = $expirationDate;
-        return $this;
-    }
-    /**
-     * Type of share.
-     *
-     * @return string
-     */
-    public function getShareType(): string
-    {
-        return $this->shareType;
-    }
-    /**
-     * Type of share.
-     *
-     * @param string $shareType
-     *
-     * @return self
-     */
-    public function setShareType(string $shareType): self
-    {
-        $this->initialized['shareType'] = true;
-        $this->shareType = $shareType;
-        return $this;
-    }
-    /**
-     * Share is readonly if the current user is not the creator but only the recipient.
-     *
-     * @return bool
-     */
-    public function getIsReadOnly(): bool
-    {
-        return $this->isReadOnly;
-    }
-    /**
-     * Share is readonly if the current user is not the creator but only the recipient.
-     *
-     * @param bool $isReadOnly
-     *
-     * @return self
-     */
-    public function setIsReadOnly(bool $isReadOnly): self
-    {
-        $this->initialized['isReadOnly'] = true;
-        $this->isReadOnly = $isReadOnly;
-        return $this;
-    }
+    public bool $isReadOnly;
 }

@@ -38,18 +38,18 @@ class ShareUserNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('displayName', $data)) {
-            $object->setDisplayName($data['displayName']);
+            $object->displayName = $data['displayName'];
         }
         if (\array_key_exists('emailHash', $data)) {
-            $object->setEmailHash($data['emailHash']);
+            $object->emailHash = $data['emailHash'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['displayName'] = $data->getDisplayName();
-        $dataArray['emailHash'] = $data->getEmailHash();
+        $dataArray['displayName'] = $data->displayName ?? null;
+        $dataArray['emailHash'] = $data->emailHash ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

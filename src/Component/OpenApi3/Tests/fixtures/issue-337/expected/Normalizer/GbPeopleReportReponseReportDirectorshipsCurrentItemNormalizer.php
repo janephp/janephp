@@ -38,51 +38,51 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemNormalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('companyName', $data)) {
-            $object->setCompanyName($data['companyName']);
+            $object->companyName = $data['companyName'];
             unset($data['companyName']);
         }
         if (\array_key_exists('companyNumber', $data)) {
-            $object->setCompanyNumber($data['companyNumber']);
+            $object->companyNumber = $data['companyNumber'];
             unset($data['companyNumber']);
         }
         if (\array_key_exists('companyRegistrationNumber', $data)) {
-            $object->setCompanyRegistrationNumber($data['companyRegistrationNumber']);
+            $object->companyRegistrationNumber = $data['companyRegistrationNumber'];
             unset($data['companyRegistrationNumber']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('position', $data)) {
-            $object->setPosition($this->denormalizer->denormalize($data['position'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemPosition::class, 'json', $context));
+            $object->position = $this->denormalizer->denormalize($data['position'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemPosition::class, 'json', $context);
             unset($data['position']);
         }
         if (\array_key_exists('companyRegistrationDate', $data)) {
-            $object->setCompanyRegistrationDate($data['companyRegistrationDate']);
+            $object->companyRegistrationDate = $data['companyRegistrationDate'];
             unset($data['companyRegistrationDate']);
         }
         if (\array_key_exists('legalCount', $data)) {
-            $object->setLegalCount($data['legalCount']);
+            $object->legalCount = $data['legalCount'];
             unset($data['legalCount']);
         }
         if (\array_key_exists('creditScore', $data)) {
-            $object->setCreditScore($this->denormalizer->denormalize($data['creditScore'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScore::class, 'json', $context));
+            $object->creditScore = $this->denormalizer->denormalize($data['creditScore'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScore::class, 'json', $context);
             unset($data['creditScore']);
         }
         if (\array_key_exists('additionalData', $data)) {
-            $object->setAdditionalData($this->denormalizer->denormalize($data['additionalData'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalData::class, 'json', $context));
+            $object->additionalData = $this->denormalizer->denormalize($data['additionalData'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalData::class, 'json', $context);
             unset($data['additionalData']);
         }
         if (\array_key_exists('latestTurnoverFigure', $data)) {
-            $object->setLatestTurnoverFigure($this->denormalizer->denormalize($data['latestTurnoverFigure'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemLatestTurnoverFigure::class, 'json', $context));
+            $object->latestTurnoverFigure = $this->denormalizer->denormalize($data['latestTurnoverFigure'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemLatestTurnoverFigure::class, 'json', $context);
             unset($data['latestTurnoverFigure']);
         }
         if (\array_key_exists('netWorth', $data)) {
-            $object->setNetWorth($this->denormalizer->denormalize($data['netWorth'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemNetWorth::class, 'json', $context));
+            $object->netWorth = $this->denormalizer->denormalize($data['netWorth'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemNetWorth::class, 'json', $context);
             unset($data['netWorth']);
         }
         if (\array_key_exists('legalAmount', $data)) {
-            $object->setLegalAmount($this->denormalizer->denormalize($data['legalAmount'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemLegalAmount::class, 'json', $context));
+            $object->legalAmount = $this->denormalizer->denormalize($data['legalAmount'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsCurrentItemLegalAmount::class, 'json', $context);
             unset($data['legalAmount']);
         }
         foreach ($data as $key => $value) {
@@ -95,41 +95,41 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemNormalizer implements D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('companyName') && null !== $data->getCompanyName()) {
-            $dataArray['companyName'] = $data->getCompanyName();
+        if (array_key_exists('companyName', get_object_vars($data)) && null !== ($data->companyName ?? null)) {
+            $dataArray['companyName'] = $data->companyName ?? null;
         }
-        if ($data->isInitialized('companyNumber') && null !== $data->getCompanyNumber()) {
-            $dataArray['companyNumber'] = $data->getCompanyNumber();
+        if (array_key_exists('companyNumber', get_object_vars($data)) && null !== ($data->companyNumber ?? null)) {
+            $dataArray['companyNumber'] = $data->companyNumber ?? null;
         }
-        if ($data->isInitialized('companyRegistrationNumber') && null !== $data->getCompanyRegistrationNumber()) {
-            $dataArray['companyRegistrationNumber'] = $data->getCompanyRegistrationNumber();
+        if (array_key_exists('companyRegistrationNumber', get_object_vars($data)) && null !== ($data->companyRegistrationNumber ?? null)) {
+            $dataArray['companyRegistrationNumber'] = $data->companyRegistrationNumber ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('position') && null !== $data->getPosition()) {
-            $dataArray['position'] = $data->getPosition() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getPosition(), 'json', $context));
+        if (array_key_exists('position', get_object_vars($data)) && null !== ($data->position ?? null)) {
+            $dataArray['position'] = ($data->position ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->position ?? null, 'json', $context));
         }
-        if ($data->isInitialized('companyRegistrationDate') && null !== $data->getCompanyRegistrationDate()) {
-            $dataArray['companyRegistrationDate'] = $data->getCompanyRegistrationDate();
+        if (array_key_exists('companyRegistrationDate', get_object_vars($data)) && null !== ($data->companyRegistrationDate ?? null)) {
+            $dataArray['companyRegistrationDate'] = $data->companyRegistrationDate ?? null;
         }
-        if ($data->isInitialized('legalCount') && null !== $data->getLegalCount()) {
-            $dataArray['legalCount'] = $data->getLegalCount();
+        if (array_key_exists('legalCount', get_object_vars($data)) && null !== ($data->legalCount ?? null)) {
+            $dataArray['legalCount'] = $data->legalCount ?? null;
         }
-        if ($data->isInitialized('creditScore') && null !== $data->getCreditScore()) {
-            $dataArray['creditScore'] = $data->getCreditScore() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCreditScore(), 'json', $context));
+        if (array_key_exists('creditScore', get_object_vars($data)) && null !== ($data->creditScore ?? null)) {
+            $dataArray['creditScore'] = ($data->creditScore ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditScore ?? null, 'json', $context));
         }
-        if ($data->isInitialized('additionalData') && null !== $data->getAdditionalData()) {
-            $dataArray['additionalData'] = $data->getAdditionalData() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAdditionalData(), 'json', $context));
+        if (array_key_exists('additionalData', get_object_vars($data)) && null !== ($data->additionalData ?? null)) {
+            $dataArray['additionalData'] = ($data->additionalData ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->additionalData ?? null, 'json', $context));
         }
-        if ($data->isInitialized('latestTurnoverFigure') && null !== $data->getLatestTurnoverFigure()) {
-            $dataArray['latestTurnoverFigure'] = $data->getLatestTurnoverFigure() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getLatestTurnoverFigure(), 'json', $context));
+        if (array_key_exists('latestTurnoverFigure', get_object_vars($data)) && null !== ($data->latestTurnoverFigure ?? null)) {
+            $dataArray['latestTurnoverFigure'] = ($data->latestTurnoverFigure ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->latestTurnoverFigure ?? null, 'json', $context));
         }
-        if ($data->isInitialized('netWorth') && null !== $data->getNetWorth()) {
-            $dataArray['netWorth'] = $data->getNetWorth() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getNetWorth(), 'json', $context));
+        if (array_key_exists('netWorth', get_object_vars($data)) && null !== ($data->netWorth ?? null)) {
+            $dataArray['netWorth'] = ($data->netWorth ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->netWorth ?? null, 'json', $context));
         }
-        if ($data->isInitialized('legalAmount') && null !== $data->getLegalAmount()) {
-            $dataArray['legalAmount'] = $data->getLegalAmount() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getLegalAmount(), 'json', $context));
+        if (array_key_exists('legalAmount', get_object_vars($data)) && null !== ($data->legalAmount ?? null)) {
+            $dataArray['legalAmount'] = ($data->legalAmount ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->legalAmount ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

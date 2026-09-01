@@ -42,36 +42,36 @@ class BusinessRuleTracedRuleNormalizer implements DenormalizerInterface, Normali
             if (is_array($data['configuration']) and \array_key_exists('isEnabled', $data['configuration']) and \array_key_exists('enableTracing', $data['configuration']) and \array_key_exists('kind', $data['configuration'])) {
                 $value = $this->denormalizer->denormalize($data['configuration'], \PicturePark\API\Model\BusinessRule::class, 'json', $context);
             }
-            $object->setConfiguration($value);
+            $object->configuration = $value;
         }
         elseif (\array_key_exists('configuration', $data) && $data['configuration'] === null) {
-            $object->setConfiguration(null);
+            $object->configuration = null;
         }
         if (\array_key_exists('evaluations', $data) && $data['evaluations'] !== null) {
             $values = [];
             foreach ($data['evaluations'] as $value_1) {
                 $values[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\BusinessRuleTracedEvaluation::class, 'json', $context);
             }
-            $object->setEvaluations($values);
+            $object->evaluations = $values;
         }
         elseif (\array_key_exists('evaluations', $data) && $data['evaluations'] === null) {
-            $object->setEvaluations(null);
+            $object->evaluations = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('configuration') && null !== $data->getConfiguration()) {
-            $value = $data->getConfiguration();
-            if (is_object($data->getConfiguration())) {
-                $value = $data->getConfiguration() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getConfiguration(), 'json', $context));
+        if (array_key_exists('configuration', get_object_vars($data)) && null !== ($data->configuration ?? null)) {
+            $value = $data->configuration ?? null;
+            if (is_object($data->configuration ?? null)) {
+                $value = ($data->configuration ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->configuration ?? null, 'json', $context));
             }
             $dataArray['configuration'] = $value;
         }
-        if ($data->isInitialized('evaluations') && null !== $data->getEvaluations()) {
+        if (array_key_exists('evaluations', get_object_vars($data)) && null !== ($data->evaluations ?? null)) {
             $values = [];
-            foreach ($data->getEvaluations() as $value_1) {
+            foreach ($data->evaluations ?? null as $value_1) {
                 $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['evaluations'] = $values;

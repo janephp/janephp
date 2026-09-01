@@ -13,12 +13,12 @@ class SchemaGuesser extends ObjectGuesser
 {
     public function supportObject($object): bool
     {
-        return ($object instanceof Schema) && ('object' === $object->getType() || null === $object->getType()) && null !== $object->getProperties();
+        return ($object instanceof Schema) && ('object' === ($object->type ?? null) || null === ($object->type ?? null)) && null !== ($object->properties ?? null);
     }
 
     protected function isPropertyNullable($property): bool
     {
-        return parent::isPropertyNullable($property) || ($property->getNullable() ?? false);
+        return parent::isPropertyNullable($property) || (($property->nullable ?? null) ?? false);
     }
 
     /**
@@ -26,14 +26,14 @@ class SchemaGuesser extends ObjectGuesser
      */
     protected function createClassGuess($object, $reference, $name, $extensions): BaseClassGuess
     {
-        $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated() ?? false);
+        $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, ($object->deprecated ?? null) ?? false);
 
-        $discriminator = $object->getDiscriminator();
+        $discriminator = ($object->discriminator ?? null);
         if ($discriminator instanceof Discriminator
-            && is_countable($discriminator->getMapping()) && \count($discriminator->getMapping()) > 0) {
-            $classGuess = new ParentClass($classGuess, $discriminator->getPropertyName());
+            && is_countable(($discriminator->mapping ?? []) ?? null) && \count(($discriminator->mapping ?? []) ?? null) > 0) {
+            $classGuess = new ParentClass($classGuess, $discriminator->propertyName ?? null);
 
-            foreach ($discriminator->getMapping() as $discriminatorValue => $entryReference) {
+            foreach ((($discriminator->mapping ?? []) ?? null) as $discriminatorValue => $entryReference) {
                 $subClassName = str_replace('#/components/schemas/', '', $entryReference);
                 $classGuess->addChildEntry(
                     $subClassName,
@@ -49,11 +49,11 @@ class SchemaGuesser extends ObjectGuesser
             return $classGuess;
         }
 
-        if ($object->getDiscriminator() instanceof Discriminator
-            && \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
-            $classGuess = new ParentClass($classGuess, $object->getDiscriminator()->getPropertyName());
+        if (($object->discriminator ?? null) instanceof Discriminator
+            && \is_array($object->enum ?? null) && \count($object->enum ?? null) > 0) {
+            $classGuess = new ParentClass($classGuess, ($object->discriminator ?? null)->propertyName);
 
-            foreach ($object->getEnum() as $subClassName) {
+            foreach (($object->enum ?? null ?? []) as $subClassName) {
                 $classGuess->addChildEntry(
                     $subClassName,
                     preg_replace(

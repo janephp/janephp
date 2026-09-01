@@ -41,31 +41,31 @@ class BusinessRuleTracedActionNormalizer implements DenormalizerInterface, Norma
             $data['documentModified'] = (bool) $data['documentModified'];
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
         }
         if (\array_key_exists('documentModified', $data)) {
-            $object->setDocumentModified($data['documentModified']);
+            $object->documentModified = $data['documentModified'];
         }
         if (\array_key_exists('text', $data) && $data['text'] !== null) {
-            $object->setText($data['text']);
+            $object->text = $data['text'];
         }
         elseif (\array_key_exists('text', $data) && $data['text'] === null) {
-            $object->setText(null);
+            $object->text = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['documentModified'] = $data->getDocumentModified();
-        if ($data->isInitialized('text') && null !== $data->getText()) {
-            $dataArray['text'] = $data->getText();
+        $dataArray['documentModified'] = $data->documentModified ?? null;
+        if (array_key_exists('text', get_object_vars($data)) && null !== ($data->text ?? null)) {
+            $dataArray['text'] = $data->text ?? null;
         }
         return $dataArray;
     }

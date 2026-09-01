@@ -38,19 +38,19 @@ class OpensearchIndexBaseNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('index_name', $data)) {
-            $object->setIndexName($data['index_name']);
+            $object->indexName = $data['index_name'];
             unset($data['index_name']);
         }
         if (\array_key_exists('number_of_shards', $data)) {
-            $object->setNumberOfShards($data['number_of_shards']);
+            $object->numberOfShards = $data['number_of_shards'];
             unset($data['number_of_shards']);
         }
         if (\array_key_exists('number_of_replicas', $data)) {
-            $object->setNumberOfReplicas($data['number_of_replicas']);
+            $object->numberOfReplicas = $data['number_of_replicas'];
             unset($data['number_of_replicas']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         if (\array_key_exists('created_time', $data)) {
@@ -58,7 +58,7 @@ class OpensearchIndexBaseNormalizer implements DenormalizerInterface, Normalizer
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_time'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedTime($date);
+            $object->createdTime = $date;
             unset($data['created_time']);
         }
         foreach ($data as $key => $value) {
@@ -71,20 +71,20 @@ class OpensearchIndexBaseNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('indexName') && null !== $data->getIndexName()) {
-            $dataArray['index_name'] = $data->getIndexName();
+        if (array_key_exists('indexName', get_object_vars($data)) && null !== ($data->indexName ?? null)) {
+            $dataArray['index_name'] = $data->indexName ?? null;
         }
-        if ($data->isInitialized('numberOfShards') && null !== $data->getNumberOfShards()) {
-            $dataArray['number_of_shards'] = $data->getNumberOfShards();
+        if (array_key_exists('numberOfShards', get_object_vars($data)) && null !== ($data->numberOfShards ?? null)) {
+            $dataArray['number_of_shards'] = $data->numberOfShards ?? null;
         }
-        if ($data->isInitialized('numberOfReplicas') && null !== $data->getNumberOfReplicas()) {
-            $dataArray['number_of_replicas'] = $data->getNumberOfReplicas();
+        if (array_key_exists('numberOfReplicas', get_object_vars($data)) && null !== ($data->numberOfReplicas ?? null)) {
+            $dataArray['number_of_replicas'] = $data->numberOfReplicas ?? null;
         }
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['size'] = $data->getSize();
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['size'] = $data->size ?? null;
         }
-        if ($data->isInitialized('createdTime') && null !== $data->getCreatedTime()) {
-            $dataArray['created_time'] = $data->getCreatedTime()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdTime', get_object_vars($data)) && null !== ($data->createdTime ?? null)) {
+            $dataArray['created_time'] = ($data->createdTime ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

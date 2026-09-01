@@ -41,26 +41,26 @@ class PluginConfigRootfsNormalizer implements DenormalizerInterface, NormalizerI
             $this->validate($data, new \Docker\Api\Validator\PluginConfigRootfsConstraint());
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('diff_ids', $data)) {
             $values = [];
             foreach ($data['diff_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setDiffIds($values);
+            $object->diffIds = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('diffIds') && null !== $data->getDiffIds()) {
+        if (array_key_exists('diffIds', get_object_vars($data)) && null !== ($data->diffIds ?? null)) {
             $values = [];
-            foreach ($data->getDiffIds() as $value) {
+            foreach ($data->diffIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['diff_ids'] = $values;

@@ -43,13 +43,19 @@ trait GetTransformResponseBodyTrait
         $outputTypes = $registry->getThrowUnexpectedStatusCode() ? [] : ['null'];
         $throwTypes = [];
 
-        if ($operation->getOperation()->getResponses()) {
-            $responses = $operation->getOperation()->getResponses();
+        if ($operation->getOperation()->responses ?? null) {
+            $responses = $operation->getOperation()->responses ?? null;
             $statuses = array_keys(iterator_to_array($responses));
             usort($statuses, fn (int|string $a, int|string $b): int => (int) $this->isStatusCodeRange($a) <=> (int) $this->isStatusCodeRange($b));
 
             foreach ($statuses as $status) {
+                if ('default' === $status) {
+                    continue;
+                }
                 $response = $responses[$status];
+                if (null === $response) {
+                    continue;
+                }
                 $reference = $operation->getReference() . '/responses/' . $status;
 
                 if ($response instanceof Reference) {
@@ -77,7 +83,7 @@ trait GetTransformResponseBodyTrait
                     $response,
                     $context,
                     $reference,
-                    $response->getDescription() ?? '',
+                    ($response->description ?? null) ?? '',
                     $guessClass,
                     $exceptionGenerator
                 );
@@ -87,8 +93,9 @@ trait GetTransformResponseBodyTrait
                 $outputStatements = array_merge($outputStatements, $ifStatements);
             }
 
-            if ($operation->getOperation()->getResponses()->getDefault()) {
-                $response = $operation->getOperation()->getResponses()->getDefault();
+            $defaultResponses = ($operation->getOperation()->responses ?? null);
+            if (($defaultResponses->default ?? null) !== null) {
+                $response = $defaultResponses->default;
                 $reference = $operation->getReference() . '/responses/default';
 
                 if ($response instanceof Reference) {
@@ -117,7 +124,7 @@ trait GetTransformResponseBodyTrait
                     $response,
                     $context,
                     $reference,
-                    $response->getDescription(),
+                    $response->description ?? null,
                     $guessClass,
                     $exceptionGenerator
                 );
@@ -182,7 +189,7 @@ EOD
 
     private function createResponseDenormalizationStatement(string $name, string $status, Response $response, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator): array
     {
-        if (!$response->getContent()) {
+        if (!($response->content ?? null)) {
             [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                 $name,
                 $status,
@@ -213,14 +220,14 @@ EOD
         $throwTypes = [];
         $statements = [];
 
-        foreach ($response->getContent() as $contentType => $content) {
+        foreach (($response->content ?? null ?? []) as $contentType => $content) {
             $baseContentType = ContentType::withoutParameters($contentType);
 
             if (\in_array($baseContentType, JsonBodyContentGenerator::JSON_TYPES) || str_ends_with($baseContentType, '+json')) {
                 [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                     $name,
                     $status,
-                    $content->getSchema(),
+                    $content->schema ?? null,
                     $context,
                     $reference . '/content/' . $contentType . '/schema',
                     $description,
@@ -256,7 +263,7 @@ EOD
                 [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                     $name,
                     $status,
-                    $content->getSchema(),
+                    $content->schema ?? null,
                     $context,
                     $reference . '/content/' . $contentType . '/schema',
                     $description,
@@ -437,25 +444,25 @@ EOD
 
     private function convertResponseType(JsonSchema $schema): ?string
     {
-        $type = $schema->getType();
+        $type = ($schema->type ?? null);
         if (\is_array($type)) {
             $type = array_filter($type, fn ($t) => $t !== 'null');
             $type = reset($type) ?: null;
         }
 
-        if (null === $type && null !== $schema->getEnum() && \count($schema->getEnum()) > 0) {
+        if (null === $type && null !== ($schema->enum ?? null) && \count($schema->enum ?? null) > 0) {
             $type = 'string';
         }
 
         return match ($type) {
             'string' => 'string',
             'number' => $this->isNumberFloat(
-                $schema->getFormat(),
-                $schema->getDefault(),
-                $schema->getMinimum(),
-                $schema->getMaximum(),
-                $schema->getMultipleOf(),
-                $schema->getEnum()
+                $schema->format ?? null,
+                $schema->default ?? null,
+                $schema->minimum ?? null,
+                $schema->maximum ?? null,
+                $schema->multipleOf ?? null,
+                $schema->enum ?? null
             ) ? 'float' : 'int',
             'boolean' => 'bool',
             'integer' => 'int',

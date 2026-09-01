@@ -42,7 +42,7 @@ class ResponseDatabaseClustersNormalizer implements DenormalizerInterface, Norma
             foreach ($data['databases'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\DatabaseClusterRead::class, 'json', $context);
             }
-            $object->setDatabases($values);
+            $object->databases = $values;
             unset($data['databases']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseDatabaseClustersNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('databases') && null !== $data->getDatabases()) {
+        if (array_key_exists('databases', get_object_vars($data)) && null !== ($data->databases ?? null)) {
             $values = [];
-            foreach ($data->getDatabases() as $value) {
+            foreach ($data->databases ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['databases'] = $values;

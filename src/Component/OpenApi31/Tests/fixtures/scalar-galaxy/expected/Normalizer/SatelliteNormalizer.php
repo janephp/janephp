@@ -44,11 +44,11 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SatelliteConstraint());
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
@@ -58,23 +58,23 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
             } elseif (is_null($data['description'])) {
                 $value = $data['description'];
             }
-            $object->setDescription($value);
+            $object->description = $value;
             unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
-            $object->setDescription(null);
+            $object->description = null;
             unset($data['description']);
         }
         if (\array_key_exists('diameter', $data)) {
-            $object->setDiameter($data['diameter']);
+            $object->diameter = $data['diameter'];
             unset($data['diameter']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('orbit', $data)) {
-            $object->setOrbit($this->denormalizer->denormalize($data['orbit'], \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit::class, 'json', $context));
+            $object->orbit = $this->denormalizer->denormalize($data['orbit'], \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit::class, 'json', $context);
             unset($data['orbit']);
         }
         foreach ($data as $key => $value_1) {
@@ -87,24 +87,24 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $value = $data->getDescription();
-            if (is_string($data->getDescription())) {
-                $value = $data->getDescription();
-            } elseif (is_null($data->getDescription())) {
-                $value = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $value = $data->description ?? null;
+            if (is_string($data->description ?? null)) {
+                $value = $data->description ?? null;
+            } elseif (is_null($data->description ?? null)) {
+                $value = $data->description ?? null;
             }
             $dataArray['description'] = $value;
         }
-        if ($data->isInitialized('diameter') && null !== $data->getDiameter()) {
-            $dataArray['diameter'] = $data->getDiameter();
+        if (array_key_exists('diameter', get_object_vars($data)) && null !== ($data->diameter ?? null)) {
+            $dataArray['diameter'] = $data->diameter ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('orbit') && null !== $data->getOrbit()) {
-            $dataArray['orbit'] = $data->getOrbit() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOrbit(), 'json', $context));
+        if (array_key_exists('orbit', get_object_vars($data)) && null !== ($data->orbit ?? null)) {
+            $dataArray['orbit'] = ($data->orbit ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->orbit ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

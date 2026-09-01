@@ -8,125 +8,27 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem implements
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $ruleCode;
     /**
      * @var string
      */
-    protected $ruleCode;
+    public string $isActive;
     /**
      * @var string
      */
-    protected $isActive;
+    public string $param0;
     /**
      * @var string
      */
-    protected $param0;
+    public string $param1;
     /**
      * @var string
      */
-    protected $param1;
-    /**
-     * @var string
-     */
-    protected $param2;
-    /**
-     * @return string
-     */
-    public function getRuleCode(): string
-    {
-        return $this->ruleCode;
-    }
-    /**
-     * @param string $ruleCode
-     *
-     * @return self
-     */
-    public function setRuleCode(string $ruleCode): self
-    {
-        $this->initialized['ruleCode'] = true;
-        $this->ruleCode = $ruleCode;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getIsActive(): string
-    {
-        return $this->isActive;
-    }
-    /**
-     * @param string $isActive
-     *
-     * @return self
-     */
-    public function setIsActive(string $isActive): self
-    {
-        $this->initialized['isActive'] = true;
-        $this->isActive = $isActive;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getParam0(): string
-    {
-        return $this->param0;
-    }
-    /**
-     * @param string $param0
-     *
-     * @return self
-     */
-    public function setParam0(string $param0): self
-    {
-        $this->initialized['param0'] = true;
-        $this->param0 = $param0;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getParam1(): string
-    {
-        return $this->param1;
-    }
-    /**
-     * @param string $param1
-     *
-     * @return self
-     */
-    public function setParam1(string $param1): self
-    {
-        $this->initialized['param1'] = true;
-        $this->param1 = $param1;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getParam2(): string
-    {
-        return $this->param2;
-    }
-    /**
-     * @param string $param2
-     *
-     * @return self
-     */
-    public function setParam2(string $param2): self
-    {
-        $this->initialized['param2'] = true;
-        $this->param2 = $param2;
-        return $this;
-    }
+    public string $param2;
     public function definedProperties(): array
     {
-        return ['ruleCode' => ['ruleCode', 'getRuleCode', 'setRuleCode'], 'isActive' => ['isActive', 'getIsActive', 'setIsActive'], 'param0' => ['param0', 'getParam0', 'setParam0'], 'param1' => ['param1', 'getParam1', 'setParam1'], 'param2' => ['param2...', 'getParam2', 'setParam2']];
+        return ['ruleCode' => 'ruleCode', 'isActive' => 'isActive', 'param0' => 'param0', 'param1' => 'param1', 'param2' => 'param2...'];
     }
 }

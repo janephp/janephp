@@ -38,63 +38,63 @@ class CompanySearchSuccessResultCompaniesItemNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($data['country']);
+            $object->country = $data['country'];
             unset($data['country']);
         }
         if (\array_key_exists('regNo', $data)) {
-            $object->setRegNo($data['regNo']);
+            $object->regNo = $data['regNo'];
             unset($data['regNo']);
         }
         if (\array_key_exists('vatNo', $data)) {
-            $object->setVatNo($this->denormalizer->denormalize($data['vatNo'], \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemVatNo::class, 'json', $context));
+            $object->vatNo = $this->denormalizer->denormalize($data['vatNo'], \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemVatNo::class, 'json', $context);
             unset($data['vatNo']);
         }
         if (\array_key_exists('safeNo', $data)) {
-            $object->setSafeNo($data['safeNo']);
+            $object->safeNo = $data['safeNo'];
             unset($data['safeNo']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('officeType', $data)) {
-            $object->setOfficeType($data['officeType']);
+            $object->officeType = $data['officeType'];
             unset($data['officeType']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('statusDescription', $data)) {
-            $object->setStatusDescription($data['statusDescription']);
+            $object->statusDescription = $data['statusDescription'];
             unset($data['statusDescription']);
         }
         if (\array_key_exists('activityCode', $data)) {
-            $object->setActivityCode($data['activityCode']);
+            $object->activityCode = $data['activityCode'];
             unset($data['activityCode']);
         }
         if (\array_key_exists('tradingNames', $data)) {
-            $object->setTradingNames($this->denormalizer->denormalize($data['tradingNames'], \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemTradingNames::class, 'json', $context));
+            $object->tradingNames = $this->denormalizer->denormalize($data['tradingNames'], \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemTradingNames::class, 'json', $context);
             unset($data['tradingNames']);
         }
         if (\array_key_exists('address', $data)) {
-            $object->setAddress($this->denormalizer->denormalize($data['address'], \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemAddress::class, 'json', $context));
+            $object->address = $this->denormalizer->denormalize($data['address'], \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemAddress::class, 'json', $context);
             unset($data['address']);
         }
         if (\array_key_exists('dateOfLatestChange', $data)) {
-            $object->setDateOfLatestChange($this->denormalizer->denormalize($data['dateOfLatestChange'], \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemDateOfLatestChange::class, 'json', $context));
+            $object->dateOfLatestChange = $this->denormalizer->denormalize($data['dateOfLatestChange'], \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemDateOfLatestChange::class, 'json', $context);
             unset($data['dateOfLatestChange']);
         }
         if (\array_key_exists('dateOfLatestCAccounts', $data)) {
-            $object->setDateOfLatestCAccounts($this->denormalizer->denormalize($data['dateOfLatestCAccounts'], \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts::class, 'json', $context));
+            $object->dateOfLatestCAccounts = $this->denormalizer->denormalize($data['dateOfLatestCAccounts'], \CreditSafe\API\Model\CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts::class, 'json', $context);
             unset($data['dateOfLatestCAccounts']);
         }
         foreach ($data as $key => $value) {
@@ -107,50 +107,50 @@ class CompanySearchSuccessResultCompaniesItemNormalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $data->getCountry();
+        if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
+            $dataArray['country'] = $data->country ?? null;
         }
-        if ($data->isInitialized('regNo') && null !== $data->getRegNo()) {
-            $dataArray['regNo'] = $data->getRegNo();
+        if (array_key_exists('regNo', get_object_vars($data)) && null !== ($data->regNo ?? null)) {
+            $dataArray['regNo'] = $data->regNo ?? null;
         }
-        if ($data->isInitialized('vatNo') && null !== $data->getVatNo()) {
-            $dataArray['vatNo'] = $data->getVatNo() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getVatNo(), 'json', $context));
+        if (array_key_exists('vatNo', get_object_vars($data)) && null !== ($data->vatNo ?? null)) {
+            $dataArray['vatNo'] = ($data->vatNo ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->vatNo ?? null, 'json', $context));
         }
-        if ($data->isInitialized('safeNo') && null !== $data->getSafeNo()) {
-            $dataArray['safeNo'] = $data->getSafeNo();
+        if (array_key_exists('safeNo', get_object_vars($data)) && null !== ($data->safeNo ?? null)) {
+            $dataArray['safeNo'] = $data->safeNo ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('officeType') && null !== $data->getOfficeType()) {
-            $dataArray['officeType'] = $data->getOfficeType();
+        if (array_key_exists('officeType', get_object_vars($data)) && null !== ($data->officeType ?? null)) {
+            $dataArray['officeType'] = $data->officeType ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('statusDescription') && null !== $data->getStatusDescription()) {
-            $dataArray['statusDescription'] = $data->getStatusDescription();
+        if (array_key_exists('statusDescription', get_object_vars($data)) && null !== ($data->statusDescription ?? null)) {
+            $dataArray['statusDescription'] = $data->statusDescription ?? null;
         }
-        if ($data->isInitialized('activityCode') && null !== $data->getActivityCode()) {
-            $dataArray['activityCode'] = $data->getActivityCode();
+        if (array_key_exists('activityCode', get_object_vars($data)) && null !== ($data->activityCode ?? null)) {
+            $dataArray['activityCode'] = $data->activityCode ?? null;
         }
-        if ($data->isInitialized('tradingNames') && null !== $data->getTradingNames()) {
-            $dataArray['tradingNames'] = $data->getTradingNames() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getTradingNames(), 'json', $context));
+        if (array_key_exists('tradingNames', get_object_vars($data)) && null !== ($data->tradingNames ?? null)) {
+            $dataArray['tradingNames'] = ($data->tradingNames ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->tradingNames ?? null, 'json', $context));
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $data->getAddress() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAddress(), 'json', $context));
+        if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
+            $dataArray['address'] = ($data->address ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address ?? null, 'json', $context));
         }
-        if ($data->isInitialized('dateOfLatestChange') && null !== $data->getDateOfLatestChange()) {
-            $dataArray['dateOfLatestChange'] = $data->getDateOfLatestChange() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getDateOfLatestChange(), 'json', $context));
+        if (array_key_exists('dateOfLatestChange', get_object_vars($data)) && null !== ($data->dateOfLatestChange ?? null)) {
+            $dataArray['dateOfLatestChange'] = ($data->dateOfLatestChange ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->dateOfLatestChange ?? null, 'json', $context));
         }
-        if ($data->isInitialized('dateOfLatestCAccounts') && null !== $data->getDateOfLatestCAccounts()) {
-            $dataArray['dateOfLatestCAccounts'] = $data->getDateOfLatestCAccounts() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getDateOfLatestCAccounts(), 'json', $context));
+        if (array_key_exists('dateOfLatestCAccounts', get_object_vars($data)) && null !== ($data->dateOfLatestCAccounts ?? null)) {
+            $dataArray['dateOfLatestCAccounts'] = ($data->dateOfLatestCAccounts ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->dateOfLatestCAccounts ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

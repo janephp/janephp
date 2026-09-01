@@ -41,23 +41,23 @@ class ApiAgentChildRelationshipVerionNormalizer implements DenormalizerInterface
             $data['is_deleted'] = (bool) $data['is_deleted'];
         }
         if (\array_key_exists('agent_name', $data)) {
-            $object->setAgentName($data['agent_name']);
+            $object->agentName = $data['agent_name'];
             unset($data['agent_name']);
         }
         if (\array_key_exists('child_agent_uuid', $data)) {
-            $object->setChildAgentUuid($data['child_agent_uuid']);
+            $object->childAgentUuid = $data['child_agent_uuid'];
             unset($data['child_agent_uuid']);
         }
         if (\array_key_exists('if_case', $data)) {
-            $object->setIfCase($data['if_case']);
+            $object->ifCase = $data['if_case'];
             unset($data['if_case']);
         }
         if (\array_key_exists('is_deleted', $data)) {
-            $object->setIsDeleted($data['is_deleted']);
+            $object->isDeleted = $data['is_deleted'];
             unset($data['is_deleted']);
         }
         if (\array_key_exists('route_name', $data)) {
-            $object->setRouteName($data['route_name']);
+            $object->routeName = $data['route_name'];
             unset($data['route_name']);
         }
         foreach ($data as $key => $value) {
@@ -70,20 +70,20 @@ class ApiAgentChildRelationshipVerionNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agentName') && null !== $data->getAgentName()) {
-            $dataArray['agent_name'] = $data->getAgentName();
+        if (array_key_exists('agentName', get_object_vars($data)) && null !== ($data->agentName ?? null)) {
+            $dataArray['agent_name'] = $data->agentName ?? null;
         }
-        if ($data->isInitialized('childAgentUuid') && null !== $data->getChildAgentUuid()) {
-            $dataArray['child_agent_uuid'] = $data->getChildAgentUuid();
+        if (array_key_exists('childAgentUuid', get_object_vars($data)) && null !== ($data->childAgentUuid ?? null)) {
+            $dataArray['child_agent_uuid'] = $data->childAgentUuid ?? null;
         }
-        if ($data->isInitialized('ifCase') && null !== $data->getIfCase()) {
-            $dataArray['if_case'] = $data->getIfCase();
+        if (array_key_exists('ifCase', get_object_vars($data)) && null !== ($data->ifCase ?? null)) {
+            $dataArray['if_case'] = $data->ifCase ?? null;
         }
-        if ($data->isInitialized('isDeleted') && null !== $data->getIsDeleted()) {
-            $dataArray['is_deleted'] = $data->getIsDeleted();
+        if (array_key_exists('isDeleted', get_object_vars($data)) && null !== ($data->isDeleted ?? null)) {
+            $dataArray['is_deleted'] = $data->isDeleted ?? null;
         }
-        if ($data->isInitialized('routeName') && null !== $data->getRouteName()) {
-            $dataArray['route_name'] = $data->getRouteName();
+        if (array_key_exists('routeName', get_object_vars($data)) && null !== ($data->routeName ?? null)) {
+            $dataArray['route_name'] = $data->routeName ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

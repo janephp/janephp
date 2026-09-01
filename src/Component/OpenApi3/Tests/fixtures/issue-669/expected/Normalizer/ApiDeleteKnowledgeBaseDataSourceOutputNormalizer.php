@@ -38,11 +38,11 @@ class ApiDeleteKnowledgeBaseDataSourceOutputNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('data_source_uuid', $data)) {
-            $object->setDataSourceUuid($data['data_source_uuid']);
+            $object->dataSourceUuid = $data['data_source_uuid'];
             unset($data['data_source_uuid']);
         }
         if (\array_key_exists('knowledge_base_uuid', $data)) {
-            $object->setKnowledgeBaseUuid($data['knowledge_base_uuid']);
+            $object->knowledgeBaseUuid = $data['knowledge_base_uuid'];
             unset($data['knowledge_base_uuid']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiDeleteKnowledgeBaseDataSourceOutputNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dataSourceUuid') && null !== $data->getDataSourceUuid()) {
-            $dataArray['data_source_uuid'] = $data->getDataSourceUuid();
+        if (array_key_exists('dataSourceUuid', get_object_vars($data)) && null !== ($data->dataSourceUuid ?? null)) {
+            $dataArray['data_source_uuid'] = $data->dataSourceUuid ?? null;
         }
-        if ($data->isInitialized('knowledgeBaseUuid') && null !== $data->getKnowledgeBaseUuid()) {
-            $dataArray['knowledge_base_uuid'] = $data->getKnowledgeBaseUuid();
+        if (array_key_exists('knowledgeBaseUuid', get_object_vars($data)) && null !== ($data->knowledgeBaseUuid ?? null)) {
+            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -47,15 +47,15 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SatelliteOrbitConstraint());
         }
         if (\array_key_exists('planet', $data)) {
-            $object->setPlanet($this->denormalizer->denormalize($data['planet'], \Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class, 'json', $context));
+            $object->planet = $this->denormalizer->denormalize($data['planet'], \Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class, 'json', $context);
             unset($data['planet']);
         }
         if (\array_key_exists('orbitalPeriod', $data)) {
-            $object->setOrbitalPeriod($data['orbitalPeriod']);
+            $object->orbitalPeriod = $data['orbitalPeriod'];
             unset($data['orbitalPeriod']);
         }
         if (\array_key_exists('distance', $data)) {
-            $object->setDistance($data['distance']);
+            $object->distance = $data['distance'];
             unset($data['distance']);
         }
         foreach ($data as $key => $value) {
@@ -68,14 +68,14 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('planet') && null !== $data->getPlanet()) {
-            $dataArray['planet'] = $data->getPlanet() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPlanet(), 'json', $context));
+        if (array_key_exists('planet', get_object_vars($data)) && null !== ($data->planet ?? null)) {
+            $dataArray['planet'] = ($data->planet ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->planet ?? null, 'json', $context));
         }
-        if ($data->isInitialized('orbitalPeriod') && null !== $data->getOrbitalPeriod()) {
-            $dataArray['orbitalPeriod'] = $data->getOrbitalPeriod();
+        if (array_key_exists('orbitalPeriod', get_object_vars($data)) && null !== ($data->orbitalPeriod ?? null)) {
+            $dataArray['orbitalPeriod'] = $data->orbitalPeriod ?? null;
         }
-        if ($data->isInitialized('distance') && null !== $data->getDistance()) {
-            $dataArray['distance'] = $data->getDistance();
+        if (array_key_exists('distance', get_object_vars($data)) && null !== ($data->distance ?? null)) {
+            $dataArray['distance'] = $data->distance ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

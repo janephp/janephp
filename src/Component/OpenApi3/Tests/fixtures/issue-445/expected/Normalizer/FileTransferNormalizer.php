@@ -38,55 +38,55 @@ class FileTransferNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('identifier', $data) && $data['identifier'] !== null) {
-            $object->setIdentifier($data['identifier']);
+            $object->identifier = $data['identifier'];
         }
         elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
-            $object->setIdentifier(null);
+            $object->identifier = null;
         }
         if (\array_key_exists('requestId', $data)) {
-            $object->setRequestId($data['requestId']);
+            $object->requestId = $data['requestId'];
         }
         if (\array_key_exists('transferId', $data)) {
-            $object->setTransferId($data['transferId']);
+            $object->transferId = $data['transferId'];
         }
         if (\array_key_exists('state', $data)) {
             $value = $data['state'];
             if (is_string($data['state'])) {
                 $value = $data['state'];
             }
-            $object->setState($value);
+            $object->state = $value;
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
-            $object->setContentId(null);
+            $object->contentId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('identifier') && null !== $data->getIdentifier()) {
-            $dataArray['identifier'] = $data->getIdentifier();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('identifier', get_object_vars($data)) && null !== ($data->identifier ?? null)) {
+            $dataArray['identifier'] = $data->identifier ?? null;
         }
-        $dataArray['requestId'] = $data->getRequestId();
-        $dataArray['transferId'] = $data->getTransferId();
-        $value = $data->getState();
-        if (is_string($data->getState())) {
-            $value = $data->getState();
+        $dataArray['requestId'] = $data->requestId ?? null;
+        $dataArray['transferId'] = $data->transferId ?? null;
+        $value = $data->state ?? null;
+        if (is_string($data->state ?? null)) {
+            $value = $data->state ?? null;
         }
         $dataArray['state'] = $value;
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
-            $dataArray['contentId'] = $data->getContentId();
+        if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
+            $dataArray['contentId'] = $data->contentId ?? null;
         }
         return $dataArray;
     }

@@ -41,47 +41,47 @@ class RedisAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
             $data['redis_ssl'] = (bool) $data['redis_ssl'];
         }
         if (\array_key_exists('redis_maxmemory_policy', $data)) {
-            $object->setRedisMaxmemoryPolicy($data['redis_maxmemory_policy']);
+            $object->redisMaxmemoryPolicy = $data['redis_maxmemory_policy'];
             unset($data['redis_maxmemory_policy']);
         }
         if (\array_key_exists('redis_pubsub_client_output_buffer_limit', $data)) {
-            $object->setRedisPubsubClientOutputBufferLimit($data['redis_pubsub_client_output_buffer_limit']);
+            $object->redisPubsubClientOutputBufferLimit = $data['redis_pubsub_client_output_buffer_limit'];
             unset($data['redis_pubsub_client_output_buffer_limit']);
         }
         if (\array_key_exists('redis_number_of_databases', $data)) {
-            $object->setRedisNumberOfDatabases($data['redis_number_of_databases']);
+            $object->redisNumberOfDatabases = $data['redis_number_of_databases'];
             unset($data['redis_number_of_databases']);
         }
         if (\array_key_exists('redis_io_threads', $data)) {
-            $object->setRedisIoThreads($data['redis_io_threads']);
+            $object->redisIoThreads = $data['redis_io_threads'];
             unset($data['redis_io_threads']);
         }
         if (\array_key_exists('redis_lfu_log_factor', $data)) {
-            $object->setRedisLfuLogFactor($data['redis_lfu_log_factor']);
+            $object->redisLfuLogFactor = $data['redis_lfu_log_factor'];
             unset($data['redis_lfu_log_factor']);
         }
         if (\array_key_exists('redis_lfu_decay_time', $data)) {
-            $object->setRedisLfuDecayTime($data['redis_lfu_decay_time']);
+            $object->redisLfuDecayTime = $data['redis_lfu_decay_time'];
             unset($data['redis_lfu_decay_time']);
         }
         if (\array_key_exists('redis_ssl', $data)) {
-            $object->setRedisSsl($data['redis_ssl']);
+            $object->redisSsl = $data['redis_ssl'];
             unset($data['redis_ssl']);
         }
         if (\array_key_exists('redis_timeout', $data)) {
-            $object->setRedisTimeout($data['redis_timeout']);
+            $object->redisTimeout = $data['redis_timeout'];
             unset($data['redis_timeout']);
         }
         if (\array_key_exists('redis_notify_keyspace_events', $data)) {
-            $object->setRedisNotifyKeyspaceEvents($data['redis_notify_keyspace_events']);
+            $object->redisNotifyKeyspaceEvents = $data['redis_notify_keyspace_events'];
             unset($data['redis_notify_keyspace_events']);
         }
         if (\array_key_exists('redis_persistence', $data)) {
-            $object->setRedisPersistence($data['redis_persistence']);
+            $object->redisPersistence = $data['redis_persistence'];
             unset($data['redis_persistence']);
         }
         if (\array_key_exists('redis_acl_channels_default', $data)) {
-            $object->setRedisAclChannelsDefault($data['redis_acl_channels_default']);
+            $object->redisAclChannelsDefault = $data['redis_acl_channels_default'];
             unset($data['redis_acl_channels_default']);
         }
         foreach ($data as $key => $value) {
@@ -94,38 +94,38 @@ class RedisAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('redisMaxmemoryPolicy') && null !== $data->getRedisMaxmemoryPolicy()) {
-            $dataArray['redis_maxmemory_policy'] = $data->getRedisMaxmemoryPolicy();
+        if (array_key_exists('redisMaxmemoryPolicy', get_object_vars($data)) && null !== ($data->redisMaxmemoryPolicy ?? null)) {
+            $dataArray['redis_maxmemory_policy'] = $data->redisMaxmemoryPolicy ?? null;
         }
-        if ($data->isInitialized('redisPubsubClientOutputBufferLimit') && null !== $data->getRedisPubsubClientOutputBufferLimit()) {
-            $dataArray['redis_pubsub_client_output_buffer_limit'] = $data->getRedisPubsubClientOutputBufferLimit();
+        if (array_key_exists('redisPubsubClientOutputBufferLimit', get_object_vars($data)) && null !== ($data->redisPubsubClientOutputBufferLimit ?? null)) {
+            $dataArray['redis_pubsub_client_output_buffer_limit'] = $data->redisPubsubClientOutputBufferLimit ?? null;
         }
-        if ($data->isInitialized('redisNumberOfDatabases') && null !== $data->getRedisNumberOfDatabases()) {
-            $dataArray['redis_number_of_databases'] = $data->getRedisNumberOfDatabases();
+        if (array_key_exists('redisNumberOfDatabases', get_object_vars($data)) && null !== ($data->redisNumberOfDatabases ?? null)) {
+            $dataArray['redis_number_of_databases'] = $data->redisNumberOfDatabases ?? null;
         }
-        if ($data->isInitialized('redisIoThreads') && null !== $data->getRedisIoThreads()) {
-            $dataArray['redis_io_threads'] = $data->getRedisIoThreads();
+        if (array_key_exists('redisIoThreads', get_object_vars($data)) && null !== ($data->redisIoThreads ?? null)) {
+            $dataArray['redis_io_threads'] = $data->redisIoThreads ?? null;
         }
-        if ($data->isInitialized('redisLfuLogFactor') && null !== $data->getRedisLfuLogFactor()) {
-            $dataArray['redis_lfu_log_factor'] = $data->getRedisLfuLogFactor();
+        if (array_key_exists('redisLfuLogFactor', get_object_vars($data)) && null !== ($data->redisLfuLogFactor ?? null)) {
+            $dataArray['redis_lfu_log_factor'] = $data->redisLfuLogFactor ?? null;
         }
-        if ($data->isInitialized('redisLfuDecayTime') && null !== $data->getRedisLfuDecayTime()) {
-            $dataArray['redis_lfu_decay_time'] = $data->getRedisLfuDecayTime();
+        if (array_key_exists('redisLfuDecayTime', get_object_vars($data)) && null !== ($data->redisLfuDecayTime ?? null)) {
+            $dataArray['redis_lfu_decay_time'] = $data->redisLfuDecayTime ?? null;
         }
-        if ($data->isInitialized('redisSsl') && null !== $data->getRedisSsl()) {
-            $dataArray['redis_ssl'] = $data->getRedisSsl();
+        if (array_key_exists('redisSsl', get_object_vars($data)) && null !== ($data->redisSsl ?? null)) {
+            $dataArray['redis_ssl'] = $data->redisSsl ?? null;
         }
-        if ($data->isInitialized('redisTimeout') && null !== $data->getRedisTimeout()) {
-            $dataArray['redis_timeout'] = $data->getRedisTimeout();
+        if (array_key_exists('redisTimeout', get_object_vars($data)) && null !== ($data->redisTimeout ?? null)) {
+            $dataArray['redis_timeout'] = $data->redisTimeout ?? null;
         }
-        if ($data->isInitialized('redisNotifyKeyspaceEvents') && null !== $data->getRedisNotifyKeyspaceEvents()) {
-            $dataArray['redis_notify_keyspace_events'] = $data->getRedisNotifyKeyspaceEvents();
+        if (array_key_exists('redisNotifyKeyspaceEvents', get_object_vars($data)) && null !== ($data->redisNotifyKeyspaceEvents ?? null)) {
+            $dataArray['redis_notify_keyspace_events'] = $data->redisNotifyKeyspaceEvents ?? null;
         }
-        if ($data->isInitialized('redisPersistence') && null !== $data->getRedisPersistence()) {
-            $dataArray['redis_persistence'] = $data->getRedisPersistence();
+        if (array_key_exists('redisPersistence', get_object_vars($data)) && null !== ($data->redisPersistence ?? null)) {
+            $dataArray['redis_persistence'] = $data->redisPersistence ?? null;
         }
-        if ($data->isInitialized('redisAclChannelsDefault') && null !== $data->getRedisAclChannelsDefault()) {
-            $dataArray['redis_acl_channels_default'] = $data->getRedisAclChannelsDefault();
+        if (array_key_exists('redisAclChannelsDefault', get_object_vars($data)) && null !== ($data->redisAclChannelsDefault ?? null)) {
+            $dataArray['redis_acl_channels_default'] = $data->redisAclChannelsDefault ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

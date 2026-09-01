@@ -42,7 +42,7 @@ class DropletBackupPolicyRecordNextBackupWindowNormalizer implements Denormalize
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStart($date);
+            $object->start = $date;
             unset($data['start']);
         }
         if (\array_key_exists('end', $data)) {
@@ -50,7 +50,7 @@ class DropletBackupPolicyRecordNextBackupWindowNormalizer implements Denormalize
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['end'], 'Y-m-d\TH:i:sP');
             }
-            $object->setEnd($date_1);
+            $object->end = $date_1;
             unset($data['end']);
         }
         foreach ($data as $key => $value) {
@@ -63,11 +63,11 @@ class DropletBackupPolicyRecordNextBackupWindowNormalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('start') && null !== $data->getStart()) {
-            $dataArray['start'] = $data->getStart()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
+            $dataArray['start'] = ($data->start ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('end') && null !== $data->getEnd()) {
-            $dataArray['end'] = $data->getEnd()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
+            $dataArray['end'] = ($data->end ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

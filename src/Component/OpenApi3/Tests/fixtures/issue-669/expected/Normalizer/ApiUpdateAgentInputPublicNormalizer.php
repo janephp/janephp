@@ -53,7 +53,7 @@ class ApiUpdateAgentInputPublicNormalizer implements DenormalizerInterface, Norm
             $data['provide_citations'] = (bool) $data['provide_citations'];
         }
         if (\array_key_exists('agent_log_insights_enabled', $data)) {
-            $object->setAgentLogInsightsEnabled($data['agent_log_insights_enabled']);
+            $object->agentLogInsightsEnabled = $data['agent_log_insights_enabled'];
             unset($data['agent_log_insights_enabled']);
         }
         if (\array_key_exists('allowed_domains', $data)) {
@@ -61,59 +61,59 @@ class ApiUpdateAgentInputPublicNormalizer implements DenormalizerInterface, Norm
             foreach ($data['allowed_domains'] as $value) {
                 $values[] = $value;
             }
-            $object->setAllowedDomains($values);
+            $object->allowedDomains = $values;
             unset($data['allowed_domains']);
         }
         if (\array_key_exists('anthropic_key_uuid', $data)) {
-            $object->setAnthropicKeyUuid($data['anthropic_key_uuid']);
+            $object->anthropicKeyUuid = $data['anthropic_key_uuid'];
             unset($data['anthropic_key_uuid']);
         }
         if (\array_key_exists('conversation_logs_enabled', $data)) {
-            $object->setConversationLogsEnabled($data['conversation_logs_enabled']);
+            $object->conversationLogsEnabled = $data['conversation_logs_enabled'];
             unset($data['conversation_logs_enabled']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('instruction', $data)) {
-            $object->setInstruction($data['instruction']);
+            $object->instruction = $data['instruction'];
             unset($data['instruction']);
         }
         if (\array_key_exists('k', $data)) {
-            $object->setK($data['k']);
+            $object->k = $data['k'];
             unset($data['k']);
         }
         if (\array_key_exists('max_tokens', $data)) {
-            $object->setMaxTokens($data['max_tokens']);
+            $object->maxTokens = $data['max_tokens'];
             unset($data['max_tokens']);
         }
         if (\array_key_exists('model_provider_key_uuid', $data)) {
-            $object->setModelProviderKeyUuid($data['model_provider_key_uuid']);
+            $object->modelProviderKeyUuid = $data['model_provider_key_uuid'];
             unset($data['model_provider_key_uuid']);
         }
         if (\array_key_exists('model_uuid', $data)) {
-            $object->setModelUuid($data['model_uuid']);
+            $object->modelUuid = $data['model_uuid'];
             unset($data['model_uuid']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('open_ai_key_uuid', $data)) {
-            $object->setOpenAiKeyUuid($data['open_ai_key_uuid']);
+            $object->openAiKeyUuid = $data['open_ai_key_uuid'];
             unset($data['open_ai_key_uuid']);
         }
         if (\array_key_exists('project_id', $data)) {
-            $object->setProjectId($data['project_id']);
+            $object->projectId = $data['project_id'];
             unset($data['project_id']);
         }
         if (\array_key_exists('provide_citations', $data)) {
-            $object->setProvideCitations($data['provide_citations']);
+            $object->provideCitations = $data['provide_citations'];
             unset($data['provide_citations']);
         }
         if (\array_key_exists('retrieval_method', $data)) {
-            $object->setRetrievalMethod($data['retrieval_method']);
+            $object->retrievalMethod = $data['retrieval_method'];
             unset($data['retrieval_method']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -121,19 +121,19 @@ class ApiUpdateAgentInputPublicNormalizer implements DenormalizerInterface, Norm
             foreach ($data['tags'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setTags($values_1);
+            $object->tags = $values_1;
             unset($data['tags']);
         }
         if (\array_key_exists('temperature', $data)) {
-            $object->setTemperature($data['temperature']);
+            $object->temperature = $data['temperature'];
             unset($data['temperature']);
         }
         if (\array_key_exists('top_p', $data)) {
-            $object->setTopP($data['top_p']);
+            $object->topP = $data['top_p'];
             unset($data['top_p']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         foreach ($data as $key => $value_2) {
@@ -146,70 +146,70 @@ class ApiUpdateAgentInputPublicNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agentLogInsightsEnabled') && null !== $data->getAgentLogInsightsEnabled()) {
-            $dataArray['agent_log_insights_enabled'] = $data->getAgentLogInsightsEnabled();
+        if (array_key_exists('agentLogInsightsEnabled', get_object_vars($data)) && null !== ($data->agentLogInsightsEnabled ?? null)) {
+            $dataArray['agent_log_insights_enabled'] = $data->agentLogInsightsEnabled ?? null;
         }
-        if ($data->isInitialized('allowedDomains') && null !== $data->getAllowedDomains()) {
+        if (array_key_exists('allowedDomains', get_object_vars($data)) && null !== ($data->allowedDomains ?? null)) {
             $values = [];
-            foreach ($data->getAllowedDomains() as $value) {
+            foreach ($data->allowedDomains ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['allowed_domains'] = $values;
         }
-        if ($data->isInitialized('anthropicKeyUuid') && null !== $data->getAnthropicKeyUuid()) {
-            $dataArray['anthropic_key_uuid'] = $data->getAnthropicKeyUuid();
+        if (array_key_exists('anthropicKeyUuid', get_object_vars($data)) && null !== ($data->anthropicKeyUuid ?? null)) {
+            $dataArray['anthropic_key_uuid'] = $data->anthropicKeyUuid ?? null;
         }
-        if ($data->isInitialized('conversationLogsEnabled') && null !== $data->getConversationLogsEnabled()) {
-            $dataArray['conversation_logs_enabled'] = $data->getConversationLogsEnabled();
+        if (array_key_exists('conversationLogsEnabled', get_object_vars($data)) && null !== ($data->conversationLogsEnabled ?? null)) {
+            $dataArray['conversation_logs_enabled'] = $data->conversationLogsEnabled ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('instruction') && null !== $data->getInstruction()) {
-            $dataArray['instruction'] = $data->getInstruction();
+        if (array_key_exists('instruction', get_object_vars($data)) && null !== ($data->instruction ?? null)) {
+            $dataArray['instruction'] = $data->instruction ?? null;
         }
-        if ($data->isInitialized('k') && null !== $data->getK()) {
-            $dataArray['k'] = $data->getK();
+        if (array_key_exists('k', get_object_vars($data)) && null !== ($data->k ?? null)) {
+            $dataArray['k'] = $data->k ?? null;
         }
-        if ($data->isInitialized('maxTokens') && null !== $data->getMaxTokens()) {
-            $dataArray['max_tokens'] = $data->getMaxTokens();
+        if (array_key_exists('maxTokens', get_object_vars($data)) && null !== ($data->maxTokens ?? null)) {
+            $dataArray['max_tokens'] = $data->maxTokens ?? null;
         }
-        if ($data->isInitialized('modelProviderKeyUuid') && null !== $data->getModelProviderKeyUuid()) {
-            $dataArray['model_provider_key_uuid'] = $data->getModelProviderKeyUuid();
+        if (array_key_exists('modelProviderKeyUuid', get_object_vars($data)) && null !== ($data->modelProviderKeyUuid ?? null)) {
+            $dataArray['model_provider_key_uuid'] = $data->modelProviderKeyUuid ?? null;
         }
-        if ($data->isInitialized('modelUuid') && null !== $data->getModelUuid()) {
-            $dataArray['model_uuid'] = $data->getModelUuid();
+        if (array_key_exists('modelUuid', get_object_vars($data)) && null !== ($data->modelUuid ?? null)) {
+            $dataArray['model_uuid'] = $data->modelUuid ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('openAiKeyUuid') && null !== $data->getOpenAiKeyUuid()) {
-            $dataArray['open_ai_key_uuid'] = $data->getOpenAiKeyUuid();
+        if (array_key_exists('openAiKeyUuid', get_object_vars($data)) && null !== ($data->openAiKeyUuid ?? null)) {
+            $dataArray['open_ai_key_uuid'] = $data->openAiKeyUuid ?? null;
         }
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
-            $dataArray['project_id'] = $data->getProjectId();
+        if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
+            $dataArray['project_id'] = $data->projectId ?? null;
         }
-        if ($data->isInitialized('provideCitations') && null !== $data->getProvideCitations()) {
-            $dataArray['provide_citations'] = $data->getProvideCitations();
+        if (array_key_exists('provideCitations', get_object_vars($data)) && null !== ($data->provideCitations ?? null)) {
+            $dataArray['provide_citations'] = $data->provideCitations ?? null;
         }
-        if ($data->isInitialized('retrievalMethod') && null !== $data->getRetrievalMethod()) {
-            $dataArray['retrieval_method'] = $data->getRetrievalMethod();
+        if (array_key_exists('retrievalMethod', get_object_vars($data)) && null !== ($data->retrievalMethod ?? null)) {
+            $dataArray['retrieval_method'] = $data->retrievalMethod ?? null;
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_1 = [];
-            foreach ($data->getTags() as $value_1) {
+            foreach ($data->tags ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
-        if ($data->isInitialized('temperature') && null !== $data->getTemperature()) {
-            $dataArray['temperature'] = $data->getTemperature();
+        if (array_key_exists('temperature', get_object_vars($data)) && null !== ($data->temperature ?? null)) {
+            $dataArray['temperature'] = $data->temperature ?? null;
         }
-        if ($data->isInitialized('topP') && null !== $data->getTopP()) {
-            $dataArray['top_p'] = $data->getTopP();
+        if (array_key_exists('topP', get_object_vars($data)) && null !== ($data->topP ?? null)) {
+            $dataArray['top_p'] = $data->topP ?? null;
         }
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

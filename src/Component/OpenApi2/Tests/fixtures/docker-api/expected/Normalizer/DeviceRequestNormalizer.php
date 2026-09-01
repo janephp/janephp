@@ -41,17 +41,17 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
             $this->validate($data, new \Docker\Api\Validator\DeviceRequestConstraint());
         }
         if (\array_key_exists('Driver', $data)) {
-            $object->setDriver($data['Driver']);
+            $object->driver = $data['Driver'];
         }
         if (\array_key_exists('Count', $data)) {
-            $object->setCount($data['Count']);
+            $object->count = $data['Count'];
         }
         if (\array_key_exists('DeviceIDs', $data)) {
             $values = [];
             foreach ($data['DeviceIDs'] as $value) {
                 $values[] = $value;
             }
-            $object->setDeviceIDs($values);
+            $object->deviceIDs = $values;
         }
         if (\array_key_exists('Capabilities', $data)) {
             $values_1 = [];
@@ -62,36 +62,36 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
                 }
                 $values_1[] = $values_2;
             }
-            $object->setCapabilities($values_1);
+            $object->capabilities = $values_1;
         }
         if (\array_key_exists('Options', $data)) {
             $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Options'] as $key => $value_3) {
                 $values_3[$key] = $value_3;
             }
-            $object->setOptions($values_3);
+            $object->options = $values_3;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('driver') && null !== $data->getDriver()) {
-            $dataArray['Driver'] = $data->getDriver();
+        if (array_key_exists('driver', get_object_vars($data)) && null !== ($data->driver ?? null)) {
+            $dataArray['Driver'] = $data->driver ?? null;
         }
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['Count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['Count'] = $data->count ?? null;
         }
-        if ($data->isInitialized('deviceIDs') && null !== $data->getDeviceIDs()) {
+        if (array_key_exists('deviceIDs', get_object_vars($data)) && null !== ($data->deviceIDs ?? null)) {
             $values = [];
-            foreach ($data->getDeviceIDs() as $value) {
+            foreach ($data->deviceIDs ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['DeviceIDs'] = $values;
         }
-        if ($data->isInitialized('capabilities') && null !== $data->getCapabilities()) {
+        if (array_key_exists('capabilities', get_object_vars($data)) && null !== ($data->capabilities ?? null)) {
             $values_1 = [];
-            foreach ($data->getCapabilities() as $value_1) {
+            foreach ($data->capabilities ?? null as $value_1) {
                 $values_2 = [];
                 foreach ($value_1 as $value_2) {
                     $values_2[] = $value_2;
@@ -100,9 +100,9 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $dataArray['Capabilities'] = $values_1;
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values_3 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getOptions() as $key => $value_3) {
+            foreach ($data->options ?? null as $key => $value_3) {
                 $values_3[$key] = $value_3;
             }
             $dataArray['Options'] = $values_3;

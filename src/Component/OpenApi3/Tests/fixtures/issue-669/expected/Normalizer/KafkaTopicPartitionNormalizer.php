@@ -38,19 +38,19 @@ class KafkaTopicPartitionNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('in_sync_replicas', $data)) {
-            $object->setInSyncReplicas($data['in_sync_replicas']);
+            $object->inSyncReplicas = $data['in_sync_replicas'];
             unset($data['in_sync_replicas']);
         }
         if (\array_key_exists('earliest_offset', $data)) {
-            $object->setEarliestOffset($data['earliest_offset']);
+            $object->earliestOffset = $data['earliest_offset'];
             unset($data['earliest_offset']);
         }
         if (\array_key_exists('consumer_groups', $data) && $data['consumer_groups'] !== null) {
@@ -58,11 +58,11 @@ class KafkaTopicPartitionNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['consumer_groups'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\KafkaTopicPartitionConsumerGroupsItem::class, 'json', $context);
             }
-            $object->setConsumerGroups($values);
+            $object->consumerGroups = $values;
             unset($data['consumer_groups']);
         }
         elseif (\array_key_exists('consumer_groups', $data) && $data['consumer_groups'] === null) {
-            $object->setConsumerGroups(null);
+            $object->consumerGroups = null;
             unset($data['consumer_groups']);
         }
         foreach ($data as $key => $value_1) {
@@ -75,21 +75,21 @@ class KafkaTopicPartitionNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['size'] = $data->getSize();
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['size'] = $data->size ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('inSyncReplicas') && null !== $data->getInSyncReplicas()) {
-            $dataArray['in_sync_replicas'] = $data->getInSyncReplicas();
+        if (array_key_exists('inSyncReplicas', get_object_vars($data)) && null !== ($data->inSyncReplicas ?? null)) {
+            $dataArray['in_sync_replicas'] = $data->inSyncReplicas ?? null;
         }
-        if ($data->isInitialized('earliestOffset') && null !== $data->getEarliestOffset()) {
-            $dataArray['earliest_offset'] = $data->getEarliestOffset();
+        if (array_key_exists('earliestOffset', get_object_vars($data)) && null !== ($data->earliestOffset ?? null)) {
+            $dataArray['earliest_offset'] = $data->earliestOffset ?? null;
         }
-        if ($data->isInitialized('consumerGroups') && null !== $data->getConsumerGroups()) {
+        if (array_key_exists('consumerGroups', get_object_vars($data)) && null !== ($data->consumerGroups ?? null)) {
             $values = [];
-            foreach ($data->getConsumerGroups() as $value) {
+            foreach ($data->consumerGroups ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['consumer_groups'] = $values;

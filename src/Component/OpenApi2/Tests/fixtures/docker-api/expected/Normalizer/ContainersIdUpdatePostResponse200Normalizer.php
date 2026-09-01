@@ -45,16 +45,16 @@ class ContainersIdUpdatePostResponse200Normalizer implements DenormalizerInterfa
             foreach ($data['Warnings'] as $value) {
                 $values[] = $value;
             }
-            $object->setWarnings($values);
+            $object->warnings = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('warnings') && null !== $data->getWarnings()) {
+        if (array_key_exists('warnings', get_object_vars($data)) && null !== ($data->warnings ?? null)) {
             $values = [];
-            foreach ($data->getWarnings() as $value) {
+            foreach ($data->warnings ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['Warnings'] = $values;

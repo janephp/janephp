@@ -33,16 +33,16 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, ClassGuesser
 
     public function supportObject($object): bool
     {
-        return $object instanceof Schema && \is_array($object->getAnyOf()) && \count($object->getAnyOf()) > 0;
+        return $object instanceof Schema && \is_array($object->anyOf ?? null) && \count($object->anyOf ?? null) > 0;
     }
 
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        if (!($object instanceof Schema) || !\is_array($object->getAnyOf())) {
+        if (!($object instanceof Schema) || !\is_array($object->anyOf ?? null)) {
             return;
         }
 
-        foreach ($object->getAnyOf() as $anyOfKey => $anyOfObject) {
+        foreach (($object->anyOf ?? null ?? []) as $anyOfKey => $anyOfObject) {
             $this->chainGuesser->guessClass($anyOfObject, $name . 'AnyOf', $reference . '/anyOf/' . $anyOfKey, $registry);
         }
     }
@@ -53,14 +53,14 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, ClassGuesser
         if ($object instanceof Schema) {
             $mapping = null;
             $supportsDiscriminator = false;
-            if ($object->getDiscriminator() && $object->getDiscriminator()->getPropertyName()) {
+            if (($object->discriminator ?? null) && (($object->discriminator ?? null)->propertyName ?? null)) {
                 $supportsDiscriminator = true;
-                $type->setDiscriminatorProperty($object->getDiscriminator()->getPropertyName());
-                if ($object->getDiscriminator()->getMapping()) {
-                    $mapping = array_flip((array) $object->getDiscriminator()->getMapping());
+                $type->setDiscriminatorProperty(($object->discriminator ?? null)->propertyName ?? null);
+                if (($object->discriminator ?? null)->mapping ?? null) {
+                    $mapping = array_flip((array) (($object->discriminator ?? null)->mapping ?? null));
                 }
             }
-            foreach ($object->getAnyOf() as $index => $anyOf) {
+            foreach (($object->anyOf ?? null ?? []) as $index => $anyOf) {
                 if ($anyOf === null) {
                     continue;
                 }
@@ -76,7 +76,7 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, ClassGuesser
 
                     $anyOfSchema = $this->resolve($anyOfSchema, $this->schemaClass);
                 }
-                if (null !== $anyOfSchema->getType()) {
+                if (null !== ($anyOfSchema->type ?? null)) {
                     $anyOfType = $this->chainGuesser->guessType($anyOfSchema, $name, $anyOfReference, $registry);
                     if ($supportsDiscriminator && $anyOf instanceof Reference) {
                         $objectRef = '#' . $anyOf->getMergedUri()->getFragment();

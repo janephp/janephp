@@ -38,11 +38,11 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('tag', $data) && $data['tag'] !== null) {
@@ -52,11 +52,11 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             } elseif (is_null($data['tag'])) {
                 $value = $data['tag'];
             }
-            $object->setTag($value);
+            $object->tag = $value;
             unset($data['tag']);
         }
         elseif (\array_key_exists('tag', $data) && $data['tag'] === null) {
-            $object->setTag(null);
+            $object->tag = null;
             unset($data['tag']);
         }
         foreach ($data as $key => $value_1) {
@@ -69,14 +69,14 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('tag') && null !== $data->getTag()) {
-            $value = $data->getTag();
-            if (is_string($data->getTag())) {
-                $value = $data->getTag();
-            } elseif (is_null($data->getTag())) {
-                $value = $data->getTag();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
+            $value = $data->tag ?? null;
+            if (is_string($data->tag ?? null)) {
+                $value = $data->tag ?? null;
+            } elseif (is_null($data->tag ?? null)) {
+                $value = $data->tag ?? null;
             }
             $dataArray['tag'] = $value;
         }

@@ -38,11 +38,11 @@ class TagsResourceResourcesItemNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('resource_id', $data)) {
-            $object->setResourceId($data['resource_id']);
+            $object->resourceId = $data['resource_id'];
             unset($data['resource_id']);
         }
         if (\array_key_exists('resource_type', $data)) {
-            $object->setResourceType($data['resource_type']);
+            $object->resourceType = $data['resource_type'];
             unset($data['resource_type']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class TagsResourceResourcesItemNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('resourceId') && null !== $data->getResourceId()) {
-            $dataArray['resource_id'] = $data->getResourceId();
+        if (array_key_exists('resourceId', get_object_vars($data)) && null !== ($data->resourceId ?? null)) {
+            $dataArray['resource_id'] = $data->resourceId ?? null;
         }
-        if ($data->isInitialized('resourceType') && null !== $data->getResourceType()) {
-            $dataArray['resource_type'] = $data->getResourceType();
+        if (array_key_exists('resourceType', get_object_vars($data)) && null !== ($data->resourceType ?? null)) {
+            $dataArray['resource_type'] = $data->resourceType ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

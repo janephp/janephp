@@ -32,33 +32,33 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return $object;
         }
         if (\array_key_exists('foo', $data)) {
-            $object->setFoo($data['foo']);
+            $object->foo = $data['foo'];
         }
         if (\array_key_exists('Bar', $data)) {
-            $object->setBar($this->denormalizer->denormalize($data['Bar'], \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class, 'json', $context));
+            $object->bar = $this->denormalizer->denormalize($data['Bar'], \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class, 'json', $context);
         }
         if (\array_key_exists('Baz', $data)) {
-            $object->setBaz($this->denormalizer->denormalize($data['Baz'], \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class, 'json', $context));
+            $object->baz = $this->denormalizer->denormalize($data['Baz'], \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class, 'json', $context);
         }
         if (\array_key_exists('inlineProperty', $data)) {
-            $object->setInlineProperty($this->denormalizer->denormalize($data['inlineProperty'], \Jane\Component\JsonSchema\Tests\Expected\Model\BazInlineProperty::class, 'json', $context));
+            $object->inlineProperty = $this->denormalizer->denormalize($data['inlineProperty'], \Jane\Component\JsonSchema\Tests\Expected\Model\BazInlineProperty::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo();
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $dataArray['foo'] = $data->foo ?? null;
         }
-        if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $dataArray['Bar'] = $data->getBar() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBar(), 'json', $context));
+        if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
+            $dataArray['Bar'] = ($data->bar ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->bar ?? null, 'json', $context));
         }
-        if ($data->isInitialized('baz') && null !== $data->getBaz()) {
-            $dataArray['Baz'] = $data->getBaz() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBaz(), 'json', $context));
+        if (array_key_exists('baz', get_object_vars($data)) && null !== ($data->baz ?? null)) {
+            $dataArray['Baz'] = ($data->baz ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->baz ?? null, 'json', $context));
         }
-        if ($data->isInitialized('inlineProperty') && null !== $data->getInlineProperty()) {
-            $dataArray['inlineProperty'] = $data->getInlineProperty() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getInlineProperty(), 'json', $context));
+        if (array_key_exists('inlineProperty', get_object_vars($data)) && null !== ($data->inlineProperty ?? null)) {
+            $dataArray['inlineProperty'] = ($data->inlineProperty ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->inlineProperty ?? null, 'json', $context));
         }
         return $dataArray;
     }

@@ -38,11 +38,11 @@ class KafkaTopicPartitionConsumerGroupsItemNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('group_name', $data)) {
-            $object->setGroupName($data['group_name']);
+            $object->groupName = $data['group_name'];
             unset($data['group_name']);
         }
         if (\array_key_exists('offset', $data)) {
-            $object->setOffset($data['offset']);
+            $object->offset = $data['offset'];
             unset($data['offset']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class KafkaTopicPartitionConsumerGroupsItemNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('groupName') && null !== $data->getGroupName()) {
-            $dataArray['group_name'] = $data->getGroupName();
+        if (array_key_exists('groupName', get_object_vars($data)) && null !== ($data->groupName ?? null)) {
+            $dataArray['group_name'] = $data->groupName ?? null;
         }
-        if ($data->isInitialized('offset') && null !== $data->getOffset()) {
-            $dataArray['offset'] = $data->getOffset();
+        if (array_key_exists('offset', get_object_vars($data)) && null !== ($data->offset ?? null)) {
+            $dataArray['offset'] = $data->offset ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

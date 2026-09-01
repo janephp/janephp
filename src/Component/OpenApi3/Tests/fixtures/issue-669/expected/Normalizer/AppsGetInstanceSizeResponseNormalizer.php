@@ -38,7 +38,7 @@ class AppsGetInstanceSizeResponseNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('instance_size', $data)) {
-            $object->setInstanceSize($this->denormalizer->denormalize($data['instance_size'], \Jane\Generated\DigitalOcean\Model\AppsInstanceSize::class, 'json', $context));
+            $object->instanceSize = $this->denormalizer->denormalize($data['instance_size'], \Jane\Generated\DigitalOcean\Model\AppsInstanceSize::class, 'json', $context);
             unset($data['instance_size']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppsGetInstanceSizeResponseNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('instanceSize') && null !== $data->getInstanceSize()) {
-            $dataArray['instance_size'] = $data->getInstanceSize() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getInstanceSize(), 'json', $context));
+        if (array_key_exists('instanceSize', get_object_vars($data)) && null !== ($data->instanceSize ?? null)) {
+            $dataArray['instance_size'] = ($data->instanceSize ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->instanceSize ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -8,147 +8,31 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $ccjDate;
     /**
      * @var string
      */
-    protected $ccjDate;
-    /**
-     * @var string
-     */
-    protected $court;
+    public string $court;
     /**
      * @var float
      */
-    protected $ccjAmount;
+    public float $ccjAmount;
     /**
      * @var string
      */
-    protected $caseNumber;
+    public string $caseNumber;
     /**
      * @var string
      */
-    protected $ccjStatus;
+    public string $ccjStatus;
     /**
      * @var string
      */
-    protected $incomingRecordDetails;
-    /**
-     * @return string
-     */
-    public function getCcjDate(): string
-    {
-        return $this->ccjDate;
-    }
-    /**
-     * @param string $ccjDate
-     *
-     * @return self
-     */
-    public function setCcjDate(string $ccjDate): self
-    {
-        $this->initialized['ccjDate'] = true;
-        $this->ccjDate = $ccjDate;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCourt(): string
-    {
-        return $this->court;
-    }
-    /**
-     * @param string $court
-     *
-     * @return self
-     */
-    public function setCourt(string $court): self
-    {
-        $this->initialized['court'] = true;
-        $this->court = $court;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getCcjAmount(): float
-    {
-        return $this->ccjAmount;
-    }
-    /**
-     * @param float $ccjAmount
-     *
-     * @return self
-     */
-    public function setCcjAmount(float $ccjAmount): self
-    {
-        $this->initialized['ccjAmount'] = true;
-        $this->ccjAmount = $ccjAmount;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCaseNumber(): string
-    {
-        return $this->caseNumber;
-    }
-    /**
-     * @param string $caseNumber
-     *
-     * @return self
-     */
-    public function setCaseNumber(string $caseNumber): self
-    {
-        $this->initialized['caseNumber'] = true;
-        $this->caseNumber = $caseNumber;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCcjStatus(): string
-    {
-        return $this->ccjStatus;
-    }
-    /**
-     * @param string $ccjStatus
-     *
-     * @return self
-     */
-    public function setCcjStatus(string $ccjStatus): self
-    {
-        $this->initialized['ccjStatus'] = true;
-        $this->ccjStatus = $ccjStatus;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getIncomingRecordDetails(): string
-    {
-        return $this->incomingRecordDetails;
-    }
-    /**
-     * @param string $incomingRecordDetails
-     *
-     * @return self
-     */
-    public function setIncomingRecordDetails(string $incomingRecordDetails): self
-    {
-        $this->initialized['incomingRecordDetails'] = true;
-        $this->incomingRecordDetails = $incomingRecordDetails;
-        return $this;
-    }
+    public string $incomingRecordDetails;
     public function definedProperties(): array
     {
-        return ['ccjDate' => ['ccjDate', 'getCcjDate', 'setCcjDate'], 'court' => ['court', 'getCourt', 'setCourt'], 'ccjAmount' => ['ccjAmount', 'getCcjAmount', 'setCcjAmount'], 'caseNumber' => ['caseNumber', 'getCaseNumber', 'setCaseNumber'], 'ccjStatus' => ['ccjStatus', 'getCcjStatus', 'setCcjStatus'], 'incomingRecordDetails' => ['incomingRecordDetails', 'getIncomingRecordDetails', 'setIncomingRecordDetails']];
+        return ['ccjDate' => 'ccjDate', 'court' => 'court', 'ccjAmount' => 'ccjAmount', 'caseNumber' => 'caseNumber', 'ccjStatus' => 'ccjStatus', 'incomingRecordDetails' => 'incomingRecordDetails'];
     }
 }

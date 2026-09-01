@@ -38,15 +38,15 @@ class DocumentStillFormatNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
-            $object->setExtension($data['extension']);
+            $object->extension = $data['extension'];
             unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
-            $object->setExtension(null);
+            $object->extension = null;
             unset($data['extension']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
@@ -54,11 +54,11 @@ class DocumentStillFormatNormalizer implements DenormalizerInterface, Normalizer
             if (is_array($data['resizeAction']) and \array_key_exists('width', $data['resizeAction']) and \array_key_exists('height', $data['resizeAction']) and \array_key_exists('resizeMode', $data['resizeAction'])) {
                 $value = $this->denormalizer->denormalize($data['resizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
             }
-            $object->setResizeAction($value);
+            $object->resizeAction = $value;
             unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
-            $object->setResizeAction(null);
+            $object->resizeAction = null;
             unset($data['resizeAction']);
         }
         foreach ($data as $key => $value_1) {
@@ -71,14 +71,14 @@ class DocumentStillFormatNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
-            $dataArray['extension'] = $data->getExtension();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
+            $dataArray['extension'] = $data->extension ?? null;
         }
-        if ($data->isInitialized('resizeAction') && null !== $data->getResizeAction()) {
-            $value = $data->getResizeAction();
-            if (is_object($data->getResizeAction())) {
-                $value = $data->getResizeAction() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getResizeAction(), 'json', $context));
+        if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
+            $value = $data->resizeAction ?? null;
+            if (is_object($data->resizeAction ?? null)) {
+                $value = ($data->resizeAction ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction ?? null, 'json', $context));
             }
             $dataArray['resizeAction'] = $value;
         }

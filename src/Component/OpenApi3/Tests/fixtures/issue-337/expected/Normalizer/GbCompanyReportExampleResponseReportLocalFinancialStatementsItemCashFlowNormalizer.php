@@ -50,19 +50,19 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
             $data['increaseInCash'] = (float) $data['increaseInCash'];
         }
         if (\array_key_exists('netCashFlowFromOperations', $data)) {
-            $object->setNetCashFlowFromOperations($data['netCashFlowFromOperations']);
+            $object->netCashFlowFromOperations = $data['netCashFlowFromOperations'];
             unset($data['netCashFlowFromOperations']);
         }
         if (\array_key_exists('netCashFlowBeforeFinancing', $data)) {
-            $object->setNetCashFlowBeforeFinancing($data['netCashFlowBeforeFinancing']);
+            $object->netCashFlowBeforeFinancing = $data['netCashFlowBeforeFinancing'];
             unset($data['netCashFlowBeforeFinancing']);
         }
         if (\array_key_exists('netCashFlowFromFinancing', $data)) {
-            $object->setNetCashFlowFromFinancing($data['netCashFlowFromFinancing']);
+            $object->netCashFlowFromFinancing = $data['netCashFlowFromFinancing'];
             unset($data['netCashFlowFromFinancing']);
         }
         if (\array_key_exists('increaseInCash', $data)) {
-            $object->setIncreaseInCash($data['increaseInCash']);
+            $object->increaseInCash = $data['increaseInCash'];
             unset($data['increaseInCash']);
         }
         foreach ($data as $key => $value) {
@@ -75,17 +75,17 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('netCashFlowFromOperations') && null !== $data->getNetCashFlowFromOperations()) {
-            $dataArray['netCashFlowFromOperations'] = $data->getNetCashFlowFromOperations();
+        if (array_key_exists('netCashFlowFromOperations', get_object_vars($data)) && null !== ($data->netCashFlowFromOperations ?? null)) {
+            $dataArray['netCashFlowFromOperations'] = $data->netCashFlowFromOperations ?? null;
         }
-        if ($data->isInitialized('netCashFlowBeforeFinancing') && null !== $data->getNetCashFlowBeforeFinancing()) {
-            $dataArray['netCashFlowBeforeFinancing'] = $data->getNetCashFlowBeforeFinancing();
+        if (array_key_exists('netCashFlowBeforeFinancing', get_object_vars($data)) && null !== ($data->netCashFlowBeforeFinancing ?? null)) {
+            $dataArray['netCashFlowBeforeFinancing'] = $data->netCashFlowBeforeFinancing ?? null;
         }
-        if ($data->isInitialized('netCashFlowFromFinancing') && null !== $data->getNetCashFlowFromFinancing()) {
-            $dataArray['netCashFlowFromFinancing'] = $data->getNetCashFlowFromFinancing();
+        if (array_key_exists('netCashFlowFromFinancing', get_object_vars($data)) && null !== ($data->netCashFlowFromFinancing ?? null)) {
+            $dataArray['netCashFlowFromFinancing'] = $data->netCashFlowFromFinancing ?? null;
         }
-        if ($data->isInitialized('increaseInCash') && null !== $data->getIncreaseInCash()) {
-            $dataArray['increaseInCash'] = $data->getIncreaseInCash();
+        if (array_key_exists('increaseInCash', get_object_vars($data)) && null !== ($data->increaseInCash ?? null)) {
+            $dataArray['increaseInCash'] = $data->increaseInCash ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

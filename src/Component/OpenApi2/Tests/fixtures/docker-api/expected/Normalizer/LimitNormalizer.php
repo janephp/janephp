@@ -41,27 +41,27 @@ class LimitNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $this->validate($data, new \Docker\Api\Validator\LimitConstraint());
         }
         if (\array_key_exists('NanoCPUs', $data)) {
-            $object->setNanoCPUs($data['NanoCPUs']);
+            $object->nanoCPUs = $data['NanoCPUs'];
         }
         if (\array_key_exists('MemoryBytes', $data)) {
-            $object->setMemoryBytes($data['MemoryBytes']);
+            $object->memoryBytes = $data['MemoryBytes'];
         }
         if (\array_key_exists('Pids', $data)) {
-            $object->setPids($data['Pids']);
+            $object->pids = $data['Pids'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nanoCPUs') && null !== $data->getNanoCPUs()) {
-            $dataArray['NanoCPUs'] = $data->getNanoCPUs();
+        if (array_key_exists('nanoCPUs', get_object_vars($data)) && null !== ($data->nanoCPUs ?? null)) {
+            $dataArray['NanoCPUs'] = $data->nanoCPUs ?? null;
         }
-        if ($data->isInitialized('memoryBytes') && null !== $data->getMemoryBytes()) {
-            $dataArray['MemoryBytes'] = $data->getMemoryBytes();
+        if (array_key_exists('memoryBytes', get_object_vars($data)) && null !== ($data->memoryBytes ?? null)) {
+            $dataArray['MemoryBytes'] = $data->memoryBytes ?? null;
         }
-        if ($data->isInitialized('pids') && null !== $data->getPids()) {
-            $dataArray['Pids'] = $data->getPids();
+        if (array_key_exists('pids', get_object_vars($data)) && null !== ($data->pids ?? null)) {
+            $dataArray['Pids'] = $data->pids ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\LimitConstraint());

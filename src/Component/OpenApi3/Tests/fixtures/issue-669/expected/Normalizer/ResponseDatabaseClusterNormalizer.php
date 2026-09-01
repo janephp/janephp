@@ -38,7 +38,7 @@ class ResponseDatabaseClusterNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('database', $data)) {
-            $object->setDatabase($this->denormalizer->denormalize($data['database'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterRead::class, 'json', $context));
+            $object->database = $this->denormalizer->denormalize($data['database'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterRead::class, 'json', $context);
             unset($data['database']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class ResponseDatabaseClusterNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['database'] = $data->getDatabase() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDatabase(), 'json', $context));
+        $dataArray['database'] = ($data->database ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->database ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

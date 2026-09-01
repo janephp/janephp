@@ -42,7 +42,7 @@ class ResponseOneClicksAllNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['1_clicks'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\OneClicks::class, 'json', $context);
             }
-            $object->set1Clicks($values);
+            $object->n1Clicks = $values;
             unset($data['1_clicks']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseOneClicksAllNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('n1Clicks') && null !== $data->get1Clicks()) {
+        if (array_key_exists('n1Clicks', get_object_vars($data)) && null !== ($data->n1Clicks ?? null)) {
             $values = [];
-            foreach ($data->get1Clicks() as $value) {
+            foreach ($data->n1Clicks ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['1_clicks'] = $values;

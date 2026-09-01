@@ -27,16 +27,16 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
 
     public function getTypes(MediaType $content, string $reference, Context $context): array
     {
-        $schema = $content->getSchema();
+        $schema = ($content->schema ?? null);
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if ($classGuess === null) {
             $type = null;
             $format = null;
             if ($schema instanceof JsonSchema) {
-                $schemaType = $schema->getType();
+                $schemaType = ($schema->type ?? null);
                 $type = \is_array($schemaType) ? ($schemaType[0] ?? null) : $schemaType;
-                $format = $schema->getFormat();
+                $format = ($schema->format ?? null);
             }
             $types = $this->schemaTypeToPHP($type, $format);
 
@@ -60,16 +60,16 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
 
     public function getTypeCondition(MediaType $content, string $reference, Context $context): Node
     {
-        $schema = $content->getSchema();
+        $schema = ($content->schema ?? null);
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if (null === $classGuess) {
             $type = null;
             $format = null;
             if ($schema instanceof JsonSchema) {
-                $schemaType = $schema->getType();
+                $schemaType = ($schema->type ?? null);
                 $type = \is_array($schemaType) ? ($schemaType[0] ?? null) : $schemaType;
-                $format = $schema->getFormat();
+                $format = ($schema->format ?? null);
             }
 
             return $this->typeToCondition($type, $format, new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));

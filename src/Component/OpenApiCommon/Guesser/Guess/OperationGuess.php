@@ -28,8 +28,8 @@ class OperationGuess
     ) {
         $this->path = preg_replace('#^/+#', '/', $path);
         $this->parameters = array_merge(
-            $pathItem->getParameters() ?? [],
-            $operation->getParameters() ?? []
+            ($pathItem->parameters ?? null) ?? [],
+            ($operation->parameters ?? null) ?? []
         );
         $this->securityScopes = $securityScopes;
     }

@@ -38,27 +38,27 @@ class ApiUpdateAgentFunctionInputPublicNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('agent_uuid', $data)) {
-            $object->setAgentUuid($data['agent_uuid']);
+            $object->agentUuid = $data['agent_uuid'];
             unset($data['agent_uuid']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('faas_name', $data)) {
-            $object->setFaasName($data['faas_name']);
+            $object->faasName = $data['faas_name'];
             unset($data['faas_name']);
         }
         if (\array_key_exists('faas_namespace', $data)) {
-            $object->setFaasNamespace($data['faas_namespace']);
+            $object->faasNamespace = $data['faas_namespace'];
             unset($data['faas_namespace']);
         }
         if (\array_key_exists('function_name', $data)) {
-            $object->setFunctionName($data['function_name']);
+            $object->functionName = $data['function_name'];
             unset($data['function_name']);
         }
         if (\array_key_exists('function_uuid', $data)) {
-            $object->setFunctionUuid($data['function_uuid']);
+            $object->functionUuid = $data['function_uuid'];
             unset($data['function_uuid']);
         }
         if (\array_key_exists('input_schema', $data)) {
@@ -66,7 +66,7 @@ class ApiUpdateAgentFunctionInputPublicNormalizer implements DenormalizerInterfa
             foreach ($data['input_schema'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setInputSchema($values);
+            $object->inputSchema = $values;
             unset($data['input_schema']);
         }
         if (\array_key_exists('output_schema', $data)) {
@@ -74,7 +74,7 @@ class ApiUpdateAgentFunctionInputPublicNormalizer implements DenormalizerInterfa
             foreach ($data['output_schema'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
-            $object->setOutputSchema($values_1);
+            $object->outputSchema = $values_1;
             unset($data['output_schema']);
         }
         foreach ($data as $key_2 => $value_2) {
@@ -87,34 +87,34 @@ class ApiUpdateAgentFunctionInputPublicNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agentUuid') && null !== $data->getAgentUuid()) {
-            $dataArray['agent_uuid'] = $data->getAgentUuid();
+        if (array_key_exists('agentUuid', get_object_vars($data)) && null !== ($data->agentUuid ?? null)) {
+            $dataArray['agent_uuid'] = $data->agentUuid ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('faasName') && null !== $data->getFaasName()) {
-            $dataArray['faas_name'] = $data->getFaasName();
+        if (array_key_exists('faasName', get_object_vars($data)) && null !== ($data->faasName ?? null)) {
+            $dataArray['faas_name'] = $data->faasName ?? null;
         }
-        if ($data->isInitialized('faasNamespace') && null !== $data->getFaasNamespace()) {
-            $dataArray['faas_namespace'] = $data->getFaasNamespace();
+        if (array_key_exists('faasNamespace', get_object_vars($data)) && null !== ($data->faasNamespace ?? null)) {
+            $dataArray['faas_namespace'] = $data->faasNamespace ?? null;
         }
-        if ($data->isInitialized('functionName') && null !== $data->getFunctionName()) {
-            $dataArray['function_name'] = $data->getFunctionName();
+        if (array_key_exists('functionName', get_object_vars($data)) && null !== ($data->functionName ?? null)) {
+            $dataArray['function_name'] = $data->functionName ?? null;
         }
-        if ($data->isInitialized('functionUuid') && null !== $data->getFunctionUuid()) {
-            $dataArray['function_uuid'] = $data->getFunctionUuid();
+        if (array_key_exists('functionUuid', get_object_vars($data)) && null !== ($data->functionUuid ?? null)) {
+            $dataArray['function_uuid'] = $data->functionUuid ?? null;
         }
-        if ($data->isInitialized('inputSchema') && null !== $data->getInputSchema()) {
+        if (array_key_exists('inputSchema', get_object_vars($data)) && null !== ($data->inputSchema ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getInputSchema() as $key => $value) {
+            foreach ($data->inputSchema ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['input_schema'] = $values;
         }
-        if ($data->isInitialized('outputSchema') && null !== $data->getOutputSchema()) {
+        if (array_key_exists('outputSchema', get_object_vars($data)) && null !== ($data->outputSchema ?? null)) {
             $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getOutputSchema() as $key_1 => $value_1) {
+            foreach ($data->outputSchema ?? null as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['output_schema'] = $values_1;

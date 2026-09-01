@@ -38,19 +38,19 @@ class VpcNatGatewayCreateNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         if (\array_key_exists('vpcs', $data)) {
@@ -58,19 +58,19 @@ class VpcNatGatewayCreateNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['vpcs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreateVpcsItem::class, 'json', $context);
             }
-            $object->setVpcs($values);
+            $object->vpcs = $values;
             unset($data['vpcs']);
         }
         if (\array_key_exists('udp_timeout_seconds', $data)) {
-            $object->setUdpTimeoutSeconds($data['udp_timeout_seconds']);
+            $object->udpTimeoutSeconds = $data['udp_timeout_seconds'];
             unset($data['udp_timeout_seconds']);
         }
         if (\array_key_exists('icmp_timeout_seconds', $data)) {
-            $object->setIcmpTimeoutSeconds($data['icmp_timeout_seconds']);
+            $object->icmpTimeoutSeconds = $data['icmp_timeout_seconds'];
             unset($data['icmp_timeout_seconds']);
         }
         if (\array_key_exists('tcp_timeout_seconds', $data)) {
-            $object->setTcpTimeoutSeconds($data['tcp_timeout_seconds']);
+            $object->tcpTimeoutSeconds = $data['tcp_timeout_seconds'];
             unset($data['tcp_timeout_seconds']);
         }
         foreach ($data as $key => $value_1) {
@@ -83,23 +83,23 @@ class VpcNatGatewayCreateNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['type'] = $data->getType();
-        $dataArray['region'] = $data->getRegion();
-        $dataArray['size'] = $data->getSize();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['type'] = $data->type ?? null;
+        $dataArray['region'] = $data->region ?? null;
+        $dataArray['size'] = $data->size ?? null;
         $values = [];
-        foreach ($data->getVpcs() as $value) {
+        foreach ($data->vpcs ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['vpcs'] = $values;
-        if ($data->isInitialized('udpTimeoutSeconds') && null !== $data->getUdpTimeoutSeconds()) {
-            $dataArray['udp_timeout_seconds'] = $data->getUdpTimeoutSeconds();
+        if (array_key_exists('udpTimeoutSeconds', get_object_vars($data)) && null !== ($data->udpTimeoutSeconds ?? null)) {
+            $dataArray['udp_timeout_seconds'] = $data->udpTimeoutSeconds ?? null;
         }
-        if ($data->isInitialized('icmpTimeoutSeconds') && null !== $data->getIcmpTimeoutSeconds()) {
-            $dataArray['icmp_timeout_seconds'] = $data->getIcmpTimeoutSeconds();
+        if (array_key_exists('icmpTimeoutSeconds', get_object_vars($data)) && null !== ($data->icmpTimeoutSeconds ?? null)) {
+            $dataArray['icmp_timeout_seconds'] = $data->icmpTimeoutSeconds ?? null;
         }
-        if ($data->isInitialized('tcpTimeoutSeconds') && null !== $data->getTcpTimeoutSeconds()) {
-            $dataArray['tcp_timeout_seconds'] = $data->getTcpTimeoutSeconds();
+        if (array_key_exists('tcpTimeoutSeconds', get_object_vars($data)) && null !== ($data->tcpTimeoutSeconds ?? null)) {
+            $dataArray['tcp_timeout_seconds'] = $data->tcpTimeoutSeconds ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

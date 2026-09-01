@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mainAddress', $data)) {
-            $object->setMainAddress($this->denormalizer->denormalize($data['mainAddress'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportContactInformationMainAddress::class, 'json', $context));
+            $object->mainAddress = $this->denormalizer->denormalize($data['mainAddress'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportContactInformationMainAddress::class, 'json', $context);
             unset($data['mainAddress']);
         }
         if (\array_key_exists('otherAddresses', $data)) {
@@ -46,7 +46,7 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
             foreach ($data['otherAddresses'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem::class, 'json', $context);
             }
-            $object->setOtherAddresses($values);
+            $object->otherAddresses = $values;
             unset($data['otherAddresses']);
         }
         if (\array_key_exists('websites', $data)) {
@@ -54,7 +54,7 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
             foreach ($data['websites'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setWebsites($values_1);
+            $object->websites = $values_1;
             unset($data['websites']);
         }
         foreach ($data as $key => $value_2) {
@@ -67,19 +67,19 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mainAddress') && null !== $data->getMainAddress()) {
-            $dataArray['mainAddress'] = $data->getMainAddress() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getMainAddress(), 'json', $context));
+        if (array_key_exists('mainAddress', get_object_vars($data)) && null !== ($data->mainAddress ?? null)) {
+            $dataArray['mainAddress'] = ($data->mainAddress ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mainAddress ?? null, 'json', $context));
         }
-        if ($data->isInitialized('otherAddresses') && null !== $data->getOtherAddresses()) {
+        if (array_key_exists('otherAddresses', get_object_vars($data)) && null !== ($data->otherAddresses ?? null)) {
             $values = [];
-            foreach ($data->getOtherAddresses() as $value) {
+            foreach ($data->otherAddresses ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['otherAddresses'] = $values;
         }
-        if ($data->isInitialized('websites') && null !== $data->getWebsites()) {
+        if (array_key_exists('websites', get_object_vars($data)) && null !== ($data->websites ?? null)) {
             $values_1 = [];
-            foreach ($data->getWebsites() as $value_1) {
+            foreach ($data->websites ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['websites'] = $values_1;

@@ -16,7 +16,7 @@ class ExclusiveMaximumValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && (\is_array($object->getType()) ? (\in_array('integer', $object->getType()) || \in_array('number', $object->getType())) : ('integer' === $object->getType() || 'number' === $object->getType())) && is_numeric($object->getExclusiveMaximum());
+        return $this->checkObject($object) && (\is_array($object->type ?? null) ? (\in_array('integer', $object->type ?? null) || \in_array('number', $object->type ?? null)) : ('integer' === ($object->type ?? null) || 'number' === ($object->type ?? null))) && is_numeric($object->exclusiveMaximum ?? null);
     }
 
     /**
@@ -26,7 +26,7 @@ class ExclusiveMaximumValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(LessThan::class, [
-            'value' => $object->getExclusiveMaximum(),
+            'value' => ($object->exclusiveMaximum ?? null),
         ]));
     }
 }

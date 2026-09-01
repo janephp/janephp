@@ -15,10 +15,10 @@ class ItemsGuesser implements GuesserInterface, ClassGuesserInterface, ChainGues
 
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        if ($object->getItems() instanceof JsonSchema) {
-            $this->chainGuesser->guessClass($object->getItems(), $name . 'Item', $reference . '/items', $registry);
+        if (($object->items ?? null) instanceof JsonSchema) {
+            $this->chainGuesser->guessClass($object->items ?? null, $name . 'Item', $reference . '/items', $registry);
         } else {
-            foreach ($object->getItems() as $key => $item) {
+            foreach (($object->items ?? null ?? []) as $key => $item) {
                 $this->chainGuesser->guessClass($item, $name . 'Item' . $key, $reference . '/items/' . $key, $registry);
             }
         }
@@ -31,8 +31,8 @@ class ItemsGuesser implements GuesserInterface, ClassGuesserInterface, ChainGues
         return
             $object instanceof $class
             && (
-                $object->getItems() instanceof $class
-                || (\is_array($object->getItems()) && \count($object->getItems()) > 0)
+                ($object->items ?? null) instanceof $class
+                || (\is_array($object->items ?? null) && \count($object->items ?? null) > 0)
             )
         ;
     }

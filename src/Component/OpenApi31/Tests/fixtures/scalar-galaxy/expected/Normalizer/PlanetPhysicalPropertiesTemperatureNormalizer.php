@@ -50,15 +50,15 @@ class PlanetPhysicalPropertiesTemperatureNormalizer implements DenormalizerInter
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetPhysicalPropertiesTemperatureConstraint());
         }
         if (\array_key_exists('min', $data)) {
-            $object->setMin($data['min']);
+            $object->min = $data['min'];
             unset($data['min']);
         }
         if (\array_key_exists('max', $data)) {
-            $object->setMax($data['max']);
+            $object->max = $data['max'];
             unset($data['max']);
         }
         if (\array_key_exists('average', $data)) {
-            $object->setAverage($data['average']);
+            $object->average = $data['average'];
             unset($data['average']);
         }
         foreach ($data as $key => $value) {
@@ -71,14 +71,14 @@ class PlanetPhysicalPropertiesTemperatureNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('min') && null !== $data->getMin()) {
-            $dataArray['min'] = $data->getMin();
+        if (array_key_exists('min', get_object_vars($data)) && null !== ($data->min ?? null)) {
+            $dataArray['min'] = $data->min ?? null;
         }
-        if ($data->isInitialized('max') && null !== $data->getMax()) {
-            $dataArray['max'] = $data->getMax();
+        if (array_key_exists('max', get_object_vars($data)) && null !== ($data->max ?? null)) {
+            $dataArray['max'] = $data->max ?? null;
         }
-        if ($data->isInitialized('average') && null !== $data->getAverage()) {
-            $dataArray['average'] = $data->getAverage();
+        if (array_key_exists('average', get_object_vars($data)) && null !== ($data->average ?? null)) {
+            $dataArray['average'] = $data->average ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

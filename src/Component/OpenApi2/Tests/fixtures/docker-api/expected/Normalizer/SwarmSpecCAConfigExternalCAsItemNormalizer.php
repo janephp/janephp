@@ -41,41 +41,41 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecCAConfigExternalCAsItemConstraint());
         }
         if (\array_key_exists('Protocol', $data)) {
-            $object->setProtocol($data['Protocol']);
+            $object->protocol = $data['Protocol'];
         }
         if (\array_key_exists('URL', $data)) {
-            $object->setURL($data['URL']);
+            $object->uRL = $data['URL'];
         }
         if (\array_key_exists('Options', $data)) {
             $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Options'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setOptions($values);
+            $object->options = $values;
         }
         if (\array_key_exists('CACert', $data)) {
-            $object->setCACert($data['CACert']);
+            $object->cACert = $data['CACert'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['Protocol'] = $data->getProtocol();
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['Protocol'] = $data->protocol ?? null;
         }
-        if ($data->isInitialized('uRL') && null !== $data->getURL()) {
-            $dataArray['URL'] = $data->getURL();
+        if (array_key_exists('uRL', get_object_vars($data)) && null !== ($data->uRL ?? null)) {
+            $dataArray['URL'] = $data->uRL ?? null;
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getOptions() as $key => $value) {
+            foreach ($data->options ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Options'] = $values;
         }
-        if ($data->isInitialized('cACert') && null !== $data->getCACert()) {
-            $dataArray['CACert'] = $data->getCACert();
+        if (array_key_exists('cACert', get_object_vars($data)) && null !== ($data->cACert ?? null)) {
+            $dataArray['CACert'] = $data->cACert ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecCAConfigExternalCAsItemConstraint());

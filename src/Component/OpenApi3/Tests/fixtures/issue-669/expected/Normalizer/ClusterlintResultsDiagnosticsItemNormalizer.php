@@ -38,19 +38,19 @@ class ClusterlintResultsDiagnosticsItemNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('check_name', $data)) {
-            $object->setCheckName($data['check_name']);
+            $object->checkName = $data['check_name'];
             unset($data['check_name']);
         }
         if (\array_key_exists('severity', $data)) {
-            $object->setSeverity($data['severity']);
+            $object->severity = $data['severity'];
             unset($data['severity']);
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
             unset($data['message']);
         }
         if (\array_key_exists('object', $data)) {
-            $object->setObject($this->denormalizer->denormalize($data['object'], \Jane\Generated\DigitalOcean\Model\ClusterlintResultsDiagnosticsItemObject::class, 'json', $context));
+            $object->object = $this->denormalizer->denormalize($data['object'], \Jane\Generated\DigitalOcean\Model\ClusterlintResultsDiagnosticsItemObject::class, 'json', $context);
             unset($data['object']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class ClusterlintResultsDiagnosticsItemNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('checkName') && null !== $data->getCheckName()) {
-            $dataArray['check_name'] = $data->getCheckName();
+        if (array_key_exists('checkName', get_object_vars($data)) && null !== ($data->checkName ?? null)) {
+            $dataArray['check_name'] = $data->checkName ?? null;
         }
-        if ($data->isInitialized('severity') && null !== $data->getSeverity()) {
-            $dataArray['severity'] = $data->getSeverity();
+        if (array_key_exists('severity', get_object_vars($data)) && null !== ($data->severity ?? null)) {
+            $dataArray['severity'] = $data->severity ?? null;
         }
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['message'] = $data->message ?? null;
         }
-        if ($data->isInitialized('object') && null !== $data->getObject()) {
-            $dataArray['object'] = $data->getObject() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getObject(), 'json', $context));
+        if (array_key_exists('object', get_object_vars($data)) && null !== ($data->object ?? null)) {
+            $dataArray['object'] = ($data->object ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->object ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

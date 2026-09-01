@@ -8,99 +8,25 @@ class MatchRegexCondition extends BusinessRuleCondition implements AdditionalPro
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * JSON path to the field
      *
      * @var string|null
      */
-    protected $fieldPath;
+    public ?string $fieldPath;
     /**
      * Regular expression
      *
      * @var string|null
      */
-    protected $regex;
+    public ?string $regex;
     /**
      * Optional variable name to store the matched regex groups in
      *
      * @var string|null
      */
-    protected $storeIn;
-    /**
-     * JSON path to the field
-     *
-     * @return string|null
-     */
-    public function getFieldPath(): ?string
-    {
-        return $this->fieldPath;
-    }
-    /**
-     * JSON path to the field
-     *
-     * @param string|null $fieldPath
-     *
-     * @return self
-     */
-    public function setFieldPath(?string $fieldPath): self
-    {
-        $this->initialized['fieldPath'] = true;
-        $this->fieldPath = $fieldPath;
-        return $this;
-    }
-    /**
-     * Regular expression
-     *
-     * @return string|null
-     */
-    public function getRegex(): ?string
-    {
-        return $this->regex;
-    }
-    /**
-     * Regular expression
-     *
-     * @param string|null $regex
-     *
-     * @return self
-     */
-    public function setRegex(?string $regex): self
-    {
-        $this->initialized['regex'] = true;
-        $this->regex = $regex;
-        return $this;
-    }
-    /**
-     * Optional variable name to store the matched regex groups in
-     *
-     * @return string|null
-     */
-    public function getStoreIn(): ?string
-    {
-        return $this->storeIn;
-    }
-    /**
-     * Optional variable name to store the matched regex groups in
-     *
-     * @param string|null $storeIn
-     *
-     * @return self
-     */
-    public function setStoreIn(?string $storeIn): self
-    {
-        $this->initialized['storeIn'] = true;
-        $this->storeIn = $storeIn;
-        return $this;
-    }
+    public ?string $storeIn;
     public function definedProperties(): array
     {
-        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath'], 'regex' => ['regex', 'getRegex', 'setRegex'], 'storeIn' => ['storeIn', 'getStoreIn', 'setStoreIn']];
+        return ['fieldPath' => 'fieldPath', 'regex' => 'regex', 'storeIn' => 'storeIn'];
     }
 }

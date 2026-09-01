@@ -13,16 +13,16 @@ class JsonSchemaMerger
     {
         $merged = clone $right;
 
-        if (null !== $left->getType() && null !== $right->getType() && $left->getType() !== $right->getType()) {
+        if (($left->type ?? null) !== null && ($right->type ?? null) !== null && ($left->type ?? null) !== ($right->type ?? null)) {
             throw new \RuntimeException('Both types are defined and different, merge is not possible');
         }
 
-        if (null === $right->getType() && null !== $left->getType()) {
-            $merged->setType($left->getType());
+        if (null === ($right->type ?? null) && null !== ($left->type ?? null)) {
+            $merged->type = $left->type;
         }
 
-        $merged->setProperties($this->arrayMerge($left->getProperties(), $right->getProperties()));
-        $merged->setRequired($this->arrayUnique($this->arrayMerge($left->getRequired(), $right->getRequired())));
+        $merged->properties = $this->arrayMerge($left->properties ?? null, $right->properties ?? null);
+        $merged->required = $this->arrayUnique($this->arrayMerge($left->required ?? null, $right->required ?? null));
 
         return $merged;
     }

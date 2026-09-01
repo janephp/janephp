@@ -38,11 +38,11 @@ class AssociatedResourceStatusNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('droplet', $data)) {
-            $object->setDroplet($this->denormalizer->denormalize($data['droplet'], \Jane\Generated\DigitalOcean\Model\DestroyedAssociatedResource::class, 'json', $context));
+            $object->droplet = $this->denormalizer->denormalize($data['droplet'], \Jane\Generated\DigitalOcean\Model\DestroyedAssociatedResource::class, 'json', $context);
             unset($data['droplet']);
         }
         if (\array_key_exists('resources', $data)) {
-            $object->setResources($this->denormalizer->denormalize($data['resources'], \Jane\Generated\DigitalOcean\Model\AssociatedResourceStatusResources::class, 'json', $context));
+            $object->resources = $this->denormalizer->denormalize($data['resources'], \Jane\Generated\DigitalOcean\Model\AssociatedResourceStatusResources::class, 'json', $context);
             unset($data['resources']);
         }
         if (\array_key_exists('completed_at', $data)) {
@@ -50,11 +50,11 @@ class AssociatedResourceStatusNormalizer implements DenormalizerInterface, Norma
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCompletedAt($date);
+            $object->completedAt = $date;
             unset($data['completed_at']);
         }
         if (\array_key_exists('failures', $data)) {
-            $object->setFailures($data['failures']);
+            $object->failures = $data['failures'];
             unset($data['failures']);
         }
         foreach ($data as $key => $value) {
@@ -67,17 +67,17 @@ class AssociatedResourceStatusNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('droplet') && null !== $data->getDroplet()) {
-            $dataArray['droplet'] = $data->getDroplet() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDroplet(), 'json', $context));
+        if (array_key_exists('droplet', get_object_vars($data)) && null !== ($data->droplet ?? null)) {
+            $dataArray['droplet'] = ($data->droplet ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet ?? null, 'json', $context));
         }
-        if ($data->isInitialized('resources') && null !== $data->getResources()) {
-            $dataArray['resources'] = $data->getResources() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getResources(), 'json', $context));
+        if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
+            $dataArray['resources'] = ($data->resources ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->resources ?? null, 'json', $context));
         }
-        if ($data->isInitialized('completedAt') && null !== $data->getCompletedAt()) {
-            $dataArray['completed_at'] = $data->getCompletedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
+            $dataArray['completed_at'] = ($data->completedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('failures') && null !== $data->getFailures()) {
-            $dataArray['failures'] = $data->getFailures();
+        if (array_key_exists('failures', get_object_vars($data)) && null !== ($data->failures ?? null)) {
+            $dataArray['failures'] = $data->failures ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

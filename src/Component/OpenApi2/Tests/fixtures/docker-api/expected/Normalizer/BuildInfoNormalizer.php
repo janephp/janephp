@@ -41,57 +41,57 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $this->validate($data, new \Docker\Api\Validator\BuildInfoConstraint());
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('stream', $data)) {
-            $object->setStream($data['stream']);
+            $object->stream = $data['stream'];
         }
         if (\array_key_exists('error', $data)) {
-            $object->setError($data['error']);
+            $object->error = $data['error'];
         }
         if (\array_key_exists('errorDetail', $data)) {
-            $object->setErrorDetail($this->denormalizer->denormalize($data['errorDetail'], \Docker\Api\Model\ErrorDetail::class, 'json', $context));
+            $object->errorDetail = $this->denormalizer->denormalize($data['errorDetail'], \Docker\Api\Model\ErrorDetail::class, 'json', $context);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
         }
         if (\array_key_exists('progress', $data)) {
-            $object->setProgress($data['progress']);
+            $object->progress = $data['progress'];
         }
         if (\array_key_exists('progressDetail', $data)) {
-            $object->setProgressDetail($this->denormalizer->denormalize($data['progressDetail'], \Docker\Api\Model\ProgressDetail::class, 'json', $context));
+            $object->progressDetail = $this->denormalizer->denormalize($data['progressDetail'], \Docker\Api\Model\ProgressDetail::class, 'json', $context);
         }
         if (\array_key_exists('aux', $data)) {
-            $object->setAux($this->denormalizer->denormalize($data['aux'], \Docker\Api\Model\ImageID::class, 'json', $context));
+            $object->aux = $this->denormalizer->denormalize($data['aux'], \Docker\Api\Model\ImageID::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('stream') && null !== $data->getStream()) {
-            $dataArray['stream'] = $data->getStream();
+        if (array_key_exists('stream', get_object_vars($data)) && null !== ($data->stream ?? null)) {
+            $dataArray['stream'] = $data->stream ?? null;
         }
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['error'] = $data->getError();
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $dataArray['error'] = $data->error ?? null;
         }
-        if ($data->isInitialized('errorDetail') && null !== $data->getErrorDetail()) {
-            $dataArray['errorDetail'] = $data->getErrorDetail() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getErrorDetail(), 'json', $context));
+        if (array_key_exists('errorDetail', get_object_vars($data)) && null !== ($data->errorDetail ?? null)) {
+            $dataArray['errorDetail'] = ($data->errorDetail ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->errorDetail ?? null, 'json', $context));
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('progress') && null !== $data->getProgress()) {
-            $dataArray['progress'] = $data->getProgress();
+        if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
+            $dataArray['progress'] = $data->progress ?? null;
         }
-        if ($data->isInitialized('progressDetail') && null !== $data->getProgressDetail()) {
-            $dataArray['progressDetail'] = $data->getProgressDetail() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getProgressDetail(), 'json', $context));
+        if (array_key_exists('progressDetail', get_object_vars($data)) && null !== ($data->progressDetail ?? null)) {
+            $dataArray['progressDetail'] = ($data->progressDetail ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->progressDetail ?? null, 'json', $context));
         }
-        if ($data->isInitialized('aux') && null !== $data->getAux()) {
-            $dataArray['aux'] = $data->getAux() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getAux(), 'json', $context));
+        if (array_key_exists('aux', get_object_vars($data)) && null !== ($data->aux ?? null)) {
+            $dataArray['aux'] = ($data->aux ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->aux ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\BuildInfoConstraint());

@@ -38,11 +38,11 @@ class ApiPresignedUrlFileNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('file_name', $data)) {
-            $object->setFileName($data['file_name']);
+            $object->fileName = $data['file_name'];
             unset($data['file_name']);
         }
         if (\array_key_exists('file_size', $data)) {
-            $object->setFileSize($data['file_size']);
+            $object->fileSize = $data['file_size'];
             unset($data['file_size']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiPresignedUrlFileNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
-            $dataArray['file_name'] = $data->getFileName();
+        if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
+            $dataArray['file_name'] = $data->fileName ?? null;
         }
-        if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
-            $dataArray['file_size'] = $data->getFileSize();
+        if (array_key_exists('fileSize', get_object_vars($data)) && null !== ($data->fileSize ?? null)) {
+            $dataArray['file_size'] = $data->fileSize ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

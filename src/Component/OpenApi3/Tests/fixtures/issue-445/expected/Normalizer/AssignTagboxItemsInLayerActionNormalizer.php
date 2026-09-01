@@ -41,35 +41,35 @@ class AssignTagboxItemsInLayerActionNormalizer implements DenormalizerInterface,
             $data['replace'] = (bool) $data['replace'];
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('namedCache', $data) && $data['namedCache'] !== null) {
-            $object->setNamedCache($data['namedCache']);
+            $object->namedCache = $data['namedCache'];
             unset($data['namedCache']);
         }
         elseif (\array_key_exists('namedCache', $data) && $data['namedCache'] === null) {
-            $object->setNamedCache(null);
+            $object->namedCache = null;
             unset($data['namedCache']);
         }
         if (\array_key_exists('refIds', $data) && $data['refIds'] !== null) {
-            $object->setRefIds($data['refIds']);
+            $object->refIds = $data['refIds'];
             unset($data['refIds']);
         }
         elseif (\array_key_exists('refIds', $data) && $data['refIds'] === null) {
-            $object->setRefIds(null);
+            $object->refIds = null;
             unset($data['refIds']);
         }
         if (\array_key_exists('replace', $data)) {
-            $object->setReplace($data['replace']);
+            $object->replace = $data['replace'];
             unset($data['replace']);
         }
         foreach ($data as $key => $value) {
@@ -82,18 +82,18 @@ class AssignTagboxItemsInLayerActionNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('namedCache') && null !== $data->getNamedCache()) {
-            $dataArray['namedCache'] = $data->getNamedCache();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('namedCache', get_object_vars($data)) && null !== ($data->namedCache ?? null)) {
+            $dataArray['namedCache'] = $data->namedCache ?? null;
         }
-        if ($data->isInitialized('refIds') && null !== $data->getRefIds()) {
-            $dataArray['refIds'] = $data->getRefIds();
+        if (array_key_exists('refIds', get_object_vars($data)) && null !== ($data->refIds ?? null)) {
+            $dataArray['refIds'] = $data->refIds ?? null;
         }
-        if ($data->isInitialized('replace') && null !== $data->getReplace()) {
-            $dataArray['replace'] = $data->getReplace();
+        if (array_key_exists('replace', get_object_vars($data)) && null !== ($data->replace ?? null)) {
+            $dataArray['replace'] = $data->replace ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

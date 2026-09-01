@@ -41,11 +41,11 @@ class SourceDatabaseNormalizer implements DenormalizerInterface, NormalizerInter
             $data['disable_ssl'] = (bool) $data['disable_ssl'];
         }
         if (\array_key_exists('source', $data)) {
-            $object->setSource($this->denormalizer->denormalize($data['source'], \Jane\Generated\DigitalOcean\Model\SourceDatabaseSource::class, 'json', $context));
+            $object->source = $this->denormalizer->denormalize($data['source'], \Jane\Generated\DigitalOcean\Model\SourceDatabaseSource::class, 'json', $context);
             unset($data['source']);
         }
         if (\array_key_exists('disable_ssl', $data)) {
-            $object->setDisableSsl($data['disable_ssl']);
+            $object->disableSsl = $data['disable_ssl'];
             unset($data['disable_ssl']);
         }
         if (\array_key_exists('ignore_dbs', $data)) {
@@ -53,7 +53,7 @@ class SourceDatabaseNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['ignore_dbs'] as $value) {
                 $values[] = $value;
             }
-            $object->setIgnoreDbs($values);
+            $object->ignoreDbs = $values;
             unset($data['ignore_dbs']);
         }
         foreach ($data as $key => $value_1) {
@@ -66,13 +66,13 @@ class SourceDatabaseNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['source'] = $data->getSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSource(), 'json', $context));
-        if ($data->isInitialized('disableSsl') && null !== $data->getDisableSsl()) {
-            $dataArray['disable_ssl'] = $data->getDisableSsl();
+        $dataArray['source'] = ($data->source ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->source ?? null, 'json', $context));
+        if (array_key_exists('disableSsl', get_object_vars($data)) && null !== ($data->disableSsl ?? null)) {
+            $dataArray['disable_ssl'] = $data->disableSsl ?? null;
         }
-        if ($data->isInitialized('ignoreDbs') && null !== $data->getIgnoreDbs()) {
+        if (array_key_exists('ignoreDbs', get_object_vars($data)) && null !== ($data->ignoreDbs ?? null)) {
             $values = [];
-            foreach ($data->getIgnoreDbs() as $value) {
+            foreach ($data->ignoreDbs ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['ignore_dbs'] = $values;

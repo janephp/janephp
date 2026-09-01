@@ -38,15 +38,15 @@ class ApiCreateEvaluationDatasetInputPublicNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('dataset_type', $data)) {
-            $object->setDatasetType($data['dataset_type']);
+            $object->datasetType = $data['dataset_type'];
             unset($data['dataset_type']);
         }
         if (\array_key_exists('file_upload_dataset', $data)) {
-            $object->setFileUploadDataset($this->denormalizer->denormalize($data['file_upload_dataset'], \Jane\Generated\DigitalOcean\Model\ApiFileUploadDataSource::class, 'json', $context));
+            $object->fileUploadDataset = $this->denormalizer->denormalize($data['file_upload_dataset'], \Jane\Generated\DigitalOcean\Model\ApiFileUploadDataSource::class, 'json', $context);
             unset($data['file_upload_dataset']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class ApiCreateEvaluationDatasetInputPublicNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('datasetType') && null !== $data->getDatasetType()) {
-            $dataArray['dataset_type'] = $data->getDatasetType();
+        if (array_key_exists('datasetType', get_object_vars($data)) && null !== ($data->datasetType ?? null)) {
+            $dataArray['dataset_type'] = $data->datasetType ?? null;
         }
-        if ($data->isInitialized('fileUploadDataset') && null !== $data->getFileUploadDataset()) {
-            $dataArray['file_upload_dataset'] = $data->getFileUploadDataset() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getFileUploadDataset(), 'json', $context));
+        if (array_key_exists('fileUploadDataset', get_object_vars($data)) && null !== ($data->fileUploadDataset ?? null)) {
+            $dataArray['file_upload_dataset'] = ($data->fileUploadDataset ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->fileUploadDataset ?? null, 'json', $context));
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

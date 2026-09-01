@@ -38,7 +38,7 @@ class TaggedItemNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('label', $data)) {
-            $object->setLabel($data['label']);
+            $object->label = $data['label'];
             unset($data['label']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class TaggedItemNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('label') && null !== $data->getLabel()) {
-            $dataArray['label'] = $data->getLabel();
+        if (array_key_exists('label', get_object_vars($data)) && null !== ($data->label ?? null)) {
+            $dataArray['label'] = $data->label ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

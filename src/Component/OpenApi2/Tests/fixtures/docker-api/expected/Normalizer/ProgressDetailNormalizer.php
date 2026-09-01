@@ -41,21 +41,21 @@ class ProgressDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $this->validate($data, new \Docker\Api\Validator\ProgressDetailConstraint());
         }
         if (\array_key_exists('current', $data)) {
-            $object->setCurrent($data['current']);
+            $object->current = $data['current'];
         }
         if (\array_key_exists('total', $data)) {
-            $object->setTotal($data['total']);
+            $object->total = $data['total'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('current') && null !== $data->getCurrent()) {
-            $dataArray['current'] = $data->getCurrent();
+        if (array_key_exists('current', get_object_vars($data)) && null !== ($data->current ?? null)) {
+            $dataArray['current'] = $data->current ?? null;
         }
-        if ($data->isInitialized('total') && null !== $data->getTotal()) {
-            $dataArray['total'] = $data->getTotal();
+        if (array_key_exists('total', get_object_vars($data)) && null !== ($data->total ?? null)) {
+            $dataArray['total'] = $data->total ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ProgressDetailConstraint());

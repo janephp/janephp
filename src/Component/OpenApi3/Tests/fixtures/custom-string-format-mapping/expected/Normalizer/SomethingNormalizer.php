@@ -38,11 +38,11 @@ class SomethingNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($this->denormalizer->denormalize($data['uuid'], \Symfony\Component\Uid\UuidV4::class, 'json', $context));
+            $object->uuid = $this->denormalizer->denormalize($data['uuid'], \Symfony\Component\Uid\UuidV4::class, 'json', $context);
             unset($data['uuid']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class SomethingNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['uuid'] = $this->normalizer->normalize($data->getUuid(), 'json', $context);
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['uuid'] = $this->normalizer->normalize($data->uuid ?? null, 'json', $context);
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

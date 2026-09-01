@@ -5,375 +5,81 @@ namespace PicturePark\API\Model;
 class ShareDetail
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Share ID.
      *
      * @var string
      */
-    protected $id;
+    public string $id;
     /**
      * Name of share.
      *
      * @var string
      */
-    protected $name;
+    public string $name;
     /**
      * Description of share entered by user.
      *
      * @var string|null
      */
-    protected $description;
+    public ?string $description;
     /**
      * Creator of share.
      *
      * @var ShareUser
      */
-    protected $creator;
+    public ShareUser $creator;
     /**
      * Audit information.
      *
      * @var UserAudit
      */
-    protected $audit;
+    public UserAudit $audit;
     /**
      * Detailed information about contents in the share.
      *
      * @var list<ShareContentDetail>
      */
-    protected $contentSelections;
+    public array $contentSelections;
     /**
      * List of shared layers.
      *
      * @var list<string>|null
      */
-    protected $layerSchemaIds;
+    public ?array $layerSchemaIds;
     /**
      * Detail of share.
      *
      * @var ShareDataBase|null
      */
-    protected $data;
+    public ?ShareDataBase $data;
     /**
      * Date when share expires and cannot be accessed anymore.
      *
      * @var \DateTime|null
      */
-    protected $expirationDate;
+    public ?\DateTime $expirationDate;
     /**
      * Info if share is already expired.
      *
      * @var bool
      */
-    protected $expired;
+    public bool $expired;
     /**
      * Defined access for contents in share.
      *
      * @var string
      */
-    protected $outputAccess;
+    public string $outputAccess;
     /**
      * Type of share.
      *
      * @var string
      */
-    protected $shareType;
+    public string $shareType;
     /**
      * Schema detail of the content and the layers.
      *
      * @var list<SchemaDetail>|null
      */
-    protected $schemas;
-    /**
-     * Share ID.
-     *
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * Share ID.
-     *
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * Name of share.
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * Name of share.
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * Description of share entered by user.
-     *
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-    /**
-     * Description of share entered by user.
-     *
-     * @param string|null $description
-     *
-     * @return self
-     */
-    public function setDescription(?string $description): self
-    {
-        $this->initialized['description'] = true;
-        $this->description = $description;
-        return $this;
-    }
-    /**
-     * Creator of share.
-     *
-     * @return ShareUser
-     */
-    public function getCreator(): ShareUser
-    {
-        return $this->creator;
-    }
-    /**
-     * Creator of share.
-     *
-     * @param ShareUser $creator
-     *
-     * @return self
-     */
-    public function setCreator(ShareUser $creator): self
-    {
-        $this->initialized['creator'] = true;
-        $this->creator = $creator;
-        return $this;
-    }
-    /**
-     * Audit information.
-     *
-     * @return UserAudit
-     */
-    public function getAudit(): UserAudit
-    {
-        return $this->audit;
-    }
-    /**
-     * Audit information.
-     *
-     * @param UserAudit $audit
-     *
-     * @return self
-     */
-    public function setAudit(UserAudit $audit): self
-    {
-        $this->initialized['audit'] = true;
-        $this->audit = $audit;
-        return $this;
-    }
-    /**
-     * Detailed information about contents in the share.
-     *
-     * @return list<ShareContentDetail>
-     */
-    public function getContentSelections(): array
-    {
-        return $this->contentSelections;
-    }
-    /**
-     * Detailed information about contents in the share.
-     *
-     * @param list<ShareContentDetail> $contentSelections
-     *
-     * @return self
-     */
-    public function setContentSelections(array $contentSelections): self
-    {
-        $this->initialized['contentSelections'] = true;
-        $this->contentSelections = $contentSelections;
-        return $this;
-    }
-    /**
-     * List of shared layers.
-     *
-     * @return list<string>|null
-     */
-    public function getLayerSchemaIds(): ?array
-    {
-        return $this->layerSchemaIds;
-    }
-    /**
-     * List of shared layers.
-     *
-     * @param list<string>|null $layerSchemaIds
-     *
-     * @return self
-     */
-    public function setLayerSchemaIds(?array $layerSchemaIds): self
-    {
-        $this->initialized['layerSchemaIds'] = true;
-        $this->layerSchemaIds = $layerSchemaIds;
-        return $this;
-    }
-    /**
-     * Detail of share.
-     *
-     * @return ShareDataBase|null
-     */
-    public function getData(): ?ShareDataBase
-    {
-        return $this->data;
-    }
-    /**
-     * Detail of share.
-     *
-     * @param ShareDataBase|null $data
-     *
-     * @return self
-     */
-    public function setData(?ShareDataBase $data): self
-    {
-        $this->initialized['data'] = true;
-        $this->data = $data;
-        return $this;
-    }
-    /**
-     * Date when share expires and cannot be accessed anymore.
-     *
-     * @return \DateTime|null
-     */
-    public function getExpirationDate(): ?\DateTime
-    {
-        return $this->expirationDate;
-    }
-    /**
-     * Date when share expires and cannot be accessed anymore.
-     *
-     * @param \DateTime|null $expirationDate
-     *
-     * @return self
-     */
-    public function setExpirationDate(?\DateTime $expirationDate): self
-    {
-        $this->initialized['expirationDate'] = true;
-        $this->expirationDate = $expirationDate;
-        return $this;
-    }
-    /**
-     * Info if share is already expired.
-     *
-     * @return bool
-     */
-    public function getExpired(): bool
-    {
-        return $this->expired;
-    }
-    /**
-     * Info if share is already expired.
-     *
-     * @param bool $expired
-     *
-     * @return self
-     */
-    public function setExpired(bool $expired): self
-    {
-        $this->initialized['expired'] = true;
-        $this->expired = $expired;
-        return $this;
-    }
-    /**
-     * Defined access for contents in share.
-     *
-     * @return string
-     */
-    public function getOutputAccess(): string
-    {
-        return $this->outputAccess;
-    }
-    /**
-     * Defined access for contents in share.
-     *
-     * @param string $outputAccess
-     *
-     * @return self
-     */
-    public function setOutputAccess(string $outputAccess): self
-    {
-        $this->initialized['outputAccess'] = true;
-        $this->outputAccess = $outputAccess;
-        return $this;
-    }
-    /**
-     * Type of share.
-     *
-     * @return string
-     */
-    public function getShareType(): string
-    {
-        return $this->shareType;
-    }
-    /**
-     * Type of share.
-     *
-     * @param string $shareType
-     *
-     * @return self
-     */
-    public function setShareType(string $shareType): self
-    {
-        $this->initialized['shareType'] = true;
-        $this->shareType = $shareType;
-        return $this;
-    }
-    /**
-     * Schema detail of the content and the layers.
-     *
-     * @return list<SchemaDetail>|null
-     */
-    public function getSchemas(): ?array
-    {
-        return $this->schemas;
-    }
-    /**
-     * Schema detail of the content and the layers.
-     *
-     * @param list<SchemaDetail>|null $schemas
-     *
-     * @return self
-     */
-    public function setSchemas(?array $schemas): self
-    {
-        $this->initialized['schemas'] = true;
-        $this->schemas = $schemas;
-        return $this;
-    }
+    public ?array $schemas;
 }

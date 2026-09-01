@@ -38,19 +38,19 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBodyNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('personalReference', $data)) {
-            $object->setPersonalReference($data['personalReference']);
+            $object->personalReference = $data['personalReference'];
             unset($data['personalReference']);
         }
         if (\array_key_exists('freeText', $data)) {
-            $object->setFreeText($data['freeText']);
+            $object->freeText = $data['freeText'];
             unset($data['freeText']);
         }
         if (\array_key_exists('personalLimit', $data)) {
-            $object->setPersonalLimit($data['personalLimit']);
+            $object->personalLimit = $data['personalLimit'];
             unset($data['personalLimit']);
         }
         foreach ($data as $key => $value) {
@@ -63,15 +63,15 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBodyNormalizer implements Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('personalReference') && null !== $data->getPersonalReference()) {
-            $dataArray['personalReference'] = $data->getPersonalReference();
+        $dataArray['id'] = $data->id ?? null;
+        if (array_key_exists('personalReference', get_object_vars($data)) && null !== ($data->personalReference ?? null)) {
+            $dataArray['personalReference'] = $data->personalReference ?? null;
         }
-        if ($data->isInitialized('freeText') && null !== $data->getFreeText()) {
-            $dataArray['freeText'] = $data->getFreeText();
+        if (array_key_exists('freeText', get_object_vars($data)) && null !== ($data->freeText ?? null)) {
+            $dataArray['freeText'] = $data->freeText ?? null;
         }
-        if ($data->isInitialized('personalLimit') && null !== $data->getPersonalLimit()) {
-            $dataArray['personalLimit'] = $data->getPersonalLimit();
+        if (array_key_exists('personalLimit', get_object_vars($data)) && null !== ($data->personalLimit ?? null)) {
+            $dataArray['personalLimit'] = $data->personalLimit ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

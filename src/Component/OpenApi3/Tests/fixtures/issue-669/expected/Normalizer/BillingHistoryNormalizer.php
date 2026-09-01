@@ -38,19 +38,19 @@ class BillingHistoryNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('amount', $data)) {
-            $object->setAmount($data['amount']);
+            $object->amount = $data['amount'];
             unset($data['amount']);
         }
         if (\array_key_exists('invoice_id', $data)) {
-            $object->setInvoiceId($data['invoice_id']);
+            $object->invoiceId = $data['invoice_id'];
             unset($data['invoice_id']);
         }
         if (\array_key_exists('invoice_uuid', $data)) {
-            $object->setInvoiceUuid($data['invoice_uuid']);
+            $object->invoiceUuid = $data['invoice_uuid'];
             unset($data['invoice_uuid']);
         }
         if (\array_key_exists('date', $data)) {
@@ -58,11 +58,11 @@ class BillingHistoryNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
             }
-            $object->setDate($date);
+            $object->date = $date;
             unset($data['date']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
@@ -75,23 +75,23 @@ class BillingHistoryNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
-            $dataArray['amount'] = $data->getAmount();
+        if (array_key_exists('amount', get_object_vars($data)) && null !== ($data->amount ?? null)) {
+            $dataArray['amount'] = $data->amount ?? null;
         }
-        if ($data->isInitialized('invoiceId') && null !== $data->getInvoiceId()) {
-            $dataArray['invoice_id'] = $data->getInvoiceId();
+        if (array_key_exists('invoiceId', get_object_vars($data)) && null !== ($data->invoiceId ?? null)) {
+            $dataArray['invoice_id'] = $data->invoiceId ?? null;
         }
-        if ($data->isInitialized('invoiceUuid') && null !== $data->getInvoiceUuid()) {
-            $dataArray['invoice_uuid'] = $data->getInvoiceUuid();
+        if (array_key_exists('invoiceUuid', get_object_vars($data)) && null !== ($data->invoiceUuid ?? null)) {
+            $dataArray['invoice_uuid'] = $data->invoiceUuid ?? null;
         }
-        if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
+            $dataArray['date'] = ($data->date ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

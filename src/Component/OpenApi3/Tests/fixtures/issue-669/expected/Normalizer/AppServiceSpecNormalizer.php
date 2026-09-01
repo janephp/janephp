@@ -38,43 +38,43 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('git', $data)) {
-            $object->setGit($this->denormalizer->denormalize($data['git'], \Jane\Generated\DigitalOcean\Model\AppsGitSourceSpec::class, 'json', $context));
+            $object->git = $this->denormalizer->denormalize($data['git'], \Jane\Generated\DigitalOcean\Model\AppsGitSourceSpec::class, 'json', $context);
             unset($data['git']);
         }
         if (\array_key_exists('github', $data)) {
-            $object->setGithub($this->denormalizer->denormalize($data['github'], \Jane\Generated\DigitalOcean\Model\AppsGithubSourceSpec::class, 'json', $context));
+            $object->github = $this->denormalizer->denormalize($data['github'], \Jane\Generated\DigitalOcean\Model\AppsGithubSourceSpec::class, 'json', $context);
             unset($data['github']);
         }
         if (\array_key_exists('gitlab', $data)) {
-            $object->setGitlab($this->denormalizer->denormalize($data['gitlab'], \Jane\Generated\DigitalOcean\Model\AppsGitlabSourceSpec::class, 'json', $context));
+            $object->gitlab = $this->denormalizer->denormalize($data['gitlab'], \Jane\Generated\DigitalOcean\Model\AppsGitlabSourceSpec::class, 'json', $context);
             unset($data['gitlab']);
         }
         if (\array_key_exists('bitbucket', $data)) {
-            $object->setBitbucket($this->denormalizer->denormalize($data['bitbucket'], \Jane\Generated\DigitalOcean\Model\AppsBitbucketSourceSpec::class, 'json', $context));
+            $object->bitbucket = $this->denormalizer->denormalize($data['bitbucket'], \Jane\Generated\DigitalOcean\Model\AppsBitbucketSourceSpec::class, 'json', $context);
             unset($data['bitbucket']);
         }
         if (\array_key_exists('image', $data)) {
-            $object->setImage($this->denormalizer->denormalize($data['image'], \Jane\Generated\DigitalOcean\Model\AppsImageSourceSpec::class, 'json', $context));
+            $object->image = $this->denormalizer->denormalize($data['image'], \Jane\Generated\DigitalOcean\Model\AppsImageSourceSpec::class, 'json', $context);
             unset($data['image']);
         }
         if (\array_key_exists('dockerfile_path', $data)) {
-            $object->setDockerfilePath($data['dockerfile_path']);
+            $object->dockerfilePath = $data['dockerfile_path'];
             unset($data['dockerfile_path']);
         }
         if (\array_key_exists('build_command', $data)) {
-            $object->setBuildCommand($data['build_command']);
+            $object->buildCommand = $data['build_command'];
             unset($data['build_command']);
         }
         if (\array_key_exists('run_command', $data)) {
-            $object->setRunCommand($data['run_command']);
+            $object->runCommand = $data['run_command'];
             unset($data['run_command']);
         }
         if (\array_key_exists('source_dir', $data)) {
-            $object->setSourceDir($data['source_dir']);
+            $object->sourceDir = $data['source_dir'];
             unset($data['source_dir']);
         }
         if (\array_key_exists('envs', $data)) {
@@ -82,11 +82,11 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['envs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppVariableDefinition::class, 'json', $context);
             }
-            $object->setEnvs($values);
+            $object->envs = $values;
             unset($data['envs']);
         }
         if (\array_key_exists('environment_slug', $data)) {
-            $object->setEnvironmentSlug($data['environment_slug']);
+            $object->environmentSlug = $data['environment_slug'];
             unset($data['environment_slug']);
         }
         if (\array_key_exists('log_destinations', $data)) {
@@ -94,11 +94,11 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['log_destinations'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\AppLogDestinationDefinition::class, 'json', $context);
             }
-            $object->setLogDestinations($values_1);
+            $object->logDestinations = $values_1;
             unset($data['log_destinations']);
         }
         if (\array_key_exists('instance_count', $data)) {
-            $object->setInstanceCount($data['instance_count']);
+            $object->instanceCount = $data['instance_count'];
             unset($data['instance_count']);
         }
         if (\array_key_exists('instance_size_slug', $data)) {
@@ -108,31 +108,31 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
             } elseif (is_string($data['instance_size_slug'])) {
                 $value_2 = $data['instance_size_slug'];
             }
-            $object->setInstanceSizeSlug($value_2);
+            $object->instanceSizeSlug = $value_2;
             unset($data['instance_size_slug']);
         }
         if (\array_key_exists('autoscaling', $data)) {
-            $object->setAutoscaling($this->denormalizer->denormalize($data['autoscaling'], \Jane\Generated\DigitalOcean\Model\AppComponentInstanceBaseAutoscaling::class, 'json', $context));
+            $object->autoscaling = $this->denormalizer->denormalize($data['autoscaling'], \Jane\Generated\DigitalOcean\Model\AppComponentInstanceBaseAutoscaling::class, 'json', $context);
             unset($data['autoscaling']);
         }
         if (\array_key_exists('cors', $data)) {
-            $object->setCors($this->denormalizer->denormalize($data['cors'], \Jane\Generated\DigitalOcean\Model\AppServiceSpecCors::class, 'json', $context));
+            $object->cors = $this->denormalizer->denormalize($data['cors'], \Jane\Generated\DigitalOcean\Model\AppServiceSpecCors::class, 'json', $context);
             unset($data['cors']);
         }
         if (\array_key_exists('health_check', $data)) {
-            $object->setHealthCheck($this->denormalizer->denormalize($data['health_check'], \Jane\Generated\DigitalOcean\Model\AppServiceSpecHealthCheck::class, 'json', $context));
+            $object->healthCheck = $this->denormalizer->denormalize($data['health_check'], \Jane\Generated\DigitalOcean\Model\AppServiceSpecHealthCheck::class, 'json', $context);
             unset($data['health_check']);
         }
         if (\array_key_exists('liveness_health_check', $data)) {
-            $object->setLivenessHealthCheck($this->denormalizer->denormalize($data['liveness_health_check'], \Jane\Generated\DigitalOcean\Model\AppHealthCheckSpec::class, 'json', $context));
+            $object->livenessHealthCheck = $this->denormalizer->denormalize($data['liveness_health_check'], \Jane\Generated\DigitalOcean\Model\AppHealthCheckSpec::class, 'json', $context);
             unset($data['liveness_health_check']);
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
             unset($data['protocol']);
         }
         if (\array_key_exists('http_port', $data)) {
-            $object->setHttpPort($data['http_port']);
+            $object->httpPort = $data['http_port'];
             unset($data['http_port']);
         }
         if (\array_key_exists('internal_ports', $data)) {
@@ -140,7 +140,7 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['internal_ports'] as $value_3) {
                 $values_2[] = $value_3;
             }
-            $object->setInternalPorts($values_2);
+            $object->internalPorts = $values_2;
             unset($data['internal_ports']);
         }
         if (\array_key_exists('routes', $data)) {
@@ -148,11 +148,11 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['routes'] as $value_4) {
                 $values_3[] = $this->denormalizer->denormalize($value_4, \Jane\Generated\DigitalOcean\Model\AppRouteSpec::class, 'json', $context);
             }
-            $object->setRoutes($values_3);
+            $object->routes = $values_3;
             unset($data['routes']);
         }
         if (\array_key_exists('termination', $data)) {
-            $object->setTermination($this->denormalizer->denormalize($data['termination'], \Jane\Generated\DigitalOcean\Model\AppServiceSpecTermination::class, 'json', $context));
+            $object->termination = $this->denormalizer->denormalize($data['termination'], \Jane\Generated\DigitalOcean\Model\AppServiceSpecTermination::class, 'json', $context);
             unset($data['termination']);
         }
         foreach ($data as $key => $value_5) {
@@ -165,99 +165,99 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('git') && null !== $data->getGit()) {
-            $dataArray['git'] = $data->getGit() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGit(), 'json', $context));
+        if (array_key_exists('git', get_object_vars($data)) && null !== ($data->git ?? null)) {
+            $dataArray['git'] = ($data->git ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->git ?? null, 'json', $context));
         }
-        if ($data->isInitialized('github') && null !== $data->getGithub()) {
-            $dataArray['github'] = $data->getGithub() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGithub(), 'json', $context));
+        if (array_key_exists('github', get_object_vars($data)) && null !== ($data->github ?? null)) {
+            $dataArray['github'] = ($data->github ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->github ?? null, 'json', $context));
         }
-        if ($data->isInitialized('gitlab') && null !== $data->getGitlab()) {
-            $dataArray['gitlab'] = $data->getGitlab() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGitlab(), 'json', $context));
+        if (array_key_exists('gitlab', get_object_vars($data)) && null !== ($data->gitlab ?? null)) {
+            $dataArray['gitlab'] = ($data->gitlab ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gitlab ?? null, 'json', $context));
         }
-        if ($data->isInitialized('bitbucket') && null !== $data->getBitbucket()) {
-            $dataArray['bitbucket'] = $data->getBitbucket() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBitbucket(), 'json', $context));
+        if (array_key_exists('bitbucket', get_object_vars($data)) && null !== ($data->bitbucket ?? null)) {
+            $dataArray['bitbucket'] = ($data->bitbucket ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bitbucket ?? null, 'json', $context));
         }
-        if ($data->isInitialized('image') && null !== $data->getImage()) {
-            $dataArray['image'] = $data->getImage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getImage(), 'json', $context));
+        if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
+            $dataArray['image'] = ($data->image ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->image ?? null, 'json', $context));
         }
-        if ($data->isInitialized('dockerfilePath') && null !== $data->getDockerfilePath()) {
-            $dataArray['dockerfile_path'] = $data->getDockerfilePath();
+        if (array_key_exists('dockerfilePath', get_object_vars($data)) && null !== ($data->dockerfilePath ?? null)) {
+            $dataArray['dockerfile_path'] = $data->dockerfilePath ?? null;
         }
-        if ($data->isInitialized('buildCommand') && null !== $data->getBuildCommand()) {
-            $dataArray['build_command'] = $data->getBuildCommand();
+        if (array_key_exists('buildCommand', get_object_vars($data)) && null !== ($data->buildCommand ?? null)) {
+            $dataArray['build_command'] = $data->buildCommand ?? null;
         }
-        if ($data->isInitialized('runCommand') && null !== $data->getRunCommand()) {
-            $dataArray['run_command'] = $data->getRunCommand();
+        if (array_key_exists('runCommand', get_object_vars($data)) && null !== ($data->runCommand ?? null)) {
+            $dataArray['run_command'] = $data->runCommand ?? null;
         }
-        if ($data->isInitialized('sourceDir') && null !== $data->getSourceDir()) {
-            $dataArray['source_dir'] = $data->getSourceDir();
+        if (array_key_exists('sourceDir', get_object_vars($data)) && null !== ($data->sourceDir ?? null)) {
+            $dataArray['source_dir'] = $data->sourceDir ?? null;
         }
-        if ($data->isInitialized('envs') && null !== $data->getEnvs()) {
+        if (array_key_exists('envs', get_object_vars($data)) && null !== ($data->envs ?? null)) {
             $values = [];
-            foreach ($data->getEnvs() as $value) {
+            foreach ($data->envs ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['envs'] = $values;
         }
-        if ($data->isInitialized('environmentSlug') && null !== $data->getEnvironmentSlug()) {
-            $dataArray['environment_slug'] = $data->getEnvironmentSlug();
+        if (array_key_exists('environmentSlug', get_object_vars($data)) && null !== ($data->environmentSlug ?? null)) {
+            $dataArray['environment_slug'] = $data->environmentSlug ?? null;
         }
-        if ($data->isInitialized('logDestinations') && null !== $data->getLogDestinations()) {
+        if (array_key_exists('logDestinations', get_object_vars($data)) && null !== ($data->logDestinations ?? null)) {
             $values_1 = [];
-            foreach ($data->getLogDestinations() as $value_1) {
+            foreach ($data->logDestinations ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['log_destinations'] = $values_1;
         }
-        if ($data->isInitialized('instanceCount') && null !== $data->getInstanceCount()) {
-            $dataArray['instance_count'] = $data->getInstanceCount();
+        if (array_key_exists('instanceCount', get_object_vars($data)) && null !== ($data->instanceCount ?? null)) {
+            $dataArray['instance_count'] = $data->instanceCount ?? null;
         }
-        if ($data->isInitialized('instanceSizeSlug') && null !== $data->getInstanceSizeSlug()) {
-            $value_2 = $data->getInstanceSizeSlug();
-            if (is_string($data->getInstanceSizeSlug())) {
-                $value_2 = $data->getInstanceSizeSlug();
-            } elseif (is_string($data->getInstanceSizeSlug())) {
-                $value_2 = $data->getInstanceSizeSlug();
+        if (array_key_exists('instanceSizeSlug', get_object_vars($data)) && null !== ($data->instanceSizeSlug ?? null)) {
+            $value_2 = $data->instanceSizeSlug ?? null;
+            if (is_string($data->instanceSizeSlug ?? null)) {
+                $value_2 = $data->instanceSizeSlug ?? null;
+            } elseif (is_string($data->instanceSizeSlug ?? null)) {
+                $value_2 = $data->instanceSizeSlug ?? null;
             }
             $dataArray['instance_size_slug'] = $value_2;
         }
-        if ($data->isInitialized('autoscaling') && null !== $data->getAutoscaling()) {
-            $dataArray['autoscaling'] = $data->getAutoscaling() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAutoscaling(), 'json', $context));
+        if (array_key_exists('autoscaling', get_object_vars($data)) && null !== ($data->autoscaling ?? null)) {
+            $dataArray['autoscaling'] = ($data->autoscaling ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscaling ?? null, 'json', $context));
         }
-        if ($data->isInitialized('cors') && null !== $data->getCors()) {
-            $dataArray['cors'] = $data->getCors() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCors(), 'json', $context));
+        if (array_key_exists('cors', get_object_vars($data)) && null !== ($data->cors ?? null)) {
+            $dataArray['cors'] = ($data->cors ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cors ?? null, 'json', $context));
         }
-        if ($data->isInitialized('healthCheck') && null !== $data->getHealthCheck()) {
-            $dataArray['health_check'] = $data->getHealthCheck() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getHealthCheck(), 'json', $context));
+        if (array_key_exists('healthCheck', get_object_vars($data)) && null !== ($data->healthCheck ?? null)) {
+            $dataArray['health_check'] = ($data->healthCheck ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->healthCheck ?? null, 'json', $context));
         }
-        if ($data->isInitialized('livenessHealthCheck') && null !== $data->getLivenessHealthCheck()) {
-            $dataArray['liveness_health_check'] = $data->getLivenessHealthCheck() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLivenessHealthCheck(), 'json', $context));
+        if (array_key_exists('livenessHealthCheck', get_object_vars($data)) && null !== ($data->livenessHealthCheck ?? null)) {
+            $dataArray['liveness_health_check'] = ($data->livenessHealthCheck ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->livenessHealthCheck ?? null, 'json', $context));
         }
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
-        if ($data->isInitialized('httpPort') && null !== $data->getHttpPort()) {
-            $dataArray['http_port'] = $data->getHttpPort();
+        if (array_key_exists('httpPort', get_object_vars($data)) && null !== ($data->httpPort ?? null)) {
+            $dataArray['http_port'] = $data->httpPort ?? null;
         }
-        if ($data->isInitialized('internalPorts') && null !== $data->getInternalPorts()) {
+        if (array_key_exists('internalPorts', get_object_vars($data)) && null !== ($data->internalPorts ?? null)) {
             $values_2 = [];
-            foreach ($data->getInternalPorts() as $value_3) {
+            foreach ($data->internalPorts ?? null as $value_3) {
                 $values_2[] = $value_3;
             }
             $dataArray['internal_ports'] = $values_2;
         }
-        if ($data->isInitialized('routes') && null !== $data->getRoutes()) {
+        if (array_key_exists('routes', get_object_vars($data)) && null !== ($data->routes ?? null)) {
             $values_3 = [];
-            foreach ($data->getRoutes() as $value_4) {
+            foreach ($data->routes ?? null as $value_4) {
                 $values_3[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['routes'] = $values_3;
         }
-        if ($data->isInitialized('termination') && null !== $data->getTermination()) {
-            $dataArray['termination'] = $data->getTermination() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTermination(), 'json', $context));
+        if (array_key_exists('termination', get_object_vars($data)) && null !== ($data->termination ?? null)) {
+            $dataArray['termination'] = ($data->termination ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->termination ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {

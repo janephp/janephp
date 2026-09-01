@@ -38,23 +38,23 @@ class AppJobInvocationNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('job_name', $data)) {
-            $object->setJobName($data['job_name']);
+            $object->jobName = $data['job_name'];
             unset($data['job_name']);
         }
         if (\array_key_exists('deployment_id', $data)) {
-            $object->setDeploymentId($data['deployment_id']);
+            $object->deploymentId = $data['deployment_id'];
             unset($data['deployment_id']);
         }
         if (\array_key_exists('phase', $data)) {
-            $object->setPhase($data['phase']);
+            $object->phase = $data['phase'];
             unset($data['phase']);
         }
         if (\array_key_exists('trigger', $data)) {
-            $object->setTrigger($this->denormalizer->denormalize($data['trigger'], \Jane\Generated\DigitalOcean\Model\AppJobInvocationTrigger::class, 'json', $context));
+            $object->trigger = $this->denormalizer->denormalize($data['trigger'], \Jane\Generated\DigitalOcean\Model\AppJobInvocationTrigger::class, 'json', $context);
             unset($data['trigger']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -62,7 +62,7 @@ class AppJobInvocationNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('started_at', $data)) {
@@ -70,7 +70,7 @@ class AppJobInvocationNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStartedAt($date_1);
+            $object->startedAt = $date_1;
             unset($data['started_at']);
         }
         if (\array_key_exists('completed_at', $data)) {
@@ -78,7 +78,7 @@ class AppJobInvocationNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date_2) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCompletedAt($date_2);
+            $object->completedAt = $date_2;
             unset($data['completed_at']);
         }
         foreach ($data as $key => $value) {
@@ -91,29 +91,29 @@ class AppJobInvocationNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('jobName') && null !== $data->getJobName()) {
-            $dataArray['job_name'] = $data->getJobName();
+        if (array_key_exists('jobName', get_object_vars($data)) && null !== ($data->jobName ?? null)) {
+            $dataArray['job_name'] = $data->jobName ?? null;
         }
-        if ($data->isInitialized('deploymentId') && null !== $data->getDeploymentId()) {
-            $dataArray['deployment_id'] = $data->getDeploymentId();
+        if (array_key_exists('deploymentId', get_object_vars($data)) && null !== ($data->deploymentId ?? null)) {
+            $dataArray['deployment_id'] = $data->deploymentId ?? null;
         }
-        if ($data->isInitialized('phase') && null !== $data->getPhase()) {
-            $dataArray['phase'] = $data->getPhase();
+        if (array_key_exists('phase', get_object_vars($data)) && null !== ($data->phase ?? null)) {
+            $dataArray['phase'] = $data->phase ?? null;
         }
-        if ($data->isInitialized('trigger') && null !== $data->getTrigger()) {
-            $dataArray['trigger'] = $data->getTrigger() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTrigger(), 'json', $context));
+        if (array_key_exists('trigger', get_object_vars($data)) && null !== ($data->trigger ?? null)) {
+            $dataArray['trigger'] = ($data->trigger ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->trigger ?? null, 'json', $context));
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
-            $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
+            $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('completedAt') && null !== $data->getCompletedAt()) {
-            $dataArray['completed_at'] = $data->getCompletedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
+            $dataArray['completed_at'] = ($data->completedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

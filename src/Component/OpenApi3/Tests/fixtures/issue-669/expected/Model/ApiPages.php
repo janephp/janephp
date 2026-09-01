@@ -8,127 +8,31 @@ class ApiPages implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * First page
      *
      * @var string
      */
-    protected $first;
+    public string $first;
     /**
      * Last page
      *
      * @var string
      */
-    protected $last;
+    public string $last;
     /**
      * Next page
      *
      * @var string
      */
-    protected $next;
+    public string $next;
     /**
      * Previous page
      *
      * @var string
      */
-    protected $previous;
-    /**
-     * First page
-     *
-     * @return string
-     */
-    public function getFirst(): string
-    {
-        return $this->first;
-    }
-    /**
-     * First page
-     *
-     * @param string $first
-     *
-     * @return self
-     */
-    public function setFirst(string $first): self
-    {
-        $this->initialized['first'] = true;
-        $this->first = $first;
-        return $this;
-    }
-    /**
-     * Last page
-     *
-     * @return string
-     */
-    public function getLast(): string
-    {
-        return $this->last;
-    }
-    /**
-     * Last page
-     *
-     * @param string $last
-     *
-     * @return self
-     */
-    public function setLast(string $last): self
-    {
-        $this->initialized['last'] = true;
-        $this->last = $last;
-        return $this;
-    }
-    /**
-     * Next page
-     *
-     * @return string
-     */
-    public function getNext(): string
-    {
-        return $this->next;
-    }
-    /**
-     * Next page
-     *
-     * @param string $next
-     *
-     * @return self
-     */
-    public function setNext(string $next): self
-    {
-        $this->initialized['next'] = true;
-        $this->next = $next;
-        return $this;
-    }
-    /**
-     * Previous page
-     *
-     * @return string
-     */
-    public function getPrevious(): string
-    {
-        return $this->previous;
-    }
-    /**
-     * Previous page
-     *
-     * @param string $previous
-     *
-     * @return self
-     */
-    public function setPrevious(string $previous): self
-    {
-        $this->initialized['previous'] = true;
-        $this->previous = $previous;
-        return $this;
-    }
+    public string $previous;
     public function definedProperties(): array
     {
-        return ['first' => ['first', 'getFirst', 'setFirst'], 'last' => ['last', 'getLast', 'setLast'], 'next' => ['next', 'getNext', 'setNext'], 'previous' => ['previous', 'getPrevious', 'setPrevious']];
+        return ['first' => 'first', 'last' => 'last', 'next' => 'next', 'previous' => 'previous'];
     }
 }

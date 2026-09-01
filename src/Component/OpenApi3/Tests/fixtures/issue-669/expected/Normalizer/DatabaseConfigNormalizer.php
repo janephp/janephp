@@ -54,7 +54,7 @@ class DatabaseConfigNormalizer implements DenormalizerInterface, NormalizerInter
             } elseif (is_array($data['config'])) {
                 $value = $this->denormalizer->denormalize($data['config'], \Jane\Generated\DigitalOcean\Model\OpensearchAdvancedConfig::class, 'json', $context);
             }
-            $object->setConfig($value);
+            $object->config = $value;
             unset($data['config']);
         }
         foreach ($data as $key => $value_1) {
@@ -67,22 +67,22 @@ class DatabaseConfigNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('config') && null !== $data->getConfig()) {
-            $value = $data->getConfig();
-            if (is_object($data->getConfig())) {
-                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
-            } elseif (is_object($data->getConfig())) {
-                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
-            } elseif (is_object($data->getConfig())) {
-                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
-            } elseif (is_object($data->getConfig())) {
-                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
-            } elseif (is_object($data->getConfig())) {
-                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
-            } elseif (is_object($data->getConfig())) {
-                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
-            } elseif (is_object($data->getConfig())) {
-                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
+        if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
+            $value = $data->config ?? null;
+            if (is_object($data->config ?? null)) {
+                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+            } elseif (is_object($data->config ?? null)) {
+                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+            } elseif (is_object($data->config ?? null)) {
+                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+            } elseif (is_object($data->config ?? null)) {
+                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+            } elseif (is_object($data->config ?? null)) {
+                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+            } elseif (is_object($data->config ?? null)) {
+                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
+            } elseif (is_object($data->config ?? null)) {
+                $value = ($data->config ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config ?? null, 'json', $context));
             }
             $dataArray['config'] = $value;
         }

@@ -8,389 +8,75 @@ class VectorMetadata implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var array<string, string>|null
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public ?iterable $names;
     /**
      * @var array<string, string>|null
      */
-    protected $names;
-    /**
-     * @var array<string, string>|null
-     */
-    protected $descriptions;
+    public ?iterable $descriptions;
     /**
      * @var string|null
      */
-    protected $fileExtension;
+    public ?string $fileExtension;
     /**
      * @var string|null
      */
-    protected $fileName;
+    public ?string $fileName;
     /**
      * @var string|null
      */
-    protected $filePath;
+    public ?string $filePath;
     /**
      * @var int|null
      */
-    protected $fileSizeInBytes;
+    public ?int $fileSizeInBytes;
     /**
      * @var string|null
      */
-    protected $sha1Hash;
+    public ?string $sha1Hash;
     /**
      * @var mixed|null
      */
-    protected $xmpMetadata;
+    public $xmpMetadata;
     /**
      * @var mixed|null
      */
-    protected $exifMetadata;
+    public $exifMetadata;
     /**
      * @var string|null
      */
-    protected $language;
+    public ?string $language;
     /**
      * @var string|null
      */
-    protected $author;
+    public ?string $author;
     /**
      * @var string|null
      */
-    protected $creator;
+    public ?string $creator;
     /**
      * @var string|null
      */
-    protected $publisher;
+    public ?string $publisher;
     /**
      * @var string|null
      */
-    protected $company;
+    public ?string $company;
     /**
      * @var string|null
      */
-    protected $title;
+    public ?string $title;
     /**
      * @var int
      */
-    protected $pageCount;
+    public int $pageCount;
     /**
      * @var EpsMetadata|null
      */
-    protected $epsInfo;
-    /**
-     * @return array<string, string>|null
-     */
-    public function getNames(): ?iterable
-    {
-        return $this->names;
-    }
-    /**
-     * @param array<string, string>|null $names
-     *
-     * @return self
-     */
-    public function setNames(?iterable $names): self
-    {
-        $this->initialized['names'] = true;
-        $this->names = $names;
-        return $this;
-    }
-    /**
-     * @return array<string, string>|null
-     */
-    public function getDescriptions(): ?iterable
-    {
-        return $this->descriptions;
-    }
-    /**
-     * @param array<string, string>|null $descriptions
-     *
-     * @return self
-     */
-    public function setDescriptions(?iterable $descriptions): self
-    {
-        $this->initialized['descriptions'] = true;
-        $this->descriptions = $descriptions;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getFileExtension(): ?string
-    {
-        return $this->fileExtension;
-    }
-    /**
-     * @param string|null $fileExtension
-     *
-     * @return self
-     */
-    public function setFileExtension(?string $fileExtension): self
-    {
-        $this->initialized['fileExtension'] = true;
-        $this->fileExtension = $fileExtension;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getFileName(): ?string
-    {
-        return $this->fileName;
-    }
-    /**
-     * @param string|null $fileName
-     *
-     * @return self
-     */
-    public function setFileName(?string $fileName): self
-    {
-        $this->initialized['fileName'] = true;
-        $this->fileName = $fileName;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getFilePath(): ?string
-    {
-        return $this->filePath;
-    }
-    /**
-     * @param string|null $filePath
-     *
-     * @return self
-     */
-    public function setFilePath(?string $filePath): self
-    {
-        $this->initialized['filePath'] = true;
-        $this->filePath = $filePath;
-        return $this;
-    }
-    /**
-     * @return int|null
-     */
-    public function getFileSizeInBytes(): ?int
-    {
-        return $this->fileSizeInBytes;
-    }
-    /**
-     * @param int|null $fileSizeInBytes
-     *
-     * @return self
-     */
-    public function setFileSizeInBytes(?int $fileSizeInBytes): self
-    {
-        $this->initialized['fileSizeInBytes'] = true;
-        $this->fileSizeInBytes = $fileSizeInBytes;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getSha1Hash(): ?string
-    {
-        return $this->sha1Hash;
-    }
-    /**
-     * @param string|null $sha1Hash
-     *
-     * @return self
-     */
-    public function setSha1Hash(?string $sha1Hash): self
-    {
-        $this->initialized['sha1Hash'] = true;
-        $this->sha1Hash = $sha1Hash;
-        return $this;
-    }
-    /**
-     * @return mixed
-     */
-    public function getXmpMetadata()
-    {
-        return $this->xmpMetadata;
-    }
-    /**
-     * @param mixed $xmpMetadata
-     *
-     * @return self
-     */
-    public function setXmpMetadata($xmpMetadata): self
-    {
-        $this->initialized['xmpMetadata'] = true;
-        $this->xmpMetadata = $xmpMetadata;
-        return $this;
-    }
-    /**
-     * @return mixed
-     */
-    public function getExifMetadata()
-    {
-        return $this->exifMetadata;
-    }
-    /**
-     * @param mixed $exifMetadata
-     *
-     * @return self
-     */
-    public function setExifMetadata($exifMetadata): self
-    {
-        $this->initialized['exifMetadata'] = true;
-        $this->exifMetadata = $exifMetadata;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getLanguage(): ?string
-    {
-        return $this->language;
-    }
-    /**
-     * @param string|null $language
-     *
-     * @return self
-     */
-    public function setLanguage(?string $language): self
-    {
-        $this->initialized['language'] = true;
-        $this->language = $language;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-    /**
-     * @param string|null $author
-     *
-     * @return self
-     */
-    public function setAuthor(?string $author): self
-    {
-        $this->initialized['author'] = true;
-        $this->author = $author;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getCreator(): ?string
-    {
-        return $this->creator;
-    }
-    /**
-     * @param string|null $creator
-     *
-     * @return self
-     */
-    public function setCreator(?string $creator): self
-    {
-        $this->initialized['creator'] = true;
-        $this->creator = $creator;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getPublisher(): ?string
-    {
-        return $this->publisher;
-    }
-    /**
-     * @param string|null $publisher
-     *
-     * @return self
-     */
-    public function setPublisher(?string $publisher): self
-    {
-        $this->initialized['publisher'] = true;
-        $this->publisher = $publisher;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getCompany(): ?string
-    {
-        return $this->company;
-    }
-    /**
-     * @param string|null $company
-     *
-     * @return self
-     */
-    public function setCompany(?string $company): self
-    {
-        $this->initialized['company'] = true;
-        $this->company = $company;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-    /**
-     * @param string|null $title
-     *
-     * @return self
-     */
-    public function setTitle(?string $title): self
-    {
-        $this->initialized['title'] = true;
-        $this->title = $title;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getPageCount(): int
-    {
-        return $this->pageCount;
-    }
-    /**
-     * @param int $pageCount
-     *
-     * @return self
-     */
-    public function setPageCount(int $pageCount): self
-    {
-        $this->initialized['pageCount'] = true;
-        $this->pageCount = $pageCount;
-        return $this;
-    }
-    /**
-     * @return EpsMetadata|null
-     */
-    public function getEpsInfo(): ?EpsMetadata
-    {
-        return $this->epsInfo;
-    }
-    /**
-     * @param EpsMetadata|null $epsInfo
-     *
-     * @return self
-     */
-    public function setEpsInfo(?EpsMetadata $epsInfo): self
-    {
-        $this->initialized['epsInfo'] = true;
-        $this->epsInfo = $epsInfo;
-        return $this;
-    }
+    public ?EpsMetadata $epsInfo;
     public function definedProperties(): array
     {
-        return ['names' => ['names', 'getNames', 'setNames'], 'descriptions' => ['descriptions', 'getDescriptions', 'setDescriptions'], 'fileExtension' => ['fileExtension', 'getFileExtension', 'setFileExtension'], 'fileName' => ['fileName', 'getFileName', 'setFileName'], 'filePath' => ['filePath', 'getFilePath', 'setFilePath'], 'fileSizeInBytes' => ['fileSizeInBytes', 'getFileSizeInBytes', 'setFileSizeInBytes'], 'sha1Hash' => ['sha1Hash', 'getSha1Hash', 'setSha1Hash'], 'xmpMetadata' => ['xmpMetadata', 'getXmpMetadata', 'setXmpMetadata'], 'exifMetadata' => ['exifMetadata', 'getExifMetadata', 'setExifMetadata'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'creator' => ['creator', 'getCreator', 'setCreator'], 'publisher' => ['publisher', 'getPublisher', 'setPublisher'], 'company' => ['company', 'getCompany', 'setCompany'], 'title' => ['title', 'getTitle', 'setTitle'], 'pageCount' => ['pageCount', 'getPageCount', 'setPageCount'], 'epsInfo' => ['epsInfo', 'getEpsInfo', 'setEpsInfo']];
+        return ['names' => 'names', 'descriptions' => 'descriptions', 'fileExtension' => 'fileExtension', 'fileName' => 'fileName', 'filePath' => 'filePath', 'fileSizeInBytes' => 'fileSizeInBytes', 'sha1Hash' => 'sha1Hash', 'xmpMetadata' => 'xmpMetadata', 'exifMetadata' => 'exifMetadata', 'language' => 'language', 'author' => 'author', 'creator' => 'creator', 'publisher' => 'publisher', 'company' => 'company', 'title' => 'title', 'pageCount' => 'pageCount', 'epsInfo' => 'epsInfo'];
     }
 }

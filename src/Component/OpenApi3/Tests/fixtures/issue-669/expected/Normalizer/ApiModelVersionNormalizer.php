@@ -38,15 +38,15 @@ class ApiModelVersionNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('major', $data)) {
-            $object->setMajor($data['major']);
+            $object->major = $data['major'];
             unset($data['major']);
         }
         if (\array_key_exists('minor', $data)) {
-            $object->setMinor($data['minor']);
+            $object->minor = $data['minor'];
             unset($data['minor']);
         }
         if (\array_key_exists('patch', $data)) {
-            $object->setPatch($data['patch']);
+            $object->patch = $data['patch'];
             unset($data['patch']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class ApiModelVersionNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('major') && null !== $data->getMajor()) {
-            $dataArray['major'] = $data->getMajor();
+        if (array_key_exists('major', get_object_vars($data)) && null !== ($data->major ?? null)) {
+            $dataArray['major'] = $data->major ?? null;
         }
-        if ($data->isInitialized('minor') && null !== $data->getMinor()) {
-            $dataArray['minor'] = $data->getMinor();
+        if (array_key_exists('minor', get_object_vars($data)) && null !== ($data->minor ?? null)) {
+            $dataArray['minor'] = $data->minor ?? null;
         }
-        if ($data->isInitialized('patch') && null !== $data->getPatch()) {
-            $dataArray['patch'] = $data->getPatch();
+        if (array_key_exists('patch', get_object_vars($data)) && null !== ($data->patch ?? null)) {
+            $dataArray['patch'] = $data->patch ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

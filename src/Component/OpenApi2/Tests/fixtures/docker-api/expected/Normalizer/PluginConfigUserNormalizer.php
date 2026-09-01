@@ -41,21 +41,21 @@ class PluginConfigUserNormalizer implements DenormalizerInterface, NormalizerInt
             $this->validate($data, new \Docker\Api\Validator\PluginConfigUserConstraint());
         }
         if (\array_key_exists('UID', $data)) {
-            $object->setUID($data['UID']);
+            $object->uID = $data['UID'];
         }
         if (\array_key_exists('GID', $data)) {
-            $object->setGID($data['GID']);
+            $object->gID = $data['GID'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('uID') && null !== $data->getUID()) {
-            $dataArray['UID'] = $data->getUID();
+        if (array_key_exists('uID', get_object_vars($data)) && null !== ($data->uID ?? null)) {
+            $dataArray['UID'] = $data->uID ?? null;
         }
-        if ($data->isInitialized('gID') && null !== $data->getGID()) {
-            $dataArray['GID'] = $data->getGID();
+        if (array_key_exists('gID', get_object_vars($data)) && null !== ($data->gID ?? null)) {
+            $dataArray['GID'] = $data->gID ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginConfigUserConstraint());

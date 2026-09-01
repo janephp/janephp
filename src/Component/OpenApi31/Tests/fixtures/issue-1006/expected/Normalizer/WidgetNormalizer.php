@@ -41,27 +41,27 @@ class WidgetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Issue1006\Validator\WidgetConstraint());
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('settings', $data)) {
-            $object->setSettings($this->denormalizer->denormalize($data['settings'], \Jane\Component\OpenApi31\Tests\Issue1006\Model\WidgetSettings::class, 'json', $context));
+            $object->settings = $this->denormalizer->denormalize($data['settings'], \Jane\Component\OpenApi31\Tests\Issue1006\Model\WidgetSettings::class, 'json', $context);
         }
         if (\array_key_exists('plain', $data)) {
-            $object->setPlain($this->denormalizer->denormalize($data['plain'], \Jane\Component\OpenApi31\Tests\Issue1006\Model\WidgetSettings::class, 'json', $context));
+            $object->plain = $this->denormalizer->denormalize($data['plain'], \Jane\Component\OpenApi31\Tests\Issue1006\Model\WidgetSettings::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('settings') && null !== $data->getSettings()) {
-            $dataArray['settings'] = $data->getSettings() === null ? null : new \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\JsonObject($this->normalizer->normalize($data->getSettings(), 'json', $context));
+        if (array_key_exists('settings', get_object_vars($data)) && null !== ($data->settings ?? null)) {
+            $dataArray['settings'] = ($data->settings ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\JsonObject($this->normalizer->normalize($data->settings ?? null, 'json', $context));
         }
-        if ($data->isInitialized('plain') && null !== $data->getPlain()) {
-            $dataArray['plain'] = $data->getPlain() === null ? null : new \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\JsonObject($this->normalizer->normalize($data->getPlain(), 'json', $context));
+        if (array_key_exists('plain', get_object_vars($data)) && null !== ($data->plain ?? null)) {
+            $dataArray['plain'] = ($data->plain ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\JsonObject($this->normalizer->normalize($data->plain ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Issue1006\Validator\WidgetConstraint());

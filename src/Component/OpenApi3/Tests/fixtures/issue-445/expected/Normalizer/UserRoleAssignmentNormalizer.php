@@ -45,27 +45,27 @@ class UserRoleAssignmentNormalizer implements DenormalizerInterface, NormalizerI
             if (is_array($data['userRole'])) {
                 $value = $this->denormalizer->denormalize($data['userRole'], \PicturePark\API\Model\UserRole::class, 'json', $context);
             }
-            $object->setUserRole($value);
+            $object->userRole = $value;
         }
         elseif (\array_key_exists('userRole', $data) && $data['userRole'] === null) {
-            $object->setUserRole(null);
+            $object->userRole = null;
         }
         if (\array_key_exists('isFederated', $data)) {
-            $object->setIsFederated($data['isFederated']);
+            $object->isFederated = $data['isFederated'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('userRole') && null !== $data->getUserRole()) {
-            $value = $data->getUserRole();
-            if (is_object($data->getUserRole())) {
-                $value = $data->getUserRole() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getUserRole(), 'json', $context));
+        if (array_key_exists('userRole', get_object_vars($data)) && null !== ($data->userRole ?? null)) {
+            $value = $data->userRole ?? null;
+            if (is_object($data->userRole ?? null)) {
+                $value = ($data->userRole ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->userRole ?? null, 'json', $context));
             }
             $dataArray['userRole'] = $value;
         }
-        $dataArray['isFederated'] = $data->getIsFederated();
+        $dataArray['isFederated'] = $data->isFederated ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

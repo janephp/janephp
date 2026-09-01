@@ -41,14 +41,14 @@ class SchemaExistsResponseNormalizer implements DenormalizerInterface, Normalize
             $data['exists'] = (bool) $data['exists'];
         }
         if (\array_key_exists('exists', $data)) {
-            $object->setExists($data['exists']);
+            $object->exists = $data['exists'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['exists'] = $data->getExists();
+        $dataArray['exists'] = $data->exists ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -42,19 +42,19 @@ class ResponseInvoicesNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['invoices'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\InvoicePreview::class, 'json', $context);
             }
-            $object->setInvoices($values);
+            $object->invoices = $values;
             unset($data['invoices']);
         }
         if (\array_key_exists('invoice_preview', $data)) {
-            $object->setInvoicePreview($this->denormalizer->denormalize($data['invoice_preview'], \Jane\Generated\DigitalOcean\Model\InvoicePreview::class, 'json', $context));
+            $object->invoicePreview = $this->denormalizer->denormalize($data['invoice_preview'], \Jane\Generated\DigitalOcean\Model\InvoicePreview::class, 'json', $context);
             unset($data['invoice_preview']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\PageLinks::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\PageLinks::class, 'json', $context);
             unset($data['links']);
         }
         if (\array_key_exists('meta', $data)) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\MetaMeta::class, 'json', $context));
+            $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Generated\DigitalOcean\Model\MetaMeta::class, 'json', $context);
             unset($data['meta']);
         }
         foreach ($data as $key => $value_1) {
@@ -67,20 +67,20 @@ class ResponseInvoicesNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('invoices') && null !== $data->getInvoices()) {
+        if (array_key_exists('invoices', get_object_vars($data)) && null !== ($data->invoices ?? null)) {
             $values = [];
-            foreach ($data->getInvoices() as $value) {
+            foreach ($data->invoices ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['invoices'] = $values;
         }
-        if ($data->isInitialized('invoicePreview') && null !== $data->getInvoicePreview()) {
-            $dataArray['invoice_preview'] = $data->getInvoicePreview() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getInvoicePreview(), 'json', $context));
+        if (array_key_exists('invoicePreview', get_object_vars($data)) && null !== ($data->invoicePreview ?? null)) {
+            $dataArray['invoice_preview'] = ($data->invoicePreview ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->invoicePreview ?? null, 'json', $context));
         }
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
-        $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
+        $dataArray['meta'] = ($data->meta ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

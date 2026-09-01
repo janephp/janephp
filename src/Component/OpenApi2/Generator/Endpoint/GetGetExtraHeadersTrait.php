@@ -16,8 +16,8 @@ trait GetGetExtraHeadersTrait
     {
         $headers = [];
         $produces = array_merge(
-            $openApi->getProduces() ?? [],
-            $operation->getOperation()->getProduces() ?? []
+            $openApi->produces ?? [],
+            $operation->getOperation()->produces ?? null ?? []
         );
 
         // It's a server side specification, what it produces is what we potentially can accept

@@ -41,19 +41,19 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
             $this->validate($data, new \Jane\Component\OpenApi3\Tests\ExpectedIssue793\Validator\FilePostBodyConstraint());
         }
         if (\array_key_exists('file', $data)) {
-            $object->setFile($data['file']);
+            $object->file = $data['file'];
             unset($data['file']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('fileNullable', $data) && $data['fileNullable'] !== null) {
-            $object->setFileNullable($data['fileNullable']);
+            $object->fileNullable = $data['fileNullable'];
             unset($data['fileNullable']);
         }
         elseif (\array_key_exists('fileNullable', $data) && $data['fileNullable'] === null) {
-            $object->setFileNullable(null);
+            $object->fileNullable = null;
             unset($data['fileNullable']);
         }
         foreach ($data as $key => $value) {
@@ -66,14 +66,14 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('file') && null !== $data->getFile()) {
-            $dataArray['file'] = $data->getFile();
+        if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
+            $dataArray['file'] = $data->file ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('fileNullable') && null !== $data->getFileNullable()) {
-            $dataArray['fileNullable'] = $data->getFileNullable();
+        if (array_key_exists('fileNullable', get_object_vars($data)) && null !== ($data->fileNullable ?? null)) {
+            $dataArray['fileNullable'] = $data->fileNullable ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

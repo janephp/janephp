@@ -44,10 +44,10 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetConstraint());
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $value = $data['description'];
@@ -56,33 +56,33 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             } elseif (is_null($data['description'])) {
                 $value = $data['description'];
             }
-            $object->setDescription($value);
+            $object->description = $value;
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
-            $object->setDescription(null);
+            $object->description = null;
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('habitabilityIndex', $data)) {
-            $object->setHabitabilityIndex($data['habitabilityIndex']);
+            $object->habitabilityIndex = $data['habitabilityIndex'];
         }
         if (\array_key_exists('physicalProperties', $data)) {
-            $object->setPhysicalProperties($this->denormalizer->denormalize($data['physicalProperties'], \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalProperties::class, 'json', $context));
+            $object->physicalProperties = $this->denormalizer->denormalize($data['physicalProperties'], \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalProperties::class, 'json', $context);
         }
         if (\array_key_exists('atmosphere', $data)) {
             $values = [];
             foreach ($data['atmosphere'] as $value_1) {
                 $values[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetAtmosphereItem::class, 'json', $context);
             }
-            $object->setAtmosphere($values);
+            $object->atmosphere = $values;
         }
         if (\array_key_exists('discoveredAt', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['discoveredAt']);
             if (false === $date) {
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['discoveredAt'], 'Y-m-d\TH:i:sP');
             }
-            $object->setDiscoveredAt($date);
+            $object->discoveredAt = $date;
         }
         if (\array_key_exists('image', $data) && $data['image'] !== null) {
             $value_2 = $data['image'];
@@ -91,106 +91,106 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             } elseif (is_null($data['image'])) {
                 $value_2 = $data['image'];
             }
-            $object->setImage($value_2);
+            $object->image = $value_2;
         }
         elseif (\array_key_exists('image', $data) && $data['image'] === null) {
-            $object->setImage(null);
+            $object->image = null;
         }
         if (\array_key_exists('satellites', $data)) {
             $values_1 = [];
             foreach ($data['satellites'] as $value_3) {
                 $values_1[] = $this->denormalizer->denormalize($value_3, \Jane\Component\OpenApi31\Tests\Expected\Model\Satellite::class, 'json', $context);
             }
-            $object->setSatellites($values_1);
+            $object->satellites = $values_1;
         }
         if (\array_key_exists('creator', $data)) {
-            $object->setCreator($this->denormalizer->denormalize($data['creator'], \Jane\Component\OpenApi31\Tests\Expected\Model\User::class, 'json', $context));
+            $object->creator = $this->denormalizer->denormalize($data['creator'], \Jane\Component\OpenApi31\Tests\Expected\Model\User::class, 'json', $context);
         }
         if (\array_key_exists('tags', $data)) {
             $values_2 = [];
             foreach ($data['tags'] as $value_4) {
                 $values_2[] = $value_4;
             }
-            $object->setTags($values_2);
+            $object->tags = $values_2;
         }
         if (\array_key_exists('lastUpdated', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastUpdated']);
             if (false === $date_1) {
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['lastUpdated'], 'Y-m-d\TH:i:sP');
             }
-            $object->setLastUpdated($date_1);
+            $object->lastUpdated = $date_1;
         }
         if (\array_key_exists('successCallbackUrl', $data)) {
-            $object->setSuccessCallbackUrl($data['successCallbackUrl']);
+            $object->successCallbackUrl = $data['successCallbackUrl'];
         }
         if (\array_key_exists('failureCallbackUrl', $data)) {
-            $object->setFailureCallbackUrl($data['failureCallbackUrl']);
+            $object->failureCallbackUrl = $data['failureCallbackUrl'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $value = $data->getDescription();
-            if (is_string($data->getDescription())) {
-                $value = $data->getDescription();
-            } elseif (is_null($data->getDescription())) {
-                $value = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $value = $data->description ?? null;
+            if (is_string($data->description ?? null)) {
+                $value = $data->description ?? null;
+            } elseif (is_null($data->description ?? null)) {
+                $value = $data->description ?? null;
             }
             $dataArray['description'] = $value;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('habitabilityIndex') && null !== $data->getHabitabilityIndex()) {
-            $dataArray['habitabilityIndex'] = $data->getHabitabilityIndex();
+        if (array_key_exists('habitabilityIndex', get_object_vars($data)) && null !== ($data->habitabilityIndex ?? null)) {
+            $dataArray['habitabilityIndex'] = $data->habitabilityIndex ?? null;
         }
-        if ($data->isInitialized('physicalProperties') && null !== $data->getPhysicalProperties()) {
-            $dataArray['physicalProperties'] = $data->getPhysicalProperties() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPhysicalProperties(), 'json', $context));
+        if (array_key_exists('physicalProperties', get_object_vars($data)) && null !== ($data->physicalProperties ?? null)) {
+            $dataArray['physicalProperties'] = ($data->physicalProperties ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->physicalProperties ?? null, 'json', $context));
         }
-        if ($data->isInitialized('atmosphere') && null !== $data->getAtmosphere()) {
+        if (array_key_exists('atmosphere', get_object_vars($data)) && null !== ($data->atmosphere ?? null)) {
             $values = [];
-            foreach ($data->getAtmosphere() as $value_1) {
+            foreach ($data->atmosphere ?? null as $value_1) {
                 $values[] = $value_1 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['atmosphere'] = $values;
         }
-        if ($data->isInitialized('discoveredAt') && null !== $data->getDiscoveredAt()) {
-            $dataArray['discoveredAt'] = $data->getDiscoveredAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('discoveredAt', get_object_vars($data)) && null !== ($data->discoveredAt ?? null)) {
+            $dataArray['discoveredAt'] = ($data->discoveredAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('image') && null !== $data->getImage()) {
-            $value_2 = $data->getImage();
-            if (is_string($data->getImage())) {
-                $value_2 = $data->getImage();
-            } elseif (is_null($data->getImage())) {
-                $value_2 = $data->getImage();
+        if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
+            $value_2 = $data->image ?? null;
+            if (is_string($data->image ?? null)) {
+                $value_2 = $data->image ?? null;
+            } elseif (is_null($data->image ?? null)) {
+                $value_2 = $data->image ?? null;
             }
             $dataArray['image'] = $value_2;
         }
-        if ($data->isInitialized('satellites') && null !== $data->getSatellites()) {
+        if (array_key_exists('satellites', get_object_vars($data)) && null !== ($data->satellites ?? null)) {
             $values_1 = [];
-            foreach ($data->getSatellites() as $value_3) {
+            foreach ($data->satellites ?? null as $value_3) {
                 $values_1[] = $value_3 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['satellites'] = $values_1;
         }
-        if ($data->isInitialized('creator') && null !== $data->getCreator()) {
-            $dataArray['creator'] = $data->getCreator() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCreator(), 'json', $context));
+        if (array_key_exists('creator', get_object_vars($data)) && null !== ($data->creator ?? null)) {
+            $dataArray['creator'] = ($data->creator ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->creator ?? null, 'json', $context));
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_2 = [];
-            foreach ($data->getTags() as $value_4) {
+            foreach ($data->tags ?? null as $value_4) {
                 $values_2[] = $value_4;
             }
             $dataArray['tags'] = $values_2;
         }
-        if ($data->isInitialized('successCallbackUrl') && null !== $data->getSuccessCallbackUrl()) {
-            $dataArray['successCallbackUrl'] = $data->getSuccessCallbackUrl();
+        if (array_key_exists('successCallbackUrl', get_object_vars($data)) && null !== ($data->successCallbackUrl ?? null)) {
+            $dataArray['successCallbackUrl'] = $data->successCallbackUrl ?? null;
         }
-        if ($data->isInitialized('failureCallbackUrl') && null !== $data->getFailureCallbackUrl()) {
-            $dataArray['failureCallbackUrl'] = $data->getFailureCallbackUrl();
+        if (array_key_exists('failureCallbackUrl', get_object_vars($data)) && null !== ($data->failureCallbackUrl ?? null)) {
+            $dataArray['failureCallbackUrl'] = $data->failureCallbackUrl ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetConstraint());

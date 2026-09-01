@@ -54,36 +54,36 @@ class MetadataValuesChangeRequestBaseNormalizer implements DenormalizerInterface
             foreach ($data['changeCommands'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\MetadataValuesChangeCommandBase::class, 'json', $context);
             }
-            $object->setChangeCommands($values);
+            $object->changeCommands = $values;
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
-            $object->setAllowMissingDependencies($data['allowMissingDependencies']);
+            $object->allowMissingDependencies = $data['allowMissingDependencies'];
         }
         if (\array_key_exists('notifyProgress', $data)) {
-            $object->setNotifyProgress($data['notifyProgress']);
+            $object->notifyProgress = $data['notifyProgress'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'ContentFieldsBatchUpdateFilterRequest' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ContentFieldsBatchUpdateFilterRequest' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ContentFieldsBatchUpdateRequest' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ContentFieldsBatchUpdateRequest' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
         $values = [];
-        foreach ($data->getChangeCommands() as $value) {
+        foreach ($data->changeCommands ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['changeCommands'] = $values;
-        $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();
-        $dataArray['notifyProgress'] = $data->getNotifyProgress();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
+        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

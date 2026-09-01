@@ -38,7 +38,7 @@ class DatabaseBackupNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('database_name', $data)) {
-            $object->setDatabaseName($data['database_name']);
+            $object->databaseName = $data['database_name'];
             unset($data['database_name']);
         }
         if (\array_key_exists('backup_created_at', $data)) {
@@ -46,7 +46,7 @@ class DatabaseBackupNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['backup_created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setBackupCreatedAt($date);
+            $object->backupCreatedAt = $date;
             unset($data['backup_created_at']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class DatabaseBackupNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['database_name'] = $data->getDatabaseName();
-        if ($data->isInitialized('backupCreatedAt') && null !== $data->getBackupCreatedAt()) {
-            $dataArray['backup_created_at'] = $data->getBackupCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['database_name'] = $data->databaseName ?? null;
+        if (array_key_exists('backupCreatedAt', get_object_vars($data)) && null !== ($data->backupCreatedAt ?? null)) {
+            $dataArray['backup_created_at'] = ($data->backupCreatedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

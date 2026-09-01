@@ -46,7 +46,7 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
                 }
                 $value = $values;
             }
-            $object->setTitle($value);
+            $object->title = $value;
         }
         if (\array_key_exists('message', $data)) {
             $value_2 = $data['message'];
@@ -57,50 +57,50 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
                 }
                 $value_2 = $values_1;
             }
-            $object->setMessage($value_2);
+            $object->message = $value_2;
         }
         if (\array_key_exists('navigationLink', $data) && $data['navigationLink'] !== null) {
-            $object->setNavigationLink($data['navigationLink']);
+            $object->navigationLink = $data['navigationLink'];
         }
         elseif (\array_key_exists('navigationLink', $data) && $data['navigationLink'] === null) {
-            $object->setNavigationLink(null);
+            $object->navigationLink = null;
         }
         if (\array_key_exists('eventType', $data)) {
             $value_4 = $data['eventType'];
             if (is_string($data['eventType'])) {
                 $value_4 = $data['eventType'];
             }
-            $object->setEventType($value_4);
+            $object->eventType = $value_4;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getTitle();
-        if (is_object($data->getTitle())) {
+        $value = $data->title ?? null;
+        if (is_object($data->title ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getTitle() as $key => $value_1) {
+            foreach ($data->title ?? null as $key => $value_1) {
                 $values[$key] = $value_1;
             }
             $value = $values;
         }
         $dataArray['title'] = $value;
-        $value_2 = $data->getMessage();
-        if (is_object($data->getMessage())) {
+        $value_2 = $data->message ?? null;
+        if (is_object($data->message ?? null)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getMessage() as $key_1 => $value_3) {
+            foreach ($data->message ?? null as $key_1 => $value_3) {
                 $values_1[$key_1] = $value_3;
             }
             $value_2 = $values_1;
         }
         $dataArray['message'] = $value_2;
-        if ($data->isInitialized('navigationLink') && null !== $data->getNavigationLink()) {
-            $dataArray['navigationLink'] = $data->getNavigationLink();
+        if (array_key_exists('navigationLink', get_object_vars($data)) && null !== ($data->navigationLink ?? null)) {
+            $dataArray['navigationLink'] = $data->navigationLink ?? null;
         }
-        $value_4 = $data->getEventType();
-        if (is_string($data->getEventType())) {
-            $value_4 = $data->getEventType();
+        $value_4 = $data->eventType ?? null;
+        if (is_string($data->eventType ?? null)) {
+            $value_4 = $data->eventType ?? null;
         }
         $dataArray['eventType'] = $value_4;
         return $dataArray;

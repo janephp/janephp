@@ -38,11 +38,11 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('iso', $data)) {
-            $object->setIso($data['iso']);
+            $object->iso = $data['iso'];
             unset($data['iso']);
         }
         if (\array_key_exists('printableName', $data)) {
-            $object->setPrintableName($data['printableName']);
+            $object->printableName = $data['printableName'];
             unset($data['printableName']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iso') && null !== $data->getIso()) {
-            $dataArray['iso'] = $data->getIso();
+        if (array_key_exists('iso', get_object_vars($data)) && null !== ($data->iso ?? null)) {
+            $dataArray['iso'] = $data->iso ?? null;
         }
-        if ($data->isInitialized('printableName') && null !== $data->getPrintableName()) {
-            $dataArray['printableName'] = $data->getPrintableName();
+        if (array_key_exists('printableName', get_object_vars($data)) && null !== ($data->printableName ?? null)) {
+            $dataArray['printableName'] = $data->printableName ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

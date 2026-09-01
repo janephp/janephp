@@ -41,7 +41,7 @@ class AppsCreateDeploymentRequestNormalizer implements DenormalizerInterface, No
             $data['force_build'] = (bool) $data['force_build'];
         }
         if (\array_key_exists('force_build', $data)) {
-            $object->setForceBuild($data['force_build']);
+            $object->forceBuild = $data['force_build'];
             unset($data['force_build']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class AppsCreateDeploymentRequestNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('forceBuild') && null !== $data->getForceBuild()) {
-            $dataArray['force_build'] = $data->getForceBuild();
+        if (array_key_exists('forceBuild', get_object_vars($data)) && null !== ($data->forceBuild ?? null)) {
+            $dataArray['force_build'] = $data->forceBuild ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

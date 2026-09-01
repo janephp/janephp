@@ -42,11 +42,11 @@ class V2FirewallsFirewallIdRulesDeleteBodyNormalizer implements DenormalizerInte
             foreach ($data['inbound_rules'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItem::class, 'json', $context);
             }
-            $object->setInboundRules($values);
+            $object->inboundRules = $values;
             unset($data['inbound_rules']);
         }
         elseif (\array_key_exists('inbound_rules', $data) && $data['inbound_rules'] === null) {
-            $object->setInboundRules(null);
+            $object->inboundRules = null;
             unset($data['inbound_rules']);
         }
         if (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] !== null) {
@@ -54,11 +54,11 @@ class V2FirewallsFirewallIdRulesDeleteBodyNormalizer implements DenormalizerInte
             foreach ($data['outbound_rules'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItem::class, 'json', $context);
             }
-            $object->setOutboundRules($values_1);
+            $object->outboundRules = $values_1;
             unset($data['outbound_rules']);
         }
         elseif (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] === null) {
-            $object->setOutboundRules(null);
+            $object->outboundRules = null;
             unset($data['outbound_rules']);
         }
         foreach ($data as $key => $value_2) {
@@ -71,16 +71,16 @@ class V2FirewallsFirewallIdRulesDeleteBodyNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('inboundRules') && null !== $data->getInboundRules()) {
+        if (array_key_exists('inboundRules', get_object_vars($data)) && null !== ($data->inboundRules ?? null)) {
             $values = [];
-            foreach ($data->getInboundRules() as $value) {
+            foreach ($data->inboundRules ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['inbound_rules'] = $values;
         }
-        if ($data->isInitialized('outboundRules') && null !== $data->getOutboundRules()) {
+        if (array_key_exists('outboundRules', get_object_vars($data)) && null !== ($data->outboundRules ?? null)) {
             $values_1 = [];
-            foreach ($data->getOutboundRules() as $value_1) {
+            foreach ($data->outboundRules ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['outbound_rules'] = $values_1;

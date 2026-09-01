@@ -5,269 +5,59 @@ namespace PicturePark\API\Model;
 class ListItemDetail
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * The list item ID.
      *
      * @var string
      */
-    protected $id;
+    public string $id;
     /**
      * The ID of the content schema. The SchemaType of the specified schema must be List.
      *
      * @var string
      */
-    protected $contentSchemaId;
+    public string $contentSchemaId;
     /**
      * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
      * by the ContentSchemaId property.
      *
      * @var array<string, mixed>|null
      */
-    protected $content;
+    public ?iterable $content;
     /**
      * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
      *
      * @var array<string, string>|null
      */
-    protected $displayValues;
+    public ?iterable $displayValues;
     /**
      * All the IDs of the referenced list items (tagboxes) that do not exist in the system.
      *
      * @var list<string>|null
      */
-    protected $brokenReferenceIds;
+    public ?array $brokenReferenceIds;
     /**
      * All the IDs of the contents or list items target of a relation that do not exist in the system.
      *
      * @var list<string>|null
      */
-    protected $brokenRelationTargetIds;
+    public ?array $brokenRelationTargetIds;
     /**
      * All the IDs of the indirectly referenced list items (tagboxes) that do not exist in the system.
      * They are referenced list items that reference at least a list item that do not exist in the system.
      *
      * @var list<string>|null
      */
-    protected $brokenIndirectReferenceIds;
+    public ?array $brokenIndirectReferenceIds;
     /**
      * Audit information.
      *
      * @var UserAuditDetail|null
      */
-    protected $audit;
+    public ?UserAuditDetail $audit;
     /**
      * Activity information: dynamically mapped from configured metadata fields or from audit information if no mapping is configured.
      *
      * @var Activity|null
      */
-    protected $activity;
-    /**
-     * The list item ID.
-     *
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * The list item ID.
-     *
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * The ID of the content schema. The SchemaType of the specified schema must be List.
-     *
-     * @return string
-     */
-    public function getContentSchemaId(): string
-    {
-        return $this->contentSchemaId;
-    }
-    /**
-     * The ID of the content schema. The SchemaType of the specified schema must be List.
-     *
-     * @param string $contentSchemaId
-     *
-     * @return self
-     */
-    public function setContentSchemaId(string $contentSchemaId): self
-    {
-        $this->initialized['contentSchemaId'] = true;
-        $this->contentSchemaId = $contentSchemaId;
-        return $this;
-    }
-    /**
-     * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
-     * by the ContentSchemaId property.
-     *
-     * @return array<string, mixed>|null
-     */
-    public function getContent(): ?iterable
-    {
-        return $this->content;
-    }
-    /**
-    * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
-    by the ContentSchemaId property.
-    *
-    * @param array<string, mixed>|null $content
-    *
-    * @return self
-    */
-    public function setContent(?iterable $content): self
-    {
-        $this->initialized['content'] = true;
-        $this->content = $content;
-        return $this;
-    }
-    /**
-     * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
-     *
-     * @return array<string, string>|null
-     */
-    public function getDisplayValues(): ?iterable
-    {
-        return $this->displayValues;
-    }
-    /**
-     * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
-     *
-     * @param array<string, string>|null $displayValues
-     *
-     * @return self
-     */
-    public function setDisplayValues(?iterable $displayValues): self
-    {
-        $this->initialized['displayValues'] = true;
-        $this->displayValues = $displayValues;
-        return $this;
-    }
-    /**
-     * All the IDs of the referenced list items (tagboxes) that do not exist in the system.
-     *
-     * @return list<string>|null
-     */
-    public function getBrokenReferenceIds(): ?array
-    {
-        return $this->brokenReferenceIds;
-    }
-    /**
-     * All the IDs of the referenced list items (tagboxes) that do not exist in the system.
-     *
-     * @param list<string>|null $brokenReferenceIds
-     *
-     * @return self
-     */
-    public function setBrokenReferenceIds(?array $brokenReferenceIds): self
-    {
-        $this->initialized['brokenReferenceIds'] = true;
-        $this->brokenReferenceIds = $brokenReferenceIds;
-        return $this;
-    }
-    /**
-     * All the IDs of the contents or list items target of a relation that do not exist in the system.
-     *
-     * @return list<string>|null
-     */
-    public function getBrokenRelationTargetIds(): ?array
-    {
-        return $this->brokenRelationTargetIds;
-    }
-    /**
-     * All the IDs of the contents or list items target of a relation that do not exist in the system.
-     *
-     * @param list<string>|null $brokenRelationTargetIds
-     *
-     * @return self
-     */
-    public function setBrokenRelationTargetIds(?array $brokenRelationTargetIds): self
-    {
-        $this->initialized['brokenRelationTargetIds'] = true;
-        $this->brokenRelationTargetIds = $brokenRelationTargetIds;
-        return $this;
-    }
-    /**
-     * All the IDs of the indirectly referenced list items (tagboxes) that do not exist in the system.
-     * They are referenced list items that reference at least a list item that do not exist in the system.
-     *
-     * @return list<string>|null
-     */
-    public function getBrokenIndirectReferenceIds(): ?array
-    {
-        return $this->brokenIndirectReferenceIds;
-    }
-    /**
-    * All the IDs of the indirectly referenced list items (tagboxes) that do not exist in the system.
-    They are referenced list items that reference at least a list item that do not exist in the system.
-    *
-    * @param list<string>|null $brokenIndirectReferenceIds
-    *
-    * @return self
-    */
-    public function setBrokenIndirectReferenceIds(?array $brokenIndirectReferenceIds): self
-    {
-        $this->initialized['brokenIndirectReferenceIds'] = true;
-        $this->brokenIndirectReferenceIds = $brokenIndirectReferenceIds;
-        return $this;
-    }
-    /**
-     * Audit information.
-     *
-     * @return UserAuditDetail|null
-     */
-    public function getAudit(): ?UserAuditDetail
-    {
-        return $this->audit;
-    }
-    /**
-     * Audit information.
-     *
-     * @param UserAuditDetail|null $audit
-     *
-     * @return self
-     */
-    public function setAudit(?UserAuditDetail $audit): self
-    {
-        $this->initialized['audit'] = true;
-        $this->audit = $audit;
-        return $this;
-    }
-    /**
-     * Activity information: dynamically mapped from configured metadata fields or from audit information if no mapping is configured.
-     *
-     * @return Activity|null
-     */
-    public function getActivity(): ?Activity
-    {
-        return $this->activity;
-    }
-    /**
-     * Activity information: dynamically mapped from configured metadata fields or from audit information if no mapping is configured.
-     *
-     * @param Activity|null $activity
-     *
-     * @return self
-     */
-    public function setActivity(?Activity $activity): self
-    {
-        $this->initialized['activity'] = true;
-        $this->activity = $activity;
-        return $this;
-    }
+    public ?Activity $activity;
 }

@@ -42,17 +42,17 @@ class ListItemManyReferencesRequestNormalizer implements DenormalizerInterface, 
             foreach ($data['listItemIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setListItemIds($values);
+            $object->listItemIds = $values;
         }
         if (\array_key_exists('references', $data) && $data['references'] !== null) {
             $value_1 = $data['references'];
             if (is_array($data['references'])) {
                 $value_1 = $this->denormalizer->denormalize($data['references'], \PicturePark\API\Model\MetadataReferencesPagingRequest::class, 'json', $context);
             }
-            $object->setReferences($value_1);
+            $object->references = $value_1;
         }
         elseif (\array_key_exists('references', $data) && $data['references'] === null) {
-            $object->setReferences(null);
+            $object->references = null;
         }
         return $object;
     }
@@ -60,14 +60,14 @@ class ListItemManyReferencesRequestNormalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getListItemIds() as $value) {
+        foreach ($data->listItemIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['listItemIds'] = $values;
-        if ($data->isInitialized('references') && null !== $data->getReferences()) {
-            $value_1 = $data->getReferences();
-            if (is_object($data->getReferences())) {
-                $value_1 = $data->getReferences() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getReferences(), 'json', $context));
+        if (array_key_exists('references', get_object_vars($data)) && null !== ($data->references ?? null)) {
+            $value_1 = $data->references ?? null;
+            if (is_object($data->references ?? null)) {
+                $value_1 = ($data->references ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references ?? null, 'json', $context));
             }
             $dataArray['references'] = $value_1;
         }

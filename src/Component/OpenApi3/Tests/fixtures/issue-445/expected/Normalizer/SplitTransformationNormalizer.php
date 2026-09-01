@@ -44,31 +44,31 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
             $data['trim'] = (bool) $data['trim'];
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('separators', $data) && $data['separators'] !== null) {
-            $object->setSeparators($data['separators']);
+            $object->separators = $data['separators'];
             unset($data['separators']);
         }
         elseif (\array_key_exists('separators', $data) && $data['separators'] === null) {
-            $object->setSeparators(null);
+            $object->separators = null;
             unset($data['separators']);
         }
         if (\array_key_exists('keepEmpty', $data)) {
-            $object->setKeepEmpty($data['keepEmpty']);
+            $object->keepEmpty = $data['keepEmpty'];
             unset($data['keepEmpty']);
         }
         if (\array_key_exists('trim', $data)) {
-            $object->setTrim($data['trim']);
+            $object->trim = $data['trim'];
             unset($data['trim']);
         }
         foreach ($data as $key => $value) {
@@ -81,18 +81,18 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('separators') && null !== $data->getSeparators()) {
-            $dataArray['separators'] = $data->getSeparators();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('separators', get_object_vars($data)) && null !== ($data->separators ?? null)) {
+            $dataArray['separators'] = $data->separators ?? null;
         }
-        if ($data->isInitialized('keepEmpty') && null !== $data->getKeepEmpty()) {
-            $dataArray['keepEmpty'] = $data->getKeepEmpty();
+        if (array_key_exists('keepEmpty', get_object_vars($data)) && null !== ($data->keepEmpty ?? null)) {
+            $dataArray['keepEmpty'] = $data->keepEmpty ?? null;
         }
-        if ($data->isInitialized('trim') && null !== $data->getTrim()) {
-            $dataArray['trim'] = $data->getTrim();
+        if (array_key_exists('trim', get_object_vars($data)) && null !== ($data->trim ?? null)) {
+            $dataArray['trim'] = $data->trim ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,19 +38,19 @@ class PartnerAttachmentWritableNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('connection_bandwidth_in_mbps', $data)) {
-            $object->setConnectionBandwidthInMbps($data['connection_bandwidth_in_mbps']);
+            $object->connectionBandwidthInMbps = $data['connection_bandwidth_in_mbps'];
             unset($data['connection_bandwidth_in_mbps']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('naas_provider', $data)) {
-            $object->setNaasProvider($data['naas_provider']);
+            $object->naasProvider = $data['naas_provider'];
             unset($data['naas_provider']);
         }
         if (\array_key_exists('vpc_ids', $data)) {
@@ -58,19 +58,19 @@ class PartnerAttachmentWritableNormalizer implements DenormalizerInterface, Norm
             foreach ($data['vpc_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setVpcIds($values);
+            $object->vpcIds = $values;
             unset($data['vpc_ids']);
         }
         if (\array_key_exists('parent_uuid', $data)) {
-            $object->setParentUuid($data['parent_uuid']);
+            $object->parentUuid = $data['parent_uuid'];
             unset($data['parent_uuid']);
         }
         if (\array_key_exists('bgp', $data)) {
-            $object->setBgp($this->denormalizer->denormalize($data['bgp'], \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritableBgp::class, 'json', $context));
+            $object->bgp = $this->denormalizer->denormalize($data['bgp'], \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritableBgp::class, 'json', $context);
             unset($data['bgp']);
         }
         if (\array_key_exists('redundancy_zone', $data)) {
-            $object->setRedundancyZone($data['redundancy_zone']);
+            $object->redundancyZone = $data['redundancy_zone'];
             unset($data['redundancy_zone']);
         }
         foreach ($data as $key => $value_1) {
@@ -83,23 +83,23 @@ class PartnerAttachmentWritableNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['connection_bandwidth_in_mbps'] = $data->getConnectionBandwidthInMbps();
-        $dataArray['region'] = $data->getRegion();
-        $dataArray['naas_provider'] = $data->getNaasProvider();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['connection_bandwidth_in_mbps'] = $data->connectionBandwidthInMbps ?? null;
+        $dataArray['region'] = $data->region ?? null;
+        $dataArray['naas_provider'] = $data->naasProvider ?? null;
         $values = [];
-        foreach ($data->getVpcIds() as $value) {
+        foreach ($data->vpcIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['vpc_ids'] = $values;
-        if ($data->isInitialized('parentUuid') && null !== $data->getParentUuid()) {
-            $dataArray['parent_uuid'] = $data->getParentUuid();
+        if (array_key_exists('parentUuid', get_object_vars($data)) && null !== ($data->parentUuid ?? null)) {
+            $dataArray['parent_uuid'] = $data->parentUuid ?? null;
         }
-        if ($data->isInitialized('bgp') && null !== $data->getBgp()) {
-            $dataArray['bgp'] = $data->getBgp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBgp(), 'json', $context));
+        if (array_key_exists('bgp', get_object_vars($data)) && null !== ($data->bgp ?? null)) {
+            $dataArray['bgp'] = ($data->bgp ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->bgp ?? null, 'json', $context));
         }
-        if ($data->isInitialized('redundancyZone') && null !== $data->getRedundancyZone()) {
-            $dataArray['redundancy_zone'] = $data->getRedundancyZone();
+        if (array_key_exists('redundancyZone', get_object_vars($data)) && null !== ($data->redundancyZone ?? null)) {
+            $dataArray['redundancy_zone'] = $data->redundancyZone ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

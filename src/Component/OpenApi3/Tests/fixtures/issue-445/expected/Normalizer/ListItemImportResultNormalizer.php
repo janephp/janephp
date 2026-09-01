@@ -38,52 +38,52 @@ class ListItemImportResultNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('importedListItemCount', $data)) {
-            $object->setImportedListItemCount($data['importedListItemCount']);
+            $object->importedListItemCount = $data['importedListItemCount'];
         }
         if (\array_key_exists('skippedListItemCount', $data)) {
-            $object->setSkippedListItemCount($data['skippedListItemCount']);
+            $object->skippedListItemCount = $data['skippedListItemCount'];
         }
         if (\array_key_exists('totalListItemCount', $data)) {
-            $object->setTotalListItemCount($data['totalListItemCount']);
+            $object->totalListItemCount = $data['totalListItemCount'];
         }
         if (\array_key_exists('skippedListItemIds', $data) && $data['skippedListItemIds'] !== null) {
             $values = [];
             foreach ($data['skippedListItemIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setSkippedListItemIds($values);
+            $object->skippedListItemIds = $values;
         }
         elseif (\array_key_exists('skippedListItemIds', $data) && $data['skippedListItemIds'] === null) {
-            $object->setSkippedListItemIds(null);
+            $object->skippedListItemIds = null;
         }
         if (\array_key_exists('importedListItemIds', $data) && $data['importedListItemIds'] !== null) {
             $values_1 = [];
             foreach ($data['importedListItemIds'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setImportedListItemIds($values_1);
+            $object->importedListItemIds = $values_1;
         }
         elseif (\array_key_exists('importedListItemIds', $data) && $data['importedListItemIds'] === null) {
-            $object->setImportedListItemIds(null);
+            $object->importedListItemIds = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['importedListItemCount'] = $data->getImportedListItemCount();
-        $dataArray['skippedListItemCount'] = $data->getSkippedListItemCount();
-        $dataArray['totalListItemCount'] = $data->getTotalListItemCount();
-        if ($data->isInitialized('skippedListItemIds') && null !== $data->getSkippedListItemIds()) {
+        $dataArray['importedListItemCount'] = $data->importedListItemCount ?? null;
+        $dataArray['skippedListItemCount'] = $data->skippedListItemCount ?? null;
+        $dataArray['totalListItemCount'] = $data->totalListItemCount ?? null;
+        if (array_key_exists('skippedListItemIds', get_object_vars($data)) && null !== ($data->skippedListItemIds ?? null)) {
             $values = [];
-            foreach ($data->getSkippedListItemIds() as $value) {
+            foreach ($data->skippedListItemIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['skippedListItemIds'] = $values;
         }
-        if ($data->isInitialized('importedListItemIds') && null !== $data->getImportedListItemIds()) {
+        if (array_key_exists('importedListItemIds', get_object_vars($data)) && null !== ($data->importedListItemIds ?? null)) {
             $values_1 = [];
-            foreach ($data->getImportedListItemIds() as $value_1) {
+            foreach ($data->importedListItemIds ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['importedListItemIds'] = $values_1;

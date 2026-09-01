@@ -41,15 +41,15 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
             $data['auto_scale'] = (bool) $data['auto_scale'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -57,7 +57,7 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
             foreach ($data['tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setTags($values);
+            $object->tags = $values;
             unset($data['tags']);
         }
         if (\array_key_exists('labels', $data) && $data['labels'] !== null) {
@@ -65,11 +65,11 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
             foreach ($data['labels'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
-            $object->setLabels($values_1);
+            $object->labels = $values_1;
             unset($data['labels']);
         }
         elseif (\array_key_exists('labels', $data) && $data['labels'] === null) {
-            $object->setLabels(null);
+            $object->labels = null;
             unset($data['labels']);
         }
         if (\array_key_exists('taints', $data)) {
@@ -77,19 +77,19 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
             foreach ($data['taints'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\KubernetesNodePoolTaint::class, 'json', $context);
             }
-            $object->setTaints($values_2);
+            $object->taints = $values_2;
             unset($data['taints']);
         }
         if (\array_key_exists('auto_scale', $data)) {
-            $object->setAutoScale($data['auto_scale']);
+            $object->autoScale = $data['auto_scale'];
             unset($data['auto_scale']);
         }
         if (\array_key_exists('min_nodes', $data)) {
-            $object->setMinNodes($data['min_nodes']);
+            $object->minNodes = $data['min_nodes'];
             unset($data['min_nodes']);
         }
         if (\array_key_exists('max_nodes', $data)) {
-            $object->setMaxNodes($data['max_nodes']);
+            $object->maxNodes = $data['max_nodes'];
             unset($data['max_nodes']);
         }
         if (\array_key_exists('nodes', $data)) {
@@ -97,7 +97,7 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
             foreach ($data['nodes'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Generated\DigitalOcean\Model\Node::class, 'json', $context);
             }
-            $object->setNodes($values_3);
+            $object->nodes = $values_3;
             unset($data['nodes']);
         }
         foreach ($data as $key_1 => $value_4) {
@@ -110,41 +110,41 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count ?? null;
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->getTags() as $value) {
+            foreach ($data->tags ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;
         }
-        if ($data->isInitialized('labels') && null !== $data->getLabels()) {
+        if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getLabels() as $key => $value_1) {
+            foreach ($data->labels ?? null as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['labels'] = $values_1;
         }
-        if ($data->isInitialized('taints') && null !== $data->getTaints()) {
+        if (array_key_exists('taints', get_object_vars($data)) && null !== ($data->taints ?? null)) {
             $values_2 = [];
-            foreach ($data->getTaints() as $value_2) {
+            foreach ($data->taints ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['taints'] = $values_2;
         }
-        if ($data->isInitialized('autoScale') && null !== $data->getAutoScale()) {
-            $dataArray['auto_scale'] = $data->getAutoScale();
+        if (array_key_exists('autoScale', get_object_vars($data)) && null !== ($data->autoScale ?? null)) {
+            $dataArray['auto_scale'] = $data->autoScale ?? null;
         }
-        if ($data->isInitialized('minNodes') && null !== $data->getMinNodes()) {
-            $dataArray['min_nodes'] = $data->getMinNodes();
+        if (array_key_exists('minNodes', get_object_vars($data)) && null !== ($data->minNodes ?? null)) {
+            $dataArray['min_nodes'] = $data->minNodes ?? null;
         }
-        if ($data->isInitialized('maxNodes') && null !== $data->getMaxNodes()) {
-            $dataArray['max_nodes'] = $data->getMaxNodes();
+        if (array_key_exists('maxNodes', get_object_vars($data)) && null !== ($data->maxNodes ?? null)) {
+            $dataArray['max_nodes'] = $data->maxNodes ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_3) {
             if (preg_match('/.*/', (string) $key_1)) {

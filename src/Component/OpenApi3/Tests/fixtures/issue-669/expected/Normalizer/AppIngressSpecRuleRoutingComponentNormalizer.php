@@ -38,15 +38,15 @@ class AppIngressSpecRuleRoutingComponentNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('preserve_path_prefix', $data)) {
-            $object->setPreservePathPrefix($data['preserve_path_prefix']);
+            $object->preservePathPrefix = $data['preserve_path_prefix'];
             unset($data['preserve_path_prefix']);
         }
         if (\array_key_exists('rewrite', $data)) {
-            $object->setRewrite($data['rewrite']);
+            $object->rewrite = $data['rewrite'];
             unset($data['rewrite']);
         }
         foreach ($data as $key => $value) {
@@ -59,12 +59,12 @@ class AppIngressSpecRuleRoutingComponentNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('preservePathPrefix') && null !== $data->getPreservePathPrefix()) {
-            $dataArray['preserve_path_prefix'] = $data->getPreservePathPrefix();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('preservePathPrefix', get_object_vars($data)) && null !== ($data->preservePathPrefix ?? null)) {
+            $dataArray['preserve_path_prefix'] = $data->preservePathPrefix ?? null;
         }
-        if ($data->isInitialized('rewrite') && null !== $data->getRewrite()) {
-            $dataArray['rewrite'] = $data->getRewrite();
+        if (array_key_exists('rewrite', get_object_vars($data)) && null !== ($data->rewrite ?? null)) {
+            $dataArray['rewrite'] = $data->rewrite ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

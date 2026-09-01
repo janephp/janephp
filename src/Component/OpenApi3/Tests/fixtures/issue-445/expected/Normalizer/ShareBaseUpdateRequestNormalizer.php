@@ -44,87 +44,87 @@ class ShareBaseUpdateRequestNormalizer implements DenormalizerInterface, Normali
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareEmbedUpdateRequest', $format, $context);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']);
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['expirationDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setExpirationDate($date);
+            $object->expirationDate = $date;
         }
         elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
-            $object->setExpirationDate(null);
+            $object->expirationDate = null;
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
-            $object->setDescription(null);
+            $object->description = null;
         }
         if (\array_key_exists('contents', $data)) {
             $values = [];
             foreach ($data['contents'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ShareContent::class, 'json', $context);
             }
-            $object->setContents($values);
+            $object->contents = $values;
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values_1 = [];
             foreach ($data['layerSchemaIds'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setLayerSchemaIds($values_1);
+            $object->layerSchemaIds = $values_1;
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
-            $object->setLayerSchemaIds(null);
+            $object->layerSchemaIds = null;
         }
         if (\array_key_exists('outputAccess', $data)) {
             $value_2 = $data['outputAccess'];
             if (is_string($data['outputAccess'])) {
                 $value_2 = $data['outputAccess'];
             }
-            $object->setOutputAccess($value_2);
+            $object->outputAccess = $value_2;
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'ShareBasicUpdateRequest' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ShareBasicUpdateRequest' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ShareEmbedUpdateRequest' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ShareEmbedUpdateRequest' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('expirationDate') && null !== $data->getExpirationDate()) {
-            $dataArray['expirationDate'] = $data->getExpirationDate()?->format('Y-m-d\TH:i:sP');
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {
+            $dataArray['expirationDate'] = ($data->expirationDate ?? null)?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
         $values = [];
-        foreach ($data->getContents() as $value) {
+        foreach ($data->contents ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['contents'] = $values;
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values_1 = [];
-            foreach ($data->getLayerSchemaIds() as $value_1) {
+            foreach ($data->layerSchemaIds ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['layerSchemaIds'] = $values_1;
         }
-        $value_2 = $data->getOutputAccess();
-        if (is_string($data->getOutputAccess())) {
-            $value_2 = $data->getOutputAccess();
+        $value_2 = $data->outputAccess ?? null;
+        if (is_string($data->outputAccess ?? null)) {
+            $value_2 = $data->outputAccess ?? null;
         }
         $dataArray['outputAccess'] = $value_2;
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -44,57 +44,57 @@ class MountNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $this->validate($data, new \Docker\Api\Validator\MountConstraint());
         }
         if (\array_key_exists('Target', $data)) {
-            $object->setTarget($data['Target']);
+            $object->target = $data['Target'];
         }
         if (\array_key_exists('Source', $data)) {
-            $object->setSource($data['Source']);
+            $object->source = $data['Source'];
         }
         if (\array_key_exists('Type', $data)) {
-            $object->setType($data['Type']);
+            $object->type = $data['Type'];
         }
         if (\array_key_exists('ReadOnly', $data)) {
-            $object->setReadOnly($data['ReadOnly']);
+            $object->readOnly = $data['ReadOnly'];
         }
         if (\array_key_exists('Consistency', $data)) {
-            $object->setConsistency($data['Consistency']);
+            $object->consistency = $data['Consistency'];
         }
         if (\array_key_exists('BindOptions', $data)) {
-            $object->setBindOptions($this->denormalizer->denormalize($data['BindOptions'], \Docker\Api\Model\MountBindOptions::class, 'json', $context));
+            $object->bindOptions = $this->denormalizer->denormalize($data['BindOptions'], \Docker\Api\Model\MountBindOptions::class, 'json', $context);
         }
         if (\array_key_exists('VolumeOptions', $data)) {
-            $object->setVolumeOptions($this->denormalizer->denormalize($data['VolumeOptions'], \Docker\Api\Model\MountVolumeOptions::class, 'json', $context));
+            $object->volumeOptions = $this->denormalizer->denormalize($data['VolumeOptions'], \Docker\Api\Model\MountVolumeOptions::class, 'json', $context);
         }
         if (\array_key_exists('TmpfsOptions', $data)) {
-            $object->setTmpfsOptions($this->denormalizer->denormalize($data['TmpfsOptions'], \Docker\Api\Model\MountTmpfsOptions::class, 'json', $context));
+            $object->tmpfsOptions = $this->denormalizer->denormalize($data['TmpfsOptions'], \Docker\Api\Model\MountTmpfsOptions::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('target') && null !== $data->getTarget()) {
-            $dataArray['Target'] = $data->getTarget();
+        if (array_key_exists('target', get_object_vars($data)) && null !== ($data->target ?? null)) {
+            $dataArray['Target'] = $data->target ?? null;
         }
-        if ($data->isInitialized('source') && null !== $data->getSource()) {
-            $dataArray['Source'] = $data->getSource();
+        if (array_key_exists('source', get_object_vars($data)) && null !== ($data->source ?? null)) {
+            $dataArray['Source'] = $data->source ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['Type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['Type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('readOnly') && null !== $data->getReadOnly()) {
-            $dataArray['ReadOnly'] = $data->getReadOnly();
+        if (array_key_exists('readOnly', get_object_vars($data)) && null !== ($data->readOnly ?? null)) {
+            $dataArray['ReadOnly'] = $data->readOnly ?? null;
         }
-        if ($data->isInitialized('consistency') && null !== $data->getConsistency()) {
-            $dataArray['Consistency'] = $data->getConsistency();
+        if (array_key_exists('consistency', get_object_vars($data)) && null !== ($data->consistency ?? null)) {
+            $dataArray['Consistency'] = $data->consistency ?? null;
         }
-        if ($data->isInitialized('bindOptions') && null !== $data->getBindOptions()) {
-            $dataArray['BindOptions'] = $data->getBindOptions() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getBindOptions(), 'json', $context));
+        if (array_key_exists('bindOptions', get_object_vars($data)) && null !== ($data->bindOptions ?? null)) {
+            $dataArray['BindOptions'] = ($data->bindOptions ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->bindOptions ?? null, 'json', $context));
         }
-        if ($data->isInitialized('volumeOptions') && null !== $data->getVolumeOptions()) {
-            $dataArray['VolumeOptions'] = $data->getVolumeOptions() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getVolumeOptions(), 'json', $context));
+        if (array_key_exists('volumeOptions', get_object_vars($data)) && null !== ($data->volumeOptions ?? null)) {
+            $dataArray['VolumeOptions'] = ($data->volumeOptions ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->volumeOptions ?? null, 'json', $context));
         }
-        if ($data->isInitialized('tmpfsOptions') && null !== $data->getTmpfsOptions()) {
-            $dataArray['TmpfsOptions'] = $data->getTmpfsOptions() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTmpfsOptions(), 'json', $context));
+        if (array_key_exists('tmpfsOptions', get_object_vars($data)) && null !== ($data->tmpfsOptions ?? null)) {
+            $dataArray['TmpfsOptions'] = ($data->tmpfsOptions ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->tmpfsOptions ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\MountConstraint());

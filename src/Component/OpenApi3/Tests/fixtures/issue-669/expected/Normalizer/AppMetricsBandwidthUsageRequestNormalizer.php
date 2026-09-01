@@ -42,7 +42,7 @@ class AppMetricsBandwidthUsageRequestNormalizer implements DenormalizerInterface
             foreach ($data['app_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setAppIds($values);
+            $object->appIds = $values;
             unset($data['app_ids']);
         }
         if (\array_key_exists('date', $data)) {
@@ -50,7 +50,7 @@ class AppMetricsBandwidthUsageRequestNormalizer implements DenormalizerInterface
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
             }
-            $object->setDate($date);
+            $object->date = $date;
             unset($data['date']);
         }
         foreach ($data as $key => $value_1) {
@@ -64,12 +64,12 @@ class AppMetricsBandwidthUsageRequestNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getAppIds() as $value) {
+        foreach ($data->appIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['app_ids'] = $values;
-        if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
+            $dataArray['date'] = ($data->date ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

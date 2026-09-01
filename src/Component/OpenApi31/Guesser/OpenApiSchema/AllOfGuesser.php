@@ -8,8 +8,8 @@ class AllOfGuesser extends BaseAllOfGuesser
 {
     protected function resolveAdditionalProperties($object, string $reference): array
     {
-        if (null === $object->getAdditionalProperties()
-            && (!method_exists($object, 'getPatternProperties') || null === $object->getPatternProperties())
+        if (null === ($object->additionalProperties ?? null)
+            && (!property_exists($object, 'patternProperties') || null === ($object->patternProperties ?? null))
         ) {
             return [
                 '.*' => [

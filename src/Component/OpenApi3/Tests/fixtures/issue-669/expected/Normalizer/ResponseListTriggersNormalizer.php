@@ -42,7 +42,7 @@ class ResponseListTriggersNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['triggers'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\TriggerInfo::class, 'json', $context);
             }
-            $object->setTriggers($values);
+            $object->triggers = $values;
             unset($data['triggers']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseListTriggersNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('triggers') && null !== $data->getTriggers()) {
+        if (array_key_exists('triggers', get_object_vars($data)) && null !== ($data->triggers ?? null)) {
             $values = [];
-            foreach ($data->getTriggers() as $value) {
+            foreach ($data->triggers ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['triggers'] = $values;

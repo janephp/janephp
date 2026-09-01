@@ -6,7 +6,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
 {
     /**
      * @param string $selector
-     * @param array $accept Accept content header application/json;schema=member-details|application/json
+     * @param array $accept Accept content header application/json|application/json;schema=member-details
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\MemberDetails|\Jane\Component\OpenApi31\Tests\Expected\Model\RequestError : \Psr\Http\Message\ResponseInterface)

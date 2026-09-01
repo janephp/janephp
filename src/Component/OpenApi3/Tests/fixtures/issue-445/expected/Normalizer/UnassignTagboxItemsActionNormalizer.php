@@ -38,39 +38,39 @@ class UnassignTagboxItemsActionNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('path', $data) && $data['path'] !== null) {
-            $object->setPath($data['path']);
+            $object->path = $data['path'];
             unset($data['path']);
         }
         elseif (\array_key_exists('path', $data) && $data['path'] === null) {
-            $object->setPath(null);
+            $object->path = null;
             unset($data['path']);
         }
         if (\array_key_exists('fieldId', $data) && $data['fieldId'] !== null) {
-            $object->setFieldId($data['fieldId']);
+            $object->fieldId = $data['fieldId'];
             unset($data['fieldId']);
         }
         elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
-            $object->setFieldId(null);
+            $object->fieldId = null;
             unset($data['fieldId']);
         }
         if (\array_key_exists('refIds', $data) && $data['refIds'] !== null) {
-            $object->setRefIds($data['refIds']);
+            $object->refIds = $data['refIds'];
             unset($data['refIds']);
         }
         elseif (\array_key_exists('refIds', $data) && $data['refIds'] === null) {
-            $object->setRefIds(null);
+            $object->refIds = null;
             unset($data['refIds']);
         }
         foreach ($data as $key => $value) {
@@ -83,18 +83,18 @@ class UnassignTagboxItemsActionNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('path') && null !== $data->getPath()) {
-            $dataArray['path'] = $data->getPath();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
+            $dataArray['path'] = $data->path ?? null;
         }
-        if ($data->isInitialized('fieldId') && null !== $data->getFieldId()) {
-            $dataArray['fieldId'] = $data->getFieldId();
+        if (array_key_exists('fieldId', get_object_vars($data)) && null !== ($data->fieldId ?? null)) {
+            $dataArray['fieldId'] = $data->fieldId ?? null;
         }
-        if ($data->isInitialized('refIds') && null !== $data->getRefIds()) {
-            $dataArray['refIds'] = $data->getRefIds();
+        if (array_key_exists('refIds', get_object_vars($data)) && null !== ($data->refIds ?? null)) {
+            $dataArray['refIds'] = $data->refIds ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,11 +38,11 @@ class DestroyedAssociatedResourceNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('destroyed_at', $data)) {
@@ -50,11 +50,11 @@ class DestroyedAssociatedResourceNormalizer implements DenormalizerInterface, No
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['destroyed_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setDestroyedAt($date);
+            $object->destroyedAt = $date;
             unset($data['destroyed_at']);
         }
         if (\array_key_exists('error_message', $data)) {
-            $object->setErrorMessage($data['error_message']);
+            $object->errorMessage = $data['error_message'];
             unset($data['error_message']);
         }
         foreach ($data as $key => $value) {
@@ -67,17 +67,17 @@ class DestroyedAssociatedResourceNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('destroyedAt') && null !== $data->getDestroyedAt()) {
-            $dataArray['destroyed_at'] = $data->getDestroyedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('destroyedAt', get_object_vars($data)) && null !== ($data->destroyedAt ?? null)) {
+            $dataArray['destroyed_at'] = ($data->destroyedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('errorMessage') && null !== $data->getErrorMessage()) {
-            $dataArray['error_message'] = $data->getErrorMessage();
+        if (array_key_exists('errorMessage', get_object_vars($data)) && null !== ($data->errorMessage ?? null)) {
+            $dataArray['error_message'] = $data->errorMessage ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

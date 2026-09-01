@@ -42,19 +42,19 @@ class SchemaPermissionSetCreateManyRequestNormalizer implements DenormalizerInte
             foreach ($data['items'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\SchemaPermissionSetCreateRequest::class, 'json', $context);
             }
-            $object->setItems($values);
+            $object->items = $values;
         }
         elseif (\array_key_exists('items', $data) && $data['items'] === null) {
-            $object->setItems(null);
+            $object->items = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('items') && null !== $data->getItems()) {
+        if (array_key_exists('items', get_object_vars($data)) && null !== ($data->items ?? null)) {
             $values = [];
-            foreach ($data->getItems() as $value) {
+            foreach ($data->items ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['items'] = $values;

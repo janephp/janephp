@@ -42,7 +42,7 @@ class ResponseVpcPeeringNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['peering'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setPeering($values);
+            $object->peering = $values;
             unset($data['peering']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -55,9 +55,9 @@ class ResponseVpcPeeringNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('peering') && null !== $data->getPeering()) {
+        if (array_key_exists('peering', get_object_vars($data)) && null !== ($data->peering ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getPeering() as $key => $value) {
+            foreach ($data->peering ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['peering'] = $values;

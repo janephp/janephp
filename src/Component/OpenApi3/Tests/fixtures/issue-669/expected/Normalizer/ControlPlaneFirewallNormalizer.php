@@ -41,7 +41,7 @@ class ControlPlaneFirewallNormalizer implements DenormalizerInterface, Normalize
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
             unset($data['enabled']);
         }
         if (\array_key_exists('allowed_addresses', $data)) {
@@ -49,7 +49,7 @@ class ControlPlaneFirewallNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['allowed_addresses'] as $value) {
                 $values[] = $value;
             }
-            $object->setAllowedAddresses($values);
+            $object->allowedAddresses = $values;
             unset($data['allowed_addresses']);
         }
         foreach ($data as $key => $value_1) {
@@ -62,12 +62,12 @@ class ControlPlaneFirewallNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
-            $dataArray['enabled'] = $data->getEnabled();
+        if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
+            $dataArray['enabled'] = $data->enabled ?? null;
         }
-        if ($data->isInitialized('allowedAddresses') && null !== $data->getAllowedAddresses()) {
+        if (array_key_exists('allowedAddresses', get_object_vars($data)) && null !== ($data->allowedAddresses ?? null)) {
             $values = [];
-            foreach ($data->getAllowedAddresses() as $value) {
+            foreach ($data->allowedAddresses ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['allowed_addresses'] = $values;

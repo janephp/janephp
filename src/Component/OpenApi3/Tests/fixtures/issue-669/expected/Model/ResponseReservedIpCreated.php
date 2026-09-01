@@ -8,59 +8,15 @@ class ResponseReservedIpCreated implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var ReservedIp
      */
-    protected $reservedIp;
+    public ReservedIp $reservedIp;
     /**
      * @var ResponseReservedIpCreatedLinks
      */
-    protected $links;
-    /**
-     * @return ReservedIp
-     */
-    public function getReservedIp(): ReservedIp
-    {
-        return $this->reservedIp;
-    }
-    /**
-     * @param ReservedIp $reservedIp
-     *
-     * @return self
-     */
-    public function setReservedIp(ReservedIp $reservedIp): self
-    {
-        $this->initialized['reservedIp'] = true;
-        $this->reservedIp = $reservedIp;
-        return $this;
-    }
-    /**
-     * @return ResponseReservedIpCreatedLinks
-     */
-    public function getLinks(): ResponseReservedIpCreatedLinks
-    {
-        return $this->links;
-    }
-    /**
-     * @param ResponseReservedIpCreatedLinks $links
-     *
-     * @return self
-     */
-    public function setLinks(ResponseReservedIpCreatedLinks $links): self
-    {
-        $this->initialized['links'] = true;
-        $this->links = $links;
-        return $this;
-    }
+    public ResponseReservedIpCreatedLinks $links;
     public function definedProperties(): array
     {
-        return ['reservedIp' => ['reserved_ip', 'getReservedIp', 'setReservedIp'], 'links' => ['links', 'getLinks', 'setLinks']];
+        return ['reservedIp' => 'reserved_ip', 'links' => 'links'];
     }
 }

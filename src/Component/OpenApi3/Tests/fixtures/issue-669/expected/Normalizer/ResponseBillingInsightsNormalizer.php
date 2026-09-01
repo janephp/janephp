@@ -42,19 +42,19 @@ class ResponseBillingInsightsNormalizer implements DenormalizerInterface, Normal
             foreach ($data['data_points'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\BillingDataPoint::class, 'json', $context);
             }
-            $object->setDataPoints($values);
+            $object->dataPoints = $values;
             unset($data['data_points']);
         }
         if (\array_key_exists('total_items', $data)) {
-            $object->setTotalItems($data['total_items']);
+            $object->totalItems = $data['total_items'];
             unset($data['total_items']);
         }
         if (\array_key_exists('total_pages', $data)) {
-            $object->setTotalPages($data['total_pages']);
+            $object->totalPages = $data['total_pages'];
             unset($data['total_pages']);
         }
         if (\array_key_exists('current_page', $data)) {
-            $object->setCurrentPage($data['current_page']);
+            $object->currentPage = $data['current_page'];
             unset($data['current_page']);
         }
         foreach ($data as $key => $value_1) {
@@ -68,13 +68,13 @@ class ResponseBillingInsightsNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getDataPoints() as $value) {
+        foreach ($data->dataPoints ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['data_points'] = $values;
-        $dataArray['total_items'] = $data->getTotalItems();
-        $dataArray['total_pages'] = $data->getTotalPages();
-        $dataArray['current_page'] = $data->getCurrentPage();
+        $dataArray['total_items'] = $data->totalItems ?? null;
+        $dataArray['total_pages'] = $data->totalPages ?? null;
+        $dataArray['current_page'] = $data->currentPage ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

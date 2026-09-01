@@ -38,15 +38,15 @@ class LogsinkBaseVerboseNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('sink_id', $data)) {
-            $object->setSinkId($data['sink_id']);
+            $object->sinkId = $data['sink_id'];
             unset($data['sink_id']);
         }
         if (\array_key_exists('sink_name', $data)) {
-            $object->setSinkName($data['sink_name']);
+            $object->sinkName = $data['sink_name'];
             unset($data['sink_name']);
         }
         if (\array_key_exists('sink_type', $data)) {
-            $object->setSinkType($data['sink_type']);
+            $object->sinkType = $data['sink_type'];
             unset($data['sink_type']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class LogsinkBaseVerboseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sinkId') && null !== $data->getSinkId()) {
-            $dataArray['sink_id'] = $data->getSinkId();
+        if (array_key_exists('sinkId', get_object_vars($data)) && null !== ($data->sinkId ?? null)) {
+            $dataArray['sink_id'] = $data->sinkId ?? null;
         }
-        if ($data->isInitialized('sinkName') && null !== $data->getSinkName()) {
-            $dataArray['sink_name'] = $data->getSinkName();
+        if (array_key_exists('sinkName', get_object_vars($data)) && null !== ($data->sinkName ?? null)) {
+            $dataArray['sink_name'] = $data->sinkName ?? null;
         }
-        if ($data->isInitialized('sinkType') && null !== $data->getSinkType()) {
-            $dataArray['sink_type'] = $data->getSinkType();
+        if (array_key_exists('sinkType', get_object_vars($data)) && null !== ($data->sinkType ?? null)) {
+            $dataArray['sink_type'] = $data->sinkType ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

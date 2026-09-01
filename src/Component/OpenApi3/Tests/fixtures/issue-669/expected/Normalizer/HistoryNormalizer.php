@@ -38,23 +38,23 @@ class HistoryNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('history_event_id', $data)) {
-            $object->setHistoryEventId($data['history_event_id']);
+            $object->historyEventId = $data['history_event_id'];
             unset($data['history_event_id']);
         }
         if (\array_key_exists('current_instance_count', $data)) {
-            $object->setCurrentInstanceCount($data['current_instance_count']);
+            $object->currentInstanceCount = $data['current_instance_count'];
             unset($data['current_instance_count']);
         }
         if (\array_key_exists('desired_instance_count', $data)) {
-            $object->setDesiredInstanceCount($data['desired_instance_count']);
+            $object->desiredInstanceCount = $data['desired_instance_count'];
             unset($data['desired_instance_count']);
         }
         if (\array_key_exists('reason', $data)) {
-            $object->setReason($data['reason']);
+            $object->reason = $data['reason'];
             unset($data['reason']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -62,7 +62,7 @@ class HistoryNormalizer implements DenormalizerInterface, NormalizerInterface, D
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -70,7 +70,7 @@ class HistoryNormalizer implements DenormalizerInterface, NormalizerInterface, D
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         foreach ($data as $key => $value) {
@@ -83,13 +83,13 @@ class HistoryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['history_event_id'] = $data->getHistoryEventId();
-        $dataArray['current_instance_count'] = $data->getCurrentInstanceCount();
-        $dataArray['desired_instance_count'] = $data->getDesiredInstanceCount();
-        $dataArray['reason'] = $data->getReason();
-        $dataArray['status'] = $data->getStatus();
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['history_event_id'] = $data->historyEventId ?? null;
+        $dataArray['current_instance_count'] = $data->currentInstanceCount ?? null;
+        $dataArray['desired_instance_count'] = $data->desiredInstanceCount ?? null;
+        $dataArray['reason'] = $data->reason ?? null;
+        $dataArray['status'] = $data->status ?? null;
+        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

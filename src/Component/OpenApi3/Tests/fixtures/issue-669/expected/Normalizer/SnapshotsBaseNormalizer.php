@@ -41,7 +41,7 @@ class SnapshotsBaseNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['size_gigabytes'] = (float) $data['size_gigabytes'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -49,7 +49,7 @@ class SnapshotsBaseNormalizer implements DenormalizerInterface, NormalizerInterf
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('regions', $data)) {
@@ -57,15 +57,15 @@ class SnapshotsBaseNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['regions'] as $value) {
                 $values[] = $value;
             }
-            $object->setRegions($values);
+            $object->regions = $values;
             unset($data['regions']);
         }
         if (\array_key_exists('min_disk_size', $data)) {
-            $object->setMinDiskSize($data['min_disk_size']);
+            $object->minDiskSize = $data['min_disk_size'];
             unset($data['min_disk_size']);
         }
         if (\array_key_exists('size_gigabytes', $data)) {
-            $object->setSizeGigabytes($data['size_gigabytes']);
+            $object->sizeGigabytes = $data['size_gigabytes'];
             unset($data['size_gigabytes']);
         }
         foreach ($data as $key => $value_1) {
@@ -78,15 +78,15 @@ class SnapshotsBaseNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
         $values = [];
-        foreach ($data->getRegions() as $value) {
+        foreach ($data->regions ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['regions'] = $values;
-        $dataArray['min_disk_size'] = $data->getMinDiskSize();
-        $dataArray['size_gigabytes'] = $data->getSizeGigabytes();
+        $dataArray['min_disk_size'] = $data->minDiskSize ?? null;
+        $dataArray['size_gigabytes'] = $data->sizeGigabytes ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

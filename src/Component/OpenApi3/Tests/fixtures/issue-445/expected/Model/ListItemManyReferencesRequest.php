@@ -5,67 +5,15 @@ namespace PicturePark\API\Model;
 class ListItemManyReferencesRequest
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * The IDs of the list items whose references need to be retrieved.
      *
      * @var list<string>
      */
-    protected $listItemIds;
+    public array $listItemIds;
     /**
      * Limits the number of the returned metadata references by setting paging information.
      *
      * @var MetadataReferencesPagingRequest|null
      */
-    protected $references;
-    /**
-     * The IDs of the list items whose references need to be retrieved.
-     *
-     * @return list<string>
-     */
-    public function getListItemIds(): array
-    {
-        return $this->listItemIds;
-    }
-    /**
-     * The IDs of the list items whose references need to be retrieved.
-     *
-     * @param list<string> $listItemIds
-     *
-     * @return self
-     */
-    public function setListItemIds(array $listItemIds): self
-    {
-        $this->initialized['listItemIds'] = true;
-        $this->listItemIds = $listItemIds;
-        return $this;
-    }
-    /**
-     * Limits the number of the returned metadata references by setting paging information.
-     *
-     * @return MetadataReferencesPagingRequest|null
-     */
-    public function getReferences(): ?MetadataReferencesPagingRequest
-    {
-        return $this->references;
-    }
-    /**
-     * Limits the number of the returned metadata references by setting paging information.
-     *
-     * @param MetadataReferencesPagingRequest|null $references
-     *
-     * @return self
-     */
-    public function setReferences(?MetadataReferencesPagingRequest $references): self
-    {
-        $this->initialized['references'] = true;
-        $this->references = $references;
-        return $this;
-    }
+    public ?MetadataReferencesPagingRequest $references;
 }

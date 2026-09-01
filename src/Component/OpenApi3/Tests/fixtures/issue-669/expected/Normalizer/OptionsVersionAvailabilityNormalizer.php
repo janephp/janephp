@@ -42,7 +42,7 @@ class OptionsVersionAvailabilityNormalizer implements DenormalizerInterface, Nor
             foreach ($data['kafka'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\DatabaseVersionAvailability::class, 'json', $context);
             }
-            $object->setKafka($values);
+            $object->kafka = $values;
             unset($data['kafka']);
         }
         if (\array_key_exists('pg', $data)) {
@@ -50,7 +50,7 @@ class OptionsVersionAvailabilityNormalizer implements DenormalizerInterface, Nor
             foreach ($data['pg'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\DatabaseVersionAvailability::class, 'json', $context);
             }
-            $object->setPg($values_1);
+            $object->pg = $values_1;
             unset($data['pg']);
         }
         if (\array_key_exists('mysql', $data)) {
@@ -58,7 +58,7 @@ class OptionsVersionAvailabilityNormalizer implements DenormalizerInterface, Nor
             foreach ($data['mysql'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\DatabaseVersionAvailability::class, 'json', $context);
             }
-            $object->setMysql($values_2);
+            $object->mysql = $values_2;
             unset($data['mysql']);
         }
         if (\array_key_exists('redis', $data)) {
@@ -66,7 +66,7 @@ class OptionsVersionAvailabilityNormalizer implements DenormalizerInterface, Nor
             foreach ($data['redis'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Generated\DigitalOcean\Model\DatabaseVersionAvailability::class, 'json', $context);
             }
-            $object->setRedis($values_3);
+            $object->redis = $values_3;
             unset($data['redis']);
         }
         if (\array_key_exists('valkey', $data)) {
@@ -74,7 +74,7 @@ class OptionsVersionAvailabilityNormalizer implements DenormalizerInterface, Nor
             foreach ($data['valkey'] as $value_4) {
                 $values_4[] = $this->denormalizer->denormalize($value_4, \Jane\Generated\DigitalOcean\Model\DatabaseVersionAvailability::class, 'json', $context);
             }
-            $object->setValkey($values_4);
+            $object->valkey = $values_4;
             unset($data['valkey']);
         }
         if (\array_key_exists('mongodb', $data)) {
@@ -82,7 +82,7 @@ class OptionsVersionAvailabilityNormalizer implements DenormalizerInterface, Nor
             foreach ($data['mongodb'] as $value_5) {
                 $values_5[] = $this->denormalizer->denormalize($value_5, \Jane\Generated\DigitalOcean\Model\DatabaseVersionAvailability::class, 'json', $context);
             }
-            $object->setMongodb($values_5);
+            $object->mongodb = $values_5;
             unset($data['mongodb']);
         }
         if (\array_key_exists('opensearch', $data)) {
@@ -90,7 +90,7 @@ class OptionsVersionAvailabilityNormalizer implements DenormalizerInterface, Nor
             foreach ($data['opensearch'] as $value_6) {
                 $values_6[] = $this->denormalizer->denormalize($value_6, \Jane\Generated\DigitalOcean\Model\DatabaseVersionAvailability::class, 'json', $context);
             }
-            $object->setOpensearch($values_6);
+            $object->opensearch = $values_6;
             unset($data['opensearch']);
         }
         foreach ($data as $key => $value_7) {
@@ -103,51 +103,51 @@ class OptionsVersionAvailabilityNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('kafka') && null !== $data->getKafka()) {
+        if (array_key_exists('kafka', get_object_vars($data)) && null !== ($data->kafka ?? null)) {
             $values = [];
-            foreach ($data->getKafka() as $value) {
+            foreach ($data->kafka ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['kafka'] = $values;
         }
-        if ($data->isInitialized('pg') && null !== $data->getPg()) {
+        if (array_key_exists('pg', get_object_vars($data)) && null !== ($data->pg ?? null)) {
             $values_1 = [];
-            foreach ($data->getPg() as $value_1) {
+            foreach ($data->pg ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['pg'] = $values_1;
         }
-        if ($data->isInitialized('mysql') && null !== $data->getMysql()) {
+        if (array_key_exists('mysql', get_object_vars($data)) && null !== ($data->mysql ?? null)) {
             $values_2 = [];
-            foreach ($data->getMysql() as $value_2) {
+            foreach ($data->mysql ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['mysql'] = $values_2;
         }
-        if ($data->isInitialized('redis') && null !== $data->getRedis()) {
+        if (array_key_exists('redis', get_object_vars($data)) && null !== ($data->redis ?? null)) {
             $values_3 = [];
-            foreach ($data->getRedis() as $value_3) {
+            foreach ($data->redis ?? null as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['redis'] = $values_3;
         }
-        if ($data->isInitialized('valkey') && null !== $data->getValkey()) {
+        if (array_key_exists('valkey', get_object_vars($data)) && null !== ($data->valkey ?? null)) {
             $values_4 = [];
-            foreach ($data->getValkey() as $value_4) {
+            foreach ($data->valkey ?? null as $value_4) {
                 $values_4[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['valkey'] = $values_4;
         }
-        if ($data->isInitialized('mongodb') && null !== $data->getMongodb()) {
+        if (array_key_exists('mongodb', get_object_vars($data)) && null !== ($data->mongodb ?? null)) {
             $values_5 = [];
-            foreach ($data->getMongodb() as $value_5) {
+            foreach ($data->mongodb ?? null as $value_5) {
                 $values_5[] = $value_5 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['mongodb'] = $values_5;
         }
-        if ($data->isInitialized('opensearch') && null !== $data->getOpensearch()) {
+        if (array_key_exists('opensearch', get_object_vars($data)) && null !== ($data->opensearch ?? null)) {
             $values_6 = [];
-            foreach ($data->getOpensearch() as $value_6) {
+            foreach ($data->opensearch ?? null as $value_6) {
                 $values_6[] = $value_6 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
             }
             $dataArray['opensearch'] = $values_6;

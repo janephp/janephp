@@ -38,11 +38,11 @@ class AppServiceSpecTerminationNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('drain_seconds', $data)) {
-            $object->setDrainSeconds($data['drain_seconds']);
+            $object->drainSeconds = $data['drain_seconds'];
             unset($data['drain_seconds']);
         }
         if (\array_key_exists('grace_period_seconds', $data)) {
-            $object->setGracePeriodSeconds($data['grace_period_seconds']);
+            $object->gracePeriodSeconds = $data['grace_period_seconds'];
             unset($data['grace_period_seconds']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class AppServiceSpecTerminationNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('drainSeconds') && null !== $data->getDrainSeconds()) {
-            $dataArray['drain_seconds'] = $data->getDrainSeconds();
+        if (array_key_exists('drainSeconds', get_object_vars($data)) && null !== ($data->drainSeconds ?? null)) {
+            $dataArray['drain_seconds'] = $data->drainSeconds ?? null;
         }
-        if ($data->isInitialized('gracePeriodSeconds') && null !== $data->getGracePeriodSeconds()) {
-            $dataArray['grace_period_seconds'] = $data->getGracePeriodSeconds();
+        if (array_key_exists('gracePeriodSeconds', get_object_vars($data)) && null !== ($data->gracePeriodSeconds ?? null)) {
+            $dataArray['grace_period_seconds'] = $data->gracePeriodSeconds ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

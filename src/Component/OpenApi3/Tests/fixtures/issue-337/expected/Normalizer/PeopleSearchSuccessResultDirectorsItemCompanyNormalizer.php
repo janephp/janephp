@@ -38,23 +38,23 @@ class PeopleSearchSuccessResultDirectorsItemCompanyNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('companyName', $data)) {
-            $object->setCompanyName($data['companyName']);
+            $object->companyName = $data['companyName'];
             unset($data['companyName']);
         }
         if (\array_key_exists('companyNumber', $data)) {
-            $object->setCompanyNumber($data['companyNumber']);
+            $object->companyNumber = $data['companyNumber'];
             unset($data['companyNumber']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('regNo', $data)) {
-            $object->setRegNo($data['regNo']);
+            $object->regNo = $data['regNo'];
             unset($data['regNo']);
         }
         foreach ($data as $key => $value) {
@@ -67,20 +67,20 @@ class PeopleSearchSuccessResultDirectorsItemCompanyNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('companyName') && null !== $data->getCompanyName()) {
-            $dataArray['companyName'] = $data->getCompanyName();
+        if (array_key_exists('companyName', get_object_vars($data)) && null !== ($data->companyName ?? null)) {
+            $dataArray['companyName'] = $data->companyName ?? null;
         }
-        if ($data->isInitialized('companyNumber') && null !== $data->getCompanyNumber()) {
-            $dataArray['companyNumber'] = $data->getCompanyNumber();
+        if (array_key_exists('companyNumber', get_object_vars($data)) && null !== ($data->companyNumber ?? null)) {
+            $dataArray['companyNumber'] = $data->companyNumber ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('regNo') && null !== $data->getRegNo()) {
-            $dataArray['regNo'] = $data->getRegNo();
+        if (array_key_exists('regNo', get_object_vars($data)) && null !== ($data->regNo ?? null)) {
+            $dataArray['regNo'] = $data->regNo ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

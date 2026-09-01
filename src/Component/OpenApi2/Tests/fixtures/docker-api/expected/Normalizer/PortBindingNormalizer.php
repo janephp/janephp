@@ -41,21 +41,21 @@ class PortBindingNormalizer implements DenormalizerInterface, NormalizerInterfac
             $this->validate($data, new \Docker\Api\Validator\PortBindingConstraint());
         }
         if (\array_key_exists('HostIp', $data)) {
-            $object->setHostIp($data['HostIp']);
+            $object->hostIp = $data['HostIp'];
         }
         if (\array_key_exists('HostPort', $data)) {
-            $object->setHostPort($data['HostPort']);
+            $object->hostPort = $data['HostPort'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('hostIp') && null !== $data->getHostIp()) {
-            $dataArray['HostIp'] = $data->getHostIp();
+        if (array_key_exists('hostIp', get_object_vars($data)) && null !== ($data->hostIp ?? null)) {
+            $dataArray['HostIp'] = $data->hostIp ?? null;
         }
-        if ($data->isInitialized('hostPort') && null !== $data->getHostPort()) {
-            $dataArray['HostPort'] = $data->getHostPort();
+        if (array_key_exists('hostPort', get_object_vars($data)) && null !== ($data->hostPort ?? null)) {
+            $dataArray['HostPort'] = $data->hostPort ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PortBindingConstraint());

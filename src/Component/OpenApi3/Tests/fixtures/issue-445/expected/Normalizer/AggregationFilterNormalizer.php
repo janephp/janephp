@@ -38,15 +38,15 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('aggregationName', $data) && $data['aggregationName'] !== null) {
-            $object->setAggregationName($data['aggregationName']);
+            $object->aggregationName = $data['aggregationName'];
             unset($data['aggregationName']);
         }
         elseif (\array_key_exists('aggregationName', $data) && $data['aggregationName'] === null) {
-            $object->setAggregationName(null);
+            $object->aggregationName = null;
             unset($data['aggregationName']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
@@ -54,19 +54,19 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
             if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
                 $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilter($value);
+            $object->filter = $value;
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
             unset($data['filter']);
         }
         if (\array_key_exists('temporaryAggregatorRequestId', $data) && $data['temporaryAggregatorRequestId'] !== null) {
-            $object->setTemporaryAggregatorRequestId($data['temporaryAggregatorRequestId']);
+            $object->temporaryAggregatorRequestId = $data['temporaryAggregatorRequestId'];
             unset($data['temporaryAggregatorRequestId']);
         }
         elseif (\array_key_exists('temporaryAggregatorRequestId', $data) && $data['temporaryAggregatorRequestId'] === null) {
-            $object->setTemporaryAggregatorRequestId(null);
+            $object->temporaryAggregatorRequestId = null;
             unset($data['temporaryAggregatorRequestId']);
         }
         foreach ($data as $key => $value_1) {
@@ -79,19 +79,19 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('aggregationName') && null !== $data->getAggregationName()) {
-            $dataArray['aggregationName'] = $data->getAggregationName();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('aggregationName', get_object_vars($data)) && null !== ($data->aggregationName ?? null)) {
+            $dataArray['aggregationName'] = $data->aggregationName ?? null;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $value = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $value = $data->filter ?? null;
+            if (is_object($data->filter ?? null)) {
+                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
-        if ($data->isInitialized('temporaryAggregatorRequestId') && null !== $data->getTemporaryAggregatorRequestId()) {
-            $dataArray['temporaryAggregatorRequestId'] = $data->getTemporaryAggregatorRequestId();
+        if (array_key_exists('temporaryAggregatorRequestId', get_object_vars($data)) && null !== ($data->temporaryAggregatorRequestId ?? null)) {
+            $dataArray['temporaryAggregatorRequestId'] = $data->temporaryAggregatorRequestId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

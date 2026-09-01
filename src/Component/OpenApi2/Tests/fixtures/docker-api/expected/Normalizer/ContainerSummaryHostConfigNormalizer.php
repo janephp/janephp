@@ -41,15 +41,15 @@ class ContainerSummaryHostConfigNormalizer implements DenormalizerInterface, Nor
             $this->validate($data, new \Docker\Api\Validator\ContainerSummaryHostConfigConstraint());
         }
         if (\array_key_exists('NetworkMode', $data)) {
-            $object->setNetworkMode($data['NetworkMode']);
+            $object->networkMode = $data['NetworkMode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('networkMode') && null !== $data->getNetworkMode()) {
-            $dataArray['NetworkMode'] = $data->getNetworkMode();
+        if (array_key_exists('networkMode', get_object_vars($data)) && null !== ($data->networkMode ?? null)) {
+            $dataArray['NetworkMode'] = $data->networkMode ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainerSummaryHostConfigConstraint());

@@ -38,19 +38,19 @@ class ApiPagesNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('first', $data)) {
-            $object->setFirst($data['first']);
+            $object->first = $data['first'];
             unset($data['first']);
         }
         if (\array_key_exists('last', $data)) {
-            $object->setLast($data['last']);
+            $object->last = $data['last'];
             unset($data['last']);
         }
         if (\array_key_exists('next', $data)) {
-            $object->setNext($data['next']);
+            $object->next = $data['next'];
             unset($data['next']);
         }
         if (\array_key_exists('previous', $data)) {
-            $object->setPrevious($data['previous']);
+            $object->previous = $data['previous'];
             unset($data['previous']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class ApiPagesNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('first') && null !== $data->getFirst()) {
-            $dataArray['first'] = $data->getFirst();
+        if (array_key_exists('first', get_object_vars($data)) && null !== ($data->first ?? null)) {
+            $dataArray['first'] = $data->first ?? null;
         }
-        if ($data->isInitialized('last') && null !== $data->getLast()) {
-            $dataArray['last'] = $data->getLast();
+        if (array_key_exists('last', get_object_vars($data)) && null !== ($data->last ?? null)) {
+            $dataArray['last'] = $data->last ?? null;
         }
-        if ($data->isInitialized('next') && null !== $data->getNext()) {
-            $dataArray['next'] = $data->getNext();
+        if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
+            $dataArray['next'] = $data->next ?? null;
         }
-        if ($data->isInitialized('previous') && null !== $data->getPrevious()) {
-            $dataArray['previous'] = $data->getPrevious();
+        if (array_key_exists('previous', get_object_vars($data)) && null !== ($data->previous ?? null)) {
+            $dataArray['previous'] = $data->previous ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

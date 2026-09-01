@@ -8,81 +8,19 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition implements Ad
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $resignationDate;
     /**
      * @var string
      */
-    protected $resignationDate;
+    public string $dateAppointed;
     /**
      * @var string
      */
-    protected $dateAppointed;
-    /**
-     * @var string
-     */
-    protected $positionName;
-    /**
-     * @return string
-     */
-    public function getResignationDate(): string
-    {
-        return $this->resignationDate;
-    }
-    /**
-     * @param string $resignationDate
-     *
-     * @return self
-     */
-    public function setResignationDate(string $resignationDate): self
-    {
-        $this->initialized['resignationDate'] = true;
-        $this->resignationDate = $resignationDate;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getDateAppointed(): string
-    {
-        return $this->dateAppointed;
-    }
-    /**
-     * @param string $dateAppointed
-     *
-     * @return self
-     */
-    public function setDateAppointed(string $dateAppointed): self
-    {
-        $this->initialized['dateAppointed'] = true;
-        $this->dateAppointed = $dateAppointed;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getPositionName(): string
-    {
-        return $this->positionName;
-    }
-    /**
-     * @param string $positionName
-     *
-     * @return self
-     */
-    public function setPositionName(string $positionName): self
-    {
-        $this->initialized['positionName'] = true;
-        $this->positionName = $positionName;
-        return $this;
-    }
+    public string $positionName;
     public function definedProperties(): array
     {
-        return ['resignationDate' => ['resignationDate', 'getResignationDate', 'setResignationDate'], 'dateAppointed' => ['dateAppointed', 'getDateAppointed', 'setDateAppointed'], 'positionName' => ['positionName', 'getPositionName', 'setPositionName']];
+        return ['resignationDate' => 'resignationDate', 'dateAppointed' => 'dateAppointed', 'positionName' => 'positionName'];
     }
 }

@@ -8,103 +8,23 @@ class ListCompanyImagesDataItemCompany implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $id;
     /**
      * @var string
      */
-    protected $id;
+    public string $country;
     /**
      * @var string
      */
-    protected $country;
+    public string $localId;
     /**
      * @var string
      */
-    protected $localId;
-    /**
-     * @var string
-     */
-    protected $name;
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCountry(): string
-    {
-        return $this->country;
-    }
-    /**
-     * @param string $country
-     *
-     * @return self
-     */
-    public function setCountry(string $country): self
-    {
-        $this->initialized['country'] = true;
-        $this->country = $country;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getLocalId(): string
-    {
-        return $this->localId;
-    }
-    /**
-     * @param string $localId
-     *
-     * @return self
-     */
-    public function setLocalId(string $localId): self
-    {
-        $this->initialized['localId'] = true;
-        $this->localId = $localId;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
+    public string $name;
     public function definedProperties(): array
     {
-        return ['id' => ['id', 'getId', 'setId'], 'country' => ['country', 'getCountry', 'setCountry'], 'localId' => ['localId', 'getLocalId', 'setLocalId'], 'name' => ['name', 'getName', 'setName']];
+        return ['id' => 'id', 'country' => 'country', 'localId' => 'localId', 'name' => 'name'];
     }
 }

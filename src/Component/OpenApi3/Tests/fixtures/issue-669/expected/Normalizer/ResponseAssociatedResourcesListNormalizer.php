@@ -42,7 +42,7 @@ class ResponseAssociatedResourcesListNormalizer implements DenormalizerInterface
             foreach ($data['reserved_ips'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AssociatedResource::class, 'json', $context);
             }
-            $object->setReservedIps($values);
+            $object->reservedIps = $values;
             unset($data['reserved_ips']);
         }
         if (\array_key_exists('floating_ips', $data)) {
@@ -50,7 +50,7 @@ class ResponseAssociatedResourcesListNormalizer implements DenormalizerInterface
             foreach ($data['floating_ips'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\AssociatedResource::class, 'json', $context);
             }
-            $object->setFloatingIps($values_1);
+            $object->floatingIps = $values_1;
             unset($data['floating_ips']);
         }
         if (\array_key_exists('snapshots', $data)) {
@@ -58,7 +58,7 @@ class ResponseAssociatedResourcesListNormalizer implements DenormalizerInterface
             foreach ($data['snapshots'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\AssociatedResource::class, 'json', $context);
             }
-            $object->setSnapshots($values_2);
+            $object->snapshots = $values_2;
             unset($data['snapshots']);
         }
         if (\array_key_exists('volumes', $data)) {
@@ -66,7 +66,7 @@ class ResponseAssociatedResourcesListNormalizer implements DenormalizerInterface
             foreach ($data['volumes'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Generated\DigitalOcean\Model\AssociatedResource::class, 'json', $context);
             }
-            $object->setVolumes($values_3);
+            $object->volumes = $values_3;
             unset($data['volumes']);
         }
         if (\array_key_exists('volume_snapshots', $data)) {
@@ -74,7 +74,7 @@ class ResponseAssociatedResourcesListNormalizer implements DenormalizerInterface
             foreach ($data['volume_snapshots'] as $value_4) {
                 $values_4[] = $this->denormalizer->denormalize($value_4, \Jane\Generated\DigitalOcean\Model\AssociatedResource::class, 'json', $context);
             }
-            $object->setVolumeSnapshots($values_4);
+            $object->volumeSnapshots = $values_4;
             unset($data['volume_snapshots']);
         }
         foreach ($data as $key => $value_5) {
@@ -87,37 +87,37 @@ class ResponseAssociatedResourcesListNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('reservedIps') && null !== $data->getReservedIps()) {
+        if (array_key_exists('reservedIps', get_object_vars($data)) && null !== ($data->reservedIps ?? null)) {
             $values = [];
-            foreach ($data->getReservedIps() as $value) {
+            foreach ($data->reservedIps ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['reserved_ips'] = $values;
         }
-        if ($data->isInitialized('floatingIps') && null !== $data->getFloatingIps()) {
+        if (array_key_exists('floatingIps', get_object_vars($data)) && null !== ($data->floatingIps ?? null)) {
             $values_1 = [];
-            foreach ($data->getFloatingIps() as $value_1) {
+            foreach ($data->floatingIps ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['floating_ips'] = $values_1;
         }
-        if ($data->isInitialized('snapshots') && null !== $data->getSnapshots()) {
+        if (array_key_exists('snapshots', get_object_vars($data)) && null !== ($data->snapshots ?? null)) {
             $values_2 = [];
-            foreach ($data->getSnapshots() as $value_2) {
+            foreach ($data->snapshots ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['snapshots'] = $values_2;
         }
-        if ($data->isInitialized('volumes') && null !== $data->getVolumes()) {
+        if (array_key_exists('volumes', get_object_vars($data)) && null !== ($data->volumes ?? null)) {
             $values_3 = [];
-            foreach ($data->getVolumes() as $value_3) {
+            foreach ($data->volumes ?? null as $value_3) {
                 $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['volumes'] = $values_3;
         }
-        if ($data->isInitialized('volumeSnapshots') && null !== $data->getVolumeSnapshots()) {
+        if (array_key_exists('volumeSnapshots', get_object_vars($data)) && null !== ($data->volumeSnapshots ?? null)) {
             $values_4 = [];
-            foreach ($data->getVolumeSnapshots() as $value_4) {
+            foreach ($data->volumeSnapshots ?? null as $value_4) {
                 $values_4[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['volume_snapshots'] = $values_4;

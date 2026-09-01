@@ -38,7 +38,7 @@ class SubLevel2Normalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('subLevel-3', $data)) {
-            $object->setSubLevel3($this->denormalizer->denormalize($data['subLevel-3'], \Jane\Component\OpenApi3\Tests\Expected\Model\SubLevel3::class, 'json', $context));
+            $object->subLevel3 = $this->denormalizer->denormalize($data['subLevel-3'], \Jane\Component\OpenApi3\Tests\Expected\Model\SubLevel3::class, 'json', $context);
             unset($data['subLevel-3']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class SubLevel2Normalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('subLevel3') && null !== $data->getSubLevel3()) {
-            $dataArray['subLevel-3'] = $data->getSubLevel3() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubLevel3(), 'json', $context));
+        if (array_key_exists('subLevel3', get_object_vars($data)) && null !== ($data->subLevel3 ?? null)) {
+            $dataArray['subLevel-3'] = ($data->subLevel3 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->subLevel3 ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

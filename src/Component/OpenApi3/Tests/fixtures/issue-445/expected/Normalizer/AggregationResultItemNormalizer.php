@@ -41,52 +41,52 @@ class AggregationResultItemNormalizer implements DenormalizerInterface, Normaliz
             $data['active'] = (bool) $data['active'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $value = $data['filter'];
             if (is_array($data['filter'])) {
                 $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
             }
-            $object->setFilter($value);
+            $object->filter = $value;
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
         }
         if (\array_key_exists('active', $data)) {
-            $object->setActive($data['active']);
+            $object->active = $data['active'];
         }
         if (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] !== null) {
             $values = [];
             foreach ($data['aggregationResults'] as $value_1) {
                 $values[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\AggregationResult::class, 'json', $context);
             }
-            $object->setAggregationResults($values);
+            $object->aggregationResults = $values;
         }
         elseif (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] === null) {
-            $object->setAggregationResults(null);
+            $object->aggregationResults = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['count'] = $data->getCount();
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $value = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['count'] = $data->count ?? null;
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $value = $data->filter ?? null;
+            if (is_object($data->filter ?? null)) {
+                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
-        $dataArray['active'] = $data->getActive();
-        if ($data->isInitialized('aggregationResults') && null !== $data->getAggregationResults()) {
+        $dataArray['active'] = $data->active ?? null;
+        if (array_key_exists('aggregationResults', get_object_vars($data)) && null !== ($data->aggregationResults ?? null)) {
             $values = [];
-            foreach ($data->getAggregationResults() as $value_1) {
+            foreach ($data->aggregationResults ?? null as $value_1) {
                 $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['aggregationResults'] = $values;

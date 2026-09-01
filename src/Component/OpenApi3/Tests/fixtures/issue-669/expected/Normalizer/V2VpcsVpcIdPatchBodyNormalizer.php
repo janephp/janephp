@@ -41,15 +41,15 @@ class V2VpcsVpcIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
             $data['default'] = (bool) $data['default'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('default', $data)) {
-            $object->setDefault($data['default']);
+            $object->default = $data['default'];
             unset($data['default']);
         }
         foreach ($data as $key => $value) {
@@ -62,14 +62,14 @@ class V2VpcsVpcIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('default') && null !== $data->getDefault()) {
-            $dataArray['default'] = $data->getDefault();
+        if (array_key_exists('default', get_object_vars($data)) && null !== ($data->default ?? null)) {
+            $dataArray['default'] = $data->default ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

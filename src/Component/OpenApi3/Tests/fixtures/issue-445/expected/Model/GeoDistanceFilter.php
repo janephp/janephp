@@ -8,102 +8,26 @@ class GeoDistanceFilter extends FilterBase implements AdditionalPropertiesInterf
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
      * (i.e. personLayer.address.street).
      *
      * @var string
      */
-    protected $field;
+    public string $field;
     /**
      * The point of origin to calculate the distance from (latitude/longitude).
      *
      * @var GeoLocation
      */
-    protected $location;
+    public GeoLocation $location;
     /**
      * The distance in meters from the point of origin.
      *
      * @var float
      */
-    protected $distance;
-    /**
-     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
-     * (i.e. personLayer.address.street).
-     *
-     * @return string
-     */
-    public function getField(): string
-    {
-        return $this->field;
-    }
-    /**
-    * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
-    (i.e. personLayer.address.street).
-    *
-    * @param string $field
-    *
-    * @return self
-    */
-    public function setField(string $field): self
-    {
-        $this->initialized['field'] = true;
-        $this->field = $field;
-        return $this;
-    }
-    /**
-     * The point of origin to calculate the distance from (latitude/longitude).
-     *
-     * @return GeoLocation
-     */
-    public function getLocation(): GeoLocation
-    {
-        return $this->location;
-    }
-    /**
-     * The point of origin to calculate the distance from (latitude/longitude).
-     *
-     * @param GeoLocation $location
-     *
-     * @return self
-     */
-    public function setLocation(GeoLocation $location): self
-    {
-        $this->initialized['location'] = true;
-        $this->location = $location;
-        return $this;
-    }
-    /**
-     * The distance in meters from the point of origin.
-     *
-     * @return float
-     */
-    public function getDistance(): float
-    {
-        return $this->distance;
-    }
-    /**
-     * The distance in meters from the point of origin.
-     *
-     * @param float $distance
-     *
-     * @return self
-     */
-    public function setDistance(float $distance): self
-    {
-        $this->initialized['distance'] = true;
-        $this->distance = $distance;
-        return $this;
-    }
+    public float $distance;
     public function definedProperties(): array
     {
-        return ['field' => ['field', 'getField', 'setField'], 'location' => ['location', 'getLocation', 'setLocation'], 'distance' => ['distance', 'getDistance', 'setDistance']];
+        return ['field' => 'field', 'location' => 'location', 'distance' => 'distance'];
     }
 }

@@ -38,7 +38,7 @@ class ResponseLogsinkNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('sink', $data)) {
-            $object->setSink($this->denormalizer->denormalize($data['sink'], \Jane\Generated\DigitalOcean\Model\LogsinkSchema::class, 'json', $context));
+            $object->sink = $this->denormalizer->denormalize($data['sink'], \Jane\Generated\DigitalOcean\Model\LogsinkSchema::class, 'json', $context);
             unset($data['sink']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseLogsinkNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sink') && null !== $data->getSink()) {
-            $dataArray['sink'] = $data->getSink() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSink(), 'json', $context));
+        if (array_key_exists('sink', get_object_vars($data)) && null !== ($data->sink ?? null)) {
+            $dataArray['sink'] = ($data->sink ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->sink ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

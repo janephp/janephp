@@ -38,7 +38,7 @@ class ApiGetEvaluationRunPromptResultsOutputNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('prompt', $data)) {
-            $object->setPrompt($this->denormalizer->denormalize($data['prompt'], \Jane\Generated\DigitalOcean\Model\ApiPrompt::class, 'json', $context));
+            $object->prompt = $this->denormalizer->denormalize($data['prompt'], \Jane\Generated\DigitalOcean\Model\ApiPrompt::class, 'json', $context);
             unset($data['prompt']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiGetEvaluationRunPromptResultsOutputNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('prompt') && null !== $data->getPrompt()) {
-            $dataArray['prompt'] = $data->getPrompt() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPrompt(), 'json', $context));
+        if (array_key_exists('prompt', get_object_vars($data)) && null !== ($data->prompt ?? null)) {
+            $dataArray['prompt'] = ($data->prompt ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->prompt ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,11 +38,11 @@ class ChildFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('childType', $data)) {
-            $object->setChildType($data['childType']);
+            $object->childType = $data['childType'];
             unset($data['childType']);
         }
         if (\array_key_exists('filter', $data)) {
@@ -50,7 +50,7 @@ class ChildFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
             if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
                 $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilter($value);
+            $object->filter = $value;
             unset($data['filter']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,11 +63,11 @@ class ChildFilterNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['childType'] = $data->getChildType();
-        $value = $data->getFilter();
-        if (is_object($data->getFilter())) {
-            $value = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['childType'] = $data->childType ?? null;
+        $value = $data->filter ?? null;
+        if (is_object($data->filter ?? null)) {
+            $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
         }
         $dataArray['filter'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

@@ -38,15 +38,15 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
             unset($data['message']);
         }
         if (\array_key_exists('request_id', $data)) {
-            $object->setRequestId($data['request_id']);
+            $object->requestId = $data['request_id'];
             unset($data['request_id']);
         }
         foreach ($data as $key => $value) {
@@ -59,10 +59,10 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['message'] = $data->getMessage();
-        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
-            $dataArray['request_id'] = $data->getRequestId();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['message'] = $data->message ?? null;
+        if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
+            $dataArray['request_id'] = $data->requestId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

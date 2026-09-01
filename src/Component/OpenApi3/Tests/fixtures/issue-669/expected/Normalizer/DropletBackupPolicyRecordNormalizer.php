@@ -41,19 +41,19 @@ class DropletBackupPolicyRecordNormalizer implements DenormalizerInterface, Norm
             $data['backup_enabled'] = (bool) $data['backup_enabled'];
         }
         if (\array_key_exists('droplet_id', $data)) {
-            $object->setDropletId($data['droplet_id']);
+            $object->dropletId = $data['droplet_id'];
             unset($data['droplet_id']);
         }
         if (\array_key_exists('backup_enabled', $data)) {
-            $object->setBackupEnabled($data['backup_enabled']);
+            $object->backupEnabled = $data['backup_enabled'];
             unset($data['backup_enabled']);
         }
         if (\array_key_exists('backup_policy', $data)) {
-            $object->setBackupPolicy($this->denormalizer->denormalize($data['backup_policy'], \Jane\Generated\DigitalOcean\Model\DropletBackupPolicyRecordBackupPolicy::class, 'json', $context));
+            $object->backupPolicy = $this->denormalizer->denormalize($data['backup_policy'], \Jane\Generated\DigitalOcean\Model\DropletBackupPolicyRecordBackupPolicy::class, 'json', $context);
             unset($data['backup_policy']);
         }
         if (\array_key_exists('next_backup_window', $data)) {
-            $object->setNextBackupWindow($this->denormalizer->denormalize($data['next_backup_window'], \Jane\Generated\DigitalOcean\Model\DropletBackupPolicyRecordNextBackupWindow::class, 'json', $context));
+            $object->nextBackupWindow = $this->denormalizer->denormalize($data['next_backup_window'], \Jane\Generated\DigitalOcean\Model\DropletBackupPolicyRecordNextBackupWindow::class, 'json', $context);
             unset($data['next_backup_window']);
         }
         foreach ($data as $key => $value) {
@@ -66,17 +66,17 @@ class DropletBackupPolicyRecordNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dropletId') && null !== $data->getDropletId()) {
-            $dataArray['droplet_id'] = $data->getDropletId();
+        if (array_key_exists('dropletId', get_object_vars($data)) && null !== ($data->dropletId ?? null)) {
+            $dataArray['droplet_id'] = $data->dropletId ?? null;
         }
-        if ($data->isInitialized('backupEnabled') && null !== $data->getBackupEnabled()) {
-            $dataArray['backup_enabled'] = $data->getBackupEnabled();
+        if (array_key_exists('backupEnabled', get_object_vars($data)) && null !== ($data->backupEnabled ?? null)) {
+            $dataArray['backup_enabled'] = $data->backupEnabled ?? null;
         }
-        if ($data->isInitialized('backupPolicy') && null !== $data->getBackupPolicy()) {
-            $dataArray['backup_policy'] = $data->getBackupPolicy() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBackupPolicy(), 'json', $context));
+        if (array_key_exists('backupPolicy', get_object_vars($data)) && null !== ($data->backupPolicy ?? null)) {
+            $dataArray['backup_policy'] = ($data->backupPolicy ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy ?? null, 'json', $context));
         }
-        if ($data->isInitialized('nextBackupWindow') && null !== $data->getNextBackupWindow()) {
-            $dataArray['next_backup_window'] = $data->getNextBackupWindow() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getNextBackupWindow(), 'json', $context));
+        if (array_key_exists('nextBackupWindow', get_object_vars($data)) && null !== ($data->nextBackupWindow ?? null)) {
+            $dataArray['next_backup_window'] = ($data->nextBackupWindow ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->nextBackupWindow ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

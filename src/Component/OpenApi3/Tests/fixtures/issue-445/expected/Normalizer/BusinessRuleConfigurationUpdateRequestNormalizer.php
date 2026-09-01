@@ -41,44 +41,44 @@ class BusinessRuleConfigurationUpdateRequestNormalizer implements DenormalizerIn
             $data['disableRuleEngine'] = (bool) $data['disableRuleEngine'];
         }
         if (\array_key_exists('disableRuleEngine', $data)) {
-            $object->setDisableRuleEngine($data['disableRuleEngine']);
+            $object->disableRuleEngine = $data['disableRuleEngine'];
         }
         if (\array_key_exists('rules', $data) && $data['rules'] !== null) {
             $values = [];
             foreach ($data['rules'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BusinessRule::class, 'json', $context);
             }
-            $object->setRules($values);
+            $object->rules = $values;
         }
         elseif (\array_key_exists('rules', $data) && $data['rules'] === null) {
-            $object->setRules(null);
+            $object->rules = null;
         }
         if (\array_key_exists('caches', $data) && $data['caches'] !== null) {
             $values_1 = [];
             foreach ($data['caches'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\NamedCacheConfigurationBase::class, 'json', $context);
             }
-            $object->setCaches($values_1);
+            $object->caches = $values_1;
         }
         elseif (\array_key_exists('caches', $data) && $data['caches'] === null) {
-            $object->setCaches(null);
+            $object->caches = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['disableRuleEngine'] = $data->getDisableRuleEngine();
-        if ($data->isInitialized('rules') && null !== $data->getRules()) {
+        $dataArray['disableRuleEngine'] = $data->disableRuleEngine ?? null;
+        if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values = [];
-            foreach ($data->getRules() as $value) {
+            foreach ($data->rules ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;
         }
-        if ($data->isInitialized('caches') && null !== $data->getCaches()) {
+        if (array_key_exists('caches', get_object_vars($data)) && null !== ($data->caches ?? null)) {
             $values_1 = [];
-            foreach ($data->getCaches() as $value_1) {
+            foreach ($data->caches ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['caches'] = $values_1;

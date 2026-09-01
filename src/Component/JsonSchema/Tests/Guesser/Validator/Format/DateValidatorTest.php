@@ -19,10 +19,10 @@ class DateValidatorTest extends TestCase
     {
         $schema = new JsonSchema();
         if (null !== $type) {
-            $schema->setType($type);
+            $schema->type = $type;
         }
         if (null !== $format) {
-            $schema->setFormat($format);
+            $schema->format = $format;
         }
 
         $validator = new DateValidator();

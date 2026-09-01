@@ -38,11 +38,11 @@ class MetadataValuesSchemaReplaceCommandNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('schemaId', $data)) {
-            $object->setSchemaId($data['schemaId']);
+            $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('value', $data)) {
@@ -50,7 +50,7 @@ class MetadataValuesSchemaReplaceCommandNormalizer implements DenormalizerInterf
             foreach ($data['value'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setValue($values);
+            $object->value = $values;
             unset($data['value']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -63,10 +63,10 @@ class MetadataValuesSchemaReplaceCommandNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['schemaId'] = $data->getSchemaId();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['schemaId'] = $data->schemaId ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         $values = new \PicturePark\API\Runtime\JsonObject();
-        foreach ($data->getValue() as $key => $value) {
+        foreach ($data->value ?? null as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['value'] = $values;

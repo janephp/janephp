@@ -42,7 +42,7 @@ class GbCompanyReportExampleResponseReportOtherInformationNormalizer implements 
             foreach ($data['advisors'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem::class, 'json', $context);
             }
-            $object->setAdvisors($values);
+            $object->advisors = $values;
             unset($data['advisors']);
         }
         if (\array_key_exists('employeesInformation', $data)) {
@@ -50,7 +50,7 @@ class GbCompanyReportExampleResponseReportOtherInformationNormalizer implements 
             foreach ($data['employeesInformation'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationItem::class, 'json', $context);
             }
-            $object->setEmployeesInformation($values_1);
+            $object->employeesInformation = $values_1;
             unset($data['employeesInformation']);
         }
         foreach ($data as $key => $value_2) {
@@ -63,16 +63,16 @@ class GbCompanyReportExampleResponseReportOtherInformationNormalizer implements 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('advisors') && null !== $data->getAdvisors()) {
+        if (array_key_exists('advisors', get_object_vars($data)) && null !== ($data->advisors ?? null)) {
             $values = [];
-            foreach ($data->getAdvisors() as $value) {
+            foreach ($data->advisors ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['advisors'] = $values;
         }
-        if ($data->isInitialized('employeesInformation') && null !== $data->getEmployeesInformation()) {
+        if (array_key_exists('employeesInformation', get_object_vars($data)) && null !== ($data->employeesInformation ?? null)) {
             $values_1 = [];
-            foreach ($data->getEmployeesInformation() as $value_1) {
+            foreach ($data->employeesInformation ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['employeesInformation'] = $values_1;

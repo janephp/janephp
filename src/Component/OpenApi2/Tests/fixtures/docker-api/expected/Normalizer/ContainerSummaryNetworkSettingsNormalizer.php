@@ -45,16 +45,16 @@ class ContainerSummaryNetworkSettingsNormalizer implements DenormalizerInterface
             foreach ($data['Networks'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, \Docker\Api\Model\EndpointSettings::class, 'json', $context);
             }
-            $object->setNetworks($values);
+            $object->networks = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('networks') && null !== $data->getNetworks()) {
+        if (array_key_exists('networks', get_object_vars($data)) && null !== ($data->networks ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getNetworks() as $key => $value) {
+            foreach ($data->networks ?? null as $key => $value) {
                 $values[$key] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Networks'] = $values;

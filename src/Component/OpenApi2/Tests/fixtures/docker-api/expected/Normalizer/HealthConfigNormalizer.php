@@ -45,43 +45,43 @@ class HealthConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
             foreach ($data['Test'] as $value) {
                 $values[] = $value;
             }
-            $object->setTest($values);
+            $object->test = $values;
         }
         if (\array_key_exists('Interval', $data)) {
-            $object->setInterval($data['Interval']);
+            $object->interval = $data['Interval'];
         }
         if (\array_key_exists('Timeout', $data)) {
-            $object->setTimeout($data['Timeout']);
+            $object->timeout = $data['Timeout'];
         }
         if (\array_key_exists('Retries', $data)) {
-            $object->setRetries($data['Retries']);
+            $object->retries = $data['Retries'];
         }
         if (\array_key_exists('StartPeriod', $data)) {
-            $object->setStartPeriod($data['StartPeriod']);
+            $object->startPeriod = $data['StartPeriod'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('test') && null !== $data->getTest()) {
+        if (array_key_exists('test', get_object_vars($data)) && null !== ($data->test ?? null)) {
             $values = [];
-            foreach ($data->getTest() as $value) {
+            foreach ($data->test ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['Test'] = $values;
         }
-        if ($data->isInitialized('interval') && null !== $data->getInterval()) {
-            $dataArray['Interval'] = $data->getInterval();
+        if (array_key_exists('interval', get_object_vars($data)) && null !== ($data->interval ?? null)) {
+            $dataArray['Interval'] = $data->interval ?? null;
         }
-        if ($data->isInitialized('timeout') && null !== $data->getTimeout()) {
-            $dataArray['Timeout'] = $data->getTimeout();
+        if (array_key_exists('timeout', get_object_vars($data)) && null !== ($data->timeout ?? null)) {
+            $dataArray['Timeout'] = $data->timeout ?? null;
         }
-        if ($data->isInitialized('retries') && null !== $data->getRetries()) {
-            $dataArray['Retries'] = $data->getRetries();
+        if (array_key_exists('retries', get_object_vars($data)) && null !== ($data->retries ?? null)) {
+            $dataArray['Retries'] = $data->retries ?? null;
         }
-        if ($data->isInitialized('startPeriod') && null !== $data->getStartPeriod()) {
-            $dataArray['StartPeriod'] = $data->getStartPeriod();
+        if (array_key_exists('startPeriod', get_object_vars($data)) && null !== ($data->startPeriod ?? null)) {
+            $dataArray['StartPeriod'] = $data->startPeriod ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\HealthConfigConstraint());

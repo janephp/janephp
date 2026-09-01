@@ -38,11 +38,11 @@ class BackwardLinksNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('first', $data)) {
-            $object->setFirst($data['first']);
+            $object->first = $data['first'];
             unset($data['first']);
         }
         if (\array_key_exists('prev', $data)) {
-            $object->setPrev($data['prev']);
+            $object->prev = $data['prev'];
             unset($data['prev']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class BackwardLinksNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('first') && null !== $data->getFirst()) {
-            $dataArray['first'] = $data->getFirst();
+        if (array_key_exists('first', get_object_vars($data)) && null !== ($data->first ?? null)) {
+            $dataArray['first'] = $data->first ?? null;
         }
-        if ($data->isInitialized('prev') && null !== $data->getPrev()) {
-            $dataArray['prev'] = $data->getPrev();
+        if (array_key_exists('prev', get_object_vars($data)) && null !== ($data->prev ?? null)) {
+            $dataArray['prev'] = $data->prev ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

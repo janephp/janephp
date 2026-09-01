@@ -62,35 +62,35 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
             $data['phoneConflict'] = (bool) $data['phoneConflict'];
         }
         if (\array_key_exists('addressConflict', $data)) {
-            $object->setAddressConflict($data['addressConflict']);
+            $object->addressConflict = $data['addressConflict'];
             unset($data['addressConflict']);
         }
         if (\array_key_exists('citizenshipConflict', $data)) {
-            $object->setCitizenshipConflict($data['citizenshipConflict']);
+            $object->citizenshipConflict = $data['citizenshipConflict'];
             unset($data['citizenshipConflict']);
         }
         if (\array_key_exists('countryConflict', $data)) {
-            $object->setCountryConflict($data['countryConflict']);
+            $object->countryConflict = $data['countryConflict'];
             unset($data['countryConflict']);
         }
         if (\array_key_exists('dobConflict', $data)) {
-            $object->setDobConflict($data['dobConflict']);
+            $object->dobConflict = $data['dobConflict'];
             unset($data['dobConflict']);
         }
         if (\array_key_exists('entityTypeConflict', $data)) {
-            $object->setEntityTypeConflict($data['entityTypeConflict']);
+            $object->entityTypeConflict = $data['entityTypeConflict'];
             unset($data['entityTypeConflict']);
         }
         if (\array_key_exists('genderConflict', $data)) {
-            $object->setGenderConflict($data['genderConflict']);
+            $object->genderConflict = $data['genderConflict'];
             unset($data['genderConflict']);
         }
         if (\array_key_exists('idConflict', $data)) {
-            $object->setIdConflict($data['idConflict']);
+            $object->idConflict = $data['idConflict'];
             unset($data['idConflict']);
         }
         if (\array_key_exists('phoneConflict', $data)) {
-            $object->setPhoneConflict($data['phoneConflict']);
+            $object->phoneConflict = $data['phoneConflict'];
             unset($data['phoneConflict']);
         }
         foreach ($data as $key => $value) {
@@ -103,29 +103,29 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('addressConflict') && null !== $data->getAddressConflict()) {
-            $dataArray['addressConflict'] = $data->getAddressConflict();
+        if (array_key_exists('addressConflict', get_object_vars($data)) && null !== ($data->addressConflict ?? null)) {
+            $dataArray['addressConflict'] = $data->addressConflict ?? null;
         }
-        if ($data->isInitialized('citizenshipConflict') && null !== $data->getCitizenshipConflict()) {
-            $dataArray['citizenshipConflict'] = $data->getCitizenshipConflict();
+        if (array_key_exists('citizenshipConflict', get_object_vars($data)) && null !== ($data->citizenshipConflict ?? null)) {
+            $dataArray['citizenshipConflict'] = $data->citizenshipConflict ?? null;
         }
-        if ($data->isInitialized('countryConflict') && null !== $data->getCountryConflict()) {
-            $dataArray['countryConflict'] = $data->getCountryConflict();
+        if (array_key_exists('countryConflict', get_object_vars($data)) && null !== ($data->countryConflict ?? null)) {
+            $dataArray['countryConflict'] = $data->countryConflict ?? null;
         }
-        if ($data->isInitialized('dobConflict') && null !== $data->getDobConflict()) {
-            $dataArray['dobConflict'] = $data->getDobConflict();
+        if (array_key_exists('dobConflict', get_object_vars($data)) && null !== ($data->dobConflict ?? null)) {
+            $dataArray['dobConflict'] = $data->dobConflict ?? null;
         }
-        if ($data->isInitialized('entityTypeConflict') && null !== $data->getEntityTypeConflict()) {
-            $dataArray['entityTypeConflict'] = $data->getEntityTypeConflict();
+        if (array_key_exists('entityTypeConflict', get_object_vars($data)) && null !== ($data->entityTypeConflict ?? null)) {
+            $dataArray['entityTypeConflict'] = $data->entityTypeConflict ?? null;
         }
-        if ($data->isInitialized('genderConflict') && null !== $data->getGenderConflict()) {
-            $dataArray['genderConflict'] = $data->getGenderConflict();
+        if (array_key_exists('genderConflict', get_object_vars($data)) && null !== ($data->genderConflict ?? null)) {
+            $dataArray['genderConflict'] = $data->genderConflict ?? null;
         }
-        if ($data->isInitialized('idConflict') && null !== $data->getIdConflict()) {
-            $dataArray['idConflict'] = $data->getIdConflict();
+        if (array_key_exists('idConflict', get_object_vars($data)) && null !== ($data->idConflict ?? null)) {
+            $dataArray['idConflict'] = $data->idConflict ?? null;
         }
-        if ($data->isInitialized('phoneConflict') && null !== $data->getPhoneConflict()) {
-            $dataArray['phoneConflict'] = $data->getPhoneConflict();
+        if (array_key_exists('phoneConflict', get_object_vars($data)) && null !== ($data->phoneConflict ?? null)) {
+            $dataArray['phoneConflict'] = $data->phoneConflict ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

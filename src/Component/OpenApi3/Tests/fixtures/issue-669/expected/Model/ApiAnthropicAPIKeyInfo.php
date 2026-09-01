@@ -8,183 +8,43 @@ class ApiAnthropicAPIKeyInfo implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Key creation date
      *
      * @var \DateTime
      */
-    protected $createdAt;
+    public \DateTime $createdAt;
     /**
      * Created by user id from DO
      *
      * @var string
      */
-    protected $createdBy;
+    public string $createdBy;
     /**
      * Key deleted date
      *
      * @var \DateTime
      */
-    protected $deletedAt;
+    public \DateTime $deletedAt;
     /**
      * Name
      *
      * @var string
      */
-    protected $name;
+    public string $name;
     /**
      * Key last updated date
      *
      * @var \DateTime
      */
-    protected $updatedAt;
+    public \DateTime $updatedAt;
     /**
      * Uuid
      *
      * @var string
      */
-    protected $uuid;
-    /**
-     * Key creation date
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt(): \DateTime
-    {
-        return $this->createdAt;
-    }
-    /**
-     * Key creation date
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt(\DateTime $createdAt): self
-    {
-        $this->initialized['createdAt'] = true;
-        $this->createdAt = $createdAt;
-        return $this;
-    }
-    /**
-     * Created by user id from DO
-     *
-     * @return string
-     */
-    public function getCreatedBy(): string
-    {
-        return $this->createdBy;
-    }
-    /**
-     * Created by user id from DO
-     *
-     * @param string $createdBy
-     *
-     * @return self
-     */
-    public function setCreatedBy(string $createdBy): self
-    {
-        $this->initialized['createdBy'] = true;
-        $this->createdBy = $createdBy;
-        return $this;
-    }
-    /**
-     * Key deleted date
-     *
-     * @return \DateTime
-     */
-    public function getDeletedAt(): \DateTime
-    {
-        return $this->deletedAt;
-    }
-    /**
-     * Key deleted date
-     *
-     * @param \DateTime $deletedAt
-     *
-     * @return self
-     */
-    public function setDeletedAt(\DateTime $deletedAt): self
-    {
-        $this->initialized['deletedAt'] = true;
-        $this->deletedAt = $deletedAt;
-        return $this;
-    }
-    /**
-     * Name
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * Name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * Key last updated date
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt(): \DateTime
-    {
-        return $this->updatedAt;
-    }
-    /**
-     * Key last updated date
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return self
-     */
-    public function setUpdatedAt(\DateTime $updatedAt): self
-    {
-        $this->initialized['updatedAt'] = true;
-        $this->updatedAt = $updatedAt;
-        return $this;
-    }
-    /**
-     * Uuid
-     *
-     * @return string
-     */
-    public function getUuid(): string
-    {
-        return $this->uuid;
-    }
-    /**
-     * Uuid
-     *
-     * @param string $uuid
-     *
-     * @return self
-     */
-    public function setUuid(string $uuid): self
-    {
-        $this->initialized['uuid'] = true;
-        $this->uuid = $uuid;
-        return $this;
-    }
+    public string $uuid;
     public function definedProperties(): array
     {
-        return ['createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'createdBy' => ['created_by', 'getCreatedBy', 'setCreatedBy'], 'deletedAt' => ['deleted_at', 'getDeletedAt', 'setDeletedAt'], 'name' => ['name', 'getName', 'setName'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
+        return ['createdAt' => 'created_at', 'createdBy' => 'created_by', 'deletedAt' => 'deleted_at', 'name' => 'name', 'updatedAt' => 'updated_at', 'uuid' => 'uuid'];
     }
 }

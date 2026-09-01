@@ -38,19 +38,19 @@ class PeopleSearchSuccessResultDirectorsItemAddressNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('simpleValue', $data)) {
-            $object->setSimpleValue($data['simpleValue']);
+            $object->simpleValue = $data['simpleValue'];
             unset($data['simpleValue']);
         }
         if (\array_key_exists('houseNo', $data)) {
-            $object->setHouseNo($data['houseNo']);
+            $object->houseNo = $data['houseNo'];
             unset($data['houseNo']);
         }
         if (\array_key_exists('city', $data)) {
-            $object->setCity($data['city']);
+            $object->city = $data['city'];
             unset($data['city']);
         }
         if (\array_key_exists('postCode', $data)) {
-            $object->setPostCode($data['postCode']);
+            $object->postCode = $data['postCode'];
             unset($data['postCode']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class PeopleSearchSuccessResultDirectorsItemAddressNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('simpleValue') && null !== $data->getSimpleValue()) {
-            $dataArray['simpleValue'] = $data->getSimpleValue();
+        if (array_key_exists('simpleValue', get_object_vars($data)) && null !== ($data->simpleValue ?? null)) {
+            $dataArray['simpleValue'] = $data->simpleValue ?? null;
         }
-        if ($data->isInitialized('houseNo') && null !== $data->getHouseNo()) {
-            $dataArray['houseNo'] = $data->getHouseNo();
+        if (array_key_exists('houseNo', get_object_vars($data)) && null !== ($data->houseNo ?? null)) {
+            $dataArray['houseNo'] = $data->houseNo ?? null;
         }
-        if ($data->isInitialized('city') && null !== $data->getCity()) {
-            $dataArray['city'] = $data->getCity();
+        if (array_key_exists('city', get_object_vars($data)) && null !== ($data->city ?? null)) {
+            $dataArray['city'] = $data->city ?? null;
         }
-        if ($data->isInitialized('postCode') && null !== $data->getPostCode()) {
-            $dataArray['postCode'] = $data->getPostCode();
+        if (array_key_exists('postCode', get_object_vars($data)) && null !== ($data->postCode ?? null)) {
+            $dataArray['postCode'] = $data->postCode ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

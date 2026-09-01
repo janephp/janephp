@@ -38,31 +38,31 @@ class AppsImageSourceSpecNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('registry', $data)) {
-            $object->setRegistry($data['registry']);
+            $object->registry = $data['registry'];
             unset($data['registry']);
         }
         if (\array_key_exists('registry_type', $data)) {
-            $object->setRegistryType($data['registry_type']);
+            $object->registryType = $data['registry_type'];
             unset($data['registry_type']);
         }
         if (\array_key_exists('registry_credentials', $data)) {
-            $object->setRegistryCredentials($data['registry_credentials']);
+            $object->registryCredentials = $data['registry_credentials'];
             unset($data['registry_credentials']);
         }
         if (\array_key_exists('repository', $data)) {
-            $object->setRepository($data['repository']);
+            $object->repository = $data['repository'];
             unset($data['repository']);
         }
         if (\array_key_exists('tag', $data)) {
-            $object->setTag($data['tag']);
+            $object->tag = $data['tag'];
             unset($data['tag']);
         }
         if (\array_key_exists('digest', $data)) {
-            $object->setDigest($data['digest']);
+            $object->digest = $data['digest'];
             unset($data['digest']);
         }
         if (\array_key_exists('deploy_on_push', $data)) {
-            $object->setDeployOnPush($this->denormalizer->denormalize($data['deploy_on_push'], \Jane\Generated\DigitalOcean\Model\AppsImageSourceSpecDeployOnPush::class, 'json', $context));
+            $object->deployOnPush = $this->denormalizer->denormalize($data['deploy_on_push'], \Jane\Generated\DigitalOcean\Model\AppsImageSourceSpecDeployOnPush::class, 'json', $context);
             unset($data['deploy_on_push']);
         }
         foreach ($data as $key => $value) {
@@ -75,26 +75,26 @@ class AppsImageSourceSpecNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('registry') && null !== $data->getRegistry()) {
-            $dataArray['registry'] = $data->getRegistry();
+        if (array_key_exists('registry', get_object_vars($data)) && null !== ($data->registry ?? null)) {
+            $dataArray['registry'] = $data->registry ?? null;
         }
-        if ($data->isInitialized('registryType') && null !== $data->getRegistryType()) {
-            $dataArray['registry_type'] = $data->getRegistryType();
+        if (array_key_exists('registryType', get_object_vars($data)) && null !== ($data->registryType ?? null)) {
+            $dataArray['registry_type'] = $data->registryType ?? null;
         }
-        if ($data->isInitialized('registryCredentials') && null !== $data->getRegistryCredentials()) {
-            $dataArray['registry_credentials'] = $data->getRegistryCredentials();
+        if (array_key_exists('registryCredentials', get_object_vars($data)) && null !== ($data->registryCredentials ?? null)) {
+            $dataArray['registry_credentials'] = $data->registryCredentials ?? null;
         }
-        if ($data->isInitialized('repository') && null !== $data->getRepository()) {
-            $dataArray['repository'] = $data->getRepository();
+        if (array_key_exists('repository', get_object_vars($data)) && null !== ($data->repository ?? null)) {
+            $dataArray['repository'] = $data->repository ?? null;
         }
-        if ($data->isInitialized('tag') && null !== $data->getTag()) {
-            $dataArray['tag'] = $data->getTag();
+        if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
+            $dataArray['tag'] = $data->tag ?? null;
         }
-        if ($data->isInitialized('digest') && null !== $data->getDigest()) {
-            $dataArray['digest'] = $data->getDigest();
+        if (array_key_exists('digest', get_object_vars($data)) && null !== ($data->digest ?? null)) {
+            $dataArray['digest'] = $data->digest ?? null;
         }
-        if ($data->isInitialized('deployOnPush') && null !== $data->getDeployOnPush()) {
-            $dataArray['deploy_on_push'] = $data->getDeployOnPush() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDeployOnPush(), 'json', $context));
+        if (array_key_exists('deployOnPush', get_object_vars($data)) && null !== ($data->deployOnPush ?? null)) {
+            $dataArray['deploy_on_push'] = ($data->deployOnPush ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->deployOnPush ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,7 +38,7 @@ class DatabaseAutoscaleParamsNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('storage', $data)) {
-            $object->setStorage($this->denormalizer->denormalize($data['storage'], \Jane\Generated\DigitalOcean\Model\DatabaseAutoscaleParamsStorage::class, 'json', $context));
+            $object->storage = $this->denormalizer->denormalize($data['storage'], \Jane\Generated\DigitalOcean\Model\DatabaseAutoscaleParamsStorage::class, 'json', $context);
             unset($data['storage']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class DatabaseAutoscaleParamsNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('storage') && null !== $data->getStorage()) {
-            $dataArray['storage'] = $data->getStorage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStorage(), 'json', $context));
+        if (array_key_exists('storage', get_object_vars($data)) && null !== ($data->storage ?? null)) {
+            $dataArray['storage'] = ($data->storage ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->storage ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

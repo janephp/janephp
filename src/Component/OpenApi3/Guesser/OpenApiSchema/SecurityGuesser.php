@@ -16,7 +16,7 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
 {
     public function supportObject($object): bool
     {
-        return ($object instanceof APIKeySecurityScheme || $object instanceof HTTPSecurityScheme || $object instanceof OAuth2SecurityScheme || $object instanceof OpenIdConnectSecurityScheme) && \in_array($object->getType(), SecuritySchemeGuess::getAvailableTypes());
+        return ($object instanceof APIKeySecurityScheme || $object instanceof HTTPSecurityScheme || $object instanceof OAuth2SecurityScheme || $object instanceof OpenIdConnectSecurityScheme) && \in_array($object->type, SecuritySchemeGuess::getAvailableTypes());
     }
 
     /**
@@ -24,19 +24,19 @@ class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        if (!\in_array($object->getType(), [SecuritySchemeGuess::TYPE_HTTP, SecuritySchemeGuess::TYPE_API_KEY])) {
+        if (!\in_array($object->type, [SecuritySchemeGuess::TYPE_HTTP, SecuritySchemeGuess::TYPE_API_KEY])) {
             return;
         }
 
-        $securitySchemeGuess = new SecuritySchemeGuess($name, $object, $object instanceof HTTPSecurityScheme ? $name : $object->getName(), $object->getType());
+        $securitySchemeGuess = new SecuritySchemeGuess($name, $object, $object instanceof HTTPSecurityScheme ? $name : $object->name, $object->type);
         switch ($securitySchemeGuess->getType()) {
             case SecuritySchemeGuess::TYPE_HTTP:
-                $scheme = $object->getScheme() ?? SecuritySchemeGuess::SCHEME_BEARER;
+                $scheme = ($object->scheme ?? null) ?? SecuritySchemeGuess::SCHEME_BEARER;
                 $scheme = ucfirst(mb_strtolower($scheme));
                 $securitySchemeGuess->setScheme($scheme);
                 break;
             case SecuritySchemeGuess::TYPE_API_KEY:
-                $securitySchemeGuess->setIn($object->getIn());
+                $securitySchemeGuess->setIn($object->in ?? null);
                 break;
         }
 

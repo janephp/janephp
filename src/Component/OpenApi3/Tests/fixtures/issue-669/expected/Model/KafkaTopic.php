@@ -8,127 +8,31 @@ class KafkaTopic implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * The name of the Kafka topic.
      *
      * @var string
      */
-    protected $name;
+    public string $name;
     /**
      * The number of nodes to replicate data across the cluster.
      *
      * @var int
      */
-    protected $replicationFactor;
+    public int $replicationFactor;
     /**
      * The number of partitions available for the topic. On update, this value can only be increased.
      *
      * @var int
      */
-    protected $partitionCount;
+    public int $partitionCount;
     /**
      * The state of the Kafka topic.
      *
      * @var string
      */
-    protected $state;
-    /**
-     * The name of the Kafka topic.
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * The name of the Kafka topic.
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
-    }
-    /**
-     * The number of nodes to replicate data across the cluster.
-     *
-     * @return int
-     */
-    public function getReplicationFactor(): int
-    {
-        return $this->replicationFactor;
-    }
-    /**
-     * The number of nodes to replicate data across the cluster.
-     *
-     * @param int $replicationFactor
-     *
-     * @return self
-     */
-    public function setReplicationFactor(int $replicationFactor): self
-    {
-        $this->initialized['replicationFactor'] = true;
-        $this->replicationFactor = $replicationFactor;
-        return $this;
-    }
-    /**
-     * The number of partitions available for the topic. On update, this value can only be increased.
-     *
-     * @return int
-     */
-    public function getPartitionCount(): int
-    {
-        return $this->partitionCount;
-    }
-    /**
-     * The number of partitions available for the topic. On update, this value can only be increased.
-     *
-     * @param int $partitionCount
-     *
-     * @return self
-     */
-    public function setPartitionCount(int $partitionCount): self
-    {
-        $this->initialized['partitionCount'] = true;
-        $this->partitionCount = $partitionCount;
-        return $this;
-    }
-    /**
-     * The state of the Kafka topic.
-     *
-     * @return string
-     */
-    public function getState(): string
-    {
-        return $this->state;
-    }
-    /**
-     * The state of the Kafka topic.
-     *
-     * @param string $state
-     *
-     * @return self
-     */
-    public function setState(string $state): self
-    {
-        $this->initialized['state'] = true;
-        $this->state = $state;
-        return $this;
-    }
+    public string $state;
     public function definedProperties(): array
     {
-        return ['name' => ['name', 'getName', 'setName'], 'replicationFactor' => ['replication_factor', 'getReplicationFactor', 'setReplicationFactor'], 'partitionCount' => ['partition_count', 'getPartitionCount', 'setPartitionCount'], 'state' => ['state', 'getState', 'setState']];
+        return ['name' => 'name', 'replicationFactor' => 'replication_factor', 'partitionCount' => 'partition_count', 'state' => 'state'];
     }
 }

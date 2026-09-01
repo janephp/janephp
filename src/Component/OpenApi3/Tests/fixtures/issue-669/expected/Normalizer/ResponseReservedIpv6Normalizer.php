@@ -38,7 +38,7 @@ class ResponseReservedIpv6Normalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('reserved_ipv6', $data)) {
-            $object->setReservedIpv6($this->denormalizer->denormalize($data['reserved_ipv6'], \Jane\Generated\DigitalOcean\Model\ReservedIpv6::class, 'json', $context));
+            $object->reservedIpv6 = $this->denormalizer->denormalize($data['reserved_ipv6'], \Jane\Generated\DigitalOcean\Model\ReservedIpv6::class, 'json', $context);
             unset($data['reserved_ipv6']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseReservedIpv6Normalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('reservedIpv6') && null !== $data->getReservedIpv6()) {
-            $dataArray['reserved_ipv6'] = $data->getReservedIpv6() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getReservedIpv6(), 'json', $context));
+        if (array_key_exists('reservedIpv6', get_object_vars($data)) && null !== ($data->reservedIpv6 ?? null)) {
+            $dataArray['reserved_ipv6'] = ($data->reservedIpv6 ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reservedIpv6 ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

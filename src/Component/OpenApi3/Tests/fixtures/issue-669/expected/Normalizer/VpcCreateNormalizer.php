@@ -38,11 +38,11 @@ class VpcCreateNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('ip_range', $data)) {
-            $object->setIpRange($data['ip_range']);
+            $object->ipRange = $data['ip_range'];
             unset($data['ip_range']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class VpcCreateNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        if ($data->isInitialized('ipRange') && null !== $data->getIpRange()) {
-            $dataArray['ip_range'] = $data->getIpRange();
+        if (array_key_exists('ipRange', get_object_vars($data)) && null !== ($data->ipRange ?? null)) {
+            $dataArray['ip_range'] = $data->ipRange ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -42,7 +42,7 @@ class NfsListResponseNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['shares'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\NfsResponse::class, 'json', $context);
             }
-            $object->setShares($values);
+            $object->shares = $values;
             unset($data['shares']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class NfsListResponseNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('shares') && null !== $data->getShares()) {
+        if (array_key_exists('shares', get_object_vars($data)) && null !== ($data->shares ?? null)) {
             $values = [];
-            foreach ($data->getShares() as $value) {
+            foreach ($data->shares ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['shares'] = $values;

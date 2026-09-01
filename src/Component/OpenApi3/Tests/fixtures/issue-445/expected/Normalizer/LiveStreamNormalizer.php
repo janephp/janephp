@@ -38,71 +38,71 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('document', $data) && $data['document'] !== null) {
-            $object->setDocument($data['document']);
+            $object->document = $data['document'];
         }
         elseif (\array_key_exists('document', $data) && $data['document'] === null) {
-            $object->setDocument(null);
+            $object->document = null;
         }
         if (\array_key_exists('scopeType', $data) && $data['scopeType'] !== null) {
-            $object->setScopeType($data['scopeType']);
+            $object->scopeType = $data['scopeType'];
         }
         elseif (\array_key_exists('scopeType', $data) && $data['scopeType'] === null) {
-            $object->setScopeType(null);
+            $object->scopeType = null;
         }
         if (\array_key_exists('timestamp', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
         }
         if (\array_key_exists('traceJob', $data) && $data['traceJob'] !== null) {
             $value = $data['traceJob'];
             if (is_array($data['traceJob'])) {
                 $value = $this->denormalizer->denormalize($data['traceJob'], \PicturePark\API\Model\LiveStreamTraceJob::class, 'json', $context);
             }
-            $object->setTraceJob($value);
+            $object->traceJob = $value;
         }
         elseif (\array_key_exists('traceJob', $data) && $data['traceJob'] === null) {
-            $object->setTraceJob(null);
+            $object->traceJob = null;
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
             $value_1 = $data['audit'];
             if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
                 $value_1 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
             }
-            $object->setAudit($value_1);
+            $object->audit = $value_1;
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
-            $object->setAudit(null);
+            $object->audit = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('document') && null !== $data->getDocument()) {
-            $dataArray['document'] = $data->getDocument();
+        $dataArray['id'] = $data->id ?? null;
+        if (array_key_exists('document', get_object_vars($data)) && null !== ($data->document ?? null)) {
+            $dataArray['document'] = $data->document ?? null;
         }
-        if ($data->isInitialized('scopeType') && null !== $data->getScopeType()) {
-            $dataArray['scopeType'] = $data->getScopeType();
+        if (array_key_exists('scopeType', get_object_vars($data)) && null !== ($data->scopeType ?? null)) {
+            $dataArray['scopeType'] = $data->scopeType ?? null;
         }
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('traceJob') && null !== $data->getTraceJob()) {
-            $value = $data->getTraceJob();
-            if (is_object($data->getTraceJob())) {
-                $value = $data->getTraceJob() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getTraceJob(), 'json', $context));
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('traceJob', get_object_vars($data)) && null !== ($data->traceJob ?? null)) {
+            $value = $data->traceJob ?? null;
+            if (is_object($data->traceJob ?? null)) {
+                $value = ($data->traceJob ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->traceJob ?? null, 'json', $context));
             }
             $dataArray['traceJob'] = $value;
         }
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
-            $value_1 = $data->getAudit();
-            if (is_object($data->getAudit())) {
-                $value_1 = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+        if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
+            $value_1 = $data->audit ?? null;
+            if (is_object($data->audit ?? null)) {
+                $value_1 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
             }
             $dataArray['audit'] = $value_1;
         }

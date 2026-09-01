@@ -41,15 +41,15 @@ class TaskSpecPlacementPreferencesItemSpreadNormalizer implements DenormalizerIn
             $this->validate($data, new \Docker\Api\Validator\TaskSpecPlacementPreferencesItemSpreadConstraint());
         }
         if (\array_key_exists('SpreadDescriptor', $data)) {
-            $object->setSpreadDescriptor($data['SpreadDescriptor']);
+            $object->spreadDescriptor = $data['SpreadDescriptor'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('spreadDescriptor') && null !== $data->getSpreadDescriptor()) {
-            $dataArray['SpreadDescriptor'] = $data->getSpreadDescriptor();
+        if (array_key_exists('spreadDescriptor', get_object_vars($data)) && null !== ($data->spreadDescriptor ?? null)) {
+            $dataArray['SpreadDescriptor'] = $data->spreadDescriptor ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecPlacementPreferencesItemSpreadConstraint());

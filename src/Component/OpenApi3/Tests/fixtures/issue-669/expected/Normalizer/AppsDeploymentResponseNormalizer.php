@@ -38,7 +38,7 @@ class AppsDeploymentResponseNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('deployment', $data)) {
-            $object->setDeployment($this->denormalizer->denormalize($data['deployment'], \Jane\Generated\DigitalOcean\Model\AppsDeployment::class, 'json', $context));
+            $object->deployment = $this->denormalizer->denormalize($data['deployment'], \Jane\Generated\DigitalOcean\Model\AppsDeployment::class, 'json', $context);
             unset($data['deployment']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class AppsDeploymentResponseNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('deployment') && null !== $data->getDeployment()) {
-            $dataArray['deployment'] = $data->getDeployment() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDeployment(), 'json', $context));
+        if (array_key_exists('deployment', get_object_vars($data)) && null !== ($data->deployment ?? null)) {
+            $dataArray['deployment'] = ($data->deployment ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->deployment ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -47,103 +47,103 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
             $this->validate($data, new \Docker\Api\Validator\PluginConfigConstraint());
         }
         if (\array_key_exists('DockerVersion', $data)) {
-            $object->setDockerVersion($data['DockerVersion']);
+            $object->dockerVersion = $data['DockerVersion'];
         }
         if (\array_key_exists('Description', $data)) {
-            $object->setDescription($data['Description']);
+            $object->description = $data['Description'];
         }
         if (\array_key_exists('Documentation', $data)) {
-            $object->setDocumentation($data['Documentation']);
+            $object->documentation = $data['Documentation'];
         }
         if (\array_key_exists('Interface', $data)) {
-            $object->setInterface($this->denormalizer->denormalize($data['Interface'], \Docker\Api\Model\PluginConfigInterface::class, 'json', $context));
+            $object->interface = $this->denormalizer->denormalize($data['Interface'], \Docker\Api\Model\PluginConfigInterface::class, 'json', $context);
         }
         if (\array_key_exists('Entrypoint', $data)) {
             $values = [];
             foreach ($data['Entrypoint'] as $value) {
                 $values[] = $value;
             }
-            $object->setEntrypoint($values);
+            $object->entrypoint = $values;
         }
         if (\array_key_exists('WorkDir', $data)) {
-            $object->setWorkDir($data['WorkDir']);
+            $object->workDir = $data['WorkDir'];
         }
         if (\array_key_exists('User', $data)) {
-            $object->setUser($this->denormalizer->denormalize($data['User'], \Docker\Api\Model\PluginConfigUser::class, 'json', $context));
+            $object->user = $this->denormalizer->denormalize($data['User'], \Docker\Api\Model\PluginConfigUser::class, 'json', $context);
         }
         if (\array_key_exists('Network', $data)) {
-            $object->setNetwork($this->denormalizer->denormalize($data['Network'], \Docker\Api\Model\PluginConfigNetwork::class, 'json', $context));
+            $object->network = $this->denormalizer->denormalize($data['Network'], \Docker\Api\Model\PluginConfigNetwork::class, 'json', $context);
         }
         if (\array_key_exists('Linux', $data)) {
-            $object->setLinux($this->denormalizer->denormalize($data['Linux'], \Docker\Api\Model\PluginConfigLinux::class, 'json', $context));
+            $object->linux = $this->denormalizer->denormalize($data['Linux'], \Docker\Api\Model\PluginConfigLinux::class, 'json', $context);
         }
         if (\array_key_exists('PropagatedMount', $data)) {
-            $object->setPropagatedMount($data['PropagatedMount']);
+            $object->propagatedMount = $data['PropagatedMount'];
         }
         if (\array_key_exists('IpcHost', $data)) {
-            $object->setIpcHost($data['IpcHost']);
+            $object->ipcHost = $data['IpcHost'];
         }
         if (\array_key_exists('PidHost', $data)) {
-            $object->setPidHost($data['PidHost']);
+            $object->pidHost = $data['PidHost'];
         }
         if (\array_key_exists('Mounts', $data)) {
             $values_1 = [];
             foreach ($data['Mounts'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Docker\Api\Model\PluginMount::class, 'json', $context);
             }
-            $object->setMounts($values_1);
+            $object->mounts = $values_1;
         }
         if (\array_key_exists('Env', $data)) {
             $values_2 = [];
             foreach ($data['Env'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Docker\Api\Model\PluginEnv::class, 'json', $context);
             }
-            $object->setEnv($values_2);
+            $object->env = $values_2;
         }
         if (\array_key_exists('Args', $data)) {
-            $object->setArgs($this->denormalizer->denormalize($data['Args'], \Docker\Api\Model\PluginConfigArgs::class, 'json', $context));
+            $object->args = $this->denormalizer->denormalize($data['Args'], \Docker\Api\Model\PluginConfigArgs::class, 'json', $context);
         }
         if (\array_key_exists('rootfs', $data)) {
-            $object->setRootfs($this->denormalizer->denormalize($data['rootfs'], \Docker\Api\Model\PluginConfigRootfs::class, 'json', $context));
+            $object->rootfs = $this->denormalizer->denormalize($data['rootfs'], \Docker\Api\Model\PluginConfigRootfs::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dockerVersion') && null !== $data->getDockerVersion()) {
-            $dataArray['DockerVersion'] = $data->getDockerVersion();
+        if (array_key_exists('dockerVersion', get_object_vars($data)) && null !== ($data->dockerVersion ?? null)) {
+            $dataArray['DockerVersion'] = $data->dockerVersion ?? null;
         }
-        $dataArray['Description'] = $data->getDescription();
-        $dataArray['Documentation'] = $data->getDocumentation();
-        $dataArray['Interface'] = $data->getInterface() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getInterface(), 'json', $context));
+        $dataArray['Description'] = $data->description ?? null;
+        $dataArray['Documentation'] = $data->documentation ?? null;
+        $dataArray['Interface'] = ($data->interface ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->interface ?? null, 'json', $context));
         $values = [];
-        foreach ($data->getEntrypoint() as $value) {
+        foreach ($data->entrypoint ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['Entrypoint'] = $values;
-        $dataArray['WorkDir'] = $data->getWorkDir();
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['User'] = $data->getUser() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
+        $dataArray['WorkDir'] = $data->workDir ?? null;
+        if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
+            $dataArray['User'] = ($data->user ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->user ?? null, 'json', $context));
         }
-        $dataArray['Network'] = $data->getNetwork() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getNetwork(), 'json', $context));
-        $dataArray['Linux'] = $data->getLinux() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getLinux(), 'json', $context));
-        $dataArray['PropagatedMount'] = $data->getPropagatedMount();
-        $dataArray['IpcHost'] = $data->getIpcHost();
-        $dataArray['PidHost'] = $data->getPidHost();
+        $dataArray['Network'] = ($data->network ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->network ?? null, 'json', $context));
+        $dataArray['Linux'] = ($data->linux ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->linux ?? null, 'json', $context));
+        $dataArray['PropagatedMount'] = $data->propagatedMount ?? null;
+        $dataArray['IpcHost'] = $data->ipcHost ?? null;
+        $dataArray['PidHost'] = $data->pidHost ?? null;
         $values_1 = [];
-        foreach ($data->getMounts() as $value_1) {
+        foreach ($data->mounts ?? null as $value_1) {
             $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['Mounts'] = $values_1;
         $values_2 = [];
-        foreach ($data->getEnv() as $value_2) {
+        foreach ($data->env ?? null as $value_2) {
             $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
         }
         $dataArray['Env'] = $values_2;
-        $dataArray['Args'] = $data->getArgs() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getArgs(), 'json', $context));
-        if ($data->isInitialized('rootfs') && null !== $data->getRootfs()) {
-            $dataArray['rootfs'] = $data->getRootfs() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getRootfs(), 'json', $context));
+        $dataArray['Args'] = ($data->args ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->args ?? null, 'json', $context));
+        if (array_key_exists('rootfs', get_object_vars($data)) && null !== ($data->rootfs ?? null)) {
+            $dataArray['rootfs'] = ($data->rootfs ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rootfs ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginConfigConstraint());

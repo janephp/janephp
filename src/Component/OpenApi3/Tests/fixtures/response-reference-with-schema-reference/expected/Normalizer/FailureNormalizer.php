@@ -42,7 +42,7 @@ class FailureNormalizer implements DenormalizerInterface, NormalizerInterface, D
             foreach ($data['errors'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\Error::class, 'json', $context);
             }
-            $object->setErrors($values);
+            $object->errors = $values;
         }
         return $object;
     }
@@ -50,7 +50,7 @@ class FailureNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getErrors() as $value) {
+        foreach ($data->errors ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['errors'] = $values;

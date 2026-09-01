@@ -38,7 +38,7 @@ class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('totalSize', $data)) {
-            $object->setTotalSize($data['totalSize']);
+            $object->totalSize = $data['totalSize'];
             unset($data['totalSize']);
         }
         if (\array_key_exists('data', $data)) {
@@ -46,7 +46,7 @@ class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['data'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\ListCompanyImagesDataItem::class, 'json', $context);
             }
-            $object->setData($values);
+            $object->data = $values;
             unset($data['data']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalSize') && null !== $data->getTotalSize()) {
-            $dataArray['totalSize'] = $data->getTotalSize();
+        if (array_key_exists('totalSize', get_object_vars($data)) && null !== ($data->totalSize ?? null)) {
+            $dataArray['totalSize'] = $data->totalSize ?? null;
         }
-        if ($data->isInitialized('data') && null !== $data->getData()) {
+        if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
-            foreach ($data->getData() as $value) {
+            foreach ($data->data ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data'] = $values;

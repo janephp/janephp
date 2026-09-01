@@ -42,19 +42,19 @@ class ApiFilePresignedUrlResponseNormalizer implements DenormalizerInterface, No
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['expires_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setExpiresAt($date);
+            $object->expiresAt = $date;
             unset($data['expires_at']);
         }
         if (\array_key_exists('object_key', $data)) {
-            $object->setObjectKey($data['object_key']);
+            $object->objectKey = $data['object_key'];
             unset($data['object_key']);
         }
         if (\array_key_exists('original_file_name', $data)) {
-            $object->setOriginalFileName($data['original_file_name']);
+            $object->originalFileName = $data['original_file_name'];
             unset($data['original_file_name']);
         }
         if (\array_key_exists('presigned_url', $data)) {
-            $object->setPresignedUrl($data['presigned_url']);
+            $object->presignedUrl = $data['presigned_url'];
             unset($data['presigned_url']);
         }
         foreach ($data as $key => $value) {
@@ -67,17 +67,17 @@ class ApiFilePresignedUrlResponseNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('expiresAt') && null !== $data->getExpiresAt()) {
-            $dataArray['expires_at'] = $data->getExpiresAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('expiresAt', get_object_vars($data)) && null !== ($data->expiresAt ?? null)) {
+            $dataArray['expires_at'] = ($data->expiresAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('objectKey') && null !== $data->getObjectKey()) {
-            $dataArray['object_key'] = $data->getObjectKey();
+        if (array_key_exists('objectKey', get_object_vars($data)) && null !== ($data->objectKey ?? null)) {
+            $dataArray['object_key'] = $data->objectKey ?? null;
         }
-        if ($data->isInitialized('originalFileName') && null !== $data->getOriginalFileName()) {
-            $dataArray['original_file_name'] = $data->getOriginalFileName();
+        if (array_key_exists('originalFileName', get_object_vars($data)) && null !== ($data->originalFileName ?? null)) {
+            $dataArray['original_file_name'] = $data->originalFileName ?? null;
         }
-        if ($data->isInitialized('presignedUrl') && null !== $data->getPresignedUrl()) {
-            $dataArray['presigned_url'] = $data->getPresignedUrl();
+        if (array_key_exists('presignedUrl', get_object_vars($data)) && null !== ($data->presignedUrl ?? null)) {
+            $dataArray['presigned_url'] = $data->presignedUrl ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

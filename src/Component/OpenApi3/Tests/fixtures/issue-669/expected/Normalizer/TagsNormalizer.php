@@ -38,7 +38,7 @@ class TagsNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('resources', $data)) {
@@ -46,7 +46,7 @@ class TagsNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             foreach ($data['resources'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setResources($values);
+            $object->resources = $values;
             unset($data['resources']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -59,8 +59,8 @@ class TagsNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

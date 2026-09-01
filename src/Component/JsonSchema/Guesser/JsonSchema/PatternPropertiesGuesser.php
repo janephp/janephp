@@ -21,15 +21,15 @@ class PatternPropertiesGuesser implements GuesserInterface, TypeGuesserInterface
             return false;
         }
 
-        if ('object' !== $object->getType()) {
+        if ('object' !== ($object->type ?? null)) {
             return false;
         }
 
-        if (null !== $object->getProperties()) {
+        if (null !== ($object->properties ?? null)) {
             return false;
         }
 
-        $patternProperties = $object->getPatternProperties();
+        $patternProperties = ($object->patternProperties ?? null);
 
         if (null === $patternProperties || 0 === \count($patternProperties)) {
             return false;
@@ -42,7 +42,7 @@ class PatternPropertiesGuesser implements GuesserInterface, TypeGuesserInterface
     {
         $type = new PatternMultipleType($object);
 
-        foreach ($object->getPatternProperties() as $pattern => $patternProperty) {
+        foreach (($object->patternProperties ?? null ?? []) as $pattern => $patternProperty) {
             $type->addType($pattern, $this->chainGuesser->guessType($patternProperty, $name, $reference . '/patternProperties/' . $pattern, $registry));
         }
 

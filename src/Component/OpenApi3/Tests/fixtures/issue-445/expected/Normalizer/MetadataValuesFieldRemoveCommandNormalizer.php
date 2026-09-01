@@ -38,15 +38,15 @@ class MetadataValuesFieldRemoveCommandNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('schemaId', $data)) {
-            $object->setSchemaId($data['schemaId']);
+            $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('fieldPath', $data)) {
-            $object->setFieldPath($data['fieldPath']);
+            $object->fieldPath = $data['fieldPath'];
             unset($data['fieldPath']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class MetadataValuesFieldRemoveCommandNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['schemaId'] = $data->getSchemaId();
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['fieldPath'] = $data->getFieldPath();
+        $dataArray['schemaId'] = $data->schemaId ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['fieldPath'] = $data->fieldPath ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -30,7 +30,7 @@ class RequestBodyGenerator
 
     public function generateMethodParameter(RequestBody|Reference $requestBody, string $reference, Context $context): ?Param
     {
-        if (!$requestBody->getContent()) {
+        if (!($requestBody->content ?? null)) {
             return null;
         }
 
@@ -46,7 +46,7 @@ class RequestBodyGenerator
         }
 
         $default = null;
-        if (!$requestBody->getRequired() || !$context->isStrict()) {
+        if (!($requestBody->required ?? null) || !$context->isStrict()) {
             $default = new Expr\ConstFetch(new Name('null'));
             $paramType = null === $paramType ? $paramType : "?$paramType";
         }
@@ -58,7 +58,7 @@ class RequestBodyGenerator
     {
         [$types] = $this->getTypes($requestBody, $reference, $context);
 
-        if (!$requestBody->getRequired() || !$context->isStrict()) {
+        if (!($requestBody->required ?? null) || !$context->isStrict()) {
             array_unshift($types, 'null');
         }
 
@@ -69,13 +69,13 @@ class RequestBodyGenerator
     {
         $types = [];
 
-        if (!$requestBody || !$requestBody->getContent()) {
+        if (!$requestBody || !($requestBody->content ?? null)) {
             return $types;
         }
 
         $onlyArray = null;
 
-        foreach ($requestBody->getContent() as $contentType => $content) {
+        foreach (($requestBody->content ?? null ?? []) as $contentType => $content) {
             $generator = $this->defaultRequestBodyGenerator;
 
             if (isset($this->generators[$contentType])) {
@@ -98,7 +98,7 @@ class RequestBodyGenerator
 
     public function getSerializeStatements(?RequestBody $requestBody, string $reference, Context $context): array
     {
-        if (!$requestBody || !$requestBody->getContent()) {
+        if (!$requestBody || !($requestBody->content ?? null)) {
             return [
                 new Stmt\Return_(new Expr\Array_([
                     new Expr\Array_(),
@@ -109,7 +109,7 @@ class RequestBodyGenerator
 
         $statements = [];
 
-        foreach ($requestBody->getContent() as $contentType => $content) {
+        foreach (($requestBody->content ?? null ?? []) as $contentType => $content) {
             $generator = $this->defaultRequestBodyGenerator;
 
             if (\array_key_exists($contentType, $this->generators)) {

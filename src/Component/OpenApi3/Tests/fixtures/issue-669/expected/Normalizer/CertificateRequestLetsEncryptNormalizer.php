@@ -38,11 +38,11 @@ class CertificateRequestLetsEncryptNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('dns_names', $data)) {
@@ -50,7 +50,7 @@ class CertificateRequestLetsEncryptNormalizer implements DenormalizerInterface, 
             foreach ($data['dns_names'] as $value) {
                 $values[] = $value;
             }
-            $object->setDnsNames($values);
+            $object->dnsNames = $values;
             unset($data['dns_names']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,12 +63,12 @@ class CertificateRequestLetsEncryptNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         $values = [];
-        foreach ($data->getDnsNames() as $value) {
+        foreach ($data->dnsNames ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['dns_names'] = $values;

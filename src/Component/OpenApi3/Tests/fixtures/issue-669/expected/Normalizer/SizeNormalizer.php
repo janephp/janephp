@@ -50,31 +50,31 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['available'] = (bool) $data['available'];
         }
         if (\array_key_exists('slug', $data)) {
-            $object->setSlug($data['slug']);
+            $object->slug = $data['slug'];
             unset($data['slug']);
         }
         if (\array_key_exists('memory', $data)) {
-            $object->setMemory($data['memory']);
+            $object->memory = $data['memory'];
             unset($data['memory']);
         }
         if (\array_key_exists('vcpus', $data)) {
-            $object->setVcpus($data['vcpus']);
+            $object->vcpus = $data['vcpus'];
             unset($data['vcpus']);
         }
         if (\array_key_exists('disk', $data)) {
-            $object->setDisk($data['disk']);
+            $object->disk = $data['disk'];
             unset($data['disk']);
         }
         if (\array_key_exists('transfer', $data)) {
-            $object->setTransfer($data['transfer']);
+            $object->transfer = $data['transfer'];
             unset($data['transfer']);
         }
         if (\array_key_exists('price_monthly', $data)) {
-            $object->setPriceMonthly($data['price_monthly']);
+            $object->priceMonthly = $data['price_monthly'];
             unset($data['price_monthly']);
         }
         if (\array_key_exists('price_hourly', $data)) {
-            $object->setPriceHourly($data['price_hourly']);
+            $object->priceHourly = $data['price_hourly'];
             unset($data['price_hourly']);
         }
         if (\array_key_exists('regions', $data)) {
@@ -82,15 +82,15 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             foreach ($data['regions'] as $value) {
                 $values[] = $value;
             }
-            $object->setRegions($values);
+            $object->regions = $values;
             unset($data['regions']);
         }
         if (\array_key_exists('available', $data)) {
-            $object->setAvailable($data['available']);
+            $object->available = $data['available'];
             unset($data['available']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('disk_info', $data)) {
@@ -98,11 +98,11 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             foreach ($data['disk_info'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\DiskInfo::class, 'json', $context);
             }
-            $object->setDiskInfo($values_1);
+            $object->diskInfo = $values_1;
             unset($data['disk_info']);
         }
         if (\array_key_exists('gpu_info', $data)) {
-            $object->setGpuInfo($this->denormalizer->denormalize($data['gpu_info'], \Jane\Generated\DigitalOcean\Model\GpuInfo::class, 'json', $context));
+            $object->gpuInfo = $this->denormalizer->denormalize($data['gpu_info'], \Jane\Generated\DigitalOcean\Model\GpuInfo::class, 'json', $context);
             unset($data['gpu_info']);
         }
         foreach ($data as $key => $value_2) {
@@ -115,29 +115,29 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['slug'] = $data->getSlug();
-        $dataArray['memory'] = $data->getMemory();
-        $dataArray['vcpus'] = $data->getVcpus();
-        $dataArray['disk'] = $data->getDisk();
-        $dataArray['transfer'] = $data->getTransfer();
-        $dataArray['price_monthly'] = $data->getPriceMonthly();
-        $dataArray['price_hourly'] = $data->getPriceHourly();
+        $dataArray['slug'] = $data->slug ?? null;
+        $dataArray['memory'] = $data->memory ?? null;
+        $dataArray['vcpus'] = $data->vcpus ?? null;
+        $dataArray['disk'] = $data->disk ?? null;
+        $dataArray['transfer'] = $data->transfer ?? null;
+        $dataArray['price_monthly'] = $data->priceMonthly ?? null;
+        $dataArray['price_hourly'] = $data->priceHourly ?? null;
         $values = [];
-        foreach ($data->getRegions() as $value) {
+        foreach ($data->regions ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['regions'] = $values;
-        $dataArray['available'] = $data->getAvailable();
-        $dataArray['description'] = $data->getDescription();
-        if ($data->isInitialized('diskInfo') && null !== $data->getDiskInfo()) {
+        $dataArray['available'] = $data->available ?? null;
+        $dataArray['description'] = $data->description ?? null;
+        if (array_key_exists('diskInfo', get_object_vars($data)) && null !== ($data->diskInfo ?? null)) {
             $values_1 = [];
-            foreach ($data->getDiskInfo() as $value_1) {
+            foreach ($data->diskInfo ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['disk_info'] = $values_1;
         }
-        if ($data->isInitialized('gpuInfo') && null !== $data->getGpuInfo()) {
-            $dataArray['gpu_info'] = $data->getGpuInfo() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGpuInfo(), 'json', $context));
+        if (array_key_exists('gpuInfo', get_object_vars($data)) && null !== ($data->gpuInfo ?? null)) {
+            $dataArray['gpu_info'] = ($data->gpuInfo ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->gpuInfo ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

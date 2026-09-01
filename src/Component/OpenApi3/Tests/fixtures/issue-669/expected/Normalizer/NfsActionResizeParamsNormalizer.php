@@ -38,7 +38,7 @@ class NfsActionResizeParamsNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('size_gib', $data)) {
-            $object->setSizeGib($data['size_gib']);
+            $object->sizeGib = $data['size_gib'];
             unset($data['size_gib']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class NfsActionResizeParamsNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['size_gib'] = $data->getSizeGib();
+        $dataArray['size_gib'] = $data->sizeGib ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

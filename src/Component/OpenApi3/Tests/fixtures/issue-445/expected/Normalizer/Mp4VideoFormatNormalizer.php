@@ -38,7 +38,7 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
@@ -46,11 +46,11 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             if (is_array($data['resizeAction']) and \array_key_exists('width', $data['resizeAction']) and \array_key_exists('height', $data['resizeAction']) and \array_key_exists('resizeMode', $data['resizeAction'])) {
                 $value = $this->denormalizer->denormalize($data['resizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
             }
-            $object->setResizeAction($value);
+            $object->resizeAction = $value;
             unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
-            $object->setResizeAction(null);
+            $object->resizeAction = null;
             unset($data['resizeAction']);
         }
         if (\array_key_exists('audioCodec', $data) && $data['audioCodec'] !== null) {
@@ -58,11 +58,11 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             if (is_array($data['audioCodec'])) {
                 $value_1 = $this->denormalizer->denormalize($data['audioCodec'], \PicturePark\API\Model\AudioFormatBase::class, 'json', $context);
             }
-            $object->setAudioCodec($value_1);
+            $object->audioCodec = $value_1;
             unset($data['audioCodec']);
         }
         elseif (\array_key_exists('audioCodec', $data) && $data['audioCodec'] === null) {
-            $object->setAudioCodec(null);
+            $object->audioCodec = null;
             unset($data['audioCodec']);
         }
         if (\array_key_exists('preset', $data)) {
@@ -70,15 +70,15 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             if (is_string($data['preset'])) {
                 $value_2 = $data['preset'];
             }
-            $object->setPreset($value_2);
+            $object->preset = $value_2;
             unset($data['preset']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
-            $object->setExtension($data['extension']);
+            $object->extension = $data['extension'];
             unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
-            $object->setExtension(null);
+            $object->extension = null;
             unset($data['extension']);
         }
         foreach ($data as $key => $value_3) {
@@ -91,30 +91,30 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('resizeAction') && null !== $data->getResizeAction()) {
-            $value = $data->getResizeAction();
-            if (is_object($data->getResizeAction())) {
-                $value = $data->getResizeAction() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getResizeAction(), 'json', $context));
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
+            $value = $data->resizeAction ?? null;
+            if (is_object($data->resizeAction ?? null)) {
+                $value = ($data->resizeAction ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction ?? null, 'json', $context));
             }
             $dataArray['resizeAction'] = $value;
         }
-        if ($data->isInitialized('audioCodec') && null !== $data->getAudioCodec()) {
-            $value_1 = $data->getAudioCodec();
-            if (is_object($data->getAudioCodec())) {
-                $value_1 = $data->getAudioCodec() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudioCodec(), 'json', $context));
+        if (array_key_exists('audioCodec', get_object_vars($data)) && null !== ($data->audioCodec ?? null)) {
+            $value_1 = $data->audioCodec ?? null;
+            if (is_object($data->audioCodec ?? null)) {
+                $value_1 = ($data->audioCodec ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audioCodec ?? null, 'json', $context));
             }
             $dataArray['audioCodec'] = $value_1;
         }
-        if ($data->isInitialized('preset') && null !== $data->getPreset()) {
-            $value_2 = $data->getPreset();
-            if (is_string($data->getPreset())) {
-                $value_2 = $data->getPreset();
+        if (array_key_exists('preset', get_object_vars($data)) && null !== ($data->preset ?? null)) {
+            $value_2 = $data->preset ?? null;
+            if (is_string($data->preset ?? null)) {
+                $value_2 = $data->preset ?? null;
             }
             $dataArray['preset'] = $value_2;
         }
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
-            $dataArray['extension'] = $data->getExtension();
+        if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
+            $dataArray['extension'] = $data->extension ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

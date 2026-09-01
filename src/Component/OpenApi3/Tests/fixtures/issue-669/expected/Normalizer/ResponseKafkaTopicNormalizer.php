@@ -38,7 +38,7 @@ class ResponseKafkaTopicNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('topic', $data)) {
-            $object->setTopic($this->denormalizer->denormalize($data['topic'], \Jane\Generated\DigitalOcean\Model\KafkaTopicVerbose::class, 'json', $context));
+            $object->topic = $this->denormalizer->denormalize($data['topic'], \Jane\Generated\DigitalOcean\Model\KafkaTopicVerbose::class, 'json', $context);
             unset($data['topic']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseKafkaTopicNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('topic') && null !== $data->getTopic()) {
-            $dataArray['topic'] = $data->getTopic() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTopic(), 'json', $context));
+        if (array_key_exists('topic', get_object_vars($data)) && null !== ($data->topic ?? null)) {
+            $dataArray['topic'] = ($data->topic ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->topic ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

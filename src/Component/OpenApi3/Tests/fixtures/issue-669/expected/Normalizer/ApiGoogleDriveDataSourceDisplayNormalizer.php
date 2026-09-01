@@ -38,11 +38,11 @@ class ApiGoogleDriveDataSourceDisplayNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('folder_id', $data)) {
-            $object->setFolderId($data['folder_id']);
+            $object->folderId = $data['folder_id'];
             unset($data['folder_id']);
         }
         if (\array_key_exists('folder_name', $data)) {
-            $object->setFolderName($data['folder_name']);
+            $object->folderName = $data['folder_name'];
             unset($data['folder_name']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiGoogleDriveDataSourceDisplayNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('folderId') && null !== $data->getFolderId()) {
-            $dataArray['folder_id'] = $data->getFolderId();
+        if (array_key_exists('folderId', get_object_vars($data)) && null !== ($data->folderId ?? null)) {
+            $dataArray['folder_id'] = $data->folderId ?? null;
         }
-        if ($data->isInitialized('folderName') && null !== $data->getFolderName()) {
-            $dataArray['folder_name'] = $data->getFolderName();
+        if (array_key_exists('folderName', get_object_vars($data)) && null !== ($data->folderName ?? null)) {
+            $dataArray['folder_name'] = $data->folderName ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

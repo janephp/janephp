@@ -44,27 +44,27 @@ class AppComponentHealthNormalizer implements DenormalizerInterface, NormalizerI
             $data['memory_usage_percent'] = (float) $data['memory_usage_percent'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('cpu_usage_percent', $data)) {
-            $object->setCpuUsagePercent($data['cpu_usage_percent']);
+            $object->cpuUsagePercent = $data['cpu_usage_percent'];
             unset($data['cpu_usage_percent']);
         }
         if (\array_key_exists('memory_usage_percent', $data)) {
-            $object->setMemoryUsagePercent($data['memory_usage_percent']);
+            $object->memoryUsagePercent = $data['memory_usage_percent'];
             unset($data['memory_usage_percent']);
         }
         if (\array_key_exists('replicas_desired', $data)) {
-            $object->setReplicasDesired($data['replicas_desired']);
+            $object->replicasDesired = $data['replicas_desired'];
             unset($data['replicas_desired']);
         }
         if (\array_key_exists('replicas_ready', $data)) {
-            $object->setReplicasReady($data['replicas_ready']);
+            $object->replicasReady = $data['replicas_ready'];
             unset($data['replicas_ready']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
             unset($data['state']);
         }
         foreach ($data as $key => $value) {
@@ -77,23 +77,23 @@ class AppComponentHealthNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('cpuUsagePercent') && null !== $data->getCpuUsagePercent()) {
-            $dataArray['cpu_usage_percent'] = $data->getCpuUsagePercent();
+        if (array_key_exists('cpuUsagePercent', get_object_vars($data)) && null !== ($data->cpuUsagePercent ?? null)) {
+            $dataArray['cpu_usage_percent'] = $data->cpuUsagePercent ?? null;
         }
-        if ($data->isInitialized('memoryUsagePercent') && null !== $data->getMemoryUsagePercent()) {
-            $dataArray['memory_usage_percent'] = $data->getMemoryUsagePercent();
+        if (array_key_exists('memoryUsagePercent', get_object_vars($data)) && null !== ($data->memoryUsagePercent ?? null)) {
+            $dataArray['memory_usage_percent'] = $data->memoryUsagePercent ?? null;
         }
-        if ($data->isInitialized('replicasDesired') && null !== $data->getReplicasDesired()) {
-            $dataArray['replicas_desired'] = $data->getReplicasDesired();
+        if (array_key_exists('replicasDesired', get_object_vars($data)) && null !== ($data->replicasDesired ?? null)) {
+            $dataArray['replicas_desired'] = $data->replicasDesired ?? null;
         }
-        if ($data->isInitialized('replicasReady') && null !== $data->getReplicasReady()) {
-            $dataArray['replicas_ready'] = $data->getReplicasReady();
+        if (array_key_exists('replicasReady', get_object_vars($data)) && null !== ($data->replicasReady ?? null)) {
+            $dataArray['replicas_ready'] = $data->replicasReady ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

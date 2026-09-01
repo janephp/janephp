@@ -41,15 +41,15 @@ class SwarmSpecTaskDefaultsNormalizer implements DenormalizerInterface, Normaliz
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecTaskDefaultsConstraint());
         }
         if (\array_key_exists('LogDriver', $data)) {
-            $object->setLogDriver($this->denormalizer->denormalize($data['LogDriver'], \Docker\Api\Model\SwarmSpecTaskDefaultsLogDriver::class, 'json', $context));
+            $object->logDriver = $this->denormalizer->denormalize($data['LogDriver'], \Docker\Api\Model\SwarmSpecTaskDefaultsLogDriver::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('logDriver') && null !== $data->getLogDriver()) {
-            $dataArray['LogDriver'] = $data->getLogDriver() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getLogDriver(), 'json', $context));
+        if (array_key_exists('logDriver', get_object_vars($data)) && null !== ($data->logDriver ?? null)) {
+            $dataArray['LogDriver'] = ($data->logDriver ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->logDriver ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecTaskDefaultsConstraint());

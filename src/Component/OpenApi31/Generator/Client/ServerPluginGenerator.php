@@ -17,11 +17,11 @@ trait ServerPluginGenerator
      */
     protected function discoverServer($openApi): array
     {
-        $servers = $openApi->getServers();
+        $servers = ($openApi->servers ?? null);
         $server = $servers !== null && !empty($servers[0]) && $servers[0] instanceof Server ? $servers[0] : null;
 
         if (null !== $server) {
-            $url = parse_url($server->getUrl());
+            $url = parse_url($server->url ?? null);
             $baseUri = '';
             $plugins = [];
 
@@ -31,14 +31,14 @@ trait ServerPluginGenerator
                 $plugins[] = AddHostPlugin::class;
             }
 
-            $variables = $server->getVariables();
+            $variables = ($server->variables ?? null);
 
             if (null !== $variables
                 && $variables instanceof \ArrayAccess
                 && $variables->offsetExists('port')
-                && null !== $variables->offsetGet('port')->getDefault()
+                && null !== $variables->offsetGet('port')->default
             ) {
-                $baseUri .= ':' . $variables['port']->getDefault();
+                $baseUri .= ':' . $variables['port']->default;
             }
 
             if (\array_key_exists('path', $url) && null !== $url['path']) {

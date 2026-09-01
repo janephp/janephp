@@ -41,45 +41,45 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['isDeleted'] = (bool) $data['isDeleted'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
         }
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
-            $object->setFirstName($data['firstName']);
+            $object->firstName = $data['firstName'];
         }
         elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
-            $object->setFirstName(null);
+            $object->firstName = null;
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
-            $object->setLastName($data['lastName']);
+            $object->lastName = $data['lastName'];
         }
         elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
-            $object->setLastName(null);
+            $object->lastName = null;
         }
         if (\array_key_exists('emailAddress', $data)) {
-            $object->setEmailAddress($data['emailAddress']);
+            $object->emailAddress = $data['emailAddress'];
         }
         if (\array_key_exists('isDeleted', $data)) {
-            $object->setIsDeleted($data['isDeleted']);
+            $object->isDeleted = $data['isDeleted'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $dataArray['firstName'] = $data->getFirstName();
+        if (array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
+            $dataArray['firstName'] = $data->firstName ?? null;
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
-            $dataArray['lastName'] = $data->getLastName();
+        if (array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
+            $dataArray['lastName'] = $data->lastName ?? null;
         }
-        $dataArray['emailAddress'] = $data->getEmailAddress();
-        $dataArray['isDeleted'] = $data->getIsDeleted();
+        $dataArray['emailAddress'] = $data->emailAddress ?? null;
+        $dataArray['isDeleted'] = $data->isDeleted ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -38,39 +38,39 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('engine', $data)) {
-            $object->setEngine($data['engine']);
+            $object->engine = $data['engine'];
             unset($data['engine']);
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
             unset($data['version']);
         }
         if (\array_key_exists('semantic_version', $data)) {
-            $object->setSemanticVersion($data['semantic_version']);
+            $object->semanticVersion = $data['semantic_version'];
             unset($data['semantic_version']);
         }
         if (\array_key_exists('num_nodes', $data)) {
-            $object->setNumNodes($data['num_nodes']);
+            $object->numNodes = $data['num_nodes'];
             unset($data['num_nodes']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -78,11 +78,11 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('private_network_uuid', $data)) {
-            $object->setPrivateNetworkUuid($data['private_network_uuid']);
+            $object->privateNetworkUuid = $data['private_network_uuid'];
             unset($data['private_network_uuid']);
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
@@ -90,11 +90,11 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setTags($values);
+            $object->tags = $values;
             unset($data['tags']);
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
-            $object->setTags(null);
+            $object->tags = null;
             unset($data['tags']);
         }
         if (\array_key_exists('db_names', $data) && $data['db_names'] !== null) {
@@ -102,35 +102,35 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['db_names'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setDbNames($values_1);
+            $object->dbNames = $values_1;
             unset($data['db_names']);
         }
         elseif (\array_key_exists('db_names', $data) && $data['db_names'] === null) {
-            $object->setDbNames(null);
+            $object->dbNames = null;
             unset($data['db_names']);
         }
         if (\array_key_exists('ui_connection', $data)) {
-            $object->setUiConnection($this->denormalizer->denormalize($data['ui_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterUiConnection::class, 'json', $context));
+            $object->uiConnection = $this->denormalizer->denormalize($data['ui_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterUiConnection::class, 'json', $context);
             unset($data['ui_connection']);
         }
         if (\array_key_exists('schema_registry_connection', $data)) {
-            $object->setSchemaRegistryConnection($this->denormalizer->denormalize($data['schema_registry_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterSchemaRegistryConnection::class, 'json', $context));
+            $object->schemaRegistryConnection = $this->denormalizer->denormalize($data['schema_registry_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterSchemaRegistryConnection::class, 'json', $context);
             unset($data['schema_registry_connection']);
         }
         if (\array_key_exists('connection', $data)) {
-            $object->setConnection($this->denormalizer->denormalize($data['connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterConnection::class, 'json', $context));
+            $object->connection = $this->denormalizer->denormalize($data['connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterConnection::class, 'json', $context);
             unset($data['connection']);
         }
         if (\array_key_exists('private_connection', $data)) {
-            $object->setPrivateConnection($this->denormalizer->denormalize($data['private_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterPrivateConnection::class, 'json', $context));
+            $object->privateConnection = $this->denormalizer->denormalize($data['private_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterPrivateConnection::class, 'json', $context);
             unset($data['private_connection']);
         }
         if (\array_key_exists('standby_connection', $data)) {
-            $object->setStandbyConnection($this->denormalizer->denormalize($data['standby_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterStandbyConnection::class, 'json', $context));
+            $object->standbyConnection = $this->denormalizer->denormalize($data['standby_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterStandbyConnection::class, 'json', $context);
             unset($data['standby_connection']);
         }
         if (\array_key_exists('standby_private_connection', $data)) {
-            $object->setStandbyPrivateConnection($this->denormalizer->denormalize($data['standby_private_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterStandbyPrivateConnection::class, 'json', $context));
+            $object->standbyPrivateConnection = $this->denormalizer->denormalize($data['standby_private_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterStandbyPrivateConnection::class, 'json', $context);
             unset($data['standby_private_connection']);
         }
         if (\array_key_exists('users', $data) && $data['users'] !== null) {
@@ -138,19 +138,19 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['users'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\DatabaseUser::class, 'json', $context);
             }
-            $object->setUsers($values_2);
+            $object->users = $values_2;
             unset($data['users']);
         }
         elseif (\array_key_exists('users', $data) && $data['users'] === null) {
-            $object->setUsers(null);
+            $object->users = null;
             unset($data['users']);
         }
         if (\array_key_exists('maintenance_window', $data)) {
-            $object->setMaintenanceWindow($this->denormalizer->denormalize($data['maintenance_window'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterMaintenanceWindow::class, 'json', $context));
+            $object->maintenanceWindow = $this->denormalizer->denormalize($data['maintenance_window'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterMaintenanceWindow::class, 'json', $context);
             unset($data['maintenance_window']);
         }
         if (\array_key_exists('project_id', $data)) {
-            $object->setProjectId($data['project_id']);
+            $object->projectId = $data['project_id'];
             unset($data['project_id']);
         }
         if (\array_key_exists('rules', $data)) {
@@ -158,19 +158,19 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['rules'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Generated\DigitalOcean\Model\FirewallRule::class, 'json', $context);
             }
-            $object->setRules($values_3);
+            $object->rules = $values_3;
             unset($data['rules']);
         }
         if (\array_key_exists('version_end_of_life', $data)) {
-            $object->setVersionEndOfLife($data['version_end_of_life']);
+            $object->versionEndOfLife = $data['version_end_of_life'];
             unset($data['version_end_of_life']);
         }
         if (\array_key_exists('version_end_of_availability', $data)) {
-            $object->setVersionEndOfAvailability($data['version_end_of_availability']);
+            $object->versionEndOfAvailability = $data['version_end_of_availability'];
             unset($data['version_end_of_availability']);
         }
         if (\array_key_exists('storage_size_mib', $data)) {
-            $object->setStorageSizeMib($data['storage_size_mib']);
+            $object->storageSizeMib = $data['storage_size_mib'];
             unset($data['storage_size_mib']);
         }
         if (\array_key_exists('metrics_endpoints', $data)) {
@@ -178,15 +178,15 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['metrics_endpoints'] as $value_4) {
                 $values_4[] = $this->denormalizer->denormalize($value_4, \Jane\Generated\DigitalOcean\Model\DatabaseServiceEndpoint::class, 'json', $context);
             }
-            $object->setMetricsEndpoints($values_4);
+            $object->metricsEndpoints = $values_4;
             unset($data['metrics_endpoints']);
         }
         if (\array_key_exists('autoscale', $data)) {
-            $object->setAutoscale($this->denormalizer->denormalize($data['autoscale'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterAutoscale::class, 'json', $context));
+            $object->autoscale = $this->denormalizer->denormalize($data['autoscale'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterAutoscale::class, 'json', $context);
             unset($data['autoscale']);
         }
         if (\array_key_exists('backup_restore', $data)) {
-            $object->setBackupRestore($this->denormalizer->denormalize($data['backup_restore'], \Jane\Generated\DigitalOcean\Model\DatabaseBackup::class, 'json', $context));
+            $object->backupRestore = $this->denormalizer->denormalize($data['backup_restore'], \Jane\Generated\DigitalOcean\Model\DatabaseBackup::class, 'json', $context);
             unset($data['backup_restore']);
         }
         foreach ($data as $key => $value_5) {
@@ -199,63 +199,63 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['engine'] = $data->getEngine();
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['engine'] = $data->engine ?? null;
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = $data->version ?? null;
         }
-        $dataArray['num_nodes'] = $data->getNumNodes();
-        $dataArray['size'] = $data->getSize();
-        $dataArray['region'] = $data->getRegion();
-        if ($data->isInitialized('privateNetworkUuid') && null !== $data->getPrivateNetworkUuid()) {
-            $dataArray['private_network_uuid'] = $data->getPrivateNetworkUuid();
+        $dataArray['num_nodes'] = $data->numNodes ?? null;
+        $dataArray['size'] = $data->size ?? null;
+        $dataArray['region'] = $data->region ?? null;
+        if (array_key_exists('privateNetworkUuid', get_object_vars($data)) && null !== ($data->privateNetworkUuid ?? null)) {
+            $dataArray['private_network_uuid'] = $data->privateNetworkUuid ?? null;
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->getTags() as $value) {
+            foreach ($data->tags ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;
         }
-        if ($data->isInitialized('uiConnection') && null !== $data->getUiConnection()) {
-            $dataArray['ui_connection'] = $data->getUiConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getUiConnection(), 'json', $context));
+        if (array_key_exists('uiConnection', get_object_vars($data)) && null !== ($data->uiConnection ?? null)) {
+            $dataArray['ui_connection'] = ($data->uiConnection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->uiConnection ?? null, 'json', $context));
         }
-        if ($data->isInitialized('schemaRegistryConnection') && null !== $data->getSchemaRegistryConnection()) {
-            $dataArray['schema_registry_connection'] = $data->getSchemaRegistryConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSchemaRegistryConnection(), 'json', $context));
+        if (array_key_exists('schemaRegistryConnection', get_object_vars($data)) && null !== ($data->schemaRegistryConnection ?? null)) {
+            $dataArray['schema_registry_connection'] = ($data->schemaRegistryConnection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->schemaRegistryConnection ?? null, 'json', $context));
         }
-        if ($data->isInitialized('connection') && null !== $data->getConnection()) {
-            $dataArray['connection'] = $data->getConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConnection(), 'json', $context));
+        if (array_key_exists('connection', get_object_vars($data)) && null !== ($data->connection ?? null)) {
+            $dataArray['connection'] = ($data->connection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->connection ?? null, 'json', $context));
         }
-        if ($data->isInitialized('privateConnection') && null !== $data->getPrivateConnection()) {
-            $dataArray['private_connection'] = $data->getPrivateConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPrivateConnection(), 'json', $context));
+        if (array_key_exists('privateConnection', get_object_vars($data)) && null !== ($data->privateConnection ?? null)) {
+            $dataArray['private_connection'] = ($data->privateConnection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->privateConnection ?? null, 'json', $context));
         }
-        if ($data->isInitialized('standbyConnection') && null !== $data->getStandbyConnection()) {
-            $dataArray['standby_connection'] = $data->getStandbyConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyConnection(), 'json', $context));
+        if (array_key_exists('standbyConnection', get_object_vars($data)) && null !== ($data->standbyConnection ?? null)) {
+            $dataArray['standby_connection'] = ($data->standbyConnection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->standbyConnection ?? null, 'json', $context));
         }
-        if ($data->isInitialized('standbyPrivateConnection') && null !== $data->getStandbyPrivateConnection()) {
-            $dataArray['standby_private_connection'] = $data->getStandbyPrivateConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyPrivateConnection(), 'json', $context));
+        if (array_key_exists('standbyPrivateConnection', get_object_vars($data)) && null !== ($data->standbyPrivateConnection ?? null)) {
+            $dataArray['standby_private_connection'] = ($data->standbyPrivateConnection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->standbyPrivateConnection ?? null, 'json', $context));
         }
-        if ($data->isInitialized('maintenanceWindow') && null !== $data->getMaintenanceWindow()) {
-            $dataArray['maintenance_window'] = $data->getMaintenanceWindow() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMaintenanceWindow(), 'json', $context));
+        if (array_key_exists('maintenanceWindow', get_object_vars($data)) && null !== ($data->maintenanceWindow ?? null)) {
+            $dataArray['maintenance_window'] = ($data->maintenanceWindow ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->maintenanceWindow ?? null, 'json', $context));
         }
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
-            $dataArray['project_id'] = $data->getProjectId();
+        if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
+            $dataArray['project_id'] = $data->projectId ?? null;
         }
-        if ($data->isInitialized('rules') && null !== $data->getRules()) {
+        if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values_1 = [];
-            foreach ($data->getRules() as $value_1) {
+            foreach ($data->rules ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['rules'] = $values_1;
         }
-        if ($data->isInitialized('storageSizeMib') && null !== $data->getStorageSizeMib()) {
-            $dataArray['storage_size_mib'] = $data->getStorageSizeMib();
+        if (array_key_exists('storageSizeMib', get_object_vars($data)) && null !== ($data->storageSizeMib ?? null)) {
+            $dataArray['storage_size_mib'] = $data->storageSizeMib ?? null;
         }
-        if ($data->isInitialized('autoscale') && null !== $data->getAutoscale()) {
-            $dataArray['autoscale'] = $data->getAutoscale() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAutoscale(), 'json', $context));
+        if (array_key_exists('autoscale', get_object_vars($data)) && null !== ($data->autoscale ?? null)) {
+            $dataArray['autoscale'] = ($data->autoscale ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscale ?? null, 'json', $context));
         }
-        if ($data->isInitialized('backupRestore') && null !== $data->getBackupRestore()) {
-            $dataArray['backup_restore'] = $data->getBackupRestore() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBackupRestore(), 'json', $context));
+        if (array_key_exists('backupRestore', get_object_vars($data)) && null !== ($data->backupRestore ?? null)) {
+            $dataArray['backup_restore'] = ($data->backupRestore ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupRestore ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

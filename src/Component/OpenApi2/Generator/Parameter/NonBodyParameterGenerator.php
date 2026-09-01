@@ -19,19 +19,19 @@ use Psr\Http\Message\StreamInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
-    use PathParameterNameTrait;
     use OpenApiNumberTypeResolverTrait;
     use OptionResolverNormalizationTrait;
+    use PathParameterNameTrait;
 
     /**
      * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): Node\Param
     {
-        $name = $this->normalizePathVariableName($parameter->getName());
+        $name = $this->normalizePathVariableName($parameter->name ?? null);
         $methodParameter = new Node\Param(new Expr\Variable($name));
 
-        if (!$parameter->getRequired() || null !== $parameter->getDefault()) {
+        if (!$parameter->required || null !== ($parameter->default ?? null)) {
             $methodParameter->default = $this->getDefaultAsExpr($parameter);
         }
 
@@ -53,7 +53,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $genericResolverKeys = array_keys($genericResolver);
 
         foreach ($parameters as $parameter) {
-            $parameterName = $parameter->getName();
+            $parameterName = ($parameter->name ?? null);
             if (str_contains($parameterName, '[]')) {
                 $parameterName = substr($parameterName, 0, -2);
             }
@@ -62,12 +62,12 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 $defined[$parameterName] = new Expr\ArrayItem(new Scalar\String_($parameterName));
             }
 
-            if ($parameter->getRequired() && null === $parameter->getDefault()) {
+            if ($parameter->required && null === ($parameter->default ?? null)) {
                 $required[] = new Expr\ArrayItem(new Scalar\String_($parameterName));
             }
 
             $matchGenericResolver = null;
-            if ($parameter->getType()) {
+            if (($parameter->type ?? null) ?? null) {
                 $types = [];
 
                 foreach ($this->convertParameterType($parameter) as $typeString) {
@@ -84,7 +84,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 ]));
             }
 
-            if (!$parameter->getRequired() && null !== $parameter->getDefault()) {
+            if (!$parameter->required && null !== ($parameter->default ?? null)) {
                 $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($parameter), new Scalar\String_($parameterName));
             }
 
@@ -114,10 +114,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
         $type = implode('|', $this->convertParameterType($parameter));
-        $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
+        $description = array_map(rtrim(...), explode("\n", ($parameter->description ?? null) ?: ''));
 
         $description = array_map(fn (string $line): string => str_replace('*/', '*\\/', $line), $description);
-        $param = [rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->normalizePathVariableName($parameter->getName())), array_shift($description)))];
+        $param = [rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->normalizePathVariableName($parameter->name ?? null)), array_shift($description)))];
         foreach ($description as $line) {
             $param[] = \sprintf(' * %s', $line);
         }
@@ -128,9 +128,9 @@ class NonBodyParameterGenerator extends ParameterGenerator
     public function generateOptionDocParameter(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): string
     {
         $type = implode('|', $this->convertParameterType($parameter));
-        $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
+        $description = array_map(rtrim(...), explode("\n", ($parameter->description ?? null) ?: ''));
 
-        $var = [rtrim(\sprintf(' *     @var %s $%s %s', $type, str_replace('*/', '*\\/', $parameter->getName()), str_replace('*/', '*\\/', array_shift($description))))];
+        $var = [rtrim(\sprintf(' *     @var %s $%s %s', $type, str_replace('*/', '*\\/', $parameter->name ?? null), str_replace('*/', '*\\/', array_shift($description))))];
         foreach ($description as $line) {
             $var[] = \sprintf(' *     %s', str_replace('*/', '*\\/', $line));
         }
@@ -144,7 +144,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     private function getDefaultAsExpr(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): Expr
     {
         /** @var Expr|Stmt\Expression $expr */
-        $expr = $this->parser->parse('<?php ' . var_export($parameter->getDefault(), true) . ';')[0];
+        $expr = $this->parser->parse('<?php ' . var_export($parameter->default ?? null, true) . ';')[0];
 
         if ($expr instanceof Stmt\Expression) {
             return $expr->expr;
@@ -155,16 +155,16 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
     private function convertParameterType(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): array
     {
-        $type = $parameter->getType();
+        $type = (($parameter->type ?? null) ?? null);
         $convertArray = [
             'string' => ['string'],
             'number' => [$this->isNumberFloat(
-                $parameter->getFormat(),
-                $parameter->getDefault(),
-                $parameter->getMinimum(),
-                $parameter->getMaximum(),
-                $parameter->getMultipleOf(),
-                $parameter->getEnum()
+                ($parameter->format ?? null) ?? null,
+                $parameter->default ?? null,
+                $parameter->minimum ?? null,
+                $parameter->maximum ?? null,
+                $parameter->multipleOf ?? null,
+                ($parameter->enum ?? null) ?? null
             ) ? 'float' : 'int'],
             'boolean' => ['bool'],
             'integer' => ['int'],

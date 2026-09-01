@@ -38,11 +38,11 @@ class KeyCreateResponseNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('secret_key', $data)) {
-            $object->setSecretKey($data['secret_key']);
+            $object->secretKey = $data['secret_key'];
             unset($data['secret_key']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('grants', $data)) {
@@ -50,11 +50,11 @@ class KeyCreateResponseNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['grants'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\Grant::class, 'json', $context);
             }
-            $object->setGrants($values);
+            $object->grants = $values;
             unset($data['grants']);
         }
         if (\array_key_exists('access_key', $data)) {
-            $object->setAccessKey($data['access_key']);
+            $object->accessKey = $data['access_key'];
             unset($data['access_key']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -62,7 +62,7 @@ class KeyCreateResponseNormalizer implements DenormalizerInterface, NormalizerIn
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         foreach ($data as $key => $value_1) {
@@ -75,12 +75,12 @@ class KeyCreateResponseNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('grants') && null !== $data->getGrants()) {
+        if (array_key_exists('grants', get_object_vars($data)) && null !== ($data->grants ?? null)) {
             $values = [];
-            foreach ($data->getGrants() as $value) {
+            foreach ($data->grants ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['grants'] = $values;

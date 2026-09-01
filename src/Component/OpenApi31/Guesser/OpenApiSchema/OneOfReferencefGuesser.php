@@ -32,19 +32,19 @@ class OneOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
 
     public function supportObject($object): bool
     {
-        if (!($object instanceof Schema) || !\is_array($object->getOneOf()) || [] === $object->getOneOf()) {
+        if (!($object instanceof Schema) || !\is_array($object->oneOf ?? null) || [] === ($object->oneOf ?? null)) {
             return false;
         }
 
-        if ($object->getOneOf()[0] instanceof Reference) {
+        if (($object->oneOf ?? null)[0] instanceof Reference) {
             return true;
         }
 
-        foreach ($object->getOneOf() as $oneOf) {
-            if (!$oneOf instanceof Schema || !\is_array($oneOf->getAllOf())) {
+        foreach (($object->oneOf ?? null ?? []) as $oneOf) {
+            if (!$oneOf instanceof Schema || !\is_array($oneOf->allOf ?? null)) {
                 continue;
             }
-            foreach ($oneOf->getAllOf() as $allOf) {
+            foreach (($oneOf->allOf ?? []) as $allOf) {
                 if ($allOf instanceof Reference) {
                     return true;
                 }
@@ -60,15 +60,15 @@ class OneOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
         if ($object instanceof Schema) {
             $mapping = null;
             $supportsDiscriminator = false;
-            $discriminator = $object->getDiscriminator();
-            if (null !== $discriminator && null !== $discriminator->getPropertyName()) {
+            $discriminator = ($object->discriminator ?? null);
+            if (null !== $discriminator && null !== ($discriminator->propertyName ?? null)) {
                 $supportsDiscriminator = true;
-                $type->setDiscriminatorProperty($discriminator->getPropertyName());
-                if ($discriminator->getMapping()) {
-                    $mapping = array_flip((array) $discriminator->getMapping());
+                $type->setDiscriminatorProperty($discriminator->propertyName ?? null);
+                if (($discriminator->mapping ?? []) ?? null) {
+                    $mapping = array_flip((array) (($discriminator->mapping ?? []) ?? null));
                 }
             }
-            foreach ($object->getOneOf() as $index => $oneOf) {
+            foreach (($object->oneOf ?? null ?? []) as $index => $oneOf) {
                 if ($oneOf === null) {
                     continue;
                 }
@@ -84,9 +84,9 @@ class OneOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
 
                     $oneOfSchema = $this->resolve($oneOfSchema, $this->schemaClass);
                 }
-                $hasContent = null !== $oneOfSchema->getType()
-                    || (\is_array($oneOfSchema->getAllOf()) && [] !== $oneOfSchema->getAllOf())
-                    || (\is_array($oneOfSchema->getAnyOf()) && [] !== $oneOfSchema->getAnyOf());
+                $hasContent = null !== ($oneOfSchema->type ?? null)
+                    || (\is_array($oneOfSchema->allOf) && [] !== $oneOfSchema->allOf)
+                    || (\is_array($oneOfSchema->anyOf ?? null) && [] !== ($oneOfSchema->anyOf ?? null));
 
                 if ($hasContent) {
                     $oneOfType = $this->chainGuesser->guessType($oneOfSchema, $name, $oneOfReference, $registry);

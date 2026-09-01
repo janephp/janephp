@@ -41,21 +41,21 @@ class TaskSpecContainerSpecPrivilegesNormalizer implements DenormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesConstraint());
         }
         if (\array_key_exists('CredentialSpec', $data)) {
-            $object->setCredentialSpec($this->denormalizer->denormalize($data['CredentialSpec'], \Docker\Api\Model\TaskSpecContainerSpecPrivilegesCredentialSpec::class, 'json', $context));
+            $object->credentialSpec = $this->denormalizer->denormalize($data['CredentialSpec'], \Docker\Api\Model\TaskSpecContainerSpecPrivilegesCredentialSpec::class, 'json', $context);
         }
         if (\array_key_exists('SELinuxContext', $data)) {
-            $object->setSELinuxContext($this->denormalizer->denormalize($data['SELinuxContext'], \Docker\Api\Model\TaskSpecContainerSpecPrivilegesSELinuxContext::class, 'json', $context));
+            $object->sELinuxContext = $this->denormalizer->denormalize($data['SELinuxContext'], \Docker\Api\Model\TaskSpecContainerSpecPrivilegesSELinuxContext::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('credentialSpec') && null !== $data->getCredentialSpec()) {
-            $dataArray['CredentialSpec'] = $data->getCredentialSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getCredentialSpec(), 'json', $context));
+        if (array_key_exists('credentialSpec', get_object_vars($data)) && null !== ($data->credentialSpec ?? null)) {
+            $dataArray['CredentialSpec'] = ($data->credentialSpec ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->credentialSpec ?? null, 'json', $context));
         }
-        if ($data->isInitialized('sELinuxContext') && null !== $data->getSELinuxContext()) {
-            $dataArray['SELinuxContext'] = $data->getSELinuxContext() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSELinuxContext(), 'json', $context));
+        if (array_key_exists('sELinuxContext', get_object_vars($data)) && null !== ($data->sELinuxContext ?? null)) {
+            $dataArray['SELinuxContext'] = ($data->sELinuxContext ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->sELinuxContext ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesConstraint());

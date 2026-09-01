@@ -42,7 +42,7 @@ class LbFirewallNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['deny'] as $value) {
                 $values[] = $value;
             }
-            $object->setDeny($values);
+            $object->deny = $values;
             unset($data['deny']);
         }
         if (\array_key_exists('allow', $data)) {
@@ -50,7 +50,7 @@ class LbFirewallNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['allow'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setAllow($values_1);
+            $object->allow = $values_1;
             unset($data['allow']);
         }
         foreach ($data as $key => $value_2) {
@@ -63,16 +63,16 @@ class LbFirewallNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('deny') && null !== $data->getDeny()) {
+        if (array_key_exists('deny', get_object_vars($data)) && null !== ($data->deny ?? null)) {
             $values = [];
-            foreach ($data->getDeny() as $value) {
+            foreach ($data->deny ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['deny'] = $values;
         }
-        if ($data->isInitialized('allow') && null !== $data->getAllow()) {
+        if (array_key_exists('allow', get_object_vars($data)) && null !== ($data->allow ?? null)) {
             $values_1 = [];
-            foreach ($data->getAllow() as $value_1) {
+            foreach ($data->allow ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['allow'] = $values_1;

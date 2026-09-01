@@ -41,7 +41,7 @@ class ByoipPrefixUpdateNormalizer implements DenormalizerInterface, NormalizerIn
             $data['advertise'] = (bool) $data['advertise'];
         }
         if (\array_key_exists('advertise', $data)) {
-            $object->setAdvertise($data['advertise']);
+            $object->advertise = $data['advertise'];
             unset($data['advertise']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class ByoipPrefixUpdateNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('advertise') && null !== $data->getAdvertise()) {
-            $dataArray['advertise'] = $data->getAdvertise();
+        if (array_key_exists('advertise', get_object_vars($data)) && null !== ($data->advertise ?? null)) {
+            $dataArray['advertise'] = $data->advertise ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

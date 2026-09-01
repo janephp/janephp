@@ -8,103 +8,23 @@ class PreviousOutage implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $region;
     /**
      * @var string
      */
-    protected $region;
+    public string $startedAt;
     /**
      * @var string
      */
-    protected $startedAt;
-    /**
-     * @var string
-     */
-    protected $endedAt;
+    public string $endedAt;
     /**
      * @var int
      */
-    protected $durationSeconds;
-    /**
-     * @return string
-     */
-    public function getRegion(): string
-    {
-        return $this->region;
-    }
-    /**
-     * @param string $region
-     *
-     * @return self
-     */
-    public function setRegion(string $region): self
-    {
-        $this->initialized['region'] = true;
-        $this->region = $region;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getStartedAt(): string
-    {
-        return $this->startedAt;
-    }
-    /**
-     * @param string $startedAt
-     *
-     * @return self
-     */
-    public function setStartedAt(string $startedAt): self
-    {
-        $this->initialized['startedAt'] = true;
-        $this->startedAt = $startedAt;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getEndedAt(): string
-    {
-        return $this->endedAt;
-    }
-    /**
-     * @param string $endedAt
-     *
-     * @return self
-     */
-    public function setEndedAt(string $endedAt): self
-    {
-        $this->initialized['endedAt'] = true;
-        $this->endedAt = $endedAt;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getDurationSeconds(): int
-    {
-        return $this->durationSeconds;
-    }
-    /**
-     * @param int $durationSeconds
-     *
-     * @return self
-     */
-    public function setDurationSeconds(int $durationSeconds): self
-    {
-        $this->initialized['durationSeconds'] = true;
-        $this->durationSeconds = $durationSeconds;
-        return $this;
-    }
+    public int $durationSeconds;
     public function definedProperties(): array
     {
-        return ['region' => ['region', 'getRegion', 'setRegion'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'endedAt' => ['ended_at', 'getEndedAt', 'setEndedAt'], 'durationSeconds' => ['duration_seconds', 'getDurationSeconds', 'setDurationSeconds']];
+        return ['region' => 'region', 'startedAt' => 'started_at', 'endedAt' => 'ended_at', 'durationSeconds' => 'duration_seconds'];
     }
 }

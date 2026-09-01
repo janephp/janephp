@@ -38,63 +38,63 @@ class DomainRecordCnameNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('data', $data)) {
-            $object->setData($data['data']);
+            $object->data = $data['data'];
             unset($data['data']);
         }
         if (\array_key_exists('priority', $data) && $data['priority'] !== null) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
             unset($data['priority']);
         }
         elseif (\array_key_exists('priority', $data) && $data['priority'] === null) {
-            $object->setPriority(null);
+            $object->priority = null;
             unset($data['priority']);
         }
         if (\array_key_exists('port', $data) && $data['port'] !== null) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
             unset($data['port']);
         }
         elseif (\array_key_exists('port', $data) && $data['port'] === null) {
-            $object->setPort(null);
+            $object->port = null;
             unset($data['port']);
         }
         if (\array_key_exists('ttl', $data)) {
-            $object->setTtl($data['ttl']);
+            $object->ttl = $data['ttl'];
             unset($data['ttl']);
         }
         if (\array_key_exists('weight', $data) && $data['weight'] !== null) {
-            $object->setWeight($data['weight']);
+            $object->weight = $data['weight'];
             unset($data['weight']);
         }
         elseif (\array_key_exists('weight', $data) && $data['weight'] === null) {
-            $object->setWeight(null);
+            $object->weight = null;
             unset($data['weight']);
         }
         if (\array_key_exists('flags', $data) && $data['flags'] !== null) {
-            $object->setFlags($data['flags']);
+            $object->flags = $data['flags'];
             unset($data['flags']);
         }
         elseif (\array_key_exists('flags', $data) && $data['flags'] === null) {
-            $object->setFlags(null);
+            $object->flags = null;
             unset($data['flags']);
         }
         if (\array_key_exists('tag', $data) && $data['tag'] !== null) {
-            $object->setTag($data['tag']);
+            $object->tag = $data['tag'];
             unset($data['tag']);
         }
         elseif (\array_key_exists('tag', $data) && $data['tag'] === null) {
-            $object->setTag(null);
+            $object->tag = null;
             unset($data['tag']);
         }
         foreach ($data as $key => $value) {
@@ -107,30 +107,30 @@ class DomainRecordCnameNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('data') && null !== $data->getData()) {
-            $dataArray['data'] = $data->getData();
+        if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
+            $dataArray['data'] = $data->data ?? null;
         }
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority();
+        if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = $data->priority ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
-        if ($data->isInitialized('ttl') && null !== $data->getTtl()) {
-            $dataArray['ttl'] = $data->getTtl();
+        if (array_key_exists('ttl', get_object_vars($data)) && null !== ($data->ttl ?? null)) {
+            $dataArray['ttl'] = $data->ttl ?? null;
         }
-        if ($data->isInitialized('weight') && null !== $data->getWeight()) {
-            $dataArray['weight'] = $data->getWeight();
+        if (array_key_exists('weight', get_object_vars($data)) && null !== ($data->weight ?? null)) {
+            $dataArray['weight'] = $data->weight ?? null;
         }
-        if ($data->isInitialized('flags') && null !== $data->getFlags()) {
-            $dataArray['flags'] = $data->getFlags();
+        if (array_key_exists('flags', get_object_vars($data)) && null !== ($data->flags ?? null)) {
+            $dataArray['flags'] = $data->flags ?? null;
         }
-        if ($data->isInitialized('tag') && null !== $data->getTag()) {
-            $dataArray['tag'] = $data->getTag();
+        if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
+            $dataArray['tag'] = $data->tag ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

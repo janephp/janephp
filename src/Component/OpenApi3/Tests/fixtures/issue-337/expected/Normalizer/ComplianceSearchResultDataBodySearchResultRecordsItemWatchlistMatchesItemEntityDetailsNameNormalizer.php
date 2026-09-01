@@ -38,7 +38,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('full', $data)) {
-            $object->setFull($data['full']);
+            $object->full = $data['full'];
             unset($data['full']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('full') && null !== $data->getFull()) {
-            $dataArray['full'] = $data->getFull();
+        if (array_key_exists('full', get_object_vars($data)) && null !== ($data->full ?? null)) {
+            $dataArray['full'] = $data->full ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

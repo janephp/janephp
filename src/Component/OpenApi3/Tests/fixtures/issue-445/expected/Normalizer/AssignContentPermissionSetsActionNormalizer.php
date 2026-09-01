@@ -41,27 +41,27 @@ class AssignContentPermissionSetsActionNormalizer implements DenormalizerInterfa
             $data['replace'] = (bool) $data['replace'];
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('permissionSetIds', $data) && $data['permissionSetIds'] !== null) {
-            $object->setPermissionSetIds($data['permissionSetIds']);
+            $object->permissionSetIds = $data['permissionSetIds'];
             unset($data['permissionSetIds']);
         }
         elseif (\array_key_exists('permissionSetIds', $data) && $data['permissionSetIds'] === null) {
-            $object->setPermissionSetIds(null);
+            $object->permissionSetIds = null;
             unset($data['permissionSetIds']);
         }
         if (\array_key_exists('replace', $data)) {
-            $object->setReplace($data['replace']);
+            $object->replace = $data['replace'];
             unset($data['replace']);
         }
         foreach ($data as $key => $value) {
@@ -74,15 +74,15 @@ class AssignContentPermissionSetsActionNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('permissionSetIds') && null !== $data->getPermissionSetIds()) {
-            $dataArray['permissionSetIds'] = $data->getPermissionSetIds();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('permissionSetIds', get_object_vars($data)) && null !== ($data->permissionSetIds ?? null)) {
+            $dataArray['permissionSetIds'] = $data->permissionSetIds ?? null;
         }
-        if ($data->isInitialized('replace') && null !== $data->getReplace()) {
-            $dataArray['replace'] = $data->getReplace();
+        if (array_key_exists('replace', get_object_vars($data)) && null !== ($data->replace ?? null)) {
+            $dataArray['replace'] = $data->replace ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

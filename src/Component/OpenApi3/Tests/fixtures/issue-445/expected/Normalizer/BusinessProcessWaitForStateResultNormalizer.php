@@ -38,29 +38,29 @@ class BusinessProcessWaitForStateResultNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('stateHit', $data) && $data['stateHit'] !== null) {
-            $object->setStateHit($data['stateHit']);
+            $object->stateHit = $data['stateHit'];
         }
         elseif (\array_key_exists('stateHit', $data) && $data['stateHit'] === null) {
-            $object->setStateHit(null);
+            $object->stateHit = null;
         }
         if (\array_key_exists('businessProcess', $data)) {
             $value = $data['businessProcess'];
             if (is_array($data['businessProcess']) and \array_key_exists('id', $data['businessProcess']) and \array_key_exists('processDefinitionId', $data['businessProcess']) and \array_key_exists('supportsCancellation', $data['businessProcess']) and \array_key_exists('businessProcessScope', $data['businessProcess']) and \array_key_exists('lifeCycle', $data['businessProcess']) and \array_key_exists('startDate', $data['businessProcess']) and \array_key_exists('endDate', $data['businessProcess']) and \array_key_exists('finished', $data['businessProcess']) and \array_key_exists('kind', $data['businessProcess'])) {
                 $value = $this->denormalizer->denormalize($data['businessProcess'], \PicturePark\API\Model\BusinessProcess::class, 'json', $context);
             }
-            $object->setBusinessProcess($value);
+            $object->businessProcess = $value;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('stateHit') && null !== $data->getStateHit()) {
-            $dataArray['stateHit'] = $data->getStateHit();
+        if (array_key_exists('stateHit', get_object_vars($data)) && null !== ($data->stateHit ?? null)) {
+            $dataArray['stateHit'] = $data->stateHit ?? null;
         }
-        $value = $data->getBusinessProcess();
-        if (is_object($data->getBusinessProcess())) {
-            $value = $data->getBusinessProcess() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getBusinessProcess(), 'json', $context));
+        $value = $data->businessProcess ?? null;
+        if (is_object($data->businessProcess ?? null)) {
+            $value = ($data->businessProcess ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->businessProcess ?? null, 'json', $context));
         }
         $dataArray['businessProcess'] = $value;
         return $dataArray;

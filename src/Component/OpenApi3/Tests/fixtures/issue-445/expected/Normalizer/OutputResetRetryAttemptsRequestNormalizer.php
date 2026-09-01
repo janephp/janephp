@@ -45,78 +45,78 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
             foreach ($data['outputIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setOutputIds($values);
+            $object->outputIds = $values;
         }
         elseif (\array_key_exists('outputIds', $data) && $data['outputIds'] === null) {
-            $object->setOutputIds(null);
+            $object->outputIds = null;
         }
         if (\array_key_exists('contentIds', $data) && $data['contentIds'] !== null) {
             $values_1 = [];
             foreach ($data['contentIds'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setContentIds($values_1);
+            $object->contentIds = $values_1;
         }
         elseif (\array_key_exists('contentIds', $data) && $data['contentIds'] === null) {
-            $object->setContentIds(null);
+            $object->contentIds = null;
         }
         if (\array_key_exists('fileExtensions', $data) && $data['fileExtensions'] !== null) {
             $values_2 = [];
             foreach ($data['fileExtensions'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setFileExtensions($values_2);
+            $object->fileExtensions = $values_2;
         }
         elseif (\array_key_exists('fileExtensions', $data) && $data['fileExtensions'] === null) {
-            $object->setFileExtensions(null);
+            $object->fileExtensions = null;
         }
         if (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] !== null) {
             $values_3 = [];
             foreach ($data['outputFormatIds'] as $value_3) {
                 $values_3[] = $value_3;
             }
-            $object->setOutputFormatIds($values_3);
+            $object->outputFormatIds = $values_3;
         }
         elseif (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] === null) {
-            $object->setOutputFormatIds(null);
+            $object->outputFormatIds = null;
         }
         if (\array_key_exists('includeCompleted', $data)) {
-            $object->setIncludeCompleted($data['includeCompleted']);
+            $object->includeCompleted = $data['includeCompleted'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('outputIds') && null !== $data->getOutputIds()) {
+        if (array_key_exists('outputIds', get_object_vars($data)) && null !== ($data->outputIds ?? null)) {
             $values = [];
-            foreach ($data->getOutputIds() as $value) {
+            foreach ($data->outputIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['outputIds'] = $values;
         }
-        if ($data->isInitialized('contentIds') && null !== $data->getContentIds()) {
+        if (array_key_exists('contentIds', get_object_vars($data)) && null !== ($data->contentIds ?? null)) {
             $values_1 = [];
-            foreach ($data->getContentIds() as $value_1) {
+            foreach ($data->contentIds ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['contentIds'] = $values_1;
         }
-        if ($data->isInitialized('fileExtensions') && null !== $data->getFileExtensions()) {
+        if (array_key_exists('fileExtensions', get_object_vars($data)) && null !== ($data->fileExtensions ?? null)) {
             $values_2 = [];
-            foreach ($data->getFileExtensions() as $value_2) {
+            foreach ($data->fileExtensions ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['fileExtensions'] = $values_2;
         }
-        if ($data->isInitialized('outputFormatIds') && null !== $data->getOutputFormatIds()) {
+        if (array_key_exists('outputFormatIds', get_object_vars($data)) && null !== ($data->outputFormatIds ?? null)) {
             $values_3 = [];
-            foreach ($data->getOutputFormatIds() as $value_3) {
+            foreach ($data->outputFormatIds ?? null as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['outputFormatIds'] = $values_3;
         }
-        $dataArray['includeCompleted'] = $data->getIncludeCompleted();
+        $dataArray['includeCompleted'] = $data->includeCompleted ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

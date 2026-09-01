@@ -42,7 +42,7 @@ class ConnectionPoolsNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['pools'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ConnectionPool::class, 'json', $context);
             }
-            $object->setPools($values);
+            $object->pools = $values;
             unset($data['pools']);
         }
         foreach ($data as $key => $value_1) {

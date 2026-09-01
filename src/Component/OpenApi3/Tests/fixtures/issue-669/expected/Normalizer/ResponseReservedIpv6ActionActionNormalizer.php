@@ -38,15 +38,15 @@ class ResponseReservedIpv6ActionActionNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('started_at', $data)) {
@@ -54,7 +54,7 @@ class ResponseReservedIpv6ActionActionNormalizer implements DenormalizerInterfac
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setStartedAt($date);
+            $object->startedAt = $date;
             unset($data['started_at']);
         }
         if (\array_key_exists('completed_at', $data) && $data['completed_at'] !== null) {
@@ -62,27 +62,27 @@ class ResponseReservedIpv6ActionActionNormalizer implements DenormalizerInterfac
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCompletedAt($date_1);
+            $object->completedAt = $date_1;
             unset($data['completed_at']);
         }
         elseif (\array_key_exists('completed_at', $data) && $data['completed_at'] === null) {
-            $object->setCompletedAt(null);
+            $object->completedAt = null;
             unset($data['completed_at']);
         }
         if (\array_key_exists('resource_id', $data)) {
-            $object->setResourceId($data['resource_id']);
+            $object->resourceId = $data['resource_id'];
             unset($data['resource_id']);
         }
         if (\array_key_exists('resource_type', $data)) {
-            $object->setResourceType($data['resource_type']);
+            $object->resourceType = $data['resource_type'];
             unset($data['resource_type']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($this->denormalizer->denormalize($data['region'], \Jane\Generated\DigitalOcean\Model\Region::class, 'json', $context));
+            $object->region = $this->denormalizer->denormalize($data['region'], \Jane\Generated\DigitalOcean\Model\Region::class, 'json', $context);
             unset($data['region']);
         }
         if (\array_key_exists('region_slug', $data)) {
-            $object->setRegionSlug($data['region_slug']);
+            $object->regionSlug = $data['region_slug'];
             unset($data['region_slug']);
         }
         foreach ($data as $key => $value) {
@@ -95,32 +95,32 @@ class ResponseReservedIpv6ActionActionNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
-            $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
+            $dataArray['started_at'] = ($data->startedAt ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('completedAt') && null !== $data->getCompletedAt()) {
-            $dataArray['completed_at'] = $data->getCompletedAt()?->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
+            $dataArray['completed_at'] = ($data->completedAt ?? null)?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('resourceId') && null !== $data->getResourceId()) {
-            $dataArray['resource_id'] = $data->getResourceId();
+        if (array_key_exists('resourceId', get_object_vars($data)) && null !== ($data->resourceId ?? null)) {
+            $dataArray['resource_id'] = $data->resourceId ?? null;
         }
-        if ($data->isInitialized('resourceType') && null !== $data->getResourceType()) {
-            $dataArray['resource_type'] = $data->getResourceType();
+        if (array_key_exists('resourceType', get_object_vars($data)) && null !== ($data->resourceType ?? null)) {
+            $dataArray['resource_type'] = $data->resourceType ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRegion(), 'json', $context));
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = ($data->region ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region ?? null, 'json', $context));
         }
-        if ($data->isInitialized('regionSlug') && null !== $data->getRegionSlug()) {
-            $dataArray['region_slug'] = $data->getRegionSlug();
+        if (array_key_exists('regionSlug', get_object_vars($data)) && null !== ($data->regionSlug ?? null)) {
+            $dataArray['region_slug'] = $data->regionSlug ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -23,14 +23,14 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
 
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
-        if (is_a($object->getItems(), $this->getSchemaClass())) {
-            $this->chainGuesser->guessClass($object->getItems(), $name . 'Item', $reference . '/items', $registry);
+        if (is_a($object->items ?? null, $this->getSchemaClass())) {
+            $this->chainGuesser->guessClass($object->items ?? null, $name . 'Item', $reference . '/items', $registry);
         }
     }
 
     public function supportObject($object): bool
     {
-        return ($object instanceof JsonSchema) && 'array' === $object->getType();
+        return ($object instanceof JsonSchema) && 'array' === ($object->type ?? null);
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
@@ -41,7 +41,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             return new ArrayType($object, new Type($object, 'mixed'));
         }
 
-        $items = $object->getItems();
+        $items = ($object->items ?? null);
 
         if (null === $items || (\is_array($items) && 0 === \count($items))) {
             return new ArrayType($object, new Type($object, 'mixed'));

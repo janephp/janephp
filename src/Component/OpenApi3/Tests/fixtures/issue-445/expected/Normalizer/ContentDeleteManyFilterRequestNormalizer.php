@@ -48,26 +48,26 @@ class ContentDeleteManyFilterRequestNormalizer implements DenormalizerInterface,
             if (is_array($data['filterRequest']) and \array_key_exists('searchType', $data['filterRequest']) and \array_key_exists('lifeCycleFilter', $data['filterRequest']) and \array_key_exists('brokenDependenciesFilter', $data['filterRequest'])) {
                 $value = $this->denormalizer->denormalize($data['filterRequest'], \PicturePark\API\Model\ContentFilterRequest::class, 'json', $context);
             }
-            $object->setFilterRequest($value);
+            $object->filterRequest = $value;
         }
         if (\array_key_exists('forceReferenceRemoval', $data)) {
-            $object->setForceReferenceRemoval($data['forceReferenceRemoval']);
+            $object->forceReferenceRemoval = $data['forceReferenceRemoval'];
         }
         if (\array_key_exists('notifyProgress', $data)) {
-            $object->setNotifyProgress($data['notifyProgress']);
+            $object->notifyProgress = $data['notifyProgress'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getFilterRequest();
-        if (is_object($data->getFilterRequest())) {
-            $value = $data->getFilterRequest() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilterRequest(), 'json', $context));
+        $value = $data->filterRequest ?? null;
+        if (is_object($data->filterRequest ?? null)) {
+            $value = ($data->filterRequest ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest ?? null, 'json', $context));
         }
         $dataArray['filterRequest'] = $value;
-        $dataArray['forceReferenceRemoval'] = $data->getForceReferenceRemoval();
-        $dataArray['notifyProgress'] = $data->getNotifyProgress();
+        $dataArray['forceReferenceRemoval'] = $data->forceReferenceRemoval ?? null;
+        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

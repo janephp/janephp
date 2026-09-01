@@ -38,31 +38,31 @@ class AppServiceSpecHealthCheckNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('failure_threshold', $data)) {
-            $object->setFailureThreshold($data['failure_threshold']);
+            $object->failureThreshold = $data['failure_threshold'];
             unset($data['failure_threshold']);
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
             unset($data['port']);
         }
         if (\array_key_exists('http_path', $data)) {
-            $object->setHttpPath($data['http_path']);
+            $object->httpPath = $data['http_path'];
             unset($data['http_path']);
         }
         if (\array_key_exists('initial_delay_seconds', $data)) {
-            $object->setInitialDelaySeconds($data['initial_delay_seconds']);
+            $object->initialDelaySeconds = $data['initial_delay_seconds'];
             unset($data['initial_delay_seconds']);
         }
         if (\array_key_exists('period_seconds', $data)) {
-            $object->setPeriodSeconds($data['period_seconds']);
+            $object->periodSeconds = $data['period_seconds'];
             unset($data['period_seconds']);
         }
         if (\array_key_exists('success_threshold', $data)) {
-            $object->setSuccessThreshold($data['success_threshold']);
+            $object->successThreshold = $data['success_threshold'];
             unset($data['success_threshold']);
         }
         if (\array_key_exists('timeout_seconds', $data)) {
-            $object->setTimeoutSeconds($data['timeout_seconds']);
+            $object->timeoutSeconds = $data['timeout_seconds'];
             unset($data['timeout_seconds']);
         }
         foreach ($data as $key => $value) {
@@ -75,26 +75,26 @@ class AppServiceSpecHealthCheckNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('failureThreshold') && null !== $data->getFailureThreshold()) {
-            $dataArray['failure_threshold'] = $data->getFailureThreshold();
+        if (array_key_exists('failureThreshold', get_object_vars($data)) && null !== ($data->failureThreshold ?? null)) {
+            $dataArray['failure_threshold'] = $data->failureThreshold ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
-        if ($data->isInitialized('httpPath') && null !== $data->getHttpPath()) {
-            $dataArray['http_path'] = $data->getHttpPath();
+        if (array_key_exists('httpPath', get_object_vars($data)) && null !== ($data->httpPath ?? null)) {
+            $dataArray['http_path'] = $data->httpPath ?? null;
         }
-        if ($data->isInitialized('initialDelaySeconds') && null !== $data->getInitialDelaySeconds()) {
-            $dataArray['initial_delay_seconds'] = $data->getInitialDelaySeconds();
+        if (array_key_exists('initialDelaySeconds', get_object_vars($data)) && null !== ($data->initialDelaySeconds ?? null)) {
+            $dataArray['initial_delay_seconds'] = $data->initialDelaySeconds ?? null;
         }
-        if ($data->isInitialized('periodSeconds') && null !== $data->getPeriodSeconds()) {
-            $dataArray['period_seconds'] = $data->getPeriodSeconds();
+        if (array_key_exists('periodSeconds', get_object_vars($data)) && null !== ($data->periodSeconds ?? null)) {
+            $dataArray['period_seconds'] = $data->periodSeconds ?? null;
         }
-        if ($data->isInitialized('successThreshold') && null !== $data->getSuccessThreshold()) {
-            $dataArray['success_threshold'] = $data->getSuccessThreshold();
+        if (array_key_exists('successThreshold', get_object_vars($data)) && null !== ($data->successThreshold ?? null)) {
+            $dataArray['success_threshold'] = $data->successThreshold ?? null;
         }
-        if ($data->isInitialized('timeoutSeconds') && null !== $data->getTimeoutSeconds()) {
-            $dataArray['timeout_seconds'] = $data->getTimeoutSeconds();
+        if (array_key_exists('timeoutSeconds', get_object_vars($data)) && null !== ($data->timeoutSeconds ?? null)) {
+            $dataArray['timeout_seconds'] = $data->timeoutSeconds ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

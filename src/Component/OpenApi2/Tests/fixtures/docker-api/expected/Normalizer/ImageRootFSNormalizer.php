@@ -41,33 +41,33 @@ class ImageRootFSNormalizer implements DenormalizerInterface, NormalizerInterfac
             $this->validate($data, new \Docker\Api\Validator\ImageRootFSConstraint());
         }
         if (\array_key_exists('Type', $data)) {
-            $object->setType($data['Type']);
+            $object->type = $data['Type'];
         }
         if (\array_key_exists('Layers', $data)) {
             $values = [];
             foreach ($data['Layers'] as $value) {
                 $values[] = $value;
             }
-            $object->setLayers($values);
+            $object->layers = $values;
         }
         if (\array_key_exists('BaseLayer', $data)) {
-            $object->setBaseLayer($data['BaseLayer']);
+            $object->baseLayer = $data['BaseLayer'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Type'] = $data->getType();
-        if ($data->isInitialized('layers') && null !== $data->getLayers()) {
+        $dataArray['Type'] = $data->type ?? null;
+        if (array_key_exists('layers', get_object_vars($data)) && null !== ($data->layers ?? null)) {
             $values = [];
-            foreach ($data->getLayers() as $value) {
+            foreach ($data->layers ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['Layers'] = $values;
         }
-        if ($data->isInitialized('baseLayer') && null !== $data->getBaseLayer()) {
-            $dataArray['BaseLayer'] = $data->getBaseLayer();
+        if (array_key_exists('baseLayer', get_object_vars($data)) && null !== ($data->baseLayer ?? null)) {
+            $dataArray['BaseLayer'] = $data->baseLayer ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImageRootFSConstraint());

@@ -41,15 +41,15 @@ class DropletActionResizeNormalizer implements DenormalizerInterface, Normalizer
             $data['disk'] = (bool) $data['disk'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('disk', $data)) {
-            $object->setDisk($data['disk']);
+            $object->disk = $data['disk'];
             unset($data['disk']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         foreach ($data as $key => $value) {
@@ -62,12 +62,12 @@ class DropletActionResizeNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('disk') && null !== $data->getDisk()) {
-            $dataArray['disk'] = $data->getDisk();
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('disk', get_object_vars($data)) && null !== ($data->disk ?? null)) {
+            $dataArray['disk'] = $data->disk ?? null;
         }
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['size'] = $data->getSize();
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['size'] = $data->size ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

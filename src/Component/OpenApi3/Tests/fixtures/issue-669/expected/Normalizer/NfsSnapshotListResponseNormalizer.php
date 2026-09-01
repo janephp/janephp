@@ -42,7 +42,7 @@ class NfsSnapshotListResponseNormalizer implements DenormalizerInterface, Normal
             foreach ($data['snapshots'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\NfsSnapshotResponse::class, 'json', $context);
             }
-            $object->setSnapshots($values);
+            $object->snapshots = $values;
             unset($data['snapshots']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class NfsSnapshotListResponseNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('snapshots') && null !== $data->getSnapshots()) {
+        if (array_key_exists('snapshots', get_object_vars($data)) && null !== ($data->snapshots ?? null)) {
             $values = [];
-            foreach ($data->getSnapshots() as $value) {
+            foreach ($data->snapshots ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['snapshots'] = $values;
