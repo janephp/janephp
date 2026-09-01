@@ -41,33 +41,33 @@ class SystemApNumberLimitSettingOfDomainNormalizer implements DenormalizerInterf
             $data['shared'] = (bool) $data['shared'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('domainName', $data)) {
-            $object->setDomainName($data['domainName']);
+            $object->domainName = $data['domainName'];
         }
         if (\array_key_exists('numberLimit', $data)) {
-            $object->setNumberLimit($data['numberLimit']);
+            $object->numberLimit = $data['numberLimit'];
         }
         if (\array_key_exists('shared', $data)) {
-            $object->setShared($data['shared']);
+            $object->shared = $data['shared'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('domainName') && null !== $data->getDomainName()) {
-            $dataArray['domainName'] = $data->getDomainName();
+        if (array_key_exists('domainName', get_object_vars($data)) && null !== ($data->domainName ?? null)) {
+            $dataArray['domainName'] = $data->domainName ?? null;
         }
-        if ($data->isInitialized('numberLimit') && null !== $data->getNumberLimit()) {
-            $dataArray['numberLimit'] = $data->getNumberLimit();
+        if (array_key_exists('numberLimit', get_object_vars($data)) && null !== ($data->numberLimit ?? null)) {
+            $dataArray['numberLimit'] = $data->numberLimit ?? null;
         }
-        if ($data->isInitialized('shared') && null !== $data->getShared()) {
-            $dataArray['shared'] = $data->getShared();
+        if (array_key_exists('shared', get_object_vars($data)) && null !== ($data->shared ?? null)) {
+            $dataArray['shared'] = $data->shared ?? null;
         }
         return $dataArray;
     }

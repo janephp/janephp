@@ -38,47 +38,47 @@ class ProfileCreateDnsServerProfileNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('primaryIp', $data)) {
-            $object->setPrimaryIp($data['primaryIp']);
+            $object->primaryIp = $data['primaryIp'];
         }
         if (\array_key_exists('secondaryIp', $data)) {
-            $object->setSecondaryIp($data['secondaryIp']);
+            $object->secondaryIp = $data['secondaryIp'];
         }
         if (\array_key_exists('tertiaryIp', $data)) {
-            $object->setTertiaryIp($data['tertiaryIp']);
+            $object->tertiaryIp = $data['tertiaryIp'];
         }
         if (\array_key_exists('mvnoId', $data)) {
-            $object->setMvnoId($data['mvnoId']);
+            $object->mvnoId = $data['mvnoId'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['primaryIp'] = $data->getPrimaryIp();
-        if ($data->isInitialized('secondaryIp') && null !== $data->getSecondaryIp()) {
-            $dataArray['secondaryIp'] = $data->getSecondaryIp();
+        $dataArray['primaryIp'] = $data->primaryIp ?? null;
+        if (array_key_exists('secondaryIp', get_object_vars($data)) && null !== ($data->secondaryIp ?? null)) {
+            $dataArray['secondaryIp'] = $data->secondaryIp ?? null;
         }
-        if ($data->isInitialized('tertiaryIp') && null !== $data->getTertiaryIp()) {
-            $dataArray['tertiaryIp'] = $data->getTertiaryIp();
+        if (array_key_exists('tertiaryIp', get_object_vars($data)) && null !== ($data->tertiaryIp ?? null)) {
+            $dataArray['tertiaryIp'] = $data->tertiaryIp ?? null;
         }
-        if ($data->isInitialized('mvnoId') && null !== $data->getMvnoId()) {
-            $dataArray['mvnoId'] = $data->getMvnoId();
+        if (array_key_exists('mvnoId', get_object_vars($data)) && null !== ($data->mvnoId ?? null)) {
+            $dataArray['mvnoId'] = $data->mvnoId ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
         return $dataArray;
     }

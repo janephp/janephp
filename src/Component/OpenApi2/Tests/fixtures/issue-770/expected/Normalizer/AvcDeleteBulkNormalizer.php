@@ -42,16 +42,16 @@ class AvcDeleteBulkNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['idList'] as $value) {
                 $values[] = $value;
             }
-            $object->setIdList($values);
+            $object->idList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('idList') && null !== $data->getIdList()) {
+        if (array_key_exists('idList', get_object_vars($data)) && null !== ($data->idList ?? null)) {
             $values = [];
-            foreach ($data->getIdList() as $value) {
+            foreach ($data->idList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['idList'] = $values;

@@ -38,11 +38,11 @@ class ApiUpdateAgentDeploymentVisibilityInputPublicNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('visibility', $data)) {
-            $object->setVisibility($data['visibility']);
+            $object->visibility = $data['visibility'];
             unset($data['visibility']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ApiUpdateAgentDeploymentVisibilityInputPublicNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
-            $dataArray['uuid'] = $data->getUuid();
+        if (array_key_exists('uuid', get_object_vars($data)) && null !== ($data->uuid ?? null)) {
+            $dataArray['uuid'] = $data->uuid ?? null;
         }
-        if ($data->isInitialized('visibility') && null !== $data->getVisibility()) {
-            $dataArray['visibility'] = $data->getVisibility();
+        if (array_key_exists('visibility', get_object_vars($data)) && null !== ($data->visibility ?? null)) {
+            $dataArray['visibility'] = $data->visibility ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

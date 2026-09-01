@@ -42,11 +42,11 @@ class ResponseAvailableUpgradesNormalizer implements DenormalizerInterface, Norm
             foreach ($data['available_upgrade_versions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\KubernetesVersion::class, 'json', $context);
             }
-            $object->setAvailableUpgradeVersions($values);
+            $object->availableUpgradeVersions = $values;
             unset($data['available_upgrade_versions']);
         }
         elseif (\array_key_exists('available_upgrade_versions', $data) && $data['available_upgrade_versions'] === null) {
-            $object->setAvailableUpgradeVersions(null);
+            $object->availableUpgradeVersions = null;
             unset($data['available_upgrade_versions']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,9 +59,9 @@ class ResponseAvailableUpgradesNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('availableUpgradeVersions') && null !== $data->getAvailableUpgradeVersions()) {
+        if (array_key_exists('availableUpgradeVersions', get_object_vars($data)) && null !== ($data->availableUpgradeVersions ?? null)) {
             $values = [];
-            foreach ($data->getAvailableUpgradeVersions() as $value) {
+            foreach ($data->availableUpgradeVersions ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['available_upgrade_versions'] = $values;

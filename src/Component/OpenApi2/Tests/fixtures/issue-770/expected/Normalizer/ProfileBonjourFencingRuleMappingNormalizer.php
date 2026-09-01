@@ -38,32 +38,32 @@ class ProfileBonjourFencingRuleMappingNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('serviceType', $data)) {
-            $object->setServiceType($data['serviceType']);
+            $object->serviceType = $data['serviceType'];
         }
         if (\array_key_exists('customServiceName', $data)) {
-            $object->setCustomServiceName($data['customServiceName']);
+            $object->customServiceName = $data['customServiceName'];
         }
         if (\array_key_exists('customStringList', $data)) {
             $values = [];
             foreach ($data['customStringList'] as $value) {
                 $values[] = $value;
             }
-            $object->setCustomStringList($values);
+            $object->customStringList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('serviceType') && null !== $data->getServiceType()) {
-            $dataArray['serviceType'] = $data->getServiceType();
+        if (array_key_exists('serviceType', get_object_vars($data)) && null !== ($data->serviceType ?? null)) {
+            $dataArray['serviceType'] = $data->serviceType ?? null;
         }
-        if ($data->isInitialized('customServiceName') && null !== $data->getCustomServiceName()) {
-            $dataArray['customServiceName'] = $data->getCustomServiceName();
+        if (array_key_exists('customServiceName', get_object_vars($data)) && null !== ($data->customServiceName ?? null)) {
+            $dataArray['customServiceName'] = $data->customServiceName ?? null;
         }
-        if ($data->isInitialized('customStringList') && null !== $data->getCustomStringList()) {
+        if (array_key_exists('customStringList', get_object_vars($data)) && null !== ($data->customStringList ?? null)) {
             $values = [];
-            foreach ($data->getCustomStringList() as $value) {
+            foreach ($data->customStringList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['customStringList'] = $values;

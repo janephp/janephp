@@ -31,7 +31,7 @@ class Test extends \Jane\Component\OpenApi3\Tests\Expected\NoReferenceResponse\R
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\NoReferenceResponse\Model\TestPostResponse201', 'json');
         }
     }

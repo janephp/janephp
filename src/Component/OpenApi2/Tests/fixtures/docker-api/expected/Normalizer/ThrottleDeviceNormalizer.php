@@ -41,21 +41,21 @@ class ThrottleDeviceNormalizer implements DenormalizerInterface, NormalizerInter
             $this->validate($data, new \Docker\Api\Validator\ThrottleDeviceConstraint());
         }
         if (\array_key_exists('Path', $data)) {
-            $object->setPath($data['Path']);
+            $object->path = $data['Path'];
         }
         if (\array_key_exists('Rate', $data)) {
-            $object->setRate($data['Rate']);
+            $object->rate = $data['Rate'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('path') && null !== $data->getPath()) {
-            $dataArray['Path'] = $data->getPath();
+        if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
+            $dataArray['Path'] = $data->path ?? null;
         }
-        if ($data->isInitialized('rate') && null !== $data->getRate()) {
-            $dataArray['Rate'] = $data->getRate();
+        if (array_key_exists('rate', get_object_vars($data)) && null !== ($data->rate ?? null)) {
+            $dataArray['Rate'] = $data->rate ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ThrottleDeviceConstraint());

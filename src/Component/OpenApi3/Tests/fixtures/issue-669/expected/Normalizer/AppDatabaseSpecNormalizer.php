@@ -41,31 +41,31 @@ class AppDatabaseSpecNormalizer implements DenormalizerInterface, NormalizerInte
             $data['production'] = (bool) $data['production'];
         }
         if (\array_key_exists('cluster_name', $data)) {
-            $object->setClusterName($data['cluster_name']);
+            $object->clusterName = $data['cluster_name'];
             unset($data['cluster_name']);
         }
         if (\array_key_exists('db_name', $data)) {
-            $object->setDbName($data['db_name']);
+            $object->dbName = $data['db_name'];
             unset($data['db_name']);
         }
         if (\array_key_exists('db_user', $data)) {
-            $object->setDbUser($data['db_user']);
+            $object->dbUser = $data['db_user'];
             unset($data['db_user']);
         }
         if (\array_key_exists('engine', $data)) {
-            $object->setEngine($data['engine']);
+            $object->engine = $data['engine'];
             unset($data['engine']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('production', $data)) {
-            $object->setProduction($data['production']);
+            $object->production = $data['production'];
             unset($data['production']);
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
             unset($data['version']);
         }
         foreach ($data as $key => $value) {
@@ -78,24 +78,24 @@ class AppDatabaseSpecNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clusterName') && null !== $data->getClusterName()) {
-            $dataArray['cluster_name'] = $data->getClusterName();
+        if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
+            $dataArray['cluster_name'] = $data->clusterName ?? null;
         }
-        if ($data->isInitialized('dbName') && null !== $data->getDbName()) {
-            $dataArray['db_name'] = $data->getDbName();
+        if (array_key_exists('dbName', get_object_vars($data)) && null !== ($data->dbName ?? null)) {
+            $dataArray['db_name'] = $data->dbName ?? null;
         }
-        if ($data->isInitialized('dbUser') && null !== $data->getDbUser()) {
-            $dataArray['db_user'] = $data->getDbUser();
+        if (array_key_exists('dbUser', get_object_vars($data)) && null !== ($data->dbUser ?? null)) {
+            $dataArray['db_user'] = $data->dbUser ?? null;
         }
-        if ($data->isInitialized('engine') && null !== $data->getEngine()) {
-            $dataArray['engine'] = $data->getEngine();
+        if (array_key_exists('engine', get_object_vars($data)) && null !== ($data->engine ?? null)) {
+            $dataArray['engine'] = $data->engine ?? null;
         }
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('production') && null !== $data->getProduction()) {
-            $dataArray['production'] = $data->getProduction();
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('production', get_object_vars($data)) && null !== ($data->production ?? null)) {
+            $dataArray['production'] = $data->production ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion();
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = $data->version ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -12,7 +12,7 @@ class SchemaGuesser extends ObjectGuesser
 {
     public function supportObject($object): bool
     {
-        return ($object instanceof Schema) && ('object' === $object->getType() || null === $object->getType()) && null !== $object->getProperties();
+        return ($object instanceof Schema) && ('object' === ($object->type ?? null) || null === ($object->type ?? null)) && null !== ($object->properties ?? null);
     }
 
     /**
@@ -30,11 +30,11 @@ class SchemaGuesser extends ObjectGuesser
     {
         $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions);
 
-        if (\is_string($object->getDiscriminator())
-            && \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
-            $classGuess = new ParentClass($classGuess, $object->getDiscriminator());
+        if (\is_string($object->discriminator ?? null)
+            && \is_array($object->enum ?? null) && \count($object->enum ?? null) > 0) {
+            $classGuess = new ParentClass($classGuess, $object->discriminator ?? null);
 
-            foreach ($object->getEnum() as $subClassName) {
+            foreach (($object->enum ?? null ?? []) as $subClassName) {
                 $subReference = preg_replace('#definitions\/.+$#', \sprintf('definitions/%s', $subClassName), $reference);
                 $classGuess->addChildEntry($subClassName, $subReference);
             }

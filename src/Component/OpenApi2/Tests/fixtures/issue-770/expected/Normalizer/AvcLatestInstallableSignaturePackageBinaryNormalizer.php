@@ -38,27 +38,27 @@ class AvcLatestInstallableSignaturePackageBinaryNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('fileName', $data)) {
-            $object->setFileName($data['fileName']);
+            $object->fileName = $data['fileName'];
         }
         if (\array_key_exists('platform', $data)) {
-            $object->setPlatform($data['platform']);
+            $object->platform = $data['platform'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
-            $dataArray['fileName'] = $data->getFileName();
+        if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
+            $dataArray['fileName'] = $data->fileName ?? null;
         }
-        if ($data->isInitialized('platform') && null !== $data->getPlatform()) {
-            $dataArray['platform'] = $data->getPlatform();
+        if (array_key_exists('platform', get_object_vars($data)) && null !== ($data->platform ?? null)) {
+            $dataArray['platform'] = $data->platform ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         return $dataArray;
     }

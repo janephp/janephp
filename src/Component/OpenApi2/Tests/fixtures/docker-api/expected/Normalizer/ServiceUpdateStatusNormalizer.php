@@ -41,33 +41,33 @@ class ServiceUpdateStatusNormalizer implements DenormalizerInterface, Normalizer
             $this->validate($data, new \Docker\Api\Validator\ServiceUpdateStatusConstraint());
         }
         if (\array_key_exists('State', $data)) {
-            $object->setState($data['State']);
+            $object->state = $data['State'];
         }
         if (\array_key_exists('StartedAt', $data)) {
-            $object->setStartedAt($data['StartedAt']);
+            $object->startedAt = $data['StartedAt'];
         }
         if (\array_key_exists('CompletedAt', $data)) {
-            $object->setCompletedAt($data['CompletedAt']);
+            $object->completedAt = $data['CompletedAt'];
         }
         if (\array_key_exists('Message', $data)) {
-            $object->setMessage($data['Message']);
+            $object->message = $data['Message'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['State'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['State'] = $data->state ?? null;
         }
-        if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
-            $dataArray['StartedAt'] = $data->getStartedAt();
+        if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
+            $dataArray['StartedAt'] = $data->startedAt ?? null;
         }
-        if ($data->isInitialized('completedAt') && null !== $data->getCompletedAt()) {
-            $dataArray['CompletedAt'] = $data->getCompletedAt();
+        if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
+            $dataArray['CompletedAt'] = $data->completedAt ?? null;
         }
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['Message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['Message'] = $data->message ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceUpdateStatusConstraint());

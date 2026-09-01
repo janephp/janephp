@@ -38,39 +38,39 @@ class ListItemCreateRequestNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('contentSchemaId', $data)) {
-            $object->setContentSchemaId($data['contentSchemaId']);
+            $object->contentSchemaId = $data['contentSchemaId'];
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
             $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['content'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setContent($values);
+            $object->content = $values;
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
-            $object->setContent(null);
+            $object->content = null;
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
-            $object->setRequestId($data['requestId']);
+            $object->requestId = $data['requestId'];
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
-            $object->setRequestId(null);
+            $object->requestId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        $dataArray['contentSchemaId'] = $data->contentSchemaId ?? null;
+        if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getContent() as $key => $value) {
+            foreach ($data->content ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['content'] = $values;
         }
-        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
-            $dataArray['requestId'] = $data->getRequestId();
+        if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
+            $dataArray['requestId'] = $data->requestId ?? null;
         }
         return $dataArray;
     }

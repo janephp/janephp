@@ -38,93 +38,93 @@ class SystemFtpNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('tenantId', $data)) {
-            $object->setTenantId($data['tenantId']);
+            $object->tenantId = $data['tenantId'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('ftpHost', $data)) {
-            $object->setFtpHost($data['ftpHost']);
+            $object->ftpHost = $data['ftpHost'];
         }
         if (\array_key_exists('ftpPort', $data)) {
-            $object->setFtpPort($data['ftpPort']);
+            $object->ftpPort = $data['ftpPort'];
         }
         if (\array_key_exists('ftpRemoteDirectory', $data)) {
-            $object->setFtpRemoteDirectory($data['ftpRemoteDirectory']);
+            $object->ftpRemoteDirectory = $data['ftpRemoteDirectory'];
         }
         if (\array_key_exists('ftpUserName', $data)) {
-            $object->setFtpUserName($data['ftpUserName']);
+            $object->ftpUserName = $data['ftpUserName'];
         }
         if (\array_key_exists('ftpPassword', $data)) {
-            $object->setFtpPassword($data['ftpPassword']);
+            $object->ftpPassword = $data['ftpPassword'];
         }
         if (\array_key_exists('creatorUUID', $data)) {
-            $object->setCreatorUUID($data['creatorUUID']);
+            $object->creatorUUID = $data['creatorUUID'];
         }
         if (\array_key_exists('createDatetime', $data)) {
-            $object->setCreateDatetime($data['createDatetime']);
+            $object->createDatetime = $data['createDatetime'];
         }
         if (\array_key_exists('lastModifiedBy', $data)) {
-            $object->setLastModifiedBy($data['lastModifiedBy']);
+            $object->lastModifiedBy = $data['lastModifiedBy'];
         }
         if (\array_key_exists('lastModifiedOn', $data)) {
-            $object->setLastModifiedOn($data['lastModifiedOn']);
+            $object->lastModifiedOn = $data['lastModifiedOn'];
         }
         if (\array_key_exists('ftpName', $data)) {
-            $object->setFtpName($data['ftpName']);
+            $object->ftpName = $data['ftpName'];
         }
         if (\array_key_exists('ftpProtocol', $data)) {
-            $object->setFtpProtocol($data['ftpProtocol']);
+            $object->ftpProtocol = $data['ftpProtocol'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('tenantId') && null !== $data->getTenantId()) {
-            $dataArray['tenantId'] = $data->getTenantId();
+        if (array_key_exists('tenantId', get_object_vars($data)) && null !== ($data->tenantId ?? null)) {
+            $dataArray['tenantId'] = $data->tenantId ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('ftpHost') && null !== $data->getFtpHost()) {
-            $dataArray['ftpHost'] = $data->getFtpHost();
+        if (array_key_exists('ftpHost', get_object_vars($data)) && null !== ($data->ftpHost ?? null)) {
+            $dataArray['ftpHost'] = $data->ftpHost ?? null;
         }
-        if ($data->isInitialized('ftpPort') && null !== $data->getFtpPort()) {
-            $dataArray['ftpPort'] = $data->getFtpPort();
+        if (array_key_exists('ftpPort', get_object_vars($data)) && null !== ($data->ftpPort ?? null)) {
+            $dataArray['ftpPort'] = $data->ftpPort ?? null;
         }
-        if ($data->isInitialized('ftpRemoteDirectory') && null !== $data->getFtpRemoteDirectory()) {
-            $dataArray['ftpRemoteDirectory'] = $data->getFtpRemoteDirectory();
+        if (array_key_exists('ftpRemoteDirectory', get_object_vars($data)) && null !== ($data->ftpRemoteDirectory ?? null)) {
+            $dataArray['ftpRemoteDirectory'] = $data->ftpRemoteDirectory ?? null;
         }
-        if ($data->isInitialized('ftpUserName') && null !== $data->getFtpUserName()) {
-            $dataArray['ftpUserName'] = $data->getFtpUserName();
+        if (array_key_exists('ftpUserName', get_object_vars($data)) && null !== ($data->ftpUserName ?? null)) {
+            $dataArray['ftpUserName'] = $data->ftpUserName ?? null;
         }
-        if ($data->isInitialized('ftpPassword') && null !== $data->getFtpPassword()) {
-            $dataArray['ftpPassword'] = $data->getFtpPassword();
+        if (array_key_exists('ftpPassword', get_object_vars($data)) && null !== ($data->ftpPassword ?? null)) {
+            $dataArray['ftpPassword'] = $data->ftpPassword ?? null;
         }
-        if ($data->isInitialized('creatorUUID') && null !== $data->getCreatorUUID()) {
-            $dataArray['creatorUUID'] = $data->getCreatorUUID();
+        if (array_key_exists('creatorUUID', get_object_vars($data)) && null !== ($data->creatorUUID ?? null)) {
+            $dataArray['creatorUUID'] = $data->creatorUUID ?? null;
         }
-        if ($data->isInitialized('createDatetime') && null !== $data->getCreateDatetime()) {
-            $dataArray['createDatetime'] = $data->getCreateDatetime();
+        if (array_key_exists('createDatetime', get_object_vars($data)) && null !== ($data->createDatetime ?? null)) {
+            $dataArray['createDatetime'] = $data->createDatetime ?? null;
         }
-        if ($data->isInitialized('lastModifiedBy') && null !== $data->getLastModifiedBy()) {
-            $dataArray['lastModifiedBy'] = $data->getLastModifiedBy();
+        if (array_key_exists('lastModifiedBy', get_object_vars($data)) && null !== ($data->lastModifiedBy ?? null)) {
+            $dataArray['lastModifiedBy'] = $data->lastModifiedBy ?? null;
         }
-        if ($data->isInitialized('lastModifiedOn') && null !== $data->getLastModifiedOn()) {
-            $dataArray['lastModifiedOn'] = $data->getLastModifiedOn();
+        if (array_key_exists('lastModifiedOn', get_object_vars($data)) && null !== ($data->lastModifiedOn ?? null)) {
+            $dataArray['lastModifiedOn'] = $data->lastModifiedOn ?? null;
         }
-        if ($data->isInitialized('ftpName') && null !== $data->getFtpName()) {
-            $dataArray['ftpName'] = $data->getFtpName();
+        if (array_key_exists('ftpName', get_object_vars($data)) && null !== ($data->ftpName ?? null)) {
+            $dataArray['ftpName'] = $data->ftpName ?? null;
         }
-        if ($data->isInitialized('ftpProtocol') && null !== $data->getFtpProtocol()) {
-            $dataArray['ftpProtocol'] = $data->getFtpProtocol();
+        if (array_key_exists('ftpProtocol', get_object_vars($data)) && null !== ($data->ftpProtocol ?? null)) {
+            $dataArray['ftpProtocol'] = $data->ftpProtocol ?? null;
         }
         return $dataArray;
     }

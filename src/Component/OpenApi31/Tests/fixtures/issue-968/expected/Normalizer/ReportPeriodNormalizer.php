@@ -47,11 +47,11 @@ class ReportPeriodNormalizer implements DenormalizerInterface, NormalizerInterfa
             } elseif (is_null($data['from'])) {
                 $value = $data['from'];
             }
-            $object->setFrom($value);
+            $object->from = $value;
             unset($data['from']);
         }
         elseif (\array_key_exists('from', $data) && $data['from'] === null) {
-            $object->setFrom(null);
+            $object->from = null;
             unset($data['from']);
         }
         foreach ($data as $key => $value_1) {
@@ -64,12 +64,12 @@ class ReportPeriodNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('from') && null !== $data->getFrom()) {
-            $value = $data->getFrom();
-            if (is_string($data->getFrom())) {
-                $value = $data->getFrom();
-            } elseif (is_null($data->getFrom())) {
-                $value = $data->getFrom();
+        if (array_key_exists('from', get_object_vars($data)) && null !== ($data->from ?? null)) {
+            $value = $data->from ?? null;
+            if (is_string($data->from ?? null)) {
+                $value = $data->from ?? null;
+            } elseif (is_null($data->from ?? null)) {
+                $value = $data->from ?? null;
             }
             $dataArray['from'] = $value;
         }

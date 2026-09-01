@@ -41,21 +41,21 @@ class EventManagementEventEmailSettingNormalizer implements DenormalizerInterfac
             $data['emailEnabled'] = (bool) $data['emailEnabled'];
         }
         if (\array_key_exists('emailEnabled', $data)) {
-            $object->setEmailEnabled($data['emailEnabled']);
+            $object->emailEnabled = $data['emailEnabled'];
         }
         if (\array_key_exists('mailTo', $data)) {
-            $object->setMailTo($data['mailTo']);
+            $object->mailTo = $data['mailTo'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('emailEnabled') && null !== $data->getEmailEnabled()) {
-            $dataArray['emailEnabled'] = $data->getEmailEnabled();
+        if (array_key_exists('emailEnabled', get_object_vars($data)) && null !== ($data->emailEnabled ?? null)) {
+            $dataArray['emailEnabled'] = $data->emailEnabled ?? null;
         }
-        if ($data->isInitialized('mailTo') && null !== $data->getMailTo()) {
-            $dataArray['mailTo'] = $data->getMailTo();
+        if (array_key_exists('mailTo', get_object_vars($data)) && null !== ($data->mailTo ?? null)) {
+            $dataArray['mailTo'] = $data->mailTo ?? null;
         }
         return $dataArray;
     }

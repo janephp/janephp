@@ -38,15 +38,15 @@ class IdentityModifyGuestPassNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('isDisabled', $data)) {
-            $object->setIsDisabled($data['isDisabled']);
+            $object->isDisabled = $data['isDisabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isDisabled') && null !== $data->getIsDisabled()) {
-            $dataArray['isDisabled'] = $data->getIsDisabled();
+        if (array_key_exists('isDisabled', get_object_vars($data)) && null !== ($data->isDisabled ?? null)) {
+            $dataArray['isDisabled'] = $data->isDisabled ?? null;
         }
         return $dataArray;
     }

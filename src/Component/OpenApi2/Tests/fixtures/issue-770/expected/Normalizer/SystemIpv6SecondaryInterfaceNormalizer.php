@@ -38,14 +38,14 @@ class SystemIpv6SecondaryInterfaceNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ipAddress', $data)) {
-            $object->setIpAddress($data['ipAddress']);
+            $object->ipAddress = $data['ipAddress'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ipAddress'] = $data->getIpAddress();
+        $dataArray['ipAddress'] = $data->ipAddress ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

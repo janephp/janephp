@@ -19,7 +19,7 @@ class GetThingDetails extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Clie
     }
     public function getUri(): string
     {
-        return str_replace(['{thingId}'], [$this->thingId], '/things/{thingId}/details');
+        return str_replace(['{thingId}'], [rawurlencode($this->thingId)], '/things/{thingId}/details');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

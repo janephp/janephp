@@ -42,7 +42,7 @@ class ResponseExistingCheckNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['check'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setCheck($values);
+            $object->check = $values;
             unset($data['check']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -55,9 +55,9 @@ class ResponseExistingCheckNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('check') && null !== $data->getCheck()) {
+        if (array_key_exists('check', get_object_vars($data)) && null !== ($data->check ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getCheck() as $key => $value) {
+            foreach ($data->check ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['check'] = $values;

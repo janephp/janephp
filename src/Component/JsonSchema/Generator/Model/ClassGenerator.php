@@ -22,9 +22,9 @@ trait ClassGenerator
     /**
      * Return a model class.
      *
-     * @param Node[]                                                $properties
-     * @param Node[]                                                $methods
-     * @param array<string, array{0: string, 1: string, 2: string}> $definedProperties Map of PHP property name to wire name, getter and setter method names
+     * @param Node[]                $properties
+     * @param Node[]                $methods
+     * @param array<string, string> $definedProperties Map of PHP property name to wire (serialized) name
      */
     protected function createModel(
         string $name,
@@ -49,7 +49,7 @@ EOD
             )];
         }
 
-        $stmts = array_merge($this->getInitialized(), $properties, $methods);
+        $stmts = array_merge($properties, $methods);
         $implements = [];
 
         if ($useExtensionsRuntime && null !== $runtimeTraitFqcn && null !== $runtimeInterfaceFqcn) {
@@ -76,18 +76,14 @@ EOD
     /**
      * Create the `definedProperties()` method describing the properties declared by the model class.
      *
-     * @param array<string, array{0: string, 1: string, 2: string}> $definedProperties
+     * @param array<string, string> $definedProperties Map of PHP property name to wire (serialized) name
      */
     private function createDefinedPropertiesMethod(array $definedProperties, bool $inherited): Stmt\ClassMethod
     {
         $items = [];
-        foreach ($definedProperties as $phpName => [$wireName, $getterName, $setterName]) {
+        foreach ($definedProperties as $phpName => $wireName) {
             $items[] = new Expr\ArrayItem(
-                new Expr\Array_([
-                    new Expr\ArrayItem(new Scalar\String_($wireName)),
-                    new Expr\ArrayItem(new Scalar\String_($getterName)),
-                    new Expr\ArrayItem(new Scalar\String_($setterName)),
-                ]),
+                new Scalar\String_($wireName),
                 new Scalar\String_($phpName),
             );
         }
@@ -105,31 +101,5 @@ EOD
             'returnType' => new Name('array'),
             'stmts' => [new Stmt\Return_($return)],
         ]);
-    }
-
-    protected function getInitialized(): array
-    {
-        $initializedProperty = new Stmt\Property(Modifiers::PROTECTED, [new Stmt\PropertyProperty('initialized', new Expr\Array_())], ['comments' => [new Doc(<<<EOD
-/**
- * @var array
- */
-EOD
-        )]]);
-        $initializedMethod = new Stmt\ClassMethod(
-            'isInitialized',
-            [
-                // public function
-                'flags' => Modifiers::PUBLIC,
-                'params' => [new Node\Param($propertyVariable = new Expr\Variable('property'))],
-                'stmts' => [
-                    new Stmt\Return_(
-                        new Expr\FuncCall(new Name('array_key_exists'), [new Arg($propertyVariable), new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'initialized'))])
-                    ),
-                ],
-                'returnType' => new Name('bool'),
-            ]
-        );
-
-        return [$initializedProperty, $initializedMethod];
     }
 }

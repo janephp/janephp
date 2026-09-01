@@ -8,103 +8,23 @@ class PaginatedResourceMeta implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var int
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public int $limit;
     /**
      * @var int
      */
-    protected $limit;
+    public int $offset;
     /**
      * @var int
      */
-    protected $offset;
-    /**
-     * @var int
-     */
-    protected $total;
+    public int $total;
     /**
      * @var string|null
      */
-    protected $next;
-    /**
-     * @return int
-     */
-    public function getLimit(): int
-    {
-        return $this->limit;
-    }
-    /**
-     * @param int $limit
-     *
-     * @return self
-     */
-    public function setLimit(int $limit): self
-    {
-        $this->initialized['limit'] = true;
-        $this->limit = $limit;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getOffset(): int
-    {
-        return $this->offset;
-    }
-    /**
-     * @param int $offset
-     *
-     * @return self
-     */
-    public function setOffset(int $offset): self
-    {
-        $this->initialized['offset'] = true;
-        $this->offset = $offset;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getTotal(): int
-    {
-        return $this->total;
-    }
-    /**
-     * @param int $total
-     *
-     * @return self
-     */
-    public function setTotal(int $total): self
-    {
-        $this->initialized['total'] = true;
-        $this->total = $total;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getNext(): ?string
-    {
-        return $this->next;
-    }
-    /**
-     * @param string|null $next
-     *
-     * @return self
-     */
-    public function setNext(?string $next): self
-    {
-        $this->initialized['next'] = true;
-        $this->next = $next;
-        return $this;
-    }
+    public ?string $next;
     public function definedProperties(): array
     {
-        return ['limit' => ['limit', 'getLimit', 'setLimit'], 'offset' => ['offset', 'getOffset', 'setOffset'], 'total' => ['total', 'getTotal', 'setTotal'], 'next' => ['next', 'getNext', 'setNext']];
+        return ['limit' => 'limit', 'offset' => 'offset', 'total' => 'total', 'next' => 'next'];
     }
 }

@@ -41,46 +41,46 @@ class VolumesCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $this->validate($data, new \Docker\Api\Validator\VolumesCreatePostBodyConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Driver', $data)) {
-            $object->setDriver($data['Driver']);
+            $object->driver = $data['Driver'];
         }
         if (\array_key_exists('DriverOpts', $data)) {
             $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['DriverOpts'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setDriverOpts($values);
+            $object->driverOpts = $values;
         }
         if (\array_key_exists('Labels', $data)) {
             $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
-            $object->setLabels($values_1);
+            $object->labels = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('driver') && null !== $data->getDriver()) {
-            $dataArray['Driver'] = $data->getDriver();
+        if (array_key_exists('driver', get_object_vars($data)) && null !== ($data->driver ?? null)) {
+            $dataArray['Driver'] = $data->driver ?? null;
         }
-        if ($data->isInitialized('driverOpts') && null !== $data->getDriverOpts()) {
+        if (array_key_exists('driverOpts', get_object_vars($data)) && null !== ($data->driverOpts ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getDriverOpts() as $key => $value) {
+            foreach ($data->driverOpts ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['DriverOpts'] = $values;
         }
-        if ($data->isInitialized('labels') && null !== $data->getLabels()) {
+        if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values_1 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getLabels() as $key_1 => $value_1) {
+            foreach ($data->labels ?? null as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['Labels'] = $values_1;

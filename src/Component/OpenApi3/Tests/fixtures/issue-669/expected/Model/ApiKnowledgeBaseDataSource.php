@@ -8,25 +8,17 @@ class ApiKnowledgeBaseDataSource implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * AWS S3 Data Source for Display
      *
      * @var ApiAWSDataSourceDisplay
      */
-    protected $awsDataSource;
+    public ApiAWSDataSourceDisplay $awsDataSource;
     /**
      * Name of storage bucket - Deprecated, moved to data_source_details
      *
      * @var string
      */
-    protected $bucketName;
+    public string $bucketName;
     /**
      * The chunking algorithm to use for processing data sources.
      * 
@@ -34,7 +26,7 @@ class ApiKnowledgeBaseDataSource implements AdditionalPropertiesInterface
      *
      * @var string
      */
-    protected $chunkingAlgorithm = 'CHUNKING_ALGORITHM_SECTION_BASED';
+    public string $chunkingAlgorithm = 'CHUNKING_ALGORITHM_SECTION_BASED';
     /**
      * Configuration options for the chunking algorithm.
      * 
@@ -42,405 +34,73 @@ class ApiKnowledgeBaseDataSource implements AdditionalPropertiesInterface
      *
      * @var ApiChunkingOptions
      */
-    protected $chunkingOptions;
+    public ApiChunkingOptions $chunkingOptions;
     /**
      * Creation date / time
      *
      * @var \DateTime
      */
-    protected $createdAt;
+    public \DateTime $createdAt;
     /**
      * Dropbox Data Source for Display
      *
      * @var ApiDropboxDataSourceDisplay
      */
-    protected $dropboxDataSource;
+    public ApiDropboxDataSourceDisplay $dropboxDataSource;
     /**
      * File to upload as data source for knowledge base.
      *
      * @var ApiFileUploadDataSource
      */
-    protected $fileUploadDataSource;
+    public ApiFileUploadDataSource $fileUploadDataSource;
     /**
      * Google Drive Data Source for Display
      *
      * @var ApiGoogleDriveDataSourceDisplay
      */
-    protected $googleDriveDataSource;
+    public ApiGoogleDriveDataSourceDisplay $googleDriveDataSource;
     /**
      * Path of folder or object in bucket - Deprecated, moved to data_source_details
      *
      * @var string
      */
-    protected $itemPath;
+    public string $itemPath;
     /**
      * @var ApiIndexedDataSource
      */
-    protected $lastDatasourceIndexingJob;
+    public ApiIndexedDataSource $lastDatasourceIndexingJob;
     /**
      * Region code - Deprecated, moved to data_source_details
      *
      * @var string
      */
-    protected $region;
+    public string $region;
     /**
      * Spaces Bucket Data Source
      *
      * @var ApiSpacesDataSource
      */
-    protected $spacesDataSource;
+    public ApiSpacesDataSource $spacesDataSource;
     /**
      * Last modified
      *
      * @var \DateTime
      */
-    protected $updatedAt;
+    public \DateTime $updatedAt;
     /**
      * Unique id of knowledge base
      *
      * @var string
      */
-    protected $uuid;
+    public string $uuid;
     /**
      * WebCrawlerDataSource
      *
      * @var ApiWebCrawlerDataSource
      */
-    protected $webCrawlerDataSource;
-    /**
-     * AWS S3 Data Source for Display
-     *
-     * @return ApiAWSDataSourceDisplay
-     */
-    public function getAwsDataSource(): ApiAWSDataSourceDisplay
-    {
-        return $this->awsDataSource;
-    }
-    /**
-     * AWS S3 Data Source for Display
-     *
-     * @param ApiAWSDataSourceDisplay $awsDataSource
-     *
-     * @return self
-     */
-    public function setAwsDataSource(ApiAWSDataSourceDisplay $awsDataSource): self
-    {
-        $this->initialized['awsDataSource'] = true;
-        $this->awsDataSource = $awsDataSource;
-        return $this;
-    }
-    /**
-     * Name of storage bucket - Deprecated, moved to data_source_details
-     *
-     * @return string
-     */
-    public function getBucketName(): string
-    {
-        return $this->bucketName;
-    }
-    /**
-     * Name of storage bucket - Deprecated, moved to data_source_details
-     *
-     * @param string $bucketName
-     *
-     * @return self
-     */
-    public function setBucketName(string $bucketName): self
-    {
-        $this->initialized['bucketName'] = true;
-        $this->bucketName = $bucketName;
-        return $this;
-    }
-    /**
-     * The chunking algorithm to use for processing data sources.
-     * 
-     * **Note: This feature requires enabling the knowledgebase enhancements feature preview flag.**
-     *
-     * @return string
-     */
-    public function getChunkingAlgorithm(): string
-    {
-        return $this->chunkingAlgorithm;
-    }
-    /**
-     * The chunking algorithm to use for processing data sources.
-     **Note: This feature requires enabling the knowledgebase enhancements feature preview flag.**
-     *
-     * @param string $chunkingAlgorithm
-     *
-     * @return self
-     */
-    public function setChunkingAlgorithm(string $chunkingAlgorithm): self
-    {
-        $this->initialized['chunkingAlgorithm'] = true;
-        $this->chunkingAlgorithm = $chunkingAlgorithm;
-        return $this;
-    }
-    /**
-     * Configuration options for the chunking algorithm.
-     * 
-     * **Note: This feature requires enabling the knowledgebase enhancements feature preview flag.**
-     *
-     * @return ApiChunkingOptions
-     */
-    public function getChunkingOptions(): ApiChunkingOptions
-    {
-        return $this->chunkingOptions;
-    }
-    /**
-     * Configuration options for the chunking algorithm.
-     **Note: This feature requires enabling the knowledgebase enhancements feature preview flag.**
-     *
-     * @param ApiChunkingOptions $chunkingOptions
-     *
-     * @return self
-     */
-    public function setChunkingOptions(ApiChunkingOptions $chunkingOptions): self
-    {
-        $this->initialized['chunkingOptions'] = true;
-        $this->chunkingOptions = $chunkingOptions;
-        return $this;
-    }
-    /**
-     * Creation date / time
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt(): \DateTime
-    {
-        return $this->createdAt;
-    }
-    /**
-     * Creation date / time
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return self
-     */
-    public function setCreatedAt(\DateTime $createdAt): self
-    {
-        $this->initialized['createdAt'] = true;
-        $this->createdAt = $createdAt;
-        return $this;
-    }
-    /**
-     * Dropbox Data Source for Display
-     *
-     * @return ApiDropboxDataSourceDisplay
-     */
-    public function getDropboxDataSource(): ApiDropboxDataSourceDisplay
-    {
-        return $this->dropboxDataSource;
-    }
-    /**
-     * Dropbox Data Source for Display
-     *
-     * @param ApiDropboxDataSourceDisplay $dropboxDataSource
-     *
-     * @return self
-     */
-    public function setDropboxDataSource(ApiDropboxDataSourceDisplay $dropboxDataSource): self
-    {
-        $this->initialized['dropboxDataSource'] = true;
-        $this->dropboxDataSource = $dropboxDataSource;
-        return $this;
-    }
-    /**
-     * File to upload as data source for knowledge base.
-     *
-     * @return ApiFileUploadDataSource
-     */
-    public function getFileUploadDataSource(): ApiFileUploadDataSource
-    {
-        return $this->fileUploadDataSource;
-    }
-    /**
-     * File to upload as data source for knowledge base.
-     *
-     * @param ApiFileUploadDataSource $fileUploadDataSource
-     *
-     * @return self
-     */
-    public function setFileUploadDataSource(ApiFileUploadDataSource $fileUploadDataSource): self
-    {
-        $this->initialized['fileUploadDataSource'] = true;
-        $this->fileUploadDataSource = $fileUploadDataSource;
-        return $this;
-    }
-    /**
-     * Google Drive Data Source for Display
-     *
-     * @return ApiGoogleDriveDataSourceDisplay
-     */
-    public function getGoogleDriveDataSource(): ApiGoogleDriveDataSourceDisplay
-    {
-        return $this->googleDriveDataSource;
-    }
-    /**
-     * Google Drive Data Source for Display
-     *
-     * @param ApiGoogleDriveDataSourceDisplay $googleDriveDataSource
-     *
-     * @return self
-     */
-    public function setGoogleDriveDataSource(ApiGoogleDriveDataSourceDisplay $googleDriveDataSource): self
-    {
-        $this->initialized['googleDriveDataSource'] = true;
-        $this->googleDriveDataSource = $googleDriveDataSource;
-        return $this;
-    }
-    /**
-     * Path of folder or object in bucket - Deprecated, moved to data_source_details
-     *
-     * @return string
-     */
-    public function getItemPath(): string
-    {
-        return $this->itemPath;
-    }
-    /**
-     * Path of folder or object in bucket - Deprecated, moved to data_source_details
-     *
-     * @param string $itemPath
-     *
-     * @return self
-     */
-    public function setItemPath(string $itemPath): self
-    {
-        $this->initialized['itemPath'] = true;
-        $this->itemPath = $itemPath;
-        return $this;
-    }
-    /**
-     * @return ApiIndexedDataSource
-     */
-    public function getLastDatasourceIndexingJob(): ApiIndexedDataSource
-    {
-        return $this->lastDatasourceIndexingJob;
-    }
-    /**
-     * @param ApiIndexedDataSource $lastDatasourceIndexingJob
-     *
-     * @return self
-     */
-    public function setLastDatasourceIndexingJob(ApiIndexedDataSource $lastDatasourceIndexingJob): self
-    {
-        $this->initialized['lastDatasourceIndexingJob'] = true;
-        $this->lastDatasourceIndexingJob = $lastDatasourceIndexingJob;
-        return $this;
-    }
-    /**
-     * Region code - Deprecated, moved to data_source_details
-     *
-     * @return string
-     */
-    public function getRegion(): string
-    {
-        return $this->region;
-    }
-    /**
-     * Region code - Deprecated, moved to data_source_details
-     *
-     * @param string $region
-     *
-     * @return self
-     */
-    public function setRegion(string $region): self
-    {
-        $this->initialized['region'] = true;
-        $this->region = $region;
-        return $this;
-    }
-    /**
-     * Spaces Bucket Data Source
-     *
-     * @return ApiSpacesDataSource
-     */
-    public function getSpacesDataSource(): ApiSpacesDataSource
-    {
-        return $this->spacesDataSource;
-    }
-    /**
-     * Spaces Bucket Data Source
-     *
-     * @param ApiSpacesDataSource $spacesDataSource
-     *
-     * @return self
-     */
-    public function setSpacesDataSource(ApiSpacesDataSource $spacesDataSource): self
-    {
-        $this->initialized['spacesDataSource'] = true;
-        $this->spacesDataSource = $spacesDataSource;
-        return $this;
-    }
-    /**
-     * Last modified
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt(): \DateTime
-    {
-        return $this->updatedAt;
-    }
-    /**
-     * Last modified
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return self
-     */
-    public function setUpdatedAt(\DateTime $updatedAt): self
-    {
-        $this->initialized['updatedAt'] = true;
-        $this->updatedAt = $updatedAt;
-        return $this;
-    }
-    /**
-     * Unique id of knowledge base
-     *
-     * @return string
-     */
-    public function getUuid(): string
-    {
-        return $this->uuid;
-    }
-    /**
-     * Unique id of knowledge base
-     *
-     * @param string $uuid
-     *
-     * @return self
-     */
-    public function setUuid(string $uuid): self
-    {
-        $this->initialized['uuid'] = true;
-        $this->uuid = $uuid;
-        return $this;
-    }
-    /**
-     * WebCrawlerDataSource
-     *
-     * @return ApiWebCrawlerDataSource
-     */
-    public function getWebCrawlerDataSource(): ApiWebCrawlerDataSource
-    {
-        return $this->webCrawlerDataSource;
-    }
-    /**
-     * WebCrawlerDataSource
-     *
-     * @param ApiWebCrawlerDataSource $webCrawlerDataSource
-     *
-     * @return self
-     */
-    public function setWebCrawlerDataSource(ApiWebCrawlerDataSource $webCrawlerDataSource): self
-    {
-        $this->initialized['webCrawlerDataSource'] = true;
-        $this->webCrawlerDataSource = $webCrawlerDataSource;
-        return $this;
-    }
+    public ApiWebCrawlerDataSource $webCrawlerDataSource;
     public function definedProperties(): array
     {
-        return ['awsDataSource' => ['aws_data_source', 'getAwsDataSource', 'setAwsDataSource'], 'bucketName' => ['bucket_name', 'getBucketName', 'setBucketName'], 'chunkingAlgorithm' => ['chunking_algorithm', 'getChunkingAlgorithm', 'setChunkingAlgorithm'], 'chunkingOptions' => ['chunking_options', 'getChunkingOptions', 'setChunkingOptions'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'dropboxDataSource' => ['dropbox_data_source', 'getDropboxDataSource', 'setDropboxDataSource'], 'fileUploadDataSource' => ['file_upload_data_source', 'getFileUploadDataSource', 'setFileUploadDataSource'], 'googleDriveDataSource' => ['google_drive_data_source', 'getGoogleDriveDataSource', 'setGoogleDriveDataSource'], 'itemPath' => ['item_path', 'getItemPath', 'setItemPath'], 'lastDatasourceIndexingJob' => ['last_datasource_indexing_job', 'getLastDatasourceIndexingJob', 'setLastDatasourceIndexingJob'], 'region' => ['region', 'getRegion', 'setRegion'], 'spacesDataSource' => ['spaces_data_source', 'getSpacesDataSource', 'setSpacesDataSource'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'uuid' => ['uuid', 'getUuid', 'setUuid'], 'webCrawlerDataSource' => ['web_crawler_data_source', 'getWebCrawlerDataSource', 'setWebCrawlerDataSource']];
+        return ['awsDataSource' => 'aws_data_source', 'bucketName' => 'bucket_name', 'chunkingAlgorithm' => 'chunking_algorithm', 'chunkingOptions' => 'chunking_options', 'createdAt' => 'created_at', 'dropboxDataSource' => 'dropbox_data_source', 'fileUploadDataSource' => 'file_upload_data_source', 'googleDriveDataSource' => 'google_drive_data_source', 'itemPath' => 'item_path', 'lastDatasourceIndexingJob' => 'last_datasource_indexing_job', 'region' => 'region', 'spacesDataSource' => 'spaces_data_source', 'updatedAt' => 'updated_at', 'uuid' => 'uuid', 'webCrawlerDataSource' => 'web_crawler_data_source'];
     }
 }

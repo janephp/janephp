@@ -38,27 +38,27 @@ class CommonSshPublicKeyRefNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('keyLabel', $data)) {
-            $object->setKeyLabel($data['keyLabel']);
+            $object->keyLabel = $data['keyLabel'];
         }
         if (\array_key_exists('keyContent', $data)) {
-            $object->setKeyContent($data['keyContent']);
+            $object->keyContent = $data['keyContent'];
         }
         if (\array_key_exists('fingerprint', $data)) {
-            $object->setFingerprint($data['fingerprint']);
+            $object->fingerprint = $data['fingerprint'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('keyLabel') && null !== $data->getKeyLabel()) {
-            $dataArray['keyLabel'] = $data->getKeyLabel();
+        if (array_key_exists('keyLabel', get_object_vars($data)) && null !== ($data->keyLabel ?? null)) {
+            $dataArray['keyLabel'] = $data->keyLabel ?? null;
         }
-        if ($data->isInitialized('keyContent') && null !== $data->getKeyContent()) {
-            $dataArray['keyContent'] = $data->getKeyContent();
+        if (array_key_exists('keyContent', get_object_vars($data)) && null !== ($data->keyContent ?? null)) {
+            $dataArray['keyContent'] = $data->keyContent ?? null;
         }
-        if ($data->isInitialized('fingerprint') && null !== $data->getFingerprint()) {
-            $dataArray['fingerprint'] = $data->getFingerprint();
+        if (array_key_exists('fingerprint', get_object_vars($data)) && null !== ($data->fingerprint ?? null)) {
+            $dataArray['fingerprint'] = $data->fingerprint ?? null;
         }
         return $dataArray;
     }

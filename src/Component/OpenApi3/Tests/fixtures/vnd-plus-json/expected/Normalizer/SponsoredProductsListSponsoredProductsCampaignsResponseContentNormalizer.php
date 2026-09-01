@@ -39,7 +39,7 @@ class SponsoredProductsListSponsoredProductsCampaignsResponseContentNormalizer i
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('totalResults', $data)) {
-            $object->setTotalResults($data['totalResults']);
+            $object->totalResults = $data['totalResults'];
             unset($data['totalResults']);
         }
         if (\array_key_exists('campaigns', $data)) {
@@ -47,7 +47,7 @@ class SponsoredProductsListSponsoredProductsCampaignsResponseContentNormalizer i
             foreach ($data['campaigns'] as $value) {
                 $values[] = $value;
             }
-            $object->setCampaigns($values);
+            $object->campaigns = $values;
             unset($data['campaigns']);
         }
         foreach ($data as $key => $value_1) {
@@ -60,12 +60,12 @@ class SponsoredProductsListSponsoredProductsCampaignsResponseContentNormalizer i
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalResults') && null !== $data->getTotalResults()) {
-            $dataArray['totalResults'] = $data->getTotalResults();
+        if (array_key_exists('totalResults', get_object_vars($data)) && null !== ($data->totalResults ?? null)) {
+            $dataArray['totalResults'] = $data->totalResults ?? null;
         }
-        if ($data->isInitialized('campaigns') && null !== $data->getCampaigns()) {
+        if (array_key_exists('campaigns', get_object_vars($data)) && null !== ($data->campaigns ?? null)) {
             $values = [];
-            foreach ($data->getCampaigns() as $value) {
+            foreach ($data->campaigns ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['campaigns'] = $values;

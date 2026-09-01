@@ -38,18 +38,18 @@ class ProfileHs20FriendlyNameNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('language', $data)) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['language'] = $data->getLanguage();
-        $dataArray['name'] = $data->getName();
+        $dataArray['language'] = $data->language ?? null;
+        $dataArray['name'] = $data->name ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

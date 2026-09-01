@@ -63,7 +63,7 @@ class Issue680EmptyObjectNormalizationTest extends TestCase
         $serializer = $this->createSerializer();
 
         $bodyDto = new Issue680\Model\TestBody();
-        $bodyDto->setItems(null);
+        $bodyDto->items = null;
 
         [, $body] = (new Issue680\Endpoint\PostTest($bodyDto))->getBody($serializer);
 
@@ -75,7 +75,7 @@ class Issue680EmptyObjectNormalizationTest extends TestCase
         $serializer = $this->createSerializer();
 
         $bodyDto = new Issue680\Model\TestBody();
-        $bodyDto->setItems(['foo', 'bar']);
+        $bodyDto->items = ['foo', 'bar'];
 
         [, $body] = (new Issue680\Endpoint\PostTest($bodyDto))->getBody($serializer);
 

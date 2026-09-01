@@ -42,7 +42,7 @@ class V2LoadBalancersLbIdForwardingRulesPostBodyNormalizer implements Denormaliz
             foreach ($data['forwarding_rules'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ForwardingRule::class, 'json', $context);
             }
-            $object->setForwardingRules($values);
+            $object->forwardingRules = $values;
             unset($data['forwarding_rules']);
         }
         foreach ($data as $key => $value_1) {
@@ -56,7 +56,7 @@ class V2LoadBalancersLbIdForwardingRulesPostBodyNormalizer implements Denormaliz
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getForwardingRules() as $value) {
+        foreach ($data->forwardingRules ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['forwarding_rules'] = $values;

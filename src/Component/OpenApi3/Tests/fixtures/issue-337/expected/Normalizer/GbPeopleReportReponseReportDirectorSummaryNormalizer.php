@@ -38,15 +38,15 @@ class GbPeopleReportReponseReportDirectorSummaryNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('currentAppointments', $data)) {
-            $object->setCurrentAppointments($data['currentAppointments']);
+            $object->currentAppointments = $data['currentAppointments'];
             unset($data['currentAppointments']);
         }
         if (\array_key_exists('inactiveAppointments', $data)) {
-            $object->setInactiveAppointments($data['inactiveAppointments']);
+            $object->inactiveAppointments = $data['inactiveAppointments'];
             unset($data['inactiveAppointments']);
         }
         if (\array_key_exists('previousAppointments', $data)) {
-            $object->setPreviousAppointments($data['previousAppointments']);
+            $object->previousAppointments = $data['previousAppointments'];
             unset($data['previousAppointments']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class GbPeopleReportReponseReportDirectorSummaryNormalizer implements Denormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('currentAppointments') && null !== $data->getCurrentAppointments()) {
-            $dataArray['currentAppointments'] = $data->getCurrentAppointments();
+        if (array_key_exists('currentAppointments', get_object_vars($data)) && null !== ($data->currentAppointments ?? null)) {
+            $dataArray['currentAppointments'] = $data->currentAppointments ?? null;
         }
-        if ($data->isInitialized('inactiveAppointments') && null !== $data->getInactiveAppointments()) {
-            $dataArray['inactiveAppointments'] = $data->getInactiveAppointments();
+        if (array_key_exists('inactiveAppointments', get_object_vars($data)) && null !== ($data->inactiveAppointments ?? null)) {
+            $dataArray['inactiveAppointments'] = $data->inactiveAppointments ?? null;
         }
-        if ($data->isInitialized('previousAppointments') && null !== $data->getPreviousAppointments()) {
-            $dataArray['previousAppointments'] = $data->getPreviousAppointments();
+        if (array_key_exists('previousAppointments', get_object_vars($data)) && null !== ($data->previousAppointments ?? null)) {
+            $dataArray['previousAppointments'] = $data->previousAppointments ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

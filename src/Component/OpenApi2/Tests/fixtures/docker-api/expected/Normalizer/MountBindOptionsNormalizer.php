@@ -44,21 +44,21 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
             $this->validate($data, new \Docker\Api\Validator\MountBindOptionsConstraint());
         }
         if (\array_key_exists('Propagation', $data)) {
-            $object->setPropagation($data['Propagation']);
+            $object->propagation = $data['Propagation'];
         }
         if (\array_key_exists('NonRecursive', $data)) {
-            $object->setNonRecursive($data['NonRecursive']);
+            $object->nonRecursive = $data['NonRecursive'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('propagation') && null !== $data->getPropagation()) {
-            $dataArray['Propagation'] = $data->getPropagation();
+        if (array_key_exists('propagation', get_object_vars($data)) && null !== ($data->propagation ?? null)) {
+            $dataArray['Propagation'] = $data->propagation ?? null;
         }
-        if ($data->isInitialized('nonRecursive') && null !== $data->getNonRecursive()) {
-            $dataArray['NonRecursive'] = $data->getNonRecursive();
+        if (array_key_exists('nonRecursive', get_object_vars($data)) && null !== ($data->nonRecursive ?? null)) {
+            $dataArray['NonRecursive'] = $data->nonRecursive ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\MountBindOptionsConstraint());

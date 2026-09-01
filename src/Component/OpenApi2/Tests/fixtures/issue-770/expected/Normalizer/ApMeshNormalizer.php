@@ -38,41 +38,41 @@ class ApMeshNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('meshMode', $data)) {
-            $object->setMeshMode($data['meshMode']);
+            $object->meshMode = $data['meshMode'];
         }
         if (\array_key_exists('uplinkSelection', $data)) {
-            $object->setUplinkSelection($data['uplinkSelection']);
+            $object->uplinkSelection = $data['uplinkSelection'];
         }
         if (\array_key_exists('meshUplinkEntryList', $data)) {
             $values = [];
             foreach ($data['meshUplinkEntryList'] as $value) {
                 $values[] = $value;
             }
-            $object->setMeshUplinkEntryList($values);
+            $object->meshUplinkEntryList = $values;
         }
         if (\array_key_exists('uplinkRadio', $data)) {
-            $object->setUplinkRadio($data['uplinkRadio']);
+            $object->uplinkRadio = $data['uplinkRadio'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('meshMode') && null !== $data->getMeshMode()) {
-            $dataArray['meshMode'] = $data->getMeshMode();
+        if (array_key_exists('meshMode', get_object_vars($data)) && null !== ($data->meshMode ?? null)) {
+            $dataArray['meshMode'] = $data->meshMode ?? null;
         }
-        if ($data->isInitialized('uplinkSelection') && null !== $data->getUplinkSelection()) {
-            $dataArray['uplinkSelection'] = $data->getUplinkSelection();
+        if (array_key_exists('uplinkSelection', get_object_vars($data)) && null !== ($data->uplinkSelection ?? null)) {
+            $dataArray['uplinkSelection'] = $data->uplinkSelection ?? null;
         }
-        if ($data->isInitialized('meshUplinkEntryList') && null !== $data->getMeshUplinkEntryList()) {
+        if (array_key_exists('meshUplinkEntryList', get_object_vars($data)) && null !== ($data->meshUplinkEntryList ?? null)) {
             $values = [];
-            foreach ($data->getMeshUplinkEntryList() as $value) {
+            foreach ($data->meshUplinkEntryList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['meshUplinkEntryList'] = $values;
         }
-        if ($data->isInitialized('uplinkRadio') && null !== $data->getUplinkRadio()) {
-            $dataArray['uplinkRadio'] = $data->getUplinkRadio();
+        if (array_key_exists('uplinkRadio', get_object_vars($data)) && null !== ($data->uplinkRadio ?? null)) {
+            $dataArray['uplinkRadio'] = $data->uplinkRadio ?? null;
         }
         return $dataArray;
     }

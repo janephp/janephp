@@ -3,53 +3,60 @@
 namespace Jane\Bundle\JsonSchemaBundle\Command;
 
 use Jane\Component\JsonSchema\Console\Command\GenerateCommand;
-use Jane\Component\JsonSchema\Console\Loader\ConfigLoader;
-use Jane\Component\JsonSchema\Console\Loader\SchemaLoader;
+use Jane\Component\JsonSchema\Console\Loader\ConfigLocator;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand(name: 'jane:json-schema:generate', description: 'Generate a set of class and normalizers given a specific Json Schema file')]
 final class JsonSchemaGenerateCommand extends Command
 {
-    private GenerateCommand $generateCommand;
-
-    public function __construct()
-    {
-        $this->generateCommand = new GenerateCommand(new ConfigLoader(), new SchemaLoader());
-
+    public function __construct(
+        private readonly GenerateCommand $generateCommand,
+        private readonly ConfigLocator $configLocator,
+    ) {
         parent::__construct();
     }
 
     protected function configure(): void
     {
-        $this
-            ->setName('jane:json-schema:generate')
-            ->setDescription('Generate a set of class and normalizers given a specific Json Schema file')
-            ->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane configuration');
+        $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane configuration');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $configFile = $input->getOption('config-file');
-        if (null === $configFile) {
-            if (!is_file($configFile = __DIR__ . '/../../../../../../../config/jane/json_schema.php')) {
-                $configFile = '.jane';
-            }
-        }
+        $configFile = $this->configLocator->locate($this->configFileOption($input), [
+            'config/jane/json-schema.php',
+            'config/jane/json_schema.php',
+        ], '.jane');
 
         $inputArray = new ArrayInput(['--config-file' => $configFile], $this->generateCommand->getDefinition());
-        $returnCode = $this->generateCommand->execute($inputArray, $output);
+        $returnCode = $this->generateCommand->run($inputArray, $output);
 
-        if (Command::SUCCESS !== $returnCode) {
-            return $returnCode;
+        if (Command::SUCCESS === $returnCode) {
+            (new SymfonyStyle($input, $output))->success('Generation done.');
         }
 
-        $sfStyle = new SymfonyStyle($input, $output);
-        $sfStyle->success('Generation done.');
+        return $returnCode;
+    }
 
-        return 0;
+    private function configFileOption(InputInterface $input): ?string
+    {
+        $configFile = $input->getOption('config-file');
+
+        if (null === $configFile) {
+            return null;
+        }
+
+        if (!\is_string($configFile) || '' === $configFile) {
+            throw new InvalidArgumentException('The "--config-file" option must be a non-empty file path.');
+        }
+
+        return $configFile;
     }
 }

@@ -38,10 +38,10 @@ class PermissionUserRoleRightsOfPermissionSetRightNormalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('userRoleId', $data) && $data['userRoleId'] !== null) {
-            $object->setUserRoleId($data['userRoleId']);
+            $object->userRoleId = $data['userRoleId'];
         }
         elseif (\array_key_exists('userRoleId', $data) && $data['userRoleId'] === null) {
-            $object->setUserRoleId(null);
+            $object->userRoleId = null;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $value = $data['names'];
@@ -52,43 +52,43 @@ class PermissionUserRoleRightsOfPermissionSetRightNormalizer implements Denormal
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
         }
         if (\array_key_exists('rights', $data) && $data['rights'] !== null) {
             $values_1 = [];
             foreach ($data['rights'] as $value_2) {
                 $values_1[] = $value_2;
             }
-            $object->setRights($values_1);
+            $object->rights = $values_1;
         }
         elseif (\array_key_exists('rights', $data) && $data['rights'] === null) {
-            $object->setRights(null);
+            $object->rights = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('userRoleId') && null !== $data->getUserRoleId()) {
-            $dataArray['userRoleId'] = $data->getUserRoleId();
+        if (array_key_exists('userRoleId', get_object_vars($data)) && null !== ($data->userRoleId ?? null)) {
+            $dataArray['userRoleId'] = $data->userRoleId ?? null;
         }
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_1) {
+                foreach ($data->names ?? null as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
             }
             $dataArray['names'] = $value;
         }
-        if ($data->isInitialized('rights') && null !== $data->getRights()) {
+        if (array_key_exists('rights', get_object_vars($data)) && null !== ($data->rights ?? null)) {
             $values_1 = [];
-            foreach ($data->getRights() as $value_2) {
+            foreach ($data->rights ?? null as $value_2) {
                 $values_1[] = $value_2;
             }
             $dataArray['rights'] = $values_1;

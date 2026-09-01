@@ -44,23 +44,23 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['viewForAll'] = (bool) $data['viewForAll'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('schemaNamespace', $data)) {
-            $object->setSchemaNamespace($data['schemaNamespace']);
+            $object->schemaNamespace = $data['schemaNamespace'];
         }
         if (\array_key_exists('parentSchemaId', $data) && $data['parentSchemaId'] !== null) {
-            $object->setParentSchemaId($data['parentSchemaId']);
+            $object->parentSchemaId = $data['parentSchemaId'];
         }
         elseif (\array_key_exists('parentSchemaId', $data) && $data['parentSchemaId'] === null) {
-            $object->setParentSchemaId(null);
+            $object->parentSchemaId = null;
         }
         if (\array_key_exists('types', $data)) {
             $values = [];
             foreach ($data['types'] as $value) {
                 $values[] = $value;
             }
-            $object->setTypes($values);
+            $object->types = $values;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $value_1 = $data['names'];
@@ -71,10 +71,10 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
                 }
                 $value_1 = $values_1;
             }
-            $object->setNames($value_1);
+            $object->names = $value_1;
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $value_3 = $data['descriptions'];
@@ -85,239 +85,239 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
                 }
                 $value_3 = $values_2;
             }
-            $object->setDescriptions($value_3);
+            $object->descriptions = $value_3;
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
-            $object->setDescriptions(null);
+            $object->descriptions = null;
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values_3 = [];
             foreach ($data['layerSchemaIds'] as $value_5) {
                 $values_3[] = $value_5;
             }
-            $object->setLayerSchemaIds($values_3);
+            $object->layerSchemaIds = $values_3;
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
-            $object->setLayerSchemaIds(null);
+            $object->layerSchemaIds = null;
         }
         if (\array_key_exists('displayPatterns', $data)) {
             $values_4 = [];
             foreach ($data['displayPatterns'] as $value_6) {
                 $values_4[] = $this->denormalizer->denormalize($value_6, \PicturePark\API\Model\DisplayPattern::class, 'json', $context);
             }
-            $object->setDisplayPatterns($values_4);
+            $object->displayPatterns = $values_4;
         }
         if (\array_key_exists('fields', $data) && $data['fields'] !== null) {
             $values_5 = [];
             foreach ($data['fields'] as $value_7) {
                 $values_5[] = $this->denormalizer->denormalize($value_7, \PicturePark\API\Model\FieldBase::class, 'json', $context);
             }
-            $object->setFields($values_5);
+            $object->fields = $values_5;
         }
         elseif (\array_key_exists('fields', $data) && $data['fields'] === null) {
-            $object->setFields(null);
+            $object->fields = null;
         }
         if (\array_key_exists('fieldsOverwrite', $data) && $data['fieldsOverwrite'] !== null) {
             $values_6 = [];
             foreach ($data['fieldsOverwrite'] as $value_8) {
                 $values_6[] = $this->denormalizer->denormalize($value_8, \PicturePark\API\Model\FieldOverwriteBase::class, 'json', $context);
             }
-            $object->setFieldsOverwrite($values_6);
+            $object->fieldsOverwrite = $values_6;
         }
         elseif (\array_key_exists('fieldsOverwrite', $data) && $data['fieldsOverwrite'] === null) {
-            $object->setFieldsOverwrite(null);
+            $object->fieldsOverwrite = null;
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
             $values_7 = [];
             foreach ($data['sort'] as $value_9) {
                 $values_7[] = $this->denormalizer->denormalize($value_9, \PicturePark\API\Model\SortInfo::class, 'json', $context);
             }
-            $object->setSort($values_7);
+            $object->sort = $values_7;
         }
         elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
-            $object->setSort(null);
+            $object->sort = null;
         }
         if (\array_key_exists('aggregations', $data) && $data['aggregations'] !== null) {
             $values_8 = [];
             foreach ($data['aggregations'] as $value_10) {
                 $values_8[] = $this->denormalizer->denormalize($value_10, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregations($values_8);
+            $object->aggregations = $values_8;
         }
         elseif (\array_key_exists('aggregations', $data) && $data['aggregations'] === null) {
-            $object->setAggregations(null);
+            $object->aggregations = null;
         }
         if (\array_key_exists('system', $data)) {
-            $object->setSystem($data['system']);
+            $object->system = $data['system'];
         }
         if (\array_key_exists('ownerTokenId', $data)) {
-            $object->setOwnerTokenId($data['ownerTokenId']);
+            $object->ownerTokenId = $data['ownerTokenId'];
         }
         if (\array_key_exists('viewForAll', $data)) {
-            $object->setViewForAll($data['viewForAll']);
+            $object->viewForAll = $data['viewForAll'];
         }
         if (\array_key_exists('schemaPermissionSetIds', $data) && $data['schemaPermissionSetIds'] !== null) {
             $values_9 = [];
             foreach ($data['schemaPermissionSetIds'] as $value_11) {
                 $values_9[] = $value_11;
             }
-            $object->setSchemaPermissionSetIds($values_9);
+            $object->schemaPermissionSetIds = $values_9;
         }
         elseif (\array_key_exists('schemaPermissionSetIds', $data) && $data['schemaPermissionSetIds'] === null) {
-            $object->setSchemaPermissionSetIds(null);
+            $object->schemaPermissionSetIds = null;
         }
         if (\array_key_exists('referencedInContentSchemaIds', $data) && $data['referencedInContentSchemaIds'] !== null) {
             $values_10 = [];
             foreach ($data['referencedInContentSchemaIds'] as $value_12) {
                 $values_10[] = $value_12;
             }
-            $object->setReferencedInContentSchemaIds($values_10);
+            $object->referencedInContentSchemaIds = $values_10;
         }
         elseif (\array_key_exists('referencedInContentSchemaIds', $data) && $data['referencedInContentSchemaIds'] === null) {
-            $object->setReferencedInContentSchemaIds(null);
+            $object->referencedInContentSchemaIds = null;
         }
         if (\array_key_exists('descendantSchemaIds', $data) && $data['descendantSchemaIds'] !== null) {
             $values_11 = [];
             foreach ($data['descendantSchemaIds'] as $value_13) {
                 $values_11[] = $value_13;
             }
-            $object->setDescendantSchemaIds($values_11);
+            $object->descendantSchemaIds = $values_11;
         }
         elseif (\array_key_exists('descendantSchemaIds', $data) && $data['descendantSchemaIds'] === null) {
-            $object->setDescendantSchemaIds(null);
+            $object->descendantSchemaIds = null;
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
             $value_14 = $data['audit'];
             if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
                 $value_14 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAuditDetail::class, 'json', $context);
             }
-            $object->setAudit($value_14);
+            $object->audit = $value_14;
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
-            $object->setAudit(null);
+            $object->audit = null;
         }
         if (\array_key_exists('searchFieldCount', $data) && $data['searchFieldCount'] !== null) {
             $value_15 = $data['searchFieldCount'];
             if (is_array($data['searchFieldCount']) and \array_key_exists('indexedField', $data['searchFieldCount']) and \array_key_exists('simpleSearchField', $data['searchFieldCount']) and \array_key_exists('sortableField', $data['searchFieldCount'])) {
                 $value_15 = $this->denormalizer->denormalize($data['searchFieldCount'], \PicturePark\API\Model\SearchFieldCount::class, 'json', $context);
             }
-            $object->setSearchFieldCount($value_15);
+            $object->searchFieldCount = $value_15;
         }
         elseif (\array_key_exists('searchFieldCount', $data) && $data['searchFieldCount'] === null) {
-            $object->setSearchFieldCount(null);
+            $object->searchFieldCount = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['schemaNamespace'] = $data->getSchemaNamespace();
-        if ($data->isInitialized('parentSchemaId') && null !== $data->getParentSchemaId()) {
-            $dataArray['parentSchemaId'] = $data->getParentSchemaId();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['schemaNamespace'] = $data->schemaNamespace ?? null;
+        if (array_key_exists('parentSchemaId', get_object_vars($data)) && null !== ($data->parentSchemaId ?? null)) {
+            $dataArray['parentSchemaId'] = $data->parentSchemaId ?? null;
         }
         $values = [];
-        foreach ($data->getTypes() as $value) {
+        foreach ($data->types ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['types'] = $values;
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value_1 = $data->getNames();
-            if (is_object($data->getNames())) {
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value_1 = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_2) {
+                foreach ($data->names ?? null as $key => $value_2) {
                     $values_1[$key] = $value_2;
                 }
                 $value_1 = $values_1;
             }
             $dataArray['names'] = $value_1;
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $value_3 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
+        if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
+            $value_3 = $data->descriptions ?? null;
+            if (is_object($data->descriptions ?? null)) {
                 $values_2 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getDescriptions() as $key_1 => $value_4) {
+                foreach ($data->descriptions ?? null as $key_1 => $value_4) {
                     $values_2[$key_1] = $value_4;
                 }
                 $value_3 = $values_2;
             }
             $dataArray['descriptions'] = $value_3;
         }
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values_3 = [];
-            foreach ($data->getLayerSchemaIds() as $value_5) {
+            foreach ($data->layerSchemaIds ?? null as $value_5) {
                 $values_3[] = $value_5;
             }
             $dataArray['layerSchemaIds'] = $values_3;
         }
         $values_4 = [];
-        foreach ($data->getDisplayPatterns() as $value_6) {
+        foreach ($data->displayPatterns ?? null as $value_6) {
             $values_4[] = $value_6 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
         }
         $dataArray['displayPatterns'] = $values_4;
-        if ($data->isInitialized('fields') && null !== $data->getFields()) {
+        if (array_key_exists('fields', get_object_vars($data)) && null !== ($data->fields ?? null)) {
             $values_5 = [];
-            foreach ($data->getFields() as $value_7) {
+            foreach ($data->fields ?? null as $value_7) {
                 $values_5[] = $value_7 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
             }
             $dataArray['fields'] = $values_5;
         }
-        if ($data->isInitialized('fieldsOverwrite') && null !== $data->getFieldsOverwrite()) {
+        if (array_key_exists('fieldsOverwrite', get_object_vars($data)) && null !== ($data->fieldsOverwrite ?? null)) {
             $values_6 = [];
-            foreach ($data->getFieldsOverwrite() as $value_8) {
+            foreach ($data->fieldsOverwrite ?? null as $value_8) {
                 $values_6[] = $value_8 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_8, 'json', $context));
             }
             $dataArray['fieldsOverwrite'] = $values_6;
         }
-        if ($data->isInitialized('sort') && null !== $data->getSort()) {
+        if (array_key_exists('sort', get_object_vars($data)) && null !== ($data->sort ?? null)) {
             $values_7 = [];
-            foreach ($data->getSort() as $value_9) {
+            foreach ($data->sort ?? null as $value_9) {
                 $values_7[] = $value_9 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_9, 'json', $context));
             }
             $dataArray['sort'] = $values_7;
         }
-        if ($data->isInitialized('aggregations') && null !== $data->getAggregations()) {
+        if (array_key_exists('aggregations', get_object_vars($data)) && null !== ($data->aggregations ?? null)) {
             $values_8 = [];
-            foreach ($data->getAggregations() as $value_10) {
+            foreach ($data->aggregations ?? null as $value_10) {
                 $values_8[] = $value_10 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_10, 'json', $context));
             }
             $dataArray['aggregations'] = $values_8;
         }
-        $dataArray['system'] = $data->getSystem();
-        $dataArray['ownerTokenId'] = $data->getOwnerTokenId();
-        $dataArray['viewForAll'] = $data->getViewForAll();
-        if ($data->isInitialized('schemaPermissionSetIds') && null !== $data->getSchemaPermissionSetIds()) {
+        $dataArray['system'] = $data->system ?? null;
+        $dataArray['ownerTokenId'] = $data->ownerTokenId ?? null;
+        $dataArray['viewForAll'] = $data->viewForAll ?? null;
+        if (array_key_exists('schemaPermissionSetIds', get_object_vars($data)) && null !== ($data->schemaPermissionSetIds ?? null)) {
             $values_9 = [];
-            foreach ($data->getSchemaPermissionSetIds() as $value_11) {
+            foreach ($data->schemaPermissionSetIds ?? null as $value_11) {
                 $values_9[] = $value_11;
             }
             $dataArray['schemaPermissionSetIds'] = $values_9;
         }
-        if ($data->isInitialized('referencedInContentSchemaIds') && null !== $data->getReferencedInContentSchemaIds()) {
+        if (array_key_exists('referencedInContentSchemaIds', get_object_vars($data)) && null !== ($data->referencedInContentSchemaIds ?? null)) {
             $values_10 = [];
-            foreach ($data->getReferencedInContentSchemaIds() as $value_12) {
+            foreach ($data->referencedInContentSchemaIds ?? null as $value_12) {
                 $values_10[] = $value_12;
             }
             $dataArray['referencedInContentSchemaIds'] = $values_10;
         }
-        if ($data->isInitialized('descendantSchemaIds') && null !== $data->getDescendantSchemaIds()) {
+        if (array_key_exists('descendantSchemaIds', get_object_vars($data)) && null !== ($data->descendantSchemaIds ?? null)) {
             $values_11 = [];
-            foreach ($data->getDescendantSchemaIds() as $value_13) {
+            foreach ($data->descendantSchemaIds ?? null as $value_13) {
                 $values_11[] = $value_13;
             }
             $dataArray['descendantSchemaIds'] = $values_11;
         }
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
-            $value_14 = $data->getAudit();
-            if (is_object($data->getAudit())) {
-                $value_14 = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+        if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
+            $value_14 = $data->audit ?? null;
+            if (is_object($data->audit ?? null)) {
+                $value_14 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
             }
             $dataArray['audit'] = $value_14;
         }
-        if ($data->isInitialized('searchFieldCount') && null !== $data->getSearchFieldCount()) {
-            $value_15 = $data->getSearchFieldCount();
-            if (is_object($data->getSearchFieldCount())) {
-                $value_15 = $data->getSearchFieldCount() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getSearchFieldCount(), 'json', $context));
+        if (array_key_exists('searchFieldCount', get_object_vars($data)) && null !== ($data->searchFieldCount ?? null)) {
+            $value_15 = $data->searchFieldCount ?? null;
+            if (is_object($data->searchFieldCount ?? null)) {
+                $value_15 = ($data->searchFieldCount ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->searchFieldCount ?? null, 'json', $context));
             }
             $dataArray['searchFieldCount'] = $value_15;
         }

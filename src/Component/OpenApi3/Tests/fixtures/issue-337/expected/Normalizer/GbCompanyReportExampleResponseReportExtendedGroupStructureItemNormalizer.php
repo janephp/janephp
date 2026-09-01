@@ -41,35 +41,35 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItemNormalizer i
             $data['level'] = (float) $data['level'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('country', $data)) {
-            $object->setCountry($data['country']);
+            $object->country = $data['country'];
             unset($data['country']);
         }
         if (\array_key_exists('safeNumber', $data)) {
-            $object->setSafeNumber($data['safeNumber']);
+            $object->safeNumber = $data['safeNumber'];
             unset($data['safeNumber']);
         }
         if (\array_key_exists('companyName', $data)) {
-            $object->setCompanyName($data['companyName']);
+            $object->companyName = $data['companyName'];
             unset($data['companyName']);
         }
         if (\array_key_exists('registeredNumber', $data)) {
-            $object->setRegisteredNumber($data['registeredNumber']);
+            $object->registeredNumber = $data['registeredNumber'];
             unset($data['registeredNumber']);
         }
         if (\array_key_exists('latestAnnualAccounts', $data)) {
-            $object->setLatestAnnualAccounts($data['latestAnnualAccounts']);
+            $object->latestAnnualAccounts = $data['latestAnnualAccounts'];
             unset($data['latestAnnualAccounts']);
         }
         if (\array_key_exists('level', $data)) {
-            $object->setLevel($data['level']);
+            $object->level = $data['level'];
             unset($data['level']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         foreach ($data as $key => $value) {
@@ -82,29 +82,29 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItemNormalizer i
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $data->getCountry();
+        if (array_key_exists('country', get_object_vars($data)) && null !== ($data->country ?? null)) {
+            $dataArray['country'] = $data->country ?? null;
         }
-        if ($data->isInitialized('safeNumber') && null !== $data->getSafeNumber()) {
-            $dataArray['safeNumber'] = $data->getSafeNumber();
+        if (array_key_exists('safeNumber', get_object_vars($data)) && null !== ($data->safeNumber ?? null)) {
+            $dataArray['safeNumber'] = $data->safeNumber ?? null;
         }
-        if ($data->isInitialized('companyName') && null !== $data->getCompanyName()) {
-            $dataArray['companyName'] = $data->getCompanyName();
+        if (array_key_exists('companyName', get_object_vars($data)) && null !== ($data->companyName ?? null)) {
+            $dataArray['companyName'] = $data->companyName ?? null;
         }
-        if ($data->isInitialized('registeredNumber') && null !== $data->getRegisteredNumber()) {
-            $dataArray['registeredNumber'] = $data->getRegisteredNumber();
+        if (array_key_exists('registeredNumber', get_object_vars($data)) && null !== ($data->registeredNumber ?? null)) {
+            $dataArray['registeredNumber'] = $data->registeredNumber ?? null;
         }
-        if ($data->isInitialized('latestAnnualAccounts') && null !== $data->getLatestAnnualAccounts()) {
-            $dataArray['latestAnnualAccounts'] = $data->getLatestAnnualAccounts();
+        if (array_key_exists('latestAnnualAccounts', get_object_vars($data)) && null !== ($data->latestAnnualAccounts ?? null)) {
+            $dataArray['latestAnnualAccounts'] = $data->latestAnnualAccounts ?? null;
         }
-        if ($data->isInitialized('level') && null !== $data->getLevel()) {
-            $dataArray['level'] = $data->getLevel();
+        if (array_key_exists('level', get_object_vars($data)) && null !== ($data->level ?? null)) {
+            $dataArray['level'] = $data->level ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

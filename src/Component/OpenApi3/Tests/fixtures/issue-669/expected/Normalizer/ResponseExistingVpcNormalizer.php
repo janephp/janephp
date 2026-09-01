@@ -42,7 +42,7 @@ class ResponseExistingVpcNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['vpc'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setVpc($values);
+            $object->vpc = $values;
             unset($data['vpc']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -55,9 +55,9 @@ class ResponseExistingVpcNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('vpc') && null !== $data->getVpc()) {
+        if (array_key_exists('vpc', get_object_vars($data)) && null !== ($data->vpc ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getVpc() as $key => $value) {
+            foreach ($data->vpc ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['vpc'] = $values;

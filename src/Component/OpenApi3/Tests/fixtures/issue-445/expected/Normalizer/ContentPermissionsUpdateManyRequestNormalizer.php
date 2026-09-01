@@ -42,7 +42,7 @@ class ContentPermissionsUpdateManyRequestNormalizer implements DenormalizerInter
             foreach ($data['items'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ContentPermissionsUpdateItem::class, 'json', $context);
             }
-            $object->setItems($values);
+            $object->items = $values;
         }
         return $object;
     }
@@ -50,7 +50,7 @@ class ContentPermissionsUpdateManyRequestNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getItems() as $value) {
+        foreach ($data->items ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['items'] = $values;

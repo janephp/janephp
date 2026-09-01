@@ -38,21 +38,21 @@ class AprulesSubnetNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('networkAddress', $data)) {
-            $object->setNetworkAddress($data['networkAddress']);
+            $object->networkAddress = $data['networkAddress'];
         }
         if (\array_key_exists('subnetMask', $data)) {
-            $object->setSubnetMask($data['subnetMask']);
+            $object->subnetMask = $data['subnetMask'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('networkAddress') && null !== $data->getNetworkAddress()) {
-            $dataArray['networkAddress'] = $data->getNetworkAddress();
+        if (array_key_exists('networkAddress', get_object_vars($data)) && null !== ($data->networkAddress ?? null)) {
+            $dataArray['networkAddress'] = $data->networkAddress ?? null;
         }
-        if ($data->isInitialized('subnetMask') && null !== $data->getSubnetMask()) {
-            $dataArray['subnetMask'] = $data->getSubnetMask();
+        if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
+            $dataArray['subnetMask'] = $data->subnetMask ?? null;
         }
         return $dataArray;
     }

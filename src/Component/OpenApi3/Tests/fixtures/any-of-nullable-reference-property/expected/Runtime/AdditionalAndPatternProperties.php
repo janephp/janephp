@@ -6,7 +6,7 @@ trait AdditionalAndPatternProperties
 {
     private array $extraProperties = [];
     /**
-     * @return array<string, array{0: string, 1: string, 2: string}>
+     * @return array<string, string> PHP property name => serialized (wire) name
      */
     public function definedProperties(): array
     {
@@ -14,27 +14,27 @@ trait AdditionalAndPatternProperties
     }
     public function offsetExists(mixed $offset): bool
     {
-        foreach ($this->definedProperties() as $phpName => $definition) {
-            if ($definition[0] === $offset) {
-                return $this->isInitialized($phpName) || null !== $this->{$phpName};
+        foreach ($this->definedProperties() as $phpName => $wireName) {
+            if ($wireName === $offset) {
+                return \array_key_exists($phpName, get_object_vars($this)) || null !== ($this->{$phpName} ?? null);
             }
         }
         return \array_key_exists($offset, $this->extraProperties);
     }
     public function offsetGet(mixed $offset): mixed
     {
-        foreach ($this->definedProperties() as $definition) {
-            if ($definition[0] === $offset) {
-                return $this->{$definition[1]}();
+        foreach ($this->definedProperties() as $phpName => $wireName) {
+            if ($wireName === $offset) {
+                return $this->{$phpName} ?? null;
             }
         }
         return $this->extraProperties[$offset] ?? null;
     }
     public function offsetSet(mixed $offset, mixed $value): void
     {
-        foreach ($this->definedProperties() as $definition) {
-            if ($definition[0] === $offset) {
-                $this->{$definition[2]}($value);
+        foreach ($this->definedProperties() as $phpName => $wireName) {
+            if ($wireName === $offset) {
+                $this->{$phpName} = $value;
                 return;
             }
         }
@@ -42,9 +42,9 @@ trait AdditionalAndPatternProperties
     }
     public function offsetUnset(mixed $offset): void
     {
-        foreach ($this->definedProperties() as $definition) {
-            if ($definition[0] === $offset) {
-                $this->{$definition[2]}(null);
+        foreach ($this->definedProperties() as $phpName => $wireName) {
+            if ($wireName === $offset) {
+                $this->{$phpName} = null;
                 return;
             }
         }
@@ -63,14 +63,18 @@ trait AdditionalAndPatternProperties
      */
     public function toArray(): array
     {
+        $publicProperties = get_object_vars($this);
         $values = [];
-        foreach ($this->definedProperties() as $phpName => $definition) {
-            $value = $this->{$phpName};
-            if ($this->isInitialized($phpName) || null !== $value) {
-                $values[$definition[0]] = $value;
+        foreach ($this->definedProperties() as $phpName => $wireName) {
+            if ('extraProperties' === $phpName) {
+                continue;
+            }
+            $value = $this->{$phpName} ?? null;
+            if (\array_key_exists($phpName, $publicProperties) || null !== $value) {
+                $values[$wireName] = $value;
             }
         }
-        return array_merge($values, $this->extraProperties);
+        return $values + $this->extraProperties;
     }
     public function getArrayCopy(): array
     {
@@ -83,8 +87,6 @@ trait AdditionalAndPatternProperties
     public function jsonSerialize(): mixed
     {
         $values = $this->toArray();
-        // An empty PHP array would encode as [], so hand out an empty object instead,
-        // keeping json_encode consistent with every other JSON object payload.
         if ([] === $values) {
             return new \stdClass();
         }

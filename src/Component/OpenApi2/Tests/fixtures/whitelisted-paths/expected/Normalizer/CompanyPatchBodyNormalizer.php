@@ -41,21 +41,21 @@ class CompanyPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $data['wants_timestamp_timers'] = (bool) $data['wants_timestamp_timers'];
         }
         if (\array_key_exists('wants_timestamp_timers', $data)) {
-            $object->setWantsTimestampTimers($data['wants_timestamp_timers']);
+            $object->wantsTimestampTimers = $data['wants_timestamp_timers'];
         }
         if (\array_key_exists('weekly_capacity', $data)) {
-            $object->setWeeklyCapacity($data['weekly_capacity']);
+            $object->weeklyCapacity = $data['weekly_capacity'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('wantsTimestampTimers') && null !== $data->getWantsTimestampTimers()) {
-            $dataArray['wants_timestamp_timers'] = $data->getWantsTimestampTimers();
+        if (array_key_exists('wantsTimestampTimers', get_object_vars($data)) && null !== ($data->wantsTimestampTimers ?? null)) {
+            $dataArray['wants_timestamp_timers'] = $data->wantsTimestampTimers ?? null;
         }
-        if ($data->isInitialized('weeklyCapacity') && null !== $data->getWeeklyCapacity()) {
-            $dataArray['weekly_capacity'] = $data->getWeeklyCapacity();
+        if (array_key_exists('weeklyCapacity', get_object_vars($data)) && null !== ($data->weeklyCapacity ?? null)) {
+            $dataArray['weekly_capacity'] = $data->weeklyCapacity ?? null;
         }
         return $dataArray;
     }

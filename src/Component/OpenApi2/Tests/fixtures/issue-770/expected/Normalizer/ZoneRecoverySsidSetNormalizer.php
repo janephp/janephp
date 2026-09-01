@@ -41,21 +41,21 @@ class ZoneRecoverySsidSetNormalizer implements DenormalizerInterface, Normalizer
             $data['recoverySsidEnabled'] = (bool) $data['recoverySsidEnabled'];
         }
         if (\array_key_exists('recoverySsidPskKey', $data)) {
-            $object->setRecoverySsidPskKey($data['recoverySsidPskKey']);
+            $object->recoverySsidPskKey = $data['recoverySsidPskKey'];
         }
         if (\array_key_exists('recoverySsidEnabled', $data)) {
-            $object->setRecoverySsidEnabled($data['recoverySsidEnabled']);
+            $object->recoverySsidEnabled = $data['recoverySsidEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('recoverySsidPskKey') && null !== $data->getRecoverySsidPskKey()) {
-            $dataArray['recoverySsidPskKey'] = $data->getRecoverySsidPskKey();
+        if (array_key_exists('recoverySsidPskKey', get_object_vars($data)) && null !== ($data->recoverySsidPskKey ?? null)) {
+            $dataArray['recoverySsidPskKey'] = $data->recoverySsidPskKey ?? null;
         }
-        if ($data->isInitialized('recoverySsidEnabled') && null !== $data->getRecoverySsidEnabled()) {
-            $dataArray['recoverySsidEnabled'] = $data->getRecoverySsidEnabled();
+        if (array_key_exists('recoverySsidEnabled', get_object_vars($data)) && null !== ($data->recoverySsidEnabled ?? null)) {
+            $dataArray['recoverySsidEnabled'] = $data->recoverySsidEnabled ?? null;
         }
         return $dataArray;
     }

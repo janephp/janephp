@@ -8,43 +8,13 @@ class V2FirewallsFirewallIdDropletsPostBody implements AdditionalPropertiesInter
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * An array containing the IDs of the Droplets to be assigned to the firewall.
      *
      * @var list<int>
      */
-    protected $dropletIds;
-    /**
-     * An array containing the IDs of the Droplets to be assigned to the firewall.
-     *
-     * @return list<int>
-     */
-    public function getDropletIds(): array
-    {
-        return $this->dropletIds;
-    }
-    /**
-     * An array containing the IDs of the Droplets to be assigned to the firewall.
-     *
-     * @param list<int> $dropletIds
-     *
-     * @return self
-     */
-    public function setDropletIds(array $dropletIds): self
-    {
-        $this->initialized['dropletIds'] = true;
-        $this->dropletIds = $dropletIds;
-        return $this;
-    }
+    public array $dropletIds;
     public function definedProperties(): array
     {
-        return ['dropletIds' => ['droplet_ids', 'getDropletIds', 'setDropletIds']];
+        return ['dropletIds' => 'droplet_ids'];
     }
 }

@@ -42,7 +42,7 @@ class ApiListRegionsOutputNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['regions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\GenaiapiRegion::class, 'json', $context);
             }
-            $object->setRegions($values);
+            $object->regions = $values;
             unset($data['regions']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ApiListRegionsOutputNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('regions') && null !== $data->getRegions()) {
+        if (array_key_exists('regions', get_object_vars($data)) && null !== ($data->regions ?? null)) {
             $values = [];
-            foreach ($data->getRegions() as $value) {
+            foreach ($data->regions ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['regions'] = $values;

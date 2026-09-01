@@ -38,97 +38,97 @@ class DpProfileDpDhcpProfileHostBONormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('hostName', $data)) {
-            $object->setHostName($data['hostName']);
+            $object->hostName = $data['hostName'];
         }
         if (\array_key_exists('leaseTime', $data)) {
-            $object->setLeaseTime($data['leaseTime']);
+            $object->leaseTime = $data['leaseTime'];
         }
         if (\array_key_exists('profileId', $data)) {
-            $object->setProfileId($data['profileId']);
+            $object->profileId = $data['profileId'];
         }
         if (\array_key_exists('hardwareEthernet', $data)) {
-            $object->setHardwareEthernet($data['hardwareEthernet']);
+            $object->hardwareEthernet = $data['hardwareEthernet'];
         }
         if (\array_key_exists('fixedAddress', $data)) {
-            $object->setFixedAddress($data['fixedAddress']);
+            $object->fixedAddress = $data['fixedAddress'];
         }
         if (\array_key_exists('domainName', $data)) {
-            $object->setDomainName($data['domainName']);
+            $object->domainName = $data['domainName'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('hostId', $data)) {
-            $object->setHostId($data['hostId']);
+            $object->hostId = $data['hostId'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('dnsServers', $data)) {
             $values = [];
             foreach ($data['dnsServers'] as $value) {
                 $values[] = $value;
             }
-            $object->setDnsServers($values);
+            $object->dnsServers = $values;
         }
         if (\array_key_exists('routers', $data)) {
             $values_1 = [];
             foreach ($data['routers'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setRouters($values_1);
+            $object->routers = $values_1;
         }
         if (\array_key_exists('broadcastAddress', $data)) {
-            $object->setBroadcastAddress($data['broadcastAddress']);
+            $object->broadcastAddress = $data['broadcastAddress'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('hostName') && null !== $data->getHostName()) {
-            $dataArray['hostName'] = $data->getHostName();
+        if (array_key_exists('hostName', get_object_vars($data)) && null !== ($data->hostName ?? null)) {
+            $dataArray['hostName'] = $data->hostName ?? null;
         }
-        if ($data->isInitialized('leaseTime') && null !== $data->getLeaseTime()) {
-            $dataArray['leaseTime'] = $data->getLeaseTime();
+        if (array_key_exists('leaseTime', get_object_vars($data)) && null !== ($data->leaseTime ?? null)) {
+            $dataArray['leaseTime'] = $data->leaseTime ?? null;
         }
-        if ($data->isInitialized('profileId') && null !== $data->getProfileId()) {
-            $dataArray['profileId'] = $data->getProfileId();
+        if (array_key_exists('profileId', get_object_vars($data)) && null !== ($data->profileId ?? null)) {
+            $dataArray['profileId'] = $data->profileId ?? null;
         }
-        if ($data->isInitialized('hardwareEthernet') && null !== $data->getHardwareEthernet()) {
-            $dataArray['hardwareEthernet'] = $data->getHardwareEthernet();
+        if (array_key_exists('hardwareEthernet', get_object_vars($data)) && null !== ($data->hardwareEthernet ?? null)) {
+            $dataArray['hardwareEthernet'] = $data->hardwareEthernet ?? null;
         }
-        if ($data->isInitialized('fixedAddress') && null !== $data->getFixedAddress()) {
-            $dataArray['fixedAddress'] = $data->getFixedAddress();
+        if (array_key_exists('fixedAddress', get_object_vars($data)) && null !== ($data->fixedAddress ?? null)) {
+            $dataArray['fixedAddress'] = $data->fixedAddress ?? null;
         }
-        if ($data->isInitialized('domainName') && null !== $data->getDomainName()) {
-            $dataArray['domainName'] = $data->getDomainName();
+        if (array_key_exists('domainName', get_object_vars($data)) && null !== ($data->domainName ?? null)) {
+            $dataArray['domainName'] = $data->domainName ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('hostId') && null !== $data->getHostId()) {
-            $dataArray['hostId'] = $data->getHostId();
+        if (array_key_exists('hostId', get_object_vars($data)) && null !== ($data->hostId ?? null)) {
+            $dataArray['hostId'] = $data->hostId ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('dnsServers') && null !== $data->getDnsServers()) {
+        if (array_key_exists('dnsServers', get_object_vars($data)) && null !== ($data->dnsServers ?? null)) {
             $values = [];
-            foreach ($data->getDnsServers() as $value) {
+            foreach ($data->dnsServers ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['dnsServers'] = $values;
         }
-        if ($data->isInitialized('routers') && null !== $data->getRouters()) {
+        if (array_key_exists('routers', get_object_vars($data)) && null !== ($data->routers ?? null)) {
             $values_1 = [];
-            foreach ($data->getRouters() as $value_1) {
+            foreach ($data->routers ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['routers'] = $values_1;
         }
-        if ($data->isInitialized('broadcastAddress') && null !== $data->getBroadcastAddress()) {
-            $dataArray['broadcastAddress'] = $data->getBroadcastAddress();
+        if (array_key_exists('broadcastAddress', get_object_vars($data)) && null !== ($data->broadcastAddress ?? null)) {
+            $dataArray['broadcastAddress'] = $data->broadcastAddress ?? null;
         }
         return $dataArray;
     }

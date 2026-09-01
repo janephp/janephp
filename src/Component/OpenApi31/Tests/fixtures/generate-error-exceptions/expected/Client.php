@@ -13,7 +13,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\GenerateErrorExcep
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\GenerateErrorExceptions\Endpoint\GetUser(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();

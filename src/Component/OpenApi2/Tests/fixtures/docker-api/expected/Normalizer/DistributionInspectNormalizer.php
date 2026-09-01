@@ -41,23 +41,23 @@ class DistributionInspectNormalizer implements DenormalizerInterface, Normalizer
             $this->validate($data, new \Docker\Api\Validator\DistributionInspectConstraint());
         }
         if (\array_key_exists('Descriptor', $data)) {
-            $object->setDescriptor($this->denormalizer->denormalize($data['Descriptor'], \Docker\Api\Model\OCIDescriptor::class, 'json', $context));
+            $object->descriptor = $this->denormalizer->denormalize($data['Descriptor'], \Docker\Api\Model\OCIDescriptor::class, 'json', $context);
         }
         if (\array_key_exists('Platforms', $data)) {
             $values = [];
             foreach ($data['Platforms'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\OCIPlatform::class, 'json', $context);
             }
-            $object->setPlatforms($values);
+            $object->platforms = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Descriptor'] = $data->getDescriptor() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getDescriptor(), 'json', $context));
+        $dataArray['Descriptor'] = ($data->descriptor ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->descriptor ?? null, 'json', $context));
         $values = [];
-        foreach ($data->getPlatforms() as $value) {
+        foreach ($data->platforms ?? null as $value) {
             $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['Platforms'] = $values;

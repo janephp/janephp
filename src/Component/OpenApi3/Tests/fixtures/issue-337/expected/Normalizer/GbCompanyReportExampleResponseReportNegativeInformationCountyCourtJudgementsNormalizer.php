@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('registered', $data)) {
-            $object->setRegistered($this->denormalizer->denormalize($data['registered'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegistered::class, 'json', $context));
+            $object->registered = $this->denormalizer->denormalize($data['registered'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegistered::class, 'json', $context);
             unset($data['registered']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('registered') && null !== $data->getRegistered()) {
-            $dataArray['registered'] = $data->getRegistered() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getRegistered(), 'json', $context));
+        if (array_key_exists('registered', get_object_vars($data)) && null !== ($data->registered ?? null)) {
+            $dataArray['registered'] = ($data->registered ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->registered ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

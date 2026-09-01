@@ -47,35 +47,35 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['by_default'] = (bool) $data['by_default'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('app_id', $data)) {
-            $object->setAppId($data['app_id']);
+            $object->appId = $data['app_id'];
             unset($data['app_id']);
         }
         if (\array_key_exists('display_name', $data)) {
-            $object->setDisplayName($data['display_name']);
+            $object->displayName = $data['display_name'];
             unset($data['display_name']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('slug', $data)) {
-            $object->setSlug($data['slug']);
+            $object->slug = $data['slug'];
             unset($data['slug']);
         }
         if (\array_key_exists('price_per_month', $data)) {
-            $object->setPricePerMonth($data['price_per_month']);
+            $object->pricePerMonth = $data['price_per_month'];
             unset($data['price_per_month']);
         }
         if (\array_key_exists('active', $data)) {
-            $object->setActive($data['active']);
+            $object->active = $data['active'];
             unset($data['active']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
             unset($data['state']);
         }
         if (\array_key_exists('features', $data)) {
@@ -83,7 +83,7 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['features'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AddonsFeature::class, 'json', $context);
             }
-            $object->setFeatures($values);
+            $object->features = $values;
             unset($data['features']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -91,7 +91,7 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedAt($date);
+            $object->createdAt = $date;
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
@@ -99,19 +99,19 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
             if (false === $date_1) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
-            $object->setUpdatedAt($date_1);
+            $object->updatedAt = $date_1;
             unset($data['updated_at']);
         }
         if (\array_key_exists('available', $data)) {
-            $object->setAvailable($data['available']);
+            $object->available = $data['available'];
             unset($data['available']);
         }
         if (\array_key_exists('uuid', $data)) {
-            $object->setUuid($data['uuid']);
+            $object->uuid = $data['uuid'];
             unset($data['uuid']);
         }
         if (\array_key_exists('by_default', $data)) {
-            $object->setByDefault($data['by_default']);
+            $object->byDefault = $data['by_default'];
             unset($data['by_default']);
         }
         if (\array_key_exists('dimensions', $data)) {
@@ -119,7 +119,7 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['dimensions'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\AddonsDimensionWithPrice::class, 'json', $context);
             }
-            $object->setDimensions($values_1);
+            $object->dimensions = $values_1;
             unset($data['dimensions']);
         }
         foreach ($data as $key => $value_2) {
@@ -132,31 +132,31 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['app_id'] = $data->getAppId();
-        $dataArray['display_name'] = $data->getDisplayName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['app_id'] = $data->appId ?? null;
+        $dataArray['display_name'] = $data->displayName ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        $dataArray['slug'] = $data->getSlug();
-        $dataArray['price_per_month'] = $data->getPricePerMonth();
-        $dataArray['active'] = $data->getActive();
-        $dataArray['state'] = $data->getState();
-        if ($data->isInitialized('features') && null !== $data->getFeatures()) {
+        $dataArray['slug'] = $data->slug ?? null;
+        $dataArray['price_per_month'] = $data->pricePerMonth ?? null;
+        $dataArray['active'] = $data->active ?? null;
+        $dataArray['state'] = $data->state ?? null;
+        if (array_key_exists('features', get_object_vars($data)) && null !== ($data->features ?? null)) {
             $values = [];
-            foreach ($data->getFeatures() as $value) {
+            foreach ($data->features ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['features'] = $values;
         }
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['available'] = $data->getAvailable();
-        $dataArray['uuid'] = $data->getUuid();
-        $dataArray['by_default'] = $data->getByDefault();
-        if ($data->isInitialized('dimensions') && null !== $data->getDimensions()) {
+        $dataArray['created_at'] = ($data->createdAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = ($data->updatedAt ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['available'] = $data->available ?? null;
+        $dataArray['uuid'] = $data->uuid ?? null;
+        $dataArray['by_default'] = $data->byDefault ?? null;
+        if (array_key_exists('dimensions', get_object_vars($data)) && null !== ($data->dimensions ?? null)) {
             $values_1 = [];
-            foreach ($data->getDimensions() as $value_1) {
+            foreach ($data->dimensions ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['dimensions'] = $values_1;

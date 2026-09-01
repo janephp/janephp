@@ -41,23 +41,23 @@ class NumberCompareConditionNormalizer implements DenormalizerInterface, Normali
             $data['value'] = (float) $data['value'];
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('fieldPath', $data) && $data['fieldPath'] !== null) {
-            $object->setFieldPath($data['fieldPath']);
+            $object->fieldPath = $data['fieldPath'];
             unset($data['fieldPath']);
         }
         elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
-            $object->setFieldPath(null);
+            $object->fieldPath = null;
             unset($data['fieldPath']);
         }
         if (\array_key_exists('mode', $data)) {
@@ -65,11 +65,11 @@ class NumberCompareConditionNormalizer implements DenormalizerInterface, Normali
             if (is_string($data['mode'])) {
                 $value = $data['mode'];
             }
-            $object->setMode($value);
+            $object->mode = $value;
             unset($data['mode']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
             unset($data['value']);
         }
         foreach ($data as $key => $value_1) {
@@ -82,22 +82,22 @@ class NumberCompareConditionNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('fieldPath') && null !== $data->getFieldPath()) {
-            $dataArray['fieldPath'] = $data->getFieldPath();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('fieldPath', get_object_vars($data)) && null !== ($data->fieldPath ?? null)) {
+            $dataArray['fieldPath'] = $data->fieldPath ?? null;
         }
-        if ($data->isInitialized('mode') && null !== $data->getMode()) {
-            $value = $data->getMode();
-            if (is_string($data->getMode())) {
-                $value = $data->getMode();
+        if (array_key_exists('mode', get_object_vars($data)) && null !== ($data->mode ?? null)) {
+            $value = $data->mode ?? null;
+            if (is_string($data->mode ?? null)) {
+                $value = $data->mode ?? null;
             }
             $dataArray['mode'] = $value;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+        if (array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['value'] = $data->value ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

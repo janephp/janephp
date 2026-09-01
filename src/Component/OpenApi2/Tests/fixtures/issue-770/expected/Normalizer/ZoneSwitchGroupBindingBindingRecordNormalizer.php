@@ -41,33 +41,33 @@ class ZoneSwitchGroupBindingBindingRecordNormalizer implements DenormalizerInter
             $data['link'] = (bool) $data['link'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('zoneId', $data)) {
-            $object->setZoneId($data['zoneId']);
+            $object->zoneId = $data['zoneId'];
         }
         if (\array_key_exists('switchGroupId', $data)) {
-            $object->setSwitchGroupId($data['switchGroupId']);
+            $object->switchGroupId = $data['switchGroupId'];
         }
         if (\array_key_exists('link', $data)) {
-            $object->setLink($data['link']);
+            $object->link = $data['link'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('zoneId') && null !== $data->getZoneId()) {
-            $dataArray['zoneId'] = $data->getZoneId();
+        if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
+            $dataArray['zoneId'] = $data->zoneId ?? null;
         }
-        if ($data->isInitialized('switchGroupId') && null !== $data->getSwitchGroupId()) {
-            $dataArray['switchGroupId'] = $data->getSwitchGroupId();
+        if (array_key_exists('switchGroupId', get_object_vars($data)) && null !== ($data->switchGroupId ?? null)) {
+            $dataArray['switchGroupId'] = $data->switchGroupId ?? null;
         }
-        if ($data->isInitialized('link') && null !== $data->getLink()) {
-            $dataArray['link'] = $data->getLink();
+        if (array_key_exists('link', get_object_vars($data)) && null !== ($data->link ?? null)) {
+            $dataArray['link'] = $data->link ?? null;
         }
         return $dataArray;
     }

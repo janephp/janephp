@@ -41,108 +41,108 @@ class AudioStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['durationInSeconds'] = (float) $data['durationInSeconds'];
         }
         if (\array_key_exists('bitRate', $data) && $data['bitRate'] !== null) {
-            $object->setBitRate($data['bitRate']);
+            $object->bitRate = $data['bitRate'];
         }
         elseif (\array_key_exists('bitRate', $data) && $data['bitRate'] === null) {
-            $object->setBitRate(null);
+            $object->bitRate = null;
         }
         if (\array_key_exists('bitRateMode', $data) && $data['bitRateMode'] !== null) {
-            $object->setBitRateMode($data['bitRateMode']);
+            $object->bitRateMode = $data['bitRateMode'];
         }
         elseif (\array_key_exists('bitRateMode', $data) && $data['bitRateMode'] === null) {
-            $object->setBitRateMode(null);
+            $object->bitRateMode = null;
         }
         if (\array_key_exists('channels', $data) && $data['channels'] !== null) {
-            $object->setChannels($data['channels']);
+            $object->channels = $data['channels'];
         }
         elseif (\array_key_exists('channels', $data) && $data['channels'] === null) {
-            $object->setChannels(null);
+            $object->channels = null;
         }
         if (\array_key_exists('channelPositions', $data) && $data['channelPositions'] !== null) {
-            $object->setChannelPositions($data['channelPositions']);
+            $object->channelPositions = $data['channelPositions'];
         }
         elseif (\array_key_exists('channelPositions', $data) && $data['channelPositions'] === null) {
-            $object->setChannelPositions(null);
+            $object->channelPositions = null;
         }
         if (\array_key_exists('codec', $data) && $data['codec'] !== null) {
-            $object->setCodec($data['codec']);
+            $object->codec = $data['codec'];
         }
         elseif (\array_key_exists('codec', $data) && $data['codec'] === null) {
-            $object->setCodec(null);
+            $object->codec = null;
         }
         if (\array_key_exists('durationInSeconds', $data) && $data['durationInSeconds'] !== null) {
-            $object->setDurationInSeconds($data['durationInSeconds']);
+            $object->durationInSeconds = $data['durationInSeconds'];
         }
         elseif (\array_key_exists('durationInSeconds', $data) && $data['durationInSeconds'] === null) {
-            $object->setDurationInSeconds(null);
+            $object->durationInSeconds = null;
         }
         if (\array_key_exists('format', $data) && $data['format'] !== null) {
-            $object->setFormat($data['format']);
+            $object->format = $data['format'];
         }
         elseif (\array_key_exists('format', $data) && $data['format'] === null) {
-            $object->setFormat(null);
+            $object->format = null;
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
-            $object->setLanguage(null);
+            $object->language = null;
         }
         if (\array_key_exists('resolution', $data) && $data['resolution'] !== null) {
-            $object->setResolution($data['resolution']);
+            $object->resolution = $data['resolution'];
         }
         elseif (\array_key_exists('resolution', $data) && $data['resolution'] === null) {
-            $object->setResolution(null);
+            $object->resolution = null;
         }
         if (\array_key_exists('samplingRate', $data) && $data['samplingRate'] !== null) {
-            $object->setSamplingRate($data['samplingRate']);
+            $object->samplingRate = $data['samplingRate'];
         }
         elseif (\array_key_exists('samplingRate', $data) && $data['samplingRate'] === null) {
-            $object->setSamplingRate(null);
+            $object->samplingRate = null;
         }
         if (\array_key_exists('streamSize', $data) && $data['streamSize'] !== null) {
-            $object->setStreamSize($data['streamSize']);
+            $object->streamSize = $data['streamSize'];
         }
         elseif (\array_key_exists('streamSize', $data) && $data['streamSize'] === null) {
-            $object->setStreamSize(null);
+            $object->streamSize = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('bitRate') && null !== $data->getBitRate()) {
-            $dataArray['bitRate'] = $data->getBitRate();
+        if (array_key_exists('bitRate', get_object_vars($data)) && null !== ($data->bitRate ?? null)) {
+            $dataArray['bitRate'] = $data->bitRate ?? null;
         }
-        if ($data->isInitialized('bitRateMode') && null !== $data->getBitRateMode()) {
-            $dataArray['bitRateMode'] = $data->getBitRateMode();
+        if (array_key_exists('bitRateMode', get_object_vars($data)) && null !== ($data->bitRateMode ?? null)) {
+            $dataArray['bitRateMode'] = $data->bitRateMode ?? null;
         }
-        if ($data->isInitialized('channels') && null !== $data->getChannels()) {
-            $dataArray['channels'] = $data->getChannels();
+        if (array_key_exists('channels', get_object_vars($data)) && null !== ($data->channels ?? null)) {
+            $dataArray['channels'] = $data->channels ?? null;
         }
-        if ($data->isInitialized('channelPositions') && null !== $data->getChannelPositions()) {
-            $dataArray['channelPositions'] = $data->getChannelPositions();
+        if (array_key_exists('channelPositions', get_object_vars($data)) && null !== ($data->channelPositions ?? null)) {
+            $dataArray['channelPositions'] = $data->channelPositions ?? null;
         }
-        if ($data->isInitialized('codec') && null !== $data->getCodec()) {
-            $dataArray['codec'] = $data->getCodec();
+        if (array_key_exists('codec', get_object_vars($data)) && null !== ($data->codec ?? null)) {
+            $dataArray['codec'] = $data->codec ?? null;
         }
-        if ($data->isInitialized('durationInSeconds') && null !== $data->getDurationInSeconds()) {
-            $dataArray['durationInSeconds'] = $data->getDurationInSeconds();
+        if (array_key_exists('durationInSeconds', get_object_vars($data)) && null !== ($data->durationInSeconds ?? null)) {
+            $dataArray['durationInSeconds'] = $data->durationInSeconds ?? null;
         }
-        if ($data->isInitialized('format') && null !== $data->getFormat()) {
-            $dataArray['format'] = $data->getFormat();
+        if (array_key_exists('format', get_object_vars($data)) && null !== ($data->format ?? null)) {
+            $dataArray['format'] = $data->format ?? null;
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
-            $dataArray['language'] = $data->getLanguage();
+        if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
+            $dataArray['language'] = $data->language ?? null;
         }
-        if ($data->isInitialized('resolution') && null !== $data->getResolution()) {
-            $dataArray['resolution'] = $data->getResolution();
+        if (array_key_exists('resolution', get_object_vars($data)) && null !== ($data->resolution ?? null)) {
+            $dataArray['resolution'] = $data->resolution ?? null;
         }
-        if ($data->isInitialized('samplingRate') && null !== $data->getSamplingRate()) {
-            $dataArray['samplingRate'] = $data->getSamplingRate();
+        if (array_key_exists('samplingRate', get_object_vars($data)) && null !== ($data->samplingRate ?? null)) {
+            $dataArray['samplingRate'] = $data->samplingRate ?? null;
         }
-        if ($data->isInitialized('streamSize') && null !== $data->getStreamSize()) {
-            $dataArray['streamSize'] = $data->getStreamSize();
+        if (array_key_exists('streamSize', get_object_vars($data)) && null !== ($data->streamSize ?? null)) {
+            $dataArray['streamSize'] = $data->streamSize ?? null;
         }
         return $dataArray;
     }

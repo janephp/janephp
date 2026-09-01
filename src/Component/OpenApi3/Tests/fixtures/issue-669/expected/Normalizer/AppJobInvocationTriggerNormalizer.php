@@ -38,15 +38,15 @@ class AppJobInvocationTriggerNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('scheduled', $data)) {
-            $object->setScheduled($this->denormalizer->denormalize($data['scheduled'], \Jane\Generated\DigitalOcean\Model\AppJobInvocationTriggerScheduled::class, 'json', $context));
+            $object->scheduled = $this->denormalizer->denormalize($data['scheduled'], \Jane\Generated\DigitalOcean\Model\AppJobInvocationTriggerScheduled::class, 'json', $context);
             unset($data['scheduled']);
         }
         if (\array_key_exists('manual', $data)) {
-            $object->setManual($this->denormalizer->denormalize($data['manual'], \Jane\Generated\DigitalOcean\Model\AppJobInvocationTriggerManual::class, 'json', $context));
+            $object->manual = $this->denormalizer->denormalize($data['manual'], \Jane\Generated\DigitalOcean\Model\AppJobInvocationTriggerManual::class, 'json', $context);
             unset($data['manual']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class AppJobInvocationTriggerNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('scheduled') && null !== $data->getScheduled()) {
-            $dataArray['scheduled'] = $data->getScheduled() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getScheduled(), 'json', $context));
+        if (array_key_exists('scheduled', get_object_vars($data)) && null !== ($data->scheduled ?? null)) {
+            $dataArray['scheduled'] = ($data->scheduled ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduled ?? null, 'json', $context));
         }
-        if ($data->isInitialized('manual') && null !== $data->getManual()) {
-            $dataArray['manual'] = $data->getManual() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getManual(), 'json', $context));
+        if (array_key_exists('manual', get_object_vars($data)) && null !== ($data->manual ?? null)) {
+            $dataArray['manual'] = ($data->manual ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->manual ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

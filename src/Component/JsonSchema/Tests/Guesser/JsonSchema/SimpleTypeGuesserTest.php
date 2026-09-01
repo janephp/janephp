@@ -22,10 +22,10 @@ class SimpleTypeGuesserTest extends TestCase
     {
         $schema = new JsonSchema();
         if (null !== $type) {
-            $schema->setType($type);
+            $schema->type = $type;
         }
         if (null !== $format) {
-            $schema->setFormat($format);
+            $schema->format = $format;
         }
 
         self::assertSame($expected, $this->guesser->supportObject($schema));

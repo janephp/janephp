@@ -42,33 +42,33 @@ class ListItemUpdateRequestNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['content'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setContent($values);
+            $object->content = $values;
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
-            $object->setContent(null);
+            $object->content = null;
         }
         if (\array_key_exists('contentFieldsUpdateOptions', $data)) {
             $value_1 = $data['contentFieldsUpdateOptions'];
             if (is_string($data['contentFieldsUpdateOptions'])) {
                 $value_1 = $data['contentFieldsUpdateOptions'];
             }
-            $object->setContentFieldsUpdateOptions($value_1);
+            $object->contentFieldsUpdateOptions = $value_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getContent() as $key => $value) {
+            foreach ($data->content ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['content'] = $values;
         }
-        $value_1 = $data->getContentFieldsUpdateOptions();
-        if (is_string($data->getContentFieldsUpdateOptions())) {
-            $value_1 = $data->getContentFieldsUpdateOptions();
+        $value_1 = $data->contentFieldsUpdateOptions ?? null;
+        if (is_string($data->contentFieldsUpdateOptions ?? null)) {
+            $value_1 = $data->contentFieldsUpdateOptions ?? null;
         }
         $dataArray['contentFieldsUpdateOptions'] = $value_1;
         return $dataArray;

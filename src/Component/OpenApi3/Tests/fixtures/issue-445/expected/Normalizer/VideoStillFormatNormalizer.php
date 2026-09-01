@@ -38,19 +38,19 @@ class VideoStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
-            $object->setExtension($data['extension']);
+            $object->extension = $data['extension'];
             unset($data['extension']);
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
-            $object->setExtension(null);
+            $object->extension = null;
             unset($data['extension']);
         }
         if (\array_key_exists('positionInSeconds', $data)) {
-            $object->setPositionInSeconds($data['positionInSeconds']);
+            $object->positionInSeconds = $data['positionInSeconds'];
             unset($data['positionInSeconds']);
         }
         foreach ($data as $key => $value) {
@@ -63,12 +63,12 @@ class VideoStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
-            $dataArray['extension'] = $data->getExtension();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('extension', get_object_vars($data)) && null !== ($data->extension ?? null)) {
+            $dataArray['extension'] = $data->extension ?? null;
         }
-        if ($data->isInitialized('positionInSeconds') && null !== $data->getPositionInSeconds()) {
-            $dataArray['positionInSeconds'] = $data->getPositionInSeconds();
+        if (array_key_exists('positionInSeconds', get_object_vars($data)) && null !== ($data->positionInSeconds ?? null)) {
+            $dataArray['positionInSeconds'] = $data->positionInSeconds ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

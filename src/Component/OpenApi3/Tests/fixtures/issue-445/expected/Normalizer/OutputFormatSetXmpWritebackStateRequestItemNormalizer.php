@@ -41,11 +41,11 @@ class OutputFormatSetXmpWritebackStateRequestItemNormalizer implements Denormali
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
             unset($data['enabled']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         foreach ($data as $key => $value) {
@@ -58,8 +58,8 @@ class OutputFormatSetXmpWritebackStateRequestItemNormalizer implements Denormali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->getEnabled();
-        $dataArray['id'] = $data->getId();
+        $dataArray['enabled'] = $data->enabled ?? null;
+        $dataArray['id'] = $data->id ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

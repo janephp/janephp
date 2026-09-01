@@ -38,39 +38,39 @@ class ProfileDataPlaneL3RoamingDataNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('key', $data)) {
-            $object->setKey($data['key']);
+            $object->key = $data['key'];
         }
         if (\array_key_exists('activated', $data)) {
-            $object->setActivated($data['activated']);
+            $object->activated = $data['activated'];
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('firmwareVersion', $data)) {
-            $object->setFirmwareVersion($data['firmwareVersion']);
+            $object->firmwareVersion = $data['firmwareVersion'];
         }
         if (\array_key_exists('subCriteriaType', $data)) {
-            $object->setSubCriteriaType($data['subCriteriaType']);
+            $object->subCriteriaType = $data['subCriteriaType'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['key'] = $data->getKey();
-        $dataArray['activated'] = $data->getActivated();
-        $dataArray['value'] = $data->getValue();
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        $dataArray['key'] = $data->key ?? null;
+        $dataArray['activated'] = $data->activated ?? null;
+        $dataArray['value'] = $data->value ?? null;
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('firmwareVersion') && null !== $data->getFirmwareVersion()) {
-            $dataArray['firmwareVersion'] = $data->getFirmwareVersion();
+        if (array_key_exists('firmwareVersion', get_object_vars($data)) && null !== ($data->firmwareVersion ?? null)) {
+            $dataArray['firmwareVersion'] = $data->firmwareVersion ?? null;
         }
-        if ($data->isInitialized('subCriteriaType') && null !== $data->getSubCriteriaType()) {
-            $dataArray['subCriteriaType'] = $data->getSubCriteriaType();
+        if (array_key_exists('subCriteriaType', get_object_vars($data)) && null !== ($data->subCriteriaType ?? null)) {
+            $dataArray['subCriteriaType'] = $data->subCriteriaType ?? null;
         }
         return $dataArray;
     }

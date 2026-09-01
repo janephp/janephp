@@ -8,345 +8,67 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss i
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var float
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public float $revenue;
     /**
      * @var float
      */
-    protected $revenue;
+    public float $operatingCosts;
     /**
      * @var float
      */
-    protected $operatingCosts;
+    public float $operatingProfit;
     /**
      * @var float
      */
-    protected $operatingProfit;
+    public float $wagesAndSalaries;
     /**
      * @var float
      */
-    protected $wagesAndSalaries;
+    public float $pensionCosts;
     /**
      * @var float
      */
-    protected $pensionCosts;
+    public float $depreciation;
     /**
      * @var float
      */
-    protected $depreciation;
+    public float $amortisation;
     /**
      * @var float
      */
-    protected $amortisation;
+    public float $financialExpenses;
     /**
      * @var float
      */
-    protected $financialExpenses;
+    public float $profitBeforeTax;
     /**
      * @var float
      */
-    protected $profitBeforeTax;
+    public float $tax;
     /**
      * @var float
      */
-    protected $tax;
+    public float $profitAfterTax;
     /**
      * @var float
      */
-    protected $profitAfterTax;
+    public float $dividends;
     /**
      * @var float
      */
-    protected $dividends;
+    public float $minorityInterests;
     /**
      * @var float
      */
-    protected $minorityInterests;
+    public float $otherAppropriations;
     /**
      * @var float
      */
-    protected $otherAppropriations;
-    /**
-     * @var float
-     */
-    protected $retainedProfit;
-    /**
-     * @return float
-     */
-    public function getRevenue(): float
-    {
-        return $this->revenue;
-    }
-    /**
-     * @param float $revenue
-     *
-     * @return self
-     */
-    public function setRevenue(float $revenue): self
-    {
-        $this->initialized['revenue'] = true;
-        $this->revenue = $revenue;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getOperatingCosts(): float
-    {
-        return $this->operatingCosts;
-    }
-    /**
-     * @param float $operatingCosts
-     *
-     * @return self
-     */
-    public function setOperatingCosts(float $operatingCosts): self
-    {
-        $this->initialized['operatingCosts'] = true;
-        $this->operatingCosts = $operatingCosts;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getOperatingProfit(): float
-    {
-        return $this->operatingProfit;
-    }
-    /**
-     * @param float $operatingProfit
-     *
-     * @return self
-     */
-    public function setOperatingProfit(float $operatingProfit): self
-    {
-        $this->initialized['operatingProfit'] = true;
-        $this->operatingProfit = $operatingProfit;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getWagesAndSalaries(): float
-    {
-        return $this->wagesAndSalaries;
-    }
-    /**
-     * @param float $wagesAndSalaries
-     *
-     * @return self
-     */
-    public function setWagesAndSalaries(float $wagesAndSalaries): self
-    {
-        $this->initialized['wagesAndSalaries'] = true;
-        $this->wagesAndSalaries = $wagesAndSalaries;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getPensionCosts(): float
-    {
-        return $this->pensionCosts;
-    }
-    /**
-     * @param float $pensionCosts
-     *
-     * @return self
-     */
-    public function setPensionCosts(float $pensionCosts): self
-    {
-        $this->initialized['pensionCosts'] = true;
-        $this->pensionCosts = $pensionCosts;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getDepreciation(): float
-    {
-        return $this->depreciation;
-    }
-    /**
-     * @param float $depreciation
-     *
-     * @return self
-     */
-    public function setDepreciation(float $depreciation): self
-    {
-        $this->initialized['depreciation'] = true;
-        $this->depreciation = $depreciation;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getAmortisation(): float
-    {
-        return $this->amortisation;
-    }
-    /**
-     * @param float $amortisation
-     *
-     * @return self
-     */
-    public function setAmortisation(float $amortisation): self
-    {
-        $this->initialized['amortisation'] = true;
-        $this->amortisation = $amortisation;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getFinancialExpenses(): float
-    {
-        return $this->financialExpenses;
-    }
-    /**
-     * @param float $financialExpenses
-     *
-     * @return self
-     */
-    public function setFinancialExpenses(float $financialExpenses): self
-    {
-        $this->initialized['financialExpenses'] = true;
-        $this->financialExpenses = $financialExpenses;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getProfitBeforeTax(): float
-    {
-        return $this->profitBeforeTax;
-    }
-    /**
-     * @param float $profitBeforeTax
-     *
-     * @return self
-     */
-    public function setProfitBeforeTax(float $profitBeforeTax): self
-    {
-        $this->initialized['profitBeforeTax'] = true;
-        $this->profitBeforeTax = $profitBeforeTax;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTax(): float
-    {
-        return $this->tax;
-    }
-    /**
-     * @param float $tax
-     *
-     * @return self
-     */
-    public function setTax(float $tax): self
-    {
-        $this->initialized['tax'] = true;
-        $this->tax = $tax;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getProfitAfterTax(): float
-    {
-        return $this->profitAfterTax;
-    }
-    /**
-     * @param float $profitAfterTax
-     *
-     * @return self
-     */
-    public function setProfitAfterTax(float $profitAfterTax): self
-    {
-        $this->initialized['profitAfterTax'] = true;
-        $this->profitAfterTax = $profitAfterTax;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getDividends(): float
-    {
-        return $this->dividends;
-    }
-    /**
-     * @param float $dividends
-     *
-     * @return self
-     */
-    public function setDividends(float $dividends): self
-    {
-        $this->initialized['dividends'] = true;
-        $this->dividends = $dividends;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getMinorityInterests(): float
-    {
-        return $this->minorityInterests;
-    }
-    /**
-     * @param float $minorityInterests
-     *
-     * @return self
-     */
-    public function setMinorityInterests(float $minorityInterests): self
-    {
-        $this->initialized['minorityInterests'] = true;
-        $this->minorityInterests = $minorityInterests;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getOtherAppropriations(): float
-    {
-        return $this->otherAppropriations;
-    }
-    /**
-     * @param float $otherAppropriations
-     *
-     * @return self
-     */
-    public function setOtherAppropriations(float $otherAppropriations): self
-    {
-        $this->initialized['otherAppropriations'] = true;
-        $this->otherAppropriations = $otherAppropriations;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getRetainedProfit(): float
-    {
-        return $this->retainedProfit;
-    }
-    /**
-     * @param float $retainedProfit
-     *
-     * @return self
-     */
-    public function setRetainedProfit(float $retainedProfit): self
-    {
-        $this->initialized['retainedProfit'] = true;
-        $this->retainedProfit = $retainedProfit;
-        return $this;
-    }
+    public float $retainedProfit;
     public function definedProperties(): array
     {
-        return ['revenue' => ['revenue', 'getRevenue', 'setRevenue'], 'operatingCosts' => ['operatingCosts', 'getOperatingCosts', 'setOperatingCosts'], 'operatingProfit' => ['operatingProfit', 'getOperatingProfit', 'setOperatingProfit'], 'wagesAndSalaries' => ['wagesAndSalaries', 'getWagesAndSalaries', 'setWagesAndSalaries'], 'pensionCosts' => ['pensionCosts', 'getPensionCosts', 'setPensionCosts'], 'depreciation' => ['depreciation', 'getDepreciation', 'setDepreciation'], 'amortisation' => ['amortisation', 'getAmortisation', 'setAmortisation'], 'financialExpenses' => ['financialExpenses', 'getFinancialExpenses', 'setFinancialExpenses'], 'profitBeforeTax' => ['profitBeforeTax', 'getProfitBeforeTax', 'setProfitBeforeTax'], 'tax' => ['tax', 'getTax', 'setTax'], 'profitAfterTax' => ['profitAfterTax', 'getProfitAfterTax', 'setProfitAfterTax'], 'dividends' => ['dividends', 'getDividends', 'setDividends'], 'minorityInterests' => ['minorityInterests', 'getMinorityInterests', 'setMinorityInterests'], 'otherAppropriations' => ['otherAppropriations', 'getOtherAppropriations', 'setOtherAppropriations'], 'retainedProfit' => ['retainedProfit', 'getRetainedProfit', 'setRetainedProfit']];
+        return ['revenue' => 'revenue', 'operatingCosts' => 'operatingCosts', 'operatingProfit' => 'operatingProfit', 'wagesAndSalaries' => 'wagesAndSalaries', 'pensionCosts' => 'pensionCosts', 'depreciation' => 'depreciation', 'amortisation' => 'amortisation', 'financialExpenses' => 'financialExpenses', 'profitBeforeTax' => 'profitBeforeTax', 'tax' => 'tax', 'profitAfterTax' => 'profitAfterTax', 'dividends' => 'dividends', 'minorityInterests' => 'minorityInterests', 'otherAppropriations' => 'otherAppropriations', 'retainedProfit' => 'retainedProfit'];
     }
 }

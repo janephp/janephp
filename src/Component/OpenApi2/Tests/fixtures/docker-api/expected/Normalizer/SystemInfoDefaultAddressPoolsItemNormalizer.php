@@ -41,21 +41,21 @@ class SystemInfoDefaultAddressPoolsItemNormalizer implements DenormalizerInterfa
             $this->validate($data, new \Docker\Api\Validator\SystemInfoDefaultAddressPoolsItemConstraint());
         }
         if (\array_key_exists('Base', $data)) {
-            $object->setBase($data['Base']);
+            $object->base = $data['Base'];
         }
         if (\array_key_exists('Size', $data)) {
-            $object->setSize($data['Size']);
+            $object->size = $data['Size'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('base') && null !== $data->getBase()) {
-            $dataArray['Base'] = $data->getBase();
+        if (array_key_exists('base', get_object_vars($data)) && null !== ($data->base ?? null)) {
+            $dataArray['Base'] = $data->base ?? null;
         }
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['Size'] = $data->getSize();
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['Size'] = $data->size ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SystemInfoDefaultAddressPoolsItemConstraint());

@@ -44,84 +44,84 @@ class NorthboundDataStreamingModifyNorthboundDataStreamingProfileNormalizer impl
             $data['streamingByDomainZoneEnabled'] = (bool) $data['streamingByDomainZoneEnabled'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('serverHost', $data)) {
-            $object->setServerHost($data['serverHost']);
+            $object->serverHost = $data['serverHost'];
         }
         if (\array_key_exists('serverPort', $data)) {
-            $object->setServerPort($data['serverPort']);
+            $object->serverPort = $data['serverPort'];
         }
         if (\array_key_exists('user', $data)) {
-            $object->setUser($data['user']);
+            $object->user = $data['user'];
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
         }
         if (\array_key_exists('systemId', $data)) {
-            $object->setSystemId($data['systemId']);
+            $object->systemId = $data['systemId'];
         }
         if (\array_key_exists('dataTypes', $data)) {
             $values = [];
             foreach ($data['dataTypes'] as $value) {
                 $values[] = $value;
             }
-            $object->setDataTypes($values);
+            $object->dataTypes = $values;
         }
         if (\array_key_exists('northboundDataStreamingEnabled', $data)) {
-            $object->setNorthboundDataStreamingEnabled($data['northboundDataStreamingEnabled']);
+            $object->northboundDataStreamingEnabled = $data['northboundDataStreamingEnabled'];
         }
         if (\array_key_exists('streamingByDomainZoneEnabled', $data)) {
-            $object->setStreamingByDomainZoneEnabled($data['streamingByDomainZoneEnabled']);
+            $object->streamingByDomainZoneEnabled = $data['streamingByDomainZoneEnabled'];
         }
         if (\array_key_exists('streamingDomainIds', $data)) {
             $values_1 = [];
             foreach ($data['streamingDomainIds'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setStreamingDomainIds($values_1);
+            $object->streamingDomainIds = $values_1;
         }
         if (\array_key_exists('streamingZoneIds', $data)) {
             $values_2 = [];
             foreach ($data['streamingZoneIds'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setStreamingZoneIds($values_2);
+            $object->streamingZoneIds = $values_2;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['serverHost'] = $data->getServerHost();
-        $dataArray['serverPort'] = $data->getServerPort();
-        $dataArray['user'] = $data->getUser();
-        $dataArray['password'] = $data->getPassword();
-        $dataArray['systemId'] = $data->getSystemId();
-        if ($data->isInitialized('dataTypes') && null !== $data->getDataTypes()) {
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['serverHost'] = $data->serverHost ?? null;
+        $dataArray['serverPort'] = $data->serverPort ?? null;
+        $dataArray['user'] = $data->user ?? null;
+        $dataArray['password'] = $data->password ?? null;
+        $dataArray['systemId'] = $data->systemId ?? null;
+        if (array_key_exists('dataTypes', get_object_vars($data)) && null !== ($data->dataTypes ?? null)) {
             $values = [];
-            foreach ($data->getDataTypes() as $value) {
+            foreach ($data->dataTypes ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['dataTypes'] = $values;
         }
-        if ($data->isInitialized('northboundDataStreamingEnabled') && null !== $data->getNorthboundDataStreamingEnabled()) {
-            $dataArray['northboundDataStreamingEnabled'] = $data->getNorthboundDataStreamingEnabled();
+        if (array_key_exists('northboundDataStreamingEnabled', get_object_vars($data)) && null !== ($data->northboundDataStreamingEnabled ?? null)) {
+            $dataArray['northboundDataStreamingEnabled'] = $data->northboundDataStreamingEnabled ?? null;
         }
-        if ($data->isInitialized('streamingByDomainZoneEnabled') && null !== $data->getStreamingByDomainZoneEnabled()) {
-            $dataArray['streamingByDomainZoneEnabled'] = $data->getStreamingByDomainZoneEnabled();
+        if (array_key_exists('streamingByDomainZoneEnabled', get_object_vars($data)) && null !== ($data->streamingByDomainZoneEnabled ?? null)) {
+            $dataArray['streamingByDomainZoneEnabled'] = $data->streamingByDomainZoneEnabled ?? null;
         }
-        if ($data->isInitialized('streamingDomainIds') && null !== $data->getStreamingDomainIds()) {
+        if (array_key_exists('streamingDomainIds', get_object_vars($data)) && null !== ($data->streamingDomainIds ?? null)) {
             $values_1 = [];
-            foreach ($data->getStreamingDomainIds() as $value_1) {
+            foreach ($data->streamingDomainIds ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['streamingDomainIds'] = $values_1;
         }
-        if ($data->isInitialized('streamingZoneIds') && null !== $data->getStreamingZoneIds()) {
+        if (array_key_exists('streamingZoneIds', get_object_vars($data)) && null !== ($data->streamingZoneIds ?? null)) {
             $values_2 = [];
-            foreach ($data->getStreamingZoneIds() as $value_2) {
+            foreach ($data->streamingZoneIds ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['streamingZoneIds'] = $values_2;

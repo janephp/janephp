@@ -38,79 +38,79 @@ class ReferenceUpdateExceptionNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceLevel', $data)) {
-            $object->setTraceLevel($data['traceLevel']);
+            $object->traceLevel = $data['traceLevel'];
             unset($data['traceLevel']);
         }
         if (\array_key_exists('traceId', $data) && $data['traceId'] !== null) {
-            $object->setTraceId($data['traceId']);
+            $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
-            $object->setTraceId(null);
+            $object->traceId = null;
             unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
-            $object->setTraceJobId($data['traceJobId']);
+            $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
-            $object->setTraceJobId(null);
+            $object->traceJobId = null;
             unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
-            $object->setHttpStatusCode($data['httpStatusCode']);
+            $object->httpStatusCode = $data['httpStatusCode'];
             unset($data['httpStatusCode']);
         }
         if (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] !== null) {
-            $object->setExceptionMessage($data['exceptionMessage']);
+            $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
-            $object->setExceptionMessage(null);
+            $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('customerId', $data) && $data['customerId'] !== null) {
-            $object->setCustomerId($data['customerId']);
+            $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
-            $object->setCustomerId(null);
+            $object->customerId = null;
             unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
-            $object->setCustomerAlias($data['customerAlias']);
+            $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
-            $object->setCustomerAlias(null);
+            $object->customerAlias = null;
             unset($data['customerAlias']);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
-            $object->setUserId($data['userId']);
+            $object->userId = $data['userId'];
             unset($data['userId']);
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
-            $object->setUserId(null);
+            $object->userId = null;
             unset($data['userId']);
         }
         if (\array_key_exists('referenceItemId', $data) && $data['referenceItemId'] !== null) {
-            $object->setReferenceItemId($data['referenceItemId']);
+            $object->referenceItemId = $data['referenceItemId'];
             unset($data['referenceItemId']);
         }
         elseif (\array_key_exists('referenceItemId', $data) && $data['referenceItemId'] === null) {
-            $object->setReferenceItemId(null);
+            $object->referenceItemId = null;
             unset($data['referenceItemId']);
         }
         if (\array_key_exists('referenceType', $data) && $data['referenceType'] !== null) {
-            $object->setReferenceType($data['referenceType']);
+            $object->referenceType = $data['referenceType'];
             unset($data['referenceType']);
         }
         elseif (\array_key_exists('referenceType', $data) && $data['referenceType'] === null) {
-            $object->setReferenceType(null);
+            $object->referenceType = null;
             unset($data['referenceType']);
         }
         if (\array_key_exists('exceptions', $data) && $data['exceptions'] !== null) {
@@ -118,11 +118,11 @@ class ReferenceUpdateExceptionNormalizer implements DenormalizerInterface, Norma
             foreach ($data['exceptions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\PictureparkException::class, 'json', $context);
             }
-            $object->setExceptions($values);
+            $object->exceptions = $values;
             unset($data['exceptions']);
         }
         elseif (\array_key_exists('exceptions', $data) && $data['exceptions'] === null) {
-            $object->setExceptions(null);
+            $object->exceptions = null;
             unset($data['exceptions']);
         }
         foreach ($data as $key => $value_1) {
@@ -135,40 +135,40 @@ class ReferenceUpdateExceptionNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
-            $dataArray['traceLevel'] = $data->getTraceLevel();
+        if (array_key_exists('traceLevel', get_object_vars($data)) && null !== ($data->traceLevel ?? null)) {
+            $dataArray['traceLevel'] = $data->traceLevel ?? null;
         }
-        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
-            $dataArray['traceId'] = $data->getTraceId();
+        if (array_key_exists('traceId', get_object_vars($data)) && null !== ($data->traceId ?? null)) {
+            $dataArray['traceId'] = $data->traceId ?? null;
         }
-        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
-            $dataArray['traceJobId'] = $data->getTraceJobId();
+        if (array_key_exists('traceJobId', get_object_vars($data)) && null !== ($data->traceJobId ?? null)) {
+            $dataArray['traceJobId'] = $data->traceJobId ?? null;
         }
-        if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
-            $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
+        if (array_key_exists('httpStatusCode', get_object_vars($data)) && null !== ($data->httpStatusCode ?? null)) {
+            $dataArray['httpStatusCode'] = $data->httpStatusCode ?? null;
         }
-        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
-            $dataArray['exceptionMessage'] = $data->getExceptionMessage();
+        if (array_key_exists('exceptionMessage', get_object_vars($data)) && null !== ($data->exceptionMessage ?? null)) {
+            $dataArray['exceptionMessage'] = $data->exceptionMessage ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
-            $dataArray['customerId'] = $data->getCustomerId();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('customerId', get_object_vars($data)) && null !== ($data->customerId ?? null)) {
+            $dataArray['customerId'] = $data->customerId ?? null;
         }
-        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
-            $dataArray['customerAlias'] = $data->getCustomerAlias();
+        if (array_key_exists('customerAlias', get_object_vars($data)) && null !== ($data->customerAlias ?? null)) {
+            $dataArray['customerAlias'] = $data->customerAlias ?? null;
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['userId'] = $data->getUserId();
+        if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['userId'] = $data->userId ?? null;
         }
-        if ($data->isInitialized('referenceItemId') && null !== $data->getReferenceItemId()) {
-            $dataArray['referenceItemId'] = $data->getReferenceItemId();
+        if (array_key_exists('referenceItemId', get_object_vars($data)) && null !== ($data->referenceItemId ?? null)) {
+            $dataArray['referenceItemId'] = $data->referenceItemId ?? null;
         }
-        if ($data->isInitialized('referenceType') && null !== $data->getReferenceType()) {
-            $dataArray['referenceType'] = $data->getReferenceType();
+        if (array_key_exists('referenceType', get_object_vars($data)) && null !== ($data->referenceType ?? null)) {
+            $dataArray['referenceType'] = $data->referenceType ?? null;
         }
-        if ($data->isInitialized('exceptions') && null !== $data->getExceptions()) {
+        if (array_key_exists('exceptions', get_object_vars($data)) && null !== ($data->exceptions ?? null)) {
             $values = [];
-            foreach ($data->getExceptions() as $value) {
+            foreach ($data->exceptions ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['exceptions'] = $values;

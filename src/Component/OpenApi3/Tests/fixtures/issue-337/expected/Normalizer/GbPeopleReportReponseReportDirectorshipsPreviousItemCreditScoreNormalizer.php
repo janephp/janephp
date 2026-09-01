@@ -38,7 +38,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreNormalizer 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('currentCreditRating', $data)) {
-            $object->setCurrentCreditRating($this->denormalizer->denormalize($data['currentCreditRating'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCreditRating::class, 'json', $context));
+            $object->currentCreditRating = $this->denormalizer->denormalize($data['currentCreditRating'], \CreditSafe\API\Model\GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCreditRating::class, 'json', $context);
             unset($data['currentCreditRating']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreNormalizer 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('currentCreditRating') && null !== $data->getCurrentCreditRating()) {
-            $dataArray['currentCreditRating'] = $data->getCurrentCreditRating() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentCreditRating(), 'json', $context));
+        if (array_key_exists('currentCreditRating', get_object_vars($data)) && null !== ($data->currentCreditRating ?? null)) {
+            $dataArray['currentCreditRating'] = ($data->currentCreditRating ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->currentCreditRating ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

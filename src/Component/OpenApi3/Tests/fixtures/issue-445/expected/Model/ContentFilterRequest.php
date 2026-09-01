@@ -5,263 +5,57 @@ namespace PicturePark\API\Model;
 class ContentFilterRequest
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * Limits the simple search fields to the fields available in the specified channel.
      *
      * @var string|null
      */
-    protected $channelId;
+    public ?string $channelId;
     /**
      * Only searches the specified language values. Defaults to all metadata languages of the language configuration.
      *
      * @var list<string>|null
      */
-    protected $searchLanguages;
+    public ?array $searchLanguages;
     /**
      * Limits the search by using a query string filter. The Lucene query string syntax is supported.
      *
      * @var string|null
      */
-    protected $searchString;
+    public ?string $searchString;
     /**
      * Type of search to be performed: against metadata, extracted fulltext from documents or both. Default to Metadata.
      *
      * @var string
      */
-    protected $searchType;
+    public string $searchType;
     /**
      * The collection id.
      *
      * @var string|null
      */
-    protected $collectionId;
+    public ?string $collectionId;
     /**
      * An optional search filter. Limits the content document result set.
      *
      * @var FilterBase|null
      */
-    protected $filter;
+    public ?FilterBase $filter;
     /**
      * Limits the content document result set to that life cycle state. Defaults to ActiveOnly.
      *
      * @var string
      */
-    protected $lifeCycleFilter;
+    public string $lifeCycleFilter;
     /**
      * Filter the content document result set to those that have or not have broken references
      *
      * @var string
      */
-    protected $brokenDependenciesFilter;
+    public string $brokenDependenciesFilter;
     /**
      * Limits the content document result set to specific ContentRights the user has
      *
      * @var list<string>|null
      */
-    protected $rightsFilter;
-    /**
-     * Limits the simple search fields to the fields available in the specified channel.
-     *
-     * @return string|null
-     */
-    public function getChannelId(): ?string
-    {
-        return $this->channelId;
-    }
-    /**
-     * Limits the simple search fields to the fields available in the specified channel.
-     *
-     * @param string|null $channelId
-     *
-     * @return self
-     */
-    public function setChannelId(?string $channelId): self
-    {
-        $this->initialized['channelId'] = true;
-        $this->channelId = $channelId;
-        return $this;
-    }
-    /**
-     * Only searches the specified language values. Defaults to all metadata languages of the language configuration.
-     *
-     * @return list<string>|null
-     */
-    public function getSearchLanguages(): ?array
-    {
-        return $this->searchLanguages;
-    }
-    /**
-     * Only searches the specified language values. Defaults to all metadata languages of the language configuration.
-     *
-     * @param list<string>|null $searchLanguages
-     *
-     * @return self
-     */
-    public function setSearchLanguages(?array $searchLanguages): self
-    {
-        $this->initialized['searchLanguages'] = true;
-        $this->searchLanguages = $searchLanguages;
-        return $this;
-    }
-    /**
-     * Limits the search by using a query string filter. The Lucene query string syntax is supported.
-     *
-     * @return string|null
-     */
-    public function getSearchString(): ?string
-    {
-        return $this->searchString;
-    }
-    /**
-     * Limits the search by using a query string filter. The Lucene query string syntax is supported.
-     *
-     * @param string|null $searchString
-     *
-     * @return self
-     */
-    public function setSearchString(?string $searchString): self
-    {
-        $this->initialized['searchString'] = true;
-        $this->searchString = $searchString;
-        return $this;
-    }
-    /**
-     * Type of search to be performed: against metadata, extracted fulltext from documents or both. Default to Metadata.
-     *
-     * @return string
-     */
-    public function getSearchType(): string
-    {
-        return $this->searchType;
-    }
-    /**
-     * Type of search to be performed: against metadata, extracted fulltext from documents or both. Default to Metadata.
-     *
-     * @param string $searchType
-     *
-     * @return self
-     */
-    public function setSearchType(string $searchType): self
-    {
-        $this->initialized['searchType'] = true;
-        $this->searchType = $searchType;
-        return $this;
-    }
-    /**
-     * The collection id.
-     *
-     * @return string|null
-     */
-    public function getCollectionId(): ?string
-    {
-        return $this->collectionId;
-    }
-    /**
-     * The collection id.
-     *
-     * @param string|null $collectionId
-     *
-     * @return self
-     */
-    public function setCollectionId(?string $collectionId): self
-    {
-        $this->initialized['collectionId'] = true;
-        $this->collectionId = $collectionId;
-        return $this;
-    }
-    /**
-     * An optional search filter. Limits the content document result set.
-     *
-     * @return FilterBase|null
-     */
-    public function getFilter(): ?FilterBase
-    {
-        return $this->filter;
-    }
-    /**
-     * An optional search filter. Limits the content document result set.
-     *
-     * @param FilterBase|null $filter
-     *
-     * @return self
-     */
-    public function setFilter(?FilterBase $filter): self
-    {
-        $this->initialized['filter'] = true;
-        $this->filter = $filter;
-        return $this;
-    }
-    /**
-     * Limits the content document result set to that life cycle state. Defaults to ActiveOnly.
-     *
-     * @return string
-     */
-    public function getLifeCycleFilter(): string
-    {
-        return $this->lifeCycleFilter;
-    }
-    /**
-     * Limits the content document result set to that life cycle state. Defaults to ActiveOnly.
-     *
-     * @param string $lifeCycleFilter
-     *
-     * @return self
-     */
-    public function setLifeCycleFilter(string $lifeCycleFilter): self
-    {
-        $this->initialized['lifeCycleFilter'] = true;
-        $this->lifeCycleFilter = $lifeCycleFilter;
-        return $this;
-    }
-    /**
-     * Filter the content document result set to those that have or not have broken references
-     *
-     * @return string
-     */
-    public function getBrokenDependenciesFilter(): string
-    {
-        return $this->brokenDependenciesFilter;
-    }
-    /**
-     * Filter the content document result set to those that have or not have broken references
-     *
-     * @param string $brokenDependenciesFilter
-     *
-     * @return self
-     */
-    public function setBrokenDependenciesFilter(string $brokenDependenciesFilter): self
-    {
-        $this->initialized['brokenDependenciesFilter'] = true;
-        $this->brokenDependenciesFilter = $brokenDependenciesFilter;
-        return $this;
-    }
-    /**
-     * Limits the content document result set to specific ContentRights the user has
-     *
-     * @return list<string>|null
-     */
-    public function getRightsFilter(): ?array
-    {
-        return $this->rightsFilter;
-    }
-    /**
-     * Limits the content document result set to specific ContentRights the user has
-     *
-     * @param list<string>|null $rightsFilter
-     *
-     * @return self
-     */
-    public function setRightsFilter(?array $rightsFilter): self
-    {
-        $this->initialized['rightsFilter'] = true;
-        $this->rightsFilter = $rightsFilter;
-        return $this;
-    }
+    public ?array $rightsFilter;
 }

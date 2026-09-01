@@ -42,25 +42,25 @@ class AlertClearBulkAlarmsNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['idList'] as $value) {
                 $values[] = $value;
             }
-            $object->setIdList($values);
+            $object->idList = $values;
         }
         if (\array_key_exists('comment', $data)) {
-            $object->setComment($data['comment']);
+            $object->comment = $data['comment'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('idList') && null !== $data->getIdList()) {
+        if (array_key_exists('idList', get_object_vars($data)) && null !== ($data->idList ?? null)) {
             $values = [];
-            foreach ($data->getIdList() as $value) {
+            foreach ($data->idList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['idList'] = $values;
         }
-        if ($data->isInitialized('comment') && null !== $data->getComment()) {
-            $dataArray['comment'] = $data->getComment();
+        if (array_key_exists('comment', get_object_vars($data)) && null !== ($data->comment ?? null)) {
+            $dataArray['comment'] = $data->comment ?? null;
         }
         return $dataArray;
     }

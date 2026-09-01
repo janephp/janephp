@@ -8,37 +8,11 @@ class PatternProperties implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string
      */
-    protected $foo;
-    /**
-     * @return string
-     */
-    public function getFoo(): string
-    {
-        return $this->foo;
-    }
-    /**
-     * @param string $foo
-     *
-     * @return self
-     */
-    public function setFoo(string $foo): self
-    {
-        $this->initialized['foo'] = true;
-        $this->foo = $foo;
-        return $this;
-    }
+    public string $foo;
     public function definedProperties(): array
     {
-        return ['foo' => ['foo', 'getFoo', 'setFoo']];
+        return ['foo' => 'foo'];
     }
 }

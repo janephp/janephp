@@ -31,7 +31,7 @@ class GetNamespacedReport extends \Jane\Component\OpenApi3\Tests\Expected\XNames
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200', 'json');
         }
     }

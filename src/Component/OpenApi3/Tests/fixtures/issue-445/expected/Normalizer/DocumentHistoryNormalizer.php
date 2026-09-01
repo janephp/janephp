@@ -41,82 +41,82 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
             $data['deleted'] = (bool) $data['deleted'];
         }
         if (\array_key_exists('documentId', $data) && $data['documentId'] !== null) {
-            $object->setDocumentId($data['documentId']);
+            $object->documentId = $data['documentId'];
         }
         elseif (\array_key_exists('documentId', $data) && $data['documentId'] === null) {
-            $object->setDocumentId(null);
+            $object->documentId = null;
         }
         if (\array_key_exists('documentVersion', $data)) {
-            $object->setDocumentVersion($data['documentVersion']);
+            $object->documentVersion = $data['documentVersion'];
         }
         if (\array_key_exists('documentType', $data) && $data['documentType'] !== null) {
-            $object->setDocumentType($data['documentType']);
+            $object->documentType = $data['documentType'];
         }
         elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
-            $object->setDocumentType(null);
+            $object->documentType = null;
         }
         if (\array_key_exists('documentDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['documentDate']);
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['documentDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setDocumentDate($date);
+            $object->documentDate = $date;
         }
         if (\array_key_exists('document', $data) && $data['document'] !== null) {
-            $object->setDocument($data['document']);
+            $object->document = $data['document'];
         }
         elseif (\array_key_exists('document', $data) && $data['document'] === null) {
-            $object->setDocument(null);
+            $object->document = null;
         }
         if (\array_key_exists('timestamp', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
             if (false === $date_1) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date_1);
+            $object->timestamp = $date_1;
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
             $value = $data['audit'];
             if (is_array($data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
                 $value = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAuditHistory::class, 'json', $context);
             }
-            $object->setAudit($value);
+            $object->audit = $value;
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
-            $object->setAudit(null);
+            $object->audit = null;
         }
         if (\array_key_exists('deleted', $data)) {
-            $object->setDeleted($data['deleted']);
+            $object->deleted = $data['deleted'];
         }
         if (\array_key_exists('action', $data)) {
-            $object->setAction($data['action']);
+            $object->action = $data['action'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
-            $dataArray['documentId'] = $data->getDocumentId();
+        if (array_key_exists('documentId', get_object_vars($data)) && null !== ($data->documentId ?? null)) {
+            $dataArray['documentId'] = $data->documentId ?? null;
         }
-        $dataArray['documentVersion'] = $data->getDocumentVersion();
-        if ($data->isInitialized('documentType') && null !== $data->getDocumentType()) {
-            $dataArray['documentType'] = $data->getDocumentType();
+        $dataArray['documentVersion'] = $data->documentVersion ?? null;
+        if (array_key_exists('documentType', get_object_vars($data)) && null !== ($data->documentType ?? null)) {
+            $dataArray['documentType'] = $data->documentType ?? null;
         }
-        $dataArray['documentDate'] = $data->getDocumentDate()->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('document') && null !== $data->getDocument()) {
-            $dataArray['document'] = $data->getDocument();
+        $dataArray['documentDate'] = ($data->documentDate ?? null)->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('document', get_object_vars($data)) && null !== ($data->document ?? null)) {
+            $dataArray['document'] = $data->document ?? null;
         }
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
-            $value = $data->getAudit();
-            if (is_object($data->getAudit())) {
-                $value = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
+            $value = $data->audit ?? null;
+            if (is_object($data->audit ?? null)) {
+                $value = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
             }
             $dataArray['audit'] = $value;
         }
-        $dataArray['deleted'] = $data->getDeleted();
-        $dataArray['action'] = $data->getAction();
+        $dataArray['deleted'] = $data->deleted ?? null;
+        $dataArray['action'] = $data->action ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

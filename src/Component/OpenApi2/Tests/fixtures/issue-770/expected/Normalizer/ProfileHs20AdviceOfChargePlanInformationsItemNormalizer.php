@@ -38,27 +38,27 @@ class ProfileHs20AdviceOfChargePlanInformationsItemNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('language', $data)) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
         }
         if (\array_key_exists('currency', $data)) {
-            $object->setCurrency($data['currency']);
+            $object->currency = $data['currency'];
         }
         if (\array_key_exists('content', $data)) {
-            $object->setContent($data['content']);
+            $object->content = $data['content'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
-            $dataArray['language'] = $data->getLanguage();
+        if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
+            $dataArray['language'] = $data->language ?? null;
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
-            $dataArray['currency'] = $data->getCurrency();
+        if (array_key_exists('currency', get_object_vars($data)) && null !== ($data->currency ?? null)) {
+            $dataArray['currency'] = $data->currency ?? null;
         }
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
-            $dataArray['content'] = $data->getContent();
+        if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
+            $dataArray['content'] = $data->content ?? null;
         }
         return $dataArray;
     }

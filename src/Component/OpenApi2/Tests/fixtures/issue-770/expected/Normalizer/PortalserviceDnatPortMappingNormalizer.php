@@ -38,21 +38,21 @@ class PortalserviceDnatPortMappingNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('sourcePort', $data)) {
-            $object->setSourcePort($data['sourcePort']);
+            $object->sourcePort = $data['sourcePort'];
         }
         if (\array_key_exists('destPort', $data)) {
-            $object->setDestPort($data['destPort']);
+            $object->destPort = $data['destPort'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sourcePort') && null !== $data->getSourcePort()) {
-            $dataArray['sourcePort'] = $data->getSourcePort();
+        if (array_key_exists('sourcePort', get_object_vars($data)) && null !== ($data->sourcePort ?? null)) {
+            $dataArray['sourcePort'] = $data->sourcePort ?? null;
         }
-        if ($data->isInitialized('destPort') && null !== $data->getDestPort()) {
-            $dataArray['destPort'] = $data->getDestPort();
+        if (array_key_exists('destPort', get_object_vars($data)) && null !== ($data->destPort ?? null)) {
+            $dataArray['destPort'] = $data->destPort ?? null;
         }
         return $dataArray;
     }

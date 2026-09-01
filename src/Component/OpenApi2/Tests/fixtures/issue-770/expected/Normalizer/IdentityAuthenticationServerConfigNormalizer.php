@@ -41,51 +41,51 @@ class IdentityAuthenticationServerConfigNormalizer implements DenormalizerInterf
             $data['local'] = (bool) $data['local'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('local', $data)) {
-            $object->setLocal($data['local']);
+            $object->local = $data['local'];
         }
         if (\array_key_exists('AUTHENTICATION_SERVER_TYPE', $data)) {
-            $object->setAUTHENTICATIONSERVERTYPE($data['AUTHENTICATION_SERVER_TYPE']);
+            $object->aUTHENTICATIONSERVERTYPE = $data['AUTHENTICATION_SERVER_TYPE'];
         }
         if (\array_key_exists('AUTHENTICATION_SERVER_NAME', $data)) {
-            $object->setAUTHENTICATIONSERVERNAME($data['AUTHENTICATION_SERVER_NAME']);
+            $object->aUTHENTICATIONSERVERNAME = $data['AUTHENTICATION_SERVER_NAME'];
         }
         if (\array_key_exists('AUTHENTICATION_SERVER_ID', $data)) {
-            $object->setAUTHENTICATIONSERVERID($data['AUTHENTICATION_SERVER_ID']);
+            $object->aUTHENTICATIONSERVERID = $data['AUTHENTICATION_SERVER_ID'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('local') && null !== $data->getLocal()) {
-            $dataArray['local'] = $data->getLocal();
+        if (array_key_exists('local', get_object_vars($data)) && null !== ($data->local ?? null)) {
+            $dataArray['local'] = $data->local ?? null;
         }
-        if ($data->isInitialized('aUTHENTICATIONSERVERTYPE') && null !== $data->getAUTHENTICATIONSERVERTYPE()) {
-            $dataArray['AUTHENTICATION_SERVER_TYPE'] = $data->getAUTHENTICATIONSERVERTYPE();
+        if (array_key_exists('aUTHENTICATIONSERVERTYPE', get_object_vars($data)) && null !== ($data->aUTHENTICATIONSERVERTYPE ?? null)) {
+            $dataArray['AUTHENTICATION_SERVER_TYPE'] = $data->aUTHENTICATIONSERVERTYPE ?? null;
         }
-        if ($data->isInitialized('aUTHENTICATIONSERVERNAME') && null !== $data->getAUTHENTICATIONSERVERNAME()) {
-            $dataArray['AUTHENTICATION_SERVER_NAME'] = $data->getAUTHENTICATIONSERVERNAME();
+        if (array_key_exists('aUTHENTICATIONSERVERNAME', get_object_vars($data)) && null !== ($data->aUTHENTICATIONSERVERNAME ?? null)) {
+            $dataArray['AUTHENTICATION_SERVER_NAME'] = $data->aUTHENTICATIONSERVERNAME ?? null;
         }
-        if ($data->isInitialized('aUTHENTICATIONSERVERID') && null !== $data->getAUTHENTICATIONSERVERID()) {
-            $dataArray['AUTHENTICATION_SERVER_ID'] = $data->getAUTHENTICATIONSERVERID();
+        if (array_key_exists('aUTHENTICATIONSERVERID', get_object_vars($data)) && null !== ($data->aUTHENTICATIONSERVERID ?? null)) {
+            $dataArray['AUTHENTICATION_SERVER_ID'] = $data->aUTHENTICATIONSERVERID ?? null;
         }
         return $dataArray;
     }

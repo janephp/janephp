@@ -45,28 +45,28 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['Mounts'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\PluginMount::class, 'json', $context);
             }
-            $object->setMounts($values);
+            $object->mounts = $values;
         }
         if (\array_key_exists('Env', $data)) {
             $values_1 = [];
             foreach ($data['Env'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setEnv($values_1);
+            $object->env = $values_1;
         }
         if (\array_key_exists('Args', $data)) {
             $values_2 = [];
             foreach ($data['Args'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setArgs($values_2);
+            $object->args = $values_2;
         }
         if (\array_key_exists('Devices', $data)) {
             $values_3 = [];
             foreach ($data['Devices'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \Docker\Api\Model\PluginDevice::class, 'json', $context);
             }
-            $object->setDevices($values_3);
+            $object->devices = $values_3;
         }
         return $object;
     }
@@ -74,22 +74,22 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getMounts() as $value) {
+        foreach ($data->mounts ?? null as $value) {
             $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['Mounts'] = $values;
         $values_1 = [];
-        foreach ($data->getEnv() as $value_1) {
+        foreach ($data->env ?? null as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['Env'] = $values_1;
         $values_2 = [];
-        foreach ($data->getArgs() as $value_2) {
+        foreach ($data->args ?? null as $value_2) {
             $values_2[] = $value_2;
         }
         $dataArray['Args'] = $values_2;
         $values_3 = [];
-        foreach ($data->getDevices() as $value_3) {
+        foreach ($data->devices ?? null as $value_3) {
             $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
         }
         $dataArray['Devices'] = $values_3;

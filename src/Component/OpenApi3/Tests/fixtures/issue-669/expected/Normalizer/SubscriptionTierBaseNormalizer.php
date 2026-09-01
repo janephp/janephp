@@ -41,35 +41,35 @@ class SubscriptionTierBaseNormalizer implements DenormalizerInterface, Normalize
             $data['allow_storage_overage'] = (bool) $data['allow_storage_overage'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('slug', $data)) {
-            $object->setSlug($data['slug']);
+            $object->slug = $data['slug'];
             unset($data['slug']);
         }
         if (\array_key_exists('included_repositories', $data)) {
-            $object->setIncludedRepositories($data['included_repositories']);
+            $object->includedRepositories = $data['included_repositories'];
             unset($data['included_repositories']);
         }
         if (\array_key_exists('included_storage_bytes', $data)) {
-            $object->setIncludedStorageBytes($data['included_storage_bytes']);
+            $object->includedStorageBytes = $data['included_storage_bytes'];
             unset($data['included_storage_bytes']);
         }
         if (\array_key_exists('allow_storage_overage', $data)) {
-            $object->setAllowStorageOverage($data['allow_storage_overage']);
+            $object->allowStorageOverage = $data['allow_storage_overage'];
             unset($data['allow_storage_overage']);
         }
         if (\array_key_exists('included_bandwidth_bytes', $data)) {
-            $object->setIncludedBandwidthBytes($data['included_bandwidth_bytes']);
+            $object->includedBandwidthBytes = $data['included_bandwidth_bytes'];
             unset($data['included_bandwidth_bytes']);
         }
         if (\array_key_exists('monthly_price_in_cents', $data)) {
-            $object->setMonthlyPriceInCents($data['monthly_price_in_cents']);
+            $object->monthlyPriceInCents = $data['monthly_price_in_cents'];
             unset($data['monthly_price_in_cents']);
         }
         if (\array_key_exists('storage_overage_price_in_cents', $data)) {
-            $object->setStorageOveragePriceInCents($data['storage_overage_price_in_cents']);
+            $object->storageOveragePriceInCents = $data['storage_overage_price_in_cents'];
             unset($data['storage_overage_price_in_cents']);
         }
         foreach ($data as $key => $value) {
@@ -82,29 +82,29 @@ class SubscriptionTierBaseNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('slug') && null !== $data->getSlug()) {
-            $dataArray['slug'] = $data->getSlug();
+        if (array_key_exists('slug', get_object_vars($data)) && null !== ($data->slug ?? null)) {
+            $dataArray['slug'] = $data->slug ?? null;
         }
-        if ($data->isInitialized('includedRepositories') && null !== $data->getIncludedRepositories()) {
-            $dataArray['included_repositories'] = $data->getIncludedRepositories();
+        if (array_key_exists('includedRepositories', get_object_vars($data)) && null !== ($data->includedRepositories ?? null)) {
+            $dataArray['included_repositories'] = $data->includedRepositories ?? null;
         }
-        if ($data->isInitialized('includedStorageBytes') && null !== $data->getIncludedStorageBytes()) {
-            $dataArray['included_storage_bytes'] = $data->getIncludedStorageBytes();
+        if (array_key_exists('includedStorageBytes', get_object_vars($data)) && null !== ($data->includedStorageBytes ?? null)) {
+            $dataArray['included_storage_bytes'] = $data->includedStorageBytes ?? null;
         }
-        if ($data->isInitialized('allowStorageOverage') && null !== $data->getAllowStorageOverage()) {
-            $dataArray['allow_storage_overage'] = $data->getAllowStorageOverage();
+        if (array_key_exists('allowStorageOverage', get_object_vars($data)) && null !== ($data->allowStorageOverage ?? null)) {
+            $dataArray['allow_storage_overage'] = $data->allowStorageOverage ?? null;
         }
-        if ($data->isInitialized('includedBandwidthBytes') && null !== $data->getIncludedBandwidthBytes()) {
-            $dataArray['included_bandwidth_bytes'] = $data->getIncludedBandwidthBytes();
+        if (array_key_exists('includedBandwidthBytes', get_object_vars($data)) && null !== ($data->includedBandwidthBytes ?? null)) {
+            $dataArray['included_bandwidth_bytes'] = $data->includedBandwidthBytes ?? null;
         }
-        if ($data->isInitialized('monthlyPriceInCents') && null !== $data->getMonthlyPriceInCents()) {
-            $dataArray['monthly_price_in_cents'] = $data->getMonthlyPriceInCents();
+        if (array_key_exists('monthlyPriceInCents', get_object_vars($data)) && null !== ($data->monthlyPriceInCents ?? null)) {
+            $dataArray['monthly_price_in_cents'] = $data->monthlyPriceInCents ?? null;
         }
-        if ($data->isInitialized('storageOveragePriceInCents') && null !== $data->getStorageOveragePriceInCents()) {
-            $dataArray['storage_overage_price_in_cents'] = $data->getStorageOveragePriceInCents();
+        if (array_key_exists('storageOveragePriceInCents', get_object_vars($data)) && null !== ($data->storageOveragePriceInCents ?? null)) {
+            $dataArray['storage_overage_price_in_cents'] = $data->storageOveragePriceInCents ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -42,7 +42,7 @@ class ApiListEvaluationRunsByTestCaseOutputNormalizer implements DenormalizerInt
             foreach ($data['evaluation_runs'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiEvaluationRun::class, 'json', $context);
             }
-            $object->setEvaluationRuns($values);
+            $object->evaluationRuns = $values;
             unset($data['evaluation_runs']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ApiListEvaluationRunsByTestCaseOutputNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('evaluationRuns') && null !== $data->getEvaluationRuns()) {
+        if (array_key_exists('evaluationRuns', get_object_vars($data)) && null !== ($data->evaluationRuns ?? null)) {
             $values = [];
-            foreach ($data->getEvaluationRuns() as $value) {
+            foreach ($data->evaluationRuns ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['evaluation_runs'] = $values;

@@ -38,18 +38,18 @@ class ServiceTicketLoginRequestNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('username', $data)) {
-            $object->setUsername($data['username']);
+            $object->username = $data['username'];
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['username'] = $data->getUsername();
-        $dataArray['password'] = $data->getPassword();
+        $dataArray['username'] = $data->username ?? null;
+        $dataArray['password'] = $data->password ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

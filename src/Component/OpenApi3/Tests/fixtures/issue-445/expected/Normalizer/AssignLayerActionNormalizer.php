@@ -38,23 +38,23 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('layerId', $data) && $data['layerId'] !== null) {
-            $object->setLayerId($data['layerId']);
+            $object->layerId = $data['layerId'];
             unset($data['layerId']);
         }
         elseif (\array_key_exists('layerId', $data) && $data['layerId'] === null) {
-            $object->setLayerId(null);
+            $object->layerId = null;
             unset($data['layerId']);
         }
         if (\array_key_exists('defaultValues', $data) && $data['defaultValues'] !== null) {
@@ -62,11 +62,11 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
             foreach ($data['defaultValues'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setDefaultValues($values);
+            $object->defaultValues = $values;
             unset($data['defaultValues']);
         }
         elseif (\array_key_exists('defaultValues', $data) && $data['defaultValues'] === null) {
-            $object->setDefaultValues(null);
+            $object->defaultValues = null;
             unset($data['defaultValues']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -79,16 +79,16 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('layerId') && null !== $data->getLayerId()) {
-            $dataArray['layerId'] = $data->getLayerId();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('layerId', get_object_vars($data)) && null !== ($data->layerId ?? null)) {
+            $dataArray['layerId'] = $data->layerId ?? null;
         }
-        if ($data->isInitialized('defaultValues') && null !== $data->getDefaultValues()) {
+        if (array_key_exists('defaultValues', get_object_vars($data)) && null !== ($data->defaultValues ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getDefaultValues() as $key => $value) {
+            foreach ($data->defaultValues ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['defaultValues'] = $values;

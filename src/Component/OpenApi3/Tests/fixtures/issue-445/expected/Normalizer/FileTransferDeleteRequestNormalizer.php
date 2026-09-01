@@ -38,23 +38,23 @@ class FileTransferDeleteRequestNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('transferId', $data)) {
-            $object->setTransferId($data['transferId']);
+            $object->transferId = $data['transferId'];
         }
         if (\array_key_exists('fileTransferIds', $data)) {
             $values = [];
             foreach ($data['fileTransferIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setFileTransferIds($values);
+            $object->fileTransferIds = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['transferId'] = $data->getTransferId();
+        $dataArray['transferId'] = $data->transferId ?? null;
         $values = [];
-        foreach ($data->getFileTransferIds() as $value) {
+        foreach ($data->fileTransferIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['fileTransferIds'] = $values;

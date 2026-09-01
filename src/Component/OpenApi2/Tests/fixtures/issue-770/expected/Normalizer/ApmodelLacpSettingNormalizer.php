@@ -44,27 +44,27 @@ class ApmodelLacpSettingNormalizer implements DenormalizerInterface, NormalizerI
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('keepApSetting', $data)) {
-            $object->setKeepApSetting($data['keepApSetting']);
+            $object->keepApSetting = $data['keepApSetting'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('bondPortProfileId', $data)) {
-            $object->setBondPortProfileId($data['bondPortProfileId']);
+            $object->bondPortProfileId = $data['bondPortProfileId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('keepApSetting') && null !== $data->getKeepApSetting()) {
-            $dataArray['keepApSetting'] = $data->getKeepApSetting();
+        if (array_key_exists('keepApSetting', get_object_vars($data)) && null !== ($data->keepApSetting ?? null)) {
+            $dataArray['keepApSetting'] = $data->keepApSetting ?? null;
         }
-        if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
-            $dataArray['enabled'] = $data->getEnabled();
+        if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
+            $dataArray['enabled'] = $data->enabled ?? null;
         }
-        if ($data->isInitialized('bondPortProfileId') && null !== $data->getBondPortProfileId()) {
-            $dataArray['bondPortProfileId'] = $data->getBondPortProfileId();
+        if (array_key_exists('bondPortProfileId', get_object_vars($data)) && null !== ($data->bondPortProfileId ?? null)) {
+            $dataArray['bondPortProfileId'] = $data->bondPortProfileId ?? null;
         }
         return $dataArray;
     }

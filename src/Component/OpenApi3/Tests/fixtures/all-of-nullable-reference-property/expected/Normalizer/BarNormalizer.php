@@ -38,7 +38,7 @@ class BarNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('baz', $data)) {
-            $object->setBaz($data['baz']);
+            $object->baz = $data['baz'];
             unset($data['baz']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class BarNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('baz') && null !== $data->getBaz()) {
-            $dataArray['baz'] = $data->getBaz();
+        if (array_key_exists('baz', get_object_vars($data)) && null !== ($data->baz ?? null)) {
+            $dataArray['baz'] = $data->baz ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

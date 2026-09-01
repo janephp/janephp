@@ -38,11 +38,11 @@ class NotificationSlackItemNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('channel', $data)) {
-            $object->setChannel($data['channel']);
+            $object->channel = $data['channel'];
             unset($data['channel']);
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
             unset($data['url']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class NotificationSlackItemNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['channel'] = $data->getChannel();
-        $dataArray['url'] = $data->getUrl();
+        $dataArray['channel'] = $data->channel ?? null;
+        $dataArray['url'] = $data->url ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

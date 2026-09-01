@@ -38,7 +38,7 @@ class VolumesXfsNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] !== null) {
@@ -46,27 +46,27 @@ class VolumesXfsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['droplet_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setDropletIds($values);
+            $object->dropletIds = $values;
             unset($data['droplet_ids']);
         }
         elseif (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] === null) {
-            $object->setDropletIds(null);
+            $object->dropletIds = null;
             unset($data['droplet_ids']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('size_gigabytes', $data)) {
-            $object->setSizeGigabytes($data['size_gigabytes']);
+            $object->sizeGigabytes = $data['size_gigabytes'];
             unset($data['size_gigabytes']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt($data['created_at']);
+            $object->createdAt = $data['created_at'];
             unset($data['created_at']);
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
@@ -74,27 +74,27 @@ class VolumesXfsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['tags'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setTags($values_1);
+            $object->tags = $values_1;
             unset($data['tags']);
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
-            $object->setTags(null);
+            $object->tags = null;
             unset($data['tags']);
         }
         if (\array_key_exists('snapshot_id', $data)) {
-            $object->setSnapshotId($data['snapshot_id']);
+            $object->snapshotId = $data['snapshot_id'];
             unset($data['snapshot_id']);
         }
         if (\array_key_exists('filesystem_type', $data)) {
-            $object->setFilesystemType($data['filesystem_type']);
+            $object->filesystemType = $data['filesystem_type'];
             unset($data['filesystem_type']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('filesystem_label', $data)) {
-            $object->setFilesystemLabel($data['filesystem_label']);
+            $object->filesystemLabel = $data['filesystem_label'];
             unset($data['filesystem_label']);
         }
         foreach ($data as $key => $value_2) {
@@ -107,31 +107,31 @@ class VolumesXfsNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('sizeGigabytes') && null !== $data->getSizeGigabytes()) {
-            $dataArray['size_gigabytes'] = $data->getSizeGigabytes();
+        if (array_key_exists('sizeGigabytes', get_object_vars($data)) && null !== ($data->sizeGigabytes ?? null)) {
+            $dataArray['size_gigabytes'] = $data->sizeGigabytes ?? null;
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->getTags() as $value) {
+            foreach ($data->tags ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;
         }
-        if ($data->isInitialized('snapshotId') && null !== $data->getSnapshotId()) {
-            $dataArray['snapshot_id'] = $data->getSnapshotId();
+        if (array_key_exists('snapshotId', get_object_vars($data)) && null !== ($data->snapshotId ?? null)) {
+            $dataArray['snapshot_id'] = $data->snapshotId ?? null;
         }
-        if ($data->isInitialized('filesystemType') && null !== $data->getFilesystemType()) {
-            $dataArray['filesystem_type'] = $data->getFilesystemType();
+        if (array_key_exists('filesystemType', get_object_vars($data)) && null !== ($data->filesystemType ?? null)) {
+            $dataArray['filesystem_type'] = $data->filesystemType ?? null;
         }
-        $dataArray['region'] = $data->getRegion();
-        if ($data->isInitialized('filesystemLabel') && null !== $data->getFilesystemLabel()) {
-            $dataArray['filesystem_label'] = $data->getFilesystemLabel();
+        $dataArray['region'] = $data->region ?? null;
+        if (array_key_exists('filesystemLabel', get_object_vars($data)) && null !== ($data->filesystemLabel ?? null)) {
+            $dataArray['filesystem_label'] = $data->filesystemLabel ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

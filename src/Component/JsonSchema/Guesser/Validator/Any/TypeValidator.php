@@ -22,7 +22,7 @@ class TypeValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && $object->getType() !== null && (\is_string($object->getType()) || (\is_array($object->getType()) && null !== $object->getType()[0]));
+        return $this->checkObject($object) && ($object->type ?? null) !== null && (\is_string($object->type ?? null) || (\is_array($object->type ?? null) && null !== ($object->type ?? null)[0]));
     }
 
     /**
@@ -31,7 +31,7 @@ class TypeValidator implements ValidatorInterface
      */
     public function guess($object, string $name, $guess): void
     {
-        $types = $object->getType();
+        $types = ($object->type ?? null);
         if (\is_string($types)) {
             $types = [$types];
         }
@@ -43,8 +43,8 @@ class TypeValidator implements ValidatorInterface
 
         // Binary strings accept plain strings, resources and PSR-7 streams, so
         // the Symfony Type constraint would wrongly reject the latter two.
-        $objectType = $object->getType();
-        if ('binary' === $object->getFormat() && ('string' === $objectType || ['string'] === $objectType)) {
+        $objectType = ($object->type ?? null);
+        if ('binary' === ($object->format ?? null) && ('string' === $objectType || ['string'] === $objectType)) {
             return;
         }
 

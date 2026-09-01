@@ -41,15 +41,15 @@ class DatabaseClusterReadMaintenanceWindowNormalizer implements DenormalizerInte
             $data['pending'] = (bool) $data['pending'];
         }
         if (\array_key_exists('day', $data)) {
-            $object->setDay($data['day']);
+            $object->day = $data['day'];
             unset($data['day']);
         }
         if (\array_key_exists('hour', $data)) {
-            $object->setHour($data['hour']);
+            $object->hour = $data['hour'];
             unset($data['hour']);
         }
         if (\array_key_exists('pending', $data)) {
-            $object->setPending($data['pending']);
+            $object->pending = $data['pending'];
             unset($data['pending']);
         }
         if (\array_key_exists('description', $data)) {
@@ -57,7 +57,7 @@ class DatabaseClusterReadMaintenanceWindowNormalizer implements DenormalizerInte
             foreach ($data['description'] as $value) {
                 $values[] = $value;
             }
-            $object->setDescription($values);
+            $object->description = $values;
             unset($data['description']);
         }
         foreach ($data as $key => $value_1) {
@@ -70,8 +70,8 @@ class DatabaseClusterReadMaintenanceWindowNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['day'] = $data->getDay();
-        $dataArray['hour'] = $data->getHour();
+        $dataArray['day'] = $data->day ?? null;
+        $dataArray['hour'] = $data->hour ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

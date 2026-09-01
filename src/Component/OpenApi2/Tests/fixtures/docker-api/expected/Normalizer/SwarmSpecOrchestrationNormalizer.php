@@ -41,15 +41,15 @@ class SwarmSpecOrchestrationNormalizer implements DenormalizerInterface, Normali
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecOrchestrationConstraint());
         }
         if (\array_key_exists('TaskHistoryRetentionLimit', $data)) {
-            $object->setTaskHistoryRetentionLimit($data['TaskHistoryRetentionLimit']);
+            $object->taskHistoryRetentionLimit = $data['TaskHistoryRetentionLimit'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('taskHistoryRetentionLimit') && null !== $data->getTaskHistoryRetentionLimit()) {
-            $dataArray['TaskHistoryRetentionLimit'] = $data->getTaskHistoryRetentionLimit();
+        if (array_key_exists('taskHistoryRetentionLimit', get_object_vars($data)) && null !== ($data->taskHistoryRetentionLimit ?? null)) {
+            $dataArray['TaskHistoryRetentionLimit'] = $data->taskHistoryRetentionLimit ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecOrchestrationConstraint());

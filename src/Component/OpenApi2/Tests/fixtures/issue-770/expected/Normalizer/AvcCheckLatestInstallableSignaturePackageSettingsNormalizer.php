@@ -41,21 +41,21 @@ class AvcCheckLatestInstallableSignaturePackageSettingsNormalizer implements Den
             $data['checkEnabled'] = (bool) $data['checkEnabled'];
         }
         if (\array_key_exists('checkEnabled', $data)) {
-            $object->setCheckEnabled($data['checkEnabled']);
+            $object->checkEnabled = $data['checkEnabled'];
         }
         if (\array_key_exists('dateOfMonth', $data)) {
-            $object->setDateOfMonth($data['dateOfMonth']);
+            $object->dateOfMonth = $data['dateOfMonth'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('checkEnabled') && null !== $data->getCheckEnabled()) {
-            $dataArray['checkEnabled'] = $data->getCheckEnabled();
+        if (array_key_exists('checkEnabled', get_object_vars($data)) && null !== ($data->checkEnabled ?? null)) {
+            $dataArray['checkEnabled'] = $data->checkEnabled ?? null;
         }
-        if ($data->isInitialized('dateOfMonth') && null !== $data->getDateOfMonth()) {
-            $dataArray['dateOfMonth'] = $data->getDateOfMonth();
+        if (array_key_exists('dateOfMonth', get_object_vars($data)) && null !== ($data->dateOfMonth ?? null)) {
+            $dataArray['dateOfMonth'] = $data->dateOfMonth ?? null;
         }
         return $dataArray;
     }

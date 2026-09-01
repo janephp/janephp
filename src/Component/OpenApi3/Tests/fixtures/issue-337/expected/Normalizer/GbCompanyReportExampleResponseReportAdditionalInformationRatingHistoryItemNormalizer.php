@@ -41,15 +41,15 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
             $data['companyValue'] = (float) $data['companyValue'];
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate($data['date']);
+            $object->date = $data['date'];
             unset($data['date']);
         }
         if (\array_key_exists('companyValue', $data)) {
-            $object->setCompanyValue($data['companyValue']);
+            $object->companyValue = $data['companyValue'];
             unset($data['companyValue']);
         }
         if (\array_key_exists('ratingDescription', $data)) {
-            $object->setRatingDescription($data['ratingDescription']);
+            $object->ratingDescription = $data['ratingDescription'];
             unset($data['ratingDescription']);
         }
         foreach ($data as $key => $value) {
@@ -62,14 +62,14 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate();
+        if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
+            $dataArray['date'] = $data->date ?? null;
         }
-        if ($data->isInitialized('companyValue') && null !== $data->getCompanyValue()) {
-            $dataArray['companyValue'] = $data->getCompanyValue();
+        if (array_key_exists('companyValue', get_object_vars($data)) && null !== ($data->companyValue ?? null)) {
+            $dataArray['companyValue'] = $data->companyValue ?? null;
         }
-        if ($data->isInitialized('ratingDescription') && null !== $data->getRatingDescription()) {
-            $dataArray['ratingDescription'] = $data->getRatingDescription();
+        if (array_key_exists('ratingDescription', get_object_vars($data)) && null !== ($data->ratingDescription ?? null)) {
+            $dataArray['ratingDescription'] = $data->ratingDescription ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

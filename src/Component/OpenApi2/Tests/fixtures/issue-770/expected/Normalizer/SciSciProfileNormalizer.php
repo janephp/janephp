@@ -38,57 +38,57 @@ class SciSciProfileNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('sciPriority', $data)) {
-            $object->setSciPriority($data['sciPriority']);
+            $object->sciPriority = $data['sciPriority'];
         }
         if (\array_key_exists('sciProfile', $data)) {
-            $object->setSciProfile($data['sciProfile']);
+            $object->sciProfile = $data['sciProfile'];
         }
         if (\array_key_exists('sciSystemId', $data)) {
-            $object->setSciSystemId($data['sciSystemId']);
+            $object->sciSystemId = $data['sciSystemId'];
         }
         if (\array_key_exists('sciServerHost', $data)) {
-            $object->setSciServerHost($data['sciServerHost']);
+            $object->sciServerHost = $data['sciServerHost'];
         }
         if (\array_key_exists('sciServerPort', $data)) {
-            $object->setSciServerPort($data['sciServerPort']);
+            $object->sciServerPort = $data['sciServerPort'];
         }
         if (\array_key_exists('sciUser', $data)) {
-            $object->setSciUser($data['sciUser']);
+            $object->sciUser = $data['sciUser'];
         }
         if (\array_key_exists('sciPassword', $data)) {
-            $object->setSciPassword($data['sciPassword']);
+            $object->sciPassword = $data['sciPassword'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('sciPriority') && null !== $data->getSciPriority()) {
-            $dataArray['sciPriority'] = $data->getSciPriority();
+        if (array_key_exists('sciPriority', get_object_vars($data)) && null !== ($data->sciPriority ?? null)) {
+            $dataArray['sciPriority'] = $data->sciPriority ?? null;
         }
-        if ($data->isInitialized('sciProfile') && null !== $data->getSciProfile()) {
-            $dataArray['sciProfile'] = $data->getSciProfile();
+        if (array_key_exists('sciProfile', get_object_vars($data)) && null !== ($data->sciProfile ?? null)) {
+            $dataArray['sciProfile'] = $data->sciProfile ?? null;
         }
-        if ($data->isInitialized('sciSystemId') && null !== $data->getSciSystemId()) {
-            $dataArray['sciSystemId'] = $data->getSciSystemId();
+        if (array_key_exists('sciSystemId', get_object_vars($data)) && null !== ($data->sciSystemId ?? null)) {
+            $dataArray['sciSystemId'] = $data->sciSystemId ?? null;
         }
-        if ($data->isInitialized('sciServerHost') && null !== $data->getSciServerHost()) {
-            $dataArray['sciServerHost'] = $data->getSciServerHost();
+        if (array_key_exists('sciServerHost', get_object_vars($data)) && null !== ($data->sciServerHost ?? null)) {
+            $dataArray['sciServerHost'] = $data->sciServerHost ?? null;
         }
-        if ($data->isInitialized('sciServerPort') && null !== $data->getSciServerPort()) {
-            $dataArray['sciServerPort'] = $data->getSciServerPort();
+        if (array_key_exists('sciServerPort', get_object_vars($data)) && null !== ($data->sciServerPort ?? null)) {
+            $dataArray['sciServerPort'] = $data->sciServerPort ?? null;
         }
-        if ($data->isInitialized('sciUser') && null !== $data->getSciUser()) {
-            $dataArray['sciUser'] = $data->getSciUser();
+        if (array_key_exists('sciUser', get_object_vars($data)) && null !== ($data->sciUser ?? null)) {
+            $dataArray['sciUser'] = $data->sciUser ?? null;
         }
-        if ($data->isInitialized('sciPassword') && null !== $data->getSciPassword()) {
-            $dataArray['sciPassword'] = $data->getSciPassword();
+        if (array_key_exists('sciPassword', get_object_vars($data)) && null !== ($data->sciPassword ?? null)) {
+            $dataArray['sciPassword'] = $data->sciPassword ?? null;
         }
         return $dataArray;
     }

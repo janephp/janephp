@@ -38,28 +38,28 @@ class ResizeActionNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('width', $data)) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
         }
         if (\array_key_exists('height', $data)) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
         }
         if (\array_key_exists('resizeMode', $data)) {
             $value = $data['resizeMode'];
             if (is_string($data['resizeMode'])) {
                 $value = $data['resizeMode'];
             }
-            $object->setResizeMode($value);
+            $object->resizeMode = $value;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['width'] = $data->getWidth();
-        $dataArray['height'] = $data->getHeight();
-        $value = $data->getResizeMode();
-        if (is_string($data->getResizeMode())) {
-            $value = $data->getResizeMode();
+        $dataArray['width'] = $data->width ?? null;
+        $dataArray['height'] = $data->height ?? null;
+        $value = $data->resizeMode ?? null;
+        if (is_string($data->resizeMode ?? null)) {
+            $value = $data->resizeMode ?? null;
         }
         $dataArray['resizeMode'] = $value;
         return $dataArray;

@@ -5,7 +5,6 @@ namespace Jane\Component\OpenApiCommon\Generator\Client;
 use Http\Client\Common\PluginClient;
 use Http\Discovery\Psr18ClientDiscovery;
 use Jane\Component\JsonSchema\Generator\Context\Context;
-use Jane\Component\OpenApi3\JsonSchema\Model\OpenApi;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -17,7 +16,6 @@ trait HttpClientCreateGenerator
 
     protected function getHttpClientCreateExpr(Context $context): array
     {
-        /** @var OpenApi $openApi */
         $openApi = $context->getCurrentSchema()->getParsed();
 
         if (!$this->needsServerPlugins($openApi)) {

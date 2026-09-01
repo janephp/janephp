@@ -42,7 +42,7 @@ class AlertsNormalizer implements DenormalizerInterface, NormalizerInterface, De
             foreach ($data['email'] as $value) {
                 $values[] = $value;
             }
-            $object->setEmail($values);
+            $object->email = $values;
             unset($data['email']);
         }
         if (\array_key_exists('slack', $data)) {
@@ -50,7 +50,7 @@ class AlertsNormalizer implements DenormalizerInterface, NormalizerInterface, De
             foreach ($data['slack'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\SlackDetails::class, 'json', $context);
             }
-            $object->setSlack($values_1);
+            $object->slack = $values_1;
             unset($data['slack']);
         }
         foreach ($data as $key => $value_2) {
@@ -64,12 +64,12 @@ class AlertsNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getEmail() as $value) {
+        foreach ($data->email ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['email'] = $values;
         $values_1 = [];
-        foreach ($data->getSlack() as $value_1) {
+        foreach ($data->slack ?? null as $value_1) {
             $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['slack'] = $values_1;

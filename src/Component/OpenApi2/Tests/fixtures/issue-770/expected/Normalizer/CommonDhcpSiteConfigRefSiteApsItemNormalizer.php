@@ -44,57 +44,57 @@ class CommonDhcpSiteConfigRefSiteApsItemNormalizer implements DenormalizerInterf
             $data['apServerPrimary'] = (bool) $data['apServerPrimary'];
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('apName', $data)) {
-            $object->setApName($data['apName']);
+            $object->apName = $data['apName'];
         }
         if (\array_key_exists('apStatus', $data)) {
-            $object->setApStatus($data['apStatus']);
+            $object->apStatus = $data['apStatus'];
         }
         if (\array_key_exists('apServerEnabled', $data)) {
-            $object->setApServerEnabled($data['apServerEnabled']);
+            $object->apServerEnabled = $data['apServerEnabled'];
         }
         if (\array_key_exists('apServerPrimary', $data)) {
-            $object->setApServerPrimary($data['apServerPrimary']);
+            $object->apServerPrimary = $data['apServerPrimary'];
         }
         if (\array_key_exists('apServerIp', $data)) {
-            $object->setApServerIp($data['apServerIp']);
+            $object->apServerIp = $data['apServerIp'];
         }
         if (\array_key_exists('apGatewayIp', $data)) {
-            $object->setApGatewayIp($data['apGatewayIp']);
+            $object->apGatewayIp = $data['apGatewayIp'];
         }
         if (\array_key_exists('apServerType', $data)) {
-            $object->setApServerType($data['apServerType']);
+            $object->apServerType = $data['apServerType'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('apName') && null !== $data->getApName()) {
-            $dataArray['apName'] = $data->getApName();
+        if (array_key_exists('apName', get_object_vars($data)) && null !== ($data->apName ?? null)) {
+            $dataArray['apName'] = $data->apName ?? null;
         }
-        if ($data->isInitialized('apStatus') && null !== $data->getApStatus()) {
-            $dataArray['apStatus'] = $data->getApStatus();
+        if (array_key_exists('apStatus', get_object_vars($data)) && null !== ($data->apStatus ?? null)) {
+            $dataArray['apStatus'] = $data->apStatus ?? null;
         }
-        if ($data->isInitialized('apServerEnabled') && null !== $data->getApServerEnabled()) {
-            $dataArray['apServerEnabled'] = $data->getApServerEnabled();
+        if (array_key_exists('apServerEnabled', get_object_vars($data)) && null !== ($data->apServerEnabled ?? null)) {
+            $dataArray['apServerEnabled'] = $data->apServerEnabled ?? null;
         }
-        if ($data->isInitialized('apServerPrimary') && null !== $data->getApServerPrimary()) {
-            $dataArray['apServerPrimary'] = $data->getApServerPrimary();
+        if (array_key_exists('apServerPrimary', get_object_vars($data)) && null !== ($data->apServerPrimary ?? null)) {
+            $dataArray['apServerPrimary'] = $data->apServerPrimary ?? null;
         }
-        if ($data->isInitialized('apServerIp') && null !== $data->getApServerIp()) {
-            $dataArray['apServerIp'] = $data->getApServerIp();
+        if (array_key_exists('apServerIp', get_object_vars($data)) && null !== ($data->apServerIp ?? null)) {
+            $dataArray['apServerIp'] = $data->apServerIp ?? null;
         }
-        if ($data->isInitialized('apGatewayIp') && null !== $data->getApGatewayIp()) {
-            $dataArray['apGatewayIp'] = $data->getApGatewayIp();
+        if (array_key_exists('apGatewayIp', get_object_vars($data)) && null !== ($data->apGatewayIp ?? null)) {
+            $dataArray['apGatewayIp'] = $data->apGatewayIp ?? null;
         }
-        if ($data->isInitialized('apServerType') && null !== $data->getApServerType()) {
-            $dataArray['apServerType'] = $data->getApServerType();
+        if (array_key_exists('apServerType', get_object_vars($data)) && null !== ($data->apServerType ?? null)) {
+            $dataArray['apServerType'] = $data->apServerType ?? null;
         }
         return $dataArray;
     }

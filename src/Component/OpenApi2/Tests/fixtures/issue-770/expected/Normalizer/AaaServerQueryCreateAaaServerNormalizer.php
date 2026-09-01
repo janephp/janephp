@@ -41,231 +41,231 @@ class AaaServerQueryCreateAaaServerNormalizer implements DenormalizerInterface, 
             $data['globalCatalog'] = (bool) $data['globalCatalog'];
         }
         if (\array_key_exists('secondaryRadiusPort', $data)) {
-            $object->setSecondaryRadiusPort($data['secondaryRadiusPort']);
+            $object->secondaryRadiusPort = $data['secondaryRadiusPort'];
         }
         if (\array_key_exists('adminDomainName', $data)) {
-            $object->setAdminDomainName($data['adminDomainName']);
+            $object->adminDomainName = $data['adminDomainName'];
         }
         if (\array_key_exists('creatorUUID', $data)) {
-            $object->setCreatorUUID($data['creatorUUID']);
+            $object->creatorUUID = $data['creatorUUID'];
         }
         if (\array_key_exists('secondaryRadiusIP', $data)) {
-            $object->setSecondaryRadiusIP($data['secondaryRadiusIP']);
+            $object->secondaryRadiusIP = $data['secondaryRadiusIP'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('secondaryRadiusIPv6', $data)) {
-            $object->setSecondaryRadiusIPv6($data['secondaryRadiusIPv6']);
+            $object->secondaryRadiusIPv6 = $data['secondaryRadiusIPv6'];
         }
         if (\array_key_exists('radiusPort', $data)) {
-            $object->setRadiusPort($data['radiusPort']);
+            $object->radiusPort = $data['radiusPort'];
         }
         if (\array_key_exists('ipv6', $data)) {
-            $object->setIpv6($data['ipv6']);
+            $object->ipv6 = $data['ipv6'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('authType', $data)) {
-            $object->setAuthType($data['authType']);
+            $object->authType = $data['authType'];
         }
         if (\array_key_exists('radiusIP', $data)) {
-            $object->setRadiusIP($data['radiusIP']);
+            $object->radiusIP = $data['radiusIP'];
         }
         if (\array_key_exists('radiusIPv6', $data)) {
-            $object->setRadiusIPv6($data['radiusIPv6']);
+            $object->radiusIPv6 = $data['radiusIPv6'];
         }
         if (\array_key_exists('key', $data)) {
-            $object->setKey($data['key']);
+            $object->key = $data['key'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('tenantUUID', $data)) {
-            $object->setTenantUUID($data['tenantUUID']);
+            $object->tenantUUID = $data['tenantUUID'];
         }
         if (\array_key_exists('enableSecondaryRadius', $data)) {
-            $object->setEnableSecondaryRadius($data['enableSecondaryRadius']);
+            $object->enableSecondaryRadius = $data['enableSecondaryRadius'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('zoneUUID', $data)) {
-            $object->setZoneUUID($data['zoneUUID']);
+            $object->zoneUUID = $data['zoneUUID'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('tacacsService', $data)) {
-            $object->setTacacsService($data['tacacsService']);
+            $object->tacacsService = $data['tacacsService'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('radiusRealm', $data)) {
-            $object->setRadiusRealm($data['radiusRealm']);
+            $object->radiusRealm = $data['radiusRealm'];
         }
         if (\array_key_exists('domainName', $data)) {
-            $object->setDomainName($data['domainName']);
+            $object->domainName = $data['domainName'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('isConflict', $data)) {
-            $object->setIsConflict($data['isConflict']);
+            $object->isConflict = $data['isConflict'];
         }
         if (\array_key_exists('createOn', $data)) {
-            $object->setCreateOn($data['createOn']);
+            $object->createOn = $data['createOn'];
         }
         if (\array_key_exists('globalCatalog', $data)) {
-            $object->setGlobalCatalog($data['globalCatalog']);
+            $object->globalCatalog = $data['globalCatalog'];
         }
         if (\array_key_exists('windowsDomainName', $data)) {
-            $object->setWindowsDomainName($data['windowsDomainName']);
+            $object->windowsDomainName = $data['windowsDomainName'];
         }
         if (\array_key_exists('partnerName', $data)) {
-            $object->setPartnerName($data['partnerName']);
+            $object->partnerName = $data['partnerName'];
         }
         if (\array_key_exists('token', $data)) {
-            $object->setToken($data['token']);
+            $object->token = $data['token'];
         }
         if (\array_key_exists('authenticationApi', $data)) {
-            $object->setAuthenticationApi($data['authenticationApi']);
+            $object->authenticationApi = $data['authenticationApi'];
         }
         if (\array_key_exists('accountingApi', $data)) {
-            $object->setAccountingApi($data['accountingApi']);
+            $object->accountingApi = $data['accountingApi'];
         }
         if (\array_key_exists('coaResponseApi', $data)) {
-            $object->setCoaResponseApi($data['coaResponseApi']);
+            $object->coaResponseApi = $data['coaResponseApi'];
         }
         if (\array_key_exists('coaApi', $data)) {
-            $object->setCoaApi($data['coaApi']);
+            $object->coaApi = $data['coaApi'];
         }
         if (\array_key_exists('sseTimeout', $data)) {
-            $object->setSseTimeout($data['sseTimeout']);
+            $object->sseTimeout = $data['sseTimeout'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('secondaryRadiusPort') && null !== $data->getSecondaryRadiusPort()) {
-            $dataArray['secondaryRadiusPort'] = $data->getSecondaryRadiusPort();
+        if (array_key_exists('secondaryRadiusPort', get_object_vars($data)) && null !== ($data->secondaryRadiusPort ?? null)) {
+            $dataArray['secondaryRadiusPort'] = $data->secondaryRadiusPort ?? null;
         }
-        if ($data->isInitialized('adminDomainName') && null !== $data->getAdminDomainName()) {
-            $dataArray['adminDomainName'] = $data->getAdminDomainName();
+        if (array_key_exists('adminDomainName', get_object_vars($data)) && null !== ($data->adminDomainName ?? null)) {
+            $dataArray['adminDomainName'] = $data->adminDomainName ?? null;
         }
-        if ($data->isInitialized('creatorUUID') && null !== $data->getCreatorUUID()) {
-            $dataArray['creatorUUID'] = $data->getCreatorUUID();
+        if (array_key_exists('creatorUUID', get_object_vars($data)) && null !== ($data->creatorUUID ?? null)) {
+            $dataArray['creatorUUID'] = $data->creatorUUID ?? null;
         }
-        if ($data->isInitialized('secondaryRadiusIP') && null !== $data->getSecondaryRadiusIP()) {
-            $dataArray['secondaryRadiusIP'] = $data->getSecondaryRadiusIP();
+        if (array_key_exists('secondaryRadiusIP', get_object_vars($data)) && null !== ($data->secondaryRadiusIP ?? null)) {
+            $dataArray['secondaryRadiusIP'] = $data->secondaryRadiusIP ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('secondaryRadiusIPv6') && null !== $data->getSecondaryRadiusIPv6()) {
-            $dataArray['secondaryRadiusIPv6'] = $data->getSecondaryRadiusIPv6();
+        if (array_key_exists('secondaryRadiusIPv6', get_object_vars($data)) && null !== ($data->secondaryRadiusIPv6 ?? null)) {
+            $dataArray['secondaryRadiusIPv6'] = $data->secondaryRadiusIPv6 ?? null;
         }
-        if ($data->isInitialized('radiusPort') && null !== $data->getRadiusPort()) {
-            $dataArray['radiusPort'] = $data->getRadiusPort();
+        if (array_key_exists('radiusPort', get_object_vars($data)) && null !== ($data->radiusPort ?? null)) {
+            $dataArray['radiusPort'] = $data->radiusPort ?? null;
         }
-        if ($data->isInitialized('ipv6') && null !== $data->getIpv6()) {
-            $dataArray['ipv6'] = $data->getIpv6();
+        if (array_key_exists('ipv6', get_object_vars($data)) && null !== ($data->ipv6 ?? null)) {
+            $dataArray['ipv6'] = $data->ipv6 ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('authType') && null !== $data->getAuthType()) {
-            $dataArray['authType'] = $data->getAuthType();
+        if (array_key_exists('authType', get_object_vars($data)) && null !== ($data->authType ?? null)) {
+            $dataArray['authType'] = $data->authType ?? null;
         }
-        if ($data->isInitialized('radiusIP') && null !== $data->getRadiusIP()) {
-            $dataArray['radiusIP'] = $data->getRadiusIP();
+        if (array_key_exists('radiusIP', get_object_vars($data)) && null !== ($data->radiusIP ?? null)) {
+            $dataArray['radiusIP'] = $data->radiusIP ?? null;
         }
-        if ($data->isInitialized('radiusIPv6') && null !== $data->getRadiusIPv6()) {
-            $dataArray['radiusIPv6'] = $data->getRadiusIPv6();
+        if (array_key_exists('radiusIPv6', get_object_vars($data)) && null !== ($data->radiusIPv6 ?? null)) {
+            $dataArray['radiusIPv6'] = $data->radiusIPv6 ?? null;
         }
-        if ($data->isInitialized('key') && null !== $data->getKey()) {
-            $dataArray['key'] = $data->getKey();
+        if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
+            $dataArray['key'] = $data->key ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('tenantUUID') && null !== $data->getTenantUUID()) {
-            $dataArray['tenantUUID'] = $data->getTenantUUID();
+        if (array_key_exists('tenantUUID', get_object_vars($data)) && null !== ($data->tenantUUID ?? null)) {
+            $dataArray['tenantUUID'] = $data->tenantUUID ?? null;
         }
-        if ($data->isInitialized('enableSecondaryRadius') && null !== $data->getEnableSecondaryRadius()) {
-            $dataArray['enableSecondaryRadius'] = $data->getEnableSecondaryRadius();
+        if (array_key_exists('enableSecondaryRadius', get_object_vars($data)) && null !== ($data->enableSecondaryRadius ?? null)) {
+            $dataArray['enableSecondaryRadius'] = $data->enableSecondaryRadius ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        if ($data->isInitialized('zoneUUID') && null !== $data->getZoneUUID()) {
-            $dataArray['zoneUUID'] = $data->getZoneUUID();
+        if (array_key_exists('zoneUUID', get_object_vars($data)) && null !== ($data->zoneUUID ?? null)) {
+            $dataArray['zoneUUID'] = $data->zoneUUID ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('tacacsService') && null !== $data->getTacacsService()) {
-            $dataArray['tacacsService'] = $data->getTacacsService();
+        if (array_key_exists('tacacsService', get_object_vars($data)) && null !== ($data->tacacsService ?? null)) {
+            $dataArray['tacacsService'] = $data->tacacsService ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
-        if ($data->isInitialized('radiusRealm') && null !== $data->getRadiusRealm()) {
-            $dataArray['radiusRealm'] = $data->getRadiusRealm();
+        if (array_key_exists('radiusRealm', get_object_vars($data)) && null !== ($data->radiusRealm ?? null)) {
+            $dataArray['radiusRealm'] = $data->radiusRealm ?? null;
         }
-        if ($data->isInitialized('domainName') && null !== $data->getDomainName()) {
-            $dataArray['domainName'] = $data->getDomainName();
+        if (array_key_exists('domainName', get_object_vars($data)) && null !== ($data->domainName ?? null)) {
+            $dataArray['domainName'] = $data->domainName ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('isConflict') && null !== $data->getIsConflict()) {
-            $dataArray['isConflict'] = $data->getIsConflict();
+        if (array_key_exists('isConflict', get_object_vars($data)) && null !== ($data->isConflict ?? null)) {
+            $dataArray['isConflict'] = $data->isConflict ?? null;
         }
-        if ($data->isInitialized('createOn') && null !== $data->getCreateOn()) {
-            $dataArray['createOn'] = $data->getCreateOn();
+        if (array_key_exists('createOn', get_object_vars($data)) && null !== ($data->createOn ?? null)) {
+            $dataArray['createOn'] = $data->createOn ?? null;
         }
-        if ($data->isInitialized('globalCatalog') && null !== $data->getGlobalCatalog()) {
-            $dataArray['globalCatalog'] = $data->getGlobalCatalog();
+        if (array_key_exists('globalCatalog', get_object_vars($data)) && null !== ($data->globalCatalog ?? null)) {
+            $dataArray['globalCatalog'] = $data->globalCatalog ?? null;
         }
-        if ($data->isInitialized('windowsDomainName') && null !== $data->getWindowsDomainName()) {
-            $dataArray['windowsDomainName'] = $data->getWindowsDomainName();
+        if (array_key_exists('windowsDomainName', get_object_vars($data)) && null !== ($data->windowsDomainName ?? null)) {
+            $dataArray['windowsDomainName'] = $data->windowsDomainName ?? null;
         }
-        if ($data->isInitialized('partnerName') && null !== $data->getPartnerName()) {
-            $dataArray['partnerName'] = $data->getPartnerName();
+        if (array_key_exists('partnerName', get_object_vars($data)) && null !== ($data->partnerName ?? null)) {
+            $dataArray['partnerName'] = $data->partnerName ?? null;
         }
-        if ($data->isInitialized('token') && null !== $data->getToken()) {
-            $dataArray['token'] = $data->getToken();
+        if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {
+            $dataArray['token'] = $data->token ?? null;
         }
-        if ($data->isInitialized('authenticationApi') && null !== $data->getAuthenticationApi()) {
-            $dataArray['authenticationApi'] = $data->getAuthenticationApi();
+        if (array_key_exists('authenticationApi', get_object_vars($data)) && null !== ($data->authenticationApi ?? null)) {
+            $dataArray['authenticationApi'] = $data->authenticationApi ?? null;
         }
-        if ($data->isInitialized('accountingApi') && null !== $data->getAccountingApi()) {
-            $dataArray['accountingApi'] = $data->getAccountingApi();
+        if (array_key_exists('accountingApi', get_object_vars($data)) && null !== ($data->accountingApi ?? null)) {
+            $dataArray['accountingApi'] = $data->accountingApi ?? null;
         }
-        if ($data->isInitialized('coaResponseApi') && null !== $data->getCoaResponseApi()) {
-            $dataArray['coaResponseApi'] = $data->getCoaResponseApi();
+        if (array_key_exists('coaResponseApi', get_object_vars($data)) && null !== ($data->coaResponseApi ?? null)) {
+            $dataArray['coaResponseApi'] = $data->coaResponseApi ?? null;
         }
-        if ($data->isInitialized('coaApi') && null !== $data->getCoaApi()) {
-            $dataArray['coaApi'] = $data->getCoaApi();
+        if (array_key_exists('coaApi', get_object_vars($data)) && null !== ($data->coaApi ?? null)) {
+            $dataArray['coaApi'] = $data->coaApi ?? null;
         }
-        if ($data->isInitialized('sseTimeout') && null !== $data->getSseTimeout()) {
-            $dataArray['sseTimeout'] = $data->getSseTimeout();
+        if (array_key_exists('sseTimeout', get_object_vars($data)) && null !== ($data->sseTimeout ?? null)) {
+            $dataArray['sseTimeout'] = $data->sseTimeout ?? null;
         }
         return $dataArray;
     }

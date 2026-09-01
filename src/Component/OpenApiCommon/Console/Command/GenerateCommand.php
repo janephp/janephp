@@ -10,10 +10,13 @@ use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\JaneOpenApi;
 use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\PrettyPrinter\Standard;
+use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(name: 'generate', description: 'Generate an api client: class, normalizers and resources given a specific Json OpenApi file')]
 class GenerateCommand extends BaseGenerateCommand
 {
     private OpenApiMatcher $matcher;
@@ -26,14 +29,12 @@ class GenerateCommand extends BaseGenerateCommand
 
     public function configure(): void
     {
-        $this->setName('generate');
-        $this->setDescription('Generate an api client: class, normalizers and resources given a specific Json OpenApi file');
         $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane OpenAPI configuration', '.jane-openapi');
     }
 
     protected function executeGeneration(InputInterface $input, OutputInterface $output): int
     {
-        $options = $this->configLoader->load($input->getOption('config-file'));
+        $options = $this->configLoader->load($this->configFileOption($input));
         $registries = $this->registries($options);
 
         /** @var Registry $registry */
@@ -57,10 +58,10 @@ class GenerateCommand extends BaseGenerateCommand
             }
 
             $janeOpenApi->generate($registry);
-            $printer->output($registry);
+            $printer->output($registry, $output);
         }
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     protected function newRegistry(string $schemaFile, array $options): Registry

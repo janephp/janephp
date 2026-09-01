@@ -38,7 +38,7 @@ class ApiGetScheduledIndexingOutputNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('indexing_info', $data)) {
-            $object->setIndexingInfo($this->denormalizer->denormalize($data['indexing_info'], \Jane\Generated\DigitalOcean\Model\ApiScheduledIndexingInfo::class, 'json', $context));
+            $object->indexingInfo = $this->denormalizer->denormalize($data['indexing_info'], \Jane\Generated\DigitalOcean\Model\ApiScheduledIndexingInfo::class, 'json', $context);
             unset($data['indexing_info']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiGetScheduledIndexingOutputNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('indexingInfo') && null !== $data->getIndexingInfo()) {
-            $dataArray['indexing_info'] = $data->getIndexingInfo() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getIndexingInfo(), 'json', $context));
+        if (array_key_exists('indexingInfo', get_object_vars($data)) && null !== ($data->indexingInfo ?? null)) {
+            $dataArray['indexing_info'] = ($data->indexingInfo ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->indexingInfo ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

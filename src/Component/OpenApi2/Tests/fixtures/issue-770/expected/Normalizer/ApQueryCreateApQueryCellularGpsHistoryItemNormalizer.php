@@ -38,27 +38,27 @@ class ApQueryCreateApQueryCellularGpsHistoryItemNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('timestamp', $data)) {
-            $object->setTimestamp($data['timestamp']);
+            $object->timestamp = $data['timestamp'];
         }
         if (\array_key_exists('latitude', $data)) {
-            $object->setLatitude($data['latitude']);
+            $object->latitude = $data['latitude'];
         }
         if (\array_key_exists('longitude', $data)) {
-            $object->setLongitude($data['longitude']);
+            $object->longitude = $data['longitude'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('timestamp') && null !== $data->getTimestamp()) {
-            $dataArray['timestamp'] = $data->getTimestamp();
+        if (array_key_exists('timestamp', get_object_vars($data)) && null !== ($data->timestamp ?? null)) {
+            $dataArray['timestamp'] = $data->timestamp ?? null;
         }
-        if ($data->isInitialized('latitude') && null !== $data->getLatitude()) {
-            $dataArray['latitude'] = $data->getLatitude();
+        if (array_key_exists('latitude', get_object_vars($data)) && null !== ($data->latitude ?? null)) {
+            $dataArray['latitude'] = $data->latitude ?? null;
         }
-        if ($data->isInitialized('longitude') && null !== $data->getLongitude()) {
-            $dataArray['longitude'] = $data->getLongitude();
+        if (array_key_exists('longitude', get_object_vars($data)) && null !== ($data->longitude ?? null)) {
+            $dataArray['longitude'] = $data->longitude ?? null;
         }
         return $dataArray;
     }

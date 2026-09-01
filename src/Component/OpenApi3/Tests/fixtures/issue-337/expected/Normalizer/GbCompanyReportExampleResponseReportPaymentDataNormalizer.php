@@ -107,99 +107,99 @@ class GbCompanyReportExampleResponseReportPaymentDataNormalizer implements Denor
             $data['industryDBT'] = (float) $data['industryDBT'];
         }
         if (\array_key_exists('paymentsOnFile', $data)) {
-            $object->setPaymentsOnFile($data['paymentsOnFile']);
+            $object->paymentsOnFile = $data['paymentsOnFile'];
             unset($data['paymentsOnFile']);
         }
         if (\array_key_exists('paymentsOnTime', $data)) {
-            $object->setPaymentsOnTime($data['paymentsOnTime']);
+            $object->paymentsOnTime = $data['paymentsOnTime'];
             unset($data['paymentsOnTime']);
         }
         if (\array_key_exists('paymentsPaidLate', $data)) {
-            $object->setPaymentsPaidLate($data['paymentsPaidLate']);
+            $object->paymentsPaidLate = $data['paymentsPaidLate'];
             unset($data['paymentsPaidLate']);
         }
         if (\array_key_exists('paymentsSentLegal', $data)) {
-            $object->setPaymentsSentLegal($data['paymentsSentLegal']);
+            $object->paymentsSentLegal = $data['paymentsSentLegal'];
             unset($data['paymentsSentLegal']);
         }
         if (\array_key_exists('paymentsStillOwingLate', $data)) {
-            $object->setPaymentsStillOwingLate($data['paymentsStillOwingLate']);
+            $object->paymentsStillOwingLate = $data['paymentsStillOwingLate'];
             unset($data['paymentsStillOwingLate']);
         }
         if (\array_key_exists('paymentsPaid0to30Days', $data)) {
-            $object->setPaymentsPaid0to30Days($data['paymentsPaid0to30Days']);
+            $object->paymentsPaid0to30Days = $data['paymentsPaid0to30Days'];
             unset($data['paymentsPaid0to30Days']);
         }
         if (\array_key_exists('highestInvoiceValueOutstandingLate', $data)) {
-            $object->setHighestInvoiceValueOutstandingLate($data['highestInvoiceValueOutstandingLate']);
+            $object->highestInvoiceValueOutstandingLate = $data['highestInvoiceValueOutstandingLate'];
             unset($data['highestInvoiceValueOutstandingLate']);
         }
         if (\array_key_exists('paymentsPaid90DaysplusLate', $data)) {
-            $object->setPaymentsPaid90DaysplusLate($data['paymentsPaid90DaysplusLate']);
+            $object->paymentsPaid90DaysplusLate = $data['paymentsPaid90DaysplusLate'];
             unset($data['paymentsPaid90DaysplusLate']);
         }
         if (\array_key_exists('totalBalanceStillOwingLate', $data)) {
-            $object->setTotalBalanceStillOwingLate($data['totalBalanceStillOwingLate']);
+            $object->totalBalanceStillOwingLate = $data['totalBalanceStillOwingLate'];
             unset($data['totalBalanceStillOwingLate']);
         }
         if (\array_key_exists('dbt', $data)) {
-            $object->setDbt($data['dbt']);
+            $object->dbt = $data['dbt'];
             unset($data['dbt']);
         }
         if (\array_key_exists('paymentsPaid61to90Days', $data)) {
-            $object->setPaymentsPaid61to90Days($data['paymentsPaid61to90Days']);
+            $object->paymentsPaid61to90Days = $data['paymentsPaid61to90Days'];
             unset($data['paymentsPaid61to90Days']);
         }
         if (\array_key_exists('totalBalanceStillOwing', $data)) {
-            $object->setTotalBalanceStillOwing($data['totalBalanceStillOwing']);
+            $object->totalBalanceStillOwing = $data['totalBalanceStillOwing'];
             unset($data['totalBalanceStillOwing']);
         }
         if (\array_key_exists('payments31to60DaysLate', $data)) {
-            $object->setPayments31to60DaysLate($data['payments31to60DaysLate']);
+            $object->payments31to60DaysLate = $data['payments31to60DaysLate'];
             unset($data['payments31to60DaysLate']);
         }
         if (\array_key_exists('payments61to90DaysLate', $data)) {
-            $object->setPayments61to90DaysLate($data['payments61to90DaysLate']);
+            $object->payments61to90DaysLate = $data['payments61to90DaysLate'];
             unset($data['payments61to90DaysLate']);
         }
         if (\array_key_exists('highestInvoiceValueOutstanding', $data)) {
-            $object->setHighestInvoiceValueOutstanding($data['highestInvoiceValueOutstanding']);
+            $object->highestInvoiceValueOutstanding = $data['highestInvoiceValueOutstanding'];
             unset($data['highestInvoiceValueOutstanding']);
         }
         if (\array_key_exists('paymentsStillOwing', $data)) {
-            $object->setPaymentsStillOwing($data['paymentsStillOwing']);
+            $object->paymentsStillOwing = $data['paymentsStillOwing'];
             unset($data['paymentsStillOwing']);
         }
         if (\array_key_exists('paymentsWithinTerms', $data)) {
-            $object->setPaymentsWithinTerms($data['paymentsWithinTerms']);
+            $object->paymentsWithinTerms = $data['paymentsWithinTerms'];
             unset($data['paymentsWithinTerms']);
         }
         if (\array_key_exists('payments0to30Dayslate', $data)) {
-            $object->setPayments0to30Dayslate($data['payments0to30Dayslate']);
+            $object->payments0to30Dayslate = $data['payments0to30Dayslate'];
             unset($data['payments0to30Dayslate']);
         }
         if (\array_key_exists('averageInvoiceValue', $data)) {
-            $object->setAverageInvoiceValue($data['averageInvoiceValue']);
+            $object->averageInvoiceValue = $data['averageInvoiceValue'];
             unset($data['averageInvoiceValue']);
         }
         if (\array_key_exists('paymentsPaid31to60Days', $data)) {
-            $object->setPaymentsPaid31to60Days($data['paymentsPaid31to60Days']);
+            $object->paymentsPaid31to60Days = $data['paymentsPaid31to60Days'];
             unset($data['paymentsPaid31to60Days']);
         }
         if (\array_key_exists('paymentsPaid90Daysplus', $data)) {
-            $object->setPaymentsPaid90Daysplus($data['paymentsPaid90Daysplus']);
+            $object->paymentsPaid90Daysplus = $data['paymentsPaid90Daysplus'];
             unset($data['paymentsPaid90Daysplus']);
         }
         if (\array_key_exists('totalInvoiceValues', $data)) {
-            $object->setTotalInvoiceValues($data['totalInvoiceValues']);
+            $object->totalInvoiceValues = $data['totalInvoiceValues'];
             unset($data['totalInvoiceValues']);
         }
         if (\array_key_exists('paymentTrend', $data)) {
-            $object->setPaymentTrend($data['paymentTrend']);
+            $object->paymentTrend = $data['paymentTrend'];
             unset($data['paymentTrend']);
         }
         if (\array_key_exists('industryDBT', $data)) {
-            $object->setIndustryDBT($data['industryDBT']);
+            $object->industryDBT = $data['industryDBT'];
             unset($data['industryDBT']);
         }
         foreach ($data as $key => $value) {
@@ -212,77 +212,77 @@ class GbCompanyReportExampleResponseReportPaymentDataNormalizer implements Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('paymentsOnFile') && null !== $data->getPaymentsOnFile()) {
-            $dataArray['paymentsOnFile'] = $data->getPaymentsOnFile();
+        if (array_key_exists('paymentsOnFile', get_object_vars($data)) && null !== ($data->paymentsOnFile ?? null)) {
+            $dataArray['paymentsOnFile'] = $data->paymentsOnFile ?? null;
         }
-        if ($data->isInitialized('paymentsOnTime') && null !== $data->getPaymentsOnTime()) {
-            $dataArray['paymentsOnTime'] = $data->getPaymentsOnTime();
+        if (array_key_exists('paymentsOnTime', get_object_vars($data)) && null !== ($data->paymentsOnTime ?? null)) {
+            $dataArray['paymentsOnTime'] = $data->paymentsOnTime ?? null;
         }
-        if ($data->isInitialized('paymentsPaidLate') && null !== $data->getPaymentsPaidLate()) {
-            $dataArray['paymentsPaidLate'] = $data->getPaymentsPaidLate();
+        if (array_key_exists('paymentsPaidLate', get_object_vars($data)) && null !== ($data->paymentsPaidLate ?? null)) {
+            $dataArray['paymentsPaidLate'] = $data->paymentsPaidLate ?? null;
         }
-        if ($data->isInitialized('paymentsSentLegal') && null !== $data->getPaymentsSentLegal()) {
-            $dataArray['paymentsSentLegal'] = $data->getPaymentsSentLegal();
+        if (array_key_exists('paymentsSentLegal', get_object_vars($data)) && null !== ($data->paymentsSentLegal ?? null)) {
+            $dataArray['paymentsSentLegal'] = $data->paymentsSentLegal ?? null;
         }
-        if ($data->isInitialized('paymentsStillOwingLate') && null !== $data->getPaymentsStillOwingLate()) {
-            $dataArray['paymentsStillOwingLate'] = $data->getPaymentsStillOwingLate();
+        if (array_key_exists('paymentsStillOwingLate', get_object_vars($data)) && null !== ($data->paymentsStillOwingLate ?? null)) {
+            $dataArray['paymentsStillOwingLate'] = $data->paymentsStillOwingLate ?? null;
         }
-        if ($data->isInitialized('paymentsPaid0to30Days') && null !== $data->getPaymentsPaid0to30Days()) {
-            $dataArray['paymentsPaid0to30Days'] = $data->getPaymentsPaid0to30Days();
+        if (array_key_exists('paymentsPaid0to30Days', get_object_vars($data)) && null !== ($data->paymentsPaid0to30Days ?? null)) {
+            $dataArray['paymentsPaid0to30Days'] = $data->paymentsPaid0to30Days ?? null;
         }
-        if ($data->isInitialized('highestInvoiceValueOutstandingLate') && null !== $data->getHighestInvoiceValueOutstandingLate()) {
-            $dataArray['highestInvoiceValueOutstandingLate'] = $data->getHighestInvoiceValueOutstandingLate();
+        if (array_key_exists('highestInvoiceValueOutstandingLate', get_object_vars($data)) && null !== ($data->highestInvoiceValueOutstandingLate ?? null)) {
+            $dataArray['highestInvoiceValueOutstandingLate'] = $data->highestInvoiceValueOutstandingLate ?? null;
         }
-        if ($data->isInitialized('paymentsPaid90DaysplusLate') && null !== $data->getPaymentsPaid90DaysplusLate()) {
-            $dataArray['paymentsPaid90DaysplusLate'] = $data->getPaymentsPaid90DaysplusLate();
+        if (array_key_exists('paymentsPaid90DaysplusLate', get_object_vars($data)) && null !== ($data->paymentsPaid90DaysplusLate ?? null)) {
+            $dataArray['paymentsPaid90DaysplusLate'] = $data->paymentsPaid90DaysplusLate ?? null;
         }
-        if ($data->isInitialized('totalBalanceStillOwingLate') && null !== $data->getTotalBalanceStillOwingLate()) {
-            $dataArray['totalBalanceStillOwingLate'] = $data->getTotalBalanceStillOwingLate();
+        if (array_key_exists('totalBalanceStillOwingLate', get_object_vars($data)) && null !== ($data->totalBalanceStillOwingLate ?? null)) {
+            $dataArray['totalBalanceStillOwingLate'] = $data->totalBalanceStillOwingLate ?? null;
         }
-        if ($data->isInitialized('dbt') && null !== $data->getDbt()) {
-            $dataArray['dbt'] = $data->getDbt();
+        if (array_key_exists('dbt', get_object_vars($data)) && null !== ($data->dbt ?? null)) {
+            $dataArray['dbt'] = $data->dbt ?? null;
         }
-        if ($data->isInitialized('paymentsPaid61to90Days') && null !== $data->getPaymentsPaid61to90Days()) {
-            $dataArray['paymentsPaid61to90Days'] = $data->getPaymentsPaid61to90Days();
+        if (array_key_exists('paymentsPaid61to90Days', get_object_vars($data)) && null !== ($data->paymentsPaid61to90Days ?? null)) {
+            $dataArray['paymentsPaid61to90Days'] = $data->paymentsPaid61to90Days ?? null;
         }
-        if ($data->isInitialized('totalBalanceStillOwing') && null !== $data->getTotalBalanceStillOwing()) {
-            $dataArray['totalBalanceStillOwing'] = $data->getTotalBalanceStillOwing();
+        if (array_key_exists('totalBalanceStillOwing', get_object_vars($data)) && null !== ($data->totalBalanceStillOwing ?? null)) {
+            $dataArray['totalBalanceStillOwing'] = $data->totalBalanceStillOwing ?? null;
         }
-        if ($data->isInitialized('payments31to60DaysLate') && null !== $data->getPayments31to60DaysLate()) {
-            $dataArray['payments31to60DaysLate'] = $data->getPayments31to60DaysLate();
+        if (array_key_exists('payments31to60DaysLate', get_object_vars($data)) && null !== ($data->payments31to60DaysLate ?? null)) {
+            $dataArray['payments31to60DaysLate'] = $data->payments31to60DaysLate ?? null;
         }
-        if ($data->isInitialized('payments61to90DaysLate') && null !== $data->getPayments61to90DaysLate()) {
-            $dataArray['payments61to90DaysLate'] = $data->getPayments61to90DaysLate();
+        if (array_key_exists('payments61to90DaysLate', get_object_vars($data)) && null !== ($data->payments61to90DaysLate ?? null)) {
+            $dataArray['payments61to90DaysLate'] = $data->payments61to90DaysLate ?? null;
         }
-        if ($data->isInitialized('highestInvoiceValueOutstanding') && null !== $data->getHighestInvoiceValueOutstanding()) {
-            $dataArray['highestInvoiceValueOutstanding'] = $data->getHighestInvoiceValueOutstanding();
+        if (array_key_exists('highestInvoiceValueOutstanding', get_object_vars($data)) && null !== ($data->highestInvoiceValueOutstanding ?? null)) {
+            $dataArray['highestInvoiceValueOutstanding'] = $data->highestInvoiceValueOutstanding ?? null;
         }
-        if ($data->isInitialized('paymentsStillOwing') && null !== $data->getPaymentsStillOwing()) {
-            $dataArray['paymentsStillOwing'] = $data->getPaymentsStillOwing();
+        if (array_key_exists('paymentsStillOwing', get_object_vars($data)) && null !== ($data->paymentsStillOwing ?? null)) {
+            $dataArray['paymentsStillOwing'] = $data->paymentsStillOwing ?? null;
         }
-        if ($data->isInitialized('paymentsWithinTerms') && null !== $data->getPaymentsWithinTerms()) {
-            $dataArray['paymentsWithinTerms'] = $data->getPaymentsWithinTerms();
+        if (array_key_exists('paymentsWithinTerms', get_object_vars($data)) && null !== ($data->paymentsWithinTerms ?? null)) {
+            $dataArray['paymentsWithinTerms'] = $data->paymentsWithinTerms ?? null;
         }
-        if ($data->isInitialized('payments0to30Dayslate') && null !== $data->getPayments0to30Dayslate()) {
-            $dataArray['payments0to30Dayslate'] = $data->getPayments0to30Dayslate();
+        if (array_key_exists('payments0to30Dayslate', get_object_vars($data)) && null !== ($data->payments0to30Dayslate ?? null)) {
+            $dataArray['payments0to30Dayslate'] = $data->payments0to30Dayslate ?? null;
         }
-        if ($data->isInitialized('averageInvoiceValue') && null !== $data->getAverageInvoiceValue()) {
-            $dataArray['averageInvoiceValue'] = $data->getAverageInvoiceValue();
+        if (array_key_exists('averageInvoiceValue', get_object_vars($data)) && null !== ($data->averageInvoiceValue ?? null)) {
+            $dataArray['averageInvoiceValue'] = $data->averageInvoiceValue ?? null;
         }
-        if ($data->isInitialized('paymentsPaid31to60Days') && null !== $data->getPaymentsPaid31to60Days()) {
-            $dataArray['paymentsPaid31to60Days'] = $data->getPaymentsPaid31to60Days();
+        if (array_key_exists('paymentsPaid31to60Days', get_object_vars($data)) && null !== ($data->paymentsPaid31to60Days ?? null)) {
+            $dataArray['paymentsPaid31to60Days'] = $data->paymentsPaid31to60Days ?? null;
         }
-        if ($data->isInitialized('paymentsPaid90Daysplus') && null !== $data->getPaymentsPaid90Daysplus()) {
-            $dataArray['paymentsPaid90Daysplus'] = $data->getPaymentsPaid90Daysplus();
+        if (array_key_exists('paymentsPaid90Daysplus', get_object_vars($data)) && null !== ($data->paymentsPaid90Daysplus ?? null)) {
+            $dataArray['paymentsPaid90Daysplus'] = $data->paymentsPaid90Daysplus ?? null;
         }
-        if ($data->isInitialized('totalInvoiceValues') && null !== $data->getTotalInvoiceValues()) {
-            $dataArray['totalInvoiceValues'] = $data->getTotalInvoiceValues();
+        if (array_key_exists('totalInvoiceValues', get_object_vars($data)) && null !== ($data->totalInvoiceValues ?? null)) {
+            $dataArray['totalInvoiceValues'] = $data->totalInvoiceValues ?? null;
         }
-        if ($data->isInitialized('paymentTrend') && null !== $data->getPaymentTrend()) {
-            $dataArray['paymentTrend'] = $data->getPaymentTrend();
+        if (array_key_exists('paymentTrend', get_object_vars($data)) && null !== ($data->paymentTrend ?? null)) {
+            $dataArray['paymentTrend'] = $data->paymentTrend ?? null;
         }
-        if ($data->isInitialized('industryDBT') && null !== $data->getIndustryDBT()) {
-            $dataArray['industryDBT'] = $data->getIndustryDBT();
+        if (array_key_exists('industryDBT', get_object_vars($data)) && null !== ($data->industryDBT ?? null)) {
+            $dataArray['industryDBT'] = $data->industryDBT ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

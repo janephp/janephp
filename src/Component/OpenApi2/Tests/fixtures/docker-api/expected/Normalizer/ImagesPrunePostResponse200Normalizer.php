@@ -45,25 +45,25 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
             foreach ($data['ImagesDeleted'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\ImageDeleteResponseItem::class, 'json', $context);
             }
-            $object->setImagesDeleted($values);
+            $object->imagesDeleted = $values;
         }
         if (\array_key_exists('SpaceReclaimed', $data)) {
-            $object->setSpaceReclaimed($data['SpaceReclaimed']);
+            $object->spaceReclaimed = $data['SpaceReclaimed'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('imagesDeleted') && null !== $data->getImagesDeleted()) {
+        if (array_key_exists('imagesDeleted', get_object_vars($data)) && null !== ($data->imagesDeleted ?? null)) {
             $values = [];
-            foreach ($data->getImagesDeleted() as $value) {
+            foreach ($data->imagesDeleted ?? null as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ImagesDeleted'] = $values;
         }
-        if ($data->isInitialized('spaceReclaimed') && null !== $data->getSpaceReclaimed()) {
-            $dataArray['SpaceReclaimed'] = $data->getSpaceReclaimed();
+        if (array_key_exists('spaceReclaimed', get_object_vars($data)) && null !== ($data->spaceReclaimed ?? null)) {
+            $dataArray['SpaceReclaimed'] = $data->spaceReclaimed ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImagesPrunePostResponse200Constraint());

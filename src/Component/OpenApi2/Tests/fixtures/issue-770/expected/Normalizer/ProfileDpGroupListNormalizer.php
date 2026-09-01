@@ -42,16 +42,16 @@ class ProfileDpGroupListNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['list'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileReturnDPGroup::class, 'json', $context);
             }
-            $object->setList($values);
+            $object->list = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('list') && null !== $data->getList()) {
+        if (array_key_exists('list', get_object_vars($data)) && null !== ($data->list ?? null)) {
             $values = [];
-            foreach ($data->getList() as $value) {
+            foreach ($data->list ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['list'] = $values;

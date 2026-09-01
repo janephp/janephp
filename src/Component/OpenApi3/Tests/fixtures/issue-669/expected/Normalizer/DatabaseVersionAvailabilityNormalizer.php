@@ -38,23 +38,23 @@ class DatabaseVersionAvailabilityNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('end_of_life', $data) && $data['end_of_life'] !== null) {
-            $object->setEndOfLife($data['end_of_life']);
+            $object->endOfLife = $data['end_of_life'];
             unset($data['end_of_life']);
         }
         elseif (\array_key_exists('end_of_life', $data) && $data['end_of_life'] === null) {
-            $object->setEndOfLife(null);
+            $object->endOfLife = null;
             unset($data['end_of_life']);
         }
         if (\array_key_exists('end_of_availability', $data) && $data['end_of_availability'] !== null) {
-            $object->setEndOfAvailability($data['end_of_availability']);
+            $object->endOfAvailability = $data['end_of_availability'];
             unset($data['end_of_availability']);
         }
         elseif (\array_key_exists('end_of_availability', $data) && $data['end_of_availability'] === null) {
-            $object->setEndOfAvailability(null);
+            $object->endOfAvailability = null;
             unset($data['end_of_availability']);
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
             unset($data['version']);
         }
         foreach ($data as $key => $value) {
@@ -67,14 +67,14 @@ class DatabaseVersionAvailabilityNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('endOfLife') && null !== $data->getEndOfLife()) {
-            $dataArray['end_of_life'] = $data->getEndOfLife();
+        if (array_key_exists('endOfLife', get_object_vars($data)) && null !== ($data->endOfLife ?? null)) {
+            $dataArray['end_of_life'] = $data->endOfLife ?? null;
         }
-        if ($data->isInitialized('endOfAvailability') && null !== $data->getEndOfAvailability()) {
-            $dataArray['end_of_availability'] = $data->getEndOfAvailability();
+        if (array_key_exists('endOfAvailability', get_object_vars($data)) && null !== ($data->endOfAvailability ?? null)) {
+            $dataArray['end_of_availability'] = $data->endOfAvailability ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion();
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = $data->version ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

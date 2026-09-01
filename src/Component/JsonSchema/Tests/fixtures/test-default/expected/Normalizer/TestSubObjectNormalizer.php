@@ -38,18 +38,18 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('foo', $data) && $data['foo'] !== null) {
-            $object->setFoo($data['foo']);
+            $object->foo = $data['foo'];
         }
         elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
-            $object->setFoo(null);
+            $object->foo = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo();
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $dataArray['foo'] = $data->foo ?? null;
         }
         return $dataArray;
     }

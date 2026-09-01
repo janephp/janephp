@@ -26,10 +26,10 @@ class MultiNamespaceDenormalizationTest extends TestCase
         $test = $serializer->deserialize('{"foo":{"foo":"foo-value","bar":{"bar":"bar-value"}}}', Test::class, 'json');
 
         self::assertInstanceOf(Test::class, $test);
-        self::assertInstanceOf(Foo::class, $test->getFoo());
-        self::assertSame('foo-value', $test->getFoo()->getFoo());
-        self::assertInstanceOf(Bar::class, $test->getFoo()->getBar());
-        self::assertSame('bar-value', $test->getFoo()->getBar()->getBar());
+        self::assertInstanceOf(Foo::class, $test->foo);
+        self::assertSame('foo-value', $test->foo->foo);
+        self::assertInstanceOf(Bar::class, $test->foo->bar);
+        self::assertSame('bar-value', $test->foo->bar->bar);
     }
 
     public function testNormalizeModelsFromOtherSchemasWithASingleProxyNormalizer(): void
@@ -37,12 +37,12 @@ class MultiNamespaceDenormalizationTest extends TestCase
         $serializer = new Serializer([new JaneObjectNormalizer()], [new JsonEncoder()]);
 
         $bar = new Bar();
-        $bar->setBar('bar-value');
+        $bar->bar = 'bar-value';
         $foo = new Foo();
-        $foo->setFoo('foo-value');
-        $foo->setBar($bar);
+        $foo->foo = 'foo-value';
+        $foo->bar = $bar;
         $test = new Test();
-        $test->setFoo($foo);
+        $test->foo = $foo;
 
         self::assertSame('{"foo":{"foo":"foo-value","bar":{"bar":"bar-value"}}}', $serializer->serialize($test, 'json'));
     }

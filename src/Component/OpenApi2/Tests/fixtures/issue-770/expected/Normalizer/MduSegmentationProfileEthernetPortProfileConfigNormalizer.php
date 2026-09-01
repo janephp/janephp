@@ -38,39 +38,39 @@ class MduSegmentationProfileEthernetPortProfileConfigNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('userSidePortMaxClient', $data)) {
-            $object->setUserSidePortMaxClient($data['userSidePortMaxClient']);
+            $object->userSidePortMaxClient = $data['userSidePortMaxClient'];
         }
         if (\array_key_exists('userSidePortUplinkLimit', $data)) {
-            $object->setUserSidePortUplinkLimit($data['userSidePortUplinkLimit']);
+            $object->userSidePortUplinkLimit = $data['userSidePortUplinkLimit'];
         }
         if (\array_key_exists('userSidePortDownlinkLimit', $data)) {
-            $object->setUserSidePortDownlinkLimit($data['userSidePortDownlinkLimit']);
+            $object->userSidePortDownlinkLimit = $data['userSidePortDownlinkLimit'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('userSidePortMaxClient') && null !== $data->getUserSidePortMaxClient()) {
-            $dataArray['userSidePortMaxClient'] = $data->getUserSidePortMaxClient();
+        if (array_key_exists('userSidePortMaxClient', get_object_vars($data)) && null !== ($data->userSidePortMaxClient ?? null)) {
+            $dataArray['userSidePortMaxClient'] = $data->userSidePortMaxClient ?? null;
         }
-        if ($data->isInitialized('userSidePortUplinkLimit') && null !== $data->getUserSidePortUplinkLimit()) {
-            $dataArray['userSidePortUplinkLimit'] = $data->getUserSidePortUplinkLimit();
+        if (array_key_exists('userSidePortUplinkLimit', get_object_vars($data)) && null !== ($data->userSidePortUplinkLimit ?? null)) {
+            $dataArray['userSidePortUplinkLimit'] = $data->userSidePortUplinkLimit ?? null;
         }
-        if ($data->isInitialized('userSidePortDownlinkLimit') && null !== $data->getUserSidePortDownlinkLimit()) {
-            $dataArray['userSidePortDownlinkLimit'] = $data->getUserSidePortDownlinkLimit();
+        if (array_key_exists('userSidePortDownlinkLimit', get_object_vars($data)) && null !== ($data->userSidePortDownlinkLimit ?? null)) {
+            $dataArray['userSidePortDownlinkLimit'] = $data->userSidePortDownlinkLimit ?? null;
         }
         return $dataArray;
     }

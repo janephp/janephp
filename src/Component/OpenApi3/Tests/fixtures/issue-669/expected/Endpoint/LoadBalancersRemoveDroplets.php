@@ -59,16 +59,16 @@ class LoadBalancersRemoveDroplets extends \Jane\Generated\DigitalOcean\Runtime\C
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsNotFoundException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (429 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (429 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsTooManyRequestsException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
         }
         if (stripos(strtolower($contentType), 'application/json') !== false) {

@@ -38,20 +38,20 @@ class CommonWebAuthenticationPortalCustomizationNormalizer implements Denormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('title', $data)) {
-            $object->setTitle($data['title']);
+            $object->title = $data['title'];
         }
         if (\array_key_exists('logo', $data)) {
-            $object->setLogo($data['logo']);
+            $object->logo = $data['logo'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
-            $dataArray['title'] = $data->getTitle();
+        if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title ?? null;
         }
-        $dataArray['logo'] = $data->getLogo();
+        $dataArray['logo'] = $data->logo ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

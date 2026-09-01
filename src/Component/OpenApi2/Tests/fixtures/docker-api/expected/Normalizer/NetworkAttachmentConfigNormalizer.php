@@ -41,40 +41,40 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
             $this->validate($data, new \Docker\Api\Validator\NetworkAttachmentConfigConstraint());
         }
         if (\array_key_exists('Target', $data)) {
-            $object->setTarget($data['Target']);
+            $object->target = $data['Target'];
         }
         if (\array_key_exists('Aliases', $data)) {
             $values = [];
             foreach ($data['Aliases'] as $value) {
                 $values[] = $value;
             }
-            $object->setAliases($values);
+            $object->aliases = $values;
         }
         if (\array_key_exists('DriverOpts', $data)) {
             $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['DriverOpts'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
-            $object->setDriverOpts($values_1);
+            $object->driverOpts = $values_1;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('target') && null !== $data->getTarget()) {
-            $dataArray['Target'] = $data->getTarget();
+        if (array_key_exists('target', get_object_vars($data)) && null !== ($data->target ?? null)) {
+            $dataArray['Target'] = $data->target ?? null;
         }
-        if ($data->isInitialized('aliases') && null !== $data->getAliases()) {
+        if (array_key_exists('aliases', get_object_vars($data)) && null !== ($data->aliases ?? null)) {
             $values = [];
-            foreach ($data->getAliases() as $value) {
+            foreach ($data->aliases ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['Aliases'] = $values;
         }
-        if ($data->isInitialized('driverOpts') && null !== $data->getDriverOpts()) {
+        if (array_key_exists('driverOpts', get_object_vars($data)) && null !== ($data->driverOpts ?? null)) {
             $values_1 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getDriverOpts() as $key => $value_1) {
+            foreach ($data->driverOpts ?? null as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['DriverOpts'] = $values_1;

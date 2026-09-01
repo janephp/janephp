@@ -42,7 +42,7 @@ class ResponseDatabaseReplicasNormalizer implements DenormalizerInterface, Norma
             foreach ($data['replicas'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\DatabaseReplicaRead::class, 'json', $context);
             }
-            $object->setReplicas($values);
+            $object->replicas = $values;
             unset($data['replicas']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseDatabaseReplicasNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('replicas') && null !== $data->getReplicas()) {
+        if (array_key_exists('replicas', get_object_vars($data)) && null !== ($data->replicas ?? null)) {
             $values = [];
-            foreach ($data->getReplicas() as $value) {
+            foreach ($data->replicas ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['replicas'] = $values;

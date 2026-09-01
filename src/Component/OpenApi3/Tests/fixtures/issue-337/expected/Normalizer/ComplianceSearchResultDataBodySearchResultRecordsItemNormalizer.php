@@ -38,23 +38,23 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('record', $data)) {
-            $object->setRecord($data['record']);
+            $object->record = $data['record'];
             unset($data['record']);
         }
         if (\array_key_exists('recordDetails', $data)) {
-            $object->setRecordDetails($this->denormalizer->denormalize($data['recordDetails'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails::class, 'json', $context));
+            $object->recordDetails = $this->denormalizer->denormalize($data['recordDetails'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails::class, 'json', $context);
             unset($data['recordDetails']);
         }
         if (\array_key_exists('resultID', $data)) {
-            $object->setResultID($data['resultID']);
+            $object->resultID = $data['resultID'];
             unset($data['resultID']);
         }
         if (\array_key_exists('runID', $data)) {
-            $object->setRunID($data['runID']);
+            $object->runID = $data['runID'];
             unset($data['runID']);
         }
         if (\array_key_exists('watchlist', $data)) {
-            $object->setWatchlist($this->denormalizer->denormalize($data['watchlist'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist::class, 'json', $context));
+            $object->watchlist = $this->denormalizer->denormalize($data['watchlist'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist::class, 'json', $context);
             unset($data['watchlist']);
         }
         foreach ($data as $key => $value) {
@@ -67,20 +67,20 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('record') && null !== $data->getRecord()) {
-            $dataArray['record'] = $data->getRecord();
+        if (array_key_exists('record', get_object_vars($data)) && null !== ($data->record ?? null)) {
+            $dataArray['record'] = $data->record ?? null;
         }
-        if ($data->isInitialized('recordDetails') && null !== $data->getRecordDetails()) {
-            $dataArray['recordDetails'] = $data->getRecordDetails() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getRecordDetails(), 'json', $context));
+        if (array_key_exists('recordDetails', get_object_vars($data)) && null !== ($data->recordDetails ?? null)) {
+            $dataArray['recordDetails'] = ($data->recordDetails ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->recordDetails ?? null, 'json', $context));
         }
-        if ($data->isInitialized('resultID') && null !== $data->getResultID()) {
-            $dataArray['resultID'] = $data->getResultID();
+        if (array_key_exists('resultID', get_object_vars($data)) && null !== ($data->resultID ?? null)) {
+            $dataArray['resultID'] = $data->resultID ?? null;
         }
-        if ($data->isInitialized('runID') && null !== $data->getRunID()) {
-            $dataArray['runID'] = $data->getRunID();
+        if (array_key_exists('runID', get_object_vars($data)) && null !== ($data->runID ?? null)) {
+            $dataArray['runID'] = $data->runID ?? null;
         }
-        if ($data->isInitialized('watchlist') && null !== $data->getWatchlist()) {
-            $dataArray['watchlist'] = $data->getWatchlist() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getWatchlist(), 'json', $context));
+        if (array_key_exists('watchlist', get_object_vars($data)) && null !== ($data->watchlist ?? null)) {
+            $dataArray['watchlist'] = ($data->watchlist ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->watchlist ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

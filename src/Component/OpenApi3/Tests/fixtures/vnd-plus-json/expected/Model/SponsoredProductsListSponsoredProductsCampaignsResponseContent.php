@@ -8,65 +8,17 @@ class SponsoredProductsListSponsoredProductsCampaignsResponseContent implements 
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * The total number of entities
      *
      * @var int
      */
-    protected $totalResults;
+    public int $totalResults;
     /**
      * @var list<string>
      */
-    protected $campaigns;
-    /**
-     * The total number of entities
-     *
-     * @return int
-     */
-    public function getTotalResults(): int
-    {
-        return $this->totalResults;
-    }
-    /**
-     * The total number of entities
-     *
-     * @param int $totalResults
-     *
-     * @return self
-     */
-    public function setTotalResults(int $totalResults): self
-    {
-        $this->initialized['totalResults'] = true;
-        $this->totalResults = $totalResults;
-        return $this;
-    }
-    /**
-     * @return list<string>
-     */
-    public function getCampaigns(): array
-    {
-        return $this->campaigns;
-    }
-    /**
-     * @param list<string> $campaigns
-     *
-     * @return self
-     */
-    public function setCampaigns(array $campaigns): self
-    {
-        $this->initialized['campaigns'] = true;
-        $this->campaigns = $campaigns;
-        return $this;
-    }
+    public array $campaigns;
     public function definedProperties(): array
     {
-        return ['totalResults' => ['totalResults', 'getTotalResults', 'setTotalResults'], 'campaigns' => ['campaigns', 'getCampaigns', 'setCampaigns']];
+        return ['totalResults' => 'totalResults', 'campaigns' => 'campaigns'];
     }
 }

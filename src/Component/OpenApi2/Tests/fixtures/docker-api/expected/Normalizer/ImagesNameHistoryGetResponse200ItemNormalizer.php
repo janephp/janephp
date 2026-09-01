@@ -41,42 +41,42 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
             $this->validate($data, new \Docker\Api\Validator\ImagesNameHistoryGetResponse200ItemConstraint());
         }
         if (\array_key_exists('Id', $data)) {
-            $object->setId($data['Id']);
+            $object->id = $data['Id'];
         }
         if (\array_key_exists('Created', $data)) {
-            $object->setCreated($data['Created']);
+            $object->created = $data['Created'];
         }
         if (\array_key_exists('CreatedBy', $data)) {
-            $object->setCreatedBy($data['CreatedBy']);
+            $object->createdBy = $data['CreatedBy'];
         }
         if (\array_key_exists('Tags', $data)) {
             $values = [];
             foreach ($data['Tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setTags($values);
+            $object->tags = $values;
         }
         if (\array_key_exists('Size', $data)) {
-            $object->setSize($data['Size']);
+            $object->size = $data['Size'];
         }
         if (\array_key_exists('Comment', $data)) {
-            $object->setComment($data['Comment']);
+            $object->comment = $data['Comment'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Id'] = $data->getId();
-        $dataArray['Created'] = $data->getCreated();
-        $dataArray['CreatedBy'] = $data->getCreatedBy();
+        $dataArray['Id'] = $data->id ?? null;
+        $dataArray['Created'] = $data->created ?? null;
+        $dataArray['CreatedBy'] = $data->createdBy ?? null;
         $values = [];
-        foreach ($data->getTags() as $value) {
+        foreach ($data->tags ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['Tags'] = $values;
-        $dataArray['Size'] = $data->getSize();
-        $dataArray['Comment'] = $data->getComment();
+        $dataArray['Size'] = $data->size ?? null;
+        $dataArray['Comment'] = $data->comment ?? null;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImagesNameHistoryGetResponse200ItemConstraint());
         }

@@ -46,7 +46,7 @@ class NeighborIdsNormalizer implements DenormalizerInterface, NormalizerInterfac
                 }
                 $values[] = $values_1;
             }
-            $object->setNeighborIds($values);
+            $object->neighborIds = $values;
             unset($data['neighbor_ids']);
         }
         foreach ($data as $key => $value_2) {
@@ -59,9 +59,9 @@ class NeighborIdsNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('neighborIds') && null !== $data->getNeighborIds()) {
+        if (array_key_exists('neighborIds', get_object_vars($data)) && null !== ($data->neighborIds ?? null)) {
             $values = [];
-            foreach ($data->getNeighborIds() as $value) {
+            foreach ($data->neighborIds ?? null as $value) {
                 $values_1 = [];
                 foreach ($value as $value_1) {
                     $values_1[] = $value_1;

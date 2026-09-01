@@ -3,13 +3,7 @@
 namespace Jane\Component\OpenApiCommon\Naming;
 
 use Jane\Component\JsonSchema\Generator\Naming;
-use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema as OA31JsonSchema;
 use Jane\Component\JsonSchema\Tools\InflectorTrait;
-use Jane\Component\OpenApi2\JsonSchema\Model\Response as OA2Response;
-use Jane\Component\OpenApi2\JsonSchema\Model\Schema as OA2Schema;
-use Jane\Component\OpenApi3\JsonSchema\Model\Response as OA3Response;
-use Jane\Component\OpenApi3\JsonSchema\Model\Schema as OA3Schema;
-use Jane\Component\OpenApi31\JsonSchema\Model\Response as OA31Response;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 
 class OperationUrlNaming implements OperationNamingInterface
@@ -32,29 +26,27 @@ class OperationUrlNaming implements OperationNamingInterface
     {
         $prefix = strtolower($operation->getMethod());
         $shouldSingularize = true;
-        $responses = $operation->getOperation()->getResponses();
+        $responses = $operation->getOperation()->responses ?? null;
 
         if (null !== $responses && isset($responses[200])) {
             $response = $responses[200];
 
-            if (class_exists(OA2Response::class) && $response instanceof OA2Response && $response->getSchema() instanceof OA2Schema && 'array' === $response->getSchema()->getType()) {
-                $shouldSingularize = false;
-            }
-            if (class_exists(OA3Response::class) && $response instanceof OA3Response && $response->getContent()) {
-                $firstContent = (new \ArrayIterator(iterator_to_array($response->getContent())))->current();
-
-                if (null !== $firstContent && $firstContent->getSchema() instanceof OA3Schema && 'array' === $firstContent->getSchema()->getType()) {
+            if (\is_object($response)) {
+                // OpenAPI 2 response shape: response.schema
+                $schema = ($response->schema ?? null);
+                if (\is_object($schema) && 'array' === ($schema->type ?? null)) {
                     $shouldSingularize = false;
-                }
-            }
-            if (class_exists(OA31Response::class) && $response instanceof OA31Response && $response->getContent()) {
-                $firstContent = (new \ArrayIterator(iterator_to_array($response->getContent())))->current();
+                } elseif ($response->content ?? null) {
+                    // OpenAPI 3 / 3.1 response shape: response.content.<media>.schema
+                    $firstContent = (new \ArrayIterator(iterator_to_array($response->content ?? null)))->current();
+                    $schema = \is_object($firstContent) ? ($firstContent->schema ?? null) : null;
 
-                if (null !== $firstContent && $firstContent->getSchema() instanceof OA31JsonSchema) {
-                    $schemaType = $firstContent->getSchema()->getType();
+                    if (\is_object($schema)) {
+                        $schemaType = ($schema->type ?? null);
 
-                    if (\is_array($schemaType) ? \in_array('array', $schemaType, true) : 'array' === $schemaType) {
-                        $shouldSingularize = false;
+                        if (\is_array($schemaType) ? \in_array('array', $schemaType, true) : 'array' === $schemaType) {
+                            $shouldSingularize = false;
+                        }
                     }
                 }
             }

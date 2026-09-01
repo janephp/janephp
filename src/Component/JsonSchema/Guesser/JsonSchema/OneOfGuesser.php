@@ -17,14 +17,14 @@ class OneOfGuesser implements ChainGuesserAwareInterface, TypeGuesserInterface, 
 
     public function supportObject($object): bool
     {
-        return ($object instanceof JsonSchema) && 'object' !== $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;
+        return ($object instanceof JsonSchema) && 'object' !== ($object->type ?? null) && \is_array($object->oneOf ?? null) && \count($object->oneOf ?? null) > 0;
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = new MultipleType($object);
 
-        foreach ($object->getOneOf() as $oneOfKey => $oneOf) {
+        foreach (($object->oneOf ?? null ?? []) as $oneOfKey => $oneOf) {
             $type->addType($this->chainGuesser->guessType($oneOf, $name, $reference . '/oneOf/' . $oneOfKey, $registry));
         }
 

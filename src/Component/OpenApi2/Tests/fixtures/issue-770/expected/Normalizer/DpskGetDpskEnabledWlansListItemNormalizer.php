@@ -38,27 +38,27 @@ class DpskGetDpskEnabledWlansListItemNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('wlanId', $data)) {
-            $object->setWlanId($data['wlanId']);
+            $object->wlanId = $data['wlanId'];
         }
         if (\array_key_exists('ssid', $data)) {
-            $object->setSsid($data['ssid']);
+            $object->ssid = $data['ssid'];
         }
         if (\array_key_exists('wlanName', $data)) {
-            $object->setWlanName($data['wlanName']);
+            $object->wlanName = $data['wlanName'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('wlanId') && null !== $data->getWlanId()) {
-            $dataArray['wlanId'] = $data->getWlanId();
+        if (array_key_exists('wlanId', get_object_vars($data)) && null !== ($data->wlanId ?? null)) {
+            $dataArray['wlanId'] = $data->wlanId ?? null;
         }
-        if ($data->isInitialized('ssid') && null !== $data->getSsid()) {
-            $dataArray['ssid'] = $data->getSsid();
+        if (array_key_exists('ssid', get_object_vars($data)) && null !== ($data->ssid ?? null)) {
+            $dataArray['ssid'] = $data->ssid ?? null;
         }
-        if ($data->isInitialized('wlanName') && null !== $data->getWlanName()) {
-            $dataArray['wlanName'] = $data->getWlanName();
+        if (array_key_exists('wlanName', get_object_vars($data)) && null !== ($data->wlanName ?? null)) {
+            $dataArray['wlanName'] = $data->wlanName ?? null;
         }
         return $dataArray;
     }

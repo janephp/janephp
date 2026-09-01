@@ -4,7 +4,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue641;
 
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue641\Runtime\Client\Client
 {
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();

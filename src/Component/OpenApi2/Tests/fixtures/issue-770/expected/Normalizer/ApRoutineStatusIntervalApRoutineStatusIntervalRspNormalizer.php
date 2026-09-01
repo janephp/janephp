@@ -38,15 +38,15 @@ class ApRoutineStatusIntervalApRoutineStatusIntervalRspNormalizer implements Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apRoutineStatusInterval', $data)) {
-            $object->setApRoutineStatusInterval($data['apRoutineStatusInterval']);
+            $object->apRoutineStatusInterval = $data['apRoutineStatusInterval'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apRoutineStatusInterval') && null !== $data->getApRoutineStatusInterval()) {
-            $dataArray['apRoutineStatusInterval'] = $data->getApRoutineStatusInterval();
+        if (array_key_exists('apRoutineStatusInterval', get_object_vars($data)) && null !== ($data->apRoutineStatusInterval ?? null)) {
+            $dataArray['apRoutineStatusInterval'] = $data->apRoutineStatusInterval ?? null;
         }
         return $dataArray;
     }

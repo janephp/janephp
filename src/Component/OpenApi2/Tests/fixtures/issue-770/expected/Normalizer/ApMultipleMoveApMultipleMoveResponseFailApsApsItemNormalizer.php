@@ -38,21 +38,21 @@ class ApMultipleMoveApMultipleMoveResponseFailApsApsItemNormalizer implements De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mac', $data)) {
-            $object->setMac($data['mac']);
+            $object->mac = $data['mac'];
         }
         if (\array_key_exists('errorMessage', $data)) {
-            $object->setErrorMessage($data['errorMessage']);
+            $object->errorMessage = $data['errorMessage'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mac') && null !== $data->getMac()) {
-            $dataArray['mac'] = $data->getMac();
+        if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
+            $dataArray['mac'] = $data->mac ?? null;
         }
-        if ($data->isInitialized('errorMessage') && null !== $data->getErrorMessage()) {
-            $dataArray['errorMessage'] = $data->getErrorMessage();
+        if (array_key_exists('errorMessage', get_object_vars($data)) && null !== ($data->errorMessage ?? null)) {
+            $dataArray['errorMessage'] = $data->errorMessage ?? null;
         }
         return $dataArray;
     }

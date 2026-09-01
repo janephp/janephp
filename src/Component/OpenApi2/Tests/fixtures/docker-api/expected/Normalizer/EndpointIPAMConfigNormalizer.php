@@ -41,32 +41,32 @@ class EndpointIPAMConfigNormalizer implements DenormalizerInterface, NormalizerI
             $this->validate($data, new \Docker\Api\Validator\EndpointIPAMConfigConstraint());
         }
         if (\array_key_exists('IPv4Address', $data)) {
-            $object->setIPv4Address($data['IPv4Address']);
+            $object->iPv4Address = $data['IPv4Address'];
         }
         if (\array_key_exists('IPv6Address', $data)) {
-            $object->setIPv6Address($data['IPv6Address']);
+            $object->iPv6Address = $data['IPv6Address'];
         }
         if (\array_key_exists('LinkLocalIPs', $data)) {
             $values = [];
             foreach ($data['LinkLocalIPs'] as $value) {
                 $values[] = $value;
             }
-            $object->setLinkLocalIPs($values);
+            $object->linkLocalIPs = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iPv4Address') && null !== $data->getIPv4Address()) {
-            $dataArray['IPv4Address'] = $data->getIPv4Address();
+        if (array_key_exists('iPv4Address', get_object_vars($data)) && null !== ($data->iPv4Address ?? null)) {
+            $dataArray['IPv4Address'] = $data->iPv4Address ?? null;
         }
-        if ($data->isInitialized('iPv6Address') && null !== $data->getIPv6Address()) {
-            $dataArray['IPv6Address'] = $data->getIPv6Address();
+        if (array_key_exists('iPv6Address', get_object_vars($data)) && null !== ($data->iPv6Address ?? null)) {
+            $dataArray['IPv6Address'] = $data->iPv6Address ?? null;
         }
-        if ($data->isInitialized('linkLocalIPs') && null !== $data->getLinkLocalIPs()) {
+        if (array_key_exists('linkLocalIPs', get_object_vars($data)) && null !== ($data->linkLocalIPs ?? null)) {
             $values = [];
-            foreach ($data->getLinkLocalIPs() as $value) {
+            foreach ($data->linkLocalIPs ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['LinkLocalIPs'] = $values;

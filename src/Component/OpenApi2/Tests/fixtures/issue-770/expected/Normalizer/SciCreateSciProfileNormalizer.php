@@ -38,34 +38,34 @@ class SciCreateSciProfileNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('sciProfile', $data)) {
-            $object->setSciProfile($data['sciProfile']);
+            $object->sciProfile = $data['sciProfile'];
         }
         if (\array_key_exists('sciSystemId', $data)) {
-            $object->setSciSystemId($data['sciSystemId']);
+            $object->sciSystemId = $data['sciSystemId'];
         }
         if (\array_key_exists('sciServerHost', $data)) {
-            $object->setSciServerHost($data['sciServerHost']);
+            $object->sciServerHost = $data['sciServerHost'];
         }
         if (\array_key_exists('sciServerPort', $data)) {
-            $object->setSciServerPort($data['sciServerPort']);
+            $object->sciServerPort = $data['sciServerPort'];
         }
         if (\array_key_exists('sciUser', $data)) {
-            $object->setSciUser($data['sciUser']);
+            $object->sciUser = $data['sciUser'];
         }
         if (\array_key_exists('sciPassword', $data)) {
-            $object->setSciPassword($data['sciPassword']);
+            $object->sciPassword = $data['sciPassword'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['sciProfile'] = $data->getSciProfile();
-        $dataArray['sciSystemId'] = $data->getSciSystemId();
-        $dataArray['sciServerHost'] = $data->getSciServerHost();
-        $dataArray['sciServerPort'] = $data->getSciServerPort();
-        $dataArray['sciUser'] = $data->getSciUser();
-        $dataArray['sciPassword'] = $data->getSciPassword();
+        $dataArray['sciProfile'] = $data->sciProfile ?? null;
+        $dataArray['sciSystemId'] = $data->sciSystemId ?? null;
+        $dataArray['sciServerHost'] = $data->sciServerHost ?? null;
+        $dataArray['sciServerPort'] = $data->sciServerPort ?? null;
+        $dataArray['sciUser'] = $data->sciUser ?? null;
+        $dataArray['sciPassword'] = $data->sciPassword ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

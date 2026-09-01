@@ -44,21 +44,21 @@ class SystemCloudOptionsNormalizer implements DenormalizerInterface, NormalizerI
             $data['isRuckusCloudOnboarded'] = (bool) $data['isRuckusCloudOnboarded'];
         }
         if (\array_key_exists('apCloudOnboardingEnabled', $data)) {
-            $object->setApCloudOnboardingEnabled($data['apCloudOnboardingEnabled']);
+            $object->apCloudOnboardingEnabled = $data['apCloudOnboardingEnabled'];
         }
         if (\array_key_exists('isRuckusCloudOnboarded', $data)) {
-            $object->setIsRuckusCloudOnboarded($data['isRuckusCloudOnboarded']);
+            $object->isRuckusCloudOnboarded = $data['isRuckusCloudOnboarded'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apCloudOnboardingEnabled') && null !== $data->getApCloudOnboardingEnabled()) {
-            $dataArray['apCloudOnboardingEnabled'] = $data->getApCloudOnboardingEnabled();
+        if (array_key_exists('apCloudOnboardingEnabled', get_object_vars($data)) && null !== ($data->apCloudOnboardingEnabled ?? null)) {
+            $dataArray['apCloudOnboardingEnabled'] = $data->apCloudOnboardingEnabled ?? null;
         }
-        if ($data->isInitialized('isRuckusCloudOnboarded') && null !== $data->getIsRuckusCloudOnboarded()) {
-            $dataArray['isRuckusCloudOnboarded'] = $data->getIsRuckusCloudOnboarded();
+        if (array_key_exists('isRuckusCloudOnboarded', get_object_vars($data)) && null !== ($data->isRuckusCloudOnboarded ?? null)) {
+            $dataArray['isRuckusCloudOnboarded'] = $data->isRuckusCloudOnboarded ?? null;
         }
         return $dataArray;
     }

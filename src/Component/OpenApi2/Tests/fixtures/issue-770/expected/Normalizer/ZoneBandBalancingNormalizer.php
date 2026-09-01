@@ -38,15 +38,15 @@ class ZoneBandBalancingNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('wifi24Percentage', $data)) {
-            $object->setWifi24Percentage($data['wifi24Percentage']);
+            $object->wifi24Percentage = $data['wifi24Percentage'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('wifi24Percentage') && null !== $data->getWifi24Percentage()) {
-            $dataArray['wifi24Percentage'] = $data->getWifi24Percentage();
+        if (array_key_exists('wifi24Percentage', get_object_vars($data)) && null !== ($data->wifi24Percentage ?? null)) {
+            $dataArray['wifi24Percentage'] = $data->wifi24Percentage ?? null;
         }
         return $dataArray;
     }

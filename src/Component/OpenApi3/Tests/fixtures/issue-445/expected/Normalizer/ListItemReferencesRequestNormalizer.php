@@ -42,20 +42,20 @@ class ListItemReferencesRequestNormalizer implements DenormalizerInterface, Norm
             if (is_array($data['references'])) {
                 $value = $this->denormalizer->denormalize($data['references'], \PicturePark\API\Model\MetadataReferencesPagingRequest::class, 'json', $context);
             }
-            $object->setReferences($value);
+            $object->references = $value;
         }
         elseif (\array_key_exists('references', $data) && $data['references'] === null) {
-            $object->setReferences(null);
+            $object->references = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('references') && null !== $data->getReferences()) {
-            $value = $data->getReferences();
-            if (is_object($data->getReferences())) {
-                $value = $data->getReferences() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getReferences(), 'json', $context));
+        if (array_key_exists('references', get_object_vars($data)) && null !== ($data->references ?? null)) {
+            $value = $data->references ?? null;
+            if (is_object($data->references ?? null)) {
+                $value = ($data->references ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references ?? null, 'json', $context));
             }
             $dataArray['references'] = $value;
         }

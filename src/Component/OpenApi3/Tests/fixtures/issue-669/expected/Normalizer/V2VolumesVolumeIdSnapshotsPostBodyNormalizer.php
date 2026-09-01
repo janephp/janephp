@@ -38,7 +38,7 @@ class V2VolumesVolumeIdSnapshotsPostBodyNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
@@ -46,11 +46,11 @@ class V2VolumesVolumeIdSnapshotsPostBodyNormalizer implements DenormalizerInterf
             foreach ($data['tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setTags($values);
+            $object->tags = $values;
             unset($data['tags']);
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
-            $object->setTags(null);
+            $object->tags = null;
             unset($data['tags']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,10 +63,10 @@ class V2VolumesVolumeIdSnapshotsPostBodyNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values = [];
-            foreach ($data->getTags() as $value) {
+            foreach ($data->tags ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['tags'] = $values;

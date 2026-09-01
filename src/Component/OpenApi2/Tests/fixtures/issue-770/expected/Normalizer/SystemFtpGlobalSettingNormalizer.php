@@ -41,27 +41,27 @@ class SystemFtpGlobalSettingNormalizer implements DenormalizerInterface, Normali
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('ftpInterval', $data)) {
-            $object->setFtpInterval($data['ftpInterval']);
+            $object->ftpInterval = $data['ftpInterval'];
         }
         if (\array_key_exists('ftpId', $data)) {
-            $object->setFtpId($data['ftpId']);
+            $object->ftpId = $data['ftpId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
-            $dataArray['enabled'] = $data->getEnabled();
+        if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
+            $dataArray['enabled'] = $data->enabled ?? null;
         }
-        if ($data->isInitialized('ftpInterval') && null !== $data->getFtpInterval()) {
-            $dataArray['ftpInterval'] = $data->getFtpInterval();
+        if (array_key_exists('ftpInterval', get_object_vars($data)) && null !== ($data->ftpInterval ?? null)) {
+            $dataArray['ftpInterval'] = $data->ftpInterval ?? null;
         }
-        if ($data->isInitialized('ftpId') && null !== $data->getFtpId()) {
-            $dataArray['ftpId'] = $data->getFtpId();
+        if (array_key_exists('ftpId', get_object_vars($data)) && null !== ($data->ftpId ?? null)) {
+            $dataArray['ftpId'] = $data->ftpId ?? null;
         }
         return $dataArray;
     }

@@ -38,7 +38,7 @@ class CaNormalizer implements DenormalizerInterface, NormalizerInterface, Denorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('certificate', $data)) {
-            $object->setCertificate($data['certificate']);
+            $object->certificate = $data['certificate'];
             unset($data['certificate']);
         }
         foreach ($data as $key => $value) {

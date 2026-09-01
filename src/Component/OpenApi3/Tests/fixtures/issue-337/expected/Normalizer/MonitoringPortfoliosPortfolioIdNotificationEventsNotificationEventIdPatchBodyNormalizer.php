@@ -41,7 +41,7 @@ class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchB
             $data['isProcessed'] = (bool) $data['isProcessed'];
         }
         if (\array_key_exists('isProcessed', $data)) {
-            $object->setIsProcessed($data['isProcessed']);
+            $object->isProcessed = $data['isProcessed'];
             unset($data['isProcessed']);
         }
         foreach ($data as $key => $value) {
@@ -54,8 +54,8 @@ class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchB
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isProcessed') && null !== $data->getIsProcessed()) {
-            $dataArray['isProcessed'] = $data->getIsProcessed();
+        if (array_key_exists('isProcessed', get_object_vars($data)) && null !== ($data->isProcessed ?? null)) {
+            $dataArray['isProcessed'] = $data->isProcessed ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,7 +38,7 @@ class LinkToFirstPageNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('first', $data)) {
-            $object->setFirst($data['first']);
+            $object->first = $data['first'];
             unset($data['first']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class LinkToFirstPageNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('first') && null !== $data->getFirst()) {
-            $dataArray['first'] = $data->getFirst();
+        if (array_key_exists('first', get_object_vars($data)) && null !== ($data->first ?? null)) {
+            $dataArray['first'] = $data->first ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

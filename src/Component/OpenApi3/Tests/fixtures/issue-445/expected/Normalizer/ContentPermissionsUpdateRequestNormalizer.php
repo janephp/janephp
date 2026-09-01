@@ -42,19 +42,19 @@ class ContentPermissionsUpdateRequestNormalizer implements DenormalizerInterface
             foreach ($data['contentPermissionSetIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setContentPermissionSetIds($values);
+            $object->contentPermissionSetIds = $values;
         }
         elseif (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] === null) {
-            $object->setContentPermissionSetIds(null);
+            $object->contentPermissionSetIds = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('contentPermissionSetIds') && null !== $data->getContentPermissionSetIds()) {
+        if (array_key_exists('contentPermissionSetIds', get_object_vars($data)) && null !== ($data->contentPermissionSetIds ?? null)) {
             $values = [];
-            foreach ($data->getContentPermissionSetIds() as $value) {
+            foreach ($data->contentPermissionSetIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['contentPermissionSetIds'] = $values;

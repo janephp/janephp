@@ -38,31 +38,31 @@ class ContentRelationItemAssignedConditionNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
             unset($data['contentId']);
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
-            $object->setContentId(null);
+            $object->contentId = null;
             unset($data['contentId']);
         }
         if (\array_key_exists('fieldPath', $data) && $data['fieldPath'] !== null) {
-            $object->setFieldPath($data['fieldPath']);
+            $object->fieldPath = $data['fieldPath'];
             unset($data['fieldPath']);
         }
         elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
-            $object->setFieldPath(null);
+            $object->fieldPath = null;
             unset($data['fieldPath']);
         }
         foreach ($data as $key => $value) {
@@ -75,15 +75,15 @@ class ContentRelationItemAssignedConditionNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
-            $dataArray['contentId'] = $data->getContentId();
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
+            $dataArray['contentId'] = $data->contentId ?? null;
         }
-        if ($data->isInitialized('fieldPath') && null !== $data->getFieldPath()) {
-            $dataArray['fieldPath'] = $data->getFieldPath();
+        if (array_key_exists('fieldPath', get_object_vars($data)) && null !== ($data->fieldPath ?? null)) {
+            $dataArray['fieldPath'] = $data->fieldPath ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -41,21 +41,21 @@ class ProfileReturnDPGroupDpGroupListWithPriorityItemNormalizer implements Denor
             $data['priority'] = (float) $data['priority'];
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         if (\array_key_exists('dpId', $data)) {
-            $object->setDpId($data['dpId']);
+            $object->dpId = $data['dpId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority();
+        if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = $data->priority ?? null;
         }
-        if ($data->isInitialized('dpId') && null !== $data->getDpId()) {
-            $dataArray['dpId'] = $data->getDpId();
+        if (array_key_exists('dpId', get_object_vars($data)) && null !== ($data->dpId ?? null)) {
+            $dataArray['dpId'] = $data->dpId ?? null;
         }
         return $dataArray;
     }

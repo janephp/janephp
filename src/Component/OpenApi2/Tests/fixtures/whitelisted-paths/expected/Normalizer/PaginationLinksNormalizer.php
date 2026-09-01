@@ -38,29 +38,29 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('first', $data)) {
-            $object->setFirst($data['first']);
+            $object->first = $data['first'];
         }
         if (\array_key_exists('last', $data)) {
-            $object->setLast($data['last']);
+            $object->last = $data['last'];
         }
         if (\array_key_exists('previous', $data)) {
-            $object->setPrevious($data['previous']);
+            $object->previous = $data['previous'];
         }
         if (\array_key_exists('next', $data)) {
-            $object->setNext($data['next']);
+            $object->next = $data['next'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['first'] = $data->getFirst();
-        $dataArray['last'] = $data->getLast();
-        if ($data->isInitialized('previous') && null !== $data->getPrevious()) {
-            $dataArray['previous'] = $data->getPrevious();
+        $dataArray['first'] = $data->first ?? null;
+        $dataArray['last'] = $data->last ?? null;
+        if (array_key_exists('previous', get_object_vars($data)) && null !== ($data->previous ?? null)) {
+            $dataArray['previous'] = $data->previous ?? null;
         }
-        if ($data->isInitialized('next') && null !== $data->getNext()) {
-            $dataArray['next'] = $data->getNext();
+        if (array_key_exists('next', get_object_vars($data)) && null !== ($data->next ?? null)) {
+            $dataArray['next'] = $data->next ?? null;
         }
         return $dataArray;
     }

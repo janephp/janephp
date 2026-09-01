@@ -41,21 +41,21 @@ class PlatformNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $this->validate($data, new \Docker\Api\Validator\PlatformConstraint());
         }
         if (\array_key_exists('Architecture', $data)) {
-            $object->setArchitecture($data['Architecture']);
+            $object->architecture = $data['Architecture'];
         }
         if (\array_key_exists('OS', $data)) {
-            $object->setOS($data['OS']);
+            $object->oS = $data['OS'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('architecture') && null !== $data->getArchitecture()) {
-            $dataArray['Architecture'] = $data->getArchitecture();
+        if (array_key_exists('architecture', get_object_vars($data)) && null !== ($data->architecture ?? null)) {
+            $dataArray['Architecture'] = $data->architecture ?? null;
         }
-        if ($data->isInitialized('oS') && null !== $data->getOS()) {
-            $dataArray['OS'] = $data->getOS();
+        if (array_key_exists('oS', get_object_vars($data)) && null !== ($data->oS ?? null)) {
+            $dataArray['OS'] = $data->oS ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PlatformConstraint());

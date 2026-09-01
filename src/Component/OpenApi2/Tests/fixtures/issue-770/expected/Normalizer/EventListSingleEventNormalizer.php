@@ -38,51 +38,51 @@ class EventListSingleEventNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('activity', $data)) {
-            $object->setActivity($data['activity']);
+            $object->activity = $data['activity'];
         }
         if (\array_key_exists('category', $data)) {
-            $object->setCategory($data['category']);
+            $object->category = $data['category'];
         }
         if (\array_key_exists('eventCode', $data)) {
-            $object->setEventCode($data['eventCode']);
+            $object->eventCode = $data['eventCode'];
         }
         if (\array_key_exists('eventType', $data)) {
-            $object->setEventType($data['eventType']);
+            $object->eventType = $data['eventType'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('insertionTime', $data)) {
-            $object->setInsertionTime($data['insertionTime']);
+            $object->insertionTime = $data['insertionTime'];
         }
         if (\array_key_exists('severity', $data)) {
-            $object->setSeverity($data['severity']);
+            $object->severity = $data['severity'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('activity') && null !== $data->getActivity()) {
-            $dataArray['activity'] = $data->getActivity();
+        if (array_key_exists('activity', get_object_vars($data)) && null !== ($data->activity ?? null)) {
+            $dataArray['activity'] = $data->activity ?? null;
         }
-        if ($data->isInitialized('category') && null !== $data->getCategory()) {
-            $dataArray['category'] = $data->getCategory();
+        if (array_key_exists('category', get_object_vars($data)) && null !== ($data->category ?? null)) {
+            $dataArray['category'] = $data->category ?? null;
         }
-        if ($data->isInitialized('eventCode') && null !== $data->getEventCode()) {
-            $dataArray['eventCode'] = $data->getEventCode();
+        if (array_key_exists('eventCode', get_object_vars($data)) && null !== ($data->eventCode ?? null)) {
+            $dataArray['eventCode'] = $data->eventCode ?? null;
         }
-        if ($data->isInitialized('eventType') && null !== $data->getEventType()) {
-            $dataArray['eventType'] = $data->getEventType();
+        if (array_key_exists('eventType', get_object_vars($data)) && null !== ($data->eventType ?? null)) {
+            $dataArray['eventType'] = $data->eventType ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('insertionTime') && null !== $data->getInsertionTime()) {
-            $dataArray['insertionTime'] = $data->getInsertionTime();
+        if (array_key_exists('insertionTime', get_object_vars($data)) && null !== ($data->insertionTime ?? null)) {
+            $dataArray['insertionTime'] = $data->insertionTime ?? null;
         }
-        if ($data->isInitialized('severity') && null !== $data->getSeverity()) {
-            $dataArray['severity'] = $data->getSeverity();
+        if (array_key_exists('severity', get_object_vars($data)) && null !== ($data->severity ?? null)) {
+            $dataArray['severity'] = $data->severity ?? null;
         }
         return $dataArray;
     }

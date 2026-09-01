@@ -49,11 +49,11 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
-            $object->setNames(null);
+            $object->names = null;
             unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
@@ -65,111 +65,111 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
                 }
                 $value_2 = $values_1;
             }
-            $object->setDescriptions($value_2);
+            $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
-            $object->setDescriptions(null);
+            $object->descriptions = null;
             unset($data['descriptions']);
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
-            $object->setFileExtension($data['fileExtension']);
+            $object->fileExtension = $data['fileExtension'];
             unset($data['fileExtension']);
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
-            $object->setFileExtension(null);
+            $object->fileExtension = null;
             unset($data['fileExtension']);
         }
         if (\array_key_exists('fileName', $data) && $data['fileName'] !== null) {
-            $object->setFileName($data['fileName']);
+            $object->fileName = $data['fileName'];
             unset($data['fileName']);
         }
         elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
-            $object->setFileName(null);
+            $object->fileName = null;
             unset($data['fileName']);
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
-            $object->setFilePath($data['filePath']);
+            $object->filePath = $data['filePath'];
             unset($data['filePath']);
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
-            $object->setFilePath(null);
+            $object->filePath = null;
             unset($data['filePath']);
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
-            $object->setFileSizeInBytes($data['fileSizeInBytes']);
+            $object->fileSizeInBytes = $data['fileSizeInBytes'];
             unset($data['fileSizeInBytes']);
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
-            $object->setFileSizeInBytes(null);
+            $object->fileSizeInBytes = null;
             unset($data['fileSizeInBytes']);
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
-            $object->setSha1Hash($data['sha1Hash']);
+            $object->sha1Hash = $data['sha1Hash'];
             unset($data['sha1Hash']);
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
-            $object->setSha1Hash(null);
+            $object->sha1Hash = null;
             unset($data['sha1Hash']);
         }
         if (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] !== null) {
-            $object->setXmpMetadata($data['xmpMetadata']);
+            $object->xmpMetadata = $data['xmpMetadata'];
             unset($data['xmpMetadata']);
         }
         elseif (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] === null) {
-            $object->setXmpMetadata(null);
+            $object->xmpMetadata = null;
             unset($data['xmpMetadata']);
         }
         if (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] !== null) {
-            $object->setExifMetadata($data['exifMetadata']);
+            $object->exifMetadata = $data['exifMetadata'];
             unset($data['exifMetadata']);
         }
         elseif (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] === null) {
-            $object->setExifMetadata(null);
+            $object->exifMetadata = null;
             unset($data['exifMetadata']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
             unset($data['language']);
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
-            $object->setLanguage(null);
+            $object->language = null;
             unset($data['language']);
         }
         if (\array_key_exists('width', $data)) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
             unset($data['width']);
         }
         if (\array_key_exists('height', $data)) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
             unset($data['height']);
         }
         if (\array_key_exists('durationInSeconds', $data)) {
-            $object->setDurationInSeconds($data['durationInSeconds']);
+            $object->durationInSeconds = $data['durationInSeconds'];
             unset($data['durationInSeconds']);
         }
         if (\array_key_exists('format', $data) && $data['format'] !== null) {
-            $object->setFormat($data['format']);
+            $object->format = $data['format'];
             unset($data['format']);
         }
         elseif (\array_key_exists('format', $data) && $data['format'] === null) {
-            $object->setFormat(null);
+            $object->format = null;
             unset($data['format']);
         }
         if (\array_key_exists('codec', $data) && $data['codec'] !== null) {
-            $object->setCodec($data['codec']);
+            $object->codec = $data['codec'];
             unset($data['codec']);
         }
         elseif (\array_key_exists('codec', $data) && $data['codec'] === null) {
-            $object->setCodec(null);
+            $object->codec = null;
             unset($data['codec']);
         }
         if (\array_key_exists('overallBitrate', $data) && $data['overallBitrate'] !== null) {
-            $object->setOverallBitrate($data['overallBitrate']);
+            $object->overallBitrate = $data['overallBitrate'];
             unset($data['overallBitrate']);
         }
         elseif (\array_key_exists('overallBitrate', $data) && $data['overallBitrate'] === null) {
-            $object->setOverallBitrate(null);
+            $object->overallBitrate = null;
             unset($data['overallBitrate']);
         }
         if (\array_key_exists('videoStreams', $data) && $data['videoStreams'] !== null) {
@@ -177,11 +177,11 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['videoStreams'] as $value_4) {
                 $values_2[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\VideoStream::class, 'json', $context);
             }
-            $object->setVideoStreams($values_2);
+            $object->videoStreams = $values_2;
             unset($data['videoStreams']);
         }
         elseif (\array_key_exists('videoStreams', $data) && $data['videoStreams'] === null) {
-            $object->setVideoStreams(null);
+            $object->videoStreams = null;
             unset($data['videoStreams']);
         }
         if (\array_key_exists('audioStreams', $data) && $data['audioStreams'] !== null) {
@@ -189,11 +189,11 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['audioStreams'] as $value_5) {
                 $values_3[] = $this->denormalizer->denormalize($value_5, \PicturePark\API\Model\AudioStream::class, 'json', $context);
             }
-            $object->setAudioStreams($values_3);
+            $object->audioStreams = $values_3;
             unset($data['audioStreams']);
         }
         elseif (\array_key_exists('audioStreams', $data) && $data['audioStreams'] === null) {
-            $object->setAudioStreams(null);
+            $object->audioStreams = null;
             unset($data['audioStreams']);
         }
         foreach ($data as $key_2 => $value_6) {
@@ -206,80 +206,80 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
+            $value = $data->names ?? null;
+            if (is_object($data->names ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getNames() as $key => $value_1) {
+                foreach ($data->names ?? null as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
             }
             $dataArray['names'] = $value;
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $value_2 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
+        if (array_key_exists('descriptions', get_object_vars($data)) && null !== ($data->descriptions ?? null)) {
+            $value_2 = $data->descriptions ?? null;
+            if (is_object($data->descriptions ?? null)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                foreach ($data->descriptions ?? null as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
                 }
                 $value_2 = $values_1;
             }
             $dataArray['descriptions'] = $value_2;
         }
-        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
-            $dataArray['fileExtension'] = $data->getFileExtension();
+        if (array_key_exists('fileExtension', get_object_vars($data)) && null !== ($data->fileExtension ?? null)) {
+            $dataArray['fileExtension'] = $data->fileExtension ?? null;
         }
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
-            $dataArray['fileName'] = $data->getFileName();
+        if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
+            $dataArray['fileName'] = $data->fileName ?? null;
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
-            $dataArray['filePath'] = $data->getFilePath();
+        if (array_key_exists('filePath', get_object_vars($data)) && null !== ($data->filePath ?? null)) {
+            $dataArray['filePath'] = $data->filePath ?? null;
         }
-        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
-            $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
+        if (array_key_exists('fileSizeInBytes', get_object_vars($data)) && null !== ($data->fileSizeInBytes ?? null)) {
+            $dataArray['fileSizeInBytes'] = $data->fileSizeInBytes ?? null;
         }
-        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
-            $dataArray['sha1Hash'] = $data->getSha1Hash();
+        if (array_key_exists('sha1Hash', get_object_vars($data)) && null !== ($data->sha1Hash ?? null)) {
+            $dataArray['sha1Hash'] = $data->sha1Hash ?? null;
         }
-        if ($data->isInitialized('xmpMetadata') && null !== $data->getXmpMetadata()) {
-            $dataArray['xmpMetadata'] = $data->getXmpMetadata();
+        if (array_key_exists('xmpMetadata', get_object_vars($data)) && null !== ($data->xmpMetadata ?? null)) {
+            $dataArray['xmpMetadata'] = $data->xmpMetadata ?? null;
         }
-        if ($data->isInitialized('exifMetadata') && null !== $data->getExifMetadata()) {
-            $dataArray['exifMetadata'] = $data->getExifMetadata();
+        if (array_key_exists('exifMetadata', get_object_vars($data)) && null !== ($data->exifMetadata ?? null)) {
+            $dataArray['exifMetadata'] = $data->exifMetadata ?? null;
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
-            $dataArray['language'] = $data->getLanguage();
+        if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
+            $dataArray['language'] = $data->language ?? null;
         }
-        if ($data->isInitialized('width') && null !== $data->getWidth()) {
-            $dataArray['width'] = $data->getWidth();
+        if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
+            $dataArray['width'] = $data->width ?? null;
         }
-        if ($data->isInitialized('height') && null !== $data->getHeight()) {
-            $dataArray['height'] = $data->getHeight();
+        if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
+            $dataArray['height'] = $data->height ?? null;
         }
-        if ($data->isInitialized('durationInSeconds') && null !== $data->getDurationInSeconds()) {
-            $dataArray['durationInSeconds'] = $data->getDurationInSeconds();
+        if (array_key_exists('durationInSeconds', get_object_vars($data)) && null !== ($data->durationInSeconds ?? null)) {
+            $dataArray['durationInSeconds'] = $data->durationInSeconds ?? null;
         }
-        if ($data->isInitialized('format') && null !== $data->getFormat()) {
-            $dataArray['format'] = $data->getFormat();
+        if (array_key_exists('format', get_object_vars($data)) && null !== ($data->format ?? null)) {
+            $dataArray['format'] = $data->format ?? null;
         }
-        if ($data->isInitialized('codec') && null !== $data->getCodec()) {
-            $dataArray['codec'] = $data->getCodec();
+        if (array_key_exists('codec', get_object_vars($data)) && null !== ($data->codec ?? null)) {
+            $dataArray['codec'] = $data->codec ?? null;
         }
-        if ($data->isInitialized('overallBitrate') && null !== $data->getOverallBitrate()) {
-            $dataArray['overallBitrate'] = $data->getOverallBitrate();
+        if (array_key_exists('overallBitrate', get_object_vars($data)) && null !== ($data->overallBitrate ?? null)) {
+            $dataArray['overallBitrate'] = $data->overallBitrate ?? null;
         }
-        if ($data->isInitialized('videoStreams') && null !== $data->getVideoStreams()) {
+        if (array_key_exists('videoStreams', get_object_vars($data)) && null !== ($data->videoStreams ?? null)) {
             $values_2 = [];
-            foreach ($data->getVideoStreams() as $value_4) {
+            foreach ($data->videoStreams ?? null as $value_4) {
                 $values_2[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['videoStreams'] = $values_2;
         }
-        if ($data->isInitialized('audioStreams') && null !== $data->getAudioStreams()) {
+        if (array_key_exists('audioStreams', get_object_vars($data)) && null !== ($data->audioStreams ?? null)) {
             $values_3 = [];
-            foreach ($data->getAudioStreams() as $value_5) {
+            foreach ($data->audioStreams ?? null as $value_5) {
                 $values_3[] = $value_5 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['audioStreams'] = $values_3;

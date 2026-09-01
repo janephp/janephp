@@ -38,14 +38,14 @@ class PermissionSetOwnershipTransferRequestNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('transferUserId', $data)) {
-            $object->setTransferUserId($data['transferUserId']);
+            $object->transferUserId = $data['transferUserId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['transferUserId'] = $data->getTransferUserId();
+        $dataArray['transferUserId'] = $data->transferUserId ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

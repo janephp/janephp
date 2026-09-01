@@ -38,51 +38,51 @@ class DpProfileDpDhcpProfileBasicBONormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('profileName', $data)) {
-            $object->setProfileName($data['profileName']);
+            $object->profileName = $data['profileName'];
         }
         if (\array_key_exists('profileId', $data)) {
-            $object->setProfileId($data['profileId']);
+            $object->profileId = $data['profileId'];
         }
         if (\array_key_exists('domainName', $data)) {
-            $object->setDomainName($data['domainName']);
+            $object->domainName = $data['domainName'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('primaryDnsServer', $data)) {
-            $object->setPrimaryDnsServer($data['primaryDnsServer']);
+            $object->primaryDnsServer = $data['primaryDnsServer'];
         }
         if (\array_key_exists('secondaryDnsServer', $data)) {
-            $object->setSecondaryDnsServer($data['secondaryDnsServer']);
+            $object->secondaryDnsServer = $data['secondaryDnsServer'];
         }
         if (\array_key_exists('defaultLeaseTime', $data)) {
-            $object->setDefaultLeaseTime($data['defaultLeaseTime']);
+            $object->defaultLeaseTime = $data['defaultLeaseTime'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('profileName') && null !== $data->getProfileName()) {
-            $dataArray['profileName'] = $data->getProfileName();
+        if (array_key_exists('profileName', get_object_vars($data)) && null !== ($data->profileName ?? null)) {
+            $dataArray['profileName'] = $data->profileName ?? null;
         }
-        if ($data->isInitialized('profileId') && null !== $data->getProfileId()) {
-            $dataArray['profileId'] = $data->getProfileId();
+        if (array_key_exists('profileId', get_object_vars($data)) && null !== ($data->profileId ?? null)) {
+            $dataArray['profileId'] = $data->profileId ?? null;
         }
-        if ($data->isInitialized('domainName') && null !== $data->getDomainName()) {
-            $dataArray['domainName'] = $data->getDomainName();
+        if (array_key_exists('domainName', get_object_vars($data)) && null !== ($data->domainName ?? null)) {
+            $dataArray['domainName'] = $data->domainName ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('primaryDnsServer') && null !== $data->getPrimaryDnsServer()) {
-            $dataArray['primaryDnsServer'] = $data->getPrimaryDnsServer();
+        if (array_key_exists('primaryDnsServer', get_object_vars($data)) && null !== ($data->primaryDnsServer ?? null)) {
+            $dataArray['primaryDnsServer'] = $data->primaryDnsServer ?? null;
         }
-        if ($data->isInitialized('secondaryDnsServer') && null !== $data->getSecondaryDnsServer()) {
-            $dataArray['secondaryDnsServer'] = $data->getSecondaryDnsServer();
+        if (array_key_exists('secondaryDnsServer', get_object_vars($data)) && null !== ($data->secondaryDnsServer ?? null)) {
+            $dataArray['secondaryDnsServer'] = $data->secondaryDnsServer ?? null;
         }
-        if ($data->isInitialized('defaultLeaseTime') && null !== $data->getDefaultLeaseTime()) {
-            $dataArray['defaultLeaseTime'] = $data->getDefaultLeaseTime();
+        if (array_key_exists('defaultLeaseTime', get_object_vars($data)) && null !== ($data->defaultLeaseTime ?? null)) {
+            $dataArray['defaultLeaseTime'] = $data->defaultLeaseTime ?? null;
         }
         return $dataArray;
     }

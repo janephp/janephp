@@ -38,45 +38,45 @@ class ZoneBonjourPolicyRuleConfigurationNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         if (\array_key_exists('bridgeService', $data)) {
-            $object->setBridgeService($data['bridgeService']);
+            $object->bridgeService = $data['bridgeService'];
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
         }
         if (\array_key_exists('fromVlan', $data)) {
-            $object->setFromVlan($data['fromVlan']);
+            $object->fromVlan = $data['fromVlan'];
         }
         if (\array_key_exists('toVlan', $data)) {
-            $object->setToVlan($data['toVlan']);
+            $object->toVlan = $data['toVlan'];
         }
         if (\array_key_exists('notes', $data)) {
-            $object->setNotes($data['notes']);
+            $object->notes = $data['notes'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority();
+        if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = $data->priority ?? null;
         }
-        if ($data->isInitialized('bridgeService') && null !== $data->getBridgeService()) {
-            $dataArray['bridgeService'] = $data->getBridgeService();
+        if (array_key_exists('bridgeService', get_object_vars($data)) && null !== ($data->bridgeService ?? null)) {
+            $dataArray['bridgeService'] = $data->bridgeService ?? null;
         }
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
-        if ($data->isInitialized('fromVlan') && null !== $data->getFromVlan()) {
-            $dataArray['fromVlan'] = $data->getFromVlan();
+        if (array_key_exists('fromVlan', get_object_vars($data)) && null !== ($data->fromVlan ?? null)) {
+            $dataArray['fromVlan'] = $data->fromVlan ?? null;
         }
-        if ($data->isInitialized('toVlan') && null !== $data->getToVlan()) {
-            $dataArray['toVlan'] = $data->getToVlan();
+        if (array_key_exists('toVlan', get_object_vars($data)) && null !== ($data->toVlan ?? null)) {
+            $dataArray['toVlan'] = $data->toVlan ?? null;
         }
-        if ($data->isInitialized('notes') && null !== $data->getNotes()) {
-            $dataArray['notes'] = $data->getNotes();
+        if (array_key_exists('notes', get_object_vars($data)) && null !== ($data->notes ?? null)) {
+            $dataArray['notes'] = $data->notes ?? null;
         }
         return $dataArray;
     }

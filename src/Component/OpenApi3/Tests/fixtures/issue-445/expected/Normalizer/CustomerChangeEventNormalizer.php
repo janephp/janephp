@@ -42,23 +42,23 @@ class CustomerChangeEventNormalizer implements DenormalizerInterface, Normalizer
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTimestamp($date);
+            $object->timestamp = $date;
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('documentType', $data) && $data['documentType'] !== null) {
-            $object->setDocumentType($data['documentType']);
+            $object->documentType = $data['documentType'];
             unset($data['documentType']);
         }
         elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
-            $object->setDocumentType(null);
+            $object->documentType = null;
             unset($data['documentType']);
         }
         if (\array_key_exists('lifeCycle', $data)) {
-            $object->setLifeCycle($data['lifeCycle']);
+            $object->lifeCycle = $data['lifeCycle'];
             unset($data['lifeCycle']);
         }
         foreach ($data as $key => $value) {
@@ -71,13 +71,13 @@ class CustomerChangeEventNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('documentType') && null !== $data->getDocumentType()) {
-            $dataArray['documentType'] = $data->getDocumentType();
+        $dataArray['timestamp'] = ($data->timestamp ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('documentType', get_object_vars($data)) && null !== ($data->documentType ?? null)) {
+            $dataArray['documentType'] = $data->documentType ?? null;
         }
-        if ($data->isInitialized('lifeCycle') && null !== $data->getLifeCycle()) {
-            $dataArray['lifeCycle'] = $data->getLifeCycle();
+        if (array_key_exists('lifeCycle', get_object_vars($data)) && null !== ($data->lifeCycle ?? null)) {
+            $dataArray['lifeCycle'] = $data->lifeCycle ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

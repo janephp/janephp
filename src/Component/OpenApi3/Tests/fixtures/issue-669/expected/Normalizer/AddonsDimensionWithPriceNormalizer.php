@@ -38,23 +38,23 @@ class AddonsDimensionWithPriceNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('sku', $data)) {
-            $object->setSku($data['sku']);
+            $object->sku = $data['sku'];
             unset($data['sku']);
         }
         if (\array_key_exists('slug', $data)) {
-            $object->setSlug($data['slug']);
+            $object->slug = $data['slug'];
             unset($data['slug']);
         }
         if (\array_key_exists('display_name', $data)) {
-            $object->setDisplayName($data['display_name']);
+            $object->displayName = $data['display_name'];
             unset($data['display_name']);
         }
         if (\array_key_exists('feature_name', $data)) {
-            $object->setFeatureName($data['feature_name']);
+            $object->featureName = $data['feature_name'];
             unset($data['feature_name']);
         }
         if (\array_key_exists('volumes', $data)) {
@@ -62,7 +62,7 @@ class AddonsDimensionWithPriceNormalizer implements DenormalizerInterface, Norma
             foreach ($data['volumes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AddonsDimensionVolumeWithPrice::class, 'json', $context);
             }
-            $object->setVolumes($values);
+            $object->volumes = $values;
             unset($data['volumes']);
         }
         foreach ($data as $key => $value_1) {
@@ -75,13 +75,13 @@ class AddonsDimensionWithPriceNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['sku'] = $data->getSku();
-        $dataArray['slug'] = $data->getSlug();
-        $dataArray['display_name'] = $data->getDisplayName();
-        $dataArray['feature_name'] = $data->getFeatureName();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['sku'] = $data->sku ?? null;
+        $dataArray['slug'] = $data->slug ?? null;
+        $dataArray['display_name'] = $data->displayName ?? null;
+        $dataArray['feature_name'] = $data->featureName ?? null;
         $values = [];
-        foreach ($data->getVolumes() as $value) {
+        foreach ($data->volumes ?? null as $value) {
             $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['volumes'] = $values;

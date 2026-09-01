@@ -38,7 +38,7 @@ class TestFormFilePostBodyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('testFile', $data)) {
-            $object->setTestFile($data['testFile']);
+            $object->testFile = $data['testFile'];
             unset($data['testFile']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class TestFormFilePostBodyNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('testFile') && null !== $data->getTestFile()) {
-            $dataArray['testFile'] = $data->getTestFile();
+        if (array_key_exists('testFile', get_object_vars($data)) && null !== ($data->testFile ?? null)) {
+            $dataArray['testFile'] = $data->testFile ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

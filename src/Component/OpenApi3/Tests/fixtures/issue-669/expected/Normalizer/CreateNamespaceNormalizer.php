@@ -38,11 +38,11 @@ class CreateNamespaceNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('label', $data)) {
-            $object->setLabel($data['label']);
+            $object->label = $data['label'];
             unset($data['label']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class CreateNamespaceNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['region'] = $data->getRegion();
-        $dataArray['label'] = $data->getLabel();
+        $dataArray['region'] = $data->region ?? null;
+        $dataArray['label'] = $data->label ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

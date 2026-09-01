@@ -24,33 +24,33 @@ trait GetGetQueryStylesTrait
                 $parameter = $guessClass->resolveParameter($parameter);
             }
 
-            if (!$parameter instanceof Parameter || EndpointGenerator::IN_QUERY !== $parameter->getIn()) {
+            if (!$parameter instanceof Parameter || EndpointGenerator::IN_QUERY !== ($parameter->in ?? null)) {
                 continue;
             }
 
             // Content based serialization takes precedence over styles.
-            if (null !== $parameter->getContent()) {
+            if (null !== ($parameter->content ?? null)) {
                 continue;
             }
 
-            $schema = $parameter->getSchema();
+            $schema = ($parameter->schema ?? null);
             if ($schema instanceof Reference) {
                 [, $schema] = $guessClass->resolve($schema, JsonSchema::class);
             }
 
             // OpenAPI defaults: style is guessed from the `in` field, explode defaults to true when style is form.
-            $style = $parameter->getStyle() ?? 'form';
-            $explode = $parameter->getExplode() ?? ('form' === $style);
+            $style = ($parameter->style ?? null) ?? 'form';
+            $explode = ($parameter->explode ?? null) ?? ('form' === $style);
 
-            $isCollectionType = $schema instanceof JsonSchema && \in_array($schema->getType(), ['object', 'array'], true);
+            $isCollectionType = $schema instanceof JsonSchema && \in_array($schema->type ?? null, ['object', 'array'], true);
 
             // Only emit a style declaration when it changes the legacy runtime behavior.
-            if (null === $parameter->getStyle() && null === $parameter->getExplode() && !$isCollectionType) {
+            if (null === ($parameter->style ?? null) && null === ($parameter->explode ?? null) && !$isCollectionType) {
                 continue;
             }
 
             // Keep option resolver keys consistent: `[]` suffixes are stripped there too.
-            $parameterName = $parameter->getName();
+            $parameterName = ($parameter->name ?? null);
             if (str_contains($parameterName, '[]')) {
                 $parameterName = substr($parameterName, 0, -2);
             }

@@ -41,27 +41,27 @@ class CommonHealthCheckPolicyNormalizer implements DenormalizerInterface, Normal
             $data['responseFail'] = (bool) $data['responseFail'];
         }
         if (\array_key_exists('responseWindow', $data)) {
-            $object->setResponseWindow($data['responseWindow']);
+            $object->responseWindow = $data['responseWindow'];
         }
         if (\array_key_exists('reviveInterval', $data)) {
-            $object->setReviveInterval($data['reviveInterval']);
+            $object->reviveInterval = $data['reviveInterval'];
         }
         if (\array_key_exists('zombiePeriod', $data)) {
-            $object->setZombiePeriod($data['zombiePeriod']);
+            $object->zombiePeriod = $data['zombiePeriod'];
         }
         if (\array_key_exists('responseFail', $data)) {
-            $object->setResponseFail($data['responseFail']);
+            $object->responseFail = $data['responseFail'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['responseWindow'] = $data->getResponseWindow();
-        $dataArray['reviveInterval'] = $data->getReviveInterval();
-        $dataArray['zombiePeriod'] = $data->getZombiePeriod();
-        if ($data->isInitialized('responseFail') && null !== $data->getResponseFail()) {
-            $dataArray['responseFail'] = $data->getResponseFail();
+        $dataArray['responseWindow'] = $data->responseWindow ?? null;
+        $dataArray['reviveInterval'] = $data->reviveInterval ?? null;
+        $dataArray['zombiePeriod'] = $data->zombiePeriod ?? null;
+        if (array_key_exists('responseFail', get_object_vars($data)) && null !== ($data->responseFail ?? null)) {
+            $dataArray['responseFail'] = $data->responseFail ?? null;
         }
         return $dataArray;
     }

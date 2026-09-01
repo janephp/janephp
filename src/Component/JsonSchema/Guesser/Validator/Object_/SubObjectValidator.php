@@ -29,7 +29,7 @@ class SubObjectValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && (\is_array($object->getType()) ? \in_array('object', $object->getType()) : 'object' === $object->getType());
+        return $this->checkObject($object) && (\is_array($object->type ?? null) ? \in_array('object', $object->type ?? null) : 'object' === ($object->type ?? null));
     }
 
     /**
@@ -42,7 +42,7 @@ class SubObjectValidator implements ValidatorInterface
             return; // we don't want to guess on properties here, only on classes
         }
 
-        foreach ($object->getProperties() ?? [] as $localName => $property) {
+        foreach (($object->properties ?? null) ?? [] as $localName => $property) {
             $reference = null;
             $className = null;
             if ($property instanceof Reference) {
@@ -64,7 +64,7 @@ class SubObjectValidator implements ValidatorInterface
                 }
             }
 
-            if (null !== $className && (\is_array($propertyObj->getType()) ? \in_array('object', $propertyObj->getType()) : 'object' === $propertyObj->getType())) {
+            if (null !== $className && (\is_array($propertyObj->type ?? null) ? \in_array('object', $propertyObj->type ?? null) : 'object' === ($propertyObj->type ?? null))) {
                 $guess->addValidatorGuess(new ValidatorGuess($this->naming->getConstraintName($className), [], $localName, $reference));
             }
         }

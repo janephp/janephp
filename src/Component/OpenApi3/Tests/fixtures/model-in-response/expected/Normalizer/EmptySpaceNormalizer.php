@@ -38,7 +38,7 @@ class EmptySpaceNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('stringProperty', $data)) {
-            $object->setStringProperty($data['stringProperty']);
+            $object->stringProperty = $data['stringProperty'];
             unset($data['stringProperty']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class EmptySpaceNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('stringProperty') && null !== $data->getStringProperty()) {
-            $dataArray['stringProperty'] = $data->getStringProperty();
+        if (array_key_exists('stringProperty', get_object_vars($data)) && null !== ($data->stringProperty ?? null)) {
+            $dataArray['stringProperty'] = $data->stringProperty ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -8,103 +8,23 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $commonValue;
     /**
      * @var string
      */
-    protected $commonValue;
-    /**
-     * @var string
-     */
-    protected $commonDescription;
+    public string $commonDescription;
     /**
      * @var GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit
      */
-    protected $creditLimit;
+    public GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit $creditLimit;
     /**
      * @var GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue
      */
-    protected $providerValue;
-    /**
-     * @return string
-     */
-    public function getCommonValue(): string
-    {
-        return $this->commonValue;
-    }
-    /**
-     * @param string $commonValue
-     *
-     * @return self
-     */
-    public function setCommonValue(string $commonValue): self
-    {
-        $this->initialized['commonValue'] = true;
-        $this->commonValue = $commonValue;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCommonDescription(): string
-    {
-        return $this->commonDescription;
-    }
-    /**
-     * @param string $commonDescription
-     *
-     * @return self
-     */
-    public function setCommonDescription(string $commonDescription): self
-    {
-        $this->initialized['commonDescription'] = true;
-        $this->commonDescription = $commonDescription;
-        return $this;
-    }
-    /**
-     * @return GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit
-     */
-    public function getCreditLimit(): GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit
-    {
-        return $this->creditLimit;
-    }
-    /**
-     * @param GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit $creditLimit
-     *
-     * @return self
-     */
-    public function setCreditLimit(GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit $creditLimit): self
-    {
-        $this->initialized['creditLimit'] = true;
-        $this->creditLimit = $creditLimit;
-        return $this;
-    }
-    /**
-     * @return GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue
-     */
-    public function getProviderValue(): GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue
-    {
-        return $this->providerValue;
-    }
-    /**
-     * @param GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue $providerValue
-     *
-     * @return self
-     */
-    public function setProviderValue(GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue $providerValue): self
-    {
-        $this->initialized['providerValue'] = true;
-        $this->providerValue = $providerValue;
-        return $this;
-    }
+    public GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue $providerValue;
     public function definedProperties(): array
     {
-        return ['commonValue' => ['commonValue', 'getCommonValue', 'setCommonValue'], 'commonDescription' => ['commonDescription', 'getCommonDescription', 'setCommonDescription'], 'creditLimit' => ['creditLimit', 'getCreditLimit', 'setCreditLimit'], 'providerValue' => ['providerValue', 'getProviderValue', 'setProviderValue']];
+        return ['commonValue' => 'commonValue', 'commonDescription' => 'commonDescription', 'creditLimit' => 'creditLimit', 'providerValue' => 'providerValue'];
     }
 }

@@ -21,9 +21,9 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
-    use PathParameterNameTrait;
     use OpenApiNumberTypeResolverTrait;
     use OptionResolverNormalizationTrait;
+    use PathParameterNameTrait;
 
     private GuessClass $guessClass;
 
@@ -38,19 +38,19 @@ class NonBodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
-        $name = $this->normalizePathVariableName($parameter->getName());
+        $name = $this->normalizePathVariableName(($parameter->name ?? null) ?? null);
         $methodParameter = new Node\Param(new Expr\Variable($name));
 
-        $schema = $parameter->getSchema();
+        $schema = ($parameter->schema ?? null);
         if (!$schema instanceof JsonSchema) {
             return $methodParameter;
         }
 
-        if (!$parameter->getRequired() || null !== $schema->getDefault()) {
+        if (!$parameter->required || null !== ($schema->default ?? null)) {
             $methodParameter->default = $this->getDefaultAsExpr($schema);
         }
 
-        if (null !== $schema->getAnyOf() && \count($schema->getAnyOf()) > 0) {
+        if (null !== ($schema->anyOf ?? null) && \count($schema->anyOf ?? null) > 0) {
             return $methodParameter;
         }
 
@@ -72,7 +72,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $genericResolverKeys = array_keys($genericResolver);
 
         foreach ($parameters as $parameter) {
-            $parameterName = $parameter->getName();
+            $parameterName = (($parameter->name ?? null) ?? null);
             if (str_contains($parameterName, '[]')) {
                 $parameterName = substr($parameterName, 0, -2);
             }
@@ -81,18 +81,18 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 $defined[$parameterName] = new Expr\ArrayItem(new Scalar\String_($parameterName));
             }
 
-            $schema = $parameter->getSchema();
+            $schema = ($parameter->schema ?? null);
 
             if ($schema instanceof Reference) {
                 [, $schema] = $this->guessClass->resolve($schema, JsonSchema::class);
             }
 
-            if ($parameter->getRequired() && (null !== $schema && null === $schema->getDefault())) {
+            if ($parameter->required && (null !== $schema && null === ($schema->default ?? null))) {
                 $required[] = new Expr\ArrayItem(new Scalar\String_($parameterName));
             }
 
             $matchGenericResolver = null;
-            if ($schema instanceof JsonSchema && $schema->getType()) {
+            if ($schema instanceof JsonSchema && ($schema->type ?? null)) {
                 $types = [];
 
                 foreach ($this->convertParameterType($schema) as $typeString) {
@@ -103,7 +103,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
                     $types[] = new Expr\ArrayItem(new Scalar\String_($typeString));
                 }
 
-                if (\is_array($schema->getType()) && \in_array('null', $schema->getType())) {
+                if (\is_array($schema->type ?? null) && \in_array('null', $schema->type ?? null)) {
                     $types[] = new Expr\ArrayItem(new Scalar\String_('null'));
                 }
 
@@ -113,7 +113,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
                 ]));
             }
 
-            if (!$parameter->getRequired() && null !== $schema && null !== $schema->getDefault()) {
+            if (!$parameter->required && null !== $schema && null !== ($schema->default ?? null)) {
                 $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($schema), new Scalar\String_($parameterName));
             }
 
@@ -141,31 +141,31 @@ class NonBodyParameterGenerator extends ParameterGenerator
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
         $type = 'mixed';
-        $schema = $parameter->getSchema();
+        $schema = ($parameter->schema ?? null);
 
-        if ($schema instanceof JsonSchema && (null === $schema->getAnyOf() || \count($schema->getAnyOf()) === 0)) {
+        if ($schema instanceof JsonSchema && (null === ($schema->anyOf ?? null) || \count($schema->anyOf ?? null) === 0)) {
             $type = implode('|', $this->convertParameterType($schema));
         }
 
-        return rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->normalizePathVariableName($parameter->getName())), str_replace('*/', '*\\/', $parameter->getDescription() ?: '')));
+        return rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->normalizePathVariableName(($parameter->name ?? null) ?? null)), str_replace('*/', '*\\/', (($parameter->description ?? null) ?? null) ?: '')));
     }
 
     public function generateOptionDocParameter(Parameter $parameter): string
     {
         $type = 'mixed';
-        $schema = $parameter->getSchema();
+        $schema = ($parameter->schema ?? null);
 
         if ($schema instanceof JsonSchema) {
             $type = implode('|', $this->convertParameterType($schema));
         }
 
-        $description = implode("\n", array_map(fn (string $line): string => str_replace('*/', '*\\/', rtrim($line)), explode("\n", $parameter->getDescription() ?: '')));
+        $description = implode("\n", array_map(fn (string $line): string => str_replace('*/', '*\\/', rtrim($line)), explode("\n", (($parameter->description ?? null) ?? null) ?: '')));
 
         return rtrim(
             \sprintf(
                 ' *    "%s"%s: %s%s',
-                str_replace('*/', '*\\/', $parameter->getName()),
-                $parameter->getRequired() ? '' : '?',
+                str_replace('*/', '*\\/', ($parameter->name ?? null) ?? null),
+                $parameter->required ? '' : '?',
                 $type,
                 $description !== '' ? ', //' . $description : ','
             )
@@ -175,7 +175,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     private function getDefaultAsExpr(JsonSchema $schema): Expr
     {
         /** @var Expr|Stmt\Expression $expr */
-        $expr = $this->parser->parse('<?php ' . var_export($schema->getDefault(), true) . ';')[0];
+        $expr = $this->parser->parse('<?php ' . var_export($schema->default ?? null, true) . ';')[0];
 
         if ($expr instanceof Stmt\Expression) {
             return $expr->expr;
@@ -186,33 +186,33 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
     private function convertParameterType(JsonSchema $schema): array
     {
-        $type = $schema->getType();
+        $type = ($schema->type ?? null);
         if (\is_array($type)) {
             $type = array_filter($type, fn ($t) => $t !== 'null');
             $type = reset($type) ?: null;
         }
 
-        $additionalProperties = $schema->getAdditionalProperties();
+        $additionalProperties = $schema->additionalProperties;
 
-        if (null === $type && null !== $schema->getEnum() && \count($schema->getEnum()) > 0) {
+        if (null === $type && null !== ($schema->enum ?? null) && \count($schema->enum ?? null) > 0) {
             $type = 'string';
         }
 
         if ($additionalProperties instanceof JsonSchema
             && 'object' === $type
-            && 'string' === (\is_array($additionalProperties->getType()) ? ($additionalProperties->getType()[0] ?? null) : $additionalProperties->getType())) {
+            && 'string' === (\is_array($additionalProperties->type ?? null) ? (($additionalProperties->type ?? null)[0] ?? null) : ($additionalProperties->type ?? null))) {
             return ['string'];
         }
 
         $convertArray = [
             'string' => ['string'],
             'number' => [$this->isNumberFloat(
-                $schema->getFormat(),
-                $schema->getDefault(),
-                $schema->getMinimum(),
-                $schema->getMaximum(),
-                $schema->getMultipleOf(),
-                $schema->getEnum()
+                $schema->format ?? null,
+                $schema->default ?? null,
+                $schema->minimum ?? null,
+                $schema->maximum ?? null,
+                $schema->multipleOf ?? null,
+                $schema->enum ?? null
             ) ? 'float' : 'int'],
             'boolean' => ['bool'],
             'integer' => ['int'],

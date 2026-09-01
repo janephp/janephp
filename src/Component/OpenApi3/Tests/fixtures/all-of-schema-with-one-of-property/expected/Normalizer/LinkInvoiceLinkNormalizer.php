@@ -38,18 +38,18 @@ class LinkInvoiceLinkNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('invoiceId', $data)) {
-            $object->setInvoiceId($data['invoiceId']);
+            $object->invoiceId = $data['invoiceId'];
         }
         if (\array_key_exists('discriminator', $data)) {
-            $object->setDiscriminator($data['discriminator']);
+            $object->discriminator = $data['discriminator'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['invoiceId'] = $data->getInvoiceId();
-        $dataArray['discriminator'] = $data->getDiscriminator();
+        $dataArray['invoiceId'] = $data->invoiceId ?? null;
+        $dataArray['discriminator'] = $data->discriminator ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

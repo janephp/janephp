@@ -41,155 +41,155 @@ class IdentityUserConfigurationCredentialsGuestPassDtoNormalizer implements Deno
             $data['autoGeneratePassword'] = (bool) $data['autoGeneratePassword'];
         }
         if (\array_key_exists('authenticationMethod', $data)) {
-            $object->setAuthenticationMethod($data['authenticationMethod']);
+            $object->authenticationMethod = $data['authenticationMethod'];
         }
         if (\array_key_exists('key', $data)) {
-            $object->setKey($data['key']);
+            $object->key = $data['key'];
         }
         if (\array_key_exists('serviceProviderId', $data)) {
-            $object->setServiceProviderId($data['serviceProviderId']);
+            $object->serviceProviderId = $data['serviceProviderId'];
         }
         if (\array_key_exists('creationDate', $data)) {
-            $object->setCreationDate($data['creationDate']);
+            $object->creationDate = $data['creationDate'];
         }
         if (\array_key_exists('expirationDate', $data)) {
-            $object->setExpirationDate($data['expirationDate']);
+            $object->expirationDate = $data['expirationDate'];
         }
         if (\array_key_exists('userKey', $data)) {
-            $object->setUserKey($data['userKey']);
+            $object->userKey = $data['userKey'];
         }
         if (\array_key_exists('userName', $data)) {
-            $object->setUserName($data['userName']);
+            $object->userName = $data['userName'];
         }
         if (\array_key_exists('displayName', $data)) {
-            $object->setDisplayName($data['displayName']);
+            $object->displayName = $data['displayName'];
         }
         if (\array_key_exists('loginPassword', $data)) {
-            $object->setLoginPassword($data['loginPassword']);
+            $object->loginPassword = $data['loginPassword'];
         }
         if (\array_key_exists('guestExpiration', $data)) {
-            $object->setGuestExpiration($data['guestExpiration']);
+            $object->guestExpiration = $data['guestExpiration'];
         }
         if (\array_key_exists('wlan', $data)) {
-            $object->setWlan($data['wlan']);
+            $object->wlan = $data['wlan'];
         }
         if (\array_key_exists('wlanName', $data)) {
-            $object->setWlanName($data['wlanName']);
+            $object->wlanName = $data['wlanName'];
         }
         if (\array_key_exists('maxDevices', $data)) {
-            $object->setMaxDevices($data['maxDevices']);
+            $object->maxDevices = $data['maxDevices'];
         }
         if (\array_key_exists('expirationValue', $data)) {
-            $object->setExpirationValue($data['expirationValue']);
+            $object->expirationValue = $data['expirationValue'];
         }
         if (\array_key_exists('expirationUnit', $data)) {
-            $object->setExpirationUnit($data['expirationUnit']);
+            $object->expirationUnit = $data['expirationUnit'];
         }
         if (\array_key_exists('sessionUnit', $data)) {
-            $object->setSessionUnit($data['sessionUnit']);
+            $object->sessionUnit = $data['sessionUnit'];
         }
         if (\array_key_exists('sessionValue', $data)) {
-            $object->setSessionValue($data['sessionValue']);
+            $object->sessionValue = $data['sessionValue'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('expireAfterIfNotUsed', $data)) {
-            $object->setExpireAfterIfNotUsed($data['expireAfterIfNotUsed']);
+            $object->expireAfterIfNotUsed = $data['expireAfterIfNotUsed'];
         }
         if (\array_key_exists('macAddressList', $data)) {
             $values = [];
             foreach ($data['macAddressList'] as $value) {
                 $values[] = $value;
             }
-            $object->setMacAddressList($values);
+            $object->macAddressList = $values;
         }
         if (\array_key_exists('autoGeneratePassword', $data)) {
-            $object->setAutoGeneratePassword($data['autoGeneratePassword']);
+            $object->autoGeneratePassword = $data['autoGeneratePassword'];
         }
         if (\array_key_exists('creatorId', $data)) {
-            $object->setCreatorId($data['creatorId']);
+            $object->creatorId = $data['creatorId'];
         }
         if (\array_key_exists('comment', $data)) {
-            $object->setComment($data['comment']);
+            $object->comment = $data['comment'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('authenticationMethod') && null !== $data->getAuthenticationMethod()) {
-            $dataArray['authenticationMethod'] = $data->getAuthenticationMethod();
+        if (array_key_exists('authenticationMethod', get_object_vars($data)) && null !== ($data->authenticationMethod ?? null)) {
+            $dataArray['authenticationMethod'] = $data->authenticationMethod ?? null;
         }
-        if ($data->isInitialized('key') && null !== $data->getKey()) {
-            $dataArray['key'] = $data->getKey();
+        if (array_key_exists('key', get_object_vars($data)) && null !== ($data->key ?? null)) {
+            $dataArray['key'] = $data->key ?? null;
         }
-        if ($data->isInitialized('serviceProviderId') && null !== $data->getServiceProviderId()) {
-            $dataArray['serviceProviderId'] = $data->getServiceProviderId();
+        if (array_key_exists('serviceProviderId', get_object_vars($data)) && null !== ($data->serviceProviderId ?? null)) {
+            $dataArray['serviceProviderId'] = $data->serviceProviderId ?? null;
         }
-        if ($data->isInitialized('creationDate') && null !== $data->getCreationDate()) {
-            $dataArray['creationDate'] = $data->getCreationDate();
+        if (array_key_exists('creationDate', get_object_vars($data)) && null !== ($data->creationDate ?? null)) {
+            $dataArray['creationDate'] = $data->creationDate ?? null;
         }
-        if ($data->isInitialized('expirationDate') && null !== $data->getExpirationDate()) {
-            $dataArray['expirationDate'] = $data->getExpirationDate();
+        if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {
+            $dataArray['expirationDate'] = $data->expirationDate ?? null;
         }
-        if ($data->isInitialized('userKey') && null !== $data->getUserKey()) {
-            $dataArray['userKey'] = $data->getUserKey();
+        if (array_key_exists('userKey', get_object_vars($data)) && null !== ($data->userKey ?? null)) {
+            $dataArray['userKey'] = $data->userKey ?? null;
         }
-        if ($data->isInitialized('userName') && null !== $data->getUserName()) {
-            $dataArray['userName'] = $data->getUserName();
+        if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
+            $dataArray['userName'] = $data->userName ?? null;
         }
-        if ($data->isInitialized('displayName') && null !== $data->getDisplayName()) {
-            $dataArray['displayName'] = $data->getDisplayName();
+        if (array_key_exists('displayName', get_object_vars($data)) && null !== ($data->displayName ?? null)) {
+            $dataArray['displayName'] = $data->displayName ?? null;
         }
-        if ($data->isInitialized('loginPassword') && null !== $data->getLoginPassword()) {
-            $dataArray['loginPassword'] = $data->getLoginPassword();
+        if (array_key_exists('loginPassword', get_object_vars($data)) && null !== ($data->loginPassword ?? null)) {
+            $dataArray['loginPassword'] = $data->loginPassword ?? null;
         }
-        if ($data->isInitialized('guestExpiration') && null !== $data->getGuestExpiration()) {
-            $dataArray['guestExpiration'] = $data->getGuestExpiration();
+        if (array_key_exists('guestExpiration', get_object_vars($data)) && null !== ($data->guestExpiration ?? null)) {
+            $dataArray['guestExpiration'] = $data->guestExpiration ?? null;
         }
-        if ($data->isInitialized('wlan') && null !== $data->getWlan()) {
-            $dataArray['wlan'] = $data->getWlan();
+        if (array_key_exists('wlan', get_object_vars($data)) && null !== ($data->wlan ?? null)) {
+            $dataArray['wlan'] = $data->wlan ?? null;
         }
-        if ($data->isInitialized('wlanName') && null !== $data->getWlanName()) {
-            $dataArray['wlanName'] = $data->getWlanName();
+        if (array_key_exists('wlanName', get_object_vars($data)) && null !== ($data->wlanName ?? null)) {
+            $dataArray['wlanName'] = $data->wlanName ?? null;
         }
-        if ($data->isInitialized('maxDevices') && null !== $data->getMaxDevices()) {
-            $dataArray['maxDevices'] = $data->getMaxDevices();
+        if (array_key_exists('maxDevices', get_object_vars($data)) && null !== ($data->maxDevices ?? null)) {
+            $dataArray['maxDevices'] = $data->maxDevices ?? null;
         }
-        if ($data->isInitialized('expirationValue') && null !== $data->getExpirationValue()) {
-            $dataArray['expirationValue'] = $data->getExpirationValue();
+        if (array_key_exists('expirationValue', get_object_vars($data)) && null !== ($data->expirationValue ?? null)) {
+            $dataArray['expirationValue'] = $data->expirationValue ?? null;
         }
-        if ($data->isInitialized('expirationUnit') && null !== $data->getExpirationUnit()) {
-            $dataArray['expirationUnit'] = $data->getExpirationUnit();
+        if (array_key_exists('expirationUnit', get_object_vars($data)) && null !== ($data->expirationUnit ?? null)) {
+            $dataArray['expirationUnit'] = $data->expirationUnit ?? null;
         }
-        if ($data->isInitialized('sessionUnit') && null !== $data->getSessionUnit()) {
-            $dataArray['sessionUnit'] = $data->getSessionUnit();
+        if (array_key_exists('sessionUnit', get_object_vars($data)) && null !== ($data->sessionUnit ?? null)) {
+            $dataArray['sessionUnit'] = $data->sessionUnit ?? null;
         }
-        if ($data->isInitialized('sessionValue') && null !== $data->getSessionValue()) {
-            $dataArray['sessionValue'] = $data->getSessionValue();
+        if (array_key_exists('sessionValue', get_object_vars($data)) && null !== ($data->sessionValue ?? null)) {
+            $dataArray['sessionValue'] = $data->sessionValue ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('expireAfterIfNotUsed') && null !== $data->getExpireAfterIfNotUsed()) {
-            $dataArray['expireAfterIfNotUsed'] = $data->getExpireAfterIfNotUsed();
+        if (array_key_exists('expireAfterIfNotUsed', get_object_vars($data)) && null !== ($data->expireAfterIfNotUsed ?? null)) {
+            $dataArray['expireAfterIfNotUsed'] = $data->expireAfterIfNotUsed ?? null;
         }
-        if ($data->isInitialized('macAddressList') && null !== $data->getMacAddressList()) {
+        if (array_key_exists('macAddressList', get_object_vars($data)) && null !== ($data->macAddressList ?? null)) {
             $values = [];
-            foreach ($data->getMacAddressList() as $value) {
+            foreach ($data->macAddressList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['macAddressList'] = $values;
         }
-        if ($data->isInitialized('autoGeneratePassword') && null !== $data->getAutoGeneratePassword()) {
-            $dataArray['autoGeneratePassword'] = $data->getAutoGeneratePassword();
+        if (array_key_exists('autoGeneratePassword', get_object_vars($data)) && null !== ($data->autoGeneratePassword ?? null)) {
+            $dataArray['autoGeneratePassword'] = $data->autoGeneratePassword ?? null;
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
-            $dataArray['creatorId'] = $data->getCreatorId();
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
         }
-        if ($data->isInitialized('comment') && null !== $data->getComment()) {
-            $dataArray['comment'] = $data->getComment();
+        if (array_key_exists('comment', get_object_vars($data)) && null !== ($data->comment ?? null)) {
+            $dataArray['comment'] = $data->comment ?? null;
         }
         return $dataArray;
     }

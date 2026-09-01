@@ -38,7 +38,7 @@ class ResponseRegistryOptionsResponseNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('options', $data)) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponseOptions::class, 'json', $context));
+            $object->options = $this->denormalizer->denormalize($data['options'], \Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponseOptions::class, 'json', $context);
             unset($data['options']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseRegistryOptionsResponseNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $dataArray['options'] = $data->getOptions() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
+            $dataArray['options'] = ($data->options ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->options ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -62,7 +62,7 @@ The syntax gate proves generated code *parses*; [Mago](https://mago.carthage.sof
 committed `expected/` tree of **every** fixture in one two-second process (`runtime-boilerplate` excepted — its
 deliberately partial trees would report their own missing runtime classes). This only works because every fixture
 generates into its own namespace (`ExpectedNamespaceUniquenessTest` guards this; see
-[ADR 0008](adrs/0008-static-analysis-of-generated-code.md)):
+[ADR 0011](adrs/0011-static-analysis-of-generated-code.md)):
 
 ```bash
 castor qa:mago:generated
@@ -71,7 +71,7 @@ castor qa:mago:generated
 Mago comes in as a composer dev dependency pinned to an exact release (the committed baseline is only reproducible
 against that release), so `composer update` is all the setup the task needs. Issue codes that merely dislike the *shape* of generated output — values moving through `mixed`-typed normalizer
 plumbing, docblock-conveyed types — are switched off in `mago-generated.toml`'s `ignore` list, each with its
-justification; every remaining code marks a defect (see [ADR 0008](adrs/0008-static-analysis-of-generated-code.md)).
+justification; every remaining code marks a defect (see [ADR 0011](adrs/0011-static-analysis-of-generated-code.md)).
 Findings that predate the gate are frozen in `mago-generated-baseline.toml`, so the check is green today and fails
 on anything *new*. Fixing a generator bug shrinks the baseline; regenerate it with:
 

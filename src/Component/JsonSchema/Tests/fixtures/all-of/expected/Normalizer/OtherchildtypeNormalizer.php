@@ -32,21 +32,21 @@ class OtherchildtypeNormalizer implements DenormalizerInterface, NormalizerInter
             return $object;
         }
         if (\array_key_exists('inheritedProperty', $data)) {
-            $object->setInheritedProperty($data['inheritedProperty']);
+            $object->inheritedProperty = $data['inheritedProperty'];
         }
         if (\array_key_exists('childProperty', $data)) {
-            $object->setChildProperty($data['childProperty']);
+            $object->childProperty = $data['childProperty'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('inheritedProperty') && null !== $data->getInheritedProperty()) {
-            $dataArray['inheritedProperty'] = $data->getInheritedProperty();
+        if (array_key_exists('inheritedProperty', get_object_vars($data)) && null !== ($data->inheritedProperty ?? null)) {
+            $dataArray['inheritedProperty'] = $data->inheritedProperty ?? null;
         }
-        if ($data->isInitialized('childProperty') && null !== $data->getChildProperty()) {
-            $dataArray['childProperty'] = $data->getChildProperty();
+        if (array_key_exists('childProperty', get_object_vars($data)) && null !== ($data->childProperty ?? null)) {
+            $dataArray['childProperty'] = $data->childProperty ?? null;
         }
         return $dataArray;
     }

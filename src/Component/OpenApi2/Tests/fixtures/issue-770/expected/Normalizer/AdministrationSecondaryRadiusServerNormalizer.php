@@ -38,46 +38,46 @@ class AdministrationSecondaryRadiusServerNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
         }
         if (\array_key_exists('sharedSecret', $data)) {
-            $object->setSharedSecret($data['sharedSecret']);
+            $object->sharedSecret = $data['sharedSecret'];
         }
         if (\array_key_exists('ipFqdn', $data)) {
-            $object->setIpFqdn($data['ipFqdn']);
+            $object->ipFqdn = $data['ipFqdn'];
         }
         if (\array_key_exists('requestTimeOut', $data)) {
-            $object->setRequestTimeOut($data['requestTimeOut']);
+            $object->requestTimeOut = $data['requestTimeOut'];
         }
         if (\array_key_exists('maxRetries', $data)) {
-            $object->setMaxRetries($data['maxRetries']);
+            $object->maxRetries = $data['maxRetries'];
         }
         if (\array_key_exists('retryPriInvl', $data)) {
-            $object->setRetryPriInvl($data['retryPriInvl']);
+            $object->retryPriInvl = $data['retryPriInvl'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        $dataArray['port'] = $data->getPort();
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        $dataArray['port'] = $data->port ?? null;
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
-        $dataArray['sharedSecret'] = $data->getSharedSecret();
-        $dataArray['ipFqdn'] = $data->getIpFqdn();
-        $dataArray['requestTimeOut'] = $data->getRequestTimeOut();
-        $dataArray['maxRetries'] = $data->getMaxRetries();
-        $dataArray['retryPriInvl'] = $data->getRetryPriInvl();
+        $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
+        $dataArray['ipFqdn'] = $data->ipFqdn ?? null;
+        $dataArray['requestTimeOut'] = $data->requestTimeOut ?? null;
+        $dataArray['maxRetries'] = $data->maxRetries ?? null;
+        $dataArray['retryPriInvl'] = $data->retryPriInvl ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

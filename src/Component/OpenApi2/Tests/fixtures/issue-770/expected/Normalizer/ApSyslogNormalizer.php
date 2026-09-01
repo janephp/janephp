@@ -41,79 +41,79 @@ class ApSyslogNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('syslogConfigType', $data)) {
-            $object->setSyslogConfigType($data['syslogConfigType']);
+            $object->syslogConfigType = $data['syslogConfigType'];
         }
         if (\array_key_exists('syslogServerProfileId', $data)) {
-            $object->setSyslogServerProfileId($data['syslogServerProfileId']);
+            $object->syslogServerProfileId = $data['syslogServerProfileId'];
         }
         if (\array_key_exists('address', $data)) {
-            $object->setAddress($data['address']);
+            $object->address = $data['address'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('facility', $data)) {
-            $object->setFacility($data['facility']);
+            $object->facility = $data['facility'];
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         if (\array_key_exists('flowLevel', $data)) {
-            $object->setFlowLevel($data['flowLevel']);
+            $object->flowLevel = $data['flowLevel'];
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
         }
         if (\array_key_exists('secondaryAddress', $data)) {
-            $object->setSecondaryAddress($data['secondaryAddress']);
+            $object->secondaryAddress = $data['secondaryAddress'];
         }
         if (\array_key_exists('secondaryPort', $data)) {
-            $object->setSecondaryPort($data['secondaryPort']);
+            $object->secondaryPort = $data['secondaryPort'];
         }
         if (\array_key_exists('secondaryProtocol', $data)) {
-            $object->setSecondaryProtocol($data['secondaryProtocol']);
+            $object->secondaryProtocol = $data['secondaryProtocol'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->getEnabled();
-        if ($data->isInitialized('syslogConfigType') && null !== $data->getSyslogConfigType()) {
-            $dataArray['syslogConfigType'] = $data->getSyslogConfigType();
+        $dataArray['enabled'] = $data->enabled ?? null;
+        if (array_key_exists('syslogConfigType', get_object_vars($data)) && null !== ($data->syslogConfigType ?? null)) {
+            $dataArray['syslogConfigType'] = $data->syslogConfigType ?? null;
         }
-        if ($data->isInitialized('syslogServerProfileId') && null !== $data->getSyslogServerProfileId()) {
-            $dataArray['syslogServerProfileId'] = $data->getSyslogServerProfileId();
+        if (array_key_exists('syslogServerProfileId', get_object_vars($data)) && null !== ($data->syslogServerProfileId ?? null)) {
+            $dataArray['syslogServerProfileId'] = $data->syslogServerProfileId ?? null;
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $data->getAddress();
+        if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
+            $dataArray['address'] = $data->address ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
-        if ($data->isInitialized('facility') && null !== $data->getFacility()) {
-            $dataArray['facility'] = $data->getFacility();
+        if (array_key_exists('facility', get_object_vars($data)) && null !== ($data->facility ?? null)) {
+            $dataArray['facility'] = $data->facility ?? null;
         }
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority();
+        if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = $data->priority ?? null;
         }
-        if ($data->isInitialized('flowLevel') && null !== $data->getFlowLevel()) {
-            $dataArray['flowLevel'] = $data->getFlowLevel();
+        if (array_key_exists('flowLevel', get_object_vars($data)) && null !== ($data->flowLevel ?? null)) {
+            $dataArray['flowLevel'] = $data->flowLevel ?? null;
         }
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
-        if ($data->isInitialized('secondaryAddress') && null !== $data->getSecondaryAddress()) {
-            $dataArray['secondaryAddress'] = $data->getSecondaryAddress();
+        if (array_key_exists('secondaryAddress', get_object_vars($data)) && null !== ($data->secondaryAddress ?? null)) {
+            $dataArray['secondaryAddress'] = $data->secondaryAddress ?? null;
         }
-        if ($data->isInitialized('secondaryPort') && null !== $data->getSecondaryPort()) {
-            $dataArray['secondaryPort'] = $data->getSecondaryPort();
+        if (array_key_exists('secondaryPort', get_object_vars($data)) && null !== ($data->secondaryPort ?? null)) {
+            $dataArray['secondaryPort'] = $data->secondaryPort ?? null;
         }
-        if ($data->isInitialized('secondaryProtocol') && null !== $data->getSecondaryProtocol()) {
-            $dataArray['secondaryProtocol'] = $data->getSecondaryProtocol();
+        if (array_key_exists('secondaryProtocol', get_object_vars($data)) && null !== ($data->secondaryProtocol ?? null)) {
+            $dataArray['secondaryProtocol'] = $data->secondaryProtocol ?? null;
         }
         return $dataArray;
     }

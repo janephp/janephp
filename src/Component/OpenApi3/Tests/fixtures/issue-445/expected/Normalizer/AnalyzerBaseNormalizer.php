@@ -53,29 +53,29 @@ class AnalyzerBaseNormalizer implements DenormalizerInterface, NormalizerInterfa
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\SimpleAnalyzer', $format, $context);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'EdgeNGramAnalyzer' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'EdgeNGramAnalyzer' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'LanguageAnalyzer' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'LanguageAnalyzer' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'NGramAnalyzer' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'NGramAnalyzer' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'PathHierarchyAnalyzer' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'PathHierarchyAnalyzer' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'SimpleAnalyzer' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'SimpleAnalyzer' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

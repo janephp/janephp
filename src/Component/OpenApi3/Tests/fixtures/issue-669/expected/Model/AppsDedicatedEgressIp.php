@@ -8,81 +8,19 @@ class AppsDedicatedEgressIp implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $ip;
     /**
      * @var string
      */
-    protected $ip;
+    public string $id;
     /**
      * @var string
      */
-    protected $id;
-    /**
-     * @var string
-     */
-    protected $status = 'UNKNOWN';
-    /**
-     * @return string
-     */
-    public function getIp(): string
-    {
-        return $this->ip;
-    }
-    /**
-     * @param string $ip
-     *
-     * @return self
-     */
-    public function setIp(string $ip): self
-    {
-        $this->initialized['ip'] = true;
-        $this->ip = $ip;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    /**
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-    /**
-     * @param string $status
-     *
-     * @return self
-     */
-    public function setStatus(string $status): self
-    {
-        $this->initialized['status'] = true;
-        $this->status = $status;
-        return $this;
-    }
+    public string $status = 'UNKNOWN';
     public function definedProperties(): array
     {
-        return ['ip' => ['ip', 'getIp', 'setIp'], 'id' => ['id', 'getId', 'setId'], 'status' => ['status', 'getStatus', 'setStatus']];
+        return ['ip' => 'ip', 'id' => 'id', 'status' => 'status'];
     }
 }

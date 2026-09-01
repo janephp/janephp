@@ -44,33 +44,33 @@ class SystemFtpTestResponseNormalizer implements DenormalizerInterface, Normaliz
             $data['data'] = (bool) $data['data'];
         }
         if (\array_key_exists('success', $data)) {
-            $object->setSuccess($data['success']);
+            $object->success = $data['success'];
         }
         if (\array_key_exists('error', $data)) {
-            $object->setError($data['error']);
+            $object->error = $data['error'];
         }
         if (\array_key_exists('data', $data)) {
-            $object->setData($data['data']);
+            $object->data = $data['data'];
         }
         if (\array_key_exists('extra', $data)) {
-            $object->setExtra($data['extra']);
+            $object->extra = $data['extra'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('success') && null !== $data->getSuccess()) {
-            $dataArray['success'] = $data->getSuccess();
+        if (array_key_exists('success', get_object_vars($data)) && null !== ($data->success ?? null)) {
+            $dataArray['success'] = $data->success ?? null;
         }
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['error'] = $data->getError();
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $dataArray['error'] = $data->error ?? null;
         }
-        if ($data->isInitialized('data') && null !== $data->getData()) {
-            $dataArray['data'] = $data->getData();
+        if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
+            $dataArray['data'] = $data->data ?? null;
         }
-        if ($data->isInitialized('extra') && null !== $data->getExtra()) {
-            $dataArray['extra'] = $data->getExtra();
+        if (array_key_exists('extra', get_object_vars($data)) && null !== ($data->extra ?? null)) {
+            $dataArray['extra'] = $data->extra ?? null;
         }
         return $dataArray;
     }

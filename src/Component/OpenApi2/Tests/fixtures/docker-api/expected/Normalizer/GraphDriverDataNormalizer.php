@@ -41,23 +41,23 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
             $this->validate($data, new \Docker\Api\Validator\GraphDriverDataConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Data', $data)) {
             $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Data'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setData($values);
+            $object->data = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['Name'] = $data->getName();
+        $dataArray['Name'] = $data->name ?? null;
         $values = new \Docker\Api\Runtime\JsonObject();
-        foreach ($data->getData() as $key => $value) {
+        foreach ($data->data ?? null as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['Data'] = $values;

@@ -42,7 +42,7 @@ class V2FirewallsFirewallIdTagsDeleteBodyNormalizer implements DenormalizerInter
             foreach ($data['tags'] as $value) {
                 $values[] = $value;
             }
-            $object->setTags($values);
+            $object->tags = $values;
             unset($data['tags']);
         }
         foreach ($data as $key => $value_1) {
@@ -56,7 +56,7 @@ class V2FirewallsFirewallIdTagsDeleteBodyNormalizer implements DenormalizerInter
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getTags() as $value) {
+        foreach ($data->tags ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['tags'] = $values;

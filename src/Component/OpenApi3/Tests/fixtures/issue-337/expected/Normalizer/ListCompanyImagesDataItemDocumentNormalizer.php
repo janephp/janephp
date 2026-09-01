@@ -38,15 +38,15 @@ class ListCompanyImagesDataItemDocumentNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('imageType', $data)) {
-            $object->setImageType($data['imageType']);
+            $object->imageType = $data['imageType'];
             unset($data['imageType']);
         }
         if (\array_key_exists('imageCode', $data)) {
-            $object->setImageCode($data['imageCode']);
+            $object->imageCode = $data['imageCode'];
             unset($data['imageCode']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class ListCompanyImagesDataItemDocumentNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('imageType') && null !== $data->getImageType()) {
-            $dataArray['imageType'] = $data->getImageType();
+        if (array_key_exists('imageType', get_object_vars($data)) && null !== ($data->imageType ?? null)) {
+            $dataArray['imageType'] = $data->imageType ?? null;
         }
-        if ($data->isInitialized('imageCode') && null !== $data->getImageCode()) {
-            $dataArray['imageCode'] = $data->getImageCode();
+        if (array_key_exists('imageCode', get_object_vars($data)) && null !== ($data->imageCode ?? null)) {
+            $dataArray['imageCode'] = $data->imageCode ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -41,45 +41,45 @@ class AdministrationScheduleBackupNormalizer implements DenormalizerInterface, N
             $data['enableScheduleBackup'] = (bool) $data['enableScheduleBackup'];
         }
         if (\array_key_exists('enableScheduleBackup', $data)) {
-            $object->setEnableScheduleBackup($data['enableScheduleBackup']);
+            $object->enableScheduleBackup = $data['enableScheduleBackup'];
         }
         if (\array_key_exists('interval', $data)) {
-            $object->setInterval($data['interval']);
+            $object->interval = $data['interval'];
         }
         if (\array_key_exists('dayOfWeek', $data)) {
-            $object->setDayOfWeek($data['dayOfWeek']);
+            $object->dayOfWeek = $data['dayOfWeek'];
         }
         if (\array_key_exists('dateOfMonth', $data)) {
-            $object->setDateOfMonth($data['dateOfMonth']);
+            $object->dateOfMonth = $data['dateOfMonth'];
         }
         if (\array_key_exists('hour', $data)) {
-            $object->setHour($data['hour']);
+            $object->hour = $data['hour'];
         }
         if (\array_key_exists('minute', $data)) {
-            $object->setMinute($data['minute']);
+            $object->minute = $data['minute'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('enableScheduleBackup') && null !== $data->getEnableScheduleBackup()) {
-            $dataArray['enableScheduleBackup'] = $data->getEnableScheduleBackup();
+        if (array_key_exists('enableScheduleBackup', get_object_vars($data)) && null !== ($data->enableScheduleBackup ?? null)) {
+            $dataArray['enableScheduleBackup'] = $data->enableScheduleBackup ?? null;
         }
-        if ($data->isInitialized('interval') && null !== $data->getInterval()) {
-            $dataArray['interval'] = $data->getInterval();
+        if (array_key_exists('interval', get_object_vars($data)) && null !== ($data->interval ?? null)) {
+            $dataArray['interval'] = $data->interval ?? null;
         }
-        if ($data->isInitialized('dayOfWeek') && null !== $data->getDayOfWeek()) {
-            $dataArray['dayOfWeek'] = $data->getDayOfWeek();
+        if (array_key_exists('dayOfWeek', get_object_vars($data)) && null !== ($data->dayOfWeek ?? null)) {
+            $dataArray['dayOfWeek'] = $data->dayOfWeek ?? null;
         }
-        if ($data->isInitialized('dateOfMonth') && null !== $data->getDateOfMonth()) {
-            $dataArray['dateOfMonth'] = $data->getDateOfMonth();
+        if (array_key_exists('dateOfMonth', get_object_vars($data)) && null !== ($data->dateOfMonth ?? null)) {
+            $dataArray['dateOfMonth'] = $data->dateOfMonth ?? null;
         }
-        if ($data->isInitialized('hour') && null !== $data->getHour()) {
-            $dataArray['hour'] = $data->getHour();
+        if (array_key_exists('hour', get_object_vars($data)) && null !== ($data->hour ?? null)) {
+            $dataArray['hour'] = $data->hour ?? null;
         }
-        if ($data->isInitialized('minute') && null !== $data->getMinute()) {
-            $dataArray['minute'] = $data->getMinute();
+        if (array_key_exists('minute', get_object_vars($data)) && null !== ($data->minute ?? null)) {
+            $dataArray['minute'] = $data->minute ?? null;
         }
         return $dataArray;
     }

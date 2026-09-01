@@ -38,11 +38,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('matchID', $data)) {
-            $object->setMatchID($data['matchID']);
+            $object->matchID = $data['matchID'];
             unset($data['matchID']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('matchID') && null !== $data->getMatchID()) {
-            $dataArray['matchID'] = $data->getMatchID();
+        if (array_key_exists('matchID', get_object_vars($data)) && null !== ($data->matchID ?? null)) {
+            $dataArray['matchID'] = $data->matchID ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,7 +38,7 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('error', $data)) {
-            $object->setError($data['error']);
+            $object->error = $data['error'];
             unset($data['error']);
         }
         if (\array_key_exists('messages', $data) && $data['messages'] !== null) {
@@ -46,11 +46,11 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['messages'] as $value) {
                 $values[] = $value;
             }
-            $object->setMessages($values);
+            $object->messages = $values;
             unset($data['messages']);
         }
         elseif (\array_key_exists('messages', $data) && $data['messages'] === null) {
-            $object->setMessages(null);
+            $object->messages = null;
             unset($data['messages']);
         }
         if (\array_key_exists('root_causes', $data)) {
@@ -58,7 +58,7 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['root_causes'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setRootCauses($values_1);
+            $object->rootCauses = $values_1;
             unset($data['root_causes']);
         }
         foreach ($data as $key => $value_2) {
@@ -71,16 +71,16 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['error'] = $data->getError();
-        if ($data->isInitialized('messages') && null !== $data->getMessages()) {
+        $dataArray['error'] = $data->error ?? null;
+        if (array_key_exists('messages', get_object_vars($data)) && null !== ($data->messages ?? null)) {
             $values = [];
-            foreach ($data->getMessages() as $value) {
+            foreach ($data->messages ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['messages'] = $values;
         }
         $values_1 = [];
-        foreach ($data->getRootCauses() as $value_1) {
+        foreach ($data->rootCauses ?? null as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['root_causes'] = $values_1;

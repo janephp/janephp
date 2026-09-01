@@ -43,7 +43,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation
     {
         return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint\ListProjects($queryParameters), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];
         if (null === $httpClient) {

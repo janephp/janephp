@@ -53,75 +53,75 @@ class EventManagementSingleEventSettingNormalizer implements DenormalizerInterfa
             $data['domainOverride'] = (bool) $data['domainOverride'];
         }
         if (\array_key_exists('eventCode', $data)) {
-            $object->setEventCode($data['eventCode']);
+            $object->eventCode = $data['eventCode'];
         }
         if (\array_key_exists('severity', $data)) {
-            $object->setSeverity($data['severity']);
+            $object->severity = $data['severity'];
         }
         if (\array_key_exists('category', $data)) {
-            $object->setCategory($data['category']);
+            $object->category = $data['category'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         if (\array_key_exists('triggerEmail', $data)) {
-            $object->setTriggerEmail($data['triggerEmail']);
+            $object->triggerEmail = $data['triggerEmail'];
         }
         if (\array_key_exists('triggerTrap', $data)) {
-            $object->setTriggerTrap($data['triggerTrap']);
+            $object->triggerTrap = $data['triggerTrap'];
         }
         if (\array_key_exists('dbPersistence', $data)) {
-            $object->setDbPersistence($data['dbPersistence']);
+            $object->dbPersistence = $data['dbPersistence'];
         }
         if (\array_key_exists('zoneOverride', $data)) {
-            $object->setZoneOverride($data['zoneOverride']);
+            $object->zoneOverride = $data['zoneOverride'];
         }
         if (\array_key_exists('domainOverride', $data)) {
-            $object->setDomainOverride($data['domainOverride']);
+            $object->domainOverride = $data['domainOverride'];
         }
         if (\array_key_exists('oid', $data)) {
-            $object->setOid($data['oid']);
+            $object->oid = $data['oid'];
         }
         if (\array_key_exists('configPageDesc', $data)) {
-            $object->setConfigPageDesc($data['configPageDesc']);
+            $object->configPageDesc = $data['configPageDesc'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('eventCode') && null !== $data->getEventCode()) {
-            $dataArray['eventCode'] = $data->getEventCode();
+        if (array_key_exists('eventCode', get_object_vars($data)) && null !== ($data->eventCode ?? null)) {
+            $dataArray['eventCode'] = $data->eventCode ?? null;
         }
-        if ($data->isInitialized('severity') && null !== $data->getSeverity()) {
-            $dataArray['severity'] = $data->getSeverity();
+        if (array_key_exists('severity', get_object_vars($data)) && null !== ($data->severity ?? null)) {
+            $dataArray['severity'] = $data->severity ?? null;
         }
-        if ($data->isInitialized('category') && null !== $data->getCategory()) {
-            $dataArray['category'] = $data->getCategory();
+        if (array_key_exists('category', get_object_vars($data)) && null !== ($data->category ?? null)) {
+            $dataArray['category'] = $data->category ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('triggerEmail') && null !== $data->getTriggerEmail()) {
-            $dataArray['triggerEmail'] = $data->getTriggerEmail();
+        if (array_key_exists('triggerEmail', get_object_vars($data)) && null !== ($data->triggerEmail ?? null)) {
+            $dataArray['triggerEmail'] = $data->triggerEmail ?? null;
         }
-        if ($data->isInitialized('triggerTrap') && null !== $data->getTriggerTrap()) {
-            $dataArray['triggerTrap'] = $data->getTriggerTrap();
+        if (array_key_exists('triggerTrap', get_object_vars($data)) && null !== ($data->triggerTrap ?? null)) {
+            $dataArray['triggerTrap'] = $data->triggerTrap ?? null;
         }
-        if ($data->isInitialized('dbPersistence') && null !== $data->getDbPersistence()) {
-            $dataArray['dbPersistence'] = $data->getDbPersistence();
+        if (array_key_exists('dbPersistence', get_object_vars($data)) && null !== ($data->dbPersistence ?? null)) {
+            $dataArray['dbPersistence'] = $data->dbPersistence ?? null;
         }
-        if ($data->isInitialized('zoneOverride') && null !== $data->getZoneOverride()) {
-            $dataArray['zoneOverride'] = $data->getZoneOverride();
+        if (array_key_exists('zoneOverride', get_object_vars($data)) && null !== ($data->zoneOverride ?? null)) {
+            $dataArray['zoneOverride'] = $data->zoneOverride ?? null;
         }
-        if ($data->isInitialized('domainOverride') && null !== $data->getDomainOverride()) {
-            $dataArray['domainOverride'] = $data->getDomainOverride();
+        if (array_key_exists('domainOverride', get_object_vars($data)) && null !== ($data->domainOverride ?? null)) {
+            $dataArray['domainOverride'] = $data->domainOverride ?? null;
         }
-        if ($data->isInitialized('oid') && null !== $data->getOid()) {
-            $dataArray['oid'] = $data->getOid();
+        if (array_key_exists('oid', get_object_vars($data)) && null !== ($data->oid ?? null)) {
+            $dataArray['oid'] = $data->oid ?? null;
         }
-        if ($data->isInitialized('configPageDesc') && null !== $data->getConfigPageDesc()) {
-            $dataArray['configPageDesc'] = $data->getConfigPageDesc();
+        if (array_key_exists('configPageDesc', get_object_vars($data)) && null !== ($data->configPageDesc ?? null)) {
+            $dataArray['configPageDesc'] = $data->configPageDesc ?? null;
         }
         return $dataArray;
     }

@@ -47,105 +47,105 @@ class ProfileFirewallProfileNormalizer implements DenormalizerInterface, Normali
             $data['factoryDefault'] = (bool) $data['factoryDefault'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('uplinkRateLimitingMbps', $data)) {
-            $object->setUplinkRateLimitingMbps($data['uplinkRateLimitingMbps']);
+            $object->uplinkRateLimitingMbps = $data['uplinkRateLimitingMbps'];
         }
         if (\array_key_exists('downlinkRateLimitingMbps', $data)) {
-            $object->setDownlinkRateLimitingMbps($data['downlinkRateLimitingMbps']);
+            $object->downlinkRateLimitingMbps = $data['downlinkRateLimitingMbps'];
         }
         if (\array_key_exists('factoryDefault', $data)) {
-            $object->setFactoryDefault($data['factoryDefault']);
+            $object->factoryDefault = $data['factoryDefault'];
         }
         if (\array_key_exists('l3AccessControlPolicyId', $data)) {
-            $object->setL3AccessControlPolicyId($data['l3AccessControlPolicyId']);
+            $object->l3AccessControlPolicyId = $data['l3AccessControlPolicyId'];
         }
         if (\array_key_exists('l2AccessControlPolicyId', $data)) {
-            $object->setL2AccessControlPolicyId($data['l2AccessControlPolicyId']);
+            $object->l2AccessControlPolicyId = $data['l2AccessControlPolicyId'];
         }
         if (\array_key_exists('appPolicyId', $data)) {
-            $object->setAppPolicyId($data['appPolicyId']);
+            $object->appPolicyId = $data['appPolicyId'];
         }
         if (\array_key_exists('urlFilteringPolicyId', $data)) {
-            $object->setUrlFilteringPolicyId($data['urlFilteringPolicyId']);
+            $object->urlFilteringPolicyId = $data['urlFilteringPolicyId'];
         }
         if (\array_key_exists('devicePolicyId', $data)) {
-            $object->setDevicePolicyId($data['devicePolicyId']);
+            $object->devicePolicyId = $data['devicePolicyId'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         if (\array_key_exists('creatorUsername', $data)) {
-            $object->setCreatorUsername($data['creatorUsername']);
+            $object->creatorUsername = $data['creatorUsername'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('uplinkRateLimitingMbps') && null !== $data->getUplinkRateLimitingMbps()) {
-            $dataArray['uplinkRateLimitingMbps'] = $data->getUplinkRateLimitingMbps();
+        if (array_key_exists('uplinkRateLimitingMbps', get_object_vars($data)) && null !== ($data->uplinkRateLimitingMbps ?? null)) {
+            $dataArray['uplinkRateLimitingMbps'] = $data->uplinkRateLimitingMbps ?? null;
         }
-        if ($data->isInitialized('downlinkRateLimitingMbps') && null !== $data->getDownlinkRateLimitingMbps()) {
-            $dataArray['downlinkRateLimitingMbps'] = $data->getDownlinkRateLimitingMbps();
+        if (array_key_exists('downlinkRateLimitingMbps', get_object_vars($data)) && null !== ($data->downlinkRateLimitingMbps ?? null)) {
+            $dataArray['downlinkRateLimitingMbps'] = $data->downlinkRateLimitingMbps ?? null;
         }
-        if ($data->isInitialized('factoryDefault') && null !== $data->getFactoryDefault()) {
-            $dataArray['factoryDefault'] = $data->getFactoryDefault();
+        if (array_key_exists('factoryDefault', get_object_vars($data)) && null !== ($data->factoryDefault ?? null)) {
+            $dataArray['factoryDefault'] = $data->factoryDefault ?? null;
         }
-        if ($data->isInitialized('l3AccessControlPolicyId') && null !== $data->getL3AccessControlPolicyId()) {
-            $dataArray['l3AccessControlPolicyId'] = $data->getL3AccessControlPolicyId();
+        if (array_key_exists('l3AccessControlPolicyId', get_object_vars($data)) && null !== ($data->l3AccessControlPolicyId ?? null)) {
+            $dataArray['l3AccessControlPolicyId'] = $data->l3AccessControlPolicyId ?? null;
         }
-        if ($data->isInitialized('l2AccessControlPolicyId') && null !== $data->getL2AccessControlPolicyId()) {
-            $dataArray['l2AccessControlPolicyId'] = $data->getL2AccessControlPolicyId();
+        if (array_key_exists('l2AccessControlPolicyId', get_object_vars($data)) && null !== ($data->l2AccessControlPolicyId ?? null)) {
+            $dataArray['l2AccessControlPolicyId'] = $data->l2AccessControlPolicyId ?? null;
         }
-        if ($data->isInitialized('appPolicyId') && null !== $data->getAppPolicyId()) {
-            $dataArray['appPolicyId'] = $data->getAppPolicyId();
+        if (array_key_exists('appPolicyId', get_object_vars($data)) && null !== ($data->appPolicyId ?? null)) {
+            $dataArray['appPolicyId'] = $data->appPolicyId ?? null;
         }
-        if ($data->isInitialized('urlFilteringPolicyId') && null !== $data->getUrlFilteringPolicyId()) {
-            $dataArray['urlFilteringPolicyId'] = $data->getUrlFilteringPolicyId();
+        if (array_key_exists('urlFilteringPolicyId', get_object_vars($data)) && null !== ($data->urlFilteringPolicyId ?? null)) {
+            $dataArray['urlFilteringPolicyId'] = $data->urlFilteringPolicyId ?? null;
         }
-        if ($data->isInitialized('devicePolicyId') && null !== $data->getDevicePolicyId()) {
-            $dataArray['devicePolicyId'] = $data->getDevicePolicyId();
+        if (array_key_exists('devicePolicyId', get_object_vars($data)) && null !== ($data->devicePolicyId ?? null)) {
+            $dataArray['devicePolicyId'] = $data->devicePolicyId ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
-        if ($data->isInitialized('creatorUsername') && null !== $data->getCreatorUsername()) {
-            $dataArray['creatorUsername'] = $data->getCreatorUsername();
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
         }
         return $dataArray;
     }

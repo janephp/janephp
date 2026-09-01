@@ -44,19 +44,19 @@ class AutoscalePoolDropletTemplateNormalizer implements DenormalizerInterface, N
             $data['ipv6'] = (bool) $data['ipv6'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         if (\array_key_exists('image', $data)) {
-            $object->setImage($data['image']);
+            $object->image = $data['image'];
             unset($data['image']);
         }
         if (\array_key_exists('ssh_keys', $data)) {
@@ -64,7 +64,7 @@ class AutoscalePoolDropletTemplateNormalizer implements DenormalizerInterface, N
             foreach ($data['ssh_keys'] as $value) {
                 $values[] = $value;
             }
-            $object->setSshKeys($values);
+            $object->sshKeys = $values;
             unset($data['ssh_keys']);
         }
         if (\array_key_exists('tags', $data)) {
@@ -72,27 +72,27 @@ class AutoscalePoolDropletTemplateNormalizer implements DenormalizerInterface, N
             foreach ($data['tags'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setTags($values_1);
+            $object->tags = $values_1;
             unset($data['tags']);
         }
         if (\array_key_exists('vpc_uuid', $data)) {
-            $object->setVpcUuid($data['vpc_uuid']);
+            $object->vpcUuid = $data['vpc_uuid'];
             unset($data['vpc_uuid']);
         }
         if (\array_key_exists('with_droplet_agent', $data)) {
-            $object->setWithDropletAgent($data['with_droplet_agent']);
+            $object->withDropletAgent = $data['with_droplet_agent'];
             unset($data['with_droplet_agent']);
         }
         if (\array_key_exists('project_id', $data)) {
-            $object->setProjectId($data['project_id']);
+            $object->projectId = $data['project_id'];
             unset($data['project_id']);
         }
         if (\array_key_exists('ipv6', $data)) {
-            $object->setIpv6($data['ipv6']);
+            $object->ipv6 = $data['ipv6'];
             unset($data['ipv6']);
         }
         if (\array_key_exists('user_data', $data)) {
-            $object->setUserData($data['user_data']);
+            $object->userData = $data['user_data'];
             unset($data['user_data']);
         }
         foreach ($data as $key => $value_2) {
@@ -105,38 +105,38 @@ class AutoscalePoolDropletTemplateNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        $dataArray['region'] = $data->getRegion();
-        $dataArray['size'] = $data->getSize();
-        $dataArray['image'] = $data->getImage();
+        $dataArray['region'] = $data->region ?? null;
+        $dataArray['size'] = $data->size ?? null;
+        $dataArray['image'] = $data->image ?? null;
         $values = [];
-        foreach ($data->getSshKeys() as $value) {
+        foreach ($data->sshKeys ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['ssh_keys'] = $values;
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_1 = [];
-            foreach ($data->getTags() as $value_1) {
+            foreach ($data->tags ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
-        if ($data->isInitialized('vpcUuid') && null !== $data->getVpcUuid()) {
-            $dataArray['vpc_uuid'] = $data->getVpcUuid();
+        if (array_key_exists('vpcUuid', get_object_vars($data)) && null !== ($data->vpcUuid ?? null)) {
+            $dataArray['vpc_uuid'] = $data->vpcUuid ?? null;
         }
-        if ($data->isInitialized('withDropletAgent') && null !== $data->getWithDropletAgent()) {
-            $dataArray['with_droplet_agent'] = $data->getWithDropletAgent();
+        if (array_key_exists('withDropletAgent', get_object_vars($data)) && null !== ($data->withDropletAgent ?? null)) {
+            $dataArray['with_droplet_agent'] = $data->withDropletAgent ?? null;
         }
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
-            $dataArray['project_id'] = $data->getProjectId();
+        if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
+            $dataArray['project_id'] = $data->projectId ?? null;
         }
-        if ($data->isInitialized('ipv6') && null !== $data->getIpv6()) {
-            $dataArray['ipv6'] = $data->getIpv6();
+        if (array_key_exists('ipv6', get_object_vars($data)) && null !== ($data->ipv6 ?? null)) {
+            $dataArray['ipv6'] = $data->ipv6 ?? null;
         }
-        if ($data->isInitialized('userData') && null !== $data->getUserData()) {
-            $dataArray['user_data'] = $data->getUserData();
+        if (array_key_exists('userData', get_object_vars($data)) && null !== ($data->userData ?? null)) {
+            $dataArray['user_data'] = $data->userData ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

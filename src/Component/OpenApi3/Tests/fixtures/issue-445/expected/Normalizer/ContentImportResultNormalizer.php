@@ -41,50 +41,50 @@ class ContentImportResultNormalizer implements DenormalizerInterface, Normalizer
             $data['succeeded'] = (bool) $data['succeeded'];
         }
         if (\array_key_exists('fileTransferId', $data)) {
-            $object->setFileTransferId($data['fileTransferId']);
+            $object->fileTransferId = $data['fileTransferId'];
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
-            $object->setContentId(null);
+            $object->contentId = null;
         }
         if (\array_key_exists('state', $data) && $data['state'] !== null) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
         }
         elseif (\array_key_exists('state', $data) && $data['state'] === null) {
-            $object->setState(null);
+            $object->state = null;
         }
         if (\array_key_exists('succeeded', $data)) {
-            $object->setSucceeded($data['succeeded']);
+            $object->succeeded = $data['succeeded'];
         }
         if (\array_key_exists('error', $data) && $data['error'] !== null) {
             $value = $data['error'];
             if (is_array($data['error'])) {
                 $value = $this->denormalizer->denormalize($data['error'], \PicturePark\API\Model\ErrorResponse::class, 'json', $context);
             }
-            $object->setError($value);
+            $object->error = $value;
         }
         elseif (\array_key_exists('error', $data) && $data['error'] === null) {
-            $object->setError(null);
+            $object->error = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['fileTransferId'] = $data->getFileTransferId();
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
-            $dataArray['contentId'] = $data->getContentId();
+        $dataArray['fileTransferId'] = $data->fileTransferId ?? null;
+        if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
+            $dataArray['contentId'] = $data->contentId ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
-        $dataArray['succeeded'] = $data->getSucceeded();
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $value = $data->getError();
-            if (is_object($data->getError())) {
-                $value = $data->getError() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getError(), 'json', $context));
+        $dataArray['succeeded'] = $data->succeeded ?? null;
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $value = $data->error ?? null;
+            if (is_object($data->error ?? null)) {
+                $value = ($data->error ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error ?? null, 'json', $context));
             }
             $dataArray['error'] = $value;
         }

@@ -3,25 +3,28 @@
 namespace Jane\Component\JsonSchema\Guesser\JsonSchema;
 
 use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\JsonSchema\Generator\Options;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserFactory;
+use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\Tools\JsonSchemaMerger;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class JsonSchemaGuesserFactory
 {
-    public static function create(DenormalizerInterface $denormalizer, array $options = []): ChainGuesser
+    public static function create(DenormalizerInterface $denormalizer, array $options = [], ?ChainValidatorFactory $chainValidatorFactory = null): ChainGuesser
     {
+        $options = Options::fromArray($options);
         $chainGuesser = ChainGuesserFactory::create($denormalizer);
         $naming = new Naming();
         $merger = new JsonSchemaMerger();
-        $dateFormat = isset($options['full-date-format']) ? $options['full-date-format'] : 'Y-m-d';
-        $outputDateTimeFormat = isset($options['date-format']) ? $options['date-format'] : \DateTimeInterface::RFC3339;
-        $inputDateTimeFormat = isset($options['date-input-format']) ? $options['date-input-format'] : null;
-        $datePreferInterface = isset($options['date-prefer-interface']) ? $options['date-prefer-interface'] : null;
-        $defaultAdditionalProperties = $options['default-additional-properties'] ?? null;
+        $dateFormat = $options->fullDateFormat;
+        $outputDateTimeFormat = $options->dateFormat;
+        $inputDateTimeFormat = $options->dateInputFormat;
+        $datePreferInterface = $options->datePreferInterface;
+        $defaultAdditionalProperties = $options->defaultAdditionalProperties;
 
-        if ($options['enums-as-objects'] ?? false) {
+        if ($options->enumsAsObjects) {
             $chainGuesser->addGuesser(new EnumGuesser($naming));
         }
 
@@ -30,7 +33,7 @@ class JsonSchemaGuesserFactory
         $chainGuesser->addGuesser(new SimpleTypeGuesser());
         $chainGuesser->addGuesser(new ArrayGuesser());
         $chainGuesser->addGuesser(new MultipleGuesser());
-        $chainGuesser->addGuesser(new ObjectGuesser($denormalizer, $naming, $defaultAdditionalProperties));
+        $chainGuesser->addGuesser(new ObjectGuesser($denormalizer, $naming, $defaultAdditionalProperties, $chainValidatorFactory));
         $chainGuesser->addGuesser(new DefinitionGuesser());
         $chainGuesser->addGuesser(new ItemsGuesser());
         $chainGuesser->addGuesser(new AnyOfGuesser());

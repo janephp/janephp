@@ -38,7 +38,7 @@ class KubernetesNodePoolSizeNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('size', $data)) {
-            $object->setSize($data['size']);
+            $object->size = $data['size'];
             unset($data['size']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class KubernetesNodePoolSizeNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['size'] = $data->getSize();
+        if (array_key_exists('size', get_object_vars($data)) && null !== ($data->size ?? null)) {
+            $dataArray['size'] = $data->size ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

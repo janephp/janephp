@@ -66,14 +66,60 @@ trait DenormalizerGenerator
         ]);
 
         if ($this->useReference) {
-            // In JSON Schema 2020-12, $ref can coexist with other keywords like type, properties, allOf, etc.
-            // Only return a Reference when $ref is not accompanied by structural schema keywords.
-            $refIssetCondition = new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('$ref'))]);
-            $noTypeCondition = new Expr\BooleanNot(new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('type'))]));
-            $noPropertiesCondition = new Expr\BooleanNot(new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('properties'))]));
-            $noAllOfCondition = new Expr\BooleanNot(new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('allOf'))]));
+            array_push($statements, ...$this->createReferenceReturnStatements($dataVariable));
+        }
 
-            $statements[] = new Stmt\If_(
+        $denormalizeMethodStatements = $this->denormalizeMethodStatements($classGuess, $context);
+        if (\count($denormalizeMethodStatements) > 0) {
+            array_push($statements, ...$denormalizeMethodStatements);
+        }
+
+        foreach ([
+            Type::TYPE_FLOAT => static fn (Expr $element): Stmt\Expression => new Stmt\Expression(new Expr\Assign($element, new Expr\Cast\Double($element, ['kind' => Expr\Cast\Double::KIND_FLOAT]))),
+            Type::TYPE_BOOLEAN => static fn (Expr $element): Stmt\Expression => new Stmt\Expression(new Expr\Assign($element, new Expr\Cast\Bool_($element))),
+        ] as $typeName => $cast) {
+            $statements = array_merge($statements, $this->createScalarCastStatements($classGuess, $dataVariable, $typeName, $cast));
+        }
+
+        if ($this->validation) {
+            $statements[] = $this->createValidationStatement($context, $classGuess, $dataVariable);
+        }
+
+        $statements = array_merge($statements, $this->createPropertyDenormalizationStatements($classGuess, $context, $objectVariable, $dataVariable));
+        $statements = array_merge($statements, $this->createPatternPropertiesDenormalizationStatements($classGuess, $context, $objectVariable, $dataVariable));
+        $statements[] = new Stmt\Return_($objectVariable);
+
+        return new Stmt\ClassMethod('denormalize', [
+            'flags' => Modifiers::PUBLIC,
+            'returnType' => new Identifier('mixed'),
+            'params' => [
+                new Param($dataVariable, type: new Identifier('mixed')),
+                new Param(new Expr\Variable('type'), type: new Identifier('string')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('?string')),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
+            ],
+            'stmts' => $statements,
+        ], [
+            'comments' => [],
+        ]);
+    }
+
+    /**
+     * Return early with a lazily-resolved Reference only when $ref is not
+     * accompanied by structural schema keywords (allowed since JSON Schema
+     * 2020-12); same for $recursiveRef.
+     *
+     * @return Stmt[]
+     */
+    private function createReferenceReturnStatements(Expr\Variable $dataVariable): array
+    {
+        $refIssetCondition = new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('$ref'))]);
+        $noTypeCondition = new Expr\BooleanNot(new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('type'))]));
+        $noPropertiesCondition = new Expr\BooleanNot(new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('properties'))]));
+        $noAllOfCondition = new Expr\BooleanNot(new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('allOf'))]));
+
+        return [
+            new Stmt\If_(
                 new Expr\BinaryOp\BooleanAnd(
                     new Expr\BinaryOp\BooleanAnd(
                         new Expr\BinaryOp\BooleanAnd($refIssetCondition, $noTypeCondition),
@@ -89,8 +135,8 @@ trait DenormalizerGenerator
                         ])),
                     ],
                 ]
-            );
-            $statements[] = new Stmt\If_(
+            ),
+            new Stmt\If_(
                 new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('$recursiveRef'))]),
                 [
                     'stmts' => [
@@ -100,16 +146,29 @@ trait DenormalizerGenerator
                         ])),
                     ],
                 ]
-            );
-        }
+            ),
+        ];
+    }
 
-        $denormalizeMethodStatements = $this->denormalizeMethodStatements($classGuess, $context);
-        if (\count($denormalizeMethodStatements) > 0) {
-            array_push($statements, ...$denormalizeMethodStatements);
-        }
+    /**
+     * Coerce integer payloads of float / boolean typed properties before
+     * denormalization, mirroring the lenient behavior of JSON decoding.
+     *
+     * @param callable(Expr): Expr $cast
+     *
+     * @return Stmt[]
+     */
+    /**
+     * @param callable(Expr): Stmt\Expression $cast
+     *
+     * @return Stmt[]
+     */
+    private function createScalarCastStatements(ClassGuess $classGuess, Expr\Variable $dataVariable, string $typeName, callable $cast): array
+    {
+        $statements = [];
 
         foreach ($classGuess->getProperties() as $property) {
-            if (Type::TYPE_FLOAT !== $property->getType()->getName()) {
+            if ($typeName !== $property->getType()->getName()) {
                 continue;
             }
             $baseCondition = new Expr\FuncCall(new Name('\array_key_exists'), [
@@ -119,35 +178,33 @@ trait DenormalizerGenerator
             $arrayElement = new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName()));
             $intCondition = new Expr\FuncCall(new Name('\is_int'), [$arrayElement]);
             $condition = new Expr\BinaryOp\BooleanAnd($baseCondition, $intCondition);
-            $castFloat = new Stmt\Expression(new Expr\Assign($arrayElement, new Expr\Cast\Double($arrayElement, ['kind' => Expr\Cast\Double::KIND_FLOAT])));
-            $statements[] = new Stmt\If_($condition, ['stmts' => [$castFloat]]);
-        }
-        foreach ($classGuess->getProperties() as $property) {
-            if (Type::TYPE_BOOLEAN !== $property->getType()->getName()) {
-                continue;
-            }
-            $baseCondition = new Expr\FuncCall(new Name('\array_key_exists'), [
-                new Arg(new Scalar\String_($property->getName())),
-                new Arg($dataVariable),
-            ]);
-            $arrayElement = new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName()));
-            $intCondition = new Expr\FuncCall(new Name('\is_int'), [$arrayElement]);
-            $condition = new Expr\BinaryOp\BooleanAnd($baseCondition, $intCondition);
-            $castFloat = new Stmt\Expression(new Expr\Assign($arrayElement, new Expr\Cast\Bool_($arrayElement)));
-            $statements[] = new Stmt\If_($condition, ['stmts' => [$castFloat]]);
-        }
-        if ($this->validation) {
-            $schema = $context->getCurrentSchema();
-            $contextVariable = new Expr\Variable('context');
-            $constraintFqdn = $this->naming->getValidatorNamespace($schema->getNamespace(), $classGuess->getSubNamespace()) . '\\' . $this->naming->getConstraintName($classGuess->getName());
-
-            $statements[] = new Stmt\If_(new Expr\BooleanNot(new Expr\BinaryOp\Coalesce(new Expr\ArrayDimFetch($contextVariable, new Scalar\String_('skip_validation')), new Expr\ConstFetch(new Name('false')))), ['stmts' => [
-                new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('this'), 'validate', [
-                    new Arg($dataVariable), new Arg(new Expr\New_(new Name('\\' . $constraintFqdn))),
-                ])),
-            ]]);
+            $statements[] = new Stmt\If_($condition, ['stmts' => [$cast($arrayElement)]]);
         }
 
+        return $statements;
+    }
+
+    private function createValidationStatement(Context $context, ClassGuess $classGuess, Expr\Variable $dataVariable): Stmt\If_
+    {
+        $schema = $context->getCurrentSchema();
+        $contextVariable = new Expr\Variable('context');
+        $constraintFqdn = $this->naming->getValidatorNamespace($schema->getNamespace(), $classGuess->getSubNamespace()) . '\\' . $this->naming->getConstraintName($classGuess->getName());
+
+        return new Stmt\If_(new Expr\BooleanNot(new Expr\BinaryOp\Coalesce(new Expr\ArrayDimFetch($contextVariable, new Scalar\String_('skip_validation')), new Expr\ConstFetch(new Name('false')))), ['stmts' => [
+            new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('this'), 'validate', [
+                new Arg($dataVariable), new Arg(new Expr\New_(new Name('\\' . $constraintFqdn))),
+            ])),
+        ]]);
+    }
+
+    /**
+     * Denormalize each declared property and set it on the object.
+     *
+     * @return Stmt[]
+     */
+    private function createPropertyDenormalizationStatements(ClassGuess $classGuess, Context $context, Expr\Variable $objectVariable, Expr\Variable $dataVariable): array
+    {
+        $statements = [];
         $unset = \count($classGuess->getExtensionsType()) > 0;
 
         foreach ($classGuess->getProperties() as $property) {
@@ -161,10 +218,9 @@ trait DenormalizerGenerator
             $fullCondition = $baseCondition;
 
             $mutatorStmt = array_merge($denormalizationStatements, [
-                new Stmt\Expression(new Expr\MethodCall(
-                    $objectVariable,
-                    $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
-                    [$outputVar],
+                new Stmt\Expression(new Expr\Assign(
+                    new Expr\PropertyFetch($objectVariable, $property->getPhpName()),
+                    $outputVar,
                 )),
             ], $unset ? [new Stmt\Unset_([$propertyVar])] : []);
 
@@ -192,16 +248,26 @@ trait DenormalizerGenerator
                 );
 
                 $statements[] = new Stmt\ElseIf_($invertCondition, [
-                    new Stmt\Expression(new Expr\MethodCall(
-                        $objectVariable,
-                        $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
-                        [new Arg(new Expr\ConstFetch(new Name('null')))],
+                    new Stmt\Expression(new Expr\Assign(
+                        new Expr\PropertyFetch($objectVariable, $property->getPhpName()),
+                        new Expr\ConstFetch(new Name('null')),
                     )),
                     ...($unset ? [new Stmt\Unset_([$propertyVar])] : []),
                 ]);
             }
         }
 
+        return $statements;
+    }
+
+    /**
+     * Fold additional / pattern matched properties into the object, iterating
+     * the raw payload once when any pattern applies.
+     *
+     * @return Stmt[]
+     */
+    private function createPatternPropertiesDenormalizationStatements(ClassGuess $classGuess, Context $context, Expr\Variable $objectVariable, Expr\Variable $dataVariable): array
+    {
         $patternCondition = [];
         $loopKeyVar = new Expr\Variable($context->getUniqueVariableName('key'));
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -223,26 +289,13 @@ trait DenormalizerGenerator
         }
 
         if (\count($patternCondition) > 0) {
-            $statements[] = new Stmt\Foreach_($dataVariable, $loopValueVar, [
+            return [new Stmt\Foreach_($dataVariable, $loopValueVar, [
                 'keyVar' => $loopKeyVar,
                 'stmts' => $patternCondition,
-            ]);
+            ])];
         }
-        $statements[] = new Stmt\Return_($objectVariable);
 
-        return new Stmt\ClassMethod('denormalize', [
-            'flags' => Modifiers::PUBLIC,
-            'returnType' => new Identifier('mixed'),
-            'params' => [
-                new Param($dataVariable, type: new Identifier('mixed')),
-                new Param(new Expr\Variable('type'), type: new Identifier('string')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('?string')),
-                new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
-            ],
-            'stmts' => $statements,
-        ], [
-            'comments' => [],
-        ]);
+        return [];
     }
 
     protected function denormalizeMethodStatements(ClassGuess $classGuess, Context $context): array

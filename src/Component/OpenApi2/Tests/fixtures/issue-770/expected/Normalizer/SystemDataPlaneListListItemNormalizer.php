@@ -38,87 +38,87 @@ class SystemDataPlaneListListItemNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('mac', $data)) {
-            $object->setMac($data['mac']);
+            $object->mac = $data['mac'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('ipv6', $data)) {
-            $object->setIpv6($data['ipv6']);
+            $object->ipv6 = $data['ipv6'];
         }
         if (\array_key_exists('managedBy', $data)) {
-            $object->setManagedBy($data['managedBy']);
+            $object->managedBy = $data['managedBy'];
         }
         if (\array_key_exists('model', $data)) {
-            $object->setModel($data['model']);
+            $object->model = $data['model'];
         }
         if (\array_key_exists('serialNumber', $data)) {
-            $object->setSerialNumber($data['serialNumber']);
+            $object->serialNumber = $data['serialNumber'];
         }
         if (\array_key_exists('greTunnels', $data)) {
-            $object->setGreTunnels($data['greTunnels']);
+            $object->greTunnels = $data['greTunnels'];
         }
         if (\array_key_exists('fwVersion', $data)) {
-            $object->setFwVersion($data['fwVersion']);
+            $object->fwVersion = $data['fwVersion'];
         }
         if (\array_key_exists('lastSeen', $data)) {
-            $object->setLastSeen($data['lastSeen']);
+            $object->lastSeen = $data['lastSeen'];
         }
         if (\array_key_exists('dpStatus', $data)) {
-            $object->setDpStatus($data['dpStatus']);
+            $object->dpStatus = $data['dpStatus'];
         }
         if (\array_key_exists('uptime', $data)) {
-            $object->setUptime($data['uptime']);
+            $object->uptime = $data['uptime'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('mac') && null !== $data->getMac()) {
-            $dataArray['mac'] = $data->getMac();
+        if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
+            $dataArray['mac'] = $data->mac ?? null;
         }
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        if ($data->isInitialized('ipv6') && null !== $data->getIpv6()) {
-            $dataArray['ipv6'] = $data->getIpv6();
+        if (array_key_exists('ipv6', get_object_vars($data)) && null !== ($data->ipv6 ?? null)) {
+            $dataArray['ipv6'] = $data->ipv6 ?? null;
         }
-        if ($data->isInitialized('managedBy') && null !== $data->getManagedBy()) {
-            $dataArray['managedBy'] = $data->getManagedBy();
+        if (array_key_exists('managedBy', get_object_vars($data)) && null !== ($data->managedBy ?? null)) {
+            $dataArray['managedBy'] = $data->managedBy ?? null;
         }
-        if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $data->getModel();
+        if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
+            $dataArray['model'] = $data->model ?? null;
         }
-        if ($data->isInitialized('serialNumber') && null !== $data->getSerialNumber()) {
-            $dataArray['serialNumber'] = $data->getSerialNumber();
+        if (array_key_exists('serialNumber', get_object_vars($data)) && null !== ($data->serialNumber ?? null)) {
+            $dataArray['serialNumber'] = $data->serialNumber ?? null;
         }
-        if ($data->isInitialized('greTunnels') && null !== $data->getGreTunnels()) {
-            $dataArray['greTunnels'] = $data->getGreTunnels();
+        if (array_key_exists('greTunnels', get_object_vars($data)) && null !== ($data->greTunnels ?? null)) {
+            $dataArray['greTunnels'] = $data->greTunnels ?? null;
         }
-        if ($data->isInitialized('fwVersion') && null !== $data->getFwVersion()) {
-            $dataArray['fwVersion'] = $data->getFwVersion();
+        if (array_key_exists('fwVersion', get_object_vars($data)) && null !== ($data->fwVersion ?? null)) {
+            $dataArray['fwVersion'] = $data->fwVersion ?? null;
         }
-        if ($data->isInitialized('lastSeen') && null !== $data->getLastSeen()) {
-            $dataArray['lastSeen'] = $data->getLastSeen();
+        if (array_key_exists('lastSeen', get_object_vars($data)) && null !== ($data->lastSeen ?? null)) {
+            $dataArray['lastSeen'] = $data->lastSeen ?? null;
         }
-        if ($data->isInitialized('dpStatus') && null !== $data->getDpStatus()) {
-            $dataArray['dpStatus'] = $data->getDpStatus();
+        if (array_key_exists('dpStatus', get_object_vars($data)) && null !== ($data->dpStatus ?? null)) {
+            $dataArray['dpStatus'] = $data->dpStatus ?? null;
         }
-        if ($data->isInitialized('uptime') && null !== $data->getUptime()) {
-            $dataArray['uptime'] = $data->getUptime();
+        if (array_key_exists('uptime', get_object_vars($data)) && null !== ($data->uptime ?? null)) {
+            $dataArray['uptime'] = $data->uptime ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         return $dataArray;
     }

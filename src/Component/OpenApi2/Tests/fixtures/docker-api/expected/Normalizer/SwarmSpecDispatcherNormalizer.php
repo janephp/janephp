@@ -41,15 +41,15 @@ class SwarmSpecDispatcherNormalizer implements DenormalizerInterface, Normalizer
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecDispatcherConstraint());
         }
         if (\array_key_exists('HeartbeatPeriod', $data)) {
-            $object->setHeartbeatPeriod($data['HeartbeatPeriod']);
+            $object->heartbeatPeriod = $data['HeartbeatPeriod'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('heartbeatPeriod') && null !== $data->getHeartbeatPeriod()) {
-            $dataArray['HeartbeatPeriod'] = $data->getHeartbeatPeriod();
+        if (array_key_exists('heartbeatPeriod', get_object_vars($data)) && null !== ($data->heartbeatPeriod ?? null)) {
+            $dataArray['HeartbeatPeriod'] = $data->heartbeatPeriod ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecDispatcherConstraint());

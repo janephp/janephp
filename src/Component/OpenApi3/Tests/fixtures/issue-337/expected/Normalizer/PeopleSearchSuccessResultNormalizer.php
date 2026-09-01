@@ -38,7 +38,7 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('totalSize', $data)) {
-            $object->setTotalSize($data['totalSize']);
+            $object->totalSize = $data['totalSize'];
             unset($data['totalSize']);
         }
         if (\array_key_exists('directors', $data)) {
@@ -46,7 +46,7 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
             foreach ($data['directors'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\PeopleSearchSuccessResultDirectorsItem::class, 'json', $context);
             }
-            $object->setDirectors($values);
+            $object->directors = $values;
             unset($data['directors']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('totalSize') && null !== $data->getTotalSize()) {
-            $dataArray['totalSize'] = $data->getTotalSize();
+        if (array_key_exists('totalSize', get_object_vars($data)) && null !== ($data->totalSize ?? null)) {
+            $dataArray['totalSize'] = $data->totalSize ?? null;
         }
-        if ($data->isInitialized('directors') && null !== $data->getDirectors()) {
+        if (array_key_exists('directors', get_object_vars($data)) && null !== ($data->directors ?? null)) {
             $values = [];
-            foreach ($data->getDirectors() as $value) {
+            foreach ($data->directors ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['directors'] = $values;

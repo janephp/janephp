@@ -42,11 +42,11 @@ class ApiMoveAgentsToWorkspaceInputPublicNormalizer implements DenormalizerInter
             foreach ($data['agent_uuids'] as $value) {
                 $values[] = $value;
             }
-            $object->setAgentUuids($values);
+            $object->agentUuids = $values;
             unset($data['agent_uuids']);
         }
         if (\array_key_exists('workspace_uuid', $data)) {
-            $object->setWorkspaceUuid($data['workspace_uuid']);
+            $object->workspaceUuid = $data['workspace_uuid'];
             unset($data['workspace_uuid']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,15 +59,15 @@ class ApiMoveAgentsToWorkspaceInputPublicNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agentUuids') && null !== $data->getAgentUuids()) {
+        if (array_key_exists('agentUuids', get_object_vars($data)) && null !== ($data->agentUuids ?? null)) {
             $values = [];
-            foreach ($data->getAgentUuids() as $value) {
+            foreach ($data->agentUuids ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['agent_uuids'] = $values;
         }
-        if ($data->isInitialized('workspaceUuid') && null !== $data->getWorkspaceUuid()) {
-            $dataArray['workspace_uuid'] = $data->getWorkspaceUuid();
+        if (array_key_exists('workspaceUuid', get_object_vars($data)) && null !== ($data->workspaceUuid ?? null)) {
+            $dataArray['workspace_uuid'] = $data->workspaceUuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -42,7 +42,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
             foreach ($data['exact'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem::class, 'json', $context);
             }
-            $object->setExact($values);
+            $object->exact = $values;
             unset($data['exact']);
         }
         if (\array_key_exists('possible', $data)) {
@@ -50,7 +50,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
             foreach ($data['possible'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem::class, 'json', $context);
             }
-            $object->setPossible($values_1);
+            $object->possible = $values_1;
             unset($data['possible']);
         }
         foreach ($data as $key => $value_2) {
@@ -63,16 +63,16 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('exact') && null !== $data->getExact()) {
+        if (array_key_exists('exact', get_object_vars($data)) && null !== ($data->exact ?? null)) {
             $values = [];
-            foreach ($data->getExact() as $value) {
+            foreach ($data->exact ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['exact'] = $values;
         }
-        if ($data->isInitialized('possible') && null !== $data->getPossible()) {
+        if (array_key_exists('possible', get_object_vars($data)) && null !== ($data->possible ?? null)) {
             $values_1 = [];
-            foreach ($data->getPossible() as $value_1) {
+            foreach ($data->possible ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['possible'] = $values_1;

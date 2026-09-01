@@ -54,7 +54,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Run
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Endpoint\GetTestComplexList(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();

@@ -38,33 +38,33 @@ class AdministrationZdImportStatusNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
+            $object->message = $data['message'];
         }
         if (\array_key_exists('details', $data)) {
-            $object->setDetails($data['details']);
+            $object->details = $data['details'];
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
         }
         if (\array_key_exists('progress', $data)) {
-            $object->setProgress($data['progress']);
+            $object->progress = $data['progress'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $data->getMessage();
+        if (array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $dataArray['message'] = $data->message ?? null;
         }
-        if ($data->isInitialized('details') && null !== $data->getDetails()) {
-            $dataArray['details'] = $data->getDetails();
+        if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
+            $dataArray['details'] = $data->details ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
-        if ($data->isInitialized('progress') && null !== $data->getProgress()) {
-            $dataArray['progress'] = $data->getProgress();
+        if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
+            $dataArray['progress'] = $data->progress ?? null;
         }
         return $dataArray;
     }

@@ -19,11 +19,7 @@ class ModelGenerator extends BaseModelGenerator
 
     protected function doCreateClassMethods(BaseClassGuess $classGuess, Property $property, string $namespace, bool $strict): array
     {
-        $methods = [];
-        $methods[] = $this->createGetter($property, $namespace, $strict);
-        $methods[] = $this->createSetter($property, $namespace, $strict, !$classGuess instanceof ParentClass);
-
-        return $methods;
+        return [];
     }
 
     /**

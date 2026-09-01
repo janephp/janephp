@@ -41,39 +41,39 @@ class SystemCommonAccessCardSettingsNormalizer implements DenormalizerInterface,
             $data['cacAuthEnabled'] = (bool) $data['cacAuthEnabled'];
         }
         if (\array_key_exists('cacAuthEnabled', $data)) {
-            $object->setCacAuthEnabled($data['cacAuthEnabled']);
+            $object->cacAuthEnabled = $data['cacAuthEnabled'];
         }
         if (\array_key_exists('cacAuthOcspServerUri', $data)) {
-            $object->setCacAuthOcspServerUri($data['cacAuthOcspServerUri']);
+            $object->cacAuthOcspServerUri = $data['cacAuthOcspServerUri'];
         }
         if (\array_key_exists('cacAuthRootCACertificate', $data)) {
-            $object->setCacAuthRootCACertificate($data['cacAuthRootCACertificate']);
+            $object->cacAuthRootCACertificate = $data['cacAuthRootCACertificate'];
         }
         if (\array_key_exists('cacAuthUserName', $data)) {
-            $object->setCacAuthUserName($data['cacAuthUserName']);
+            $object->cacAuthUserName = $data['cacAuthUserName'];
         }
         if (\array_key_exists('cacAuthAaaServer', $data)) {
-            $object->setCacAuthAaaServer($data['cacAuthAaaServer']);
+            $object->cacAuthAaaServer = $data['cacAuthAaaServer'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('cacAuthEnabled') && null !== $data->getCacAuthEnabled()) {
-            $dataArray['cacAuthEnabled'] = $data->getCacAuthEnabled();
+        if (array_key_exists('cacAuthEnabled', get_object_vars($data)) && null !== ($data->cacAuthEnabled ?? null)) {
+            $dataArray['cacAuthEnabled'] = $data->cacAuthEnabled ?? null;
         }
-        if ($data->isInitialized('cacAuthOcspServerUri') && null !== $data->getCacAuthOcspServerUri()) {
-            $dataArray['cacAuthOcspServerUri'] = $data->getCacAuthOcspServerUri();
+        if (array_key_exists('cacAuthOcspServerUri', get_object_vars($data)) && null !== ($data->cacAuthOcspServerUri ?? null)) {
+            $dataArray['cacAuthOcspServerUri'] = $data->cacAuthOcspServerUri ?? null;
         }
-        if ($data->isInitialized('cacAuthRootCACertificate') && null !== $data->getCacAuthRootCACertificate()) {
-            $dataArray['cacAuthRootCACertificate'] = $data->getCacAuthRootCACertificate();
+        if (array_key_exists('cacAuthRootCACertificate', get_object_vars($data)) && null !== ($data->cacAuthRootCACertificate ?? null)) {
+            $dataArray['cacAuthRootCACertificate'] = $data->cacAuthRootCACertificate ?? null;
         }
-        if ($data->isInitialized('cacAuthUserName') && null !== $data->getCacAuthUserName()) {
-            $dataArray['cacAuthUserName'] = $data->getCacAuthUserName();
+        if (array_key_exists('cacAuthUserName', get_object_vars($data)) && null !== ($data->cacAuthUserName ?? null)) {
+            $dataArray['cacAuthUserName'] = $data->cacAuthUserName ?? null;
         }
-        if ($data->isInitialized('cacAuthAaaServer') && null !== $data->getCacAuthAaaServer()) {
-            $dataArray['cacAuthAaaServer'] = $data->getCacAuthAaaServer();
+        if (array_key_exists('cacAuthAaaServer', get_object_vars($data)) && null !== ($data->cacAuthAaaServer ?? null)) {
+            $dataArray['cacAuthAaaServer'] = $data->cacAuthAaaServer ?? null;
         }
         return $dataArray;
     }

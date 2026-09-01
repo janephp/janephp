@@ -60,11 +60,11 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
             if (is_array($data['sourceOutputFormats'])) {
                 $value = $this->denormalizer->denormalize($data['sourceOutputFormats'], \PicturePark\API\Model\SourceOutputFormats::class, 'json', $context);
             }
-            $object->setSourceOutputFormats($value);
+            $object->sourceOutputFormats = $value;
             unset($data['sourceOutputFormats']);
         }
         elseif (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] === null) {
-            $object->setSourceOutputFormats(null);
+            $object->sourceOutputFormats = null;
             unset($data['sourceOutputFormats']);
         }
         if (\array_key_exists('format', $data) && $data['format'] !== null) {
@@ -72,11 +72,11 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
             if (is_array($data['format']) and \array_key_exists('kind', $data['format'])) {
                 $value_1 = $this->denormalizer->denormalize($data['format'], \PicturePark\API\Model\FormatBase::class, 'json', $context);
             }
-            $object->setFormat($value_1);
+            $object->format = $value_1;
             unset($data['format']);
         }
         elseif (\array_key_exists('format', $data) && $data['format'] === null) {
-            $object->setFormat(null);
+            $object->format = null;
             unset($data['format']);
         }
         if (\array_key_exists('names', $data)) {
@@ -88,11 +88,11 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
                 }
                 $value_2 = $values;
             }
-            $object->setNames($value_2);
+            $object->names = $value_2;
             unset($data['names']);
         }
         if (\array_key_exists('retentionTime', $data)) {
-            $object->setRetentionTime($data['retentionTime']);
+            $object->retentionTime = $data['retentionTime'];
             unset($data['retentionTime']);
         }
         if (\array_key_exists('downloadFileNamePatterns', $data) && $data['downloadFileNamePatterns'] !== null) {
@@ -104,43 +104,43 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
                 }
                 $value_4 = $values_1;
             }
-            $object->setDownloadFileNamePatterns($value_4);
+            $object->downloadFileNamePatterns = $value_4;
             unset($data['downloadFileNamePatterns']);
         }
         elseif (\array_key_exists('downloadFileNamePatterns', $data) && $data['downloadFileNamePatterns'] === null) {
-            $object->setDownloadFileNamePatterns(null);
+            $object->downloadFileNamePatterns = null;
             unset($data['downloadFileNamePatterns']);
         }
         if (\array_key_exists('viewForAll', $data)) {
-            $object->setViewForAll($data['viewForAll']);
+            $object->viewForAll = $data['viewForAll'];
             unset($data['viewForAll']);
         }
         if (\array_key_exists('enableXmpWriteback', $data)) {
-            $object->setEnableXmpWriteback($data['enableXmpWriteback']);
+            $object->enableXmpWriteback = $data['enableXmpWriteback'];
             unset($data['enableXmpWriteback']);
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
             unset($data['id']);
         }
         if (\array_key_exists('system', $data)) {
-            $object->setSystem($data['system']);
+            $object->system = $data['system'];
             unset($data['system']);
         }
         if (\array_key_exists('dynamic', $data)) {
-            $object->setDynamic($data['dynamic']);
+            $object->dynamic = $data['dynamic'];
             unset($data['dynamic']);
         }
         if (\array_key_exists('dataExtraction', $data)) {
-            $object->setDataExtraction($data['dataExtraction']);
+            $object->dataExtraction = $data['dataExtraction'];
             unset($data['dataExtraction']);
         }
         if (\array_key_exists('temporary', $data)) {
-            $object->setTemporary($data['temporary']);
+            $object->temporary = $data['temporary'];
             unset($data['temporary']);
         }
         foreach ($data as $key_2 => $value_6) {
@@ -153,63 +153,63 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sourceOutputFormats') && null !== $data->getSourceOutputFormats()) {
-            $value = $data->getSourceOutputFormats();
-            if (is_object($data->getSourceOutputFormats())) {
-                $value = $data->getSourceOutputFormats() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getSourceOutputFormats(), 'json', $context));
+        if (array_key_exists('sourceOutputFormats', get_object_vars($data)) && null !== ($data->sourceOutputFormats ?? null)) {
+            $value = $data->sourceOutputFormats ?? null;
+            if (is_object($data->sourceOutputFormats ?? null)) {
+                $value = ($data->sourceOutputFormats ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->sourceOutputFormats ?? null, 'json', $context));
             }
             $dataArray['sourceOutputFormats'] = $value;
         }
-        if ($data->isInitialized('format') && null !== $data->getFormat()) {
-            $value_1 = $data->getFormat();
-            if (is_object($data->getFormat())) {
-                $value_1 = $data->getFormat() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFormat(), 'json', $context));
+        if (array_key_exists('format', get_object_vars($data)) && null !== ($data->format ?? null)) {
+            $value_1 = $data->format ?? null;
+            if (is_object($data->format ?? null)) {
+                $value_1 = ($data->format ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->format ?? null, 'json', $context));
             }
             $dataArray['format'] = $value_1;
         }
-        $value_2 = $data->getNames();
-        if (is_object($data->getNames())) {
+        $value_2 = $data->names ?? null;
+        if (is_object($data->names ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getNames() as $key => $value_3) {
+            foreach ($data->names ?? null as $key => $value_3) {
                 $values[$key] = $value_3;
             }
             $value_2 = $values;
         }
         $dataArray['names'] = $value_2;
-        if ($data->isInitialized('retentionTime') && null !== $data->getRetentionTime()) {
-            $dataArray['retentionTime'] = $data->getRetentionTime();
+        if (array_key_exists('retentionTime', get_object_vars($data)) && null !== ($data->retentionTime ?? null)) {
+            $dataArray['retentionTime'] = $data->retentionTime ?? null;
         }
-        if ($data->isInitialized('downloadFileNamePatterns') && null !== $data->getDownloadFileNamePatterns()) {
-            $value_4 = $data->getDownloadFileNamePatterns();
-            if (is_object($data->getDownloadFileNamePatterns())) {
+        if (array_key_exists('downloadFileNamePatterns', get_object_vars($data)) && null !== ($data->downloadFileNamePatterns ?? null)) {
+            $value_4 = $data->downloadFileNamePatterns ?? null;
+            if (is_object($data->downloadFileNamePatterns ?? null)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getDownloadFileNamePatterns() as $key_1 => $value_5) {
+                foreach ($data->downloadFileNamePatterns ?? null as $key_1 => $value_5) {
                     $values_1[$key_1] = $value_5;
                 }
                 $value_4 = $values_1;
             }
             $dataArray['downloadFileNamePatterns'] = $value_4;
         }
-        if ($data->isInitialized('viewForAll') && null !== $data->getViewForAll()) {
-            $dataArray['viewForAll'] = $data->getViewForAll();
+        if (array_key_exists('viewForAll', get_object_vars($data)) && null !== ($data->viewForAll ?? null)) {
+            $dataArray['viewForAll'] = $data->viewForAll ?? null;
         }
-        if ($data->isInitialized('enableXmpWriteback') && null !== $data->getEnableXmpWriteback()) {
-            $dataArray['enableXmpWriteback'] = $data->getEnableXmpWriteback();
+        if (array_key_exists('enableXmpWriteback', get_object_vars($data)) && null !== ($data->enableXmpWriteback ?? null)) {
+            $dataArray['enableXmpWriteback'] = $data->enableXmpWriteback ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('system') && null !== $data->getSystem()) {
-            $dataArray['system'] = $data->getSystem();
+        if (array_key_exists('system', get_object_vars($data)) && null !== ($data->system ?? null)) {
+            $dataArray['system'] = $data->system ?? null;
         }
-        if ($data->isInitialized('dynamic') && null !== $data->getDynamic()) {
-            $dataArray['dynamic'] = $data->getDynamic();
+        if (array_key_exists('dynamic', get_object_vars($data)) && null !== ($data->dynamic ?? null)) {
+            $dataArray['dynamic'] = $data->dynamic ?? null;
         }
-        if ($data->isInitialized('dataExtraction') && null !== $data->getDataExtraction()) {
-            $dataArray['dataExtraction'] = $data->getDataExtraction();
+        if (array_key_exists('dataExtraction', get_object_vars($data)) && null !== ($data->dataExtraction ?? null)) {
+            $dataArray['dataExtraction'] = $data->dataExtraction ?? null;
         }
-        if ($data->isInitialized('temporary') && null !== $data->getTemporary()) {
-            $dataArray['temporary'] = $data->getTemporary();
+        if (array_key_exists('temporary', get_object_vars($data)) && null !== ($data->temporary ?? null)) {
+            $dataArray['temporary'] = $data->temporary ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_6) {
             if (preg_match('/.*/', (string) $key_2)) {

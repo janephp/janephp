@@ -44,7 +44,7 @@ class ReservedIpActionTypeNormalizer implements DenormalizerInterface, Normalize
             return $this->denormalizer->denormalize($data, 'Jane\Generated\DigitalOcean\Model\ReservedIpActionUnassign', $format, $context);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
@@ -57,13 +57,13 @@ class ReservedIpActionTypeNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getType() and 'assign' === $data->getType()) {
+        if (null !== ($data->type ?? null) and 'assign' === ($data->type ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getType() and 'unassign' === $data->getType()) {
+        if (null !== ($data->type ?? null) and 'unassign' === ($data->type ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['type'] = $data->getType();
+        $dataArray['type'] = $data->type ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

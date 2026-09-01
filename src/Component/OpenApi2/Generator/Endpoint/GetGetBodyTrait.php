@@ -20,13 +20,13 @@ trait GetGetBodyTrait
     {
         $hasBody = $isSerializableBody = $isFormBody = $hasFileInForm = false;
         $isObjectBody = false;
-        $consumes = \is_array($operation->getOperation()->getConsumes()) ? $operation->getOperation()->getConsumes() : [$operation->getOperation()->getConsumes()];
+        $consumes = \is_array($operation->getOperation()->consumes ?? null) ? $operation->getOperation()->consumes ?? null : [$operation->getOperation()->consumes ?? null];
 
         foreach ($operation->getParameters() as $key => $parameter) {
-            if ($parameter instanceof BodyParameter && $parameter->getSchema() !== null) {
+            if ($parameter instanceof BodyParameter && ($parameter->schema ?? null) !== null) {
                 $hasBody = true;
 
-                $schema = $parameter->getSchema();
+                $schema = ($parameter->schema ?? null);
                 $array = false;
                 $classGuess = $this->guessClass->guessClass($schema, $operation->getReference() . '/parameters/' . $key, $context->getRegistry(), $array);
 
@@ -45,7 +45,7 @@ trait GetGetBodyTrait
             if ($parameter instanceof FormDataParameterSubSchema) {
                 $isFormBody = true;
 
-                if ($parameter->getType() === 'file') {
+                if (($parameter->type ?? null) === 'file') {
                     $hasFileInForm = true;
                 }
             }

@@ -2,36 +2,17 @@
 
 namespace Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Model;
 
-class Unspecified
+use Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\DefaultAdditionalProps\Runtime\AdditionalPropertiesInterface;
+class Unspecified implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * @var string
      */
-    protected $name;
-    /**
-     * @return string
-     */
-    public function getName(): string
+    public string $name;
+    public function definedProperties(): array
     {
-        return $this->name;
-    }
-    /**
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
+        return ['name' => 'name'];
     }
 }

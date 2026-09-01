@@ -38,38 +38,38 @@ class ScguserScgUserGroupPermissionWithoutDetailItemsNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('resource', $data)) {
-            $object->setResource($data['resource']);
+            $object->resource = $data['resource'];
         }
         if (\array_key_exists('access', $data)) {
-            $object->setAccess($data['access']);
+            $object->access = $data['access'];
         }
         if (\array_key_exists('display', $data)) {
-            $object->setDisplay($data['display']);
+            $object->display = $data['display'];
         }
         if (\array_key_exists('ids', $data)) {
             $values = [];
             foreach ($data['ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setIds($values);
+            $object->ids = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('resource') && null !== $data->getResource()) {
-            $dataArray['resource'] = $data->getResource();
+        if (array_key_exists('resource', get_object_vars($data)) && null !== ($data->resource ?? null)) {
+            $dataArray['resource'] = $data->resource ?? null;
         }
-        if ($data->isInitialized('access') && null !== $data->getAccess()) {
-            $dataArray['access'] = $data->getAccess();
+        if (array_key_exists('access', get_object_vars($data)) && null !== ($data->access ?? null)) {
+            $dataArray['access'] = $data->access ?? null;
         }
-        if ($data->isInitialized('display') && null !== $data->getDisplay()) {
-            $dataArray['display'] = $data->getDisplay();
+        if (array_key_exists('display', get_object_vars($data)) && null !== ($data->display ?? null)) {
+            $dataArray['display'] = $data->display ?? null;
         }
-        if ($data->isInitialized('ids') && null !== $data->getIds()) {
+        if (array_key_exists('ids', get_object_vars($data)) && null !== ($data->ids ?? null)) {
             $values = [];
-            foreach ($data->getIds() as $value) {
+            foreach ($data->ids ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['ids'] = $values;

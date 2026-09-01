@@ -38,21 +38,21 @@ class MeshNodeInfoHelperZoneInfoNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('helperAPZoneId', $data)) {
-            $object->setHelperAPZoneId($data['helperAPZoneId']);
+            $object->helperAPZoneId = $data['helperAPZoneId'];
         }
         if (\array_key_exists('helperAPZoneName', $data)) {
-            $object->setHelperAPZoneName($data['helperAPZoneName']);
+            $object->helperAPZoneName = $data['helperAPZoneName'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('helperAPZoneId') && null !== $data->getHelperAPZoneId()) {
-            $dataArray['helperAPZoneId'] = $data->getHelperAPZoneId();
+        if (array_key_exists('helperAPZoneId', get_object_vars($data)) && null !== ($data->helperAPZoneId ?? null)) {
+            $dataArray['helperAPZoneId'] = $data->helperAPZoneId ?? null;
         }
-        if ($data->isInitialized('helperAPZoneName') && null !== $data->getHelperAPZoneName()) {
-            $dataArray['helperAPZoneName'] = $data->getHelperAPZoneName();
+        if (array_key_exists('helperAPZoneName', get_object_vars($data)) && null !== ($data->helperAPZoneName ?? null)) {
+            $dataArray['helperAPZoneName'] = $data->helperAPZoneName ?? null;
         }
         return $dataArray;
     }

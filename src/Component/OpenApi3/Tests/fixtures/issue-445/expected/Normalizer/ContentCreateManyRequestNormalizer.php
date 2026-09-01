@@ -41,23 +41,23 @@ class ContentCreateManyRequestNormalizer implements DenormalizerInterface, Norma
             $data['allowMissingDependencies'] = (bool) $data['allowMissingDependencies'];
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
-            $object->setAllowMissingDependencies($data['allowMissingDependencies']);
+            $object->allowMissingDependencies = $data['allowMissingDependencies'];
         }
         if (\array_key_exists('items', $data)) {
             $values = [];
             foreach ($data['items'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ContentCreateRequest::class, 'json', $context);
             }
-            $object->setItems($values);
+            $object->items = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
         $values = [];
-        foreach ($data->getItems() as $value) {
+        foreach ($data->items ?? null as $value) {
             $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['items'] = $values;

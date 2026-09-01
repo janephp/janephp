@@ -38,7 +38,7 @@ class DatabaseMetricsCredentialsNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('credentials', $data)) {
-            $object->setCredentials($this->denormalizer->denormalize($data['credentials'], \Jane\Generated\DigitalOcean\Model\DatabasesBasicAuthCredentials::class, 'json', $context));
+            $object->credentials = $this->denormalizer->denormalize($data['credentials'], \Jane\Generated\DigitalOcean\Model\DatabasesBasicAuthCredentials::class, 'json', $context);
             unset($data['credentials']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class DatabaseMetricsCredentialsNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('credentials') && null !== $data->getCredentials()) {
-            $dataArray['credentials'] = $data->getCredentials() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCredentials(), 'json', $context));
+        if (array_key_exists('credentials', get_object_vars($data)) && null !== ($data->credentials ?? null)) {
+            $dataArray['credentials'] = ($data->credentials ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->credentials ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

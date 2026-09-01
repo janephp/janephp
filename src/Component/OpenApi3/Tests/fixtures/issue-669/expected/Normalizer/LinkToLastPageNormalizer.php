@@ -38,7 +38,7 @@ class LinkToLastPageNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('last', $data)) {
-            $object->setLast($data['last']);
+            $object->last = $data['last'];
             unset($data['last']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class LinkToLastPageNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('last') && null !== $data->getLast()) {
-            $dataArray['last'] = $data->getLast();
+        if (array_key_exists('last', get_object_vars($data)) && null !== ($data->last ?? null)) {
+            $dataArray['last'] = $data->last ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

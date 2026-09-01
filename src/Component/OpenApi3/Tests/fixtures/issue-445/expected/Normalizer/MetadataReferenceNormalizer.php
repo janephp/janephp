@@ -41,35 +41,35 @@ class MetadataReferenceNormalizer implements DenormalizerInterface, NormalizerIn
             $data['isRestricted'] = (bool) $data['isRestricted'];
         }
         if (\array_key_exists('targetMetadataItemId', $data)) {
-            $object->setTargetMetadataItemId($data['targetMetadataItemId']);
+            $object->targetMetadataItemId = $data['targetMetadataItemId'];
         }
         if (\array_key_exists('isRestricted', $data)) {
-            $object->setIsRestricted($data['isRestricted']);
+            $object->isRestricted = $data['isRestricted'];
         }
         if (\array_key_exists('sourceMetadataItemId', $data) && $data['sourceMetadataItemId'] !== null) {
-            $object->setSourceMetadataItemId($data['sourceMetadataItemId']);
+            $object->sourceMetadataItemId = $data['sourceMetadataItemId'];
         }
         elseif (\array_key_exists('sourceMetadataItemId', $data) && $data['sourceMetadataItemId'] === null) {
-            $object->setSourceMetadataItemId(null);
+            $object->sourceMetadataItemId = null;
         }
         if (\array_key_exists('sourceDocType', $data) && $data['sourceDocType'] !== null) {
-            $object->setSourceDocType($data['sourceDocType']);
+            $object->sourceDocType = $data['sourceDocType'];
         }
         elseif (\array_key_exists('sourceDocType', $data) && $data['sourceDocType'] === null) {
-            $object->setSourceDocType(null);
+            $object->sourceDocType = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['targetMetadataItemId'] = $data->getTargetMetadataItemId();
-        $dataArray['isRestricted'] = $data->getIsRestricted();
-        if ($data->isInitialized('sourceMetadataItemId') && null !== $data->getSourceMetadataItemId()) {
-            $dataArray['sourceMetadataItemId'] = $data->getSourceMetadataItemId();
+        $dataArray['targetMetadataItemId'] = $data->targetMetadataItemId ?? null;
+        $dataArray['isRestricted'] = $data->isRestricted ?? null;
+        if (array_key_exists('sourceMetadataItemId', get_object_vars($data)) && null !== ($data->sourceMetadataItemId ?? null)) {
+            $dataArray['sourceMetadataItemId'] = $data->sourceMetadataItemId ?? null;
         }
-        if ($data->isInitialized('sourceDocType') && null !== $data->getSourceDocType()) {
-            $dataArray['sourceDocType'] = $data->getSourceDocType();
+        if (array_key_exists('sourceDocType', get_object_vars($data)) && null !== ($data->sourceDocType ?? null)) {
+            $dataArray['sourceDocType'] = $data->sourceDocType ?? null;
         }
         return $dataArray;
     }

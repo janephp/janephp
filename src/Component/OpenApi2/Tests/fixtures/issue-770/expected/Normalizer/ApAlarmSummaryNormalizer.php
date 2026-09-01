@@ -38,33 +38,33 @@ class ApAlarmSummaryNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('criticalCount', $data)) {
-            $object->setCriticalCount($data['criticalCount']);
+            $object->criticalCount = $data['criticalCount'];
         }
         if (\array_key_exists('majorCount', $data)) {
-            $object->setMajorCount($data['majorCount']);
+            $object->majorCount = $data['majorCount'];
         }
         if (\array_key_exists('minorCount', $data)) {
-            $object->setMinorCount($data['minorCount']);
+            $object->minorCount = $data['minorCount'];
         }
         if (\array_key_exists('warningCount', $data)) {
-            $object->setWarningCount($data['warningCount']);
+            $object->warningCount = $data['warningCount'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('criticalCount') && null !== $data->getCriticalCount()) {
-            $dataArray['criticalCount'] = $data->getCriticalCount();
+        if (array_key_exists('criticalCount', get_object_vars($data)) && null !== ($data->criticalCount ?? null)) {
+            $dataArray['criticalCount'] = $data->criticalCount ?? null;
         }
-        if ($data->isInitialized('majorCount') && null !== $data->getMajorCount()) {
-            $dataArray['majorCount'] = $data->getMajorCount();
+        if (array_key_exists('majorCount', get_object_vars($data)) && null !== ($data->majorCount ?? null)) {
+            $dataArray['majorCount'] = $data->majorCount ?? null;
         }
-        if ($data->isInitialized('minorCount') && null !== $data->getMinorCount()) {
-            $dataArray['minorCount'] = $data->getMinorCount();
+        if (array_key_exists('minorCount', get_object_vars($data)) && null !== ($data->minorCount ?? null)) {
+            $dataArray['minorCount'] = $data->minorCount ?? null;
         }
-        if ($data->isInitialized('warningCount') && null !== $data->getWarningCount()) {
-            $dataArray['warningCount'] = $data->getWarningCount();
+        if (array_key_exists('warningCount', get_object_vars($data)) && null !== ($data->warningCount ?? null)) {
+            $dataArray['warningCount'] = $data->warningCount ?? null;
         }
         return $dataArray;
     }

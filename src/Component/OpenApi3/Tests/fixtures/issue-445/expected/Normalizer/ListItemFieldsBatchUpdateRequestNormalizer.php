@@ -48,20 +48,20 @@ class ListItemFieldsBatchUpdateRequestNormalizer implements DenormalizerInterfac
             foreach ($data['listItemIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setListItemIds($values);
+            $object->listItemIds = $values;
         }
         if (\array_key_exists('changeCommands', $data)) {
             $values_1 = [];
             foreach ($data['changeCommands'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\MetadataValuesChangeCommandBase::class, 'json', $context);
             }
-            $object->setChangeCommands($values_1);
+            $object->changeCommands = $values_1;
         }
         if (\array_key_exists('allowMissingDependencies', $data)) {
-            $object->setAllowMissingDependencies($data['allowMissingDependencies']);
+            $object->allowMissingDependencies = $data['allowMissingDependencies'];
         }
         if (\array_key_exists('notifyProgress', $data)) {
-            $object->setNotifyProgress($data['notifyProgress']);
+            $object->notifyProgress = $data['notifyProgress'];
         }
         return $object;
     }
@@ -69,17 +69,17 @@ class ListItemFieldsBatchUpdateRequestNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getListItemIds() as $value) {
+        foreach ($data->listItemIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['listItemIds'] = $values;
         $values_1 = [];
-        foreach ($data->getChangeCommands() as $value_1) {
+        foreach ($data->changeCommands ?? null as $value_1) {
             $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['changeCommands'] = $values_1;
-        $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();
-        $dataArray['notifyProgress'] = $data->getNotifyProgress();
+        $dataArray['allowMissingDependencies'] = $data->allowMissingDependencies ?? null;
+        $dataArray['notifyProgress'] = $data->notifyProgress ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

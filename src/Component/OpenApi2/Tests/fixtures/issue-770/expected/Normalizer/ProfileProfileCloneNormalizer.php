@@ -38,33 +38,33 @@ class ProfileProfileCloneNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('oldName', $data)) {
-            $object->setOldName($data['oldName']);
+            $object->oldName = $data['oldName'];
         }
         if (\array_key_exists('oldId', $data)) {
-            $object->setOldId($data['oldId']);
+            $object->oldId = $data['oldId'];
         }
         if (\array_key_exists('newName', $data)) {
-            $object->setNewName($data['newName']);
+            $object->newName = $data['newName'];
         }
         if (\array_key_exists('newId', $data)) {
-            $object->setNewId($data['newId']);
+            $object->newId = $data['newId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('oldName') && null !== $data->getOldName()) {
-            $dataArray['oldName'] = $data->getOldName();
+        if (array_key_exists('oldName', get_object_vars($data)) && null !== ($data->oldName ?? null)) {
+            $dataArray['oldName'] = $data->oldName ?? null;
         }
-        if ($data->isInitialized('oldId') && null !== $data->getOldId()) {
-            $dataArray['oldId'] = $data->getOldId();
+        if (array_key_exists('oldId', get_object_vars($data)) && null !== ($data->oldId ?? null)) {
+            $dataArray['oldId'] = $data->oldId ?? null;
         }
-        if ($data->isInitialized('newName') && null !== $data->getNewName()) {
-            $dataArray['newName'] = $data->getNewName();
+        if (array_key_exists('newName', get_object_vars($data)) && null !== ($data->newName ?? null)) {
+            $dataArray['newName'] = $data->newName ?? null;
         }
-        if ($data->isInitialized('newId') && null !== $data->getNewId()) {
-            $dataArray['newId'] = $data->getNewId();
+        if (array_key_exists('newId', get_object_vars($data)) && null !== ($data->newId ?? null)) {
+            $dataArray['newId'] = $data->newId ?? null;
         }
         return $dataArray;
     }

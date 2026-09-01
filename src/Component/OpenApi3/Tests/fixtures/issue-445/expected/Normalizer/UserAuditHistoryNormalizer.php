@@ -42,22 +42,22 @@ class UserAuditHistoryNormalizer implements DenormalizerInterface, NormalizerInt
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['modificationDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setModificationDate($date);
+            $object->modificationDate = $date;
         }
         if (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] !== null) {
-            $object->setModifiedByUser($data['modifiedByUser']);
+            $object->modifiedByUser = $data['modifiedByUser'];
         }
         elseif (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] === null) {
-            $object->setModifiedByUser(null);
+            $object->modifiedByUser = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['modificationDate'] = $data->getModificationDate()->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('modifiedByUser') && null !== $data->getModifiedByUser()) {
-            $dataArray['modifiedByUser'] = $data->getModifiedByUser();
+        $dataArray['modificationDate'] = ($data->modificationDate ?? null)->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('modifiedByUser', get_object_vars($data)) && null !== ($data->modifiedByUser ?? null)) {
+            $dataArray['modifiedByUser'] = $data->modifiedByUser ?? null;
         }
         return $dataArray;
     }

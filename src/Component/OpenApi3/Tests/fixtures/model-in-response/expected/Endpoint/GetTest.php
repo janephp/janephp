@@ -33,13 +33,13 @@ class GetTest extends \Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Ru
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Model\Schema', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Exception\GetTestBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Model\Error', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Exception\GetTestNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Model\Error', 'json'), $response);
         }
     }

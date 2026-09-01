@@ -38,18 +38,18 @@ class ApSnmpAgentProfileTargetConfigNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('address', $data)) {
-            $object->setAddress($data['address']);
+            $object->address = $data['address'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['address'] = $data->getAddress();
-        $dataArray['port'] = $data->getPort();
+        $dataArray['address'] = $data->address ?? null;
+        $dataArray['port'] = $data->port ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

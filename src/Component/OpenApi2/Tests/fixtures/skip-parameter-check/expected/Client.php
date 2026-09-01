@@ -23,7 +23,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Runtime\Cl
     {
         return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Endpoint\TestGetWithPathParameters($testPath, $testBody, $queryParameters, $headerParameters), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();

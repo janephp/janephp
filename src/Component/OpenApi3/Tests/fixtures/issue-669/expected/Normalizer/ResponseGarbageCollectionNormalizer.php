@@ -38,7 +38,7 @@ class ResponseGarbageCollectionNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('garbage_collection', $data)) {
-            $object->setGarbageCollection($this->denormalizer->denormalize($data['garbage_collection'], \Jane\Generated\DigitalOcean\Model\GarbageCollection::class, 'json', $context));
+            $object->garbageCollection = $this->denormalizer->denormalize($data['garbage_collection'], \Jane\Generated\DigitalOcean\Model\GarbageCollection::class, 'json', $context);
             unset($data['garbage_collection']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseGarbageCollectionNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('garbageCollection') && null !== $data->getGarbageCollection()) {
-            $dataArray['garbage_collection'] = $data->getGarbageCollection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGarbageCollection(), 'json', $context));
+        if (array_key_exists('garbageCollection', get_object_vars($data)) && null !== ($data->garbageCollection ?? null)) {
+            $dataArray['garbage_collection'] = ($data->garbageCollection ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->garbageCollection ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

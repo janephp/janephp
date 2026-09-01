@@ -38,18 +38,18 @@ class TupleOfStringAndStringNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('item1', $data)) {
-            $object->setItem1($data['item1']);
+            $object->item1 = $data['item1'];
         }
         if (\array_key_exists('item2', $data)) {
-            $object->setItem2($data['item2']);
+            $object->item2 = $data['item2'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['item1'] = $data->getItem1();
-        $dataArray['item2'] = $data->getItem2();
+        $dataArray['item1'] = $data->item1 ?? null;
+        $dataArray['item2'] = $data->item2 ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

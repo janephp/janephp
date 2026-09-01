@@ -83,141 +83,141 @@ class ProfileFirewallProfileQueryCriteriaOptionsNormalizer implements Denormaliz
             $data['includeSystemDefault'] = (bool) $data['includeSystemDefault'];
         }
         if (\array_key_exists('auth_includeNa', $data)) {
-            $object->setAuthIncludeNa($data['auth_includeNa']);
+            $object->authIncludeNa = $data['auth_includeNa'];
         }
         if (\array_key_exists('auth_includeLocalDb', $data)) {
-            $object->setAuthIncludeLocalDb($data['auth_includeLocalDb']);
+            $object->authIncludeLocalDb = $data['auth_includeLocalDb'];
         }
         if (\array_key_exists('auth_includeGuest', $data)) {
-            $object->setAuthIncludeGuest($data['auth_includeGuest']);
+            $object->authIncludeGuest = $data['auth_includeGuest'];
         }
         if (\array_key_exists('auth_includeAdGlobal', $data)) {
-            $object->setAuthIncludeAdGlobal($data['auth_includeAdGlobal']);
+            $object->authIncludeAdGlobal = $data['auth_includeAdGlobal'];
         }
         if (\array_key_exists('auth_type', $data)) {
-            $object->setAuthType($data['auth_type']);
+            $object->authType = $data['auth_type'];
         }
         if (\array_key_exists('auth_realmType', $data)) {
-            $object->setAuthRealmType($data['auth_realmType']);
+            $object->authRealmType = $data['auth_realmType'];
         }
         if (\array_key_exists('acct_type', $data)) {
-            $object->setAcctType($data['acct_type']);
+            $object->acctType = $data['acct_type'];
         }
         if (\array_key_exists('auth_testableOnly', $data)) {
-            $object->setAuthTestableOnly($data['auth_testableOnly']);
+            $object->authTestableOnly = $data['auth_testableOnly'];
         }
         if (\array_key_exists('acct_testableOnly', $data)) {
-            $object->setAcctTestableOnly($data['acct_testableOnly']);
+            $object->acctTestableOnly = $data['acct_testableOnly'];
         }
         if (\array_key_exists('acct_includeNa', $data)) {
-            $object->setAcctIncludeNa($data['acct_includeNa']);
+            $object->acctIncludeNa = $data['acct_includeNa'];
         }
         if (\array_key_exists('forwarding_type', $data)) {
-            $object->setForwardingType($data['forwarding_type']);
+            $object->forwardingType = $data['forwarding_type'];
         }
         if (\array_key_exists('includeSharedResources', $data)) {
-            $object->setIncludeSharedResources($data['includeSharedResources']);
+            $object->includeSharedResources = $data['includeSharedResources'];
         }
         if (\array_key_exists('INCLUDE_RBAC_METADATA', $data)) {
-            $object->setINCLUDERBACMETADATA($data['INCLUDE_RBAC_METADATA']);
+            $object->iNCLUDERBACMETADATA = $data['INCLUDE_RBAC_METADATA'];
         }
         if (\array_key_exists('TENANT_ID', $data)) {
-            $object->setTENANTID($data['TENANT_ID']);
+            $object->tENANTID = $data['TENANT_ID'];
         }
         if (\array_key_exists('inMap', $data)) {
-            $object->setInMap($data['inMap']);
+            $object->inMap = $data['inMap'];
         }
         if (\array_key_exists('globalFilterId', $data)) {
-            $object->setGlobalFilterId($data['globalFilterId']);
+            $object->globalFilterId = $data['globalFilterId'];
         }
         if (\array_key_exists('auth_hostedAaaSupportedEnabled', $data)) {
-            $object->setAuthHostedAaaSupportedEnabled($data['auth_hostedAaaSupportedEnabled']);
+            $object->authHostedAaaSupportedEnabled = $data['auth_hostedAaaSupportedEnabled'];
         }
         if (\array_key_exists('auth_plmnIdentifierEnabled', $data)) {
-            $object->setAuthPlmnIdentifierEnabled($data['auth_plmnIdentifierEnabled']);
+            $object->authPlmnIdentifierEnabled = $data['auth_plmnIdentifierEnabled'];
         }
         if (\array_key_exists('includeUsers', $data)) {
-            $object->setIncludeUsers($data['includeUsers']);
+            $object->includeUsers = $data['includeUsers'];
         }
         if (\array_key_exists('includeUserClickNode', $data)) {
-            $object->setIncludeUserClickNode($data['includeUserClickNode']);
+            $object->includeUserClickNode = $data['includeUserClickNode'];
         }
         if (\array_key_exists('dpGroupFilterId', $data)) {
-            $object->setDpGroupFilterId($data['dpGroupFilterId']);
+            $object->dpGroupFilterId = $data['dpGroupFilterId'];
         }
         if (\array_key_exists('includeSystemDefault', $data)) {
-            $object->setIncludeSystemDefault($data['includeSystemDefault']);
+            $object->includeSystemDefault = $data['includeSystemDefault'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('authIncludeNa') && null !== $data->getAuthIncludeNa()) {
-            $dataArray['auth_includeNa'] = $data->getAuthIncludeNa();
+        if (array_key_exists('authIncludeNa', get_object_vars($data)) && null !== ($data->authIncludeNa ?? null)) {
+            $dataArray['auth_includeNa'] = $data->authIncludeNa ?? null;
         }
-        if ($data->isInitialized('authIncludeLocalDb') && null !== $data->getAuthIncludeLocalDb()) {
-            $dataArray['auth_includeLocalDb'] = $data->getAuthIncludeLocalDb();
+        if (array_key_exists('authIncludeLocalDb', get_object_vars($data)) && null !== ($data->authIncludeLocalDb ?? null)) {
+            $dataArray['auth_includeLocalDb'] = $data->authIncludeLocalDb ?? null;
         }
-        if ($data->isInitialized('authIncludeGuest') && null !== $data->getAuthIncludeGuest()) {
-            $dataArray['auth_includeGuest'] = $data->getAuthIncludeGuest();
+        if (array_key_exists('authIncludeGuest', get_object_vars($data)) && null !== ($data->authIncludeGuest ?? null)) {
+            $dataArray['auth_includeGuest'] = $data->authIncludeGuest ?? null;
         }
-        if ($data->isInitialized('authIncludeAdGlobal') && null !== $data->getAuthIncludeAdGlobal()) {
-            $dataArray['auth_includeAdGlobal'] = $data->getAuthIncludeAdGlobal();
+        if (array_key_exists('authIncludeAdGlobal', get_object_vars($data)) && null !== ($data->authIncludeAdGlobal ?? null)) {
+            $dataArray['auth_includeAdGlobal'] = $data->authIncludeAdGlobal ?? null;
         }
-        if ($data->isInitialized('authType') && null !== $data->getAuthType()) {
-            $dataArray['auth_type'] = $data->getAuthType();
+        if (array_key_exists('authType', get_object_vars($data)) && null !== ($data->authType ?? null)) {
+            $dataArray['auth_type'] = $data->authType ?? null;
         }
-        if ($data->isInitialized('authRealmType') && null !== $data->getAuthRealmType()) {
-            $dataArray['auth_realmType'] = $data->getAuthRealmType();
+        if (array_key_exists('authRealmType', get_object_vars($data)) && null !== ($data->authRealmType ?? null)) {
+            $dataArray['auth_realmType'] = $data->authRealmType ?? null;
         }
-        if ($data->isInitialized('acctType') && null !== $data->getAcctType()) {
-            $dataArray['acct_type'] = $data->getAcctType();
+        if (array_key_exists('acctType', get_object_vars($data)) && null !== ($data->acctType ?? null)) {
+            $dataArray['acct_type'] = $data->acctType ?? null;
         }
-        if ($data->isInitialized('authTestableOnly') && null !== $data->getAuthTestableOnly()) {
-            $dataArray['auth_testableOnly'] = $data->getAuthTestableOnly();
+        if (array_key_exists('authTestableOnly', get_object_vars($data)) && null !== ($data->authTestableOnly ?? null)) {
+            $dataArray['auth_testableOnly'] = $data->authTestableOnly ?? null;
         }
-        if ($data->isInitialized('acctTestableOnly') && null !== $data->getAcctTestableOnly()) {
-            $dataArray['acct_testableOnly'] = $data->getAcctTestableOnly();
+        if (array_key_exists('acctTestableOnly', get_object_vars($data)) && null !== ($data->acctTestableOnly ?? null)) {
+            $dataArray['acct_testableOnly'] = $data->acctTestableOnly ?? null;
         }
-        if ($data->isInitialized('acctIncludeNa') && null !== $data->getAcctIncludeNa()) {
-            $dataArray['acct_includeNa'] = $data->getAcctIncludeNa();
+        if (array_key_exists('acctIncludeNa', get_object_vars($data)) && null !== ($data->acctIncludeNa ?? null)) {
+            $dataArray['acct_includeNa'] = $data->acctIncludeNa ?? null;
         }
-        if ($data->isInitialized('forwardingType') && null !== $data->getForwardingType()) {
-            $dataArray['forwarding_type'] = $data->getForwardingType();
+        if (array_key_exists('forwardingType', get_object_vars($data)) && null !== ($data->forwardingType ?? null)) {
+            $dataArray['forwarding_type'] = $data->forwardingType ?? null;
         }
-        if ($data->isInitialized('includeSharedResources') && null !== $data->getIncludeSharedResources()) {
-            $dataArray['includeSharedResources'] = $data->getIncludeSharedResources();
+        if (array_key_exists('includeSharedResources', get_object_vars($data)) && null !== ($data->includeSharedResources ?? null)) {
+            $dataArray['includeSharedResources'] = $data->includeSharedResources ?? null;
         }
-        if ($data->isInitialized('iNCLUDERBACMETADATA') && null !== $data->getINCLUDERBACMETADATA()) {
-            $dataArray['INCLUDE_RBAC_METADATA'] = $data->getINCLUDERBACMETADATA();
+        if (array_key_exists('iNCLUDERBACMETADATA', get_object_vars($data)) && null !== ($data->iNCLUDERBACMETADATA ?? null)) {
+            $dataArray['INCLUDE_RBAC_METADATA'] = $data->iNCLUDERBACMETADATA ?? null;
         }
-        if ($data->isInitialized('tENANTID') && null !== $data->getTENANTID()) {
-            $dataArray['TENANT_ID'] = $data->getTENANTID();
+        if (array_key_exists('tENANTID', get_object_vars($data)) && null !== ($data->tENANTID ?? null)) {
+            $dataArray['TENANT_ID'] = $data->tENANTID ?? null;
         }
-        if ($data->isInitialized('inMap') && null !== $data->getInMap()) {
-            $dataArray['inMap'] = $data->getInMap();
+        if (array_key_exists('inMap', get_object_vars($data)) && null !== ($data->inMap ?? null)) {
+            $dataArray['inMap'] = $data->inMap ?? null;
         }
-        if ($data->isInitialized('globalFilterId') && null !== $data->getGlobalFilterId()) {
-            $dataArray['globalFilterId'] = $data->getGlobalFilterId();
+        if (array_key_exists('globalFilterId', get_object_vars($data)) && null !== ($data->globalFilterId ?? null)) {
+            $dataArray['globalFilterId'] = $data->globalFilterId ?? null;
         }
-        if ($data->isInitialized('authHostedAaaSupportedEnabled') && null !== $data->getAuthHostedAaaSupportedEnabled()) {
-            $dataArray['auth_hostedAaaSupportedEnabled'] = $data->getAuthHostedAaaSupportedEnabled();
+        if (array_key_exists('authHostedAaaSupportedEnabled', get_object_vars($data)) && null !== ($data->authHostedAaaSupportedEnabled ?? null)) {
+            $dataArray['auth_hostedAaaSupportedEnabled'] = $data->authHostedAaaSupportedEnabled ?? null;
         }
-        if ($data->isInitialized('authPlmnIdentifierEnabled') && null !== $data->getAuthPlmnIdentifierEnabled()) {
-            $dataArray['auth_plmnIdentifierEnabled'] = $data->getAuthPlmnIdentifierEnabled();
+        if (array_key_exists('authPlmnIdentifierEnabled', get_object_vars($data)) && null !== ($data->authPlmnIdentifierEnabled ?? null)) {
+            $dataArray['auth_plmnIdentifierEnabled'] = $data->authPlmnIdentifierEnabled ?? null;
         }
-        if ($data->isInitialized('includeUsers') && null !== $data->getIncludeUsers()) {
-            $dataArray['includeUsers'] = $data->getIncludeUsers();
+        if (array_key_exists('includeUsers', get_object_vars($data)) && null !== ($data->includeUsers ?? null)) {
+            $dataArray['includeUsers'] = $data->includeUsers ?? null;
         }
-        if ($data->isInitialized('includeUserClickNode') && null !== $data->getIncludeUserClickNode()) {
-            $dataArray['includeUserClickNode'] = $data->getIncludeUserClickNode();
+        if (array_key_exists('includeUserClickNode', get_object_vars($data)) && null !== ($data->includeUserClickNode ?? null)) {
+            $dataArray['includeUserClickNode'] = $data->includeUserClickNode ?? null;
         }
-        if ($data->isInitialized('dpGroupFilterId') && null !== $data->getDpGroupFilterId()) {
-            $dataArray['dpGroupFilterId'] = $data->getDpGroupFilterId();
+        if (array_key_exists('dpGroupFilterId', get_object_vars($data)) && null !== ($data->dpGroupFilterId ?? null)) {
+            $dataArray['dpGroupFilterId'] = $data->dpGroupFilterId ?? null;
         }
-        if ($data->isInitialized('includeSystemDefault') && null !== $data->getIncludeSystemDefault()) {
-            $dataArray['includeSystemDefault'] = $data->getIncludeSystemDefault();
+        if (array_key_exists('includeSystemDefault', get_object_vars($data)) && null !== ($data->includeSystemDefault ?? null)) {
+            $dataArray['includeSystemDefault'] = $data->includeSystemDefault ?? null;
         }
         return $dataArray;
     }

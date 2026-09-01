@@ -41,11 +41,11 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
             $data['year'] = (float) $data['year'];
         }
         if (\array_key_exists('year', $data)) {
-            $object->setYear($data['year']);
+            $object->year = $data['year'];
             unset($data['year']);
         }
         if (\array_key_exists('numberOfEmployees', $data)) {
-            $object->setNumberOfEmployees($data['numberOfEmployees']);
+            $object->numberOfEmployees = $data['numberOfEmployees'];
             unset($data['numberOfEmployees']);
         }
         foreach ($data as $key => $value) {
@@ -58,11 +58,11 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('year') && null !== $data->getYear()) {
-            $dataArray['year'] = $data->getYear();
+        if (array_key_exists('year', get_object_vars($data)) && null !== ($data->year ?? null)) {
+            $dataArray['year'] = $data->year ?? null;
         }
-        if ($data->isInitialized('numberOfEmployees') && null !== $data->getNumberOfEmployees()) {
-            $dataArray['numberOfEmployees'] = $data->getNumberOfEmployees();
+        if (array_key_exists('numberOfEmployees', get_object_vars($data)) && null !== ($data->numberOfEmployees ?? null)) {
+            $dataArray['numberOfEmployees'] = $data->numberOfEmployees ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

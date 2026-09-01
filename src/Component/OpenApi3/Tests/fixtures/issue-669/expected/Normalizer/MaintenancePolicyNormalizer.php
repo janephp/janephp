@@ -38,15 +38,15 @@ class MaintenancePolicyNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('start_time', $data)) {
-            $object->setStartTime($data['start_time']);
+            $object->startTime = $data['start_time'];
             unset($data['start_time']);
         }
         if (\array_key_exists('duration', $data)) {
-            $object->setDuration($data['duration']);
+            $object->duration = $data['duration'];
             unset($data['duration']);
         }
         if (\array_key_exists('day', $data)) {
-            $object->setDay($data['day']);
+            $object->day = $data['day'];
             unset($data['day']);
         }
         foreach ($data as $key => $value) {
@@ -59,11 +59,11 @@ class MaintenancePolicyNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('startTime') && null !== $data->getStartTime()) {
-            $dataArray['start_time'] = $data->getStartTime();
+        if (array_key_exists('startTime', get_object_vars($data)) && null !== ($data->startTime ?? null)) {
+            $dataArray['start_time'] = $data->startTime ?? null;
         }
-        if ($data->isInitialized('day') && null !== $data->getDay()) {
-            $dataArray['day'] = $data->getDay();
+        if (array_key_exists('day', get_object_vars($data)) && null !== ($data->day ?? null)) {
+            $dataArray['day'] = $data->day ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

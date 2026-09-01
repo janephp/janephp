@@ -31,7 +31,7 @@ class GetReport extends \Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtim
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\Report', 'json');
         }
     }

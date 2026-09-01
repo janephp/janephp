@@ -41,39 +41,39 @@ class NetworkContainerNormalizer implements DenormalizerInterface, NormalizerInt
             $this->validate($data, new \Docker\Api\Validator\NetworkContainerConstraint());
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('EndpointID', $data)) {
-            $object->setEndpointID($data['EndpointID']);
+            $object->endpointID = $data['EndpointID'];
         }
         if (\array_key_exists('MacAddress', $data)) {
-            $object->setMacAddress($data['MacAddress']);
+            $object->macAddress = $data['MacAddress'];
         }
         if (\array_key_exists('IPv4Address', $data)) {
-            $object->setIPv4Address($data['IPv4Address']);
+            $object->iPv4Address = $data['IPv4Address'];
         }
         if (\array_key_exists('IPv6Address', $data)) {
-            $object->setIPv6Address($data['IPv6Address']);
+            $object->iPv6Address = $data['IPv6Address'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('endpointID') && null !== $data->getEndpointID()) {
-            $dataArray['EndpointID'] = $data->getEndpointID();
+        if (array_key_exists('endpointID', get_object_vars($data)) && null !== ($data->endpointID ?? null)) {
+            $dataArray['EndpointID'] = $data->endpointID ?? null;
         }
-        if ($data->isInitialized('macAddress') && null !== $data->getMacAddress()) {
-            $dataArray['MacAddress'] = $data->getMacAddress();
+        if (array_key_exists('macAddress', get_object_vars($data)) && null !== ($data->macAddress ?? null)) {
+            $dataArray['MacAddress'] = $data->macAddress ?? null;
         }
-        if ($data->isInitialized('iPv4Address') && null !== $data->getIPv4Address()) {
-            $dataArray['IPv4Address'] = $data->getIPv4Address();
+        if (array_key_exists('iPv4Address', get_object_vars($data)) && null !== ($data->iPv4Address ?? null)) {
+            $dataArray['IPv4Address'] = $data->iPv4Address ?? null;
         }
-        if ($data->isInitialized('iPv6Address') && null !== $data->getIPv6Address()) {
-            $dataArray['IPv6Address'] = $data->getIPv6Address();
+        if (array_key_exists('iPv6Address', get_object_vars($data)) && null !== ($data->iPv6Address ?? null)) {
+            $dataArray['IPv6Address'] = $data->iPv6Address ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NetworkContainerConstraint());

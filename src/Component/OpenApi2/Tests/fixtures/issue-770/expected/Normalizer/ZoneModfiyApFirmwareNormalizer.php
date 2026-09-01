@@ -38,15 +38,15 @@ class ZoneModfiyApFirmwareNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('firmwareVersion', $data)) {
-            $object->setFirmwareVersion($data['firmwareVersion']);
+            $object->firmwareVersion = $data['firmwareVersion'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('firmwareVersion') && null !== $data->getFirmwareVersion()) {
-            $dataArray['firmwareVersion'] = $data->getFirmwareVersion();
+        if (array_key_exists('firmwareVersion', get_object_vars($data)) && null !== ($data->firmwareVersion ?? null)) {
+            $dataArray['firmwareVersion'] = $data->firmwareVersion ?? null;
         }
         return $dataArray;
     }

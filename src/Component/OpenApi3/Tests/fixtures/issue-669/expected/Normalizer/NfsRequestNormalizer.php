@@ -38,15 +38,15 @@ class NfsRequestNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('size_gib', $data)) {
-            $object->setSizeGib($data['size_gib']);
+            $object->sizeGib = $data['size_gib'];
             unset($data['size_gib']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('vpc_ids', $data)) {
@@ -54,7 +54,7 @@ class NfsRequestNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['vpc_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setVpcIds($values);
+            $object->vpcIds = $values;
             unset($data['vpc_ids']);
         }
         foreach ($data as $key => $value_1) {
@@ -67,11 +67,11 @@ class NfsRequestNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['size_gib'] = $data->getSizeGib();
-        $dataArray['region'] = $data->getRegion();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['size_gib'] = $data->sizeGib ?? null;
+        $dataArray['region'] = $data->region ?? null;
         $values = [];
-        foreach ($data->getVpcIds() as $value) {
+        foreach ($data->vpcIds ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['vpc_ids'] = $values;

@@ -38,21 +38,21 @@ class MduSegmentationProfileSiteSecondaryNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('index', $data)) {
-            $object->setIndex($data['index']);
+            $object->index = $data['index'];
         }
         if (\array_key_exists('dpId', $data)) {
-            $object->setDpId($data['dpId']);
+            $object->dpId = $data['dpId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('index') && null !== $data->getIndex()) {
-            $dataArray['index'] = $data->getIndex();
+        if (array_key_exists('index', get_object_vars($data)) && null !== ($data->index ?? null)) {
+            $dataArray['index'] = $data->index ?? null;
         }
-        if ($data->isInitialized('dpId') && null !== $data->getDpId()) {
-            $dataArray['dpId'] = $data->getDpId();
+        if (array_key_exists('dpId', get_object_vars($data)) && null !== ($data->dpId ?? null)) {
+            $dataArray['dpId'] = $data->dpId ?? null;
         }
         return $dataArray;
     }

@@ -41,39 +41,39 @@ class ZoneAvailableTunnelProfileNormalizer implements DenormalizerInterface, Nor
             $data['aaaAffinityEnabled'] = (bool) $data['aaaAffinityEnabled'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('tunnelType', $data)) {
-            $object->setTunnelType($data['tunnelType']);
+            $object->tunnelType = $data['tunnelType'];
         }
         if (\array_key_exists('ipMode', $data)) {
-            $object->setIpMode($data['ipMode']);
+            $object->ipMode = $data['ipMode'];
         }
         if (\array_key_exists('aaaAffinityEnabled', $data)) {
-            $object->setAaaAffinityEnabled($data['aaaAffinityEnabled']);
+            $object->aaaAffinityEnabled = $data['aaaAffinityEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('tunnelType') && null !== $data->getTunnelType()) {
-            $dataArray['tunnelType'] = $data->getTunnelType();
+        if (array_key_exists('tunnelType', get_object_vars($data)) && null !== ($data->tunnelType ?? null)) {
+            $dataArray['tunnelType'] = $data->tunnelType ?? null;
         }
-        if ($data->isInitialized('ipMode') && null !== $data->getIpMode()) {
-            $dataArray['ipMode'] = $data->getIpMode();
+        if (array_key_exists('ipMode', get_object_vars($data)) && null !== ($data->ipMode ?? null)) {
+            $dataArray['ipMode'] = $data->ipMode ?? null;
         }
-        if ($data->isInitialized('aaaAffinityEnabled') && null !== $data->getAaaAffinityEnabled()) {
-            $dataArray['aaaAffinityEnabled'] = $data->getAaaAffinityEnabled();
+        if (array_key_exists('aaaAffinityEnabled', get_object_vars($data)) && null !== ($data->aaaAffinityEnabled ?? null)) {
+            $dataArray['aaaAffinityEnabled'] = $data->aaaAffinityEnabled ?? null;
         }
         return $dataArray;
     }

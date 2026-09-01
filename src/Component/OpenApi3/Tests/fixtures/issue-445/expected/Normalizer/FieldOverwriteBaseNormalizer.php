@@ -50,37 +50,37 @@ class FieldOverwriteBaseNormalizer implements DenormalizerInterface, NormalizerI
             $data['overwriteRequired'] = (bool) $data['overwriteRequired'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
         }
         if (\array_key_exists('required', $data)) {
-            $object->setRequired($data['required']);
+            $object->required = $data['required'];
         }
         if (\array_key_exists('overwriteRequired', $data)) {
-            $object->setOverwriteRequired($data['overwriteRequired']);
+            $object->overwriteRequired = $data['overwriteRequired'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'FieldOverwriteSingleTagbox' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldOverwriteSingleTagbox' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'FieldOverwriteMultiTagbox' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'FieldOverwriteMultiTagbox' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['required'] = $data->getRequired();
-        $dataArray['overwriteRequired'] = $data->getOverwriteRequired();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['required'] = $data->required ?? null;
+        $dataArray['overwriteRequired'] = $data->overwriteRequired ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

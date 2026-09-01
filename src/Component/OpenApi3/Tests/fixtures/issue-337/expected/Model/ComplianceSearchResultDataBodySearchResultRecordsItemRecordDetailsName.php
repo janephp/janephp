@@ -8,37 +8,11 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName imp
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string
      */
-    protected $full;
-    /**
-     * @return string
-     */
-    public function getFull(): string
-    {
-        return $this->full;
-    }
-    /**
-     * @param string $full
-     *
-     * @return self
-     */
-    public function setFull(string $full): self
-    {
-        $this->initialized['full'] = true;
-        $this->full = $full;
-        return $this;
-    }
+    public string $full;
     public function definedProperties(): array
     {
-        return ['full' => ['full', 'getFull', 'setFull']];
+        return ['full' => 'full'];
     }
 }

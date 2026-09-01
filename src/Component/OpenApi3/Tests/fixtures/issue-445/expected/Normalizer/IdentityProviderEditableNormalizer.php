@@ -42,57 +42,57 @@ class IdentityProviderEditableNormalizer implements DenormalizerInterface, Norma
             foreach ($data['claimMapping'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\IdpClaimToUserAttributeMapping::class, 'json', $context);
             }
-            $object->setClaimMapping($values);
+            $object->claimMapping = $values;
         }
         elseif (\array_key_exists('claimMapping', $data) && $data['claimMapping'] === null) {
-            $object->setClaimMapping(null);
+            $object->claimMapping = null;
         }
         if (\array_key_exists('groupClaimType', $data) && $data['groupClaimType'] !== null) {
-            $object->setGroupClaimType($data['groupClaimType']);
+            $object->groupClaimType = $data['groupClaimType'];
         }
         elseif (\array_key_exists('groupClaimType', $data) && $data['groupClaimType'] === null) {
-            $object->setGroupClaimType(null);
+            $object->groupClaimType = null;
         }
         if (\array_key_exists('groupMapping', $data) && $data['groupMapping'] !== null) {
             $values_1 = [];
             foreach ($data['groupMapping'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\IdpGroupToUserRoleMapping::class, 'json', $context);
             }
-            $object->setGroupMapping($values_1);
+            $object->groupMapping = $values_1;
         }
         elseif (\array_key_exists('groupMapping', $data) && $data['groupMapping'] === null) {
-            $object->setGroupMapping(null);
+            $object->groupMapping = null;
         }
         if (\array_key_exists('fallbackUserRoleId', $data) && $data['fallbackUserRoleId'] !== null) {
-            $object->setFallbackUserRoleId($data['fallbackUserRoleId']);
+            $object->fallbackUserRoleId = $data['fallbackUserRoleId'];
         }
         elseif (\array_key_exists('fallbackUserRoleId', $data) && $data['fallbackUserRoleId'] === null) {
-            $object->setFallbackUserRoleId(null);
+            $object->fallbackUserRoleId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('claimMapping') && null !== $data->getClaimMapping()) {
+        if (array_key_exists('claimMapping', get_object_vars($data)) && null !== ($data->claimMapping ?? null)) {
             $values = [];
-            foreach ($data->getClaimMapping() as $value) {
+            foreach ($data->claimMapping ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['claimMapping'] = $values;
         }
-        if ($data->isInitialized('groupClaimType') && null !== $data->getGroupClaimType()) {
-            $dataArray['groupClaimType'] = $data->getGroupClaimType();
+        if (array_key_exists('groupClaimType', get_object_vars($data)) && null !== ($data->groupClaimType ?? null)) {
+            $dataArray['groupClaimType'] = $data->groupClaimType ?? null;
         }
-        if ($data->isInitialized('groupMapping') && null !== $data->getGroupMapping()) {
+        if (array_key_exists('groupMapping', get_object_vars($data)) && null !== ($data->groupMapping ?? null)) {
             $values_1 = [];
-            foreach ($data->getGroupMapping() as $value_1) {
+            foreach ($data->groupMapping ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['groupMapping'] = $values_1;
         }
-        if ($data->isInitialized('fallbackUserRoleId') && null !== $data->getFallbackUserRoleId()) {
-            $dataArray['fallbackUserRoleId'] = $data->getFallbackUserRoleId();
+        if (array_key_exists('fallbackUserRoleId', get_object_vars($data)) && null !== ($data->fallbackUserRoleId ?? null)) {
+            $dataArray['fallbackUserRoleId'] = $data->fallbackUserRoleId ?? null;
         }
         return $dataArray;
     }

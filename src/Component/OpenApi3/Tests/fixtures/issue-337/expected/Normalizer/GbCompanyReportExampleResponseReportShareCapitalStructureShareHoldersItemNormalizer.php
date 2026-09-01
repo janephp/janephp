@@ -44,27 +44,27 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItemN
             $data['percentSharesHeld'] = (float) $data['percentSharesHeld'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('shareholderType', $data)) {
-            $object->setShareholderType($data['shareholderType']);
+            $object->shareholderType = $data['shareholderType'];
             unset($data['shareholderType']);
         }
         if (\array_key_exists('shareType', $data)) {
-            $object->setShareType($data['shareType']);
+            $object->shareType = $data['shareType'];
             unset($data['shareType']);
         }
         if (\array_key_exists('currency', $data)) {
-            $object->setCurrency($data['currency']);
+            $object->currency = $data['currency'];
             unset($data['currency']);
         }
         if (\array_key_exists('totalNumberOfSharesOwned', $data)) {
-            $object->setTotalNumberOfSharesOwned($data['totalNumberOfSharesOwned']);
+            $object->totalNumberOfSharesOwned = $data['totalNumberOfSharesOwned'];
             unset($data['totalNumberOfSharesOwned']);
         }
         if (\array_key_exists('percentSharesHeld', $data)) {
-            $object->setPercentSharesHeld($data['percentSharesHeld']);
+            $object->percentSharesHeld = $data['percentSharesHeld'];
             unset($data['percentSharesHeld']);
         }
         foreach ($data as $key => $value) {
@@ -77,23 +77,23 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItemN
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('shareholderType') && null !== $data->getShareholderType()) {
-            $dataArray['shareholderType'] = $data->getShareholderType();
+        if (array_key_exists('shareholderType', get_object_vars($data)) && null !== ($data->shareholderType ?? null)) {
+            $dataArray['shareholderType'] = $data->shareholderType ?? null;
         }
-        if ($data->isInitialized('shareType') && null !== $data->getShareType()) {
-            $dataArray['shareType'] = $data->getShareType();
+        if (array_key_exists('shareType', get_object_vars($data)) && null !== ($data->shareType ?? null)) {
+            $dataArray['shareType'] = $data->shareType ?? null;
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
-            $dataArray['currency'] = $data->getCurrency();
+        if (array_key_exists('currency', get_object_vars($data)) && null !== ($data->currency ?? null)) {
+            $dataArray['currency'] = $data->currency ?? null;
         }
-        if ($data->isInitialized('totalNumberOfSharesOwned') && null !== $data->getTotalNumberOfSharesOwned()) {
-            $dataArray['totalNumberOfSharesOwned'] = $data->getTotalNumberOfSharesOwned();
+        if (array_key_exists('totalNumberOfSharesOwned', get_object_vars($data)) && null !== ($data->totalNumberOfSharesOwned ?? null)) {
+            $dataArray['totalNumberOfSharesOwned'] = $data->totalNumberOfSharesOwned ?? null;
         }
-        if ($data->isInitialized('percentSharesHeld') && null !== $data->getPercentSharesHeld()) {
-            $dataArray['percentSharesHeld'] = $data->getPercentSharesHeld();
+        if (array_key_exists('percentSharesHeld', get_object_vars($data)) && null !== ($data->percentSharesHeld ?? null)) {
+            $dataArray['percentSharesHeld'] = $data->percentSharesHeld ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

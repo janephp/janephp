@@ -41,39 +41,39 @@ class DpskWlanDpskSettingNormalizer implements DenormalizerInterface, Normalizer
             $data['dpskEnabled'] = (bool) $data['dpskEnabled'];
         }
         if (\array_key_exists('dpskEnabled', $data)) {
-            $object->setDpskEnabled($data['dpskEnabled']);
+            $object->dpskEnabled = $data['dpskEnabled'];
         }
         if (\array_key_exists('length', $data)) {
-            $object->setLength($data['length']);
+            $object->length = $data['length'];
         }
         if (\array_key_exists('dpskType', $data)) {
-            $object->setDpskType($data['dpskType']);
+            $object->dpskType = $data['dpskType'];
         }
         if (\array_key_exists('expiration', $data)) {
-            $object->setExpiration($data['expiration']);
+            $object->expiration = $data['expiration'];
         }
         if (\array_key_exists('dpskFromType', $data)) {
-            $object->setDpskFromType($data['dpskFromType']);
+            $object->dpskFromType = $data['dpskFromType'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dpskEnabled') && null !== $data->getDpskEnabled()) {
-            $dataArray['dpskEnabled'] = $data->getDpskEnabled();
+        if (array_key_exists('dpskEnabled', get_object_vars($data)) && null !== ($data->dpskEnabled ?? null)) {
+            $dataArray['dpskEnabled'] = $data->dpskEnabled ?? null;
         }
-        if ($data->isInitialized('length') && null !== $data->getLength()) {
-            $dataArray['length'] = $data->getLength();
+        if (array_key_exists('length', get_object_vars($data)) && null !== ($data->length ?? null)) {
+            $dataArray['length'] = $data->length ?? null;
         }
-        if ($data->isInitialized('dpskType') && null !== $data->getDpskType()) {
-            $dataArray['dpskType'] = $data->getDpskType();
+        if (array_key_exists('dpskType', get_object_vars($data)) && null !== ($data->dpskType ?? null)) {
+            $dataArray['dpskType'] = $data->dpskType ?? null;
         }
-        if ($data->isInitialized('expiration') && null !== $data->getExpiration()) {
-            $dataArray['expiration'] = $data->getExpiration();
+        if (array_key_exists('expiration', get_object_vars($data)) && null !== ($data->expiration ?? null)) {
+            $dataArray['expiration'] = $data->expiration ?? null;
         }
-        if ($data->isInitialized('dpskFromType') && null !== $data->getDpskFromType()) {
-            $dataArray['dpskFromType'] = $data->getDpskFromType();
+        if (array_key_exists('dpskFromType', get_object_vars($data)) && null !== ($data->dpskFromType ?? null)) {
+            $dataArray['dpskFromType'] = $data->dpskFromType ?? null;
         }
         return $dataArray;
     }

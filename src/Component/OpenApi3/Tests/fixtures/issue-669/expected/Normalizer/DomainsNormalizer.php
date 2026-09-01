@@ -41,15 +41,15 @@ class DomainsNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['is_managed'] = (bool) $data['is_managed'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('is_managed', $data)) {
-            $object->setIsManaged($data['is_managed']);
+            $object->isManaged = $data['is_managed'];
             unset($data['is_managed']);
         }
         if (\array_key_exists('certificate_id', $data)) {
-            $object->setCertificateId($data['certificate_id']);
+            $object->certificateId = $data['certificate_id'];
             unset($data['certificate_id']);
         }
         foreach ($data as $key => $value) {
@@ -62,14 +62,14 @@ class DomainsNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('isManaged') && null !== $data->getIsManaged()) {
-            $dataArray['is_managed'] = $data->getIsManaged();
+        if (array_key_exists('isManaged', get_object_vars($data)) && null !== ($data->isManaged ?? null)) {
+            $dataArray['is_managed'] = $data->isManaged ?? null;
         }
-        if ($data->isInitialized('certificateId') && null !== $data->getCertificateId()) {
-            $dataArray['certificate_id'] = $data->getCertificateId();
+        if (array_key_exists('certificateId', get_object_vars($data)) && null !== ($data->certificateId ?? null)) {
+            $dataArray['certificate_id'] = $data->certificateId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

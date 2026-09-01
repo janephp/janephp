@@ -38,7 +38,7 @@ class AppsVpcNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('egress_ips', $data)) {
@@ -46,7 +46,7 @@ class AppsVpcNormalizer implements DenormalizerInterface, NormalizerInterface, D
             foreach ($data['egress_ips'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppsVpcEgressIp::class, 'json', $context);
             }
-            $object->setEgressIps($values);
+            $object->egressIps = $values;
             unset($data['egress_ips']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class AppsVpcNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('egressIps') && null !== $data->getEgressIps()) {
+        if (array_key_exists('egressIps', get_object_vars($data)) && null !== ($data->egressIps ?? null)) {
             $values = [];
-            foreach ($data->getEgressIps() as $value) {
+            foreach ($data->egressIps ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['egress_ips'] = $values;

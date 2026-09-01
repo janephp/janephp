@@ -41,27 +41,27 @@ class PortfolioRequestNormalizer implements DenormalizerInterface, NormalizerInt
             $data['isDefault'] = (bool) $data['isDefault'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('isDefault', $data)) {
-            $object->setIsDefault($data['isDefault']);
+            $object->isDefault = $data['isDefault'];
             unset($data['isDefault']);
         }
         if (\array_key_exists('emails', $data)) {
-            $object->setEmails($this->denormalizer->denormalize($data['emails'], \CreditSafe\API\Model\PortfolioRequestEmails::class, 'json', $context));
+            $object->emails = $this->denormalizer->denormalize($data['emails'], \CreditSafe\API\Model\PortfolioRequestEmails::class, 'json', $context);
             unset($data['emails']);
         }
         if (\array_key_exists('emailSubject', $data)) {
-            $object->setEmailSubject($data['emailSubject']);
+            $object->emailSubject = $data['emailSubject'];
             unset($data['emailSubject']);
         }
         if (\array_key_exists('emailLanguage', $data)) {
-            $object->setEmailLanguage($data['emailLanguage']);
+            $object->emailLanguage = $data['emailLanguage'];
             unset($data['emailLanguage']);
         }
         if (\array_key_exists('frequency', $data)) {
-            $object->setFrequency($data['frequency']);
+            $object->frequency = $data['frequency'];
             unset($data['frequency']);
         }
         foreach ($data as $key => $value) {
@@ -74,19 +74,19 @@ class PortfolioRequestNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['isDefault'] = $data->getIsDefault();
-        if ($data->isInitialized('emails') && null !== $data->getEmails()) {
-            $dataArray['emails'] = $data->getEmails() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getEmails(), 'json', $context));
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['isDefault'] = $data->isDefault ?? null;
+        if (array_key_exists('emails', get_object_vars($data)) && null !== ($data->emails ?? null)) {
+            $dataArray['emails'] = ($data->emails ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->emails ?? null, 'json', $context));
         }
-        if ($data->isInitialized('emailSubject') && null !== $data->getEmailSubject()) {
-            $dataArray['emailSubject'] = $data->getEmailSubject();
+        if (array_key_exists('emailSubject', get_object_vars($data)) && null !== ($data->emailSubject ?? null)) {
+            $dataArray['emailSubject'] = $data->emailSubject ?? null;
         }
-        if ($data->isInitialized('emailLanguage') && null !== $data->getEmailLanguage()) {
-            $dataArray['emailLanguage'] = $data->getEmailLanguage();
+        if (array_key_exists('emailLanguage', get_object_vars($data)) && null !== ($data->emailLanguage ?? null)) {
+            $dataArray['emailLanguage'] = $data->emailLanguage ?? null;
         }
-        if ($data->isInitialized('frequency') && null !== $data->getFrequency()) {
-            $dataArray['frequency'] = $data->getFrequency();
+        if (array_key_exists('frequency', get_object_vars($data)) && null !== ($data->frequency ?? null)) {
+            $dataArray['frequency'] = $data->frequency ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

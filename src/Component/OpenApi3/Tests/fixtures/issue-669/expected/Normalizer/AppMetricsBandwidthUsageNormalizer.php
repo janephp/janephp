@@ -42,7 +42,7 @@ class AppMetricsBandwidthUsageNormalizer implements DenormalizerInterface, Norma
             foreach ($data['app_bandwidth_usage'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsageDetails::class, 'json', $context);
             }
-            $object->setAppBandwidthUsage($values);
+            $object->appBandwidthUsage = $values;
             unset($data['app_bandwidth_usage']);
         }
         if (\array_key_exists('date', $data)) {
@@ -50,7 +50,7 @@ class AppMetricsBandwidthUsageNormalizer implements DenormalizerInterface, Norma
             if (false === $date) {
                 throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
             }
-            $object->setDate($date);
+            $object->date = $date;
             unset($data['date']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,15 +63,15 @@ class AppMetricsBandwidthUsageNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('appBandwidthUsage') && null !== $data->getAppBandwidthUsage()) {
+        if (array_key_exists('appBandwidthUsage', get_object_vars($data)) && null !== ($data->appBandwidthUsage ?? null)) {
             $values = [];
-            foreach ($data->getAppBandwidthUsage() as $value) {
+            foreach ($data->appBandwidthUsage ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['app_bandwidth_usage'] = $values;
         }
-        if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
+            $dataArray['date'] = ($data->date ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

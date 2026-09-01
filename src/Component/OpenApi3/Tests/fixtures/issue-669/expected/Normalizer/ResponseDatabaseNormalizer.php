@@ -38,7 +38,7 @@ class ResponseDatabaseNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('db', $data)) {
-            $object->setDb($this->denormalizer->denormalize($data['db'], \Jane\Generated\DigitalOcean\Model\Database::class, 'json', $context));
+            $object->db = $this->denormalizer->denormalize($data['db'], \Jane\Generated\DigitalOcean\Model\Database::class, 'json', $context);
             unset($data['db']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class ResponseDatabaseNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['db'] = $data->getDb() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDb(), 'json', $context));
+        $dataArray['db'] = ($data->db ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->db ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

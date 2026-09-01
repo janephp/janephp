@@ -41,19 +41,19 @@ class ApiStarMetricNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['success_threshold'] = (float) $data['success_threshold'];
         }
         if (\array_key_exists('metric_uuid', $data)) {
-            $object->setMetricUuid($data['metric_uuid']);
+            $object->metricUuid = $data['metric_uuid'];
             unset($data['metric_uuid']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('success_threshold', $data)) {
-            $object->setSuccessThreshold($data['success_threshold']);
+            $object->successThreshold = $data['success_threshold'];
             unset($data['success_threshold']);
         }
         if (\array_key_exists('success_threshold_pct', $data)) {
-            $object->setSuccessThresholdPct($data['success_threshold_pct']);
+            $object->successThresholdPct = $data['success_threshold_pct'];
             unset($data['success_threshold_pct']);
         }
         foreach ($data as $key => $value) {
@@ -66,17 +66,17 @@ class ApiStarMetricNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('metricUuid') && null !== $data->getMetricUuid()) {
-            $dataArray['metric_uuid'] = $data->getMetricUuid();
+        if (array_key_exists('metricUuid', get_object_vars($data)) && null !== ($data->metricUuid ?? null)) {
+            $dataArray['metric_uuid'] = $data->metricUuid ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('successThreshold') && null !== $data->getSuccessThreshold()) {
-            $dataArray['success_threshold'] = $data->getSuccessThreshold();
+        if (array_key_exists('successThreshold', get_object_vars($data)) && null !== ($data->successThreshold ?? null)) {
+            $dataArray['success_threshold'] = $data->successThreshold ?? null;
         }
-        if ($data->isInitialized('successThresholdPct') && null !== $data->getSuccessThresholdPct()) {
-            $dataArray['success_threshold_pct'] = $data->getSuccessThresholdPct();
+        if (array_key_exists('successThresholdPct', get_object_vars($data)) && null !== ($data->successThresholdPct ?? null)) {
+            $dataArray['success_threshold_pct'] = $data->successThresholdPct ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

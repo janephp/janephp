@@ -38,90 +38,90 @@ class ContentCreateRequestNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('contentSchemaId', $data)) {
-            $object->setContentSchemaId($data['contentSchemaId']);
+            $object->contentSchemaId = $data['contentSchemaId'];
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values = [];
             foreach ($data['layerSchemaIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setLayerSchemaIds($values);
+            $object->layerSchemaIds = $values;
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
-            $object->setLayerSchemaIds(null);
+            $object->layerSchemaIds = null;
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['content'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
-            $object->setContent($values_1);
+            $object->content = $values_1;
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
-            $object->setContent(null);
+            $object->content = null;
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['metadata'] as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
-            $object->setMetadata($values_2);
+            $object->metadata = $values_2;
         }
         elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
-            $object->setMetadata(null);
+            $object->metadata = null;
         }
         if (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] !== null) {
             $values_3 = [];
             foreach ($data['contentPermissionSetIds'] as $value_3) {
                 $values_3[] = $value_3;
             }
-            $object->setContentPermissionSetIds($values_3);
+            $object->contentPermissionSetIds = $values_3;
         }
         elseif (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] === null) {
-            $object->setContentPermissionSetIds(null);
+            $object->contentPermissionSetIds = null;
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
-            $object->setRequestId($data['requestId']);
+            $object->requestId = $data['requestId'];
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
-            $object->setRequestId(null);
+            $object->requestId = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        $dataArray['contentSchemaId'] = $data->contentSchemaId ?? null;
+        if (array_key_exists('layerSchemaIds', get_object_vars($data)) && null !== ($data->layerSchemaIds ?? null)) {
             $values = [];
-            foreach ($data->getLayerSchemaIds() as $value) {
+            foreach ($data->layerSchemaIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getContent() as $key => $value_1) {
+            foreach ($data->content ?? null as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['content'] = $values_1;
         }
-        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+        if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getMetadata() as $key_1 => $value_2) {
+            foreach ($data->metadata ?? null as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
             $dataArray['metadata'] = $values_2;
         }
-        if ($data->isInitialized('contentPermissionSetIds') && null !== $data->getContentPermissionSetIds()) {
+        if (array_key_exists('contentPermissionSetIds', get_object_vars($data)) && null !== ($data->contentPermissionSetIds ?? null)) {
             $values_3 = [];
-            foreach ($data->getContentPermissionSetIds() as $value_3) {
+            foreach ($data->contentPermissionSetIds ?? null as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['contentPermissionSetIds'] = $values_3;
         }
-        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
-            $dataArray['requestId'] = $data->getRequestId();
+        if (array_key_exists('requestId', get_object_vars($data)) && null !== ($data->requestId ?? null)) {
+            $dataArray['requestId'] = $data->requestId ?? null;
         }
         return $dataArray;
     }

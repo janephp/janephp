@@ -38,39 +38,39 @@ class ClusterbladeBladeProgressNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('bladeUUID', $data)) {
-            $object->setBladeUUID($data['bladeUUID']);
+            $object->bladeUUID = $data['bladeUUID'];
         }
         if (\array_key_exists('hostName', $data)) {
-            $object->setHostName($data['hostName']);
+            $object->hostName = $data['hostName'];
         }
         if (\array_key_exists('iterationName', $data)) {
-            $object->setIterationName($data['iterationName']);
+            $object->iterationName = $data['iterationName'];
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $object->state = $data['state'];
         }
         if (\array_key_exists('progress', $data)) {
-            $object->setProgress($data['progress']);
+            $object->progress = $data['progress'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('bladeUUID') && null !== $data->getBladeUUID()) {
-            $dataArray['bladeUUID'] = $data->getBladeUUID();
+        if (array_key_exists('bladeUUID', get_object_vars($data)) && null !== ($data->bladeUUID ?? null)) {
+            $dataArray['bladeUUID'] = $data->bladeUUID ?? null;
         }
-        if ($data->isInitialized('hostName') && null !== $data->getHostName()) {
-            $dataArray['hostName'] = $data->getHostName();
+        if (array_key_exists('hostName', get_object_vars($data)) && null !== ($data->hostName ?? null)) {
+            $dataArray['hostName'] = $data->hostName ?? null;
         }
-        if ($data->isInitialized('iterationName') && null !== $data->getIterationName()) {
-            $dataArray['iterationName'] = $data->getIterationName();
+        if (array_key_exists('iterationName', get_object_vars($data)) && null !== ($data->iterationName ?? null)) {
+            $dataArray['iterationName'] = $data->iterationName ?? null;
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $data->getState();
+        if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
+            $dataArray['state'] = $data->state ?? null;
         }
-        if ($data->isInitialized('progress') && null !== $data->getProgress()) {
-            $dataArray['progress'] = $data->getProgress();
+        if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
+            $dataArray['progress'] = $data->progress ?? null;
         }
         return $dataArray;
     }

@@ -38,31 +38,31 @@ class ApiAuditHeaderNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('actor_id', $data)) {
-            $object->setActorId($data['actor_id']);
+            $object->actorId = $data['actor_id'];
             unset($data['actor_id']);
         }
         if (\array_key_exists('actor_ip', $data)) {
-            $object->setActorIp($data['actor_ip']);
+            $object->actorIp = $data['actor_ip'];
             unset($data['actor_ip']);
         }
         if (\array_key_exists('actor_uuid', $data)) {
-            $object->setActorUuid($data['actor_uuid']);
+            $object->actorUuid = $data['actor_uuid'];
             unset($data['actor_uuid']);
         }
         if (\array_key_exists('context_urn', $data)) {
-            $object->setContextUrn($data['context_urn']);
+            $object->contextUrn = $data['context_urn'];
             unset($data['context_urn']);
         }
         if (\array_key_exists('origin_application', $data)) {
-            $object->setOriginApplication($data['origin_application']);
+            $object->originApplication = $data['origin_application'];
             unset($data['origin_application']);
         }
         if (\array_key_exists('user_id', $data)) {
-            $object->setUserId($data['user_id']);
+            $object->userId = $data['user_id'];
             unset($data['user_id']);
         }
         if (\array_key_exists('user_uuid', $data)) {
-            $object->setUserUuid($data['user_uuid']);
+            $object->userUuid = $data['user_uuid'];
             unset($data['user_uuid']);
         }
         foreach ($data as $key => $value) {
@@ -75,26 +75,26 @@ class ApiAuditHeaderNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('actorId') && null !== $data->getActorId()) {
-            $dataArray['actor_id'] = $data->getActorId();
+        if (array_key_exists('actorId', get_object_vars($data)) && null !== ($data->actorId ?? null)) {
+            $dataArray['actor_id'] = $data->actorId ?? null;
         }
-        if ($data->isInitialized('actorIp') && null !== $data->getActorIp()) {
-            $dataArray['actor_ip'] = $data->getActorIp();
+        if (array_key_exists('actorIp', get_object_vars($data)) && null !== ($data->actorIp ?? null)) {
+            $dataArray['actor_ip'] = $data->actorIp ?? null;
         }
-        if ($data->isInitialized('actorUuid') && null !== $data->getActorUuid()) {
-            $dataArray['actor_uuid'] = $data->getActorUuid();
+        if (array_key_exists('actorUuid', get_object_vars($data)) && null !== ($data->actorUuid ?? null)) {
+            $dataArray['actor_uuid'] = $data->actorUuid ?? null;
         }
-        if ($data->isInitialized('contextUrn') && null !== $data->getContextUrn()) {
-            $dataArray['context_urn'] = $data->getContextUrn();
+        if (array_key_exists('contextUrn', get_object_vars($data)) && null !== ($data->contextUrn ?? null)) {
+            $dataArray['context_urn'] = $data->contextUrn ?? null;
         }
-        if ($data->isInitialized('originApplication') && null !== $data->getOriginApplication()) {
-            $dataArray['origin_application'] = $data->getOriginApplication();
+        if (array_key_exists('originApplication', get_object_vars($data)) && null !== ($data->originApplication ?? null)) {
+            $dataArray['origin_application'] = $data->originApplication ?? null;
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['user_id'] = $data->getUserId();
+        if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['user_id'] = $data->userId ?? null;
         }
-        if ($data->isInitialized('userUuid') && null !== $data->getUserUuid()) {
-            $dataArray['user_uuid'] = $data->getUserUuid();
+        if (array_key_exists('userUuid', get_object_vars($data)) && null !== ($data->userUuid ?? null)) {
+            $dataArray['user_uuid'] = $data->userUuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

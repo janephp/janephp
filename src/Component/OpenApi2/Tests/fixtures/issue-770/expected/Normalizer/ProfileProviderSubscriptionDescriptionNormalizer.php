@@ -38,29 +38,29 @@ class ProfileProviderSubscriptionDescriptionNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('language', $data)) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('icon', $data)) {
-            $object->setIcon($data['icon']);
+            $object->icon = $data['icon'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['language'] = $data->getLanguage();
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        $dataArray['language'] = $data->language ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('icon') && null !== $data->getIcon()) {
-            $dataArray['icon'] = $data->getIcon();
+        if (array_key_exists('icon', get_object_vars($data)) && null !== ($data->icon ?? null)) {
+            $dataArray['icon'] = $data->icon ?? null;
         }
         return $dataArray;
     }

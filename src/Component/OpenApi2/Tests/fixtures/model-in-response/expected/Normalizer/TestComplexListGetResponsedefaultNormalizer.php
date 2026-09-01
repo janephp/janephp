@@ -41,21 +41,21 @@ class TestComplexListGetResponsedefaultNormalizer implements DenormalizerInterfa
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('error', $data)) {
-            $object->setError($data['error']);
+            $object->error = $data['error'];
         }
         if (\array_key_exists('ok', $data)) {
-            $object->setOk($data['ok']);
+            $object->ok = $data['ok'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['error'] = $data->getError();
+        if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $dataArray['error'] = $data->error ?? null;
         }
-        if ($data->isInitialized('ok') && null !== $data->getOk()) {
-            $dataArray['ok'] = $data->getOk();
+        if (array_key_exists('ok', get_object_vars($data)) && null !== ($data->ok ?? null)) {
+            $dataArray['ok'] = $data->ok ?? null;
         }
         return $dataArray;
     }

@@ -86,25 +86,25 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\SystemInfoConstraint());
         }
         if (\array_key_exists('ID', $data)) {
-            $object->setID($data['ID']);
+            $object->iD = $data['ID'];
         }
         if (\array_key_exists('Containers', $data)) {
-            $object->setContainers($data['Containers']);
+            $object->containers = $data['Containers'];
         }
         if (\array_key_exists('ContainersRunning', $data)) {
-            $object->setContainersRunning($data['ContainersRunning']);
+            $object->containersRunning = $data['ContainersRunning'];
         }
         if (\array_key_exists('ContainersPaused', $data)) {
-            $object->setContainersPaused($data['ContainersPaused']);
+            $object->containersPaused = $data['ContainersPaused'];
         }
         if (\array_key_exists('ContainersStopped', $data)) {
-            $object->setContainersStopped($data['ContainersStopped']);
+            $object->containersStopped = $data['ContainersStopped'];
         }
         if (\array_key_exists('Images', $data)) {
-            $object->setImages($data['Images']);
+            $object->images = $data['Images'];
         }
         if (\array_key_exists('Driver', $data)) {
-            $object->setDriver($data['Driver']);
+            $object->driver = $data['Driver'];
         }
         if (\array_key_exists('DriverStatus', $data)) {
             $values = [];
@@ -115,226 +115,226 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
                 }
                 $values[] = $values_1;
             }
-            $object->setDriverStatus($values);
+            $object->driverStatus = $values;
         }
         if (\array_key_exists('DockerRootDir', $data)) {
-            $object->setDockerRootDir($data['DockerRootDir']);
+            $object->dockerRootDir = $data['DockerRootDir'];
         }
         if (\array_key_exists('Plugins', $data)) {
-            $object->setPlugins($this->denormalizer->denormalize($data['Plugins'], \Docker\Api\Model\PluginsInfo::class, 'json', $context));
+            $object->plugins = $this->denormalizer->denormalize($data['Plugins'], \Docker\Api\Model\PluginsInfo::class, 'json', $context);
         }
         if (\array_key_exists('MemoryLimit', $data)) {
-            $object->setMemoryLimit($data['MemoryLimit']);
+            $object->memoryLimit = $data['MemoryLimit'];
         }
         if (\array_key_exists('SwapLimit', $data)) {
-            $object->setSwapLimit($data['SwapLimit']);
+            $object->swapLimit = $data['SwapLimit'];
         }
         if (\array_key_exists('KernelMemory', $data)) {
-            $object->setKernelMemory($data['KernelMemory']);
+            $object->kernelMemory = $data['KernelMemory'];
         }
         if (\array_key_exists('CpuCfsPeriod', $data)) {
-            $object->setCpuCfsPeriod($data['CpuCfsPeriod']);
+            $object->cpuCfsPeriod = $data['CpuCfsPeriod'];
         }
         if (\array_key_exists('CpuCfsQuota', $data)) {
-            $object->setCpuCfsQuota($data['CpuCfsQuota']);
+            $object->cpuCfsQuota = $data['CpuCfsQuota'];
         }
         if (\array_key_exists('CPUShares', $data)) {
-            $object->setCPUShares($data['CPUShares']);
+            $object->cPUShares = $data['CPUShares'];
         }
         if (\array_key_exists('CPUSet', $data)) {
-            $object->setCPUSet($data['CPUSet']);
+            $object->cPUSet = $data['CPUSet'];
         }
         if (\array_key_exists('PidsLimit', $data)) {
-            $object->setPidsLimit($data['PidsLimit']);
+            $object->pidsLimit = $data['PidsLimit'];
         }
         if (\array_key_exists('OomKillDisable', $data)) {
-            $object->setOomKillDisable($data['OomKillDisable']);
+            $object->oomKillDisable = $data['OomKillDisable'];
         }
         if (\array_key_exists('IPv4Forwarding', $data)) {
-            $object->setIPv4Forwarding($data['IPv4Forwarding']);
+            $object->iPv4Forwarding = $data['IPv4Forwarding'];
         }
         if (\array_key_exists('BridgeNfIptables', $data)) {
-            $object->setBridgeNfIptables($data['BridgeNfIptables']);
+            $object->bridgeNfIptables = $data['BridgeNfIptables'];
         }
         if (\array_key_exists('BridgeNfIp6tables', $data)) {
-            $object->setBridgeNfIp6tables($data['BridgeNfIp6tables']);
+            $object->bridgeNfIp6tables = $data['BridgeNfIp6tables'];
         }
         if (\array_key_exists('Debug', $data)) {
-            $object->setDebug($data['Debug']);
+            $object->debug = $data['Debug'];
         }
         if (\array_key_exists('NFd', $data)) {
-            $object->setNFd($data['NFd']);
+            $object->nFd = $data['NFd'];
         }
         if (\array_key_exists('NGoroutines', $data)) {
-            $object->setNGoroutines($data['NGoroutines']);
+            $object->nGoroutines = $data['NGoroutines'];
         }
         if (\array_key_exists('SystemTime', $data)) {
-            $object->setSystemTime($data['SystemTime']);
+            $object->systemTime = $data['SystemTime'];
         }
         if (\array_key_exists('LoggingDriver', $data)) {
-            $object->setLoggingDriver($data['LoggingDriver']);
+            $object->loggingDriver = $data['LoggingDriver'];
         }
         if (\array_key_exists('CgroupDriver', $data)) {
-            $object->setCgroupDriver($data['CgroupDriver']);
+            $object->cgroupDriver = $data['CgroupDriver'];
         }
         if (\array_key_exists('CgroupVersion', $data)) {
-            $object->setCgroupVersion($data['CgroupVersion']);
+            $object->cgroupVersion = $data['CgroupVersion'];
         }
         if (\array_key_exists('NEventsListener', $data)) {
-            $object->setNEventsListener($data['NEventsListener']);
+            $object->nEventsListener = $data['NEventsListener'];
         }
         if (\array_key_exists('KernelVersion', $data)) {
-            $object->setKernelVersion($data['KernelVersion']);
+            $object->kernelVersion = $data['KernelVersion'];
         }
         if (\array_key_exists('OperatingSystem', $data)) {
-            $object->setOperatingSystem($data['OperatingSystem']);
+            $object->operatingSystem = $data['OperatingSystem'];
         }
         if (\array_key_exists('OSVersion', $data)) {
-            $object->setOSVersion($data['OSVersion']);
+            $object->oSVersion = $data['OSVersion'];
         }
         if (\array_key_exists('OSType', $data)) {
-            $object->setOSType($data['OSType']);
+            $object->oSType = $data['OSType'];
         }
         if (\array_key_exists('Architecture', $data)) {
-            $object->setArchitecture($data['Architecture']);
+            $object->architecture = $data['Architecture'];
         }
         if (\array_key_exists('NCPU', $data)) {
-            $object->setNCPU($data['NCPU']);
+            $object->nCPU = $data['NCPU'];
         }
         if (\array_key_exists('MemTotal', $data)) {
-            $object->setMemTotal($data['MemTotal']);
+            $object->memTotal = $data['MemTotal'];
         }
         if (\array_key_exists('IndexServerAddress', $data)) {
-            $object->setIndexServerAddress($data['IndexServerAddress']);
+            $object->indexServerAddress = $data['IndexServerAddress'];
         }
         if (\array_key_exists('RegistryConfig', $data) && $data['RegistryConfig'] !== null) {
-            $object->setRegistryConfig($this->denormalizer->denormalize($data['RegistryConfig'], \Docker\Api\Model\RegistryServiceConfig::class, 'json', $context));
+            $object->registryConfig = $this->denormalizer->denormalize($data['RegistryConfig'], \Docker\Api\Model\RegistryServiceConfig::class, 'json', $context);
         }
         elseif (\array_key_exists('RegistryConfig', $data) && $data['RegistryConfig'] === null) {
-            $object->setRegistryConfig(null);
+            $object->registryConfig = null;
         }
         if (\array_key_exists('GenericResources', $data)) {
             $values_2 = [];
             foreach ($data['GenericResources'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Docker\Api\Model\GenericResourcesItem::class, 'json', $context);
             }
-            $object->setGenericResources($values_2);
+            $object->genericResources = $values_2;
         }
         if (\array_key_exists('HttpProxy', $data)) {
-            $object->setHttpProxy($data['HttpProxy']);
+            $object->httpProxy = $data['HttpProxy'];
         }
         if (\array_key_exists('HttpsProxy', $data)) {
-            $object->setHttpsProxy($data['HttpsProxy']);
+            $object->httpsProxy = $data['HttpsProxy'];
         }
         if (\array_key_exists('NoProxy', $data)) {
-            $object->setNoProxy($data['NoProxy']);
+            $object->noProxy = $data['NoProxy'];
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         if (\array_key_exists('Labels', $data)) {
             $values_3 = [];
             foreach ($data['Labels'] as $value_3) {
                 $values_3[] = $value_3;
             }
-            $object->setLabels($values_3);
+            $object->labels = $values_3;
         }
         if (\array_key_exists('ExperimentalBuild', $data)) {
-            $object->setExperimentalBuild($data['ExperimentalBuild']);
+            $object->experimentalBuild = $data['ExperimentalBuild'];
         }
         if (\array_key_exists('ServerVersion', $data)) {
-            $object->setServerVersion($data['ServerVersion']);
+            $object->serverVersion = $data['ServerVersion'];
         }
         if (\array_key_exists('ClusterStore', $data)) {
-            $object->setClusterStore($data['ClusterStore']);
+            $object->clusterStore = $data['ClusterStore'];
         }
         if (\array_key_exists('ClusterAdvertise', $data)) {
-            $object->setClusterAdvertise($data['ClusterAdvertise']);
+            $object->clusterAdvertise = $data['ClusterAdvertise'];
         }
         if (\array_key_exists('Runtimes', $data)) {
             $values_4 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Runtimes'] as $key => $value_4) {
                 $values_4[$key] = $this->denormalizer->denormalize($value_4, \Docker\Api\Model\Runtime::class, 'json', $context);
             }
-            $object->setRuntimes($values_4);
+            $object->runtimes = $values_4;
         }
         if (\array_key_exists('DefaultRuntime', $data)) {
-            $object->setDefaultRuntime($data['DefaultRuntime']);
+            $object->defaultRuntime = $data['DefaultRuntime'];
         }
         if (\array_key_exists('Swarm', $data)) {
-            $object->setSwarm($this->denormalizer->denormalize($data['Swarm'], \Docker\Api\Model\SwarmInfo::class, 'json', $context));
+            $object->swarm = $this->denormalizer->denormalize($data['Swarm'], \Docker\Api\Model\SwarmInfo::class, 'json', $context);
         }
         if (\array_key_exists('LiveRestoreEnabled', $data)) {
-            $object->setLiveRestoreEnabled($data['LiveRestoreEnabled']);
+            $object->liveRestoreEnabled = $data['LiveRestoreEnabled'];
         }
         if (\array_key_exists('Isolation', $data)) {
-            $object->setIsolation($data['Isolation']);
+            $object->isolation = $data['Isolation'];
         }
         if (\array_key_exists('InitBinary', $data)) {
-            $object->setInitBinary($data['InitBinary']);
+            $object->initBinary = $data['InitBinary'];
         }
         if (\array_key_exists('ContainerdCommit', $data)) {
-            $object->setContainerdCommit($this->denormalizer->denormalize($data['ContainerdCommit'], \Docker\Api\Model\Commit::class, 'json', $context));
+            $object->containerdCommit = $this->denormalizer->denormalize($data['ContainerdCommit'], \Docker\Api\Model\Commit::class, 'json', $context);
         }
         if (\array_key_exists('RuncCommit', $data)) {
-            $object->setRuncCommit($this->denormalizer->denormalize($data['RuncCommit'], \Docker\Api\Model\Commit::class, 'json', $context));
+            $object->runcCommit = $this->denormalizer->denormalize($data['RuncCommit'], \Docker\Api\Model\Commit::class, 'json', $context);
         }
         if (\array_key_exists('InitCommit', $data)) {
-            $object->setInitCommit($this->denormalizer->denormalize($data['InitCommit'], \Docker\Api\Model\Commit::class, 'json', $context));
+            $object->initCommit = $this->denormalizer->denormalize($data['InitCommit'], \Docker\Api\Model\Commit::class, 'json', $context);
         }
         if (\array_key_exists('SecurityOptions', $data)) {
             $values_5 = [];
             foreach ($data['SecurityOptions'] as $value_5) {
                 $values_5[] = $value_5;
             }
-            $object->setSecurityOptions($values_5);
+            $object->securityOptions = $values_5;
         }
         if (\array_key_exists('ProductLicense', $data)) {
-            $object->setProductLicense($data['ProductLicense']);
+            $object->productLicense = $data['ProductLicense'];
         }
         if (\array_key_exists('DefaultAddressPools', $data)) {
             $values_6 = [];
             foreach ($data['DefaultAddressPools'] as $value_6) {
                 $values_6[] = $this->denormalizer->denormalize($value_6, \Docker\Api\Model\SystemInfoDefaultAddressPoolsItem::class, 'json', $context);
             }
-            $object->setDefaultAddressPools($values_6);
+            $object->defaultAddressPools = $values_6;
         }
         if (\array_key_exists('Warnings', $data)) {
             $values_7 = [];
             foreach ($data['Warnings'] as $value_7) {
                 $values_7[] = $value_7;
             }
-            $object->setWarnings($values_7);
+            $object->warnings = $values_7;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iD') && null !== $data->getID()) {
-            $dataArray['ID'] = $data->getID();
+        if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
+            $dataArray['ID'] = $data->iD ?? null;
         }
-        if ($data->isInitialized('containers') && null !== $data->getContainers()) {
-            $dataArray['Containers'] = $data->getContainers();
+        if (array_key_exists('containers', get_object_vars($data)) && null !== ($data->containers ?? null)) {
+            $dataArray['Containers'] = $data->containers ?? null;
         }
-        if ($data->isInitialized('containersRunning') && null !== $data->getContainersRunning()) {
-            $dataArray['ContainersRunning'] = $data->getContainersRunning();
+        if (array_key_exists('containersRunning', get_object_vars($data)) && null !== ($data->containersRunning ?? null)) {
+            $dataArray['ContainersRunning'] = $data->containersRunning ?? null;
         }
-        if ($data->isInitialized('containersPaused') && null !== $data->getContainersPaused()) {
-            $dataArray['ContainersPaused'] = $data->getContainersPaused();
+        if (array_key_exists('containersPaused', get_object_vars($data)) && null !== ($data->containersPaused ?? null)) {
+            $dataArray['ContainersPaused'] = $data->containersPaused ?? null;
         }
-        if ($data->isInitialized('containersStopped') && null !== $data->getContainersStopped()) {
-            $dataArray['ContainersStopped'] = $data->getContainersStopped();
+        if (array_key_exists('containersStopped', get_object_vars($data)) && null !== ($data->containersStopped ?? null)) {
+            $dataArray['ContainersStopped'] = $data->containersStopped ?? null;
         }
-        if ($data->isInitialized('images') && null !== $data->getImages()) {
-            $dataArray['Images'] = $data->getImages();
+        if (array_key_exists('images', get_object_vars($data)) && null !== ($data->images ?? null)) {
+            $dataArray['Images'] = $data->images ?? null;
         }
-        if ($data->isInitialized('driver') && null !== $data->getDriver()) {
-            $dataArray['Driver'] = $data->getDriver();
+        if (array_key_exists('driver', get_object_vars($data)) && null !== ($data->driver ?? null)) {
+            $dataArray['Driver'] = $data->driver ?? null;
         }
-        if ($data->isInitialized('driverStatus') && null !== $data->getDriverStatus()) {
+        if (array_key_exists('driverStatus', get_object_vars($data)) && null !== ($data->driverStatus ?? null)) {
             $values = [];
-            foreach ($data->getDriverStatus() as $value) {
+            foreach ($data->driverStatus ?? null as $value) {
                 $values_1 = [];
                 foreach ($value as $value_1) {
                     $values_1[] = $value_1;
@@ -343,188 +343,188 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $dataArray['DriverStatus'] = $values;
         }
-        if ($data->isInitialized('dockerRootDir') && null !== $data->getDockerRootDir()) {
-            $dataArray['DockerRootDir'] = $data->getDockerRootDir();
+        if (array_key_exists('dockerRootDir', get_object_vars($data)) && null !== ($data->dockerRootDir ?? null)) {
+            $dataArray['DockerRootDir'] = $data->dockerRootDir ?? null;
         }
-        if ($data->isInitialized('plugins') && null !== $data->getPlugins()) {
-            $dataArray['Plugins'] = $data->getPlugins() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPlugins(), 'json', $context));
+        if (array_key_exists('plugins', get_object_vars($data)) && null !== ($data->plugins ?? null)) {
+            $dataArray['Plugins'] = ($data->plugins ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->plugins ?? null, 'json', $context));
         }
-        if ($data->isInitialized('memoryLimit') && null !== $data->getMemoryLimit()) {
-            $dataArray['MemoryLimit'] = $data->getMemoryLimit();
+        if (array_key_exists('memoryLimit', get_object_vars($data)) && null !== ($data->memoryLimit ?? null)) {
+            $dataArray['MemoryLimit'] = $data->memoryLimit ?? null;
         }
-        if ($data->isInitialized('swapLimit') && null !== $data->getSwapLimit()) {
-            $dataArray['SwapLimit'] = $data->getSwapLimit();
+        if (array_key_exists('swapLimit', get_object_vars($data)) && null !== ($data->swapLimit ?? null)) {
+            $dataArray['SwapLimit'] = $data->swapLimit ?? null;
         }
-        if ($data->isInitialized('kernelMemory') && null !== $data->getKernelMemory()) {
-            $dataArray['KernelMemory'] = $data->getKernelMemory();
+        if (array_key_exists('kernelMemory', get_object_vars($data)) && null !== ($data->kernelMemory ?? null)) {
+            $dataArray['KernelMemory'] = $data->kernelMemory ?? null;
         }
-        if ($data->isInitialized('cpuCfsPeriod') && null !== $data->getCpuCfsPeriod()) {
-            $dataArray['CpuCfsPeriod'] = $data->getCpuCfsPeriod();
+        if (array_key_exists('cpuCfsPeriod', get_object_vars($data)) && null !== ($data->cpuCfsPeriod ?? null)) {
+            $dataArray['CpuCfsPeriod'] = $data->cpuCfsPeriod ?? null;
         }
-        if ($data->isInitialized('cpuCfsQuota') && null !== $data->getCpuCfsQuota()) {
-            $dataArray['CpuCfsQuota'] = $data->getCpuCfsQuota();
+        if (array_key_exists('cpuCfsQuota', get_object_vars($data)) && null !== ($data->cpuCfsQuota ?? null)) {
+            $dataArray['CpuCfsQuota'] = $data->cpuCfsQuota ?? null;
         }
-        if ($data->isInitialized('cPUShares') && null !== $data->getCPUShares()) {
-            $dataArray['CPUShares'] = $data->getCPUShares();
+        if (array_key_exists('cPUShares', get_object_vars($data)) && null !== ($data->cPUShares ?? null)) {
+            $dataArray['CPUShares'] = $data->cPUShares ?? null;
         }
-        if ($data->isInitialized('cPUSet') && null !== $data->getCPUSet()) {
-            $dataArray['CPUSet'] = $data->getCPUSet();
+        if (array_key_exists('cPUSet', get_object_vars($data)) && null !== ($data->cPUSet ?? null)) {
+            $dataArray['CPUSet'] = $data->cPUSet ?? null;
         }
-        if ($data->isInitialized('pidsLimit') && null !== $data->getPidsLimit()) {
-            $dataArray['PidsLimit'] = $data->getPidsLimit();
+        if (array_key_exists('pidsLimit', get_object_vars($data)) && null !== ($data->pidsLimit ?? null)) {
+            $dataArray['PidsLimit'] = $data->pidsLimit ?? null;
         }
-        if ($data->isInitialized('oomKillDisable') && null !== $data->getOomKillDisable()) {
-            $dataArray['OomKillDisable'] = $data->getOomKillDisable();
+        if (array_key_exists('oomKillDisable', get_object_vars($data)) && null !== ($data->oomKillDisable ?? null)) {
+            $dataArray['OomKillDisable'] = $data->oomKillDisable ?? null;
         }
-        if ($data->isInitialized('iPv4Forwarding') && null !== $data->getIPv4Forwarding()) {
-            $dataArray['IPv4Forwarding'] = $data->getIPv4Forwarding();
+        if (array_key_exists('iPv4Forwarding', get_object_vars($data)) && null !== ($data->iPv4Forwarding ?? null)) {
+            $dataArray['IPv4Forwarding'] = $data->iPv4Forwarding ?? null;
         }
-        if ($data->isInitialized('bridgeNfIptables') && null !== $data->getBridgeNfIptables()) {
-            $dataArray['BridgeNfIptables'] = $data->getBridgeNfIptables();
+        if (array_key_exists('bridgeNfIptables', get_object_vars($data)) && null !== ($data->bridgeNfIptables ?? null)) {
+            $dataArray['BridgeNfIptables'] = $data->bridgeNfIptables ?? null;
         }
-        if ($data->isInitialized('bridgeNfIp6tables') && null !== $data->getBridgeNfIp6tables()) {
-            $dataArray['BridgeNfIp6tables'] = $data->getBridgeNfIp6tables();
+        if (array_key_exists('bridgeNfIp6tables', get_object_vars($data)) && null !== ($data->bridgeNfIp6tables ?? null)) {
+            $dataArray['BridgeNfIp6tables'] = $data->bridgeNfIp6tables ?? null;
         }
-        if ($data->isInitialized('debug') && null !== $data->getDebug()) {
-            $dataArray['Debug'] = $data->getDebug();
+        if (array_key_exists('debug', get_object_vars($data)) && null !== ($data->debug ?? null)) {
+            $dataArray['Debug'] = $data->debug ?? null;
         }
-        if ($data->isInitialized('nFd') && null !== $data->getNFd()) {
-            $dataArray['NFd'] = $data->getNFd();
+        if (array_key_exists('nFd', get_object_vars($data)) && null !== ($data->nFd ?? null)) {
+            $dataArray['NFd'] = $data->nFd ?? null;
         }
-        if ($data->isInitialized('nGoroutines') && null !== $data->getNGoroutines()) {
-            $dataArray['NGoroutines'] = $data->getNGoroutines();
+        if (array_key_exists('nGoroutines', get_object_vars($data)) && null !== ($data->nGoroutines ?? null)) {
+            $dataArray['NGoroutines'] = $data->nGoroutines ?? null;
         }
-        if ($data->isInitialized('systemTime') && null !== $data->getSystemTime()) {
-            $dataArray['SystemTime'] = $data->getSystemTime();
+        if (array_key_exists('systemTime', get_object_vars($data)) && null !== ($data->systemTime ?? null)) {
+            $dataArray['SystemTime'] = $data->systemTime ?? null;
         }
-        if ($data->isInitialized('loggingDriver') && null !== $data->getLoggingDriver()) {
-            $dataArray['LoggingDriver'] = $data->getLoggingDriver();
+        if (array_key_exists('loggingDriver', get_object_vars($data)) && null !== ($data->loggingDriver ?? null)) {
+            $dataArray['LoggingDriver'] = $data->loggingDriver ?? null;
         }
-        if ($data->isInitialized('cgroupDriver') && null !== $data->getCgroupDriver()) {
-            $dataArray['CgroupDriver'] = $data->getCgroupDriver();
+        if (array_key_exists('cgroupDriver', get_object_vars($data)) && null !== ($data->cgroupDriver ?? null)) {
+            $dataArray['CgroupDriver'] = $data->cgroupDriver ?? null;
         }
-        if ($data->isInitialized('cgroupVersion') && null !== $data->getCgroupVersion()) {
-            $dataArray['CgroupVersion'] = $data->getCgroupVersion();
+        if (array_key_exists('cgroupVersion', get_object_vars($data)) && null !== ($data->cgroupVersion ?? null)) {
+            $dataArray['CgroupVersion'] = $data->cgroupVersion ?? null;
         }
-        if ($data->isInitialized('nEventsListener') && null !== $data->getNEventsListener()) {
-            $dataArray['NEventsListener'] = $data->getNEventsListener();
+        if (array_key_exists('nEventsListener', get_object_vars($data)) && null !== ($data->nEventsListener ?? null)) {
+            $dataArray['NEventsListener'] = $data->nEventsListener ?? null;
         }
-        if ($data->isInitialized('kernelVersion') && null !== $data->getKernelVersion()) {
-            $dataArray['KernelVersion'] = $data->getKernelVersion();
+        if (array_key_exists('kernelVersion', get_object_vars($data)) && null !== ($data->kernelVersion ?? null)) {
+            $dataArray['KernelVersion'] = $data->kernelVersion ?? null;
         }
-        if ($data->isInitialized('operatingSystem') && null !== $data->getOperatingSystem()) {
-            $dataArray['OperatingSystem'] = $data->getOperatingSystem();
+        if (array_key_exists('operatingSystem', get_object_vars($data)) && null !== ($data->operatingSystem ?? null)) {
+            $dataArray['OperatingSystem'] = $data->operatingSystem ?? null;
         }
-        if ($data->isInitialized('oSVersion') && null !== $data->getOSVersion()) {
-            $dataArray['OSVersion'] = $data->getOSVersion();
+        if (array_key_exists('oSVersion', get_object_vars($data)) && null !== ($data->oSVersion ?? null)) {
+            $dataArray['OSVersion'] = $data->oSVersion ?? null;
         }
-        if ($data->isInitialized('oSType') && null !== $data->getOSType()) {
-            $dataArray['OSType'] = $data->getOSType();
+        if (array_key_exists('oSType', get_object_vars($data)) && null !== ($data->oSType ?? null)) {
+            $dataArray['OSType'] = $data->oSType ?? null;
         }
-        if ($data->isInitialized('architecture') && null !== $data->getArchitecture()) {
-            $dataArray['Architecture'] = $data->getArchitecture();
+        if (array_key_exists('architecture', get_object_vars($data)) && null !== ($data->architecture ?? null)) {
+            $dataArray['Architecture'] = $data->architecture ?? null;
         }
-        if ($data->isInitialized('nCPU') && null !== $data->getNCPU()) {
-            $dataArray['NCPU'] = $data->getNCPU();
+        if (array_key_exists('nCPU', get_object_vars($data)) && null !== ($data->nCPU ?? null)) {
+            $dataArray['NCPU'] = $data->nCPU ?? null;
         }
-        if ($data->isInitialized('memTotal') && null !== $data->getMemTotal()) {
-            $dataArray['MemTotal'] = $data->getMemTotal();
+        if (array_key_exists('memTotal', get_object_vars($data)) && null !== ($data->memTotal ?? null)) {
+            $dataArray['MemTotal'] = $data->memTotal ?? null;
         }
-        if ($data->isInitialized('indexServerAddress') && null !== $data->getIndexServerAddress()) {
-            $dataArray['IndexServerAddress'] = $data->getIndexServerAddress();
+        if (array_key_exists('indexServerAddress', get_object_vars($data)) && null !== ($data->indexServerAddress ?? null)) {
+            $dataArray['IndexServerAddress'] = $data->indexServerAddress ?? null;
         }
-        if ($data->isInitialized('registryConfig') && null !== $data->getRegistryConfig()) {
-            $dataArray['RegistryConfig'] = $data->getRegistryConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getRegistryConfig(), 'json', $context));
+        if (array_key_exists('registryConfig', get_object_vars($data)) && null !== ($data->registryConfig ?? null)) {
+            $dataArray['RegistryConfig'] = ($data->registryConfig ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->registryConfig ?? null, 'json', $context));
         }
-        if ($data->isInitialized('genericResources') && null !== $data->getGenericResources()) {
+        if (array_key_exists('genericResources', get_object_vars($data)) && null !== ($data->genericResources ?? null)) {
             $values_2 = [];
-            foreach ($data->getGenericResources() as $value_2) {
+            foreach ($data->genericResources ?? null as $value_2) {
                 $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['GenericResources'] = $values_2;
         }
-        if ($data->isInitialized('httpProxy') && null !== $data->getHttpProxy()) {
-            $dataArray['HttpProxy'] = $data->getHttpProxy();
+        if (array_key_exists('httpProxy', get_object_vars($data)) && null !== ($data->httpProxy ?? null)) {
+            $dataArray['HttpProxy'] = $data->httpProxy ?? null;
         }
-        if ($data->isInitialized('httpsProxy') && null !== $data->getHttpsProxy()) {
-            $dataArray['HttpsProxy'] = $data->getHttpsProxy();
+        if (array_key_exists('httpsProxy', get_object_vars($data)) && null !== ($data->httpsProxy ?? null)) {
+            $dataArray['HttpsProxy'] = $data->httpsProxy ?? null;
         }
-        if ($data->isInitialized('noProxy') && null !== $data->getNoProxy()) {
-            $dataArray['NoProxy'] = $data->getNoProxy();
+        if (array_key_exists('noProxy', get_object_vars($data)) && null !== ($data->noProxy ?? null)) {
+            $dataArray['NoProxy'] = $data->noProxy ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('labels') && null !== $data->getLabels()) {
+        if (array_key_exists('labels', get_object_vars($data)) && null !== ($data->labels ?? null)) {
             $values_3 = [];
-            foreach ($data->getLabels() as $value_3) {
+            foreach ($data->labels ?? null as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['Labels'] = $values_3;
         }
-        if ($data->isInitialized('experimentalBuild') && null !== $data->getExperimentalBuild()) {
-            $dataArray['ExperimentalBuild'] = $data->getExperimentalBuild();
+        if (array_key_exists('experimentalBuild', get_object_vars($data)) && null !== ($data->experimentalBuild ?? null)) {
+            $dataArray['ExperimentalBuild'] = $data->experimentalBuild ?? null;
         }
-        if ($data->isInitialized('serverVersion') && null !== $data->getServerVersion()) {
-            $dataArray['ServerVersion'] = $data->getServerVersion();
+        if (array_key_exists('serverVersion', get_object_vars($data)) && null !== ($data->serverVersion ?? null)) {
+            $dataArray['ServerVersion'] = $data->serverVersion ?? null;
         }
-        if ($data->isInitialized('clusterStore') && null !== $data->getClusterStore()) {
-            $dataArray['ClusterStore'] = $data->getClusterStore();
+        if (array_key_exists('clusterStore', get_object_vars($data)) && null !== ($data->clusterStore ?? null)) {
+            $dataArray['ClusterStore'] = $data->clusterStore ?? null;
         }
-        if ($data->isInitialized('clusterAdvertise') && null !== $data->getClusterAdvertise()) {
-            $dataArray['ClusterAdvertise'] = $data->getClusterAdvertise();
+        if (array_key_exists('clusterAdvertise', get_object_vars($data)) && null !== ($data->clusterAdvertise ?? null)) {
+            $dataArray['ClusterAdvertise'] = $data->clusterAdvertise ?? null;
         }
-        if ($data->isInitialized('runtimes') && null !== $data->getRuntimes()) {
+        if (array_key_exists('runtimes', get_object_vars($data)) && null !== ($data->runtimes ?? null)) {
             $values_4 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getRuntimes() as $key => $value_4) {
+            foreach ($data->runtimes ?? null as $key => $value_4) {
                 $values_4[$key] = $value_4 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['Runtimes'] = $values_4;
         }
-        if ($data->isInitialized('defaultRuntime') && null !== $data->getDefaultRuntime()) {
-            $dataArray['DefaultRuntime'] = $data->getDefaultRuntime();
+        if (array_key_exists('defaultRuntime', get_object_vars($data)) && null !== ($data->defaultRuntime ?? null)) {
+            $dataArray['DefaultRuntime'] = $data->defaultRuntime ?? null;
         }
-        if ($data->isInitialized('swarm') && null !== $data->getSwarm()) {
-            $dataArray['Swarm'] = $data->getSwarm() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSwarm(), 'json', $context));
+        if (array_key_exists('swarm', get_object_vars($data)) && null !== ($data->swarm ?? null)) {
+            $dataArray['Swarm'] = ($data->swarm ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->swarm ?? null, 'json', $context));
         }
-        if ($data->isInitialized('liveRestoreEnabled') && null !== $data->getLiveRestoreEnabled()) {
-            $dataArray['LiveRestoreEnabled'] = $data->getLiveRestoreEnabled();
+        if (array_key_exists('liveRestoreEnabled', get_object_vars($data)) && null !== ($data->liveRestoreEnabled ?? null)) {
+            $dataArray['LiveRestoreEnabled'] = $data->liveRestoreEnabled ?? null;
         }
-        if ($data->isInitialized('isolation') && null !== $data->getIsolation()) {
-            $dataArray['Isolation'] = $data->getIsolation();
+        if (array_key_exists('isolation', get_object_vars($data)) && null !== ($data->isolation ?? null)) {
+            $dataArray['Isolation'] = $data->isolation ?? null;
         }
-        if ($data->isInitialized('initBinary') && null !== $data->getInitBinary()) {
-            $dataArray['InitBinary'] = $data->getInitBinary();
+        if (array_key_exists('initBinary', get_object_vars($data)) && null !== ($data->initBinary ?? null)) {
+            $dataArray['InitBinary'] = $data->initBinary ?? null;
         }
-        if ($data->isInitialized('containerdCommit') && null !== $data->getContainerdCommit()) {
-            $dataArray['ContainerdCommit'] = $data->getContainerdCommit() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getContainerdCommit(), 'json', $context));
+        if (array_key_exists('containerdCommit', get_object_vars($data)) && null !== ($data->containerdCommit ?? null)) {
+            $dataArray['ContainerdCommit'] = ($data->containerdCommit ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->containerdCommit ?? null, 'json', $context));
         }
-        if ($data->isInitialized('runcCommit') && null !== $data->getRuncCommit()) {
-            $dataArray['RuncCommit'] = $data->getRuncCommit() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getRuncCommit(), 'json', $context));
+        if (array_key_exists('runcCommit', get_object_vars($data)) && null !== ($data->runcCommit ?? null)) {
+            $dataArray['RuncCommit'] = ($data->runcCommit ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->runcCommit ?? null, 'json', $context));
         }
-        if ($data->isInitialized('initCommit') && null !== $data->getInitCommit()) {
-            $dataArray['InitCommit'] = $data->getInitCommit() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getInitCommit(), 'json', $context));
+        if (array_key_exists('initCommit', get_object_vars($data)) && null !== ($data->initCommit ?? null)) {
+            $dataArray['InitCommit'] = ($data->initCommit ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->initCommit ?? null, 'json', $context));
         }
-        if ($data->isInitialized('securityOptions') && null !== $data->getSecurityOptions()) {
+        if (array_key_exists('securityOptions', get_object_vars($data)) && null !== ($data->securityOptions ?? null)) {
             $values_5 = [];
-            foreach ($data->getSecurityOptions() as $value_5) {
+            foreach ($data->securityOptions ?? null as $value_5) {
                 $values_5[] = $value_5;
             }
             $dataArray['SecurityOptions'] = $values_5;
         }
-        if ($data->isInitialized('productLicense') && null !== $data->getProductLicense()) {
-            $dataArray['ProductLicense'] = $data->getProductLicense();
+        if (array_key_exists('productLicense', get_object_vars($data)) && null !== ($data->productLicense ?? null)) {
+            $dataArray['ProductLicense'] = $data->productLicense ?? null;
         }
-        if ($data->isInitialized('defaultAddressPools') && null !== $data->getDefaultAddressPools()) {
+        if (array_key_exists('defaultAddressPools', get_object_vars($data)) && null !== ($data->defaultAddressPools ?? null)) {
             $values_6 = [];
-            foreach ($data->getDefaultAddressPools() as $value_6) {
+            foreach ($data->defaultAddressPools ?? null as $value_6) {
                 $values_6[] = $value_6 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
             }
             $dataArray['DefaultAddressPools'] = $values_6;
         }
-        if ($data->isInitialized('warnings') && null !== $data->getWarnings()) {
+        if (array_key_exists('warnings', get_object_vars($data)) && null !== ($data->warnings ?? null)) {
             $values_7 = [];
-            foreach ($data->getWarnings() as $value_7) {
+            foreach ($data->warnings ?? null as $value_7) {
                 $values_7[] = $value_7;
             }
             $dataArray['Warnings'] = $values_7;

@@ -50,7 +50,7 @@ class ResponseAllRegistriesInfoNormalizer implements DenormalizerInterface, Norm
                 }
                 $values[] = $value_1;
             }
-            $object->setRegistries($values);
+            $object->registries = $values;
             unset($data['registries']);
         }
         foreach ($data as $key_1 => $value_3) {
@@ -63,9 +63,9 @@ class ResponseAllRegistriesInfoNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('registries') && null !== $data->getRegistries()) {
+        if (array_key_exists('registries', get_object_vars($data)) && null !== ($data->registries ?? null)) {
             $values = [];
-            foreach ($data->getRegistries() as $value) {
+            foreach ($data->registries ?? null as $value) {
                 $value_1 = $value;
                 if (is_object($value)) {
                     $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();

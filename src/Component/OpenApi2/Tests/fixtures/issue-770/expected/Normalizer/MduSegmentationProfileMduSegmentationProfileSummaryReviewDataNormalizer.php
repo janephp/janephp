@@ -38,51 +38,51 @@ class MduSegmentationProfileMduSegmentationProfileSummaryReviewDataNormalizer im
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apGroupNameList', $data)) {
-            $object->setApGroupNameList($data['apGroupNameList']);
+            $object->apGroupNameList = $data['apGroupNameList'];
         }
         if (\array_key_exists('ethernetProfileName', $data)) {
-            $object->setEthernetProfileName($data['ethernetProfileName']);
+            $object->ethernetProfileName = $data['ethernetProfileName'];
         }
         if (\array_key_exists('apModelList', $data)) {
-            $object->setApModelList($data['apModelList']);
+            $object->apModelList = $data['apModelList'];
         }
         if (\array_key_exists('wlanNameList', $data)) {
-            $object->setWlanNameList($data['wlanNameList']);
+            $object->wlanNameList = $data['wlanNameList'];
         }
         if (\array_key_exists('wlanSsid', $data)) {
-            $object->setWlanSsid($data['wlanSsid']);
+            $object->wlanSsid = $data['wlanSsid'];
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
         }
         if (\array_key_exists('result', $data)) {
-            $object->setResult($data['result']);
+            $object->result = $data['result'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apGroupNameList') && null !== $data->getApGroupNameList()) {
-            $dataArray['apGroupNameList'] = $data->getApGroupNameList();
+        if (array_key_exists('apGroupNameList', get_object_vars($data)) && null !== ($data->apGroupNameList ?? null)) {
+            $dataArray['apGroupNameList'] = $data->apGroupNameList ?? null;
         }
-        if ($data->isInitialized('ethernetProfileName') && null !== $data->getEthernetProfileName()) {
-            $dataArray['ethernetProfileName'] = $data->getEthernetProfileName();
+        if (array_key_exists('ethernetProfileName', get_object_vars($data)) && null !== ($data->ethernetProfileName ?? null)) {
+            $dataArray['ethernetProfileName'] = $data->ethernetProfileName ?? null;
         }
-        if ($data->isInitialized('apModelList') && null !== $data->getApModelList()) {
-            $dataArray['apModelList'] = $data->getApModelList();
+        if (array_key_exists('apModelList', get_object_vars($data)) && null !== ($data->apModelList ?? null)) {
+            $dataArray['apModelList'] = $data->apModelList ?? null;
         }
-        if ($data->isInitialized('wlanNameList') && null !== $data->getWlanNameList()) {
-            $dataArray['wlanNameList'] = $data->getWlanNameList();
+        if (array_key_exists('wlanNameList', get_object_vars($data)) && null !== ($data->wlanNameList ?? null)) {
+            $dataArray['wlanNameList'] = $data->wlanNameList ?? null;
         }
-        if ($data->isInitialized('wlanSsid') && null !== $data->getWlanSsid()) {
-            $dataArray['wlanSsid'] = $data->getWlanSsid();
+        if (array_key_exists('wlanSsid', get_object_vars($data)) && null !== ($data->wlanSsid ?? null)) {
+            $dataArray['wlanSsid'] = $data->wlanSsid ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('result') && null !== $data->getResult()) {
-            $dataArray['result'] = $data->getResult();
+        if (array_key_exists('result', get_object_vars($data)) && null !== ($data->result ?? null)) {
+            $dataArray['result'] = $data->result ?? null;
         }
         return $dataArray;
     }

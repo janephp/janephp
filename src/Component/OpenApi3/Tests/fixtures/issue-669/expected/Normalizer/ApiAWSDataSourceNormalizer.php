@@ -38,23 +38,23 @@ class ApiAWSDataSourceNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('bucket_name', $data)) {
-            $object->setBucketName($data['bucket_name']);
+            $object->bucketName = $data['bucket_name'];
             unset($data['bucket_name']);
         }
         if (\array_key_exists('item_path', $data)) {
-            $object->setItemPath($data['item_path']);
+            $object->itemPath = $data['item_path'];
             unset($data['item_path']);
         }
         if (\array_key_exists('key_id', $data)) {
-            $object->setKeyId($data['key_id']);
+            $object->keyId = $data['key_id'];
             unset($data['key_id']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('secret_key', $data)) {
-            $object->setSecretKey($data['secret_key']);
+            $object->secretKey = $data['secret_key'];
             unset($data['secret_key']);
         }
         foreach ($data as $key => $value) {
@@ -67,20 +67,20 @@ class ApiAWSDataSourceNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('bucketName') && null !== $data->getBucketName()) {
-            $dataArray['bucket_name'] = $data->getBucketName();
+        if (array_key_exists('bucketName', get_object_vars($data)) && null !== ($data->bucketName ?? null)) {
+            $dataArray['bucket_name'] = $data->bucketName ?? null;
         }
-        if ($data->isInitialized('itemPath') && null !== $data->getItemPath()) {
-            $dataArray['item_path'] = $data->getItemPath();
+        if (array_key_exists('itemPath', get_object_vars($data)) && null !== ($data->itemPath ?? null)) {
+            $dataArray['item_path'] = $data->itemPath ?? null;
         }
-        if ($data->isInitialized('keyId') && null !== $data->getKeyId()) {
-            $dataArray['key_id'] = $data->getKeyId();
+        if (array_key_exists('keyId', get_object_vars($data)) && null !== ($data->keyId ?? null)) {
+            $dataArray['key_id'] = $data->keyId ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        if ($data->isInitialized('secretKey') && null !== $data->getSecretKey()) {
-            $dataArray['secret_key'] = $data->getSecretKey();
+        if (array_key_exists('secretKey', get_object_vars($data)) && null !== ($data->secretKey ?? null)) {
+            $dataArray['secret_key'] = $data->secretKey ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -38,10 +38,10 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('appId', $data) && $data['appId'] !== null) {
-            $object->setAppId($data['appId']);
+            $object->appId = $data['appId'];
         }
         elseif (\array_key_exists('appId', $data) && $data['appId'] === null) {
-            $object->setAppId(null);
+            $object->appId = null;
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $value = $data['name'];
@@ -52,10 +52,10 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
                 }
                 $value = $values;
             }
-            $object->setName($value);
+            $object->name = $value;
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+            $object->name = null;
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $value_2 = $data['description'];
@@ -66,49 +66,49 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
                 }
                 $value_2 = $values_1;
             }
-            $object->setDescription($value_2);
+            $object->description = $value_2;
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
-            $object->setDescription(null);
+            $object->description = null;
         }
         if (\array_key_exists('icon', $data) && $data['icon'] !== null) {
-            $object->setIcon($data['icon']);
+            $object->icon = $data['icon'];
         }
         elseif (\array_key_exists('icon', $data) && $data['icon'] === null) {
-            $object->setIcon(null);
+            $object->icon = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('appId') && null !== $data->getAppId()) {
-            $dataArray['appId'] = $data->getAppId();
+        if (array_key_exists('appId', get_object_vars($data)) && null !== ($data->appId ?? null)) {
+            $dataArray['appId'] = $data->appId ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $value = $data->getName();
-            if (is_object($data->getName())) {
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $value = $data->name ?? null;
+            if (is_object($data->name ?? null)) {
                 $values = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getName() as $key => $value_1) {
+                foreach ($data->name ?? null as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
                 $value = $values;
             }
             $dataArray['name'] = $value;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $value_2 = $data->getDescription();
-            if (is_object($data->getDescription())) {
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $value_2 = $data->description ?? null;
+            if (is_object($data->description ?? null)) {
                 $values_1 = new \PicturePark\API\Runtime\JsonObject();
-                foreach ($data->getDescription() as $key_1 => $value_3) {
+                foreach ($data->description ?? null as $key_1 => $value_3) {
                     $values_1[$key_1] = $value_3;
                 }
                 $value_2 = $values_1;
             }
             $dataArray['description'] = $value_2;
         }
-        if ($data->isInitialized('icon') && null !== $data->getIcon()) {
-            $dataArray['icon'] = $data->getIcon();
+        if (array_key_exists('icon', get_object_vars($data)) && null !== ($data->icon ?? null)) {
+            $dataArray['icon'] = $data->icon ?? null;
         }
         return $dataArray;
     }

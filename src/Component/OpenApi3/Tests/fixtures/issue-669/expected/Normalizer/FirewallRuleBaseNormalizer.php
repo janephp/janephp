@@ -38,11 +38,11 @@ class FirewallRuleBaseNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
             unset($data['protocol']);
         }
         if (\array_key_exists('ports', $data)) {
-            $object->setPorts($data['ports']);
+            $object->ports = $data['ports'];
             unset($data['ports']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class FirewallRuleBaseNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['protocol'] = $data->getProtocol();
-        $dataArray['ports'] = $data->getPorts();
+        $dataArray['protocol'] = $data->protocol ?? null;
+        $dataArray['ports'] = $data->ports ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

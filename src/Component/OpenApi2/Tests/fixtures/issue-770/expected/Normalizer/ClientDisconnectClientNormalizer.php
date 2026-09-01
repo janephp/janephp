@@ -38,18 +38,18 @@ class ClientDisconnectClientNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mac', $data)) {
-            $object->setMac($data['mac']);
+            $object->mac = $data['mac'];
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['mac'] = $data->getMac();
-        $dataArray['apMac'] = $data->getApMac();
+        $dataArray['mac'] = $data->mac ?? null;
+        $dataArray['apMac'] = $data->apMac ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

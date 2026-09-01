@@ -18,7 +18,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue299\Runtime\Cl
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue299\Endpoint\GetUsers($queryParameters), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];
         if (null === $httpClient) {

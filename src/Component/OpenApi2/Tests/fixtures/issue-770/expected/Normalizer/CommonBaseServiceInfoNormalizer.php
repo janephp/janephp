@@ -38,33 +38,33 @@ class CommonBaseServiceInfoNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('serviceId', $data)) {
-            $object->setServiceId($data['serviceId']);
+            $object->serviceId = $data['serviceId'];
         }
         if (\array_key_exists('serviceName', $data)) {
-            $object->setServiceName($data['serviceName']);
+            $object->serviceName = $data['serviceName'];
         }
         if (\array_key_exists('serviceType', $data)) {
-            $object->setServiceType($data['serviceType']);
+            $object->serviceType = $data['serviceType'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('serviceId') && null !== $data->getServiceId()) {
-            $dataArray['serviceId'] = $data->getServiceId();
+        if (array_key_exists('serviceId', get_object_vars($data)) && null !== ($data->serviceId ?? null)) {
+            $dataArray['serviceId'] = $data->serviceId ?? null;
         }
-        if ($data->isInitialized('serviceName') && null !== $data->getServiceName()) {
-            $dataArray['serviceName'] = $data->getServiceName();
+        if (array_key_exists('serviceName', get_object_vars($data)) && null !== ($data->serviceName ?? null)) {
+            $dataArray['serviceName'] = $data->serviceName ?? null;
         }
-        if ($data->isInitialized('serviceType') && null !== $data->getServiceType()) {
-            $dataArray['serviceType'] = $data->getServiceType();
+        if (array_key_exists('serviceType', get_object_vars($data)) && null !== ($data->serviceType ?? null)) {
+            $dataArray['serviceType'] = $data->serviceType ?? null;
         }
         return $dataArray;
     }

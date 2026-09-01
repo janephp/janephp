@@ -42,11 +42,11 @@ class ComplianceSearchResultDataBodySearchResultNormalizer implements Denormaliz
             foreach ($data['records'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItem::class, 'json', $context);
             }
-            $object->setRecords($values);
+            $object->records = $values;
             unset($data['records']);
         }
         if (\array_key_exists('searchEngineVersion', $data)) {
-            $object->setSearchEngineVersion($data['searchEngineVersion']);
+            $object->searchEngineVersion = $data['searchEngineVersion'];
             unset($data['searchEngineVersion']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,15 +59,15 @@ class ComplianceSearchResultDataBodySearchResultNormalizer implements Denormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('records') && null !== $data->getRecords()) {
+        if (array_key_exists('records', get_object_vars($data)) && null !== ($data->records ?? null)) {
             $values = [];
-            foreach ($data->getRecords() as $value) {
+            foreach ($data->records ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['records'] = $values;
         }
-        if ($data->isInitialized('searchEngineVersion') && null !== $data->getSearchEngineVersion()) {
-            $dataArray['searchEngineVersion'] = $data->getSearchEngineVersion();
+        if (array_key_exists('searchEngineVersion', get_object_vars($data)) && null !== ($data->searchEngineVersion ?? null)) {
+            $dataArray['searchEngineVersion'] = $data->searchEngineVersion ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

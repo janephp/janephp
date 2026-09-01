@@ -41,21 +41,21 @@ class EngineDescriptionPluginsItemNormalizer implements DenormalizerInterface, N
             $this->validate($data, new \Docker\Api\Validator\EngineDescriptionPluginsItemConstraint());
         }
         if (\array_key_exists('Type', $data)) {
-            $object->setType($data['Type']);
+            $object->type = $data['Type'];
         }
         if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+            $object->name = $data['Name'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['Type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['Type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['Name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['Name'] = $data->name ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\EngineDescriptionPluginsItemConstraint());

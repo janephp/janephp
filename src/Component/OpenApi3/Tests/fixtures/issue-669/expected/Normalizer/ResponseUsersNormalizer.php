@@ -42,7 +42,7 @@ class ResponseUsersNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['users'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\DatabaseUser::class, 'json', $context);
             }
-            $object->setUsers($values);
+            $object->users = $values;
             unset($data['users']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseUsersNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('users') && null !== $data->getUsers()) {
+        if (array_key_exists('users', get_object_vars($data)) && null !== ($data->users ?? null)) {
             $values = [];
-            foreach ($data->getUsers() as $value) {
+            foreach ($data->users ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['users'] = $values;

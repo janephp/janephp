@@ -44,24 +44,24 @@ class ShareDataBaseNormalizer implements DenormalizerInterface, NormalizerInterf
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareDataBasic', $format, $context);
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'ShareDataEmbed' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ShareDataEmbed' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'ShareDataBasic' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ShareDataBasic' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['url'] = $data->getUrl();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['url'] = $data->url ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

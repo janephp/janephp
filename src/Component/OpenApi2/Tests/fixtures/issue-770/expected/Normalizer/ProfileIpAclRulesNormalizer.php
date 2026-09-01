@@ -68,171 +68,171 @@ class ProfileIpAclRulesNormalizer implements DenormalizerInterface, NormalizerIn
             $data['enableDestinationPortRange'] = (bool) $data['enableDestinationPortRange'];
         }
         if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+            $object->priority = $data['priority'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('uplinkRateLimitingEnabled', $data)) {
-            $object->setUplinkRateLimitingEnabled($data['uplinkRateLimitingEnabled']);
+            $object->uplinkRateLimitingEnabled = $data['uplinkRateLimitingEnabled'];
         }
         if (\array_key_exists('uplinkRateLimitingMbps', $data)) {
-            $object->setUplinkRateLimitingMbps($data['uplinkRateLimitingMbps']);
+            $object->uplinkRateLimitingMbps = $data['uplinkRateLimitingMbps'];
         }
         if (\array_key_exists('downlinkRateLimitingEnabled', $data)) {
-            $object->setDownlinkRateLimitingEnabled($data['downlinkRateLimitingEnabled']);
+            $object->downlinkRateLimitingEnabled = $data['downlinkRateLimitingEnabled'];
         }
         if (\array_key_exists('downlinkRateLimitingMbps', $data)) {
-            $object->setDownlinkRateLimitingMbps($data['downlinkRateLimitingMbps']);
+            $object->downlinkRateLimitingMbps = $data['downlinkRateLimitingMbps'];
         }
         if (\array_key_exists('ipType', $data)) {
-            $object->setIpType($data['ipType']);
+            $object->ipType = $data['ipType'];
         }
         if (\array_key_exists('enableSourceIpSubnet', $data)) {
-            $object->setEnableSourceIpSubnet($data['enableSourceIpSubnet']);
+            $object->enableSourceIpSubnet = $data['enableSourceIpSubnet'];
         }
         if (\array_key_exists('sourceIp', $data)) {
-            $object->setSourceIp($data['sourceIp']);
+            $object->sourceIp = $data['sourceIp'];
         }
         if (\array_key_exists('sourceIpMask', $data)) {
-            $object->setSourceIpMask($data['sourceIpMask']);
+            $object->sourceIpMask = $data['sourceIpMask'];
         }
         if (\array_key_exists('enableSourceV6Prefix', $data)) {
-            $object->setEnableSourceV6Prefix($data['enableSourceV6Prefix']);
+            $object->enableSourceV6Prefix = $data['enableSourceV6Prefix'];
         }
         if (\array_key_exists('sourceIpV6', $data)) {
-            $object->setSourceIpV6($data['sourceIpV6']);
+            $object->sourceIpV6 = $data['sourceIpV6'];
         }
         if (\array_key_exists('enableDestinationIpSubnet', $data)) {
-            $object->setEnableDestinationIpSubnet($data['enableDestinationIpSubnet']);
+            $object->enableDestinationIpSubnet = $data['enableDestinationIpSubnet'];
         }
         if (\array_key_exists('destinationIp', $data)) {
-            $object->setDestinationIp($data['destinationIp']);
+            $object->destinationIp = $data['destinationIp'];
         }
         if (\array_key_exists('destinationIpMask', $data)) {
-            $object->setDestinationIpMask($data['destinationIpMask']);
+            $object->destinationIpMask = $data['destinationIpMask'];
         }
         if (\array_key_exists('enableDestinationV6Prefix', $data)) {
-            $object->setEnableDestinationV6Prefix($data['enableDestinationV6Prefix']);
+            $object->enableDestinationV6Prefix = $data['enableDestinationV6Prefix'];
         }
         if (\array_key_exists('destinationIpV6', $data)) {
-            $object->setDestinationIpV6($data['destinationIpV6']);
+            $object->destinationIpV6 = $data['destinationIpV6'];
         }
         if (\array_key_exists('enableSourcePortRange', $data)) {
-            $object->setEnableSourcePortRange($data['enableSourcePortRange']);
+            $object->enableSourcePortRange = $data['enableSourcePortRange'];
         }
         if (\array_key_exists('sourceMinPort', $data)) {
-            $object->setSourceMinPort($data['sourceMinPort']);
+            $object->sourceMinPort = $data['sourceMinPort'];
         }
         if (\array_key_exists('sourceMaxPort', $data)) {
-            $object->setSourceMaxPort($data['sourceMaxPort']);
+            $object->sourceMaxPort = $data['sourceMaxPort'];
         }
         if (\array_key_exists('enableDestinationPortRange', $data)) {
-            $object->setEnableDestinationPortRange($data['enableDestinationPortRange']);
+            $object->enableDestinationPortRange = $data['enableDestinationPortRange'];
         }
         if (\array_key_exists('destinationMinPort', $data)) {
-            $object->setDestinationMinPort($data['destinationMinPort']);
+            $object->destinationMinPort = $data['destinationMinPort'];
         }
         if (\array_key_exists('destinationMaxPort', $data)) {
-            $object->setDestinationMaxPort($data['destinationMaxPort']);
+            $object->destinationMaxPort = $data['destinationMaxPort'];
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
         }
         if (\array_key_exists('customProtocol', $data)) {
-            $object->setCustomProtocol($data['customProtocol']);
+            $object->customProtocol = $data['customProtocol'];
         }
         if (\array_key_exists('action', $data)) {
-            $object->setAction($data['action']);
+            $object->action = $data['action'];
         }
         if (\array_key_exists('direction', $data)) {
-            $object->setDirection($data['direction']);
+            $object->direction = $data['direction'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority();
+        if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = $data->priority ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('uplinkRateLimitingEnabled') && null !== $data->getUplinkRateLimitingEnabled()) {
-            $dataArray['uplinkRateLimitingEnabled'] = $data->getUplinkRateLimitingEnabled();
+        if (array_key_exists('uplinkRateLimitingEnabled', get_object_vars($data)) && null !== ($data->uplinkRateLimitingEnabled ?? null)) {
+            $dataArray['uplinkRateLimitingEnabled'] = $data->uplinkRateLimitingEnabled ?? null;
         }
-        if ($data->isInitialized('uplinkRateLimitingMbps') && null !== $data->getUplinkRateLimitingMbps()) {
-            $dataArray['uplinkRateLimitingMbps'] = $data->getUplinkRateLimitingMbps();
+        if (array_key_exists('uplinkRateLimitingMbps', get_object_vars($data)) && null !== ($data->uplinkRateLimitingMbps ?? null)) {
+            $dataArray['uplinkRateLimitingMbps'] = $data->uplinkRateLimitingMbps ?? null;
         }
-        if ($data->isInitialized('downlinkRateLimitingEnabled') && null !== $data->getDownlinkRateLimitingEnabled()) {
-            $dataArray['downlinkRateLimitingEnabled'] = $data->getDownlinkRateLimitingEnabled();
+        if (array_key_exists('downlinkRateLimitingEnabled', get_object_vars($data)) && null !== ($data->downlinkRateLimitingEnabled ?? null)) {
+            $dataArray['downlinkRateLimitingEnabled'] = $data->downlinkRateLimitingEnabled ?? null;
         }
-        if ($data->isInitialized('downlinkRateLimitingMbps') && null !== $data->getDownlinkRateLimitingMbps()) {
-            $dataArray['downlinkRateLimitingMbps'] = $data->getDownlinkRateLimitingMbps();
+        if (array_key_exists('downlinkRateLimitingMbps', get_object_vars($data)) && null !== ($data->downlinkRateLimitingMbps ?? null)) {
+            $dataArray['downlinkRateLimitingMbps'] = $data->downlinkRateLimitingMbps ?? null;
         }
-        if ($data->isInitialized('ipType') && null !== $data->getIpType()) {
-            $dataArray['ipType'] = $data->getIpType();
+        if (array_key_exists('ipType', get_object_vars($data)) && null !== ($data->ipType ?? null)) {
+            $dataArray['ipType'] = $data->ipType ?? null;
         }
-        if ($data->isInitialized('enableSourceIpSubnet') && null !== $data->getEnableSourceIpSubnet()) {
-            $dataArray['enableSourceIpSubnet'] = $data->getEnableSourceIpSubnet();
+        if (array_key_exists('enableSourceIpSubnet', get_object_vars($data)) && null !== ($data->enableSourceIpSubnet ?? null)) {
+            $dataArray['enableSourceIpSubnet'] = $data->enableSourceIpSubnet ?? null;
         }
-        if ($data->isInitialized('sourceIp') && null !== $data->getSourceIp()) {
-            $dataArray['sourceIp'] = $data->getSourceIp();
+        if (array_key_exists('sourceIp', get_object_vars($data)) && null !== ($data->sourceIp ?? null)) {
+            $dataArray['sourceIp'] = $data->sourceIp ?? null;
         }
-        if ($data->isInitialized('sourceIpMask') && null !== $data->getSourceIpMask()) {
-            $dataArray['sourceIpMask'] = $data->getSourceIpMask();
+        if (array_key_exists('sourceIpMask', get_object_vars($data)) && null !== ($data->sourceIpMask ?? null)) {
+            $dataArray['sourceIpMask'] = $data->sourceIpMask ?? null;
         }
-        if ($data->isInitialized('enableSourceV6Prefix') && null !== $data->getEnableSourceV6Prefix()) {
-            $dataArray['enableSourceV6Prefix'] = $data->getEnableSourceV6Prefix();
+        if (array_key_exists('enableSourceV6Prefix', get_object_vars($data)) && null !== ($data->enableSourceV6Prefix ?? null)) {
+            $dataArray['enableSourceV6Prefix'] = $data->enableSourceV6Prefix ?? null;
         }
-        if ($data->isInitialized('sourceIpV6') && null !== $data->getSourceIpV6()) {
-            $dataArray['sourceIpV6'] = $data->getSourceIpV6();
+        if (array_key_exists('sourceIpV6', get_object_vars($data)) && null !== ($data->sourceIpV6 ?? null)) {
+            $dataArray['sourceIpV6'] = $data->sourceIpV6 ?? null;
         }
-        if ($data->isInitialized('enableDestinationIpSubnet') && null !== $data->getEnableDestinationIpSubnet()) {
-            $dataArray['enableDestinationIpSubnet'] = $data->getEnableDestinationIpSubnet();
+        if (array_key_exists('enableDestinationIpSubnet', get_object_vars($data)) && null !== ($data->enableDestinationIpSubnet ?? null)) {
+            $dataArray['enableDestinationIpSubnet'] = $data->enableDestinationIpSubnet ?? null;
         }
-        if ($data->isInitialized('destinationIp') && null !== $data->getDestinationIp()) {
-            $dataArray['destinationIp'] = $data->getDestinationIp();
+        if (array_key_exists('destinationIp', get_object_vars($data)) && null !== ($data->destinationIp ?? null)) {
+            $dataArray['destinationIp'] = $data->destinationIp ?? null;
         }
-        if ($data->isInitialized('destinationIpMask') && null !== $data->getDestinationIpMask()) {
-            $dataArray['destinationIpMask'] = $data->getDestinationIpMask();
+        if (array_key_exists('destinationIpMask', get_object_vars($data)) && null !== ($data->destinationIpMask ?? null)) {
+            $dataArray['destinationIpMask'] = $data->destinationIpMask ?? null;
         }
-        if ($data->isInitialized('enableDestinationV6Prefix') && null !== $data->getEnableDestinationV6Prefix()) {
-            $dataArray['enableDestinationV6Prefix'] = $data->getEnableDestinationV6Prefix();
+        if (array_key_exists('enableDestinationV6Prefix', get_object_vars($data)) && null !== ($data->enableDestinationV6Prefix ?? null)) {
+            $dataArray['enableDestinationV6Prefix'] = $data->enableDestinationV6Prefix ?? null;
         }
-        if ($data->isInitialized('destinationIpV6') && null !== $data->getDestinationIpV6()) {
-            $dataArray['destinationIpV6'] = $data->getDestinationIpV6();
+        if (array_key_exists('destinationIpV6', get_object_vars($data)) && null !== ($data->destinationIpV6 ?? null)) {
+            $dataArray['destinationIpV6'] = $data->destinationIpV6 ?? null;
         }
-        if ($data->isInitialized('enableSourcePortRange') && null !== $data->getEnableSourcePortRange()) {
-            $dataArray['enableSourcePortRange'] = $data->getEnableSourcePortRange();
+        if (array_key_exists('enableSourcePortRange', get_object_vars($data)) && null !== ($data->enableSourcePortRange ?? null)) {
+            $dataArray['enableSourcePortRange'] = $data->enableSourcePortRange ?? null;
         }
-        if ($data->isInitialized('sourceMinPort') && null !== $data->getSourceMinPort()) {
-            $dataArray['sourceMinPort'] = $data->getSourceMinPort();
+        if (array_key_exists('sourceMinPort', get_object_vars($data)) && null !== ($data->sourceMinPort ?? null)) {
+            $dataArray['sourceMinPort'] = $data->sourceMinPort ?? null;
         }
-        if ($data->isInitialized('sourceMaxPort') && null !== $data->getSourceMaxPort()) {
-            $dataArray['sourceMaxPort'] = $data->getSourceMaxPort();
+        if (array_key_exists('sourceMaxPort', get_object_vars($data)) && null !== ($data->sourceMaxPort ?? null)) {
+            $dataArray['sourceMaxPort'] = $data->sourceMaxPort ?? null;
         }
-        if ($data->isInitialized('enableDestinationPortRange') && null !== $data->getEnableDestinationPortRange()) {
-            $dataArray['enableDestinationPortRange'] = $data->getEnableDestinationPortRange();
+        if (array_key_exists('enableDestinationPortRange', get_object_vars($data)) && null !== ($data->enableDestinationPortRange ?? null)) {
+            $dataArray['enableDestinationPortRange'] = $data->enableDestinationPortRange ?? null;
         }
-        if ($data->isInitialized('destinationMinPort') && null !== $data->getDestinationMinPort()) {
-            $dataArray['destinationMinPort'] = $data->getDestinationMinPort();
+        if (array_key_exists('destinationMinPort', get_object_vars($data)) && null !== ($data->destinationMinPort ?? null)) {
+            $dataArray['destinationMinPort'] = $data->destinationMinPort ?? null;
         }
-        if ($data->isInitialized('destinationMaxPort') && null !== $data->getDestinationMaxPort()) {
-            $dataArray['destinationMaxPort'] = $data->getDestinationMaxPort();
+        if (array_key_exists('destinationMaxPort', get_object_vars($data)) && null !== ($data->destinationMaxPort ?? null)) {
+            $dataArray['destinationMaxPort'] = $data->destinationMaxPort ?? null;
         }
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
-        if ($data->isInitialized('customProtocol') && null !== $data->getCustomProtocol()) {
-            $dataArray['customProtocol'] = $data->getCustomProtocol();
+        if (array_key_exists('customProtocol', get_object_vars($data)) && null !== ($data->customProtocol ?? null)) {
+            $dataArray['customProtocol'] = $data->customProtocol ?? null;
         }
-        if ($data->isInitialized('action') && null !== $data->getAction()) {
-            $dataArray['action'] = $data->getAction();
+        if (array_key_exists('action', get_object_vars($data)) && null !== ($data->action ?? null)) {
+            $dataArray['action'] = $data->action ?? null;
         }
-        if ($data->isInitialized('direction') && null !== $data->getDirection()) {
-            $dataArray['direction'] = $data->getDirection();
+        if (array_key_exists('direction', get_object_vars($data)) && null !== ($data->direction ?? null)) {
+            $dataArray['direction'] = $data->direction ?? null;
         }
         return $dataArray;
     }

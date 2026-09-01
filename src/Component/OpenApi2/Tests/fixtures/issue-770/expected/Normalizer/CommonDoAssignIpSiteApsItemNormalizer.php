@@ -44,27 +44,27 @@ class CommonDoAssignIpSiteApsItemNormalizer implements DenormalizerInterface, No
             $data['apServerPrimary'] = (bool) $data['apServerPrimary'];
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('apServerEnabled', $data)) {
-            $object->setApServerEnabled($data['apServerEnabled']);
+            $object->apServerEnabled = $data['apServerEnabled'];
         }
         if (\array_key_exists('apServerPrimary', $data)) {
-            $object->setApServerPrimary($data['apServerPrimary']);
+            $object->apServerPrimary = $data['apServerPrimary'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('apServerEnabled') && null !== $data->getApServerEnabled()) {
-            $dataArray['apServerEnabled'] = $data->getApServerEnabled();
+        if (array_key_exists('apServerEnabled', get_object_vars($data)) && null !== ($data->apServerEnabled ?? null)) {
+            $dataArray['apServerEnabled'] = $data->apServerEnabled ?? null;
         }
-        if ($data->isInitialized('apServerPrimary') && null !== $data->getApServerPrimary()) {
-            $dataArray['apServerPrimary'] = $data->getApServerPrimary();
+        if (array_key_exists('apServerPrimary', get_object_vars($data)) && null !== ($data->apServerPrimary ?? null)) {
+            $dataArray['apServerPrimary'] = $data->apServerPrimary ?? null;
         }
         return $dataArray;
     }

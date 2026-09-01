@@ -42,31 +42,31 @@ class ActivityNormalizer implements DenormalizerInterface, NormalizerInterface, 
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['creationDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreationDate($date);
+            $object->creationDate = $date;
         }
         elseif (\array_key_exists('creationDate', $data) && $data['creationDate'] === null) {
-            $object->setCreationDate(null);
+            $object->creationDate = null;
         }
         if (\array_key_exists('modificationDate', $data) && $data['modificationDate'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']);
             if (false === $date_1) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['modificationDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setModificationDate($date_1);
+            $object->modificationDate = $date_1;
         }
         elseif (\array_key_exists('modificationDate', $data) && $data['modificationDate'] === null) {
-            $object->setModificationDate(null);
+            $object->modificationDate = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('creationDate') && null !== $data->getCreationDate()) {
-            $dataArray['creationDate'] = $data->getCreationDate()?->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('creationDate', get_object_vars($data)) && null !== ($data->creationDate ?? null)) {
+            $dataArray['creationDate'] = ($data->creationDate ?? null)?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('modificationDate') && null !== $data->getModificationDate()) {
-            $dataArray['modificationDate'] = $data->getModificationDate()?->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('modificationDate', get_object_vars($data)) && null !== ($data->modificationDate ?? null)) {
+            $dataArray['modificationDate'] = ($data->modificationDate ?? null)?->format('Y-m-d\TH:i:sP');
         }
         return $dataArray;
     }

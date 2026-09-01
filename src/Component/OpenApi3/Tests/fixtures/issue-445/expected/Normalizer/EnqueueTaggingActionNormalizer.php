@@ -38,15 +38,15 @@ class EnqueueTaggingActionNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
-            $object->setTraceRefId($data['traceRefId']);
+            $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
-            $object->setTraceRefId(null);
+            $object->traceRefId = null;
             unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
@@ -54,11 +54,11 @@ class EnqueueTaggingActionNormalizer implements DenormalizerInterface, Normalize
             if (is_array($data['options']) and \array_key_exists('kind', $data['options'])) {
                 $value = $this->denormalizer->denormalize($data['options'], \PicturePark\API\Model\TaggingOptionsBase::class, 'json', $context);
             }
-            $object->setOptions($value);
+            $object->options = $value;
             unset($data['options']);
         }
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
-            $object->setOptions(null);
+            $object->options = null;
             unset($data['options']);
         }
         foreach ($data as $key => $value_1) {
@@ -71,14 +71,14 @@ class EnqueueTaggingActionNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
-            $dataArray['traceRefId'] = $data->getTraceRefId();
+        if (array_key_exists('traceRefId', get_object_vars($data)) && null !== ($data->traceRefId ?? null)) {
+            $dataArray['traceRefId'] = $data->traceRefId ?? null;
         }
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $value = $data->getOptions();
-            if (is_object($data->getOptions())) {
-                $value = $data->getOptions() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
+            $value = $data->options ?? null;
+            if (is_object($data->options ?? null)) {
+                $value = ($data->options ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->options ?? null, 'json', $context));
             }
             $dataArray['options'] = $value;
         }

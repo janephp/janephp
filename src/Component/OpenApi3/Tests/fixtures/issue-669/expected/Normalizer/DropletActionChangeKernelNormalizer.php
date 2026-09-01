@@ -38,11 +38,11 @@ class DropletActionChangeKernelNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('kernel', $data)) {
-            $object->setKernel($data['kernel']);
+            $object->kernel = $data['kernel'];
             unset($data['kernel']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +55,9 @@ class DropletActionChangeKernelNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('kernel') && null !== $data->getKernel()) {
-            $dataArray['kernel'] = $data->getKernel();
+        $dataArray['type'] = $data->type ?? null;
+        if (array_key_exists('kernel', get_object_vars($data)) && null !== ($data->kernel ?? null)) {
+            $dataArray['kernel'] = $data->kernel ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

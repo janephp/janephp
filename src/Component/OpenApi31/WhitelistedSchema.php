@@ -40,16 +40,16 @@ class WhitelistedSchema implements WhitelistFetchInterface
         }
 
         /** @var RequestBody|null $requestBody */
-        $requestBody = $operationGuess->getOperation()->getRequestBody();
+        $requestBody = $operationGuess->getOperation()->requestBody ?? null;
         if (null !== $requestBody) {
-            if (null !== $requestBody->getContent() && is_iterable($requestBody->getContent())) {
+            if (null !== ($requestBody->content ?? null) && is_iterable($requestBody->content ?? null)) {
                 /** @var MediaType $content */
-                foreach ($requestBody->getContent() as $contentType => $content) {
+                foreach (($requestBody->content ?? null) as $contentType => $content) {
                     $baseContentType = ContentType::withoutParameters($contentType);
 
                     if (\in_array($baseContentType, ['application/json', 'application/x-www-form-urlencoded'], true) || str_ends_with($baseContentType, '+json')) {
                         $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
-                        $schema = $content->getSchema();
+                        $schema = ($content->schema ?? null);
                         $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
                         if (null !== $classGuess) {
                             $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
@@ -60,13 +60,13 @@ class WhitelistedSchema implements WhitelistFetchInterface
         }
 
         /** @var Responses|null $responses */
-        $responses = $operationGuess->getOperation()->getResponses();
+        $responses = $operationGuess->getOperation()->responses ?? null;
         if (null !== $responses && \count($responses) > 0) {
             foreach ($responses as $response) {
                 $this->addResponseRelations($operationGuess, $baseOperation, $response, $registry);
             }
 
-            $defaultResponse = $responses->getDefault();
+            $defaultResponse = ($responses->default ?? null);
             if (null !== $defaultResponse) {
                 $this->addResponseRelations($operationGuess, $baseOperation, $defaultResponse, $registry);
             }
@@ -82,7 +82,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
             return;
         }
 
-        if (null === $response->getContent()) {
+        if (null === ($response->content ?? null)) {
             $schema = null;
             $classGuess = $this->guessClass->guessClass($schema, $operationGuess->getReference(), $registry);
             if (null !== $classGuess) {
@@ -90,14 +90,14 @@ class WhitelistedSchema implements WhitelistFetchInterface
             }
         }
 
-        if (null !== $response->getContent() && is_iterable($response->getContent())) {
+        if (null !== ($response->content ?? null) && is_iterable($response->content ?? null)) {
             /** @var MediaType $content */
-            foreach ($response->getContent() as $contentType => $content) {
+            foreach (($response->content ?? null) as $contentType => $content) {
                 $baseContentType = ContentType::withoutParameters($contentType);
 
                 if (\in_array($baseContentType, ['application/json', 'application/x-www-form-urlencoded'], true) || str_ends_with($baseContentType, '+json')) {
                     $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
-                    $schema = $content->getSchema();
+                    $schema = ($content->schema ?? null);
                     $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
                     if (null !== $classGuess) {
                         $this->schema->addOperationRelation($baseOperation, $classGuess->getName());

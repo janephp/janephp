@@ -31,7 +31,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMulti
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Endpoint\GetBaz(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];
         if (null === $httpClient) {

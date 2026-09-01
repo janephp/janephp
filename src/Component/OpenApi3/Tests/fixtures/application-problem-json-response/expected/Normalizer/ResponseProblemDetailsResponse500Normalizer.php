@@ -38,19 +38,19 @@ class ResponseProblemDetailsResponse500Normalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('title', $data)) {
-            $object->setTitle($data['title']);
+            $object->title = $data['title'];
             unset($data['title']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('detail', $data)) {
-            $object->setDetail($data['detail']);
+            $object->detail = $data['detail'];
             unset($data['detail']);
         }
         foreach ($data as $key => $value) {
@@ -63,10 +63,10 @@ class ResponseProblemDetailsResponse500Normalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['status'] = $data->getStatus();
-        $dataArray['title'] = $data->getTitle();
-        $dataArray['type'] = $data->getType();
-        $dataArray['detail'] = $data->getDetail();
+        $dataArray['status'] = $data->status ?? null;
+        $dataArray['title'] = $data->title ?? null;
+        $dataArray['type'] = $data->type ?? null;
+        $dataArray['detail'] = $data->detail ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

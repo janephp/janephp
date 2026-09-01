@@ -38,14 +38,14 @@ class SciDeleteSciProfileNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
+        $dataArray['id'] = $data->id ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

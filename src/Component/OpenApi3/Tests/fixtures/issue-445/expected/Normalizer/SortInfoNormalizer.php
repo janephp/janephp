@@ -38,29 +38,29 @@ class SortInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('field', $data) && $data['field'] !== null) {
-            $object->setField($data['field']);
+            $object->field = $data['field'];
         }
         elseif (\array_key_exists('field', $data) && $data['field'] === null) {
-            $object->setField(null);
+            $object->field = null;
         }
         if (\array_key_exists('direction', $data)) {
             $value = $data['direction'];
             if (is_string($data['direction'])) {
                 $value = $data['direction'];
             }
-            $object->setDirection($value);
+            $object->direction = $value;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('field') && null !== $data->getField()) {
-            $dataArray['field'] = $data->getField();
+        if (array_key_exists('field', get_object_vars($data)) && null !== ($data->field ?? null)) {
+            $dataArray['field'] = $data->field ?? null;
         }
-        $value = $data->getDirection();
-        if (is_string($data->getDirection())) {
-            $value = $data->getDirection();
+        $value = $data->direction ?? null;
+        if (is_string($data->direction ?? null)) {
+            $value = $data->direction ?? null;
         }
         $dataArray['direction'] = $value;
         return $dataArray;

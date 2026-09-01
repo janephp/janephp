@@ -22,7 +22,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\Cl
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue672\Endpoint\GetEndpoint3(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();

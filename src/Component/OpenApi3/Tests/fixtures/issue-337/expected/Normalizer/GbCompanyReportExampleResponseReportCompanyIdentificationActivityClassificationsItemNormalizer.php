@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('classification', $data)) {
-            $object->setClassification($data['classification']);
+            $object->classification = $data['classification'];
             unset($data['classification']);
         }
         if (\array_key_exists('activities', $data)) {
@@ -46,7 +46,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
             foreach ($data['activities'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItemActivitiesItem::class, 'json', $context);
             }
-            $object->setActivities($values);
+            $object->activities = $values;
             unset($data['activities']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('classification') && null !== $data->getClassification()) {
-            $dataArray['classification'] = $data->getClassification();
+        if (array_key_exists('classification', get_object_vars($data)) && null !== ($data->classification ?? null)) {
+            $dataArray['classification'] = $data->classification ?? null;
         }
-        if ($data->isInitialized('activities') && null !== $data->getActivities()) {
+        if (array_key_exists('activities', get_object_vars($data)) && null !== ($data->activities ?? null)) {
             $values = [];
-            foreach ($data->getActivities() as $value) {
+            foreach ($data->activities ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['activities'] = $values;

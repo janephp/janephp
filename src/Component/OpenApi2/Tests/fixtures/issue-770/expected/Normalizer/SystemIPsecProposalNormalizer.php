@@ -38,18 +38,18 @@ class SystemIPsecProposalNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('encAlg', $data)) {
-            $object->setEncAlg($data['encAlg']);
+            $object->encAlg = $data['encAlg'];
         }
         if (\array_key_exists('authAlg', $data)) {
-            $object->setAuthAlg($data['authAlg']);
+            $object->authAlg = $data['authAlg'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['encAlg'] = $data->getEncAlg();
-        $dataArray['authAlg'] = $data->getAuthAlg();
+        $dataArray['encAlg'] = $data->encAlg ?? null;
+        $dataArray['authAlg'] = $data->authAlg ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

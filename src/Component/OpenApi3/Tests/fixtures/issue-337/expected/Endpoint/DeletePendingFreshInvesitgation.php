@@ -56,7 +56,7 @@ class DeletePendingFreshInvesitgation extends \CreditSafe\API\Runtime\Client\Bas
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 return $decodedBody;
@@ -64,7 +64,7 @@ class DeletePendingFreshInvesitgation extends \CreditSafe\API\Runtime\Client\Bas
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\DeletePendingFreshInvesitgationBadRequestException($response);
@@ -72,7 +72,7 @@ class DeletePendingFreshInvesitgation extends \CreditSafe\API\Runtime\Client\Bas
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\DeletePendingFreshInvesitgationUnauthorizedException($response);
@@ -80,7 +80,7 @@ class DeletePendingFreshInvesitgation extends \CreditSafe\API\Runtime\Client\Bas
                 throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
-        if (is_null($contentType) === false && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\DeletePendingFreshInvesitgationForbiddenException($response);

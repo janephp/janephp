@@ -38,23 +38,23 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('tag', $data)) {
-            $object->setTag($data['tag']);
+            $object->tag = $data['tag'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('tag') && null !== $data->getTag()) {
-            $dataArray['tag'] = $data->getTag();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('tag', get_object_vars($data)) && null !== ($data->tag ?? null)) {
+            $dataArray['tag'] = $data->tag ?? null;
         }
         return $dataArray;
     }

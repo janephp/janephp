@@ -4,7 +4,9 @@ namespace Jane\Component\OpenApi31;
 
 use Jane\Component\JsonSchema\Generator\EnumGenerator;
 use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\JsonSchema\Generator\Options;
 use Jane\Component\JsonSchema\Generator\ValidatorGenerator;
+use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\JsonSchema\Normalizer\JsonSchemaNormalizer;
 use Jane\Component\OpenApi31\Generator\EndpointGenerator;
 use Jane\Component\OpenApi31\Generator\GeneratorFactory;
@@ -35,32 +37,33 @@ class JaneOpenApi extends CommonJaneOpenApi
     protected const OBJECT_NORMALIZER_CLASS = JsonSchema\Normalizer\JaneObjectNormalizer::class;
     protected const WHITELIST_FETCH_CLASS = WhitelistedSchema::class;
 
-    protected static function create(array $options = []): CommonJaneOpenApi
+    protected static function create(array $options = [], ?ChainValidatorFactory $chainValidatorFactory = null): CommonJaneOpenApi
     {
         $serializer = self::buildSerializer();
 
         return new self(
             SchemaParser::class,
-            GuesserFactory::create($serializer, $options),
+            GuesserFactory::create($serializer, $options, $chainValidatorFactory),
             $options['strict'] ?? true
         );
     }
 
     protected static function generators(DenormalizerInterface $denormalizer, array $options = []): \Generator
     {
+        $options = Options::fromArray($options);
         $naming = new Naming();
         $parser = (new ParserFactory())->createForHostVersion();
 
         yield new ModelGenerator($naming, $parser);
-        yield new NormalizerGenerator($naming, $parser, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false, $options['validation'] ?? false, $options['include-null-value'] ?? true);
+        yield new NormalizerGenerator($naming, $parser, $options->reference, $options->useCacheableSupportsMethod ?? false, $options->skipNullValues, $options->skipRequiredFields, $options->validation, $options->includeNullValue);
         yield new AuthenticationGenerator();
-        $operationNaming = OperationNamingFactory::create($options['operation-namings'] ?? []);
-        yield GeneratorFactory::build($denormalizer, $options['endpoint-generator'] ?: EndpointGenerator::class, $operationNaming);
+        $operationNaming = OperationNamingFactory::create($options->operationNamings);
+        yield GeneratorFactory::build($denormalizer, $options->endpointGenerator ?? EndpointGenerator::class, $operationNaming);
         yield new RuntimeGenerator($naming, $parser);
-        if ($options['validation'] ?? false) {
-            yield new ValidatorGenerator($naming, $options['default-additional-properties'] ?? null);
+        if ($options->validation) {
+            yield new ValidatorGenerator($naming, $options->defaultAdditionalProperties);
         }
-        if ($options['enums-as-objects'] ?? false) {
+        if ($options->enumsAsObjects) {
             yield new EnumGenerator();
         }
     }

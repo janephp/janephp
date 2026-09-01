@@ -41,37 +41,37 @@ class CommonPortalCustomizationNormalizer implements DenormalizerInterface, Norm
             $data['termsAndConditionsRequired'] = (bool) $data['termsAndConditionsRequired'];
         }
         if (\array_key_exists('language', $data)) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
         }
         if (\array_key_exists('title', $data)) {
-            $object->setTitle($data['title']);
+            $object->title = $data['title'];
         }
         if (\array_key_exists('logo', $data)) {
-            $object->setLogo($data['logo']);
+            $object->logo = $data['logo'];
         }
         if (\array_key_exists('termsAndConditionsRequired', $data)) {
-            $object->setTermsAndConditionsRequired($data['termsAndConditionsRequired']);
+            $object->termsAndConditionsRequired = $data['termsAndConditionsRequired'];
         }
         if (\array_key_exists('termsAndConditionsText', $data)) {
-            $object->setTermsAndConditionsText($data['termsAndConditionsText']);
+            $object->termsAndConditionsText = $data['termsAndConditionsText'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['language'] = $data->getLanguage();
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
-            $dataArray['title'] = $data->getTitle();
+        $dataArray['language'] = $data->language ?? null;
+        if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title ?? null;
         }
-        if ($data->isInitialized('logo') && null !== $data->getLogo()) {
-            $dataArray['logo'] = $data->getLogo();
+        if (array_key_exists('logo', get_object_vars($data)) && null !== ($data->logo ?? null)) {
+            $dataArray['logo'] = $data->logo ?? null;
         }
-        if ($data->isInitialized('termsAndConditionsRequired') && null !== $data->getTermsAndConditionsRequired()) {
-            $dataArray['termsAndConditionsRequired'] = $data->getTermsAndConditionsRequired();
+        if (array_key_exists('termsAndConditionsRequired', get_object_vars($data)) && null !== ($data->termsAndConditionsRequired ?? null)) {
+            $dataArray['termsAndConditionsRequired'] = $data->termsAndConditionsRequired ?? null;
         }
-        if ($data->isInitialized('termsAndConditionsText') && null !== $data->getTermsAndConditionsText()) {
-            $dataArray['termsAndConditionsText'] = $data->getTermsAndConditionsText();
+        if (array_key_exists('termsAndConditionsText', get_object_vars($data)) && null !== ($data->termsAndConditionsText ?? null)) {
+            $dataArray['termsAndConditionsText'] = $data->termsAndConditionsText ?? null;
         }
         return $dataArray;
     }

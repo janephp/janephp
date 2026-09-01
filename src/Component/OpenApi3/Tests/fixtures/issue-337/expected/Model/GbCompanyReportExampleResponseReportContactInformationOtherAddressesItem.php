@@ -8,103 +8,23 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem i
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $type;
     /**
      * @var string
      */
-    protected $type;
+    public string $simpleValue;
     /**
      * @var string
      */
-    protected $simpleValue;
+    public string $postalCode;
     /**
      * @var string
      */
-    protected $postalCode;
-    /**
-     * @var string
-     */
-    protected $telephone;
-    /**
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-    /**
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType(string $type): self
-    {
-        $this->initialized['type'] = true;
-        $this->type = $type;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getSimpleValue(): string
-    {
-        return $this->simpleValue;
-    }
-    /**
-     * @param string $simpleValue
-     *
-     * @return self
-     */
-    public function setSimpleValue(string $simpleValue): self
-    {
-        $this->initialized['simpleValue'] = true;
-        $this->simpleValue = $simpleValue;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getPostalCode(): string
-    {
-        return $this->postalCode;
-    }
-    /**
-     * @param string $postalCode
-     *
-     * @return self
-     */
-    public function setPostalCode(string $postalCode): self
-    {
-        $this->initialized['postalCode'] = true;
-        $this->postalCode = $postalCode;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getTelephone(): string
-    {
-        return $this->telephone;
-    }
-    /**
-     * @param string $telephone
-     *
-     * @return self
-     */
-    public function setTelephone(string $telephone): self
-    {
-        $this->initialized['telephone'] = true;
-        $this->telephone = $telephone;
-        return $this;
-    }
+    public string $telephone;
     public function definedProperties(): array
     {
-        return ['type' => ['type', 'getType', 'setType'], 'simpleValue' => ['simpleValue', 'getSimpleValue', 'setSimpleValue'], 'postalCode' => ['postalCode', 'getPostalCode', 'setPostalCode'], 'telephone' => ['telephone', 'getTelephone', 'setTelephone']];
+        return ['type' => 'type', 'simpleValue' => 'simpleValue', 'postalCode' => 'postalCode', 'telephone' => 'telephone'];
     }
 }

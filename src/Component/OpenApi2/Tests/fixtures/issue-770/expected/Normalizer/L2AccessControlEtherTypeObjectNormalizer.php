@@ -38,15 +38,15 @@ class L2AccessControlEtherTypeObjectNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('etherType', $data)) {
-            $object->setEtherType($data['etherType']);
+            $object->etherType = $data['etherType'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('etherType') && null !== $data->getEtherType()) {
-            $dataArray['etherType'] = $data->getEtherType();
+        if (array_key_exists('etherType', get_object_vars($data)) && null !== ($data->etherType ?? null)) {
+            $dataArray['etherType'] = $data->etherType ?? null;
         }
         return $dataArray;
     }

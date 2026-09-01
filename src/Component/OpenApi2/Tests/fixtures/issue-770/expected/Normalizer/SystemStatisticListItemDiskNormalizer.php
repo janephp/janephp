@@ -50,33 +50,33 @@ class SystemStatisticListItemDiskNormalizer implements DenormalizerInterface, No
             $data['minFree'] = (float) $data['minFree'];
         }
         if (\array_key_exists('total', $data)) {
-            $object->setTotal($data['total']);
+            $object->total = $data['total'];
         }
         if (\array_key_exists('free', $data)) {
-            $object->setFree($data['free']);
+            $object->free = $data['free'];
         }
         if (\array_key_exists('maxFree', $data)) {
-            $object->setMaxFree($data['maxFree']);
+            $object->maxFree = $data['maxFree'];
         }
         if (\array_key_exists('minFree', $data)) {
-            $object->setMinFree($data['minFree']);
+            $object->minFree = $data['minFree'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('total') && null !== $data->getTotal()) {
-            $dataArray['total'] = $data->getTotal();
+        if (array_key_exists('total', get_object_vars($data)) && null !== ($data->total ?? null)) {
+            $dataArray['total'] = $data->total ?? null;
         }
-        if ($data->isInitialized('free') && null !== $data->getFree()) {
-            $dataArray['free'] = $data->getFree();
+        if (array_key_exists('free', get_object_vars($data)) && null !== ($data->free ?? null)) {
+            $dataArray['free'] = $data->free ?? null;
         }
-        if ($data->isInitialized('maxFree') && null !== $data->getMaxFree()) {
-            $dataArray['maxFree'] = $data->getMaxFree();
+        if (array_key_exists('maxFree', get_object_vars($data)) && null !== ($data->maxFree ?? null)) {
+            $dataArray['maxFree'] = $data->maxFree ?? null;
         }
-        if ($data->isInitialized('minFree') && null !== $data->getMinFree()) {
-            $dataArray['minFree'] = $data->getMinFree();
+        if (array_key_exists('minFree', get_object_vars($data)) && null !== ($data->minFree ?? null)) {
+            $dataArray['minFree'] = $data->minFree ?? null;
         }
         return $dataArray;
     }

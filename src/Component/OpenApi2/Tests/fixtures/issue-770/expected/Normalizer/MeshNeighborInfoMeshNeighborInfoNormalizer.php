@@ -38,69 +38,69 @@ class MeshNeighborInfoMeshNeighborInfoNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('apName', $data)) {
-            $object->setApName($data['apName']);
+            $object->apName = $data['apName'];
         }
         if (\array_key_exists('ipAddress', $data)) {
-            $object->setIpAddress($data['ipAddress']);
+            $object->ipAddress = $data['ipAddress'];
         }
         if (\array_key_exists('externalIPAddress', $data)) {
-            $object->setExternalIPAddress($data['externalIPAddress']);
+            $object->externalIPAddress = $data['externalIPAddress'];
         }
         if (\array_key_exists('apModel', $data)) {
-            $object->setApModel($data['apModel']);
+            $object->apModel = $data['apModel'];
         }
         if (\array_key_exists('apFirmware', $data)) {
-            $object->setApFirmware($data['apFirmware']);
+            $object->apFirmware = $data['apFirmware'];
         }
         if (\array_key_exists('channel', $data)) {
-            $object->setChannel($data['channel']);
+            $object->channel = $data['channel'];
         }
         if (\array_key_exists('connectionStatus', $data)) {
-            $object->setConnectionStatus($data['connectionStatus']);
+            $object->connectionStatus = $data['connectionStatus'];
         }
         if (\array_key_exists('snr', $data)) {
-            $object->setSnr($data['snr']);
+            $object->snr = $data['snr'];
         }
         if (\array_key_exists('zoneName', $data)) {
-            $object->setZoneName($data['zoneName']);
+            $object->zoneName = $data['zoneName'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('apName') && null !== $data->getApName()) {
-            $dataArray['apName'] = $data->getApName();
+        if (array_key_exists('apName', get_object_vars($data)) && null !== ($data->apName ?? null)) {
+            $dataArray['apName'] = $data->apName ?? null;
         }
-        if ($data->isInitialized('ipAddress') && null !== $data->getIpAddress()) {
-            $dataArray['ipAddress'] = $data->getIpAddress();
+        if (array_key_exists('ipAddress', get_object_vars($data)) && null !== ($data->ipAddress ?? null)) {
+            $dataArray['ipAddress'] = $data->ipAddress ?? null;
         }
-        if ($data->isInitialized('externalIPAddress') && null !== $data->getExternalIPAddress()) {
-            $dataArray['externalIPAddress'] = $data->getExternalIPAddress();
+        if (array_key_exists('externalIPAddress', get_object_vars($data)) && null !== ($data->externalIPAddress ?? null)) {
+            $dataArray['externalIPAddress'] = $data->externalIPAddress ?? null;
         }
-        if ($data->isInitialized('apModel') && null !== $data->getApModel()) {
-            $dataArray['apModel'] = $data->getApModel();
+        if (array_key_exists('apModel', get_object_vars($data)) && null !== ($data->apModel ?? null)) {
+            $dataArray['apModel'] = $data->apModel ?? null;
         }
-        if ($data->isInitialized('apFirmware') && null !== $data->getApFirmware()) {
-            $dataArray['apFirmware'] = $data->getApFirmware();
+        if (array_key_exists('apFirmware', get_object_vars($data)) && null !== ($data->apFirmware ?? null)) {
+            $dataArray['apFirmware'] = $data->apFirmware ?? null;
         }
-        if ($data->isInitialized('channel') && null !== $data->getChannel()) {
-            $dataArray['channel'] = $data->getChannel();
+        if (array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
+            $dataArray['channel'] = $data->channel ?? null;
         }
-        if ($data->isInitialized('connectionStatus') && null !== $data->getConnectionStatus()) {
-            $dataArray['connectionStatus'] = $data->getConnectionStatus();
+        if (array_key_exists('connectionStatus', get_object_vars($data)) && null !== ($data->connectionStatus ?? null)) {
+            $dataArray['connectionStatus'] = $data->connectionStatus ?? null;
         }
-        if ($data->isInitialized('snr') && null !== $data->getSnr()) {
-            $dataArray['snr'] = $data->getSnr();
+        if (array_key_exists('snr', get_object_vars($data)) && null !== ($data->snr ?? null)) {
+            $dataArray['snr'] = $data->snr ?? null;
         }
-        if ($data->isInitialized('zoneName') && null !== $data->getZoneName()) {
-            $dataArray['zoneName'] = $data->getZoneName();
+        if (array_key_exists('zoneName', get_object_vars($data)) && null !== ($data->zoneName ?? null)) {
+            $dataArray['zoneName'] = $data->zoneName ?? null;
         }
         return $dataArray;
     }

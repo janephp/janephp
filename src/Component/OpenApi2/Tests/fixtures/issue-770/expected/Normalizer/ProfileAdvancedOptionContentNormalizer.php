@@ -62,75 +62,75 @@ class ProfileAdvancedOptionContentNormalizer implements DenormalizerInterface, N
             $data['failoverPrimaryCheckInterval'] = (float) $data['failoverPrimaryCheckInterval'];
         }
         if (\array_key_exists('dhcpOpt43Subcode', $data)) {
-            $object->setDhcpOpt43Subcode($data['dhcpOpt43Subcode']);
+            $object->dhcpOpt43Subcode = $data['dhcpOpt43Subcode'];
         }
         if (\array_key_exists('retryLimit', $data)) {
-            $object->setRetryLimit($data['retryLimit']);
+            $object->retryLimit = $data['retryLimit'];
         }
         if (\array_key_exists('replayWindow', $data)) {
-            $object->setReplayWindow($data['replayWindow']);
+            $object->replayWindow = $data['replayWindow'];
         }
         if (\array_key_exists('ipcompEnable', $data)) {
-            $object->setIpcompEnable($data['ipcompEnable']);
+            $object->ipcompEnable = $data['ipcompEnable'];
         }
         if (\array_key_exists('enforceNatt', $data)) {
-            $object->setEnforceNatt($data['enforceNatt']);
+            $object->enforceNatt = $data['enforceNatt'];
         }
         if (\array_key_exists('dpdDelay', $data)) {
-            $object->setDpdDelay($data['dpdDelay']);
+            $object->dpdDelay = $data['dpdDelay'];
         }
         if (\array_key_exists('keepAliveIntval', $data)) {
-            $object->setKeepAliveIntval($data['keepAliveIntval']);
+            $object->keepAliveIntval = $data['keepAliveIntval'];
         }
         if (\array_key_exists('failoverRetryPeriod', $data)) {
-            $object->setFailoverRetryPeriod($data['failoverRetryPeriod']);
+            $object->failoverRetryPeriod = $data['failoverRetryPeriod'];
         }
         if (\array_key_exists('failoverRetryInterval', $data)) {
-            $object->setFailoverRetryInterval($data['failoverRetryInterval']);
+            $object->failoverRetryInterval = $data['failoverRetryInterval'];
         }
         if (\array_key_exists('failoverMode', $data)) {
-            $object->setFailoverMode($data['failoverMode']);
+            $object->failoverMode = $data['failoverMode'];
         }
         if (\array_key_exists('failoverPrimaryCheckInterval', $data)) {
-            $object->setFailoverPrimaryCheckInterval($data['failoverPrimaryCheckInterval']);
+            $object->failoverPrimaryCheckInterval = $data['failoverPrimaryCheckInterval'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('dhcpOpt43Subcode') && null !== $data->getDhcpOpt43Subcode()) {
-            $dataArray['dhcpOpt43Subcode'] = $data->getDhcpOpt43Subcode();
+        if (array_key_exists('dhcpOpt43Subcode', get_object_vars($data)) && null !== ($data->dhcpOpt43Subcode ?? null)) {
+            $dataArray['dhcpOpt43Subcode'] = $data->dhcpOpt43Subcode ?? null;
         }
-        if ($data->isInitialized('retryLimit') && null !== $data->getRetryLimit()) {
-            $dataArray['retryLimit'] = $data->getRetryLimit();
+        if (array_key_exists('retryLimit', get_object_vars($data)) && null !== ($data->retryLimit ?? null)) {
+            $dataArray['retryLimit'] = $data->retryLimit ?? null;
         }
-        if ($data->isInitialized('replayWindow') && null !== $data->getReplayWindow()) {
-            $dataArray['replayWindow'] = $data->getReplayWindow();
+        if (array_key_exists('replayWindow', get_object_vars($data)) && null !== ($data->replayWindow ?? null)) {
+            $dataArray['replayWindow'] = $data->replayWindow ?? null;
         }
-        if ($data->isInitialized('ipcompEnable') && null !== $data->getIpcompEnable()) {
-            $dataArray['ipcompEnable'] = $data->getIpcompEnable();
+        if (array_key_exists('ipcompEnable', get_object_vars($data)) && null !== ($data->ipcompEnable ?? null)) {
+            $dataArray['ipcompEnable'] = $data->ipcompEnable ?? null;
         }
-        if ($data->isInitialized('enforceNatt') && null !== $data->getEnforceNatt()) {
-            $dataArray['enforceNatt'] = $data->getEnforceNatt();
+        if (array_key_exists('enforceNatt', get_object_vars($data)) && null !== ($data->enforceNatt ?? null)) {
+            $dataArray['enforceNatt'] = $data->enforceNatt ?? null;
         }
-        if ($data->isInitialized('dpdDelay') && null !== $data->getDpdDelay()) {
-            $dataArray['dpdDelay'] = $data->getDpdDelay();
+        if (array_key_exists('dpdDelay', get_object_vars($data)) && null !== ($data->dpdDelay ?? null)) {
+            $dataArray['dpdDelay'] = $data->dpdDelay ?? null;
         }
-        if ($data->isInitialized('keepAliveIntval') && null !== $data->getKeepAliveIntval()) {
-            $dataArray['keepAliveIntval'] = $data->getKeepAliveIntval();
+        if (array_key_exists('keepAliveIntval', get_object_vars($data)) && null !== ($data->keepAliveIntval ?? null)) {
+            $dataArray['keepAliveIntval'] = $data->keepAliveIntval ?? null;
         }
-        if ($data->isInitialized('failoverRetryPeriod') && null !== $data->getFailoverRetryPeriod()) {
-            $dataArray['failoverRetryPeriod'] = $data->getFailoverRetryPeriod();
+        if (array_key_exists('failoverRetryPeriod', get_object_vars($data)) && null !== ($data->failoverRetryPeriod ?? null)) {
+            $dataArray['failoverRetryPeriod'] = $data->failoverRetryPeriod ?? null;
         }
-        if ($data->isInitialized('failoverRetryInterval') && null !== $data->getFailoverRetryInterval()) {
-            $dataArray['failoverRetryInterval'] = $data->getFailoverRetryInterval();
+        if (array_key_exists('failoverRetryInterval', get_object_vars($data)) && null !== ($data->failoverRetryInterval ?? null)) {
+            $dataArray['failoverRetryInterval'] = $data->failoverRetryInterval ?? null;
         }
-        if ($data->isInitialized('failoverMode') && null !== $data->getFailoverMode()) {
-            $dataArray['failoverMode'] = $data->getFailoverMode();
+        if (array_key_exists('failoverMode', get_object_vars($data)) && null !== ($data->failoverMode ?? null)) {
+            $dataArray['failoverMode'] = $data->failoverMode ?? null;
         }
-        if ($data->isInitialized('failoverPrimaryCheckInterval') && null !== $data->getFailoverPrimaryCheckInterval()) {
-            $dataArray['failoverPrimaryCheckInterval'] = $data->getFailoverPrimaryCheckInterval();
+        if (array_key_exists('failoverPrimaryCheckInterval', get_object_vars($data)) && null !== ($data->failoverPrimaryCheckInterval ?? null)) {
+            $dataArray['failoverPrimaryCheckInterval'] = $data->failoverPrimaryCheckInterval ?? null;
         }
         return $dataArray;
     }

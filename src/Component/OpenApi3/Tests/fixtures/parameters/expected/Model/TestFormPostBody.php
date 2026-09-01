@@ -8,147 +8,31 @@ class TestFormPostBody implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
-    /**
      * @var string
      */
-    protected $testString;
+    public string $testString;
     /**
      * @var int
      */
-    protected $testInteger;
+    public int $testInteger;
     /**
      * @var float
      */
-    protected $testFloat;
+    public float $testFloat;
     /**
      * @var list<mixed>
      */
-    protected $testArray;
+    public array $testArray;
     /**
      * @var string
      */
-    protected $testRequired;
+    public string $testRequired;
     /**
      * @var string
      */
-    protected $testDefault = 'test';
-    /**
-     * @return string
-     */
-    public function getTestString(): string
-    {
-        return $this->testString;
-    }
-    /**
-     * @param string $testString
-     *
-     * @return self
-     */
-    public function setTestString(string $testString): self
-    {
-        $this->initialized['testString'] = true;
-        $this->testString = $testString;
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getTestInteger(): int
-    {
-        return $this->testInteger;
-    }
-    /**
-     * @param int $testInteger
-     *
-     * @return self
-     */
-    public function setTestInteger(int $testInteger): self
-    {
-        $this->initialized['testInteger'] = true;
-        $this->testInteger = $testInteger;
-        return $this;
-    }
-    /**
-     * @return float
-     */
-    public function getTestFloat(): float
-    {
-        return $this->testFloat;
-    }
-    /**
-     * @param float $testFloat
-     *
-     * @return self
-     */
-    public function setTestFloat(float $testFloat): self
-    {
-        $this->initialized['testFloat'] = true;
-        $this->testFloat = $testFloat;
-        return $this;
-    }
-    /**
-     * @return list<mixed>
-     */
-    public function getTestArray(): array
-    {
-        return $this->testArray;
-    }
-    /**
-     * @param list<mixed> $testArray
-     *
-     * @return self
-     */
-    public function setTestArray(array $testArray): self
-    {
-        $this->initialized['testArray'] = true;
-        $this->testArray = $testArray;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getTestRequired(): string
-    {
-        return $this->testRequired;
-    }
-    /**
-     * @param string $testRequired
-     *
-     * @return self
-     */
-    public function setTestRequired(string $testRequired): self
-    {
-        $this->initialized['testRequired'] = true;
-        $this->testRequired = $testRequired;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getTestDefault(): string
-    {
-        return $this->testDefault;
-    }
-    /**
-     * @param string $testDefault
-     *
-     * @return self
-     */
-    public function setTestDefault(string $testDefault): self
-    {
-        $this->initialized['testDefault'] = true;
-        $this->testDefault = $testDefault;
-        return $this;
-    }
+    public string $testDefault = 'test';
     public function definedProperties(): array
     {
-        return ['testString' => ['testString', 'getTestString', 'setTestString'], 'testInteger' => ['testInteger', 'getTestInteger', 'setTestInteger'], 'testFloat' => ['testFloat', 'getTestFloat', 'setTestFloat'], 'testArray' => ['testArray', 'getTestArray', 'setTestArray'], 'testRequired' => ['testRequired', 'getTestRequired', 'setTestRequired'], 'testDefault' => ['testDefault', 'getTestDefault', 'setTestDefault']];
+        return ['testString' => 'testString', 'testInteger' => 'testInteger', 'testFloat' => 'testFloat', 'testArray' => 'testArray', 'testRequired' => 'testRequired', 'testDefault' => 'testDefault'];
     }
 }

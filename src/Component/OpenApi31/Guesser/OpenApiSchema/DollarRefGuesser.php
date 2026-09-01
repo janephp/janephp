@@ -18,9 +18,9 @@ class DollarRefGuesser extends ReferenceGuesser
         // meta-schema itself relies on that); nodes composing their own properties or
         // allOf keep their inline handling, for anything else the reference wins
         return $object instanceof $schemaClass
-            && null !== $object->getDollarRef()
-            && null === $object->getProperties()
-            && null === $object->getAllOf();
+            && null !== ($object->dollarRef ?? null)
+            && null === ($object->properties ?? null)
+            && null === ($object->allOf ?? null);
     }
 
     public function guessClass($object, string $name, string $reference, Registry $registry): void
@@ -37,6 +37,6 @@ class DollarRefGuesser extends ReferenceGuesser
     {
         [$origin] = explode('#', $reference, 2);
 
-        return new Reference($object->getDollarRef(), $origin);
+        return new Reference($object->dollarRef ?? null, $origin);
     }
 }

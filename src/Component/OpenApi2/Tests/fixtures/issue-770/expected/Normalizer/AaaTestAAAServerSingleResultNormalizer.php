@@ -38,15 +38,15 @@ class AaaTestAAAServerSingleResultNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('aaaTesting', $data)) {
-            $object->setAaaTesting($data['aaaTesting']);
+            $object->aaaTesting = $data['aaaTesting'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('aaaTesting') && null !== $data->getAaaTesting()) {
-            $dataArray['aaaTesting'] = $data->getAaaTesting();
+        if (array_key_exists('aaaTesting', get_object_vars($data)) && null !== ($data->aaaTesting ?? null)) {
+            $dataArray['aaaTesting'] = $data->aaaTesting ?? null;
         }
         return $dataArray;
     }

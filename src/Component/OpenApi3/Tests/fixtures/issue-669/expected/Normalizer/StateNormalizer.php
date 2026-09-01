@@ -38,11 +38,11 @@ class StateNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('regions', $data)) {
-            $object->setRegions($this->denormalizer->denormalize($data['regions'], \Jane\Generated\DigitalOcean\Model\RegionalState::class, 'json', $context));
+            $object->regions = $this->denormalizer->denormalize($data['regions'], \Jane\Generated\DigitalOcean\Model\RegionalState::class, 'json', $context);
             unset($data['regions']);
         }
         if (\array_key_exists('previous_outage', $data)) {
-            $object->setPreviousOutage($this->denormalizer->denormalize($data['previous_outage'], \Jane\Generated\DigitalOcean\Model\PreviousOutage::class, 'json', $context));
+            $object->previousOutage = $this->denormalizer->denormalize($data['previous_outage'], \Jane\Generated\DigitalOcean\Model\PreviousOutage::class, 'json', $context);
             unset($data['previous_outage']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class StateNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('regions') && null !== $data->getRegions()) {
-            $dataArray['regions'] = $data->getRegions() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRegions(), 'json', $context));
+        if (array_key_exists('regions', get_object_vars($data)) && null !== ($data->regions ?? null)) {
+            $dataArray['regions'] = ($data->regions ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->regions ?? null, 'json', $context));
         }
-        if ($data->isInitialized('previousOutage') && null !== $data->getPreviousOutage()) {
-            $dataArray['previous_outage'] = $data->getPreviousOutage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPreviousOutage(), 'json', $context));
+        if (array_key_exists('previousOutage', get_object_vars($data)) && null !== ($data->previousOutage ?? null)) {
+            $dataArray['previous_outage'] = ($data->previousOutage ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->previousOutage ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

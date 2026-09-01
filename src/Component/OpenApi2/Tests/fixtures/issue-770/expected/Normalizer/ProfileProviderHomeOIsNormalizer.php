@@ -38,18 +38,18 @@ class ProfileProviderHomeOIsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('oi', $data)) {
-            $object->setOi($data['oi']);
+            $object->oi = $data['oi'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['oi'] = $data->getOi();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['oi'] = $data->oi ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

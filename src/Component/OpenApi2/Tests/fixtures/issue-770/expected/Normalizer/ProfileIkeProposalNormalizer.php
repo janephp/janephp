@@ -38,28 +38,28 @@ class ProfileIkeProposalNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('encAlg', $data)) {
-            $object->setEncAlg($data['encAlg']);
+            $object->encAlg = $data['encAlg'];
         }
         if (\array_key_exists('authAlg', $data)) {
-            $object->setAuthAlg($data['authAlg']);
+            $object->authAlg = $data['authAlg'];
         }
         if (\array_key_exists('prfAlg', $data)) {
-            $object->setPrfAlg($data['prfAlg']);
+            $object->prfAlg = $data['prfAlg'];
         }
         if (\array_key_exists('dhGroup', $data)) {
-            $object->setDhGroup($data['dhGroup']);
+            $object->dhGroup = $data['dhGroup'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['encAlg'] = $data->getEncAlg();
-        $dataArray['authAlg'] = $data->getAuthAlg();
-        if ($data->isInitialized('prfAlg') && null !== $data->getPrfAlg()) {
-            $dataArray['prfAlg'] = $data->getPrfAlg();
+        $dataArray['encAlg'] = $data->encAlg ?? null;
+        $dataArray['authAlg'] = $data->authAlg ?? null;
+        if (array_key_exists('prfAlg', get_object_vars($data)) && null !== ($data->prfAlg ?? null)) {
+            $dataArray['prfAlg'] = $data->prfAlg ?? null;
         }
-        $dataArray['dhGroup'] = $data->getDhGroup();
+        $dataArray['dhGroup'] = $data->dhGroup ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

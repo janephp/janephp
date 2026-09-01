@@ -38,27 +38,27 @@ class ApRoutineConfigIntervalApRoutineConfigIntervalRspNormalizer implements Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apRoutineConfigInterval', $data)) {
-            $object->setApRoutineConfigInterval($data['apRoutineConfigInterval']);
+            $object->apRoutineConfigInterval = $data['apRoutineConfigInterval'];
         }
         if (\array_key_exists('upperBound', $data)) {
-            $object->setUpperBound($data['upperBound']);
+            $object->upperBound = $data['upperBound'];
         }
         if (\array_key_exists('lowerBound', $data)) {
-            $object->setLowerBound($data['lowerBound']);
+            $object->lowerBound = $data['lowerBound'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apRoutineConfigInterval') && null !== $data->getApRoutineConfigInterval()) {
-            $dataArray['apRoutineConfigInterval'] = $data->getApRoutineConfigInterval();
+        if (array_key_exists('apRoutineConfigInterval', get_object_vars($data)) && null !== ($data->apRoutineConfigInterval ?? null)) {
+            $dataArray['apRoutineConfigInterval'] = $data->apRoutineConfigInterval ?? null;
         }
-        if ($data->isInitialized('upperBound') && null !== $data->getUpperBound()) {
-            $dataArray['upperBound'] = $data->getUpperBound();
+        if (array_key_exists('upperBound', get_object_vars($data)) && null !== ($data->upperBound ?? null)) {
+            $dataArray['upperBound'] = $data->upperBound ?? null;
         }
-        if ($data->isInitialized('lowerBound') && null !== $data->getLowerBound()) {
-            $dataArray['lowerBound'] = $data->getLowerBound();
+        if (array_key_exists('lowerBound', get_object_vars($data)) && null !== ($data->lowerBound ?? null)) {
+            $dataArray['lowerBound'] = $data->lowerBound ?? null;
         }
         return $dataArray;
     }

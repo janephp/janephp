@@ -44,39 +44,39 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemNormalizer impl
             $data['consolidatedAccounts'] = (bool) $data['consolidatedAccounts'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('yearEndDate', $data)) {
-            $object->setYearEndDate($data['yearEndDate']);
+            $object->yearEndDate = $data['yearEndDate'];
             unset($data['yearEndDate']);
         }
         if (\array_key_exists('numberOfWeeks', $data)) {
-            $object->setNumberOfWeeks($data['numberOfWeeks']);
+            $object->numberOfWeeks = $data['numberOfWeeks'];
             unset($data['numberOfWeeks']);
         }
         if (\array_key_exists('currency', $data)) {
-            $object->setCurrency($data['currency']);
+            $object->currency = $data['currency'];
             unset($data['currency']);
         }
         if (\array_key_exists('consolidatedAccounts', $data)) {
-            $object->setConsolidatedAccounts($data['consolidatedAccounts']);
+            $object->consolidatedAccounts = $data['consolidatedAccounts'];
             unset($data['consolidatedAccounts']);
         }
         if (\array_key_exists('profitAndLoss', $data)) {
-            $object->setProfitAndLoss($this->denormalizer->denormalize($data['profitAndLoss'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss::class, 'json', $context));
+            $object->profitAndLoss = $this->denormalizer->denormalize($data['profitAndLoss'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss::class, 'json', $context);
             unset($data['profitAndLoss']);
         }
         if (\array_key_exists('balanceSheet', $data)) {
-            $object->setBalanceSheet($this->denormalizer->denormalize($data['balanceSheet'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet::class, 'json', $context));
+            $object->balanceSheet = $this->denormalizer->denormalize($data['balanceSheet'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet::class, 'json', $context);
             unset($data['balanceSheet']);
         }
         if (\array_key_exists('otherFinancials', $data)) {
-            $object->setOtherFinancials($this->denormalizer->denormalize($data['otherFinancials'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials::class, 'json', $context));
+            $object->otherFinancials = $this->denormalizer->denormalize($data['otherFinancials'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials::class, 'json', $context);
             unset($data['otherFinancials']);
         }
         if (\array_key_exists('ratios', $data)) {
-            $object->setRatios($this->denormalizer->denormalize($data['ratios'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios::class, 'json', $context));
+            $object->ratios = $this->denormalizer->denormalize($data['ratios'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios::class, 'json', $context);
             unset($data['ratios']);
         }
         foreach ($data as $key => $value) {
@@ -89,32 +89,32 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemNormalizer impl
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('yearEndDate') && null !== $data->getYearEndDate()) {
-            $dataArray['yearEndDate'] = $data->getYearEndDate();
+        if (array_key_exists('yearEndDate', get_object_vars($data)) && null !== ($data->yearEndDate ?? null)) {
+            $dataArray['yearEndDate'] = $data->yearEndDate ?? null;
         }
-        if ($data->isInitialized('numberOfWeeks') && null !== $data->getNumberOfWeeks()) {
-            $dataArray['numberOfWeeks'] = $data->getNumberOfWeeks();
+        if (array_key_exists('numberOfWeeks', get_object_vars($data)) && null !== ($data->numberOfWeeks ?? null)) {
+            $dataArray['numberOfWeeks'] = $data->numberOfWeeks ?? null;
         }
-        if ($data->isInitialized('currency') && null !== $data->getCurrency()) {
-            $dataArray['currency'] = $data->getCurrency();
+        if (array_key_exists('currency', get_object_vars($data)) && null !== ($data->currency ?? null)) {
+            $dataArray['currency'] = $data->currency ?? null;
         }
-        if ($data->isInitialized('consolidatedAccounts') && null !== $data->getConsolidatedAccounts()) {
-            $dataArray['consolidatedAccounts'] = $data->getConsolidatedAccounts();
+        if (array_key_exists('consolidatedAccounts', get_object_vars($data)) && null !== ($data->consolidatedAccounts ?? null)) {
+            $dataArray['consolidatedAccounts'] = $data->consolidatedAccounts ?? null;
         }
-        if ($data->isInitialized('profitAndLoss') && null !== $data->getProfitAndLoss()) {
-            $dataArray['profitAndLoss'] = $data->getProfitAndLoss() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getProfitAndLoss(), 'json', $context));
+        if (array_key_exists('profitAndLoss', get_object_vars($data)) && null !== ($data->profitAndLoss ?? null)) {
+            $dataArray['profitAndLoss'] = ($data->profitAndLoss ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->profitAndLoss ?? null, 'json', $context));
         }
-        if ($data->isInitialized('balanceSheet') && null !== $data->getBalanceSheet()) {
-            $dataArray['balanceSheet'] = $data->getBalanceSheet() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getBalanceSheet(), 'json', $context));
+        if (array_key_exists('balanceSheet', get_object_vars($data)) && null !== ($data->balanceSheet ?? null)) {
+            $dataArray['balanceSheet'] = ($data->balanceSheet ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->balanceSheet ?? null, 'json', $context));
         }
-        if ($data->isInitialized('otherFinancials') && null !== $data->getOtherFinancials()) {
-            $dataArray['otherFinancials'] = $data->getOtherFinancials() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getOtherFinancials(), 'json', $context));
+        if (array_key_exists('otherFinancials', get_object_vars($data)) && null !== ($data->otherFinancials ?? null)) {
+            $dataArray['otherFinancials'] = ($data->otherFinancials ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->otherFinancials ?? null, 'json', $context));
         }
-        if ($data->isInitialized('ratios') && null !== $data->getRatios()) {
-            $dataArray['ratios'] = $data->getRatios() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getRatios(), 'json', $context));
+        if (array_key_exists('ratios', get_object_vars($data)) && null !== ($data->ratios ?? null)) {
+            $dataArray['ratios'] = ($data->ratios ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->ratios ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

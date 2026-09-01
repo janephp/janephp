@@ -38,7 +38,7 @@ class ResponseAutoscaleNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('autoscale', $data)) {
-            $object->setAutoscale($this->denormalizer->denormalize($data['autoscale'], \Jane\Generated\DigitalOcean\Model\DatabaseAutoscaleParams::class, 'json', $context));
+            $object->autoscale = $this->denormalizer->denormalize($data['autoscale'], \Jane\Generated\DigitalOcean\Model\DatabaseAutoscaleParams::class, 'json', $context);
             unset($data['autoscale']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseAutoscaleNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('autoscale') && null !== $data->getAutoscale()) {
-            $dataArray['autoscale'] = $data->getAutoscale() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAutoscale(), 'json', $context));
+        if (array_key_exists('autoscale', get_object_vars($data)) && null !== ($data->autoscale ?? null)) {
+            $dataArray['autoscale'] = ($data->autoscale ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->autoscale ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

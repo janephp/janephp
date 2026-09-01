@@ -41,32 +41,32 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
             $this->validate($data, new \Docker\Api\Validator\ResourceObjectConstraint());
         }
         if (\array_key_exists('NanoCPUs', $data)) {
-            $object->setNanoCPUs($data['NanoCPUs']);
+            $object->nanoCPUs = $data['NanoCPUs'];
         }
         if (\array_key_exists('MemoryBytes', $data)) {
-            $object->setMemoryBytes($data['MemoryBytes']);
+            $object->memoryBytes = $data['MemoryBytes'];
         }
         if (\array_key_exists('GenericResources', $data)) {
             $values = [];
             foreach ($data['GenericResources'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\GenericResourcesItem::class, 'json', $context);
             }
-            $object->setGenericResources($values);
+            $object->genericResources = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nanoCPUs') && null !== $data->getNanoCPUs()) {
-            $dataArray['NanoCPUs'] = $data->getNanoCPUs();
+        if (array_key_exists('nanoCPUs', get_object_vars($data)) && null !== ($data->nanoCPUs ?? null)) {
+            $dataArray['NanoCPUs'] = $data->nanoCPUs ?? null;
         }
-        if ($data->isInitialized('memoryBytes') && null !== $data->getMemoryBytes()) {
-            $dataArray['MemoryBytes'] = $data->getMemoryBytes();
+        if (array_key_exists('memoryBytes', get_object_vars($data)) && null !== ($data->memoryBytes ?? null)) {
+            $dataArray['MemoryBytes'] = $data->memoryBytes ?? null;
         }
-        if ($data->isInitialized('genericResources') && null !== $data->getGenericResources()) {
+        if (array_key_exists('genericResources', get_object_vars($data)) && null !== ($data->genericResources ?? null)) {
             $values = [];
-            foreach ($data->getGenericResources() as $value) {
+            foreach ($data->genericResources ?? null as $value) {
                 $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['GenericResources'] = $values;

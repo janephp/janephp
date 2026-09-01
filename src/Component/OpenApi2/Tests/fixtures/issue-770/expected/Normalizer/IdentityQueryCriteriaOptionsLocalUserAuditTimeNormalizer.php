@@ -47,27 +47,27 @@ class IdentityQueryCriteriaOptionsLocalUserAuditTimeNormalizer implements Denorm
             $data['interval'] = (float) $data['interval'];
         }
         if (\array_key_exists('start', $data)) {
-            $object->setStart($data['start']);
+            $object->start = $data['start'];
         }
         if (\array_key_exists('end', $data)) {
-            $object->setEnd($data['end']);
+            $object->end = $data['end'];
         }
         if (\array_key_exists('interval', $data)) {
-            $object->setInterval($data['interval']);
+            $object->interval = $data['interval'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('start') && null !== $data->getStart()) {
-            $dataArray['start'] = $data->getStart();
+        if (array_key_exists('start', get_object_vars($data)) && null !== ($data->start ?? null)) {
+            $dataArray['start'] = $data->start ?? null;
         }
-        if ($data->isInitialized('end') && null !== $data->getEnd()) {
-            $dataArray['end'] = $data->getEnd();
+        if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
+            $dataArray['end'] = $data->end ?? null;
         }
-        if ($data->isInitialized('interval') && null !== $data->getInterval()) {
-            $dataArray['interval'] = $data->getInterval();
+        if (array_key_exists('interval', get_object_vars($data)) && null !== ($data->interval ?? null)) {
+            $dataArray['interval'] = $data->interval ?? null;
         }
         return $dataArray;
     }

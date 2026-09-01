@@ -41,33 +41,33 @@ class AdministrationClusterBackupSummaryNormalizer implements DenormalizerInterf
             $data['filesize'] = (float) $data['filesize'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
         }
         if (\array_key_exists('filesize', $data)) {
-            $object->setFilesize($data['filesize']);
+            $object->filesize = $data['filesize'];
         }
         if (\array_key_exists('createdOn', $data)) {
-            $object->setCreatedOn($data['createdOn']);
+            $object->createdOn = $data['createdOn'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion();
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = $data->version ?? null;
         }
-        if ($data->isInitialized('filesize') && null !== $data->getFilesize()) {
-            $dataArray['filesize'] = $data->getFilesize();
+        if (array_key_exists('filesize', get_object_vars($data)) && null !== ($data->filesize ?? null)) {
+            $dataArray['filesize'] = $data->filesize ?? null;
         }
-        if ($data->isInitialized('createdOn') && null !== $data->getCreatedOn()) {
-            $dataArray['createdOn'] = $data->getCreatedOn();
+        if (array_key_exists('createdOn', get_object_vars($data)) && null !== ($data->createdOn ?? null)) {
+            $dataArray['createdOn'] = $data->createdOn ?? null;
         }
         return $dataArray;
     }

@@ -44,11 +44,11 @@ class PatternPropertiesNormalizer implements DenormalizerInterface, NormalizerIn
             } elseif (is_null($data['bar'])) {
                 $value = $data['bar'];
             }
-            $object->setBar($value);
+            $object->bar = $value;
             unset($data['bar']);
         }
         elseif (\array_key_exists('bar', $data) && $data['bar'] === null) {
-            $object->setBar(null);
+            $object->bar = null;
             unset($data['bar']);
         }
         foreach ($data as $key => $value_1) {
@@ -61,12 +61,12 @@ class PatternPropertiesNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $value = $data->getBar();
-            if (is_int($data->getBar())) {
-                $value = $data->getBar();
-            } elseif (is_null($data->getBar())) {
-                $value = $data->getBar();
+        if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
+            $value = $data->bar ?? null;
+            if (is_int($data->bar ?? null)) {
+                $value = $data->bar ?? null;
+            } elseif (is_null($data->bar ?? null)) {
+                $value = $data->bar ?? null;
             }
             $dataArray['bar'] = $value;
         }

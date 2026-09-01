@@ -38,59 +38,59 @@ class ApPacketCaptureApPacketCaptureResNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apMac', $data)) {
-            $object->setApMac($data['apMac']);
+            $object->apMac = $data['apMac'];
         }
         if (\array_key_exists('captureInterface', $data)) {
-            $object->setCaptureInterface($data['captureInterface']);
+            $object->captureInterface = $data['captureInterface'];
         }
         if (\array_key_exists('hostIp', $data)) {
-            $object->setHostIp($data['hostIp']);
+            $object->hostIp = $data['hostIp'];
         }
         if (\array_key_exists('includedMac', $data)) {
-            $object->setIncludedMac($data['includedMac']);
+            $object->includedMac = $data['includedMac'];
         }
         if (\array_key_exists('includedFrameTypes', $data)) {
             $values = [];
             foreach ($data['includedFrameTypes'] as $value) {
                 $values[] = $value;
             }
-            $object->setIncludedFrameTypes($values);
+            $object->includedFrameTypes = $values;
         }
         if (\array_key_exists('captureMode', $data)) {
-            $object->setCaptureMode($data['captureMode']);
+            $object->captureMode = $data['captureMode'];
         }
         if (\array_key_exists('captureState', $data)) {
-            $object->setCaptureState($data['captureState']);
+            $object->captureState = $data['captureState'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apMac') && null !== $data->getApMac()) {
-            $dataArray['apMac'] = $data->getApMac();
+        if (array_key_exists('apMac', get_object_vars($data)) && null !== ($data->apMac ?? null)) {
+            $dataArray['apMac'] = $data->apMac ?? null;
         }
-        if ($data->isInitialized('captureInterface') && null !== $data->getCaptureInterface()) {
-            $dataArray['captureInterface'] = $data->getCaptureInterface();
+        if (array_key_exists('captureInterface', get_object_vars($data)) && null !== ($data->captureInterface ?? null)) {
+            $dataArray['captureInterface'] = $data->captureInterface ?? null;
         }
-        if ($data->isInitialized('hostIp') && null !== $data->getHostIp()) {
-            $dataArray['hostIp'] = $data->getHostIp();
+        if (array_key_exists('hostIp', get_object_vars($data)) && null !== ($data->hostIp ?? null)) {
+            $dataArray['hostIp'] = $data->hostIp ?? null;
         }
-        if ($data->isInitialized('includedMac') && null !== $data->getIncludedMac()) {
-            $dataArray['includedMac'] = $data->getIncludedMac();
+        if (array_key_exists('includedMac', get_object_vars($data)) && null !== ($data->includedMac ?? null)) {
+            $dataArray['includedMac'] = $data->includedMac ?? null;
         }
-        if ($data->isInitialized('includedFrameTypes') && null !== $data->getIncludedFrameTypes()) {
+        if (array_key_exists('includedFrameTypes', get_object_vars($data)) && null !== ($data->includedFrameTypes ?? null)) {
             $values = [];
-            foreach ($data->getIncludedFrameTypes() as $value) {
+            foreach ($data->includedFrameTypes ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['includedFrameTypes'] = $values;
         }
-        if ($data->isInitialized('captureMode') && null !== $data->getCaptureMode()) {
-            $dataArray['captureMode'] = $data->getCaptureMode();
+        if (array_key_exists('captureMode', get_object_vars($data)) && null !== ($data->captureMode ?? null)) {
+            $dataArray['captureMode'] = $data->captureMode ?? null;
         }
-        if ($data->isInitialized('captureState') && null !== $data->getCaptureState()) {
-            $dataArray['captureState'] = $data->getCaptureState();
+        if (array_key_exists('captureState', get_object_vars($data)) && null !== ($data->captureState ?? null)) {
+            $dataArray['captureState'] = $data->captureState ?? null;
         }
         return $dataArray;
     }

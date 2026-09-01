@@ -38,51 +38,51 @@ class SessionManagementRuckusSessionNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('lastAccessTime', $data)) {
-            $object->setLastAccessTime($data['lastAccessTime']);
+            $object->lastAccessTime = $data['lastAccessTime'];
         }
         if (\array_key_exists('lastAccessURI', $data)) {
-            $object->setLastAccessURI($data['lastAccessURI']);
+            $object->lastAccessURI = $data['lastAccessURI'];
         }
         if (\array_key_exists('userUUID', $data)) {
-            $object->setUserUUID($data['userUUID']);
+            $object->userUUID = $data['userUUID'];
         }
         if (\array_key_exists('userName', $data)) {
-            $object->setUserName($data['userName']);
+            $object->userName = $data['userName'];
         }
         if (\array_key_exists('sessionId', $data)) {
-            $object->setSessionId($data['sessionId']);
+            $object->sessionId = $data['sessionId'];
         }
         if (\array_key_exists('sourceIp', $data)) {
-            $object->setSourceIp($data['sourceIp']);
+            $object->sourceIp = $data['sourceIp'];
         }
         if (\array_key_exists('authType', $data)) {
-            $object->setAuthType($data['authType']);
+            $object->authType = $data['authType'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('lastAccessTime') && null !== $data->getLastAccessTime()) {
-            $dataArray['lastAccessTime'] = $data->getLastAccessTime();
+        if (array_key_exists('lastAccessTime', get_object_vars($data)) && null !== ($data->lastAccessTime ?? null)) {
+            $dataArray['lastAccessTime'] = $data->lastAccessTime ?? null;
         }
-        if ($data->isInitialized('lastAccessURI') && null !== $data->getLastAccessURI()) {
-            $dataArray['lastAccessURI'] = $data->getLastAccessURI();
+        if (array_key_exists('lastAccessURI', get_object_vars($data)) && null !== ($data->lastAccessURI ?? null)) {
+            $dataArray['lastAccessURI'] = $data->lastAccessURI ?? null;
         }
-        if ($data->isInitialized('userUUID') && null !== $data->getUserUUID()) {
-            $dataArray['userUUID'] = $data->getUserUUID();
+        if (array_key_exists('userUUID', get_object_vars($data)) && null !== ($data->userUUID ?? null)) {
+            $dataArray['userUUID'] = $data->userUUID ?? null;
         }
-        if ($data->isInitialized('userName') && null !== $data->getUserName()) {
-            $dataArray['userName'] = $data->getUserName();
+        if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
+            $dataArray['userName'] = $data->userName ?? null;
         }
-        if ($data->isInitialized('sessionId') && null !== $data->getSessionId()) {
-            $dataArray['sessionId'] = $data->getSessionId();
+        if (array_key_exists('sessionId', get_object_vars($data)) && null !== ($data->sessionId ?? null)) {
+            $dataArray['sessionId'] = $data->sessionId ?? null;
         }
-        if ($data->isInitialized('sourceIp') && null !== $data->getSourceIp()) {
-            $dataArray['sourceIp'] = $data->getSourceIp();
+        if (array_key_exists('sourceIp', get_object_vars($data)) && null !== ($data->sourceIp ?? null)) {
+            $dataArray['sourceIp'] = $data->sourceIp ?? null;
         }
-        if ($data->isInitialized('authType') && null !== $data->getAuthType()) {
-            $dataArray['authType'] = $data->getAuthType();
+        if (array_key_exists('authType', get_object_vars($data)) && null !== ($data->authType ?? null)) {
+            $dataArray['authType'] = $data->authType ?? null;
         }
         return $dataArray;
     }

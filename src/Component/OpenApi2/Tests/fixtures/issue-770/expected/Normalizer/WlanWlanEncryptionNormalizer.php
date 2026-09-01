@@ -47,73 +47,73 @@ class WlanWlanEncryptionNormalizer implements DenormalizerInterface, NormalizerI
             $data['reserveSsidEnabled'] = (bool) $data['reserveSsidEnabled'];
         }
         if (\array_key_exists('method', $data)) {
-            $object->setMethod($data['method']);
+            $object->method = $data['method'];
         }
         if (\array_key_exists('algorithm', $data)) {
-            $object->setAlgorithm($data['algorithm']);
+            $object->algorithm = $data['algorithm'];
         }
         if (\array_key_exists('passphrase', $data)) {
-            $object->setPassphrase($data['passphrase']);
+            $object->passphrase = $data['passphrase'];
         }
         if (\array_key_exists('saePassphrase', $data)) {
-            $object->setSaePassphrase($data['saePassphrase']);
+            $object->saePassphrase = $data['saePassphrase'];
         }
         if (\array_key_exists('mfp', $data)) {
-            $object->setMfp($data['mfp']);
+            $object->mfp = $data['mfp'];
         }
         if (\array_key_exists('transitionDisable', $data)) {
-            $object->setTransitionDisable($data['transitionDisable']);
+            $object->transitionDisable = $data['transitionDisable'];
         }
         if (\array_key_exists('keyIndex', $data)) {
-            $object->setKeyIndex($data['keyIndex']);
+            $object->keyIndex = $data['keyIndex'];
         }
         if (\array_key_exists('keyInHex', $data)) {
-            $object->setKeyInHex($data['keyInHex']);
+            $object->keyInHex = $data['keyInHex'];
         }
         if (\array_key_exists('support80211rEnabled', $data)) {
-            $object->setSupport80211rEnabled($data['support80211rEnabled']);
+            $object->support80211rEnabled = $data['support80211rEnabled'];
         }
         if (\array_key_exists('reserveSsidEnabled', $data)) {
-            $object->setReserveSsidEnabled($data['reserveSsidEnabled']);
+            $object->reserveSsidEnabled = $data['reserveSsidEnabled'];
         }
         if (\array_key_exists('mobilityDomainId', $data)) {
-            $object->setMobilityDomainId($data['mobilityDomainId']);
+            $object->mobilityDomainId = $data['mobilityDomainId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['method'] = $data->getMethod();
-        if ($data->isInitialized('algorithm') && null !== $data->getAlgorithm()) {
-            $dataArray['algorithm'] = $data->getAlgorithm();
+        $dataArray['method'] = $data->method ?? null;
+        if (array_key_exists('algorithm', get_object_vars($data)) && null !== ($data->algorithm ?? null)) {
+            $dataArray['algorithm'] = $data->algorithm ?? null;
         }
-        if ($data->isInitialized('passphrase') && null !== $data->getPassphrase()) {
-            $dataArray['passphrase'] = $data->getPassphrase();
+        if (array_key_exists('passphrase', get_object_vars($data)) && null !== ($data->passphrase ?? null)) {
+            $dataArray['passphrase'] = $data->passphrase ?? null;
         }
-        if ($data->isInitialized('saePassphrase') && null !== $data->getSaePassphrase()) {
-            $dataArray['saePassphrase'] = $data->getSaePassphrase();
+        if (array_key_exists('saePassphrase', get_object_vars($data)) && null !== ($data->saePassphrase ?? null)) {
+            $dataArray['saePassphrase'] = $data->saePassphrase ?? null;
         }
-        if ($data->isInitialized('mfp') && null !== $data->getMfp()) {
-            $dataArray['mfp'] = $data->getMfp();
+        if (array_key_exists('mfp', get_object_vars($data)) && null !== ($data->mfp ?? null)) {
+            $dataArray['mfp'] = $data->mfp ?? null;
         }
-        if ($data->isInitialized('transitionDisable') && null !== $data->getTransitionDisable()) {
-            $dataArray['transitionDisable'] = $data->getTransitionDisable();
+        if (array_key_exists('transitionDisable', get_object_vars($data)) && null !== ($data->transitionDisable ?? null)) {
+            $dataArray['transitionDisable'] = $data->transitionDisable ?? null;
         }
-        if ($data->isInitialized('keyIndex') && null !== $data->getKeyIndex()) {
-            $dataArray['keyIndex'] = $data->getKeyIndex();
+        if (array_key_exists('keyIndex', get_object_vars($data)) && null !== ($data->keyIndex ?? null)) {
+            $dataArray['keyIndex'] = $data->keyIndex ?? null;
         }
-        if ($data->isInitialized('keyInHex') && null !== $data->getKeyInHex()) {
-            $dataArray['keyInHex'] = $data->getKeyInHex();
+        if (array_key_exists('keyInHex', get_object_vars($data)) && null !== ($data->keyInHex ?? null)) {
+            $dataArray['keyInHex'] = $data->keyInHex ?? null;
         }
-        if ($data->isInitialized('support80211rEnabled') && null !== $data->getSupport80211rEnabled()) {
-            $dataArray['support80211rEnabled'] = $data->getSupport80211rEnabled();
+        if (array_key_exists('support80211rEnabled', get_object_vars($data)) && null !== ($data->support80211rEnabled ?? null)) {
+            $dataArray['support80211rEnabled'] = $data->support80211rEnabled ?? null;
         }
-        if ($data->isInitialized('reserveSsidEnabled') && null !== $data->getReserveSsidEnabled()) {
-            $dataArray['reserveSsidEnabled'] = $data->getReserveSsidEnabled();
+        if (array_key_exists('reserveSsidEnabled', get_object_vars($data)) && null !== ($data->reserveSsidEnabled ?? null)) {
+            $dataArray['reserveSsidEnabled'] = $data->reserveSsidEnabled ?? null;
         }
-        if ($data->isInitialized('mobilityDomainId') && null !== $data->getMobilityDomainId()) {
-            $dataArray['mobilityDomainId'] = $data->getMobilityDomainId();
+        if (array_key_exists('mobilityDomainId', get_object_vars($data)) && null !== ($data->mobilityDomainId ?? null)) {
+            $dataArray['mobilityDomainId'] = $data->mobilityDomainId ?? null;
         }
         return $dataArray;
     }

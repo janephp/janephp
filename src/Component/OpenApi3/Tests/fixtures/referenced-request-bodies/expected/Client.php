@@ -27,7 +27,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBo
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Endpoint\PatchParentsByParentIdChildChildId($parentId, $childId, $requestBody), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];
         if (null === $httpClient) {

@@ -38,21 +38,21 @@ class CommonSmartMonitorNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('intervalInSec', $data)) {
-            $object->setIntervalInSec($data['intervalInSec']);
+            $object->intervalInSec = $data['intervalInSec'];
         }
         if (\array_key_exists('retryThreshold', $data)) {
-            $object->setRetryThreshold($data['retryThreshold']);
+            $object->retryThreshold = $data['retryThreshold'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('intervalInSec') && null !== $data->getIntervalInSec()) {
-            $dataArray['intervalInSec'] = $data->getIntervalInSec();
+        if (array_key_exists('intervalInSec', get_object_vars($data)) && null !== ($data->intervalInSec ?? null)) {
+            $dataArray['intervalInSec'] = $data->intervalInSec ?? null;
         }
-        if ($data->isInitialized('retryThreshold') && null !== $data->getRetryThreshold()) {
-            $dataArray['retryThreshold'] = $data->getRetryThreshold();
+        if (array_key_exists('retryThreshold', get_object_vars($data)) && null !== ($data->retryThreshold ?? null)) {
+            $dataArray['retryThreshold'] = $data->retryThreshold ?? null;
         }
         return $dataArray;
     }

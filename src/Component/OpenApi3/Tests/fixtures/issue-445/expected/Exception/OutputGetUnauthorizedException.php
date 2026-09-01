@@ -4,14 +4,14 @@ namespace PicturePark\API\Exception;
 
 class OutputGetUnauthorizedException extends UnauthorizedException
 {
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(
+        /**
+         * @var \Psr\Http\Message\ResponseInterface|null
+         */
+        private readonly ?\Psr\Http\Message\ResponseInterface $response = null
+    )
     {
         parent::__construct('Unauthorized');
-        $this->response = $response;
     }
     public function getResponse(): ?\Psr\Http\Message\ResponseInterface
     {

@@ -38,39 +38,39 @@ class SystemCpStaticRouteNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('networkAddress', $data)) {
-            $object->setNetworkAddress($data['networkAddress']);
+            $object->networkAddress = $data['networkAddress'];
         }
         if (\array_key_exists('subnetMask', $data)) {
-            $object->setSubnetMask($data['subnetMask']);
+            $object->subnetMask = $data['subnetMask'];
         }
         if (\array_key_exists('gateway', $data)) {
-            $object->setGateway($data['gateway']);
+            $object->gateway = $data['gateway'];
         }
         if (\array_key_exists('interfaceMode', $data)) {
-            $object->setInterfaceMode($data['interfaceMode']);
+            $object->interfaceMode = $data['interfaceMode'];
         }
         if (\array_key_exists('metric', $data)) {
-            $object->setMetric($data['metric']);
+            $object->metric = $data['metric'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('networkAddress') && null !== $data->getNetworkAddress()) {
-            $dataArray['networkAddress'] = $data->getNetworkAddress();
+        if (array_key_exists('networkAddress', get_object_vars($data)) && null !== ($data->networkAddress ?? null)) {
+            $dataArray['networkAddress'] = $data->networkAddress ?? null;
         }
-        if ($data->isInitialized('subnetMask') && null !== $data->getSubnetMask()) {
-            $dataArray['subnetMask'] = $data->getSubnetMask();
+        if (array_key_exists('subnetMask', get_object_vars($data)) && null !== ($data->subnetMask ?? null)) {
+            $dataArray['subnetMask'] = $data->subnetMask ?? null;
         }
-        if ($data->isInitialized('gateway') && null !== $data->getGateway()) {
-            $dataArray['gateway'] = $data->getGateway();
+        if (array_key_exists('gateway', get_object_vars($data)) && null !== ($data->gateway ?? null)) {
+            $dataArray['gateway'] = $data->gateway ?? null;
         }
-        if ($data->isInitialized('interfaceMode') && null !== $data->getInterfaceMode()) {
-            $dataArray['interfaceMode'] = $data->getInterfaceMode();
+        if (array_key_exists('interfaceMode', get_object_vars($data)) && null !== ($data->interfaceMode ?? null)) {
+            $dataArray['interfaceMode'] = $data->interfaceMode ?? null;
         }
-        if ($data->isInitialized('metric') && null !== $data->getMetric()) {
-            $dataArray['metric'] = $data->getMetric();
+        if (array_key_exists('metric', get_object_vars($data)) && null !== ($data->metric ?? null)) {
+            $dataArray['metric'] = $data->metric ?? null;
         }
         return $dataArray;
     }

@@ -38,38 +38,38 @@ class AdministrationZdImportNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('user', $data)) {
-            $object->setUser($data['user']);
+            $object->user = $data['user'];
         }
         if (\array_key_exists('password', $data)) {
-            $object->setPassword($data['password']);
+            $object->password = $data['password'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('apMacList', $data)) {
             $values = [];
             foreach ($data['apMacList'] as $value) {
                 $values[] = $value;
             }
-            $object->setApMacList($values);
+            $object->apMacList = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['user'] = $data->getUser();
+        if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
+            $dataArray['user'] = $data->user ?? null;
         }
-        if ($data->isInitialized('password') && null !== $data->getPassword()) {
-            $dataArray['password'] = $data->getPassword();
+        if (array_key_exists('password', get_object_vars($data)) && null !== ($data->password ?? null)) {
+            $dataArray['password'] = $data->password ?? null;
         }
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        if ($data->isInitialized('apMacList') && null !== $data->getApMacList()) {
+        if (array_key_exists('apMacList', get_object_vars($data)) && null !== ($data->apMacList ?? null)) {
             $values = [];
-            foreach ($data->getApMacList() as $value) {
+            foreach ($data->apMacList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['apMacList'] = $values;

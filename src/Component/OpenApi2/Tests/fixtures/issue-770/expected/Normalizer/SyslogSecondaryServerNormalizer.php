@@ -38,33 +38,33 @@ class SyslogSecondaryServerNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('host', $data)) {
-            $object->setHost($data['host']);
+            $object->host = $data['host'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
         }
         if (\array_key_exists('redundancyMode', $data)) {
-            $object->setRedundancyMode($data['redundancyMode']);
+            $object->redundancyMode = $data['redundancyMode'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('host') && null !== $data->getHost()) {
-            $dataArray['host'] = $data->getHost();
+        if (array_key_exists('host', get_object_vars($data)) && null !== ($data->host ?? null)) {
+            $dataArray['host'] = $data->host ?? null;
         }
-        if ($data->isInitialized('port') && null !== $data->getPort()) {
-            $dataArray['port'] = $data->getPort();
+        if (array_key_exists('port', get_object_vars($data)) && null !== ($data->port ?? null)) {
+            $dataArray['port'] = $data->port ?? null;
         }
-        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
-            $dataArray['protocol'] = $data->getProtocol();
+        if (array_key_exists('protocol', get_object_vars($data)) && null !== ($data->protocol ?? null)) {
+            $dataArray['protocol'] = $data->protocol ?? null;
         }
-        if ($data->isInitialized('redundancyMode') && null !== $data->getRedundancyMode()) {
-            $dataArray['redundancyMode'] = $data->getRedundancyMode();
+        if (array_key_exists('redundancyMode', get_object_vars($data)) && null !== ($data->redundancyMode ?? null)) {
+            $dataArray['redundancyMode'] = $data->redundancyMode ?? null;
         }
         return $dataArray;
     }

@@ -38,21 +38,21 @@ class NorthboundDataStreamingNorthboundDataStreamingEventCodesListItemNormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('code', $data)) {
-            $object->setCode($data['code']);
+            $object->code = $data['code'];
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('code') && null !== $data->getCode()) {
-            $dataArray['code'] = $data->getCode();
+        if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
+            $dataArray['code'] = $data->code ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
         return $dataArray;
     }

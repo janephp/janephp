@@ -38,24 +38,24 @@ class ProfileHs20OperatorIconNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('language', $data)) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
         }
         if (\array_key_exists('fileName', $data)) {
-            $object->setFileName($data['fileName']);
+            $object->fileName = $data['fileName'];
         }
         if (\array_key_exists('icon', $data)) {
-            $object->setIcon($data['icon']);
+            $object->icon = $data['icon'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['language'] = $data->getLanguage();
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
-            $dataArray['fileName'] = $data->getFileName();
+        $dataArray['language'] = $data->language ?? null;
+        if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
+            $dataArray['fileName'] = $data->fileName ?? null;
         }
-        $dataArray['icon'] = $data->getIcon();
+        $dataArray['icon'] = $data->icon ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

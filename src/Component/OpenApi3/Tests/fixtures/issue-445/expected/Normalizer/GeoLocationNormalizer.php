@@ -44,21 +44,21 @@ class GeoLocationNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['lon'] = (float) $data['lon'];
         }
         if (\array_key_exists('lat', $data)) {
-            $object->setLat($data['lat']);
+            $object->lat = $data['lat'];
         }
         if (\array_key_exists('lon', $data)) {
-            $object->setLon($data['lon']);
+            $object->lon = $data['lon'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('lat') && null !== $data->getLat()) {
-            $dataArray['lat'] = $data->getLat();
+        if (array_key_exists('lat', get_object_vars($data)) && null !== ($data->lat ?? null)) {
+            $dataArray['lat'] = $data->lat ?? null;
         }
-        if ($data->isInitialized('lon') && null !== $data->getLon()) {
-            $dataArray['lon'] = $data->getLon();
+        if (array_key_exists('lon', get_object_vars($data)) && null !== ($data->lon ?? null)) {
+            $dataArray['lon'] = $data->lon ?? null;
         }
         return $dataArray;
     }

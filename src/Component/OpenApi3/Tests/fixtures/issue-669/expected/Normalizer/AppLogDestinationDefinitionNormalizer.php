@@ -38,23 +38,23 @@ class AppLogDestinationDefinitionNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('papertrail', $data)) {
-            $object->setPapertrail($this->denormalizer->denormalize($data['papertrail'], \Jane\Generated\DigitalOcean\Model\AppLogDestinationPapertrailSpec::class, 'json', $context));
+            $object->papertrail = $this->denormalizer->denormalize($data['papertrail'], \Jane\Generated\DigitalOcean\Model\AppLogDestinationPapertrailSpec::class, 'json', $context);
             unset($data['papertrail']);
         }
         if (\array_key_exists('datadog', $data)) {
-            $object->setDatadog($this->denormalizer->denormalize($data['datadog'], \Jane\Generated\DigitalOcean\Model\AppLogDestinationDatadogSpec::class, 'json', $context));
+            $object->datadog = $this->denormalizer->denormalize($data['datadog'], \Jane\Generated\DigitalOcean\Model\AppLogDestinationDatadogSpec::class, 'json', $context);
             unset($data['datadog']);
         }
         if (\array_key_exists('logtail', $data)) {
-            $object->setLogtail($this->denormalizer->denormalize($data['logtail'], \Jane\Generated\DigitalOcean\Model\AppLogDestinationLogtailSpec::class, 'json', $context));
+            $object->logtail = $this->denormalizer->denormalize($data['logtail'], \Jane\Generated\DigitalOcean\Model\AppLogDestinationLogtailSpec::class, 'json', $context);
             unset($data['logtail']);
         }
         if (\array_key_exists('open_search', $data)) {
-            $object->setOpenSearch($this->denormalizer->denormalize($data['open_search'], \Jane\Generated\DigitalOcean\Model\AppLogDestinationOpenSearchSpec::class, 'json', $context));
+            $object->openSearch = $this->denormalizer->denormalize($data['open_search'], \Jane\Generated\DigitalOcean\Model\AppLogDestinationOpenSearchSpec::class, 'json', $context);
             unset($data['open_search']);
         }
         foreach ($data as $key => $value) {
@@ -67,18 +67,18 @@ class AppLogDestinationDefinitionNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('papertrail') && null !== $data->getPapertrail()) {
-            $dataArray['papertrail'] = $data->getPapertrail() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPapertrail(), 'json', $context));
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('papertrail', get_object_vars($data)) && null !== ($data->papertrail ?? null)) {
+            $dataArray['papertrail'] = ($data->papertrail ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->papertrail ?? null, 'json', $context));
         }
-        if ($data->isInitialized('datadog') && null !== $data->getDatadog()) {
-            $dataArray['datadog'] = $data->getDatadog() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDatadog(), 'json', $context));
+        if (array_key_exists('datadog', get_object_vars($data)) && null !== ($data->datadog ?? null)) {
+            $dataArray['datadog'] = ($data->datadog ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->datadog ?? null, 'json', $context));
         }
-        if ($data->isInitialized('logtail') && null !== $data->getLogtail()) {
-            $dataArray['logtail'] = $data->getLogtail() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLogtail(), 'json', $context));
+        if (array_key_exists('logtail', get_object_vars($data)) && null !== ($data->logtail ?? null)) {
+            $dataArray['logtail'] = ($data->logtail ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->logtail ?? null, 'json', $context));
         }
-        if ($data->isInitialized('openSearch') && null !== $data->getOpenSearch()) {
-            $dataArray['open_search'] = $data->getOpenSearch() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getOpenSearch(), 'json', $context));
+        if (array_key_exists('openSearch', get_object_vars($data)) && null !== ($data->openSearch ?? null)) {
+            $dataArray['open_search'] = ($data->openSearch ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->openSearch ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

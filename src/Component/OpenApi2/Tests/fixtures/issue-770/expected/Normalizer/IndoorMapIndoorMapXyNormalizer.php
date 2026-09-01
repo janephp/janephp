@@ -44,21 +44,21 @@ class IndoorMapIndoorMapXyNormalizer implements DenormalizerInterface, Normalize
             $data['y'] = (float) $data['y'];
         }
         if (\array_key_exists('x', $data)) {
-            $object->setX($data['x']);
+            $object->x = $data['x'];
         }
         if (\array_key_exists('y', $data)) {
-            $object->setY($data['y']);
+            $object->y = $data['y'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('x') && null !== $data->getX()) {
-            $dataArray['x'] = $data->getX();
+        if (array_key_exists('x', get_object_vars($data)) && null !== ($data->x ?? null)) {
+            $dataArray['x'] = $data->x ?? null;
         }
-        if ($data->isInitialized('y') && null !== $data->getY()) {
-            $dataArray['y'] = $data->getY();
+        if (array_key_exists('y', get_object_vars($data)) && null !== ($data->y ?? null)) {
+            $dataArray['y'] = $data->y ?? null;
         }
         return $dataArray;
     }

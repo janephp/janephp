@@ -41,39 +41,39 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
             $this->validate($data, new \Docker\Api\Validator\NodeDescriptionConstraint());
         }
         if (\array_key_exists('Hostname', $data)) {
-            $object->setHostname($data['Hostname']);
+            $object->hostname = $data['Hostname'];
         }
         if (\array_key_exists('Platform', $data)) {
-            $object->setPlatform($this->denormalizer->denormalize($data['Platform'], \Docker\Api\Model\Platform::class, 'json', $context));
+            $object->platform = $this->denormalizer->denormalize($data['Platform'], \Docker\Api\Model\Platform::class, 'json', $context);
         }
         if (\array_key_exists('Resources', $data)) {
-            $object->setResources($this->denormalizer->denormalize($data['Resources'], \Docker\Api\Model\ResourceObject::class, 'json', $context));
+            $object->resources = $this->denormalizer->denormalize($data['Resources'], \Docker\Api\Model\ResourceObject::class, 'json', $context);
         }
         if (\array_key_exists('Engine', $data)) {
-            $object->setEngine($this->denormalizer->denormalize($data['Engine'], \Docker\Api\Model\EngineDescription::class, 'json', $context));
+            $object->engine = $this->denormalizer->denormalize($data['Engine'], \Docker\Api\Model\EngineDescription::class, 'json', $context);
         }
         if (\array_key_exists('TLSInfo', $data)) {
-            $object->setTLSInfo($this->denormalizer->denormalize($data['TLSInfo'], \Docker\Api\Model\TLSInfo::class, 'json', $context));
+            $object->tLSInfo = $this->denormalizer->denormalize($data['TLSInfo'], \Docker\Api\Model\TLSInfo::class, 'json', $context);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('hostname') && null !== $data->getHostname()) {
-            $dataArray['Hostname'] = $data->getHostname();
+        if (array_key_exists('hostname', get_object_vars($data)) && null !== ($data->hostname ?? null)) {
+            $dataArray['Hostname'] = $data->hostname ?? null;
         }
-        if ($data->isInitialized('platform') && null !== $data->getPlatform()) {
-            $dataArray['Platform'] = $data->getPlatform() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPlatform(), 'json', $context));
+        if (array_key_exists('platform', get_object_vars($data)) && null !== ($data->platform ?? null)) {
+            $dataArray['Platform'] = ($data->platform ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->platform ?? null, 'json', $context));
         }
-        if ($data->isInitialized('resources') && null !== $data->getResources()) {
-            $dataArray['Resources'] = $data->getResources() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResources(), 'json', $context));
+        if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
+            $dataArray['Resources'] = ($data->resources ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->resources ?? null, 'json', $context));
         }
-        if ($data->isInitialized('engine') && null !== $data->getEngine()) {
-            $dataArray['Engine'] = $data->getEngine() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getEngine(), 'json', $context));
+        if (array_key_exists('engine', get_object_vars($data)) && null !== ($data->engine ?? null)) {
+            $dataArray['Engine'] = ($data->engine ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->engine ?? null, 'json', $context));
         }
-        if ($data->isInitialized('tLSInfo') && null !== $data->getTLSInfo()) {
-            $dataArray['TLSInfo'] = $data->getTLSInfo() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTLSInfo(), 'json', $context));
+        if (array_key_exists('tLSInfo', get_object_vars($data)) && null !== ($data->tLSInfo ?? null)) {
+            $dataArray['TLSInfo'] = ($data->tLSInfo ?? null) === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->tLSInfo ?? null, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NodeDescriptionConstraint());

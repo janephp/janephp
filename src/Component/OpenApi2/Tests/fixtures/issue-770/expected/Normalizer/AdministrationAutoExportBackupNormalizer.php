@@ -41,27 +41,27 @@ class AdministrationAutoExportBackupNormalizer implements DenormalizerInterface,
             $data['enableAutoExportBackup'] = (bool) $data['enableAutoExportBackup'];
         }
         if (\array_key_exists('enableAutoExportBackup', $data)) {
-            $object->setEnableAutoExportBackup($data['enableAutoExportBackup']);
+            $object->enableAutoExportBackup = $data['enableAutoExportBackup'];
         }
         if (\array_key_exists('ftpNamePrefix', $data)) {
-            $object->setFtpNamePrefix($data['ftpNamePrefix']);
+            $object->ftpNamePrefix = $data['ftpNamePrefix'];
         }
         if (\array_key_exists('ftpServer', $data)) {
-            $object->setFtpServer($data['ftpServer']);
+            $object->ftpServer = $data['ftpServer'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('enableAutoExportBackup') && null !== $data->getEnableAutoExportBackup()) {
-            $dataArray['enableAutoExportBackup'] = $data->getEnableAutoExportBackup();
+        if (array_key_exists('enableAutoExportBackup', get_object_vars($data)) && null !== ($data->enableAutoExportBackup ?? null)) {
+            $dataArray['enableAutoExportBackup'] = $data->enableAutoExportBackup ?? null;
         }
-        if ($data->isInitialized('ftpNamePrefix') && null !== $data->getFtpNamePrefix()) {
-            $dataArray['ftpNamePrefix'] = $data->getFtpNamePrefix();
+        if (array_key_exists('ftpNamePrefix', get_object_vars($data)) && null !== ($data->ftpNamePrefix ?? null)) {
+            $dataArray['ftpNamePrefix'] = $data->ftpNamePrefix ?? null;
         }
-        if ($data->isInitialized('ftpServer') && null !== $data->getFtpServer()) {
-            $dataArray['ftpServer'] = $data->getFtpServer();
+        if (array_key_exists('ftpServer', get_object_vars($data)) && null !== ($data->ftpServer ?? null)) {
+            $dataArray['ftpServer'] = $data->ftpServer ?? null;
         }
         return $dataArray;
     }

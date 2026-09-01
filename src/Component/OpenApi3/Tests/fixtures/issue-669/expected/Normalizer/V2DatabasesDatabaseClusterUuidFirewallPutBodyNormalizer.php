@@ -42,7 +42,7 @@ class V2DatabasesDatabaseClusterUuidFirewallPutBodyNormalizer implements Denorma
             foreach ($data['rules'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\FirewallRule::class, 'json', $context);
             }
-            $object->setRules($values);
+            $object->rules = $values;
             unset($data['rules']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class V2DatabasesDatabaseClusterUuidFirewallPutBodyNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('rules') && null !== $data->getRules()) {
+        if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values = [];
-            foreach ($data->getRules() as $value) {
+            foreach ($data->rules ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;

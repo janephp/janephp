@@ -38,7 +38,7 @@ class V2AddOnsSaasResourceUuidPlanPatchBodyNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('plan_slug', $data)) {
-            $object->setPlanSlug($data['plan_slug']);
+            $object->planSlug = $data['plan_slug'];
             unset($data['plan_slug']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class V2AddOnsSaasResourceUuidPlanPatchBodyNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['plan_slug'] = $data->getPlanSlug();
+        $dataArray['plan_slug'] = $data->planSlug ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

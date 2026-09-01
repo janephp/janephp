@@ -13,14 +13,19 @@ class RuntimeGenerator implements GeneratorInterface
     public const FILE_TYPE_RUNTIME = 'runtime';
 
     /**
-     * @var array<string, array{class: string, namespace: string[], source: string, file: string}>
+     * `requires` lists builders a runtime class depends on from inside its own
+     * template, invisible to require-sites: ValidatorTrait throws
+     * ValidationException, so emitting the trait without the exception makes
+     * generated clients fatal instead of throwing it.
+     *
+     * @var array<string, array{class: string, namespace: string[], source: string, file: string, requires?: string[]}>
      */
     private const BUILDERS = [
         'AdditionalAndPatternProperties' => ['class' => 'AdditionalAndPatternProperties', 'namespace' => [], 'source' => 'AdditionalAndPatternProperties.php', 'file' => 'AdditionalAndPatternProperties.php'],
         'AdditionalPropertiesInterface' => ['class' => 'AdditionalPropertiesInterface', 'namespace' => [], 'source' => 'AdditionalPropertiesInterface.php', 'file' => 'AdditionalPropertiesInterface.php'],
         'JsonObject' => ['class' => 'JsonObject', 'namespace' => [], 'source' => 'JsonObject.php', 'file' => 'JsonObject.php'],
         'CheckArray' => ['class' => 'CheckArray', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/CheckArray.php', 'file' => 'CheckArray.php'],
-        'ValidatorTrait' => ['class' => 'ValidatorTrait', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ValidatorTrait.php', 'file' => 'ValidatorTrait.php'],
+        'ValidatorTrait' => ['class' => 'ValidatorTrait', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ValidatorTrait.php', 'file' => 'ValidatorTrait.php', 'requires' => ['ValidationException']],
         'ReferenceNormalizer' => ['class' => 'ReferenceNormalizer', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ReferenceNormalizer.php', 'file' => 'ReferenceNormalizer.php'],
         'InvalidDateException' => ['class' => 'InvalidDateException', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/InvalidDateException.php', 'file' => 'InvalidDateException.php'],
         'ValidationException' => ['class' => 'ValidationException', 'namespace' => ['Normalizer'], 'source' => 'Normalizer/ValidationException.php', 'file' => 'ValidationException.php'],
@@ -34,7 +39,10 @@ class RuntimeGenerator implements GeneratorInterface
 
     public function generate(Schema $schema, string $className, Context $context): void
     {
-        foreach ($this->getBuilders() as $config) {
+        $builders = $this->getBuilders();
+        $this->requireDependencies($schema, $builders);
+
+        foreach ($builders as $config) {
             $fqcn = $this->naming->getRuntimeClassFQCN($schema->getNamespace(), $config['namespace'], $config['class']);
             if ($schema->isRuntimeFileRequired($fqcn)) {
                 $sourceDir = $this->getSourceDir($config['namespace']);
@@ -53,6 +61,40 @@ class RuntimeGenerator implements GeneratorInterface
     protected function getBuilders(): array
     {
         return self::BUILDERS;
+    }
+
+    /**
+     * Marks the declared dependencies of every required runtime class as
+     * required themselves, so require-sites only have to know the class they
+     * use directly.
+     *
+     * @param array<string, array{class: string, namespace: string[], source: string, file: string, requires?: string[]}> $builders
+     */
+    private function requireDependencies(Schema $schema, array $builders): void
+    {
+        do {
+            $changed = false;
+
+            foreach ($builders as $config) {
+                if (!isset($config['requires'])) {
+                    continue;
+                }
+
+                if (!$schema->isRuntimeFileRequired($this->naming->getRuntimeClassFQCN($schema->getNamespace(), $config['namespace'], $config['class']))) {
+                    continue;
+                }
+
+                foreach ($config['requires'] as $dependency) {
+                    $dependencyConfig = $builders[$dependency];
+                    $dependencyFqcn = $this->naming->getRuntimeClassFQCN($schema->getNamespace(), $dependencyConfig['namespace'], $dependencyConfig['class']);
+
+                    if (!$schema->isRuntimeFileRequired($dependencyFqcn)) {
+                        $schema->addRequiredRuntimeFile($dependencyFqcn);
+                        $changed = true;
+                    }
+                }
+            }
+        } while ($changed);
     }
 
     /**

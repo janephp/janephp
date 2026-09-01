@@ -38,7 +38,7 @@ class SubLevel3Normalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('end', $data)) {
-            $object->setEnd($data['end']);
+            $object->end = $data['end'];
             unset($data['end']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class SubLevel3Normalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('end') && null !== $data->getEnd()) {
-            $dataArray['end'] = $data->getEnd();
+        if (array_key_exists('end', get_object_vars($data)) && null !== ($data->end ?? null)) {
+            $dataArray['end'] = $data->end ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -44,33 +44,33 @@ class CommonOverrideClientAdmissionControlNormalizer implements DenormalizerInte
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('maxRadioLoadPercent', $data)) {
-            $object->setMaxRadioLoadPercent($data['maxRadioLoadPercent']);
+            $object->maxRadioLoadPercent = $data['maxRadioLoadPercent'];
         }
         if (\array_key_exists('minClientCount', $data)) {
-            $object->setMinClientCount($data['minClientCount']);
+            $object->minClientCount = $data['minClientCount'];
         }
         if (\array_key_exists('minClientThroughputMbps', $data)) {
-            $object->setMinClientThroughputMbps($data['minClientThroughputMbps']);
+            $object->minClientThroughputMbps = $data['minClientThroughputMbps'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
-            $dataArray['enabled'] = $data->getEnabled();
+        if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
+            $dataArray['enabled'] = $data->enabled ?? null;
         }
-        if ($data->isInitialized('maxRadioLoadPercent') && null !== $data->getMaxRadioLoadPercent()) {
-            $dataArray['maxRadioLoadPercent'] = $data->getMaxRadioLoadPercent();
+        if (array_key_exists('maxRadioLoadPercent', get_object_vars($data)) && null !== ($data->maxRadioLoadPercent ?? null)) {
+            $dataArray['maxRadioLoadPercent'] = $data->maxRadioLoadPercent ?? null;
         }
-        if ($data->isInitialized('minClientCount') && null !== $data->getMinClientCount()) {
-            $dataArray['minClientCount'] = $data->getMinClientCount();
+        if (array_key_exists('minClientCount', get_object_vars($data)) && null !== ($data->minClientCount ?? null)) {
+            $dataArray['minClientCount'] = $data->minClientCount ?? null;
         }
-        if ($data->isInitialized('minClientThroughputMbps') && null !== $data->getMinClientThroughputMbps()) {
-            $dataArray['minClientThroughputMbps'] = $data->getMinClientThroughputMbps();
+        if (array_key_exists('minClientThroughputMbps', get_object_vars($data)) && null !== ($data->minClientThroughputMbps ?? null)) {
+            $dataArray['minClientThroughputMbps'] = $data->minClientThroughputMbps ?? null;
         }
         return $dataArray;
     }

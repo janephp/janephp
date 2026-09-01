@@ -38,29 +38,29 @@ class WhiteLabelCustomizationCreateWhiteLabelCustomizationNormalizer implements 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('companyName', $data)) {
-            $object->setCompanyName($data['companyName']);
+            $object->companyName = $data['companyName'];
         }
         if (\array_key_exists('favIconImage', $data)) {
-            $object->setFavIconImage($data['favIconImage']);
+            $object->favIconImage = $data['favIconImage'];
         }
         if (\array_key_exists('homeLogoImage', $data)) {
-            $object->setHomeLogoImage($data['homeLogoImage']);
+            $object->homeLogoImage = $data['homeLogoImage'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domainId'] = $data->getDomainId();
-        $dataArray['companyName'] = $data->getCompanyName();
-        if ($data->isInitialized('favIconImage') && null !== $data->getFavIconImage()) {
-            $dataArray['favIconImage'] = $data->getFavIconImage();
+        $dataArray['domainId'] = $data->domainId ?? null;
+        $dataArray['companyName'] = $data->companyName ?? null;
+        if (array_key_exists('favIconImage', get_object_vars($data)) && null !== ($data->favIconImage ?? null)) {
+            $dataArray['favIconImage'] = $data->favIconImage ?? null;
         }
-        if ($data->isInitialized('homeLogoImage') && null !== $data->getHomeLogoImage()) {
-            $dataArray['homeLogoImage'] = $data->getHomeLogoImage();
+        if (array_key_exists('homeLogoImage', get_object_vars($data)) && null !== ($data->homeLogoImage ?? null)) {
+            $dataArray['homeLogoImage'] = $data->homeLogoImage ?? null;
         }
         return $dataArray;
     }

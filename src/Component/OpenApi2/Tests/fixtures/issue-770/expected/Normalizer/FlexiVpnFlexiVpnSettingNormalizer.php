@@ -38,14 +38,14 @@ class FlexiVpnFlexiVpnSettingNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('dpGroupId', $data)) {
-            $object->setDpGroupId($data['dpGroupId']);
+            $object->dpGroupId = $data['dpGroupId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['dpGroupId'] = $data->getDpGroupId();
+        $dataArray['dpGroupId'] = $data->dpGroupId ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

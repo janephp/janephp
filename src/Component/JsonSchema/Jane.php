@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\Generator\EnumGenerator;
 use Jane\Component\JsonSchema\Generator\ModelGenerator;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Generator\NormalizerGenerator;
+use Jane\Component\JsonSchema\Generator\Options;
 use Jane\Component\JsonSchema\Generator\RuntimeGenerator;
 use Jane\Component\JsonSchema\Generator\ValidatorGenerator;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
@@ -17,7 +18,7 @@ use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\JsonSchema\Normalizer\JaneObjectNormalizer;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
-use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\ReferenceResolver;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
@@ -33,6 +34,7 @@ class Jane extends ChainGenerator
         private readonly SerializerInterface $serializer,
         private readonly ChainGuesser $chainGuesser,
         private readonly Naming $naming,
+        private readonly ChainValidatorFactory $chainValidatorFactory,
         private readonly bool $strict = true,
     ) {
     }
@@ -52,7 +54,7 @@ class Jane extends ChainGenerator
             $this->chainGuesser->guessClass($jsonSchema, $schema->getRootName(), $schema->getOrigin() . '#', $registry);
         }
 
-        $chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->serializer);
+        $chainValidator = $this->chainValidatorFactory->create($this->naming, $registry, $this->serializer);
 
         foreach ($registry->getSchemas() as $schema) {
             foreach ($schema->getClasses() as $class) {
@@ -90,43 +92,31 @@ class Jane extends ChainGenerator
 
     public static function build(array $options = []): self
     {
-        Reference::resetConfig();
-        if ($options['allow-external-refs'] ?? false) {
-            Reference::allowExternalRefs(true);
-        }
-        if (!empty($options['external-ref-allowed-hosts'] ?? [])) {
-            Reference::setAllowedExternalHosts($options['external-ref-allowed-hosts']);
-        }
-        if (!empty($options['external-ref-follow-redirects'] ?? false)) {
-            Reference::setFollowRedirects(true);
-        }
-        if (!empty($options['allowed-local-ref-roots'] ?? [])) {
-            Reference::setAllowedLocalRefRoots($options['allowed-local-ref-roots']);
-        }
+        $options = Options::fromArray($options);
+        ReferenceResolver::default()->applyOptions($options->toArray());
 
-        ChainValidatorFactory::resetCustomValidators();
-        ChainValidatorFactory::setDateFormats(
-            $options['full-date-format'] ?? 'Y-m-d',
-            $options['date-format'] ?? \DateTimeInterface::RFC3339,
-            $options['date-input-format'] ?? null,
+        $chainValidatorFactory = new ChainValidatorFactory(
+            $options->fullDateFormat,
+            $options->dateFormat,
+            $options->dateInputFormat,
         );
-        foreach ($options['validators'] ?? [] as $validator) {
-            ChainValidatorFactory::addValidator($validator);
+        foreach ($options->validators as $validator) {
+            $chainValidatorFactory->addValidator($validator);
         }
 
         $serializer = self::buildSerializer();
-        $chainGuesser = JsonSchemaGuesserFactory::create($serializer, $options);
+        $chainGuesser = JsonSchemaGuesserFactory::create($serializer, $options->toArray(), $chainValidatorFactory);
         $naming = new Naming();
         $parser = (new ParserFactory())->createForHostVersion();
 
-        $self = new self($serializer, $chainGuesser, $naming, $options['strict'] ?? true);
+        $self = new self($serializer, $chainGuesser, $naming, $chainValidatorFactory, $options->strict);
         $self->addGenerator(new ModelGenerator($naming, $parser));
-        $self->addGenerator(new NormalizerGenerator($naming, $parser, $options['reference'], $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false, $options['validation'] ?? false, $options['include-null-value'] ?? true));
+        $self->addGenerator(new NormalizerGenerator($naming, $parser, $options->reference, $options->useCacheableSupportsMethod ?? false, $options->skipNullValues, $options->skipRequiredFields, $options->validation, $options->includeNullValue));
         $self->addGenerator(new RuntimeGenerator($naming, $parser));
-        if ($options['validation'] ?? false) {
-            $self->addGenerator(new ValidatorGenerator($naming, $options['default-additional-properties'] ?? null));
+        if ($options->validation) {
+            $self->addGenerator(new ValidatorGenerator($naming, $options->defaultAdditionalProperties));
         }
-        if ($options['enums-as-objects'] ?? false) {
+        if ($options->enumsAsObjects) {
             $self->addGenerator(new EnumGenerator());
         }
 

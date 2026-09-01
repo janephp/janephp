@@ -38,11 +38,11 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('state', $data)) {
@@ -50,7 +50,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             if (is_string($data['state'])) {
                 $value = $data['state'];
             }
-            $object->setState($value);
+            $object->state = $value;
             unset($data['state']);
         }
         if (\array_key_exists('transferType', $data)) {
@@ -58,27 +58,27 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             if (is_string($data['transferType'])) {
                 $value_1 = $data['transferType'];
             }
-            $object->setTransferType($value_1);
+            $object->transferType = $value_1;
             unset($data['transferType']);
         }
         if (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] !== null) {
-            $object->setBusinessProcessId($data['businessProcessId']);
+            $object->businessProcessId = $data['businessProcessId'];
             unset($data['businessProcessId']);
         }
         elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
-            $object->setBusinessProcessId(null);
+            $object->businessProcessId = null;
             unset($data['businessProcessId']);
         }
         if (\array_key_exists('fileTransferCount', $data)) {
-            $object->setFileTransferCount($data['fileTransferCount']);
+            $object->fileTransferCount = $data['fileTransferCount'];
             unset($data['fileTransferCount']);
         }
         if (\array_key_exists('collectionId', $data) && $data['collectionId'] !== null) {
-            $object->setCollectionId($data['collectionId']);
+            $object->collectionId = $data['collectionId'];
             unset($data['collectionId']);
         }
         elseif (\array_key_exists('collectionId', $data) && $data['collectionId'] === null) {
-            $object->setCollectionId(null);
+            $object->collectionId = null;
             unset($data['collectionId']);
         }
         if (\array_key_exists('audit', $data)) {
@@ -86,31 +86,31 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
                 $value_2 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
             }
-            $object->setAudit($value_2);
+            $object->audit = $value_2;
             unset($data['audit']);
         }
         if (\array_key_exists('itemProgress', $data)) {
-            $object->setItemProgress($data['itemProgress']);
+            $object->itemProgress = $data['itemProgress'];
             unset($data['itemProgress']);
         }
         if (\array_key_exists('itemCount', $data)) {
-            $object->setItemCount($data['itemCount']);
+            $object->itemCount = $data['itemCount'];
             unset($data['itemCount']);
         }
         if (\array_key_exists('fileUploadInProgressCount', $data)) {
-            $object->setFileUploadInProgressCount($data['fileUploadInProgressCount']);
+            $object->fileUploadInProgressCount = $data['fileUploadInProgressCount'];
             unset($data['fileUploadInProgressCount']);
         }
         if (\array_key_exists('dataExtractionInProgressCount', $data)) {
-            $object->setDataExtractionInProgressCount($data['dataExtractionInProgressCount']);
+            $object->dataExtractionInProgressCount = $data['dataExtractionInProgressCount'];
             unset($data['dataExtractionInProgressCount']);
         }
         if (\array_key_exists('itemsFailed', $data)) {
-            $object->setItemsFailed($data['itemsFailed']);
+            $object->itemsFailed = $data['itemsFailed'];
             unset($data['itemsFailed']);
         }
         if (\array_key_exists('itemsCancelled', $data)) {
-            $object->setItemsCancelled($data['itemsCancelled']);
+            $object->itemsCancelled = $data['itemsCancelled'];
             unset($data['itemsCancelled']);
         }
         if (\array_key_exists('lastDataExtractionProgressTimeStamp', $data) && $data['lastDataExtractionProgressTimeStamp'] !== null) {
@@ -118,11 +118,11 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastDataExtractionProgressTimeStamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setLastDataExtractionProgressTimeStamp($date);
+            $object->lastDataExtractionProgressTimeStamp = $date;
             unset($data['lastDataExtractionProgressTimeStamp']);
         }
         elseif (\array_key_exists('lastDataExtractionProgressTimeStamp', $data) && $data['lastDataExtractionProgressTimeStamp'] === null) {
-            $object->setLastDataExtractionProgressTimeStamp(null);
+            $object->lastDataExtractionProgressTimeStamp = null;
             unset($data['lastDataExtractionProgressTimeStamp']);
         }
         if (\array_key_exists('lastFileUploadProgressTimeStamp', $data) && $data['lastFileUploadProgressTimeStamp'] !== null) {
@@ -130,11 +130,11 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             if (false === $date_1) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastFileUploadProgressTimeStamp'], 'Y-m-d\TH:i:sP');
             }
-            $object->setLastFileUploadProgressTimeStamp($date_1);
+            $object->lastFileUploadProgressTimeStamp = $date_1;
             unset($data['lastFileUploadProgressTimeStamp']);
         }
         elseif (\array_key_exists('lastFileUploadProgressTimeStamp', $data) && $data['lastFileUploadProgressTimeStamp'] === null) {
-            $object->setLastFileUploadProgressTimeStamp(null);
+            $object->lastFileUploadProgressTimeStamp = null;
             unset($data['lastFileUploadProgressTimeStamp']);
         }
         foreach ($data as $key => $value_3) {
@@ -147,53 +147,53 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $value = $data->getState();
-        if (is_string($data->getState())) {
-            $value = $data->getState();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        $value = $data->state ?? null;
+        if (is_string($data->state ?? null)) {
+            $value = $data->state ?? null;
         }
         $dataArray['state'] = $value;
-        $value_1 = $data->getTransferType();
-        if (is_string($data->getTransferType())) {
-            $value_1 = $data->getTransferType();
+        $value_1 = $data->transferType ?? null;
+        if (is_string($data->transferType ?? null)) {
+            $value_1 = $data->transferType ?? null;
         }
         $dataArray['transferType'] = $value_1;
-        if ($data->isInitialized('businessProcessId') && null !== $data->getBusinessProcessId()) {
-            $dataArray['businessProcessId'] = $data->getBusinessProcessId();
+        if (array_key_exists('businessProcessId', get_object_vars($data)) && null !== ($data->businessProcessId ?? null)) {
+            $dataArray['businessProcessId'] = $data->businessProcessId ?? null;
         }
-        $dataArray['fileTransferCount'] = $data->getFileTransferCount();
-        if ($data->isInitialized('collectionId') && null !== $data->getCollectionId()) {
-            $dataArray['collectionId'] = $data->getCollectionId();
+        $dataArray['fileTransferCount'] = $data->fileTransferCount ?? null;
+        if (array_key_exists('collectionId', get_object_vars($data)) && null !== ($data->collectionId ?? null)) {
+            $dataArray['collectionId'] = $data->collectionId ?? null;
         }
-        $value_2 = $data->getAudit();
-        if (is_object($data->getAudit())) {
-            $value_2 = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+        $value_2 = $data->audit ?? null;
+        if (is_object($data->audit ?? null)) {
+            $value_2 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
         }
         $dataArray['audit'] = $value_2;
-        if ($data->isInitialized('itemProgress') && null !== $data->getItemProgress()) {
-            $dataArray['itemProgress'] = $data->getItemProgress();
+        if (array_key_exists('itemProgress', get_object_vars($data)) && null !== ($data->itemProgress ?? null)) {
+            $dataArray['itemProgress'] = $data->itemProgress ?? null;
         }
-        if ($data->isInitialized('itemCount') && null !== $data->getItemCount()) {
-            $dataArray['itemCount'] = $data->getItemCount();
+        if (array_key_exists('itemCount', get_object_vars($data)) && null !== ($data->itemCount ?? null)) {
+            $dataArray['itemCount'] = $data->itemCount ?? null;
         }
-        if ($data->isInitialized('fileUploadInProgressCount') && null !== $data->getFileUploadInProgressCount()) {
-            $dataArray['fileUploadInProgressCount'] = $data->getFileUploadInProgressCount();
+        if (array_key_exists('fileUploadInProgressCount', get_object_vars($data)) && null !== ($data->fileUploadInProgressCount ?? null)) {
+            $dataArray['fileUploadInProgressCount'] = $data->fileUploadInProgressCount ?? null;
         }
-        if ($data->isInitialized('dataExtractionInProgressCount') && null !== $data->getDataExtractionInProgressCount()) {
-            $dataArray['dataExtractionInProgressCount'] = $data->getDataExtractionInProgressCount();
+        if (array_key_exists('dataExtractionInProgressCount', get_object_vars($data)) && null !== ($data->dataExtractionInProgressCount ?? null)) {
+            $dataArray['dataExtractionInProgressCount'] = $data->dataExtractionInProgressCount ?? null;
         }
-        if ($data->isInitialized('itemsFailed') && null !== $data->getItemsFailed()) {
-            $dataArray['itemsFailed'] = $data->getItemsFailed();
+        if (array_key_exists('itemsFailed', get_object_vars($data)) && null !== ($data->itemsFailed ?? null)) {
+            $dataArray['itemsFailed'] = $data->itemsFailed ?? null;
         }
-        if ($data->isInitialized('itemsCancelled') && null !== $data->getItemsCancelled()) {
-            $dataArray['itemsCancelled'] = $data->getItemsCancelled();
+        if (array_key_exists('itemsCancelled', get_object_vars($data)) && null !== ($data->itemsCancelled ?? null)) {
+            $dataArray['itemsCancelled'] = $data->itemsCancelled ?? null;
         }
-        if ($data->isInitialized('lastDataExtractionProgressTimeStamp') && null !== $data->getLastDataExtractionProgressTimeStamp()) {
-            $dataArray['lastDataExtractionProgressTimeStamp'] = $data->getLastDataExtractionProgressTimeStamp()?->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('lastDataExtractionProgressTimeStamp', get_object_vars($data)) && null !== ($data->lastDataExtractionProgressTimeStamp ?? null)) {
+            $dataArray['lastDataExtractionProgressTimeStamp'] = ($data->lastDataExtractionProgressTimeStamp ?? null)?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('lastFileUploadProgressTimeStamp') && null !== $data->getLastFileUploadProgressTimeStamp()) {
-            $dataArray['lastFileUploadProgressTimeStamp'] = $data->getLastFileUploadProgressTimeStamp()?->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('lastFileUploadProgressTimeStamp', get_object_vars($data)) && null !== ($data->lastFileUploadProgressTimeStamp ?? null)) {
+            $dataArray['lastFileUploadProgressTimeStamp'] = ($data->lastFileUploadProgressTimeStamp ?? null)?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

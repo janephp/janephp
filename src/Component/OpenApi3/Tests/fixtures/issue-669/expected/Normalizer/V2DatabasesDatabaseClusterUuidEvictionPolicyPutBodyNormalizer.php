@@ -38,7 +38,7 @@ class V2DatabasesDatabaseClusterUuidEvictionPolicyPutBodyNormalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('eviction_policy', $data)) {
-            $object->setEvictionPolicy($data['eviction_policy']);
+            $object->evictionPolicy = $data['eviction_policy'];
             unset($data['eviction_policy']);
         }
         foreach ($data as $key => $value) {
@@ -51,7 +51,7 @@ class V2DatabasesDatabaseClusterUuidEvictionPolicyPutBodyNormalizer implements D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['eviction_policy'] = $data->getEvictionPolicy();
+        $dataArray['eviction_policy'] = $data->evictionPolicy ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

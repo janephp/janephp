@@ -38,21 +38,21 @@ class WifiCallingEpdgNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('fqdn', $data)) {
-            $object->setFqdn($data['fqdn']);
+            $object->fqdn = $data['fqdn'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fqdn') && null !== $data->getFqdn()) {
-            $dataArray['fqdn'] = $data->getFqdn();
+        if (array_key_exists('fqdn', get_object_vars($data)) && null !== ($data->fqdn ?? null)) {
+            $dataArray['fqdn'] = $data->fqdn ?? null;
         }
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
         return $dataArray;
     }

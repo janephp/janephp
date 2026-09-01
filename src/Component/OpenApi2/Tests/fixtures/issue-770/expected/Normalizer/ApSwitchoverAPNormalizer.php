@@ -41,55 +41,55 @@ class ApSwitchoverAPNormalizer implements DenormalizerInterface, NormalizerInter
             $data['deleteRecord'] = (bool) $data['deleteRecord'];
         }
         if (\array_key_exists('ipOrFqdn', $data)) {
-            $object->setIpOrFqdn($data['ipOrFqdn']);
+            $object->ipOrFqdn = $data['ipOrFqdn'];
         }
         if (\array_key_exists('clusterName', $data)) {
-            $object->setClusterName($data['clusterName']);
+            $object->clusterName = $data['clusterName'];
         }
         if (\array_key_exists('apMacList', $data)) {
             $values = [];
             foreach ($data['apMacList'] as $value) {
                 $values[] = $value;
             }
-            $object->setApMacList($values);
+            $object->apMacList = $values;
         }
         if (\array_key_exists('zoneIdList', $data)) {
             $values_1 = [];
             foreach ($data['zoneIdList'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setZoneIdList($values_1);
+            $object->zoneIdList = $values_1;
         }
         if (\array_key_exists('deleteRecord', $data)) {
-            $object->setDeleteRecord($data['deleteRecord']);
+            $object->deleteRecord = $data['deleteRecord'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ipOrFqdn') && null !== $data->getIpOrFqdn()) {
-            $dataArray['ipOrFqdn'] = $data->getIpOrFqdn();
+        if (array_key_exists('ipOrFqdn', get_object_vars($data)) && null !== ($data->ipOrFqdn ?? null)) {
+            $dataArray['ipOrFqdn'] = $data->ipOrFqdn ?? null;
         }
-        if ($data->isInitialized('clusterName') && null !== $data->getClusterName()) {
-            $dataArray['clusterName'] = $data->getClusterName();
+        if (array_key_exists('clusterName', get_object_vars($data)) && null !== ($data->clusterName ?? null)) {
+            $dataArray['clusterName'] = $data->clusterName ?? null;
         }
-        if ($data->isInitialized('apMacList') && null !== $data->getApMacList()) {
+        if (array_key_exists('apMacList', get_object_vars($data)) && null !== ($data->apMacList ?? null)) {
             $values = [];
-            foreach ($data->getApMacList() as $value) {
+            foreach ($data->apMacList ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['apMacList'] = $values;
         }
-        if ($data->isInitialized('zoneIdList') && null !== $data->getZoneIdList()) {
+        if (array_key_exists('zoneIdList', get_object_vars($data)) && null !== ($data->zoneIdList ?? null)) {
             $values_1 = [];
-            foreach ($data->getZoneIdList() as $value_1) {
+            foreach ($data->zoneIdList ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['zoneIdList'] = $values_1;
         }
-        if ($data->isInitialized('deleteRecord') && null !== $data->getDeleteRecord()) {
-            $dataArray['deleteRecord'] = $data->getDeleteRecord();
+        if (array_key_exists('deleteRecord', get_object_vars($data)) && null !== ($data->deleteRecord ?? null)) {
+            $dataArray['deleteRecord'] = $data->deleteRecord ?? null;
         }
         return $dataArray;
     }

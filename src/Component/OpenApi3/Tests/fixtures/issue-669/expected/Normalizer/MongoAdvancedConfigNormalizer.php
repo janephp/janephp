@@ -38,23 +38,23 @@ class MongoAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('default_read_concern', $data)) {
-            $object->setDefaultReadConcern($data['default_read_concern']);
+            $object->defaultReadConcern = $data['default_read_concern'];
             unset($data['default_read_concern']);
         }
         if (\array_key_exists('default_write_concern', $data)) {
-            $object->setDefaultWriteConcern($data['default_write_concern']);
+            $object->defaultWriteConcern = $data['default_write_concern'];
             unset($data['default_write_concern']);
         }
         if (\array_key_exists('transaction_lifetime_limit_seconds', $data)) {
-            $object->setTransactionLifetimeLimitSeconds($data['transaction_lifetime_limit_seconds']);
+            $object->transactionLifetimeLimitSeconds = $data['transaction_lifetime_limit_seconds'];
             unset($data['transaction_lifetime_limit_seconds']);
         }
         if (\array_key_exists('slow_op_threshold_ms', $data)) {
-            $object->setSlowOpThresholdMs($data['slow_op_threshold_ms']);
+            $object->slowOpThresholdMs = $data['slow_op_threshold_ms'];
             unset($data['slow_op_threshold_ms']);
         }
         if (\array_key_exists('verbosity', $data)) {
-            $object->setVerbosity($data['verbosity']);
+            $object->verbosity = $data['verbosity'];
             unset($data['verbosity']);
         }
         foreach ($data as $key => $value) {
@@ -67,20 +67,20 @@ class MongoAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('defaultReadConcern') && null !== $data->getDefaultReadConcern()) {
-            $dataArray['default_read_concern'] = $data->getDefaultReadConcern();
+        if (array_key_exists('defaultReadConcern', get_object_vars($data)) && null !== ($data->defaultReadConcern ?? null)) {
+            $dataArray['default_read_concern'] = $data->defaultReadConcern ?? null;
         }
-        if ($data->isInitialized('defaultWriteConcern') && null !== $data->getDefaultWriteConcern()) {
-            $dataArray['default_write_concern'] = $data->getDefaultWriteConcern();
+        if (array_key_exists('defaultWriteConcern', get_object_vars($data)) && null !== ($data->defaultWriteConcern ?? null)) {
+            $dataArray['default_write_concern'] = $data->defaultWriteConcern ?? null;
         }
-        if ($data->isInitialized('transactionLifetimeLimitSeconds') && null !== $data->getTransactionLifetimeLimitSeconds()) {
-            $dataArray['transaction_lifetime_limit_seconds'] = $data->getTransactionLifetimeLimitSeconds();
+        if (array_key_exists('transactionLifetimeLimitSeconds', get_object_vars($data)) && null !== ($data->transactionLifetimeLimitSeconds ?? null)) {
+            $dataArray['transaction_lifetime_limit_seconds'] = $data->transactionLifetimeLimitSeconds ?? null;
         }
-        if ($data->isInitialized('slowOpThresholdMs') && null !== $data->getSlowOpThresholdMs()) {
-            $dataArray['slow_op_threshold_ms'] = $data->getSlowOpThresholdMs();
+        if (array_key_exists('slowOpThresholdMs', get_object_vars($data)) && null !== ($data->slowOpThresholdMs ?? null)) {
+            $dataArray['slow_op_threshold_ms'] = $data->slowOpThresholdMs ?? null;
         }
-        if ($data->isInitialized('verbosity') && null !== $data->getVerbosity()) {
-            $dataArray['verbosity'] = $data->getVerbosity();
+        if (array_key_exists('verbosity', get_object_vars($data)) && null !== ($data->verbosity ?? null)) {
+            $dataArray['verbosity'] = $data->verbosity ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

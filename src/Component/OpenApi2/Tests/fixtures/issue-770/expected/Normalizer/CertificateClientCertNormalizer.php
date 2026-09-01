@@ -38,71 +38,71 @@ class CertificateClientCertNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('data', $data)) {
-            $object->setData($data['data']);
+            $object->data = $data['data'];
         }
         if (\array_key_exists('information', $data)) {
-            $object->setInformation($data['information']);
+            $object->information = $data['information'];
         }
         if (\array_key_exists('intermediateData', $data)) {
             $values = [];
             foreach ($data['intermediateData'] as $value) {
                 $values[] = $value;
             }
-            $object->setIntermediateData($values);
+            $object->intermediateData = $values;
         }
         if (\array_key_exists('rootData', $data)) {
-            $object->setRootData($data['rootData']);
+            $object->rootData = $data['rootData'];
         }
         if (\array_key_exists('privateKeyData', $data)) {
-            $object->setPrivateKeyData($data['privateKeyData']);
+            $object->privateKeyData = $data['privateKeyData'];
         }
         if (\array_key_exists('publicKey', $data)) {
-            $object->setPublicKey($data['publicKey']);
+            $object->publicKey = $data['publicKey'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('data') && null !== $data->getData()) {
-            $dataArray['data'] = $data->getData();
+        if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
+            $dataArray['data'] = $data->data ?? null;
         }
-        if ($data->isInitialized('information') && null !== $data->getInformation()) {
-            $dataArray['information'] = $data->getInformation();
+        if (array_key_exists('information', get_object_vars($data)) && null !== ($data->information ?? null)) {
+            $dataArray['information'] = $data->information ?? null;
         }
-        if ($data->isInitialized('intermediateData') && null !== $data->getIntermediateData()) {
+        if (array_key_exists('intermediateData', get_object_vars($data)) && null !== ($data->intermediateData ?? null)) {
             $values = [];
-            foreach ($data->getIntermediateData() as $value) {
+            foreach ($data->intermediateData ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['intermediateData'] = $values;
         }
-        if ($data->isInitialized('rootData') && null !== $data->getRootData()) {
-            $dataArray['rootData'] = $data->getRootData();
+        if (array_key_exists('rootData', get_object_vars($data)) && null !== ($data->rootData ?? null)) {
+            $dataArray['rootData'] = $data->rootData ?? null;
         }
-        if ($data->isInitialized('privateKeyData') && null !== $data->getPrivateKeyData()) {
-            $dataArray['privateKeyData'] = $data->getPrivateKeyData();
+        if (array_key_exists('privateKeyData', get_object_vars($data)) && null !== ($data->privateKeyData ?? null)) {
+            $dataArray['privateKeyData'] = $data->privateKeyData ?? null;
         }
-        if ($data->isInitialized('publicKey') && null !== $data->getPublicKey()) {
-            $dataArray['publicKey'] = $data->getPublicKey();
+        if (array_key_exists('publicKey', get_object_vars($data)) && null !== ($data->publicKey ?? null)) {
+            $dataArray['publicKey'] = $data->publicKey ?? null;
         }
         return $dataArray;
     }

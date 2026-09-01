@@ -38,19 +38,19 @@ class PreviousOutageNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         if (\array_key_exists('started_at', $data)) {
-            $object->setStartedAt($data['started_at']);
+            $object->startedAt = $data['started_at'];
             unset($data['started_at']);
         }
         if (\array_key_exists('ended_at', $data)) {
-            $object->setEndedAt($data['ended_at']);
+            $object->endedAt = $data['ended_at'];
             unset($data['ended_at']);
         }
         if (\array_key_exists('duration_seconds', $data)) {
-            $object->setDurationSeconds($data['duration_seconds']);
+            $object->durationSeconds = $data['duration_seconds'];
             unset($data['duration_seconds']);
         }
         foreach ($data as $key => $value) {
@@ -63,17 +63,17 @@ class PreviousOutageNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
-        if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
-            $dataArray['started_at'] = $data->getStartedAt();
+        if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
+            $dataArray['started_at'] = $data->startedAt ?? null;
         }
-        if ($data->isInitialized('endedAt') && null !== $data->getEndedAt()) {
-            $dataArray['ended_at'] = $data->getEndedAt();
+        if (array_key_exists('endedAt', get_object_vars($data)) && null !== ($data->endedAt ?? null)) {
+            $dataArray['ended_at'] = $data->endedAt ?? null;
         }
-        if ($data->isInitialized('durationSeconds') && null !== $data->getDurationSeconds()) {
-            $dataArray['duration_seconds'] = $data->getDurationSeconds();
+        if (array_key_exists('durationSeconds', get_object_vars($data)) && null !== ($data->durationSeconds ?? null)) {
+            $dataArray['duration_seconds'] = $data->durationSeconds ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

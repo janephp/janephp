@@ -41,14 +41,14 @@ class SciModifySciEnabledNormalizer implements DenormalizerInterface, Normalizer
             $data['sciEnabled'] = (bool) $data['sciEnabled'];
         }
         if (\array_key_exists('sciEnabled', $data)) {
-            $object->setSciEnabled($data['sciEnabled']);
+            $object->sciEnabled = $data['sciEnabled'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['sciEnabled'] = $data->getSciEnabled();
+        $dataArray['sciEnabled'] = $data->sciEnabled ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

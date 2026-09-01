@@ -38,29 +38,29 @@ class WlanFastInitialLinkSetupNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('encryptionType', $data)) {
-            $object->setEncryptionType($data['encryptionType']);
+            $object->encryptionType = $data['encryptionType'];
         }
         if (\array_key_exists('dhcpServerIp', $data)) {
-            $object->setDhcpServerIp($data['dhcpServerIp']);
+            $object->dhcpServerIp = $data['dhcpServerIp'];
         }
         if (\array_key_exists('hlpTimeout', $data)) {
-            $object->setHlpTimeout($data['hlpTimeout']);
+            $object->hlpTimeout = $data['hlpTimeout'];
         }
         if (\array_key_exists('realmProfileId', $data)) {
-            $object->setRealmProfileId($data['realmProfileId']);
+            $object->realmProfileId = $data['realmProfileId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['encryptionType'] = $data->getEncryptionType();
-        $dataArray['dhcpServerIp'] = $data->getDhcpServerIp();
-        if ($data->isInitialized('hlpTimeout') && null !== $data->getHlpTimeout()) {
-            $dataArray['hlpTimeout'] = $data->getHlpTimeout();
+        $dataArray['encryptionType'] = $data->encryptionType ?? null;
+        $dataArray['dhcpServerIp'] = $data->dhcpServerIp ?? null;
+        if (array_key_exists('hlpTimeout', get_object_vars($data)) && null !== ($data->hlpTimeout ?? null)) {
+            $dataArray['hlpTimeout'] = $data->hlpTimeout ?? null;
         }
-        if ($data->isInitialized('realmProfileId') && null !== $data->getRealmProfileId()) {
-            $dataArray['realmProfileId'] = $data->getRealmProfileId();
+        if (array_key_exists('realmProfileId', get_object_vars($data)) && null !== ($data->realmProfileId ?? null)) {
+            $dataArray['realmProfileId'] = $data->realmProfileId ?? null;
         }
         return $dataArray;
     }

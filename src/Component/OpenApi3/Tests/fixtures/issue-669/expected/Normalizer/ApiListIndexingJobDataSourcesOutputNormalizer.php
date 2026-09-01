@@ -42,7 +42,7 @@ class ApiListIndexingJobDataSourcesOutputNormalizer implements DenormalizerInter
             foreach ($data['indexed_data_sources'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiIndexedDataSource::class, 'json', $context);
             }
-            $object->setIndexedDataSources($values);
+            $object->indexedDataSources = $values;
             unset($data['indexed_data_sources']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ApiListIndexingJobDataSourcesOutputNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('indexedDataSources') && null !== $data->getIndexedDataSources()) {
+        if (array_key_exists('indexedDataSources', get_object_vars($data)) && null !== ($data->indexedDataSources ?? null)) {
             $values = [];
-            foreach ($data->getIndexedDataSources() as $value) {
+            foreach ($data->indexedDataSources ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['indexed_data_sources'] = $values;

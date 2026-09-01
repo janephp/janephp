@@ -38,7 +38,7 @@ class ApiUpdateKnowledgeBaseOutputNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('knowledge_base', $data)) {
-            $object->setKnowledgeBase($this->denormalizer->denormalize($data['knowledge_base'], \Jane\Generated\DigitalOcean\Model\ApiKnowledgeBase::class, 'json', $context));
+            $object->knowledgeBase = $this->denormalizer->denormalize($data['knowledge_base'], \Jane\Generated\DigitalOcean\Model\ApiKnowledgeBase::class, 'json', $context);
             unset($data['knowledge_base']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiUpdateKnowledgeBaseOutputNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('knowledgeBase') && null !== $data->getKnowledgeBase()) {
-            $dataArray['knowledge_base'] = $data->getKnowledgeBase() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKnowledgeBase(), 'json', $context));
+        if (array_key_exists('knowledgeBase', get_object_vars($data)) && null !== ($data->knowledgeBase ?? null)) {
+            $dataArray['knowledge_base'] = ($data->knowledgeBase ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->knowledgeBase ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

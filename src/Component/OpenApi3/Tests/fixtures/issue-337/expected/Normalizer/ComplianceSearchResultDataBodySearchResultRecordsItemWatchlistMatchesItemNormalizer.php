@@ -68,107 +68,107 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
             $data['trueMatch'] = (bool) $data['trueMatch'];
         }
         if (\array_key_exists('acceptListID', $data)) {
-            $object->setAcceptListID($data['acceptListID']);
+            $object->acceptListID = $data['acceptListID'];
             unset($data['acceptListID']);
         }
         if (\array_key_exists('addedToAcceptList', $data)) {
-            $object->setAddedToAcceptList($data['addedToAcceptList']);
+            $object->addedToAcceptList = $data['addedToAcceptList'];
             unset($data['addedToAcceptList']);
         }
         if (\array_key_exists('addressName', $data)) {
-            $object->setAddressName($data['addressName']);
+            $object->addressName = $data['addressName'];
             unset($data['addressName']);
         }
         if (\array_key_exists('autoFalsePositive', $data)) {
-            $object->setAutoFalsePositive($data['autoFalsePositive']);
+            $object->autoFalsePositive = $data['autoFalsePositive'];
             unset($data['autoFalsePositive']);
         }
         if (\array_key_exists('bestAddressIsPartial', $data)) {
-            $object->setBestAddressIsPartial($data['bestAddressIsPartial']);
+            $object->bestAddressIsPartial = $data['bestAddressIsPartial'];
             unset($data['bestAddressIsPartial']);
         }
         if (\array_key_exists('bestCountryScore', $data)) {
-            $object->setBestCountryScore($data['bestCountryScore']);
+            $object->bestCountryScore = $data['bestCountryScore'];
             unset($data['bestCountryScore']);
         }
         if (\array_key_exists('bestCountryType', $data)) {
-            $object->setBestCountryType($data['bestCountryType']);
+            $object->bestCountryType = $data['bestCountryType'];
             unset($data['bestCountryType']);
         }
         if (\array_key_exists('bestDOBIsPartial', $data)) {
-            $object->setBestDOBIsPartial($data['bestDOBIsPartial']);
+            $object->bestDOBIsPartial = $data['bestDOBIsPartial'];
             unset($data['bestDOBIsPartial']);
         }
         if (\array_key_exists('bestName', $data)) {
-            $object->setBestName($data['bestName']);
+            $object->bestName = $data['bestName'];
             unset($data['bestName']);
         }
         if (\array_key_exists('bestNameScore', $data)) {
-            $object->setBestNameScore($data['bestNameScore']);
+            $object->bestNameScore = $data['bestNameScore'];
             unset($data['bestNameScore']);
         }
         if (\array_key_exists('checkSum', $data)) {
-            $object->setCheckSum($data['checkSum']);
+            $object->checkSum = $data['checkSum'];
             unset($data['checkSum']);
         }
         if (\array_key_exists('conflicts', $data)) {
-            $object->setConflicts($this->denormalizer->denormalize($data['conflicts'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts::class, 'json', $context));
+            $object->conflicts = $this->denormalizer->denormalize($data['conflicts'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts::class, 'json', $context);
             unset($data['conflicts']);
         }
         if (\array_key_exists('entityDetails', $data)) {
-            $object->setEntityDetails($this->denormalizer->denormalize($data['entityDetails'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails::class, 'json', $context));
+            $object->entityDetails = $this->denormalizer->denormalize($data['entityDetails'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails::class, 'json', $context);
             unset($data['entityDetails']);
         }
         if (\array_key_exists('entityName', $data)) {
-            $object->setEntityName($data['entityName']);
+            $object->entityName = $data['entityName'];
             unset($data['entityName']);
         }
         if (\array_key_exists('entityScore', $data)) {
-            $object->setEntityScore($data['entityScore']);
+            $object->entityScore = $data['entityScore'];
             unset($data['entityScore']);
         }
         if (\array_key_exists('entityUniqueID', $data)) {
-            $object->setEntityUniqueID($data['entityUniqueID']);
+            $object->entityUniqueID = $data['entityUniqueID'];
             unset($data['entityUniqueID']);
         }
         if (\array_key_exists('falsePositive', $data)) {
-            $object->setFalsePositive($data['falsePositive']);
+            $object->falsePositive = $data['falsePositive'];
             unset($data['falsePositive']);
         }
         if (\array_key_exists('file', $data)) {
-            $object->setFile($this->denormalizer->denormalize($data['file'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile::class, 'json', $context));
+            $object->file = $this->denormalizer->denormalize($data['file'], \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile::class, 'json', $context);
             unset($data['file']);
         }
         if (\array_key_exists('gatewayOFACScreeningIndicatorMatch', $data)) {
-            $object->setGatewayOFACScreeningIndicatorMatch($data['gatewayOFACScreeningIndicatorMatch']);
+            $object->gatewayOFACScreeningIndicatorMatch = $data['gatewayOFACScreeningIndicatorMatch'];
             unset($data['gatewayOFACScreeningIndicatorMatch']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('matchReAlert', $data)) {
-            $object->setMatchReAlert($data['matchReAlert']);
+            $object->matchReAlert = $data['matchReAlert'];
             unset($data['matchReAlert']);
         }
         if (\array_key_exists('previousResultID', $data)) {
-            $object->setPreviousResultID($data['previousResultID']);
+            $object->previousResultID = $data['previousResultID'];
             unset($data['previousResultID']);
         }
         if (\array_key_exists('reasonListed', $data)) {
-            $object->setReasonListed($data['reasonListed']);
+            $object->reasonListed = $data['reasonListed'];
             unset($data['reasonListed']);
         }
         if (\array_key_exists('resultDate', $data)) {
-            $object->setResultDate($data['resultDate']);
+            $object->resultDate = $data['resultDate'];
             unset($data['resultDate']);
         }
         if (\array_key_exists('secondaryOFACScreeningIndicatorMatch', $data)) {
-            $object->setSecondaryOFACScreeningIndicatorMatch($data['secondaryOFACScreeningIndicatorMatch']);
+            $object->secondaryOFACScreeningIndicatorMatch = $data['secondaryOFACScreeningIndicatorMatch'];
             unset($data['secondaryOFACScreeningIndicatorMatch']);
         }
         if (\array_key_exists('trueMatch', $data)) {
-            $object->setTrueMatch($data['trueMatch']);
+            $object->trueMatch = $data['trueMatch'];
             unset($data['trueMatch']);
         }
         foreach ($data as $key => $value) {
@@ -181,83 +181,83 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('acceptListID') && null !== $data->getAcceptListID()) {
-            $dataArray['acceptListID'] = $data->getAcceptListID();
+        if (array_key_exists('acceptListID', get_object_vars($data)) && null !== ($data->acceptListID ?? null)) {
+            $dataArray['acceptListID'] = $data->acceptListID ?? null;
         }
-        if ($data->isInitialized('addedToAcceptList') && null !== $data->getAddedToAcceptList()) {
-            $dataArray['addedToAcceptList'] = $data->getAddedToAcceptList();
+        if (array_key_exists('addedToAcceptList', get_object_vars($data)) && null !== ($data->addedToAcceptList ?? null)) {
+            $dataArray['addedToAcceptList'] = $data->addedToAcceptList ?? null;
         }
-        if ($data->isInitialized('addressName') && null !== $data->getAddressName()) {
-            $dataArray['addressName'] = $data->getAddressName();
+        if (array_key_exists('addressName', get_object_vars($data)) && null !== ($data->addressName ?? null)) {
+            $dataArray['addressName'] = $data->addressName ?? null;
         }
-        if ($data->isInitialized('autoFalsePositive') && null !== $data->getAutoFalsePositive()) {
-            $dataArray['autoFalsePositive'] = $data->getAutoFalsePositive();
+        if (array_key_exists('autoFalsePositive', get_object_vars($data)) && null !== ($data->autoFalsePositive ?? null)) {
+            $dataArray['autoFalsePositive'] = $data->autoFalsePositive ?? null;
         }
-        if ($data->isInitialized('bestAddressIsPartial') && null !== $data->getBestAddressIsPartial()) {
-            $dataArray['bestAddressIsPartial'] = $data->getBestAddressIsPartial();
+        if (array_key_exists('bestAddressIsPartial', get_object_vars($data)) && null !== ($data->bestAddressIsPartial ?? null)) {
+            $dataArray['bestAddressIsPartial'] = $data->bestAddressIsPartial ?? null;
         }
-        if ($data->isInitialized('bestCountryScore') && null !== $data->getBestCountryScore()) {
-            $dataArray['bestCountryScore'] = $data->getBestCountryScore();
+        if (array_key_exists('bestCountryScore', get_object_vars($data)) && null !== ($data->bestCountryScore ?? null)) {
+            $dataArray['bestCountryScore'] = $data->bestCountryScore ?? null;
         }
-        if ($data->isInitialized('bestCountryType') && null !== $data->getBestCountryType()) {
-            $dataArray['bestCountryType'] = $data->getBestCountryType();
+        if (array_key_exists('bestCountryType', get_object_vars($data)) && null !== ($data->bestCountryType ?? null)) {
+            $dataArray['bestCountryType'] = $data->bestCountryType ?? null;
         }
-        if ($data->isInitialized('bestDOBIsPartial') && null !== $data->getBestDOBIsPartial()) {
-            $dataArray['bestDOBIsPartial'] = $data->getBestDOBIsPartial();
+        if (array_key_exists('bestDOBIsPartial', get_object_vars($data)) && null !== ($data->bestDOBIsPartial ?? null)) {
+            $dataArray['bestDOBIsPartial'] = $data->bestDOBIsPartial ?? null;
         }
-        if ($data->isInitialized('bestName') && null !== $data->getBestName()) {
-            $dataArray['bestName'] = $data->getBestName();
+        if (array_key_exists('bestName', get_object_vars($data)) && null !== ($data->bestName ?? null)) {
+            $dataArray['bestName'] = $data->bestName ?? null;
         }
-        if ($data->isInitialized('bestNameScore') && null !== $data->getBestNameScore()) {
-            $dataArray['bestNameScore'] = $data->getBestNameScore();
+        if (array_key_exists('bestNameScore', get_object_vars($data)) && null !== ($data->bestNameScore ?? null)) {
+            $dataArray['bestNameScore'] = $data->bestNameScore ?? null;
         }
-        if ($data->isInitialized('checkSum') && null !== $data->getCheckSum()) {
-            $dataArray['checkSum'] = $data->getCheckSum();
+        if (array_key_exists('checkSum', get_object_vars($data)) && null !== ($data->checkSum ?? null)) {
+            $dataArray['checkSum'] = $data->checkSum ?? null;
         }
-        if ($data->isInitialized('conflicts') && null !== $data->getConflicts()) {
-            $dataArray['conflicts'] = $data->getConflicts() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getConflicts(), 'json', $context));
+        if (array_key_exists('conflicts', get_object_vars($data)) && null !== ($data->conflicts ?? null)) {
+            $dataArray['conflicts'] = ($data->conflicts ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->conflicts ?? null, 'json', $context));
         }
-        if ($data->isInitialized('entityDetails') && null !== $data->getEntityDetails()) {
-            $dataArray['entityDetails'] = $data->getEntityDetails() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getEntityDetails(), 'json', $context));
+        if (array_key_exists('entityDetails', get_object_vars($data)) && null !== ($data->entityDetails ?? null)) {
+            $dataArray['entityDetails'] = ($data->entityDetails ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->entityDetails ?? null, 'json', $context));
         }
-        if ($data->isInitialized('entityName') && null !== $data->getEntityName()) {
-            $dataArray['entityName'] = $data->getEntityName();
+        if (array_key_exists('entityName', get_object_vars($data)) && null !== ($data->entityName ?? null)) {
+            $dataArray['entityName'] = $data->entityName ?? null;
         }
-        if ($data->isInitialized('entityScore') && null !== $data->getEntityScore()) {
-            $dataArray['entityScore'] = $data->getEntityScore();
+        if (array_key_exists('entityScore', get_object_vars($data)) && null !== ($data->entityScore ?? null)) {
+            $dataArray['entityScore'] = $data->entityScore ?? null;
         }
-        if ($data->isInitialized('entityUniqueID') && null !== $data->getEntityUniqueID()) {
-            $dataArray['entityUniqueID'] = $data->getEntityUniqueID();
+        if (array_key_exists('entityUniqueID', get_object_vars($data)) && null !== ($data->entityUniqueID ?? null)) {
+            $dataArray['entityUniqueID'] = $data->entityUniqueID ?? null;
         }
-        if ($data->isInitialized('falsePositive') && null !== $data->getFalsePositive()) {
-            $dataArray['falsePositive'] = $data->getFalsePositive();
+        if (array_key_exists('falsePositive', get_object_vars($data)) && null !== ($data->falsePositive ?? null)) {
+            $dataArray['falsePositive'] = $data->falsePositive ?? null;
         }
-        if ($data->isInitialized('file') && null !== $data->getFile()) {
-            $dataArray['file'] = $data->getFile() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
+        if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
+            $dataArray['file'] = ($data->file ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->file ?? null, 'json', $context));
         }
-        if ($data->isInitialized('gatewayOFACScreeningIndicatorMatch') && null !== $data->getGatewayOFACScreeningIndicatorMatch()) {
-            $dataArray['gatewayOFACScreeningIndicatorMatch'] = $data->getGatewayOFACScreeningIndicatorMatch();
+        if (array_key_exists('gatewayOFACScreeningIndicatorMatch', get_object_vars($data)) && null !== ($data->gatewayOFACScreeningIndicatorMatch ?? null)) {
+            $dataArray['gatewayOFACScreeningIndicatorMatch'] = $data->gatewayOFACScreeningIndicatorMatch ?? null;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('matchReAlert') && null !== $data->getMatchReAlert()) {
-            $dataArray['matchReAlert'] = $data->getMatchReAlert();
+        if (array_key_exists('matchReAlert', get_object_vars($data)) && null !== ($data->matchReAlert ?? null)) {
+            $dataArray['matchReAlert'] = $data->matchReAlert ?? null;
         }
-        if ($data->isInitialized('previousResultID') && null !== $data->getPreviousResultID()) {
-            $dataArray['previousResultID'] = $data->getPreviousResultID();
+        if (array_key_exists('previousResultID', get_object_vars($data)) && null !== ($data->previousResultID ?? null)) {
+            $dataArray['previousResultID'] = $data->previousResultID ?? null;
         }
-        if ($data->isInitialized('reasonListed') && null !== $data->getReasonListed()) {
-            $dataArray['reasonListed'] = $data->getReasonListed();
+        if (array_key_exists('reasonListed', get_object_vars($data)) && null !== ($data->reasonListed ?? null)) {
+            $dataArray['reasonListed'] = $data->reasonListed ?? null;
         }
-        if ($data->isInitialized('resultDate') && null !== $data->getResultDate()) {
-            $dataArray['resultDate'] = $data->getResultDate();
+        if (array_key_exists('resultDate', get_object_vars($data)) && null !== ($data->resultDate ?? null)) {
+            $dataArray['resultDate'] = $data->resultDate ?? null;
         }
-        if ($data->isInitialized('secondaryOFACScreeningIndicatorMatch') && null !== $data->getSecondaryOFACScreeningIndicatorMatch()) {
-            $dataArray['secondaryOFACScreeningIndicatorMatch'] = $data->getSecondaryOFACScreeningIndicatorMatch();
+        if (array_key_exists('secondaryOFACScreeningIndicatorMatch', get_object_vars($data)) && null !== ($data->secondaryOFACScreeningIndicatorMatch ?? null)) {
+            $dataArray['secondaryOFACScreeningIndicatorMatch'] = $data->secondaryOFACScreeningIndicatorMatch ?? null;
         }
-        if ($data->isInitialized('trueMatch') && null !== $data->getTrueMatch()) {
-            $dataArray['trueMatch'] = $data->getTrueMatch();
+        if (array_key_exists('trueMatch', get_object_vars($data)) && null !== ($data->trueMatch ?? null)) {
+            $dataArray['trueMatch'] = $data->trueMatch ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

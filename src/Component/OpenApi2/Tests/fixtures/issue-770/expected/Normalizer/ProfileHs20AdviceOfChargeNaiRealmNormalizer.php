@@ -42,24 +42,24 @@ class ProfileHs20AdviceOfChargeNaiRealmNormalizer implements DenormalizerInterfa
             foreach ($data['names'] as $value) {
                 $values[] = $value;
             }
-            $object->setNames($values);
+            $object->names = $values;
         }
         if (\array_key_exists('encoding', $data)) {
-            $object->setEncoding($data['encoding']);
+            $object->encoding = $data['encoding'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if (array_key_exists('names', get_object_vars($data)) && null !== ($data->names ?? null)) {
             $values = [];
-            foreach ($data->getNames() as $value) {
+            foreach ($data->names ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['names'] = $values;
         }
-        $dataArray['encoding'] = $data->getEncoding();
+        $dataArray['encoding'] = $data->encoding ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

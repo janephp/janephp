@@ -42,60 +42,60 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
             if (false === $date) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['from'], 'Y-m-d\TH:i:sP');
             }
-            $object->setFrom($date);
+            $object->from = $date;
         }
         if (\array_key_exists('to', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['to']);
             if (false === $date_1) {
                 throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['to'], 'Y-m-d\TH:i:sP');
             }
-            $object->setTo($date_1);
+            $object->to = $date_1;
         }
         if (\array_key_exists('scopeType', $data) && $data['scopeType'] !== null) {
-            $object->setScopeType($data['scopeType']);
+            $object->scopeType = $data['scopeType'];
         }
         elseif (\array_key_exists('scopeType', $data) && $data['scopeType'] === null) {
-            $object->setScopeType(null);
+            $object->scopeType = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $value = $data['filter'];
             if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
                 $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilter($value);
+            $object->filter = $value;
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
         }
         if (\array_key_exists('limit', $data)) {
-            $object->setLimit($data['limit']);
+            $object->limit = $data['limit'];
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-            $object->setPageToken($data['pageToken']);
+            $object->pageToken = $data['pageToken'];
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-            $object->setPageToken(null);
+            $object->pageToken = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['from'] = $data->getFrom()->format('Y-m-d\TH:i:sP');
-        $dataArray['to'] = $data->getTo()->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('scopeType') && null !== $data->getScopeType()) {
-            $dataArray['scopeType'] = $data->getScopeType();
+        $dataArray['from'] = ($data->from ?? null)->format('Y-m-d\TH:i:sP');
+        $dataArray['to'] = ($data->to ?? null)->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('scopeType', get_object_vars($data)) && null !== ($data->scopeType ?? null)) {
+            $dataArray['scopeType'] = $data->scopeType ?? null;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $value = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $value = $data->filter ?? null;
+            if (is_object($data->filter ?? null)) {
+                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
-        $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
-            $dataArray['pageToken'] = $data->getPageToken();
+        $dataArray['limit'] = $data->limit ?? null;
+        if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
+            $dataArray['pageToken'] = $data->pageToken ?? null;
         }
         return $dataArray;
     }

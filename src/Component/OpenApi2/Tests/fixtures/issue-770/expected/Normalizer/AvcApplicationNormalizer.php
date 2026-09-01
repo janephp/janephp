@@ -38,27 +38,27 @@ class AvcApplicationNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('catId', $data)) {
-            $object->setCatId($data['catId']);
+            $object->catId = $data['catId'];
         }
         if (\array_key_exists('appId', $data)) {
-            $object->setAppId($data['appId']);
+            $object->appId = $data['appId'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('catId') && null !== $data->getCatId()) {
-            $dataArray['catId'] = $data->getCatId();
+        if (array_key_exists('catId', get_object_vars($data)) && null !== ($data->catId ?? null)) {
+            $dataArray['catId'] = $data->catId ?? null;
         }
-        if ($data->isInitialized('appId') && null !== $data->getAppId()) {
-            $dataArray['appId'] = $data->getAppId();
+        if (array_key_exists('appId', get_object_vars($data)) && null !== ($data->appId ?? null)) {
+            $dataArray['appId'] = $data->appId ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
         return $dataArray;
     }

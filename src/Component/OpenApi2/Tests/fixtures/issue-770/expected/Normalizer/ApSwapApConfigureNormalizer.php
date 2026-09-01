@@ -38,18 +38,18 @@ class ApSwapApConfigureNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('swapInMac', $data)) {
-            $object->setSwapInMac($data['swapInMac']);
+            $object->swapInMac = $data['swapInMac'];
         }
         if (\array_key_exists('swapOutMac', $data)) {
-            $object->setSwapOutMac($data['swapOutMac']);
+            $object->swapOutMac = $data['swapOutMac'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['swapInMac'] = $data->getSwapInMac();
-        $dataArray['swapOutMac'] = $data->getSwapOutMac();
+        $dataArray['swapInMac'] = $data->swapInMac ?? null;
+        $dataArray['swapOutMac'] = $data->swapOutMac ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -42,11 +42,11 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['content'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setContent($values);
+            $object->content = $values;
             unset($data['content']);
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
-            $object->setContent(null);
+            $object->content = null;
             unset($data['content']);
         }
         if (\array_key_exists('contentFieldsUpdateOptions', $data)) {
@@ -54,11 +54,11 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
             if (is_string($data['contentFieldsUpdateOptions'])) {
                 $value_1 = $data['contentFieldsUpdateOptions'];
             }
-            $object->setContentFieldsUpdateOptions($value_1);
+            $object->contentFieldsUpdateOptions = $value_1;
             unset($data['contentFieldsUpdateOptions']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         foreach ($data as $key_1 => $value_2) {
@@ -71,19 +71,19 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        if (array_key_exists('content', get_object_vars($data)) && null !== ($data->content ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getContent() as $key => $value) {
+            foreach ($data->content ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['content'] = $values;
         }
-        $value_1 = $data->getContentFieldsUpdateOptions();
-        if (is_string($data->getContentFieldsUpdateOptions())) {
-            $value_1 = $data->getContentFieldsUpdateOptions();
+        $value_1 = $data->contentFieldsUpdateOptions ?? null;
+        if (is_string($data->contentFieldsUpdateOptions ?? null)) {
+            $value_1 = $data->contentFieldsUpdateOptions ?? null;
         }
         $dataArray['contentFieldsUpdateOptions'] = $value_1;
-        $dataArray['id'] = $data->getId();
+        $dataArray['id'] = $data->id ?? null;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_2;

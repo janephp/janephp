@@ -50,101 +50,101 @@ class ApCreateAPNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['bssColoringEnable'] = (bool) $data['bssColoringEnable'];
         }
         if (\array_key_exists('mac', $data)) {
-            $object->setMac($data['mac']);
+            $object->mac = $data['mac'];
         }
         if (\array_key_exists('zoneId', $data)) {
-            $object->setZoneId($data['zoneId']);
+            $object->zoneId = $data['zoneId'];
         }
         if (\array_key_exists('apGroupId', $data)) {
-            $object->setApGroupId($data['apGroupId']);
+            $object->apGroupId = $data['apGroupId'];
         }
         if (\array_key_exists('serial', $data)) {
-            $object->setSerial($data['serial']);
+            $object->serial = $data['serial'];
         }
         if (\array_key_exists('model', $data)) {
-            $object->setModel($data['model']);
+            $object->model = $data['model'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('gpsSource', $data)) {
-            $object->setGpsSource($data['gpsSource']);
+            $object->gpsSource = $data['gpsSource'];
         }
         if (\array_key_exists('latitude', $data)) {
-            $object->setLatitude($data['latitude']);
+            $object->latitude = $data['latitude'];
         }
         if (\array_key_exists('longitude', $data)) {
-            $object->setLongitude($data['longitude']);
+            $object->longitude = $data['longitude'];
         }
         if (\array_key_exists('location', $data)) {
-            $object->setLocation($data['location']);
+            $object->location = $data['location'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('administrativeState', $data)) {
-            $object->setAdministrativeState($data['administrativeState']);
+            $object->administrativeState = $data['administrativeState'];
         }
         if (\array_key_exists('provisionChecklist', $data)) {
-            $object->setProvisionChecklist($data['provisionChecklist']);
+            $object->provisionChecklist = $data['provisionChecklist'];
         }
         if (\array_key_exists('awsVenue', $data)) {
-            $object->setAwsVenue($data['awsVenue']);
+            $object->awsVenue = $data['awsVenue'];
         }
         if (\array_key_exists('testSpeedEnabled', $data)) {
-            $object->setTestSpeedEnabled($data['testSpeedEnabled']);
+            $object->testSpeedEnabled = $data['testSpeedEnabled'];
         }
         if (\array_key_exists('bssColoringEnable', $data)) {
-            $object->setBssColoringEnable($data['bssColoringEnable']);
+            $object->bssColoringEnable = $data['bssColoringEnable'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['mac'] = $data->getMac();
-        $dataArray['zoneId'] = $data->getZoneId();
-        if ($data->isInitialized('apGroupId') && null !== $data->getApGroupId()) {
-            $dataArray['apGroupId'] = $data->getApGroupId();
+        $dataArray['mac'] = $data->mac ?? null;
+        $dataArray['zoneId'] = $data->zoneId ?? null;
+        if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
+            $dataArray['apGroupId'] = $data->apGroupId ?? null;
         }
-        if ($data->isInitialized('serial') && null !== $data->getSerial()) {
-            $dataArray['serial'] = $data->getSerial();
+        if (array_key_exists('serial', get_object_vars($data)) && null !== ($data->serial ?? null)) {
+            $dataArray['serial'] = $data->serial ?? null;
         }
-        if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $data->getModel();
+        if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
+            $dataArray['model'] = $data->model ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('gpsSource') && null !== $data->getGpsSource()) {
-            $dataArray['gpsSource'] = $data->getGpsSource();
+        if (array_key_exists('gpsSource', get_object_vars($data)) && null !== ($data->gpsSource ?? null)) {
+            $dataArray['gpsSource'] = $data->gpsSource ?? null;
         }
-        if ($data->isInitialized('latitude') && null !== $data->getLatitude()) {
-            $dataArray['latitude'] = $data->getLatitude();
+        if (array_key_exists('latitude', get_object_vars($data)) && null !== ($data->latitude ?? null)) {
+            $dataArray['latitude'] = $data->latitude ?? null;
         }
-        if ($data->isInitialized('longitude') && null !== $data->getLongitude()) {
-            $dataArray['longitude'] = $data->getLongitude();
+        if (array_key_exists('longitude', get_object_vars($data)) && null !== ($data->longitude ?? null)) {
+            $dataArray['longitude'] = $data->longitude ?? null;
         }
-        if ($data->isInitialized('location') && null !== $data->getLocation()) {
-            $dataArray['location'] = $data->getLocation();
+        if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
+            $dataArray['location'] = $data->location ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('administrativeState') && null !== $data->getAdministrativeState()) {
-            $dataArray['administrativeState'] = $data->getAdministrativeState();
+        if (array_key_exists('administrativeState', get_object_vars($data)) && null !== ($data->administrativeState ?? null)) {
+            $dataArray['administrativeState'] = $data->administrativeState ?? null;
         }
-        if ($data->isInitialized('provisionChecklist') && null !== $data->getProvisionChecklist()) {
-            $dataArray['provisionChecklist'] = $data->getProvisionChecklist();
+        if (array_key_exists('provisionChecklist', get_object_vars($data)) && null !== ($data->provisionChecklist ?? null)) {
+            $dataArray['provisionChecklist'] = $data->provisionChecklist ?? null;
         }
-        if ($data->isInitialized('awsVenue') && null !== $data->getAwsVenue()) {
-            $dataArray['awsVenue'] = $data->getAwsVenue();
+        if (array_key_exists('awsVenue', get_object_vars($data)) && null !== ($data->awsVenue ?? null)) {
+            $dataArray['awsVenue'] = $data->awsVenue ?? null;
         }
-        if ($data->isInitialized('testSpeedEnabled') && null !== $data->getTestSpeedEnabled()) {
-            $dataArray['testSpeedEnabled'] = $data->getTestSpeedEnabled();
+        if (array_key_exists('testSpeedEnabled', get_object_vars($data)) && null !== ($data->testSpeedEnabled ?? null)) {
+            $dataArray['testSpeedEnabled'] = $data->testSpeedEnabled ?? null;
         }
-        if ($data->isInitialized('bssColoringEnable') && null !== $data->getBssColoringEnable()) {
-            $dataArray['bssColoringEnable'] = $data->getBssColoringEnable();
+        if (array_key_exists('bssColoringEnable', get_object_vars($data)) && null !== ($data->bssColoringEnable ?? null)) {
+            $dataArray['bssColoringEnable'] = $data->bssColoringEnable ?? null;
         }
         return $dataArray;
     }

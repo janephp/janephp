@@ -47,10 +47,10 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblem
         if (200 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception\PostFooBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse400', 'json'), $response);
         }
-        if (is_null($contentType) === false && (500 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
+        if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception\PostFooInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse500', 'json'), $response);
         }
         throw new \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception\BadResponseException($status, $body, $response);

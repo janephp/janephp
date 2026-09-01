@@ -38,57 +38,57 @@ class SystemSmsNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('serverType', $data)) {
-            $object->setServerType($data['serverType']);
+            $object->serverType = $data['serverType'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('serverName', $data)) {
-            $object->setServerName($data['serverName']);
+            $object->serverName = $data['serverName'];
         }
         if (\array_key_exists('accountSid', $data)) {
-            $object->setAccountSid($data['accountSid']);
+            $object->accountSid = $data['accountSid'];
         }
         if (\array_key_exists('authToken', $data)) {
-            $object->setAuthToken($data['authToken']);
+            $object->authToken = $data['authToken'];
         }
         if (\array_key_exists('from', $data)) {
-            $object->setFrom($data['from']);
+            $object->from = $data['from'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('serverType') && null !== $data->getServerType()) {
-            $dataArray['serverType'] = $data->getServerType();
+        if (array_key_exists('serverType', get_object_vars($data)) && null !== ($data->serverType ?? null)) {
+            $dataArray['serverType'] = $data->serverType ?? null;
         }
-        if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
-            $dataArray['enabled'] = $data->getEnabled();
+        if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
+            $dataArray['enabled'] = $data->enabled ?? null;
         }
-        if ($data->isInitialized('serverName') && null !== $data->getServerName()) {
-            $dataArray['serverName'] = $data->getServerName();
+        if (array_key_exists('serverName', get_object_vars($data)) && null !== ($data->serverName ?? null)) {
+            $dataArray['serverName'] = $data->serverName ?? null;
         }
-        if ($data->isInitialized('accountSid') && null !== $data->getAccountSid()) {
-            $dataArray['accountSid'] = $data->getAccountSid();
+        if (array_key_exists('accountSid', get_object_vars($data)) && null !== ($data->accountSid ?? null)) {
+            $dataArray['accountSid'] = $data->accountSid ?? null;
         }
-        if ($data->isInitialized('authToken') && null !== $data->getAuthToken()) {
-            $dataArray['authToken'] = $data->getAuthToken();
+        if (array_key_exists('authToken', get_object_vars($data)) && null !== ($data->authToken ?? null)) {
+            $dataArray['authToken'] = $data->authToken ?? null;
         }
-        if ($data->isInitialized('from') && null !== $data->getFrom()) {
-            $dataArray['from'] = $data->getFrom();
+        if (array_key_exists('from', get_object_vars($data)) && null !== ($data->from ?? null)) {
+            $dataArray['from'] = $data->from ?? null;
         }
         return $dataArray;
     }

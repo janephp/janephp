@@ -32,15 +32,15 @@ class BazInlinePropertyNormalizer implements DenormalizerInterface, NormalizerIn
             return $object;
         }
         if (\array_key_exists('inline', $data)) {
-            $object->setInline($data['inline']);
+            $object->inline = $data['inline'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('inline') && null !== $data->getInline()) {
-            $dataArray['inline'] = $data->getInline();
+        if (array_key_exists('inline', get_object_vars($data)) && null !== ($data->inline ?? null)) {
+            $dataArray['inline'] = $data->inline ?? null;
         }
         return $dataArray;
     }

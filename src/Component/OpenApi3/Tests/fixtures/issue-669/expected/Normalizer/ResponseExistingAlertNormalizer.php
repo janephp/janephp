@@ -42,7 +42,7 @@ class ResponseExistingAlertNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['alert'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setAlert($values);
+            $object->alert = $values;
             unset($data['alert']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -55,9 +55,9 @@ class ResponseExistingAlertNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('alert') && null !== $data->getAlert()) {
+        if (array_key_exists('alert', get_object_vars($data)) && null !== ($data->alert ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getAlert() as $key => $value) {
+            foreach ($data->alert ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['alert'] = $values;

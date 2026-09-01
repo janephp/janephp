@@ -38,7 +38,7 @@ class AddonsResourceMetadataNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('value', $data)) {
@@ -48,7 +48,7 @@ class AddonsResourceMetadataNormalizer implements DenormalizerInterface, Normali
             } elseif (is_bool($data['value'])) {
                 $value = $data['value'];
             }
-            $object->setValue($value);
+            $object->value = $value;
             unset($data['value']);
         }
         foreach ($data as $key => $value_1) {
@@ -61,12 +61,12 @@ class AddonsResourceMetadataNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $value = $data->getValue();
-        if (is_string($data->getValue())) {
-            $value = $data->getValue();
-        } elseif (is_bool($data->getValue())) {
-            $value = $data->getValue();
+        $dataArray['name'] = $data->name ?? null;
+        $value = $data->value ?? null;
+        if (is_string($data->value ?? null)) {
+            $value = $data->value ?? null;
+        } elseif (is_bool($data->value ?? null)) {
+            $value = $data->value ?? null;
         }
         $dataArray['value'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

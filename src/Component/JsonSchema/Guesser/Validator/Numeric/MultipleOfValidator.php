@@ -16,7 +16,7 @@ class MultipleOfValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && (\is_array($object->getType()) ? (\in_array('integer', $object->getType()) || \in_array('number', $object->getType())) : ('integer' === $object->getType() || 'number' === $object->getType())) && is_numeric($object->getMultipleOf()) && ((int) $object->getMultipleOf()) > 0;
+        return $this->checkObject($object) && (\is_array($object->type ?? null) ? (\in_array('integer', $object->type ?? null) || \in_array('number', $object->type ?? null)) : ('integer' === ($object->type ?? null) || 'number' === ($object->type ?? null))) && is_numeric($object->multipleOf ?? null) && ((int) ($object->multipleOf ?? null)) > 0;
     }
 
     /**
@@ -26,7 +26,7 @@ class MultipleOfValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(DivisibleBy::class, [
-            'value' => $object->getMultipleOf(),
+            'value' => ($object->multipleOf ?? null),
         ]));
     }
 }

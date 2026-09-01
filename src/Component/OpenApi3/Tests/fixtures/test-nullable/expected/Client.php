@@ -16,7 +16,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\TestNullable\Runtim
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\TestNullable\Endpoint\TestNullableQueryParameters($queryParameters), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();

@@ -38,27 +38,27 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('identifier', $data) && $data['identifier'] !== null) {
-            $object->setIdentifier($data['identifier']);
+            $object->identifier = $data['identifier'];
             unset($data['identifier']);
         }
         elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
-            $object->setIdentifier(null);
+            $object->identifier = null;
             unset($data['identifier']);
         }
         if (\array_key_exists('requestId', $data)) {
-            $object->setRequestId($data['requestId']);
+            $object->requestId = $data['requestId'];
             unset($data['requestId']);
         }
         if (\array_key_exists('transferId', $data)) {
-            $object->setTransferId($data['transferId']);
+            $object->transferId = $data['transferId'];
             unset($data['transferId']);
         }
         if (\array_key_exists('state', $data)) {
@@ -66,15 +66,15 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
             if (is_string($data['state'])) {
                 $value = $data['state'];
             }
-            $object->setState($value);
+            $object->state = $value;
             unset($data['state']);
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
             unset($data['contentId']);
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
-            $object->setContentId(null);
+            $object->contentId = null;
             unset($data['contentId']);
         }
         if (\array_key_exists('audit', $data)) {
@@ -82,7 +82,7 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
             if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
                 $value_1 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
             }
-            $object->setAudit($value_1);
+            $object->audit = $value_1;
             unset($data['audit']);
         }
         if (\array_key_exists('fileMetadata', $data) && $data['fileMetadata'] !== null) {
@@ -90,11 +90,11 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
             if (is_array($data['fileMetadata'])) {
                 $value_2 = $this->denormalizer->denormalize($data['fileMetadata'], \PicturePark\API\Model\FileMetadata::class, 'json', $context);
             }
-            $object->setFileMetadata($value_2);
+            $object->fileMetadata = $value_2;
             unset($data['fileMetadata']);
         }
         elseif (\array_key_exists('fileMetadata', $data) && $data['fileMetadata'] === null) {
-            $object->setFileMetadata(null);
+            $object->fileMetadata = null;
             unset($data['fileMetadata']);
         }
         if (\array_key_exists('outputItems', $data) && $data['outputItems'] !== null) {
@@ -102,11 +102,11 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['outputItems'] as $value_3) {
                 $values[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\FileTransferOutput::class, 'json', $context);
             }
-            $object->setOutputItems($values);
+            $object->outputItems = $values;
             unset($data['outputItems']);
         }
         elseif (\array_key_exists('outputItems', $data) && $data['outputItems'] === null) {
-            $object->setOutputItems(null);
+            $object->outputItems = null;
             unset($data['outputItems']);
         }
         foreach ($data as $key => $value_4) {
@@ -119,36 +119,36 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('identifier') && null !== $data->getIdentifier()) {
-            $dataArray['identifier'] = $data->getIdentifier();
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['name'] = $data->name ?? null;
+        if (array_key_exists('identifier', get_object_vars($data)) && null !== ($data->identifier ?? null)) {
+            $dataArray['identifier'] = $data->identifier ?? null;
         }
-        $dataArray['requestId'] = $data->getRequestId();
-        $dataArray['transferId'] = $data->getTransferId();
-        $value = $data->getState();
-        if (is_string($data->getState())) {
-            $value = $data->getState();
+        $dataArray['requestId'] = $data->requestId ?? null;
+        $dataArray['transferId'] = $data->transferId ?? null;
+        $value = $data->state ?? null;
+        if (is_string($data->state ?? null)) {
+            $value = $data->state ?? null;
         }
         $dataArray['state'] = $value;
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
-            $dataArray['contentId'] = $data->getContentId();
+        if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
+            $dataArray['contentId'] = $data->contentId ?? null;
         }
-        $value_1 = $data->getAudit();
-        if (is_object($data->getAudit())) {
-            $value_1 = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+        $value_1 = $data->audit ?? null;
+        if (is_object($data->audit ?? null)) {
+            $value_1 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
         }
         $dataArray['audit'] = $value_1;
-        if ($data->isInitialized('fileMetadata') && null !== $data->getFileMetadata()) {
-            $value_2 = $data->getFileMetadata();
-            if (is_object($data->getFileMetadata())) {
-                $value_2 = $data->getFileMetadata() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFileMetadata(), 'json', $context));
+        if (array_key_exists('fileMetadata', get_object_vars($data)) && null !== ($data->fileMetadata ?? null)) {
+            $value_2 = $data->fileMetadata ?? null;
+            if (is_object($data->fileMetadata ?? null)) {
+                $value_2 = ($data->fileMetadata ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->fileMetadata ?? null, 'json', $context));
             }
             $dataArray['fileMetadata'] = $value_2;
         }
-        if ($data->isInitialized('outputItems') && null !== $data->getOutputItems()) {
+        if (array_key_exists('outputItems', get_object_vars($data)) && null !== ($data->outputItems ?? null)) {
             $values = [];
-            foreach ($data->getOutputItems() as $value_3) {
+            foreach ($data->outputItems ?? null as $value_3) {
                 $values[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['outputItems'] = $values;

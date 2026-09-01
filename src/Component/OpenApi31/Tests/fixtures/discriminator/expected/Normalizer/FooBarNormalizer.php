@@ -44,7 +44,7 @@ class FooBarNormalizer implements DenormalizerInterface, NormalizerInterface, De
             } elseif (is_array($data['what']) and (isset($data['what']['type']) and $data['what']['type'] == 'bar')) {
                 $value = $this->denormalizer->denormalize($data['what'], \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Model\Bar::class, 'json', $context);
             }
-            $object->setWhat($value);
+            $object->what = $value;
             unset($data['what']);
         }
         foreach ($data as $key => $value_1) {
@@ -57,12 +57,12 @@ class FooBarNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('what') && null !== $data->getWhat()) {
-            $value = $data->getWhat();
-            if (is_object($data->getWhat())) {
-                $value = $data->getWhat() === null ? null : new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Runtime\JsonObject($this->normalizer->normalize($data->getWhat(), 'json', $context));
-            } elseif (is_object($data->getWhat())) {
-                $value = $data->getWhat() === null ? null : new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Runtime\JsonObject($this->normalizer->normalize($data->getWhat(), 'json', $context));
+        if (array_key_exists('what', get_object_vars($data)) && null !== ($data->what ?? null)) {
+            $value = $data->what ?? null;
+            if (is_object($data->what ?? null)) {
+                $value = ($data->what ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Runtime\JsonObject($this->normalizer->normalize($data->what ?? null, 'json', $context));
+            } elseif (is_object($data->what ?? null)) {
+                $value = ($data->what ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\DiscriminatorExpected\Runtime\JsonObject($this->normalizer->normalize($data->what ?? null, 'json', $context));
             }
             $dataArray['what'] = $value;
         }

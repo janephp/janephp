@@ -45,72 +45,72 @@ class RegistryServiceConfigNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['AllowNondistributableArtifactsCIDRs'] as $value) {
                 $values[] = $value;
             }
-            $object->setAllowNondistributableArtifactsCIDRs($values);
+            $object->allowNondistributableArtifactsCIDRs = $values;
         }
         if (\array_key_exists('AllowNondistributableArtifactsHostnames', $data)) {
             $values_1 = [];
             foreach ($data['AllowNondistributableArtifactsHostnames'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setAllowNondistributableArtifactsHostnames($values_1);
+            $object->allowNondistributableArtifactsHostnames = $values_1;
         }
         if (\array_key_exists('InsecureRegistryCIDRs', $data)) {
             $values_2 = [];
             foreach ($data['InsecureRegistryCIDRs'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setInsecureRegistryCIDRs($values_2);
+            $object->insecureRegistryCIDRs = $values_2;
         }
         if (\array_key_exists('IndexConfigs', $data)) {
             $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['IndexConfigs'] as $key => $value_3) {
                 $values_3[$key] = $this->denormalizer->denormalize($value_3, \Docker\Api\Model\IndexInfo::class, 'json', $context);
             }
-            $object->setIndexConfigs($values_3);
+            $object->indexConfigs = $values_3;
         }
         if (\array_key_exists('Mirrors', $data)) {
             $values_4 = [];
             foreach ($data['Mirrors'] as $value_4) {
                 $values_4[] = $value_4;
             }
-            $object->setMirrors($values_4);
+            $object->mirrors = $values_4;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('allowNondistributableArtifactsCIDRs') && null !== $data->getAllowNondistributableArtifactsCIDRs()) {
+        if (array_key_exists('allowNondistributableArtifactsCIDRs', get_object_vars($data)) && null !== ($data->allowNondistributableArtifactsCIDRs ?? null)) {
             $values = [];
-            foreach ($data->getAllowNondistributableArtifactsCIDRs() as $value) {
+            foreach ($data->allowNondistributableArtifactsCIDRs ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['AllowNondistributableArtifactsCIDRs'] = $values;
         }
-        if ($data->isInitialized('allowNondistributableArtifactsHostnames') && null !== $data->getAllowNondistributableArtifactsHostnames()) {
+        if (array_key_exists('allowNondistributableArtifactsHostnames', get_object_vars($data)) && null !== ($data->allowNondistributableArtifactsHostnames ?? null)) {
             $values_1 = [];
-            foreach ($data->getAllowNondistributableArtifactsHostnames() as $value_1) {
+            foreach ($data->allowNondistributableArtifactsHostnames ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['AllowNondistributableArtifactsHostnames'] = $values_1;
         }
-        if ($data->isInitialized('insecureRegistryCIDRs') && null !== $data->getInsecureRegistryCIDRs()) {
+        if (array_key_exists('insecureRegistryCIDRs', get_object_vars($data)) && null !== ($data->insecureRegistryCIDRs ?? null)) {
             $values_2 = [];
-            foreach ($data->getInsecureRegistryCIDRs() as $value_2) {
+            foreach ($data->insecureRegistryCIDRs ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['InsecureRegistryCIDRs'] = $values_2;
         }
-        if ($data->isInitialized('indexConfigs') && null !== $data->getIndexConfigs()) {
+        if (array_key_exists('indexConfigs', get_object_vars($data)) && null !== ($data->indexConfigs ?? null)) {
             $values_3 = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getIndexConfigs() as $key => $value_3) {
+            foreach ($data->indexConfigs ?? null as $key => $value_3) {
                 $values_3[$key] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['IndexConfigs'] = $values_3;
         }
-        if ($data->isInitialized('mirrors') && null !== $data->getMirrors()) {
+        if (array_key_exists('mirrors', get_object_vars($data)) && null !== ($data->mirrors ?? null)) {
             $values_4 = [];
-            foreach ($data->getMirrors() as $value_4) {
+            foreach ($data->mirrors ?? null as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['Mirrors'] = $values_4;

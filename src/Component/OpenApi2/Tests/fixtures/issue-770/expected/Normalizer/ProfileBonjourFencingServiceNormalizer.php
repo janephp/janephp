@@ -38,33 +38,33 @@ class ProfileBonjourFencingServiceNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('sourceType', $data)) {
-            $object->setSourceType($data['sourceType']);
+            $object->sourceType = $data['sourceType'];
         }
         if (\array_key_exists('neighborApMac', $data)) {
-            $object->setNeighborApMac($data['neighborApMac']);
+            $object->neighborApMac = $data['neighborApMac'];
         }
         if (\array_key_exists('neighborApName', $data)) {
-            $object->setNeighborApName($data['neighborApName']);
+            $object->neighborApName = $data['neighborApName'];
         }
         if (\array_key_exists('serviceType', $data)) {
-            $object->setServiceType($data['serviceType']);
+            $object->serviceType = $data['serviceType'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sourceType') && null !== $data->getSourceType()) {
-            $dataArray['sourceType'] = $data->getSourceType();
+        if (array_key_exists('sourceType', get_object_vars($data)) && null !== ($data->sourceType ?? null)) {
+            $dataArray['sourceType'] = $data->sourceType ?? null;
         }
-        if ($data->isInitialized('neighborApMac') && null !== $data->getNeighborApMac()) {
-            $dataArray['neighborApMac'] = $data->getNeighborApMac();
+        if (array_key_exists('neighborApMac', get_object_vars($data)) && null !== ($data->neighborApMac ?? null)) {
+            $dataArray['neighborApMac'] = $data->neighborApMac ?? null;
         }
-        if ($data->isInitialized('neighborApName') && null !== $data->getNeighborApName()) {
-            $dataArray['neighborApName'] = $data->getNeighborApName();
+        if (array_key_exists('neighborApName', get_object_vars($data)) && null !== ($data->neighborApName ?? null)) {
+            $dataArray['neighborApName'] = $data->neighborApName ?? null;
         }
-        if ($data->isInitialized('serviceType') && null !== $data->getServiceType()) {
-            $dataArray['serviceType'] = $data->getServiceType();
+        if (array_key_exists('serviceType', get_object_vars($data)) && null !== ($data->serviceType ?? null)) {
+            $dataArray['serviceType'] = $data->serviceType ?? null;
         }
         return $dataArray;
     }

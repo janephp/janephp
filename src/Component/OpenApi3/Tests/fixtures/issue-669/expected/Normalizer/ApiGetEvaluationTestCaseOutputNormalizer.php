@@ -38,7 +38,7 @@ class ApiGetEvaluationTestCaseOutputNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('evaluation_test_case', $data)) {
-            $object->setEvaluationTestCase($this->denormalizer->denormalize($data['evaluation_test_case'], \Jane\Generated\DigitalOcean\Model\ApiEvaluationTestCase::class, 'json', $context));
+            $object->evaluationTestCase = $this->denormalizer->denormalize($data['evaluation_test_case'], \Jane\Generated\DigitalOcean\Model\ApiEvaluationTestCase::class, 'json', $context);
             unset($data['evaluation_test_case']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ApiGetEvaluationTestCaseOutputNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('evaluationTestCase') && null !== $data->getEvaluationTestCase()) {
-            $dataArray['evaluation_test_case'] = $data->getEvaluationTestCase() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getEvaluationTestCase(), 'json', $context));
+        if (array_key_exists('evaluationTestCase', get_object_vars($data)) && null !== ($data->evaluationTestCase ?? null)) {
+            $dataArray['evaluation_test_case'] = ($data->evaluationTestCase ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->evaluationTestCase ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

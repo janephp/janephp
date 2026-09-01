@@ -42,40 +42,40 @@ class BusinessRuleTriggerPointNormalizer implements DenormalizerInterface, Norma
             if (is_string($data['executionScope'])) {
                 $value = $data['executionScope'];
             }
-            $object->setExecutionScope($value);
+            $object->executionScope = $value;
         }
         if (\array_key_exists('documentType', $data)) {
             $value_1 = $data['documentType'];
             if (is_string($data['documentType'])) {
                 $value_1 = $data['documentType'];
             }
-            $object->setDocumentType($value_1);
+            $object->documentType = $value_1;
         }
         if (\array_key_exists('action', $data)) {
             $value_2 = $data['action'];
             if (is_string($data['action'])) {
                 $value_2 = $data['action'];
             }
-            $object->setAction($value_2);
+            $object->action = $value_2;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getExecutionScope();
-        if (is_string($data->getExecutionScope())) {
-            $value = $data->getExecutionScope();
+        $value = $data->executionScope ?? null;
+        if (is_string($data->executionScope ?? null)) {
+            $value = $data->executionScope ?? null;
         }
         $dataArray['executionScope'] = $value;
-        $value_1 = $data->getDocumentType();
-        if (is_string($data->getDocumentType())) {
-            $value_1 = $data->getDocumentType();
+        $value_1 = $data->documentType ?? null;
+        if (is_string($data->documentType ?? null)) {
+            $value_1 = $data->documentType ?? null;
         }
         $dataArray['documentType'] = $value_1;
-        $value_2 = $data->getAction();
-        if (is_string($data->getAction())) {
-            $value_2 = $data->getAction();
+        $value_2 = $data->action ?? null;
+        if (is_string($data->action ?? null)) {
+            $value_2 = $data->action ?? null;
         }
         $dataArray['action'] = $value_2;
         return $dataArray;

@@ -41,39 +41,39 @@ class TriggerInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['is_enabled'] = (bool) $data['is_enabled'];
         }
         if (\array_key_exists('namespace', $data)) {
-            $object->setNamespace($data['namespace']);
+            $object->namespace = $data['namespace'];
             unset($data['namespace']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('function', $data)) {
-            $object->setFunction($data['function']);
+            $object->function = $data['function'];
             unset($data['function']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('is_enabled', $data)) {
-            $object->setIsEnabled($data['is_enabled']);
+            $object->isEnabled = $data['is_enabled'];
             unset($data['is_enabled']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt($data['created_at']);
+            $object->createdAt = $data['created_at'];
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt($data['updated_at']);
+            $object->updatedAt = $data['updated_at'];
             unset($data['updated_at']);
         }
         if (\array_key_exists('scheduled_details', $data)) {
-            $object->setScheduledDetails($this->denormalizer->denormalize($data['scheduled_details'], \Jane\Generated\DigitalOcean\Model\ScheduledDetails::class, 'json', $context));
+            $object->scheduledDetails = $this->denormalizer->denormalize($data['scheduled_details'], \Jane\Generated\DigitalOcean\Model\ScheduledDetails::class, 'json', $context);
             unset($data['scheduled_details']);
         }
         if (\array_key_exists('scheduled_runs', $data)) {
-            $object->setScheduledRuns($this->denormalizer->denormalize($data['scheduled_runs'], \Jane\Generated\DigitalOcean\Model\TriggerInfoScheduledRuns::class, 'json', $context));
+            $object->scheduledRuns = $this->denormalizer->denormalize($data['scheduled_runs'], \Jane\Generated\DigitalOcean\Model\TriggerInfoScheduledRuns::class, 'json', $context);
             unset($data['scheduled_runs']);
         }
         foreach ($data as $key => $value) {
@@ -86,32 +86,32 @@ class TriggerInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('namespace') && null !== $data->getNamespace()) {
-            $dataArray['namespace'] = $data->getNamespace();
+        if (array_key_exists('namespace', get_object_vars($data)) && null !== ($data->namespace ?? null)) {
+            $dataArray['namespace'] = $data->namespace ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('function') && null !== $data->getFunction()) {
-            $dataArray['function'] = $data->getFunction();
+        if (array_key_exists('function', get_object_vars($data)) && null !== ($data->function ?? null)) {
+            $dataArray['function'] = $data->function ?? null;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('isEnabled') && null !== $data->getIsEnabled()) {
-            $dataArray['is_enabled'] = $data->getIsEnabled();
+        if (array_key_exists('isEnabled', get_object_vars($data)) && null !== ($data->isEnabled ?? null)) {
+            $dataArray['is_enabled'] = $data->isEnabled ?? null;
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt();
+        if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
+            $dataArray['created_at'] = $data->createdAt ?? null;
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt();
+        if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
+            $dataArray['updated_at'] = $data->updatedAt ?? null;
         }
-        if ($data->isInitialized('scheduledDetails') && null !== $data->getScheduledDetails()) {
-            $dataArray['scheduled_details'] = $data->getScheduledDetails() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getScheduledDetails(), 'json', $context));
+        if (array_key_exists('scheduledDetails', get_object_vars($data)) && null !== ($data->scheduledDetails ?? null)) {
+            $dataArray['scheduled_details'] = ($data->scheduledDetails ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduledDetails ?? null, 'json', $context));
         }
-        if ($data->isInitialized('scheduledRuns') && null !== $data->getScheduledRuns()) {
-            $dataArray['scheduled_runs'] = $data->getScheduledRuns() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getScheduledRuns(), 'json', $context));
+        if (array_key_exists('scheduledRuns', get_object_vars($data)) && null !== ($data->scheduledRuns ?? null)) {
+            $dataArray['scheduled_runs'] = ($data->scheduledRuns ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduledRuns ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

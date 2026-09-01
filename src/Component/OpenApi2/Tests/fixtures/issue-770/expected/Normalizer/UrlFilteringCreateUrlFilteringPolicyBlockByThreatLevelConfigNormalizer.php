@@ -38,15 +38,15 @@ class UrlFilteringCreateUrlFilteringPolicyBlockByThreatLevelConfigNormalizer imp
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('webReputationScore', $data)) {
-            $object->setWebReputationScore($data['webReputationScore']);
+            $object->webReputationScore = $data['webReputationScore'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('webReputationScore') && null !== $data->getWebReputationScore()) {
-            $dataArray['webReputationScore'] = $data->getWebReputationScore();
+        if (array_key_exists('webReputationScore', get_object_vars($data)) && null !== ($data->webReputationScore ?? null)) {
+            $dataArray['webReputationScore'] = $data->webReputationScore ?? null;
         }
         return $dataArray;
     }

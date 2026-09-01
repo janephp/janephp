@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Jane\Component\JsonSchemaRuntime;
 
-use Jane\Component\JsonSchemaRuntime\Exception\ReferenceResolveException;
+use Jane\Component\JsonSchemaRuntime\Exception\InvalidReferenceException;
+use Jane\Component\JsonSchemaRuntime\Exception\ReferenceDecodeException;
+use Jane\Component\JsonSchemaRuntime\Exception\ReferenceFetchException;
+use Jane\Component\JsonSchemaRuntime\Exception\ReferencePointerException;
 use League\Uri\Http;
 use League\Uri\UriString;
 use Psr\Http\Message\UriInterface;
@@ -17,22 +20,23 @@ use Symfony\Component\Yaml\Yaml;
  */
 class Reference
 {
-    private static array $fileCache = [];
-    private static array $pointerCache = [];
-    private static array $arrayCache = [];
-
-    private static bool $allowExternalRefs = false;
-    private static array $allowedExternalHosts = [];
-    private static bool $followRedirects = false;
-    private static array $allowedLocalRefRoots = [];
+    /**
+     * league/uri v7 static factories, detected once per process: composer
+     * allows both ^6.7.2 and ^7.4, and method_exists() must not run on every
+     * single Reference construction.
+     */
+    private static ?bool $uriHasNewFactory = null;
+    private static ?bool $uriHasFromComponentsFactory = null;
 
     private string|int|float|bool|array|null $resolved = null;
     private Http $referenceUri;
     private Http $originUri;
     private Http $mergedUri;
+    private ReferenceResolver $resolver;
 
-    public function __construct(string $reference, string $origin)
+    public function __construct(string $reference, string $origin, ?ReferenceResolver $resolver = null)
     {
+        $this->resolver = $resolver ?? ReferenceResolver::default();
         $reference = $this->fixPath($reference);
         $origin = $this->fixPath($origin);
         $originParts = UriString::parse($origin);
@@ -43,42 +47,16 @@ class Reference
             $mergedParts['path'] = $this->joinPath(\dirname($originParts['path']), $referenceParts['path']);
         }
 
-        $this->referenceUri = method_exists(Http::class, 'new') ? Http::new($reference) : Http::createFromString($reference);
-        $this->originUri = method_exists(Http::class, 'new') ? Http::new($origin) : Http::createFromString($origin);
-        $this->mergedUri = method_exists(Http::class, 'fromComponents') ? Http::fromComponents($mergedParts) : Http::createFromComponents($mergedParts);
-    }
+        self::$uriHasNewFactory ??= method_exists(Http::class, 'new');
+        self::$uriHasFromComponentsFactory ??= method_exists(Http::class, 'fromComponents');
 
-    public static function allowExternalRefs(bool $allow = true): void
-    {
-        self::$allowExternalRefs = $allow;
-    }
-
-    public static function setAllowedExternalHosts(array $hosts): void
-    {
-        self::$allowedExternalHosts = $hosts;
-    }
-
-    public static function setAllowedLocalRefRoots(array $roots): void
-    {
-        self::$allowedLocalRefRoots = $roots;
-    }
-
-    /**
-     * Allow (or forbid) following HTTP redirects when fetching external
-     * references. Disabled by default: an allowlisted host must not be able
-     * to bounce the fetch to an arbitrary, possibly non allowlisted host.
-     */
-    public static function setFollowRedirects(bool $allow = true): void
-    {
-        self::$followRedirects = $allow;
-    }
-
-    public static function resetConfig(): void
-    {
-        self::$allowExternalRefs = false;
-        self::$allowedExternalHosts = [];
-        self::$followRedirects = false;
-        self::$allowedLocalRefRoots = [];
+        try {
+            $this->referenceUri = self::$uriHasNewFactory ? Http::new($reference) : Http::createFromString($reference);
+            $this->originUri = self::$uriHasNewFactory ? Http::new($origin) : Http::createFromString($origin);
+            $this->mergedUri = self::$uriHasFromComponentsFactory ? Http::fromComponents($mergedParts) : Http::createFromComponents($mergedParts);
+        } catch (\Throwable $exception) {
+            throw new InvalidReferenceException(\sprintf('Unable to parse reference "%s" against origin "%s".', $reference, $origin), 0, $exception);
+        }
     }
 
     /**
@@ -88,12 +66,12 @@ class Reference
      */
     public function resolve(?callable $deserializeCallback = null)
     {
-        if (null === $deserializeCallback) {
-            $deserializeCallback = function ($data) { return $data; };
-        }
-
         if (null === $this->resolved) {
             $this->resolved = $this->doResolve();
+        }
+
+        if (null === $deserializeCallback) {
+            return $this->resolved;
         }
 
         return $deserializeCallback($this->resolved);
@@ -111,25 +89,31 @@ class Reference
 
         $this->validateReference($fragment);
 
-        if (!\array_key_exists($fragment, self::$fileCache)) {
-            self::$fileCache[$fragment] = $this->fetchAndNormalizeContents($fragment);
+        if (!$this->resolver->hasFile($fragment)) {
+            $this->resolver->setFile($fragment, $this->fetchAndNormalizeContents($fragment));
         }
 
-        if (!\array_key_exists($reference, self::$arrayCache)) {
+        if (!$this->resolver->hasArray($reference)) {
             if ('' === $this->mergedUri->getFragment()) {
-                $array = json_decode(self::$fileCache[$fragment], true);
+                $array = json_decode($this->resolver->getFile($fragment), true);
             } else {
-                if (!\array_key_exists($fragment, self::$pointerCache)) {
-                    self::$pointerCache[$fragment] = new Pointer(self::$fileCache[$fragment]);
+                try {
+                    if (!$this->resolver->hasPointer($fragment)) {
+                        $this->resolver->setPointer($fragment, new Pointer($this->resolver->getFile($fragment)));
+                    }
+
+                    $pointer = $this->resolver->getPointer($fragment)->get($this->mergedUri->getFragment());
+                } catch (\Throwable $exception) {
+                    throw new ReferencePointerException(\sprintf('Unable to resolve pointer "%s" in reference document "%s".', $this->mergedUri->getFragment(), $fragment), 0, $exception);
                 }
 
-                $array = json_decode(json_encode(self::$pointerCache[$fragment]->get($this->mergedUri->getFragment())), true);
+                $array = json_decode(json_encode($pointer), true);
             }
 
-            self::$arrayCache[$reference] = $array;
+            $this->resolver->setArray($reference, $array);
         }
 
-        return self::$arrayCache[$reference];
+        return $this->resolver->getArray($reference);
     }
 
     /**
@@ -145,7 +129,7 @@ class Reference
         // allowlisted host must not be able to bounce the fetch to an
         // arbitrary (possibly non allowlisted) host.
         $context = stream_context_create([
-            'http' => ['follow_location' => self::$followRedirects ? 1 : 0],
+            'http' => ['follow_location' => $this->resolver->followsRedirects() ? 1 : 0],
         ]);
 
         // $http_response_header is populated by the HTTP stream wrapper in
@@ -156,14 +140,14 @@ class Reference
         $contents = @file_get_contents($fragment, false, $context);
 
         if (false === $contents) {
-            throw new ReferenceResolveException(\sprintf('Unable to fetch reference document "%s".', $fragment));
+            throw new ReferenceFetchException(\sprintf('Unable to fetch reference document "%s".', $fragment));
         }
 
-        if (!self::$followRedirects) {
+        if (!$this->resolver->followsRedirects()) {
             $statusCode = $this->lastHttpStatusCode($http_response_header);
 
             if (null !== $statusCode && $statusCode >= 300 && $statusCode < 400) {
-                throw new ReferenceResolveException(\sprintf('Reference document "%s" answered with HTTP status %d: redirects are not followed when fetching external references (set "external-ref-follow-redirects" to true to enable them).', $fragment, $statusCode));
+                throw new ReferenceFetchException(\sprintf('Reference document "%s" answered with HTTP status %d: redirects are not followed when fetching external references (set "external-ref-follow-redirects" to true to enable them).', $fragment, $statusCode));
             }
         }
 
@@ -179,13 +163,13 @@ class Reference
             $decoded = Yaml::parse($contents,
                 Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
         } catch (ParseException $exception) {
-            throw new ReferenceResolveException(\sprintf('Unable to parse reference document "%s": content is neither valid JSON nor valid YAML.', $fragment), 0, $exception);
+            throw new ReferenceDecodeException(\sprintf('Unable to parse reference document "%s": content is neither valid JSON nor valid YAML.', $fragment), 0, $exception);
         }
 
         $encoded = json_encode($decoded);
 
         if (false === $encoded) {
-            throw new ReferenceResolveException(\sprintf('Unable to convert reference document "%s" back to JSON.', $fragment));
+            throw new ReferenceDecodeException(\sprintf('Unable to convert reference document "%s" back to JSON.', $fragment));
         }
 
         return $encoded;
@@ -249,7 +233,7 @@ class Reference
 
         $allowedSchemes = ['', 'http', 'https', 'file'];
         if (!\in_array($scheme, $allowedSchemes, true)) {
-            throw new \RuntimeException(\sprintf('Reference scheme "%s" is not allowed. Allowed schemes: http, https, file (or local path without scheme).', $scheme));
+            throw new InvalidReferenceException(\sprintf('Reference scheme "%s" is not allowed. Allowed schemes: http, https, file (or local path without scheme).', $scheme));
         }
 
         if ('' === $scheme || 'file' === $scheme) {
@@ -268,10 +252,11 @@ class Reference
         // An empty or root origin path degenerates to an empty base directory,
         // which authorizes absolute paths only: containment logic still runs,
         // there is just no meaningful directory to stay under.
-        $basePath = @realpath(\dirname($originPath));
+        $baseDir = \dirname($originPath);
+        $basePath = is_dir($baseDir) ? realpath($baseDir) : false;
 
         if (false === $basePath) {
-            $basePath = \dirname($originPath);
+            $basePath = $baseDir;
         }
 
         $basePath = rtrim(str_replace('\\', '/', $basePath), '/');
@@ -285,7 +270,7 @@ class Reference
             $path = $basePath . '/' . $path;
         }
 
-        $normalized = @realpath($path);
+        $normalized = file_exists($path) ? realpath($path) : false;
         if (false === $normalized) {
             $normalized = $this->normalizePath($path);
         }
@@ -300,7 +285,7 @@ class Reference
             }
         }
 
-        throw new \RuntimeException(\sprintf('Local reference "%s" resolves outside the allowed directories [%s]. Add its location to "allowed-local-ref-roots" in your Jane configuration.', $fragment, implode(', ', $allowedBases)));
+        throw new InvalidReferenceException(\sprintf('Local reference "%s" resolves outside the allowed directories [%s]. Add its location to "allowed-local-ref-roots" in your Jane configuration.', $fragment, implode(', ', $allowedBases)));
     }
 
     /**
@@ -313,13 +298,13 @@ class Reference
     {
         $bases = [$basePath];
 
-        foreach (self::$allowedLocalRefRoots as $root) {
+        foreach ($this->resolver->getAllowedLocalRefRoots() as $root) {
             if (!\is_string($root) || '' === $root) {
                 continue;
             }
 
             $root = str_replace('\\', '/', $root);
-            $realRoot = @realpath($root);
+            $realRoot = is_dir($root) ? realpath($root) : false;
 
             $root = false !== $realRoot ? str_replace('\\', '/', $realRoot) : $this->normalizePath($root);
 
@@ -335,15 +320,15 @@ class Reference
 
     private function validateRemoteRef(): void
     {
-        if (!self::$allowExternalRefs) {
-            throw new \RuntimeException('External (HTTP/HTTPS) references are not allowed. Set "allow-external-refs" to true in your Jane configuration to enable them, or use "external-ref-allowed-hosts" to restrict to specific hosts.');
+        if (!$this->resolver->allowsExternalRefs()) {
+            throw new InvalidReferenceException('External (HTTP/HTTPS) references are not allowed. Set "allow-external-refs" to true in your Jane configuration to enable them, or use "external-ref-allowed-hosts" to restrict to specific hosts.');
         }
 
-        if ([] !== self::$allowedExternalHosts) {
+        if ([] !== $this->resolver->getAllowedExternalHosts()) {
             $host = $this->mergedUri->getHost();
             $allowed = false;
 
-            foreach (self::$allowedExternalHosts as $allowedHost) {
+            foreach ($this->resolver->getAllowedExternalHosts() as $allowedHost) {
                 if ($host === $allowedHost || str_ends_with($host, '.' . $allowedHost)) {
                     $allowed = true;
                     break;
@@ -351,7 +336,7 @@ class Reference
             }
 
             if (!$allowed) {
-                throw new \RuntimeException(\sprintf('Remote reference host "%s" is not allowed. Must be one of: %s.', $host, implode(', ', self::$allowedExternalHosts)));
+                throw new InvalidReferenceException(\sprintf('Remote reference host "%s" is not allowed. Must be one of: %s.', $host, implode(', ', $this->resolver->getAllowedExternalHosts())));
             }
         }
     }

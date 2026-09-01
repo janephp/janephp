@@ -38,27 +38,27 @@ class GbCompanyReportExampleResponseNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('orderId', $data)) {
-            $object->setOrderId($data['orderId']);
+            $object->orderId = $data['orderId'];
             unset($data['orderId']);
         }
         if (\array_key_exists('companyId', $data)) {
-            $object->setCompanyId($data['companyId']);
+            $object->companyId = $data['companyId'];
             unset($data['companyId']);
         }
         if (\array_key_exists('dateOfOrder', $data)) {
-            $object->setDateOfOrder($data['dateOfOrder']);
+            $object->dateOfOrder = $data['dateOfOrder'];
             unset($data['dateOfOrder']);
         }
         if (\array_key_exists('language', $data)) {
-            $object->setLanguage($data['language']);
+            $object->language = $data['language'];
             unset($data['language']);
         }
         if (\array_key_exists('userId', $data)) {
-            $object->setUserId($data['userId']);
+            $object->userId = $data['userId'];
             unset($data['userId']);
         }
         if (\array_key_exists('report', $data)) {
-            $object->setReport($this->denormalizer->denormalize($data['report'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReport::class, 'json', $context));
+            $object->report = $this->denormalizer->denormalize($data['report'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReport::class, 'json', $context);
             unset($data['report']);
         }
         foreach ($data as $key => $value) {
@@ -71,23 +71,23 @@ class GbCompanyReportExampleResponseNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('orderId') && null !== $data->getOrderId()) {
-            $dataArray['orderId'] = $data->getOrderId();
+        if (array_key_exists('orderId', get_object_vars($data)) && null !== ($data->orderId ?? null)) {
+            $dataArray['orderId'] = $data->orderId ?? null;
         }
-        if ($data->isInitialized('companyId') && null !== $data->getCompanyId()) {
-            $dataArray['companyId'] = $data->getCompanyId();
+        if (array_key_exists('companyId', get_object_vars($data)) && null !== ($data->companyId ?? null)) {
+            $dataArray['companyId'] = $data->companyId ?? null;
         }
-        if ($data->isInitialized('dateOfOrder') && null !== $data->getDateOfOrder()) {
-            $dataArray['dateOfOrder'] = $data->getDateOfOrder();
+        if (array_key_exists('dateOfOrder', get_object_vars($data)) && null !== ($data->dateOfOrder ?? null)) {
+            $dataArray['dateOfOrder'] = $data->dateOfOrder ?? null;
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
-            $dataArray['language'] = $data->getLanguage();
+        if (array_key_exists('language', get_object_vars($data)) && null !== ($data->language ?? null)) {
+            $dataArray['language'] = $data->language ?? null;
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['userId'] = $data->getUserId();
+        if (array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['userId'] = $data->userId ?? null;
         }
-        if ($data->isInitialized('report') && null !== $data->getReport()) {
-            $dataArray['report'] = $data->getReport() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getReport(), 'json', $context));
+        if (array_key_exists('report', get_object_vars($data)) && null !== ($data->report ?? null)) {
+            $dataArray['report'] = ($data->report ?? null) === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->report ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

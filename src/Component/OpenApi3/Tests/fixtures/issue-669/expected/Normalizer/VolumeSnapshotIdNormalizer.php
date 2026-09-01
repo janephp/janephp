@@ -38,7 +38,7 @@ class VolumeSnapshotIdNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('snapshot_id', $data)) {
-            $object->setSnapshotId($data['snapshot_id']);
+            $object->snapshotId = $data['snapshot_id'];
             unset($data['snapshot_id']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class VolumeSnapshotIdNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('snapshotId') && null !== $data->getSnapshotId()) {
-            $dataArray['snapshot_id'] = $data->getSnapshotId();
+        if (array_key_exists('snapshotId', get_object_vars($data)) && null !== ($data->snapshotId ?? null)) {
+            $dataArray['snapshot_id'] = $data->snapshotId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

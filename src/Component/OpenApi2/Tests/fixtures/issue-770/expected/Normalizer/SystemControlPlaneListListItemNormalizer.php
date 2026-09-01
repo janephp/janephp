@@ -38,81 +38,81 @@ class SystemControlPlaneListListItemNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('managementIp', $data)) {
-            $object->setManagementIp($data['managementIp']);
+            $object->managementIp = $data['managementIp'];
         }
         if (\array_key_exists('clusterIp', $data)) {
-            $object->setClusterIp($data['clusterIp']);
+            $object->clusterIp = $data['clusterIp'];
         }
         if (\array_key_exists('controlIp', $data)) {
-            $object->setControlIp($data['controlIp']);
+            $object->controlIp = $data['controlIp'];
         }
         if (\array_key_exists('model', $data)) {
-            $object->setModel($data['model']);
+            $object->model = $data['model'];
         }
         if (\array_key_exists('serialNumber', $data)) {
-            $object->setSerialNumber($data['serialNumber']);
+            $object->serialNumber = $data['serialNumber'];
         }
         if (\array_key_exists('numOfAps', $data)) {
-            $object->setNumOfAps($data['numOfAps']);
+            $object->numOfAps = $data['numOfAps'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('firmware', $data)) {
-            $object->setFirmware($data['firmware']);
+            $object->firmware = $data['firmware'];
         }
         if (\array_key_exists('clusterRole', $data)) {
-            $object->setClusterRole($data['clusterRole']);
+            $object->clusterRole = $data['clusterRole'];
         }
         if (\array_key_exists('upTime', $data)) {
-            $object->setUpTime($data['upTime']);
+            $object->upTime = $data['upTime'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('managementIp') && null !== $data->getManagementIp()) {
-            $dataArray['managementIp'] = $data->getManagementIp();
+        if (array_key_exists('managementIp', get_object_vars($data)) && null !== ($data->managementIp ?? null)) {
+            $dataArray['managementIp'] = $data->managementIp ?? null;
         }
-        if ($data->isInitialized('clusterIp') && null !== $data->getClusterIp()) {
-            $dataArray['clusterIp'] = $data->getClusterIp();
+        if (array_key_exists('clusterIp', get_object_vars($data)) && null !== ($data->clusterIp ?? null)) {
+            $dataArray['clusterIp'] = $data->clusterIp ?? null;
         }
-        if ($data->isInitialized('controlIp') && null !== $data->getControlIp()) {
-            $dataArray['controlIp'] = $data->getControlIp();
+        if (array_key_exists('controlIp', get_object_vars($data)) && null !== ($data->controlIp ?? null)) {
+            $dataArray['controlIp'] = $data->controlIp ?? null;
         }
-        if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $data->getModel();
+        if (array_key_exists('model', get_object_vars($data)) && null !== ($data->model ?? null)) {
+            $dataArray['model'] = $data->model ?? null;
         }
-        if ($data->isInitialized('serialNumber') && null !== $data->getSerialNumber()) {
-            $dataArray['serialNumber'] = $data->getSerialNumber();
+        if (array_key_exists('serialNumber', get_object_vars($data)) && null !== ($data->serialNumber ?? null)) {
+            $dataArray['serialNumber'] = $data->serialNumber ?? null;
         }
-        if ($data->isInitialized('numOfAps') && null !== $data->getNumOfAps()) {
-            $dataArray['numOfAps'] = $data->getNumOfAps();
+        if (array_key_exists('numOfAps', get_object_vars($data)) && null !== ($data->numOfAps ?? null)) {
+            $dataArray['numOfAps'] = $data->numOfAps ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('firmware') && null !== $data->getFirmware()) {
-            $dataArray['firmware'] = $data->getFirmware();
+        if (array_key_exists('firmware', get_object_vars($data)) && null !== ($data->firmware ?? null)) {
+            $dataArray['firmware'] = $data->firmware ?? null;
         }
-        if ($data->isInitialized('clusterRole') && null !== $data->getClusterRole()) {
-            $dataArray['clusterRole'] = $data->getClusterRole();
+        if (array_key_exists('clusterRole', get_object_vars($data)) && null !== ($data->clusterRole ?? null)) {
+            $dataArray['clusterRole'] = $data->clusterRole ?? null;
         }
-        if ($data->isInitialized('upTime') && null !== $data->getUpTime()) {
-            $dataArray['upTime'] = $data->getUpTime();
+        if (array_key_exists('upTime', get_object_vars($data)) && null !== ($data->upTime ?? null)) {
+            $dataArray['upTime'] = $data->upTime ?? null;
         }
         return $dataArray;
     }

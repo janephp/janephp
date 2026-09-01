@@ -38,207 +38,207 @@ class WlanQueryCreateWlanQueryNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('clients', $data)) {
-            $object->setClients($data['clients']);
+            $object->clients = $data['clients'];
         }
         if (\array_key_exists('applicationVisibility', $data)) {
-            $object->setApplicationVisibility($data['applicationVisibility']);
+            $object->applicationVisibility = $data['applicationVisibility'];
         }
         if (\array_key_exists('clientVirtualIdExtractionEnabled', $data)) {
-            $object->setClientVirtualIdExtractionEnabled($data['clientVirtualIdExtractionEnabled']);
+            $object->clientVirtualIdExtractionEnabled = $data['clientVirtualIdExtractionEnabled'];
         }
         if (\array_key_exists('zeroITOnboard', $data)) {
-            $object->setZeroITOnboard($data['zeroITOnboard']);
+            $object->zeroITOnboard = $data['zeroITOnboard'];
         }
         if (\array_key_exists('trafficUplink', $data)) {
-            $object->setTrafficUplink($data['trafficUplink']);
+            $object->trafficUplink = $data['trafficUplink'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('zeroITEnabled', $data)) {
-            $object->setZeroITEnabled($data['zeroITEnabled']);
+            $object->zeroITEnabled = $data['zeroITEnabled'];
         }
         if (\array_key_exists('ssid', $data)) {
-            $object->setSsid($data['ssid']);
+            $object->ssid = $data['ssid'];
         }
         if (\array_key_exists('wlanId', $data)) {
-            $object->setWlanId($data['wlanId']);
+            $object->wlanId = $data['wlanId'];
         }
         if (\array_key_exists('encryptionMethod', $data)) {
-            $object->setEncryptionMethod($data['encryptionMethod']);
+            $object->encryptionMethod = $data['encryptionMethod'];
         }
         if (\array_key_exists('enability11k', $data)) {
-            $object->setEnability11k($data['enability11k']);
+            $object->enability11k = $data['enability11k'];
         }
         if (\array_key_exists('alerts', $data)) {
-            $object->setAlerts($data['alerts']);
+            $object->alerts = $data['alerts'];
         }
         if (\array_key_exists('tunneled', $data)) {
-            $object->setTunneled($data['tunneled']);
+            $object->tunneled = $data['tunneled'];
         }
         if (\array_key_exists('vlan', $data)) {
-            $object->setVlan($data['vlan']);
+            $object->vlan = $data['vlan'];
         }
         if (\array_key_exists('enability11r', $data)) {
-            $object->setEnability11r($data['enability11r']);
+            $object->enability11r = $data['enability11r'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('authMethod', $data)) {
-            $object->setAuthMethod($data['authMethod']);
+            $object->authMethod = $data['authMethod'];
         }
         if (\array_key_exists('authType', $data)) {
-            $object->setAuthType($data['authType']);
+            $object->authType = $data['authType'];
         }
         if (\array_key_exists('domainName', $data)) {
-            $object->setDomainName($data['domainName']);
+            $object->domainName = $data['domainName'];
         }
         if (\array_key_exists('zoneName', $data)) {
-            $object->setZoneName($data['zoneName']);
+            $object->zoneName = $data['zoneName'];
         }
         if (\array_key_exists('zoneId', $data)) {
-            $object->setZoneId($data['zoneId']);
+            $object->zoneId = $data['zoneId'];
         }
         if (\array_key_exists('trafficDownlink', $data)) {
-            $object->setTrafficDownlink($data['trafficDownlink']);
+            $object->trafficDownlink = $data['trafficDownlink'];
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
         }
         if (\array_key_exists('traffic', $data)) {
-            $object->setTraffic($data['traffic']);
+            $object->traffic = $data['traffic'];
         }
         if (\array_key_exists('wpaVersion', $data)) {
-            $object->setWpaVersion($data['wpaVersion']);
+            $object->wpaVersion = $data['wpaVersion'];
         }
         if (\array_key_exists('wepEncryptionStrength', $data)) {
-            $object->setWepEncryptionStrength($data['wepEncryptionStrength']);
+            $object->wepEncryptionStrength = $data['wepEncryptionStrength'];
         }
         if (\array_key_exists('availability', $data)) {
-            $object->setAvailability($data['availability']);
+            $object->availability = $data['availability'];
         }
         if (\array_key_exists('tenantId', $data)) {
-            $object->setTenantId($data['tenantId']);
+            $object->tenantId = $data['tenantId'];
         }
         if (\array_key_exists('tenantDomainName', $data)) {
-            $object->setTenantDomainName($data['tenantDomainName']);
+            $object->tenantDomainName = $data['tenantDomainName'];
         }
         if (\array_key_exists('utp', $data)) {
-            $object->setUtp($data['utp']);
+            $object->utp = $data['utp'];
         }
         if (\array_key_exists('firewallProfileId', $data)) {
-            $object->setFirewallProfileId($data['firewallProfileId']);
+            $object->firewallProfileId = $data['firewallProfileId'];
         }
         if (\array_key_exists('firewallProfile', $data)) {
-            $object->setFirewallProfile($data['firewallProfile']);
+            $object->firewallProfile = $data['firewallProfile'];
         }
         if (\array_key_exists('oweTransWlanId', $data)) {
-            $object->setOweTransWlanId($data['oweTransWlanId']);
+            $object->oweTransWlanId = $data['oweTransWlanId'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clients') && null !== $data->getClients()) {
-            $dataArray['clients'] = $data->getClients();
+        if (array_key_exists('clients', get_object_vars($data)) && null !== ($data->clients ?? null)) {
+            $dataArray['clients'] = $data->clients ?? null;
         }
-        if ($data->isInitialized('applicationVisibility') && null !== $data->getApplicationVisibility()) {
-            $dataArray['applicationVisibility'] = $data->getApplicationVisibility();
+        if (array_key_exists('applicationVisibility', get_object_vars($data)) && null !== ($data->applicationVisibility ?? null)) {
+            $dataArray['applicationVisibility'] = $data->applicationVisibility ?? null;
         }
-        if ($data->isInitialized('clientVirtualIdExtractionEnabled') && null !== $data->getClientVirtualIdExtractionEnabled()) {
-            $dataArray['clientVirtualIdExtractionEnabled'] = $data->getClientVirtualIdExtractionEnabled();
+        if (array_key_exists('clientVirtualIdExtractionEnabled', get_object_vars($data)) && null !== ($data->clientVirtualIdExtractionEnabled ?? null)) {
+            $dataArray['clientVirtualIdExtractionEnabled'] = $data->clientVirtualIdExtractionEnabled ?? null;
         }
-        if ($data->isInitialized('zeroITOnboard') && null !== $data->getZeroITOnboard()) {
-            $dataArray['zeroITOnboard'] = $data->getZeroITOnboard();
+        if (array_key_exists('zeroITOnboard', get_object_vars($data)) && null !== ($data->zeroITOnboard ?? null)) {
+            $dataArray['zeroITOnboard'] = $data->zeroITOnboard ?? null;
         }
-        if ($data->isInitialized('trafficUplink') && null !== $data->getTrafficUplink()) {
-            $dataArray['trafficUplink'] = $data->getTrafficUplink();
+        if (array_key_exists('trafficUplink', get_object_vars($data)) && null !== ($data->trafficUplink ?? null)) {
+            $dataArray['trafficUplink'] = $data->trafficUplink ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('zeroITEnabled') && null !== $data->getZeroITEnabled()) {
-            $dataArray['zeroITEnabled'] = $data->getZeroITEnabled();
+        if (array_key_exists('zeroITEnabled', get_object_vars($data)) && null !== ($data->zeroITEnabled ?? null)) {
+            $dataArray['zeroITEnabled'] = $data->zeroITEnabled ?? null;
         }
-        if ($data->isInitialized('ssid') && null !== $data->getSsid()) {
-            $dataArray['ssid'] = $data->getSsid();
+        if (array_key_exists('ssid', get_object_vars($data)) && null !== ($data->ssid ?? null)) {
+            $dataArray['ssid'] = $data->ssid ?? null;
         }
-        if ($data->isInitialized('wlanId') && null !== $data->getWlanId()) {
-            $dataArray['wlanId'] = $data->getWlanId();
+        if (array_key_exists('wlanId', get_object_vars($data)) && null !== ($data->wlanId ?? null)) {
+            $dataArray['wlanId'] = $data->wlanId ?? null;
         }
-        if ($data->isInitialized('encryptionMethod') && null !== $data->getEncryptionMethod()) {
-            $dataArray['encryptionMethod'] = $data->getEncryptionMethod();
+        if (array_key_exists('encryptionMethod', get_object_vars($data)) && null !== ($data->encryptionMethod ?? null)) {
+            $dataArray['encryptionMethod'] = $data->encryptionMethod ?? null;
         }
-        if ($data->isInitialized('enability11k') && null !== $data->getEnability11k()) {
-            $dataArray['enability11k'] = $data->getEnability11k();
+        if (array_key_exists('enability11k', get_object_vars($data)) && null !== ($data->enability11k ?? null)) {
+            $dataArray['enability11k'] = $data->enability11k ?? null;
         }
-        if ($data->isInitialized('alerts') && null !== $data->getAlerts()) {
-            $dataArray['alerts'] = $data->getAlerts();
+        if (array_key_exists('alerts', get_object_vars($data)) && null !== ($data->alerts ?? null)) {
+            $dataArray['alerts'] = $data->alerts ?? null;
         }
-        if ($data->isInitialized('tunneled') && null !== $data->getTunneled()) {
-            $dataArray['tunneled'] = $data->getTunneled();
+        if (array_key_exists('tunneled', get_object_vars($data)) && null !== ($data->tunneled ?? null)) {
+            $dataArray['tunneled'] = $data->tunneled ?? null;
         }
-        if ($data->isInitialized('vlan') && null !== $data->getVlan()) {
-            $dataArray['vlan'] = $data->getVlan();
+        if (array_key_exists('vlan', get_object_vars($data)) && null !== ($data->vlan ?? null)) {
+            $dataArray['vlan'] = $data->vlan ?? null;
         }
-        if ($data->isInitialized('enability11r') && null !== $data->getEnability11r()) {
-            $dataArray['enability11r'] = $data->getEnability11r();
+        if (array_key_exists('enability11r', get_object_vars($data)) && null !== ($data->enability11r ?? null)) {
+            $dataArray['enability11r'] = $data->enability11r ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('authMethod') && null !== $data->getAuthMethod()) {
-            $dataArray['authMethod'] = $data->getAuthMethod();
+        if (array_key_exists('authMethod', get_object_vars($data)) && null !== ($data->authMethod ?? null)) {
+            $dataArray['authMethod'] = $data->authMethod ?? null;
         }
-        if ($data->isInitialized('authType') && null !== $data->getAuthType()) {
-            $dataArray['authType'] = $data->getAuthType();
+        if (array_key_exists('authType', get_object_vars($data)) && null !== ($data->authType ?? null)) {
+            $dataArray['authType'] = $data->authType ?? null;
         }
-        if ($data->isInitialized('domainName') && null !== $data->getDomainName()) {
-            $dataArray['domainName'] = $data->getDomainName();
+        if (array_key_exists('domainName', get_object_vars($data)) && null !== ($data->domainName ?? null)) {
+            $dataArray['domainName'] = $data->domainName ?? null;
         }
-        if ($data->isInitialized('zoneName') && null !== $data->getZoneName()) {
-            $dataArray['zoneName'] = $data->getZoneName();
+        if (array_key_exists('zoneName', get_object_vars($data)) && null !== ($data->zoneName ?? null)) {
+            $dataArray['zoneName'] = $data->zoneName ?? null;
         }
-        if ($data->isInitialized('zoneId') && null !== $data->getZoneId()) {
-            $dataArray['zoneId'] = $data->getZoneId();
+        if (array_key_exists('zoneId', get_object_vars($data)) && null !== ($data->zoneId ?? null)) {
+            $dataArray['zoneId'] = $data->zoneId ?? null;
         }
-        if ($data->isInitialized('trafficDownlink') && null !== $data->getTrafficDownlink()) {
-            $dataArray['trafficDownlink'] = $data->getTrafficDownlink();
+        if (array_key_exists('trafficDownlink', get_object_vars($data)) && null !== ($data->trafficDownlink ?? null)) {
+            $dataArray['trafficDownlink'] = $data->trafficDownlink ?? null;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status ?? null;
         }
-        if ($data->isInitialized('traffic') && null !== $data->getTraffic()) {
-            $dataArray['traffic'] = $data->getTraffic();
+        if (array_key_exists('traffic', get_object_vars($data)) && null !== ($data->traffic ?? null)) {
+            $dataArray['traffic'] = $data->traffic ?? null;
         }
-        if ($data->isInitialized('wpaVersion') && null !== $data->getWpaVersion()) {
-            $dataArray['wpaVersion'] = $data->getWpaVersion();
+        if (array_key_exists('wpaVersion', get_object_vars($data)) && null !== ($data->wpaVersion ?? null)) {
+            $dataArray['wpaVersion'] = $data->wpaVersion ?? null;
         }
-        if ($data->isInitialized('wepEncryptionStrength') && null !== $data->getWepEncryptionStrength()) {
-            $dataArray['wepEncryptionStrength'] = $data->getWepEncryptionStrength();
+        if (array_key_exists('wepEncryptionStrength', get_object_vars($data)) && null !== ($data->wepEncryptionStrength ?? null)) {
+            $dataArray['wepEncryptionStrength'] = $data->wepEncryptionStrength ?? null;
         }
-        if ($data->isInitialized('availability') && null !== $data->getAvailability()) {
-            $dataArray['availability'] = $data->getAvailability();
+        if (array_key_exists('availability', get_object_vars($data)) && null !== ($data->availability ?? null)) {
+            $dataArray['availability'] = $data->availability ?? null;
         }
-        if ($data->isInitialized('tenantId') && null !== $data->getTenantId()) {
-            $dataArray['tenantId'] = $data->getTenantId();
+        if (array_key_exists('tenantId', get_object_vars($data)) && null !== ($data->tenantId ?? null)) {
+            $dataArray['tenantId'] = $data->tenantId ?? null;
         }
-        if ($data->isInitialized('tenantDomainName') && null !== $data->getTenantDomainName()) {
-            $dataArray['tenantDomainName'] = $data->getTenantDomainName();
+        if (array_key_exists('tenantDomainName', get_object_vars($data)) && null !== ($data->tenantDomainName ?? null)) {
+            $dataArray['tenantDomainName'] = $data->tenantDomainName ?? null;
         }
-        if ($data->isInitialized('utp') && null !== $data->getUtp()) {
-            $dataArray['utp'] = $data->getUtp();
+        if (array_key_exists('utp', get_object_vars($data)) && null !== ($data->utp ?? null)) {
+            $dataArray['utp'] = $data->utp ?? null;
         }
-        if ($data->isInitialized('firewallProfileId') && null !== $data->getFirewallProfileId()) {
-            $dataArray['firewallProfileId'] = $data->getFirewallProfileId();
+        if (array_key_exists('firewallProfileId', get_object_vars($data)) && null !== ($data->firewallProfileId ?? null)) {
+            $dataArray['firewallProfileId'] = $data->firewallProfileId ?? null;
         }
-        if ($data->isInitialized('firewallProfile') && null !== $data->getFirewallProfile()) {
-            $dataArray['firewallProfile'] = $data->getFirewallProfile();
+        if (array_key_exists('firewallProfile', get_object_vars($data)) && null !== ($data->firewallProfile ?? null)) {
+            $dataArray['firewallProfile'] = $data->firewallProfile ?? null;
         }
-        if ($data->isInitialized('oweTransWlanId') && null !== $data->getOweTransWlanId()) {
-            $dataArray['oweTransWlanId'] = $data->getOweTransWlanId();
+        if (array_key_exists('oweTransWlanId', get_object_vars($data)) && null !== ($data->oweTransWlanId ?? null)) {
+            $dataArray['oweTransWlanId'] = $data->oweTransWlanId ?? null;
         }
         return $dataArray;
     }

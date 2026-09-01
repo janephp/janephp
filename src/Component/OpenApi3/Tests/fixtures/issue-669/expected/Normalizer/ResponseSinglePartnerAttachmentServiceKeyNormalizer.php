@@ -42,7 +42,7 @@ class ResponseSinglePartnerAttachmentServiceKeyNormalizer implements Denormalize
             foreach ($data['service_key'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setServiceKey($values);
+            $object->serviceKey = $values;
             unset($data['service_key']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -55,9 +55,9 @@ class ResponseSinglePartnerAttachmentServiceKeyNormalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('serviceKey') && null !== $data->getServiceKey()) {
+        if (array_key_exists('serviceKey', get_object_vars($data)) && null !== ($data->serviceKey ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-            foreach ($data->getServiceKey() as $key => $value) {
+            foreach ($data->serviceKey ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['service_key'] = $values;

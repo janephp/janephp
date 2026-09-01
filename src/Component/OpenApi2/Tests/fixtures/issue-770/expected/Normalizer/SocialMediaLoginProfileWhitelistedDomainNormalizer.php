@@ -38,14 +38,14 @@ class SocialMediaLoginProfileWhitelistedDomainNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('domain', $data)) {
-            $object->setDomain($data['domain']);
+            $object->domain = $data['domain'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domain'] = $data->getDomain();
+        $dataArray['domain'] = $data->domain ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -38,75 +38,75 @@ class AdministrationUpgradeHistorySummaryNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('startTime', $data)) {
-            $object->setStartTime($data['startTime']);
+            $object->startTime = $data['startTime'];
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($data['version']);
+            $object->version = $data['version'];
         }
         if (\array_key_exists('cbVersion', $data)) {
-            $object->setCbVersion($data['cbVersion']);
+            $object->cbVersion = $data['cbVersion'];
         }
         if (\array_key_exists('dpVersion', $data)) {
-            $object->setDpVersion($data['dpVersion']);
+            $object->dpVersion = $data['dpVersion'];
         }
         if (\array_key_exists('apFwVersion', $data)) {
-            $object->setApFwVersion($data['apFwVersion']);
+            $object->apFwVersion = $data['apFwVersion'];
         }
         if (\array_key_exists('oldVersion', $data)) {
-            $object->setOldVersion($data['oldVersion']);
+            $object->oldVersion = $data['oldVersion'];
         }
         if (\array_key_exists('oldCbVersion', $data)) {
-            $object->setOldCbVersion($data['oldCbVersion']);
+            $object->oldCbVersion = $data['oldCbVersion'];
         }
         if (\array_key_exists('oldDpVersion', $data)) {
-            $object->setOldDpVersion($data['oldDpVersion']);
+            $object->oldDpVersion = $data['oldDpVersion'];
         }
         if (\array_key_exists('oldApFwVersion', $data)) {
-            $object->setOldApFwVersion($data['oldApFwVersion']);
+            $object->oldApFwVersion = $data['oldApFwVersion'];
         }
         if (\array_key_exists('fileName', $data)) {
-            $object->setFileName($data['fileName']);
+            $object->fileName = $data['fileName'];
         }
         if (\array_key_exists('elapsedSeconds', $data)) {
-            $object->setElapsedSeconds($data['elapsedSeconds']);
+            $object->elapsedSeconds = $data['elapsedSeconds'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('startTime') && null !== $data->getStartTime()) {
-            $dataArray['startTime'] = $data->getStartTime();
+        if (array_key_exists('startTime', get_object_vars($data)) && null !== ($data->startTime ?? null)) {
+            $dataArray['startTime'] = $data->startTime ?? null;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $data->getVersion();
+        if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
+            $dataArray['version'] = $data->version ?? null;
         }
-        if ($data->isInitialized('cbVersion') && null !== $data->getCbVersion()) {
-            $dataArray['cbVersion'] = $data->getCbVersion();
+        if (array_key_exists('cbVersion', get_object_vars($data)) && null !== ($data->cbVersion ?? null)) {
+            $dataArray['cbVersion'] = $data->cbVersion ?? null;
         }
-        if ($data->isInitialized('dpVersion') && null !== $data->getDpVersion()) {
-            $dataArray['dpVersion'] = $data->getDpVersion();
+        if (array_key_exists('dpVersion', get_object_vars($data)) && null !== ($data->dpVersion ?? null)) {
+            $dataArray['dpVersion'] = $data->dpVersion ?? null;
         }
-        if ($data->isInitialized('apFwVersion') && null !== $data->getApFwVersion()) {
-            $dataArray['apFwVersion'] = $data->getApFwVersion();
+        if (array_key_exists('apFwVersion', get_object_vars($data)) && null !== ($data->apFwVersion ?? null)) {
+            $dataArray['apFwVersion'] = $data->apFwVersion ?? null;
         }
-        if ($data->isInitialized('oldVersion') && null !== $data->getOldVersion()) {
-            $dataArray['oldVersion'] = $data->getOldVersion();
+        if (array_key_exists('oldVersion', get_object_vars($data)) && null !== ($data->oldVersion ?? null)) {
+            $dataArray['oldVersion'] = $data->oldVersion ?? null;
         }
-        if ($data->isInitialized('oldCbVersion') && null !== $data->getOldCbVersion()) {
-            $dataArray['oldCbVersion'] = $data->getOldCbVersion();
+        if (array_key_exists('oldCbVersion', get_object_vars($data)) && null !== ($data->oldCbVersion ?? null)) {
+            $dataArray['oldCbVersion'] = $data->oldCbVersion ?? null;
         }
-        if ($data->isInitialized('oldDpVersion') && null !== $data->getOldDpVersion()) {
-            $dataArray['oldDpVersion'] = $data->getOldDpVersion();
+        if (array_key_exists('oldDpVersion', get_object_vars($data)) && null !== ($data->oldDpVersion ?? null)) {
+            $dataArray['oldDpVersion'] = $data->oldDpVersion ?? null;
         }
-        if ($data->isInitialized('oldApFwVersion') && null !== $data->getOldApFwVersion()) {
-            $dataArray['oldApFwVersion'] = $data->getOldApFwVersion();
+        if (array_key_exists('oldApFwVersion', get_object_vars($data)) && null !== ($data->oldApFwVersion ?? null)) {
+            $dataArray['oldApFwVersion'] = $data->oldApFwVersion ?? null;
         }
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
-            $dataArray['fileName'] = $data->getFileName();
+        if (array_key_exists('fileName', get_object_vars($data)) && null !== ($data->fileName ?? null)) {
+            $dataArray['fileName'] = $data->fileName ?? null;
         }
-        if ($data->isInitialized('elapsedSeconds') && null !== $data->getElapsedSeconds()) {
-            $dataArray['elapsedSeconds'] = $data->getElapsedSeconds();
+        if (array_key_exists('elapsedSeconds', get_object_vars($data)) && null !== ($data->elapsedSeconds ?? null)) {
+            $dataArray['elapsedSeconds'] = $data->elapsedSeconds ?? null;
         }
         return $dataArray;
     }

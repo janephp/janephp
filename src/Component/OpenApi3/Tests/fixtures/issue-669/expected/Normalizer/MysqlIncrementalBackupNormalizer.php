@@ -41,11 +41,11 @@ class MysqlIncrementalBackupNormalizer implements DenormalizerInterface, Normali
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
             unset($data['enabled']);
         }
         if (\array_key_exists('full_backup_week_schedule', $data)) {
-            $object->setFullBackupWeekSchedule($data['full_backup_week_schedule']);
+            $object->fullBackupWeekSchedule = $data['full_backup_week_schedule'];
             unset($data['full_backup_week_schedule']);
         }
         foreach ($data as $key => $value) {
@@ -58,11 +58,11 @@ class MysqlIncrementalBackupNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
-            $dataArray['enabled'] = $data->getEnabled();
+        if (array_key_exists('enabled', get_object_vars($data)) && null !== ($data->enabled ?? null)) {
+            $dataArray['enabled'] = $data->enabled ?? null;
         }
-        if ($data->isInitialized('fullBackupWeekSchedule') && null !== $data->getFullBackupWeekSchedule()) {
-            $dataArray['full_backup_week_schedule'] = $data->getFullBackupWeekSchedule();
+        if (array_key_exists('fullBackupWeekSchedule', get_object_vars($data)) && null !== ($data->fullBackupWeekSchedule ?? null)) {
+            $dataArray['full_backup_week_schedule'] = $data->fullBackupWeekSchedule ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

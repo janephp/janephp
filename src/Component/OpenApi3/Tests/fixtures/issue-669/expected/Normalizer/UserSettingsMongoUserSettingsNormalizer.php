@@ -42,11 +42,11 @@ class UserSettingsMongoUserSettingsNormalizer implements DenormalizerInterface, 
             foreach ($data['databases'] as $value) {
                 $values[] = $value;
             }
-            $object->setDatabases($values);
+            $object->databases = $values;
             unset($data['databases']);
         }
         if (\array_key_exists('role', $data)) {
-            $object->setRole($data['role']);
+            $object->role = $data['role'];
             unset($data['role']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,15 +59,15 @@ class UserSettingsMongoUserSettingsNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('databases') && null !== $data->getDatabases()) {
+        if (array_key_exists('databases', get_object_vars($data)) && null !== ($data->databases ?? null)) {
             $values = [];
-            foreach ($data->getDatabases() as $value) {
+            foreach ($data->databases ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['databases'] = $values;
         }
-        if ($data->isInitialized('role') && null !== $data->getRole()) {
-            $dataArray['role'] = $data->getRole();
+        if (array_key_exists('role', get_object_vars($data)) && null !== ($data->role ?? null)) {
+            $dataArray['role'] = $data->role ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

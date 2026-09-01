@@ -38,15 +38,15 @@ class ApRoutineConfigIntervalApRoutineConfigIntervalReqNormalizer implements Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apRoutineConfigInterval', $data)) {
-            $object->setApRoutineConfigInterval($data['apRoutineConfigInterval']);
+            $object->apRoutineConfigInterval = $data['apRoutineConfigInterval'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('apRoutineConfigInterval') && null !== $data->getApRoutineConfigInterval()) {
-            $dataArray['apRoutineConfigInterval'] = $data->getApRoutineConfigInterval();
+        if (array_key_exists('apRoutineConfigInterval', get_object_vars($data)) && null !== ($data->apRoutineConfigInterval ?? null)) {
+            $dataArray['apRoutineConfigInterval'] = $data->apRoutineConfigInterval ?? null;
         }
         return $dataArray;
     }

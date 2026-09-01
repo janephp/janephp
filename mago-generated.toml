@@ -3,7 +3,7 @@
 # this second configuration covers what the project actually ships.
 #
 # Run it via `castor qa:mago:generated` (see docs/contributing/tests.md and
-# docs/contributing/adrs/0008-static-analysis-of-generated-code.md).
+# docs/contributing/adrs/0011-static-analysis-of-generated-code.md).
 
 # Pinned so the committed baseline does not depend on the contributor's PHP.
 php-version = "8.4"
@@ -53,6 +53,7 @@ ignore = [
     "mixed-array-access",
     "mixed-array-assignment",
     "mixed-property-access",
+    "mixed-property-type-coercion",
     "mixed-return-statement",
     # foreach / property access on values inferred only as mixed or nonnull —
     # the same inference limit, different reporters (every finding in the

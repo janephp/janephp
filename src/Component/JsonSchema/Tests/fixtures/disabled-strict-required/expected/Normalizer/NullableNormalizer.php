@@ -38,10 +38,10 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('onlyNull', $data) && $data['onlyNull'] !== null) {
-            $object->setOnlyNull($data['onlyNull']);
+            $object->onlyNull = $data['onlyNull'];
         }
         elseif (\array_key_exists('onlyNull', $data) && $data['onlyNull'] === null) {
-            $object->setOnlyNull(null);
+            $object->onlyNull = null;
         }
         if (\array_key_exists('nullOrString', $data) && $data['nullOrString'] !== null) {
             $value = $data['nullOrString'];
@@ -50,16 +50,16 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
             } elseif (is_null($data['nullOrString'])) {
                 $value = $data['nullOrString'];
             }
-            $object->setNullOrString($value);
+            $object->nullOrString = $value;
         }
         elseif (\array_key_exists('nullOrString', $data) && $data['nullOrString'] === null) {
-            $object->setNullOrString(null);
+            $object->nullOrString = null;
         }
         if (\array_key_exists('required', $data) && $data['required'] !== null) {
-            $object->setRequired($data['required']);
+            $object->required = $data['required'];
         }
         elseif (\array_key_exists('required', $data) && $data['required'] === null) {
-            $object->setRequired(null);
+            $object->required = null;
         }
         if (\array_key_exists('requiredNull', $data) && $data['requiredNull'] !== null) {
             $value_1 = $data['requiredNull'];
@@ -68,37 +68,37 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
             } elseif (is_null($data['requiredNull'])) {
                 $value_1 = $data['requiredNull'];
             }
-            $object->setRequiredNull($value_1);
+            $object->requiredNull = $value_1;
         }
         elseif (\array_key_exists('requiredNull', $data) && $data['requiredNull'] === null) {
-            $object->setRequiredNull(null);
+            $object->requiredNull = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('onlyNull') && null !== $data->getOnlyNull()) {
-            $dataArray['onlyNull'] = $data->getOnlyNull();
+        if (array_key_exists('onlyNull', get_object_vars($data)) && null !== ($data->onlyNull ?? null)) {
+            $dataArray['onlyNull'] = $data->onlyNull ?? null;
         }
-        if ($data->isInitialized('nullOrString') && null !== $data->getNullOrString()) {
-            $value = $data->getNullOrString();
-            if (is_string($data->getNullOrString())) {
-                $value = $data->getNullOrString();
-            } elseif (is_null($data->getNullOrString())) {
-                $value = $data->getNullOrString();
+        if (array_key_exists('nullOrString', get_object_vars($data)) && null !== ($data->nullOrString ?? null)) {
+            $value = $data->nullOrString ?? null;
+            if (is_string($data->nullOrString ?? null)) {
+                $value = $data->nullOrString ?? null;
+            } elseif (is_null($data->nullOrString ?? null)) {
+                $value = $data->nullOrString ?? null;
             }
             $dataArray['nullOrString'] = $value;
         }
-        if (null !== $data->getRequired()) {
-            $dataArray['required'] = $data->getRequired();
+        if (null !== ($data->required ?? null)) {
+            $dataArray['required'] = $data->required ?? null;
         }
-        if (null !== $data->getRequiredNull()) {
-            $value_1 = $data->getRequiredNull();
-            if (is_string($data->getRequiredNull())) {
-                $value_1 = $data->getRequiredNull();
-            } elseif (is_null($data->getRequiredNull())) {
-                $value_1 = $data->getRequiredNull();
+        if (null !== ($data->requiredNull ?? null)) {
+            $value_1 = $data->requiredNull ?? null;
+            if (is_string($data->requiredNull ?? null)) {
+                $value_1 = $data->requiredNull ?? null;
+            } elseif (is_null($data->requiredNull ?? null)) {
+                $value_1 = $data->requiredNull ?? null;
             }
             $dataArray['requiredNull'] = $value_1;
         }

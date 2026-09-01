@@ -2,20 +2,15 @@
 
 namespace Jane\Component\JsonSchema\Guesser\Validator;
 
-use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
-
+/**
+ * Recognizes schema objects the validator chain is allowed to handle, without
+ * depending on the model classes of any specific OpenAPI version.
+ */
 trait ObjectCheckTrait
 {
     public function checkObject(object $object): bool
     {
-        if (JsonSchema::class === ($objectClass = \get_class($object))
-            || 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema' === $objectClass
-            || 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema' === $objectClass
-            || 'Jane\\Component\\OpenApi31\\JsonSchema\\Model\\Schema' === $objectClass) {
-            return true;
-        }
-
-        return false;
+        return property_exists($object, 'type') || property_exists($object, 'properties');
     }
 
     /**
@@ -23,20 +18,25 @@ trait ObjectCheckTrait
      */
     public function isNullable(object $object): bool
     {
-        if (\get_class($object) === JsonSchema::class) {
-            return \is_array($object->getType()) ? \in_array('null', $object->getType()) : 'null' === $object->getType();
+        // JSON Schema 2020-12 (and the OpenAPI 3.1 model extending it): the
+        // "null" keyword is part of the (possibly union) type.
+        if (property_exists($object, 'type')) {
+            $type = ($object->type ?? null);
+
+            if (\is_array($type) ? \in_array('null', $type, true) : 'null' === $type) {
+                return true;
+            }
         }
 
-        if (\get_class($object) === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema') {
-            return $object->offsetExists('x-nullable') && \is_bool($object->offsetGet('x-nullable')) && $object->offsetGet('x-nullable');
+        // OpenAPI 2.0: boolean vendor extension "x-nullable".
+        if (method_exists($object, 'offsetExists') && method_exists($object, 'offsetGet')
+            && $object->offsetExists('x-nullable') && \is_bool($object->offsetGet('x-nullable'))) {
+            return $object->offsetGet('x-nullable');
         }
 
-        if (\get_class($object) === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema') {
-            return method_exists($object, 'getNullable') && $object->getNullable() ?? false;
-        }
-
-        if (\get_class($object) === 'Jane\\Component\\OpenApi31\\JsonSchema\\Model\\Schema') {
-            return \is_array($object->getType()) ? \in_array('null', $object->getType()) : 'null' === $object->getType();
+        // OpenAPI 3.0: "nullable: true" keyword.
+        if (property_exists($object, 'nullable')) {
+            return ($object->nullable ?? null) ?? false;
         }
 
         return false;

@@ -50,44 +50,44 @@ class FieldIndexingInfoNormalizer implements DenormalizerInterface, NormalizerIn
             $data['sortable'] = (bool) $data['sortable'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('index', $data)) {
-            $object->setIndex($data['index']);
+            $object->index = $data['index'];
         }
         if (\array_key_exists('simpleSearch', $data)) {
-            $object->setSimpleSearch($data['simpleSearch']);
+            $object->simpleSearch = $data['simpleSearch'];
         }
         if (\array_key_exists('sortable', $data)) {
-            $object->setSortable($data['sortable']);
+            $object->sortable = $data['sortable'];
         }
         if (\array_key_exists('boost', $data)) {
-            $object->setBoost($data['boost']);
+            $object->boost = $data['boost'];
         }
         if (\array_key_exists('relatedSchemaIndexing', $data) && $data['relatedSchemaIndexing'] !== null) {
             $value = $data['relatedSchemaIndexing'];
             if (is_array($data['relatedSchemaIndexing'])) {
                 $value = $this->denormalizer->denormalize($data['relatedSchemaIndexing'], \PicturePark\API\Model\SchemaIndexingInfo::class, 'json', $context);
             }
-            $object->setRelatedSchemaIndexing($value);
+            $object->relatedSchemaIndexing = $value;
         }
         elseif (\array_key_exists('relatedSchemaIndexing', $data) && $data['relatedSchemaIndexing'] === null) {
-            $object->setRelatedSchemaIndexing(null);
+            $object->relatedSchemaIndexing = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['index'] = $data->getIndex();
-        $dataArray['simpleSearch'] = $data->getSimpleSearch();
-        $dataArray['sortable'] = $data->getSortable();
-        $dataArray['boost'] = $data->getBoost();
-        if ($data->isInitialized('relatedSchemaIndexing') && null !== $data->getRelatedSchemaIndexing()) {
-            $value = $data->getRelatedSchemaIndexing();
-            if (is_object($data->getRelatedSchemaIndexing())) {
-                $value = $data->getRelatedSchemaIndexing() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getRelatedSchemaIndexing(), 'json', $context));
+        $dataArray['id'] = $data->id ?? null;
+        $dataArray['index'] = $data->index ?? null;
+        $dataArray['simpleSearch'] = $data->simpleSearch ?? null;
+        $dataArray['sortable'] = $data->sortable ?? null;
+        $dataArray['boost'] = $data->boost ?? null;
+        if (array_key_exists('relatedSchemaIndexing', get_object_vars($data)) && null !== ($data->relatedSchemaIndexing ?? null)) {
+            $value = $data->relatedSchemaIndexing ?? null;
+            if (is_object($data->relatedSchemaIndexing ?? null)) {
+                $value = ($data->relatedSchemaIndexing ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->relatedSchemaIndexing ?? null, 'json', $context));
             }
             $dataArray['relatedSchemaIndexing'] = $value;
         }

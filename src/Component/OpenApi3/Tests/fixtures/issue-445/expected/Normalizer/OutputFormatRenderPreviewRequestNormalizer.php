@@ -38,33 +38,33 @@ class OutputFormatRenderPreviewRequestNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
-            $object->setContentId(null);
+            $object->contentId = null;
         }
         if (\array_key_exists('outputFormat', $data) && $data['outputFormat'] !== null) {
             $value = $data['outputFormat'];
             if (is_array($data['outputFormat'])) {
                 $value = $this->denormalizer->denormalize($data['outputFormat'], \PicturePark\API\Model\OutputFormatRenderingSpecification::class, 'json', $context);
             }
-            $object->setOutputFormat($value);
+            $object->outputFormat = $value;
         }
         elseif (\array_key_exists('outputFormat', $data) && $data['outputFormat'] === null) {
-            $object->setOutputFormat(null);
+            $object->outputFormat = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
-            $dataArray['contentId'] = $data->getContentId();
+        if (array_key_exists('contentId', get_object_vars($data)) && null !== ($data->contentId ?? null)) {
+            $dataArray['contentId'] = $data->contentId ?? null;
         }
-        if ($data->isInitialized('outputFormat') && null !== $data->getOutputFormat()) {
-            $value = $data->getOutputFormat();
-            if (is_object($data->getOutputFormat())) {
-                $value = $data->getOutputFormat() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getOutputFormat(), 'json', $context));
+        if (array_key_exists('outputFormat', get_object_vars($data)) && null !== ($data->outputFormat ?? null)) {
+            $value = $data->outputFormat ?? null;
+            if (is_object($data->outputFormat ?? null)) {
+                $value = ($data->outputFormat ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->outputFormat ?? null, 'json', $context));
             }
             $dataArray['outputFormat'] = $value;
         }

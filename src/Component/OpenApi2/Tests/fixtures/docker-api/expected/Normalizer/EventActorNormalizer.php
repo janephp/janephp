@@ -41,26 +41,26 @@ class EventActorNormalizer implements DenormalizerInterface, NormalizerInterface
             $this->validate($data, new \Docker\Api\Validator\EventActorConstraint());
         }
         if (\array_key_exists('ID', $data)) {
-            $object->setID($data['ID']);
+            $object->iD = $data['ID'];
         }
         if (\array_key_exists('Attributes', $data)) {
             $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Attributes'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setAttributes($values);
+            $object->attributes = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iD') && null !== $data->getID()) {
-            $dataArray['ID'] = $data->getID();
+        if (array_key_exists('iD', get_object_vars($data)) && null !== ($data->iD ?? null)) {
+            $dataArray['ID'] = $data->iD ?? null;
         }
-        if ($data->isInitialized('attributes') && null !== $data->getAttributes()) {
+        if (array_key_exists('attributes', get_object_vars($data)) && null !== ($data->attributes ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
-            foreach ($data->getAttributes() as $key => $value) {
+            foreach ($data->attributes ?? null as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Attributes'] = $values;

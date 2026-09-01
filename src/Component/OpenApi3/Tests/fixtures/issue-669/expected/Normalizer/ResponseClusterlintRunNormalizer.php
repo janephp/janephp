@@ -38,7 +38,7 @@ class ResponseClusterlintRunNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('run_id', $data)) {
-            $object->setRunId($data['run_id']);
+            $object->runId = $data['run_id'];
             unset($data['run_id']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseClusterlintRunNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('runId') && null !== $data->getRunId()) {
-            $dataArray['run_id'] = $data->getRunId();
+        if (array_key_exists('runId', get_object_vars($data)) && null !== ($data->runId ?? null)) {
+            $dataArray['run_id'] = $data->runId ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

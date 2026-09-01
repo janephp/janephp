@@ -38,7 +38,7 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('correlationId', $data)) {
-            $object->setCorrelationId($data['correlationId']);
+            $object->correlationId = $data['correlationId'];
             unset($data['correlationId']);
         }
         if (\array_key_exists('countryAccess', $data)) {
@@ -46,7 +46,7 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
             foreach ($data['countryAccess'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\AccessCountriesResponseCountryAccessItem::class, 'json', $context);
             }
-            $object->setCountryAccess($values);
+            $object->countryAccess = $values;
             unset($data['countryAccess']);
         }
         foreach ($data as $key => $value_1) {
@@ -59,12 +59,12 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('correlationId') && null !== $data->getCorrelationId()) {
-            $dataArray['correlationId'] = $data->getCorrelationId();
+        if (array_key_exists('correlationId', get_object_vars($data)) && null !== ($data->correlationId ?? null)) {
+            $dataArray['correlationId'] = $data->correlationId ?? null;
         }
-        if ($data->isInitialized('countryAccess') && null !== $data->getCountryAccess()) {
+        if (array_key_exists('countryAccess', get_object_vars($data)) && null !== ($data->countryAccess ?? null)) {
             $values = [];
-            foreach ($data->getCountryAccess() as $value) {
+            foreach ($data->countryAccess ?? null as $value) {
                 $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['countryAccess'] = $values;

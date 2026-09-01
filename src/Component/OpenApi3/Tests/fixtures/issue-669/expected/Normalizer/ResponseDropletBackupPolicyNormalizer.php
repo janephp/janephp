@@ -38,7 +38,7 @@ class ResponseDropletBackupPolicyNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('policy', $data)) {
-            $object->setPolicy($this->denormalizer->denormalize($data['policy'], \Jane\Generated\DigitalOcean\Model\DropletBackupPolicyRecord::class, 'json', $context));
+            $object->policy = $this->denormalizer->denormalize($data['policy'], \Jane\Generated\DigitalOcean\Model\DropletBackupPolicyRecord::class, 'json', $context);
             unset($data['policy']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseDropletBackupPolicyNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('policy') && null !== $data->getPolicy()) {
-            $dataArray['policy'] = $data->getPolicy() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPolicy(), 'json', $context));
+        if (array_key_exists('policy', get_object_vars($data)) && null !== ($data->policy ?? null)) {
+            $dataArray['policy'] = ($data->policy ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->policy ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

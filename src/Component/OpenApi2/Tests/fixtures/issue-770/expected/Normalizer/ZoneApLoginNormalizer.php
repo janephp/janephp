@@ -38,18 +38,18 @@ class ZoneApLoginNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('apLoginName', $data)) {
-            $object->setApLoginName($data['apLoginName']);
+            $object->apLoginName = $data['apLoginName'];
         }
         if (\array_key_exists('apLoginPassword', $data)) {
-            $object->setApLoginPassword($data['apLoginPassword']);
+            $object->apLoginPassword = $data['apLoginPassword'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['apLoginName'] = $data->getApLoginName();
-        $dataArray['apLoginPassword'] = $data->getApLoginPassword();
+        $dataArray['apLoginName'] = $data->apLoginName ?? null;
+        $dataArray['apLoginPassword'] = $data->apLoginPassword ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

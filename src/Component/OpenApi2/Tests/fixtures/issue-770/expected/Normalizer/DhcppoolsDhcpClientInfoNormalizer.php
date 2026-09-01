@@ -38,45 +38,45 @@ class DhcppoolsDhcpClientInfoNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('clientMac', $data)) {
-            $object->setClientMac($data['clientMac']);
+            $object->clientMac = $data['clientMac'];
         }
         if (\array_key_exists('clientIp', $data)) {
-            $object->setClientIp($data['clientIp']);
+            $object->clientIp = $data['clientIp'];
         }
         if (\array_key_exists('leaseTime', $data)) {
-            $object->setLeaseTime($data['leaseTime']);
+            $object->leaseTime = $data['leaseTime'];
         }
         if (\array_key_exists('leaseTimeHours', $data)) {
-            $object->setLeaseTimeHours($data['leaseTimeHours']);
+            $object->leaseTimeHours = $data['leaseTimeHours'];
         }
         if (\array_key_exists('leaseTimeMinutes', $data)) {
-            $object->setLeaseTimeMinutes($data['leaseTimeMinutes']);
+            $object->leaseTimeMinutes = $data['leaseTimeMinutes'];
         }
         if (\array_key_exists('leaseExpiryTime', $data)) {
-            $object->setLeaseExpiryTime($data['leaseExpiryTime']);
+            $object->leaseExpiryTime = $data['leaseExpiryTime'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clientMac') && null !== $data->getClientMac()) {
-            $dataArray['clientMac'] = $data->getClientMac();
+        if (array_key_exists('clientMac', get_object_vars($data)) && null !== ($data->clientMac ?? null)) {
+            $dataArray['clientMac'] = $data->clientMac ?? null;
         }
-        if ($data->isInitialized('clientIp') && null !== $data->getClientIp()) {
-            $dataArray['clientIp'] = $data->getClientIp();
+        if (array_key_exists('clientIp', get_object_vars($data)) && null !== ($data->clientIp ?? null)) {
+            $dataArray['clientIp'] = $data->clientIp ?? null;
         }
-        if ($data->isInitialized('leaseTime') && null !== $data->getLeaseTime()) {
-            $dataArray['leaseTime'] = $data->getLeaseTime();
+        if (array_key_exists('leaseTime', get_object_vars($data)) && null !== ($data->leaseTime ?? null)) {
+            $dataArray['leaseTime'] = $data->leaseTime ?? null;
         }
-        if ($data->isInitialized('leaseTimeHours') && null !== $data->getLeaseTimeHours()) {
-            $dataArray['leaseTimeHours'] = $data->getLeaseTimeHours();
+        if (array_key_exists('leaseTimeHours', get_object_vars($data)) && null !== ($data->leaseTimeHours ?? null)) {
+            $dataArray['leaseTimeHours'] = $data->leaseTimeHours ?? null;
         }
-        if ($data->isInitialized('leaseTimeMinutes') && null !== $data->getLeaseTimeMinutes()) {
-            $dataArray['leaseTimeMinutes'] = $data->getLeaseTimeMinutes();
+        if (array_key_exists('leaseTimeMinutes', get_object_vars($data)) && null !== ($data->leaseTimeMinutes ?? null)) {
+            $dataArray['leaseTimeMinutes'] = $data->leaseTimeMinutes ?? null;
         }
-        if ($data->isInitialized('leaseExpiryTime') && null !== $data->getLeaseExpiryTime()) {
-            $dataArray['leaseExpiryTime'] = $data->getLeaseExpiryTime();
+        if (array_key_exists('leaseExpiryTime', get_object_vars($data)) && null !== ($data->leaseExpiryTime ?? null)) {
+            $dataArray['leaseExpiryTime'] = $data->leaseExpiryTime ?? null;
         }
         return $dataArray;
     }

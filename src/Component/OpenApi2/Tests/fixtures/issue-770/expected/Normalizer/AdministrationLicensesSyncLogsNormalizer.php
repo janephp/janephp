@@ -38,21 +38,21 @@ class AdministrationLicensesSyncLogsNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('syncResult', $data)) {
-            $object->setSyncResult($data['syncResult']);
+            $object->syncResult = $data['syncResult'];
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('syncResult') && null !== $data->getSyncResult()) {
-            $dataArray['syncResult'] = $data->getSyncResult();
+        if (array_key_exists('syncResult', get_object_vars($data)) && null !== ($data->syncResult ?? null)) {
+            $dataArray['syncResult'] = $data->syncResult ?? null;
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
         return $dataArray;
     }

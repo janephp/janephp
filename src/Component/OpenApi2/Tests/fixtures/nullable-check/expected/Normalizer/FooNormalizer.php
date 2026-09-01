@@ -38,38 +38,38 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('foo', $data)) {
-            $object->setFoo($data['foo']);
+            $object->foo = $data['foo'];
         }
         if (\array_key_exists('bar', $data)) {
             $value = $data['bar'];
             if (is_string($data['bar'])) {
                 $value = $data['bar'];
             }
-            $object->setBar($value);
+            $object->bar = $value;
         }
         if (\array_key_exists('baz', $data) && $data['baz'] !== null) {
-            $object->setBaz($data['baz']);
+            $object->baz = $data['baz'];
         }
         elseif (\array_key_exists('baz', $data) && $data['baz'] === null) {
-            $object->setBaz(null);
+            $object->baz = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $data->getFoo();
+        if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
+            $dataArray['foo'] = $data->foo ?? null;
         }
-        if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $value = $data->getBar();
-            if (is_string($data->getBar())) {
-                $value = $data->getBar();
+        if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
+            $value = $data->bar ?? null;
+            if (is_string($data->bar ?? null)) {
+                $value = $data->bar ?? null;
             }
             $dataArray['bar'] = $value;
         }
-        if ($data->isInitialized('baz') && null !== $data->getBaz()) {
-            $dataArray['baz'] = $data->getBaz();
+        if (array_key_exists('baz', get_object_vars($data)) && null !== ($data->baz ?? null)) {
+            $dataArray['baz'] = $data->baz ?? null;
         }
         return $dataArray;
     }

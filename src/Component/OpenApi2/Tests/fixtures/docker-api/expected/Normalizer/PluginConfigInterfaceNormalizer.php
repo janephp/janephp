@@ -45,13 +45,13 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
             foreach ($data['Types'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\PluginInterfaceType::class, 'json', $context);
             }
-            $object->setTypes($values);
+            $object->types = $values;
         }
         if (\array_key_exists('Socket', $data)) {
-            $object->setSocket($data['Socket']);
+            $object->socket = $data['Socket'];
         }
         if (\array_key_exists('ProtocolScheme', $data)) {
-            $object->setProtocolScheme($data['ProtocolScheme']);
+            $object->protocolScheme = $data['ProtocolScheme'];
         }
         return $object;
     }
@@ -59,13 +59,13 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getTypes() as $value) {
+        foreach ($data->types ?? null as $value) {
             $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['Types'] = $values;
-        $dataArray['Socket'] = $data->getSocket();
-        if ($data->isInitialized('protocolScheme') && null !== $data->getProtocolScheme()) {
-            $dataArray['ProtocolScheme'] = $data->getProtocolScheme();
+        $dataArray['Socket'] = $data->socket ?? null;
+        if (array_key_exists('protocolScheme', get_object_vars($data)) && null !== ($data->protocolScheme ?? null)) {
+            $dataArray['ProtocolScheme'] = $data->protocolScheme ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginConfigInterfaceConstraint());

@@ -38,18 +38,18 @@ class BlacklistItemNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('match', $data)) {
-            $object->setMatch($data['match']);
+            $object->match = $data['match'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['match'] = $data->getMatch();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['match'] = $data->match ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

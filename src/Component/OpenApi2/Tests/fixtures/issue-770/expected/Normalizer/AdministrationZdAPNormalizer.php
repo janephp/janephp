@@ -38,21 +38,21 @@ class AdministrationZdAPNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mac', $data)) {
-            $object->setMac($data['mac']);
+            $object->mac = $data['mac'];
         }
         if (\array_key_exists('connected', $data)) {
-            $object->setConnected($data['connected']);
+            $object->connected = $data['connected'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mac') && null !== $data->getMac()) {
-            $dataArray['mac'] = $data->getMac();
+        if (array_key_exists('mac', get_object_vars($data)) && null !== ($data->mac ?? null)) {
+            $dataArray['mac'] = $data->mac ?? null;
         }
-        if ($data->isInitialized('connected') && null !== $data->getConnected()) {
-            $dataArray['connected'] = $data->getConnected();
+        if (array_key_exists('connected', get_object_vars($data)) && null !== ($data->connected ?? null)) {
+            $dataArray['connected'] = $data->connected ?? null;
         }
         return $dataArray;
     }

@@ -46,7 +46,7 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
                 }
                 $value = $values;
             }
-            $object->setNames($value);
+            $object->names = $value;
             unset($data['names']);
         }
         if (\array_key_exists('userRights', $data)) {
@@ -54,11 +54,11 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['userRights'] as $value_2) {
                 $values_1[] = $value_2;
             }
-            $object->setUserRights($values_1);
+            $object->userRights = $values_1;
             unset($data['userRights']);
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
@@ -66,11 +66,11 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
             if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
                 $value_3 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAuditDetail::class, 'json', $context);
             }
-            $object->setAudit($value_3);
+            $object->audit = $value_3;
             unset($data['audit']);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
-            $object->setAudit(null);
+            $object->audit = null;
             unset($data['audit']);
         }
         foreach ($data as $key_1 => $value_4) {
@@ -83,25 +83,25 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getNames();
-        if (is_object($data->getNames())) {
+        $value = $data->names ?? null;
+        if (is_object($data->names ?? null)) {
             $values = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getNames() as $key => $value_1) {
+            foreach ($data->names ?? null as $key => $value_1) {
                 $values[$key] = $value_1;
             }
             $value = $values;
         }
         $dataArray['names'] = $value;
         $values_1 = [];
-        foreach ($data->getUserRights() as $value_2) {
+        foreach ($data->userRights ?? null as $value_2) {
             $values_1[] = $value_2;
         }
         $dataArray['userRights'] = $values_1;
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
-            $value_3 = $data->getAudit();
-            if (is_object($data->getAudit())) {
-                $value_3 = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+        $dataArray['id'] = $data->id ?? null;
+        if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
+            $value_3 = $data->audit ?? null;
+            if (is_object($data->audit ?? null)) {
+                $value_3 = ($data->audit ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit ?? null, 'json', $context));
             }
             $dataArray['audit'] = $value_3;
         }

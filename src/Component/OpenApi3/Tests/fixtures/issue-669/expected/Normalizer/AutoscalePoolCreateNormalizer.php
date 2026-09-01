@@ -38,7 +38,7 @@ class AutoscalePoolCreateNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('config', $data)) {
@@ -46,11 +46,11 @@ class AutoscalePoolCreateNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['config'] as $key => $value) {
                 $values[$key] = $value;
             }
-            $object->setConfig($values);
+            $object->config = $values;
             unset($data['config']);
         }
         if (\array_key_exists('droplet_template', $data)) {
-            $object->setDropletTemplate($this->denormalizer->denormalize($data['droplet_template'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class, 'json', $context));
+            $object->dropletTemplate = $this->denormalizer->denormalize($data['droplet_template'], \Jane\Generated\DigitalOcean\Model\AutoscalePoolDropletTemplate::class, 'json', $context);
             unset($data['droplet_template']);
         }
         foreach ($data as $key_1 => $value_1) {
@@ -63,13 +63,13 @@ class AutoscalePoolCreateNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
+        $dataArray['name'] = $data->name ?? null;
         $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
-        foreach ($data->getConfig() as $key => $value) {
+        foreach ($data->config ?? null as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['config'] = $values;
-        $dataArray['droplet_template'] = $data->getDropletTemplate() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDropletTemplate(), 'json', $context));
+        $dataArray['droplet_template'] = ($data->dropletTemplate ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dropletTemplate ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;

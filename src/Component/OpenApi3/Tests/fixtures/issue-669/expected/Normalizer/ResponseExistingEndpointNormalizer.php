@@ -38,7 +38,7 @@ class ResponseExistingEndpointNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('endpoint', $data)) {
-            $object->setEndpoint($this->denormalizer->denormalize($data['endpoint'], \Jane\Generated\DigitalOcean\Model\CdnEndpoint::class, 'json', $context));
+            $object->endpoint = $this->denormalizer->denormalize($data['endpoint'], \Jane\Generated\DigitalOcean\Model\CdnEndpoint::class, 'json', $context);
             unset($data['endpoint']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseExistingEndpointNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('endpoint') && null !== $data->getEndpoint()) {
-            $dataArray['endpoint'] = $data->getEndpoint() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getEndpoint(), 'json', $context));
+        if (array_key_exists('endpoint', get_object_vars($data)) && null !== ($data->endpoint ?? null)) {
+            $dataArray['endpoint'] = ($data->endpoint ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->endpoint ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

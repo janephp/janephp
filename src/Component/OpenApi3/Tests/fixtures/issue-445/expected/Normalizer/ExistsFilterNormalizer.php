@@ -38,11 +38,11 @@ class ExistsFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('field', $data)) {
-            $object->setField($data['field']);
+            $object->field = $data['field'];
             unset($data['field']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class ExistsFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['kind'] = $data->getKind();
-        $dataArray['field'] = $data->getField();
+        $dataArray['kind'] = $data->kind ?? null;
+        $dataArray['field'] = $data->field ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

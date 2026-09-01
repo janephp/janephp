@@ -38,7 +38,7 @@ class ResponseSinglePartnerAttachmentNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('partner_attachment', $data)) {
-            $object->setPartnerAttachment($this->denormalizer->denormalize($data['partner_attachment'], \Jane\Generated\DigitalOcean\Model\PartnerAttachment::class, 'json', $context));
+            $object->partnerAttachment = $this->denormalizer->denormalize($data['partner_attachment'], \Jane\Generated\DigitalOcean\Model\PartnerAttachment::class, 'json', $context);
             unset($data['partner_attachment']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ResponseSinglePartnerAttachmentNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('partnerAttachment') && null !== $data->getPartnerAttachment()) {
-            $dataArray['partner_attachment'] = $data->getPartnerAttachment() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPartnerAttachment(), 'json', $context));
+        if (array_key_exists('partnerAttachment', get_object_vars($data)) && null !== ($data->partnerAttachment ?? null)) {
+            $dataArray['partner_attachment'] = ($data->partnerAttachment ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->partnerAttachment ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

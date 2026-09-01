@@ -42,15 +42,15 @@ class ContentPermissionsUpdateItemNormalizer implements DenormalizerInterface, N
             foreach ($data['contentPermissionSetIds'] as $value) {
                 $values[] = $value;
             }
-            $object->setContentPermissionSetIds($values);
+            $object->contentPermissionSetIds = $values;
             unset($data['contentPermissionSetIds']);
         }
         elseif (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] === null) {
-            $object->setContentPermissionSetIds(null);
+            $object->contentPermissionSetIds = null;
             unset($data['contentPermissionSetIds']);
         }
         if (\array_key_exists('contentId', $data)) {
-            $object->setContentId($data['contentId']);
+            $object->contentId = $data['contentId'];
             unset($data['contentId']);
         }
         foreach ($data as $key => $value_1) {
@@ -63,14 +63,14 @@ class ContentPermissionsUpdateItemNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('contentPermissionSetIds') && null !== $data->getContentPermissionSetIds()) {
+        if (array_key_exists('contentPermissionSetIds', get_object_vars($data)) && null !== ($data->contentPermissionSetIds ?? null)) {
             $values = [];
-            foreach ($data->getContentPermissionSetIds() as $value) {
+            foreach ($data->contentPermissionSetIds ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['contentPermissionSetIds'] = $values;
         }
-        $dataArray['contentId'] = $data->getContentId();
+        $dataArray['contentId'] = $data->contentId ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

@@ -41,21 +41,21 @@ class ServiceEndpointVirtualIPsItemNormalizer implements DenormalizerInterface, 
             $this->validate($data, new \Docker\Api\Validator\ServiceEndpointVirtualIPsItemConstraint());
         }
         if (\array_key_exists('NetworkID', $data)) {
-            $object->setNetworkID($data['NetworkID']);
+            $object->networkID = $data['NetworkID'];
         }
         if (\array_key_exists('Addr', $data)) {
-            $object->setAddr($data['Addr']);
+            $object->addr = $data['Addr'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('networkID') && null !== $data->getNetworkID()) {
-            $dataArray['NetworkID'] = $data->getNetworkID();
+        if (array_key_exists('networkID', get_object_vars($data)) && null !== ($data->networkID ?? null)) {
+            $dataArray['NetworkID'] = $data->networkID ?? null;
         }
-        if ($data->isInitialized('addr') && null !== $data->getAddr()) {
-            $dataArray['Addr'] = $data->getAddr();
+        if (array_key_exists('addr', get_object_vars($data)) && null !== ($data->addr ?? null)) {
+            $dataArray['Addr'] = $data->addr ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ServiceEndpointVirtualIPsItemConstraint());

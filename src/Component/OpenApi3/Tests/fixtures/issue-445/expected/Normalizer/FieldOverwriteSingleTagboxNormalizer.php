@@ -50,23 +50,23 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
             $data['overwriteListItemCreateTemplate'] = (bool) $data['overwriteListItemCreateTemplate'];
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
-            $object->setId(null);
+            $object->id = null;
             unset($data['id']);
         }
         if (\array_key_exists('required', $data)) {
-            $object->setRequired($data['required']);
+            $object->required = $data['required'];
             unset($data['required']);
         }
         if (\array_key_exists('overwriteRequired', $data)) {
-            $object->setOverwriteRequired($data['overwriteRequired']);
+            $object->overwriteRequired = $data['overwriteRequired'];
             unset($data['overwriteRequired']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
@@ -74,27 +74,27 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
             if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
                 $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilter($value);
+            $object->filter = $value;
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
             unset($data['filter']);
         }
         if (\array_key_exists('overwriteFilter', $data)) {
-            $object->setOverwriteFilter($data['overwriteFilter']);
+            $object->overwriteFilter = $data['overwriteFilter'];
             unset($data['overwriteFilter']);
         }
         if (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] !== null) {
-            $object->setListItemCreateTemplate($data['listItemCreateTemplate']);
+            $object->listItemCreateTemplate = $data['listItemCreateTemplate'];
             unset($data['listItemCreateTemplate']);
         }
         elseif (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] === null) {
-            $object->setListItemCreateTemplate(null);
+            $object->listItemCreateTemplate = null;
             unset($data['listItemCreateTemplate']);
         }
         if (\array_key_exists('overwriteListItemCreateTemplate', $data)) {
-            $object->setOverwriteListItemCreateTemplate($data['overwriteListItemCreateTemplate']);
+            $object->overwriteListItemCreateTemplate = $data['overwriteListItemCreateTemplate'];
             unset($data['overwriteListItemCreateTemplate']);
         }
         foreach ($data as $key => $value_1) {
@@ -107,27 +107,27 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        $dataArray['required'] = $data->getRequired();
-        $dataArray['overwriteRequired'] = $data->getOverwriteRequired();
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $value = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        $dataArray['required'] = $data->required ?? null;
+        $dataArray['overwriteRequired'] = $data->overwriteRequired ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $value = $data->filter ?? null;
+            if (is_object($data->filter ?? null)) {
+                $value = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }
-        if ($data->isInitialized('overwriteFilter') && null !== $data->getOverwriteFilter()) {
-            $dataArray['overwriteFilter'] = $data->getOverwriteFilter();
+        if (array_key_exists('overwriteFilter', get_object_vars($data)) && null !== ($data->overwriteFilter ?? null)) {
+            $dataArray['overwriteFilter'] = $data->overwriteFilter ?? null;
         }
-        if ($data->isInitialized('listItemCreateTemplate') && null !== $data->getListItemCreateTemplate()) {
-            $dataArray['listItemCreateTemplate'] = $data->getListItemCreateTemplate();
+        if (array_key_exists('listItemCreateTemplate', get_object_vars($data)) && null !== ($data->listItemCreateTemplate ?? null)) {
+            $dataArray['listItemCreateTemplate'] = $data->listItemCreateTemplate ?? null;
         }
-        if ($data->isInitialized('overwriteListItemCreateTemplate') && null !== $data->getOverwriteListItemCreateTemplate()) {
-            $dataArray['overwriteListItemCreateTemplate'] = $data->getOverwriteListItemCreateTemplate();
+        if (array_key_exists('overwriteListItemCreateTemplate', get_object_vars($data)) && null !== ($data->overwriteListItemCreateTemplate ?? null)) {
+            $dataArray['overwriteListItemCreateTemplate'] = $data->overwriteListItemCreateTemplate ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

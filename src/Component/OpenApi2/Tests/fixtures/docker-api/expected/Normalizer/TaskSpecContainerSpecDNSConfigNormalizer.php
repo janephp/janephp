@@ -45,44 +45,44 @@ class TaskSpecContainerSpecDNSConfigNormalizer implements DenormalizerInterface,
             foreach ($data['Nameservers'] as $value) {
                 $values[] = $value;
             }
-            $object->setNameservers($values);
+            $object->nameservers = $values;
         }
         if (\array_key_exists('Search', $data)) {
             $values_1 = [];
             foreach ($data['Search'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setSearch($values_1);
+            $object->search = $values_1;
         }
         if (\array_key_exists('Options', $data)) {
             $values_2 = [];
             foreach ($data['Options'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setOptions($values_2);
+            $object->options = $values_2;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('nameservers') && null !== $data->getNameservers()) {
+        if (array_key_exists('nameservers', get_object_vars($data)) && null !== ($data->nameservers ?? null)) {
             $values = [];
-            foreach ($data->getNameservers() as $value) {
+            foreach ($data->nameservers ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['Nameservers'] = $values;
         }
-        if ($data->isInitialized('search') && null !== $data->getSearch()) {
+        if (array_key_exists('search', get_object_vars($data)) && null !== ($data->search ?? null)) {
             $values_1 = [];
-            foreach ($data->getSearch() as $value_1) {
+            foreach ($data->search ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['Search'] = $values_1;
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $values_2 = [];
-            foreach ($data->getOptions() as $value_2) {
+            foreach ($data->options ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['Options'] = $values_2;

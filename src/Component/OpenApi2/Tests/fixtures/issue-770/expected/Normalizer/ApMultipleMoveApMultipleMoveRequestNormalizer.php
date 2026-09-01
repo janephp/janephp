@@ -38,29 +38,29 @@ class ApMultipleMoveApMultipleMoveRequestNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('targetZoneId', $data)) {
-            $object->setTargetZoneId($data['targetZoneId']);
+            $object->targetZoneId = $data['targetZoneId'];
         }
         if (\array_key_exists('targetApGroupId', $data)) {
-            $object->setTargetApGroupId($data['targetApGroupId']);
+            $object->targetApGroupId = $data['targetApGroupId'];
         }
         if (\array_key_exists('apMacs', $data)) {
             $values = [];
             foreach ($data['apMacs'] as $value) {
                 $values[] = $value;
             }
-            $object->setApMacs($values);
+            $object->apMacs = $values;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['targetZoneId'] = $data->getTargetZoneId();
-        if ($data->isInitialized('targetApGroupId') && null !== $data->getTargetApGroupId()) {
-            $dataArray['targetApGroupId'] = $data->getTargetApGroupId();
+        $dataArray['targetZoneId'] = $data->targetZoneId ?? null;
+        if (array_key_exists('targetApGroupId', get_object_vars($data)) && null !== ($data->targetApGroupId ?? null)) {
+            $dataArray['targetApGroupId'] = $data->targetApGroupId ?? null;
         }
         $values = [];
-        foreach ($data->getApMacs() as $value) {
+        foreach ($data->apMacs ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['apMacs'] = $values;

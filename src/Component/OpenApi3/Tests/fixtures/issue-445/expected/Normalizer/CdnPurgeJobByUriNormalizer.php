@@ -41,23 +41,23 @@ class CdnPurgeJobByUriNormalizer implements DenormalizerInterface, NormalizerInt
             $data['success'] = (bool) $data['success'];
         }
         if (\array_key_exists('success', $data)) {
-            $object->setSuccess($data['success']);
+            $object->success = $data['success'];
             unset($data['success']);
         }
         if (\array_key_exists('retriesLeft', $data)) {
-            $object->setRetriesLeft($data['retriesLeft']);
+            $object->retriesLeft = $data['retriesLeft'];
             unset($data['retriesLeft']);
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
             unset($data['kind']);
         }
         if (\array_key_exists('uri', $data) && $data['uri'] !== null) {
-            $object->setUri($data['uri']);
+            $object->uri = $data['uri'];
             unset($data['uri']);
         }
         elseif (\array_key_exists('uri', $data) && $data['uri'] === null) {
-            $object->setUri(null);
+            $object->uri = null;
             unset($data['uri']);
         }
         foreach ($data as $key => $value) {
@@ -70,11 +70,11 @@ class CdnPurgeJobByUriNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['success'] = $data->getSuccess();
-        $dataArray['retriesLeft'] = $data->getRetriesLeft();
-        $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('uri') && null !== $data->getUri()) {
-            $dataArray['uri'] = $data->getUri();
+        $dataArray['success'] = $data->success ?? null;
+        $dataArray['retriesLeft'] = $data->retriesLeft ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
+        if (array_key_exists('uri', get_object_vars($data)) && null !== ($data->uri ?? null)) {
+            $dataArray['uri'] = $data->uri ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

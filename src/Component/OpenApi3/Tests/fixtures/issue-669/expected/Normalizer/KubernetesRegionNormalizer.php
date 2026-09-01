@@ -38,11 +38,11 @@ class KubernetesRegionNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('slug', $data)) {
-            $object->setSlug($data['slug']);
+            $object->slug = $data['slug'];
             unset($data['slug']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class KubernetesRegionNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('slug') && null !== $data->getSlug()) {
-            $dataArray['slug'] = $data->getSlug();
+        if (array_key_exists('slug', get_object_vars($data)) && null !== ($data->slug ?? null)) {
+            $dataArray['slug'] = $data->slug ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

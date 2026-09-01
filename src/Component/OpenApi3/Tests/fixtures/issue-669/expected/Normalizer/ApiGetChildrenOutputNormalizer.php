@@ -42,7 +42,7 @@ class ApiGetChildrenOutputNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['children'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiAgent::class, 'json', $context);
             }
-            $object->setChildren($values);
+            $object->children = $values;
             unset($data['children']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ApiGetChildrenOutputNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('children') && null !== $data->getChildren()) {
+        if (array_key_exists('children', get_object_vars($data)) && null !== ($data->children ?? null)) {
             $values = [];
-            foreach ($data->getChildren() as $value) {
+            foreach ($data->children ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['children'] = $values;

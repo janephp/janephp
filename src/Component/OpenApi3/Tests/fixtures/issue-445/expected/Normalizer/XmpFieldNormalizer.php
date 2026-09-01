@@ -41,33 +41,33 @@ class XmpFieldNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['isWritable'] = (bool) $data['isWritable'];
         }
         if (\array_key_exists('path', $data) && $data['path'] !== null) {
-            $object->setPath($data['path']);
+            $object->path = $data['path'];
         }
         elseif (\array_key_exists('path', $data) && $data['path'] === null) {
-            $object->setPath(null);
+            $object->path = null;
         }
         if (\array_key_exists('isWritable', $data)) {
-            $object->setIsWritable($data['isWritable']);
+            $object->isWritable = $data['isWritable'];
         }
         if (\array_key_exists('dataType', $data)) {
             $value = $data['dataType'];
             if (is_string($data['dataType'])) {
                 $value = $data['dataType'];
             }
-            $object->setDataType($value);
+            $object->dataType = $value;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('path') && null !== $data->getPath()) {
-            $dataArray['path'] = $data->getPath();
+        if (array_key_exists('path', get_object_vars($data)) && null !== ($data->path ?? null)) {
+            $dataArray['path'] = $data->path ?? null;
         }
-        $dataArray['isWritable'] = $data->getIsWritable();
-        $value = $data->getDataType();
-        if (is_string($data->getDataType())) {
-            $value = $data->getDataType();
+        $dataArray['isWritable'] = $data->isWritable ?? null;
+        $value = $data->dataType ?? null;
+        if (is_string($data->dataType ?? null)) {
+            $value = $data->dataType ?? null;
         }
         $dataArray['dataType'] = $value;
         return $dataArray;

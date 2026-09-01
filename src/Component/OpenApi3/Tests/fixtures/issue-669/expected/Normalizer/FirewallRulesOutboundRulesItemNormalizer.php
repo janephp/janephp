@@ -38,15 +38,15 @@ class FirewallRulesOutboundRulesItemNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('protocol', $data)) {
-            $object->setProtocol($data['protocol']);
+            $object->protocol = $data['protocol'];
             unset($data['protocol']);
         }
         if (\array_key_exists('ports', $data)) {
-            $object->setPorts($data['ports']);
+            $object->ports = $data['ports'];
             unset($data['ports']);
         }
         if (\array_key_exists('destinations', $data)) {
-            $object->setDestinations($this->denormalizer->denormalize($data['destinations'], \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItemDestinations::class, 'json', $context));
+            $object->destinations = $this->denormalizer->denormalize($data['destinations'], \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItemDestinations::class, 'json', $context);
             unset($data['destinations']);
         }
         foreach ($data as $key => $value) {
@@ -59,9 +59,9 @@ class FirewallRulesOutboundRulesItemNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['protocol'] = $data->getProtocol();
-        $dataArray['ports'] = $data->getPorts();
-        $dataArray['destinations'] = $data->getDestinations() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDestinations(), 'json', $context));
+        $dataArray['protocol'] = $data->protocol ?? null;
+        $dataArray['ports'] = $data->ports ?? null;
+        $dataArray['destinations'] = ($data->destinations ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->destinations ?? null, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

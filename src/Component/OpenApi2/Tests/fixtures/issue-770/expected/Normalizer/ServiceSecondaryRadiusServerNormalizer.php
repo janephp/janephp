@@ -41,32 +41,32 @@ class ServiceSecondaryRadiusServerNormalizer implements DenormalizerInterface, N
             $data['autoFallbackDisable'] = (bool) $data['autoFallbackDisable'];
         }
         if (\array_key_exists('autoFallbackDisable', $data)) {
-            $object->setAutoFallbackDisable($data['autoFallbackDisable']);
+            $object->autoFallbackDisable = $data['autoFallbackDisable'];
         }
         if (\array_key_exists('ip', $data)) {
-            $object->setIp($data['ip']);
+            $object->ip = $data['ip'];
         }
         if (\array_key_exists('port', $data)) {
-            $object->setPort($data['port']);
+            $object->port = $data['port'];
         }
         if (\array_key_exists('sharedSecret', $data)) {
-            $object->setSharedSecret($data['sharedSecret']);
+            $object->sharedSecret = $data['sharedSecret'];
         }
         if (\array_key_exists('ipFqdn', $data)) {
-            $object->setIpFqdn($data['ipFqdn']);
+            $object->ipFqdn = $data['ipFqdn'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['autoFallbackDisable'] = $data->getAutoFallbackDisable();
-        if ($data->isInitialized('ip') && null !== $data->getIp()) {
-            $dataArray['ip'] = $data->getIp();
+        $dataArray['autoFallbackDisable'] = $data->autoFallbackDisable ?? null;
+        if (array_key_exists('ip', get_object_vars($data)) && null !== ($data->ip ?? null)) {
+            $dataArray['ip'] = $data->ip ?? null;
         }
-        $dataArray['port'] = $data->getPort();
-        $dataArray['sharedSecret'] = $data->getSharedSecret();
-        $dataArray['ipFqdn'] = $data->getIpFqdn();
+        $dataArray['port'] = $data->port ?? null;
+        $dataArray['sharedSecret'] = $data->sharedSecret ?? null;
+        $dataArray['ipFqdn'] = $data->ipFqdn ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

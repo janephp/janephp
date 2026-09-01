@@ -50,36 +50,36 @@ class NamedCacheConfigurationBaseNormalizer implements DenormalizerInterface, No
             $data['caseSensitive'] = (bool) $data['caseSensitive'];
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+            $object->name = null;
         }
         if (\array_key_exists('caseSensitive', $data)) {
-            $object->setCaseSensitive($data['caseSensitive']);
+            $object->caseSensitive = $data['caseSensitive'];
         }
         if (\array_key_exists('kind', $data)) {
-            $object->setKind($data['kind']);
+            $object->kind = $data['kind'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if (null !== $data->getKind() and 'ListItemNamedCacheConfiguration' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'ListItemNamedCacheConfiguration' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'SchemaTagboxFilterLookupNamedCacheConfiguration' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'SchemaTagboxFilterLookupNamedCacheConfiguration' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if (null !== $data->getKind() and 'InverseListItemNamedCacheConfiguration' === $data->getKind()) {
+        if (null !== ($data->kind ?? null) and 'InverseListItemNamedCacheConfiguration' === ($data->kind ?? null)) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        $dataArray['caseSensitive'] = $data->getCaseSensitive();
-        $dataArray['kind'] = $data->getKind();
+        $dataArray['caseSensitive'] = $data->caseSensitive ?? null;
+        $dataArray['kind'] = $data->kind ?? null;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

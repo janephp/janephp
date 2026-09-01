@@ -41,15 +41,15 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalDataNormalize
             $data['gearing'] = (float) $data['gearing'];
         }
         if (\array_key_exists('occupation', $data)) {
-            $object->setOccupation($data['occupation']);
+            $object->occupation = $data['occupation'];
             unset($data['occupation']);
         }
         if (\array_key_exists('statusDescription', $data)) {
-            $object->setStatusDescription($data['statusDescription']);
+            $object->statusDescription = $data['statusDescription'];
             unset($data['statusDescription']);
         }
         if (\array_key_exists('gearing', $data)) {
-            $object->setGearing($data['gearing']);
+            $object->gearing = $data['gearing'];
             unset($data['gearing']);
         }
         foreach ($data as $key => $value) {
@@ -62,14 +62,14 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalDataNormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('occupation') && null !== $data->getOccupation()) {
-            $dataArray['occupation'] = $data->getOccupation();
+        if (array_key_exists('occupation', get_object_vars($data)) && null !== ($data->occupation ?? null)) {
+            $dataArray['occupation'] = $data->occupation ?? null;
         }
-        if ($data->isInitialized('statusDescription') && null !== $data->getStatusDescription()) {
-            $dataArray['statusDescription'] = $data->getStatusDescription();
+        if (array_key_exists('statusDescription', get_object_vars($data)) && null !== ($data->statusDescription ?? null)) {
+            $dataArray['statusDescription'] = $data->statusDescription ?? null;
         }
-        if ($data->isInitialized('gearing') && null !== $data->getGearing()) {
-            $dataArray['gearing'] = $data->getGearing();
+        if (array_key_exists('gearing', get_object_vars($data)) && null !== ($data->gearing ?? null)) {
+            $dataArray['gearing'] = $data->gearing ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

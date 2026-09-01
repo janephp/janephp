@@ -41,23 +41,23 @@ class AppDomainSpecNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['wildcard'] = (bool) $data['wildcard'];
         }
         if (\array_key_exists('domain', $data)) {
-            $object->setDomain($data['domain']);
+            $object->domain = $data['domain'];
             unset($data['domain']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('wildcard', $data)) {
-            $object->setWildcard($data['wildcard']);
+            $object->wildcard = $data['wildcard'];
             unset($data['wildcard']);
         }
         if (\array_key_exists('zone', $data)) {
-            $object->setZone($data['zone']);
+            $object->zone = $data['zone'];
             unset($data['zone']);
         }
         if (\array_key_exists('minimum_tls_version', $data)) {
-            $object->setMinimumTlsVersion($data['minimum_tls_version']);
+            $object->minimumTlsVersion = $data['minimum_tls_version'];
             unset($data['minimum_tls_version']);
         }
         foreach ($data as $key => $value) {
@@ -70,18 +70,18 @@ class AppDomainSpecNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domain'] = $data->getDomain();
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        $dataArray['domain'] = $data->domain ?? null;
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type ?? null;
         }
-        if ($data->isInitialized('wildcard') && null !== $data->getWildcard()) {
-            $dataArray['wildcard'] = $data->getWildcard();
+        if (array_key_exists('wildcard', get_object_vars($data)) && null !== ($data->wildcard ?? null)) {
+            $dataArray['wildcard'] = $data->wildcard ?? null;
         }
-        if ($data->isInitialized('zone') && null !== $data->getZone()) {
-            $dataArray['zone'] = $data->getZone();
+        if (array_key_exists('zone', get_object_vars($data)) && null !== ($data->zone ?? null)) {
+            $dataArray['zone'] = $data->zone ?? null;
         }
-        if ($data->isInitialized('minimumTlsVersion') && null !== $data->getMinimumTlsVersion()) {
-            $dataArray['minimum_tls_version'] = $data->getMinimumTlsVersion();
+        if (array_key_exists('minimumTlsVersion', get_object_vars($data)) && null !== ($data->minimumTlsVersion ?? null)) {
+            $dataArray['minimum_tls_version'] = $data->minimumTlsVersion ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

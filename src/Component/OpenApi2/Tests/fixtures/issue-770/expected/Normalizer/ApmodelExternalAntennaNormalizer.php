@@ -41,25 +41,25 @@ class ApmodelExternalAntennaNormalizer implements DenormalizerInterface, Normali
             $data['enabled'] = (bool) $data['enabled'];
         }
         if (\array_key_exists('enabled', $data)) {
-            $object->setEnabled($data['enabled']);
+            $object->enabled = $data['enabled'];
         }
         if (\array_key_exists('dbi', $data)) {
-            $object->setDbi($data['dbi']);
+            $object->dbi = $data['dbi'];
         }
         if (\array_key_exists('chainMask', $data)) {
-            $object->setChainMask($data['chainMask']);
+            $object->chainMask = $data['chainMask'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enabled'] = $data->getEnabled();
-        if ($data->isInitialized('dbi') && null !== $data->getDbi()) {
-            $dataArray['dbi'] = $data->getDbi();
+        $dataArray['enabled'] = $data->enabled ?? null;
+        if (array_key_exists('dbi', get_object_vars($data)) && null !== ($data->dbi ?? null)) {
+            $dataArray['dbi'] = $data->dbi ?? null;
         }
-        if ($data->isInitialized('chainMask') && null !== $data->getChainMask()) {
-            $dataArray['chainMask'] = $data->getChainMask();
+        if (array_key_exists('chainMask', get_object_vars($data)) && null !== ($data->chainMask ?? null)) {
+            $dataArray['chainMask'] = $data->chainMask ?? null;
         }
         return $dataArray;
     }

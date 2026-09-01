@@ -41,21 +41,21 @@ class ProfileDownlinkRateLimitingNormalizer implements DenormalizerInterface, No
             $data['downlinkRateLimitingEnabled'] = (bool) $data['downlinkRateLimitingEnabled'];
         }
         if (\array_key_exists('downlinkRateLimitingEnabled', $data)) {
-            $object->setDownlinkRateLimitingEnabled($data['downlinkRateLimitingEnabled']);
+            $object->downlinkRateLimitingEnabled = $data['downlinkRateLimitingEnabled'];
         }
         if (\array_key_exists('downlinkRateLimitingBps', $data)) {
-            $object->setDownlinkRateLimitingBps($data['downlinkRateLimitingBps']);
+            $object->downlinkRateLimitingBps = $data['downlinkRateLimitingBps'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('downlinkRateLimitingEnabled') && null !== $data->getDownlinkRateLimitingEnabled()) {
-            $dataArray['downlinkRateLimitingEnabled'] = $data->getDownlinkRateLimitingEnabled();
+        if (array_key_exists('downlinkRateLimitingEnabled', get_object_vars($data)) && null !== ($data->downlinkRateLimitingEnabled ?? null)) {
+            $dataArray['downlinkRateLimitingEnabled'] = $data->downlinkRateLimitingEnabled ?? null;
         }
-        if ($data->isInitialized('downlinkRateLimitingBps') && null !== $data->getDownlinkRateLimitingBps()) {
-            $dataArray['downlinkRateLimitingBps'] = $data->getDownlinkRateLimitingBps();
+        if (array_key_exists('downlinkRateLimitingBps', get_object_vars($data)) && null !== ($data->downlinkRateLimitingBps ?? null)) {
+            $dataArray['downlinkRateLimitingBps'] = $data->downlinkRateLimitingBps ?? null;
         }
         return $dataArray;
     }

@@ -7,17 +7,19 @@ use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetConstructorTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetBodyTrait;
-use Jane\Component\OpenApi3\Generator\Endpoint\GetGetExtraHeadersTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetOptionsResolverTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetQueryAllowReservedTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetQueryStylesTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetUriTrait;
-use Jane\Component\OpenApi3\Generator\Endpoint\GetTransformResponseBodyTrait;
 use Jane\Component\OpenApi3\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\Component\OpenApi3\Guesser\GuessClass;
+use Jane\Component\OpenApi3\JsonSchema\Model\Response;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
+use Jane\Component\OpenApi3\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Generator\Endpoint\GetAuthenticationScopesTrait;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\GetGetExtraHeadersTrait;
 use Jane\Component\OpenApiCommon\Generator\Endpoint\GetGetMethodTrait;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\GetTransformResponseBodyTrait;
 use Jane\Component\OpenApiCommon\Generator\EndpointGeneratorInterface;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Generator\Traits\OptionResolverNormalizationTrait;
@@ -55,6 +57,21 @@ class EndpointGenerator implements EndpointGeneratorInterface
         private readonly RequestBodyGenerator $requestBodyGenerator,
     ) {
         $this->guessClass = new GuessClass(Schema::class, $denormalizer);
+    }
+
+    protected function schemaClassName(): string
+    {
+        return Schema::class;
+    }
+
+    protected function responseClassName(): string
+    {
+        return Response::class;
+    }
+
+    protected function responseNormalizerClassName(): string
+    {
+        return ResponseNormalizer::class;
     }
 
     public function createEndpointClass(OperationGuess $operation, Context $context): array

@@ -38,11 +38,11 @@ class ResponseFloatingIpCreatedNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('floating_ip', $data)) {
-            $object->setFloatingIp($this->denormalizer->denormalize($data['floating_ip'], \Jane\Generated\DigitalOcean\Model\FloatingIp::class, 'json', $context));
+            $object->floatingIp = $this->denormalizer->denormalize($data['floating_ip'], \Jane\Generated\DigitalOcean\Model\FloatingIp::class, 'json', $context);
             unset($data['floating_ip']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\ResponseFloatingIpCreatedLinks::class, 'json', $context));
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Generated\DigitalOcean\Model\ResponseFloatingIpCreatedLinks::class, 'json', $context);
             unset($data['links']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class ResponseFloatingIpCreatedNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('floatingIp') && null !== $data->getFloatingIp()) {
-            $dataArray['floating_ip'] = $data->getFloatingIp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getFloatingIp(), 'json', $context));
+        if (array_key_exists('floatingIp', get_object_vars($data)) && null !== ($data->floatingIp ?? null)) {
+            $dataArray['floating_ip'] = ($data->floatingIp ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->floatingIp ?? null, 'json', $context));
         }
-        if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

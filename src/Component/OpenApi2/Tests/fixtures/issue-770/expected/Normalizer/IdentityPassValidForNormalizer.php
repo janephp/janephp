@@ -38,21 +38,21 @@ class IdentityPassValidForNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('expirationValue', $data)) {
-            $object->setExpirationValue($data['expirationValue']);
+            $object->expirationValue = $data['expirationValue'];
         }
         if (\array_key_exists('expirationUnit', $data)) {
-            $object->setExpirationUnit($data['expirationUnit']);
+            $object->expirationUnit = $data['expirationUnit'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('expirationValue') && null !== $data->getExpirationValue()) {
-            $dataArray['expirationValue'] = $data->getExpirationValue();
+        if (array_key_exists('expirationValue', get_object_vars($data)) && null !== ($data->expirationValue ?? null)) {
+            $dataArray['expirationValue'] = $data->expirationValue ?? null;
         }
-        if ($data->isInitialized('expirationUnit') && null !== $data->getExpirationUnit()) {
-            $dataArray['expirationUnit'] = $data->getExpirationUnit();
+        if (array_key_exists('expirationUnit', get_object_vars($data)) && null !== ($data->expirationUnit ?? null)) {
+            $dataArray['expirationUnit'] = $data->expirationUnit ?? null;
         }
         return $dataArray;
     }

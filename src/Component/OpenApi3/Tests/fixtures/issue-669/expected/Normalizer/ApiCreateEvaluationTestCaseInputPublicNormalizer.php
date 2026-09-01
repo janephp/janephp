@@ -38,15 +38,15 @@ class ApiCreateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('agent_workspace_name', $data)) {
-            $object->setAgentWorkspaceName($data['agent_workspace_name']);
+            $object->agentWorkspaceName = $data['agent_workspace_name'];
             unset($data['agent_workspace_name']);
         }
         if (\array_key_exists('dataset_uuid', $data)) {
-            $object->setDatasetUuid($data['dataset_uuid']);
+            $object->datasetUuid = $data['dataset_uuid'];
             unset($data['dataset_uuid']);
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
             unset($data['description']);
         }
         if (\array_key_exists('metrics', $data)) {
@@ -54,19 +54,19 @@ class ApiCreateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
             foreach ($data['metrics'] as $value) {
                 $values[] = $value;
             }
-            $object->setMetrics($values);
+            $object->metrics = $values;
             unset($data['metrics']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('star_metric', $data)) {
-            $object->setStarMetric($this->denormalizer->denormalize($data['star_metric'], \Jane\Generated\DigitalOcean\Model\ApiStarMetric::class, 'json', $context));
+            $object->starMetric = $this->denormalizer->denormalize($data['star_metric'], \Jane\Generated\DigitalOcean\Model\ApiStarMetric::class, 'json', $context);
             unset($data['star_metric']);
         }
         if (\array_key_exists('workspace_uuid', $data)) {
-            $object->setWorkspaceUuid($data['workspace_uuid']);
+            $object->workspaceUuid = $data['workspace_uuid'];
             unset($data['workspace_uuid']);
         }
         foreach ($data as $key => $value_1) {
@@ -79,30 +79,30 @@ class ApiCreateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agentWorkspaceName') && null !== $data->getAgentWorkspaceName()) {
-            $dataArray['agent_workspace_name'] = $data->getAgentWorkspaceName();
+        if (array_key_exists('agentWorkspaceName', get_object_vars($data)) && null !== ($data->agentWorkspaceName ?? null)) {
+            $dataArray['agent_workspace_name'] = $data->agentWorkspaceName ?? null;
         }
-        if ($data->isInitialized('datasetUuid') && null !== $data->getDatasetUuid()) {
-            $dataArray['dataset_uuid'] = $data->getDatasetUuid();
+        if (array_key_exists('datasetUuid', get_object_vars($data)) && null !== ($data->datasetUuid ?? null)) {
+            $dataArray['dataset_uuid'] = $data->datasetUuid ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('metrics') && null !== $data->getMetrics()) {
+        if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
             $values = [];
-            foreach ($data->getMetrics() as $value) {
+            foreach ($data->metrics ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['metrics'] = $values;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('starMetric') && null !== $data->getStarMetric()) {
-            $dataArray['star_metric'] = $data->getStarMetric() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStarMetric(), 'json', $context));
+        if (array_key_exists('starMetric', get_object_vars($data)) && null !== ($data->starMetric ?? null)) {
+            $dataArray['star_metric'] = ($data->starMetric ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric ?? null, 'json', $context));
         }
-        if ($data->isInitialized('workspaceUuid') && null !== $data->getWorkspaceUuid()) {
-            $dataArray['workspace_uuid'] = $data->getWorkspaceUuid();
+        if (array_key_exists('workspaceUuid', get_object_vars($data)) && null !== ($data->workspaceUuid ?? null)) {
+            $dataArray['workspace_uuid'] = $data->workspaceUuid ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

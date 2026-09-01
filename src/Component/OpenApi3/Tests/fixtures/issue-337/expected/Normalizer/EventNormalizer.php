@@ -47,35 +47,35 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['portfolioId'] = (float) $data['portfolioId'];
         }
         if (\array_key_exists('eventId', $data)) {
-            $object->setEventId($data['eventId']);
+            $object->eventId = $data['eventId'];
             unset($data['eventId']);
         }
         if (\array_key_exists('companyId', $data)) {
-            $object->setCompanyId($data['companyId']);
+            $object->companyId = $data['companyId'];
             unset($data['companyId']);
         }
         if (\array_key_exists('portfolioId', $data)) {
-            $object->setPortfolioId($data['portfolioId']);
+            $object->portfolioId = $data['portfolioId'];
             unset($data['portfolioId']);
         }
         if (\array_key_exists('ruleName', $data)) {
-            $object->setRuleName($data['ruleName']);
+            $object->ruleName = $data['ruleName'];
             unset($data['ruleName']);
         }
         if (\array_key_exists('localEventCode', $data)) {
-            $object->setLocalEventCode($data['localEventCode']);
+            $object->localEventCode = $data['localEventCode'];
             unset($data['localEventCode']);
         }
         if (\array_key_exists('globalEventCode', $data)) {
-            $object->setGlobalEventCode($data['globalEventCode']);
+            $object->globalEventCode = $data['globalEventCode'];
             unset($data['globalEventCode']);
         }
         if (\array_key_exists('newValue', $data)) {
-            $object->setNewValue($data['newValue']);
+            $object->newValue = $data['newValue'];
             unset($data['newValue']);
         }
         if (\array_key_exists('oldValue', $data)) {
-            $object->setOldValue($data['oldValue']);
+            $object->oldValue = $data['oldValue'];
             unset($data['oldValue']);
         }
         if (\array_key_exists('eventDate', $data)) {
@@ -83,7 +83,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             if (false === $date) {
                 throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['eventDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setEventDate($date);
+            $object->eventDate = $date;
             unset($data['eventDate']);
         }
         if (\array_key_exists('createdDate', $data)) {
@@ -91,7 +91,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             if (false === $date_1) {
                 throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['createdDate'], 'Y-m-d\TH:i:sP');
             }
-            $object->setCreatedDate($date_1);
+            $object->createdDate = $date_1;
             unset($data['createdDate']);
         }
         foreach ($data as $key => $value) {
@@ -104,35 +104,35 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('eventId') && null !== $data->getEventId()) {
-            $dataArray['eventId'] = $data->getEventId();
+        if (array_key_exists('eventId', get_object_vars($data)) && null !== ($data->eventId ?? null)) {
+            $dataArray['eventId'] = $data->eventId ?? null;
         }
-        if ($data->isInitialized('companyId') && null !== $data->getCompanyId()) {
-            $dataArray['companyId'] = $data->getCompanyId();
+        if (array_key_exists('companyId', get_object_vars($data)) && null !== ($data->companyId ?? null)) {
+            $dataArray['companyId'] = $data->companyId ?? null;
         }
-        if ($data->isInitialized('portfolioId') && null !== $data->getPortfolioId()) {
-            $dataArray['portfolioId'] = $data->getPortfolioId();
+        if (array_key_exists('portfolioId', get_object_vars($data)) && null !== ($data->portfolioId ?? null)) {
+            $dataArray['portfolioId'] = $data->portfolioId ?? null;
         }
-        if ($data->isInitialized('ruleName') && null !== $data->getRuleName()) {
-            $dataArray['ruleName'] = $data->getRuleName();
+        if (array_key_exists('ruleName', get_object_vars($data)) && null !== ($data->ruleName ?? null)) {
+            $dataArray['ruleName'] = $data->ruleName ?? null;
         }
-        if ($data->isInitialized('localEventCode') && null !== $data->getLocalEventCode()) {
-            $dataArray['localEventCode'] = $data->getLocalEventCode();
+        if (array_key_exists('localEventCode', get_object_vars($data)) && null !== ($data->localEventCode ?? null)) {
+            $dataArray['localEventCode'] = $data->localEventCode ?? null;
         }
-        if ($data->isInitialized('globalEventCode') && null !== $data->getGlobalEventCode()) {
-            $dataArray['globalEventCode'] = $data->getGlobalEventCode();
+        if (array_key_exists('globalEventCode', get_object_vars($data)) && null !== ($data->globalEventCode ?? null)) {
+            $dataArray['globalEventCode'] = $data->globalEventCode ?? null;
         }
-        if ($data->isInitialized('newValue') && null !== $data->getNewValue()) {
-            $dataArray['newValue'] = $data->getNewValue();
+        if (array_key_exists('newValue', get_object_vars($data)) && null !== ($data->newValue ?? null)) {
+            $dataArray['newValue'] = $data->newValue ?? null;
         }
-        if ($data->isInitialized('oldValue') && null !== $data->getOldValue()) {
-            $dataArray['oldValue'] = $data->getOldValue();
+        if (array_key_exists('oldValue', get_object_vars($data)) && null !== ($data->oldValue ?? null)) {
+            $dataArray['oldValue'] = $data->oldValue ?? null;
         }
-        if ($data->isInitialized('eventDate') && null !== $data->getEventDate()) {
-            $dataArray['eventDate'] = $data->getEventDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('eventDate', get_object_vars($data)) && null !== ($data->eventDate ?? null)) {
+            $dataArray['eventDate'] = ($data->eventDate ?? null)->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('createdDate') && null !== $data->getCreatedDate()) {
-            $dataArray['createdDate'] = $data->getCreatedDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('createdDate', get_object_vars($data)) && null !== ($data->createdDate ?? null)) {
+            $dataArray['createdDate'] = ($data->createdDate ?? null)->format('Y-m-d\TH:i:sP');
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

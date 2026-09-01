@@ -5,11 +5,12 @@ namespace Jane\Component\OpenApiCommon;
 use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\JsonSchema\Generator\Options;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\Registry\Registry;
-use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\ReferenceResolver;
 use Jane\Component\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
@@ -35,6 +36,8 @@ abstract class JaneOpenApi extends ChainGenerator
 
     protected SchemaParser $schemaParser;
     protected Naming $naming;
+
+    protected ChainValidatorFactory $chainValidatorFactory;
 
     /** @var array<string, mixed> */
     protected array $options = [];
@@ -73,7 +76,7 @@ abstract class JaneOpenApi extends ChainGenerator
             $schema->setParsed($openApiSpec);
         }
 
-        $chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->serializer);
+        $chainValidator = $this->chainValidatorFactory->create($this->naming, $registry, $this->serializer);
         $checkWhitelistedPaths = \count($registry->getWhitelistedPaths()) > 0;
 
         foreach ($schemas as $schema) {
@@ -182,42 +185,32 @@ abstract class JaneOpenApi extends ChainGenerator
         return new Serializer([new $objectNormalizerClass()], $encoders);
     }
 
-    abstract protected static function create(array $options = []): self;
+    abstract protected static function create(array $options = [], ?ChainValidatorFactory $chainValidatorFactory = null): self;
 
     abstract protected static function generators(DenormalizerInterface $denormalizer, array $options = []): \Generator;
 
     public static function build(array $options = [])
     {
-        Reference::resetConfig();
-        if ($options['allow-external-refs'] ?? false) {
-            Reference::allowExternalRefs(true);
-        }
-        if (!empty($options['external-ref-allowed-hosts'] ?? [])) {
-            Reference::setAllowedExternalHosts($options['external-ref-allowed-hosts']);
-        }
-        if (!empty($options['external-ref-follow-redirects'] ?? false)) {
-            Reference::setFollowRedirects(true);
-        }
-        if (!empty($options['allowed-local-ref-roots'] ?? [])) {
-            Reference::setAllowedLocalRefRoots($options['allowed-local-ref-roots']);
-        }
+        $options = Options::fromArray($options);
+        $optionsArray = $options->toArray();
+        ReferenceResolver::default()->applyOptions($optionsArray);
 
-        ChainValidatorFactory::resetCustomValidators();
-        ChainValidatorFactory::setDateFormats(
-            $options['full-date-format'] ?? 'Y-m-d',
-            $options['date-format'] ?? \DateTimeInterface::RFC3339,
-            $options['date-input-format'] ?? null,
+        $chainValidatorFactory = new ChainValidatorFactory(
+            $options->fullDateFormat,
+            $options->dateFormat,
+            $options->dateInputFormat,
         );
-        foreach ($options['validators'] ?? [] as $validator) {
-            ChainValidatorFactory::addValidator($validator);
+        foreach ($options->validators as $validator) {
+            $chainValidatorFactory->addValidator($validator);
         }
 
-        $instance = static::create($options);
-        $instance->options = $options;
+        $instance = static::create($optionsArray, $chainValidatorFactory);
+        $instance->options = $optionsArray;
+        $instance->chainValidatorFactory = $chainValidatorFactory;
 
         /** @var DenormalizerInterface $denormalizer */
         $denormalizer = $instance->getSerializer();
-        $generators = static::generators($denormalizer, $options);
+        $generators = static::generators($denormalizer, $optionsArray);
 
         foreach ($generators as $generator) {
             $instance->addGenerator($generator);

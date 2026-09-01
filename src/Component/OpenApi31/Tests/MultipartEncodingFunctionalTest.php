@@ -226,14 +226,14 @@ try {
     foreach ($config['operations'] as $parameter => $operation) {
         $type = $operation['type'] ?? 'string';
         if ('string' === $type) {
-            $upload->{'set' . ucfirst($parameter)}($operation['value']);
+            $upload->{$parameter} = $operation['value'];
         } elseif ('realfile' === $type) {
-            $upload->{'set' . ucfirst($parameter)}(fopen($operation['value'], 'r'));
+            $upload->{$parameter} = fopen($operation['value'], 'r');
         } elseif ('inmemory' === $type) {
             $stream = fopen('php://temp', 'rb+');
             fwrite($stream, (string) $operation['value']);
             rewind($stream);
-            $upload->{'set' . ucfirst($parameter)}($stream);
+            $upload->{$parameter} = $stream;
         } else {
             throw new RuntimeException(sprintf('Unknown operation type "%s" for "%s".', $type, $parameter));
         }

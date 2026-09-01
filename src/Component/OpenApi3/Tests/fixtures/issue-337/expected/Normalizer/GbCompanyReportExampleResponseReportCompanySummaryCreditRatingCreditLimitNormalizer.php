@@ -38,11 +38,11 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimitN
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('currency', $data)) {
-            $object->setCurrency($data['currency']);
+            $object->currency = $data['currency'];
             unset($data['currency']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
             unset($data['value']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimitN
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['currency'] = $data->getCurrency();
-        $dataArray['value'] = $data->getValue();
+        $dataArray['currency'] = $data->currency ?? null;
+        $dataArray['value'] = $data->value ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -38,11 +38,11 @@ class V2VpcsVpcIdPeeringsPostBodyNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('vpc_id', $data)) {
-            $object->setVpcId($data['vpc_id']);
+            $object->vpcId = $data['vpc_id'];
             unset($data['vpc_id']);
         }
         foreach ($data as $key => $value) {
@@ -55,8 +55,8 @@ class V2VpcsVpcIdPeeringsPostBodyNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['vpc_id'] = $data->getVpcId();
+        $dataArray['name'] = $data->name ?? null;
+        $dataArray['vpc_id'] = $data->vpcId ?? null;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

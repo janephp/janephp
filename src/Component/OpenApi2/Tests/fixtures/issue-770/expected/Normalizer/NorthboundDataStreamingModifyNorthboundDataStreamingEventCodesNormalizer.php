@@ -42,7 +42,7 @@ class NorthboundDataStreamingModifyNorthboundDataStreamingEventCodesNormalizer i
             foreach ($data['northboundDataStreamingAcceptedEventCodes'] as $value) {
                 $values[] = $value;
             }
-            $object->setNorthboundDataStreamingAcceptedEventCodes($values);
+            $object->northboundDataStreamingAcceptedEventCodes = $values;
         }
         return $object;
     }
@@ -50,7 +50,7 @@ class NorthboundDataStreamingModifyNorthboundDataStreamingEventCodesNormalizer i
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getNorthboundDataStreamingAcceptedEventCodes() as $value) {
+        foreach ($data->northboundDataStreamingAcceptedEventCodes ?? null as $value) {
             $values[] = $value;
         }
         $dataArray['northboundDataStreamingAcceptedEventCodes'] = $values;

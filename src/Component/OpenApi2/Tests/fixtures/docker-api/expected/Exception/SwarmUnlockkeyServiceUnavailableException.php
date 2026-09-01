@@ -4,19 +4,18 @@ namespace Docker\Api\Exception;
 
 class SwarmUnlockkeyServiceUnavailableException extends ServiceUnavailableException
 {
-    /**
-     * @var \Docker\Api\Model\ErrorResponse
-     */
-    private $errorResponse;
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(\Docker\Api\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(
+        /**
+         * @var \Docker\Api\Model\ErrorResponse
+         */
+        private readonly \Docker\Api\Model\ErrorResponse $errorResponse,
+        /**
+         * @var \Psr\Http\Message\ResponseInterface
+         */
+        private readonly \Psr\Http\Message\ResponseInterface $response
+    )
     {
         parent::__construct('node is not part of a swarm');
-        $this->errorResponse = $errorResponse;
-        $this->response = $response;
     }
     public function getErrorResponse(): \Docker\Api\Model\ErrorResponse
     {

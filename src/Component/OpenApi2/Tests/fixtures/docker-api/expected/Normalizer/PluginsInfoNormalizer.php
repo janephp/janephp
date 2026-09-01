@@ -45,58 +45,58 @@ class PluginsInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             foreach ($data['Volume'] as $value) {
                 $values[] = $value;
             }
-            $object->setVolume($values);
+            $object->volume = $values;
         }
         if (\array_key_exists('Network', $data)) {
             $values_1 = [];
             foreach ($data['Network'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setNetwork($values_1);
+            $object->network = $values_1;
         }
         if (\array_key_exists('Authorization', $data)) {
             $values_2 = [];
             foreach ($data['Authorization'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setAuthorization($values_2);
+            $object->authorization = $values_2;
         }
         if (\array_key_exists('Log', $data)) {
             $values_3 = [];
             foreach ($data['Log'] as $value_3) {
                 $values_3[] = $value_3;
             }
-            $object->setLog($values_3);
+            $object->log = $values_3;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('volume') && null !== $data->getVolume()) {
+        if (array_key_exists('volume', get_object_vars($data)) && null !== ($data->volume ?? null)) {
             $values = [];
-            foreach ($data->getVolume() as $value) {
+            foreach ($data->volume ?? null as $value) {
                 $values[] = $value;
             }
             $dataArray['Volume'] = $values;
         }
-        if ($data->isInitialized('network') && null !== $data->getNetwork()) {
+        if (array_key_exists('network', get_object_vars($data)) && null !== ($data->network ?? null)) {
             $values_1 = [];
-            foreach ($data->getNetwork() as $value_1) {
+            foreach ($data->network ?? null as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['Network'] = $values_1;
         }
-        if ($data->isInitialized('authorization') && null !== $data->getAuthorization()) {
+        if (array_key_exists('authorization', get_object_vars($data)) && null !== ($data->authorization ?? null)) {
             $values_2 = [];
-            foreach ($data->getAuthorization() as $value_2) {
+            foreach ($data->authorization ?? null as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['Authorization'] = $values_2;
         }
-        if ($data->isInitialized('log') && null !== $data->getLog()) {
+        if (array_key_exists('log', get_object_vars($data)) && null !== ($data->log ?? null)) {
             $values_3 = [];
-            foreach ($data->getLog() as $value_3) {
+            foreach ($data->log ?? null as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['Log'] = $values_3;

@@ -26,10 +26,10 @@ class ItemsValidator implements ValidatorInterface
             return false;
         }
 
-        $type = $object->getType();
+        $type = ($object->type ?? null);
         $isArray = \is_array($type) ? \in_array('array', $type) : 'array' === $type;
 
-        return $isArray && \is_object($object->getItems()) && $this->checkObject($object->getItems());
+        return $isArray && \is_object($object->items ?? null) && $this->checkObject($object->items ?? null);
     }
 
     /**
@@ -39,7 +39,7 @@ class ItemsValidator implements ValidatorInterface
     {
         $collector = new ValidatorGuessCollector();
 
-        $this->chainValidator->guess($object->getItems(), $name, $collector);
+        $this->chainValidator->guess($object->items ?? null, $name, $collector);
 
         $constraints = array_filter(
             $collector->getValidatorGuesses(),

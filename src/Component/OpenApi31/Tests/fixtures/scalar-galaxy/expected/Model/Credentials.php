@@ -8,59 +8,15 @@ class Credentials implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var string
      */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    public string $email;
     /**
      * @var string
      */
-    protected $email;
-    /**
-     * @var string
-     */
-    protected $password;
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-    /**
-     * @param string $email
-     *
-     * @return self
-     */
-    public function setEmail(string $email): self
-    {
-        $this->initialized['email'] = true;
-        $this->email = $email;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-    /**
-     * @param string $password
-     *
-     * @return self
-     */
-    public function setPassword(string $password): self
-    {
-        $this->initialized['password'] = true;
-        $this->password = $password;
-        return $this;
-    }
+    public string $password;
     public function definedProperties(): array
     {
-        return ['email' => ['email', 'getEmail', 'setEmail'], 'password' => ['password', 'getPassword', 'setPassword']];
+        return ['email' => 'email', 'password' => 'password'];
     }
 }

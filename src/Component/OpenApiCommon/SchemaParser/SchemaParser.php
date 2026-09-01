@@ -11,7 +11,8 @@ use Symfony\Component\Yaml\Yaml;
 
 abstract class SchemaParser
 {
-    protected static $parsed = [];
+    /** @var array<string, mixed> */
+    private array $parsed = [];
 
     protected const OPEN_API_MODEL = null;
     protected const OPEN_API_VERSION_MAJOR = null;
@@ -23,13 +24,13 @@ abstract class SchemaParser
 
     public function parseSchema(string $openApiSpecPath)
     {
-        if (!\array_key_exists($openApiSpecPath, static::$parsed)) {
+        if (!\array_key_exists($openApiSpecPath, $this->parsed)) {
             $openApiSpecContents = file_get_contents($openApiSpecPath);
             $jsonException = null;
             $yamlException = null;
 
             try {
-                return static::$parsed[$openApiSpecPath] = $this->deserialize($openApiSpecContents, $openApiSpecPath);
+                return $this->parsed[$openApiSpecPath] = $this->deserialize($openApiSpecContents, $openApiSpecPath);
             } catch (InvalidSchemaException $exception) {
                 // Structural violations do not depend on the serialization format,
                 // retrying as YAML would only report the same problem again.
@@ -46,7 +47,7 @@ abstract class SchemaParser
                     Yaml::PARSE_OBJECT | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
                 );
 
-                return static::$parsed[$openApiSpecPath] = $this->denormalize($content, $openApiSpecPath);
+                return $this->parsed[$openApiSpecPath] = $this->denormalize($content, $openApiSpecPath);
             } catch (InvalidSchemaException $exception) {
                 throw $exception;
             } catch (\TypeError $exception) {
@@ -56,7 +57,7 @@ abstract class SchemaParser
             }
         }
 
-        return static::$parsed[$openApiSpecPath];
+        return $this->parsed[$openApiSpecPath];
     }
 
     protected function deserialize($openApiSpecContents, $openApiSpecPath)

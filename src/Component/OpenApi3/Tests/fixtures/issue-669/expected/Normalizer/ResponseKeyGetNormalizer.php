@@ -42,7 +42,7 @@ class ResponseKeyGetNormalizer implements DenormalizerInterface, NormalizerInter
             foreach ($data['keys'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\Key::class, 'json', $context);
             }
-            $object->setKeys($values);
+            $object->keys = $values;
             unset($data['keys']);
         }
         foreach ($data as $key => $value_1) {
@@ -55,9 +55,9 @@ class ResponseKeyGetNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('keys') && null !== $data->getKeys()) {
+        if (array_key_exists('keys', get_object_vars($data)) && null !== ($data->keys ?? null)) {
             $values = [];
-            foreach ($data->getKeys() as $value) {
+            foreach ($data->keys ?? null as $value) {
                 $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['keys'] = $values;

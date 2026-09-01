@@ -38,15 +38,15 @@ class ApiSpacesDataSourceNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('bucket_name', $data)) {
-            $object->setBucketName($data['bucket_name']);
+            $object->bucketName = $data['bucket_name'];
             unset($data['bucket_name']);
         }
         if (\array_key_exists('item_path', $data)) {
-            $object->setItemPath($data['item_path']);
+            $object->itemPath = $data['item_path'];
             unset($data['item_path']);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($data['region']);
+            $object->region = $data['region'];
             unset($data['region']);
         }
         foreach ($data as $key => $value) {
@@ -59,14 +59,14 @@ class ApiSpacesDataSourceNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('bucketName') && null !== $data->getBucketName()) {
-            $dataArray['bucket_name'] = $data->getBucketName();
+        if (array_key_exists('bucketName', get_object_vars($data)) && null !== ($data->bucketName ?? null)) {
+            $dataArray['bucket_name'] = $data->bucketName ?? null;
         }
-        if ($data->isInitialized('itemPath') && null !== $data->getItemPath()) {
-            $dataArray['item_path'] = $data->getItemPath();
+        if (array_key_exists('itemPath', get_object_vars($data)) && null !== ($data->itemPath ?? null)) {
+            $dataArray['item_path'] = $data->itemPath ?? null;
         }
-        if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $data->getRegion();
+        if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
+            $dataArray['region'] = $data->region ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

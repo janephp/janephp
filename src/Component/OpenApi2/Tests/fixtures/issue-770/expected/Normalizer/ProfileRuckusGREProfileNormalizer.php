@@ -41,111 +41,111 @@ class ProfileRuckusGREProfileNormalizer implements DenormalizerInterface, Normal
             $data['dualTunnel'] = (bool) $data['dualTunnel'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
         }
         if (\array_key_exists('description', $data)) {
-            $object->setDescription($data['description']);
+            $object->description = $data['description'];
         }
         if (\array_key_exists('tunnelMode', $data)) {
-            $object->setTunnelMode($data['tunnelMode']);
+            $object->tunnelMode = $data['tunnelMode'];
         }
         if (\array_key_exists('tunnelEncryption', $data)) {
-            $object->setTunnelEncryption($data['tunnelEncryption']);
+            $object->tunnelEncryption = $data['tunnelEncryption'];
         }
         if (\array_key_exists('tunnelMtuAutoEnabled', $data)) {
-            $object->setTunnelMtuAutoEnabled($data['tunnelMtuAutoEnabled']);
+            $object->tunnelMtuAutoEnabled = $data['tunnelMtuAutoEnabled'];
         }
         if (\array_key_exists('tunnelMtuSize', $data)) {
-            $object->setTunnelMtuSize($data['tunnelMtuSize']);
+            $object->tunnelMtuSize = $data['tunnelMtuSize'];
         }
         if (\array_key_exists('keepAlivePeriod', $data)) {
-            $object->setKeepAlivePeriod($data['keepAlivePeriod']);
+            $object->keepAlivePeriod = $data['keepAlivePeriod'];
         }
         if (\array_key_exists('keepAliveRetry', $data)) {
-            $object->setKeepAliveRetry($data['keepAliveRetry']);
+            $object->keepAliveRetry = $data['keepAliveRetry'];
         }
         if (\array_key_exists('dualTunnel', $data)) {
-            $object->setDualTunnel($data['dualTunnel']);
+            $object->dualTunnel = $data['dualTunnel'];
         }
         if (\array_key_exists('domainId', $data)) {
-            $object->setDomainId($data['domainId']);
+            $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('createDateTime', $data)) {
-            $object->setCreateDateTime($data['createDateTime']);
+            $object->createDateTime = $data['createDateTime'];
         }
         if (\array_key_exists('modifiedDateTime', $data)) {
-            $object->setModifiedDateTime($data['modifiedDateTime']);
+            $object->modifiedDateTime = $data['modifiedDateTime'];
         }
         if (\array_key_exists('creatorId', $data)) {
-            $object->setCreatorId($data['creatorId']);
+            $object->creatorId = $data['creatorId'];
         }
         if (\array_key_exists('modifierId', $data)) {
-            $object->setModifierId($data['modifierId']);
+            $object->modifierId = $data['modifierId'];
         }
         if (\array_key_exists('creatorUsername', $data)) {
-            $object->setCreatorUsername($data['creatorUsername']);
+            $object->creatorUsername = $data['creatorUsername'];
         }
         if (\array_key_exists('modifierUsername', $data)) {
-            $object->setModifierUsername($data['modifierUsername']);
+            $object->modifierUsername = $data['modifierUsername'];
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id ?? null;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+        if (array_key_exists('description', get_object_vars($data)) && null !== ($data->description ?? null)) {
+            $dataArray['description'] = $data->description ?? null;
         }
-        if ($data->isInitialized('tunnelMode') && null !== $data->getTunnelMode()) {
-            $dataArray['tunnelMode'] = $data->getTunnelMode();
+        if (array_key_exists('tunnelMode', get_object_vars($data)) && null !== ($data->tunnelMode ?? null)) {
+            $dataArray['tunnelMode'] = $data->tunnelMode ?? null;
         }
-        if ($data->isInitialized('tunnelEncryption') && null !== $data->getTunnelEncryption()) {
-            $dataArray['tunnelEncryption'] = $data->getTunnelEncryption();
+        if (array_key_exists('tunnelEncryption', get_object_vars($data)) && null !== ($data->tunnelEncryption ?? null)) {
+            $dataArray['tunnelEncryption'] = $data->tunnelEncryption ?? null;
         }
-        if ($data->isInitialized('tunnelMtuAutoEnabled') && null !== $data->getTunnelMtuAutoEnabled()) {
-            $dataArray['tunnelMtuAutoEnabled'] = $data->getTunnelMtuAutoEnabled();
+        if (array_key_exists('tunnelMtuAutoEnabled', get_object_vars($data)) && null !== ($data->tunnelMtuAutoEnabled ?? null)) {
+            $dataArray['tunnelMtuAutoEnabled'] = $data->tunnelMtuAutoEnabled ?? null;
         }
-        if ($data->isInitialized('tunnelMtuSize') && null !== $data->getTunnelMtuSize()) {
-            $dataArray['tunnelMtuSize'] = $data->getTunnelMtuSize();
+        if (array_key_exists('tunnelMtuSize', get_object_vars($data)) && null !== ($data->tunnelMtuSize ?? null)) {
+            $dataArray['tunnelMtuSize'] = $data->tunnelMtuSize ?? null;
         }
-        if ($data->isInitialized('keepAlivePeriod') && null !== $data->getKeepAlivePeriod()) {
-            $dataArray['keepAlivePeriod'] = $data->getKeepAlivePeriod();
+        if (array_key_exists('keepAlivePeriod', get_object_vars($data)) && null !== ($data->keepAlivePeriod ?? null)) {
+            $dataArray['keepAlivePeriod'] = $data->keepAlivePeriod ?? null;
         }
-        if ($data->isInitialized('keepAliveRetry') && null !== $data->getKeepAliveRetry()) {
-            $dataArray['keepAliveRetry'] = $data->getKeepAliveRetry();
+        if (array_key_exists('keepAliveRetry', get_object_vars($data)) && null !== ($data->keepAliveRetry ?? null)) {
+            $dataArray['keepAliveRetry'] = $data->keepAliveRetry ?? null;
         }
-        if ($data->isInitialized('dualTunnel') && null !== $data->getDualTunnel()) {
-            $dataArray['dualTunnel'] = $data->getDualTunnel();
+        if (array_key_exists('dualTunnel', get_object_vars($data)) && null !== ($data->dualTunnel ?? null)) {
+            $dataArray['dualTunnel'] = $data->dualTunnel ?? null;
         }
-        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
-            $dataArray['domainId'] = $data->getDomainId();
+        if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
+            $dataArray['domainId'] = $data->domainId ?? null;
         }
-        if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
-            $dataArray['createDateTime'] = $data->getCreateDateTime();
+        if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
+            $dataArray['createDateTime'] = $data->createDateTime ?? null;
         }
-        if ($data->isInitialized('modifiedDateTime') && null !== $data->getModifiedDateTime()) {
-            $dataArray['modifiedDateTime'] = $data->getModifiedDateTime();
+        if (array_key_exists('modifiedDateTime', get_object_vars($data)) && null !== ($data->modifiedDateTime ?? null)) {
+            $dataArray['modifiedDateTime'] = $data->modifiedDateTime ?? null;
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
-            $dataArray['creatorId'] = $data->getCreatorId();
+        if (array_key_exists('creatorId', get_object_vars($data)) && null !== ($data->creatorId ?? null)) {
+            $dataArray['creatorId'] = $data->creatorId ?? null;
         }
-        if ($data->isInitialized('modifierId') && null !== $data->getModifierId()) {
-            $dataArray['modifierId'] = $data->getModifierId();
+        if (array_key_exists('modifierId', get_object_vars($data)) && null !== ($data->modifierId ?? null)) {
+            $dataArray['modifierId'] = $data->modifierId ?? null;
         }
-        if ($data->isInitialized('creatorUsername') && null !== $data->getCreatorUsername()) {
-            $dataArray['creatorUsername'] = $data->getCreatorUsername();
+        if (array_key_exists('creatorUsername', get_object_vars($data)) && null !== ($data->creatorUsername ?? null)) {
+            $dataArray['creatorUsername'] = $data->creatorUsername ?? null;
         }
-        if ($data->isInitialized('modifierUsername') && null !== $data->getModifierUsername()) {
-            $dataArray['modifierUsername'] = $data->getModifierUsername();
+        if (array_key_exists('modifierUsername', get_object_vars($data)) && null !== ($data->modifierUsername ?? null)) {
+            $dataArray['modifierUsername'] = $data->modifierUsername ?? null;
         }
         return $dataArray;
     }

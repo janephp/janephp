@@ -41,117 +41,117 @@ class XmpMappingEntrySearchRequestNormalizer implements DenormalizerInterface, N
             $data['debugMode'] = (bool) $data['debugMode'];
         }
         if (\array_key_exists('debugMode', $data)) {
-            $object->setDebugMode($data['debugMode']);
+            $object->debugMode = $data['debugMode'];
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values = [];
             foreach ($data['aggregationFilters'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
             }
-            $object->setAggregationFilters($values);
+            $object->aggregationFilters = $values;
         }
         elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
-            $object->setAggregationFilters(null);
+            $object->aggregationFilters = null;
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
             $values_1 = [];
             foreach ($data['aggregators'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregators($values_1);
+            $object->aggregators = $values_1;
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
-            $object->setAggregators(null);
+            $object->aggregators = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $value_2 = $data['filter'];
             if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
                 $value_2 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
             }
-            $object->setFilter($value_2);
+            $object->filter = $value_2;
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
-            $object->setFilter(null);
+            $object->filter = null;
         }
         if (\array_key_exists('limit', $data)) {
-            $object->setLimit($data['limit']);
+            $object->limit = $data['limit'];
         }
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-            $object->setPageToken($data['pageToken']);
+            $object->pageToken = $data['pageToken'];
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-            $object->setPageToken(null);
+            $object->pageToken = null;
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
-            $object->setSearchString($data['searchString']);
+            $object->searchString = $data['searchString'];
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
-            $object->setSearchString(null);
+            $object->searchString = null;
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
             $values_2 = [];
             foreach ($data['searchBehaviors'] as $value_3) {
                 $values_2[] = $value_3;
             }
-            $object->setSearchBehaviors($values_2);
+            $object->searchBehaviors = $values_2;
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
-            $object->setSearchBehaviors(null);
+            $object->searchBehaviors = null;
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
             $values_3 = [];
             foreach ($data['sort'] as $value_4) {
                 $values_3[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\SortInfo::class, 'json', $context);
             }
-            $object->setSort($values_3);
+            $object->sort = $values_3;
         }
         elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
-            $object->setSort(null);
+            $object->sort = null;
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['debugMode'] = $data->getDebugMode();
-        if ($data->isInitialized('aggregationFilters') && null !== $data->getAggregationFilters()) {
+        $dataArray['debugMode'] = $data->debugMode ?? null;
+        if (array_key_exists('aggregationFilters', get_object_vars($data)) && null !== ($data->aggregationFilters ?? null)) {
             $values = [];
-            foreach ($data->getAggregationFilters() as $value) {
+            foreach ($data->aggregationFilters ?? null as $value) {
                 $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['aggregationFilters'] = $values;
         }
-        if ($data->isInitialized('aggregators') && null !== $data->getAggregators()) {
+        if (array_key_exists('aggregators', get_object_vars($data)) && null !== ($data->aggregators ?? null)) {
             $values_1 = [];
-            foreach ($data->getAggregators() as $value_1) {
+            foreach ($data->aggregators ?? null as $value_1) {
                 $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['aggregators'] = $values_1;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $value_2 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_2 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+        if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
+            $value_2 = $data->filter ?? null;
+            if (is_object($data->filter ?? null)) {
+                $value_2 = ($data->filter ?? null) === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter ?? null, 'json', $context));
             }
             $dataArray['filter'] = $value_2;
         }
-        $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
-            $dataArray['pageToken'] = $data->getPageToken();
+        $dataArray['limit'] = $data->limit ?? null;
+        if (array_key_exists('pageToken', get_object_vars($data)) && null !== ($data->pageToken ?? null)) {
+            $dataArray['pageToken'] = $data->pageToken ?? null;
         }
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
-            $dataArray['searchString'] = $data->getSearchString();
+        if (array_key_exists('searchString', get_object_vars($data)) && null !== ($data->searchString ?? null)) {
+            $dataArray['searchString'] = $data->searchString ?? null;
         }
-        if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
+        if (array_key_exists('searchBehaviors', get_object_vars($data)) && null !== ($data->searchBehaviors ?? null)) {
             $values_2 = [];
-            foreach ($data->getSearchBehaviors() as $value_3) {
+            foreach ($data->searchBehaviors ?? null as $value_3) {
                 $values_2[] = $value_3;
             }
             $dataArray['searchBehaviors'] = $values_2;
         }
-        if ($data->isInitialized('sort') && null !== $data->getSort()) {
+        if (array_key_exists('sort', get_object_vars($data)) && null !== ($data->sort ?? null)) {
             $values_3 = [];
-            foreach ($data->getSort() as $value_4) {
+            foreach ($data->sort ?? null as $value_4) {
                 $values_3[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['sort'] = $values_3;

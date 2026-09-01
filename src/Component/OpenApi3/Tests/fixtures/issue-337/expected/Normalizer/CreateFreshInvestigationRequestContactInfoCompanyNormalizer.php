@@ -38,11 +38,11 @@ class CreateFreshInvestigationRequestContactInfoCompanyNormalizer implements Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('number', $data)) {
-            $object->setNumber($data['number']);
+            $object->number = $data['number'];
             unset($data['number']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class CreateFreshInvestigationRequestContactInfoCompanyNormalizer implements Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name ?? null;
         }
-        if ($data->isInitialized('number') && null !== $data->getNumber()) {
-            $dataArray['number'] = $data->getNumber();
+        if (array_key_exists('number', get_object_vars($data)) && null !== ($data->number ?? null)) {
+            $dataArray['number'] = $data->number ?? null;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

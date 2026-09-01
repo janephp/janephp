@@ -38,27 +38,27 @@ class ApiCreateKnowledgeBaseDataSourceInputPublicNormalizer implements Denormali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('aws_data_source', $data)) {
-            $object->setAwsDataSource($this->denormalizer->denormalize($data['aws_data_source'], \Jane\Generated\DigitalOcean\Model\ApiAWSDataSource::class, 'json', $context));
+            $object->awsDataSource = $this->denormalizer->denormalize($data['aws_data_source'], \Jane\Generated\DigitalOcean\Model\ApiAWSDataSource::class, 'json', $context);
             unset($data['aws_data_source']);
         }
         if (\array_key_exists('chunking_algorithm', $data)) {
-            $object->setChunkingAlgorithm($data['chunking_algorithm']);
+            $object->chunkingAlgorithm = $data['chunking_algorithm'];
             unset($data['chunking_algorithm']);
         }
         if (\array_key_exists('chunking_options', $data)) {
-            $object->setChunkingOptions($this->denormalizer->denormalize($data['chunking_options'], \Jane\Generated\DigitalOcean\Model\ApiChunkingOptions::class, 'json', $context));
+            $object->chunkingOptions = $this->denormalizer->denormalize($data['chunking_options'], \Jane\Generated\DigitalOcean\Model\ApiChunkingOptions::class, 'json', $context);
             unset($data['chunking_options']);
         }
         if (\array_key_exists('knowledge_base_uuid', $data)) {
-            $object->setKnowledgeBaseUuid($data['knowledge_base_uuid']);
+            $object->knowledgeBaseUuid = $data['knowledge_base_uuid'];
             unset($data['knowledge_base_uuid']);
         }
         if (\array_key_exists('spaces_data_source', $data)) {
-            $object->setSpacesDataSource($this->denormalizer->denormalize($data['spaces_data_source'], \Jane\Generated\DigitalOcean\Model\ApiSpacesDataSource::class, 'json', $context));
+            $object->spacesDataSource = $this->denormalizer->denormalize($data['spaces_data_source'], \Jane\Generated\DigitalOcean\Model\ApiSpacesDataSource::class, 'json', $context);
             unset($data['spaces_data_source']);
         }
         if (\array_key_exists('web_crawler_data_source', $data)) {
-            $object->setWebCrawlerDataSource($this->denormalizer->denormalize($data['web_crawler_data_source'], \Jane\Generated\DigitalOcean\Model\ApiWebCrawlerDataSource::class, 'json', $context));
+            $object->webCrawlerDataSource = $this->denormalizer->denormalize($data['web_crawler_data_source'], \Jane\Generated\DigitalOcean\Model\ApiWebCrawlerDataSource::class, 'json', $context);
             unset($data['web_crawler_data_source']);
         }
         foreach ($data as $key => $value) {
@@ -71,23 +71,23 @@ class ApiCreateKnowledgeBaseDataSourceInputPublicNormalizer implements Denormali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('awsDataSource') && null !== $data->getAwsDataSource()) {
-            $dataArray['aws_data_source'] = $data->getAwsDataSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAwsDataSource(), 'json', $context));
+        if (array_key_exists('awsDataSource', get_object_vars($data)) && null !== ($data->awsDataSource ?? null)) {
+            $dataArray['aws_data_source'] = ($data->awsDataSource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->awsDataSource ?? null, 'json', $context));
         }
-        if ($data->isInitialized('chunkingAlgorithm') && null !== $data->getChunkingAlgorithm()) {
-            $dataArray['chunking_algorithm'] = $data->getChunkingAlgorithm();
+        if (array_key_exists('chunkingAlgorithm', get_object_vars($data)) && null !== ($data->chunkingAlgorithm ?? null)) {
+            $dataArray['chunking_algorithm'] = $data->chunkingAlgorithm ?? null;
         }
-        if ($data->isInitialized('chunkingOptions') && null !== $data->getChunkingOptions()) {
-            $dataArray['chunking_options'] = $data->getChunkingOptions() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getChunkingOptions(), 'json', $context));
+        if (array_key_exists('chunkingOptions', get_object_vars($data)) && null !== ($data->chunkingOptions ?? null)) {
+            $dataArray['chunking_options'] = ($data->chunkingOptions ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->chunkingOptions ?? null, 'json', $context));
         }
-        if ($data->isInitialized('knowledgeBaseUuid') && null !== $data->getKnowledgeBaseUuid()) {
-            $dataArray['knowledge_base_uuid'] = $data->getKnowledgeBaseUuid();
+        if (array_key_exists('knowledgeBaseUuid', get_object_vars($data)) && null !== ($data->knowledgeBaseUuid ?? null)) {
+            $dataArray['knowledge_base_uuid'] = $data->knowledgeBaseUuid ?? null;
         }
-        if ($data->isInitialized('spacesDataSource') && null !== $data->getSpacesDataSource()) {
-            $dataArray['spaces_data_source'] = $data->getSpacesDataSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSpacesDataSource(), 'json', $context));
+        if (array_key_exists('spacesDataSource', get_object_vars($data)) && null !== ($data->spacesDataSource ?? null)) {
+            $dataArray['spaces_data_source'] = ($data->spacesDataSource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spacesDataSource ?? null, 'json', $context));
         }
-        if ($data->isInitialized('webCrawlerDataSource') && null !== $data->getWebCrawlerDataSource()) {
-            $dataArray['web_crawler_data_source'] = $data->getWebCrawlerDataSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getWebCrawlerDataSource(), 'json', $context));
+        if (array_key_exists('webCrawlerDataSource', get_object_vars($data)) && null !== ($data->webCrawlerDataSource ?? null)) {
+            $dataArray['web_crawler_data_source'] = ($data->webCrawlerDataSource ?? null) === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->webCrawlerDataSource ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
