@@ -1,10 +1,9 @@
 <?php
 
-use Http\Message\MultipartStream\MultipartStreamBuilder;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\StreamFactoryInterface;
+use Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 abstract class BaseEndpoint implements Endpoint
 {
@@ -15,14 +14,14 @@ abstract class BaseEndpoint implements Endpoint
 
     abstract public function getMethod(): string;
 
-    abstract public function getBody(SerializerInterface $serializer, ?StreamFactoryInterface $streamFactory = null): array;
+    abstract public function getBody(SerializerInterface $serializer): array;
 
     abstract public function getUri(): string;
 
     abstract public function getAuthenticationScopes(): array;
 
     /**
-     * Transform the response body into a value for the requested fetch mode.
+     * Transform the response body into a value.
      *
      * @return mixed
      */
@@ -125,9 +124,9 @@ abstract class BaseEndpoint implements Endpoint
         ];
     }
 
-    protected function getMultipartBody(?StreamFactoryInterface $streamFactory = null): array
+    protected function getMultipartBody(): array
     {
-        $bodyBuilder = new MultipartStreamBuilder($streamFactory);
+        $bodyBuilder = new MultipartStreamBuilder();
         $formParameters = $this->getFormOptionsResolver()->resolve($this->formParameters);
 
         foreach ($formParameters as $key => $value) {
