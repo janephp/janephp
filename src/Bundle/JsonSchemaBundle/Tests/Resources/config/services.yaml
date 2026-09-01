@@ -1,3 +1,0 @@
-services:
-  Jane\Bundle\JsonSchemaBundle\Command\JsonSchemaGenerateCommand:
-    public: true

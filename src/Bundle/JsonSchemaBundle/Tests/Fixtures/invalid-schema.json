@@ -1,0 +1,8 @@
+{
+    "type": "object",
+    "properties": {
+        "broken": {
+            "$ref": "this-file-does-not-exist.json"
+        }
+    }
+}
