@@ -68,7 +68,13 @@ covariance codes, generics-annotation requests, and dynamic
 5. **Coverage is every fixture, not a sample.** A gate over a curated subset
    lets the rest regress silently. The config points at the components'
    `Tests/fixtures` roots, so a new fixture is analysed the moment its
-   `expected/` tree is committed.
+   `expected/` tree is committed. The one structural exception: manifest-mode
+   fixtures (`github`, `twitter`, `api-platform-demo` — see
+   [ADR 0007](0007-tiered-fixture-baselines.md)) commit no `expected/` tree,
+   so their output is invisible to this analysis; the per-test php-parser
+   syntax gate is what keeps a validity floor under them. Extending the task
+   to their freshly generated output would close that gap and is left as a
+   follow-up.
 6. **Every fixture generates into its own namespace** (its config appends a
    segment derived from the fixture directory name), guarded by
    `ExpectedNamespaceUniquenessTest`. An analyser resolves duplicate class
