@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.14.0] - 2026-08-31
 ### Added
 - [JsonSchema] [OpenApi] New `default-additional-properties` option: decides how a schema that leaves `additionalProperties` unspecified is treated, across every component. `null` (default) keeps each component's own behavior — closed models for the JsonSchema component and OpenAPI 2, open models (unknown keys captured through the `AdditionalAndPatternProperties` trait) for OpenAPI 3 / 3.1; `true` treats unspecified `additionalProperties` as open everywhere; `false` treats it as closed everywhere, letting users keep closed models without editing their specification when migrating from older Jane versions where unspecified meant closed. An explicit `additionalProperties` value in the specification always wins over the option. The generated Symfony validation `Collection` constraint (`allowExtraFields`) follows the same resolution: while the option is unset it keeps its previous behavior (extra fields allowed for schemas without `additionalProperties` / `patternProperties`), and once the option is set — or the specification sets `additionalProperties: false` — it matches the generated model
 - [JsonSchema] [OpenApi] New `external-ref-follow-redirects` option: when enabled, fetching a remote reference follows HTTP redirects instead of aborting on a 3xx response. Disabled by default (an allowlisted host cannot bounce the fetch to an arbitrary host); the redirect target host is not re-checked against `external-ref-allowed-hosts`, so only enable it for remote documents you fully trust. Companion to the `Reference::setFollowRedirects()` runtime switch
@@ -958,7 +960,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.13.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.14.0...HEAD
+[7.14.0]: https://github.com/janephp/janephp/compare/v7.13.0...v7.14.0
 [7.13.0]: https://github.com/janephp/janephp/compare/v7.12.0...v7.13.0
 [7.12.0]: https://github.com/janephp/janephp/compare/v7.11.2...v7.12.0
 [7.11.2]: https://github.com/janephp/janephp/compare/v7.11.1...v7.11.2
