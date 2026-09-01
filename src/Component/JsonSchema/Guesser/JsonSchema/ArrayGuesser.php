@@ -28,7 +28,7 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     /** @var array<string, int> */
     protected array $refGuessLevel = [];
 
-/**
+    /**
      * Guess the class of array items.
      *
      * In this base guesser the check targets {@see Schema::class} (the schema

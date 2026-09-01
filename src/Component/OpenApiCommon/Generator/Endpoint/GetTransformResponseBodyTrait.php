@@ -202,7 +202,7 @@ EOD
 
     private function createResponseDenormalizationStatement(string $name, string $status, $response, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator): array
     {
-// No content response
+        // No content response
         if (!($response->content ?? null)) {
             [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                 $name,

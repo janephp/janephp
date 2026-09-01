@@ -36,7 +36,7 @@ class OperationUrlNaming implements OperationNamingInterface
                 $schema = ($response->schema ?? null);
                 if (\is_object($schema) && 'array' === ($schema->type ?? null)) {
                     $shouldSingularize = false;
-                } elseif (($response->content ?? null)) {
+                } elseif ($response->content ?? null) {
                     // OpenAPI 3 / 3.1 response shape: response.content.<media>.schema
                     $firstContent = (new \ArrayIterator(iterator_to_array($response->content ?? null)))->current();
                     $schema = \is_object($firstContent) ? ($firstContent->schema ?? null) : null;
