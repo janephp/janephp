@@ -71,14 +71,18 @@ This library provides a PHP console application to generate the Model. You can u
 at the root of your project:
 
 ```bash
-php vendor/bin/jane-openapi generate
+php vendor/bin/jane-openapi jane:open-api:generate
 ```
+
+> [!NOTE]
+> `jane:open-api:generate` is the canonical command name since Jane 7.14. The bare `generate` name is still available
+> as a backward-compatibility alias.
 
 This command will try to read a config file named `.jane-openapi` located on the current working directory. However,
 you can name it as you like and use the `--config-file` option to specify its location and name:
 
 ```bash
-php vendor/bin/jane-openapi generate --config-file=jane-openapi-configuration.php
+php vendor/bin/jane-openapi jane:open-api:generate --config-file=jane-openapi-configuration.php
 ```
 
 > [!NOTE]
@@ -94,7 +98,7 @@ php vendor/bin/jane-openapi generate --config-file=jane-openapi-configuration.ph
 > If you have a really big specification and want to optimize your generation time, you can disable garbage collector
 > during generation, you can read more about it on
 > [Scrutinizer blog post](https://scrutinizer-ci.com/blog/composer-gc-performance-who-is-affected-too). To do that,
-> use Jane as following: `php -d zend.enable_gc=0 vendor/bin/jane-openapi generate`.
+> use Jane as following: `php -d zend.enable_gc=0 vendor/bin/jane-openapi jane:open-api:generate`.
 
 ### Configuration file
 
