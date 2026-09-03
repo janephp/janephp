@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindServicesVlanPoolingByQueryCriteria extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindServicesVlanPoolingByQueryCriteria extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -44,10 +44,10 @@ class FindServicesVlanPoolingByQueryCriteria extends \Jane\Component\OpenApi3\Te
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVlanPoolingByQueryCriteriaBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVlanPoolingByQueryCriteriaForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVlanPoolingByQueryCriteriaInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVlanPoolingByQueryCriteriaUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaUnprocessableEntityException
      *
      * @return null
      */
@@ -56,16 +56,16 @@ class FindServicesVlanPoolingByQueryCriteria extends \Jane\Component\OpenApi3\Te
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVlanPoolingByQueryCriteriaBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVlanPoolingByQueryCriteriaForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVlanPoolingByQueryCriteriaInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVlanPoolingByQueryCriteriaUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesVlanPoolingByQueryCriteriaUnprocessableEntityException($response);
         }
         if (200 === $status) {
             return null;

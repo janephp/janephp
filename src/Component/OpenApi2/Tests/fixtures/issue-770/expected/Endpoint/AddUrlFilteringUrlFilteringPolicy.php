@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddUrlFilteringUrlFilteringPolicy extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddUrlFilteringUrlFilteringPolicy extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringCreateUrlFilteringPolicy $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringCreateUrlFilteringPolicy $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringCreateUrlFilteringPolicy $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringCreateUrlFilteringPolicy $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -44,31 +44,31 @@ class AddUrlFilteringUrlFilteringPolicy extends \Jane\Component\OpenApi3\Tests\E
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUrlFilteringUrlFilteringPolicyBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUrlFilteringUrlFilteringPolicyForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUrlFilteringUrlFilteringPolicyInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUrlFilteringUrlFilteringPolicyUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUrlFilteringUrlFilteringPolicyBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUrlFilteringUrlFilteringPolicyForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUrlFilteringUrlFilteringPolicyInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUrlFilteringUrlFilteringPolicyUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUrlFilteringUrlFilteringPolicyUnprocessableEntityException($response);
         }
         if (201 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult', 'json');
         }
     }
     public function getAuthenticationScopes(): array

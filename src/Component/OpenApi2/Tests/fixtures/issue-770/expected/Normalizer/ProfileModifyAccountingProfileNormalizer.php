@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProfileModifyAccountingProfileNormalizer implements DenormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyAccountingProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyAccountingProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyAccountingProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyAccountingProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyAccountingProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyAccountingProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -46,7 +46,7 @@ class ProfileModifyAccountingProfileNormalizer implements DenormalizerInterface,
         if (\array_key_exists('realmMappings', $data)) {
             $values = [];
             foreach ($data['realmMappings'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAcctServiceRealmMapping::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAcctServiceRealmMapping::class, 'json', $context);
             }
             $object->realmMappings = $values;
         }
@@ -73,7 +73,7 @@ class ProfileModifyAccountingProfileNormalizer implements DenormalizerInterface,
         if (array_key_exists('realmMappings', get_object_vars($data)) && null !== ($data->realmMappings ?? null)) {
             $values = [];
             foreach ($data->realmMappings ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['realmMappings'] = $values;
         }
@@ -90,6 +90,6 @@ class ProfileModifyAccountingProfileNormalizer implements DenormalizerInterface,
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyAccountingProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyAccountingProfile::class => false];
     }
 }

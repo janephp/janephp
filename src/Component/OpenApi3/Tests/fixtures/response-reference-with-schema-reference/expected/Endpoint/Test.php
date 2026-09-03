@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Endpoint;
 
-class Test extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class Test extends \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -24,7 +24,7 @@ class Test extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEn
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\TestBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Exception\TestBadRequestException
      *
      * @return null
      */
@@ -33,7 +33,7 @@ class Test extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEn
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\TestBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Failure', 'json'), $response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Exception\TestBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Model\Failure', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array

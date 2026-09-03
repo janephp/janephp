@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ClientDisconnectClientListNormalizer implements DenormalizerInterface, Nor
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ClientDisconnectClientList::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClientList::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ClientDisconnectClientList::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClientList::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ClientDisconnectClientList();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClientList();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -40,7 +40,7 @@ class ClientDisconnectClientListNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('clientList', $data)) {
             $values = [];
             foreach ($data['clientList'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ClientDisconnectClient::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClient::class, 'json', $context);
             }
             $object->clientList = $values;
         }
@@ -52,7 +52,7 @@ class ClientDisconnectClientListNormalizer implements DenormalizerInterface, Nor
         if (array_key_exists('clientList', get_object_vars($data)) && null !== ($data->clientList ?? null)) {
             $values = [];
             foreach ($data->clientList ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['clientList'] = $values;
         }
@@ -60,6 +60,6 @@ class ClientDisconnectClientListNormalizer implements DenormalizerInterface, Nor
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ClientDisconnectClientList::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClientList::class => false];
     }
 }

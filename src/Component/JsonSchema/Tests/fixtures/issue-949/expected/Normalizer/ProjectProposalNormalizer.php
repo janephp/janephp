@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\Issue949\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\ProjectProposal::class;
+        return $type === \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\ProjectProposal::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\ProjectProposal;
+        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\ProjectProposal;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\ProjectProposal();
+        $object = new \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\ProjectProposal();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -55,7 +55,7 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('ecoScore', $data) && $data['ecoScore'] !== null) {
             $value_1 = $data['ecoScore'];
             if (is_array($data['ecoScore']) and \array_key_exists('emission_factors', $data['ecoScore']) and \array_key_exists('tracingId', $data['ecoScore'])) {
-                $value_1 = $this->denormalizer->denormalize($data['ecoScore'], \Jane\Component\JsonSchema\Tests\Expected\Model\GlobalEcoScore::class, 'json', $context);
+                $value_1 = $this->denormalizer->denormalize($data['ecoScore'], \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\GlobalEcoScore::class, 'json', $context);
             } elseif (is_null($data['ecoScore'])) {
                 $value_1 = $data['ecoScore'];
             }
@@ -79,7 +79,7 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['name'] = $value;
         $value_1 = $data->ecoScore ?? null;
         if (is_object($data->ecoScore ?? null)) {
-            $value_1 = ($data->ecoScore ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ecoScore ?? null, 'json', $context));
+            $value_1 = ($data->ecoScore ?? null) === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\JsonObject($this->normalizer->normalize($data->ecoScore ?? null, 'json', $context));
         } elseif (is_null($data->ecoScore ?? null)) {
             $value_1 = $data->ecoScore ?? null;
         }
@@ -88,6 +88,6 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\JsonSchema\Tests\Expected\Model\ProjectProposal::class => false];
+        return [\Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\ProjectProposal::class => false];
     }
 }

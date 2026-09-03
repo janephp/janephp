@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint;
 
-class FindTweetsById extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindTweetsById extends \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\Endpoint
 {
     protected $accept;
     /**
@@ -22,7 +22,7 @@ class FindTweetsById extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEn
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
-    use \Jane\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -64,17 +64,17 @@ class FindTweetsById extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEn
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse|\Jane\OpenApi3\Tests\Expected\Model\Error
+     * @return null|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetLookupResponse|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse', 'json');
+            return $serializer->deserialize($body, 'Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetLookupResponse', 'json');
         }
         if (stripos(strtolower($contentType), 'application/json') !== false) {
-            return $serializer->deserialize($body, 'Jane\OpenApi3\Tests\Expected\Model\Error', 'json');
+            return $serializer->deserialize($body, 'Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error', 'json');
         }
         if (stripos(strtolower($contentType), 'application/problem+json') !== false) {
             try {

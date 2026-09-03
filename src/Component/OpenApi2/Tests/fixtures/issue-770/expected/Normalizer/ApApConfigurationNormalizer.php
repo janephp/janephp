@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ApApConfigurationNormalizer implements DenormalizerInterface, NormalizerIn
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ApApConfiguration::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApConfiguration::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ApApConfiguration::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApConfiguration::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApApConfiguration();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApConfiguration();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,7 +98,7 @@ class ApApConfigurationNormalizer implements DenormalizerInterface, NormalizerIn
             $object->locationAdditionalInfo = $data['locationAdditionalInfo'];
         }
         if (\array_key_exists('altitude', $data)) {
-            $object->altitude = $this->denormalizer->denormalize($data['altitude'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonAltitude::class, 'json', $context);
+            $object->altitude = $this->denormalizer->denormalize($data['altitude'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonAltitude::class, 'json', $context);
         }
         if (\array_key_exists('provisionChecklist', $data)) {
             $object->provisionChecklist = $data['provisionChecklist'];
@@ -107,52 +107,52 @@ class ApApConfigurationNormalizer implements DenormalizerInterface, NormalizerIn
             $object->administrativeState = $data['administrativeState'];
         }
         if (\array_key_exists('login', $data)) {
-            $object->login = $this->denormalizer->denormalize($data['login'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApLogin::class, 'json', $context);
+            $object->login = $this->denormalizer->denormalize($data['login'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApLogin::class, 'json', $context);
         }
         if (\array_key_exists('syslog', $data)) {
-            $object->syslog = $this->denormalizer->denormalize($data['syslog'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApSyslog::class, 'json', $context);
+            $object->syslog = $this->denormalizer->denormalize($data['syslog'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslog::class, 'json', $context);
         }
         if (\array_key_exists('radioConfig', $data)) {
-            $object->radioConfig = $this->denormalizer->denormalize($data['radioConfig'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadioConfigResponseAp::class, 'json', $context);
+            $object->radioConfig = $this->denormalizer->denormalize($data['radioConfig'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RadioRadioConfigResponseAp::class, 'json', $context);
         }
         if (\array_key_exists('network', $data)) {
-            $object->network = $this->denormalizer->denormalize($data['network'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApNetwork::class, 'json', $context);
+            $object->network = $this->denormalizer->denormalize($data['network'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApNetwork::class, 'json', $context);
         }
         if (\array_key_exists('networkIpv6', $data)) {
-            $object->networkIpv6 = $this->denormalizer->denormalize($data['networkIpv6'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApNetworkIpv6::class, 'json', $context);
+            $object->networkIpv6 = $this->denormalizer->denormalize($data['networkIpv6'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApNetworkIpv6::class, 'json', $context);
         }
         if (\array_key_exists('smartMonitor', $data)) {
-            $object->smartMonitor = $this->denormalizer->denormalize($data['smartMonitor'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonOverrideSmartMonitor::class, 'json', $context);
+            $object->smartMonitor = $this->denormalizer->denormalize($data['smartMonitor'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonOverrideSmartMonitor::class, 'json', $context);
         }
         if (\array_key_exists('bonjourGateway', $data)) {
-            $object->bonjourGateway = $this->denormalizer->denormalize($data['bonjourGateway'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
+            $object->bonjourGateway = $this->denormalizer->denormalize($data['bonjourGateway'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('clientAdmissionControl24', $data)) {
-            $object->clientAdmissionControl24 = $this->denormalizer->denormalize($data['clientAdmissionControl24'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonOverrideClientAdmissionControl::class, 'json', $context);
+            $object->clientAdmissionControl24 = $this->denormalizer->denormalize($data['clientAdmissionControl24'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonOverrideClientAdmissionControl::class, 'json', $context);
         }
         if (\array_key_exists('clientAdmissionControl50', $data)) {
-            $object->clientAdmissionControl50 = $this->denormalizer->denormalize($data['clientAdmissionControl50'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonOverrideClientAdmissionControl::class, 'json', $context);
+            $object->clientAdmissionControl50 = $this->denormalizer->denormalize($data['clientAdmissionControl50'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonOverrideClientAdmissionControl::class, 'json', $context);
         }
         if (\array_key_exists('snmpAgent', $data)) {
-            $object->snmpAgent = $this->denormalizer->denormalize($data['snmpAgent'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApSnmpOptions::class, 'json', $context);
+            $object->snmpAgent = $this->denormalizer->denormalize($data['snmpAgent'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApSnmpOptions::class, 'json', $context);
         }
         if (\array_key_exists('venueProfile', $data)) {
-            $object->venueProfile = $this->denormalizer->denormalize($data['venueProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
+            $object->venueProfile = $this->denormalizer->denormalize($data['venueProfile'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('channelEvaluationInterval', $data)) {
             $object->channelEvaluationInterval = $data['channelEvaluationInterval'];
         }
         if (\array_key_exists('apMgmtVlan', $data)) {
-            $object->apMgmtVlan = $this->denormalizer->denormalize($data['apMgmtVlan'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonApManagementVlan::class, 'json', $context);
+            $object->apMgmtVlan = $this->denormalizer->denormalize($data['apMgmtVlan'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonApManagementVlan::class, 'json', $context);
         }
         if (\array_key_exists('specific', $data)) {
-            $object->specific = $this->denormalizer->denormalize($data['specific'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelApModel::class, 'json', $context);
+            $object->specific = $this->denormalizer->denormalize($data['specific'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelApModel::class, 'json', $context);
         }
         if (\array_key_exists('meshOptions', $data)) {
-            $object->meshOptions = $this->denormalizer->denormalize($data['meshOptions'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApMesh::class, 'json', $context);
+            $object->meshOptions = $this->denormalizer->denormalize($data['meshOptions'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApMesh::class, 'json', $context);
         }
         if (\array_key_exists('recoverySsid', $data)) {
-            $object->recoverySsid = $this->denormalizer->denormalize($data['recoverySsid'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRecoverySsid::class, 'json', $context);
+            $object->recoverySsid = $this->denormalizer->denormalize($data['recoverySsid'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRecoverySsid::class, 'json', $context);
         }
         if (\array_key_exists('rogueApReportThreshold', $data)) {
             $object->rogueApReportThreshold = $data['rogueApReportThreshold'];
@@ -175,7 +175,7 @@ class ApApConfigurationNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('lteBandLockChannels', $data)) {
             $values = [];
             foreach ($data['lteBandLockChannels'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonLteBandLockChannel::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonLteBandLockChannel::class, 'json', $context);
             }
             $object->lteBandLockChannels = $values;
         }
@@ -239,7 +239,7 @@ class ApApConfigurationNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['locationAdditionalInfo'] = $data->locationAdditionalInfo ?? null;
         }
         if (array_key_exists('altitude', get_object_vars($data)) && null !== ($data->altitude ?? null)) {
-            $dataArray['altitude'] = ($data->altitude ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->altitude ?? null, 'json', $context));
+            $dataArray['altitude'] = ($data->altitude ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->altitude ?? null, 'json', $context));
         }
         if (array_key_exists('provisionChecklist', get_object_vars($data)) && null !== ($data->provisionChecklist ?? null)) {
             $dataArray['provisionChecklist'] = $data->provisionChecklist ?? null;
@@ -248,52 +248,52 @@ class ApApConfigurationNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['administrativeState'] = $data->administrativeState ?? null;
         }
         if (array_key_exists('login', get_object_vars($data)) && null !== ($data->login ?? null)) {
-            $dataArray['login'] = ($data->login ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->login ?? null, 'json', $context));
+            $dataArray['login'] = ($data->login ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->login ?? null, 'json', $context));
         }
         if (array_key_exists('syslog', get_object_vars($data)) && null !== ($data->syslog ?? null)) {
-            $dataArray['syslog'] = ($data->syslog ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->syslog ?? null, 'json', $context));
+            $dataArray['syslog'] = ($data->syslog ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->syslog ?? null, 'json', $context));
         }
         if (array_key_exists('radioConfig', get_object_vars($data)) && null !== ($data->radioConfig ?? null)) {
-            $dataArray['radioConfig'] = ($data->radioConfig ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->radioConfig ?? null, 'json', $context));
+            $dataArray['radioConfig'] = ($data->radioConfig ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->radioConfig ?? null, 'json', $context));
         }
         if (array_key_exists('network', get_object_vars($data)) && null !== ($data->network ?? null)) {
-            $dataArray['network'] = ($data->network ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->network ?? null, 'json', $context));
+            $dataArray['network'] = ($data->network ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->network ?? null, 'json', $context));
         }
         if (array_key_exists('networkIpv6', get_object_vars($data)) && null !== ($data->networkIpv6 ?? null)) {
-            $dataArray['networkIpv6'] = ($data->networkIpv6 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->networkIpv6 ?? null, 'json', $context));
+            $dataArray['networkIpv6'] = ($data->networkIpv6 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkIpv6 ?? null, 'json', $context));
         }
         if (array_key_exists('smartMonitor', get_object_vars($data)) && null !== ($data->smartMonitor ?? null)) {
-            $dataArray['smartMonitor'] = ($data->smartMonitor ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->smartMonitor ?? null, 'json', $context));
+            $dataArray['smartMonitor'] = ($data->smartMonitor ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->smartMonitor ?? null, 'json', $context));
         }
         if (array_key_exists('bonjourGateway', get_object_vars($data)) && null !== ($data->bonjourGateway ?? null)) {
-            $dataArray['bonjourGateway'] = ($data->bonjourGateway ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->bonjourGateway ?? null, 'json', $context));
+            $dataArray['bonjourGateway'] = ($data->bonjourGateway ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->bonjourGateway ?? null, 'json', $context));
         }
         if (array_key_exists('clientAdmissionControl24', get_object_vars($data)) && null !== ($data->clientAdmissionControl24 ?? null)) {
-            $dataArray['clientAdmissionControl24'] = ($data->clientAdmissionControl24 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->clientAdmissionControl24 ?? null, 'json', $context));
+            $dataArray['clientAdmissionControl24'] = ($data->clientAdmissionControl24 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clientAdmissionControl24 ?? null, 'json', $context));
         }
         if (array_key_exists('clientAdmissionControl50', get_object_vars($data)) && null !== ($data->clientAdmissionControl50 ?? null)) {
-            $dataArray['clientAdmissionControl50'] = ($data->clientAdmissionControl50 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->clientAdmissionControl50 ?? null, 'json', $context));
+            $dataArray['clientAdmissionControl50'] = ($data->clientAdmissionControl50 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clientAdmissionControl50 ?? null, 'json', $context));
         }
         if (array_key_exists('snmpAgent', get_object_vars($data)) && null !== ($data->snmpAgent ?? null)) {
-            $dataArray['snmpAgent'] = ($data->snmpAgent ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->snmpAgent ?? null, 'json', $context));
+            $dataArray['snmpAgent'] = ($data->snmpAgent ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->snmpAgent ?? null, 'json', $context));
         }
         if (array_key_exists('venueProfile', get_object_vars($data)) && null !== ($data->venueProfile ?? null)) {
-            $dataArray['venueProfile'] = ($data->venueProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->venueProfile ?? null, 'json', $context));
+            $dataArray['venueProfile'] = ($data->venueProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->venueProfile ?? null, 'json', $context));
         }
         if (array_key_exists('channelEvaluationInterval', get_object_vars($data)) && null !== ($data->channelEvaluationInterval ?? null)) {
             $dataArray['channelEvaluationInterval'] = $data->channelEvaluationInterval ?? null;
         }
         if (array_key_exists('apMgmtVlan', get_object_vars($data)) && null !== ($data->apMgmtVlan ?? null)) {
-            $dataArray['apMgmtVlan'] = ($data->apMgmtVlan ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->apMgmtVlan ?? null, 'json', $context));
+            $dataArray['apMgmtVlan'] = ($data->apMgmtVlan ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->apMgmtVlan ?? null, 'json', $context));
         }
         if (array_key_exists('specific', get_object_vars($data)) && null !== ($data->specific ?? null)) {
-            $dataArray['specific'] = ($data->specific ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->specific ?? null, 'json', $context));
+            $dataArray['specific'] = ($data->specific ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->specific ?? null, 'json', $context));
         }
         if (array_key_exists('meshOptions', get_object_vars($data)) && null !== ($data->meshOptions ?? null)) {
-            $dataArray['meshOptions'] = ($data->meshOptions ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->meshOptions ?? null, 'json', $context));
+            $dataArray['meshOptions'] = ($data->meshOptions ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->meshOptions ?? null, 'json', $context));
         }
         if (array_key_exists('recoverySsid', get_object_vars($data)) && null !== ($data->recoverySsid ?? null)) {
-            $dataArray['recoverySsid'] = ($data->recoverySsid ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->recoverySsid ?? null, 'json', $context));
+            $dataArray['recoverySsid'] = ($data->recoverySsid ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->recoverySsid ?? null, 'json', $context));
         }
         if (array_key_exists('rogueApReportThreshold', get_object_vars($data)) && null !== ($data->rogueApReportThreshold ?? null)) {
             $dataArray['rogueApReportThreshold'] = $data->rogueApReportThreshold ?? null;
@@ -316,7 +316,7 @@ class ApApConfigurationNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('lteBandLockChannels', get_object_vars($data)) && null !== ($data->lteBandLockChannels ?? null)) {
             $values = [];
             foreach ($data->lteBandLockChannels ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['lteBandLockChannels'] = $values;
         }
@@ -342,6 +342,6 @@ class ApApConfigurationNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ApApConfiguration::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApConfiguration::class => false];
     }
 }

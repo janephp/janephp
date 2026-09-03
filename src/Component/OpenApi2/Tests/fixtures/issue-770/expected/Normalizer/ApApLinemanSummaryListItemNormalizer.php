@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ApApLinemanSummaryListItemNormalizer implements DenormalizerInterface, Nor
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ApApLinemanSummaryListItem::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApLinemanSummaryListItem::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ApApLinemanSummaryListItem::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApLinemanSummaryListItem::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApApLinemanSummaryListItem();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApLinemanSummaryListItem();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,7 +62,7 @@ class ApApLinemanSummaryListItemNormalizer implements DenormalizerInterface, Nor
             $object->location = $data['location'];
         }
         if (\array_key_exists('alarms', $data)) {
-            $object->alarms = $this->denormalizer->denormalize($data['alarms'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApAlarmSummary::class, 'json', $context);
+            $object->alarms = $this->denormalizer->denormalize($data['alarms'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApAlarmSummary::class, 'json', $context);
         }
         return $object;
     }
@@ -88,12 +88,12 @@ class ApApLinemanSummaryListItemNormalizer implements DenormalizerInterface, Nor
             $dataArray['location'] = $data->location ?? null;
         }
         if (array_key_exists('alarms', get_object_vars($data)) && null !== ($data->alarms ?? null)) {
-            $dataArray['alarms'] = ($data->alarms ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->alarms ?? null, 'json', $context));
+            $dataArray['alarms'] = ($data->alarms ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->alarms ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ApApLinemanSummaryListItem::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApLinemanSummaryListItem::class => false];
     }
 }

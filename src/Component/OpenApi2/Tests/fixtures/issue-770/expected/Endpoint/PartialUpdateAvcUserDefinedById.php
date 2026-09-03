@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class PartialUpdateAvcUserDefinedById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class PartialUpdateAvcUserDefinedById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $id;
     /**
      * @param string $id
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\AvcModifyUserDefinedProfile $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcModifyUserDefinedProfile $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AvcModifyUserDefinedProfile $body, array $queryParameters = [])
+    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcModifyUserDefinedProfile $body, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PATCH';
@@ -47,10 +47,10 @@ class PartialUpdateAvcUserDefinedById extends \Jane\Component\OpenApi3\Tests\Exp
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcUserDefinedByIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcUserDefinedByIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcUserDefinedByIdInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcUserDefinedByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdUnprocessableEntityException
      *
      * @return null
      */
@@ -59,16 +59,16 @@ class PartialUpdateAvcUserDefinedById extends \Jane\Component\OpenApi3\Tests\Exp
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcUserDefinedByIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcUserDefinedByIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcUserDefinedByIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcUserDefinedByIdUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateAvcUserDefinedByIdUnprocessableEntityException($response);
         }
         if (204 === $status) {
             return null;

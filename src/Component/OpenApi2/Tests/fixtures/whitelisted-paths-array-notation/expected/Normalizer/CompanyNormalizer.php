@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\CheckArray;
+use Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\OpenApi2\Tests\Expected\Model\Company::class;
+        return $type === \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\OpenApi2\Tests\Expected\Model\Company::class;
+        return is_object($data) && get_class($data) === \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\OpenApi2\Tests\Expected\Model\Company();
+        $object = new \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -166,6 +166,6 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\OpenApi2\Tests\Expected\Model\Company::class => false];
+        return [\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company::class => false];
     }
 }

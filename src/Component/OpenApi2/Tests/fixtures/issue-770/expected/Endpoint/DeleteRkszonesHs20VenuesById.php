@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class DeleteRkszonesHs20VenuesById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class DeleteRkszonesHs20VenuesById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $zoneId;
     protected $id;
@@ -19,7 +19,7 @@ class DeleteRkszonesHs20VenuesById extends \Jane\Component\OpenApi3\Tests\Expect
         $this->id = $id;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'DELETE';
@@ -48,27 +48,27 @@ class DeleteRkszonesHs20VenuesById extends \Jane\Component\OpenApi3\Tests\Expect
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesHs20VenuesByIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesHs20VenuesByIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesHs20VenuesByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20VenuesByIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20VenuesByIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20VenuesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesHs20VenuesByIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20VenuesByIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesHs20VenuesByIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20VenuesByIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesHs20VenuesByIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteRkszonesHs20VenuesByIdInternalServerErrorException($response);
         }
         if (204 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult', 'json');
         }
     }
     public function getAuthenticationScopes(): array

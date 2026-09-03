@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class DeleteControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class DeleteControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $bladeUUID;
     /**
@@ -16,7 +16,7 @@ class DeleteControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component
         $this->bladeUUID = $bladeUUID;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'DELETE';
@@ -45,9 +45,9 @@ class DeleteControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException
      *
      * @return null
      */
@@ -56,13 +56,13 @@ class DeleteControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Component
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException($response);
         }
         if (204 === $status) {
             return null;

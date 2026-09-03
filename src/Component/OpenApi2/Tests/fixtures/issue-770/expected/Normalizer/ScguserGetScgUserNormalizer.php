@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ScguserGetScgUserNormalizer implements DenormalizerInterface, NormalizerIn
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserGetScgUser::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserGetScgUser::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserGetScgUser::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserGetScgUser::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserGetScgUser();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserGetScgUser();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -103,7 +103,7 @@ class ScguserGetScgUserNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('sshPublicKeys', $data)) {
             $values = [];
             foreach ($data['sshPublicKeys'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonSshPublicKeyRef::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonSshPublicKeyRef::class, 'json', $context);
             }
             $object->sshPublicKeys = $values;
         }
@@ -172,7 +172,7 @@ class ScguserGetScgUserNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('sshPublicKeys', get_object_vars($data)) && null !== ($data->sshPublicKeys ?? null)) {
             $values = [];
             foreach ($data->sshPublicKeys ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['sshPublicKeys'] = $values;
         }
@@ -183,6 +183,6 @@ class ScguserGetScgUserNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserGetScgUser::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserGetScgUser::class => false];
     }
 }

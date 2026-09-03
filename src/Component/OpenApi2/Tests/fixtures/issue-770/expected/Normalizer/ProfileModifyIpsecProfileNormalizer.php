@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProfileModifyIpsecProfileNormalizer implements DenormalizerInterface, Norm
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyIpsecProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyIpsecProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyIpsecProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyIpsecProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyIpsecProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyIpsecProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -62,10 +62,10 @@ class ProfileModifyIpsecProfileNormalizer implements DenormalizerInterface, Norm
             $object->preSharedKey = $data['preSharedKey'];
         }
         if (\array_key_exists('ikeSecurityAssociation', $data)) {
-            $object->ikeSecurityAssociation = $this->denormalizer->denormalize($data['ikeSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileIkeSecurityAssociationContent::class, 'json', $context);
+            $object->ikeSecurityAssociation = $this->denormalizer->denormalize($data['ikeSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileIkeSecurityAssociationContent::class, 'json', $context);
         }
         if (\array_key_exists('espSecurityAssociation', $data)) {
-            $object->espSecurityAssociation = $this->denormalizer->denormalize($data['espSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileEspSecurityAssociationContent::class, 'json', $context);
+            $object->espSecurityAssociation = $this->denormalizer->denormalize($data['espSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileEspSecurityAssociationContent::class, 'json', $context);
         }
         if (\array_key_exists('ikeRekeyTime', $data)) {
             $object->ikeRekeyTime = $data['ikeRekeyTime'];
@@ -80,10 +80,10 @@ class ProfileModifyIpsecProfileNormalizer implements DenormalizerInterface, Norm
             $object->espRekeyTimeUnit = $data['espRekeyTimeUnit'];
         }
         if (\array_key_exists('cmProtocolOption', $data)) {
-            $object->cmProtocolOption = $this->denormalizer->denormalize($data['cmProtocolOption'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCmProtocolOptionContent::class, 'json', $context);
+            $object->cmProtocolOption = $this->denormalizer->denormalize($data['cmProtocolOption'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCmProtocolOptionContent::class, 'json', $context);
         }
         if (\array_key_exists('advancedOption', $data)) {
-            $object->advancedOption = $this->denormalizer->denormalize($data['advancedOption'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAdvancedOptionContent::class, 'json', $context);
+            $object->advancedOption = $this->denormalizer->denormalize($data['advancedOption'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAdvancedOptionContent::class, 'json', $context);
         }
         if (\array_key_exists('ipMode', $data)) {
             $object->ipMode = $data['ipMode'];
@@ -115,10 +115,10 @@ class ProfileModifyIpsecProfileNormalizer implements DenormalizerInterface, Norm
             $dataArray['preSharedKey'] = $data->preSharedKey ?? null;
         }
         if (array_key_exists('ikeSecurityAssociation', get_object_vars($data)) && null !== ($data->ikeSecurityAssociation ?? null)) {
-            $dataArray['ikeSecurityAssociation'] = ($data->ikeSecurityAssociation ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ikeSecurityAssociation ?? null, 'json', $context));
+            $dataArray['ikeSecurityAssociation'] = ($data->ikeSecurityAssociation ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ikeSecurityAssociation ?? null, 'json', $context));
         }
         if (array_key_exists('espSecurityAssociation', get_object_vars($data)) && null !== ($data->espSecurityAssociation ?? null)) {
-            $dataArray['espSecurityAssociation'] = ($data->espSecurityAssociation ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->espSecurityAssociation ?? null, 'json', $context));
+            $dataArray['espSecurityAssociation'] = ($data->espSecurityAssociation ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->espSecurityAssociation ?? null, 'json', $context));
         }
         if (array_key_exists('ikeRekeyTime', get_object_vars($data)) && null !== ($data->ikeRekeyTime ?? null)) {
             $dataArray['ikeRekeyTime'] = $data->ikeRekeyTime ?? null;
@@ -133,10 +133,10 @@ class ProfileModifyIpsecProfileNormalizer implements DenormalizerInterface, Norm
             $dataArray['espRekeyTimeUnit'] = $data->espRekeyTimeUnit ?? null;
         }
         if (array_key_exists('cmProtocolOption', get_object_vars($data)) && null !== ($data->cmProtocolOption ?? null)) {
-            $dataArray['cmProtocolOption'] = ($data->cmProtocolOption ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->cmProtocolOption ?? null, 'json', $context));
+            $dataArray['cmProtocolOption'] = ($data->cmProtocolOption ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cmProtocolOption ?? null, 'json', $context));
         }
         if (array_key_exists('advancedOption', get_object_vars($data)) && null !== ($data->advancedOption ?? null)) {
-            $dataArray['advancedOption'] = ($data->advancedOption ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->advancedOption ?? null, 'json', $context));
+            $dataArray['advancedOption'] = ($data->advancedOption ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->advancedOption ?? null, 'json', $context));
         }
         if (array_key_exists('ipMode', get_object_vars($data)) && null !== ($data->ipMode ?? null)) {
             $dataArray['ipMode'] = $data->ipMode ?? null;
@@ -148,6 +148,6 @@ class ProfileModifyIpsecProfileNormalizer implements DenormalizerInterface, Norm
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyIpsecProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyIpsecProfile::class => false];
     }
 }

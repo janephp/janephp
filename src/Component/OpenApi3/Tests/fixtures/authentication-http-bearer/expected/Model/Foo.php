@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBearer\Model;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBearer\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBearer\Runtime\AdditionalPropertiesInterface;
 class Foo implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

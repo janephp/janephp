@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNormalizer implements De
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileUpdateMduSegmentationProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileUpdateMduSegmentationProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileUpdateMduSegmentationProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -46,19 +46,19 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNormalizer implements De
         if (\array_key_exists('dpInfoList', $data)) {
             $values = [];
             foreach ($data['dpInfoList'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileMduProfileDpInfo::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileMduProfileDpInfo::class, 'json', $context);
             }
             $object->dpInfoList = $values;
         }
         if (\array_key_exists('apGroupInfoList', $data)) {
             $values_1 = [];
             foreach ($data['apGroupInfoList'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileMduProfileApGroupInfo::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileMduProfileApGroupInfo::class, 'json', $context);
             }
             $object->apGroupInfoList = $values_1;
         }
         if (\array_key_exists('networkSegmentationSwitchInfo', $data)) {
-            $object->networkSegmentationSwitchInfo = $this->denormalizer->denormalize($data['networkSegmentationSwitchInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileUpdateMduSegmentationProfileNetworkSegmentationSwitchInfo::class, 'json', $context);
+            $object->networkSegmentationSwitchInfo = $this->denormalizer->denormalize($data['networkSegmentationSwitchInfo'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfileNetworkSegmentationSwitchInfo::class, 'json', $context);
         }
         return $object;
     }
@@ -69,21 +69,21 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNormalizer implements De
         $dataArray['name'] = $data->name ?? null;
         $values = [];
         foreach ($data->dpInfoList ?? null as $value) {
-            $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['dpInfoList'] = $values;
         $values_1 = [];
         foreach ($data->apGroupInfoList ?? null as $value_1) {
-            $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['apGroupInfoList'] = $values_1;
         if (array_key_exists('networkSegmentationSwitchInfo', get_object_vars($data)) && null !== ($data->networkSegmentationSwitchInfo ?? null)) {
-            $dataArray['networkSegmentationSwitchInfo'] = ($data->networkSegmentationSwitchInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo ?? null, 'json', $context));
+            $dataArray['networkSegmentationSwitchInfo'] = ($data->networkSegmentationSwitchInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileUpdateMduSegmentationProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfile::class => false];
     }
 }

@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class PartialUpdateSmsGateway extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class PartialUpdateSmsGateway extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\SystemSms $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSms $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSms $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSms $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PATCH';
@@ -44,10 +44,10 @@ class PartialUpdateSmsGateway extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSmsGatewayBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSmsGatewayForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSmsGatewayInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSmsGatewayUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayUnprocessableEntityException
      *
      * @return null
      */
@@ -56,16 +56,16 @@ class PartialUpdateSmsGateway extends \Jane\Component\OpenApi3\Tests\Expected\Ru
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSmsGatewayBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSmsGatewayForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSmsGatewayInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSmsGatewayUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSmsGatewayUnprocessableEntityException($response);
         }
         if (200 === $status) {
             return null;

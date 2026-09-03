@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindProfilesVdp extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindProfilesVdp extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
      * @param array $queryParameters {
@@ -15,7 +15,7 @@ class FindProfilesVdp extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cl
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -46,27 +46,27 @@ class FindProfilesVdp extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cl
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesVdpBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesVdpForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesVdpInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesVdpBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesVdpForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesVdpInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindProfilesVdpInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList', 'json');
         }
     }
     public function getAuthenticationScopes(): array

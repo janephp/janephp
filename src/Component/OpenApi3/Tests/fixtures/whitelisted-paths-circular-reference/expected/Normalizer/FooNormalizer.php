@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\Foo::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Foo::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\Foo::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Foo::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Foo();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Foo();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -42,7 +42,7 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             unset($data['label']);
         }
         if (\array_key_exists('parent', $data)) {
-            $object->parent = $this->denormalizer->denormalize($data['parent'], \Jane\Component\OpenApi3\Tests\Expected\Model\Foo::class, 'json', $context);
+            $object->parent = $this->denormalizer->denormalize($data['parent'], \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Foo::class, 'json', $context);
             unset($data['parent']);
         }
         foreach ($data as $key => $value) {
@@ -59,7 +59,7 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $dataArray['label'] = $data->label ?? null;
         }
         if (array_key_exists('parent', get_object_vars($data)) && null !== ($data->parent ?? null)) {
-            $dataArray['parent'] = ($data->parent ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->parent ?? null, 'json', $context));
+            $dataArray['parent'] = ($data->parent ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\JsonObject($this->normalizer->normalize($data->parent ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -70,6 +70,6 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\Foo::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Foo::class => false];
     }
 }

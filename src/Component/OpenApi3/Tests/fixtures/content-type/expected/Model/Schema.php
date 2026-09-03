@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\Expected\ContentType\Model;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime\AdditionalPropertiesInterface;
 class Schema implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

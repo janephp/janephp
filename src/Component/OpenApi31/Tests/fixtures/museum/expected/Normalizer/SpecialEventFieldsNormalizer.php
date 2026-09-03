@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEventFields::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEventFields::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEventFields();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,7 +41,7 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
             $data['price'] = (float) $data['price'];
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SpecialEventFieldsConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Museum\Validator\SpecialEventFieldsConstraint());
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
@@ -60,7 +60,7 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['dates'] as $value) {
                 $date = \DateTime::createFromFormat('Y-m-d', $value);
                 if (false === $date) {
-                    throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($value, 'Y-m-d');
+                    throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\InvalidDateException($value, 'Y-m-d');
                 }
                 $values[] = $date->setTime(0, 0, 0);
             }
@@ -106,12 +106,12 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SpecialEventFieldsConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Museum\Validator\SpecialEventFieldsConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEventFields::class => false];
     }
 }

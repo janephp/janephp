@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteria::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneQueryCriteria::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteria::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneQueryCriteria::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteria();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneQueryCriteria();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -43,14 +43,14 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('filters', $data)) {
             $values = [];
             foreach ($data['filters'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaFiltersItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneQueryCriteriaFiltersItem::class, 'json', $context);
             }
             $object->filters = $values;
         }
         if (\array_key_exists('extraFilters', $data)) {
             $values_1 = [];
             foreach ($data['extraFilters'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaExtraFiltersItem::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneQueryCriteriaExtraFiltersItem::class, 'json', $context);
             }
             $object->extraFilters = $values_1;
         }
@@ -58,13 +58,13 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
             $object->extraNotFilters = $data['extraNotFilters'];
         }
         if (\array_key_exists('options', $data)) {
-            $object->options = $this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaOptions::class, 'json', $context);
+            $object->options = $this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneQueryCriteriaOptions::class, 'json', $context);
         }
         if (\array_key_exists('extraTimeRange', $data)) {
-            $object->extraTimeRange = $this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTimeRange::class, 'json', $context);
+            $object->extraTimeRange = $this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonTimeRange::class, 'json', $context);
         }
         if (\array_key_exists('fullTextSearch', $data)) {
-            $object->fullTextSearch = $this->denormalizer->denormalize($data['fullTextSearch'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonFullTextSearch::class, 'json', $context);
+            $object->fullTextSearch = $this->denormalizer->denormalize($data['fullTextSearch'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonFullTextSearch::class, 'json', $context);
         }
         if (\array_key_exists('attributes', $data)) {
             $values_2 = [];
@@ -74,7 +74,7 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
             $object->attributes = $values_2;
         }
         if (\array_key_exists('sortInfo', $data)) {
-            $object->sortInfo = $this->denormalizer->denormalize($data['sortInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSortInfo::class, 'json', $context);
+            $object->sortInfo = $this->denormalizer->denormalize($data['sortInfo'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSortInfo::class, 'json', $context);
         }
         if (\array_key_exists('page', $data)) {
             $object->page = $data['page'];
@@ -99,14 +99,14 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('filters', get_object_vars($data)) && null !== ($data->filters ?? null)) {
             $values = [];
             foreach ($data->filters ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['filters'] = $values;
         }
         if (array_key_exists('extraFilters', get_object_vars($data)) && null !== ($data->extraFilters ?? null)) {
             $values_1 = [];
             foreach ($data->extraFilters ?? null as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['extraFilters'] = $values_1;
         }
@@ -114,13 +114,13 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['extraNotFilters'] = $data->extraNotFilters ?? null;
         }
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
-            $dataArray['options'] = ($data->options ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->options ?? null, 'json', $context));
+            $dataArray['options'] = ($data->options ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->options ?? null, 'json', $context));
         }
         if (array_key_exists('extraTimeRange', get_object_vars($data)) && null !== ($data->extraTimeRange ?? null)) {
-            $dataArray['extraTimeRange'] = ($data->extraTimeRange ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->extraTimeRange ?? null, 'json', $context));
+            $dataArray['extraTimeRange'] = ($data->extraTimeRange ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extraTimeRange ?? null, 'json', $context));
         }
         if (array_key_exists('fullTextSearch', get_object_vars($data)) && null !== ($data->fullTextSearch ?? null)) {
-            $dataArray['fullTextSearch'] = ($data->fullTextSearch ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->fullTextSearch ?? null, 'json', $context));
+            $dataArray['fullTextSearch'] = ($data->fullTextSearch ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->fullTextSearch ?? null, 'json', $context));
         }
         if (array_key_exists('attributes', get_object_vars($data)) && null !== ($data->attributes ?? null)) {
             $values_2 = [];
@@ -130,7 +130,7 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['attributes'] = $values_2;
         }
         if (array_key_exists('sortInfo', get_object_vars($data)) && null !== ($data->sortInfo ?? null)) {
-            $dataArray['sortInfo'] = ($data->sortInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->sortInfo ?? null, 'json', $context));
+            $dataArray['sortInfo'] = ($data->sortInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->sortInfo ?? null, 'json', $context));
         }
         if (array_key_exists('page', get_object_vars($data)) && null !== ($data->page ?? null)) {
             $dataArray['page'] = $data->page ?? null;
@@ -151,6 +151,6 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteria::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneQueryCriteria::class => false];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PortalserviceHotspotNormalizer implements DenormalizerInterface, Normalize
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceHotspot::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceHotspot::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceHotspot();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,16 +68,16 @@ class PortalserviceHotspotNormalizer implements DenormalizerInterface, Normalize
             $object->backupPortalUrl = $data['backupPortalUrl'];
         }
         if (\array_key_exists('location', $data)) {
-            $object->location = $this->denormalizer->denormalize($data['location'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalLocation::class, 'json', $context);
+            $object->location = $this->denormalizer->denormalize($data['location'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalLocation::class, 'json', $context);
         }
         if (\array_key_exists('redirect', $data)) {
-            $object->redirect = $this->denormalizer->denormalize($data['redirect'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalRedirect::class, 'json', $context);
+            $object->redirect = $this->denormalizer->denormalize($data['redirect'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalRedirect::class, 'json', $context);
         }
         if (\array_key_exists('portalCustomization', $data)) {
-            $object->portalCustomization = $this->denormalizer->denormalize($data['portalCustomization'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonPortalCustomization::class, 'json', $context);
+            $object->portalCustomization = $this->denormalizer->denormalize($data['portalCustomization'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonPortalCustomization::class, 'json', $context);
         }
         if (\array_key_exists('userSession', $data)) {
-            $object->userSession = $this->denormalizer->denormalize($data['userSession'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceUserSession::class, 'json', $context);
+            $object->userSession = $this->denormalizer->denormalize($data['userSession'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceUserSession::class, 'json', $context);
         }
         if (\array_key_exists('walledGardens', $data)) {
             $values = [];
@@ -134,16 +134,16 @@ class PortalserviceHotspotNormalizer implements DenormalizerInterface, Normalize
             $dataArray['backupPortalUrl'] = $data->backupPortalUrl ?? null;
         }
         if (array_key_exists('location', get_object_vars($data)) && null !== ($data->location ?? null)) {
-            $dataArray['location'] = ($data->location ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->location ?? null, 'json', $context));
+            $dataArray['location'] = ($data->location ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->location ?? null, 'json', $context));
         }
         if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
-            $dataArray['redirect'] = ($data->redirect ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->redirect ?? null, 'json', $context));
+            $dataArray['redirect'] = ($data->redirect ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->redirect ?? null, 'json', $context));
         }
         if (array_key_exists('portalCustomization', get_object_vars($data)) && null !== ($data->portalCustomization ?? null)) {
-            $dataArray['portalCustomization'] = ($data->portalCustomization ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->portalCustomization ?? null, 'json', $context));
+            $dataArray['portalCustomization'] = ($data->portalCustomization ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->portalCustomization ?? null, 'json', $context));
         }
         if (array_key_exists('userSession', get_object_vars($data)) && null !== ($data->userSession ?? null)) {
-            $dataArray['userSession'] = ($data->userSession ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->userSession ?? null, 'json', $context));
+            $dataArray['userSession'] = ($data->userSession ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userSession ?? null, 'json', $context));
         }
         if (array_key_exists('walledGardens', get_object_vars($data)) && null !== ($data->walledGardens ?? null)) {
             $values = [];
@@ -171,6 +171,6 @@ class PortalserviceHotspotNormalizer implements DenormalizerInterface, Normalize
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceHotspot::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot::class => false];
     }
 }

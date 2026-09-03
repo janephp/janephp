@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Normalizer;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,17 +18,17 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\Error::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ErrorNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Error::class => \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Normalizer\ErrorNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\Expansions::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ExpansionsNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Expansions::class => \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Normalizer\ExpansionsNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\TweetLookupResponse::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\TweetLookupResponseNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\TweetLookupResponse::class => \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Normalizer\TweetLookupResponseNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\Poll::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\PollNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Poll::class => \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Normalizer\PollNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\PollOption::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\PollOptionNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\PollOption::class => \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Normalizer\PollOptionNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

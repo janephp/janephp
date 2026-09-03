@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Normalizer;
 
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,17 +18,17 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi2\Tests\Expected\Model\Foo::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\FooNormalizer::class,
+        \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\Foo::class => \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Normalizer\FooNormalizer::class,
         
-        \Jane\Component\OpenApi2\Tests\Expected\Model\Bar::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\BarNormalizer::class,
+        \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\Bar::class => \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Normalizer\BarNormalizer::class,
         
-        \Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBody::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\TestGetBodyNormalizer::class,
+        \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody::class => \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Normalizer\TestGetBodyNormalizer::class,
         
-        \Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBodyBaz::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\TestGetBodyBazNormalizer::class,
+        \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBodyBaz::class => \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Normalizer\TestGetBodyBazNormalizer::class,
         
-        \Jane\Component\OpenApi2\Tests\Expected\Model\TestPostBody::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\TestPostBodyNormalizer::class,
+        \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestPostBody::class => \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Normalizer\TestPostBodyNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class DeleteApsBonjourGatewayByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class DeleteApsBonjourGatewayByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $apMac;
     /**
@@ -16,7 +16,7 @@ class DeleteApsBonjourGatewayByApMac extends \Jane\Component\OpenApi3\Tests\Expe
         $this->apMac = $apMac;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'DELETE';
@@ -45,27 +45,27 @@ class DeleteApsBonjourGatewayByApMac extends \Jane\Component\OpenApi3\Tests\Expe
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsBonjourGatewayByApMacBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsBonjourGatewayByApMacForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsBonjourGatewayByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsBonjourGatewayByApMacBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsBonjourGatewayByApMacForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsBonjourGatewayByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsBonjourGatewayByApMacBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsBonjourGatewayByApMacBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsBonjourGatewayByApMacForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsBonjourGatewayByApMacForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsBonjourGatewayByApMacInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteApsBonjourGatewayByApMacInternalServerErrorException($response);
         }
         if (204 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult', 'json');
         }
     }
     public function getAuthenticationScopes(): array

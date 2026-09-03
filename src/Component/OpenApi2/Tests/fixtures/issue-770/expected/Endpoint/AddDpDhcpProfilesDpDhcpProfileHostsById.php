@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddDpDhcpProfilesDpDhcpProfileHostsById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddDpDhcpProfilesDpDhcpProfileHostsById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $id;
     /**
      * @param string $id
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters = [])
+    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -47,31 +47,31 @@ class AddDpDhcpProfilesDpDhcpProfileHostsById extends \Jane\Component\OpenApi3\T
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdUnprocessableEntityException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO', 'json');
         }
     }
     public function getAuthenticationScopes(): array

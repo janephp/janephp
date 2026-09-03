@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Model;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue1007\Model;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\AdditionalPropertiesInterface;
 class PatternOnlySchema implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

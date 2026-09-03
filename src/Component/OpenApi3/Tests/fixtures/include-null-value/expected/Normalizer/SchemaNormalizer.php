@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\Schema::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Model\Schema::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\Schema::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Model\Schema::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Schema();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Model\Schema();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -71,7 +71,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('dateProperty', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateProperty']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateProperty'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\InvalidDateException($data['dateProperty'], 'Y-m-d\TH:i:sP');
             }
             $object->dateProperty = $date;
             unset($data['dateProperty']);
@@ -79,7 +79,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('dateNullableProperty', $data) && $data['dateNullableProperty'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateNullableProperty']);
             if (false === $date_1) {
-                throw new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateNullableProperty'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\Normalizer\InvalidDateException($data['dateNullableProperty'], 'Y-m-d\TH:i:sP');
             }
             $object->dateNullableProperty = $date_1;
             unset($data['dateNullableProperty']);
@@ -105,7 +105,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             unset($data['arrayProperty']);
         }
         if (\array_key_exists('mapProperty', $data)) {
-            $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
+            $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject();
             foreach ($data['mapProperty'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -113,11 +113,11 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             unset($data['mapProperty']);
         }
         if (\array_key_exists('objectProperty', $data)) {
-            $object->objectProperty = $this->denormalizer->denormalize($data['objectProperty'], \Jane\Component\OpenApi3\Tests\Expected\Model\SchemaObjectProperty::class, 'json', $context);
+            $object->objectProperty = $this->denormalizer->denormalize($data['objectProperty'], \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Model\SchemaObjectProperty::class, 'json', $context);
             unset($data['objectProperty']);
         }
         if (\array_key_exists('objectRefProperty', $data)) {
-            $object->objectRefProperty = $this->denormalizer->denormalize($data['objectRefProperty'], \Jane\Component\OpenApi3\Tests\Expected\Model\Schema::class, 'json', $context);
+            $object->objectRefProperty = $this->denormalizer->denormalize($data['objectRefProperty'], \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Model\Schema::class, 'json', $context);
             unset($data['objectRefProperty']);
         }
         foreach ($data as $key_1 => $value_2) {
@@ -161,17 +161,17 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['arrayProperty'] = $values;
         }
         if (array_key_exists('mapProperty', get_object_vars($data))) {
-            $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
+            $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject();
             foreach ($data->mapProperty ?? null as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['mapProperty'] = $values_1;
         }
         if (array_key_exists('objectProperty', get_object_vars($data))) {
-            $dataArray['objectProperty'] = ($data->objectProperty ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty ?? null, 'json', $context));
+            $dataArray['objectProperty'] = ($data->objectProperty ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty ?? null, 'json', $context));
         }
         if (array_key_exists('objectRefProperty', get_object_vars($data))) {
-            $dataArray['objectRefProperty'] = ($data->objectRefProperty ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty ?? null, 'json', $context));
+            $dataArray['objectRefProperty'] = ($data->objectRefProperty ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -182,6 +182,6 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\Schema::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\IncludeNullValue\Model\Schema::class => false];
     }
 }

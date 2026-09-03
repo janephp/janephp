@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddMaps extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddMaps extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMap $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMap $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -44,31 +44,31 @@ class AddMaps extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddMapsBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddMapsForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddMapsInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddMapsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndooMapAuditId
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddMapsBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddMapsForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddMapsInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddMapsUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddMapsUnprocessableEntityException($response);
         }
         if (201 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndooMapAuditId', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId', 'json');
         }
     }
     public function getAuthenticationScopes(): array

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\FromUrl\Endpoint;
 
-class ListPets extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class ListPets extends \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime\Client\Endpoint
 {
     /**
      * @param array{
@@ -13,7 +13,7 @@ class ListPets extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -43,17 +43,17 @@ class ListPets extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Pet[]|\Jane\Component\OpenApi3\Tests\Expected\Model\Error
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet[]|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Pet[]', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet[]', 'json');
         }
         if (stripos(strtolower($contentType), 'application/json') !== false) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Error', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error', 'json');
         }
     }
     public function getAuthenticationScopes(): array

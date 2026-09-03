@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Authentication;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue963\Authentication;
 
 class BearerAuthAuthentication implements \Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin
 {

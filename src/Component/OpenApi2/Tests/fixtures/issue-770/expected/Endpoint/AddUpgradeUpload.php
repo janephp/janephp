@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddUpgradeUpload extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddUpgradeUpload extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
      * @param array $queryParameters {
@@ -17,7 +17,7 @@ class AddUpgradeUpload extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
         $this->queryParameters = $queryParameters;
         $this->formParameters = $formParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -55,31 +55,31 @@ class AddUpgradeUpload extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUploadBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUploadForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUploadInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUploadUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradeStatus
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUploadBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUploadForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUploadInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUploadUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddUpgradeUploadUnprocessableEntityException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradeStatus', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus', 'json');
         }
     }
     public function getAuthenticationScopes(): array

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindServicesAuthLdap extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindServicesAuthLdap extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
      * @param array $queryParameters {
@@ -13,7 +13,7 @@ class FindServicesAuthLdap extends \Jane\Component\OpenApi3\Tests\Expected\Runti
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -42,27 +42,27 @@ class FindServicesAuthLdap extends \Jane\Component\OpenApi3\Tests\Expected\Runti
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPServiceList
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPServiceList
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindServicesAuthLdapInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPServiceList', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPServiceList', 'json');
         }
     }
     public function getAuthenticationScopes(): array

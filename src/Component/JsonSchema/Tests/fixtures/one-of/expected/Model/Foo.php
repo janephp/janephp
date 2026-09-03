@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Model;
+namespace Jane\Component\JsonSchema\Tests\Expected\OneOf\Model;
 
 class Foo
 {

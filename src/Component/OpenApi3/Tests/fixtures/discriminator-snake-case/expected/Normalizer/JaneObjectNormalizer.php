@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Normalizer;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,13 +18,13 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\Pet::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\PetNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Model\Pet::class => \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Normalizer\PetNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\CatInSnakeCase::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\CatInSnakeCaseNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Model\CatInSnakeCase::class => \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Normalizer\CatInSnakeCaseNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\DogInSnakeCase::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\DogInSnakeCaseNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Model\DogInSnakeCase::class => \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Normalizer\DogInSnakeCaseNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\DiscriminatorSnakeCase\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

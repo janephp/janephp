@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\Simple\Endpoint;
 
-class CreatePet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class CreatePet extends \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\Pet $requestBody
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet $requestBody
      */
-    public function __construct(\Jane\Component\OpenApi31\Tests\Expected\Model\Pet $requestBody)
+    public function __construct(\Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet $requestBody)
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -22,8 +22,8 @@ class CreatePet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Pet) {
-            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet) {
+            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }
@@ -35,14 +35,14 @@ class CreatePet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Model\Pet
+     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Pet', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet', 'json');
         }
     }
     public function getAuthenticationScopes(): array

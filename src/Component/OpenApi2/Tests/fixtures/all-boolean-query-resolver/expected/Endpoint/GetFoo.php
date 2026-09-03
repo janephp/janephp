@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\AllBooleanQueryResolver\Endpoint;
 
-class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\AllBooleanQueryResolver\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\AllBooleanQueryResolver\Runtime\Client\Endpoint
 {
     /**
      * @param array $queryParameters {
@@ -13,7 +13,7 @@ class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Base
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\AllBooleanQueryResolver\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

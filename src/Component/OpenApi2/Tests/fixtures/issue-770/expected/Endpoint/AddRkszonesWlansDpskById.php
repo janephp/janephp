@@ -1,27 +1,27 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddRkszonesWlansDpskById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddRkszonesWlansDpskById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $zoneId;
     protected $id;
     /**
      * @param string $zoneId
      * @param string $id
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\DpskDeleteDPSKs $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteDPSKs $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpskDeleteDPSKs $body, array $queryParameters = [])
+    public function __construct(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteDPSKs $body, array $queryParameters = [])
     {
         $this->zoneId = $zoneId;
         $this->id = $id;
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -50,31 +50,31 @@ class AddRkszonesWlansDpskById extends \Jane\Component\OpenApi3\Tests\Expected\R
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskByIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskByIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskByIdInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskDeleteDpskResult
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteDpskResult
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskByIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskByIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskByIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskByIdUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesWlansDpskByIdUnprocessableEntityException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\DpskDeleteDpskResult', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteDpskResult', 'json');
         }
     }
     public function getAuthenticationScopes(): array

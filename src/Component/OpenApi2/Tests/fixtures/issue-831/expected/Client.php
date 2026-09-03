@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected;
+namespace Jane\Component\OpenApi2\Tests\Expected\Issue831;
 
-class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi2\Tests\Expected\Issue831\Runtime\Client\Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -11,7 +11,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function list(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\_List(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Issue831\Endpoint\_List(), $fetch);
     }
     /**
      * @param string $orderId
@@ -21,7 +21,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function clone(string $orderId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\_Clone($orderId), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Issue831\Endpoint\_Clone($orderId), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -30,7 +30,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function print(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\_Print(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Issue831\Endpoint\_Print(), $fetch);
     }
     public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
@@ -49,11 +49,11 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
         $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\Issue831\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\Issue831\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

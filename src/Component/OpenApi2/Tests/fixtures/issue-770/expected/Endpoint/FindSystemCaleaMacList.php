@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
      * @param array $queryParameters {
@@ -13,7 +13,7 @@ class FindSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Run
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -42,27 +42,27 @@ class FindSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Run
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCaleaMacListBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCaleaMacListForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCaleaMacListInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaMacListBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaMacListForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaMacListInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CaleaCaleaMacListRsp
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRsp
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCaleaMacListBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaMacListBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCaleaMacListForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaMacListForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCaleaMacListInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemCaleaMacListInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\CaleaCaleaMacListRsp', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRsp', 'json');
         }
     }
     public function getAuthenticationScopes(): array

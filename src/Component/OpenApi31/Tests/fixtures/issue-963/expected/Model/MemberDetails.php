@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Model;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue963\Model;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi31\Tests\Expected\Issue963\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Issue963\Runtime\AdditionalPropertiesInterface;
 class MemberDetails implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

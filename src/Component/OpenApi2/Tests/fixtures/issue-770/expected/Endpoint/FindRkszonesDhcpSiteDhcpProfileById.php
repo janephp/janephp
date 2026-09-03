@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindRkszonesDhcpSiteDhcpProfileById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindRkszonesDhcpSiteDhcpProfileById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $zoneId;
     protected $id;
@@ -19,7 +19,7 @@ class FindRkszonesDhcpSiteDhcpProfileById extends \Jane\Component\OpenApi3\Tests
         $this->id = $id;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -48,27 +48,27 @@ class FindRkszonesDhcpSiteDhcpProfileById extends \Jane\Component\OpenApi3\Tests
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpProfileByIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpProfileByIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpProfileRef
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpProfileRef
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpProfileByIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpProfileByIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpProfileByIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesDhcpSiteDhcpProfileByIdInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpProfileRef', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpProfileRef', 'json');
         }
     }
     public function getAuthenticationScopes(): array

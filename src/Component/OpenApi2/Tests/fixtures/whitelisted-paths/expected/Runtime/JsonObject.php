@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Runtime;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime;
 
 class JsonObject extends \stdClass implements \ArrayAccess, \Countable, \IteratorAggregate
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\ParameterTypeReference\Endpoint;
 
-class Foo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class Foo extends \Jane\Component\OpenApi3\Tests\Expected\ParameterTypeReference\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\ParameterTypeReference\Runtime\Client\Endpoint
 {
     /**
      * caca
@@ -14,7 +14,7 @@ class Foo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEnd
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\ParameterTypeReference\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

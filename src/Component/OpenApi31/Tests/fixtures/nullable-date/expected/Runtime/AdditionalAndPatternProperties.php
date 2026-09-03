@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Runtime;
+namespace Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime;
 
 trait AdditionalAndPatternProperties
 {

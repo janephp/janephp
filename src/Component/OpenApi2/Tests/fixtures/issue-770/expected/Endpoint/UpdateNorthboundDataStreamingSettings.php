@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class UpdateNorthboundDataStreamingSettings extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class UpdateNorthboundDataStreamingSettings extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingSettings $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingSettings $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingSettings $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingSettings $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PUT';
@@ -44,10 +44,10 @@ class UpdateNorthboundDataStreamingSettings extends \Jane\Component\OpenApi3\Tes
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingSettingsBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingSettingsForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingSettingsInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingSettingsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsUnprocessableEntityException
      *
      * @return null
      */
@@ -56,16 +56,16 @@ class UpdateNorthboundDataStreamingSettings extends \Jane\Component\OpenApi3\Tes
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingSettingsBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingSettingsForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingSettingsInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingSettingsUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateNorthboundDataStreamingSettingsUnprocessableEntityException($response);
         }
         if (200 === $status) {
             return null;

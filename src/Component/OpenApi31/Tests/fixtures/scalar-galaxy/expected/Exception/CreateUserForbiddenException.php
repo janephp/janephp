@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception;
 
 class CreateUserForbiddenException extends ForbiddenException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi31\Tests\Expected\Model\ForbiddenError
+         * @var \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ForbiddenError
          */
-        private readonly \Jane\Component\OpenApi31\Tests\Expected\Model\ForbiddenError $forbiddenError,
+        private readonly \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ForbiddenError $forbiddenError,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class CreateUserForbiddenException extends ForbiddenException
     {
         parent::__construct('Forbidden');
     }
-    public function getForbiddenError(): \Jane\Component\OpenApi31\Tests\Expected\Model\ForbiddenError
+    public function getForbiddenError(): \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\ForbiddenError
     {
         return $this->forbiddenError;
     }

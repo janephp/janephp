@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Validator;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Validator;
 
 class BuyMuseumTicketsConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {

@@ -2,7 +2,7 @@
 
 return [
     'openapi-file' => __DIR__ . '/swagger.yaml',
-    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected\AllOfMerge',
     'directory' => __DIR__ . '/generated',
     'use-fixer' => false,
 ];

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindApplicationsDownloadByBladeUUID extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindApplicationsDownloadByBladeUUID extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $bladeUUID;
     /**
@@ -18,7 +18,7 @@ class FindApplicationsDownloadByBladeUUID extends \Jane\Component\OpenApi3\Tests
         $this->bladeUUID = $bladeUUID;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -49,9 +49,9 @@ class FindApplicationsDownloadByBladeUUID extends \Jane\Component\OpenApi3\Tests
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadByBladeUUIDBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadByBladeUUIDForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadByBladeUUIDBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadByBladeUUIDForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadByBladeUUIDInternalServerErrorException
      *
      * @return null
      */
@@ -60,13 +60,13 @@ class FindApplicationsDownloadByBladeUUID extends \Jane\Component\OpenApi3\Tests
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadByBladeUUIDBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadByBladeUUIDBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadByBladeUUIDForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadByBladeUUIDForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadByBladeUUIDInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadByBladeUUIDInternalServerErrorException($response);
         }
         if (200 === $status) {
             try {

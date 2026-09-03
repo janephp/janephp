@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Endpoint;
 
-class GetBaz extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class GetBaz extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -25,14 +25,14 @@ class GetBaz extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Base
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Baz
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Baz
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Baz', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsCircularReference\Model\Baz', 'json');
         }
     }
     public function getAuthenticationScopes(): array

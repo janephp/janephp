@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
      * @param array $queryParameters {
@@ -17,7 +17,7 @@ class AddSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Runt
         $this->queryParameters = $queryParameters;
         $this->formParameters = $formParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -55,10 +55,10 @@ class AddSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Runt
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacListBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacListForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacListInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacListUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListUnprocessableEntityException
      *
      * @return null
      */
@@ -67,16 +67,16 @@ class AddSystemCaleaMacList extends \Jane\Component\OpenApi3\Tests\Expected\Runt
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacListBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacListForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacListInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacListUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddSystemCaleaMacListUnprocessableEntityException($response);
         }
         if (200 === $status) {
             return null;

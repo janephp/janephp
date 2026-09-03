@@ -2,7 +2,7 @@
 
 return [
     'openapi-file' => __DIR__ . '/openapi.json',
-    'namespace' => 'Jane\OpenApi3\Tests\Expected',
+    'namespace' => 'Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation',
     'directory' => __DIR__ . '/generated',
     'whitelisted-paths' => [
         ['\/tweets$'],

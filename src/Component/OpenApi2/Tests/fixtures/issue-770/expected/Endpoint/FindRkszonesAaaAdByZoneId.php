@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindRkszonesAaaAdByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindRkszonesAaaAdByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $zoneId;
     /**
@@ -16,7 +16,7 @@ class FindRkszonesAaaAdByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\
         $this->zoneId = $zoneId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -45,27 +45,27 @@ class FindRkszonesAaaAdByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaAdByZoneIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaAdByZoneIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaAdByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByZoneIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByZoneIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaActiveDirectoryList
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaActiveDirectoryList
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaAdByZoneIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByZoneIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaAdByZoneIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByZoneIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaAdByZoneIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesAaaAdByZoneIdInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\AaaActiveDirectoryList', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaActiveDirectoryList', 'json');
         }
     }
     public function getAuthenticationScopes(): array

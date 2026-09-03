@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\JsonSchema\Tests\Expected\CustomValidators\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\JsonSchema\Tests\Expected\CustomValidators\Runtime\Normalizer\CheckArray;
+use Jane\JsonSchema\Tests\Expected\CustomValidators\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\JsonSchema\Tests\Expected\Model\Price::class;
+        return $type === \Jane\JsonSchema\Tests\Expected\CustomValidators\Model\Price::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\Price;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\CustomValidators\Model\Price;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\JsonSchema\Tests\Expected\Model\Price();
+        $object = new \Jane\JsonSchema\Tests\Expected\CustomValidators\Model\Price();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\PriceConstraint());
+            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\CustomValidators\Validator\PriceConstraint());
         }
         if (\array_key_exists('amount', $data)) {
             $object->amount = $data['amount'];
@@ -58,12 +58,12 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $dataArray['comment'] = $data->comment ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\JsonSchema\Tests\Expected\Validator\PriceConstraint());
+            $this->validate($dataArray, new \Jane\JsonSchema\Tests\Expected\CustomValidators\Validator\PriceConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\JsonSchema\Tests\Expected\Model\Price::class => false];
+        return [\Jane\JsonSchema\Tests\Expected\CustomValidators\Model\Price::class => false];
     }
 }

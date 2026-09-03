@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Endpoint;
 
-class GetTrips extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class GetTrips extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Client\Endpoint
 {
     protected $accept;
     /**
@@ -24,7 +24,7 @@ class GetTrips extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\B
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -62,35 +62,35 @@ class GetTrips extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\B
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsBadRequestException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsUnauthorizedException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsForbiddenException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsTooManyRequestsException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsBadRequestException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsUnauthorizedException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsForbiddenException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsTooManyRequestsException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200
+     * @return null|\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
         if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsUnauthorizedException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsUnauthorizedException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
         if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsForbiddenException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsForbiddenException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
         if ($contentType !== null && (429 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsTooManyRequestsException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsTooManyRequestsException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetTripsInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array

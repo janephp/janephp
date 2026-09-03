@@ -1,15 +1,15 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\Expected\VndPlusJson;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Runtime\Client\Client
 {
     /**
     * List campaigns
     *
     * **Requires one of these permissions**:
     * ["advertiser_campaign_edit","advertiser_campaign_view"]
-    * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody
+    * @param null|\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody
     * @param array{
     *    "Amazon-Advertising-API-ClientId": string, //The identifier of a client associated with a "Login with Amazon" account.
     *    "Amazon-Advertising-API-Scope": string, //The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list
@@ -18,11 +18,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent : \Psr\Http\Message\ResponseInterface)
+    * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent : \Psr\Http\Message\ResponseInterface)
     */
-    public function listSponsoredProductsCampaigns(?\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function listSponsoredProductsCampaigns(?\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\ListSponsoredProductsCampaigns($requestBody, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Endpoint\ListSponsoredProductsCampaigns($requestBody, $headerParameters), $fetch);
     }
     public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -36,11 +36,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

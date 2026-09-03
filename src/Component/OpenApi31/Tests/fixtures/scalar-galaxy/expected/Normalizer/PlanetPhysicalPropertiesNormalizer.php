@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalProperties::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetPhysicalProperties::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalProperties::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetPhysicalProperties::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalProperties();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetPhysicalProperties();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -47,7 +47,7 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
             $data['gravity'] = (float) $data['gravity'];
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetPhysicalPropertiesConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\PlanetPhysicalPropertiesConstraint());
         }
         if (\array_key_exists('mass', $data)) {
             $object->mass = $data['mass'];
@@ -62,7 +62,7 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
             unset($data['gravity']);
         }
         if (\array_key_exists('temperature', $data)) {
-            $object->temperature = $this->denormalizer->denormalize($data['temperature'], \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalPropertiesTemperature::class, 'json', $context);
+            $object->temperature = $this->denormalizer->denormalize($data['temperature'], \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetPhysicalPropertiesTemperature::class, 'json', $context);
             unset($data['temperature']);
         }
         foreach ($data as $key => $value) {
@@ -85,7 +85,7 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
             $dataArray['gravity'] = $data->gravity ?? null;
         }
         if (array_key_exists('temperature', get_object_vars($data)) && null !== ($data->temperature ?? null)) {
-            $dataArray['temperature'] = ($data->temperature ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->temperature ?? null, 'json', $context));
+            $dataArray['temperature'] = ($data->temperature ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->temperature ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -93,12 +93,12 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetPhysicalPropertiesConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\PlanetPhysicalPropertiesConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalProperties::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetPhysicalProperties::class => false];
     }
 }

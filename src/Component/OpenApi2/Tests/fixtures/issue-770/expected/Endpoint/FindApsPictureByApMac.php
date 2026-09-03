@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $apMac;
     /**
@@ -16,7 +16,7 @@ class FindApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Runt
         $this->apMac = $apMac;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -45,9 +45,9 @@ class FindApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Runt
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsPictureByApMacBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsPictureByApMacForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsPictureByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsPictureByApMacBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsPictureByApMacForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsPictureByApMacInternalServerErrorException
      *
      * @return null
      */
@@ -56,13 +56,13 @@ class FindApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Runt
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsPictureByApMacBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsPictureByApMacBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsPictureByApMacForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsPictureByApMacForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsPictureByApMacInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsPictureByApMacInternalServerErrorException($response);
         }
         if (200 === $status) {
             try {

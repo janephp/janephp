@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\Datetime\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\Datetime\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\Datetime\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class;
+        return $type === \Jane\Component\JsonSchema\Tests\Expected\Datetime\Model\Test::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Test;
+        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Datetime\Model\Test;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Test();
+        $object = new \Jane\Component\JsonSchema\Tests\Expected\Datetime\Model\Test();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -40,14 +40,14 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('date', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']);
             if (false === $date) {
-                throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\JsonSchema\Tests\Expected\Datetime\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
             }
             $object->date = $date;
         }
         if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNull']);
             if (false === $date_1) {
-                throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateOrNull'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\JsonSchema\Tests\Expected\Datetime\Runtime\Normalizer\InvalidDateException($data['dateOrNull'], 'Y-m-d\TH:i:sP');
             }
             $object->dateOrNull = $date_1;
         }
@@ -59,7 +59,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt'])) {
                 $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt']);
                 if (false === $date_2) {
-                    throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'Y-m-d\TH:i:sP');
+                    throw new \Jane\Component\JsonSchema\Tests\Expected\Datetime\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'Y-m-d\TH:i:sP');
                 }
                 $value = $date_2;
             } elseif (is_null($data['dateOrNullOrInt'])) {
@@ -69,7 +69,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             } elseif ('' === $data['dateOrNullOrInt']) {
                 $value = null;
             } elseif (is_string($data['dateOrNullOrInt'])) {
-                throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\JsonSchema\Tests\Expected\Datetime\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'Y-m-d\TH:i:sP');
             }
             $object->dateOrNullOrInt = $value;
         }
@@ -102,6 +102,6 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false];
+        return [\Jane\Component\JsonSchema\Tests\Expected\Datetime\Model\Test::class => false];
     }
 }

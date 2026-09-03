@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\Price::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Model\Price::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Price::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Model\Price::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Price();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Model\Price();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,7 +41,7 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['discount'] = (float) $data['discount'];
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PriceConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Validator\PriceConstraint());
         }
         if (\array_key_exists('amount', $data)) {
             $object->amount = $data['amount'];
@@ -87,12 +87,12 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PriceConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Validator\PriceConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\Price::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\CustomValidators\Model\Price::class => false];
     }
 }

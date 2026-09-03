@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Validator;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator;
 
 class PaginatedResourceMetaConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {

@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class DeleteAvcApplicationPolicyV2 extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class DeleteAvcApplicationPolicyV2 extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\AvcDeleteBulk $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDeleteBulk $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\AvcDeleteBulk $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDeleteBulk $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'DELETE';
@@ -44,9 +44,9 @@ class DeleteAvcApplicationPolicyV2 extends \Jane\Component\OpenApi3\Tests\Expect
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyV2BadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyV2ForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyV2InternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2BadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2ForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2InternalServerErrorException
      *
      * @return null
      */
@@ -55,13 +55,13 @@ class DeleteAvcApplicationPolicyV2 extends \Jane\Component\OpenApi3\Tests\Expect
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyV2BadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2BadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyV2ForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2ForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyV2InternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteAvcApplicationPolicyV2InternalServerErrorException($response);
         }
         if (200 === $status) {
             return null;

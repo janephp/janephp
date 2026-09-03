@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddRkszonesVendorSpecificAttributeProfilesByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddRkszonesVendorSpecificAttributeProfilesByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $zoneId;
     /**
      * @param string $zoneId
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfilePersist $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfilePersist $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfilePersist $body, array $queryParameters = [])
+    public function __construct(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfilePersist $body, array $queryParameters = [])
     {
         $this->zoneId = $zoneId;
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -47,31 +47,31 @@ class AddRkszonesVendorSpecificAttributeProfilesByZoneId extends \Jane\Component
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileCreateResult
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileCreateResult
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdUnprocessableEntityException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileCreateResult', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileCreateResult', 'json');
         }
     }
     public function getAuthenticationScopes(): array

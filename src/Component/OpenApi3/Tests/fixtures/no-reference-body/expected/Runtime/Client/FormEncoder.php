@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Runtime\Client;
+namespace Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\Client;
 
 use Symfony\Component\Serializer\Encoder\DecoderInterface;
 use Symfony\Component\Serializer\Encoder\EncoderInterface;

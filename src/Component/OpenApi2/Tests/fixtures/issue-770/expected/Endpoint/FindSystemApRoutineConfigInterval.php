@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindSystemApRoutineConfigInterval extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindSystemApRoutineConfigInterval extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
      * @param array $queryParameters {
@@ -13,7 +13,7 @@ class FindSystemApRoutineConfigInterval extends \Jane\Component\OpenApi3\Tests\E
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -42,27 +42,27 @@ class FindSystemApRoutineConfigInterval extends \Jane\Component\OpenApi3\Tests\E
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApRoutineConfigIntervalBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApRoutineConfigIntervalForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApRoutineConfigIntervalInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineConfigIntervalBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineConfigIntervalForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineConfigIntervalInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApRoutineConfigIntervalApRoutineConfigIntervalRsp
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApRoutineConfigIntervalApRoutineConfigIntervalRsp
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApRoutineConfigIntervalBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineConfigIntervalBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApRoutineConfigIntervalForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineConfigIntervalForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApRoutineConfigIntervalInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApRoutineConfigIntervalInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\ApRoutineConfigIntervalApRoutineConfigIntervalRsp', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApRoutineConfigIntervalApRoutineConfigIntervalRsp', 'json');
         }
     }
     public function getAuthenticationScopes(): array

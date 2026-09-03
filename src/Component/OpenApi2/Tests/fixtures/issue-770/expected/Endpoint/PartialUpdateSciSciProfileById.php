@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class PartialUpdateSciSciProfileById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class PartialUpdateSciSciProfileById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $id;
     /**
      * @param string $id
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\SciModifySciProfile $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciProfile $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\SciModifySciProfile $body, array $queryParameters = [])
+    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciProfile $body, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PATCH';
@@ -47,10 +47,10 @@ class PartialUpdateSciSciProfileById extends \Jane\Component\OpenApi3\Tests\Expe
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciProfileByIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciProfileByIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciProfileByIdInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciProfileByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdUnprocessableEntityException
      *
      * @return null
      */
@@ -59,16 +59,16 @@ class PartialUpdateSciSciProfileById extends \Jane\Component\OpenApi3\Tests\Expe
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciProfileByIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciProfileByIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciProfileByIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciProfileByIdUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateSciSciProfileByIdUnprocessableEntityException($response);
         }
         if (200 === $status) {
             return null;

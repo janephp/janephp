@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Authentication;
+namespace Jane\Component\OpenApi3\Tests\Expected\AuthenticationHttpBasic\Authentication;
 
 class BasicAuthentication implements \Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin
 {

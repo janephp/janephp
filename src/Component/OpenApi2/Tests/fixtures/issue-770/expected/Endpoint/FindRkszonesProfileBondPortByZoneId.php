@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindRkszonesProfileBondPortByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindRkszonesProfileBondPortByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $zoneId;
     /**
@@ -16,7 +16,7 @@ class FindRkszonesProfileBondPortByZoneId extends \Jane\Component\OpenApi3\Tests
         $this->zoneId = $zoneId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -45,27 +45,27 @@ class FindRkszonesProfileBondPortByZoneId extends \Jane\Component\OpenApi3\Tests
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileBondPortByZoneIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileBondPortByZoneIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileBondPortByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByZoneIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByZoneIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\BondPortBondPortProfileList
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileList
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileBondPortByZoneIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByZoneIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileBondPortByZoneIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByZoneIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileBondPortByZoneIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindRkszonesProfileBondPortByZoneIdInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\BondPortBondPortProfileList', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileList', 'json');
         }
     }
     public function getAuthenticationScopes(): array

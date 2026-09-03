@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class DpskGetDpskResultNormalizer implements DenormalizerInterface, NormalizerIn
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskResult::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskResult::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskResult::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskResult::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskResult();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskResult();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -43,7 +43,7 @@ class DpskGetDpskResultNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('dpskInfoList', $data)) {
             $values = [];
             foreach ($data['dpskInfoList'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\DpskDpskInfoItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDpskInfoItem::class, 'json', $context);
             }
             $object->dpskInfoList = $values;
         }
@@ -58,7 +58,7 @@ class DpskGetDpskResultNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('dpskInfoList', get_object_vars($data)) && null !== ($data->dpskInfoList ?? null)) {
             $values = [];
             foreach ($data->dpskInfoList ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['dpskInfoList'] = $values;
         }
@@ -66,6 +66,6 @@ class DpskGetDpskResultNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskResult::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskResult::class => false];
     }
 }

@@ -104,6 +104,57 @@ class FixtureComparisonTraitTest extends TestCase
         $this->assertFixtureMatchesGenerated($this->testDirectory);
     }
 
+    public function testDirectoryModeFailsWhenACommittedRuntimeFileIsNoLongerGenerated(): void
+    {
+        $validPhp = "<?php\n\nclass Fine\n{\n}\n";
+        $this->writeFile('generated/Model/Fine.php', $validPhp);
+        $this->writeFile('expected/Model/Fine.php', $validPhp);
+        $this->writeFile('expected/Runtime/Client/Stale.php', $validPhp);
+
+        try {
+            $this->assertFixtureMatchesGenerated($this->testDirectory);
+        } catch (AssertionFailedError $failure) {
+            $this->assertStringContainsString('Runtime/', $failure->getMessage());
+            $this->assertStringContainsString('Stale.php', $failure->getMessage());
+
+            return;
+        }
+
+        $this->fail('Expected a committed Runtime file that is no longer generated to fail the fixture.');
+    }
+
+    public function testDirectoryModeFailsWhenAGeneratedRuntimeFileIsNotCommitted(): void
+    {
+        $validPhp = "<?php\n\nclass Fine\n{\n}\n";
+        $this->writeFile('generated/Model/Fine.php', $validPhp);
+        $this->writeFile('generated/Runtime/Client/Fresh.php', $validPhp);
+        $this->writeFile('expected/Model/Fine.php', $validPhp);
+
+        try {
+            $this->assertFixtureMatchesGenerated($this->testDirectory);
+        } catch (AssertionFailedError $failure) {
+            $this->assertStringContainsString('Runtime/', $failure->getMessage());
+            $this->assertStringContainsString('Fresh.php', $failure->getMessage());
+
+            return;
+        }
+
+        $this->fail('Expected a generated Runtime file missing from expected/ to fail the fixture.');
+    }
+
+    public function testRuntimeFileContentsAreStillSkipped(): void
+    {
+        $validPhp = "<?php\n\nclass Fine\n{\n}\n";
+        $this->writeFile('generated/Model/Fine.php', $validPhp);
+        $this->writeFile('generated/Runtime/Normalizer/Helper.php', "<?php\n\nclass HelperA\n{\n}\n");
+        $this->writeFile('expected/Model/Fine.php', $validPhp);
+        // Same file, different content: asserted centrally by the
+        // runtime-boilerplate fixture, not here.
+        $this->writeFile('expected/Runtime/Normalizer/Helper.php', "<?php\n\nclass HelperB\n{\n}\n");
+
+        $this->assertFixtureMatchesGenerated($this->testDirectory);
+    }
+
     private function writeFile(string $relativePath, string $content): void
     {
         $absolutePath = $this->testDirectory . \DIRECTORY_SEPARATOR . str_replace('/', \DIRECTORY_SEPARATOR, $relativePath);

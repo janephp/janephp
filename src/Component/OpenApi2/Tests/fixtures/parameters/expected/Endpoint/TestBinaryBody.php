@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint;
 
-class TestBinaryBody extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class TestBinaryBody extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\Client\Endpoint
 {
     /**
      * @param string|resource|\Psr\Http\Message\StreamInterface $testBinary
@@ -11,7 +11,7 @@ class TestBinaryBody extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Cli
     {
         $this->body = $testBinary;
     }
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';

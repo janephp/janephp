@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\NullableDate\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\Event::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Event::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Event();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,12 +38,12 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\EventConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Validator\EventConstraint());
         }
         if (\array_key_exists('eventDate', $data) && $data['eventDate'] !== null) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['eventDate']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['eventDate'], 'Y-m-d');
+                throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\InvalidDateException($data['eventDate'], 'Y-m-d');
             }
             $object->eventDate = $date->setTime(0, 0, 0);
             unset($data['eventDate']);
@@ -55,7 +55,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('createdAt', $data) && $data['createdAt'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createdAt']);
             if (false === $date_1) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['createdAt'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\InvalidDateException($data['createdAt'], 'Y-m-d\TH:i:sP');
             }
             $object->createdAt = $date_1;
             unset($data['createdAt']);
@@ -67,7 +67,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('updatedAt', $data)) {
             $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updatedAt']);
             if (false === $date_2) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['updatedAt'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer\InvalidDateException($data['updatedAt'], 'Y-m-d\TH:i:sP');
             }
             $object->updatedAt = $date_2;
             unset($data['updatedAt']);
@@ -118,12 +118,12 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\EventConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Validator\EventConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\Event::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event::class => false];
     }
 }

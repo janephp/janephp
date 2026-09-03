@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint;
 
-class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\Client\Endpoint
 {
     /**
      * @param array $formParameters {
@@ -13,7 +13,7 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Run
     {
         $this->formParameters = $formParameters;
     }
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';

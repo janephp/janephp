@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Model\Catalog;
+namespace Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Catalog;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\AdditionalPropertiesInterface;
 class TaggedItem implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class PartialUpdateDomainsById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class PartialUpdateDomainsById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $id;
     /**
      * @param string $id
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\DomainModifyDomain $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainModifyDomain $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DomainModifyDomain $body, array $queryParameters = [])
+    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainModifyDomain $body, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PATCH';
@@ -47,10 +47,10 @@ class PartialUpdateDomainsById extends \Jane\Component\OpenApi3\Tests\Expected\R
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateDomainsByIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateDomainsByIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateDomainsByIdInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateDomainsByIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdUnprocessableEntityException
      *
      * @return null
      */
@@ -59,16 +59,16 @@ class PartialUpdateDomainsById extends \Jane\Component\OpenApi3\Tests\Expected\R
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateDomainsByIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateDomainsByIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateDomainsByIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateDomainsByIdUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateDomainsByIdUnprocessableEntityException($response);
         }
         if (204 === $status) {
             return null;

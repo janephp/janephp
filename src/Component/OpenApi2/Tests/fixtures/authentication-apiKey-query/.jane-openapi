@@ -2,6 +2,6 @@
 
 return [
     'openapi-file' => __DIR__ . '/swagger.json',
-    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi2\Tests\Expected\AuthenticationApiKeyQuery',
     'directory' => __DIR__ . '/generated',
 ];

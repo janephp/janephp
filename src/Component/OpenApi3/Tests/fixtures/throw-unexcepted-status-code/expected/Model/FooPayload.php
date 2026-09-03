@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Model;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Runtime\AdditionalPropertiesInterface;
 class FooPayload implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

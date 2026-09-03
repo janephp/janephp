@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Endpoint;
 
-class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -24,19 +24,19 @@ class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Base
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\GetFooUnauthorizedException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Exception\GetFooUnauthorizedException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Foo
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Model\Foo
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Foo', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Model\Foo', 'json');
         }
         if (401 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetFooUnauthorizedException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPathsReferenceWithoutContent\Exception\GetFooUnauthorizedException($response);
         }
     }
     public function getAuthenticationScopes(): array

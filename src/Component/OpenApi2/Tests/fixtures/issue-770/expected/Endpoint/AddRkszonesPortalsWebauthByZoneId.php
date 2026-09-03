@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddRkszonesPortalsWebauthByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddRkszonesPortalsWebauthByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $zoneId;
     /**
      * @param string $zoneId
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWebAuthentication $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWebAuthentication $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWebAuthentication $body, array $queryParameters = [])
+    public function __construct(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWebAuthentication $body, array $queryParameters = [])
     {
         $this->zoneId = $zoneId;
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -47,31 +47,31 @@ class AddRkszonesPortalsWebauthByZoneId extends \Jane\Component\OpenApi3\Tests\E
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWebauthByZoneIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWebauthByZoneIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWebauthByZoneIdInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWebauthByZoneIdUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWebauthByZoneIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWebauthByZoneIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWebauthByZoneIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWebauthByZoneIdUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddRkszonesPortalsWebauthByZoneIdUnprocessableEntityException($response);
         }
         if (201 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult', 'json');
         }
     }
     public function getAuthenticationScopes(): array

@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Model;
+namespace Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\AdditionalPropertiesInterface;
 class Event implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

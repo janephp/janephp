@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi3\Tests\Expected\Runtime\Client;
+namespace Jane\OpenApi3\Tests\Expected\SkipParameterCheck\Runtime\Client;
 
 use Symfony\Component\Serializer\Encoder\DecoderInterface;
 use Symfony\Component\Serializer\Encoder\EncoderInterface;

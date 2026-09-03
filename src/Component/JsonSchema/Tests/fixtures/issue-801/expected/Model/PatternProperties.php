@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Model;
+namespace Jane\Component\JsonSchema\Tests\Expected\Issue801\Model;
 
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\JsonSchema\Tests\Expected\Issue801\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\JsonSchema\Tests\Expected\Issue801\Runtime\AdditionalPropertiesInterface;
 class PatternProperties implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Model;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Model;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\AdditionalPropertiesInterface;
 class MuseumTicketsConfirmation implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

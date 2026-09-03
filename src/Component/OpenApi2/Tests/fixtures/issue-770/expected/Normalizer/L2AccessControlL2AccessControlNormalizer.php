@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlL2AccessControl::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControl::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlL2AccessControl::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControl::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlL2AccessControl();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControl();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -55,7 +55,7 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
         if (\array_key_exists('rules', $data)) {
             $values = [];
             foreach ($data['rules'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlRuleObject::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlRuleObject::class, 'json', $context);
             }
             $object->rules = $values;
         }
@@ -65,14 +65,14 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
         if (\array_key_exists('etherTypes', $data)) {
             $values_1 = [];
             foreach ($data['etherTypes'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlEtherTypeObject::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlEtherTypeObject::class, 'json', $context);
             }
             $object->etherTypes = $values_1;
         }
         if (\array_key_exists('userDefinedEtherTypes', $data)) {
             $values_2 = [];
             foreach ($data['userDefinedEtherTypes'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlUserDefinedEtherTypeObject::class, 'json', $context);
+                $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlUserDefinedEtherTypeObject::class, 'json', $context);
             }
             $object->userDefinedEtherTypes = $values_2;
         }
@@ -117,7 +117,7 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
         if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values = [];
             foreach ($data->rules ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;
         }
@@ -127,14 +127,14 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
         if (array_key_exists('etherTypes', get_object_vars($data)) && null !== ($data->etherTypes ?? null)) {
             $values_1 = [];
             foreach ($data->etherTypes ?? null as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['etherTypes'] = $values_1;
         }
         if (array_key_exists('userDefinedEtherTypes', get_object_vars($data)) && null !== ($data->userDefinedEtherTypes ?? null)) {
             $values_2 = [];
             foreach ($data->userDefinedEtherTypes ?? null as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['userDefinedEtherTypes'] = $values_2;
         }
@@ -160,6 +160,6 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlL2AccessControl::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControl::class => false];
     }
 }

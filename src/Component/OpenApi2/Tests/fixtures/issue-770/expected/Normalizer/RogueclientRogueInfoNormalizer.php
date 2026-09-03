@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class RogueclientRogueInfoNormalizer implements DenormalizerInterface, Normalize
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\RogueclientRogueInfo::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RogueclientRogueInfo::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\RogueclientRogueInfo::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RogueclientRogueInfo::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\RogueclientRogueInfo();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RogueclientRogueInfo();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -40,7 +40,7 @@ class RogueclientRogueInfoNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('detectedByAP', $data)) {
             $values = [];
             foreach ($data['detectedByAP'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApInfoApInfo::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApInfoApInfo::class, 'json', $context);
             }
             $object->detectedByAP = $values;
         }
@@ -82,7 +82,7 @@ class RogueclientRogueInfoNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('detectedByAP', get_object_vars($data)) && null !== ($data->detectedByAP ?? null)) {
             $values = [];
             foreach ($data->detectedByAP ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['detectedByAP'] = $values;
         }
@@ -120,6 +120,6 @@ class RogueclientRogueInfoNormalizer implements DenormalizerInterface, Normalize
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\RogueclientRogueInfo::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RogueclientRogueInfo::class => false];
     }
 }

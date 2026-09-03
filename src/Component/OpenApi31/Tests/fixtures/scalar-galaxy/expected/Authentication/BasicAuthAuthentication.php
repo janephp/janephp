@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Authentication;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Authentication;
 
 class BasicAuthAuthentication implements \Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin
 {

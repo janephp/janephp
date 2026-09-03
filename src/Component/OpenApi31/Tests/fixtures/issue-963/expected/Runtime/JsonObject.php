@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Runtime;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue963\Runtime;
 
 class JsonObject extends \stdClass implements \ArrayAccess, \Countable, \IteratorAggregate
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $id;
     protected $poolId;
@@ -19,7 +19,7 @@ class DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId extends \Jane\Component\Ope
         $this->poolId = $poolId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'DELETE';
@@ -48,9 +48,9 @@ class DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId extends \Jane\Component\Ope
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException
      *
      * @return null
      */
@@ -59,13 +59,13 @@ class DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId extends \Jane\Component\Ope
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException($response);
         }
         if (200 === $status) {
             return null;

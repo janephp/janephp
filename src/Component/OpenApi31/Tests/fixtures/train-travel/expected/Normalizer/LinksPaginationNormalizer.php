@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class LinksPaginationNormalizer implements DenormalizerInterface, NormalizerInte
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\LinksPagination::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksPagination::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\LinksPagination::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksPagination::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\LinksPagination();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksPagination();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class LinksPaginationNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\LinksPaginationConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Validator\LinksPaginationConstraint());
         }
         if (\array_key_exists('next', $data)) {
             $object->next = $data['next'];
@@ -70,12 +70,12 @@ class LinksPaginationNormalizer implements DenormalizerInterface, NormalizerInte
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\LinksPaginationConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Validator\LinksPaginationConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\LinksPagination::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksPagination::class => false];
     }
 }

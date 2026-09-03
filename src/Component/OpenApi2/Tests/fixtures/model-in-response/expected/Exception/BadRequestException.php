@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception;
 
 abstract class BadRequestException extends \RuntimeException implements ClientException, WithResponseInterface
 {

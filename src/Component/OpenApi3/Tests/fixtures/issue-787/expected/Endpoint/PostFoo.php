@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue787\Endpoint;
 
-class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Issue787\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue787\Runtime\Client\Endpoint
 {
     /**
      * @param mixed $requestBody
@@ -11,7 +11,7 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue787\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';

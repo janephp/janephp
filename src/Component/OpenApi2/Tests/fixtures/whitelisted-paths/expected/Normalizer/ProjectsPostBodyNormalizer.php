@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\CheckArray;
+use Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody::class;
+        return $type === \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody::class;
+        return is_object($data) && get_class($data) === \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody();
+        $object = new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -130,14 +130,14 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('starts_on', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['starts_on']);
             if (false === $date) {
-                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['starts_on'], 'Y-m-d');
+                throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['starts_on'], 'Y-m-d');
             }
             $object->startsOn = $date->setTime(0, 0, 0);
         }
         if (\array_key_exists('ends_on', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d', $data['ends_on']);
             if (false === $date_1) {
-                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['ends_on'], 'Y-m-d');
+                throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['ends_on'], 'Y-m-d');
             }
             $object->endsOn = $date_1->setTime(0, 0, 0);
         }
@@ -200,6 +200,6 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody::class => false];
+        return [\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectsPostBody::class => false];
     }
 }

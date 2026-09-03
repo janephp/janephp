@@ -2,7 +2,7 @@
 
 return [
     'openapi-file' => __DIR__ . '/swagger.json',
-    'namespace' => 'Jane\Component\OpenApi3\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi3\Tests\Expected\AuthenticationApiKeyQuery',
     'directory' => __DIR__ . '/generated',
     'use-fixer' => false,
 //    'client' => 'psr18',

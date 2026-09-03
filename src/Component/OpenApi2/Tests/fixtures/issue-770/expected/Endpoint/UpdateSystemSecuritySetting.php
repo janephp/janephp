@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class UpdateSystemSecuritySetting extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class UpdateSystemSecuritySetting extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\SystemSecuritySetting $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSecuritySetting $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSecuritySetting $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSecuritySetting $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PUT';
@@ -44,10 +44,10 @@ class UpdateSystemSecuritySetting extends \Jane\Component\OpenApi3\Tests\Expecte
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSecuritySettingBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSecuritySettingForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSecuritySettingInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSecuritySettingUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingUnprocessableEntityException
      *
      * @return null
      */
@@ -56,16 +56,16 @@ class UpdateSystemSecuritySetting extends \Jane\Component\OpenApi3\Tests\Expecte
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSecuritySettingBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSecuritySettingForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSecuritySettingInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSecuritySettingUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemSecuritySettingUnprocessableEntityException($response);
         }
         if (200 === $status) {
             return null;

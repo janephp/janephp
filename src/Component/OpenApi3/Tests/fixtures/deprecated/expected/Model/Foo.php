@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\Expected\Deprecated\Model;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi3\Tests\Expected\Deprecated\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Deprecated\Runtime\AdditionalPropertiesInterface;
 /**
  * @deprecated
  */

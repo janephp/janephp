@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class EthernetPortEthernetPortProfileNormalizer implements DenormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortEthernetPortProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortEthernetPortProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortEthernetPortProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortEthernetPortProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortEthernetPortProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortEthernetPortProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -98,7 +98,7 @@ class EthernetPortEthernetPortProfileNormalizer implements DenormalizerInterface
             $object->guestVlan = $data['guestVlan'];
         }
         if (\array_key_exists('qinq', $data)) {
-            $object->qinq = $this->denormalizer->denormalize($data['qinq'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQinq::class, 'json', $context);
+            $object->qinq = $this->denormalizer->denormalize($data['qinq'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQinq::class, 'json', $context);
         }
         if (\array_key_exists('antiSpoofingEnabled', $data)) {
             $object->antiSpoofingEnabled = $data['antiSpoofingEnabled'];
@@ -122,13 +122,13 @@ class EthernetPortEthernetPortProfileNormalizer implements DenormalizerInterface
             $object->userSidePortDownlinkLimit = $data['userSidePortDownlinkLimit'];
         }
         if (\array_key_exists('_8021X', $data)) {
-            $object->n8021X = $this->denormalizer->denormalize($data['_8021X'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPort8021X::class, 'json', $context);
+            $object->n8021X = $this->denormalizer->denormalize($data['_8021X'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPort8021X::class, 'json', $context);
         }
         if (\array_key_exists('tunnelProfile', $data)) {
-            $object->tunnelProfile = $this->denormalizer->denormalize($data['tunnelProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
+            $object->tunnelProfile = $this->denormalizer->denormalize($data['tunnelProfile'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('ipsecProfile', $data)) {
-            $object->ipsecProfile = $this->denormalizer->denormalize($data['ipsecProfile'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
+            $object->ipsecProfile = $this->denormalizer->denormalize($data['ipsecProfile'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('firewallProfileId', $data)) {
             $object->firewallProfileId = $data['firewallProfileId'];
@@ -155,7 +155,7 @@ class EthernetPortEthernetPortProfileNormalizer implements DenormalizerInterface
             $object->clientIsolationAutoVrrpEnabled = $data['clientIsolationAutoVrrpEnabled'];
         }
         if (\array_key_exists('clientIsolationWhitelist', $data)) {
-            $object->clientIsolationWhitelist = $this->denormalizer->denormalize($data['clientIsolationWhitelist'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
+            $object->clientIsolationWhitelist = $this->denormalizer->denormalize($data['clientIsolationWhitelist'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
         return $object;
     }
@@ -193,7 +193,7 @@ class EthernetPortEthernetPortProfileNormalizer implements DenormalizerInterface
             $dataArray['guestVlan'] = $data->guestVlan ?? null;
         }
         if (array_key_exists('qinq', get_object_vars($data)) && null !== ($data->qinq ?? null)) {
-            $dataArray['qinq'] = ($data->qinq ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->qinq ?? null, 'json', $context));
+            $dataArray['qinq'] = ($data->qinq ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->qinq ?? null, 'json', $context));
         }
         if (array_key_exists('antiSpoofingEnabled', get_object_vars($data)) && null !== ($data->antiSpoofingEnabled ?? null)) {
             $dataArray['antiSpoofingEnabled'] = $data->antiSpoofingEnabled ?? null;
@@ -217,13 +217,13 @@ class EthernetPortEthernetPortProfileNormalizer implements DenormalizerInterface
             $dataArray['userSidePortDownlinkLimit'] = $data->userSidePortDownlinkLimit ?? null;
         }
         if (array_key_exists('n8021X', get_object_vars($data)) && null !== ($data->n8021X ?? null)) {
-            $dataArray['_8021X'] = ($data->n8021X ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->n8021X ?? null, 'json', $context));
+            $dataArray['_8021X'] = ($data->n8021X ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->n8021X ?? null, 'json', $context));
         }
         if (array_key_exists('tunnelProfile', get_object_vars($data)) && null !== ($data->tunnelProfile ?? null)) {
-            $dataArray['tunnelProfile'] = ($data->tunnelProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->tunnelProfile ?? null, 'json', $context));
+            $dataArray['tunnelProfile'] = ($data->tunnelProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->tunnelProfile ?? null, 'json', $context));
         }
         if (array_key_exists('ipsecProfile', get_object_vars($data)) && null !== ($data->ipsecProfile ?? null)) {
-            $dataArray['ipsecProfile'] = ($data->ipsecProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->ipsecProfile ?? null, 'json', $context));
+            $dataArray['ipsecProfile'] = ($data->ipsecProfile ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipsecProfile ?? null, 'json', $context));
         }
         if (array_key_exists('firewallProfileId', get_object_vars($data)) && null !== ($data->firewallProfileId ?? null)) {
             $dataArray['firewallProfileId'] = $data->firewallProfileId ?? null;
@@ -250,12 +250,12 @@ class EthernetPortEthernetPortProfileNormalizer implements DenormalizerInterface
             $dataArray['clientIsolationAutoVrrpEnabled'] = $data->clientIsolationAutoVrrpEnabled ?? null;
         }
         if (array_key_exists('clientIsolationWhitelist', get_object_vars($data)) && null !== ($data->clientIsolationWhitelist ?? null)) {
-            $dataArray['clientIsolationWhitelist'] = ($data->clientIsolationWhitelist ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->clientIsolationWhitelist ?? null, 'json', $context));
+            $dataArray['clientIsolationWhitelist'] = ($data->clientIsolationWhitelist ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clientIsolationWhitelist ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortEthernetPortProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortEthernetPortProfile::class => false];
     }
 }

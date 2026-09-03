@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, N
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteriaOptions::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteriaOptions::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteriaOptions();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +56,7 @@ class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, N
             $object->globalFilterId = $data['globalFilterId'];
         }
         if (\array_key_exists('localUser_auditTime', $data)) {
-            $object->localUserAuditTime = $this->denormalizer->denormalize($data['localUser_auditTime'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime::class, 'json', $context);
+            $object->localUserAuditTime = $this->denormalizer->denormalize($data['localUser_auditTime'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime::class, 'json', $context);
         }
         if (\array_key_exists('localUser_firstName', $data)) {
             $object->localUserFirstName = $data['localUser_firstName'];
@@ -89,7 +89,7 @@ class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, N
             $object->guestPassDisplayName = $data['guestPass_displayName'];
         }
         if (\array_key_exists('guestPass_expiration', $data)) {
-            $object->guestPassExpiration = $this->denormalizer->denormalize($data['guestPass_expiration'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsGuestPassExpiration::class, 'json', $context);
+            $object->guestPassExpiration = $this->denormalizer->denormalize($data['guestPass_expiration'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteriaOptionsGuestPassExpiration::class, 'json', $context);
         }
         if (\array_key_exists('guestPass_wlan', $data)) {
             $object->guestPassWlan = $data['guestPass_wlan'];
@@ -112,7 +112,7 @@ class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, N
             $dataArray['globalFilterId'] = $data->globalFilterId ?? null;
         }
         if (array_key_exists('localUserAuditTime', get_object_vars($data)) && null !== ($data->localUserAuditTime ?? null)) {
-            $dataArray['localUser_auditTime'] = ($data->localUserAuditTime ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->localUserAuditTime ?? null, 'json', $context));
+            $dataArray['localUser_auditTime'] = ($data->localUserAuditTime ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->localUserAuditTime ?? null, 'json', $context));
         }
         if (array_key_exists('localUserFirstName', get_object_vars($data)) && null !== ($data->localUserFirstName ?? null)) {
             $dataArray['localUser_firstName'] = $data->localUserFirstName ?? null;
@@ -145,7 +145,7 @@ class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, N
             $dataArray['guestPass_displayName'] = $data->guestPassDisplayName ?? null;
         }
         if (array_key_exists('guestPassExpiration', get_object_vars($data)) && null !== ($data->guestPassExpiration ?? null)) {
-            $dataArray['guestPass_expiration'] = ($data->guestPassExpiration ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->guestPassExpiration ?? null, 'json', $context));
+            $dataArray['guestPass_expiration'] = ($data->guestPassExpiration ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->guestPassExpiration ?? null, 'json', $context));
         }
         if (array_key_exists('guestPassWlan', get_object_vars($data)) && null !== ($data->guestPassWlan ?? null)) {
             $dataArray['guestPass_wlan'] = $data->guestPassWlan ?? null;
@@ -154,6 +154,6 @@ class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, N
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteriaOptions::class => false];
     }
 }

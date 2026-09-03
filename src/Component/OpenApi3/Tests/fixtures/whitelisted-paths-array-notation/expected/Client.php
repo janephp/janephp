@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApi3\Tests\Expected;
+namespace Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation;
 
-class Client extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\Client
 {
     /**
      * Returns a variety of information about the Tweet specified by the requested ID
@@ -17,11 +17,11 @@ class Client extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Client
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse|\Jane\OpenApi3\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetLookupResponse|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function findTweetsById(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\FindTweetsById($queryParameters, $accept), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint\FindTweetsById($queryParameters, $accept), $fetch);
     }
     /**
      * Add or delete rules from a user's active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
@@ -32,11 +32,11 @@ class Client extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Client
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\OpenApi3\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function addOrDeleteRules($requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\Endpoint\AddOrDeleteRules($requestBody, $queryParameters, $accept), $fetch);
+        return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint\AddOrDeleteRules($requestBody, $queryParameters, $accept), $fetch);
     }
     public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
@@ -54,11 +54,11 @@ class Client extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Client
         $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

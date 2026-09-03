@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\Issue949\Normalizer;
 
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\ProjectProposal::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ProjectProposalNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\ProjectProposal::class => \Jane\Component\JsonSchema\Tests\Expected\Issue949\Normalizer\ProjectProposalNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\GlobalEcoScore::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\GlobalEcoScoreNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\Issue949\Model\GlobalEcoScore::class => \Jane\Component\JsonSchema\Tests\Expected\Issue949\Normalizer\GlobalEcoScoreNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

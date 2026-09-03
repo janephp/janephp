@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Normalizer;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Validation;

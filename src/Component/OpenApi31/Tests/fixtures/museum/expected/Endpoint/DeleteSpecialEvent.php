@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Endpoint;
 
-class DeleteSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class DeleteSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\Endpoint
 {
     protected $eventId;
     /**
@@ -13,7 +13,7 @@ class DeleteSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtim
     {
         $this->eventId = $eventId;
     }
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'DELETE';
@@ -33,9 +33,9 @@ class DeleteSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtim
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\DeleteSpecialEventBadRequestException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\DeleteSpecialEventUnauthorizedException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\DeleteSpecialEventNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\DeleteSpecialEventBadRequestException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\DeleteSpecialEventUnauthorizedException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\DeleteSpecialEventNotFoundException
      *
      * @return null
      */
@@ -47,13 +47,13 @@ class DeleteSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtim
             return null;
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\DeleteSpecialEventBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\DeleteSpecialEventBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);
         }
         if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\DeleteSpecialEventUnauthorizedException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\DeleteSpecialEventUnauthorizedException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);
         }
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\DeleteSpecialEventNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\DeleteSpecialEventNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array

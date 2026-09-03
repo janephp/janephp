@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception;
 
 class PostFooInternalServerErrorException extends InternalServerErrorException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi3\Tests\Expected\Model\ResponseProblemDetailsResponse500
+         * @var \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse500
          */
-        private readonly \Jane\Component\OpenApi3\Tests\Expected\Model\ResponseProblemDetailsResponse500 $responseProblemDetailsResponse500,
+        private readonly \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse500 $responseProblemDetailsResponse500,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class PostFooInternalServerErrorException extends InternalServerErrorException
     {
         parent::__construct('An error occurred');
     }
-    public function getResponseProblemDetailsResponse500(): \Jane\Component\OpenApi3\Tests\Expected\Model\ResponseProblemDetailsResponse500
+    public function getResponseProblemDetailsResponse500(): \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse500
     {
         return $this->responseProblemDetailsResponse500;
     }

@@ -3,6 +3,6 @@
 return [
     'json-schema-file' => __DIR__ . '/schema.json',
     'root-class' => 'Test',
-    'namespace' => 'Jane\JsonSchema\Tests\Expected',
+    'namespace' => 'Jane\JsonSchema\Tests\Expected\DollarDefs',
     'directory' => __DIR__ . '/generated',
 ];

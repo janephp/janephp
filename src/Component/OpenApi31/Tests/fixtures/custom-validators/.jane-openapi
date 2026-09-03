@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 
 return [
     'openapi-file' => __DIR__ . '/openapi.json',
-    'namespace' => 'Jane\Component\OpenApi31\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi31\Tests\Expected\CustomValidators',
     'directory' => __DIR__ . '/generated',
     'validation' => true,
     'validators' => [

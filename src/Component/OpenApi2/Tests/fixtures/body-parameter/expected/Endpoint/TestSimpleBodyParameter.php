@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint;
 
-class TestSimpleBodyParameter extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class TestSimpleBodyParameter extends \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Client\Endpoint
 {
     /**
      * @param string|resource|\Psr\Http\Message\StreamInterface $testString
@@ -11,7 +11,7 @@ class TestSimpleBodyParameter extends \Jane\Component\OpenApi2\Tests\Expected\Ru
     {
         $this->body = $testString;
     }
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';

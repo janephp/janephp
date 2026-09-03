@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class DeleteDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class DeleteDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $dpKey;
     /**
@@ -16,7 +16,7 @@ class DeleteDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expe
         $this->dpKey = $dpKey;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'DELETE';
@@ -45,9 +45,9 @@ class DeleteDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expe
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpProfileSettingsByDpKeyBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpProfileSettingsByDpKeyForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpProfileSettingsByDpKeyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsByDpKeyBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsByDpKeyForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsByDpKeyInternalServerErrorException
      *
      * @return null
      */
@@ -56,13 +56,13 @@ class DeleteDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expe
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpProfileSettingsByDpKeyBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsByDpKeyBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpProfileSettingsByDpKeyForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsByDpKeyForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpProfileSettingsByDpKeyInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpProfileSettingsByDpKeyInternalServerErrorException($response);
         }
         if (204 === $status) {
             return null;

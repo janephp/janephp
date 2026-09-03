@@ -1,18 +1,18 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Runtime\Client\Client
 {
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
-    public function postFile(?\Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postFile(?\Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\PostFile($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Endpoint\PostFile($requestBody), $fetch);
     }
     public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -26,11 +26,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBody::class;
+        return $type === \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBody::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBody();
+        $object = new \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,10 +41,10 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->foo = $data['foo'];
         }
         if (\array_key_exists('Bar', $data)) {
-            $object->bar = $this->denormalizer->denormalize($data['Bar'], \Jane\Component\OpenApi2\Tests\Expected\Model\Bar::class, 'json', $context);
+            $object->bar = $this->denormalizer->denormalize($data['Bar'], \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\Bar::class, 'json', $context);
         }
         if (\array_key_exists('Baz', $data)) {
-            $object->baz = $this->denormalizer->denormalize($data['Baz'], \Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBodyBaz::class, 'json', $context);
+            $object->baz = $this->denormalizer->denormalize($data['Baz'], \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBodyBaz::class, 'json', $context);
         }
         return $object;
     }
@@ -55,15 +55,15 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['foo'] = $data->foo ?? null;
         }
         if (array_key_exists('bar', get_object_vars($data)) && null !== ($data->bar ?? null)) {
-            $dataArray['Bar'] = ($data->bar ?? null) === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->bar ?? null, 'json', $context));
+            $dataArray['Bar'] = ($data->bar ?? null) === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\JsonObject($this->normalizer->normalize($data->bar ?? null, 'json', $context));
         }
         if (array_key_exists('baz', get_object_vars($data)) && null !== ($data->baz ?? null)) {
-            $dataArray['Baz'] = ($data->baz ?? null) === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->baz ?? null, 'json', $context));
+            $dataArray['Baz'] = ($data->baz ?? null) === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\JsonObject($this->normalizer->normalize($data->baz ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBody::class => false];
+        return [\Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody::class => false];
     }
 }

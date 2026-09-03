@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class DeleteDpNatProfilesDpNatPoolsByPoolId extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class DeleteDpNatProfilesDpNatPoolsByPoolId extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $id;
     protected $poolId;
@@ -19,7 +19,7 @@ class DeleteDpNatProfilesDpNatPoolsByPoolId extends \Jane\Component\OpenApi3\Tes
         $this->poolId = $poolId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'DELETE';
@@ -48,9 +48,9 @@ class DeleteDpNatProfilesDpNatPoolsByPoolId extends \Jane\Component\OpenApi3\Tes
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdInternalServerErrorException
      *
      * @return null
      */
@@ -59,13 +59,13 @@ class DeleteDpNatProfilesDpNatPoolsByPoolId extends \Jane\Component\OpenApi3\Tes
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdInternalServerErrorException($response);
         }
         if (200 === $status) {
             return null;

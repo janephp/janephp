@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\AdditionalPropertiesInterface;
 class SalesRetrieveInvoicesRequestFilter implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

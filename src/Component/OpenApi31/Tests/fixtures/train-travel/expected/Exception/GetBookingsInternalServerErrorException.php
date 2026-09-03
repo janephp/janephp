@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception;
 
 class GetBookingsInternalServerErrorException extends InternalServerErrorException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi31\Tests\Expected\Model\Problem
+         * @var \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem
          */
-        private readonly \Jane\Component\OpenApi31\Tests\Expected\Model\Problem $problem,
+        private readonly \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem $problem,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class GetBookingsInternalServerErrorException extends InternalServerErrorExcepti
     {
         parent::__construct('Internal Server Error');
     }
-    public function getProblem(): \Jane\Component\OpenApi31\Tests\Expected\Model\Problem
+    public function getProblem(): \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem
     {
         return $this->problem;
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ClientHistoricalClientListNormalizer implements DenormalizerInterface, Nor
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ClientHistoricalClientList::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientHistoricalClientList::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ClientHistoricalClientList::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientHistoricalClientList::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ClientHistoricalClientList();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientHistoricalClientList();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -50,12 +50,12 @@ class ClientHistoricalClientListNormalizer implements DenormalizerInterface, Nor
             $object->totalCount = $data['totalCount'];
         }
         if (\array_key_exists('extra', $data)) {
-            $object->extra = $this->denormalizer->denormalize($data['extra'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonRbacMetadata::class, 'json', $context);
+            $object->extra = $this->denormalizer->denormalize($data['extra'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonRbacMetadata::class, 'json', $context);
         }
         if (\array_key_exists('list', $data)) {
             $values = [];
             foreach ($data['list'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ClientHistoricalClient::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientHistoricalClient::class, 'json', $context);
             }
             $object->list = $values;
         }
@@ -74,12 +74,12 @@ class ClientHistoricalClientListNormalizer implements DenormalizerInterface, Nor
             $dataArray['totalCount'] = $data->totalCount ?? null;
         }
         if (array_key_exists('extra', get_object_vars($data)) && null !== ($data->extra ?? null)) {
-            $dataArray['extra'] = ($data->extra ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->extra ?? null, 'json', $context));
+            $dataArray['extra'] = ($data->extra ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extra ?? null, 'json', $context));
         }
         if (array_key_exists('list', get_object_vars($data)) && null !== ($data->list ?? null)) {
             $values = [];
             foreach ($data->list ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['list'] = $values;
         }
@@ -87,6 +87,6 @@ class ClientHistoricalClientListNormalizer implements DenormalizerInterface, Nor
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ClientHistoricalClientList::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientHistoricalClientList::class => false];
     }
 }

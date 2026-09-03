@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint;
 
-class TestObjectBodyParameter extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class TestObjectBodyParameter extends \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema $testObject
+     * @param \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Model\Schema $testObject
      */
-    public function __construct(\Jane\Component\OpenApi2\Tests\Expected\Model\Schema $testObject)
+    public function __construct(\Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Model\Schema $testObject)
     {
         $this->body = $testObject;
     }
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';

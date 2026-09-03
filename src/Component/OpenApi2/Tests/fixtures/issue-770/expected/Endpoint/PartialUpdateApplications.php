@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class PartialUpdateApplications extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class PartialUpdateApplications extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModifyLogLevel $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyLogLevel $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModifyLogLevel $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyLogLevel $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PATCH';
@@ -44,10 +44,10 @@ class PartialUpdateApplications extends \Jane\Component\OpenApi3\Tests\Expected\
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApplicationsBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApplicationsForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApplicationsInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApplicationsUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsUnprocessableEntityException
      *
      * @return null
      */
@@ -56,16 +56,16 @@ class PartialUpdateApplications extends \Jane\Component\OpenApi3\Tests\Expected\
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApplicationsBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApplicationsForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApplicationsInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApplicationsUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\PartialUpdateApplicationsUnprocessableEntityException($response);
         }
         if (204 === $status) {
             return null;

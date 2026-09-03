@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Model;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue940\Model;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi31\Tests\Expected\Issue940\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Issue940\Runtime\AdditionalPropertiesInterface;
 class User implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

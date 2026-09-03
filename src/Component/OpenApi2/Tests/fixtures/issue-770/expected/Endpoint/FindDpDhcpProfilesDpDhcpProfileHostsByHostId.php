@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindDpDhcpProfilesDpDhcpProfileHostsByHostId extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindDpDhcpProfilesDpDhcpProfileHostsByHostId extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $id;
     protected $hostId;
@@ -19,7 +19,7 @@ class FindDpDhcpProfilesDpDhcpProfileHostsByHostId extends \Jane\Component\OpenA
         $this->hostId = $hostId;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -48,27 +48,27 @@ class FindDpDhcpProfilesDpDhcpProfileHostsByHostId extends \Jane\Component\OpenA
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO', 'json');
         }
     }
     public function getAuthenticationScopes(): array

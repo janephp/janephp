@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class WlangroupWlanMemberNormalizer implements DenormalizerInterface, Normalizer
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupWlanMember::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanMember::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupWlanMember::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanMember::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupWlanMember();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanMember();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -47,7 +47,7 @@ class WlangroupWlanMemberNormalizer implements DenormalizerInterface, Normalizer
             $object->accessVlan = $data['accessVlan'];
         }
         if (\array_key_exists('vlanPooling', $data)) {
-            $object->vlanPooling = $this->denormalizer->denormalize($data['vlanPooling'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
+            $object->vlanPooling = $this->denormalizer->denormalize($data['vlanPooling'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('nasId', $data)) {
             $object->nasId = $data['nasId'];
@@ -65,7 +65,7 @@ class WlangroupWlanMemberNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['accessVlan'] = $data->accessVlan ?? null;
         }
         if (array_key_exists('vlanPooling', get_object_vars($data)) && null !== ($data->vlanPooling ?? null)) {
-            $dataArray['vlanPooling'] = ($data->vlanPooling ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling ?? null, 'json', $context));
+            $dataArray['vlanPooling'] = ($data->vlanPooling ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling ?? null, 'json', $context));
         }
         if (array_key_exists('nasId', get_object_vars($data)) && null !== ($data->nasId ?? null)) {
             $dataArray['nasId'] = $data->nasId ?? null;
@@ -74,6 +74,6 @@ class WlangroupWlanMemberNormalizer implements DenormalizerInterface, Normalizer
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupWlanMember::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanMember::class => false];
     }
 }

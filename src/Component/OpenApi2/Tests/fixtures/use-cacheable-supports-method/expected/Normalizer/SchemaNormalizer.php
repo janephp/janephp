@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,15 +20,15 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi2\Tests\Expected\Model\Schema::class;
+        return $type === \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Model\Schema::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi2\Tests\Expected\Model\Schema::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Model\Schema::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi2\Tests\Expected\Model\Schema();
+        $object = new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Model\Schema();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -47,7 +47,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('dateProperty', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateProperty']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateProperty'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\Normalizer\InvalidDateException($data['dateProperty'], 'Y-m-d\TH:i:sP');
             }
             $object->dateProperty = $date;
         }
@@ -65,17 +65,17 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->arrayProperty = $values;
         }
         if (\array_key_exists('mapProperty', $data)) {
-            $values_1 = new \Jane\Component\OpenApi2\Tests\Expected\Runtime\JsonObject();
+            $values_1 = new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject();
             foreach ($data['mapProperty'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $object->mapProperty = $values_1;
         }
         if (\array_key_exists('objectProperty', $data)) {
-            $object->objectProperty = $this->denormalizer->denormalize($data['objectProperty'], \Jane\Component\OpenApi2\Tests\Expected\Model\SchemaObjectProperty::class, 'json', $context);
+            $object->objectProperty = $this->denormalizer->denormalize($data['objectProperty'], \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Model\SchemaObjectProperty::class, 'json', $context);
         }
         if (\array_key_exists('objectRefProperty', $data)) {
-            $object->objectRefProperty = $this->denormalizer->denormalize($data['objectRefProperty'], \Jane\Component\OpenApi2\Tests\Expected\Model\Schema::class, 'json', $context);
+            $object->objectRefProperty = $this->denormalizer->denormalize($data['objectRefProperty'], \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Model\Schema::class, 'json', $context);
         }
         return $object;
     }
@@ -102,23 +102,23 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['arrayProperty'] = $values;
         }
         if (array_key_exists('mapProperty', get_object_vars($data)) && null !== ($data->mapProperty ?? null)) {
-            $values_1 = new \Jane\Component\OpenApi2\Tests\Expected\Runtime\JsonObject();
+            $values_1 = new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject();
             foreach ($data->mapProperty ?? null as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['mapProperty'] = $values_1;
         }
         if (array_key_exists('objectProperty', get_object_vars($data)) && null !== ($data->objectProperty ?? null)) {
-            $dataArray['objectProperty'] = ($data->objectProperty ?? null) === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty ?? null, 'json', $context));
+            $dataArray['objectProperty'] = ($data->objectProperty ?? null) === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty ?? null, 'json', $context));
         }
         if (array_key_exists('objectRefProperty', get_object_vars($data)) && null !== ($data->objectRefProperty ?? null)) {
-            $dataArray['objectRefProperty'] = ($data->objectRefProperty ?? null) === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty ?? null, 'json', $context));
+            $dataArray['objectRefProperty'] = ($data->objectRefProperty ?? null) === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi2\Tests\Expected\Model\Schema::class => true];
+        return [\Jane\Component\OpenApi2\Tests\Expected\UseCacheableSupportsMethod\Model\Schema::class => true];
     }
     public function hasCacheableSupportsMethod(): bool
     {

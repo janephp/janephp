@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Runtime\Client;
+namespace Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Runtime\Client;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;

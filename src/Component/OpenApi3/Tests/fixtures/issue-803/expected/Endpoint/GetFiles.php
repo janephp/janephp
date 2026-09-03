@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue803\Endpoint;
 
-class GetFiles extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class GetFiles extends \Jane\Component\OpenApi3\Tests\Expected\Issue803\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue803\Runtime\Client\Endpoint
 {
     /**
      * Foo bar
@@ -19,7 +19,7 @@ class GetFiles extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue803\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -58,14 +58,14 @@ class GetFiles extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\File[]
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File[]
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\File[]', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue803\Model\File[]', 'json');
         }
     }
     public function getAuthenticationScopes(): array

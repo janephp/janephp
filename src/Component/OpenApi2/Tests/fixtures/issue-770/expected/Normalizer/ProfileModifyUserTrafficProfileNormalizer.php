@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProfileModifyUserTrafficProfileNormalizer implements DenormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyUserTrafficProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyUserTrafficProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyUserTrafficProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyUserTrafficProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyUserTrafficProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyUserTrafficProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -50,15 +50,15 @@ class ProfileModifyUserTrafficProfileNormalizer implements DenormalizerInterface
             $object->defaultAction = $data['defaultAction'];
         }
         if (\array_key_exists('uplinkRateLimiting', $data)) {
-            $object->uplinkRateLimiting = $this->denormalizer->denormalize($data['uplinkRateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUplinkRateLimiting::class, 'json', $context);
+            $object->uplinkRateLimiting = $this->denormalizer->denormalize($data['uplinkRateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUplinkRateLimiting::class, 'json', $context);
         }
         if (\array_key_exists('downlinkRateLimiting', $data)) {
-            $object->downlinkRateLimiting = $this->denormalizer->denormalize($data['downlinkRateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDownlinkRateLimiting::class, 'json', $context);
+            $object->downlinkRateLimiting = $this->denormalizer->denormalize($data['downlinkRateLimiting'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDownlinkRateLimiting::class, 'json', $context);
         }
         if (\array_key_exists('ipAclRules', $data)) {
             $values = [];
             foreach ($data['ipAclRules'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyIpAclRules::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyIpAclRules::class, 'json', $context);
             }
             $object->ipAclRules = $values;
         }
@@ -95,15 +95,15 @@ class ProfileModifyUserTrafficProfileNormalizer implements DenormalizerInterface
             $dataArray['defaultAction'] = $data->defaultAction ?? null;
         }
         if (array_key_exists('uplinkRateLimiting', get_object_vars($data)) && null !== ($data->uplinkRateLimiting ?? null)) {
-            $dataArray['uplinkRateLimiting'] = ($data->uplinkRateLimiting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->uplinkRateLimiting ?? null, 'json', $context));
+            $dataArray['uplinkRateLimiting'] = ($data->uplinkRateLimiting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->uplinkRateLimiting ?? null, 'json', $context));
         }
         if (array_key_exists('downlinkRateLimiting', get_object_vars($data)) && null !== ($data->downlinkRateLimiting ?? null)) {
-            $dataArray['downlinkRateLimiting'] = ($data->downlinkRateLimiting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->downlinkRateLimiting ?? null, 'json', $context));
+            $dataArray['downlinkRateLimiting'] = ($data->downlinkRateLimiting ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->downlinkRateLimiting ?? null, 'json', $context));
         }
         if (array_key_exists('ipAclRules', get_object_vars($data)) && null !== ($data->ipAclRules ?? null)) {
             $values = [];
             foreach ($data->ipAclRules ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ipAclRules'] = $values;
         }
@@ -126,6 +126,6 @@ class ProfileModifyUserTrafficProfileNormalizer implements DenormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyUserTrafficProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyUserTrafficProfile::class => false];
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception;
 
 class TestNoTagBadRequestException extends BadRequestException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi2\Tests\Expected\Model\Error
+         * @var \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Model\Error
          */
-        private readonly \Jane\Component\OpenApi2\Tests\Expected\Model\Error $error,
+        private readonly \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Model\Error $error,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class TestNoTagBadRequestException extends BadRequestException
     {
         parent::__construct('Bad request on test exception');
     }
-    public function getError(): \Jane\Component\OpenApi2\Tests\Expected\Model\Error
+    public function getError(): \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Model\Error
     {
         return $this->error;
     }

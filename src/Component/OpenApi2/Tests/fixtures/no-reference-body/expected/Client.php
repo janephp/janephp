@@ -1,28 +1,28 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected;
+namespace Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody;
 
-class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\Client\Client
 {
     /**
-     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBody $body
+     * @param \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
-    public function getTest(\Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBody $body, string $fetch = self::FETCH_OBJECT)
+    public function getTest(\Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody $body, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\GetTest($body), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Endpoint\GetTest($body), $fetch);
     }
     /**
-     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\TestPostBody $body
+     * @param \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestPostBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
-    public function test(\Jane\Component\OpenApi2\Tests\Expected\Model\TestPostBody $body, string $fetch = self::FETCH_OBJECT)
+    public function test(\Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestPostBody $body, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\Test($body), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Endpoint\Test($body), $fetch);
     }
     public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -36,11 +36,11 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

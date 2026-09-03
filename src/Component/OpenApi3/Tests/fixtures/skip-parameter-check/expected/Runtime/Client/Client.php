@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi3\Tests\Expected\Runtime\Client;
+namespace Jane\OpenApi3\Tests\Expected\SkipParameterCheck\Runtime\Client;
 
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use Psr\Http\Client\ClientInterface;

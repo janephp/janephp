@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class CertificateCertSettingNormalizer implements DenormalizerInterface, Normali
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertSetting::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertSetting::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertSetting::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertSetting::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertSetting();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertSetting();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -40,7 +40,7 @@ class CertificateCertSettingNormalizer implements DenormalizerInterface, Normali
         if (\array_key_exists('serviceCertificates', $data)) {
             $values = [];
             foreach ($data['serviceCertificates'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CertificateServiceCertificate::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateServiceCertificate::class, 'json', $context);
             }
             $object->serviceCertificates = $values;
         }
@@ -52,7 +52,7 @@ class CertificateCertSettingNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('serviceCertificates', get_object_vars($data)) && null !== ($data->serviceCertificates ?? null)) {
             $values = [];
             foreach ($data->serviceCertificates ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['serviceCertificates'] = $values;
         }
@@ -60,6 +60,6 @@ class CertificateCertSettingNormalizer implements DenormalizerInterface, Normali
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertSetting::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertSetting::class => false];
     }
 }

@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Endpoint;
 
-class UpdateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class UpdateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\Endpoint
 {
     protected $eventId;
     protected $accept;
     /**
      * Update the details of a special event.
      * @param string $eventId Identifier for a special event.
-     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields $requestBody
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEventFields $requestBody
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(string $eventId, \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields $requestBody, array $accept = [])
+    public function __construct(string $eventId, \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEventFields $requestBody, array $accept = [])
     {
         $this->eventId = $eventId;
         $this->body = $requestBody;
         $this->accept = $accept;
     }
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PATCH';
@@ -29,8 +29,8 @@ class UpdateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtim
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields) {
-            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEventFields) {
+            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }
@@ -44,23 +44,23 @@ class UpdateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtim
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\UpdateSpecialEventBadRequestException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\UpdateSpecialEventNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\UpdateSpecialEventBadRequestException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\UpdateSpecialEventNotFoundException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent
+     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\UpdateSpecialEventBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\UpdateSpecialEventBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);
         }
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\UpdateSpecialEventNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\UpdateSpecialEventNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array

@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Endpoint;
 
-class CreateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class CreateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\Endpoint
 {
     protected $accept;
     /**
      * Creates a new special event for the museum.
-     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent $requestBody
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent $requestBody
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(\Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent $requestBody, array $accept = [])
+    public function __construct(\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent $requestBody, array $accept = [])
     {
         $this->body = $requestBody;
         $this->accept = $accept;
     }
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -26,8 +26,8 @@ class CreateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtim
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent) {
-            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent) {
+            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }
@@ -41,23 +41,23 @@ class CreateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtim
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\CreateSpecialEventBadRequestException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\CreateSpecialEventNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\CreateSpecialEventBadRequestException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\CreateSpecialEventNotFoundException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent
+     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\CreateSpecialEventBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\CreateSpecialEventBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);
         }
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\CreateSpecialEventNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\CreateSpecialEventNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array

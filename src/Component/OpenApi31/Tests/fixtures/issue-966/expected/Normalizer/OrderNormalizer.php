@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue966\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Issue966\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Issue966\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\Order::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\Issue966\Model\Order::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Order::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Issue966\Model\Order::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Order();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Issue966\Model\Order();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,14 +38,14 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\OrderConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Issue966\Validator\OrderConstraint());
         }
         if (\array_key_exists('product_data', $data)) {
-            $object->productData = $this->denormalizer->denormalize($data['product_data'], \Jane\Component\OpenApi31\Tests\Expected\Model\OrderProductData::class, 'json', $context);
+            $object->productData = $this->denormalizer->denormalize($data['product_data'], \Jane\Component\OpenApi31\Tests\Expected\Issue966\Model\OrderProductData::class, 'json', $context);
             unset($data['product_data']);
         }
         if (\array_key_exists('product', $data)) {
-            $object->product = $this->denormalizer->denormalize($data['product'], \Jane\Component\OpenApi31\Tests\Expected\Model\OrderProduct::class, 'json', $context);
+            $object->product = $this->denormalizer->denormalize($data['product'], \Jane\Component\OpenApi31\Tests\Expected\Issue966\Model\OrderProduct::class, 'json', $context);
             unset($data['product']);
         }
         foreach ($data as $key => $value) {
@@ -59,10 +59,10 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if (array_key_exists('productData', get_object_vars($data)) && null !== ($data->productData ?? null)) {
-            $dataArray['product_data'] = ($data->productData ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->productData ?? null, 'json', $context));
+            $dataArray['product_data'] = ($data->productData ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Issue966\Runtime\JsonObject($this->normalizer->normalize($data->productData ?? null, 'json', $context));
         }
         if (array_key_exists('product', get_object_vars($data)) && null !== ($data->product ?? null)) {
-            $dataArray['product'] = ($data->product ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->product ?? null, 'json', $context));
+            $dataArray['product'] = ($data->product ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Issue966\Runtime\JsonObject($this->normalizer->normalize($data->product ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -70,12 +70,12 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\OrderConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Issue966\Validator\OrderConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\Order::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\Issue966\Model\Order::class => false];
     }
 }

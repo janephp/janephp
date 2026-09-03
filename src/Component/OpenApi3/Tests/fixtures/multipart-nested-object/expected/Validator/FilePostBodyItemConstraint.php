@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Validator;
+namespace Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Validator;
 
 class FilePostBodyItemConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {

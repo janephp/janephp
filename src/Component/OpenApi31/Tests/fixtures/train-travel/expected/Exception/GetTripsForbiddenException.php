@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception;
 
 class GetTripsForbiddenException extends ForbiddenException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi31\Tests\Expected\Model\Problem
+         * @var \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem
          */
-        private readonly \Jane\Component\OpenApi31\Tests\Expected\Model\Problem $problem,
+        private readonly \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem $problem,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class GetTripsForbiddenException extends ForbiddenException
     {
         parent::__construct('Forbidden');
     }
-    public function getProblem(): \Jane\Component\OpenApi31\Tests\Expected\Model\Problem
+    public function getProblem(): \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem
     {
         return $this->problem;
     }

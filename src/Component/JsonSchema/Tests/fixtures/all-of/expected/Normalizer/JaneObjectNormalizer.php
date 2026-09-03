@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer;
 
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\AllOf\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,23 +18,23 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\TestNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\OtherchildtypeNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Otherchildtype::class => \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\OtherchildtypeNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ChildtypeNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Childtype::class => \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\ChildtypeNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ParenttypeNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Parenttype::class => \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\ParenttypeNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\FooNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\FooNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BarNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Bar::class => \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BarNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\Baz::class => \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BazNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazBazNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\BazBaz::class => \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BazBazNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\BazInlineProperty::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazInlinePropertyNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AllOf\Model\BazInlineProperty::class => \Jane\Component\JsonSchema\Tests\Expected\AllOf\Normalizer\BazInlinePropertyNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

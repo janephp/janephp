@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint;
 
-class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\BaseEndpoint implements \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\Endpoint
 {
     protected $accept;
     /**
@@ -19,7 +19,7 @@ class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Base
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
-    use \Jane\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -55,7 +55,7 @@ class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Base
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi3\Tests\Expected\Model\Error
+     * @return null|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -70,7 +70,7 @@ class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Base
             }
         }
         if (stripos(strtolower($contentType), 'application/json') !== false) {
-            return $serializer->deserialize($body, 'Jane\OpenApi3\Tests\Expected\Model\Error', 'json');
+            return $serializer->deserialize($body, 'Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error', 'json');
         }
         if (stripos(strtolower($contentType), 'application/problem+json') !== false) {
             try {

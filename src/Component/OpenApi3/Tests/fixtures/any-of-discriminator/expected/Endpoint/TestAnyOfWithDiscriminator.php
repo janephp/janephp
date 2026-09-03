@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Endpoint;
 
-class TestAnyOfWithDiscriminator extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestAnyOfWithDiscriminator extends \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -24,19 +24,19 @@ class TestAnyOfWithDiscriminator extends \Jane\Component\OpenApi3\Tests\Expected
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\TestAnyOfWithDiscriminatorBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Exception\TestAnyOfWithDiscriminatorBadRequestException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\FooBar
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBar
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\FooBar', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBar', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\TestAnyOfWithDiscriminatorBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\FooBarWithMapping', 'json'), $response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Exception\TestAnyOfWithDiscriminatorBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBarWithMapping', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array

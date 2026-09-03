@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindApplicationsDownloadsnapByBladeUUID extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindApplicationsDownloadsnapByBladeUUID extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $bladeUUID;
     /**
@@ -16,7 +16,7 @@ class FindApplicationsDownloadsnapByBladeUUID extends \Jane\Component\OpenApi3\T
         $this->bladeUUID = $bladeUUID;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -45,9 +45,9 @@ class FindApplicationsDownloadsnapByBladeUUID extends \Jane\Component\OpenApi3\T
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadsnapByBladeUUIDBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadsnapByBladeUUIDForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadsnapByBladeUUIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDInternalServerErrorException
      *
      * @return null
      */
@@ -56,13 +56,13 @@ class FindApplicationsDownloadsnapByBladeUUID extends \Jane\Component\OpenApi3\T
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadsnapByBladeUUIDBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadsnapByBladeUUIDForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadsnapByBladeUUIDInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApplicationsDownloadsnapByBladeUUIDInternalServerErrorException($response);
         }
         if (200 === $status) {
             try {

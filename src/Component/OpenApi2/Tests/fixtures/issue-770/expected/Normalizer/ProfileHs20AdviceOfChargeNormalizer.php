@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProfileHs20AdviceOfChargeNormalizer implements DenormalizerInterface, Norm
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20AdviceOfCharge::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20AdviceOfCharge::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20AdviceOfCharge::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20AdviceOfCharge::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20AdviceOfCharge();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20AdviceOfCharge();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,12 +41,12 @@ class ProfileHs20AdviceOfChargeNormalizer implements DenormalizerInterface, Norm
             $object->type = $data['type'];
         }
         if (\array_key_exists('naiRealm', $data)) {
-            $object->naiRealm = $this->denormalizer->denormalize($data['naiRealm'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20AdviceOfChargeNaiRealm::class, 'json', $context);
+            $object->naiRealm = $this->denormalizer->denormalize($data['naiRealm'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20AdviceOfChargeNaiRealm::class, 'json', $context);
         }
         if (\array_key_exists('planInformations', $data)) {
             $values = [];
             foreach ($data['planInformations'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20AdviceOfChargePlanInformationsItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20AdviceOfChargePlanInformationsItem::class, 'json', $context);
             }
             $object->planInformations = $values;
         }
@@ -57,12 +57,12 @@ class ProfileHs20AdviceOfChargeNormalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         $dataArray['type'] = $data->type ?? null;
         if (array_key_exists('naiRealm', get_object_vars($data)) && null !== ($data->naiRealm ?? null)) {
-            $dataArray['naiRealm'] = ($data->naiRealm ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->naiRealm ?? null, 'json', $context));
+            $dataArray['naiRealm'] = ($data->naiRealm ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->naiRealm ?? null, 'json', $context));
         }
         if (array_key_exists('planInformations', get_object_vars($data)) && null !== ($data->planInformations ?? null)) {
             $values = [];
             foreach ($data->planInformations ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['planInformations'] = $values;
         }
@@ -70,6 +70,6 @@ class ProfileHs20AdviceOfChargeNormalizer implements DenormalizerInterface, Norm
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20AdviceOfCharge::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20AdviceOfCharge::class => false];
     }
 }

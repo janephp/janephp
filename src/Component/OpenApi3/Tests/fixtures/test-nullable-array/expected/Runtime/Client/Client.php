@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Runtime\Client;
+namespace Jane\Component\OpenApi3\Tests\Expected\TestNullableArray\Runtime\Client;
 
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use Psr\Http\Client\ClientInterface;

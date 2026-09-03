@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue946\Normalizer;
 
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Issue946\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Issue946\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\MyApiEndpointGetResponse200Item::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\MyApiEndpointGetResponse200ItemNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Issue946\Model\MyApiEndpointGetResponse200Item::class => \Jane\Component\OpenApi31\Tests\Expected\Issue946\Normalizer\MyApiEndpointGetResponse200ItemNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Expected\Model\MyApiEndpointIdGetResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\MyApiEndpointIdGetResponse200Normalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Issue946\Model\MyApiEndpointIdGetResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Issue946\Normalizer\MyApiEndpointIdGetResponse200Normalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Issue946\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Endpoint;
 
-class GetTicketCode extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class GetTicketCode extends \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\Endpoint
 {
     protected $ticketId;
     protected $accept;
@@ -16,7 +16,7 @@ class GetTicketCode extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cli
         $this->ticketId = $ticketId;
         $this->accept = $accept;
     }
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -39,8 +39,8 @@ class GetTicketCode extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cli
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTicketCodeBadRequestException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTicketCodeNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetTicketCodeBadRequestException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetTicketCodeNotFoundException
      *
      * @return null
      */
@@ -51,10 +51,10 @@ class GetTicketCode extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cli
         if (200 === $status) {
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTicketCodeBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetTicketCodeBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);
         }
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTicketCodeNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Exception\GetTicketCodeNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array

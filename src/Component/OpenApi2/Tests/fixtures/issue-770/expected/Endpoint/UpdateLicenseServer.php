@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class UpdateLicenseServer extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class UpdateLicenseServer extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModfiyLicenseServer $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModfiyLicenseServer $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModfiyLicenseServer $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModfiyLicenseServer $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PUT';
@@ -44,10 +44,10 @@ class UpdateLicenseServer extends \Jane\Component\OpenApi3\Tests\Expected\Runtim
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicenseServerBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicenseServerForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicenseServerInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicenseServerUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerUnprocessableEntityException
      *
      * @return null
      */
@@ -56,16 +56,16 @@ class UpdateLicenseServer extends \Jane\Component\OpenApi3\Tests\Expected\Runtim
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicenseServerBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicenseServerForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicenseServerInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicenseServerUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateLicenseServerUnprocessableEntityException($response);
         }
         if (204 === $status) {
             return null;

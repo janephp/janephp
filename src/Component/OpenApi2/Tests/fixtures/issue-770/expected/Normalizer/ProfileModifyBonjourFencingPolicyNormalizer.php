@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProfileModifyBonjourFencingPolicyNormalizer implements DenormalizerInterfa
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBonjourFencingPolicy::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBonjourFencingPolicy::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBonjourFencingPolicy::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBonjourFencingPolicy::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBonjourFencingPolicy();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBonjourFencingPolicy();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -46,14 +46,14 @@ class ProfileModifyBonjourFencingPolicyNormalizer implements DenormalizerInterfa
         if (\array_key_exists('bonjourFencingRuleList', $data)) {
             $values = [];
             foreach ($data['bonjourFencingRuleList'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingRule::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingRule::class, 'json', $context);
             }
             $object->bonjourFencingRuleList = $values;
         }
         if (\array_key_exists('bonjourFencingRuleMappingList', $data)) {
             $values_1 = [];
             foreach ($data['bonjourFencingRuleMappingList'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingRuleMapping::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingRuleMapping::class, 'json', $context);
             }
             $object->bonjourFencingRuleMappingList = $values_1;
         }
@@ -71,14 +71,14 @@ class ProfileModifyBonjourFencingPolicyNormalizer implements DenormalizerInterfa
         if (array_key_exists('bonjourFencingRuleList', get_object_vars($data)) && null !== ($data->bonjourFencingRuleList ?? null)) {
             $values = [];
             foreach ($data->bonjourFencingRuleList ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['bonjourFencingRuleList'] = $values;
         }
         if (array_key_exists('bonjourFencingRuleMappingList', get_object_vars($data)) && null !== ($data->bonjourFencingRuleMappingList ?? null)) {
             $values_1 = [];
             foreach ($data->bonjourFencingRuleMappingList ?? null as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['bonjourFencingRuleMappingList'] = $values_1;
         }
@@ -86,6 +86,6 @@ class ProfileModifyBonjourFencingPolicyNormalizer implements DenormalizerInterfa
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBonjourFencingPolicy::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBonjourFencingPolicy::class => false];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProfileCreatePrecedenceProfileNormalizer implements DenormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreatePrecedenceProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreatePrecedenceProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreatePrecedenceProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreatePrecedenceProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreatePrecedenceProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreatePrecedenceProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -46,14 +46,14 @@ class ProfileCreatePrecedenceProfileNormalizer implements DenormalizerInterface,
         if (\array_key_exists('vlanPrecedence', $data)) {
             $values = [];
             foreach ($data['vlanPrecedence'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileVlanPrecedenceItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileVlanPrecedenceItem::class, 'json', $context);
             }
             $object->vlanPrecedence = $values;
         }
         if (\array_key_exists('rateLimitingPrecedence', $data)) {
             $values_1 = [];
             foreach ($data['rateLimitingPrecedence'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRateLimitingPrecedenceItem::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRateLimitingPrecedenceItem::class, 'json', $context);
             }
             $object->rateLimitingPrecedence = $values_1;
         }
@@ -71,14 +71,14 @@ class ProfileCreatePrecedenceProfileNormalizer implements DenormalizerInterface,
         if (array_key_exists('vlanPrecedence', get_object_vars($data)) && null !== ($data->vlanPrecedence ?? null)) {
             $values = [];
             foreach ($data->vlanPrecedence ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['vlanPrecedence'] = $values;
         }
         if (array_key_exists('rateLimitingPrecedence', get_object_vars($data)) && null !== ($data->rateLimitingPrecedence ?? null)) {
             $values_1 = [];
             foreach ($data->rateLimitingPrecedence ?? null as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['rateLimitingPrecedence'] = $values_1;
         }
@@ -86,6 +86,6 @@ class ProfileCreatePrecedenceProfileNormalizer implements DenormalizerInterface,
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreatePrecedenceProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreatePrecedenceProfile::class => false];
     }
 }

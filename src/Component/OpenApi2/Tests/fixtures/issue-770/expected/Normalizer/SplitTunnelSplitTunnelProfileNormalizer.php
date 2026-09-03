@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class SplitTunnelSplitTunnelProfileNormalizer implements DenormalizerInterface, 
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,7 +58,7 @@ class SplitTunnelSplitTunnelProfileNormalizer implements DenormalizerInterface, 
         if (\array_key_exists('rules', $data)) {
             $values = [];
             foreach ($data['rules'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelIpMaskRule::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelIpMaskRule::class, 'json', $context);
             }
             $object->rules = $values;
         }
@@ -91,7 +91,7 @@ class SplitTunnelSplitTunnelProfileNormalizer implements DenormalizerInterface, 
         if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values = [];
             foreach ($data->rules ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;
         }
@@ -102,6 +102,6 @@ class SplitTunnelSplitTunnelProfileNormalizer implements DenormalizerInterface, 
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfile::class => false];
     }
 }

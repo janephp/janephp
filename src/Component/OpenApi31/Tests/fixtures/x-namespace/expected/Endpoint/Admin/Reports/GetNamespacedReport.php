@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint\Admin\Reports;
+namespace Jane\Component\OpenApi31\Tests\Expected\XNamespace\Endpoint\Admin\Reports;
 
-class GetNamespacedReport extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class GetNamespacedReport extends \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -25,14 +25,14 @@ class GetNamespacedReport extends \Jane\Component\OpenApi31\Tests\Expected\Runti
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Model\Admin\Reports\NamespacedReportGetResponse200
+     * @return null|\Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Admin\Reports\NamespacedReportGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200', 'json');
         }
     }
     public function getAuthenticationScopes(): array

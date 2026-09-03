@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class DomainDevicePolicyCreateDomainDevicePolicyNormalizer implements Denormaliz
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyCreateDomainDevicePolicy::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyCreateDomainDevicePolicy::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyCreateDomainDevicePolicy::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyCreateDomainDevicePolicy::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyCreateDomainDevicePolicy();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyCreateDomainDevicePolicy();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -49,7 +49,7 @@ class DomainDevicePolicyCreateDomainDevicePolicyNormalizer implements Denormaliz
         if (\array_key_exists('rule', $data)) {
             $values = [];
             foreach ($data['rule'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyDomainDevicePolicyRule::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyDomainDevicePolicyRule::class, 'json', $context);
             }
             $object->rule = $values;
         }
@@ -68,7 +68,7 @@ class DomainDevicePolicyCreateDomainDevicePolicyNormalizer implements Denormaliz
         $dataArray['defaultAction'] = $data->defaultAction ?? null;
         $values = [];
         foreach ($data->rule ?? null as $value) {
-            $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['rule'] = $values;
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
@@ -78,6 +78,6 @@ class DomainDevicePolicyCreateDomainDevicePolicyNormalizer implements Denormaliz
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyCreateDomainDevicePolicy::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyCreateDomainDevicePolicy::class => false];
     }
 }

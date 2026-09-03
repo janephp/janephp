@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\CheckArray;
+use Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\OpenApi2\Tests\Expected\Model\Project::class;
+        return $type === \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Project::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\OpenApi2\Tests\Expected\Model\Project::class;
+        return is_object($data) && get_class($data) === \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Project::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\OpenApi2\Tests\Expected\Model\Project();
+        $object = new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Project();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -77,7 +77,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->id = $data['id'];
         }
         if (\array_key_exists('client', $data)) {
-            $object->client = $this->denormalizer->denormalize($data['client'], \Jane\OpenApi2\Tests\Expected\Model\ProjectClient::class, 'json', $context);
+            $object->client = $this->denormalizer->denormalize($data['client'], \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\ProjectClient::class, 'json', $context);
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
@@ -118,7 +118,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('over_budget_notification_date', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['over_budget_notification_date']);
             if (false === $date) {
-                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['over_budget_notification_date'], 'Y-m-d');
+                throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['over_budget_notification_date'], 'Y-m-d');
             }
             $object->overBudgetNotificationDate = $date->setTime(0, 0, 0);
         }
@@ -140,28 +140,28 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('starts_on', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d', $data['starts_on']);
             if (false === $date_1) {
-                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['starts_on'], 'Y-m-d');
+                throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['starts_on'], 'Y-m-d');
             }
             $object->startsOn = $date_1->setTime(0, 0, 0);
         }
         if (\array_key_exists('ends_on', $data)) {
             $date_2 = \DateTime::createFromFormat('Y-m-d', $data['ends_on']);
             if (false === $date_2) {
-                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['ends_on'], 'Y-m-d');
+                throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['ends_on'], 'Y-m-d');
             }
             $object->endsOn = $date_2->setTime(0, 0, 0);
         }
         if (\array_key_exists('created_at', $data)) {
             $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
             if (false === $date_3) {
-                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
             }
             $object->createdAt = $date_3;
         }
         if (\array_key_exists('updated_at', $data)) {
             $date_4 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
             if (false === $date_4) {
-                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
             }
             $object->updatedAt = $date_4;
         }
@@ -174,7 +174,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['id'] = $data->id ?? null;
         }
         if (array_key_exists('client', get_object_vars($data)) && null !== ($data->client ?? null)) {
-            $dataArray['client'] = ($data->client ?? null) === null ? null : new \Jane\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->client ?? null, 'json', $context));
+            $dataArray['client'] = ($data->client ?? null) === null ? null : new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($data->client ?? null, 'json', $context));
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
             $dataArray['name'] = $data->name ?? null;
@@ -246,6 +246,6 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\OpenApi2\Tests\Expected\Model\Project::class => false];
+        return [\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Project::class => false];
     }
 }

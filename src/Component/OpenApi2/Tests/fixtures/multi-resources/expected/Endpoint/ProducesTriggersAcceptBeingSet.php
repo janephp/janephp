@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\MultiResources\Endpoint;
 
-class ProducesTriggersAcceptBeingSet extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class ProducesTriggersAcceptBeingSet extends \Jane\Component\OpenApi2\Tests\Expected\MultiResources\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\MultiResources\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\MultiResources\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

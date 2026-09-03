@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PortalserviceCreateWechatNormalizer implements DenormalizerInterface, Norm
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWechat::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWechat::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWechat::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWechat::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWechat();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWechat();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -65,7 +65,7 @@ class PortalserviceCreateWechatNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('dnatPortMapping', $data)) {
             $values_1 = [];
             foreach ($data['dnatPortMapping'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceDnatPortMapping::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceDnatPortMapping::class, 'json', $context);
             }
             $object->dnatPortMapping = $values_1;
         }
@@ -92,7 +92,7 @@ class PortalserviceCreateWechatNormalizer implements DenormalizerInterface, Norm
         if (array_key_exists('dnatPortMapping', get_object_vars($data)) && null !== ($data->dnatPortMapping ?? null)) {
             $values_1 = [];
             foreach ($data->dnatPortMapping ?? null as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['dnatPortMapping'] = $values_1;
         }
@@ -100,6 +100,6 @@ class PortalserviceCreateWechatNormalizer implements DenormalizerInterface, Norm
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWechat::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWechat::class => false];
     }
 }

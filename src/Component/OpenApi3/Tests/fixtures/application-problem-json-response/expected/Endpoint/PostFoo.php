@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Endpoint;
 
-class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Runtime\Client\Endpoint
 {
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\FooPayload $requestBody
      */
-    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody = null)
+    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\FooPayload $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -22,8 +22,8 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload) {
-            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
+        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\FooPayload) {
+            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }
@@ -34,9 +34,9 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\BadResponseException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception\PostFooBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception\PostFooInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception\BadResponseException
      *
      * @return null
      */
@@ -48,12 +48,12 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
             return null;
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\ResponseProblemDetailsResponse400', 'json'), $response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception\PostFooBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse400', 'json'), $response);
         }
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\ResponseProblemDetailsResponse500', 'json'), $response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception\PostFooInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Model\ResponseProblemDetailsResponse500', 'json'), $response);
         }
-        throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\BadResponseException($status, $body, $response);
+        throw new \Jane\Component\OpenApi3\Tests\Expected\ApplicationProblemJsonResponse\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class UpdateApsRebootByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class UpdateApsRebootByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $apMac;
     /**
@@ -16,7 +16,7 @@ class UpdateApsRebootByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Run
         $this->apMac = $apMac;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PUT';
@@ -45,10 +45,10 @@ class UpdateApsRebootByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Run
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsRebootByApMacBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsRebootByApMacForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsRebootByApMacInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsRebootByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacUnprocessableEntityException
      *
      * @return null
      */
@@ -57,16 +57,16 @@ class UpdateApsRebootByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Run
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsRebootByApMacBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsRebootByApMacForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsRebootByApMacInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsRebootByApMacUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateApsRebootByApMacUnprocessableEntityException($response);
         }
         if (204 === $status) {
             return null;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddApsOperationalBlinkLedByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddApsOperationalBlinkLedByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $apMac;
     /**
@@ -16,7 +16,7 @@ class AddApsOperationalBlinkLedByApMac extends \Jane\Component\OpenApi3\Tests\Ex
         $this->apMac = $apMac;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -45,10 +45,10 @@ class AddApsOperationalBlinkLedByApMac extends \Jane\Component\OpenApi3\Tests\Ex
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsOperationalBlinkLedByApMacBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsOperationalBlinkLedByApMacForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsOperationalBlinkLedByApMacInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsOperationalBlinkLedByApMacUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacUnprocessableEntityException
      *
      * @return null
      */
@@ -57,16 +57,16 @@ class AddApsOperationalBlinkLedByApMac extends \Jane\Component\OpenApi3\Tests\Ex
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsOperationalBlinkLedByApMacBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsOperationalBlinkLedByApMacForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsOperationalBlinkLedByApMacInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsOperationalBlinkLedByApMacUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsOperationalBlinkLedByApMacUnprocessableEntityException($response);
         }
         if (200 === $status) {
             return null;

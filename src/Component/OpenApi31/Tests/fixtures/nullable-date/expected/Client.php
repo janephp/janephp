@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected;
+namespace Jane\Component\OpenApi31\Tests\Expected\NullableDate;
 
-class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Client\Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\Event : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\NullableDate\Model\Event : \Psr\Http\Message\ResponseInterface)
      */
     public function getEvents(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\GetEvents(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Endpoint\GetEvents(), $fetch);
     }
     public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -25,11 +25,11 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi31\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi31\Tests\Expected\NullableDate\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

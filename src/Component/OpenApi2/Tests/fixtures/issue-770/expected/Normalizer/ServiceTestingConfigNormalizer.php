@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ServiceTestingConfigNormalizer implements DenormalizerInterface, Normalize
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTestingConfig::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTestingConfig::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTestingConfig::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTestingConfig::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTestingConfig();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTestingConfig();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,7 +41,7 @@ class ServiceTestingConfigNormalizer implements DenormalizerInterface, Normalize
             $object->id = $data['id'];
         }
         if (\array_key_exists('loginRequest', $data)) {
-            $object->loginRequest = $this->denormalizer->denormalize($data['loginRequest'], \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTestingConfigLoginRequest::class, 'json', $context);
+            $object->loginRequest = $this->denormalizer->denormalize($data['loginRequest'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTestingConfigLoginRequest::class, 'json', $context);
         }
         return $object;
     }
@@ -52,12 +52,12 @@ class ServiceTestingConfigNormalizer implements DenormalizerInterface, Normalize
             $dataArray['id'] = $data->id ?? null;
         }
         if (array_key_exists('loginRequest', get_object_vars($data)) && null !== ($data->loginRequest ?? null)) {
-            $dataArray['loginRequest'] = ($data->loginRequest ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->loginRequest ?? null, 'json', $context));
+            $dataArray['loginRequest'] = ($data->loginRequest ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->loginRequest ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTestingConfig::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTestingConfig::class => false];
     }
 }

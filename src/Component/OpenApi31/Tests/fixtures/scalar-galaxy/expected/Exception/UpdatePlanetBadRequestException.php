@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception;
 
 class UpdatePlanetBadRequestException extends BadRequestException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi31\Tests\Expected\Model\BadRequestError
+         * @var \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\BadRequestError
          */
-        private readonly \Jane\Component\OpenApi31\Tests\Expected\Model\BadRequestError $badRequestError,
+        private readonly \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\BadRequestError $badRequestError,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class UpdatePlanetBadRequestException extends BadRequestException
     {
         parent::__construct('Bad Request');
     }
-    public function getBadRequestError(): \Jane\Component\OpenApi31\Tests\Expected\Model\BadRequestError
+    public function getBadRequestError(): \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\BadRequestError
     {
         return $this->badRequestError;
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Planet();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,7 +41,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['habitabilityIndex'] = (float) $data['habitabilityIndex'];
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\PlanetConstraint());
         }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
@@ -68,19 +68,19 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->habitabilityIndex = $data['habitabilityIndex'];
         }
         if (\array_key_exists('physicalProperties', $data)) {
-            $object->physicalProperties = $this->denormalizer->denormalize($data['physicalProperties'], \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalProperties::class, 'json', $context);
+            $object->physicalProperties = $this->denormalizer->denormalize($data['physicalProperties'], \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetPhysicalProperties::class, 'json', $context);
         }
         if (\array_key_exists('atmosphere', $data)) {
             $values = [];
             foreach ($data['atmosphere'] as $value_1) {
-                $values[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetAtmosphereItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetAtmosphereItem::class, 'json', $context);
             }
             $object->atmosphere = $values;
         }
         if (\array_key_exists('discoveredAt', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['discoveredAt']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['discoveredAt'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\InvalidDateException($data['discoveredAt'], 'Y-m-d\TH:i:sP');
             }
             $object->discoveredAt = $date;
         }
@@ -99,12 +99,12 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('satellites', $data)) {
             $values_1 = [];
             foreach ($data['satellites'] as $value_3) {
-                $values_1[] = $this->denormalizer->denormalize($value_3, \Jane\Component\OpenApi31\Tests\Expected\Model\Satellite::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_3, \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Satellite::class, 'json', $context);
             }
             $object->satellites = $values_1;
         }
         if (\array_key_exists('creator', $data)) {
-            $object->creator = $this->denormalizer->denormalize($data['creator'], \Jane\Component\OpenApi31\Tests\Expected\Model\User::class, 'json', $context);
+            $object->creator = $this->denormalizer->denormalize($data['creator'], \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User::class, 'json', $context);
         }
         if (\array_key_exists('tags', $data)) {
             $values_2 = [];
@@ -116,7 +116,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('lastUpdated', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastUpdated']);
             if (false === $date_1) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['lastUpdated'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\InvalidDateException($data['lastUpdated'], 'Y-m-d\TH:i:sP');
             }
             $object->lastUpdated = $date_1;
         }
@@ -148,12 +148,12 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['habitabilityIndex'] = $data->habitabilityIndex ?? null;
         }
         if (array_key_exists('physicalProperties', get_object_vars($data)) && null !== ($data->physicalProperties ?? null)) {
-            $dataArray['physicalProperties'] = ($data->physicalProperties ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->physicalProperties ?? null, 'json', $context));
+            $dataArray['physicalProperties'] = ($data->physicalProperties ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->physicalProperties ?? null, 'json', $context));
         }
         if (array_key_exists('atmosphere', get_object_vars($data)) && null !== ($data->atmosphere ?? null)) {
             $values = [];
             foreach ($data->atmosphere ?? null as $value_1) {
-                $values[] = $value_1 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values[] = $value_1 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['atmosphere'] = $values;
         }
@@ -172,12 +172,12 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (array_key_exists('satellites', get_object_vars($data)) && null !== ($data->satellites ?? null)) {
             $values_1 = [];
             foreach ($data->satellites ?? null as $value_3) {
-                $values_1[] = $value_3 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $values_1[] = $value_3 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['satellites'] = $values_1;
         }
         if (array_key_exists('creator', get_object_vars($data)) && null !== ($data->creator ?? null)) {
-            $dataArray['creator'] = ($data->creator ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->creator ?? null, 'json', $context));
+            $dataArray['creator'] = ($data->creator ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->creator ?? null, 'json', $context));
         }
         if (array_key_exists('tags', get_object_vars($data)) && null !== ($data->tags ?? null)) {
             $values_2 = [];
@@ -193,12 +193,12 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['failureCallbackUrl'] = $data->failureCallbackUrl ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\PlanetConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet::class => false];
     }
 }

@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class UpdateDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class UpdateDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $dpKey;
     /**
      * @param string $dpKey
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpProfileSettingBO $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $dpKey, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpProfileSettingBO $body, array $queryParameters = [])
+    public function __construct(string $dpKey, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO $body, array $queryParameters = [])
     {
         $this->dpKey = $dpKey;
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PUT';
@@ -47,10 +47,10 @@ class UpdateDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expe
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpProfileSettingsByDpKeyBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpProfileSettingsByDpKeyForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpProfileSettingsByDpKeyInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpProfileSettingsByDpKeyUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyUnprocessableEntityException
      *
      * @return null
      */
@@ -59,16 +59,16 @@ class UpdateDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expe
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpProfileSettingsByDpKeyBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpProfileSettingsByDpKeyForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpProfileSettingsByDpKeyInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpProfileSettingsByDpKeyUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateDpProfileSettingsByDpKeyUnprocessableEntityException($response);
         }
         if (204 === $status) {
             return null;

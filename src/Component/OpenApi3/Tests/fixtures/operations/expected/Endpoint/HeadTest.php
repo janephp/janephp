@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint;
 
-class HeadTest extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class HeadTest extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'HEAD';

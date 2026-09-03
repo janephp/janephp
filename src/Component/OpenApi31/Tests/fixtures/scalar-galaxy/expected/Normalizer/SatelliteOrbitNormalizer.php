@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\SatelliteOrbit::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\SatelliteOrbit::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\SatelliteOrbit();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -44,10 +44,10 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
             $data['distance'] = (float) $data['distance'];
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SatelliteOrbitConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\SatelliteOrbitConstraint());
         }
         if (\array_key_exists('planet', $data)) {
-            $object->planet = $this->denormalizer->denormalize($data['planet'], \Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class, 'json', $context);
+            $object->planet = $this->denormalizer->denormalize($data['planet'], \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet::class, 'json', $context);
             unset($data['planet']);
         }
         if (\array_key_exists('orbitalPeriod', $data)) {
@@ -69,7 +69,7 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('planet', get_object_vars($data)) && null !== ($data->planet ?? null)) {
-            $dataArray['planet'] = ($data->planet ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->planet ?? null, 'json', $context));
+            $dataArray['planet'] = ($data->planet ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->planet ?? null, 'json', $context));
         }
         if (array_key_exists('orbitalPeriod', get_object_vars($data)) && null !== ($data->orbitalPeriod ?? null)) {
             $dataArray['orbitalPeriod'] = $data->orbitalPeriod ?? null;
@@ -83,12 +83,12 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SatelliteOrbitConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\SatelliteOrbitConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\SatelliteOrbit::class => false];
     }
 }

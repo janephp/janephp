@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer;
+namespace Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Normalizer;
 
 use RuntimeException;
 class InvalidDateException extends RuntimeException

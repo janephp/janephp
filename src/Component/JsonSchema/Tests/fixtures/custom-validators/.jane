@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 return [
     'json-schema-file' => __DIR__ . '/schema.json',
     'root-class' => 'Price',
-    'namespace' => 'Jane\JsonSchema\Tests\Expected',
+    'namespace' => 'Jane\JsonSchema\Tests\Expected\CustomValidators',
     'directory' => __DIR__ . '/generated',
     'validation' => true,
     'validators' => [

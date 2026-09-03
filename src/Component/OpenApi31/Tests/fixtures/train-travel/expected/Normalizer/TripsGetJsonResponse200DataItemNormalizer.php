@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class TripsGetJsonResponse200DataItemNormalizer implements DenormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200DataItem::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200DataItem::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200DataItem::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200DataItem::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200DataItem();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200DataItem();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -47,7 +47,7 @@ class TripsGetJsonResponse200DataItemNormalizer implements DenormalizerInterface
             $data['dogs_allowed'] = (bool) $data['dogs_allowed'];
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\TripsGetJsonResponse200DataItemConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Validator\TripsGetJsonResponse200DataItemConstraint());
         }
         if (\array_key_exists('id', $data)) {
             $object->id = $data['id'];
@@ -64,7 +64,7 @@ class TripsGetJsonResponse200DataItemNormalizer implements DenormalizerInterface
         if (\array_key_exists('departure_time', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['departure_time']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['departure_time'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\InvalidDateException($data['departure_time'], 'Y-m-d\TH:i:sP');
             }
             $object->departureTime = $date;
             unset($data['departure_time']);
@@ -72,7 +72,7 @@ class TripsGetJsonResponse200DataItemNormalizer implements DenormalizerInterface
         if (\array_key_exists('arrival_time', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['arrival_time']);
             if (false === $date_1) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['arrival_time'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\InvalidDateException($data['arrival_time'], 'Y-m-d\TH:i:sP');
             }
             $object->arrivalTime = $date_1;
             unset($data['arrival_time']);
@@ -143,12 +143,12 @@ class TripsGetJsonResponse200DataItemNormalizer implements DenormalizerInterface
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\TripsGetJsonResponse200DataItemConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Validator\TripsGetJsonResponse200DataItemConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200DataItem::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200DataItem::class => false];
     }
 }

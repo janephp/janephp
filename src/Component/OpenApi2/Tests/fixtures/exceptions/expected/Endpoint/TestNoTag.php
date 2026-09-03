@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\Exceptions\Endpoint;
 
-class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -20,10 +20,10 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\B
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\TestNoTagBadRequestException
-     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\TestNoTagNotFoundException
-     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\TestNoTagInternalServerErrorException
-     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\TestNoTagCustom600Exception
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagBadRequestException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagNotFoundException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagInternalServerErrorException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagCustom600Exception
      *
      * @return null
      */
@@ -32,16 +32,16 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\B
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\TestNoTagBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Model\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Exceptions\Model\Error', 'json'), $response);
         }
         if (404 === $status) {
-            throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\TestNoTagNotFoundException($response);
+            throw new \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagNotFoundException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\TestNoTagInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagInternalServerErrorException($response);
         }
         if (600 === $status) {
-            throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\TestNoTagCustom600Exception($response);
+            throw new \Jane\Component\OpenApi2\Tests\Expected\Exceptions\Exception\TestNoTagCustom600Exception($response);
         }
     }
     public function getAuthenticationScopes(): array

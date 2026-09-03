@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception;
 
 class FindRkszonesApmodelCommonAttributeByModelForbiddenException extends ForbiddenException
 {

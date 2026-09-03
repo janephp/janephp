@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,14 +38,14 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi3\Tests\Expected\Validator\FilePostBodyConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Validator\FilePostBodyConstraint());
         }
         if (\array_key_exists('fichier', $data)) {
             $object->fichier = $data['fichier'];
             unset($data['fichier']);
         }
         if (\array_key_exists('item', $data)) {
-            $object->item = $this->denormalizer->denormalize($data['item'], \Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBodyItem::class, 'json', $context);
+            $object->item = $this->denormalizer->denormalize($data['item'], \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBodyItem::class, 'json', $context);
             unset($data['item']);
         }
         foreach ($data as $key => $value) {
@@ -62,7 +62,7 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['fichier'] = $data->fichier ?? null;
         }
         if (array_key_exists('item', get_object_vars($data)) && null !== ($data->item ?? null)) {
-            $dataArray['item'] = ($data->item ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->item ?? null, 'json', $context));
+            $dataArray['item'] = ($data->item ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Runtime\JsonObject($this->normalizer->normalize($data->item ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -70,12 +70,12 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi3\Tests\Expected\Validator\FilePostBodyConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Validator\FilePostBodyConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody::class => false];
     }
 }

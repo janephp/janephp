@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\DeepObject\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\DeepObject\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\DeepObject\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class;
+        return $type === \Jane\Component\JsonSchema\Tests\Expected\DeepObject\Model\Test::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Test;
+        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\DeepObject\Model\Test;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Test();
+        $object = new \Jane\Component\JsonSchema\Tests\Expected\DeepObject\Model\Test();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -40,7 +40,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('foo', $data)) {
             $values = [];
             foreach ($data['foo'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\JsonSchema\Tests\Expected\Model\TestFooItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\JsonSchema\Tests\Expected\DeepObject\Model\TestFooItem::class, 'json', $context);
             }
             $object->foo = $values;
         }
@@ -52,7 +52,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
             $values = [];
             foreach ($data->foo ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\DeepObject\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['foo'] = $values;
         }
@@ -60,6 +60,6 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false];
+        return [\Jane\Component\JsonSchema\Tests\Expected\DeepObject\Model\Test::class => false];
     }
 }

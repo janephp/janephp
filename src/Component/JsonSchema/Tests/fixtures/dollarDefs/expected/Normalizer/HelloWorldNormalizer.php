@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\JsonSchema\Tests\Expected\DollarDefs\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\JsonSchema\Tests\Expected\DollarDefs\Runtime\Normalizer\CheckArray;
+use Jane\JsonSchema\Tests\Expected\DollarDefs\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class HelloWorldNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\JsonSchema\Tests\Expected\Model\HelloWorld::class;
+        return $type === \Jane\JsonSchema\Tests\Expected\DollarDefs\Model\HelloWorld::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\HelloWorld;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\DollarDefs\Model\HelloWorld;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\JsonSchema\Tests\Expected\Model\HelloWorld();
+        $object = new \Jane\JsonSchema\Tests\Expected\DollarDefs\Model\HelloWorld();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -52,6 +52,6 @@ class HelloWorldNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\JsonSchema\Tests\Expected\Model\HelloWorld::class => false];
+        return [\Jane\JsonSchema\Tests\Expected\DollarDefs\Model\HelloWorld::class => false];
     }
 }

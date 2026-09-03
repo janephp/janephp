@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Exception;
 
 class GetTestBadRequestException extends BadRequestException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi2\Tests\Expected\Model\Error
+         * @var \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Error
          */
-        private readonly \Jane\Component\OpenApi2\Tests\Expected\Model\Error $error,
+        private readonly \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Error $error,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class GetTestBadRequestException extends BadRequestException
     {
         parent::__construct('bad request');
     }
-    public function getError(): \Jane\Component\OpenApi2\Tests\Expected\Model\Error
+    public function getError(): \Jane\Component\OpenApi2\Tests\Expected\ModelInResponse\Model\Error
     {
         return $this->error;
     }

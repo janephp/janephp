@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Endpoint;
 
-class GetItem extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class GetItem extends \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -25,14 +25,14 @@ class GetItem extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Ba
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Model\Container
+     * @return null|\Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Container', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container', 'json');
         }
     }
     public function getAuthenticationScopes(): array

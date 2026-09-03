@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\XNamespace\Endpoint;
 
-class GetFlatItems extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class GetFlatItems extends \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -25,14 +25,14 @@ class GetFlatItems extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Model\FlatItem
+     * @return null|\Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\FlatItem
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\FlatItem', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\FlatItem', 'json');
         }
     }
     public function getAuthenticationScopes(): array

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class TestFooNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\TestFoo::class;
+        return $type === \Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Model\TestFoo::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\TestFoo;
+        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Model\TestFoo;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\TestFoo();
+        $object = new \Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Model\TestFoo();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -46,6 +46,6 @@ class TestFooNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\JsonSchema\Tests\Expected\Model\TestFoo::class => false];
+        return [\Jane\Component\JsonSchema\Tests\Expected\MultiFiles\Model\TestFoo::class => false];
     }
 }

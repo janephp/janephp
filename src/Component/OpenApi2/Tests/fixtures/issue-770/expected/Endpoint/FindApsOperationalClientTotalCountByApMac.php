@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindApsOperationalClientTotalCountByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindApsOperationalClientTotalCountByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $apMac;
     /**
@@ -16,7 +16,7 @@ class FindApsOperationalClientTotalCountByApMac extends \Jane\Component\OpenApi3
         $this->apMac = $apMac;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -45,9 +45,9 @@ class FindApsOperationalClientTotalCountByApMac extends \Jane\Component\OpenApi3
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalClientTotalCountByApMacBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalClientTotalCountByApMacForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalClientTotalCountByApMacInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalClientTotalCountByApMacBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalClientTotalCountByApMacForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalClientTotalCountByApMacInternalServerErrorException
      *
      * @return null
      */
@@ -56,13 +56,13 @@ class FindApsOperationalClientTotalCountByApMac extends \Jane\Component\OpenApi3
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalClientTotalCountByApMacBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalClientTotalCountByApMacBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalClientTotalCountByApMacForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalClientTotalCountByApMacForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalClientTotalCountByApMacInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindApsOperationalClientTotalCountByApMacInternalServerErrorException($response);
         }
         if (200 === $status) {
             return null;

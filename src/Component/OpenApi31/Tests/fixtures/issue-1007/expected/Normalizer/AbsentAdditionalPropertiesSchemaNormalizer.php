@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue1007\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Issue1007\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class AbsentAdditionalPropertiesSchemaNormalizer implements DenormalizerInterfac
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Model\AbsentAdditionalPropertiesSchema::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Model\AbsentAdditionalPropertiesSchema::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Model\AbsentAdditionalPropertiesSchema();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class AbsentAdditionalPropertiesSchemaNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\AbsentAdditionalPropertiesSchemaConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Validator\AbsentAdditionalPropertiesSchemaConstraint());
         }
         if (\array_key_exists('name', $data)) {
             $object->name = $data['name'];
@@ -63,12 +63,12 @@ class AbsentAdditionalPropertiesSchemaNormalizer implements DenormalizerInterfac
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\AbsentAdditionalPropertiesSchemaConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Issue1007\Validator\AbsentAdditionalPropertiesSchemaConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\Issue1007\Model\AbsentAdditionalPropertiesSchema::class => false];
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Endpoint;
 
-class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Client\Endpoint
 {
     protected $planetId;
     protected $accept;
@@ -16,7 +16,7 @@ class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
         $this->planetId = $planetId;
         $this->accept = $accept;
     }
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'DELETE';
@@ -39,7 +39,7 @@ class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\DeletePlanetNotFoundException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\DeletePlanetNotFoundException
      *
      * @return null
      */
@@ -51,7 +51,7 @@ class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
             return null;
         }
         if ($contentType !== null && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\DeletePlanetNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\NotFoundError', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception\DeletePlanetNotFoundException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\NotFoundError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi3\Tests\Expected\Runtime\Client;
+namespace Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Psr\Http\Message\ResponseInterface;

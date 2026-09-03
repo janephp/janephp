@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue810\Endpoint;
 
-class MimeTypeGeneratedValidDocBlock extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class MimeTypeGeneratedValidDocBlock extends \Jane\Component\OpenApi3\Tests\Expected\Issue810\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue810\Runtime\Client\Endpoint
 {
     protected $accept;
     /**
@@ -14,7 +14,7 @@ class MimeTypeGeneratedValidDocBlock extends \Jane\Component\OpenApi3\Tests\Expe
         $this->body = $requestBody;
         $this->accept = $accept;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue810\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';

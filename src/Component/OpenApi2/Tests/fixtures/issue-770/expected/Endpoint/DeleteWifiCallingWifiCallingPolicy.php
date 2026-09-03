@@ -1,21 +1,21 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class DeleteWifiCallingWifiCallingPolicy extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class DeleteWifiCallingWifiCallingPolicy extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingDeleteBulk $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingDeleteBulk $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingDeleteBulk $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingDeleteBulk $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'DELETE';
@@ -44,9 +44,9 @@ class DeleteWifiCallingWifiCallingPolicy extends \Jane\Component\OpenApi3\Tests\
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWifiCallingWifiCallingPolicyBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWifiCallingWifiCallingPolicyForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWifiCallingWifiCallingPolicyInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyInternalServerErrorException
      *
      * @return null
      */
@@ -55,13 +55,13 @@ class DeleteWifiCallingWifiCallingPolicy extends \Jane\Component\OpenApi3\Tests\
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWifiCallingWifiCallingPolicyBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWifiCallingWifiCallingPolicyForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWifiCallingWifiCallingPolicyInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\DeleteWifiCallingWifiCallingPolicyInternalServerErrorException($response);
         }
         if (200 === $status) {
             return null;

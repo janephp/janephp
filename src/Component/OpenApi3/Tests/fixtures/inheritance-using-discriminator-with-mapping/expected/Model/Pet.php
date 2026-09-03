@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\Expected\InheritanceUsingDiscriminatorWithMapping\Model;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+use Jane\Component\OpenApi3\Tests\Expected\InheritanceUsingDiscriminatorWithMapping\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\InheritanceUsingDiscriminatorWithMapping\Runtime\AdditionalPropertiesInterface;
 class Pet implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;

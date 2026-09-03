@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Endpoint;
 
-class GetBar extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class GetBar extends \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

@@ -1,35 +1,35 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected;
+namespace Jane\Component\OpenApi31\Tests\Expected\XNamespace;
 
-class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Client\Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\FlatItem : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\FlatItem : \Psr\Http\Message\ResponseInterface)
      */
     public function getFlatItems(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\GetFlatItems(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Endpoint\GetFlatItems(), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\Admin\Reports\NamespacedReportGetResponse200 : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Admin\Reports\NamespacedReportGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function getNamespacedReport(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\Admin\Reports\GetNamespacedReport(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Endpoint\Admin\Reports\GetNamespacedReport(), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\Catalog\TaggedItem : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\XNamespace\Model\Catalog\TaggedItem : \Psr\Http\Message\ResponseInterface)
      */
     public function getTaggedItems(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\Ops\Monitoring\GetTaggedItems(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Endpoint\Ops\Monitoring\GetTaggedItems(), $fetch);
     }
     public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
@@ -48,11 +48,11 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
         $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi31\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi31\Tests\Expected\XNamespace\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

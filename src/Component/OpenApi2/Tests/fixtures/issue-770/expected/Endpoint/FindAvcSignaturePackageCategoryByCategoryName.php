@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindAvcSignaturePackageCategoryByCategoryName extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindAvcSignaturePackageCategoryByCategoryName extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $categoryName;
     /**
@@ -16,7 +16,7 @@ class FindAvcSignaturePackageCategoryByCategoryName extends \Jane\Component\Open
         $this->categoryName = $categoryName;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -45,27 +45,27 @@ class FindAvcSignaturePackageCategoryByCategoryName extends \Jane\Component\Open
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageCategoryByCategoryNameBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageCategoryByCategoryNameForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageCategoryByCategoryNameInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoryByCategoryNameBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoryByCategoryNameForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoryByCategoryNameInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcAppCategory
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategory
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageCategoryByCategoryNameBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoryByCategoryNameBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageCategoryByCategoryNameForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoryByCategoryNameForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageCategoryByCategoryNameInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageCategoryByCategoryNameInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\AvcAppCategory', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategory', 'json');
         }
     }
     public function getAuthenticationScopes(): array

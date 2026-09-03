@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PlanetsGetXmlResponse200Normalizer implements DenormalizerInterface, Norma
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetXmlResponse200::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetXmlResponse200::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetXmlResponse200::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetXmlResponse200::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetXmlResponse200();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetXmlResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,18 +38,18 @@ class PlanetsGetXmlResponse200Normalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetsGetXmlResponse200Constraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\PlanetsGetXmlResponse200Constraint());
         }
         if (\array_key_exists('data', $data)) {
             $values = [];
             foreach ($data['data'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\Planet::class, 'json', $context);
             }
             $object->data = $values;
             unset($data['data']);
         }
         if (\array_key_exists('meta', $data)) {
-            $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Component\OpenApi31\Tests\Expected\Model\PaginatedResourceMeta::class, 'json', $context);
+            $object->meta = $this->denormalizer->denormalize($data['meta'], \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PaginatedResourceMeta::class, 'json', $context);
             unset($data['meta']);
         }
         foreach ($data as $key => $value_1) {
@@ -65,12 +65,12 @@ class PlanetsGetXmlResponse200Normalizer implements DenormalizerInterface, Norma
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
             foreach ($data->data ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data'] = $values;
         }
         if (array_key_exists('meta', get_object_vars($data)) && null !== ($data->meta ?? null)) {
-            $dataArray['meta'] = ($data->meta ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->meta ?? null, 'json', $context));
+            $dataArray['meta'] = ($data->meta ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->meta ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -78,12 +78,12 @@ class PlanetsGetXmlResponse200Normalizer implements DenormalizerInterface, Norma
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetsGetXmlResponse200Constraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Validator\PlanetsGetXmlResponse200Constraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetXmlResponse200::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\PlanetsGetXmlResponse200::class => false];
     }
 }

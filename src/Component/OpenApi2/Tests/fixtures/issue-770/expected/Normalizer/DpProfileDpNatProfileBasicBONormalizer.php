@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class DpProfileDpNatProfileBasicBONormalizer implements DenormalizerInterface, N
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -59,7 +59,7 @@ class DpProfileDpNatProfileBasicBONormalizer implements DenormalizerInterface, N
             $object->primaryNatDefaultRouteGateway = $data['primaryNatDefaultRouteGateway'];
         }
         if (\array_key_exists('natPublicSubnetId', $data)) {
-            $object->natPublicSubnetId = $this->denormalizer->denormalize($data['natPublicSubnetId'], \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePublicSubnetIdBO::class, 'json', $context);
+            $object->natPublicSubnetId = $this->denormalizer->denormalize($data['natPublicSubnetId'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePublicSubnetIdBO::class, 'json', $context);
         }
         return $object;
     }
@@ -88,12 +88,12 @@ class DpProfileDpNatProfileBasicBONormalizer implements DenormalizerInterface, N
             $dataArray['primaryNatDefaultRouteGateway'] = $data->primaryNatDefaultRouteGateway ?? null;
         }
         if (array_key_exists('natPublicSubnetId', get_object_vars($data)) && null !== ($data->natPublicSubnetId ?? null)) {
-            $dataArray['natPublicSubnetId'] = ($data->natPublicSubnetId ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->natPublicSubnetId ?? null, 'json', $context));
+            $dataArray['natPublicSubnetId'] = ($data->natPublicSubnetId ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->natPublicSubnetId ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO::class => false];
     }
 }

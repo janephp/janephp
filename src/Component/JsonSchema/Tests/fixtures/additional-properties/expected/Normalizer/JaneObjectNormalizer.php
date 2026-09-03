@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Normalizer;
 
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\AdditionalProperties::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\AdditionalPropertiesNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Model\AdditionalProperties::class => \Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Normalizer\AdditionalPropertiesNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\PatternProperties::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\PatternPropertiesNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Model\PatternProperties::class => \Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Normalizer\PatternPropertiesNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\Tests\Expected\AdditionalProperties\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

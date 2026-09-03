@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator\Endpoint;
 
-class TestReferenceResponse extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class TestReferenceResponse extends \Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\CustomEndpointGenerator\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

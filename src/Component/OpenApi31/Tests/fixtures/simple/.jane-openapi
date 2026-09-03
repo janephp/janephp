@@ -2,6 +2,6 @@
 
 return [
     'openapi-file' => __DIR__ . '/openapi.json',
-    'namespace' => 'Jane\Component\OpenApi31\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi31\Tests\Expected\Simple',
     'directory' => __DIR__ . '/generated',
 ];

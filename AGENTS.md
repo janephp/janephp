@@ -17,7 +17,8 @@ This file gives coding agents the minimum project context needed to work safely 
 - `docs/`: documentation sources.
 - `castor.php`: QA and documentation helper tasks.
 - `phpunit.xml`: test configuration.
-- `phpstan.neon`: static analysis configuration.
+- `phpstan.neon`: static analysis configuration for `src/`.
+- `mago-generated.toml`: static analysis configuration for generated fixture code (baseline: `mago-generated-baseline.toml`).
 
 ## Working Rules
 
@@ -37,7 +38,8 @@ This file gives coding agents the minimum project context needed to work safely 
 - Run tests for a single component (never pass a path — it loads fixture classes and fatals):
   - `vendor/bin/phpunit --testsuite <Component>` (e.g. `JsonSchema`; see `vendor/bin/phpunit --list-suites`)
 - Run static analysis:
-  - `castor qa:phpstan`
+  - `castor qa:phpstan` (`src/`)
+  - `castor qa:mago:generated` (generated fixture code; `--generate-baseline` after a generator fix shrinks the baseline)
 - Run coding standards (dry run):
   - `castor qa:cs:check`
 - Fix coding standards:

@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Exception;
 
 class TestBadRequestException extends BadRequestException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi3\Tests\Expected\Model\Failure
+         * @var \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Model\Failure
          */
-        private readonly \Jane\Component\OpenApi3\Tests\Expected\Model\Failure $failure,
+        private readonly \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Model\Failure $failure,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class TestBadRequestException extends BadRequestException
     {
         parent::__construct('Bad Request');
     }
-    public function getFailure(): \Jane\Component\OpenApi3\Tests\Expected\Model\Failure
+    public function getFailure(): \Jane\Component\OpenApi3\Tests\Expected\ResponseReferenceWithSchemaReference\Model\Failure
     {
         return $this->failure;
     }

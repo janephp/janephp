@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class IdentityCreateUserNormalizer implements DenormalizerInterface, NormalizerI
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCreateUser::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCreateUser::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCreateUser();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -83,7 +83,7 @@ class IdentityCreateUserNormalizer implements DenormalizerInterface, NormalizerI
             $object->domainId = $data['domainId'];
         }
         if (\array_key_exists('subscriberPackage', $data)) {
-            $object->subscriberPackage = $this->denormalizer->denormalize($data['subscriberPackage'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
+            $object->subscriberPackage = $this->denormalizer->denormalize($data['subscriberPackage'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
         return $object;
     }
@@ -126,12 +126,12 @@ class IdentityCreateUserNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['domainId'] = $data->domainId ?? null;
         }
         if (array_key_exists('subscriberPackage', get_object_vars($data)) && null !== ($data->subscriberPackage ?? null)) {
-            $dataArray['subscriberPackage'] = ($data->subscriberPackage ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->subscriberPackage ?? null, 'json', $context));
+            $dataArray['subscriberPackage'] = ($data->subscriberPackage ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->subscriberPackage ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCreateUser::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser::class => false];
     }
 }

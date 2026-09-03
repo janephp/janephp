@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class MuseumTicketsConfirmationNormalizer implements DenormalizerInterface, Norm
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\MuseumTicketsConfirmation::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumTicketsConfirmation::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\MuseumTicketsConfirmation::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumTicketsConfirmation::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\MuseumTicketsConfirmation();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumTicketsConfirmation();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class MuseumTicketsConfirmationNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\MuseumTicketsConfirmationConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Museum\Validator\MuseumTicketsConfirmationConstraint());
         }
         if (\array_key_exists('ticketId', $data)) {
             $object->ticketId = $data['ticketId'];
@@ -47,7 +47,7 @@ class MuseumTicketsConfirmationNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('ticketDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['ticketDate']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['ticketDate'], 'Y-m-d');
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Normalizer\InvalidDateException($data['ticketDate'], 'Y-m-d');
             }
             $object->ticketDate = $date->setTime(0, 0, 0);
             unset($data['ticketDate']);
@@ -94,12 +94,12 @@ class MuseumTicketsConfirmationNormalizer implements DenormalizerInterface, Norm
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\MuseumTicketsConfirmationConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Museum\Validator\MuseumTicketsConfirmationConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\MuseumTicketsConfirmation::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\MuseumTicketsConfirmation::class => false];
     }
 }

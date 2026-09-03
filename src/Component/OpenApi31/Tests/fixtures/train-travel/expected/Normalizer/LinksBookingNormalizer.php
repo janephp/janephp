@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class LinksBookingNormalizer implements DenormalizerInterface, NormalizerInterfa
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\LinksBooking::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksBooking::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\LinksBooking::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksBooking::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\LinksBooking();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksBooking();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class LinksBookingNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\LinksBookingConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Validator\LinksBookingConstraint());
         }
         if (\array_key_exists('booking', $data)) {
             $object->booking = $data['booking'];
@@ -63,12 +63,12 @@ class LinksBookingNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\LinksBookingConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Validator\LinksBookingConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\LinksBooking::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\LinksBooking::class => false];
     }
 }

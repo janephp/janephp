@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi3\Tests\Expected\ThrowUnexceptedStatusCode\Exception;
 
 interface ServerException extends ApiException
 {

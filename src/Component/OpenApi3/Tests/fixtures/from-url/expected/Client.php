@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\Expected\FromUrl;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime\Client\Client
 {
     /**
      * @param array{
@@ -10,31 +10,31 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\Pet[]|\Jane\Component\OpenApi3\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet[]|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function listPets(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\ListPets($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Endpoint\ListPets($queryParameters), $fetch);
     }
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\Pet $requestBody
+     * @param \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
-    public function createPets(\Jane\Component\OpenApi3\Tests\Expected\Model\Pet $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function createPets(\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\CreatePets($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Endpoint\CreatePets($requestBody), $fetch);
     }
     /**
      * @param string $petId The id of the pet to retrieve
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\Pet|\Jane\Component\OpenApi3\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Pet|\Jane\Component\OpenApi3\Tests\Expected\FromUrl\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function showPetById(string $petId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\ShowPetById($petId), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Endpoint\ShowPetById($petId), $fetch);
     }
     public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
@@ -53,11 +53,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\FromUrl\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

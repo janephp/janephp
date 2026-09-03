@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\JsonSchema\Tests\Expected\Model;
+namespace Jane\JsonSchema\Tests\Expected\Validator\Model;
 
 class ModelFooooooo
 {

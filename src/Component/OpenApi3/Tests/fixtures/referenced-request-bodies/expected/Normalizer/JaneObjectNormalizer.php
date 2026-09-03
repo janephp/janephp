@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Normalizer;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,13 +18,13 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\_Parent::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ParentNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\_Parent::class => \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Normalizer\ParentNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\Child::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ChildNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\Child::class => \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Normalizer\ChildNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ParentsParentIdChildChildIdPatchBody::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ParentsParentIdChildChildIdPatchBodyNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\ParentsParentIdChildChildIdPatchBody::class => \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Normalizer\ParentsParentIdChildChildIdPatchBodyNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProfileDhcpRelayNoRelayTunnelNormalizer implements DenormalizerInterface, 
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpRelayNoRelayTunnel::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpRelayNoRelayTunnel::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpRelayNoRelayTunnel::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpRelayNoRelayTunnel::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpRelayNoRelayTunnel();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpRelayNoRelayTunnel();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +56,7 @@ class ProfileDhcpRelayNoRelayTunnelNormalizer implements DenormalizerInterface, 
             $object->relayBothEnabled = $data['relayBothEnabled'];
         }
         if (\array_key_exists('dhcpOption82', $data)) {
-            $object->dhcpOption82 = $this->denormalizer->denormalize($data['dhcpOption82'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpOption82::class, 'json', $context);
+            $object->dhcpOption82 = $this->denormalizer->denormalize($data['dhcpOption82'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpOption82::class, 'json', $context);
         }
         return $object;
     }
@@ -76,12 +76,12 @@ class ProfileDhcpRelayNoRelayTunnelNormalizer implements DenormalizerInterface, 
             $dataArray['relayBothEnabled'] = $data->relayBothEnabled ?? null;
         }
         if (array_key_exists('dhcpOption82', get_object_vars($data)) && null !== ($data->dhcpOption82 ?? null)) {
-            $dataArray['dhcpOption82'] = ($data->dhcpOption82 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->dhcpOption82 ?? null, 'json', $context));
+            $dataArray['dhcpOption82'] = ($data->dhcpOption82 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpOption82 ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpRelayNoRelayTunnel::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpRelayNoRelayTunnel::class => false];
     }
 }

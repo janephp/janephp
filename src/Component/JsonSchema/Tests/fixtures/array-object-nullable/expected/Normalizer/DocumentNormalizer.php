@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Document::class;
+        return $type === \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Model\Document::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Document;
+        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Model\Document;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Document();
+        $object = new \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Model\Document();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -42,7 +42,7 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             if (is_array($data['attributes']) && $this->isOnlyNumericKeys($data['attributes'])) {
                 $values = [];
                 foreach ($data['attributes'] as $value_1) {
-                    $values[] = $this->denormalizer->denormalize($value_1, \Jane\Component\JsonSchema\Tests\Expected\Model\Attributes::class, 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value_1, \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Model\Attributes::class, 'json', $context);
                 }
                 $value = $values;
             } elseif (is_null($data['attributes'])) {
@@ -63,7 +63,7 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             if (is_array($data->attributes ?? null)) {
                 $values = [];
                 foreach ($data->attributes ?? null as $value_1) {
-                    $values[] = $value_1 === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                    $values[] = $value_1 === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
                 }
                 $value = $values;
             } elseif (is_null($data->attributes ?? null)) {
@@ -75,6 +75,6 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\JsonSchema\Tests\Expected\Model\Document::class => false];
+        return [\Jane\Component\JsonSchema\Tests\Expected\ArrayObjectNullable\Model\Document::class => false];
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $firmwareVersion___;
     /**
@@ -16,7 +16,7 @@ class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests
         $this->firmwareVersion___ = $firmwareVersion;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -45,9 +45,9 @@ class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApmodelsByFirmwareVersionBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApmodelsByFirmwareVersionForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApmodelsByFirmwareVersionInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionInternalServerErrorException
      *
      * @return null
      */
@@ -56,13 +56,13 @@ class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApmodelsByFirmwareVersionBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApmodelsByFirmwareVersionForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApmodelsByFirmwareVersionInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindSystemApmodelsByFirmwareVersionInternalServerErrorException($response);
         }
         if (200 === $status) {
             return null;

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ClusterRedundancyClusterRedundancySettingsNormalizer implements Denormaliz
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyClusterRedundancySettings::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyClusterRedundancySettings::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyClusterRedundancySettings::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyClusterRedundancySettings::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyClusterRedundancySettings();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyClusterRedundancySettings();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -55,14 +55,14 @@ class ClusterRedundancyClusterRedundancySettingsNormalizer implements Denormaliz
         if (\array_key_exists('managementEntryList', $data)) {
             $values = [];
             foreach ($data['managementEntryList'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyManagementEntry::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyManagementEntry::class, 'json', $context);
             }
             $object->managementEntryList = $values;
         }
         if (\array_key_exists('activeClusterList', $data)) {
             $values_1 = [];
             foreach ($data['activeClusterList'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyActiveCluster::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyActiveCluster::class, 'json', $context);
             }
             $object->activeClusterList = $values_1;
         }
@@ -101,14 +101,14 @@ class ClusterRedundancyClusterRedundancySettingsNormalizer implements Denormaliz
         if (array_key_exists('managementEntryList', get_object_vars($data)) && null !== ($data->managementEntryList ?? null)) {
             $values = [];
             foreach ($data->managementEntryList ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['managementEntryList'] = $values;
         }
         if (array_key_exists('activeClusterList', get_object_vars($data)) && null !== ($data->activeClusterList ?? null)) {
             $values_1 = [];
             foreach ($data->activeClusterList ?? null as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['activeClusterList'] = $values_1;
         }
@@ -134,6 +134,6 @@ class ClusterRedundancyClusterRedundancySettingsNormalizer implements Denormaliz
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyClusterRedundancySettings::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyClusterRedundancySettings::class => false];
     }
 }

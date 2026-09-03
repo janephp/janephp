@@ -46,6 +46,7 @@
         "jane-php/open-api-runtime": "self.version"
     },
     "require-dev": {
+        "carthage-software/mago": "1.47.4",
         "doctrine/annotations": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.59",
         "jms/serializer": "^3.28",

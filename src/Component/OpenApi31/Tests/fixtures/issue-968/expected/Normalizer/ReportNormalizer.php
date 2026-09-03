@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue968\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ReportNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\Report::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\Report::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Report::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\Report::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Report();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\Report();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,10 +38,10 @@ class ReportNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ReportConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Issue968\Validator\ReportConstraint());
         }
         if (\array_key_exists('period', $data) && $data['period'] !== null) {
-            $object->period = $this->denormalizer->denormalize($data['period'], \Jane\Component\OpenApi31\Tests\Expected\Model\ReportPeriod::class, 'json', $context);
+            $object->period = $this->denormalizer->denormalize($data['period'], \Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\ReportPeriod::class, 'json', $context);
             unset($data['period']);
         }
         elseif (\array_key_exists('period', $data) && $data['period'] === null) {
@@ -59,7 +59,7 @@ class ReportNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         if (array_key_exists('period', get_object_vars($data)) && null !== ($data->period ?? null)) {
-            $dataArray['period'] = ($data->period ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->period ?? null, 'json', $context));
+            $dataArray['period'] = ($data->period ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Issue968\Runtime\JsonObject($this->normalizer->normalize($data->period ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -67,12 +67,12 @@ class ReportNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ReportConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Issue968\Validator\ReportConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\Report::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\Issue968\Model\Report::class => false];
     }
 }

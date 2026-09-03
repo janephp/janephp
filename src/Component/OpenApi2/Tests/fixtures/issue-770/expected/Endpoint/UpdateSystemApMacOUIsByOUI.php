@@ -1,24 +1,24 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class UpdateSystemApMacOUIsByOUI extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class UpdateSystemApMacOUIsByOUI extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $OUI;
     /**
      * @param string $oUI
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\SystemUpdateApMacOUI $body
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUpdateApMacOUI $body
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $oUI, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemUpdateApMacOUI $body, array $queryParameters = [])
+    public function __construct(string $oUI, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUpdateApMacOUI $body, array $queryParameters = [])
     {
         $this->OUI = $oUI;
         $this->body = $body;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PUT';
@@ -47,10 +47,10 @@ class UpdateSystemApMacOUIsByOUI extends \Jane\Component\OpenApi3\Tests\Expected
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemApMacOUIsByOUIBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemApMacOUIsByOUIForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemApMacOUIsByOUIInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemApMacOUIsByOUIUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIUnprocessableEntityException
      *
      * @return null
      */
@@ -59,16 +59,16 @@ class UpdateSystemApMacOUIsByOUI extends \Jane\Component\OpenApi3\Tests\Expected
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemApMacOUIsByOUIBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemApMacOUIsByOUIForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemApMacOUIsByOUIInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemApMacOUIsByOUIUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateSystemApMacOUIsByOUIUnprocessableEntityException($response);
         }
         if (204 === $status) {
             return null;

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\CheckArray;
+use Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\OpenApi2\Tests\Expected\Model\Projects::class;
+        return $type === \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\OpenApi2\Tests\Expected\Model\Projects::class;
+        return is_object($data) && get_class($data) === \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\OpenApi2\Tests\Expected\Model\Projects();
+        $object = new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -40,7 +40,7 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('projects', $data)) {
             $values = [];
             foreach ($data['projects'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\OpenApi2\Tests\Expected\Model\Project::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Project::class, 'json', $context);
             }
             $object->projects = $values;
         }
@@ -63,7 +63,7 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->page = $data['page'];
         }
         if (\array_key_exists('links', $data)) {
-            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\OpenApi2\Tests\Expected\Model\PaginationLinks::class, 'json', $context);
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\PaginationLinks::class, 'json', $context);
         }
         return $object;
     }
@@ -72,7 +72,7 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray = [];
         $values = [];
         foreach ($data->projects ?? null as $value) {
-            $values[] = $value === null ? null : new \Jane\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $values[] = $value === null ? null : new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['projects'] = $values;
         $dataArray['per_page'] = $data->perPage ?? null;
@@ -81,11 +81,11 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['next_page'] = $data->nextPage ?? null;
         $dataArray['previous_page'] = $data->previousPage ?? null;
         $dataArray['page'] = $data->page ?? null;
-        $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
+        $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\OpenApi2\Tests\Expected\Model\Projects::class => false];
+        return [\Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Model\Projects::class => false];
     }
 }

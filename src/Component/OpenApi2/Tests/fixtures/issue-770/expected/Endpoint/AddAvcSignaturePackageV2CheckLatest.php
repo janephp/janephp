@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class AddAvcSignaturePackageV2CheckLatest extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class AddAvcSignaturePackageV2CheckLatest extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
      * @param array $queryParameters {
@@ -13,7 +13,7 @@ class AddAvcSignaturePackageV2CheckLatest extends \Jane\Component\OpenApi3\Tests
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -42,31 +42,31 @@ class AddAvcSignaturePackageV2CheckLatest extends \Jane\Component\OpenApi3\Tests
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2CheckLatestBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2CheckLatestForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2CheckLatestInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2CheckLatestUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcLatestInstallableSignaturePackage
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcLatestInstallableSignaturePackage
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2CheckLatestBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2CheckLatestForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2CheckLatestInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2CheckLatestUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddAvcSignaturePackageV2CheckLatestUnprocessableEntityException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\AvcLatestInstallableSignaturePackage', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcLatestInstallableSignaturePackage', 'json');
         }
     }
     public function getAuthenticationScopes(): array

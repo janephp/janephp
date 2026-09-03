@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\ContentType\Normalizer;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\Schema::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SchemaNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\ContentType\Model\Schema::class => \Jane\Component\OpenApi3\Tests\Expected\ContentType\Normalizer\SchemaNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\SchemaObjectProperty::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SchemaObjectPropertyNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\ContentType\Model\SchemaObjectProperty::class => \Jane\Component\OpenApi3\Tests\Expected\ContentType\Normalizer\SchemaObjectPropertyNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

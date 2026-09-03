@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\Component\JsonSchema\Tests\Expected\TestDefault\Normalizer;
 
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchema\Tests\Expected\TestDefault\Runtime\Normalizer\CheckArray;
+use Jane\Component\JsonSchema\Tests\Expected\TestDefault\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,11 +18,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Normalizer\TestNormalizer::class,
         
-        \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestSubObjectNormalizer::class,
+        \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Model\TestSubObject::class => \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Normalizer\TestSubObjectNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

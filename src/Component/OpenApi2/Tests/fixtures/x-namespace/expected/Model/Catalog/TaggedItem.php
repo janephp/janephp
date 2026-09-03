@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Model\Catalog;
+namespace Jane\Component\OpenApi2\Tests\Expected\XNamespace\Model\Catalog;
 
 class TaggedItem
 {

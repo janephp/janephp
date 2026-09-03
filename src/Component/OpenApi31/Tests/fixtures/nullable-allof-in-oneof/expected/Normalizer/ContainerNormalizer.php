@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\Container::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Container::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Container();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,12 +38,12 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ContainerConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Validator\ContainerConstraint());
         }
         if (\array_key_exists('iconOneOf', $data) && $data['iconOneOf'] !== null) {
             $value = $data['iconOneOf'];
             if (is_array($data['iconOneOf'])) {
-                $value = $this->denormalizer->denormalize($data['iconOneOf'], \Jane\Component\OpenApi31\Tests\Expected\Model\Image::class, 'json', $context);
+                $value = $this->denormalizer->denormalize($data['iconOneOf'], \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Image::class, 'json', $context);
             } elseif (is_null($data['iconOneOf'])) {
                 $value = $data['iconOneOf'];
             }
@@ -57,7 +57,7 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('iconAnyOf', $data) && $data['iconAnyOf'] !== null) {
             $value_1 = $data['iconAnyOf'];
             if (is_array($data['iconAnyOf'])) {
-                $value_1 = $this->denormalizer->denormalize($data['iconAnyOf'], \Jane\Component\OpenApi31\Tests\Expected\Model\ContainerIconAnyOfAnyOf::class, 'json', $context);
+                $value_1 = $this->denormalizer->denormalize($data['iconAnyOf'], \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\ContainerIconAnyOfAnyOf::class, 'json', $context);
             } elseif (is_null($data['iconAnyOf'])) {
                 $value_1 = $data['iconAnyOf'];
             }
@@ -81,7 +81,7 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('iconOneOf', get_object_vars($data)) && null !== ($data->iconOneOf ?? null)) {
             $value = $data->iconOneOf ?? null;
             if (is_object($data->iconOneOf ?? null)) {
-                $value = ($data->iconOneOf ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->iconOneOf ?? null, 'json', $context));
+                $value = ($data->iconOneOf ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconOneOf ?? null, 'json', $context));
             } elseif (is_null($data->iconOneOf ?? null)) {
                 $value = $data->iconOneOf ?? null;
             }
@@ -90,7 +90,7 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('iconAnyOf', get_object_vars($data)) && null !== ($data->iconAnyOf ?? null)) {
             $value_1 = $data->iconAnyOf ?? null;
             if (is_object($data->iconAnyOf ?? null)) {
-                $value_1 = ($data->iconAnyOf ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->iconAnyOf ?? null, 'json', $context));
+                $value_1 = ($data->iconAnyOf ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconAnyOf ?? null, 'json', $context));
             } elseif (is_null($data->iconAnyOf ?? null)) {
                 $value_1 = $data->iconAnyOf ?? null;
             }
@@ -102,12 +102,12 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ContainerConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Validator\ContainerConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\Container::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Model\Container::class => false];
     }
 }

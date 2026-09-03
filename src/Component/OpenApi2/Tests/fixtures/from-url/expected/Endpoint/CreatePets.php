@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\FromUrl\Endpoint;
 
-class CreatePets extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class CreatePets extends \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -25,7 +25,7 @@ class CreatePets extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Error
+     * @return null|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
@@ -34,7 +34,7 @@ class CreatePets extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\
         if (201 === $status) {
             return null;
         }
-        return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Model\Error', 'json');
+        return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error', 'json');
     }
     public function getAuthenticationScopes(): array
     {

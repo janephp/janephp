@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi3\Tests\Expected\Runtime;
+namespace Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Runtime;
 
 trait AdditionalAndPatternProperties
 {

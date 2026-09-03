@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue299\Endpoint;
 
-class GetUsers extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class GetUsers extends \Jane\Component\OpenApi3\Tests\Expected\Issue299\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue299\Runtime\Client\Endpoint
 {
     /**
      * Foo bar
@@ -15,7 +15,7 @@ class GetUsers extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue299\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

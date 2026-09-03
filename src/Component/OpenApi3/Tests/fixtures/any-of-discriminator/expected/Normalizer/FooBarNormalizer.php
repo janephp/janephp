@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class FooBarNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\FooBar::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBar::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\FooBar::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBar::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\FooBar();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBar();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -40,9 +40,9 @@ class FooBarNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('what', $data)) {
             $value = $data['what'];
             if (is_array($data['what']) and (isset($data['what']['type']) and $data['what']['type'] == '#/components/schemas/Foo')) {
-                $value = $this->denormalizer->denormalize($data['what'], \Jane\Component\OpenApi3\Tests\Expected\Model\Foo::class, 'json', $context);
+                $value = $this->denormalizer->denormalize($data['what'], \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\Foo::class, 'json', $context);
             } elseif (is_array($data['what']) and (isset($data['what']['type']) and $data['what']['type'] == '#/components/schemas/Bar')) {
-                $value = $this->denormalizer->denormalize($data['what'], \Jane\Component\OpenApi3\Tests\Expected\Model\Bar::class, 'json', $context);
+                $value = $this->denormalizer->denormalize($data['what'], \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\Bar::class, 'json', $context);
             }
             $object->what = $value;
             unset($data['what']);
@@ -60,9 +60,9 @@ class FooBarNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (array_key_exists('what', get_object_vars($data)) && null !== ($data->what ?? null)) {
             $value = $data->what ?? null;
             if (is_object($data->what ?? null)) {
-                $value = ($data->what ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->what ?? null, 'json', $context));
+                $value = ($data->what ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Runtime\JsonObject($this->normalizer->normalize($data->what ?? null, 'json', $context));
             } elseif (is_object($data->what ?? null)) {
-                $value = ($data->what ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->what ?? null, 'json', $context));
+                $value = ($data->what ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Runtime\JsonObject($this->normalizer->normalize($data->what ?? null, 'json', $context));
             }
             $dataArray['what'] = $value;
         }
@@ -75,6 +75,6 @@ class FooBarNormalizer implements DenormalizerInterface, NormalizerInterface, De
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\FooBar::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\AnyOfDiscriminator\Model\FooBar::class => false];
     }
 }

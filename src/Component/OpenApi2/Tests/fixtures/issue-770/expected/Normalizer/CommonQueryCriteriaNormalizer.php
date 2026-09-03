@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class CommonQueryCriteriaNormalizer implements DenormalizerInterface, Normalizer
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteria::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteria::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteria::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteria::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteria();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteria();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -53,10 +53,10 @@ class CommonQueryCriteriaNormalizer implements DenormalizerInterface, Normalizer
             $object->options = $data['options'];
         }
         if (\array_key_exists('extraTimeRange', $data)) {
-            $object->extraTimeRange = $this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTimeRange::class, 'json', $context);
+            $object->extraTimeRange = $this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonTimeRange::class, 'json', $context);
         }
         if (\array_key_exists('fullTextSearch', $data)) {
-            $object->fullTextSearch = $this->denormalizer->denormalize($data['fullTextSearch'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonFullTextSearch::class, 'json', $context);
+            $object->fullTextSearch = $this->denormalizer->denormalize($data['fullTextSearch'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonFullTextSearch::class, 'json', $context);
         }
         if (\array_key_exists('attributes', $data)) {
             $values = [];
@@ -66,7 +66,7 @@ class CommonQueryCriteriaNormalizer implements DenormalizerInterface, Normalizer
             $object->attributes = $values;
         }
         if (\array_key_exists('sortInfo', $data)) {
-            $object->sortInfo = $this->denormalizer->denormalize($data['sortInfo'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSortInfo::class, 'json', $context);
+            $object->sortInfo = $this->denormalizer->denormalize($data['sortInfo'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSortInfo::class, 'json', $context);
         }
         if (\array_key_exists('page', $data)) {
             $object->page = $data['page'];
@@ -101,10 +101,10 @@ class CommonQueryCriteriaNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['options'] = $data->options ?? null;
         }
         if (array_key_exists('extraTimeRange', get_object_vars($data)) && null !== ($data->extraTimeRange ?? null)) {
-            $dataArray['extraTimeRange'] = ($data->extraTimeRange ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->extraTimeRange ?? null, 'json', $context));
+            $dataArray['extraTimeRange'] = ($data->extraTimeRange ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extraTimeRange ?? null, 'json', $context));
         }
         if (array_key_exists('fullTextSearch', get_object_vars($data)) && null !== ($data->fullTextSearch ?? null)) {
-            $dataArray['fullTextSearch'] = ($data->fullTextSearch ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->fullTextSearch ?? null, 'json', $context));
+            $dataArray['fullTextSearch'] = ($data->fullTextSearch ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->fullTextSearch ?? null, 'json', $context));
         }
         if (array_key_exists('attributes', get_object_vars($data)) && null !== ($data->attributes ?? null)) {
             $values = [];
@@ -114,7 +114,7 @@ class CommonQueryCriteriaNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['attributes'] = $values;
         }
         if (array_key_exists('sortInfo', get_object_vars($data)) && null !== ($data->sortInfo ?? null)) {
-            $dataArray['sortInfo'] = ($data->sortInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->sortInfo ?? null, 'json', $context));
+            $dataArray['sortInfo'] = ($data->sortInfo ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->sortInfo ?? null, 'json', $context));
         }
         if (array_key_exists('page', get_object_vars($data)) && null !== ($data->page ?? null)) {
             $dataArray['page'] = $data->page ?? null;
@@ -135,6 +135,6 @@ class CommonQueryCriteriaNormalizer implements DenormalizerInterface, Normalizer
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteria::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteria::class => false];
     }
 }

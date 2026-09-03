@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Endpoint;
 
-class GetBookings extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
+class GetBookings extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Client\Endpoint
 {
     protected $accept;
     /**
@@ -18,7 +18,7 @@ class GetBookings extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
-    use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -51,35 +51,35 @@ class GetBookings extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsBadRequestException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsUnauthorizedException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsForbiddenException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsTooManyRequestsException
-     * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsInternalServerErrorException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsBadRequestException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsUnauthorizedException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsForbiddenException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsTooManyRequestsException
+     * @throws \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetJsonResponse200
+     * @return null|\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsGetJsonResponse200
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetJsonResponse200', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsGetJsonResponse200', 'json');
         }
         if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsBadRequestException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
         if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsUnauthorizedException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsUnauthorizedException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
         if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsForbiddenException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsForbiddenException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
         if ($contentType !== null && (429 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsTooManyRequestsException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsTooManyRequestsException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
         if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Model\Problem', 'json'), $response);
+            throw new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Exception\GetBookingsInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem', 'json'), $response);
         }
     }
     public function getAuthenticationScopes(): array

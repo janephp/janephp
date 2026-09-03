@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Runtime\Client;
+namespace Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Runtime\Client;
 
 use Symfony\Component\Serializer\SerializerInterface;
 final class JsonPayload

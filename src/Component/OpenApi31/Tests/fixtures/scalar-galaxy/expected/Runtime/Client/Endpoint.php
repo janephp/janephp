@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Runtime\Client;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\Client;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;

@@ -2,7 +2,7 @@
 
 return [
     'openapi-file' => __DIR__ . '/openapi.json',
-    'namespace' => 'Jane\Component\OpenApi31\Tests\Expected',
+    'namespace' => 'Jane\Component\OpenApi31\Tests\Expected\GenerateErrorExceptions',
     'directory' => __DIR__ . '/generated',
     'generate-error-exceptions' => false,
 ];

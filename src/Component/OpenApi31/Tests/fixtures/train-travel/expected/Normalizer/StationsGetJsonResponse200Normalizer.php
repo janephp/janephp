@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class StationsGetJsonResponse200Normalizer implements DenormalizerInterface, Nor
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetJsonResponse200::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetJsonResponse200::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetJsonResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,18 +38,18 @@ class StationsGetJsonResponse200Normalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\StationsGetJsonResponse200Constraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Validator\StationsGetJsonResponse200Constraint());
         }
         if (\array_key_exists('data', $data)) {
             $values = [];
             foreach ($data['data'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi31\Tests\Expected\Model\Station::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Station::class, 'json', $context);
             }
             $object->data = $values;
             unset($data['data']);
         }
         if (\array_key_exists('links', $data)) {
-            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200Links::class, 'json', $context);
+            $object->links = $this->denormalizer->denormalize($data['links'], \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetJsonResponse200Links::class, 'json', $context);
             unset($data['links']);
         }
         foreach ($data as $key => $value_1) {
@@ -65,12 +65,12 @@ class StationsGetJsonResponse200Normalizer implements DenormalizerInterface, Nor
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
             foreach ($data->data ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data'] = $values;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
+            $dataArray['links'] = ($data->links ?? null) === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -78,12 +78,12 @@ class StationsGetJsonResponse200Normalizer implements DenormalizerInterface, Nor
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\StationsGetJsonResponse200Constraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Validator\StationsGetJsonResponse200Constraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\StationsGetJsonResponse200::class => false];
     }
 }

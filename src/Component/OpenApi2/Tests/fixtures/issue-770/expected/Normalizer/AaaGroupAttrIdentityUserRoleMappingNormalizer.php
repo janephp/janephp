@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class AaaGroupAttrIdentityUserRoleMappingNormalizer implements DenormalizerInter
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\AaaGroupAttrIdentityUserRoleMapping::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaGroupAttrIdentityUserRoleMapping::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\AaaGroupAttrIdentityUserRoleMapping::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaGroupAttrIdentityUserRoleMapping::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AaaGroupAttrIdentityUserRoleMapping();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaGroupAttrIdentityUserRoleMapping();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -44,7 +44,7 @@ class AaaGroupAttrIdentityUserRoleMappingNormalizer implements DenormalizerInter
             $object->groupAttr = $data['groupAttr'];
         }
         if (\array_key_exists('userRole', $data)) {
-            $object->userRole = $this->denormalizer->denormalize($data['userRole'], \Jane\Component\OpenApi3\Tests\Expected\Model\AaaGroupAttrIdentityUserRoleMappingUserRole::class, 'json', $context);
+            $object->userRole = $this->denormalizer->denormalize($data['userRole'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaGroupAttrIdentityUserRoleMappingUserRole::class, 'json', $context);
         }
         return $object;
     }
@@ -55,11 +55,11 @@ class AaaGroupAttrIdentityUserRoleMappingNormalizer implements DenormalizerInter
             $dataArray['id'] = $data->id ?? null;
         }
         $dataArray['groupAttr'] = $data->groupAttr ?? null;
-        $dataArray['userRole'] = ($data->userRole ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->userRole ?? null, 'json', $context));
+        $dataArray['userRole'] = ($data->userRole ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userRole ?? null, 'json', $context));
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\AaaGroupAttrIdentityUserRoleMapping::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaGroupAttrIdentityUserRoleMapping::class => false];
     }
 }

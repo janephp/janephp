@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Endpoint;
 
-class GetTest extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class GetTest extends \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\Client\Endpoint
 {
     /**
-     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBody $body
+     * @param \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody $body
      */
-    public function __construct(\Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBody $body)
+    public function __construct(\Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Model\TestGetBody $body)
     {
         $this->body = $body;
     }
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\NoReferenceBody\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';

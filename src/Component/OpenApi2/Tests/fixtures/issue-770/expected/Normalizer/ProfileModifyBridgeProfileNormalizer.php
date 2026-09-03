@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ProfileModifyBridgeProfileNormalizer implements DenormalizerInterface, Nor
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBridgeProfile::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBridgeProfile::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBridgeProfile::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBridgeProfile::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBridgeProfile();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBridgeProfile();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -47,7 +47,7 @@ class ProfileModifyBridgeProfileNormalizer implements DenormalizerInterface, Nor
             $object->description = $data['description'];
         }
         if (\array_key_exists('dhcpRelay', $data)) {
-            $object->dhcpRelay = $this->denormalizer->denormalize($data['dhcpRelay'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpRelayNoRelayTunnel::class, 'json', $context);
+            $object->dhcpRelay = $this->denormalizer->denormalize($data['dhcpRelay'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpRelayNoRelayTunnel::class, 'json', $context);
         }
         if (\array_key_exists('domainId', $data)) {
             $object->domainId = $data['domainId'];
@@ -67,7 +67,7 @@ class ProfileModifyBridgeProfileNormalizer implements DenormalizerInterface, Nor
             $dataArray['description'] = $data->description ?? null;
         }
         if (array_key_exists('dhcpRelay', get_object_vars($data)) && null !== ($data->dhcpRelay ?? null)) {
-            $dataArray['dhcpRelay'] = ($data->dhcpRelay ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->dhcpRelay ?? null, 'json', $context));
+            $dataArray['dhcpRelay'] = ($data->dhcpRelay ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpRelay ?? null, 'json', $context));
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
             $dataArray['domainId'] = $data->domainId ?? null;
@@ -76,6 +76,6 @@ class ProfileModifyBridgeProfileNormalizer implements DenormalizerInterface, Nor
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBridgeProfile::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBridgeProfile::class => false];
     }
 }

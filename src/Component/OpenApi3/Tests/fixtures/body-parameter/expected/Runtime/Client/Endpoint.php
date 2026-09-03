@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Runtime\Client;
+namespace Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runtime\Client;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;

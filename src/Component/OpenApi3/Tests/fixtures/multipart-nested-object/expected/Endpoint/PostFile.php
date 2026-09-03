@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Endpoint;
 
-class PostFile extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class PostFile extends \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Runtime\Client\Endpoint
 {
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody $requestBody
      */
-    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody $requestBody = null)
+    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
@@ -22,7 +22,7 @@ class PostFile extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody) {
+        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\MultipartNestedObject\Model\FilePostBody) {
             $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
             $formParameters = $serializer->normalize($this->body, 'json');
             $partOptions = ['fichier' => ['filename' => 'fichier']];

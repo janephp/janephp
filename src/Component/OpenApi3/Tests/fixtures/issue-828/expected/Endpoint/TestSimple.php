@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue828\Endpoint;
 
-class TestSimple extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestSimple extends \Jane\Component\OpenApi3\Tests\Expected\Issue828\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue828\Runtime\Client\Endpoint
 {
     /**
      * @param array[] $requestBody
@@ -11,7 +11,7 @@ class TestSimple extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue828\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';

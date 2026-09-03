@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\Expansions::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Expansions::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\Expansions::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Expansions::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Expansions();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Expansions();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -42,11 +42,11 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['users'] as $value) {
                 $value_1 = $value;
                 if (is_array($value) and (isset($value['format']) and $value['format'] == 'compact')) {
-                    $value_1 = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\CompactUser::class, 'json', $context);
+                    $value_1 = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\CompactUser::class, 'json', $context);
                 } elseif (is_array($value) and (isset($value['format']) and $value['format'] == 'default')) {
-                    $value_1 = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\DefaultUser::class, 'json', $context);
+                    $value_1 = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DefaultUser::class, 'json', $context);
                 } elseif (is_array($value) and (isset($value['format']) and $value['format'] == 'detailed')) {
-                    $value_1 = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\DetailedUser::class, 'json', $context);
+                    $value_1 = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedUser::class, 'json', $context);
                 }
                 $values[] = $value_1;
             }
@@ -58,11 +58,11 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['tweets'] as $value_2) {
                 $value_3 = $value_2;
                 if (is_array($value_2) and (isset($value_2['format']) and $value_2['format'] == 'compact')) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\CompactTweet::class, 'json', $context);
+                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\CompactTweet::class, 'json', $context);
                 } elseif (is_array($value_2) and (isset($value_2['format']) and $value_2['format'] == 'default')) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\DefaultTweet::class, 'json', $context);
+                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DefaultTweet::class, 'json', $context);
                 } elseif (is_array($value_2) and (isset($value_2['format']) and $value_2['format'] == 'detailed')) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\DetailedTweet::class, 'json', $context);
+                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedTweet::class, 'json', $context);
                 }
                 $values_1[] = $value_3;
             }
@@ -74,11 +74,11 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['places'] as $value_4) {
                 $value_5 = $value_4;
                 if (is_array($value_4) and (isset($value_4['format']) and $value_4['format'] == 'compact')) {
-                    $value_5 = $this->denormalizer->denormalize($value_4, \Jane\Component\OpenApi3\Tests\Expected\Model\CompactPlace::class, 'json', $context);
+                    $value_5 = $this->denormalizer->denormalize($value_4, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\CompactPlace::class, 'json', $context);
                 } elseif (is_array($value_4) and (isset($value_4['format']) and $value_4['format'] == 'default')) {
-                    $value_5 = $this->denormalizer->denormalize($value_4, \Jane\Component\OpenApi3\Tests\Expected\Model\DefaultPlace::class, 'json', $context);
+                    $value_5 = $this->denormalizer->denormalize($value_4, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DefaultPlace::class, 'json', $context);
                 } elseif (is_array($value_4) and (isset($value_4['format']) and $value_4['format'] == 'detailed')) {
-                    $value_5 = $this->denormalizer->denormalize($value_4, \Jane\Component\OpenApi3\Tests\Expected\Model\DetailedPlace::class, 'json', $context);
+                    $value_5 = $this->denormalizer->denormalize($value_4, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\DetailedPlace::class, 'json', $context);
                 }
                 $values_2[] = $value_5;
             }
@@ -90,11 +90,11 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data['media'] as $value_6) {
                 $value_7 = $value_6;
                 if (is_array($value_6) and (isset($value_6['type']) and $value_6['type'] == 'photo')) {
-                    $value_7 = $this->denormalizer->denormalize($value_6, \Jane\Component\OpenApi3\Tests\Expected\Model\Photo::class, 'json', $context);
+                    $value_7 = $this->denormalizer->denormalize($value_6, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Photo::class, 'json', $context);
                 } elseif (is_array($value_6) and (isset($value_6['type']) and $value_6['type'] == 'video')) {
-                    $value_7 = $this->denormalizer->denormalize($value_6, \Jane\Component\OpenApi3\Tests\Expected\Model\Video::class, 'json', $context);
+                    $value_7 = $this->denormalizer->denormalize($value_6, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Video::class, 'json', $context);
                 } elseif (is_array($value_6) and (isset($value_6['type']) and $value_6['type'] == 'animated_gif')) {
-                    $value_7 = $this->denormalizer->denormalize($value_6, \Jane\Component\OpenApi3\Tests\Expected\Model\AnimatedGif::class, 'json', $context);
+                    $value_7 = $this->denormalizer->denormalize($value_6, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\AnimatedGif::class, 'json', $context);
                 }
                 $values_3[] = $value_7;
             }
@@ -104,7 +104,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('polls', $data)) {
             $values_4 = [];
             foreach ($data['polls'] as $value_8) {
-                $values_4[] = $this->denormalizer->denormalize($value_8, \Jane\Component\OpenApi3\Tests\Expected\Model\Poll::class, 'json', $context);
+                $values_4[] = $this->denormalizer->denormalize($value_8, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Poll::class, 'json', $context);
             }
             $object->polls = $values_4;
             unset($data['polls']);
@@ -124,11 +124,11 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data->users ?? null as $value) {
                 $value_1 = $value;
                 if (is_object($value)) {
-                    $value_1 = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                    $value_1 = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
                 } elseif (is_object($value)) {
-                    $value_1 = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                    $value_1 = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
                 } elseif (is_object($value)) {
-                    $value_1 = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                    $value_1 = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
                 }
                 $values[] = $value_1;
             }
@@ -139,11 +139,11 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data->tweets ?? null as $value_2) {
                 $value_3 = $value_2;
                 if (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 }
                 $values_1[] = $value_3;
             }
@@ -154,11 +154,11 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data->places ?? null as $value_4) {
                 $value_5 = $value_4;
                 if (is_object($value_4)) {
-                    $value_5 = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                    $value_5 = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
                 } elseif (is_object($value_4)) {
-                    $value_5 = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                    $value_5 = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
                 } elseif (is_object($value_4)) {
-                    $value_5 = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                    $value_5 = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
                 }
                 $values_2[] = $value_5;
             }
@@ -169,11 +169,11 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
             foreach ($data->media ?? null as $value_6) {
                 $value_7 = $value_6;
                 if (is_object($value_6)) {
-                    $value_7 = $value_6 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
+                    $value_7 = $value_6 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
                 } elseif (is_object($value_6)) {
-                    $value_7 = $value_6 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
+                    $value_7 = $value_6 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
                 } elseif (is_object($value_6)) {
-                    $value_7 = $value_6 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
+                    $value_7 = $value_6 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
                 }
                 $values_3[] = $value_7;
             }
@@ -182,7 +182,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('polls', get_object_vars($data)) && null !== ($data->polls ?? null)) {
             $values_4 = [];
             foreach ($data->polls ?? null as $value_8) {
-                $values_4[] = $value_8 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_8, 'json', $context));
+                $values_4[] = $value_8 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_8, 'json', $context));
             }
             $dataArray['polls'] = $values_4;
         }
@@ -195,6 +195,6 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\Expansions::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Expansions::class => false];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3GetResponse200::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3GetResponse200::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3GetResponse200::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3GetResponse200::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3GetResponse200();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3GetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('field-3', $data)) {
-            $object->field3 = $this->denormalizer->denormalize($data['field-3'], \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3GetResponse200Field3::class, 'json', $context);
+            $object->field3 = $this->denormalizer->denormalize($data['field-3'], \Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3GetResponse200Field3::class, 'json', $context);
             unset($data['field-3']);
         }
         foreach ($data as $key => $value) {
@@ -52,7 +52,7 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('field3', get_object_vars($data)) && null !== ($data->field3 ?? null)) {
-            $dataArray['field-3'] = ($data->field3 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->field3 ?? null, 'json', $context));
+            $dataArray['field-3'] = ($data->field3 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\JsonObject($this->normalizer->normalize($data->field3 ?? null, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -63,6 +63,6 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3GetResponse200::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3GetResponse200::class => false];
     }
 }

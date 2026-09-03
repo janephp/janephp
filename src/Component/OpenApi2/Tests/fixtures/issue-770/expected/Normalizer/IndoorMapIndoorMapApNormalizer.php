@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class IndoorMapIndoorMapApNormalizer implements DenormalizerInterface, Normalize
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapAp::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapAp::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapAp::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapAp::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapAp();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapAp();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,7 +41,7 @@ class IndoorMapIndoorMapApNormalizer implements DenormalizerInterface, Normalize
             $object->mac = $data['mac'];
         }
         if (\array_key_exists('indoorMapXy', $data)) {
-            $object->indoorMapXy = $this->denormalizer->denormalize($data['indoorMapXy'], \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapXy::class, 'json', $context);
+            $object->indoorMapXy = $this->denormalizer->denormalize($data['indoorMapXy'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapXy::class, 'json', $context);
         }
         return $object;
     }
@@ -52,12 +52,12 @@ class IndoorMapIndoorMapApNormalizer implements DenormalizerInterface, Normalize
             $dataArray['mac'] = $data->mac ?? null;
         }
         if (array_key_exists('indoorMapXy', get_object_vars($data)) && null !== ($data->indoorMapXy ?? null)) {
-            $dataArray['indoorMapXy'] = ($data->indoorMapXy ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->indoorMapXy ?? null, 'json', $context));
+            $dataArray['indoorMapXy'] = ($data->indoorMapXy ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->indoorMapXy ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapAp::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapAp::class => false];
     }
 }

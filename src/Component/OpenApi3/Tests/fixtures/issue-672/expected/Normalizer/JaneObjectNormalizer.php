@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue672\Normalizer;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,17 +18,17 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint2GetResponse::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\Endpoint2GetResponseNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\Endpoint2GetResponse::class => \Jane\Component\OpenApi3\Tests\Expected\Issue672\Normalizer\Endpoint2GetResponseNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\SubLevel1::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SubLevel1Normalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\SubLevel1::class => \Jane\Component\OpenApi3\Tests\Expected\Issue672\Normalizer\SubLevel1Normalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\SubLevel2::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SubLevel2Normalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\SubLevel2::class => \Jane\Component\OpenApi3\Tests\Expected\Issue672\Normalizer\SubLevel2Normalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\SubLevel3::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SubLevel3Normalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\SubLevel3::class => \Jane\Component\OpenApi3\Tests\Expected\Issue672\Normalizer\SubLevel3Normalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3GetResponse200::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\Endpoint3GetResponse200Normalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Issue672\Model\Endpoint3GetResponse200::class => \Jane\Component\OpenApi3\Tests\Expected\Issue672\Normalizer\Endpoint3GetResponse200Normalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Issue672\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

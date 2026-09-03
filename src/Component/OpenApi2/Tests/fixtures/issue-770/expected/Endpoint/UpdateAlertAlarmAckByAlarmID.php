@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class UpdateAlertAlarmAckByAlarmID extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class UpdateAlertAlarmAckByAlarmID extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     protected $alarmID;
     /**
@@ -16,7 +16,7 @@ class UpdateAlertAlarmAckByAlarmID extends \Jane\Component\OpenApi3\Tests\Expect
         $this->alarmID = $alarmID;
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'PUT';
@@ -45,10 +45,10 @@ class UpdateAlertAlarmAckByAlarmID extends \Jane\Component\OpenApi3\Tests\Expect
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckByAlarmIDBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckByAlarmIDForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckByAlarmIDInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckByAlarmIDUnprocessableEntityException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDUnprocessableEntityException
      *
      * @return null
      */
@@ -57,16 +57,16 @@ class UpdateAlertAlarmAckByAlarmID extends \Jane\Component\OpenApi3\Tests\Expect
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckByAlarmIDBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckByAlarmIDForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckByAlarmIDInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDInternalServerErrorException($response);
         }
         if (422 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckByAlarmIDUnprocessableEntityException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\UpdateAlertAlarmAckByAlarmIDUnprocessableEntityException($response);
         }
         if (200 === $status) {
             return null;

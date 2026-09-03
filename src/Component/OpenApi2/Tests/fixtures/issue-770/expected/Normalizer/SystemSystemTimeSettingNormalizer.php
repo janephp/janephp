@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class SystemSystemTimeSettingNormalizer implements DenormalizerInterface, Normal
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemTimeSetting::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemTimeSetting::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemTimeSetting::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemTimeSetting::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemTimeSetting();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemTimeSetting();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,13 +56,13 @@ class SystemSystemTimeSettingNormalizer implements DenormalizerInterface, Normal
             $object->timezone = $data['timezone'];
         }
         if (\array_key_exists('authenticationKey', $data)) {
-            $object->authenticationKey = $this->denormalizer->denormalize($data['authenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context);
+            $object->authenticationKey = $this->denormalizer->denormalize($data['authenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemAuthenticationKey::class, 'json', $context);
         }
         if (\array_key_exists('secondaryAuthenticationKey', $data)) {
-            $object->secondaryAuthenticationKey = $this->denormalizer->denormalize($data['secondaryAuthenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context);
+            $object->secondaryAuthenticationKey = $this->denormalizer->denormalize($data['secondaryAuthenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemAuthenticationKey::class, 'json', $context);
         }
         if (\array_key_exists('thirdAuthenticationKey', $data)) {
-            $object->thirdAuthenticationKey = $this->denormalizer->denormalize($data['thirdAuthenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Model\SystemAuthenticationKey::class, 'json', $context);
+            $object->thirdAuthenticationKey = $this->denormalizer->denormalize($data['thirdAuthenticationKey'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemAuthenticationKey::class, 'json', $context);
         }
         return $object;
     }
@@ -88,18 +88,18 @@ class SystemSystemTimeSettingNormalizer implements DenormalizerInterface, Normal
             $dataArray['timezone'] = $data->timezone ?? null;
         }
         if (array_key_exists('authenticationKey', get_object_vars($data)) && null !== ($data->authenticationKey ?? null)) {
-            $dataArray['authenticationKey'] = ($data->authenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->authenticationKey ?? null, 'json', $context));
+            $dataArray['authenticationKey'] = ($data->authenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticationKey ?? null, 'json', $context));
         }
         if (array_key_exists('secondaryAuthenticationKey', get_object_vars($data)) && null !== ($data->secondaryAuthenticationKey ?? null)) {
-            $dataArray['secondaryAuthenticationKey'] = ($data->secondaryAuthenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->secondaryAuthenticationKey ?? null, 'json', $context));
+            $dataArray['secondaryAuthenticationKey'] = ($data->secondaryAuthenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryAuthenticationKey ?? null, 'json', $context));
         }
         if (array_key_exists('thirdAuthenticationKey', get_object_vars($data)) && null !== ($data->thirdAuthenticationKey ?? null)) {
-            $dataArray['thirdAuthenticationKey'] = ($data->thirdAuthenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->thirdAuthenticationKey ?? null, 'json', $context));
+            $dataArray['thirdAuthenticationKey'] = ($data->thirdAuthenticationKey ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->thirdAuthenticationKey ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemTimeSetting::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemTimeSetting::class => false];
     }
 }

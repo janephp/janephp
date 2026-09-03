@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\SalesRetrieveInvoicesRequestFilter::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesRetrieveInvoicesRequestFilter::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\SalesRetrieveInvoicesRequestFilter::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesRetrieveInvoicesRequestFilter::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SalesRetrieveInvoicesRequestFilter();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesRetrieveInvoicesRequestFilter();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -57,9 +57,9 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
             foreach ($data['links'] as $value_1) {
                 $value_2 = $value_1;
                 if (is_array($value_1) and \array_key_exists('discriminator', $value_1)) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\LinkLinkBase::class, 'json', $context);
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\LinkLinkBase::class, 'json', $context);
                 } elseif (is_array($value_1) and \array_key_exists('invoiceId', $value_1)) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\LinkInvoiceLink::class, 'json', $context);
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\LinkInvoiceLink::class, 'json', $context);
                 }
                 $values_1[] = $value_2;
             }
@@ -100,9 +100,9 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
             foreach ($data->links ?? null as $value_1) {
                 $value_2 = $value_1;
                 if (is_object($value_1)) {
-                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
                 } elseif (is_object($value_1)) {
-                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
                 }
                 $values_1[] = $value_2;
             }
@@ -120,6 +120,6 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\SalesRetrieveInvoicesRequestFilter::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesRetrieveInvoicesRequestFilter::class => false];
     }
 }

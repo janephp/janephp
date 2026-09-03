@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\AuthenticationApiKeyHeader\Endpoint;
 
-class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\AuthenticationApiKeyHeader\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\AuthenticationApiKeyHeader\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\AuthenticationApiKeyHeader\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -25,14 +25,14 @@ class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Base
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Foo
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\AuthenticationApiKeyHeader\Model\Foo
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Foo', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\AuthenticationApiKeyHeader\Model\Foo', 'json');
         }
     }
     public function getAuthenticationScopes(): array

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Endpoint;
 
-class GetParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class GetParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Runtime\Client\Endpoint
 {
     protected $parent_id;
     protected $child_id;
@@ -15,7 +15,7 @@ class GetParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\Ex
         $this->parent_id = $parentId;
         $this->child_id = $childId;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -36,14 +36,14 @@ class GetParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\Ex
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Child
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\Child
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Child', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\ReferencedRequestBodies\Model\Child', 'json');
         }
     }
     public function getAuthenticationScopes(): array

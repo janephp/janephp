@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,19 +18,19 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\SalesRetrieveInvoicesRequest::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SalesRetrieveInvoicesRequestNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesRetrieveInvoicesRequest::class => \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesRetrieveInvoicesRequestNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\SalesRetrieveInvoicesRequestFilter::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SalesRetrieveInvoicesRequestFilterNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesRetrieveInvoicesRequestFilter::class => \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesRetrieveInvoicesRequestFilterNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\SalesRetrieveSettlementRequestBase::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SalesRetrieveSettlementRequestBaseNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesRetrieveSettlementRequestBase::class => \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesRetrieveSettlementRequestBaseNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\SalesInvoiceFilter::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SalesInvoiceFilterNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesInvoiceFilter::class => \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\SalesInvoiceFilterNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\LinkInvoiceLink::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\LinkInvoiceLinkNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\LinkInvoiceLink::class => \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\LinkInvoiceLinkNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\LinkLinkBase::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\LinkLinkBaseNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\LinkLinkBase::class => \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Normalizer\LinkLinkBaseNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

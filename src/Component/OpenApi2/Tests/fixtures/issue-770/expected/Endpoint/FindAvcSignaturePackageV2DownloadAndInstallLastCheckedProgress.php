@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 
-class FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgress extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgress extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
      * @param array $queryParameters {
@@ -13,7 +13,7 @@ class FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgress extends \Ja
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -42,27 +42,27 @@ class FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgress extends \Ja
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressForbiddenException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcDownloadLatestInstallableSignaturePackage
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDownloadLatestInstallableSignaturePackage
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressBadRequestException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressBadRequestException($response);
         }
         if (403 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressForbiddenException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressForbiddenException($response);
         }
         if (500 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressInternalServerErrorException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressInternalServerErrorException($response);
         }
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\AvcDownloadLatestInstallableSignaturePackage', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDownloadLatestInstallableSignaturePackage', 'json');
         }
     }
     public function getAuthenticationScopes(): array

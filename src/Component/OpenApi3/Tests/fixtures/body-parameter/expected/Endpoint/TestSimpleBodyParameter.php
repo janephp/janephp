@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Endpoint;
 
-class TestSimpleBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestSimpleBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runtime\Client\Endpoint
 {
     /**
      * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
@@ -11,7 +11,7 @@ class TestSimpleBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';

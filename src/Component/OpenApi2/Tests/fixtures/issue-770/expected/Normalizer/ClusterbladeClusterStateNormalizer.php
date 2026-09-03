@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ClusterbladeClusterStateNormalizer implements DenormalizerInterface, Norma
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterState::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterState::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterState::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterState::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterState();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterState();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -55,14 +55,14 @@ class ClusterbladeClusterStateNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('nodeStateList', $data)) {
             $values = [];
             foreach ($data['nodeStateList'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterStateNodeStateListItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterStateNodeStateListItem::class, 'json', $context);
             }
             $object->nodeStateList = $values;
         }
         if (\array_key_exists('managementServiceStateList', $data)) {
             $values_1 = [];
             foreach ($data['managementServiceStateList'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterStateManagementServiceStateListItem::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterStateManagementServiceStateListItem::class, 'json', $context);
             }
             $object->managementServiceStateList = $values_1;
         }
@@ -89,14 +89,14 @@ class ClusterbladeClusterStateNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('nodeStateList', get_object_vars($data)) && null !== ($data->nodeStateList ?? null)) {
             $values = [];
             foreach ($data->nodeStateList ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['nodeStateList'] = $values;
         }
         if (array_key_exists('managementServiceStateList', get_object_vars($data)) && null !== ($data->managementServiceStateList ?? null)) {
             $values_1 = [];
             foreach ($data->managementServiceStateList ?? null as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['managementServiceStateList'] = $values_1;
         }
@@ -104,6 +104,6 @@ class ClusterbladeClusterStateNormalizer implements DenormalizerInterface, Norma
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterState::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterState::class => false];
     }
 }

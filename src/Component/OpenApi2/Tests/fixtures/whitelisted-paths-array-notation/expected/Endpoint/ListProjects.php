@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint;
 
-class ListProjects extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class ListProjects extends \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\BaseEndpoint implements \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\Endpoint
 {
     /**
      * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
@@ -20,7 +20,7 @@ class ListProjects extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndp
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Jane\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -50,16 +50,16 @@ class ListProjects extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndp
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Projects|\Jane\OpenApi2\Tests\Expected\Model\Error
+     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Projects|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\OpenApi2\Tests\Expected\Model\Projects', 'json');
+            return $serializer->deserialize($body, 'Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Projects', 'json');
         }
-        return $serializer->deserialize($body, 'Jane\OpenApi2\Tests\Expected\Model\Error', 'json');
+        return $serializer->deserialize($body, 'Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error', 'json');
     }
     public function getAuthenticationScopes(): array
     {

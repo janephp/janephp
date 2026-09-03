@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception;
 
 class CreateUserUnprocessableEntityException extends UnprocessableEntityException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity
+         * @var \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UnprocessableEntity
          */
-        private readonly \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity $unprocessableEntity,
+        private readonly \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UnprocessableEntity $unprocessableEntity,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class CreateUserUnprocessableEntityException extends UnprocessableEntityExceptio
     {
         parent::__construct('Unprocessable Entity');
     }
-    public function getUnprocessableEntity(): \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity
+    public function getUnprocessableEntity(): \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UnprocessableEntity
     {
         return $this->unprocessableEntity;
     }

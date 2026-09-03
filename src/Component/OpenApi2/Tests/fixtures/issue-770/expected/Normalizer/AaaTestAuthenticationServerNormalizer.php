@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class AaaTestAuthenticationServerNormalizer implements DenormalizerInterface, No
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\AaaTestAuthenticationServer::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAuthenticationServer::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\AaaTestAuthenticationServer::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAuthenticationServer::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AaaTestAuthenticationServer();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAuthenticationServer();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -44,7 +44,7 @@ class AaaTestAuthenticationServerNormalizer implements DenormalizerInterface, No
             $object->aaaType = $data['aaaType'];
         }
         if (\array_key_exists('aaaServer', $data)) {
-            $object->aaaServer = $this->denormalizer->denormalize($data['aaaServer'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonGenericRef::class, 'json', $context);
+            $object->aaaServer = $this->denormalizer->denormalize($data['aaaServer'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonGenericRef::class, 'json', $context);
         }
         if (\array_key_exists('userName', $data)) {
             $object->userName = $data['userName'];
@@ -66,7 +66,7 @@ class AaaTestAuthenticationServerNormalizer implements DenormalizerInterface, No
         if (array_key_exists('aaaType', get_object_vars($data)) && null !== ($data->aaaType ?? null)) {
             $dataArray['aaaType'] = $data->aaaType ?? null;
         }
-        $dataArray['aaaServer'] = ($data->aaaServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->aaaServer ?? null, 'json', $context));
+        $dataArray['aaaServer'] = ($data->aaaServer ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->aaaServer ?? null, 'json', $context));
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
             $dataArray['userName'] = $data->userName ?? null;
         }
@@ -80,6 +80,6 @@ class AaaTestAuthenticationServerNormalizer implements DenormalizerInterface, No
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\AaaTestAuthenticationServer::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAuthenticationServer::class => false];
     }
 }

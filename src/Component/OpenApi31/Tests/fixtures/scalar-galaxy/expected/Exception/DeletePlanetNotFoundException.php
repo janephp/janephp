@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Exception;
 
 class DeletePlanetNotFoundException extends NotFoundException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi31\Tests\Expected\Model\NotFoundError
+         * @var \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\NotFoundError
          */
-        private readonly \Jane\Component\OpenApi31\Tests\Expected\Model\NotFoundError $notFoundError,
+        private readonly \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\NotFoundError $notFoundError,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class DeletePlanetNotFoundException extends NotFoundException
     {
         parent::__construct('Not Found');
     }
-    public function getNotFoundError(): \Jane\Component\OpenApi31\Tests\Expected\Model\NotFoundError
+    public function getNotFoundError(): \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\NotFoundError
     {
         return $this->notFoundError;
     }

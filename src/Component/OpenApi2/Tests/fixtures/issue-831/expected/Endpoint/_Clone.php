@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi2\Tests\Expected\Issue831\Endpoint;
 
-class _Clone extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class _Clone extends \Jane\Component\OpenApi2\Tests\Expected\Issue831\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Issue831\Runtime\Client\Endpoint
 {
     protected $orderId;
     /**
@@ -12,7 +12,7 @@ class _Clone extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Base
     {
         $this->orderId = $orderId;
     }
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi2\Tests\Expected\Issue831\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';

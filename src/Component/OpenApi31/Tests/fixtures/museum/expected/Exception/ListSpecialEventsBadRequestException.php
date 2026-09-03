@@ -1,14 +1,14 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi31\Tests\Expected\Museum\Exception;
 
 class ListSpecialEventsBadRequestException extends BadRequestException
 {
     public function __construct(
         /**
-         * @var \Jane\Component\OpenApi31\Tests\Expected\Model\Error
+         * @var \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error
          */
-        private readonly \Jane\Component\OpenApi31\Tests\Expected\Model\Error $error,
+        private readonly \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error $error,
         /**
          * @var \Psr\Http\Message\ResponseInterface
          */
@@ -17,7 +17,7 @@ class ListSpecialEventsBadRequestException extends BadRequestException
     {
         parent::__construct('Bad request.');
     }
-    public function getError(): \Jane\Component\OpenApi31\Tests\Expected\Model\Error
+    public function getError(): \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\Error
     {
         return $this->error;
     }

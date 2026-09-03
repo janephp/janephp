@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQuery::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryCreateApQuery::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQuery::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryCreateApQuery::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQuery();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryCreateApQuery();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -323,7 +323,7 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
             $object->latency6G = $data['latency6G'];
         }
         if (\array_key_exists('indoorMapXy', $data)) {
-            $object->indoorMapXy = $this->denormalizer->denormalize($data['indoorMapXy'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQueryIndoorMapXy::class, 'json', $context);
+            $object->indoorMapXy = $this->denormalizer->denormalize($data['indoorMapXy'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryCreateApQueryIndoorMapXy::class, 'json', $context);
         }
         if (\array_key_exists('apGroupId', $data)) {
             $object->apGroupId = $data['apGroupId'];
@@ -571,7 +571,7 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('cellularGpsHistory', $data)) {
             $values = [];
             foreach ($data['cellularGpsHistory'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQueryCellularGpsHistoryItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryCreateApQueryCellularGpsHistoryItem::class, 'json', $context);
             }
             $object->cellularGpsHistory = $values;
         }
@@ -860,7 +860,7 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
             $dataArray['latency6G'] = $data->latency6G ?? null;
         }
         if (array_key_exists('indoorMapXy', get_object_vars($data)) && null !== ($data->indoorMapXy ?? null)) {
-            $dataArray['indoorMapXy'] = ($data->indoorMapXy ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->indoorMapXy ?? null, 'json', $context));
+            $dataArray['indoorMapXy'] = ($data->indoorMapXy ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->indoorMapXy ?? null, 'json', $context));
         }
         if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
             $dataArray['apGroupId'] = $data->apGroupId ?? null;
@@ -1108,7 +1108,7 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('cellularGpsHistory', get_object_vars($data)) && null !== ($data->cellularGpsHistory ?? null)) {
             $values = [];
             foreach ($data->cellularGpsHistory ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['cellularGpsHistory'] = $values;
         }
@@ -1185,6 +1185,6 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQuery::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryCreateApQuery::class => false];
     }
 }

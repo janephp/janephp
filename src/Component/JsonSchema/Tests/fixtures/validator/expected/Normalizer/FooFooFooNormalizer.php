@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\JsonSchema\Tests\Expected\Normalizer;
+namespace Jane\JsonSchema\Tests\Expected\Validator\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\CheckArray;
+use Jane\JsonSchema\Tests\Expected\Validator\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class FooFooFooNormalizer implements DenormalizerInterface, NormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class;
+        return $type === \Jane\JsonSchema\Tests\Expected\Validator\Model\FooFooFoo::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo;
+        return $data instanceof \Jane\JsonSchema\Tests\Expected\Validator\Model\FooFooFoo;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo();
+        $object = new \Jane\JsonSchema\Tests\Expected\Validator\Model\FooFooFoo();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class FooFooFooNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\FooFooFooConstraint());
+            $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\Validator\FooFooFooConstraint());
         }
         if (\array_key_exists('foo', $data)) {
             $object->foo = $data['foo'];
@@ -52,12 +52,12 @@ class FooFooFooNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['foo'] = $data->foo ?? null;
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\JsonSchema\Tests\Expected\Validator\FooFooFooConstraint());
+            $this->validate($dataArray, new \Jane\JsonSchema\Tests\Expected\Validator\Validator\FooFooFooConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class => false];
+        return [\Jane\JsonSchema\Tests\Expected\Validator\Model\FooFooFoo::class => false];
     }
 }

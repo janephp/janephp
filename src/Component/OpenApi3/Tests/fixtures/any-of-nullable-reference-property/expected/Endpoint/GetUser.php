@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Endpoint;
 
-class GetUser extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class GetUser extends \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
@@ -24,19 +24,19 @@ class GetUser extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\GetUserNotFoundException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Exception\GetUserNotFoundException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Account
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Account
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Account', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Model\Account', 'json');
         }
         if (404 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetUserNotFoundException($response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\AnyOfNullableReferenceProperty\Exception\GetUserNotFoundException($response);
         }
     }
     public function getAuthenticationScopes(): array

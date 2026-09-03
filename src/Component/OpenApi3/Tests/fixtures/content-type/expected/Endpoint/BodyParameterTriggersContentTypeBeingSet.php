@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\Expected\ContentType\Endpoint;
 
-class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime\Client\Endpoint
 {
     /**
      * @param string $requestBody
@@ -11,7 +11,7 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi3\
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\Expected\ContentType\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';

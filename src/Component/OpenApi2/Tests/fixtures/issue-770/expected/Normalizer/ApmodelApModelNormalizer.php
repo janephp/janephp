@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ApmodelApModelNormalizer implements DenormalizerInterface, NormalizerInter
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelApModel::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelApModel::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelApModel::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelApModel::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelApModel();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelApModel();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -53,13 +53,13 @@ class ApmodelApModelNormalizer implements DenormalizerInterface, NormalizerInter
             $object->ledStatusEnabled = $data['ledStatusEnabled'];
         }
         if (\array_key_exists('lldp', $data)) {
-            $object->lldp = $this->denormalizer->denormalize($data['lldp'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLldpSetting::class, 'json', $context);
+            $object->lldp = $this->denormalizer->denormalize($data['lldp'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLldpSetting::class, 'json', $context);
         }
         if (\array_key_exists('lacp', $data)) {
-            $object->lacp = $this->denormalizer->denormalize($data['lacp'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLacpSetting::class, 'json', $context);
+            $object->lacp = $this->denormalizer->denormalize($data['lacp'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLacpSetting::class, 'json', $context);
         }
         if (\array_key_exists('cellularSettings', $data)) {
-            $object->cellularSettings = $this->denormalizer->denormalize($data['cellularSettings'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelCellularSettings::class, 'json', $context);
+            $object->cellularSettings = $this->denormalizer->denormalize($data['cellularSettings'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelCellularSettings::class, 'json', $context);
         }
         if (\array_key_exists('ledMode', $data)) {
             $object->ledMode = $data['ledMode'];
@@ -83,15 +83,15 @@ class ApmodelApModelNormalizer implements DenormalizerInterface, NormalizerInter
             $object->radioBand = $data['radioBand'];
         }
         if (\array_key_exists('externalAntenna24', $data)) {
-            $object->externalAntenna24 = $this->denormalizer->denormalize($data['externalAntenna24'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelExternalAntenna::class, 'json', $context);
+            $object->externalAntenna24 = $this->denormalizer->denormalize($data['externalAntenna24'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelExternalAntenna::class, 'json', $context);
         }
         if (\array_key_exists('externalAntenna50', $data)) {
-            $object->externalAntenna50 = $this->denormalizer->denormalize($data['externalAntenna50'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelExternalAntenna::class, 'json', $context);
+            $object->externalAntenna50 = $this->denormalizer->denormalize($data['externalAntenna50'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelExternalAntenna::class, 'json', $context);
         }
         if (\array_key_exists('lanPorts', $data)) {
             $values = [];
             foreach ($data['lanPorts'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPortSetting::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPortSetting::class, 'json', $context);
             }
             $object->lanPorts = $values;
         }
@@ -104,13 +104,13 @@ class ApmodelApModelNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['ledStatusEnabled'] = $data->ledStatusEnabled ?? null;
         }
         if (array_key_exists('lldp', get_object_vars($data)) && null !== ($data->lldp ?? null)) {
-            $dataArray['lldp'] = ($data->lldp ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->lldp ?? null, 'json', $context));
+            $dataArray['lldp'] = ($data->lldp ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->lldp ?? null, 'json', $context));
         }
         if (array_key_exists('lacp', get_object_vars($data)) && null !== ($data->lacp ?? null)) {
-            $dataArray['lacp'] = ($data->lacp ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->lacp ?? null, 'json', $context));
+            $dataArray['lacp'] = ($data->lacp ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->lacp ?? null, 'json', $context));
         }
         if (array_key_exists('cellularSettings', get_object_vars($data)) && null !== ($data->cellularSettings ?? null)) {
-            $dataArray['cellularSettings'] = ($data->cellularSettings ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->cellularSettings ?? null, 'json', $context));
+            $dataArray['cellularSettings'] = ($data->cellularSettings ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->cellularSettings ?? null, 'json', $context));
         }
         if (array_key_exists('ledMode', get_object_vars($data)) && null !== ($data->ledMode ?? null)) {
             $dataArray['ledMode'] = $data->ledMode ?? null;
@@ -134,15 +134,15 @@ class ApmodelApModelNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['radioBand'] = $data->radioBand ?? null;
         }
         if (array_key_exists('externalAntenna24', get_object_vars($data)) && null !== ($data->externalAntenna24 ?? null)) {
-            $dataArray['externalAntenna24'] = ($data->externalAntenna24 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->externalAntenna24 ?? null, 'json', $context));
+            $dataArray['externalAntenna24'] = ($data->externalAntenna24 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->externalAntenna24 ?? null, 'json', $context));
         }
         if (array_key_exists('externalAntenna50', get_object_vars($data)) && null !== ($data->externalAntenna50 ?? null)) {
-            $dataArray['externalAntenna50'] = ($data->externalAntenna50 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->externalAntenna50 ?? null, 'json', $context));
+            $dataArray['externalAntenna50'] = ($data->externalAntenna50 ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->externalAntenna50 ?? null, 'json', $context));
         }
         if (array_key_exists('lanPorts', get_object_vars($data)) && null !== ($data->lanPorts ?? null)) {
             $values = [];
             foreach ($data->lanPorts ?? null as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['lanPorts'] = $values;
         }
@@ -150,6 +150,6 @@ class ApmodelApModelNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelApModel::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelApModel::class => false];
     }
 }

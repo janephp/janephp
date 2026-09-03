@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class ApmodelLanPort8021XNormalizer implements DenormalizerInterface, Normalizer
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPort8021X::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPort8021X::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPort8021X::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPort8021X::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPort8021X();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPort8021X();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -41,10 +41,10 @@ class ApmodelLanPort8021XNormalizer implements DenormalizerInterface, Normalizer
             $object->type = $data['type'];
         }
         if (\array_key_exists('authenticator', $data)) {
-            $object->authenticator = $this->denormalizer->denormalize($data['authenticator'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPortAuthenticator::class, 'json', $context);
+            $object->authenticator = $this->denormalizer->denormalize($data['authenticator'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPortAuthenticator::class, 'json', $context);
         }
         if (\array_key_exists('supplicant', $data)) {
-            $object->supplicant = $this->denormalizer->denormalize($data['supplicant'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPortSupplicant::class, 'json', $context);
+            $object->supplicant = $this->denormalizer->denormalize($data['supplicant'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPortSupplicant::class, 'json', $context);
         }
         return $object;
     }
@@ -53,15 +53,15 @@ class ApmodelLanPort8021XNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         $dataArray['type'] = $data->type ?? null;
         if (array_key_exists('authenticator', get_object_vars($data)) && null !== ($data->authenticator ?? null)) {
-            $dataArray['authenticator'] = ($data->authenticator ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->authenticator ?? null, 'json', $context));
+            $dataArray['authenticator'] = ($data->authenticator ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authenticator ?? null, 'json', $context));
         }
         if (array_key_exists('supplicant', get_object_vars($data)) && null !== ($data->supplicant ?? null)) {
-            $dataArray['supplicant'] = ($data->supplicant ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->supplicant ?? null, 'json', $context));
+            $dataArray['supplicant'] = ($data->supplicant ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->supplicant ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPort8021X::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelLanPort8021X::class => false];
     }
 }

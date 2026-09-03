@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PortalserviceWebAuthenticationNormalizer implements DenormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceWebAuthentication::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceWebAuthentication::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceWebAuthentication::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceWebAuthentication::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceWebAuthentication();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceWebAuthentication();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -53,13 +53,13 @@ class PortalserviceWebAuthenticationNormalizer implements DenormalizerInterface,
             $object->portalLanguage = $data['portalLanguage'];
         }
         if (\array_key_exists('redirect', $data)) {
-            $object->redirect = $this->denormalizer->denormalize($data['redirect'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalRedirect::class, 'json', $context);
+            $object->redirect = $this->denormalizer->denormalize($data['redirect'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalRedirect::class, 'json', $context);
         }
         if (\array_key_exists('userSession', $data)) {
-            $object->userSession = $this->denormalizer->denormalize($data['userSession'], \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceUserSession::class, 'json', $context);
+            $object->userSession = $this->denormalizer->denormalize($data['userSession'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceUserSession::class, 'json', $context);
         }
         if (\array_key_exists('webAuthenticationPortalCustomization', $data)) {
-            $object->webAuthenticationPortalCustomization = $this->denormalizer->denormalize($data['webAuthenticationPortalCustomization'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonWebAuthenticationPortalCustomization::class, 'json', $context);
+            $object->webAuthenticationPortalCustomization = $this->denormalizer->denormalize($data['webAuthenticationPortalCustomization'], \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonWebAuthenticationPortalCustomization::class, 'json', $context);
         }
         return $object;
     }
@@ -82,18 +82,18 @@ class PortalserviceWebAuthenticationNormalizer implements DenormalizerInterface,
             $dataArray['portalLanguage'] = $data->portalLanguage ?? null;
         }
         if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
-            $dataArray['redirect'] = ($data->redirect ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->redirect ?? null, 'json', $context));
+            $dataArray['redirect'] = ($data->redirect ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->redirect ?? null, 'json', $context));
         }
         if (array_key_exists('userSession', get_object_vars($data)) && null !== ($data->userSession ?? null)) {
-            $dataArray['userSession'] = ($data->userSession ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->userSession ?? null, 'json', $context));
+            $dataArray['userSession'] = ($data->userSession ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userSession ?? null, 'json', $context));
         }
         if (array_key_exists('webAuthenticationPortalCustomization', get_object_vars($data)) && null !== ($data->webAuthenticationPortalCustomization ?? null)) {
-            $dataArray['webAuthenticationPortalCustomization'] = ($data->webAuthenticationPortalCustomization ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->webAuthenticationPortalCustomization ?? null, 'json', $context));
+            $dataArray['webAuthenticationPortalCustomization'] = ($data->webAuthenticationPortalCustomization ?? null) === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->webAuthenticationPortalCustomization ?? null, 'json', $context));
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceWebAuthentication::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceWebAuthentication::class => false];
     }
 }

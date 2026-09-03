@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -19,15 +19,15 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\Poll::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Poll::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\Poll::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Poll::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Poll();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Poll();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -44,7 +44,7 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('options', $data)) {
             $values = [];
             foreach ($data['options'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\PollOption::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\PollOption::class, 'json', $context);
             }
             $object->options = $values;
             unset($data['options']);
@@ -56,7 +56,7 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('end_datetime', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['end_datetime']);
             if (false === $date) {
-                throw new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['end_datetime'], 'Y-m-d\TH:i:sP');
+                throw new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Normalizer\InvalidDateException($data['end_datetime'], 'Y-m-d\TH:i:sP');
             }
             $object->endDatetime = $date;
             unset($data['end_datetime']);
@@ -78,7 +78,7 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $dataArray['id'] = $data->id ?? null;
         $values = [];
         foreach ($data->options ?? null as $value) {
-            $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['options'] = $values;
         $dataArray['voting_status'] = $data->votingStatus ?? null;
@@ -95,6 +95,6 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\Poll::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Poll::class => false];
     }
 }
