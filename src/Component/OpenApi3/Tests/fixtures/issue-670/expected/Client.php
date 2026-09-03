@@ -1,59 +1,59 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\Expected\Issue670;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Client\Client
 {
     /**
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint1GetResponse
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint1GetResponse
      */
     public function getEndpoint1()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetEndpoint1());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Endpoint\GetEndpoint1());
     }
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint1PostBody $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint1PostBody $requestBody
      *
      * @return null
      */
-    public function postEndpoint1(?\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint1PostBody $requestBody = null)
+    public function postEndpoint1(?\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint1PostBody $requestBody = null)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\PostEndpoint1($requestBody));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Endpoint\PostEndpoint1($requestBody));
     }
     /**
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint2GetResponse200
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint2GetResponse200
      */
     public function getEndpoint2()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetEndpoint2());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Endpoint\GetEndpoint2());
     }
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint2PostBody $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint2PostBody $requestBody
      *
      * @return null
      */
-    public function postEndpoint2(?\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint2PostBody $requestBody = null)
+    public function postEndpoint2(?\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint2PostBody $requestBody = null)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\PostEndpoint2($requestBody));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Endpoint\PostEndpoint2($requestBody));
     }
     /**
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3GetResponse200
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3GetResponse200
      */
     public function getEndpoint3()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetEndpoint3());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Endpoint\GetEndpoint3());
     }
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3PostBody $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3PostBody $requestBody
      *
      * @return null
      */
-    public function postEndpoint3(?\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3PostBody $requestBody = null)
+    public function postEndpoint3(?\Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint3PostBody $requestBody = null)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\PostEndpoint3($requestBody));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Endpoint\PostEndpoint3($requestBody));
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -67,11 +67,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }

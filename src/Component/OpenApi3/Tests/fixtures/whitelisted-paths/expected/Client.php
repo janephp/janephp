@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Client\Client
 {
     /**
      * Returns a variety of information about the Tweet specified by the requested ID
@@ -16,11 +16,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\TweetLookupResponse|\Jane\Component\OpenApi3\Tests\Expected\Model\Error
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\TweetLookupResponse|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Error
      */
     public function findTweetsById(array $queryParameters = [], array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindTweetsById($queryParameters, $accept));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Endpoint\FindTweetsById($queryParameters, $accept));
     }
     /**
      * Add or delete rules from a user's active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
@@ -30,11 +30,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Model\Error
      */
     public function addOrDeleteRules($requestBody, array $queryParameters = [], array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\AddOrDeleteRules($requestBody, $queryParameters, $accept));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Endpoint\AddOrDeleteRules($requestBody, $queryParameters, $accept));
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
@@ -51,11 +51,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }

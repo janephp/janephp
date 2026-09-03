@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected;
+namespace Jane\OpenApi2\Tests\Expected\SkipParameterCheck;
 
-class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Runtime\Client\Client
 {
     /**
      * @param string $testPath
@@ -20,7 +20,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
      */
     public function testGetWithPathParameters(string $testPath, array $testBody, array $queryParameters = [], array $headerParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\TestGetWithPathParameters($testPath, $testBody, $queryParameters, $headerParameters));
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Endpoint\TestGetWithPathParameters($testPath, $testBody, $queryParameters, $headerParameters));
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -34,11 +34,11 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\OpenApi2\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\OpenApi2\Tests\Expected\SkipParameterCheck\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }

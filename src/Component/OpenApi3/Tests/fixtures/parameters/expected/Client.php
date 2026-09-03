@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\Expected\Parameters;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Client\Client
 {
     /**
      * @param string $testPath
@@ -17,7 +17,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function testGetWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestGetWithPathParameters($testPath, $queryParameters, $headerParameters));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestGetWithPathParameters($testPath, $queryParameters, $headerParameters));
     }
     /**
      * @param string $testPath
@@ -32,7 +32,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function testPostWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestPostWithPathParameters($testPath, $queryParameters, $headerParameters));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestPostWithPathParameters($testPath, $queryParameters, $headerParameters));
     }
     /**
      * @param array{
@@ -48,7 +48,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function testQueryParameters(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestQueryParameters($queryParameters));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestQueryParameters($queryParameters));
     }
     /**
      * @param array{
@@ -64,25 +64,25 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function testHeaderParameters(array $headerParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestHeaderParameters($headerParameters));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestHeaderParameters($headerParameters));
     }
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody $requestBody
      *
      * @return null
      */
-    public function testFormParameters(?\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody = null)
+    public function testFormParameters(?\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody $requestBody = null)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestFormParameters($requestBody));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestFormParameters($requestBody));
     }
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormFilePostBody $requestBody
      *
      * @return null
      */
-    public function testFormFileParameters(?\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody = null)
+    public function testFormFileParameters(?\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormFilePostBody $requestBody = null)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestFormFileParameters($requestBody));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestFormFileParameters($requestBody));
     }
     /**
      * @param string|resource $requestBody
@@ -91,7 +91,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function testBinaryBody($requestBody)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestBinaryBody($requestBody));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestBinaryBody($requestBody));
     }
     /**
      * @param string $testString
@@ -102,7 +102,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function testPathParameters(string $testString, int $testInteger, int $testFloat)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestPathParameters($testString, $testInteger, $testFloat));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestPathParameters($testString, $testInteger, $testFloat));
     }
     /**
      * @param int $testInteger
@@ -111,7 +111,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function getByTestInteger(int $testInteger)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetByTestInteger($testInteger));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\GetByTestInteger($testInteger));
     }
     /**
      * @param array{
@@ -122,7 +122,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function testDictionary(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestDictionary($queryParameters));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestDictionary($queryParameters));
     }
     /**
      * @param array{
@@ -133,7 +133,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function testObjectQuery(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestObjectQuery($queryParameters));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestObjectQuery($queryParameters));
     }
     /**
      * @param array{
@@ -144,7 +144,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function testObjectAdditionalProperties(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestObjectAdditionalProperties($queryParameters));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestObjectAdditionalProperties($queryParameters));
     }
     /**
      * @param array{
@@ -156,7 +156,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function testFormExplodeQuery(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestFormExplodeQuery($queryParameters));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestFormExplodeQuery($queryParameters));
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -170,11 +170,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }

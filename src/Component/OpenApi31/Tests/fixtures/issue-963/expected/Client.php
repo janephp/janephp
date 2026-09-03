@@ -1,18 +1,18 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Expected;
+namespace Jane\Component\OpenApi31\Tests\Expected\Issue963;
 
-class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi31\Tests\Expected\Issue963\Runtime\Client\Client
 {
     /**
      * @param string $selector
      * @param array $accept Accept content header application/json|application/json;schema=member-details
      *
-     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Model\MemberDetails|\Jane\Component\OpenApi31\Tests\Expected\Model\RequestError
+     * @return null|\Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\MemberDetails|\Jane\Component\OpenApi31\Tests\Expected\Issue963\Model\RequestError
      */
     public function getMemberBySelector(string $selector, array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\GetMemberBySelector($selector, $accept));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Issue963\Endpoint\GetMemberBySelector($selector, $accept));
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
@@ -29,11 +29,11 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi31\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi31\Tests\Expected\Issue963\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi31\Tests\Expected\Issue963\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }

@@ -1,19 +1,19 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\Expected\Exceptions;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Runtime\Client\Client
 {
     /**
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagBadRequestException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagNotFoundException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\TestNoTagInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Exception\TestNoTagBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Exception\TestNoTagNotFoundException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Exception\TestNoTagInternalServerErrorException
      *
      * @return null
      */
     public function testNoTag()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestNoTag());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Endpoint\TestNoTag());
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -27,11 +27,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Exceptions\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }

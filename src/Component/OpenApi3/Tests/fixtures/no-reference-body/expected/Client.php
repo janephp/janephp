@@ -1,26 +1,26 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\Client\Client
 {
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\TestGetBody $requestBody
+     * @param \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Model\TestGetBody $requestBody
      *
      * @return null
      */
-    public function getTest(\Jane\Component\OpenApi3\Tests\Expected\Model\TestGetBody $requestBody)
+    public function getTest(\Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Model\TestGetBody $requestBody)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetTest($requestBody));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Endpoint\GetTest($requestBody));
     }
     /**
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\TestPostBody $requestBody
+     * @param \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Model\TestPostBody $requestBody
      *
      * @return null
      */
-    public function test(\Jane\Component\OpenApi3\Tests\Expected\Model\TestPostBody $requestBody)
+    public function test(\Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Model\TestPostBody $requestBody)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\Test($requestBody));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Endpoint\Test($requestBody));
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -34,11 +34,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\NoReferenceBody\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\Expected\ScalarResponse;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Runtime\Client\Client
 {
     /**
      *
@@ -10,7 +10,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function getInteger()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetInteger());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetInteger());
     }
     /**
      *
@@ -18,7 +18,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function getString()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetString());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetString());
     }
     /**
      *
@@ -26,7 +26,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function getBoolean()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetBoolean());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetBoolean());
     }
     /**
      *
@@ -34,7 +34,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function getNumberFloat()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetNumberFloat());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetNumberFloat());
     }
     /**
      *
@@ -42,7 +42,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function getNumberPlain()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetNumberPlain());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetNumberPlain());
     }
     /**
      *
@@ -50,7 +50,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function getEnumWithoutType()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetEnumWithoutType());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetEnumWithoutType());
     }
     /**
      *
@@ -58,7 +58,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function getArrayOfIntegers()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetArrayOfIntegers());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetArrayOfIntegers());
     }
     /**
      *
@@ -66,7 +66,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      */
     public function getNullableInteger()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetNullableInteger());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Endpoint\GetNullableInteger());
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -80,11 +80,11 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\ScalarResponse\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected;
+namespace Jane\Component\OpenApi2\Tests\Expected\BodyParameter;
 
-class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Client\Client
 {
     /**
      * @param string|resource $testString
@@ -11,25 +11,25 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function testSimpleBodyParameter($testString)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\TestSimpleBodyParameter($testString));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint\TestSimpleBodyParameter($testString));
     }
     /**
-     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema $testObject
+     * @param \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Model\Schema $testObject
      *
      * @return null
      */
-    public function testObjectBodyParameter(\Jane\Component\OpenApi2\Tests\Expected\Model\Schema $testObject)
+    public function testObjectBodyParameter(\Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Model\Schema $testObject)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\TestObjectBodyParameter($testObject));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint\TestObjectBodyParameter($testObject));
     }
     /**
-     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema[] $testObjectList
+     * @param \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Model\Schema[] $testObjectList
      *
      * @return null
      */
     public function testObjectListBodyParameter(array $testObjectList)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\TestObjectListBodyParameter($testObjectList));
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint\TestObjectListBodyParameter($testObjectList));
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -43,11 +43,11 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }

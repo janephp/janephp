@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected;
+namespace Jane\Component\OpenApi2\Tests\Expected\Operations;
 
-class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi2\Tests\Expected\Operations\Runtime\Client\Client
 {
     /**
      *
@@ -10,7 +10,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function testNoTag()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\TestNoTag());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\TestNoTag());
     }
     /**
      *
@@ -18,7 +18,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function getTestOperationUrl()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\GetTestOperationUrl());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\GetTestOperationUrl());
     }
     /**
      *
@@ -26,7 +26,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function getTestOperationUrlById()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\GetTestOperationUrlById());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\GetTestOperationUrlById());
     }
     /**
      *
@@ -34,7 +34,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function getTestOperationUrlWithExtension()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\GetTestOperationUrlWithExtension());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\GetTestOperationUrlWithExtension());
     }
     /**
      *
@@ -42,7 +42,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function deleteTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\DeleteTest());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\DeleteTest());
     }
     /**
      *
@@ -50,7 +50,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function getTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\GetTest());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\GetTest());
     }
     /**
      *
@@ -58,7 +58,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function headTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\HeadTest());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\HeadTest());
     }
     /**
      *
@@ -66,7 +66,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function optionsTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\OptionsTest());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\OptionsTest());
     }
     /**
      *
@@ -74,7 +74,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function patchTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\PatchTest());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\PatchTest());
     }
     /**
      *
@@ -82,7 +82,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function postTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\PostTest());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\PostTest());
     }
     /**
      *
@@ -90,39 +90,39 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function putTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\PutTest());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\PutTest());
     }
     /**
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Thing[]
+     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Operations\Model\Thing[]
      */
     public function getThings()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\GetThings());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\GetThings());
     }
     /**
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Thing[]
+     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Operations\Model\Thing[]
      */
     public function getThingsById()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\GetThingsById());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\GetThingsById());
     }
     /**
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Thing
+     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Operations\Model\Thing
      */
     public function getAnotherThing()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\GetAnotherThing());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\GetAnotherThing());
     }
     /**
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Thing
+     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Operations\Model\Thing
      */
     public function getAnotherThingById()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\GetAnotherThingById());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\GetAnotherThingById());
     }
     /**
      *
@@ -130,7 +130,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      */
     public function postNo200Thing()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\PostNo200Thing());
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Operations\Endpoint\PostNo200Thing());
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -144,11 +144,11 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\Operations\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\Operations\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }

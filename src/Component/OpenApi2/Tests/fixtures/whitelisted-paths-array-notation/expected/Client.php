@@ -1,26 +1,26 @@
 <?php
 
-namespace Jane\OpenApi2\Tests\Expected;
+namespace Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation;
 
-class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\Client
 {
     /**
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error
+     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     public function retrieveCompany()
     {
-        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\RetrieveCompany());
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint\RetrieveCompany());
     }
     /**
      * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
-     * @param \Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload json payload
+     * @param \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompanyPatchBody $payload json payload
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error
+     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Company|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
-    public function updateCompany(\Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload)
+    public function updateCompany(\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\CompanyPatchBody $payload)
     {
-        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\UpdateCompany($payload));
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint\UpdateCompany($payload));
     }
     /**
      * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
@@ -34,11 +34,11 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
      *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
      * }
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Projects|\Jane\OpenApi2\Tests\Expected\Model\Error
+     * @return null|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Projects|\Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
     public function listProjects(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ListProjects($queryParameters));
+        return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint\ListProjects($queryParameters));
     }
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
@@ -55,11 +55,11 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
         foreach ($plugins as $plugin) {
             $httpClient = $plugin($httpClient);
         }
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\OpenApi2\Tests\Expected\Runtime\Client\FormEncoder()]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\OpenApi2\Tests\Expected\WhitelistedPathsArrayNotation\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $serializer);
     }
 }
