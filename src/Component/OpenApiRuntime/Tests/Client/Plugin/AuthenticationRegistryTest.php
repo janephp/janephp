@@ -16,7 +16,7 @@ class AuthenticationRegistryTest extends TestCase
     public function testDecoratesTheClientAndStripsTheScopesOption(): void
     {
         $spy = new SpyHttpClient();
-        $registry = new AuthenticationRegistry([self::plugin('A', 'header-A')])($spy);
+        $registry = (new AuthenticationRegistry([self::plugin('A', 'header-A')]))($spy);
 
         $registry->request('GET', '/test', ['extra' => [AuthenticationRegistry::SCOPES_OPTION => ['A']]]);
 
@@ -31,7 +31,7 @@ class AuthenticationRegistryTest extends TestCase
     public function testNoPluginsForwardsTheRequestUnchanged(): void
     {
         $spy = new SpyHttpClient();
-        $registry = new AuthenticationRegistry([])($spy);
+        $registry = (new AuthenticationRegistry([]))($spy);
 
         $registry->request('GET', '/test', ['extra' => [AuthenticationRegistry::SCOPES_OPTION => ['unknown']], 'headers' => ['X-Base' => '1']]);
 
@@ -41,11 +41,11 @@ class AuthenticationRegistryTest extends TestCase
     public function testMultipleScopesApplyEveryMatchingPlugin(): void
     {
         $spy = new SpyHttpClient();
-        $registry = new AuthenticationRegistry([
+        $registry = (new AuthenticationRegistry([
             self::plugin('A', 'header-A'),
             self::plugin('B', 'header-B'),
             self::plugin('C', 'header-C'),
-        ])($spy);
+        ]))($spy);
 
         $registry->request('GET', '/test', ['extra' => [AuthenticationRegistry::SCOPES_OPTION => ['A', 'C']]]);
 
@@ -59,10 +59,10 @@ class AuthenticationRegistryTest extends TestCase
     public function testUnmatchedScopesDoNotDecorate(): void
     {
         $spy = new SpyHttpClient();
-        $registry = new AuthenticationRegistry([
+        $registry = (new AuthenticationRegistry([
             self::plugin('A', 'header-A'),
             self::plugin('B', 'header-B'),
-        ])($spy);
+        ]))($spy);
 
         $registry->request('GET', '/test', ['extra' => [AuthenticationRegistry::SCOPES_OPTION => ['A']]]);
 
@@ -72,7 +72,7 @@ class AuthenticationRegistryTest extends TestCase
     public function testScopesMarkerIsOnlyStrippedWhenPresent(): void
     {
         $spy = new SpyHttpClient();
-        $registry = new AuthenticationRegistry([])($spy);
+        $registry = (new AuthenticationRegistry([]))($spy);
 
         $registry->request('GET', '/test', ['headers' => ['X-Base' => '1']]);
 
@@ -82,7 +82,7 @@ class AuthenticationRegistryTest extends TestCase
     public function testQueryBasedDecorationsReachTheOptions(): void
     {
         $spy = new SpyHttpClient();
-        $registry = new AuthenticationRegistry([
+        $registry = (new AuthenticationRegistry([
             new class() implements AuthenticationPlugin {
                 public function decorate(string $method, string $url, array &$options): void
                 {
@@ -94,7 +94,7 @@ class AuthenticationRegistryTest extends TestCase
                     return 'query';
                 }
             },
-        ])($spy);
+        ]))($spy);
 
         $registry->request('GET', '/test', ['extra' => [AuthenticationRegistry::SCOPES_OPTION => ['query']]]);
 

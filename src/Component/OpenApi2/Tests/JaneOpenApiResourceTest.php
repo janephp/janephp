@@ -92,8 +92,9 @@ class JaneOpenApiResourceTest extends TestCase
 
         // 2. Test unauthorized
         $client = Client::create();
+        $result = $client->getEndpoint();
         try {
-            $client->getEndpoint();
+            $result->toObject();
             self::fail('Expected GetEndpointUnauthorizedException to be thrown.');
         } catch (GetEndpointUnauthorizedException $e) {
             $this->assertEquals(401, $e->getCode());
@@ -102,11 +103,11 @@ class JaneOpenApiResourceTest extends TestCase
 
         // 3. Test
         $client = Client::create(null, [new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')])]);
-        $response = $client->getEndpoint();
+        $response = $client->getEndpoint()->toObject();
         $this->assertInstanceOf(SimpleResponse::class, $response);
 
         // 4. Path and query parameters, enum, date format and array denormalization
-        $thing = $client->getThing('thing-1', ['q' => 'search', 'page' => 2]);
+        $thing = $client->getThing('thing-1', ['q' => 'search', 'page' => 2])->toObject();
         $this->assertInstanceOf(Thing::class, $thing);
         $this->assertContains($thing->kind, ['created', 'updated', 'deleted']);
         $this->assertInstanceOf(\DateTime::class, $thing->createdAt);
@@ -124,7 +125,7 @@ class JaneOpenApiResourceTest extends TestCase
         $this->assertInstanceOf(Thing::class, $formThing);
 
         // 7. allOf inheritance
-        $thingDetails = $client->getThingDetails('thing-1');
+        $thingDetails = $client->getThingDetails('thing-1')->toObject();
         $this->assertInstanceOf(ThingDetails::class, $thingDetails);
         $this->assertNotSame('', $thingDetails->description);
 
@@ -141,8 +142,9 @@ class JaneOpenApiResourceTest extends TestCase
             new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')]),
             static fn (HttpClientInterface $httpClient): HttpClientInterface => $httpClient->withOptions(['headers' => ['Prefer' => 'code=404']]),
         ]);
+        $result = $preferClient->getThing('thing-1', ['q' => 'search']);
         try {
-            $preferClient->getThing('thing-1', ['q' => 'search']);
+            $result->toObject();
             self::fail('Expected GetThingNotFoundException to be thrown.');
         } catch (GetThingNotFoundException $e) {
             $this->assertEquals(404, $e->getCode());
