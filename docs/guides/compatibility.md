@@ -44,7 +44,7 @@ Since Jane 8.0, generated clients are built on [Symfony HttpClient](https://symf
 - requests never throw on 3xx/4xx/5xx before parsing: status-to-exception mapping stays in the generated code, and raw
   responses handed to you keep Symfony's default behavior (`$throw = true` on explicit reads unless you pass `false`).
 
-See [ADR 0011](../contributing/adrs/0011-symfony-httpclient-migration-x-fetch-mode.md) for the full decision record.
+See [ADR 0012](../contributing/adrs/0012-symfony-httpclient-migration-x-fetch-mode.md) for the full decision record.
 
 ## Unsupported syntax across versions
 
