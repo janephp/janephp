@@ -20,7 +20,7 @@ class OperationGuess
     /** @var string[] Sub-namespace segments from the "x-namespace" extension; empty when the endpoint uses the flat layout */
     private array $subNamespace = [];
     /** Fetch mode of the operation (a FetchMode value); only meaningful on GET/HEAD, other verbs are always eager */
-    private string $fetchMode = FetchMode::Lazy->value;
+    private string $fetchMode;
 
     public function __construct(
         object $pathItem,
@@ -36,6 +36,9 @@ class OperationGuess
             ($operation->parameters ?? null) ?? []
         );
         $this->securityScopes = $securityScopes;
+        // Assigned in the constructor rather than as a property default:
+        // `FetchMode::Lazy->value` is not a valid constant expression on PHP 8.1.
+        $this->fetchMode = FetchMode::Lazy->value;
     }
 
     public function getParameters(): array

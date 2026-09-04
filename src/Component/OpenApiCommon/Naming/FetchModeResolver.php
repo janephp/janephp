@@ -19,11 +19,12 @@ class FetchModeResolver
 {
     public const ATTRIBUTE_NAME = 'x-fetch-mode';
 
-    private const VALID_MODES = [
-        FetchMode::Lazy->value,
-        FetchMode::Eager->value,
-        FetchMode::Preload->value,
-    ];
+    /**
+     * Plain string literals rather than `FetchMode::Xxx->value`: an enum
+     * property fetch is not a valid constant expression on PHP 8.1 (the
+     * supported floor). Kept in sync with the FetchMode enum.
+     */
+    private const VALID_MODES = ['lazy', 'eager', 'preload'];
 
     public function __construct(private readonly ?string $defaultFetchMode = null)
     {
