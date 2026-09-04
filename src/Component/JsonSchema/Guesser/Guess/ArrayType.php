@@ -11,6 +11,8 @@ use PhpParser\Node\Stmt;
 
 class ArrayType extends Type
 {
+    use CheckNullableTrait;
+
     protected Type $itemType;
 
     public function __construct(object $object, Type $itemType, string $type = 'array')
@@ -53,7 +55,7 @@ class ArrayType extends Type
 
         list($subStatements, $outputExpr) = $this->itemType->createDenormalizationStatement($context, $loopValueVar, $normalizerFromObject);
 
-        $loopStatements = array_merge($subStatements, [
+        $loopStatements = array_merge($this->createNullableItemGuardStatements($valuesVar, $loopKeyVar, $loopValueVar), $subStatements, [
             new Stmt\Expression(new Expr\Assign($this->createLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)),
         ]);
 
@@ -88,7 +90,7 @@ class ArrayType extends Type
 
         list($subStatements, $outputExpr) = $this->itemType->createNormalizationStatement($context, $loopValueVar, $normalizerFromObject);
 
-        $loopStatements = array_merge($subStatements, [
+        $loopStatements = array_merge($this->createNullableItemGuardStatements($valuesVar, $loopKeyVar, $loopValueVar), $subStatements, [
             new Stmt\Expression(new Expr\Assign($this->createNormalizationLoopOutputAssignement($valuesVar, $loopKeyVar), $outputExpr)),
         ]);
 
@@ -128,5 +130,29 @@ class ArrayType extends Type
     protected function createNormalizationLoopOutputAssignement(Expr $valuesVar, $loopKeyVar): Expr
     {
         return new Expr\ArrayDimFetch($valuesVar);
+    }
+
+    private function createNullableItemGuardStatements(Expr $valuesVar, $loopKeyVar, Expr $loopValueVar): array
+    {
+        if (!$this->itemType instanceof self
+            || null === $this->itemType->getObject()
+            || !$this->isNullable($this->itemType->getObject())) {
+            return [];
+        }
+
+        return [
+            new Stmt\If_(
+                new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $loopValueVar),
+                [
+                    'stmts' => [
+                        new Stmt\Expression(new Expr\Assign(
+                            $this->createLoopOutputAssignement($valuesVar, $loopKeyVar),
+                            new Expr\ConstFetch(new Name('null'))
+                        )),
+                        new Stmt\Continue_(),
+                    ],
+                ]
+            ),
+        ];
     }
 }
