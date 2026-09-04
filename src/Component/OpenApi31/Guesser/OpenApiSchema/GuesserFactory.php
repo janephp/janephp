@@ -34,6 +34,7 @@ class GuesserFactory
         $customStringFormatMapping = $options->customStringFormatMapping;
         $operationNaming = OperationNamingFactory::create($options->operationNamings);
         $defaultAdditionalProperties = $options->defaultAdditionalProperties;
+        $defaultFetchMode = $options->defaultFetchMode;
 
         $chainGuesser = new ChainGuesser();
         if ($options->enumsAsObjects) {
@@ -46,7 +47,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new BinaryStringFormatGuesser(Schema::class));
         $chainGuesser->addGuesser(new ReferenceGuesser($denormalizer, Schema::class));
         $chainGuesser->addGuesser(new DollarRefGuesser($denormalizer, Schema::class));
-        $chainGuesser->addGuesser(new OpenApiGuesser($denormalizer, $operationNaming));
+        $chainGuesser->addGuesser(new OpenApiGuesser($denormalizer, $operationNaming, $defaultFetchMode));
         $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming, $defaultAdditionalProperties, $chainValidatorFactory));
         $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(Schema::class, $defaultAdditionalProperties));
         $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, Schema::class, $defaultAdditionalProperties));

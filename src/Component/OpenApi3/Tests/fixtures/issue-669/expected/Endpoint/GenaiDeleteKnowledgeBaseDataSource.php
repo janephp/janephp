@@ -25,7 +25,7 @@ class GenaiDeleteKnowledgeBaseDataSource extends \Jane\Generated\DigitalOcean\Ru
     {
         return str_replace(['{knowledge_base_uuid}', '{data_source_uuid}'], [rawurlencode($this->knowledge_base_uuid), rawurlencode($this->data_source_uuid)], '/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources/{data_source_uuid}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -43,10 +43,10 @@ class GenaiDeleteKnowledgeBaseDataSource extends \Jane\Generated\DigitalOcean\Ru
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteKnowledgeBaseDataSourceOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ApiDeleteKnowledgeBaseDataSourceOutput', 'json');
         }
@@ -69,5 +69,9 @@ class GenaiDeleteKnowledgeBaseDataSource extends \Jane\Generated\DigitalOcean\Ru
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

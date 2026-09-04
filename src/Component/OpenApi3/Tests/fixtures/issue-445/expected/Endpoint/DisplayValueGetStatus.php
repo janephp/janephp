@@ -13,7 +13,7 @@ class DisplayValueGetStatus extends \PicturePark\API\Runtime\Client\BaseEndpoint
     {
         return '/v1/DisplayValues/status';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -34,10 +34,10 @@ class DisplayValueGetStatus extends \PicturePark\API\Runtime\Client\BaseEndpoint
      *
      * @return null|\PicturePark\API\Model\DisplayValueStatus
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\DisplayValueStatus', 'json');
         }
@@ -66,5 +66,9 @@ class DisplayValueGetStatus extends \PicturePark\API\Runtime\Client\BaseEndpoint
     public function getAuthenticationScopes(): array
     {
         return ['Bearer'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

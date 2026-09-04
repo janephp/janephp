@@ -33,7 +33,7 @@ class TaskList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
     {
         return '/tasks';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -58,10 +58,10 @@ class TaskList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
      *
      * @return null|\Docker\Api\Model\Task[]
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'Docker\Api\Model\Task[]', 'json');
         }
@@ -75,5 +75,9 @@ class TaskList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

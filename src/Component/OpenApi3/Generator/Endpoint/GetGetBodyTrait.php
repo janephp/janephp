@@ -30,7 +30,6 @@ trait GetGetBodyTrait
             'flags' => Modifiers::PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
-                new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null'))),
             ],
             'returnType' => new Name('array'),
             'stmts' => $requestBodyGenerator->getSerializeStatements($requestBody, $opRef, $context),

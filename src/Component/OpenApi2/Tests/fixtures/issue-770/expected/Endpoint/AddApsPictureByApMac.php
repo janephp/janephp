@@ -11,7 +11,7 @@ class AddApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      * @param array $formParameters {
-     *     @var string|resource|\Psr\Http\Message\StreamInterface $uploadFile The file to upload
+     *     @var string|resource $uploadFile The file to upload
      * }
      */
     public function __construct(string $apMac, array $queryParameters = [], array $formParameters = [])
@@ -29,9 +29,9 @@ class AddApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue
     {
         return str_replace(['{apMac}'], [rawurlencode($this->apMac)], '/aps/{apMac}/picture');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
-        return $this->getMultipartBody($streamFactory);
+        return $this->getMultipartBody();
     }
     public function getExtraHeaders(): array
     {
@@ -52,7 +52,7 @@ class AddApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue
         $optionsResolver->setDefined(['uploadFile']);
         $optionsResolver->setRequired(['uploadFile']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('uploadFile', ['string', 'resource', '\Psr\Http\Message\StreamInterface']);
+        $optionsResolver->addAllowedTypes('uploadFile', ['string', 'resource']);
         return $optionsResolver;
     }
     /**
@@ -65,10 +65,10 @@ class AddApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (400 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Exception\AddApsPictureByApMacBadRequestException($response);
         }
@@ -88,5 +88,9 @@ class AddApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

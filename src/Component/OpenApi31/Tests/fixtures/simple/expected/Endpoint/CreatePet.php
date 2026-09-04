@@ -20,7 +20,7 @@ class CreatePet extends \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\
     {
         return '/pets';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet) {
             return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -37,10 +37,10 @@ class CreatePet extends \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\
      *
      * @return null|\Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Simple\Model\Pet', 'json');
         }
@@ -48,5 +48,9 @@ class CreatePet extends \Jane\Component\OpenApi31\Tests\Expected\Simple\Runtime\
     public function getAuthenticationScopes(): array
     {
         return ['bearerAuth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

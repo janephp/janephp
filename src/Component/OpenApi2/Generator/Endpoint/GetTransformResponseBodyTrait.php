@@ -31,7 +31,7 @@ trait GetTransformResponseBodyTrait
     {
         $outputStatements = [
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('status'), new Expr\MethodCall(new Expr\Variable('response'), 'getStatusCode'))),
-            new Stmt\Expression(new Expr\Assign(new Expr\Variable('body'), new Expr\Cast\String_(new Expr\MethodCall(new Expr\Variable('response'), 'getBody')))),
+            new Stmt\Expression(new Expr\Assign(new Expr\Variable('body'), new Expr\MethodCall(new Expr\Variable('response'), 'getContent', [new Arg(new Expr\ConstFetch(new Name('false')))]))),
         ];
 
         /** @var Registry $registry */
@@ -102,7 +102,7 @@ trait GetTransformResponseBodyTrait
         return [new Stmt\ClassMethod('transformResponseBody', [
             'flags' => Modifiers::PROTECTED,
             'params' => [
-                new Node\Param(new Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
+                new Node\Param(new Expr\Variable('response'), null, new Name('\\Symfony\\Contracts\\HttpClient\\ResponseInterface')),
                 new Node\Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
                 new Node\Param(new Expr\Variable('contentType'), new Expr\ConstFetch(new Name('null')), new Node\NullableType(new Name('string'))),
             ],

@@ -5,54 +5,49 @@ namespace Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityL
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Runtime\Client\Client
 {
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function getFoo(string $fetch = self::FETCH_OBJECT)
+    public function getFoo()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Endpoint\GetFoo(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Endpoint\GetFoo());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function getBar(string $fetch = self::FETCH_OBJECT)
+    public function getBar()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Endpoint\GetBar(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Endpoint\GetBar());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function getBaz(string $fetch = self::FETCH_OBJECT)
+    public function getBaz()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Endpoint\GetBaz(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Endpoint\GetBaz());
     }
-    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
+    public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
+            $httpClient = \Symfony\Component\HttpClient\HttpClient::create();
         }
         if ($applyServerPlugins) {
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('http://127.0.0.1/');
-            $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
-            $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
+            $plugins[] = new \Jane\Component\OpenApiRuntime\Client\Plugin\ServerUrlHttpClient('http://127.0.0.1/');
         }
         if (count($additionalPlugins) > 0) {
             $plugins = array_merge($plugins, $additionalPlugins);
         }
-        $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
-        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
+        foreach ($plugins as $plugin) {
+            $httpClient = $plugin($httpClient);
+        }
         $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
         $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\AuthenticationMultipleSecurityLayers\Runtime\Client\FormEncoder()]);
-        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
+        return new static($httpClient, $serializer);
     }
 }

@@ -29,7 +29,7 @@ class DatabasesGetKafkaSchemaSubjectConfig extends \Jane\Generated\DigitalOcean\
     {
         return str_replace(['{database_cluster_uuid}', '{subject_name}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->subject_name)], '/v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -47,10 +47,10 @@ class DatabasesGetKafkaSchemaSubjectConfig extends \Jane\Generated\DigitalOcean\
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig', 'json');
         }
@@ -73,5 +73,9 @@ class DatabasesGetKafkaSchemaSubjectConfig extends \Jane\Generated\DigitalOcean\
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

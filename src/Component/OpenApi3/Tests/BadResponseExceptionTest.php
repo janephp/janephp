@@ -6,10 +6,11 @@ use Jane\Component\OpenApi3\Tests\BadResponse\Endpoint\GetFoo;
 use Jane\Component\OpenApi3\Tests\BadResponse\Exception\BadResponseException;
 use Jane\Component\OpenApi3\Tests\BadResponse\Exception\UnexpectedStatusCodeException;
 use Jane\Component\OpenApi3\Tests\BadResponse\Exception\WithResponseInterface;
-use Jane\Component\OpenApi3\Tests\BadResponse\Runtime\Client\Client;
-use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpClient\MockHttpClient;
+use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * @see https://github.com/janephp/janephp/issues/815
@@ -17,6 +18,12 @@ use Symfony\Component\Serializer\SerializerInterface;
 class BadResponseExceptionTest extends TestCase
 {
     private const FIXTURE_DIR = __DIR__ . '/fixtures/bad-response-exception/expected';
+
+    private static function response(int $statusCode, string $body = '', array $headers = []): ResponseInterface
+    {
+        return (new MockHttpClient(new MockResponse($body, ['http_code' => $statusCode, 'response_headers' => $headers])))
+            ->request('GET', 'https://example.com/foo');
+    }
 
     protected function setUp(): void
     {
@@ -39,11 +46,11 @@ class BadResponseExceptionTest extends TestCase
 
     public function testUndocumentedResponseThrowsBadResponseException(): void
     {
-        $response = new Response(409, [], '{"message":"conflict"}');
+        $response = self::response(409, '{"message":"conflict"}');
         $endpoint = new GetFoo();
 
         try {
-            $endpoint->parseResponse($response, $this->createMock(SerializerInterface::class), Client::FETCH_OBJECT);
+            $endpoint->parseResponse($response, $this->createMock(SerializerInterface::class));
             self::fail('No exception thrown for undocumented response.');
         } catch (BadResponseException $e) {
             self::assertSame(409, $e->getCode());
@@ -54,11 +61,11 @@ class BadResponseExceptionTest extends TestCase
 
     public function testBadResponseExceptionIsACatchableUnexpectedStatusCodeException(): void
     {
-        $response = new Response(503, [], 'unavailable');
+        $response = self::response(503, 'unavailable');
         $endpoint = new GetFoo();
 
         try {
-            $endpoint->parseResponse($response, $this->createMock(SerializerInterface::class), Client::FETCH_OBJECT);
+            $endpoint->parseResponse($response, $this->createMock(SerializerInterface::class));
             self::fail('No exception thrown for undocumented response.');
         } catch (UnexpectedStatusCodeException $e) {
             self::assertInstanceOf(BadResponseException::class, $e);
@@ -72,11 +79,11 @@ class BadResponseExceptionTest extends TestCase
      */
     public function testUnexpectedStatusCodeExceptionExposesResponse(): void
     {
-        $response = new Response(418, [], 'teapot');
+        $response = self::response(418, 'teapot');
         $endpoint = new GetFoo();
 
         try {
-            $endpoint->parseResponse($response, $this->createMock(SerializerInterface::class), Client::FETCH_OBJECT);
+            $endpoint->parseResponse($response, $this->createMock(SerializerInterface::class));
             self::fail('No exception thrown for undocumented response.');
         } catch (UnexpectedStatusCodeException $e) {
             self::assertInstanceOf(WithResponseInterface::class, $e);
@@ -86,9 +93,9 @@ class BadResponseExceptionTest extends TestCase
 
     public function testDocumentedResponseStillReturnsNull(): void
     {
-        $response = new Response(200, []);
+        $response = self::response(200);
         $endpoint = new GetFoo();
 
-        self::assertNull($endpoint->parseResponse($response, $this->createMock(SerializerInterface::class), Client::FETCH_OBJECT));
+        self::assertNull($endpoint->parseResponse($response, $this->createMock(SerializerInterface::class)));
     }
 }

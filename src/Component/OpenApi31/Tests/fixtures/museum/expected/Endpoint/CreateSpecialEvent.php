@@ -24,7 +24,7 @@ class CreateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Museum
     {
         return '/special-events';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent) {
             return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\Museum\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -46,10 +46,10 @@ class CreateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Museum
      *
      * @return null|\Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\Museum\Model\SpecialEvent', 'json');
         }
@@ -63,5 +63,9 @@ class CreateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Museum
     public function getAuthenticationScopes(): array
     {
         return ['MuseumPlaceholderAuth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

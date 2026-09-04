@@ -30,6 +30,22 @@ Use this mapping when choosing which OpenAPI package/component to install.
 > [!TIP]
 > If you handle mixed OpenAPI versions across projects, you can keep both `jane-php/open-api-2` and `jane-php/open-api-3` as dev dependencies. Jane will select the matching parser/component from the schema version.
 
+## HTTP transport (Jane 8.0)
+
+Since Jane 8.0, generated clients are built on [Symfony HttpClient](https://symfony.com/doc/current/components/http_client.html)
+(`Symfony\Contracts\HttpClient\HttpClientInterface`) instead of PSR-18 / PSR-7 and the HTTPlug plugin system:
+
+- pass a `Symfony\Contracts\HttpClient\HttpClientInterface` to `Client::create()` (PSR-18 clients are no longer accepted);
+- `$additionalPlugins` are now **decorator factories** (`callable(HttpClientInterface): HttpClientInterface`), e.g. `AuthenticationRegistry` or your own closures;
+- the `$fetch` parameter (`FETCH_OBJECT` / `FETCH_RESPONSE`) was removed: use `executeRawEndpoint()` for raw responses and
+  [`x-fetch-mode`](../openapi/component.md#fetch-modes) for per-operation fetch strategies on GET/HEAD;
+- generated authentication classes implement `decorate(string $method, string $url, array &$options): void` instead of `authentication(RequestInterface)`;
+- custom `Endpoint` implementations must add `getFetchMode(): string` and drop the `$fetchMode` argument of `parseResponse()`;
+- requests never throw on 3xx/4xx/5xx before parsing: status-to-exception mapping stays in the generated code, and raw
+  responses handed to you keep Symfony's default behavior (`$throw = true` on explicit reads unless you pass `false`).
+
+See [ADR 0012](../contributing/adrs/0012-symfony-httpclient-migration-x-fetch-mode.md) for the full decision record.
+
 ## Unsupported syntax across versions
 
 Jane validates your document against the features supported by the selected

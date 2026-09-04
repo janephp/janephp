@@ -12,13 +12,12 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      * @param array{
      *    "testHeader"?: string,
      * } $headerParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testGetWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testGetWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestGetWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestGetWithPathParameters($testPath, $queryParameters, $headerParameters));
     }
     /**
      * @param string $testPath
@@ -28,13 +27,12 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      * @param array{
      *    "testHeader"?: string,
      * } $headerParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testPostWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testPostWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestPostWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestPostWithPathParameters($testPath, $queryParameters, $headerParameters));
     }
     /**
      * @param array{
@@ -45,13 +43,12 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      *    "testRequired": string,
      *    "testDefault"?: string,
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testQueryParameters(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testQueryParameters(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestQueryParameters($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestQueryParameters($queryParameters));
     }
     /**
      * @param array{
@@ -62,132 +59,122 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      *    "testRequired": string,
      *    "testDefault"?: string,
      * } $headerParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testHeaderParameters(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testHeaderParameters(array $headerParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestHeaderParameters($headerParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestHeaderParameters($headerParameters));
     }
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testFormParameters(?\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function testFormParameters(?\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormPostBody $requestBody = null)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestFormParameters($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestFormParameters($requestBody));
     }
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormFilePostBody $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testFormFileParameters(?\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormFilePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function testFormFileParameters(?\Jane\Component\OpenApi3\Tests\Expected\Parameters\Model\TestFormFilePostBody $requestBody = null)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestFormFileParameters($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestFormFileParameters($requestBody));
     }
     /**
-     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string|resource $requestBody
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testBinaryBody($requestBody, string $fetch = self::FETCH_OBJECT)
+    public function testBinaryBody($requestBody)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestBinaryBody($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestBinaryBody($requestBody));
     }
     /**
      * @param string $testString
      * @param int $testInteger
      * @param int $testFloat
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testPathParameters(string $testString, int $testInteger, int $testFloat, string $fetch = self::FETCH_OBJECT)
+    public function testPathParameters(string $testString, int $testInteger, int $testFloat)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestPathParameters($testString, $testInteger, $testFloat), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestPathParameters($testString, $testInteger, $testFloat));
     }
     /**
      * @param int $testInteger
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function getByTestInteger(int $testInteger, string $fetch = self::FETCH_OBJECT)
+    public function getByTestInteger(int $testInteger)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\GetByTestInteger($testInteger), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\GetByTestInteger($testInteger));
     }
     /**
      * @param array{
      *    "input": array,
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testDictionary(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testDictionary(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestDictionary($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestDictionary($queryParameters));
     }
     /**
      * @param array{
      *    "filter"?: array,
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testObjectQuery(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testObjectQuery(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestObjectQuery($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestObjectQuery($queryParameters));
     }
     /**
      * @param array{
      *    "search": array,
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testObjectAdditionalProperties(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testObjectAdditionalProperties(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestObjectAdditionalProperties($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestObjectAdditionalProperties($queryParameters));
     }
     /**
      * @param array{
      *    "columns"?: array,
      *    "properties[]"?: array,
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testFormExplodeQuery(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function testFormExplodeQuery(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestFormExplodeQuery($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestFormExplodeQuery($queryParameters));
     }
-    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = [];
-            if (count($additionalPlugins) > 0) {
-                $plugins = array_merge($plugins, $additionalPlugins);
-            }
-            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
+            $httpClient = \Symfony\Component\HttpClient\HttpClient::create();
         }
-        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
+        $plugins = [];
+        if (count($additionalPlugins) > 0) {
+            $plugins = array_merge($plugins, $additionalPlugins);
+        }
+        foreach ($plugins as $plugin) {
+            $httpClient = $plugin($httpClient);
+        }
         $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
         $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\Client\FormEncoder()]);
-        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
+        return new static($httpClient, $serializer);
     }
 }

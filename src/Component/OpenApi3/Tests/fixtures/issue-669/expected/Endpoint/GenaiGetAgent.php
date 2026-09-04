@@ -22,7 +22,7 @@ class GenaiGetAgent extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
     {
         return str_replace(['{uuid}'], [rawurlencode($this->uuid)], '/v2/gen-ai/agents/{uuid}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -40,10 +40,10 @@ class GenaiGetAgent extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetAgentOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ApiGetAgentOutput', 'json');
         }
@@ -66,5 +66,9 @@ class GenaiGetAgent extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

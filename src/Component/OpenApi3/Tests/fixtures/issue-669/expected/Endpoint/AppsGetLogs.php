@@ -38,7 +38,7 @@ class AppsGetLogs extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
     {
         return str_replace(['{app_id}', '{deployment_id}', '{component_name}'], [rawurlencode($this->app_id), rawurlencode($this->deployment_id), rawurlencode($this->component_name)], '/v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/logs');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -67,10 +67,10 @@ class AppsGetLogs extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse', 'json');
         }
@@ -93,5 +93,9 @@ class AppsGetLogs extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

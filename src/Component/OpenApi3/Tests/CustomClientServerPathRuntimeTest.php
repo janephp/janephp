@@ -2,23 +2,23 @@
 
 namespace Jane\Component\OpenApi3\Tests;
 
-use Http\Client\Common\Plugin\AddPathPlugin;
-use Http\Client\Common\PluginClient;
-use Http\Discovery\Psr17FactoryDiscovery;
 use Jane\Component\OpenApiCommon\Console\Command\GenerateCommand;
 use Jane\Component\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\Console\Loader\SchemaLoader;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\HttpClient\MockHttpClient;
+use Symfony\Component\HttpClient\Response\MockResponse;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseStreamInterface;
 
 /**
- * Runtime test asserting that specification server plugins (host + path) are
- * applied around a caller provided PSR-18 client, and can be opted out from.
+ * Runtime test asserting that the specification server URL decorator is
+ * applied around a caller provided HttpClientInterface, and can be opted out
+ * from.
  *
  * A dedicated client is generated from the issue-299 specification into an
  * isolated namespace, as generated clients usually share their namespace
@@ -47,7 +47,7 @@ class CustomClientServerPathRuntimeTest extends TestCase
         self::assertNotNull($capturingClient->lastRequest);
         self::assertSame(
             'https://example.com/rest/v1/users?userState=x',
-            (string) $capturingClient->lastRequest->getUri()
+            $capturingClient->lastRequest[1]
         );
     }
 
@@ -59,28 +59,28 @@ class CustomClientServerPathRuntimeTest extends TestCase
         $client->executeRawEndpoint(self::createGetUsersEndpoint(['userState' => 'x']));
 
         self::assertNotNull($capturingClient->lastRequest);
-        self::assertSame('/users?userState=x', (string) $capturingClient->lastRequest->getUri());
+        self::assertSame('/users?userState=x', $capturingClient->lastRequest[1]);
     }
 
-    public function testCallerOwnedPathPrefixIsNotDuplicated(): void
+    public function testCallerDecoratorsSeeTheSpecRewrittenUrl(): void
     {
         $capturingClient = $this->createCapturingClient();
-        $preWrappedClient = new PluginClient($capturingClient, [
-            new AddPathPlugin(Psr17FactoryDiscovery::findUriFactory()->createUri('https://caller.example.com/rest/v1')),
+        // additionalPlugins are decorator factories applied after the server
+        // URL decorator: they observe the already rewritten URL
+        $client = self::createClient($capturingClient, [
+            static fn (HttpClientInterface $httpClient): HttpClientInterface => $httpClient->withOptions([]),
         ]);
-
-        $client = self::createClient($preWrappedClient);
 
         $client->executeRawEndpoint(self::createGetUsersEndpoint(['userState' => 'x']));
 
         self::assertNotNull($capturingClient->lastRequest);
         self::assertSame(
             'https://example.com/rest/v1/users?userState=x',
-            (string) $capturingClient->lastRequest->getUri()
+            $capturingClient->lastRequest[1]
         );
     }
 
-    private static function createClient(?ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true): object
+    private static function createClient(?HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true): object
     {
         $clientClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\Issue789CustomClient\Client');
 
@@ -179,14 +179,31 @@ class CustomClientServerPathRuntimeTest extends TestCase
     }
 }
 
-final class CapturingHttpClient implements ClientInterface
+final class CapturingHttpClient implements HttpClientInterface
 {
-    public ?RequestInterface $lastRequest = null;
+    /** @var array{0: string, 1: string, 2: array<string, mixed>}|null */
+    public ?array $lastRequest = null;
+    private readonly MockHttpClient $mock;
 
-    public function sendRequest(RequestInterface $request): ResponseInterface
+    public function __construct()
     {
-        $this->lastRequest = $request;
+        $this->mock = new MockHttpClient(static fn (): MockResponse => new MockResponse('', ['http_code' => 200]));
+    }
 
-        return Psr17FactoryDiscovery::findResponseFactory()->createResponse(200);
+    public function request(string $method, string $url, array $options = []): ResponseInterface
+    {
+        $this->lastRequest = [$method, $url, $options];
+
+        return $this->mock->request($method, $url, $options);
+    }
+
+    public function stream(ResponseInterface|iterable $responses, ?float $timeout = null): ResponseStreamInterface
+    {
+        return $this->mock->stream($responses, $timeout);
+    }
+
+    public function withOptions(array $options): static
+    {
+        return $this;
     }
 }

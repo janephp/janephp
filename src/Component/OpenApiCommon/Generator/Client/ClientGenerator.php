@@ -2,7 +2,6 @@
 
 namespace Jane\Component\OpenApiCommon\Generator\Client;
 
-use Http\Discovery\Psr17FactoryDiscovery;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Registry\Schema;
@@ -13,11 +12,11 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
-use Psr\Http\Client\ClientInterface;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 trait ClientGenerator
 {
@@ -47,8 +46,6 @@ trait ClientGenerator
                 'params' => $params,
                 'stmts' => [
                     ...$this->getHttpClientCreateExpr($context),
-                    $this->createRequestFactoryStatement(),
-                    $this->createStreamFactoryStatement(),
                     $this->createNormalizersStatement($context),
                     $this->createAdditionalNormalizersStatement(),
                     $this->createSerializerStatement($context),
@@ -64,7 +61,7 @@ trait ClientGenerator
     private function getFactoryParams(Context $context): array
     {
         $params = [
-            new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null')), new Node\NullableType(new Name\FullyQualified(ClientInterface::class))),
+            new Node\Param(new Expr\Variable('httpClient'), new Expr\ConstFetch(new Name('null')), new Node\NullableType(new Name\FullyQualified(HttpClientInterface::class))),
             new Node\Param(new Expr\Variable('additionalPlugins'), new Expr\Array_(), new Node\Identifier('array')),
             new Node\Param(new Expr\Variable('additionalNormalizers'), new Expr\Array_(), new Node\Identifier('array')),
         ];
@@ -78,28 +75,6 @@ trait ClientGenerator
         }
 
         return $params;
-    }
-
-    private function createRequestFactoryStatement(): Stmt\Expression
-    {
-        return new Stmt\Expression(new Expr\Assign(
-            new Expr\Variable('requestFactory'),
-            new Expr\StaticCall(
-                new Name\FullyQualified(Psr17FactoryDiscovery::class),
-                'findRequestFactory'
-            )
-        ));
-    }
-
-    private function createStreamFactoryStatement(): Stmt\Expression
-    {
-        return new Stmt\Expression(new Expr\Assign(
-            new Expr\Variable('streamFactory'),
-            new Expr\StaticCall(
-                new Name\FullyQualified(Psr17FactoryDiscovery::class),
-                'findStreamFactory'
-            )
-        ));
     }
 
     private function createNormalizersStatement(Context $context): Stmt\Expression
@@ -170,9 +145,7 @@ trait ClientGenerator
             new Expr\New_(
                 new Name('static'), [
                     new Node\Arg(new Expr\Variable('httpClient')),
-                    new Node\Arg(new Expr\Variable('requestFactory')),
                     new Node\Arg(new Expr\Variable('serializer')),
-                    new Node\Arg(new Expr\Variable('streamFactory')),
                 ]
             )
         );

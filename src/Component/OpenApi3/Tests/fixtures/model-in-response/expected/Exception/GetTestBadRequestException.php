@@ -10,9 +10,9 @@ class GetTestBadRequestException extends BadRequestException
          */
         private readonly \Jane\Component\OpenApi3\Tests\Expected\ModelInResponse\Model\Error $error,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('bad request');
@@ -21,7 +21,7 @@ class GetTestBadRequestException extends BadRequestException
     {
         return $this->error;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

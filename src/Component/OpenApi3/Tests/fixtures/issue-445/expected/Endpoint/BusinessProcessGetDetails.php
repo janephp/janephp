@@ -22,7 +22,7 @@ class BusinessProcessGetDetails extends \PicturePark\API\Runtime\Client\BaseEndp
     {
         return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/BusinessProcesses/{id}/details');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -43,10 +43,10 @@ class BusinessProcessGetDetails extends \PicturePark\API\Runtime\Client\BaseEndp
      *
      * @return null|\PicturePark\API\Model\BusinessProcessDetails
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\BusinessProcessDetails', 'json');
         }
@@ -75,5 +75,9 @@ class BusinessProcessGetDetails extends \PicturePark\API\Runtime\Client\BaseEndp
     public function getAuthenticationScopes(): array
     {
         return ['Bearer'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

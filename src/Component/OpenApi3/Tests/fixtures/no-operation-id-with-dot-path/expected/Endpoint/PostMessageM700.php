@@ -20,7 +20,7 @@ class PostMessageM700 extends \Jane\Component\OpenApi3\Tests\Expected\NoOperatio
     {
         return '/message/M700';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Model\MessageM700PostBody) {
             return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi3\Tests\Expected\NoOperationIdWithDotPath\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -33,14 +33,18 @@ class PostMessageM700 extends \Jane\Component\OpenApi3\Tests\Expected\NoOperatio
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         return null;
     }
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

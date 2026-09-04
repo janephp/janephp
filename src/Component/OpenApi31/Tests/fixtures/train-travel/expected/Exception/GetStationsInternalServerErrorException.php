@@ -10,9 +10,9 @@ class GetStationsInternalServerErrorException extends InternalServerErrorExcepti
          */
         private readonly \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\Problem $problem,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('Internal Server Error');
@@ -21,7 +21,7 @@ class GetStationsInternalServerErrorException extends InternalServerErrorExcepti
     {
         return $this->problem;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

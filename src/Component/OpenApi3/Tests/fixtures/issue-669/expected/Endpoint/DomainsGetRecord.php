@@ -25,7 +25,7 @@ class DomainsGetRecord extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     {
         return str_replace(['{domain_name}', '{domain_record_id}'], [rawurlencode($this->domain_name), rawurlencode($this->domain_record_id)], '/v2/domains/{domain_name}/records/{domain_record_id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -43,10 +43,10 @@ class DomainsGetRecord extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseDomainRecord', 'json');
         }
@@ -69,5 +69,9 @@ class DomainsGetRecord extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

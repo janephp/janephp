@@ -5,52 +5,49 @@ namespace Jane\Component\OpenApi2\Tests\Expected\BodyParameter;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Client\Client
 {
     /**
-     * @param string|resource|\Psr\Http\Message\StreamInterface $testString
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string|resource $testString
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testSimpleBodyParameter($testString, string $fetch = self::FETCH_OBJECT)
+    public function testSimpleBodyParameter($testString)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint\TestSimpleBodyParameter($testString), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint\TestSimpleBodyParameter($testString));
     }
     /**
      * @param \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Model\Schema $testObject
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testObjectBodyParameter(\Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Model\Schema $testObject, string $fetch = self::FETCH_OBJECT)
+    public function testObjectBodyParameter(\Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Model\Schema $testObject)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint\TestObjectBodyParameter($testObject), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint\TestObjectBodyParameter($testObject));
     }
     /**
      * @param \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Model\Schema[] $testObjectList
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testObjectListBodyParameter(array $testObjectList, string $fetch = self::FETCH_OBJECT)
+    public function testObjectListBodyParameter(array $testObjectList)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint\TestObjectListBodyParameter($testObjectList), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Endpoint\TestObjectListBodyParameter($testObjectList));
     }
-    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = [];
-            if (count($additionalPlugins) > 0) {
-                $plugins = array_merge($plugins, $additionalPlugins);
-            }
-            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
+            $httpClient = \Symfony\Component\HttpClient\HttpClient::create();
         }
-        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
+        $plugins = [];
+        if (count($additionalPlugins) > 0) {
+            $plugins = array_merge($plugins, $additionalPlugins);
+        }
+        foreach ($plugins as $plugin) {
+            $httpClient = $plugin($httpClient);
+        }
         $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
         $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Expected\BodyParameter\Runtime\Client\FormEncoder()]);
-        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
+        return new static($httpClient, $serializer);
     }
 }

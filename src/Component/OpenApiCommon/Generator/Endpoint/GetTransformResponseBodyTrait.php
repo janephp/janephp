@@ -17,6 +17,7 @@ use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
 use PhpParser\Node;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
@@ -48,7 +49,7 @@ trait GetTransformResponseBodyTrait
     {
         $outputStatements = [
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('status'), new Expr\MethodCall(new Expr\Variable('response'), 'getStatusCode'))),
-            new Stmt\Expression(new Expr\Assign(new Expr\Variable('body'), new Expr\Cast\String_(new Expr\MethodCall(new Expr\Variable('response'), 'getBody')))),
+            new Stmt\Expression(new Expr\Assign(new Expr\Variable('body'), new Expr\MethodCall(new Expr\Variable('response'), 'getContent', [new Arg(new Expr\ConstFetch(new Name('false')))]))),
         ];
 
         /** @var Registry $registry */
@@ -163,9 +164,9 @@ trait GetTransformResponseBodyTrait
                         new Expr\New_(
                             new Name($throwType),
                             [
-                                new Node\Arg(new Expr\Variable('status')),
-                                new Node\Arg(new Expr\Variable('body')),
-                                new Node\Arg(new Expr\Variable('response')),
+                                new Arg(new Expr\Variable('status')),
+                                new Arg(new Expr\Variable('body')),
+                                new Arg(new Expr\Variable('response')),
                             ]
                         )
                     )),
@@ -182,7 +183,7 @@ trait GetTransformResponseBodyTrait
         return [new Stmt\ClassMethod('transformResponseBody', [
             'flags' => Modifiers::PROTECTED,
             'params' => [
-                new Node\Param(new Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
+                new Node\Param(new Expr\Variable('response'), null, new Name('\\Symfony\\Contracts\\HttpClient\\ResponseInterface')),
                 new Node\Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
                 new Node\Param(new Expr\Variable('contentType'), new Expr\ConstFetch(new Name('null')), new Node\NullableType(new Name('string'))),
             ],
@@ -260,12 +261,12 @@ EOD
                 $statements[] = new Stmt\If_(
                     new Expr\BinaryOp\NotIdentical(
                         new Expr\FuncCall(new Name('stripos'), [
-                            new Node\Arg(
+                            new Arg(
                                 new Expr\FuncCall(new Name('strtolower'), [
                                     new Expr\Variable('contentType'),
                                 ]),
                             ),
-                            new Node\Arg(new Scalar\String_($baseContentType)),
+                            new Arg(new Scalar\String_($baseContentType)),
                         ]),
                         new Expr\ConstFetch(new Name('false'))
                     ),
@@ -297,12 +298,12 @@ EOD
                 $statements[] = new Stmt\If_(
                     new Expr\BinaryOp\NotIdentical(
                         new Expr\FuncCall(new Name('stripos'), [
-                            new Node\Arg(
+                            new Arg(
                                 new Expr\FuncCall(new Name('strtolower'), [
                                     new Expr\Variable('contentType'),
                                 ]),
                             ),
-                            new Node\Arg(new Scalar\String_($baseContentType)),
+                            new Arg(new Scalar\String_($baseContentType)),
                         ]),
                         new Expr\ConstFetch(new Name('false'))
                     ),
@@ -374,9 +375,9 @@ EOD
                 new Expr\Variable('serializer'),
                 'deserialize',
                 [
-                    new Node\Arg(new Expr\Variable('body')),
-                    new Node\Arg(new Scalar\String_($class)),
-                    new Node\Arg(new Scalar\String_($format)),
+                    new Arg(new Expr\Variable('body')),
+                    new Arg(new Scalar\String_($class)),
+                    new Arg(new Scalar\String_($format)),
                 ]
             );
         } elseif ($schema instanceof ($schemaClassName = $this->schemaClassName())) {
@@ -407,8 +408,8 @@ EOD
             $returnType = null;
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\' . $exceptionName;
             $contentStatement = new Stmt\Expression(new Expr\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
-                new Node\Arg($serializeStmt), new Node\Arg(new Expr\Variable('response')),
-            ] : [new Node\Arg(new Expr\Variable('response'))])));
+                new Arg($serializeStmt), new Arg(new Expr\Variable('response')),
+            ] : [new Arg(new Expr\Variable('response'))])));
         }
 
         if ($isBareJsonDecode) {
@@ -431,10 +432,10 @@ EOD
                 new Stmt\Expression(new Expr\Assign(
                     new Expr\Variable('decodedBody'),
                     new Expr\FuncCall(new Name('json_decode'), [
-                        new Node\Arg(new Expr\Variable('body')),
-                        new Node\Arg(new Expr\ConstFetch(new Name('false'))),
-                        new Node\Arg(new Scalar\LNumber(512)),
-                        new Node\Arg(new Expr\ConstFetch(new Name('JSON_THROW_ON_ERROR'))),
+                        new Arg(new Expr\Variable('body')),
+                        new Arg(new Expr\ConstFetch(new Name('false'))),
+                        new Arg(new Scalar\LNumber(512)),
+                        new Arg(new Expr\ConstFetch(new Name('JSON_THROW_ON_ERROR'))),
                     ])
                 )),
                 $statement,
@@ -445,9 +446,9 @@ EOD
                     new Expr\Variable('jsonException'),
                     [
                         new Stmt\Expression(new Expr\Throw_(new Expr\New_(new Name\FullyQualified(MalformedJsonException::class), [
-                            new Node\Arg(new Scalar\String_('Malformed JSON response body.')),
-                            new Node\Arg(new Expr\ConstFetch(new Name('0'))),
-                            new Node\Arg(new Expr\Variable('jsonException')),
+                            new Arg(new Scalar\String_('Malformed JSON response body.')),
+                            new Arg(new Expr\ConstFetch(new Name('0'))),
+                            new Arg(new Expr\Variable('jsonException')),
                         ]))),
                     ]
                 ),

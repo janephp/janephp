@@ -10,9 +10,9 @@ class BusinessRuleSearchTracesInternalServerErrorException extends InternalServe
          */
         private readonly \PicturePark\API\Model\PictureparkException $pictureparkException,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('Internal server error');
@@ -21,7 +21,7 @@ class BusinessRuleSearchTracesInternalServerErrorException extends InternalServe
     {
         return $this->pictureparkException;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

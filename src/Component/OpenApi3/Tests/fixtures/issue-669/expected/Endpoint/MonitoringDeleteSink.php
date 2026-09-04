@@ -22,7 +22,7 @@ class MonitoringDeleteSink extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     {
         return str_replace(['{sink_uuid}'], [rawurlencode($this->sink_uuid)], '/v2/monitoring/sinks/{sink_uuid}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -40,10 +40,10 @@ class MonitoringDeleteSink extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (204 === $status) {
             return null;
         }
@@ -66,5 +66,9 @@ class MonitoringDeleteSink extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

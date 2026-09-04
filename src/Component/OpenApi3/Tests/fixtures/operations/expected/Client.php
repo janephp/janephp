@@ -5,166 +5,150 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Operations;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\Client\Client
 {
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function testNoTag(string $fetch = self::FETCH_OBJECT)
+    public function testNoTag()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\TestNoTag(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\TestNoTag());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function getTestOperationUrl(string $fetch = self::FETCH_OBJECT)
+    public function getTestOperationUrl()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTestOperationUrl(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTestOperationUrl());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function getTestOperationUrlById(string $fetch = self::FETCH_OBJECT)
+    public function getTestOperationUrlById()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTestOperationUrlById(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTestOperationUrlById());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function getTestOperationUrlWithExtension(string $fetch = self::FETCH_OBJECT)
+    public function getTestOperationUrlWithExtension()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTestOperationUrlWithExtension(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTestOperationUrlWithExtension());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function deleteTest(string $fetch = self::FETCH_OBJECT)
+    public function deleteTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\DeleteTest(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\DeleteTest());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function getTest(string $fetch = self::FETCH_OBJECT)
+    public function getTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTest(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetTest());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function headTest(string $fetch = self::FETCH_OBJECT)
+    public function headTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\HeadTest(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\HeadTest());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function optionsTest(string $fetch = self::FETCH_OBJECT)
+    public function optionsTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\OptionsTest(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\OptionsTest());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function patchTest(string $fetch = self::FETCH_OBJECT)
+    public function patchTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PatchTest(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PatchTest());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function postTest(string $fetch = self::FETCH_OBJECT)
+    public function postTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PostTest(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PostTest());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function putTest(string $fetch = self::FETCH_OBJECT)
+    public function putTest()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PutTest(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PutTest());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing[]
      */
-    public function getThings(string $fetch = self::FETCH_OBJECT)
+    public function getThings()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetThings(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetThings());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing[]
      */
-    public function getThingsById(string $fetch = self::FETCH_OBJECT)
+    public function getThingsById()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetThingsById(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetThingsById());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing : \Psr\Http\Message\ResponseInterface)
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing
      */
-    public function getAnotherThing(string $fetch = self::FETCH_OBJECT)
+    public function getAnotherThing()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetAnotherThing(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetAnotherThing());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing : \Psr\Http\Message\ResponseInterface)
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Operations\Model\Thing
      */
-    public function getAnotherThingById(string $fetch = self::FETCH_OBJECT)
+    public function getAnotherThingById()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetAnotherThingById(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\GetAnotherThingById());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function postNo200Thing(string $fetch = self::FETCH_OBJECT)
+    public function postNo200Thing()
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PostNo200Thing(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Operations\Endpoint\PostNo200Thing());
     }
-    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = [];
-            if (count($additionalPlugins) > 0) {
-                $plugins = array_merge($plugins, $additionalPlugins);
-            }
-            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
+            $httpClient = \Symfony\Component\HttpClient\HttpClient::create();
         }
-        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
+        $plugins = [];
+        if (count($additionalPlugins) > 0) {
+            $plugins = array_merge($plugins, $additionalPlugins);
+        }
+        foreach ($plugins as $plugin) {
+            $httpClient = $plugin($httpClient);
+        }
         $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Operations\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
         $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi3\Tests\Expected\Operations\Runtime\Client\FormEncoder()]);
-        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
+        return new static($httpClient, $serializer);
     }
 }

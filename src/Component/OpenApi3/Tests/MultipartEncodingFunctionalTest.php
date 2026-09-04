@@ -162,11 +162,13 @@ use Jane\Component\OpenApiCommon\Console\Command\GenerateCommand;
 use Jane\Component\OpenApiCommon\Console\Loader\ConfigLoader;
 use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\Console\Loader\SchemaLoader;
-use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\HttpClient\MockHttpClient;
+use Symfony\Component\HttpClient\Response\MockResponse;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseStreamInterface;
 
 try {
     $config = json_decode(file_get_contents($argv[1]), true, 512, JSON_THROW_ON_ERROR);
@@ -207,16 +209,30 @@ try {
     $endpointClass = $namespacePrefix . '\Endpoint\UploadDocument';
     $clientClass = $namespacePrefix . '\Client';
 
-    /** @var RequestInterface|null $lastRequest */
-    $lastRequest = null;
-    $capturingClient = new class() implements ClientInterface {
-        public ?RequestInterface $lastRequest = null;
+    $capturingClient = new class() implements HttpClientInterface {
+        public ?array $lastRequest = null;
+        private readonly MockHttpClient $mock;
 
-        public function sendRequest(RequestInterface $request): ResponseInterface
+        public function __construct()
         {
-            $this->lastRequest = $request;
+            $this->mock = new MockHttpClient(static fn (): MockResponse => new MockResponse('{}', ['http_code' => 201]));
+        }
 
-            return \Http\Discovery\Psr17FactoryDiscovery::findResponseFactory()->createResponse(201);
+        public function request(string $method, string $url, array $options = []): ResponseInterface
+        {
+            $this->lastRequest = [$method, $url, $options];
+
+            return $this->mock->request($method, $url, $options);
+        }
+
+        public function stream(ResponseInterface|iterable $responses, ?float $timeout = null): ResponseStreamInterface
+        {
+            return $this->mock->stream($responses, $timeout);
+        }
+
+        public function withOptions(array $options): static
+        {
+            return $this;
         }
     };
 
@@ -245,12 +261,14 @@ try {
         throw new RuntimeException('No request reached the capturing HTTP client.');
     }
 
-    $request = $capturingClient->lastRequest;
+    [$method, $url, $options] = $capturingClient->lastRequest;
+    $contentTypeHeader = $options['headers']['Content-Type'] ?? '';
+    $body = $options['body'] ?? '';
     echo json_encode([
-        'method' => $request->getMethod(),
-        'path' => $request->getUri()->getPath(),
-        'contentType' => $request->getHeaderLine('Content-Type'),
-        'body' => (string) $request->getBody(),
+        'method' => $method,
+        'path' => (string) (parse_url($url, PHP_URL_PATH) ?: $url),
+        'contentType' => is_array($contentTypeHeader) ? (string) ($contentTypeHeader[0] ?? '') : (string) $contentTypeHeader,
+        'body' => is_resource($body) ? (string) stream_get_contents($body) : (string) $body,
     ], JSON_THROW_ON_ERROR);
 } catch (Throwable $error) {
     fwrite(STDERR, (string) $error);

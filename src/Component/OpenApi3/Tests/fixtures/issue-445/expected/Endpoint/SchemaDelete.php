@@ -28,7 +28,7 @@ class SchemaDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     {
         return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Schemas/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -58,10 +58,10 @@ class SchemaDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             try {
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
@@ -95,5 +95,9 @@ class SchemaDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     public function getAuthenticationScopes(): array
     {
         return ['Bearer'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

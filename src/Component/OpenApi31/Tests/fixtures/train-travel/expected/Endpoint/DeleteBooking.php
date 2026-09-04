@@ -25,7 +25,7 @@ class DeleteBooking extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel
     {
         return str_replace(['{bookingId}'], [rawurlencode($this->bookingId)], '/bookings/{bookingId}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -48,10 +48,10 @@ class DeleteBooking extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (204 === $status) {
             return null;
         }
@@ -77,5 +77,9 @@ class DeleteBooking extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel
     public function getAuthenticationScopes(): array
     {
         return ['OAuth2'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

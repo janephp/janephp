@@ -17,6 +17,7 @@ use Jane\Component\OpenApi2\JsonSchema\Model\HeaderParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\QueryParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Generator\Endpoint\GetAuthenticationScopesTrait;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\GetFetchModeTrait;
 use Jane\Component\OpenApiCommon\Generator\Endpoint\GetGetMethodTrait;
 use Jane\Component\OpenApiCommon\Generator\EndpointGeneratorInterface;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
@@ -31,6 +32,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
 {
     use GetAuthenticationScopesTrait;
     use GetConstructorTrait;
+    use GetFetchModeTrait;
     use GetGetBodyTrait;
     use GetGetExtraHeadersTrait;
     use GetGetMethodTrait;
@@ -103,6 +105,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
 
         $class->stmts[] = $transformBodyMethod;
         $class->stmts[] = $this->getAuthenticationScopesMethod($operation);
+        $class->stmts[] = $this->getFetchModeMethod($operation);
 
         $subNamespace = $operation->getSubNamespace();
         $endpointPath = $naming->getArtifactPath($schema->getDirectory(), 'Endpoint', $subNamespace);

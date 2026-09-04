@@ -39,6 +39,8 @@ final class Options
         public readonly bool $includeNullValue = true,
         public readonly bool $enumsAsObjects = false,
         public readonly ?bool $defaultAdditionalProperties = null,
+        /** Default fetch mode applied to GET/HEAD operations without an explicit `x-fetch-mode`; one of lazy, eager or preload */
+        public readonly ?string $defaultFetchMode = null,
         public readonly bool $allowExternalRefs = false,
         /** @var array<string> */
         public readonly array $externalRefAllowedHosts = [],
@@ -88,6 +90,7 @@ final class Options
             includeNullValue: $options['include-null-value'] ?? true,
             enumsAsObjects: $options['enums-as-objects'] ?? false,
             defaultAdditionalProperties: $options['default-additional-properties'] ?? null,
+            defaultFetchMode: $options['default-fetch-mode'] ?? null,
             allowExternalRefs: $options['allow-external-refs'] ?? false,
             externalRefAllowedHosts: $options['external-ref-allowed-hosts'] ?? [],
             externalRefFollowRedirects: $options['external-ref-follow-redirects'] ?? false,
@@ -128,6 +131,7 @@ final class Options
             'include-null-value' => $this->includeNullValue,
             'enums-as-objects' => $this->enumsAsObjects,
             'default-additional-properties' => $this->defaultAdditionalProperties,
+            'default-fetch-mode' => $this->defaultFetchMode,
             'allow-external-refs' => $this->allowExternalRefs,
             'external-ref-allowed-hosts' => $this->externalRefAllowedHosts,
             'external-ref-follow-redirects' => $this->externalRefFollowRedirects,

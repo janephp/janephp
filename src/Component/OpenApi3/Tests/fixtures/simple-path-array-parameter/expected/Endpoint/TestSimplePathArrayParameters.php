@@ -30,7 +30,7 @@ class TestSimplePathArrayParameters extends \Jane\Component\OpenApi3\Tests\Expec
     {
         return str_replace(['{string}', '{array}', '{stringRef}', '{arrayRef}'], [rawurlencode($this->string), rawurlencode(implode(',', $this->array)), rawurlencode($this->stringRef), rawurlencode(implode(',', $this->arrayRef))], '/test-simple-path-array-parameters/{string}/{array}/{stringRef}/{arrayRef}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -40,14 +40,18 @@ class TestSimplePathArrayParameters extends \Jane\Component\OpenApi3\Tests\Expec
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         return null;
     }
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

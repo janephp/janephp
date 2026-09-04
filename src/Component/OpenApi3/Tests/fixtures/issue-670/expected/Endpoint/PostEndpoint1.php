@@ -20,7 +20,7 @@ class PostEndpoint1 extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Run
     {
         return '/endpoint/1';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Issue670\Model\Endpoint1PostBody) {
             return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi3\Tests\Expected\Issue670\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -33,10 +33,10 @@ class PostEndpoint1 extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Run
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (204 === $status) {
             return null;
         }
@@ -44,5 +44,9 @@ class PostEndpoint1 extends \Jane\Component\OpenApi3\Tests\Expected\Issue670\Run
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

@@ -381,41 +381,30 @@ $apiClient = Vendor\Library\Generated\Client::create();
 > If you are using Symfony recipe, the client will be autowired. So you can use it anywhere by using your Client class
 
 > [!NOTE]
-> Optionally, you can pass a custom ``HttpClient`` respecting the [PSR18](https://www.php-fig.org/psr/psr-18/) Client
-> standard. If you which to use the constructor to reuse existing instances, sections below describe the 4 services
-> used by it and how to create them.
+> Optionally, you can pass a custom HTTP client implementing
+> `Symfony\Contracts\HttpClient\HttpClientInterface`. If you wish to use the constructor to reuse existing
+> instances, sections below describe the 2 services used by it and how to create them.
 
 ### Creating the Http Client
 
-The main dependency on the `Client` class is an HTTP client respecting the [PSR18](https://www.php-fig.org/psr/psr-18/)
-client standard. We highly recommend you to read the [PSR18](https://www.php-fig.org/psr/psr-18/) specification. This
-HTTP client MAY redirect on a 3XX responses (depend on your API), but it MUST not throw errors on 4XX and 5XX responses,
-as this can be handle by the generated code directly.
+The main dependency of the `Client` class is an HTTP client implementing
+[`Symfony\Contracts\HttpClient\HttpClientInterface`](https://symfony.com/doc/current/components/http_client.html).
+Jane's runtime never throws on 3XX/4XX/5XX responses: responses are consumed with the no-throw variants of the
+Symfony HttpClient read methods, and the generated code maps status codes to models / exceptions itself (as it
+historically did on top of PSR-18).
 
-Recommended way of creating an HTTP Client is by using the [discovery](http://docs.php-http.org/en/latest/discovery.html)
- library to create the client::
+The recommended way of creating the client is Symfony's factory:
 
 ```php
-$httpClient = Http\Discovery\Psr18ClientDiscovery::find();
+$httpClient = \Symfony\Component\HttpClient\HttpClient::create();
 ```
 
-This allows user of the API to use any client respecting the standard.
+This is exactly what the static `create` method does when you do not provide one. You can pass any decorator-built
+client, for example one configured with a base URI, proxy settings or a custom timeout.
 
 > [!TIP]
-> You can use clients such as Symfony [HttpClient](https://symfony.com/doc/current/components/http_client.html#psr-18)
-> as [PSR18](https://www.php-fig.org/psr/psr-18/) client.
-
-### Creating the Request Factory
-
-The generated endpoints will also need a factory to transform parameters and object of the endpoint to a
-[PSR7 Request](http://www.php-fig.org/psr/psr-7/#32-psrhttpmessagerequestinterface).
-
-Like the HTTP Client, it is recommended to use the [discovery](http://docs.php-http.org/en/latest/discovery.html)
-library to create it:
-
-```php
-$requestFactory = Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
-```
+> If you migrate from Jane 7.x: PSR-18 / PSR-7 clients are no longer accepted. Wrap your previous setup into a
+> `Symfony\Contracts\HttpClient\HttpClientInterface` implementation instead (or switch to `HttpClient::create()`).
 
 ### Creating the Serializer
 
@@ -436,18 +425,6 @@ With Symfony ecosystem, you just have to use the recipe and all the configuratio
 This serializer will be able to encode and decode every data respecting your OpenAPI specification thanks to autowiring
 of the generated normalizers.
 
-### Creating the Stream Factory
-
-The generated endpoints will also need a service to transform body parameters like `resource` or `string` into
-[PSR7 Stream](https://www.php-fig.org/psr/psr-7/#34-psrhttpmessagestreaminterface) when uploading file (multipart form).
-
-Like the HTTP Client and Request Factory, it is recommended to use the
-[discovery](http://docs.php-http.org/en/latest/discovery.html) library to create it:
-
-```php
-$streamFactory = Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-```
-
 ## Using the API Client
 
 Generated code has complete [PHPDoc](https://www.phpdoc.org/) comment on each method, which should correctly describe
@@ -462,48 +439,156 @@ $foos = $apiClient->listFoo();
 
 Also depending on the parameters of the endpoint, it may have 2 to more arguments.
 
-Last parameter of each endpoint, allows to specify which type of data the method must return. By default, it will try to
-return an object depending on the status code of your response. But you can force the method to return a
-[PSR7 Response](http://www.php-fig.org/psr/psr-7/#33-psrhttpmessageresponseinterface) object:
+Historically, each generated method accepted a trailing `$fetch` argument (`FETCH_OBJECT` / `FETCH_RESPONSE`). This
+parameter was removed in 8.0. For a raw response, use `executeRawEndpoint`:
 
 ```php
 $apiClient = Vendor\Library\Generated\Client::create();
-// First argument is an empty list of parameters, second one being the return type
-$response = $apiClient->listFoo([], Vendor\Library\Generated\Client::FETCH_RESPONSE);
+$response = $apiClient->executeRawEndpoint(new Vendor\Library\Generated\Endpoint\ListFoo());
+
+// $response is a Symfony\Contracts\HttpClient\ResponseInterface:
+// reading it with the default $throw = true throws on 4xx/5xx, pass false to handle the status yourself
+$statusCode = $response->getStatusCode();
+$body = $response->getContent(false);
 ```
 
-This allow to do custom work when the API does not return standard JSON body.
+This allows custom work when the API does not return a standard JSON body. See [Fetch modes](#fetch-modes) below for
+the new, per-operation ways of controlling when requests are sent and parsed.
 
-### Host and basePath support
+## Fetch modes
 
-Jane OpenAPI will never generate the complete url with the host and the base path for an endpoint. Instead, it will only
-do a request on the specified path.
+Jane 8.0 introduces a per-operation fetch strategy for **GET and HEAD** operations, controlled by the `x-fetch-mode`
+OpenAPI extension and the `default-fetch-mode` generation option (ADR 0011). Every other verb (POST, PUT, PATCH,
+DELETE, OPTIONS, ...) is **always eager** and must not declare the attribute: generation fails with a clean,
+complete error listing every violation and its JSON pointer.
 
-If host and/or base path is present in the specification it is added, via the `PluginClient`, `AddHostPlugin` and
-`AddPathPlugin` thanks to `php-http plugin system`_ when using the static `create`.
+### Values
 
-This allow you to configure different host and base path given a specific environment / server, which may defer when in test,
-preprod and production environment.
+| Mode | Behavior |
+|---|---|
+| `lazy` (default) | Nothing is sent when the method is called: it returns a `Result` holding a **deferred send**. The request (including body serialization and authentication) happens on first access of the `Result`. |
+| `eager` | The historical behavior: a blocking request is sent and parsed at call time, returning the parsed model directly. Documented exceptions are thrown at call time. |
+| `preload` | The request is registered immediately and the method returns a `Result` holding the in-flight response. All in-flight requests of a client progress **concurrently** as soon as any of them is consumed (`stream()`, `await()`, first parse). Parsing happens on access. |
 
-Jane OpenAPI will always try to use `https` if present in the scheme (or if there is no scheme). It will use the first scheme
-present if `https` is not present.
+```yaml
+paths:
+  /pets:
+    get:
+      operationId: listPets
+      x-fetch-mode: preload   # lazy | eager | preload
+      responses:
+        '200':
+          description: OK
+```
 
-Those plugins are also applied when you provide your own PSR-18 client to the static `create` method. If you do not want
-the host and/or base path of the specification to be applied around your client (for example because it is already fully
-configured with the correct base URL, or you manage the URL yourself through your own plugins), pass `false` as fourth
-argument:
+Resolution precedence for GET/HEAD operations: the operation's own `x-fetch-mode`, then the `default-fetch-mode`
+generation option, then `lazy`:
 
 ```php
-$apiClient = Vendor\Library\Generated\Client::create($myPsr18Client, [], [], false);
+return [
+    // ...
+    'default-fetch-mode' => 'eager', // applies to GET/HEAD operations without an explicit x-fetch-mode only
+];
+```
+
+### The Result object
+
+`lazy` and `preload` methods return a `Jane\Component\OpenApiRuntime\Client\Result`:
+
+```php
+$result = $apiClient->listPets(); // x-fetch-mode: lazy
+
+// nothing has been sent yet:
+$result->isInitialized(); // false
+
+// any of these sends the request and parses through the endpoint's own
+// status-code mapping (models / exceptions):
+$pets = $result->toObject();       // object|null (generated model)
+$rows  = $result->toArray();       // array (JSON arrays)
+$code  = $result->getStatusCode(); // never throws on 3xx/4xx/5xx
+
+// lifecycle helpers:
+$result->await();   // wait for the transfer to complete without parsing
+$result->cancel();  // abort the transfer (or prevent the deferred send)
+
+// dropping an unconsumed Result aborts its transfer too (GC = drop-to-cancel)
+```
+
+Batching with `preload` (or awaiting several lazy results):
+
+```php
+$results = [$apiClient->listPets(), $apiClient->listOwners()];
+
+// drive every in-flight response concurrently:
+foreach ($apiClient->stream($results) as $response => $chunk) {
+    if ($chunk->isLast()) {
+        // $response->getStatusCode() ...
+    }
+}
+```
+
+> [!WARNING]
+> Responses are buffered by default: peak memory grows with payload size × parallelism. You can pass
+> `'buffer' => false` through a decorator's `withOptions()` to stream bodies instead, but then responses must be
+> consumed in order.
+
+### Exception timing
+
+| Mode | When the request is sent | When status exceptions are thrown |
+|---|---|---|
+| `eager` | At call time | At call time |
+| `preload` | At call time (registered; sent on the first tick) | On first access (`toObject()`, `toArray()`, `getStatusCode()` never throws; parse does) |
+| `lazy` | On first access | On first access, through the same mapping as eager |
+
+`default-fetch-mode: eager` is the migration escape hatch if you rely on call-time exceptions from GET/HEAD endpoints
+(see the [compatibility guide](../guides/compatibility.md)).
+
+### Host, basePath and servers support
+
+Jane OpenAPI never generates the complete URL with the host and the base path for an endpoint. Instead, it only
+performs requests on the specified path.
+
+When the specification declares a server URL (OpenAPI 3 `servers`, OpenAPI 2 `host` / `basePath`), the generated
+static `create` method wraps the HTTP client with
+`Jane\Component\OpenApiRuntime\Client\Plugin\ServerUrlHttpClient`, a decorator rewriting request URLs to that
+server URL (scheme, host, port and base path prepended). Jane OpenAPI will always try to use `https` if present in the
+scheme (or if there is no scheme), and the first scheme present otherwise.
+
+> [!NOTE]
+> The base path is prepended explicitly (like the old HTTPlug `AddPathPlugin`): Symfony's `base_uri` request option
+> cannot be used for this, as its RFC 3986 resolution drops the base URI path for the absolute-path URLs every
+> generated endpoint uses.
+
+This decorator is also applied when you provide your own HTTP client to the static `create` method. If you do not want
+the server URL of the specification to be applied around your client (for example because it is already fully
+configured with the correct base URL, or you manage the URL yourself through your own decorators), pass `false` as
+fourth argument:
+
+```php
+$apiClient = Vendor\Library\Generated\Client::create($myHttpClient, [], [], false);
 ```
 
 The parameter only exists on generated clients whose specification declares a server URL (OpenAPI 3 `servers`, OpenAPI 2
 `host` / `basePath`).
 
-### Having custom plugins
+### Having custom decorators
 
-If you want to support more behavior such as authentication or other stuff that need a plugin, you can pass them
-through the second argument of the static `create` method.
+The historical HTTPlug plugin system is replaced by plain **HTTP client decorator factories**. The second argument of
+the static `create` method accepts any list of `callable(HttpClientInterface): HttpClientInterface` — classes with an
+`__invoke` like the shipped decorators, or simple closures:
+
+```php
+$apiClient = Vendor\Library\Generated\Client::create(null, [
+    // add default headers to every request
+    static fn (HttpClientInterface $httpClient): HttpClientInterface => $httpClient->withOptions([
+        'headers' => ['Accept-Language' => 'fr-FR'],
+    ]),
+]);
+```
+
+Decorators are applied left-to-right around the client, after the server URL decorator: they observe already rewritten
+URLs. An exception thrown inside a decorator surfaces at call time for eager operations, and when the deferred request
+is sent for lazy ones.
 
 ### Authentication
 
@@ -529,11 +614,15 @@ components:
       name: X-API-Key
 ```
 
-When your OpenAPI definition contains it, Jane will generate a Authentication namespace that contains all plugins you
-need for your API.
-Then you give all your authentication plugins to `Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry`.
-And finally you can pass it to your Jane Client (only if you let Jane make a HTTP Client for you, otherwise this second
-parameters is ignored).
+When your OpenAPI definition contains it, Jane will generate an Authentication namespace that contains all
+authentication classes you need for your API. Each generated class implements
+`Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin`: its `decorate(string $method, string $url, array &$options): void`
+method receives the Symfony HttpClient request options by reference — header based authentication adds data to the
+`headers` option, query parameter based authentication to the `query` option.
+
+Then you give all your authentication classes to
+`Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry` (a decorator factory), and pass it through the
+second argument of the static `create` method.
 
 An example Authentification directory:
 
@@ -671,9 +760,9 @@ use Vendor\Library\Generated\Endpoint\FooEndpoint;
 
 class Client extends BaseClient
 {
-  public function getFoo(array $queryParameters = [], $fetch = self::FETCH_OBJECT)
+  public function getFoo(array $queryParameters = [])
   {
-    return $this->executePsr7Endpoint(new FooEndpoint($queryParameters), $fetch);
+    return $this->executeEndpoint(new FooEndpoint($queryParameters));
   }
 }
 ```

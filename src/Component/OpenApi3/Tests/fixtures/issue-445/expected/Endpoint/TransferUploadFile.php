@@ -15,7 +15,7 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
      * To upload a file, split it into chunks of reasonable size (accepted range is 1MB-100MB). The last chunk may be smaller than 1MB.
      * @param string $transferId ID of transfer.
      * @param string $requestId Identifier of file.
-     * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody
+     * @param null|string|resource $requestBody
      * @param array{
      *    "ChunkNumber": int, //Information about chunk.
      *    "CurrentChunkSize": int, //Information about chunk.
@@ -39,9 +39,9 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
     {
         return str_replace(['{transferId}', '{requestId}'], [rawurlencode($this->transferId), rawurlencode($this->requestId)], '/v1/Transfers/{transferId}/files/{requestId}/upload');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
-        if (is_string($this->body) or is_resource($this->body) or $this->body instanceof \Psr\Http\Message\StreamInterface) {
+        if (is_string($this->body) or is_resource($this->body)) {
             return [['Content-Type' => ['application/octet-stream']], $this->body];
         }
         return [[], null];
@@ -75,10 +75,10 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return null;
         }
@@ -107,5 +107,9 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
     public function getAuthenticationScopes(): array
     {
         return ['Bearer'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

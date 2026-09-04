@@ -27,7 +27,7 @@ class CreateBookingPayment extends \Jane\Component\OpenApi31\Tests\Expected\Trai
     {
         return str_replace(['{bookingId}'], [rawurlencode($this->bookingId)], '/bookings/{bookingId}/payment');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingPayment) {
             return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -52,10 +52,10 @@ class CreateBookingPayment extends \Jane\Component\OpenApi31\Tests\Expected\Trai
      *
      * @return null|\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsBookingIdPaymentPostResponse200
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\BookingsBookingIdPaymentPostResponse200', 'json');
         }
@@ -78,5 +78,9 @@ class CreateBookingPayment extends \Jane\Component\OpenApi31\Tests\Expected\Trai
     public function getAuthenticationScopes(): array
     {
         return ['OAuth2'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

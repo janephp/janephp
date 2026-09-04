@@ -10,9 +10,9 @@ class DatabasesUpdateLogsinkInternalServerErrorException extends InternalServerE
          */
         private readonly \Jane\Generated\DigitalOcean\Model\Error $error,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('There was a server error.');
@@ -21,7 +21,7 @@ class DatabasesUpdateLogsinkInternalServerErrorException extends InternalServerE
     {
         return $this->error;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

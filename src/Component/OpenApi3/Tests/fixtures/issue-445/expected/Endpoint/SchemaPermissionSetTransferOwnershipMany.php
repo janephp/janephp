@@ -21,7 +21,7 @@ class SchemaPermissionSetTransferOwnershipMany extends \PicturePark\API\Runtime\
     {
         return '/v1/SchemaPermissionSets/many/ownership';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest) {
             return [['Content-Type' => ['application/json']], \PicturePark\API\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -45,10 +45,10 @@ class SchemaPermissionSetTransferOwnershipMany extends \PicturePark\API\Runtime\
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return null;
         }
@@ -77,5 +77,9 @@ class SchemaPermissionSetTransferOwnershipMany extends \PicturePark\API\Runtime\
     public function getAuthenticationScopes(): array
     {
         return ['Bearer'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

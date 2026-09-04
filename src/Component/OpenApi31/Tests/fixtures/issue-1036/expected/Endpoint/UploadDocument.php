@@ -20,10 +20,10 @@ class UploadDocument extends \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\R
     {
         return '/documents';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Model\DocumentUpload) {
-            $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
+            $bodyBuilder = new \Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder();
             $formParameters = $serializer->normalize($this->body, 'json');
             $partOptions = ['file' => ['filename' => 'file', 'headers' => ['Content-Type' => 'application/pdf']], 'preview' => ['filename' => 'preview']];
             foreach ($formParameters as $key => $value) {
@@ -34,9 +34,7 @@ class UploadDocument extends \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\R
                 $resourceOptions = $partOptions[$key] ?? [];
                 if (isset($resourceOptions['filename'])) {
                     $uri = null;
-                    if ($value instanceof \Psr\Http\Message\StreamInterface) {
-                        $uri = $value->getMetadata('uri');
-                    } elseif (is_resource($value)) {
+                    if (is_resource($value)) {
                         $uri = stream_get_meta_data($value)['uri'] ?? null;
                     }
                     if (is_string($uri) && is_file($uri)) {
@@ -59,10 +57,10 @@ class UploadDocument extends \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\R
      *
      * @return null|\Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Model\Document
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\ExpectedIssue1036\Model\Document', 'json');
         }
@@ -70,5 +68,9 @@ class UploadDocument extends \Jane\Component\OpenApi31\Tests\ExpectedIssue1036\R
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

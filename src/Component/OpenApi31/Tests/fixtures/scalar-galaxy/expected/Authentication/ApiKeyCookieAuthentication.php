@@ -9,9 +9,8 @@ class ApiKeyCookieAuthentication implements \Jane\Component\OpenApiRuntime\Clien
     {
         $this->{'apiKey'} = $apiKey;
     }
-    public function authentication(\Psr\Http\Message\RequestInterface $request): \Psr\Http\Message\RequestInterface
+    public function decorate(string $method, string $url, array &$options): void
     {
-        return $request;
     }
     public function getScope(): string
     {

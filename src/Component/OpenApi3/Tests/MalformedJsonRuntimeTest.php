@@ -4,9 +4,11 @@ namespace Jane\Component\OpenApi3\Tests;
 
 use Jane\Component\JsonSchemaRuntime\Exception\JaneExceptionInterface;
 use Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException;
-use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpClient\MockHttpClient;
+use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * Runtime test for generated endpoints returning a raw json_decode() of the
@@ -16,6 +18,12 @@ use Symfony\Component\Serializer\Serializer;
 class MalformedJsonRuntimeTest extends TestCase
 {
     private const FIXTURE_DIR = __DIR__ . '/fixtures/response-reference';
+
+    private static function response(int $statusCode, string $body = '', array $headers = []): ResponseInterface
+    {
+        return (new MockHttpClient(new MockResponse($body, ['http_code' => $statusCode, 'response_headers' => $headers])))
+            ->request('GET', 'https://example.com/test');
+    }
 
     public static function setUpBeforeClass(): void
     {
@@ -31,7 +39,7 @@ class MalformedJsonRuntimeTest extends TestCase
     public function testMalformedJsonThrowsRuntimeException(): void
     {
         $endpoint = new Expected\ResponseReference\Endpoint\TestRefArray();
-        $response = new Response(200, ['Content-Type' => 'application/json'], '{"broken": ');
+        $response = self::response(200, '{"broken": ', ['Content-Type' => 'application/json']);
 
         try {
             $endpoint->parseResponse($response, new Serializer([], []));
@@ -49,7 +57,7 @@ class MalformedJsonRuntimeTest extends TestCase
     public function testValidJsonIsStillDecoded(): void
     {
         $endpoint = new Expected\ResponseReference\Endpoint\TestRefArray();
-        $response = new Response(200, ['Content-Type' => 'application/json'], '[{"id": 1}]');
+        $response = self::response(200, '[{"id": 1}]', ['Content-Type' => 'application/json']);
 
         $result = $endpoint->parseResponse($response, new Serializer([], []));
 
@@ -59,7 +67,7 @@ class MalformedJsonRuntimeTest extends TestCase
     public function testValidScalarJsonRootIsStillDecoded(): void
     {
         $endpoint = new Expected\ResponseReference\Endpoint\TestRefArray();
-        $response = new Response(200, ['Content-Type' => 'application/json'], '0');
+        $response = self::response(200, '0', ['Content-Type' => 'application/json']);
 
         $result = $endpoint->parseResponse($response, new Serializer([], []));
 

@@ -17,7 +17,6 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
-use Psr\Http\Message\StreamInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
@@ -211,7 +210,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             'integer' => ['int'],
             'array' => ['array'],
             'object' => ['array'],
-            'file' => ['string', 'resource', '\\' . StreamInterface::class],
+            'file' => ['string', 'resource'],
         ];
 
         if (!isset($convertArray[$type])) {

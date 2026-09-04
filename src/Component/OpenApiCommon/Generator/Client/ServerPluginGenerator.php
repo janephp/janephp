@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApiCommon\Generator\Client;
 
-use Http\Discovery\Psr17FactoryDiscovery;
+use Jane\Component\OpenApiRuntime\Client\Plugin\ServerUrlHttpClient;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -13,7 +13,7 @@ trait ServerPluginGenerator
     /**
      * @param object $openApi
      *
-     * @return array{0: string|null, 1: string[]}
+     * @return array{0: string|null}
      */
     abstract protected function discoverServer(mixed $openApi): array;
 
@@ -28,37 +28,22 @@ trait ServerPluginGenerator
     }
 
     /**
+     * Emits the registration of the server URL decorator: request URLs are
+     * rewritten to the spec's server URL (scheme, host, port and base path).
+     *
      * @param object $openApi
      */
     protected function getServerPluginsStatements(mixed $openApi): array
     {
-        [$baseUri, $plugins] = $this->discoverServer($openApi);
+        [$baseUri] = $this->discoverServer($openApi);
 
-        $stmts = [
+        return [
             new Stmt\Expression(new Expr\Assign(
-                new Expr\Variable('uri'),
-                new Expr\MethodCall(
-                    new Expr\StaticCall(
-                        new Name\FullyQualified(Psr17FactoryDiscovery::class),
-                        'findUriFactory'
-                    ),
-                    'createUri',
-                    [
-                        new Node\Arg(new Node\Scalar\String_($baseUri)),
-                    ]
-                )
+                new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
+                new Expr\New_(new Name\FullyQualified(ServerUrlHttpClient::class), [
+                    new Node\Arg(new Node\Scalar\String_($baseUri)),
+                ])
             )),
         ];
-
-        foreach ($plugins as $pluginClass) {
-            $stmts[] = new Stmt\Expression(new Expr\Assign(
-                new Expr\ArrayDimFetch(new Expr\Variable('plugins')),
-                new Expr\New_(new Name\FullyQualified($pluginClass), [
-                    new Node\Arg(new Expr\Variable('uri')),
-                ])
-            ));
-        }
-
-        return $stmts;
     }
 }

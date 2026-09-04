@@ -10,9 +10,9 @@ class GetTokenUnauthorizedException extends UnauthorizedException
          */
         private readonly \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\UnauthorizedError $unauthorizedError,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('Unauthorized');
@@ -21,7 +21,7 @@ class GetTokenUnauthorizedException extends UnauthorizedException
     {
         return $this->unauthorizedError;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

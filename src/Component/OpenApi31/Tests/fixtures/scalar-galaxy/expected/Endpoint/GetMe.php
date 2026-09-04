@@ -22,7 +22,7 @@ class GetMe extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtim
     {
         return '/me';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -41,10 +41,10 @@ class GetMe extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtim
      *
      * @return null|\Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Model\User', 'json');
         }
@@ -58,5 +58,9 @@ class GetMe extends \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtim
     public function getAuthenticationScopes(): array
     {
         return ['bearerAuth', 'basicAuth', 'apiKeyQuery', 'apiKeyHeader', 'apiKeyCookie', 'oAuth2', 'openIdConnect'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

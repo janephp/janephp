@@ -2,11 +2,10 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\Client;
 
-use Http\Message\MultipartStream\MultipartStreamBuilder;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\StreamFactoryInterface;
+use Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 abstract class BaseEndpoint implements Endpoint
 {
     protected array $formParameters = [];
@@ -14,11 +13,11 @@ abstract class BaseEndpoint implements Endpoint
     protected array $headerParameters = [];
     protected mixed $body;
     abstract public function getMethod(): string;
-    abstract public function getBody(SerializerInterface $serializer, ?StreamFactoryInterface $streamFactory = null): array;
+    abstract public function getBody(SerializerInterface $serializer): array;
     abstract public function getUri(): string;
     abstract public function getAuthenticationScopes(): array;
     /**
-     * Transform the response body into a value for the requested fetch mode.
+     * Transform the response body into a value.
      *
      * @return mixed
      */
@@ -102,9 +101,9 @@ abstract class BaseEndpoint implements Endpoint
     {
         return [['Content-Type' => ['application/x-www-form-urlencoded']], http_build_query($this->getFormOptionsResolver()->resolve($this->formParameters))];
     }
-    protected function getMultipartBody(?StreamFactoryInterface $streamFactory = null): array
+    protected function getMultipartBody(): array
     {
-        $bodyBuilder = new MultipartStreamBuilder($streamFactory);
+        $bodyBuilder = new MultipartStreamBuilder();
         $formParameters = $this->getFormOptionsResolver()->resolve($this->formParameters);
         foreach ($formParameters as $key => $value) {
             $bodyBuilder->addResource($key, $value);

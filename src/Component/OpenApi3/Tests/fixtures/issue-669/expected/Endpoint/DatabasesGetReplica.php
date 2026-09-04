@@ -29,7 +29,7 @@ class DatabasesGetReplica extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     {
         return str_replace(['{database_cluster_uuid}', '{replica_name}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->replica_name)], '/v2/databases/{database_cluster_uuid}/replicas/{replica_name}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -47,10 +47,10 @@ class DatabasesGetReplica extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplica|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplica', 'json');
         }
@@ -73,5 +73,9 @@ class DatabasesGetReplica extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

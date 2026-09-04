@@ -17,6 +17,12 @@ parameters:
 
 	ignoreErrors:
 		-
+			message: '#Jane\\Component\\OpenApi3\\Tests\\FetchMode(Default|Eager|Head|Preload)#'
+			path: src/Component/OpenApi3/Tests/FetchModeRuntimeTest.php
+		-
+			message: '#Jane\\Component\\OpenApi3\\Tests\\Expected\\MultipartNestedObject#'
+			path: src/Component/OpenApi3/Tests/MultipartNestedObjectRuntimeTest.php
+		-
 			message: '#^Property Docker\\Api\\Model\\ContainersCreatePostBody::\$exposedPorts.*does not accept Docker\\Api\\Runtime\\JsonObject\.$#'
 			path: src/Component/OpenApi2/Tests/EmptyObjectNormalizationTest.php
 		-

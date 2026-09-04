@@ -5,7 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint;
 class TestBinaryBody extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\Client\Endpoint
 {
     /**
-     * @param string|resource|\Psr\Http\Message\StreamInterface $testBinary
+     * @param string|resource $testBinary
      */
     public function __construct($testBinary)
     {
@@ -20,7 +20,7 @@ class TestBinaryBody extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\
     {
         return '/test-binary-body';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], $this->body];
     }
@@ -30,10 +30,10 @@ class TestBinaryBody extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return null;
         }
@@ -41,5 +41,9 @@ class TestBinaryBody extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

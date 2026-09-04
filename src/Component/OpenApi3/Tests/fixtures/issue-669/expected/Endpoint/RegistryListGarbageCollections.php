@@ -27,7 +27,7 @@ class RegistryListGarbageCollections extends \Jane\Generated\DigitalOcean\Runtim
     {
         return str_replace(['{registry_name}'], [rawurlencode($this->registry_name)], '/v2/registry/{registry_name}/garbage-collections');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -55,10 +55,10 @@ class RegistryListGarbageCollections extends \Jane\Generated\DigitalOcean\Runtim
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollections|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseGarbageCollections', 'json');
         }
@@ -81,5 +81,9 @@ class RegistryListGarbageCollections extends \Jane\Generated\DigitalOcean\Runtim
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

@@ -49,7 +49,6 @@ class MultipartEncodingRuntimeTest extends TestCase
     public function testMultipartPartsCarryFilenameAndDeclaredContentType(): void
     {
         $serializer = $this->createSerializer();
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
 
         /** @var class-string */
         $modelClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\DocumentUpload');
@@ -61,7 +60,7 @@ class MultipartEncodingRuntimeTest extends TestCase
         $body->preview = 'preview-file-content';
         $body->note = 'a note';
 
-        $result = (new $endpointClass($body))->getBody($serializer, $streamFactory);
+        $result = (new $endpointClass($body))->getBody($serializer);
 
         $this->assertIsArray($result);
         $this->assertCount(2, $result);
@@ -89,7 +88,6 @@ class MultipartEncodingRuntimeTest extends TestCase
     public function testDefaultFilenameYieldsToRealFileStreams(): void
     {
         $serializer = $this->createSerializer();
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
 
         $realFile = sys_get_temp_dir() . '/jane-issue-1036-upload.pdf';
         file_put_contents($realFile, 'real-file-content');
@@ -103,7 +101,7 @@ class MultipartEncodingRuntimeTest extends TestCase
             // a resource backed by a real file keeps its derived filename (and extension based Content-Type guessing stays possible)
             $body = new $modelClass();
             $body->file = fopen($realFile, 'r');
-            $result = (new $endpointClass($body))->getBody($serializer, $streamFactory);
+            $result = (new $endpointClass($body))->getBody($serializer);
             $streamContent = (string) $result[1];
             $this->assertMatchesRegularExpression('/name="file"; filename="jane-issue-1036-upload.pdf"\R/', $streamContent);
 
@@ -113,7 +111,7 @@ class MultipartEncodingRuntimeTest extends TestCase
             rewind($inMemory);
             $body = new $modelClass();
             $body->file = $inMemory;
-            $result = (new $endpointClass($body))->getBody($serializer, $streamFactory);
+            $result = (new $endpointClass($body))->getBody($serializer);
             $streamContent = (string) $result[1];
             $this->assertMatchesRegularExpression('/name="file"; filename="file"\R/', $streamContent);
         } finally {

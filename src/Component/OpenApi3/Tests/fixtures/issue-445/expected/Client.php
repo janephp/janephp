@@ -6,7 +6,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
 {
     /**
      * @param string $id The business process id.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessGetBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessGetUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessProcessGetNotFoundException
@@ -15,15 +14,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function businessProcessGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function businessProcessGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessGet($id));
     }
     /**
      * @param \PicturePark\API\Model\BusinessProcessCreateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessCreateBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessCreateUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessProcessCreateNotFoundException
@@ -32,17 +30,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessCreateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function businessProcessCreate(\PicturePark\API\Model\BusinessProcessCreateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function businessProcessCreate(\PicturePark\API\Model\BusinessProcessCreateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessCreate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessCreate($requestBody));
     }
     /**
      * Only available for business processes created through BusinessProcessCreateRequest). The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param string $id The business process id.
      * @param \PicturePark\API\Model\BusinessProcessStateChangeRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessChangeStateBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessChangeStateUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessProcessChangeStateNotFoundException
@@ -51,17 +48,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessChangeStateTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessChangeStateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function businessProcessChangeState(string $id, \PicturePark\API\Model\BusinessProcessStateChangeRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function businessProcessChangeState(string $id, \PicturePark\API\Model\BusinessProcessStateChangeRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessChangeState($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessChangeState($id, $requestBody));
     }
     /**
      * Only available for business processes created through BusinessProcessCreateRequest).
      * @param string $id The business process id.
      * @param \PicturePark\API\Model\BusinessProcessNotificationUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationNotFoundException
@@ -70,16 +66,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function businessProcessUpdateNotification(string $id, \PicturePark\API\Model\BusinessProcessNotificationUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function businessProcessUpdateNotification(string $id, \PicturePark\API\Model\BusinessProcessNotificationUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessUpdateNotification($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessUpdateNotification($id, $requestBody));
     }
     /**
      * Only available if the business process indicates support for cancellation in SupportsCancellation.
      * @param string $id The business process id.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessCancelBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessCancelUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessProcessCancelNotFoundException
@@ -88,11 +83,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessCancelTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessCancelInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function businessProcessCancel(string $id, string $fetch = self::FETCH_OBJECT)
+    public function businessProcessCancel(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessCancel($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessCancel($id));
     }
     /**
      * Wait for the business process to hit one of the given states.
@@ -101,7 +96,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *    "states"?: array, //Business process states to wait for.
      *    "timeout"?: string, //The timeout to wait for completion.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesNotFoundException
@@ -110,11 +104,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcessWaitForStateResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcessWaitForStateResult
      */
-    public function businessProcessWaitForStates(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function businessProcessWaitForStates(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessWaitForStates($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessWaitForStates($id, $queryParameters));
     }
     /**
      * Wait for the business process to hit one of the given life cycles.
@@ -123,7 +117,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *    "lifeCycles"?: array, //Business process life cycles to wait for.
      *    "timeout"?: string, //The timeout to wait for completion.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesNotFoundException
@@ -132,11 +125,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult
      */
-    public function businessProcessWaitForLifeCycles(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function businessProcessWaitForLifeCycles(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessWaitForLifeCycles($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessWaitForLifeCycles($id, $queryParameters));
     }
     /**
      * Shortcut to wait for the business process to hit one of the finished life cycles.
@@ -150,7 +143,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *    "timeout"?: string, //The timeout to wait for completion.
      *    "waitForContinuationCompletion"?: bool, //Waits for the completion of the continuation business process (if existing, recursively). Default to true.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionNotFoundException
@@ -159,16 +151,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult
      */
-    public function businessProcessWaitForCompletion(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function businessProcessWaitForCompletion(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessWaitForCompletion($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessWaitForCompletion($id, $queryParameters));
     }
     /**
      * Gets details of the given business process.
      * @param string $id The business process id.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessGetDetailsBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessGetDetailsUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessProcessGetDetailsNotFoundException
@@ -177,16 +168,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessGetDetailsTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessGetDetailsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcessDetails : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcessDetails
      */
-    public function businessProcessGetDetails(string $id, string $fetch = self::FETCH_OBJECT)
+    public function businessProcessGetDetails(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessGetDetails($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessGetDetails($id));
     }
     /**
      * Search for business processes.
      * @param \PicturePark\API\Model\BusinessProcessSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessSearchBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessProcessSearchNotFoundException
@@ -195,14 +185,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcessSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcessSearchResult
      */
-    public function businessProcessSearch(\PicturePark\API\Model\BusinessProcessSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function businessProcessSearch(\PicturePark\API\Model\BusinessProcessSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessSearch($requestBody));
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationBadRequestException
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationNotFoundException
@@ -211,15 +200,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessRuleGetConfigurationInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessRuleConfiguration : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessRuleConfiguration
      */
-    public function businessRuleGetConfiguration(string $fetch = self::FETCH_OBJECT)
+    public function businessRuleGetConfiguration()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessRuleGetConfiguration(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessRuleGetConfiguration());
     }
     /**
      * @param \PicturePark\API\Model\BusinessRuleConfigurationUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessRuleUpdateConfigurationBadRequestException
      * @throws \PicturePark\API\Exception\BusinessRuleUpdateConfigurationUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessRuleUpdateConfigurationNotFoundException
@@ -228,15 +216,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessRuleUpdateConfigurationTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessRuleUpdateConfigurationInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function businessRuleUpdateConfiguration(\PicturePark\API\Model\BusinessRuleConfigurationUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function businessRuleUpdateConfiguration(\PicturePark\API\Model\BusinessRuleConfigurationUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessRuleUpdateConfiguration($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessRuleUpdateConfiguration($requestBody));
     }
     /**
      * @param \PicturePark\API\Model\BusinessRuleTraceLogSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesBadRequestException
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesUnauthorizedException
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesNotFoundException
@@ -245,14 +232,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessRuleSearchTracesInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessRuleTraceLogSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessRuleTraceLogSearchResult
      */
-    public function businessRuleSearchTraces(\PicturePark\API\Model\BusinessRuleTraceLogSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function businessRuleSearchTraces(\PicturePark\API\Model\BusinessRuleTraceLogSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessRuleSearchTraces($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessRuleSearchTraces($requestBody));
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ChannelGetAllBadRequestException
      * @throws \PicturePark\API\Exception\ChannelGetAllUnauthorizedException
      * @throws \PicturePark\API\Exception\ChannelGetAllNotFoundException
@@ -261,16 +247,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelGetAllTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelGetAllInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\Channel[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\Channel[]
      */
-    public function channelGetAll(string $fetch = self::FETCH_OBJECT)
+    public function channelGetAll()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ChannelGetAll(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ChannelGetAll());
     }
     /**
      * Creates new channel based on supplied request.
      * @param \PicturePark\API\Model\ChannelCreateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ChannelCreateBadRequestException
      * @throws \PicturePark\API\Exception\ChannelCreateUnauthorizedException
      * @throws \PicturePark\API\Exception\ChannelCreateNotFoundException
@@ -279,16 +264,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelCreateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\Channel : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\Channel
      */
-    public function channelCreate(\PicturePark\API\Model\ChannelCreateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function channelCreate(\PicturePark\API\Model\ChannelCreateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ChannelCreate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ChannelCreate($requestBody));
     }
     /**
      * Deletes the channel specified by the ID.
      * @param string $id ID of the channel that should be deleted.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ChannelDeleteBadRequestException
      * @throws \PicturePark\API\Exception\ChannelDeleteUnauthorizedException
      * @throws \PicturePark\API\Exception\ChannelDeleteNotFoundException
@@ -297,16 +281,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelDeleteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function channelDelete(string $id, string $fetch = self::FETCH_OBJECT)
+    public function channelDelete(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ChannelDelete($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ChannelDelete($id));
     }
     /**
      * Gets the channel information by the output format ID.
      * @param string $id The channel ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ChannelGetBadRequestException
      * @throws \PicturePark\API\Exception\ChannelGetUnauthorizedException
      * @throws \PicturePark\API\Exception\ChannelGetNotFoundException
@@ -315,17 +298,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\Channel : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\Channel
      */
-    public function channelGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function channelGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ChannelGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ChannelGet($id));
     }
     /**
      * Updates the channel specified by the ID and based on supplied request.
      * @param string $id ID of channel to update
      * @param \PicturePark\API\Model\ChannelUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ChannelUpdateBadRequestException
      * @throws \PicturePark\API\Exception\ChannelUpdateUnauthorizedException
      * @throws \PicturePark\API\Exception\ChannelUpdateNotFoundException
@@ -334,16 +316,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelUpdateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\Channel : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\Channel
      */
-    public function channelUpdate(string $id, \PicturePark\API\Model\ChannelUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function channelUpdate(string $id, \PicturePark\API\Model\ChannelUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ChannelUpdate($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ChannelUpdate($id, $requestBody));
     }
     /**
      * Deletes the content permission set specified by the ID.
      * @param string $id Content permission set ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteNotFoundException
@@ -352,16 +333,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function contentPermissionSetDelete(string $id, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetDelete(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetDelete($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetDelete($id));
     }
     /**
      * Gets the content permission set detail information by the content permission set ID.
      * @param string $id Content permission set ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetNotFoundException
@@ -370,17 +350,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentPermissionSetDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ContentPermissionSetDetail
      */
-    public function contentPermissionSetGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetGet($id));
     }
     /**
      * Updates the content permission set specified by the ID and based on supplied request.
      * @param string $id Content permission set ID.
      * @param \PicturePark\API\Model\ContentPermissionSetUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateNotFoundException
@@ -389,18 +368,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentPermissionSetDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ContentPermissionSetDetail
      */
-    public function contentPermissionSetUpdate(string $id, \PicturePark\API\Model\ContentPermissionSetUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetUpdate(string $id, \PicturePark\API\Model\ContentPermissionSetUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetUpdate($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetUpdate($id, $requestBody));
     }
     /**
      * Gets multiple content permission set details by the content permission set IDs.
      * @param array{
      *    "ids"?: array, //Ids
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyNotFoundException
@@ -409,16 +387,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentPermissionSetDetail[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ContentPermissionSetDetail[]
      */
-    public function contentPermissionSetGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetGetMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetGetMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetGetMany($queryParameters));
     }
     /**
      * Creates new content permission set based on supplied request.
      * @param \PicturePark\API\Model\ContentPermissionSetCreateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateNotFoundException
@@ -427,17 +404,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentPermissionSetDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ContentPermissionSetDetail
      */
-    public function contentPermissionSetCreate(\PicturePark\API\Model\ContentPermissionSetCreateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetCreate(\PicturePark\API\Model\ContentPermissionSetCreateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetCreate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetCreate($requestBody));
     }
     /**
      * Transfers ownership of content permission set to supplied user.
      * @param string $id Content permission set ID.
      * @param \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipNotFoundException
@@ -446,16 +422,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function contentPermissionSetTransferOwnership(string $id, \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetTransferOwnership(string $id, \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetTransferOwnership($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetTransferOwnership($id, $requestBody));
     }
     /**
      * Returns permissions for the content permission set for the current user.
      * @param string $id Content permission set ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsNotFoundException
@@ -464,16 +439,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
+     * @return null|array
      */
-    public function contentPermissionSetGetPermissions(string $id, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetGetPermissions(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetGetPermissions($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetGetPermissions($id));
     }
     /**
      * Creates new content permission sets based on supplied requests.
      * @param \PicturePark\API\Model\ContentPermissionSetCreateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateManyNotFoundException
@@ -482,16 +456,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetCreateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BulkResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BulkResponse
      */
-    public function contentPermissionSetCreateMany(\PicturePark\API\Model\ContentPermissionSetCreateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetCreateMany(\PicturePark\API\Model\ContentPermissionSetCreateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetCreateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetCreateMany($requestBody));
     }
     /**
      * Updates the content permission sets specified by the IDs and based on supplied request.
      * @param \PicturePark\API\Model\ContentPermissionSetUpdateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateManyNotFoundException
@@ -500,16 +473,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetUpdateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BulkResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BulkResponse
      */
-    public function contentPermissionSetUpdateMany(\PicturePark\API\Model\ContentPermissionSetUpdateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetUpdateMany(\PicturePark\API\Model\ContentPermissionSetUpdateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetUpdateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetUpdateMany($requestBody));
     }
     /**
      * Deletes the content permission sets specified by the IDs.
      * @param \PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteManyNotFoundException
@@ -518,16 +490,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BulkResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BulkResponse
      */
-    public function contentPermissionSetDeleteMany(\PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetDeleteMany(\PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetDeleteMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetDeleteMany($requestBody));
     }
     /**
      * Transfers ownership of multiple content permission sets to respective supplied users.
      * @param \PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipManyNotFoundException
@@ -536,18 +507,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function contentPermissionSetTransferOwnershipMany(\PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetTransferOwnershipMany(\PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetTransferOwnershipMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetTransferOwnershipMany($requestBody));
     }
     /**
      * Returns permissions for multiple content permission sets for the current user.
      * @param array{
      *    "ids"?: array, //Ids
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyNotFoundException
@@ -556,16 +526,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\PermissionSetUserPermissionRights[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\PermissionSetUserPermissionRights[]
      */
-    public function contentPermissionSetGetPermissionsMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetGetPermissionsMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetGetPermissionsMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetGetPermissionsMany($queryParameters));
     }
     /**
      * Searches content permission sets as specified in the search request.
      * @param \PicturePark\API\Model\PermissionSetSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetSearchBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentPermissionSetSearchNotFoundException
@@ -574,11 +543,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\PermissionSetSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\PermissionSetSearchResult
      */
-    public function contentPermissionSetSearch(\PicturePark\API\Model\PermissionSetSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetSearch(\PicturePark\API\Model\PermissionSetSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetSearch($requestBody));
     }
     /**
     * Deletes a single content. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
@@ -591,7 +560,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentDeleteBadRequestException
     * @throws \PicturePark\API\Exception\ContentDeleteUnauthorizedException
     * @throws \PicturePark\API\Exception\ContentDeleteNotFoundException
@@ -600,11 +568,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ContentDeleteTooManyRequestsException
     * @throws \PicturePark\API\Exception\ContentDeleteInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+    * @return null
     */
-    public function contentDelete(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function contentDelete(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDelete($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDelete($id, $queryParameters));
     }
     /**
      * Gets the content detail by ID.
@@ -612,7 +580,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @param array{
      *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentGetBadRequestException
      * @throws \PicturePark\API\Exception\ContentGetUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentGetNotFoundException
@@ -621,11 +588,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ContentDetail
      */
-    public function contentGet(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function contentGet(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGet($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGet($id, $queryParameters));
     }
     /**
      * Download a single content in a specific output format. To resize images on download specify target width &amp; height. To download only a portion of the file, specify the range parameter.
@@ -639,7 +606,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *    "range"?: string, //The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000).
      * } $headerParameters
      * @param array $accept Accept content header application/json|application/octet-stream
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentDownloadBadRequestException
      * @throws \PicturePark\API\Exception\ContentDownloadUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentDownloadNotFoundException
@@ -649,11 +615,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDownloadInternalServerErrorException
      * @throws \PicturePark\API\Exception\ContentDownloadPreconditionFailedException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function contentDownload(string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function contentDownload(string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDownload($contentId, $outputFormatId, $queryParameters, $headerParameters, $accept), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDownload($contentId, $outputFormatId, $queryParameters, $headerParameters, $accept));
     }
     /**
      * Provides a lightweight endpoint to download content thumbnails.
@@ -664,7 +630,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *    "height"?: int, //Optional height in pixels to resize image.
      * } $queryParameters
      * @param array $accept Accept content header application/json|application/octet-stream
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailBadRequestException
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailNotFoundException
@@ -674,11 +639,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailInternalServerErrorException
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailPreconditionFailedException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function contentDownloadThumbnail(string $id, string $size, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function contentDownloadThumbnail(string $id, string $size, array $queryParameters = [], array $accept = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDownloadThumbnail($id, $size, $queryParameters, $accept), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDownloadThumbnail($id, $size, $queryParameters, $accept));
     }
     /**
      * Gets multiple content details by IDs.
@@ -687,7 +652,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *    "ids": array, //List of content IDs
      *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentGetManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentGetManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentGetManyNotFoundException
@@ -696,11 +660,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentDetail[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ContentDetail[]
      */
-    public function contentGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function contentGetMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetMany($queryParameters));
     }
     /**
     * Create a single file-less content item. To import files, see [Transfer](#tag/Transfer).
@@ -714,7 +678,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentCreateBadRequestException
     * @throws \PicturePark\API\Exception\ContentCreateUnauthorizedException
     * @throws \PicturePark\API\Exception\ContentCreateNotFoundException
@@ -723,11 +686,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ContentCreateTooManyRequestsException
     * @throws \PicturePark\API\Exception\ContentCreateInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentDetail : \Psr\Http\Message\ResponseInterface)
+    * @return null|\PicturePark\API\Model\ContentDetail
     */
-    public function contentCreate(\PicturePark\API\Model\ContentCreateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function contentCreate(\PicturePark\API\Model\ContentCreateRequest $requestBody, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentCreate($requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentCreate($requestBody, $queryParameters));
     }
     /**
     * Updates metadata layers of a specified content. For file-less contents, the content itself can be updated as well.
@@ -745,7 +708,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentUpdateMetadataBadRequestException
     * @throws \PicturePark\API\Exception\ContentUpdateMetadataUnauthorizedException
     * @throws \PicturePark\API\Exception\ContentUpdateMetadataNotFoundException
@@ -754,11 +716,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ContentUpdateMetadataTooManyRequestsException
     * @throws \PicturePark\API\Exception\ContentUpdateMetadataInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentDetail : \Psr\Http\Message\ResponseInterface)
+    * @return null|\PicturePark\API\Model\ContentDetail
     */
-    public function contentUpdateMetadata(string $id, \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function contentUpdateMetadata(string $id, \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdateMetadata($id, $requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdateMetadata($id, $requestBody, $queryParameters));
     }
     /**
     * Updates the content permission sets of a single content. To get a list of available content permission sets, see [Permissions](operation/Permission_SearchContentPermissions)
@@ -772,7 +734,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsBadRequestException
     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsUnauthorizedException
     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsNotFoundException
@@ -781,11 +742,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsTooManyRequestsException
     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentDetail : \Psr\Http\Message\ResponseInterface)
+    * @return null|\PicturePark\API\Model\ContentDetail
     */
-    public function contentUpdatePermissions(string $id, \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function contentUpdatePermissions(string $id, \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdatePermissions($id, $requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdatePermissions($id, $requestBody, $queryParameters));
     }
     /**
     * Restores a previously deleted content.
@@ -798,7 +759,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentRestoreBadRequestException
     * @throws \PicturePark\API\Exception\ContentRestoreUnauthorizedException
     * @throws \PicturePark\API\Exception\ContentRestoreNotFoundException
@@ -807,11 +767,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ContentRestoreTooManyRequestsException
     * @throws \PicturePark\API\Exception\ContentRestoreInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+    * @return null
     */
-    public function contentRestore(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function contentRestore(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentRestore($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentRestore($id, $queryParameters));
     }
     /**
     * Transfers ownership of a content to another user. The target user must have the ManageContent UserRight.
@@ -824,7 +784,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentTransferOwnershipBadRequestException
     * @throws \PicturePark\API\Exception\ContentTransferOwnershipUnauthorizedException
     * @throws \PicturePark\API\Exception\ContentTransferOwnershipNotFoundException
@@ -833,18 +792,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ContentTransferOwnershipTooManyRequestsException
     * @throws \PicturePark\API\Exception\ContentTransferOwnershipInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+    * @return null
     */
-    public function contentTransferOwnership(string $id, \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function contentTransferOwnership(string $id, \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentTransferOwnership($id, $requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentTransferOwnership($id, $requestBody, $queryParameters));
     }
     /**
      * Updates binary file of existing content. The file must already be uploaded before calling this endpoint. See [Transfer](#tag/Transfer).
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param string $id The ID of the content to replace.
      * @param \PicturePark\API\Model\ContentFileUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentUpdateFileBadRequestException
      * @throws \PicturePark\API\Exception\ContentUpdateFileUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentUpdateFileNotFoundException
@@ -853,17 +811,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentUpdateFileTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentUpdateFileInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentUpdateFile(string $id, \PicturePark\API\Model\ContentFileUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentUpdateFile(string $id, \PicturePark\API\Model\ContentFileUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdateFile($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdateFile($id, $requestBody));
     }
     /**
      * Gets the references (list items, contents, shares) to a single content.
      * @param string $id The content ID whose references to retrieve.
      * @param \PicturePark\API\Model\ContentReferencesRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentGetReferencesBadRequestException
      * @throws \PicturePark\API\Exception\ContentGetReferencesUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentGetReferencesNotFoundException
@@ -872,16 +829,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetReferencesTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetReferencesInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentReferencesResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ContentReferencesResult
      */
-    public function contentGetReferences(string $id, \PicturePark\API\Model\ContentReferencesRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentGetReferences(string $id, \PicturePark\API\Model\ContentReferencesRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetReferences($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetReferences($id, $requestBody));
     }
     /**
      * Retrieves all outputs available for content, also dynamic rendered outputs are returned, if requested.
      * @param string $id ID of content.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentGetOutputsBadRequestException
      * @throws \PicturePark\API\Exception\ContentGetOutputsUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentGetOutputsNotFoundException
@@ -890,16 +846,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetOutputsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetOutputsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\OutputResolveResult[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\OutputResolveResult[]
      */
-    public function contentGetOutputs(string $id, string $fetch = self::FETCH_OBJECT)
+    public function contentGetOutputs(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetOutputs($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetOutputs($id));
     }
     /**
      * Creates a download link for one or more contents. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ContentDownloadLinkCreateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentCreateDownloadLinkBadRequestException
      * @throws \PicturePark\API\Exception\ContentCreateDownloadLinkUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentCreateDownloadLinkNotFoundException
@@ -908,15 +863,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentCreateDownloadLinkTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentCreateDownloadLinkInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentCreateDownloadLink(\PicturePark\API\Model\ContentDownloadLinkCreateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentCreateDownloadLink(\PicturePark\API\Model\ContentDownloadLinkCreateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentCreateDownloadLink($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentCreateDownloadLink($requestBody));
     }
     /**
      * @param string $token Token
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentGetDownloadLinkBadRequestException
      * @throws \PicturePark\API\Exception\ContentGetDownloadLinkUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentGetDownloadLinkNotFoundException
@@ -925,17 +879,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetDownloadLinkTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetDownloadLinkInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\DownloadLink : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\DownloadLink
      */
-    public function contentGetDownloadLink(string $token, string $fetch = self::FETCH_OBJECT)
+    public function contentGetDownloadLink(string $token)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetDownloadLink($token), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetDownloadLink($token));
     }
     /**
      * Create multiple file-less content items. To import files, see [Transfer](#tag/Transfer).
      * The operation is executed asynchronous and it's not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ContentCreateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentCreateManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentCreateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentCreateManyNotFoundException
@@ -944,18 +897,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentCreateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentCreateMany(\PicturePark\API\Model\ContentCreateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentCreateMany(\PicturePark\API\Model\ContentCreateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentCreateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentCreateMany($requestBody));
     }
     /**
      * Updates metadata layers of multiple contents. For file-less contents, the contents itself can be updated a swell.
      * See [ShouldUpdateMetadata](https://github.com/Picturepark/Picturepark.SDK.DotNet/blob/master/src/Picturepark.SDK.V1.Tests/Clients/ContentTests.cs) tests.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ContentMetadataUpdateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataManyNotFoundException
@@ -964,17 +916,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentUpdateMetadataManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentUpdateMetadataMany(\PicturePark\API\Model\ContentMetadataUpdateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentUpdateMetadataMany(\PicturePark\API\Model\ContentMetadataUpdateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdateMetadataMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdateMetadataMany($requestBody));
     }
     /**
      * Updates the content permission sets of multiple contents. To get a list of available content permission sets, see [Permissions](#operation/Permission_SearchContentPermissions)
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ContentPermissionsUpdateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsManyNotFoundException
@@ -983,17 +934,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentUpdatePermissionsManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentUpdatePermissionsMany(\PicturePark\API\Model\ContentPermissionsUpdateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentUpdatePermissionsMany(\PicturePark\API\Model\ContentPermissionsUpdateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdatePermissionsMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdatePermissionsMany($requestBody));
     }
     /**
      * Transfers ownerships of multiple contents to specified users. The target users must have the ManageContent UserRight.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ContentOwnershipTransferManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipManyNotFoundException
@@ -1002,17 +952,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentTransferOwnershipManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentTransferOwnershipMany(\PicturePark\API\Model\ContentOwnershipTransferManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentTransferOwnershipMany(\PicturePark\API\Model\ContentOwnershipTransferManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentTransferOwnershipMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentTransferOwnershipMany($requestBody));
     }
     /**
      * Deletes multiple contents. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ContentDeleteManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentDeleteManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentDeleteManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentDeleteManyNotFoundException
@@ -1021,18 +970,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentDeleteManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentDeleteMany(\PicturePark\API\Model\ContentDeleteManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentDeleteMany(\PicturePark\API\Model\ContentDeleteManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDeleteMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDeleteMany($requestBody));
     }
     /**
      * Deletes multiple contents. A filter must be provided to limit the deletion to specific contents.
      * The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
      * The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ContentDeleteManyFilterRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentDeleteManyByFilterBadRequestException
      * @throws \PicturePark\API\Exception\ContentDeleteManyByFilterUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentDeleteManyByFilterNotFoundException
@@ -1041,17 +989,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentDeleteManyByFilterTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentDeleteManyByFilterInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentDeleteManyByFilter(\PicturePark\API\Model\ContentDeleteManyFilterRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentDeleteManyByFilter(\PicturePark\API\Model\ContentDeleteManyFilterRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDeleteManyByFilter($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDeleteManyByFilter($requestBody));
     }
     /**
      * Restores previously deleted contents.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ContentRestoreManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentRestoreManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentRestoreManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentRestoreManyNotFoundException
@@ -1060,16 +1007,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentRestoreManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentRestoreManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentRestoreMany(\PicturePark\API\Model\ContentRestoreManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentRestoreMany(\PicturePark\API\Model\ContentRestoreManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentRestoreMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentRestoreMany($requestBody));
     }
     /**
      * Gets references (list items, contents, shares) to content documents defined by IDs.
      * @param \PicturePark\API\Model\ContentManyReferencesRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentGetReferencesManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentGetReferencesManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentGetReferencesManyNotFoundException
@@ -1078,17 +1024,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetReferencesManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetReferencesManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentReferencesResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ContentReferencesResult
      */
-    public function contentGetReferencesMany(\PicturePark\API\Model\ContentManyReferencesRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentGetReferencesMany(\PicturePark\API\Model\ContentManyReferencesRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetReferencesMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetReferencesMany($requestBody));
     }
     /**
      * Retrieves all outputs available for contents, also dynamic rendered outputs are returned, if requested.
      * A maximum of 1000 content ids can be specified.
      * @param \PicturePark\API\Model\OutputResolveManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentGetOutputsManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentGetOutputsManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentGetOutputsManyNotFoundException
@@ -1097,11 +1042,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentGetOutputsManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentGetOutputsManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\OutputResolveResult[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\OutputResolveResult[]
      */
-    public function contentGetOutputsMany(\PicturePark\API\Model\OutputResolveManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentGetOutputsMany(\PicturePark\API\Model\OutputResolveManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetOutputsMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetOutputsMany($requestBody));
     }
     /**
      * Updates metadata layers' fields of multiple contents. For file-less contents, the content's fields themselves can be updated as well.
@@ -1109,7 +1054,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * See [ShouldUpdateMetadataMany](https://github.com/Picturepark/Picturepark.SDK.DotNet/blob/master/src/Picturepark.SDK.V1.Tests/Clients/ContentTests.cs) tests.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ContentFieldsBatchUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByIdsBadRequestException
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByIdsUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByIdsNotFoundException
@@ -1118,18 +1062,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByIdsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByIdsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentBatchUpdateFieldsByIds(\PicturePark\API\Model\ContentFieldsBatchUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentBatchUpdateFieldsByIds(\PicturePark\API\Model\ContentFieldsBatchUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentBatchUpdateFieldsByIds($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentBatchUpdateFieldsByIds($requestBody));
     }
     /**
      * Updates metadata layers' fields of multiple contents. For file-less contents, the content's fields themselves can be updated as well.
      * A filter must be provided to limit the update to specific contents. The same set of changes is applied to all the contents.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ContentFieldsBatchUpdateFilterRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByFilterBadRequestException
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByFilterUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByFilterNotFoundException
@@ -1138,16 +1081,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByFilterTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentBatchUpdateFieldsByFilterInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function contentBatchUpdateFieldsByFilter(\PicturePark\API\Model\ContentFieldsBatchUpdateFilterRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentBatchUpdateFieldsByFilter(\PicturePark\API\Model\ContentFieldsBatchUpdateFilterRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentBatchUpdateFieldsByFilter($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentBatchUpdateFieldsByFilter($requestBody));
     }
     /**
      * Searches contents as specified in the search request.
      * @param \PicturePark\API\Model\ContentSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentSearchBadRequestException
      * @throws \PicturePark\API\Exception\ContentSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentSearchNotFoundException
@@ -1156,16 +1098,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ContentSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ContentSearchResult
      */
-    public function contentSearch(\PicturePark\API\Model\ContentSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentSearch(\PicturePark\API\Model\ContentSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentSearch($requestBody));
     }
     /**
      * Aggregates content by content fields values as specified in the aggregators saved on a channel.
      * @param \PicturePark\API\Model\ContentAggregationOnChannelRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentAggregateOnChannelBadRequestException
      * @throws \PicturePark\API\Exception\ContentAggregateOnChannelUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentAggregateOnChannelNotFoundException
@@ -1174,16 +1115,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentAggregateOnChannelTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentAggregateOnChannelInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ObjectAggregationResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ObjectAggregationResult
      */
-    public function contentAggregateOnChannel(\PicturePark\API\Model\ContentAggregationOnChannelRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentAggregateOnChannel(\PicturePark\API\Model\ContentAggregationOnChannelRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentAggregateOnChannel($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentAggregateOnChannel($requestBody));
     }
     /**
      * Aggregates content by content fields values as specified in the aggregation request.
      * @param \PicturePark\API\Model\ContentAggregationRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentAggregateBadRequestException
      * @throws \PicturePark\API\Exception\ContentAggregateUnauthorizedException
      * @throws \PicturePark\API\Exception\ContentAggregateNotFoundException
@@ -1192,14 +1132,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentAggregateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentAggregateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ObjectAggregationResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ObjectAggregationResult
      */
-    public function contentAggregate(\PicturePark\API\Model\ContentAggregationRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function contentAggregate(\PicturePark\API\Model\ContentAggregationRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentAggregate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentAggregate($requestBody));
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusBadRequestException
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusUnauthorizedException
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusNotFoundException
@@ -1208,14 +1147,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusTooManyRequestsException
      * @throws \PicturePark\API\Exception\DisplayValueGetStatusInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\DisplayValueStatus : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\DisplayValueStatus
      */
-    public function displayValueGetStatus(string $fetch = self::FETCH_OBJECT)
+    public function displayValueGetStatus()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DisplayValueGetStatus(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DisplayValueGetStatus());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\DisplayValueRerenderBadRequestException
      * @throws \PicturePark\API\Exception\DisplayValueRerenderUnauthorizedException
      * @throws \PicturePark\API\Exception\DisplayValueRerenderNotFoundException
@@ -1224,17 +1162,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DisplayValueRerenderTooManyRequestsException
      * @throws \PicturePark\API\Exception\DisplayValueRerenderInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function displayValueRerender(string $fetch = self::FETCH_OBJECT)
+    public function displayValueRerender()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DisplayValueRerender(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DisplayValueRerender());
     }
     /**
      * Gets the current version of a document.
      * @param string $documentType The type of the document (e.g. Content).
      * @param string $documentId The ID of the document (e.g. contentId).
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentBadRequestException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentUnauthorizedException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentNotFoundException
@@ -1243,18 +1180,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetCurrentInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\DocumentHistory : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\DocumentHistory
      */
-    public function documentHistoryGetCurrent(string $documentType, string $documentId, string $fetch = self::FETCH_OBJECT)
+    public function documentHistoryGetCurrent(string $documentType, string $documentId)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistoryGetCurrent($documentType, $documentId), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistoryGetCurrent($documentType, $documentId));
     }
     /**
      * Gets a specific version of a document.
      * @param string $documentType The type of the document (e.g. Content).
      * @param string $documentId The ID of the document (e.g. contentId).
      * @param int $documentVersion The version of the document.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\DocumentHistoryGetVersionBadRequestException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetVersionUnauthorizedException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetVersionNotFoundException
@@ -1263,11 +1199,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DocumentHistoryGetVersionTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistoryGetVersionInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\DocumentHistory : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\DocumentHistory
      */
-    public function documentHistoryGetVersion(string $documentType, string $documentId, int $documentVersion, string $fetch = self::FETCH_OBJECT)
+    public function documentHistoryGetVersion(string $documentType, string $documentId, int $documentVersion)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistoryGetVersion($documentType, $documentId, $documentVersion), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistoryGetVersion($documentType, $documentId, $documentVersion));
     }
     /**
      * Compare the current version of a document with the requested version and get the differences.
@@ -1276,7 +1212,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @param array{
      *    "version"?: int, //The version of the document to compare with.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentBadRequestException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentUnauthorizedException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentNotFoundException
@@ -1285,11 +1220,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\DocumentHistoryDifference : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\DocumentHistoryDifference
      */
-    public function documentHistoryCompareWithCurrent(string $documentType, string $documentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function documentHistoryCompareWithCurrent(string $documentType, string $documentId, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistoryCompareWithCurrent($documentType, $documentId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistoryCompareWithCurrent($documentType, $documentId, $queryParameters));
     }
     /**
      * Compare a specific version of a document with another version and get the differences.
@@ -1299,7 +1234,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @param array{
      *    "version"?: int, //The version of the document to compare with.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithVersionBadRequestException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithVersionUnauthorizedException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithVersionNotFoundException
@@ -1308,16 +1242,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithVersionTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithVersionInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\DocumentHistoryDifference : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\DocumentHistoryDifference
      */
-    public function documentHistoryCompareWithVersion(string $documentType, string $documentId, int $documentVersion, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function documentHistoryCompareWithVersion(string $documentType, string $documentId, int $documentVersion, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistoryCompareWithVersion($documentType, $documentId, $documentVersion, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistoryCompareWithVersion($documentType, $documentId, $documentVersion, $queryParameters));
     }
     /**
      * Search the document history as specified in the search request.
      * @param \PicturePark\API\Model\DocumentHistorySearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\DocumentHistorySearchBadRequestException
      * @throws \PicturePark\API\Exception\DocumentHistorySearchUnauthorizedException
      * @throws \PicturePark\API\Exception\DocumentHistorySearchNotFoundException
@@ -1326,14 +1259,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\DocumentHistorySearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\DocumentHistorySearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\DocumentHistorySearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\DocumentHistorySearchResult
      */
-    public function documentHistorySearch(\PicturePark\API\Model\DocumentHistorySearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function documentHistorySearch(\PicturePark\API\Model\DocumentHistorySearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistorySearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistorySearch($requestBody));
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllBadRequestException
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllUnauthorizedException
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllNotFoundException
@@ -1342,14 +1274,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\IdentityProvider[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\IdentityProvider[]
      */
-    public function identityProviderGetAll(string $fetch = self::FETCH_OBJECT)
+    public function identityProviderGetAll()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderGetAll(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderGetAll());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllBasicInfosBadRequestException
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllBasicInfosUnauthorizedException
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllBasicInfosNotFoundException
@@ -1358,15 +1289,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllBasicInfosTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetAllBasicInfosInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\IdentityProviderBasicInfo[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\IdentityProviderBasicInfo[]
      */
-    public function identityProviderGetAllBasicInfos(string $fetch = self::FETCH_OBJECT)
+    public function identityProviderGetAllBasicInfos()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderGetAllBasicInfos(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderGetAllBasicInfos());
     }
     /**
      * @param string $id Identity provider ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\IdentityProviderGetBadRequestException
      * @throws \PicturePark\API\Exception\IdentityProviderGetUnauthorizedException
      * @throws \PicturePark\API\Exception\IdentityProviderGetNotFoundException
@@ -1375,17 +1305,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\IdentityProvider : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\IdentityProvider
      */
-    public function identityProviderGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function identityProviderGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderGet($id));
     }
     /**
      * Identity provider has to be already created via UI
      * @param string $id Identity provider ID.
      * @param \PicturePark\API\Model\IdentityProviderEditable $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\IdentityProviderUpdateBadRequestException
      * @throws \PicturePark\API\Exception\IdentityProviderUpdateUnauthorizedException
      * @throws \PicturePark\API\Exception\IdentityProviderUpdateNotFoundException
@@ -1394,14 +1323,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderUpdateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\IdentityProvider : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\IdentityProvider
      */
-    public function identityProviderUpdate(string $id, \PicturePark\API\Model\IdentityProviderEditable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function identityProviderUpdate(string $id, \PicturePark\API\Model\IdentityProviderEditable $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderUpdate($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderUpdate($id, $requestBody));
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesBadRequestException
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesUnauthorizedException
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesNotFoundException
@@ -1410,43 +1338,39 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
+     * @return null|array
      */
-    public function identityProviderGetSynchronizableAttributes(string $fetch = self::FETCH_OBJECT)
+    public function identityProviderGetSynchronizableAttributes()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderGetSynchronizableAttributes(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\IdentityProviderGetSynchronizableAttributes());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\VersionInfo : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\VersionInfo
      */
-    public function infoGetVersion(string $fetch = self::FETCH_OBJECT)
+    public function infoGetVersion()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\InfoGetVersion(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\InfoGetVersion());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\CustomerInfo : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\CustomerInfo
      */
-    public function infoGetInfo(string $fetch = self::FETCH_OBJECT)
+    public function infoGetInfo()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\InfoGetInfo(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\InfoGetInfo());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SystemStatus : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SystemStatus
      */
-    public function infoGetStatus(string $fetch = self::FETCH_OBJECT)
+    public function infoGetStatus()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\InfoGetStatus(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\InfoGetStatus());
     }
     /**
      * Gets the json schema for the specified schema.
      * @param string $id The ID of the schema whose json schema to retrieve.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\JsonSchemaGetBadRequestException
      * @throws \PicturePark\API\Exception\JsonSchemaGetUnauthorizedException
      * @throws \PicturePark\API\Exception\JsonSchemaGetNotFoundException
@@ -1455,11 +1379,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\JsonSchemaGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\JsonSchemaGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function jsonSchemaGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function jsonSchemaGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\JsonSchemaGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\JsonSchemaGet($id));
     }
     /**
     * Deletes a list item. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all related files will be deleted.
@@ -1472,7 +1396,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ListItemDeleteBadRequestException
     * @throws \PicturePark\API\Exception\ListItemDeleteUnauthorizedException
     * @throws \PicturePark\API\Exception\ListItemDeleteNotFoundException
@@ -1481,11 +1404,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ListItemDeleteTooManyRequestsException
     * @throws \PicturePark\API\Exception\ListItemDeleteInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+    * @return null
     */
-    public function listItemDelete(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function listItemDelete(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemDelete($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemDelete($id, $queryParameters));
     }
     /**
      * Gets the list item detail by ID.
@@ -1493,7 +1416,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @param array{
      *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemGetBadRequestException
      * @throws \PicturePark\API\Exception\ListItemGetUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemGetNotFoundException
@@ -1502,11 +1424,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ListItemDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ListItemDetail
      */
-    public function listItemGet(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function listItemGet(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGet($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGet($id, $queryParameters));
     }
     /**
     * Updates a single list item.
@@ -1521,7 +1443,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ListItemUpdateBadRequestException
     * @throws \PicturePark\API\Exception\ListItemUpdateUnauthorizedException
     * @throws \PicturePark\API\Exception\ListItemUpdateNotFoundException
@@ -1530,11 +1451,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ListItemUpdateTooManyRequestsException
     * @throws \PicturePark\API\Exception\ListItemUpdateInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ListItemDetail : \Psr\Http\Message\ResponseInterface)
+    * @return null|\PicturePark\API\Model\ListItemDetail
     */
-    public function listItemUpdate(string $id, \PicturePark\API\Model\ListItemUpdateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function listItemUpdate(string $id, \PicturePark\API\Model\ListItemUpdateRequest $requestBody, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemUpdate($id, $requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemUpdate($id, $requestBody, $queryParameters));
     }
     /**
     * Restores a previously deleted list item.
@@ -1547,7 +1468,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ListItemRestoreBadRequestException
     * @throws \PicturePark\API\Exception\ListItemRestoreUnauthorizedException
     * @throws \PicturePark\API\Exception\ListItemRestoreNotFoundException
@@ -1556,17 +1476,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ListItemRestoreTooManyRequestsException
     * @throws \PicturePark\API\Exception\ListItemRestoreInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+    * @return null
     */
-    public function listItemRestore(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function listItemRestore(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemRestore($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemRestore($id, $queryParameters));
     }
     /**
      * Gets the references (list items, contents) to a single list item.
      * @param string $id The ID of the list item.
      * @param \PicturePark\API\Model\ListItemReferencesRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemGetReferencesBadRequestException
      * @throws \PicturePark\API\Exception\ListItemGetReferencesUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemGetReferencesNotFoundException
@@ -1575,11 +1494,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemGetReferencesTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemGetReferencesInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ListItemReferencesResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ListItemReferencesResult
      */
-    public function listItemGetReferences(string $id, \PicturePark\API\Model\ListItemReferencesRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemGetReferences(string $id, \PicturePark\API\Model\ListItemReferencesRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGetReferences($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGetReferences($id, $requestBody));
     }
     /**
      * Gets multiple list item details by IDs.
@@ -1588,7 +1507,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *    "ids"?: array, //List of list item IDs.
      *    "resolveBehaviors"?: array, //List of enums that control which parts of the list items are resolved and returned.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemGetManyBadRequestException
      * @throws \PicturePark\API\Exception\ListItemGetManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemGetManyNotFoundException
@@ -1597,11 +1515,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemGetManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ListItemDetail[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ListItemDetail[]
      */
-    public function listItemGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function listItemGetMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGetMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGetMany($queryParameters));
     }
     /**
     * Create a new list item.
@@ -1615,7 +1533,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ListItemCreateBadRequestException
     * @throws \PicturePark\API\Exception\ListItemCreateUnauthorizedException
     * @throws \PicturePark\API\Exception\ListItemCreateNotFoundException
@@ -1624,16 +1541,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ListItemCreateTooManyRequestsException
     * @throws \PicturePark\API\Exception\ListItemCreateInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ListItemDetail : \Psr\Http\Message\ResponseInterface)
+    * @return null|\PicturePark\API\Model\ListItemDetail
     */
-    public function listItemCreate(\PicturePark\API\Model\ListItemCreateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function listItemCreate(\PicturePark\API\Model\ListItemCreateRequest $requestBody, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemCreate($requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemCreate($requestBody, $queryParameters));
     }
     /**
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ListItemCreateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemCreateManyBadRequestException
      * @throws \PicturePark\API\Exception\ListItemCreateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemCreateManyNotFoundException
@@ -1642,16 +1558,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemCreateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function listItemCreateMany(\PicturePark\API\Model\ListItemCreateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemCreateMany(\PicturePark\API\Model\ListItemCreateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemCreateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemCreateMany($requestBody));
     }
     /**
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ListItemUpdateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemUpdateManyBadRequestException
      * @throws \PicturePark\API\Exception\ListItemUpdateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemUpdateManyNotFoundException
@@ -1660,17 +1575,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemUpdateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function listItemUpdateMany(\PicturePark\API\Model\ListItemUpdateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemUpdateMany(\PicturePark\API\Model\ListItemUpdateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemUpdateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemUpdateMany($requestBody));
     }
     /**
      * The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all files will be deleted.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ListItemDeleteManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemDeleteManyBadRequestException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyNotFoundException
@@ -1679,18 +1593,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function listItemDeleteMany(\PicturePark\API\Model\ListItemDeleteManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemDeleteMany(\PicturePark\API\Model\ListItemDeleteManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemDeleteMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemDeleteMany($requestBody));
     }
     /**
      * Deletes multiple list items. A filter must be provided to limit the deletion to specific list items.
      * The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all files will be hard deleted.
      * The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ListItemDeleteManyFilterRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterBadRequestException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterNotFoundException
@@ -1699,17 +1612,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemDeleteManyByFilterInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function listItemDeleteManyByFilter(\PicturePark\API\Model\ListItemDeleteManyFilterRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemDeleteManyByFilter(\PicturePark\API\Model\ListItemDeleteManyFilterRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemDeleteManyByFilter($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemDeleteManyByFilter($requestBody));
     }
     /**
      * Restores previously deleted list items.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ListItemRestoreManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemRestoreManyBadRequestException
      * @throws \PicturePark\API\Exception\ListItemRestoreManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemRestoreManyNotFoundException
@@ -1718,16 +1630,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemRestoreManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemRestoreManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function listItemRestoreMany(\PicturePark\API\Model\ListItemRestoreManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemRestoreMany(\PicturePark\API\Model\ListItemRestoreManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemRestoreMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemRestoreMany($requestBody));
     }
     /**
      * Gets the references (list items, contents) to multiple list items.
      * @param \PicturePark\API\Model\ListItemManyReferencesRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemGetReferencesManyBadRequestException
      * @throws \PicturePark\API\Exception\ListItemGetReferencesManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemGetReferencesManyNotFoundException
@@ -1736,18 +1647,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemGetReferencesManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemGetReferencesManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ListItemReferencesResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ListItemReferencesResult
      */
-    public function listItemGetReferencesMany(\PicturePark\API\Model\ListItemManyReferencesRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemGetReferencesMany(\PicturePark\API\Model\ListItemManyReferencesRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGetReferencesMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGetReferencesMany($requestBody));
     }
     /**
      * Updates fields of multiple list items. A list of list item IDs must be provided to limit the update to specific list items.
      * The same set of changes is applied to all the list items.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ListItemFieldsBatchUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByIdsBadRequestException
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByIdsUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByIdsNotFoundException
@@ -1756,18 +1666,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByIdsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByIdsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function listItemBatchUpdateFieldsByIds(\PicturePark\API\Model\ListItemFieldsBatchUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemBatchUpdateFieldsByIds(\PicturePark\API\Model\ListItemFieldsBatchUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemBatchUpdateFieldsByIds($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemBatchUpdateFieldsByIds($requestBody));
     }
     /**
      * Updates fields of multiple list items. A filter must be provided to limit the update to specific list items.
      * The same set of changes is applied to all the list items.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ListItemFieldsBatchUpdateFilterRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByFilterBadRequestException
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByFilterUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByFilterNotFoundException
@@ -1776,16 +1685,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByFilterTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemBatchUpdateFieldsByFilterInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function listItemBatchUpdateFieldsByFilter(\PicturePark\API\Model\ListItemFieldsBatchUpdateFilterRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemBatchUpdateFieldsByFilter(\PicturePark\API\Model\ListItemFieldsBatchUpdateFilterRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemBatchUpdateFieldsByFilter($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemBatchUpdateFieldsByFilter($requestBody));
     }
     /**
      * Searches list items as specified in the search request.
      * @param \PicturePark\API\Model\ListItemSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemSearchBadRequestException
      * @throws \PicturePark\API\Exception\ListItemSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemSearchNotFoundException
@@ -1794,16 +1702,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ListItemSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ListItemSearchResult
      */
-    public function listItemSearch(\PicturePark\API\Model\ListItemSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemSearch(\PicturePark\API\Model\ListItemSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemSearch($requestBody));
     }
     /**
      * Aggregates list items as specified in the aggregation request.
      * @param \PicturePark\API\Model\ListItemAggregationRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemAggregateBadRequestException
      * @throws \PicturePark\API\Exception\ListItemAggregateUnauthorizedException
      * @throws \PicturePark\API\Exception\ListItemAggregateNotFoundException
@@ -1812,16 +1719,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ListItemAggregateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ListItemAggregateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ObjectAggregationResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ObjectAggregationResult
      */
-    public function listItemAggregate(\PicturePark\API\Model\ListItemAggregationRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function listItemAggregate(\PicturePark\API\Model\ListItemAggregationRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemAggregate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemAggregate($requestBody));
     }
     /**
      * Search for live stream events with optional parameters to limit time, document type or use more complex filtering.
      * @param \PicturePark\API\Model\LiveStreamSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\LiveStreamSearchBadRequestException
      * @throws \PicturePark\API\Exception\LiveStreamSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\LiveStreamSearchNotFoundException
@@ -1830,14 +1736,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\LiveStreamSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\LiveStreamSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\LiveStreamSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\LiveStreamSearchResult
      */
-    public function liveStreamSearch(\PicturePark\API\Model\LiveStreamSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function liveStreamSearch(\PicturePark\API\Model\LiveStreamSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\LiveStreamSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\LiveStreamSearch($requestBody));
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\MetadataGetStatusBadRequestException
      * @throws \PicturePark\API\Exception\MetadataGetStatusUnauthorizedException
      * @throws \PicturePark\API\Exception\MetadataGetStatusNotFoundException
@@ -1846,14 +1751,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\MetadataGetStatusTooManyRequestsException
      * @throws \PicturePark\API\Exception\MetadataGetStatusInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\MetadataStatus : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\MetadataStatus
      */
-    public function metadataGetStatus(string $fetch = self::FETCH_OBJECT)
+    public function metadataGetStatus()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\MetadataGetStatus(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\MetadataGetStatus());
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\MetadataUpdateOutdatedBadRequestException
      * @throws \PicturePark\API\Exception\MetadataUpdateOutdatedUnauthorizedException
      * @throws \PicturePark\API\Exception\MetadataUpdateOutdatedNotFoundException
@@ -1862,17 +1766,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\MetadataUpdateOutdatedTooManyRequestsException
      * @throws \PicturePark\API\Exception\MetadataUpdateOutdatedInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function metadataUpdateOutdated(string $fetch = self::FETCH_OBJECT)
+    public function metadataUpdateOutdated()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\MetadataUpdateOutdated(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\MetadataUpdateOutdated());
     }
     /**
      * This is allowed for both static and dynamic formats. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param string $id ID of the output format.
      * @param \stdClass $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsNotFoundException
@@ -1881,16 +1784,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputFormatSetDownloadFileNamePatterns(string $id, \stdClass $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatSetDownloadFileNamePatterns(string $id, \stdClass $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatSetDownloadFileNamePatterns($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatSetDownloadFileNamePatterns($id, $requestBody));
     }
     /**
      * This is allowed for both static and dynamic formats. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\OutputFormatDownloadFileNamePatternUpdateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsManyBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsManyUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsManyNotFoundException
@@ -1899,18 +1801,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatSetDownloadFileNamePatternsManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputFormatSetDownloadFileNamePatternsMany(\PicturePark\API\Model\OutputFormatDownloadFileNamePatternUpdateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatSetDownloadFileNamePatternsMany(\PicturePark\API\Model\OutputFormatDownloadFileNamePatternUpdateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatSetDownloadFileNamePatternsMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatSetDownloadFileNamePatternsMany($requestBody));
     }
     /**
      * This is allowed for both static and dynamic formats.
      * However, enabling XMP writeback for Thumbnail formats or temporary formats is not allowed. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param string $id ID of the output format.
      * @param \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackStateBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackStateUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackStateNotFoundException
@@ -1919,17 +1820,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackStateTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackStateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputFormatSetXmpWritebackState(string $id, \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatSetXmpWritebackState(string $id, \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatSetXmpWritebackState($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatSetXmpWritebackState($id, $requestBody));
     }
     /**
      * This is allowed for both static and dynamic formats.
      * However, enabling XMP writeback for Thumbnail formats or temporary formats is not allowed. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\OutputFormatSetXmpWritebackStateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2BadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2UnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2NotFoundException
@@ -1938,17 +1838,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2TooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatSetXmpWritebackState2InternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputFormatSetXmpWritebackState2(\PicturePark\API\Model\OutputFormatSetXmpWritebackStateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatSetXmpWritebackState2(\PicturePark\API\Model\OutputFormatSetXmpWritebackStateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatSetXmpWritebackState2($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatSetXmpWritebackState2($requestBody));
     }
     /**
      * Request rendering of the given OutputFormat for a given content.
      * @param \PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody
      * @param array $accept Accept content header application/octet-stream|application/json
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewNotFoundException
@@ -1958,18 +1857,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewInternalServerErrorException
      * @throws \PicturePark\API\Exception\OutputFormatRenderFormatPreviewPreconditionFailedException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function outputFormatRenderFormatPreview(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function outputFormatRenderFormatPreview(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, array $accept = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatRenderFormatPreview($requestBody, $accept), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatRenderFormatPreview($requestBody, $accept));
     }
     /**
      * Gets multiple output format details by the output format IDs. Can fetch maximum of 100 output formats at once.
      * @param array{
      *    "ids"?: array, //Output format IDs to get information about. If this is omitted, all output formats in the system will be returned.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatGetManyBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatGetManyUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatGetManyNotFoundException
@@ -1978,16 +1876,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatGetManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\OutputFormatDetail[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\OutputFormatDetail[]
      */
-    public function outputFormatGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function outputFormatGetMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatGetMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatGetMany($queryParameters));
     }
     /**
      * Creates new output format based on the supplied request. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\OutputFormat $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatCreateBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatCreateUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatCreateNotFoundException
@@ -1996,16 +1893,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatCreateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputFormatCreate(\PicturePark\API\Model\OutputFormat $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatCreate(\PicturePark\API\Model\OutputFormat $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatCreate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatCreate($requestBody));
     }
     /**
      * Deletes the output format specified by the ID. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param string $id Output format ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatDeleteBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatDeleteUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatDeleteNotFoundException
@@ -2014,16 +1910,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatDeleteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputFormatDelete(string $id, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatDelete(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatDelete($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatDelete($id));
     }
     /**
      * Gets the output format by the output format ID.
      * @param string $id Output format ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatGetBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatGetUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatGetNotFoundException
@@ -2032,17 +1927,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\OutputFormatDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\OutputFormatDetail
      */
-    public function outputFormatGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatGet($id));
     }
     /**
      * Updates the output format specified by the ID and based on supplied request. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param string $id Output format ID.
      * @param \PicturePark\API\Model\OutputFormatEditable $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatUpdateBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatUpdateUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatUpdateNotFoundException
@@ -2051,16 +1945,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatUpdateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputFormatUpdate(string $id, \PicturePark\API\Model\OutputFormatEditable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatUpdate(string $id, \PicturePark\API\Model\OutputFormatEditable $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatUpdate($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatUpdate($id, $requestBody));
     }
     /**
      * Creates new output formats based on supplied requests. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\OutputFormatCreateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatCreateManyBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatCreateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatCreateManyNotFoundException
@@ -2069,16 +1962,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatCreateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputFormatCreateMany(\PicturePark\API\Model\OutputFormatCreateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatCreateMany(\PicturePark\API\Model\OutputFormatCreateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatCreateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatCreateMany($requestBody));
     }
     /**
      * Updates the output formats specified by the IDs and based on supplied requests. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\OutputFormatUpdateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatUpdateManyBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatUpdateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatUpdateManyNotFoundException
@@ -2087,16 +1979,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatUpdateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputFormatUpdateMany(\PicturePark\API\Model\OutputFormatUpdateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatUpdateMany(\PicturePark\API\Model\OutputFormatUpdateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatUpdateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatUpdateMany($requestBody));
     }
     /**
      * Deletes the output formats specified by the IDs. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\OutputFormatDeleteManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatDeleteManyBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatDeleteManyUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputFormatDeleteManyNotFoundException
@@ -2105,16 +1996,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputFormatDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputFormatDeleteManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputFormatDeleteMany(\PicturePark\API\Model\OutputFormatDeleteManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputFormatDeleteMany(\PicturePark\API\Model\OutputFormatDeleteManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatDeleteMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatDeleteMany($requestBody));
     }
     /**
      * Gets a output document by id.
      * @param string $id Output ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputGetBadRequestException
      * @throws \PicturePark\API\Exception\OutputGetUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputGetNotFoundException
@@ -2123,16 +2013,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\OutputDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\OutputDetail
      */
-    public function outputGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function outputGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputGet($id));
     }
     /**
      * ContentIds must be mandatory filled.
      * @param \PicturePark\API\Model\OutputSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputSearchBadRequestException
      * @throws \PicturePark\API\Exception\OutputSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputSearchNotFoundException
@@ -2141,18 +2030,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\OutputSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\OutputSearchResult
      */
-    public function outputSearch(\PicturePark\API\Model\OutputSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputSearch(\PicturePark\API\Model\OutputSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputSearch($requestBody));
     }
     /**
      * Resets retry attempt counters on failed (optionally also completed) outputs and they will be subsequently picked up for re-rendering.
      * The number the counters are reset to is determined by a global configuration value. If OutputIds are specified, the rest of the fields are ignored.
      * Can reset 100 outputs at most. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\OutputResetRetryAttemptsRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsBadRequestException
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsUnauthorizedException
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsNotFoundException
@@ -2161,14 +2049,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsTooManyRequestsException
      * @throws \PicturePark\API\Exception\OutputResetRetryAttemptsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function outputResetRetryAttempts(\PicturePark\API\Model\OutputResetRetryAttemptsRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function outputResetRetryAttempts(\PicturePark\API\Model\OutputResetRetryAttemptsRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputResetRetryAttempts($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputResetRetryAttempts($requestBody));
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ProfileGetBadRequestException
      * @throws \PicturePark\API\Exception\ProfileGetUnauthorizedException
      * @throws \PicturePark\API\Exception\ProfileGetNotFoundException
@@ -2177,16 +2064,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ProfileGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ProfileGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserProfile : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserProfile
      */
-    public function profileGet(string $fetch = self::FETCH_OBJECT)
+    public function profileGet()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ProfileGet(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ProfileGet());
     }
     /**
      * Updates profile of currently logged in user.
      * @param \PicturePark\API\Model\UserProfileUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ProfileUpdateBadRequestException
      * @throws \PicturePark\API\Exception\ProfileUpdateUnauthorizedException
      * @throws \PicturePark\API\Exception\ProfileUpdateNotFoundException
@@ -2195,14 +2081,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ProfileUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ProfileUpdateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserProfile : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserProfile
      */
-    public function profileUpdate(\PicturePark\API\Model\UserProfileUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function profileUpdate(\PicturePark\API\Model\UserProfileUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ProfileUpdate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ProfileUpdate($requestBody));
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionBadRequestException
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionUnauthorizedException
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionNotFoundException
@@ -2211,16 +2096,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionTooManyRequestsException
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function profileRequestDeletion(string $fetch = self::FETCH_OBJECT)
+    public function profileRequestDeletion()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ProfileRequestDeletion(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ProfileRequestDeletion());
     }
     /**
      * Deletes the schema permission set specified by the ID.
      * @param string $id Schema permission set ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteNotFoundException
@@ -2229,16 +2113,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function schemaPermissionSetDelete(string $id, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetDelete(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetDelete($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetDelete($id));
     }
     /**
      * Gets the schema permission set detail information by the schema permission set ID.
      * @param string $id Schema permission set ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetNotFoundException
@@ -2247,17 +2130,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaPermissionSetDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SchemaPermissionSetDetail
      */
-    public function schemaPermissionSetGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetGet($id));
     }
     /**
      * Updates the schema permission set specified by the ID and based on supplied request.
      * @param string $id Schema permission set ID.
      * @param \PicturePark\API\Model\SchemaPermissionSetUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateNotFoundException
@@ -2266,18 +2148,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaPermissionSetDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SchemaPermissionSetDetail
      */
-    public function schemaPermissionSetUpdate(string $id, \PicturePark\API\Model\SchemaPermissionSetUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetUpdate(string $id, \PicturePark\API\Model\SchemaPermissionSetUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetUpdate($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetUpdate($id, $requestBody));
     }
     /**
      * Gets multiple schema permission set details by the schema permission set IDs.
      * @param array{
      *    "ids"?: array, //Ids
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetManyUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetManyNotFoundException
@@ -2286,16 +2167,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaPermissionSetDetail[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SchemaPermissionSetDetail[]
      */
-    public function schemaPermissionSetGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetGetMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetGetMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetGetMany($queryParameters));
     }
     /**
      * Creates new schema permission set based on supplied request.
      * @param \PicturePark\API\Model\SchemaPermissionSetCreateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateNotFoundException
@@ -2304,17 +2184,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaPermissionSetDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SchemaPermissionSetDetail
      */
-    public function schemaPermissionSetCreate(\PicturePark\API\Model\SchemaPermissionSetCreateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetCreate(\PicturePark\API\Model\SchemaPermissionSetCreateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetCreate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetCreate($requestBody));
     }
     /**
      * Transfers ownership of schema permission set to supplied user.
      * @param string $id Schema permission set ID.
      * @param \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipNotFoundException
@@ -2323,16 +2202,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function schemaPermissionSetTransferOwnership(string $id, \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetTransferOwnership(string $id, \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetTransferOwnership($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetTransferOwnership($id, $requestBody));
     }
     /**
      * Returns permissions for the schema permission set for the current user.
      * @param string $id Schema permission set ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsNotFoundException
@@ -2341,16 +2219,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
+     * @return null|array
      */
-    public function schemaPermissionSetGetPermissions(string $id, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetGetPermissions(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetGetPermissions($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetGetPermissions($id));
     }
     /**
      * Creates new schema permission sets based on supplied requests.
      * @param \PicturePark\API\Model\SchemaPermissionSetCreateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateManyNotFoundException
@@ -2359,16 +2236,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetCreateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BulkResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BulkResponse
      */
-    public function schemaPermissionSetCreateMany(\PicturePark\API\Model\SchemaPermissionSetCreateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetCreateMany(\PicturePark\API\Model\SchemaPermissionSetCreateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetCreateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetCreateMany($requestBody));
     }
     /**
      * Updates the schema permission sets specified by the IDs and based on supplied request.
      * @param \PicturePark\API\Model\SchemaPermissionSetUpdateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateManyNotFoundException
@@ -2377,16 +2253,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetUpdateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BulkResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BulkResponse
      */
-    public function schemaPermissionSetUpdateMany(\PicturePark\API\Model\SchemaPermissionSetUpdateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetUpdateMany(\PicturePark\API\Model\SchemaPermissionSetUpdateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetUpdateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetUpdateMany($requestBody));
     }
     /**
      * Deletes the schema permission sets specified by the IDs.
      * @param \PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyNotFoundException
@@ -2395,16 +2270,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BulkResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BulkResponse
      */
-    public function schemaPermissionSetDeleteMany(\PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetDeleteMany(\PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetDeleteMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetDeleteMany($requestBody));
     }
     /**
      * Transfers ownership of multiple schema permission sets to respective supplied users.
      * @param \PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipManyUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipManyNotFoundException
@@ -2413,18 +2287,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function schemaPermissionSetTransferOwnershipMany(\PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetTransferOwnershipMany(\PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetTransferOwnershipMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetTransferOwnershipMany($requestBody));
     }
     /**
      * Returns permissions for multiple schema permission sets for the current user.
      * @param array{
      *    "ids"?: array, //Ids
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsManyUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsManyNotFoundException
@@ -2433,16 +2306,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\PermissionSetUserPermissionRights[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\PermissionSetUserPermissionRights[]
      */
-    public function schemaPermissionSetGetPermissionsMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetGetPermissionsMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetGetPermissionsMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetGetPermissionsMany($queryParameters));
     }
     /**
      * Searches schema permission sets as specified in the search request.
      * @param \PicturePark\API\Model\PermissionSetSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetSearchBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetSearchNotFoundException
@@ -2451,11 +2323,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\PermissionSetSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\PermissionSetSearchResult
      */
-    public function schemaPermissionSetSearch(\PicturePark\API\Model\PermissionSetSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetSearch(\PicturePark\API\Model\PermissionSetSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetSearch($requestBody));
     }
     /**
     * Deletes an existing schema.
@@ -2466,7 +2338,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                Only the waiting is aborted, and the calls returned.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\SchemaDeleteBadRequestException
     * @throws \PicturePark\API\Exception\SchemaDeleteUnauthorizedException
     * @throws \PicturePark\API\Exception\SchemaDeleteNotFoundException
@@ -2475,16 +2346,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\SchemaDeleteTooManyRequestsException
     * @throws \PicturePark\API\Exception\SchemaDeleteInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+    * @return null
     */
-    public function schemaDelete(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function schemaDelete(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaDelete($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaDelete($id, $queryParameters));
     }
     /**
      * Gets the schema detail by schema ID.
      * @param string $id The schema ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaGetBadRequestException
      * @throws \PicturePark\API\Exception\SchemaGetUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaGetNotFoundException
@@ -2493,11 +2363,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SchemaDetail
      */
-    public function schemaGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function schemaGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGet($id));
     }
     /**
     * Updates an existing schema.
@@ -2509,7 +2379,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                Only the waiting is aborted, and the calls returned.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\SchemaUpdateBadRequestException
     * @throws \PicturePark\API\Exception\SchemaUpdateUnauthorizedException
     * @throws \PicturePark\API\Exception\SchemaUpdateNotFoundException
@@ -2518,16 +2387,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\SchemaUpdateTooManyRequestsException
     * @throws \PicturePark\API\Exception\SchemaUpdateInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaUpdateResult : \Psr\Http\Message\ResponseInterface)
+    * @return null|\PicturePark\API\Model\SchemaUpdateResult
     */
-    public function schemaUpdate(string $id, \PicturePark\API\Model\SchemaUpdateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function schemaUpdate(string $id, \PicturePark\API\Model\SchemaUpdateRequest $requestBody, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaUpdate($id, $requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaUpdate($id, $requestBody, $queryParameters));
     }
     /**
      * Checks if the schema already exists.
      * @param string $id The schema ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaExistsBadRequestException
      * @throws \PicturePark\API\Exception\SchemaExistsUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaExistsNotFoundException
@@ -2536,18 +2404,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaExistsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaExistsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaExistsResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SchemaExistsResponse
      */
-    public function schemaExists(string $id, string $fetch = self::FETCH_OBJECT)
+    public function schemaExists(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaExists($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaExists($id));
     }
     /**
      * Checks if the field in the specified schema already exists.
      * Also returns a flag indicating if the field was previously deleted and the ID can therefore not be reused.
      * @param string $schemaId The schema ID.
      * @param string $fieldId The field ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaFieldExistsBadRequestException
      * @throws \PicturePark\API\Exception\SchemaFieldExistsUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaFieldExistsNotFoundException
@@ -2556,16 +2423,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaFieldExistsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaFieldExistsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\FieldExistsResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\FieldExistsResponse
      */
-    public function schemaFieldExists(string $schemaId, string $fieldId, string $fetch = self::FETCH_OBJECT)
+    public function schemaFieldExists(string $schemaId, string $fieldId)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaFieldExists($schemaId, $fieldId), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaFieldExists($schemaId, $fieldId));
     }
     /**
      * Can fetch referencing schemas for 100 schemas at most.
      * @param string $id The schema ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaGetReferencedBadRequestException
      * @throws \PicturePark\API\Exception\SchemaGetReferencedUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaGetReferencedNotFoundException
@@ -2574,11 +2440,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaGetReferencedTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaGetReferencedInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaDetail[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SchemaDetail[]
      */
-    public function schemaGetReferenced(string $id, string $fetch = self::FETCH_OBJECT)
+    public function schemaGetReferenced(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetReferenced($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetReferenced($id));
     }
     /**
     * Transfer ownership of the schema specified in
@@ -2589,7 +2455,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                Only the waiting is aborted, and the calls returned.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipBadRequestException
     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipUnauthorizedException
     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipNotFoundException
@@ -2598,11 +2463,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipTooManyRequestsException
     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+    * @return null
     */
-    public function schemaTransferOwnership(string $id, \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function schemaTransferOwnership(string $id, \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaTransferOwnership($id, $requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaTransferOwnership($id, $requestBody, $queryParameters));
     }
     /**
      * Gets multiple schema details by given schema IDs.
@@ -2610,7 +2475,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @param array{
      *    "ids"?: array, //Comma separated list of schema IDs.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaGetManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaGetManyUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaGetManyNotFoundException
@@ -2619,11 +2483,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaGetManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaDetail[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SchemaDetail[]
      */
-    public function schemaGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function schemaGetMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetMany($queryParameters));
     }
     /**
     * Create a new schema.
@@ -2633,7 +2497,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
                Only the waiting is aborted, and the calls returned.
     * } $queryParameters
     
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\SchemaCreateBadRequestException
     * @throws \PicturePark\API\Exception\SchemaCreateUnauthorizedException
     * @throws \PicturePark\API\Exception\SchemaCreateNotFoundException
@@ -2642,16 +2505,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\SchemaCreateTooManyRequestsException
     * @throws \PicturePark\API\Exception\SchemaCreateInternalServerErrorException
     *
-    * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaCreateResult : \Psr\Http\Message\ResponseInterface)
+    * @return null|\PicturePark\API\Model\SchemaCreateResult
     */
-    public function schemaCreate(\PicturePark\API\Model\SchemaCreateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function schemaCreate(\PicturePark\API\Model\SchemaCreateRequest $requestBody, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaCreate($requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaCreate($requestBody, $queryParameters));
     }
     /**
      * Creates new schemas. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\SchemaCreateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaCreateManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaCreateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaCreateManyNotFoundException
@@ -2660,17 +2522,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaCreateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function schemaCreateMany(\PicturePark\API\Model\SchemaCreateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaCreateMany(\PicturePark\API\Model\SchemaCreateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaCreateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaCreateMany($requestBody));
     }
     /**
      * Updates multiple existing schemas.
      * Prefer this whenever you have updates for multiple schemas. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\SchemaUpdateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaUpdateManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaUpdateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaUpdateManyNotFoundException
@@ -2679,17 +2540,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaUpdateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function schemaUpdateMany(\PicturePark\API\Model\SchemaUpdateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaUpdateMany(\PicturePark\API\Model\SchemaUpdateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaUpdateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaUpdateMany($requestBody));
     }
     /**
      * @param array{
      *    "ids"?: array, //The schema IDs.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaGetManyReferencedBadRequestException
      * @throws \PicturePark\API\Exception\SchemaGetManyReferencedUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaGetManyReferencedNotFoundException
@@ -2698,17 +2558,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaGetManyReferencedTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaGetManyReferencedInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaDetail[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SchemaDetail[]
      */
-    public function schemaGetManyReferenced(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function schemaGetManyReferenced(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetManyReferenced($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetManyReferenced($queryParameters));
     }
     /**
      * Transfers ownership of multiple schemas to specified user. The target user must have the ManageSchemas user right.
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\SchemaOwnershipTransferManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipManyUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipManyNotFoundException
@@ -2717,16 +2576,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaTransferOwnershipManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function schemaTransferOwnershipMany(\PicturePark\API\Model\SchemaOwnershipTransferManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaTransferOwnershipMany(\PicturePark\API\Model\SchemaOwnershipTransferManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaTransferOwnershipMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaTransferOwnershipMany($requestBody));
     }
     /**
      * Searches schemas as specified in the search request.
      * @param \PicturePark\API\Model\SchemaSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaSearchBadRequestException
      * @throws \PicturePark\API\Exception\SchemaSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaSearchNotFoundException
@@ -2735,11 +2593,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\SchemaSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\SchemaSearchResult
      */
-    public function schemaSearch(\PicturePark\API\Model\SchemaSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaSearch(\PicturePark\API\Model\SchemaSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaSearch($requestBody));
     }
     /**
      * Search the indexed fields based on the search request.
@@ -2747,7 +2605,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * SimpleSearch or Sortable.
      * All indexed fields are aggregated and returned as a a single list.
      * @param \PicturePark\API\Model\IndexFieldsSearchBySchemaIdsRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaGetIndexFieldsBadRequestException
      * @throws \PicturePark\API\Exception\SchemaGetIndexFieldsUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaGetIndexFieldsNotFoundException
@@ -2756,17 +2613,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaGetIndexFieldsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaGetIndexFieldsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\IndexField[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\IndexField[]
      */
-    public function schemaGetIndexFields(\PicturePark\API\Model\IndexFieldsSearchBySchemaIdsRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaGetIndexFields(\PicturePark\API\Model\IndexFieldsSearchBySchemaIdsRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetIndexFields($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetIndexFields($requestBody));
     }
     /**
      * Imports schemas and list items. The file must already be uploaded before calling this endpoint. See [Transfer](#tag/Transfer).
      * The operation is executed asynchronous and it is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\SchemaImportRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaTransferImportBadRequestException
      * @throws \PicturePark\API\Exception\SchemaTransferImportUnauthorizedException
      * @throws \PicturePark\API\Exception\SchemaTransferImportNotFoundException
@@ -2775,11 +2631,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaTransferImportTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaTransferImportInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\Transfer : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\Transfer
      */
-    public function schemaTransferImport(\PicturePark\API\Model\SchemaImportRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function schemaTransferImport(\PicturePark\API\Model\SchemaImportRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaTransferImport($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaTransferImport($requestBody));
     }
     /**
      * @param string $token Share token
@@ -2787,7 +2643,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *    "lang"?: string, //Language code
      *    "resolveBehaviors"?: array, //List of enums that control which parts of the share are resolved and returned.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareGetShareJsonBadRequestException
      * @throws \PicturePark\API\Exception\ShareGetShareJsonUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareGetShareJsonNotFoundException
@@ -2796,11 +2651,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareGetShareJsonTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareGetShareJsonInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ShareDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ShareDetail
      */
-    public function shareGetShareJson(string $token, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function shareGetShareJson(string $token, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareGetShareJson($token, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareGetShareJson($token, $queryParameters));
     }
     /**
      * @param string $token Share token
@@ -2812,7 +2667,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *    "range"?: string, //The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
      * } $headerParameters
      * @param array $accept Accept content header application/json|application/octet-stream
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareDownloadBadRequestException
      * @throws \PicturePark\API\Exception\ShareDownloadUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareDownloadNotFoundException
@@ -2822,11 +2676,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareDownloadInternalServerErrorException
      * @throws \PicturePark\API\Exception\ShareDownloadPreconditionFailedException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function shareDownload(string $token, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function shareDownload(string $token, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDownload($token, $queryParameters, $headerParameters, $accept), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDownload($token, $queryParameters, $headerParameters, $accept));
     }
     /**
      * Download single content in a specific output format (or automatically determined format if none is specified). To resize images on download specify target width &amp; height. To download only a portion of the file, specify the range parameter.
@@ -2841,7 +2695,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *    "range"?: string, //The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
      * } $headerParameters
      * @param array $accept Accept content header application/json|application/octet-stream
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentBadRequestException
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentNotFoundException
@@ -2851,11 +2704,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentInternalServerErrorException
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentPreconditionFailedException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function shareDownloadSingleContent(string $token, string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function shareDownloadSingleContent(string $token, string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDownloadSingleContent($token, $contentId, $outputFormatId, $queryParameters, $headerParameters, $accept), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDownloadSingleContent($token, $contentId, $outputFormatId, $queryParameters, $headerParameters, $accept));
     }
     /**
      * Get share by id (basic or embed).
@@ -2863,7 +2716,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @param array{
      *    "resolveBehaviors"?: array, //List of enums that control which parts of the share are resolved and returned.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareGetBadRequestException
      * @throws \PicturePark\API\Exception\ShareGetUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareGetNotFoundException
@@ -2872,17 +2724,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ShareDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ShareDetail
      */
-    public function shareGet(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function shareGet(string $id, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareGet($id, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareGet($id, $queryParameters));
     }
     /**
      * Updates a single share. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param string $id The share id.
      * @param \PicturePark\API\Model\ShareBaseUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareUpdateBadRequestException
      * @throws \PicturePark\API\Exception\ShareUpdateUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareUpdateNotFoundException
@@ -2891,16 +2742,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareUpdateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function shareUpdate(string $id, \PicturePark\API\Model\ShareBaseUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function shareUpdate(string $id, \PicturePark\API\Model\ShareBaseUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareUpdate($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareUpdate($id, $requestBody));
     }
     /**
      * Create a new share (basic or embed). The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ShareBaseCreateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareCreateBadRequestException
      * @throws \PicturePark\API\Exception\ShareCreateUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareCreateNotFoundException
@@ -2909,16 +2759,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareCreateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function shareCreate(\PicturePark\API\Model\ShareBaseCreateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function shareCreate(\PicturePark\API\Model\ShareBaseCreateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareCreate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareCreate($requestBody));
     }
     /**
      * Deletes multiple shares. Returns a business process which will hold a batch response detail containing information about successful and failed rows. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\ShareDeleteManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareDeleteManyBadRequestException
      * @throws \PicturePark\API\Exception\ShareDeleteManyUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareDeleteManyNotFoundException
@@ -2927,15 +2776,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareDeleteManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function shareDeleteMany(\PicturePark\API\Model\ShareDeleteManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function shareDeleteMany(\PicturePark\API\Model\ShareDeleteManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDeleteMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDeleteMany($requestBody));
     }
     /**
      * @param \PicturePark\API\Model\ShareRevokeManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareRevokeBadRequestException
      * @throws \PicturePark\API\Exception\ShareRevokeUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareRevokeNotFoundException
@@ -2944,16 +2792,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareRevokeTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareRevokeInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function shareRevoke(\PicturePark\API\Model\ShareRevokeManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function shareRevoke(\PicturePark\API\Model\ShareRevokeManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareRevoke($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareRevoke($requestBody));
     }
     /**
      * Aggregates shares either created by or sent to current user.
      * @param \PicturePark\API\Model\ShareAggregationRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareAggregateBadRequestException
      * @throws \PicturePark\API\Exception\ShareAggregateUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareAggregateNotFoundException
@@ -2962,16 +2809,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareAggregateTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareAggregateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ObjectAggregationResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ObjectAggregationResult
      */
-    public function shareAggregate(\PicturePark\API\Model\ShareAggregationRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function shareAggregate(\PicturePark\API\Model\ShareAggregationRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareAggregate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareAggregate($requestBody));
     }
     /**
      * Search shares either created by or sent to current user.
      * @param \PicturePark\API\Model\ShareSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareSearchBadRequestException
      * @throws \PicturePark\API\Exception\ShareSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\ShareSearchNotFoundException
@@ -2980,16 +2826,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ShareSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\ShareSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ShareSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ShareSearchResult
      */
-    public function shareSearch(\PicturePark\API\Model\ShareSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function shareSearch(\PicturePark\API\Model\ShareSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareSearch($requestBody));
     }
     /**
      * For transfers of type FileUpload or FileUploadAutoImport, after creating the transfer, wait for the returned BusinessProcess to hit the "Created" state before attempting to upload files.
      * @param \PicturePark\API\Model\CreateTransferRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferCreateBadRequestException
      * @throws \PicturePark\API\Exception\TransferCreateUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferCreateNotFoundException
@@ -2998,16 +2843,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferCreateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\Transfer : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\Transfer
      */
-    public function transferCreate(\PicturePark\API\Model\CreateTransferRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function transferCreate(\PicturePark\API\Model\CreateTransferRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferCreate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferCreate($requestBody));
     }
     /**
      * A transfer cannot be deleted if it's currently in the UploadInProgress or ImportInProgress state.
      * @param string $id ID of transfer.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferDeleteBadRequestException
      * @throws \PicturePark\API\Exception\TransferDeleteUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferDeleteNotFoundException
@@ -3016,15 +2860,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferDeleteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function transferDelete(string $id, string $fetch = self::FETCH_OBJECT)
+    public function transferDelete(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferDelete($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferDelete($id));
     }
     /**
      * @param string $id ID of transfer.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferGetBadRequestException
      * @throws \PicturePark\API\Exception\TransferGetUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferGetNotFoundException
@@ -3033,11 +2876,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\TransferDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\TransferDetail
      */
-    public function transferGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function transferGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferGet($id));
     }
     /**
      * This triggers the import of a Transfer, creating Contents. All items in the Transfer will be enqueued for rendering.
@@ -3046,7 +2889,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * Note: Before attempting to import a Transfer, the transfer has to be in the TransferReady state.
      * @param string $id ID of transfer.
      * @param \PicturePark\API\Model\ImportTransferRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferImportBadRequestException
      * @throws \PicturePark\API\Exception\TransferImportUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferImportNotFoundException
@@ -3055,11 +2897,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferImportTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferImportInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\Transfer : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\Transfer
      */
-    public function transferImport(string $id, \PicturePark\API\Model\ImportTransferRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function transferImport(string $id, \PicturePark\API\Model\ImportTransferRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferImport($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferImport($id, $requestBody));
     }
     /**
      * This triggers the import of selected items in a Transfer, creating contents. All imported items will be enqueued for rendering.
@@ -3070,7 +2912,6 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * Transfer will transition to state TransferReady if any files of the transfer remain for import.
      * @param string $id ID of transfer.
      * @param \PicturePark\API\Model\ImportTransferPartialRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferPartialImportBadRequestException
      * @throws \PicturePark\API\Exception\TransferPartialImportUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferPartialImportNotFoundException
@@ -3079,17 +2920,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferPartialImportTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferPartialImportInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\Transfer : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\Transfer
      */
-    public function transferPartialImport(string $id, \PicturePark\API\Model\ImportTransferPartialRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function transferPartialImport(string $id, \PicturePark\API\Model\ImportTransferPartialRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferPartialImport($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferPartialImport($id, $requestBody));
     }
     /**
      * Requests cancellation of transfer.
      * Note: Transfers can only be cancelled when state is UploadInProgress.
      * @param string $id ID of transfer.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferCancelBadRequestException
      * @throws \PicturePark\API\Exception\TransferCancelUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferCancelNotFoundException
@@ -3098,15 +2938,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferCancelTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferCancelInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function transferCancel(string $id, string $fetch = self::FETCH_OBJECT)
+    public function transferCancel(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferCancel($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferCancel($id));
     }
     /**
      * @param \PicturePark\API\Model\TransferSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferSearchBadRequestException
      * @throws \PicturePark\API\Exception\TransferSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferSearchNotFoundException
@@ -3115,15 +2954,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\TransferSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\TransferSearchResult
      */
-    public function transferSearch(\PicturePark\API\Model\TransferSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function transferSearch(\PicturePark\API\Model\TransferSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferSearch($requestBody));
     }
     /**
      * @param string $id ID of file transfer.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferGetFileBadRequestException
      * @throws \PicturePark\API\Exception\TransferGetFileUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferGetFileNotFoundException
@@ -3132,15 +2970,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferGetFileTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferGetFileInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\FileTransferDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\FileTransferDetail
      */
-    public function transferGetFile(string $id, string $fetch = self::FETCH_OBJECT)
+    public function transferGetFile(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferGetFile($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferGetFile($id));
     }
     /**
      * @param \PicturePark\API\Model\FileTransferSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferSearchFilesBadRequestException
      * @throws \PicturePark\API\Exception\TransferSearchFilesUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferSearchFilesNotFoundException
@@ -3149,15 +2986,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferSearchFilesTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferSearchFilesInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\FileTransferSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\FileTransferSearchResult
      */
-    public function transferSearchFiles(\PicturePark\API\Model\FileTransferSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function transferSearchFiles(\PicturePark\API\Model\FileTransferSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferSearchFiles($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferSearchFiles($requestBody));
     }
     /**
      * @param \PicturePark\API\Model\FileTransferDeleteRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferDeleteFilesBadRequestException
      * @throws \PicturePark\API\Exception\TransferDeleteFilesUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferDeleteFilesNotFoundException
@@ -3166,14 +3002,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferDeleteFilesTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferDeleteFilesInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function transferDeleteFiles(\PicturePark\API\Model\FileTransferDeleteRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function transferDeleteFiles(\PicturePark\API\Model\FileTransferDeleteRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferDeleteFiles($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferDeleteFiles($requestBody));
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferGetBlacklistBadRequestException
      * @throws \PicturePark\API\Exception\TransferGetBlacklistUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferGetBlacklistNotFoundException
@@ -3182,11 +3017,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferGetBlacklistTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferGetBlacklistInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\Blacklist : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\Blacklist
      */
-    public function transferGetBlacklist(string $fetch = self::FETCH_OBJECT)
+    public function transferGetBlacklist()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferGetBlacklist(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferGetBlacklist());
     }
     /**
      * Uploads the specified chunk data.
@@ -3197,14 +3032,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * To upload a file, split it into chunks of reasonable size (accepted range is 1MB-100MB). The last chunk may be smaller than 1MB.
      * @param string $transferId ID of transfer.
      * @param string $requestId Identifier of file.
-     * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody
+     * @param null|string|resource $requestBody
      * @param array{
      *    "ChunkNumber": int, //Information about chunk.
      *    "CurrentChunkSize": int, //Information about chunk.
      *    "TotalSize": int, //Information about chunk.
      *    "TotalChunks": int, //Information about chunk.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferUploadFileBadRequestException
      * @throws \PicturePark\API\Exception\TransferUploadFileUnauthorizedException
      * @throws \PicturePark\API\Exception\TransferUploadFileNotFoundException
@@ -3213,15 +3047,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferUploadFileTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferUploadFileInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function transferUploadFile(string $transferId, string $requestId, $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function transferUploadFile(string $transferId, string $requestId, $requestBody = null, array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferUploadFile($transferId, $requestId, $requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferUploadFile($transferId, $requestId, $requestBody, $queryParameters));
     }
     /**
      * @param \PicturePark\API\Model\UserRoleSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRoleSearchBadRequestException
      * @throws \PicturePark\API\Exception\UserRoleSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\UserRoleSearchNotFoundException
@@ -3230,18 +3063,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserRoleSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserRoleSearchResult
      */
-    public function userRoleSearch(\PicturePark\API\Model\UserRoleSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userRoleSearch(\PicturePark\API\Model\UserRoleSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleSearch($requestBody));
     }
     /**
      * Gets multiple user role details by the user role IDs. Can fetch maximum of 100 user roles at once.
      * @param array{
      *    "ids"?: array, //User role IDs to get information about.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRoleGetManyBadRequestException
      * @throws \PicturePark\API\Exception\UserRoleGetManyUnauthorizedException
      * @throws \PicturePark\API\Exception\UserRoleGetManyNotFoundException
@@ -3250,16 +3082,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleGetManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserRoleDetail[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserRoleDetail[]
      */
-    public function userRoleGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function userRoleGetMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleGetMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleGetMany($queryParameters));
     }
     /**
      * Creates new user role based on the supplied request.
      * @param \PicturePark\API\Model\UserRoleCreateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRoleCreateBadRequestException
      * @throws \PicturePark\API\Exception\UserRoleCreateUnauthorizedException
      * @throws \PicturePark\API\Exception\UserRoleCreateNotFoundException
@@ -3268,16 +3099,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleCreateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserRoleDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserRoleDetail
      */
-    public function userRoleCreate(\PicturePark\API\Model\UserRoleCreateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userRoleCreate(\PicturePark\API\Model\UserRoleCreateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleCreate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleCreate($requestBody));
     }
     /**
      * Creates new user roles based on supplied requests.
      * @param \PicturePark\API\Model\UserRoleCreateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRoleCreateManyBadRequestException
      * @throws \PicturePark\API\Exception\UserRoleCreateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\UserRoleCreateManyNotFoundException
@@ -3286,16 +3116,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleCreateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BulkResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BulkResponse
      */
-    public function userRoleCreateMany(\PicturePark\API\Model\UserRoleCreateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userRoleCreateMany(\PicturePark\API\Model\UserRoleCreateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleCreateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleCreateMany($requestBody));
     }
     /**
      * Updates the user roles specified by the IDs and based on supplied requests.
      * @param \PicturePark\API\Model\UserRoleUpdateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyBadRequestException
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyNotFoundException
@@ -3304,16 +3133,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleUpdateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BulkResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BulkResponse
      */
-    public function userRoleUpdateMany(\PicturePark\API\Model\UserRoleUpdateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userRoleUpdateMany(\PicturePark\API\Model\UserRoleUpdateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleUpdateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleUpdateMany($requestBody));
     }
     /**
      * Deletes the user roles specified by the IDs.
      * @param \PicturePark\API\Model\UserRoleDeleteManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRoleDeleteManyBadRequestException
      * @throws \PicturePark\API\Exception\UserRoleDeleteManyUnauthorizedException
      * @throws \PicturePark\API\Exception\UserRoleDeleteManyNotFoundException
@@ -3322,16 +3150,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleDeleteManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BulkResponse : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BulkResponse
      */
-    public function userRoleDeleteMany(\PicturePark\API\Model\UserRoleDeleteManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userRoleDeleteMany(\PicturePark\API\Model\UserRoleDeleteManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleDeleteMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleDeleteMany($requestBody));
     }
     /**
      * Deletes the user role specified by the ID.
      * @param string $id User role ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRoleDeleteBadRequestException
      * @throws \PicturePark\API\Exception\UserRoleDeleteUnauthorizedException
      * @throws \PicturePark\API\Exception\UserRoleDeleteNotFoundException
@@ -3340,16 +3167,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleDeleteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function userRoleDelete(string $id, string $fetch = self::FETCH_OBJECT)
+    public function userRoleDelete(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleDelete($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleDelete($id));
     }
     /**
      * Gets the user role by the user role ID.
      * @param string $id User role ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRoleGetBadRequestException
      * @throws \PicturePark\API\Exception\UserRoleGetUnauthorizedException
      * @throws \PicturePark\API\Exception\UserRoleGetNotFoundException
@@ -3358,17 +3184,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserRoleDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserRoleDetail
      */
-    public function userRoleGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function userRoleGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleGet($id));
     }
     /**
      * Updates the user role specified by the ID and based on supplied request.
      * @param string $id User role ID.
      * @param \PicturePark\API\Model\UserRoleEditable $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRoleUpdateBadRequestException
      * @throws \PicturePark\API\Exception\UserRoleUpdateUnauthorizedException
      * @throws \PicturePark\API\Exception\UserRoleUpdateNotFoundException
@@ -3377,15 +3202,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleUpdateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserRoleDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserRoleDetail
      */
-    public function userRoleUpdate(string $id, \PicturePark\API\Model\UserRoleEditable $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userRoleUpdate(string $id, \PicturePark\API\Model\UserRoleEditable $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleUpdate($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleUpdate($id, $requestBody));
     }
     /**
      * @param string $id User ID to search for.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserGetBadRequestException
      * @throws \PicturePark\API\Exception\UserGetUnauthorizedException
      * @throws \PicturePark\API\Exception\UserGetNotFoundException
@@ -3394,16 +3218,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserDetail
      */
-    public function userGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function userGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserGet($id));
     }
     /**
      * @param string $id User ID to action on.
      * @param \PicturePark\API\Model\UserUpdateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserUpdateBadRequestException
      * @throws \PicturePark\API\Exception\UserUpdateUnauthorizedException
      * @throws \PicturePark\API\Exception\UserUpdateNotFoundException
@@ -3412,18 +3235,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserUpdateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserDetail
      */
-    public function userUpdate(string $id, \PicturePark\API\Model\UserUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userUpdate(string $id, \PicturePark\API\Model\UserUpdateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserUpdate($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserUpdate($id, $requestBody));
     }
     /**
      * Does not affect AuthorizationState of user.
      * If User is already in desired state, this will be returned as error.
      * @param string $id User ID to action on.
      * @param \PicturePark\API\Model\UserLockRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserLockBadRequestException
      * @throws \PicturePark\API\Exception\UserLockUnauthorizedException
      * @throws \PicturePark\API\Exception\UserLockNotFoundException
@@ -3432,17 +3254,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserLockTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserLockInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function userLock(string $id, \PicturePark\API\Model\UserLockRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userLock(string $id, \PicturePark\API\Model\UserLockRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserLock($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserLock($id, $requestBody));
     }
     /**
      * Does not affect AuthorizationState of users
      * Users which are already in desired state will be returned as errors. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\UserLockManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserLockManyBadRequestException
      * @throws \PicturePark\API\Exception\UserLockManyUnauthorizedException
      * @throws \PicturePark\API\Exception\UserLockManyNotFoundException
@@ -3451,17 +3272,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserLockManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserLockManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function userLockMany(\PicturePark\API\Model\UserLockManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userLockMany(\PicturePark\API\Model\UserLockManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserLockMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserLockMany($requestBody));
     }
     /**
      * Users with AuthorizationState != ToBeReviewed are considered reviewed.
      * @param string $id User ID to action on.
      * @param \PicturePark\API\Model\UserReviewRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserReviewBadRequestException
      * @throws \PicturePark\API\Exception\UserReviewUnauthorizedException
      * @throws \PicturePark\API\Exception\UserReviewNotFoundException
@@ -3470,16 +3290,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserReviewTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserReviewInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function userReview(string $id, \PicturePark\API\Model\UserReviewRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userReview(string $id, \PicturePark\API\Model\UserReviewRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserReview($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserReview($id, $requestBody));
     }
     /**
      * Users with AuthorizationState != ToBeReviewed are considered reviewed. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\UserReviewManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserReviewManyBadRequestException
      * @throws \PicturePark\API\Exception\UserReviewManyUnauthorizedException
      * @throws \PicturePark\API\Exception\UserReviewManyNotFoundException
@@ -3488,16 +3307,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserReviewManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserReviewManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function userReviewMany(\PicturePark\API\Model\UserReviewManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userReviewMany(\PicturePark\API\Model\UserReviewManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserReviewMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserReviewMany($requestBody));
     }
     /**
      * Formally invites a user, e.g. sends an invitation email. Transitions AuthorizationState to Invited, implicitly reviews user.
      * @param string $id User ID to action on.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserInviteBadRequestException
      * @throws \PicturePark\API\Exception\UserInviteUnauthorizedException
      * @throws \PicturePark\API\Exception\UserInviteNotFoundException
@@ -3506,16 +3324,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserInviteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserInviteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function userInvite(string $id, string $fetch = self::FETCH_OBJECT)
+    public function userInvite(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserInvite($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserInvite($id));
     }
     /**
      * Formally invites users, e.g. sends an invitation email. Transitions to Invited, implicitly reviews user. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\UserInviteManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserInviteManyBadRequestException
      * @throws \PicturePark\API\Exception\UserInviteManyUnauthorizedException
      * @throws \PicturePark\API\Exception\UserInviteManyNotFoundException
@@ -3524,16 +3341,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserInviteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserInviteManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function userInviteMany(\PicturePark\API\Model\UserInviteManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userInviteMany(\PicturePark\API\Model\UserInviteManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserInviteMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserInviteMany($requestBody));
     }
     /**
      * Formally re-invites a user, e.g. sends an invitation email.
      * @param string $id User ID to action on.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserReinviteBadRequestException
      * @throws \PicturePark\API\Exception\UserReinviteUnauthorizedException
      * @throws \PicturePark\API\Exception\UserReinviteNotFoundException
@@ -3542,16 +3358,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserReinviteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserReinviteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function userReinvite(string $id, string $fetch = self::FETCH_OBJECT)
+    public function userReinvite(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserReinvite($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserReinvite($id));
     }
     /**
      * Formally re-invites users, e.g. sends an invitation email. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\UserReinviteManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserReInviteManyBadRequestException
      * @throws \PicturePark\API\Exception\UserReInviteManyUnauthorizedException
      * @throws \PicturePark\API\Exception\UserReInviteManyNotFoundException
@@ -3560,15 +3375,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserReInviteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserReInviteManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function userReInviteMany(\PicturePark\API\Model\UserReinviteManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userReInviteMany(\PicturePark\API\Model\UserReinviteManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserReInviteMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserReInviteMany($requestBody));
     }
     /**
      * @param \PicturePark\API\Model\UserRoleAssignManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserAssignUserRolesBadRequestException
      * @throws \PicturePark\API\Exception\UserAssignUserRolesUnauthorizedException
      * @throws \PicturePark\API\Exception\UserAssignUserRolesNotFoundException
@@ -3577,16 +3391,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserAssignUserRolesTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserAssignUserRolesInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function userAssignUserRoles(\PicturePark\API\Model\UserRoleAssignManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userAssignUserRoles(\PicturePark\API\Model\UserRoleAssignManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserAssignUserRoles($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserAssignUserRoles($requestBody));
     }
     /**
      * @param string $id User ID
      * @param \PicturePark\API\Model\UserDeleteRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserDeleteBadRequestException
      * @throws \PicturePark\API\Exception\UserDeleteUnauthorizedException
      * @throws \PicturePark\API\Exception\UserDeleteNotFoundException
@@ -3595,16 +3408,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserDeleteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function userDelete(string $id, \PicturePark\API\Model\UserDeleteRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userDelete(string $id, \PicturePark\API\Model\UserDeleteRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserDelete($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserDelete($id, $requestBody));
     }
     /**
      * Restores previously deleted user, who was not cleaned up yet.
      * @param string $id User ID to action on.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRestoreBadRequestException
      * @throws \PicturePark\API\Exception\UserRestoreUnauthorizedException
      * @throws \PicturePark\API\Exception\UserRestoreNotFoundException
@@ -3613,15 +3425,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRestoreTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRestoreInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function userRestore(string $id, string $fetch = self::FETCH_OBJECT)
+    public function userRestore(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRestore($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRestore($id));
     }
     /**
      * @param string $id User ID to action on.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestBadRequestException
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestUnauthorizedException
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestNotFoundException
@@ -3630,15 +3441,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return null
      */
-    public function userCancelDeletionRequest(string $id, string $fetch = self::FETCH_OBJECT)
+    public function userCancelDeletionRequest(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserCancelDeletionRequest($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserCancelDeletionRequest($id));
     }
     /**
      * @param string $tokenId ID of the owner token.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserGetByOwnerTokenBadRequestException
      * @throws \PicturePark\API\Exception\UserGetByOwnerTokenUnauthorizedException
      * @throws \PicturePark\API\Exception\UserGetByOwnerTokenNotFoundException
@@ -3647,16 +3457,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserGetByOwnerTokenTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserGetByOwnerTokenInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserDetail
      */
-    public function userGetByOwnerToken(string $tokenId, string $fetch = self::FETCH_OBJECT)
+    public function userGetByOwnerToken(string $tokenId)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserGetByOwnerToken($tokenId), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserGetByOwnerToken($tokenId));
     }
     /**
      * User will not be invited.
      * @param \PicturePark\API\Model\UserCreateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserCreateBadRequestException
      * @throws \PicturePark\API\Exception\UserCreateUnauthorizedException
      * @throws \PicturePark\API\Exception\UserCreateNotFoundException
@@ -3665,18 +3474,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserCreateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserDetail : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserDetail
      */
-    public function userCreate(\PicturePark\API\Model\UserCreateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userCreate(\PicturePark\API\Model\UserCreateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserCreate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserCreate($requestBody));
     }
     /**
      * Can fetch 100 users at most.
      * @param array{
      *    "ids"?: array, //User IDs.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserGetManyBadRequestException
      * @throws \PicturePark\API\Exception\UserGetManyUnauthorizedException
      * @throws \PicturePark\API\Exception\UserGetManyNotFoundException
@@ -3685,15 +3493,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserGetManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserDetail[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserDetail[]
      */
-    public function userGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function userGetMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserGetMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserGetMany($queryParameters));
     }
     /**
      * @param \PicturePark\API\Model\UserSearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserSearchBadRequestException
      * @throws \PicturePark\API\Exception\UserSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\UserSearchNotFoundException
@@ -3702,15 +3509,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\UserSearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\UserSearchResult
      */
-    public function userSearch(\PicturePark\API\Model\UserSearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userSearch(\PicturePark\API\Model\UserSearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserSearch($requestBody));
     }
     /**
      * @param \PicturePark\API\Model\UserAggregationRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserAggregateBadRequestException
      * @throws \PicturePark\API\Exception\UserAggregateUnauthorizedException
      * @throws \PicturePark\API\Exception\UserAggregateNotFoundException
@@ -3719,15 +3525,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserAggregateTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserAggregateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\ObjectAggregationResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\ObjectAggregationResult
      */
-    public function userAggregate(\PicturePark\API\Model\UserAggregationRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userAggregate(\PicturePark\API\Model\UserAggregationRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserAggregate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserAggregate($requestBody));
     }
     /**
      * @param \PicturePark\API\Model\UserUpdateIdentityProviderManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserUpdateIdentityProviderManyBadRequestException
      * @throws \PicturePark\API\Exception\UserUpdateIdentityProviderManyUnauthorizedException
      * @throws \PicturePark\API\Exception\UserUpdateIdentityProviderManyNotFoundException
@@ -3736,14 +3541,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserUpdateIdentityProviderManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserUpdateIdentityProviderManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function userUpdateIdentityProviderMany(\PicturePark\API\Model\UserUpdateIdentityProviderManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function userUpdateIdentityProviderMany(\PicturePark\API\Model\UserUpdateIdentityProviderManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserUpdateIdentityProviderMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserUpdateIdentityProviderMany($requestBody));
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingGetAvailableTargetsBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingGetAvailableTargetsUnauthorizedException
      * @throws \PicturePark\API\Exception\XmpMappingGetAvailableTargetsNotFoundException
@@ -3752,15 +3556,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingGetAvailableTargetsTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingGetAvailableTargetsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\XmpMappingTargets : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\XmpMappingTargets
      */
-    public function xmpMappingGetAvailableTargets(string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingGetAvailableTargets()
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingGetAvailableTargets(), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingGetAvailableTargets());
     }
     /**
      * @param \PicturePark\API\Model\XmpMappingEntrySearchRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingSearchBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingSearchUnauthorizedException
      * @throws \PicturePark\API\Exception\XmpMappingSearchNotFoundException
@@ -3769,16 +3572,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingSearchTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingSearchInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\XmpMappingEntrySearchResult : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\XmpMappingEntrySearchResult
      */
-    public function xmpMappingSearch(\PicturePark\API\Model\XmpMappingEntrySearchRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingSearch(\PicturePark\API\Model\XmpMappingEntrySearchRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingSearch($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingSearch($requestBody));
     }
     /**
      * Deletes the xmp mapping specified by the ID. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param string $id Xmp mapping ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingDeleteBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteUnauthorizedException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteNotFoundException
@@ -3787,16 +3589,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function xmpMappingDelete(string $id, string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingDelete(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingDelete($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingDelete($id));
     }
     /**
      * Gets the xmp mapping by the xmp mapping ID.
      * @param string $id Xmp mapping ID.
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingGetBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingGetUnauthorizedException
      * @throws \PicturePark\API\Exception\XmpMappingGetNotFoundException
@@ -3805,17 +3606,16 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\XmpMappingEntry : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\XmpMappingEntry
      */
-    public function xmpMappingGet(string $id, string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingGet(string $id)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingGet($id), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingGet($id));
     }
     /**
      * Updates the xmp mapping specified by the ID and based on supplied request. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param string $id Xmp mapping ID.
      * @param \PicturePark\API\Model\XmpMappingEntry $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingUpdateBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateUnauthorizedException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateNotFoundException
@@ -3824,18 +3624,17 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingUpdateTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function xmpMappingUpdate(string $id, \PicturePark\API\Model\XmpMappingEntry $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingUpdate(string $id, \PicturePark\API\Model\XmpMappingEntry $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingUpdate($id, $requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingUpdate($id, $requestBody));
     }
     /**
      * Gets multiple xmp mapping details by the xmp mapping IDs. Can fetch maximum of 100 xmp mappings at once.
      * @param array{
      *    "ids"?: array, //Xmp mapping IDs to get information about.
      * } $queryParameters
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingGetManyBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingGetManyUnauthorizedException
      * @throws \PicturePark\API\Exception\XmpMappingGetManyNotFoundException
@@ -3844,16 +3643,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingGetManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingGetManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\XmpMappingEntry[] : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\XmpMappingEntry[]
      */
-    public function xmpMappingGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingGetMany(array $queryParameters = [])
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingGetMany($queryParameters), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingGetMany($queryParameters));
     }
     /**
      * Creates new xmp mapping based on the supplied request. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\XmpMappingEntryCreateRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingCreateBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingCreateUnauthorizedException
      * @throws \PicturePark\API\Exception\XmpMappingCreateNotFoundException
@@ -3862,16 +3660,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingCreateTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingCreateInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function xmpMappingCreate(\PicturePark\API\Model\XmpMappingEntryCreateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingCreate(\PicturePark\API\Model\XmpMappingEntryCreateRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingCreate($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingCreate($requestBody));
     }
     /**
      * Creates new xmp mappings based on supplied requests. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\XmpMappingEntryCreateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingCreateManyBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingCreateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\XmpMappingCreateManyNotFoundException
@@ -3880,16 +3677,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingCreateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingCreateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function xmpMappingCreateMany(\PicturePark\API\Model\XmpMappingEntryCreateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingCreateMany(\PicturePark\API\Model\XmpMappingEntryCreateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingCreateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingCreateMany($requestBody));
     }
     /**
      * Updates the xmp mappings specified by the IDs and based on supplied requests. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\XmpMappingEntryUpdateManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingUpdateManyBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateManyUnauthorizedException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateManyNotFoundException
@@ -3898,16 +3694,15 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingUpdateManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingUpdateManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function xmpMappingUpdateMany(\PicturePark\API\Model\XmpMappingEntryUpdateManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingUpdateMany(\PicturePark\API\Model\XmpMappingEntryUpdateManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingUpdateMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingUpdateMany($requestBody));
     }
     /**
      * Deletes the xmp mappings specified by the IDs. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
      * @param \PicturePark\API\Model\XmpMappingEntryDeleteManyRequest $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingDeleteManyBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteManyUnauthorizedException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteManyNotFoundException
@@ -3916,29 +3711,29 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\XmpMappingDeleteManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\XmpMappingDeleteManyInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null|\PicturePark\API\Model\BusinessProcess : \Psr\Http\Message\ResponseInterface)
+     * @return null|\PicturePark\API\Model\BusinessProcess
      */
-    public function xmpMappingDeleteMany(\PicturePark\API\Model\XmpMappingEntryDeleteManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingDeleteMany(\PicturePark\API\Model\XmpMappingEntryDeleteManyRequest $requestBody)
     {
-        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingDeleteMany($requestBody), $fetch);
+        return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingDeleteMany($requestBody));
     }
-    public static function create(?\Psr\Http\Client\ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
-            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = [];
-            if (count($additionalPlugins) > 0) {
-                $plugins = array_merge($plugins, $additionalPlugins);
-            }
-            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
+            $httpClient = \Symfony\Component\HttpClient\HttpClient::create();
         }
-        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
-        $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
+        $plugins = [];
+        if (count($additionalPlugins) > 0) {
+            $plugins = array_merge($plugins, $additionalPlugins);
+        }
+        foreach ($plugins as $plugin) {
+            $httpClient = $plugin($httpClient);
+        }
         $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \PicturePark\API\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
         $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \PicturePark\API\Runtime\Client\FormEncoder()]);
-        return new static($httpClient, $requestFactory, $serializer, $streamFactory);
+        return new static($httpClient, $serializer);
     }
 }

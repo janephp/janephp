@@ -29,6 +29,7 @@ Each record follows a lightweight ADR format:
 | [0009](0009-generation-options-value-object.md) | Frozen generation `Options` value object as single source of defaults | Accepted |
 | [0010](0010-openapi-3-31-generator-consolidation.md) | Consolidate OpenAPI 3 / 3.1 generator duplication | Accepted |
 | [0011](0011-static-analysis-of-generated-code.md) | Generated code is statically analysed with Mago | Accepted |
+| [0012](0012-symfony-httpclient-migration-x-fetch-mode.md) | Symfony HttpClient migration and `x-fetch-mode` (GET/HEAD only) | Accepted |
 
 ## Adding a new record
 

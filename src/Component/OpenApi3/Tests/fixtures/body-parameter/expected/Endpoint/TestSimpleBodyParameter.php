@@ -5,7 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Endpoint;
 class TestSimpleBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\BodyParameter\Runtime\Client\Endpoint
 {
     /**
-     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
+     * @param string|resource $requestBody
      */
     public function __construct($requestBody)
     {
@@ -20,9 +20,9 @@ class TestSimpleBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Bo
     {
         return '/test-simple';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
-        if (is_string($this->body) or is_resource($this->body) or $this->body instanceof \Psr\Http\Message\StreamInterface) {
+        if (is_string($this->body) or is_resource($this->body)) {
             return [['Content-Type' => ['text/plain']], $this->body];
         }
         return [[], null];
@@ -33,10 +33,10 @@ class TestSimpleBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Bo
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return null;
         }
@@ -44,5 +44,9 @@ class TestSimpleBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Bo
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

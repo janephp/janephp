@@ -28,7 +28,7 @@ class AutoscalepoolsList extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     {
         return '/v2/droplets/autoscale';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -56,10 +56,10 @@ class AutoscalepoolsList extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllAutoscalePools|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseAllAutoscalePools', 'json');
         }
@@ -79,5 +79,9 @@ class AutoscalepoolsList extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

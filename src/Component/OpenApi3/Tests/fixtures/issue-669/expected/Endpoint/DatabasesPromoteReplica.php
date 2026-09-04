@@ -29,7 +29,7 @@ class DatabasesPromoteReplica extends \Jane\Generated\DigitalOcean\Runtime\Clien
     {
         return str_replace(['{database_cluster_uuid}', '{replica_name}'], [rawurlencode($this->database_cluster_uuid), rawurlencode($this->replica_name)], '/v2/databases/{database_cluster_uuid}/replicas/{replica_name}/promote');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -47,10 +47,10 @@ class DatabasesPromoteReplica extends \Jane\Generated\DigitalOcean\Runtime\Clien
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (204 === $status) {
             return null;
         }
@@ -73,5 +73,9 @@ class DatabasesPromoteReplica extends \Jane\Generated\DigitalOcean\Runtime\Clien
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

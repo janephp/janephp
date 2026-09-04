@@ -21,7 +21,7 @@ class TransferGetFile extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     {
         return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Transfers/files/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -42,10 +42,10 @@ class TransferGetFile extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
      *
      * @return null|\PicturePark\API\Model\FileTransferDetail
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\FileTransferDetail', 'json');
         }
@@ -74,5 +74,9 @@ class TransferGetFile extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     public function getAuthenticationScopes(): array
     {
         return ['Bearer'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

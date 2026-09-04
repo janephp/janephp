@@ -10,9 +10,9 @@ class IdentityProviderGetSynchronizableAttributesNotFoundException extends NotFo
          */
         private readonly \PicturePark\API\Model\PictureparkNotFoundException $pictureparkNotFoundException,
         /**
-         * @var \Psr\Http\Message\ResponseInterface
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
          */
-        private readonly \Psr\Http\Message\ResponseInterface $response
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
     )
     {
         parent::__construct('Entity not found');
@@ -21,7 +21,7 @@ class IdentityProviderGetSynchronizableAttributesNotFoundException extends NotFo
     {
         return $this->pictureparkNotFoundException;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

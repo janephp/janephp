@@ -22,7 +22,7 @@ class SchemaGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements 
     {
         return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Schemas/{id}');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -43,10 +43,10 @@ class SchemaGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements 
      *
      * @return null|\PicturePark\API\Model\SchemaDetail
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\SchemaDetail', 'json');
         }
@@ -75,5 +75,9 @@ class SchemaGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements 
     public function getAuthenticationScopes(): array
     {
         return ['Bearer'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

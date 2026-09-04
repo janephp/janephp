@@ -15,7 +15,6 @@ use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
-use Psr\Http\Message\StreamInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
@@ -169,7 +168,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             'boolean' => ['bool'],
             'integer' => ['int'],
             'array' => ['array'],
-            'file' => ['string', 'resource', '\\' . StreamInterface::class],
+            'file' => ['string', 'resource'],
         ];
 
         return $convertArray[$type];

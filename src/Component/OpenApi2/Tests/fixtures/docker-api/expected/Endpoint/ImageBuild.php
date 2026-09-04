@@ -13,7 +13,7 @@ class ImageBuild extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      *
      * The build is canceled if the client drops the connection by quitting or being killed.
      *
-     * @param string|resource|\Psr\Http\Message\StreamInterface $inputStream A tar archive compressed with one of the following algorithms: identity (no compression), gzip, bzip2, xz.
+     * @param string|resource $inputStream A tar archive compressed with one of the following algorithms: identity (no compression), gzip, bzip2, xz.
      * @param array $queryParameters {
      *     @var string $dockerfile Path within the build context to the `Dockerfile`. This is ignored if `remote` is specified and points to an external `Dockerfile`.
      *     @var string $t A name and optional tag to apply to the image in the `name:tag` format. If you omit the tag the default `latest` value is assumed. You can provide several `t` parameters.
@@ -87,7 +87,7 @@ class ImageBuild extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     {
         return '/build';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], $this->body];
     }
@@ -145,10 +145,10 @@ class ImageBuild extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return null;
         }
@@ -162,5 +162,9 @@ class ImageBuild extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

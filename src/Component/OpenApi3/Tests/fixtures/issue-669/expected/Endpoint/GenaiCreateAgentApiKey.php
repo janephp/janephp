@@ -24,7 +24,7 @@ class GenaiCreateAgentApiKey extends \Jane\Generated\DigitalOcean\Runtime\Client
     {
         return str_replace(['{agent_uuid}'], [rawurlencode($this->agent_uuid)], '/v2/gen-ai/agents/{agent_uuid}/api_keys');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \Jane\Generated\DigitalOcean\Model\ApiCreateAgentAPIKeyInputPublic) {
             return [['Content-Type' => ['application/json']], \Jane\Generated\DigitalOcean\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -45,10 +45,10 @@ class GenaiCreateAgentApiKey extends \Jane\Generated\DigitalOcean\Runtime\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ApiCreateAgentAPIKeyOutput', 'json');
         }
@@ -71,5 +71,9 @@ class GenaiCreateAgentApiKey extends \Jane\Generated\DigitalOcean\Runtime\Client
     public function getAuthenticationScopes(): array
     {
         return ['bearer_auth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }

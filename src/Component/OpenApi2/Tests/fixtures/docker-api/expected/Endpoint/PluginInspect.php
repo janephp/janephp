@@ -23,7 +23,7 @@ class PluginInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     {
         return str_replace(['{name}'], [rawurlencode($this->name)], '/plugins/{name}/json');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -39,10 +39,10 @@ class PluginInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      *
      * @return null|\Docker\Api\Model\Plugin
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'Docker\Api\Model\Plugin', 'json');
         }
@@ -56,5 +56,9 @@ class PluginInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     public function getAuthenticationScopes(): array
     {
         return [];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Lazy->value;
     }
 }

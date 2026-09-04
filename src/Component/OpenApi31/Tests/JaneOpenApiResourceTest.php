@@ -2,7 +2,6 @@
 
 namespace Jane\Component\OpenApi31\Tests;
 
-use Http\Client\Common\Plugin\HeaderSetPlugin;
 use Jane\Component\JsonSchema\Tests\CodeStyleFixerTrait;
 use Jane\Component\JsonSchema\Tests\FixtureComparisonTrait;
 use Jane\Component\OpenApi31\Tests\Client\Authentication\ApiKeyAuthAuthentication;
@@ -21,11 +20,12 @@ use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\Console\Loader\SchemaLoader;
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class JaneOpenApiResourceTest extends TestCase
 {
@@ -79,8 +79,9 @@ class JaneOpenApiResourceTest extends TestCase
 
         // 2. Test unauthorized
         $client = Client::create();
+        $result = $client->getEndpoint();
         try {
-            $client->getEndpoint();
+            $result->toObject();
             self::fail('Expected GetEndpointUnauthorizedException to be thrown.');
         } catch (GetEndpointUnauthorizedException $exception) {
             $this->assertEquals(401, $exception->getCode());
@@ -89,11 +90,11 @@ class JaneOpenApiResourceTest extends TestCase
 
         // 3. Simple authenticated call
         $client = Client::create(null, [new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')])]);
-        $response = $client->getEndpoint();
+        $response = $client->getEndpoint()->toObject();
         $this->assertInstanceOf(SimpleResponse::class, $response);
 
         // 4. Path and query parameters, enum, date format and array denormalization
-        $thing = $client->getThing('thing-1', ['q' => 'search', 'page' => 2]);
+        $thing = $client->getThing('thing-1', ['q' => 'search', 'page' => 2])->toObject();
         $this->assertInstanceOf(Thing::class, $thing);
         $this->assertContains($thing->kind, ['created', 'updated', 'deleted']);
         $this->assertInstanceOf(\DateTime::class, $thing->createdAt);
@@ -111,7 +112,7 @@ class JaneOpenApiResourceTest extends TestCase
         $this->assertInstanceOf(Thing::class, $formThing);
 
         // 7. allOf inheritance
-        $thingDetails = $client->getThingDetails('thing-1');
+        $thingDetails = $client->getThingDetails('thing-1')->toObject();
         $this->assertInstanceOf(ThingDetails::class, $thingDetails);
         $this->assertNotSame('', $thingDetails->description);
 
@@ -126,10 +127,11 @@ class JaneOpenApiResourceTest extends TestCase
         // 10. Typed exception on a 404 response selected through the Prefer header
         $preferClient = Client::create(null, [
             new AuthenticationRegistry([new ApiKeyAuthAuthentication('api_key')]),
-            new HeaderSetPlugin(['Prefer' => 'code=404']),
+            static fn (HttpClientInterface $httpClient): HttpClientInterface => $httpClient->withOptions(['headers' => ['Prefer' => 'code=404']]),
         ]);
+        $result = $preferClient->getThing('thing-1', ['q' => 'search']);
         try {
-            $preferClient->getThing('thing-1', ['q' => 'search']);
+            $result->toObject();
             self::fail('Expected GetThingNotFoundException to be thrown.');
         } catch (GetThingNotFoundException $exception) {
             $this->assertEquals(404, $exception->getCode());

@@ -5,7 +5,7 @@ Jane OpenAPI is a library to generate, in PHP, an http client and its associated
 
 ## At a glance
 
-- Generate a PSR-18 compatible client, endpoint classes, models and normalizers.
+- Generate a client based on [Symfony HttpClient](https://symfony.com/doc/current/components/http_client.html) (endpoint classes, models and normalizers included).
 - Works with OpenAPI 2.0, 3.0.x and 3.1.x.
 - Use [OpenAPI component](./component.md) for full options and advanced configuration.
 

@@ -2,13 +2,12 @@
 
 namespace Jane\Component\OpenApiCommon\Generator\Client;
 
-use Http\Client\Common\PluginClient;
-use Http\Discovery\Psr18ClientDiscovery;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
+use Symfony\Component\HttpClient\HttpClient;
 
 trait HttpClientCreateGenerator
 {
@@ -20,20 +19,13 @@ trait HttpClientCreateGenerator
 
         if (!$this->needsServerPlugins($openApi)) {
             return [
-                new Stmt\If_(
-                    $this->createHttpClientNullCheck(),
-                    [
-                        'stmts' => [
-                            $this->createHttpClientDiscoveryStmt(),
-                            new Stmt\Expression(new Expr\Assign(
-                                new Expr\Variable('plugins'),
-                                new Expr\Array_()
-                            )),
-                            $this->createAdditionalPluginsMergeStmt(),
-                            $this->createPluginClientAssignStmt(),
-                        ],
-                    ]
-                ),
+                $this->createHttpClientDefaultStmt(),
+                new Stmt\Expression(new Expr\Assign(
+                    new Expr\Variable('plugins'),
+                    new Expr\Array_()
+                )),
+                $this->createAdditionalPluginsMergeStmt(),
+                $this->createDecoratorLoopStmt(),
             ];
         }
 
@@ -42,14 +34,7 @@ trait HttpClientCreateGenerator
                 new Expr\Variable('plugins'),
                 new Expr\Array_()
             )),
-            new Stmt\If_(
-                $this->createHttpClientNullCheck(),
-                [
-                    'stmts' => [
-                        $this->createHttpClientDiscoveryStmt(),
-                    ],
-                ]
-            ),
+            $this->createHttpClientDefaultStmt(),
             new Stmt\If_(
                 new Expr\Variable('applyServerPlugins'),
                 [
@@ -57,8 +42,26 @@ trait HttpClientCreateGenerator
                 ]
             ),
             $this->createAdditionalPluginsMergeStmt(),
-            $this->createPluginClientAssignStmt(),
+            $this->createDecoratorLoopStmt(),
         ];
+    }
+
+    private function createHttpClientDefaultStmt(): Stmt\If_
+    {
+        return new Stmt\If_(
+            $this->createHttpClientNullCheck(),
+            [
+                'stmts' => [
+                    new Stmt\Expression(new Expr\Assign(
+                        new Expr\Variable('httpClient'),
+                        new Expr\StaticCall(
+                            new Name\FullyQualified(HttpClient::class),
+                            'create'
+                        )
+                    )),
+                ],
+            ]
+        );
     }
 
     private function createHttpClientNullCheck(): Expr
@@ -67,17 +70,6 @@ trait HttpClientCreateGenerator
             new Expr\ConstFetch(new Name('null')),
             new Expr\Variable('httpClient')
         );
-    }
-
-    private function createHttpClientDiscoveryStmt(): Stmt\Expression
-    {
-        return new Stmt\Expression(new Expr\Assign(
-            new Expr\Variable('httpClient'),
-            new Expr\StaticCall(
-                new Name\FullyQualified(Psr18ClientDiscovery::class),
-                'find'
-            )
-        ));
     }
 
     private function createAdditionalPluginsMergeStmt(): Stmt\If_
@@ -101,17 +93,29 @@ trait HttpClientCreateGenerator
         );
     }
 
-    private function createPluginClientAssignStmt(): Stmt\Expression
+    /**
+     * Plugins are HttpClientInterface decorator factories
+     * (callable(HttpClientInterface): HttpClientInterface): each one wraps the
+     * client with an additional behavior (server URL, authentication, ...).
+     */
+    private function createDecoratorLoopStmt(): Stmt\Foreach_
     {
-        return new Stmt\Expression(new Expr\Assign(
-            new Expr\Variable('httpClient'),
-            new Expr\New_(
-                new Name\FullyQualified(PluginClient::class),
-                [
-                    new Node\Arg(new Expr\Variable('httpClient')),
-                    new Node\Arg(new Expr\Variable('plugins')),
-                ]
-            )
-        ));
+        return new Stmt\Foreach_(
+            new Expr\Variable('plugins'),
+            new Expr\Variable('plugin'),
+            [
+                'stmts' => [
+                    new Stmt\Expression(new Expr\Assign(
+                        new Expr\Variable('httpClient'),
+                        new Expr\FuncCall(
+                            new Expr\Variable('plugin'),
+                            [
+                                new Node\Arg(new Expr\Variable('httpClient')),
+                            ]
+                        )
+                    )),
+                ],
+            ]
+        );
     }
 }

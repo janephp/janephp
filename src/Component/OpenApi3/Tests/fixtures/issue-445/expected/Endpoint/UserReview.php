@@ -24,7 +24,7 @@ class UserReview extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
     {
         return str_replace(['{id}'], [rawurlencode($this->id)], '/v1/Users/{id}/review');
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         if ($this->body instanceof \PicturePark\API\Model\UserReviewRequest) {
             return [['Content-Type' => ['application/json']], \PicturePark\API\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
@@ -48,10 +48,10 @@ class UserReview extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
      *
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return null;
         }
@@ -80,5 +80,9 @@ class UserReview extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
     public function getAuthenticationScopes(): array
     {
         return ['Bearer'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
     }
 }
