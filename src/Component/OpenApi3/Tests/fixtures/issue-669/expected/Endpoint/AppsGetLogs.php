@@ -8,20 +8,20 @@ class AppsGetLogs extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
     protected $deployment_id;
     protected $component_name;
     /**
-    * Retrieve the logs of a past, in-progress, or active deployment. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment.
-    * @param string $appId The app ID
-    * @param string $deploymentId The deployment ID
-    * @param string $componentName An optional component name. If set, logs will be limited to this component only.
-    * @param array{
-    *    "follow"?: bool, //Whether the logs should follow live updates.
-    *    "type": string, //The type of logs to retrieve
-    - BUILD: Build-time logs
-    - DEPLOY: Deploy-time logs
-    - RUN: Live run-time logs
-    - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
-    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    * } $queryParameters
-    */
+     * Retrieve the logs of a past, in-progress, or active deployment. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment.
+     * @param string $appId The app ID
+     * @param string $deploymentId The deployment ID
+     * @param string $componentName An optional component name. If set, logs will be limited to this component only.
+     * @param array{
+     *    "follow"?: bool, //Whether the logs should follow live updates.
+     *    "type"?: string, //The type of logs to retrieve
+     *                     //- BUILD: Build-time logs
+     *                     //- DEPLOY: Deploy-time logs
+     *                     //- RUN: Live run-time logs
+     *                     //- RUN_RESTARTED: Logs of crashed/restarted instances during runtime
+     *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+     * } $queryParameters
+     */
     public function __construct(string $appId, string $deploymentId, string $componentName, array $queryParameters = [])
     {
         $this->app_id = $appId;

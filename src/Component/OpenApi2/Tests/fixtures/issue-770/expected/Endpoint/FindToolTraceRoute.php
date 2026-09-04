@@ -5,12 +5,12 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 class FindToolTraceRoute extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $apMac MAC address of the AP running the traceRoute test
-     *     @var string $targetIP the target IP address to traceRoute
-     *     @var string $timeoutInSec Timeout in unit of seconds (Default: 30)
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "apMac": string, //MAC address of the AP running the traceRoute test
+     *    "targetIP": string, //the target IP address to traceRoute
+     *    "timeoutInSec"?: string, //Timeout in unit of seconds (Default: 30)
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

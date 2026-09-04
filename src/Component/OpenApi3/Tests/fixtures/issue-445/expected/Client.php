@@ -550,26 +550,25 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetSearch($requestBody));
     }
     /**
-    * Deletes a single content. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
-    * @param string $id The ID of the content to delete.
-    * @param array{
-    *    "forceReferenceRemoval"?: bool, //A value indicating whether references to the content should be removed.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\ContentDeleteBadRequestException
-    * @throws \PicturePark\API\Exception\ContentDeleteUnauthorizedException
-    * @throws \PicturePark\API\Exception\ContentDeleteNotFoundException
-    * @throws \PicturePark\API\Exception\ContentDeleteMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\ContentDeleteConflictException
-    * @throws \PicturePark\API\Exception\ContentDeleteTooManyRequestsException
-    * @throws \PicturePark\API\Exception\ContentDeleteInternalServerErrorException
-    *
-    * @return null
-    */
+     * Deletes a single content. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
+     * @param string $id The ID of the content to delete.
+     * @param array{
+     *    "forceReferenceRemoval"?: bool, //A value indicating whether references to the content should be removed.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\ContentDeleteBadRequestException
+     * @throws \PicturePark\API\Exception\ContentDeleteUnauthorizedException
+     * @throws \PicturePark\API\Exception\ContentDeleteNotFoundException
+     * @throws \PicturePark\API\Exception\ContentDeleteMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\ContentDeleteConflictException
+     * @throws \PicturePark\API\Exception\ContentDeleteTooManyRequestsException
+     * @throws \PicturePark\API\Exception\ContentDeleteInternalServerErrorException
+     *
+     * @return null
+     */
     public function contentDelete(string $id, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDelete($id, $queryParameters));
@@ -667,133 +666,128 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetMany($queryParameters));
     }
     /**
-    * Create a single file-less content item. To import files, see [Transfer](#tag/Transfer).
-    * @param \PicturePark\API\Model\ContentCreateRequest $requestBody
-    * @param array{
-    *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
-    *    "allowMissingDependencies"?: bool, //Allows creating contents that refer to list items or contents that don't exist in the system.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\ContentCreateBadRequestException
-    * @throws \PicturePark\API\Exception\ContentCreateUnauthorizedException
-    * @throws \PicturePark\API\Exception\ContentCreateNotFoundException
-    * @throws \PicturePark\API\Exception\ContentCreateMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\ContentCreateConflictException
-    * @throws \PicturePark\API\Exception\ContentCreateTooManyRequestsException
-    * @throws \PicturePark\API\Exception\ContentCreateInternalServerErrorException
-    *
-    * @return null|\PicturePark\API\Model\ContentDetail
-    */
+     * Create a single file-less content item. To import files, see [Transfer](#tag/Transfer).
+     * @param \PicturePark\API\Model\ContentCreateRequest $requestBody
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
+     *    "allowMissingDependencies"?: bool, //Allows creating contents that refer to list items or contents that don't exist in the system.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\ContentCreateBadRequestException
+     * @throws \PicturePark\API\Exception\ContentCreateUnauthorizedException
+     * @throws \PicturePark\API\Exception\ContentCreateNotFoundException
+     * @throws \PicturePark\API\Exception\ContentCreateMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\ContentCreateConflictException
+     * @throws \PicturePark\API\Exception\ContentCreateTooManyRequestsException
+     * @throws \PicturePark\API\Exception\ContentCreateInternalServerErrorException
+     *
+     * @return null|\PicturePark\API\Model\ContentDetail
+     */
     public function contentCreate(\PicturePark\API\Model\ContentCreateRequest $requestBody, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentCreate($requestBody, $queryParameters));
     }
     /**
-    * Updates metadata layers of a specified content. For file-less contents, the content itself can be updated as well.
-    * The update is flexible enough to allow the update of only the fields that are specified in the request (leaving untouched the other existing ones) or to allow
-    * the entire replacement of all the values of a schema or even of all the schemas.
-    * See [ShouldUpdateMetadata](https://github.com/Picturepark/Picturepark.SDK.DotNet/blob/master/src/Picturepark.SDK.V1.Tests/Clients/ContentTests.cs) tests.
-    * @param string $id The content ID.
-    * @param \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody
-    * @param array{
-    *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
-    *    "allowMissingDependencies"?: bool, //Allows storing references to list items or contents that don't exist in the system.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\ContentUpdateMetadataBadRequestException
-    * @throws \PicturePark\API\Exception\ContentUpdateMetadataUnauthorizedException
-    * @throws \PicturePark\API\Exception\ContentUpdateMetadataNotFoundException
-    * @throws \PicturePark\API\Exception\ContentUpdateMetadataMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\ContentUpdateMetadataConflictException
-    * @throws \PicturePark\API\Exception\ContentUpdateMetadataTooManyRequestsException
-    * @throws \PicturePark\API\Exception\ContentUpdateMetadataInternalServerErrorException
-    *
-    * @return null|\PicturePark\API\Model\ContentDetail
-    */
+     * Updates metadata layers of a specified content. For file-less contents, the content itself can be updated as well.
+     * The update is flexible enough to allow the update of only the fields that are specified in the request (leaving untouched the other existing ones) or to allow
+     * the entire replacement of all the values of a schema or even of all the schemas.
+     * See [ShouldUpdateMetadata](https://github.com/Picturepark/Picturepark.SDK.DotNet/blob/master/src/Picturepark.SDK.V1.Tests/Clients/ContentTests.cs) tests.
+     * @param string $id The content ID.
+     * @param \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
+     *    "allowMissingDependencies"?: bool, //Allows storing references to list items or contents that don't exist in the system.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\ContentUpdateMetadataBadRequestException
+     * @throws \PicturePark\API\Exception\ContentUpdateMetadataUnauthorizedException
+     * @throws \PicturePark\API\Exception\ContentUpdateMetadataNotFoundException
+     * @throws \PicturePark\API\Exception\ContentUpdateMetadataMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\ContentUpdateMetadataConflictException
+     * @throws \PicturePark\API\Exception\ContentUpdateMetadataTooManyRequestsException
+     * @throws \PicturePark\API\Exception\ContentUpdateMetadataInternalServerErrorException
+     *
+     * @return null|\PicturePark\API\Model\ContentDetail
+     */
     public function contentUpdateMetadata(string $id, \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdateMetadata($id, $requestBody, $queryParameters));
     }
     /**
-    * Updates the content permission sets of a single content. To get a list of available content permission sets, see [Permissions](operation/Permission_SearchContentPermissions)
-    * @param string $id The content ID.
-    * @param \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody
-    * @param array{
-    *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\ContentUpdatePermissionsBadRequestException
-    * @throws \PicturePark\API\Exception\ContentUpdatePermissionsUnauthorizedException
-    * @throws \PicturePark\API\Exception\ContentUpdatePermissionsNotFoundException
-    * @throws \PicturePark\API\Exception\ContentUpdatePermissionsMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\ContentUpdatePermissionsConflictException
-    * @throws \PicturePark\API\Exception\ContentUpdatePermissionsTooManyRequestsException
-    * @throws \PicturePark\API\Exception\ContentUpdatePermissionsInternalServerErrorException
-    *
-    * @return null|\PicturePark\API\Model\ContentDetail
-    */
+     * Updates the content permission sets of a single content. To get a list of available content permission sets, see [Permissions](operation/Permission_SearchContentPermissions)
+     * @param string $id The content ID.
+     * @param \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsBadRequestException
+     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsUnauthorizedException
+     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsNotFoundException
+     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsConflictException
+     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsTooManyRequestsException
+     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsInternalServerErrorException
+     *
+     * @return null|\PicturePark\API\Model\ContentDetail
+     */
     public function contentUpdatePermissions(string $id, \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdatePermissions($id, $requestBody, $queryParameters));
     }
     /**
-    * Restores a previously deleted content.
-    * @param string $id The content ID.
-    * @param array{
-    *    "allowMissingDependencies"?: bool, //Allows restoring contents that refer to list items or contents that don't exist in the system.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\ContentRestoreBadRequestException
-    * @throws \PicturePark\API\Exception\ContentRestoreUnauthorizedException
-    * @throws \PicturePark\API\Exception\ContentRestoreNotFoundException
-    * @throws \PicturePark\API\Exception\ContentRestoreMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\ContentRestoreConflictException
-    * @throws \PicturePark\API\Exception\ContentRestoreTooManyRequestsException
-    * @throws \PicturePark\API\Exception\ContentRestoreInternalServerErrorException
-    *
-    * @return null
-    */
+     * Restores a previously deleted content.
+     * @param string $id The content ID.
+     * @param array{
+     *    "allowMissingDependencies"?: bool, //Allows restoring contents that refer to list items or contents that don't exist in the system.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\ContentRestoreBadRequestException
+     * @throws \PicturePark\API\Exception\ContentRestoreUnauthorizedException
+     * @throws \PicturePark\API\Exception\ContentRestoreNotFoundException
+     * @throws \PicturePark\API\Exception\ContentRestoreMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\ContentRestoreConflictException
+     * @throws \PicturePark\API\Exception\ContentRestoreTooManyRequestsException
+     * @throws \PicturePark\API\Exception\ContentRestoreInternalServerErrorException
+     *
+     * @return null
+     */
     public function contentRestore(string $id, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentRestore($id, $queryParameters));
     }
     /**
-    * Transfers ownership of a content to another user. The target user must have the ManageContent UserRight.
-    * @param string $id The content ID.
-    * @param \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody
-    * @param array{
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\ContentTransferOwnershipBadRequestException
-    * @throws \PicturePark\API\Exception\ContentTransferOwnershipUnauthorizedException
-    * @throws \PicturePark\API\Exception\ContentTransferOwnershipNotFoundException
-    * @throws \PicturePark\API\Exception\ContentTransferOwnershipMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\ContentTransferOwnershipConflictException
-    * @throws \PicturePark\API\Exception\ContentTransferOwnershipTooManyRequestsException
-    * @throws \PicturePark\API\Exception\ContentTransferOwnershipInternalServerErrorException
-    *
-    * @return null
-    */
+     * Transfers ownership of a content to another user. The target user must have the ManageContent UserRight.
+     * @param string $id The content ID.
+     * @param \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody
+     * @param array{
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\ContentTransferOwnershipBadRequestException
+     * @throws \PicturePark\API\Exception\ContentTransferOwnershipUnauthorizedException
+     * @throws \PicturePark\API\Exception\ContentTransferOwnershipNotFoundException
+     * @throws \PicturePark\API\Exception\ContentTransferOwnershipMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\ContentTransferOwnershipConflictException
+     * @throws \PicturePark\API\Exception\ContentTransferOwnershipTooManyRequestsException
+     * @throws \PicturePark\API\Exception\ContentTransferOwnershipInternalServerErrorException
+     *
+     * @return null
+     */
     public function contentTransferOwnership(string $id, \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentTransferOwnership($id, $requestBody, $queryParameters));
@@ -1386,26 +1380,25 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\JsonSchemaGet($id));
     }
     /**
-    * Deletes a list item. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all related files will be deleted.
-    * @param string $id The ID of the list item to delete.
-    * @param array{
-    *    "forceReferenceRemoval"?: bool, //A value indicating whether references to the list item should be removed.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\ListItemDeleteBadRequestException
-    * @throws \PicturePark\API\Exception\ListItemDeleteUnauthorizedException
-    * @throws \PicturePark\API\Exception\ListItemDeleteNotFoundException
-    * @throws \PicturePark\API\Exception\ListItemDeleteMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\ListItemDeleteConflictException
-    * @throws \PicturePark\API\Exception\ListItemDeleteTooManyRequestsException
-    * @throws \PicturePark\API\Exception\ListItemDeleteInternalServerErrorException
-    *
-    * @return null
-    */
+     * Deletes a list item. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all related files will be deleted.
+     * @param string $id The ID of the list item to delete.
+     * @param array{
+     *    "forceReferenceRemoval"?: bool, //A value indicating whether references to the list item should be removed.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\ListItemDeleteBadRequestException
+     * @throws \PicturePark\API\Exception\ListItemDeleteUnauthorizedException
+     * @throws \PicturePark\API\Exception\ListItemDeleteNotFoundException
+     * @throws \PicturePark\API\Exception\ListItemDeleteMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\ListItemDeleteConflictException
+     * @throws \PicturePark\API\Exception\ListItemDeleteTooManyRequestsException
+     * @throws \PicturePark\API\Exception\ListItemDeleteInternalServerErrorException
+     *
+     * @return null
+     */
     public function listItemDelete(string $id, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemDelete($id, $queryParameters));
@@ -1431,53 +1424,51 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGet($id, $queryParameters));
     }
     /**
-    * Updates a single list item.
-    * @param string $id The list item ID.
-    * @param \PicturePark\API\Model\ListItemUpdateRequest $requestBody
-    * @param array{
-    *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
-    *    "allowMissingDependencies"?: bool, //Allows creating list items that refer to list items or contents that don't exist in the system.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\ListItemUpdateBadRequestException
-    * @throws \PicturePark\API\Exception\ListItemUpdateUnauthorizedException
-    * @throws \PicturePark\API\Exception\ListItemUpdateNotFoundException
-    * @throws \PicturePark\API\Exception\ListItemUpdateMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\ListItemUpdateConflictException
-    * @throws \PicturePark\API\Exception\ListItemUpdateTooManyRequestsException
-    * @throws \PicturePark\API\Exception\ListItemUpdateInternalServerErrorException
-    *
-    * @return null|\PicturePark\API\Model\ListItemDetail
-    */
+     * Updates a single list item.
+     * @param string $id The list item ID.
+     * @param \PicturePark\API\Model\ListItemUpdateRequest $requestBody
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
+     *    "allowMissingDependencies"?: bool, //Allows creating list items that refer to list items or contents that don't exist in the system.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\ListItemUpdateBadRequestException
+     * @throws \PicturePark\API\Exception\ListItemUpdateUnauthorizedException
+     * @throws \PicturePark\API\Exception\ListItemUpdateNotFoundException
+     * @throws \PicturePark\API\Exception\ListItemUpdateMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\ListItemUpdateConflictException
+     * @throws \PicturePark\API\Exception\ListItemUpdateTooManyRequestsException
+     * @throws \PicturePark\API\Exception\ListItemUpdateInternalServerErrorException
+     *
+     * @return null|\PicturePark\API\Model\ListItemDetail
+     */
     public function listItemUpdate(string $id, \PicturePark\API\Model\ListItemUpdateRequest $requestBody, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemUpdate($id, $requestBody, $queryParameters));
     }
     /**
-    * Restores a previously deleted list item.
-    * @param string $id The list item ID.
-    * @param array{
-    *    "allowMissingDependencies"?: bool, //Allows restoring list items that refer to list items or contents that don't exist in the system.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\ListItemRestoreBadRequestException
-    * @throws \PicturePark\API\Exception\ListItemRestoreUnauthorizedException
-    * @throws \PicturePark\API\Exception\ListItemRestoreNotFoundException
-    * @throws \PicturePark\API\Exception\ListItemRestoreMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\ListItemRestoreConflictException
-    * @throws \PicturePark\API\Exception\ListItemRestoreTooManyRequestsException
-    * @throws \PicturePark\API\Exception\ListItemRestoreInternalServerErrorException
-    *
-    * @return null
-    */
+     * Restores a previously deleted list item.
+     * @param string $id The list item ID.
+     * @param array{
+     *    "allowMissingDependencies"?: bool, //Allows restoring list items that refer to list items or contents that don't exist in the system.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\ListItemRestoreBadRequestException
+     * @throws \PicturePark\API\Exception\ListItemRestoreUnauthorizedException
+     * @throws \PicturePark\API\Exception\ListItemRestoreNotFoundException
+     * @throws \PicturePark\API\Exception\ListItemRestoreMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\ListItemRestoreConflictException
+     * @throws \PicturePark\API\Exception\ListItemRestoreTooManyRequestsException
+     * @throws \PicturePark\API\Exception\ListItemRestoreInternalServerErrorException
+     *
+     * @return null
+     */
     public function listItemRestore(string $id, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemRestore($id, $queryParameters));
@@ -1522,27 +1513,26 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGetMany($queryParameters));
     }
     /**
-    * Create a new list item.
-    * @param \PicturePark\API\Model\ListItemCreateRequest $requestBody
-    * @param array{
-    *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
-    *    "allowMissingDependencies"?: bool, //Allows creating list items that refer to list items or contents that don't exist in the system.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\ListItemCreateBadRequestException
-    * @throws \PicturePark\API\Exception\ListItemCreateUnauthorizedException
-    * @throws \PicturePark\API\Exception\ListItemCreateNotFoundException
-    * @throws \PicturePark\API\Exception\ListItemCreateMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\ListItemCreateConflictException
-    * @throws \PicturePark\API\Exception\ListItemCreateTooManyRequestsException
-    * @throws \PicturePark\API\Exception\ListItemCreateInternalServerErrorException
-    *
-    * @return null|\PicturePark\API\Model\ListItemDetail
-    */
+     * Create a new list item.
+     * @param \PicturePark\API\Model\ListItemCreateRequest $requestBody
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
+     *    "allowMissingDependencies"?: bool, //Allows creating list items that refer to list items or contents that don't exist in the system.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\ListItemCreateBadRequestException
+     * @throws \PicturePark\API\Exception\ListItemCreateUnauthorizedException
+     * @throws \PicturePark\API\Exception\ListItemCreateNotFoundException
+     * @throws \PicturePark\API\Exception\ListItemCreateMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\ListItemCreateConflictException
+     * @throws \PicturePark\API\Exception\ListItemCreateTooManyRequestsException
+     * @throws \PicturePark\API\Exception\ListItemCreateInternalServerErrorException
+     *
+     * @return null|\PicturePark\API\Model\ListItemDetail
+     */
     public function listItemCreate(\PicturePark\API\Model\ListItemCreateRequest $requestBody, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemCreate($requestBody, $queryParameters));
@@ -2330,24 +2320,23 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetSearch($requestBody));
     }
     /**
-    * Deletes an existing schema.
-    * Depending on how much the schema is referenced, the operation can take a lot of time.
-    * @param string $id The schema ID.
-    * @param array{
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\SchemaDeleteBadRequestException
-    * @throws \PicturePark\API\Exception\SchemaDeleteUnauthorizedException
-    * @throws \PicturePark\API\Exception\SchemaDeleteNotFoundException
-    * @throws \PicturePark\API\Exception\SchemaDeleteMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\SchemaDeleteConflictException
-    * @throws \PicturePark\API\Exception\SchemaDeleteTooManyRequestsException
-    * @throws \PicturePark\API\Exception\SchemaDeleteInternalServerErrorException
-    *
-    * @return null
-    */
+     * Deletes an existing schema.
+     * Depending on how much the schema is referenced, the operation can take a lot of time.
+     * @param string $id The schema ID.
+     * @param array{
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\SchemaDeleteBadRequestException
+     * @throws \PicturePark\API\Exception\SchemaDeleteUnauthorizedException
+     * @throws \PicturePark\API\Exception\SchemaDeleteNotFoundException
+     * @throws \PicturePark\API\Exception\SchemaDeleteMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\SchemaDeleteConflictException
+     * @throws \PicturePark\API\Exception\SchemaDeleteTooManyRequestsException
+     * @throws \PicturePark\API\Exception\SchemaDeleteInternalServerErrorException
+     *
+     * @return null
+     */
     public function schemaDelete(string $id, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaDelete($id, $queryParameters));
@@ -2370,25 +2359,24 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGet($id));
     }
     /**
-    * Updates an existing schema.
-    * Depending on how much the schema is referenced by existing data, the operation can take a lot of time.
-    * @param string $id The schema ID.
-    * @param \PicturePark\API\Model\SchemaUpdateRequest $requestBody
-    * @param array{
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\SchemaUpdateBadRequestException
-    * @throws \PicturePark\API\Exception\SchemaUpdateUnauthorizedException
-    * @throws \PicturePark\API\Exception\SchemaUpdateNotFoundException
-    * @throws \PicturePark\API\Exception\SchemaUpdateMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\SchemaUpdateConflictException
-    * @throws \PicturePark\API\Exception\SchemaUpdateTooManyRequestsException
-    * @throws \PicturePark\API\Exception\SchemaUpdateInternalServerErrorException
-    *
-    * @return null|\PicturePark\API\Model\SchemaUpdateResult
-    */
+     * Updates an existing schema.
+     * Depending on how much the schema is referenced by existing data, the operation can take a lot of time.
+     * @param string $id The schema ID.
+     * @param \PicturePark\API\Model\SchemaUpdateRequest $requestBody
+     * @param array{
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\SchemaUpdateBadRequestException
+     * @throws \PicturePark\API\Exception\SchemaUpdateUnauthorizedException
+     * @throws \PicturePark\API\Exception\SchemaUpdateNotFoundException
+     * @throws \PicturePark\API\Exception\SchemaUpdateMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\SchemaUpdateConflictException
+     * @throws \PicturePark\API\Exception\SchemaUpdateTooManyRequestsException
+     * @throws \PicturePark\API\Exception\SchemaUpdateInternalServerErrorException
+     *
+     * @return null|\PicturePark\API\Model\SchemaUpdateResult
+     */
     public function schemaUpdate(string $id, \PicturePark\API\Model\SchemaUpdateRequest $requestBody, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaUpdate($id, $requestBody, $queryParameters));
@@ -2447,24 +2435,23 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetReferenced($id));
     }
     /**
-    * Transfer ownership of the schema specified in
-    * @param string $id The schema ID.
-    * @param \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody
-    * @param array{
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\SchemaTransferOwnershipBadRequestException
-    * @throws \PicturePark\API\Exception\SchemaTransferOwnershipUnauthorizedException
-    * @throws \PicturePark\API\Exception\SchemaTransferOwnershipNotFoundException
-    * @throws \PicturePark\API\Exception\SchemaTransferOwnershipMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\SchemaTransferOwnershipConflictException
-    * @throws \PicturePark\API\Exception\SchemaTransferOwnershipTooManyRequestsException
-    * @throws \PicturePark\API\Exception\SchemaTransferOwnershipInternalServerErrorException
-    *
-    * @return null
-    */
+     * Transfer ownership of the schema specified in
+     * @param string $id The schema ID.
+     * @param \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody
+     * @param array{
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipBadRequestException
+     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipUnauthorizedException
+     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipNotFoundException
+     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipConflictException
+     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipTooManyRequestsException
+     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipInternalServerErrorException
+     *
+     * @return null
+     */
     public function schemaTransferOwnership(string $id, \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaTransferOwnership($id, $requestBody, $queryParameters));
@@ -2490,23 +2477,22 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetMany($queryParameters));
     }
     /**
-    * Create a new schema.
-    * @param \PicturePark\API\Model\SchemaCreateRequest $requestBody
-    * @param array{
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    * } $queryParameters
-    
-    * @throws \PicturePark\API\Exception\SchemaCreateBadRequestException
-    * @throws \PicturePark\API\Exception\SchemaCreateUnauthorizedException
-    * @throws \PicturePark\API\Exception\SchemaCreateNotFoundException
-    * @throws \PicturePark\API\Exception\SchemaCreateMethodNotAllowedException
-    * @throws \PicturePark\API\Exception\SchemaCreateConflictException
-    * @throws \PicturePark\API\Exception\SchemaCreateTooManyRequestsException
-    * @throws \PicturePark\API\Exception\SchemaCreateInternalServerErrorException
-    *
-    * @return null|\PicturePark\API\Model\SchemaCreateResult
-    */
+     * Create a new schema.
+     * @param \PicturePark\API\Model\SchemaCreateRequest $requestBody
+     * @param array{
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     * } $queryParameters
+     * @throws \PicturePark\API\Exception\SchemaCreateBadRequestException
+     * @throws \PicturePark\API\Exception\SchemaCreateUnauthorizedException
+     * @throws \PicturePark\API\Exception\SchemaCreateNotFoundException
+     * @throws \PicturePark\API\Exception\SchemaCreateMethodNotAllowedException
+     * @throws \PicturePark\API\Exception\SchemaCreateConflictException
+     * @throws \PicturePark\API\Exception\SchemaCreateTooManyRequestsException
+     * @throws \PicturePark\API\Exception\SchemaCreateInternalServerErrorException
+     *
+     * @return null|\PicturePark\API\Model\SchemaCreateResult
+     */
     public function schemaCreate(\PicturePark\API\Model\SchemaCreateRequest $requestBody, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaCreate($requestBody, $queryParameters));

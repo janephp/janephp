@@ -6,21 +6,21 @@ class AppsListDeployments extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
 {
     protected $app_id;
     /**
-    * List all deployments of an app.
-    * @param string $appId The app ID
-    * @param array{
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    *    "per_page"?: int, //Number of items returned per page
-    *    "deployment_types"?: array, //Optional. Filter deployments by deployment_type
-     - MANUAL: manual deployment
-     - DEPLOY_ON_PUSH: deployment triggered by a push to the app's repository
-     - MAINTENANCE: deployment for maintenance purposes
-     - MANUAL_ROLLBACK: manual revert to a previous deployment
-     - AUTO_ROLLBACK: automatic revert to a previous deployment
-     - UPDATE_DATABASE_TRUSTED_SOURCES: update database trusted sources
-     - AUTOSCALED: deployment that has been autoscaled
-    * } $queryParameters
-    */
+     * List all deployments of an app.
+     * @param string $appId The app ID
+     * @param array{
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "per_page"?: int, //Number of items returned per page
+     *    "deployment_types"?: array, //Optional. Filter deployments by deployment_type
+     *                                //  - MANUAL: manual deployment
+     *                                //  - DEPLOY_ON_PUSH: deployment triggered by a push to the app's repository
+     *                                //  - MAINTENANCE: deployment for maintenance purposes
+     *                                //  - MANUAL_ROLLBACK: manual revert to a previous deployment
+     *                                //  - AUTO_ROLLBACK: automatic revert to a previous deployment
+     *                                //  - UPDATE_DATABASE_TRUSTED_SOURCES: update database trusted sources
+     *                                //  - AUTOSCALED: deployment that has been autoscaled
+     * } $queryParameters
+     */
     public function __construct(string $appId, array $queryParameters = [])
     {
         $this->app_id = $appId;

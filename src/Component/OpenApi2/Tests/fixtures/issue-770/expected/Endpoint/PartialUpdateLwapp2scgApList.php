@@ -6,9 +6,9 @@ class PartialUpdateLwapp2scgApList extends \Jane\Component\OpenApi3\Tests\Expect
 {
     /**
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyLwapp2scg $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyLwapp2scg $body, array $queryParameters = [])
     {

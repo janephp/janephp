@@ -7,10 +7,10 @@ class FindRkszonesAaaRadiusByZoneId extends \Jane\Component\OpenApi3\Tests\Expec
     protected $zoneId;
     /**
      * @param string $zoneId
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $forAccounting radius server for filtering accounting type(forAccounting=true), not accounting type(forAccounting=false) and both(without forAccounting).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "forAccounting"?: string, //radius server for filtering accounting type(forAccounting=true), not accounting type(forAccounting=false) and both(without forAccounting).
+     * } $queryParameters
      */
     public function __construct(string $zoneId, array $queryParameters = [])
     {

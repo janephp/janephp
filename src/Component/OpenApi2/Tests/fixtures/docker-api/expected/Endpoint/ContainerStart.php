@@ -7,12 +7,11 @@ class ContainerStart extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     protected $id;
     /**
      * @param string $id ID or name of the container
-     * @param array $queryParameters {
-     *     @var string $detachKeys Override the key sequence for detaching a container. Format is a
-     *     single character `[a-Z]` or `ctrl-<value>` where `<value>` is one
-     *     of: `a-z`, `@`, `^`, `[`, `,` or `_`.
-     *     
-     * }
+     * @param array{
+     *    "detachKeys"?: string, //Override the key sequence for detaching a container. Format is a
+     *                           //single character `[a-Z]` or `ctrl-<value>` where `<value>` is one
+     *                           //of: `a-z`, `@`, `^`, `[`, `,` or `_`.
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

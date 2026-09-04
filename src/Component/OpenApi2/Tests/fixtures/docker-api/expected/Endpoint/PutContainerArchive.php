@@ -11,16 +11,14 @@ class PutContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implem
     * @param string|resource $inputStream The input stream must be a tar archive compressed with one of the
     following algorithms: `identity` (no compression), `gzip`, `bzip2`,
     or `xz`.
-    * @param array $queryParameters {
-    *     @var string $path Path to a directory in the container to extract the archive’s contents into.
-    *     @var string $noOverwriteDirNonDir If `1`, `true`, or `True` then it will be an error if unpacking the
-    *     given content would cause an existing directory to be replaced with
-    *     a non-directory and vice versa.
-    *     
-    *     @var string $copyUIDGID If `1`, `true`, then it will copy UID/GID maps to the dest file or
-    *     dir
-    *     
-    * }
+    * @param array{
+    *    "path": string, //Path to a directory in the container to extract the archive’s contents into.
+    *    "noOverwriteDirNonDir"?: string, //If `1`, `true`, or `True` then it will be an error if unpacking the
+    *                                     //given content would cause an existing directory to be replaced with
+    *                                     //a non-directory and vice versa.
+    *    "copyUIDGID"?: string, //If `1`, `true`, then it will copy UID/GID maps to the dest file or
+    *                           //dir
+    * } $queryParameters
     */
     public function __construct(string $id, $inputStream, array $queryParameters = [])
     {

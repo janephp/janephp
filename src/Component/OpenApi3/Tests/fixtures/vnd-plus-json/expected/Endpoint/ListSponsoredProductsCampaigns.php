@@ -5,17 +5,17 @@ namespace Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Endpoint;
 class ListSponsoredProductsCampaigns extends \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Runtime\Client\Endpoint
 {
     /**
-    * List campaigns
-    *
-    * **Requires one of these permissions**:
-    * ["advertiser_campaign_edit","advertiser_campaign_view"]
-    * @param null|\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody
-    * @param array{
-    *    "Amazon-Advertising-API-ClientId": string, //The identifier of a client associated with a "Login with Amazon" account.
-    *    "Amazon-Advertising-API-Scope": string, //The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list
-    profiles associated with the access token passed in the HTTP Authorization header.
-    * } $headerParameters
-    */
+     * List campaigns
+     *
+     * **Requires one of these permissions**:
+     * ["advertiser_campaign_edit","advertiser_campaign_view"]
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody
+     * @param array{
+     *    "Amazon-Advertising-API-ClientId": string, //The identifier of a client associated with a "Login with Amazon" account.
+     *    "Amazon-Advertising-API-Scope": string, //The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list
+     *                                            //profiles associated with the access token passed in the HTTP Authorization header.
+     * } $headerParameters
+     */
     public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody = null, array $headerParameters = [])
     {
         $this->body = $requestBody;

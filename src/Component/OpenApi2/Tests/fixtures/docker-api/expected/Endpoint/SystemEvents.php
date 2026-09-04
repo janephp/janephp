@@ -29,27 +29,26 @@ class SystemEvents extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      *
      * The Builder reports `prune` events
      *
-     * @param array $queryParameters {
-     *     @var string $since Show events created since this timestamp then stream new events.
-     *     @var string $until Show events created until this timestamp then stop streaming.
-     *     @var string $filters A JSON encoded value of filters (a `map[string][]string`) to process on the event list. Available filters:
-     *     
-     *     - `config=<string>` config name or ID
-     *     - `container=<string>` container name or ID
-     *     - `daemon=<string>` daemon name or ID
-     *     - `event=<string>` event type
-     *     - `image=<string>` image name or ID
-     *     - `label=<string>` image or container label
-     *     - `network=<string>` network name or ID
-     *     - `node=<string>` node ID
-     *     - `plugin`=<string> plugin name or ID
-     *     - `scope`=<string> local or swarm
-     *     - `secret=<string>` secret name or ID
-     *     - `service=<string>` service name or ID
-     *     - `type=<string>` object to filter by, one of `container`, `image`, `volume`, `network`, `daemon`, `plugin`, `node`, `service`, `secret` or `config`
-     *     - `volume=<string>` volume name
-     *     
-     * }
+     * @param array{
+     *    "since"?: string, //Show events created since this timestamp then stream new events.
+     *    "until"?: string, //Show events created until this timestamp then stop streaming.
+     *    "filters"?: string, //A JSON encoded value of filters (a `map[string][]string`) to process on the event list. Available filters:
+     *                        //
+     *                        //- `config=<string>` config name or ID
+     *                        //- `container=<string>` container name or ID
+     *                        //- `daemon=<string>` daemon name or ID
+     *                        //- `event=<string>` event type
+     *                        //- `image=<string>` image name or ID
+     *                        //- `label=<string>` image or container label
+     *                        //- `network=<string>` network name or ID
+     *                        //- `node=<string>` node ID
+     *                        //- `plugin`=<string> plugin name or ID
+     *                        //- `scope`=<string> local or swarm
+     *                        //- `secret=<string>` secret name or ID
+     *                        //- `service=<string>` service name or ID
+     *                        //- `type=<string>` object to filter by, one of `container`, `image`, `volume`, `network`, `daemon`, `plugin`, `node`, `service`, `secret` or `config`
+     *                        //- `volume=<string>` volume name
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

@@ -6,16 +6,15 @@ class PluginList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
 {
     /**
      * Returns information about installed plugins.
-     * @param array $queryParameters {
-     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-     *     process on the plugin list.
-     *     
-     *     Available filters:
-     *     
-     *     - `capability=<capability name>`
-     *     - `enable=<true>|<false>`
-     *     
-     * }
+     * @param array{
+     *    "filters"?: string, //A JSON encoded value of the filters (a `map[string][]string`) to
+     *                        //process on the plugin list.
+     *                        //
+     *                        //Available filters:
+     *                        //
+     *                        //- `capability=<capability name>`
+     *                        //- `enable=<true>|<false>`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

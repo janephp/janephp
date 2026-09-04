@@ -7,28 +7,26 @@ class ImageCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     /**
      * Create an image by either pulling it from a registry or importing it.
      * @param string $inputImage Image content if the value `-` has been specified in fromSrc query parameter
-     * @param array $queryParameters {
-     *     @var string $fromImage Name of the image to pull. The name may include a tag or digest. This parameter may only be used when pulling an image. The pull is cancelled if the HTTP connection is closed.
-     *     @var string $fromSrc Source to import. The value may be a URL from which the image can be retrieved or `-` to read the image from the request body. This parameter may only be used when importing an image.
-     *     @var string $repo Repository name given to an image when it is imported. The repo may include a tag. This parameter may only be used when importing an image.
-     *     @var string $tag Tag or digest. If empty when pulling an image, this causes all tags for the given image to be pulled.
-     *     @var string $message Set commit message for imported image.
-     *     @var array $changes Apply `Dockerfile` instructions to the image that is created,
-     *     for example: `changes=ENV DEBUG=true`.
-     *     Note that `ENV DEBUG=true` should be URI component encoded.
-     *     
-     *     Supported `Dockerfile` instructions:
-     *     `CMD`|`ENTRYPOINT`|`ENV`|`EXPOSE`|`ONBUILD`|`USER`|`VOLUME`|`WORKDIR`
-     *     
-     *     @var string $platform Platform in the format os[/arch[/variant]]
-     * }
-     * @param array $headerParameters {
-     *     @var string $X-Registry-Auth A base64url-encoded auth configuration.
-     *     
-     *     Refer to the [authentication section](#section/Authentication) for
-     *     details.
-     *     
-     * }
+     * @param array{
+     *    "fromImage"?: string, //Name of the image to pull. The name may include a tag or digest. This parameter may only be used when pulling an image. The pull is cancelled if the HTTP connection is closed.
+     *    "fromSrc"?: string, //Source to import. The value may be a URL from which the image can be retrieved or `-` to read the image from the request body. This parameter may only be used when importing an image.
+     *    "repo"?: string, //Repository name given to an image when it is imported. The repo may include a tag. This parameter may only be used when importing an image.
+     *    "tag"?: string, //Tag or digest. If empty when pulling an image, this causes all tags for the given image to be pulled.
+     *    "message"?: string, //Set commit message for imported image.
+     *    "changes"?: array, //Apply `Dockerfile` instructions to the image that is created,
+     *                       //for example: `changes=ENV DEBUG=true`.
+     *                       //Note that `ENV DEBUG=true` should be URI component encoded.
+     *                       //
+     *                       //Supported `Dockerfile` instructions:
+     *                       //`CMD`|`ENTRYPOINT`|`ENV`|`EXPOSE`|`ONBUILD`|`USER`|`VOLUME`|`WORKDIR`
+     *    "platform"?: string, //Platform in the format os[/arch[/variant]]
+     * } $queryParameters
+     * @param array{
+     *    "X-Registry-Auth"?: string, //A base64url-encoded auth configuration.
+     *                                //
+     *                                //Refer to the [authentication section](#section/Authentication) for
+     *                                //details.
+     * } $headerParameters
      */
     public function __construct(string $inputImage, array $queryParameters = [], array $headerParameters = [])
     {

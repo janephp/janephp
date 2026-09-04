@@ -6,14 +6,13 @@ class ServiceCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
 {
     /**
      * @param \Docker\Api\Model\ServicesCreatePostBody $body
-     * @param array $headerParameters {
-     *     @var string $X-Registry-Auth A base64url-encoded auth configuration for pulling from private
-     *     registries.
-     *     
-     *     Refer to the [authentication section](#section/Authentication) for
-     *     details.
-     *     
-     * }
+     * @param array{
+     *    "X-Registry-Auth"?: string, //A base64url-encoded auth configuration for pulling from private
+     *                                //registries.
+     *                                //
+     *                                //Refer to the [authentication section](#section/Authentication) for
+     *                                //details.
+     * } $headerParameters
      */
     public function __construct(\Docker\Api\Model\ServicesCreatePostBody $body, array $headerParameters = [])
     {

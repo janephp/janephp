@@ -10,9 +10,9 @@ class ContainerKill extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      * container.
      *
      * @param string $id ID or name of the container
-     * @param array $queryParameters {
-     *     @var string $signal Signal to send to the container as an integer or string (e.g. `SIGINT`)
-     * }
+     * @param array{
+     *    "signal"?: string, //Signal to send to the container as an integer or string (e.g. `SIGINT`)
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

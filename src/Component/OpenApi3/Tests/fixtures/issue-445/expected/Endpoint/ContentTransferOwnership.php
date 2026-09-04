@@ -6,16 +6,16 @@ class ContentTransferOwnership extends \PicturePark\API\Runtime\Client\BaseEndpo
 {
     protected $id;
     /**
-    * Transfers ownership of a content to another user. The target user must have the ManageContent UserRight.
-    * @param string $id The content ID.
-    * @param \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody
-    * @param array{
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    */
+     * Transfers ownership of a content to another user. The target user must have the ManageContent UserRight.
+     * @param string $id The content ID.
+     * @param \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody
+     * @param array{
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     */
     public function __construct(string $id, \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody, array $queryParameters = [])
     {
         $this->id = $id;

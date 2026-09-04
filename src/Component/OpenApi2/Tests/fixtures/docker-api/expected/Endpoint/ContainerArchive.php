@@ -8,9 +8,9 @@ class ContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     /**
      * Get a tar archive of a resource in the filesystem of container id.
      * @param string $id ID or name of the container
-     * @param array $queryParameters {
-     *     @var string $path Resource in the container’s filesystem to archive.
-     * }
+     * @param array{
+     *    "path": string, //Resource in the container’s filesystem to archive.
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

@@ -34,14 +34,12 @@ class ContainerStats extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
      * * CPU usage % = `(cpu_delta / system_cpu_delta) * number_cpus * 100.0`
      *
      * @param string $id ID or name of the container
-     * @param array $queryParameters {
-     *     @var bool $stream Stream the output. If false, the stats will be output once and then
-     *     it will disconnect.
-     *     
-     *     @var bool $one-shot Only get a single stat instead of waiting for 2 cycles. Must be used
-     *     with `stream=false`.
-     *     
-     * }
+     * @param array{
+     *    "stream"?: bool, //Stream the output. If false, the stats will be output once and then
+     *                     //it will disconnect.
+     *    "one-shot"?: bool, //Only get a single stat instead of waiting for 2 cycles. Must be used
+     *                       //with `stream=false`.
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

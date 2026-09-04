@@ -16,9 +16,9 @@ class ImageGetAll extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      *
      * For details on the format, see the [export image endpoint](#operation/ImageGet).
      *
-     * @param array $queryParameters {
-     *     @var array $names Image names to filter by
-     * }
+     * @param array{
+     *    "names"?: array, //Image names to filter by
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

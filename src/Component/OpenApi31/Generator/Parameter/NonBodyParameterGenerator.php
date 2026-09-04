@@ -158,17 +158,11 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $type = implode('|', $this->convertParameterType($schema));
         }
 
-        $description = implode("\n", array_map(fn (string $line): string => str_replace('*/', '*\\/', rtrim($line)), explode("\n", (($parameter->description ?? null) ?? null) ?: '')));
+        // Same notion of "required" as the options resolver above: a required
+        // parameter carrying a default is filled in, so its key is optional.
+        $required = $parameter->required && $schema instanceof JsonSchema && null === ($schema->default ?? null);
 
-        return rtrim(
-            \sprintf(
-                ' *    "%s"%s: %s%s',
-                str_replace('*/', '*\\/', ($parameter->name ?? null) ?? null),
-                $parameter->required ? '' : '?',
-                $type,
-                $description !== '' ? ', //' . $description : ','
-            )
-        );
+        return $this->formatOptionDocEntry($parameter->name ?? '', $required, $type, $parameter->description ?? null);
     }
 
     private function getDefaultAsExpr(JsonSchema $schema): Expr

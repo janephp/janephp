@@ -8,9 +8,9 @@ class PartialUpdateControlPlanesUserDefinedInterfaceByBladeUUID extends \Jane\Co
     /**
      * @param string $bladeUUID
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyCPUserDefinedInterface $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyCPUserDefinedInterface $body, array $queryParameters = [])
     {

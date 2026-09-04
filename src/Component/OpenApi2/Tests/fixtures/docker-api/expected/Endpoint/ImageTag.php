@@ -8,10 +8,10 @@ class ImageTag extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
     /**
      * Tag an image so that it becomes part of a repository.
      * @param string $name Image name or ID to tag.
-     * @param array $queryParameters {
-     *     @var string $repo The repository to tag in. For example, `someuser/someimage`.
-     *     @var string $tag The name of the new tag.
-     * }
+     * @param array{
+     *    "repo"?: string, //The repository to tag in. For example, `someuser/someimage`.
+     *    "tag"?: string, //The name of the new tag.
+     * } $queryParameters
      */
     public function __construct(string $name, array $queryParameters = [])
     {

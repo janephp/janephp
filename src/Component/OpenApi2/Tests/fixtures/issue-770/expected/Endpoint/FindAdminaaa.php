@@ -5,10 +5,10 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 class FindAdminaaa extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $type Type of Admin AAA Server (RADIUS/TACACS/AD/LDAP), please be infomed that the type name [TACACS] is for TACACS+ (Terminal Access Controller Access-Control System Plus)
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "type": string, //Type of Admin AAA Server (RADIUS/TACACS/AD/LDAP), please be infomed that the type name [TACACS] is for TACACS+ (Terminal Access Controller Access-Control System Plus)
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

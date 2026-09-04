@@ -5,11 +5,11 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 class FindApsTotalCount extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $zoneId filter AP total count by zone. Default: current logon domain
-     *     @var string $domainId filter AP total count by domain. Default: current logon domain
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "zoneId"?: string, //filter AP total count by zone. Default: current logon domain
+     *    "domainId"?: string, //filter AP total count by domain. Default: current logon domain
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

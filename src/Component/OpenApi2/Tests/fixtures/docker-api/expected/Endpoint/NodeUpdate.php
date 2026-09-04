@@ -8,11 +8,10 @@ class NodeUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     /**
      * @param string $id The ID of the node
      * @param \Docker\Api\Model\NodeSpec $body
-     * @param array $queryParameters {
-     *     @var int $version The version number of the node object being updated. This is required
-     *     to avoid conflicting writes.
-     *     
-     * }
+     * @param array{
+     *    "version": int, //The version number of the node object being updated. This is required
+     *                    //to avoid conflicting writes.
+     * } $queryParameters
      */
     public function __construct(string $id, \Docker\Api\Model\NodeSpec $body, array $queryParameters = [])
     {

@@ -8,9 +8,9 @@ class UpdateL3AccessControlPoliciesById extends \Jane\Component\OpenApi3\Tests\E
     /**
      * @param string $id
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyL3AccessControlPolicy $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyL3AccessControlPolicy $body, array $queryParameters = [])
     {
