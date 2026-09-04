@@ -8,9 +8,9 @@ class AddRkszonesL2ACLByZoneId extends \Jane\Component\OpenApi3\Tests\Expected\I
     /**
      * @param string $zoneId
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateL2ACL $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateL2ACL $body, array $queryParameters = [])
     {

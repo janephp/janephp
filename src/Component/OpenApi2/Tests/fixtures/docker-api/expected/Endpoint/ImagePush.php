@@ -15,16 +15,15 @@ class ImagePush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
      * The push is cancelled if the HTTP connection is closed.
      *
      * @param string $name Image name or ID.
-     * @param array $queryParameters {
-     *     @var string $tag The tag to associate with the image on the registry.
-     * }
-     * @param array $headerParameters {
-     *     @var string $X-Registry-Auth A base64url-encoded auth configuration.
-     *     
-     *     Refer to the [authentication section](#section/Authentication) for
-     *     details.
-     *     
-     * }
+     * @param array{
+     *    "tag"?: string, //The tag to associate with the image on the registry.
+     * } $queryParameters
+     * @param array{
+     *    "X-Registry-Auth": string, //A base64url-encoded auth configuration.
+     *                               //
+     *                               //Refer to the [authentication section](#section/Authentication) for
+     *                               //details.
+     * } $headerParameters
      */
     public function __construct(string $name, array $queryParameters = [], array $headerParameters = [])
     {

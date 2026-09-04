@@ -7,11 +7,11 @@ class FindApplicationsDownloadByBladeUUID extends \Jane\Component\OpenApi3\Tests
     protected $bladeUUID;
     /**
      * @param string $bladeUUID
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $appName Download all logs of the specified application name.
-     *     @var string $logFileName Download log of the specified log file name.
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "appName": string, //Download all logs of the specified application name.
+     *    "logFileName"?: string, //Download log of the specified log file name.
+     * } $queryParameters
      */
     public function __construct(string $bladeUUID, array $queryParameters = [])
     {

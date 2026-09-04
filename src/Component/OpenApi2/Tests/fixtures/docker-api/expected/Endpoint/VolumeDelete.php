@@ -8,9 +8,9 @@ class VolumeDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     /**
      * Instruct the driver to remove the volume.
      * @param string $name Volume name or ID
-     * @param array $queryParameters {
-     *     @var bool $force Force the removal of the volume
-     * }
+     * @param array{
+     *    "force"?: bool, //Force the removal of the volume
+     * } $queryParameters
      */
     public function __construct(string $name, array $queryParameters = [])
     {

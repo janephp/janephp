@@ -5,22 +5,22 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class GenaiListModels extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To list all models, send a GET request to `/v2/gen-ai/models`.
-    * @param array{
-    *    "usecases"?: array, //Include only models defined for the listed usecases.
-    
-    - MODEL_USECASE_UNKNOWN: The use case of the model is unknown
-    - MODEL_USECASE_AGENT: The model maybe used in an agent
-    - MODEL_USECASE_FINETUNED: The model maybe used for fine tuning
-    - MODEL_USECASE_KNOWLEDGEBASE: The model maybe used for knowledge bases (embedding models)
-    - MODEL_USECASE_GUARDRAIL: The model maybe used for guardrails
-    - MODEL_USECASE_REASONING: The model usecase for reasoning
-    - MODEL_USECASE_SERVERLESS: The model usecase for serverless inference
-    *    "public_only"?: bool, //Only include models that are publicly available.
-    *    "page"?: int, //Page number.
-    *    "per_page"?: int, //Items per page.
-    * } $queryParameters
-    */
+     * To list all models, send a GET request to `/v2/gen-ai/models`.
+     * @param array{
+     *    "usecases"?: array, //Include only models defined for the listed usecases.
+     *                        //
+     *                        // - MODEL_USECASE_UNKNOWN: The use case of the model is unknown
+     *                        // - MODEL_USECASE_AGENT: The model maybe used in an agent
+     *                        // - MODEL_USECASE_FINETUNED: The model maybe used for fine tuning
+     *                        // - MODEL_USECASE_KNOWLEDGEBASE: The model maybe used for knowledge bases (embedding models)
+     *                        // - MODEL_USECASE_GUARDRAIL: The model maybe used for guardrails
+     *                        // - MODEL_USECASE_REASONING: The model usecase for reasoning
+     *                        // - MODEL_USECASE_SERVERLESS: The model usecase for serverless inference
+     *    "public_only"?: bool, //Only include models that are publicly available.
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

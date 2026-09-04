@@ -10,9 +10,9 @@ class ContainerTop extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      * is not supported on Windows.
      *
      * @param string $id ID or name of the container
-     * @param array $queryParameters {
-     *     @var string $ps_args The arguments to pass to `ps`. For example, `aux`
-     * }
+     * @param array{
+     *    "ps_args"?: string, //The arguments to pass to `ps`. For example, `aux`
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

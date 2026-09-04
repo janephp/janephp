@@ -9,9 +9,9 @@ class FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Compone
     /**
      * @param string $id
      * @param string $spaceId
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $id, string $spaceId, array $queryParameters = [])
     {

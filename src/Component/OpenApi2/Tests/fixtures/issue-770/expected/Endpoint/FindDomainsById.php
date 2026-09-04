@@ -7,10 +7,10 @@ class FindDomainsById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\R
     protected $id;
     /**
      * @param string $id
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $recursively
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "recursively"?: string,
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

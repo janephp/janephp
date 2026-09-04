@@ -5,14 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 class FindApsLineman extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $index The index of the first entry to be retrieved. Default: 0
-     *     @var string $listSize The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
-     *     @var string $zoneId filter AP lineman by zone. Default: current login domain
-     *     @var string $domainId filter AP lineman by domain. Default: current login domain
-     *     @var string $showAlarm indicate to show alarm counter. Default: true
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "index"?: string, //The index of the first entry to be retrieved. Default: 0
+     *    "listSize"?: string, //The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
+     *    "zoneId"?: string, //filter AP lineman by zone. Default: current login domain
+     *    "domainId"?: string, //filter AP lineman by domain. Default: current login domain
+     *    "showAlarm"?: string, //indicate to show alarm counter. Default: true
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

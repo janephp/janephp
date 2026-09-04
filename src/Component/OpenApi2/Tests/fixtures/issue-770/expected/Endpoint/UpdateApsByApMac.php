@@ -8,9 +8,9 @@ class UpdateApsByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\
     /**
      * @param string $apMac
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyAP $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyAP $body, array $queryParameters = [])
     {

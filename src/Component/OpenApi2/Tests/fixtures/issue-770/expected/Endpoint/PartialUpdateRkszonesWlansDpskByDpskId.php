@@ -12,9 +12,9 @@ class PartialUpdateRkszonesWlansDpskByDpskId extends \Jane\Component\OpenApi3\Te
      * @param string $id
      * @param string $dpskId
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskUpdateDpsk $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $zoneId, string $id, string $dpskId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskUpdateDpsk $body, array $queryParameters = [])
     {

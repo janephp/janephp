@@ -703,7 +703,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *    "sortDir"?: string,
      *    "pageSize"?: int, //Number of items to return per Page (max 1000)
      *    "page"?: int, //Starting page number (indexed from 0)
-     *    "sortBy": string, //Sort results by this column. Null values of sort column are listed after non-nulls.
+     *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
      * } $queryParameters
      * @param array{
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.

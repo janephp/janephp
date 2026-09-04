@@ -108,8 +108,8 @@ trait GetConstructorTrait
             $pathParamsDoc,
             $pathParamsWithDefaultValueDoc,
             $bodyDoc ? [$bodyDoc] : [],
-            \count($queryParamsDoc) > 0 ? [\sprintf(" * @param array{\n%s\n * } \$queryParameters", implode("\n", $queryParamsDoc))] : [],
-            \count($headerParamsDoc) > 0 ? [\sprintf(" * @param array{\n%s\n * } \$headerParameters", implode("\n", $headerParamsDoc))] : [],
+            \count($queryParamsDoc) > 0 ? [$nonBodyParameterGenerator->generateOptionsArrayDocParameter('queryParameters', $queryParamsDoc)] : [],
+            \count($headerParamsDoc) > 0 ? [$nonBodyParameterGenerator->generateOptionsArrayDocParameter('headerParameters', $headerParamsDoc)] : [],
             \count($contentTypes) > 1 ? [' * @param array $accept Accept content header ' .
                 str_replace('*/', '*\\/', implode('|', $this->getContentTypes($operation, $guessClass, $context)))] : []
         );

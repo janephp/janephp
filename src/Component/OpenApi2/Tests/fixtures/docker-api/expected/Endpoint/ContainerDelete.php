@@ -7,11 +7,11 @@ class ContainerDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     protected $id;
     /**
      * @param string $id ID or name of the container
-     * @param array $queryParameters {
-     *     @var bool $v Remove anonymous volumes associated with the container.
-     *     @var bool $force If the container is running, kill it before removing it.
-     *     @var bool $link Remove the specified link associated with the container.
-     * }
+     * @param array{
+     *    "v"?: bool, //Remove anonymous volumes associated with the container.
+     *    "force"?: bool, //If the container is running, kill it before removing it.
+     *    "link"?: bool, //Remove the specified link associated with the container.
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

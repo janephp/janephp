@@ -5,9 +5,9 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 class DeleteServiceTicket extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $serviceTicket
-     * }
+     * @param array{
+     *    "serviceTicket": string,
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

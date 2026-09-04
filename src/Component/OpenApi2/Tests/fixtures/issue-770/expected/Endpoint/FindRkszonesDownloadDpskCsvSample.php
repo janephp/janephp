@@ -5,10 +5,10 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 class FindRkszonesDownloadDpskCsvSample extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $type DPSK CSV sample type. Valid value is PHASE1 or PHASE2. Default: PHASE2.
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "type"?: string, //DPSK CSV sample type. Valid value is PHASE1 or PHASE2. Default: PHASE2.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

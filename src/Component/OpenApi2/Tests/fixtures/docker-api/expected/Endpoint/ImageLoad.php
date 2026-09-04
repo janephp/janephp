@@ -10,9 +10,9 @@ class ImageLoad extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
      * For details on the format, see the [export image endpoint](#operation/ImageGet).
      *
      * @param string|resource $imagesTarball Tar archive containing images
-     * @param array $queryParameters {
-     *     @var bool $quiet Suppress progress details during load.
-     * }
+     * @param array{
+     *    "quiet"?: bool, //Suppress progress details during load.
+     * } $queryParameters
      */
     public function __construct($imagesTarball, array $queryParameters = [])
     {

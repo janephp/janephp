@@ -6,12 +6,12 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
 {
     /**
      * @param array $testBody
-     * @param array $queryParameters {
-     *     @var string $testQuery
-     * }
-     * @param array $headerParameters {
-     *     @var string $testHeader
-     * }
+     * @param array{
+     *    "testQuery"?: string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader"?: string,
+     * } $headerParameters
      *
      * @return null
      */
@@ -21,12 +21,12 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
     }
     /**
      * @param array $testBody
-     * @param array $queryParameters {
-     *     @var string $testQuery
-     * }
-     * @param array $headerParameters {
-     *     @var string $testHeader
-     * }
+     * @param array{
+     *    "testQuery"?: string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader"?: string,
+     * } $headerParameters
      *
      * @return null
      */
@@ -35,14 +35,14 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint\TestPostWithPathParameters($testBody, $queryParameters, $headerParameters));
     }
     /**
-     * @param array $queryParameters {
-     *     @var string $testString
-     *     @var int $testInteger
-     *     @var int $testFloat
-     *     @var array $testArray
-     *     @var string $testRequired
-     *     @var string $testDefault
-     * }
+     * @param array{
+     *    "testString"?: string,
+     *    "testInteger"?: int,
+     *    "testFloat"?: int,
+     *    "testArray"?: array,
+     *    "testRequired": string,
+     *    "testDefault"?: string,
+     * } $queryParameters
      *
      * @return null
      */
@@ -51,14 +51,14 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint\TestQueryParameters($queryParameters));
     }
     /**
-     * @param array $headerParameters {
-     *     @var string $testString
-     *     @var int $testInteger
-     *     @var int $testFloat
-     *     @var array $testArray
-     *     @var string $testRequired
-     *     @var string $testDefault
-     * }
+     * @param array{
+     *    "testString"?: string,
+     *    "testInteger"?: int,
+     *    "testFloat"?: int,
+     *    "testArray"?: array,
+     *    "testRequired": string,
+     *    "testDefault"?: string,
+     * } $headerParameters
      *
      * @return null
      */
@@ -67,14 +67,14 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint\TestHeaderParameters($headerParameters));
     }
     /**
-     * @param array $formParameters {
-     *     @var string $testString
-     *     @var int $testInteger
-     *     @var int $testFloat
-     *     @var array $testArray
-     *     @var string $testRequired
-     *     @var string $testDefault
-     * }
+     * @param array{
+     *    "testString"?: string,
+     *    "testInteger"?: int,
+     *    "testFloat"?: int,
+     *    "testArray"?: array,
+     *    "testRequired": string,
+     *    "testDefault"?: string,
+     * } $formParameters
      *
      * @return null
      */
@@ -83,9 +83,9 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint\TestFormParameters($formParameters));
     }
     /**
-     * @param array $formParameters {
-     *     @var string|resource $testFile
-     * }
+     * @param array{
+     *    "testFile"?: string|resource,
+     * } $formParameters
      *
      * @return null
      */

@@ -10,9 +10,9 @@ class UpdateDpDhcpProfilesDpDhcpProfilePoolsByPoolId extends \Jane\Component\Ope
      * @param string $id
      * @param string $poolId
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $id, string $poolId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO $body, array $queryParameters = [])
     {

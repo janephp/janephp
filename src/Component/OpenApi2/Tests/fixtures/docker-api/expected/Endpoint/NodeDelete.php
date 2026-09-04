@@ -7,9 +7,9 @@ class NodeDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     protected $id;
     /**
      * @param string $id The ID or name of the node
-     * @param array $queryParameters {
-     *     @var bool $force Force remove a node from the swarm
-     * }
+     * @param array{
+     *    "force"?: bool, //Force remove a node from the swarm
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

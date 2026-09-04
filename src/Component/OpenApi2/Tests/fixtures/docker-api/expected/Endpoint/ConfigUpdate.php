@@ -10,11 +10,10 @@ class ConfigUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     * @param \Docker\Api\Model\ConfigSpec $body The spec of the config to update. Currently, only the Labels field
     can be updated. All other fields must remain unchanged from the
     [ConfigInspect endpoint](#operation/ConfigInspect) response values.
-    * @param array $queryParameters {
-    *     @var int $version The version number of the config object being updated. This is
-    *     required to avoid conflicting writes.
-    *     
-    * }
+    * @param array{
+    *    "version": int, //The version number of the config object being updated. This is
+    *                    //required to avoid conflicting writes.
+    * } $queryParameters
     */
     public function __construct(string $id, \Docker\Api\Model\ConfigSpec $body, array $queryParameters = [])
     {

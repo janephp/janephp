@@ -5,13 +5,13 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 class FindAps extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $index The index of the first entry to be retrieved. Default: 0
-     *     @var string $listSize The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
-     *     @var string $zoneId filter AP list by zone
-     *     @var string $domainId filter AP list by domain. Default: current logon domain
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "index"?: string, //The index of the first entry to be retrieved. Default: 0
+     *    "listSize"?: string, //The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
+     *    "zoneId"?: string, //filter AP list by zone
+     *    "domainId"?: string, //filter AP list by domain. Default: current logon domain
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

@@ -7,10 +7,10 @@ class DeleteApsByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\
     protected $apMac;
     /**
      * @param string $apMac
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $validateMesh Validate if AP is not MAP/eMAP. Default: true
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "validateMesh"?: string, //Validate if AP is not MAP/eMAP. Default: true
+     * } $queryParameters
      */
     public function __construct(string $apMac, array $queryParameters = [])
     {

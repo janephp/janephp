@@ -98,9 +98,9 @@ trait GetConstructorTrait
             $pathParamsDoc,
             $pathParamsWithDefaultValueDoc,
             $bodyDoc ? [$bodyDoc] : [],
-            \count($queryParamsDoc) > 0 ? array_merge([' * @param array $queryParameters {'], $queryParamsDoc, [' * }']) : [],
-            \count($formParamsDoc) > 0 ? array_merge([' * @param array $formParameters {'], $formParamsDoc, [' * }']) : [],
-            \count($headerParamsDoc) > 0 ? array_merge([' * @param array $headerParameters {'], $headerParamsDoc, [' * }']) : []
+            \count($queryParamsDoc) > 0 ? [$nonBodyParameterGenerator->generateOptionsArrayDocParameter('queryParameters', $queryParamsDoc)] : [],
+            \count($formParamsDoc) > 0 ? [$nonBodyParameterGenerator->generateOptionsArrayDocParameter('formParameters', $formParamsDoc)] : [],
+            \count($headerParamsDoc) > 0 ? [$nonBodyParameterGenerator->generateOptionsArrayDocParameter('headerParameters', $headerParamsDoc)] : []
         );
 
         $methodParamsDoc = ['/**'];
