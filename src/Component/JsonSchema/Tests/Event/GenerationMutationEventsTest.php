@@ -3,8 +3,6 @@
 namespace Jane\Component\JsonSchema\Tests\Event;
 
 use Jane\Component\JsonSchema\Event\ClassGeneratedEvent;
-use Jane\Component\JsonSchema\Event\EventDispatcher;
-use Jane\Component\JsonSchema\Event\GenerationSubscriberInterface;
 use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\Jane;
@@ -20,6 +18,8 @@ use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use PhpParser\PrettyPrinter\Standard;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -104,9 +104,9 @@ JSON);
  * The issue's own example: schemas carrying `minimum: 1` get their guessed
  * docblock type replaced by positive-int (docblock-only, native type stays int).
  */
-final class PositiveIntSubscriber implements GenerationSubscriberInterface
+final class PositiveIntSubscriber implements EventSubscriberInterface
 {
-    public function getSubscribedEvents(): array
+    public static function getSubscribedEvents(): array
     {
         return [
             PropertyGuessedEvent::class => ['onPropertyGuessed'],
@@ -136,9 +136,9 @@ final class PositiveIntSubscriber implements GenerationSubscriberInterface
 }
 
 /** Decorates the generated model class with a custom method and a psalm tag. */
-final class ModelDecoratorSubscriber implements GenerationSubscriberInterface
+final class ModelDecoratorSubscriber implements EventSubscriberInterface
 {
-    public function getSubscribedEvents(): array
+    public static function getSubscribedEvents(): array
     {
         return [
             ClassGeneratedEvent::class => ['onClassGenerated'],

@@ -1,4 +1,4 @@
-# ADR 0013: Generation events — internal dispatcher for progress and customization
+# ADR 0013: Generation events — Symfony EventDispatcher for progress and customization
 
 - **Status**: Accepted
 - **Codified**: 2026-09
@@ -9,10 +9,10 @@ Two feature requests converge: [#252](https://github.com/janephp/janephp/issues/
 
 ## Decision
 
-1. **Internal, dependency-free dispatcher.** `Jane\Component\JsonSchema\Event\EventDispatcher` with `dispatch(object $event): object` and `addSubscriber(GenerationSubscriberInterface $subscriber): void`. Losing options: symfony/event-dispatcher (new hard require on standalone packages for one service), psr/event-dispatcher (still a new require + adapter ceremony); an adapter can be added later without breaking this API.
-2. **Subscriber contract, symfony-style.** `getSubscribedEvents(): array<class-string, list<callable|string>>`; listeners receive the event as single argument. Listener order is subscription order; no priority system in v1.
+1. **Symfony EventDispatcher.** Generation events are dispatched through `Symfony\Component\EventDispatcher\EventDispatcher`; the injected type is its interface `Symfony\Contracts\EventDispatcher\EventDispatcherInterface`. Events are plain final classes (no base class to extend): Symfony derives the event name from the class. Losing options: a hand-rolled dispatcher (had been shipped first, per the original version of this record — replaced on review because it was ours to maintain for zero ecosystem benefit: no profiler/TraceableEventDispatcher, no priorities, no PSR-14 interop), PSR-14 only (no listener registration contract, everyone re-invents subscription). `symfony/event-dispatcher` joins the other symfony packages (`console`, `serializer`, ...) as a plain require of the JsonSchema and OpenApiCommon components — no adapter needed, and PSR-14 interop remains possible later through `psr/event-dispatcher`.
+2. **Subscriber contract.** `Symfony\Component\EventDispatcher\EventSubscriberInterface` (static `getSubscribedEvents()`): the map binds event classes to method names on the subscriber (Symfony's `[method, priority]` shapes apply); arbitrary callables can be attached with `EventDispatcher::addListener()`. Listeners receive the event as single argument. Symfony priorities are available but unused in v1 — shipped listeners stay at priority 0, so order is registration order (stable for equal priorities).
 3. **Event taxonomy.** Lifecycle events (readonly payloads): GenerationStarted/EndedEvent (registry, elapsed), SchemaStarted/EndedEvent, GuessingStarted/EndedEvent, GeneratingStarted/EndedEvent, FileGeneratedEvent (schema, file). Mutation events (final class, LIVE MUTABLE REFERENCES by design): PropertyGuessedEvent (schema, classGuess, property) — listeners may replace the type via Property::setType(), which flows into models AND normalizers; PropertyGeneratedEvent (schema, classGuess, property, Stmt\Property) — AST-level, model file only; ClassGeneratedEvent (schema, classGuess, Stmt\Class_) — add methods/traits/extends/psalm tags. Guidance: type changes go through PropertyGuessedEvent so normalizers stay consistent; AST events are model-file decoration only. Normalizer/endpoint/exception mutation events are out of scope.
-4. **The dispatcher is an optional dependency.** `Jane::build(array $options = [], ?EventDispatcher $dispatcher = null)` and `JaneOpenApi::build(array $options = [], ?EventDispatcher $dispatcher = null)` take it as an optional second argument (a required parameter after the defaulted `$options` would trigger PHP 8.0+'s "optional before required" deprecation at every class load). When omitted, a fresh zero-subscriber dispatcher is created — a no-op fast-path. Context takes the resolved dispatcher as third constructor param; ChainGenerator holds it as a protected property. Customization is programmatic: pass your own dispatcher with subscribers to `build()`. CLI interface and generated code are unchanged.
+4. **The dispatcher is an optional dependency.** `Jane::build(array $options = [], ?EventDispatcherInterface $dispatcher = null)` and `JaneOpenApi::build(array $options = [], ?EventDispatcherInterface $dispatcher = null)` take it as an optional second argument (a required parameter after the defaulted `$options` would trigger PHP 8.0+'s "optional before required" deprecation at every class load). When omitted, a listener-less `Symfony\Component\EventDispatcher\EventDispatcher` is created. Context takes the resolved dispatcher as third constructor param; ChainGenerator holds it as a protected property. Customization is programmatic: pass your own dispatcher with subscribers to `build()`. CLI interface and generated code are unchanged.
 5. **Per-file events are explicit.** Generators dispatch FileGeneratedEvent next to each Schema::addFile() call (~20 sites) rather than hiding a callback inside Schema::addFile().
 6. **Console owns rendering.** Both GenerateCommands always construct the dispatcher and attach a built-in Console\GenerationProgressSubscriber (SymfonyStyle) only when verbosity > quiet. Counts come from Schema::getFiles() grouped by File::getType(); `Endpoint`/`Exception` casing is normalized in the display layer only — type values never change.
 7. **No `.jane` config option in v1.** Console users cannot register listeners yet (programmatic API only) — follow-up.
@@ -20,11 +20,11 @@ Two feature requests converge: [#252](https://github.com/janephp/janephp/issues/
 
 ## Consequences
 
-- Console feedback without polluting the core; generation semantics identical when no listeners are attached.
+- Console feedback without polluting the core; generation semantics identical when no listeners are attached (dispatching into a listener-less Symfony dispatcher is a trivial no-op).
 - #859 is delivered: listeners can alter guessed types and ASTs; throwing listeners abort generation via the existing GenerationFailedException wrapping (documented).
-- Builds without a dispatcher get an internal no-op instance; passing one is purely additive for programmatic callers (per repo BC policy the generation components carry no BC promise anyway).
+- Builds without a dispatcher get an internal listener-less Symfony dispatcher; passing one is purely additive for programmatic callers (per repo BC policy the generation components carry no BC promise anyway).
 - Dispatch is synchronous; OAI whitelist deferral means PropertyGuessedEvent may fire for classes later pruned by whitelisting (documented).
-- A small dispatcher implementation is ours to maintain; PSR-14/symfony adapter possible later.
+- `jane-php/json-schema` and `jane-php/open-api-common` now require `symfony/event-dispatcher`, one more shared symfony requirement alongside `console`, `serializer`, ...; PSR-14 interop possible later via `psr/event-dispatcher`.
 
 ## Links
 

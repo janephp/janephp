@@ -31,6 +31,7 @@
         "jane-php/json-schema-runtime": "^7.5",
         "nikic/php-parser": "^4.19 || ^5.1",
         "symfony/console": "^5.4 || ^6.4 || ^7.0 || ^8.0",
+        "symfony/event-dispatcher": "^5.4 || ^6.4 || ^7.0 || ^8.0",
         "symfony/filesystem": "^5.4 || ^6.4 || ^7.0 || ^8.0",
         "symfony/options-resolver": "^5.4 || ^6.4 || ^7.0 || ^8.0",
         "symfony/serializer": "^5.4 || ^6.4 || ^7.0 || ^8.0",

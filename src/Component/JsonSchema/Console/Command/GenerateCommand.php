@@ -5,7 +5,6 @@ namespace Jane\Component\JsonSchema\Console\Command;
 use Jane\Component\JsonSchema\Console\GenerationProgressSubscriber;
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoaderInterface;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoaderInterface;
-use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Jane;
 use Jane\Component\JsonSchema\Printer;
 use Jane\Component\JsonSchema\Registry\Registry;
@@ -18,6 +17,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 #[AsCommand(name: 'generate', description: 'Generate a set of class and normalizers given a specific Json Schema file')]
 class GenerateCommand extends Command

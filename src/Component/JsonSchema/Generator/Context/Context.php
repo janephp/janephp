@@ -2,9 +2,9 @@
 
 namespace Jane\Component\JsonSchema\Generator\Context;
 
-use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Context when generating a library base on a Schema.
@@ -17,7 +17,7 @@ class Context
     public function __construct(
         private readonly Registry $registry,
         private readonly bool $strict,
-        private readonly EventDispatcher $dispatcher,
+        private readonly EventDispatcherInterface $dispatcher,
     ) {
         $this->variableScope = new UniqueVariableScope();
     }

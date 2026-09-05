@@ -4,10 +4,10 @@ namespace Jane\Component\JsonSchema\Console;
 
 use Jane\Component\JsonSchema\Event\GeneratingEndedEvent;
 use Jane\Component\JsonSchema\Event\GenerationEndedEvent;
-use Jane\Component\JsonSchema\Event\GenerationSubscriberInterface;
 use Jane\Component\JsonSchema\Event\GuessingEndedEvent;
 use Jane\Component\JsonSchema\Event\SchemaStartedEvent;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Renders console progress for a generation run: schema header, guessing /
@@ -15,7 +15,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  *
  * @experimental Part of the experimental generation events API (see ADR 0013)
  */
-final class GenerationProgressSubscriber implements GenerationSubscriberInterface
+final class GenerationProgressSubscriber implements EventSubscriberInterface
 {
     /** Display label per File::getType() value — casing of `Endpoint` / `Exception` is normalized here only */
     private const TYPE_LABELS = [
@@ -35,7 +35,7 @@ final class GenerationProgressSubscriber implements GenerationSubscriberInterfac
     ) {
     }
 
-    public function getSubscribedEvents(): array
+    public static function getSubscribedEvents(): array
     {
         return [
             SchemaStartedEvent::class => ['onSchemaStarted'],

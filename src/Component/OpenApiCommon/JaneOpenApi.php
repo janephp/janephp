@@ -2,7 +2,6 @@
 
 namespace Jane\Component\OpenApiCommon;
 
-use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
 use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
@@ -20,6 +19,8 @@ use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\Component\OpenApiCommon\Registry\Schema;
 use Jane\Component\OpenApiCommon\SchemaParser\SchemaParser;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -195,7 +196,7 @@ abstract class JaneOpenApi extends ChainGenerator
 
     abstract protected static function generators(DenormalizerInterface $denormalizer, array $options = []): \Generator;
 
-    public static function build(array $options = [], ?EventDispatcher $dispatcher = null)
+    public static function build(array $options = [], ?EventDispatcherInterface $dispatcher = null)
     {
         $options = Options::fromArray($options);
         $optionsArray = $options->toArray();

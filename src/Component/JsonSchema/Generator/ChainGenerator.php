@@ -2,7 +2,6 @@
 
 namespace Jane\Component\JsonSchema\Generator;
 
-use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Event\GeneratingEndedEvent;
 use Jane\Component\JsonSchema\Event\GeneratingStartedEvent;
 use Jane\Component\JsonSchema\Event\GenerationEndedEvent;
@@ -15,13 +14,14 @@ use Jane\Component\JsonSchema\Exception\GenerationFailedException;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Exception\JaneExceptionInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 abstract class ChainGenerator
 {
     /** @var GeneratorInterface[] */
     private array $generators = [];
 
-    protected EventDispatcher $dispatcher;
+    protected EventDispatcherInterface $dispatcher;
 
     public function addGenerator(GeneratorInterface $generator): void
     {

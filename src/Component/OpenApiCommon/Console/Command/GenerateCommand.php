@@ -6,7 +6,6 @@ use Jane\Component\JsonSchema\Console\Command\GenerateCommand as BaseGenerateCom
 use Jane\Component\JsonSchema\Console\GenerationProgressSubscriber;
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoaderInterface;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoaderInterface;
-use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Printer;
 use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\JaneOpenApi;
@@ -18,6 +17,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 #[AsCommand(name: 'generate', description: 'Generate an api client: class, normalizers and resources given a specific Json OpenApi file')]
 class GenerateCommand extends BaseGenerateCommand

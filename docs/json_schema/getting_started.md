@@ -181,21 +181,23 @@ autowiring of the generated normalizers.
 ## Customizing generation
 
 Generation is customizable programmatically through **experimental** generation events (see
-[ADR 0013](../contributing/adrs/0013-generation-events.md)). Build an `EventDispatcher`, attach subscribers and pass
-it to `Jane::build()` as a second argument — listeners registered there are called during generation:
+[ADR 0013](../contributing/adrs/0013-generation-events.md)). Build a Symfony `EventDispatcher` (from
+`symfony/event-dispatcher`), attach subscribers and pass it to `Jane::build()` as a second argument — listeners
+registered there are called during generation:
 
 ```php
-use Jane\Component\JsonSchema\Event\EventDispatcher;
-use Jane\Component\JsonSchema\Event\GenerationSubscriberInterface;
 use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\Jane;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 $dispatcher = new EventDispatcher();
-$dispatcher->addSubscriber(new class implements GenerationSubscriberInterface {
+$dispatcher->addSubscriber(new class implements EventSubscriberInterface {
     public function getSubscribedEvents(): array
     {
-        // symfony-style map: event class => list of listeners (callable or method name)
+        // symfony subscriber map: event class => method name(s) on the subscriber
+        // (arbitrary callables can be attached with EventDispatcher::addListener())
         return [PropertyGuessedEvent::class => ['onPropertyGuessed']];
     }
 

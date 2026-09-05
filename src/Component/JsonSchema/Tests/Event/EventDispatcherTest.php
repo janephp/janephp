@@ -2,8 +2,6 @@
 
 namespace Jane\Component\JsonSchema\Tests\Event;
 
-use Jane\Component\JsonSchema\Event\EventDispatcher;
-use Jane\Component\JsonSchema\Event\GenerationSubscriberInterface;
 use Jane\Component\JsonSchema\Event\GuessingStartedEvent;
 use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
@@ -11,6 +9,8 @@ use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class EventDispatcherTest extends TestCase
 {
@@ -22,7 +22,7 @@ class EventDispatcherTest extends TestCase
         $this->assertSame($event, $dispatcher->dispatch($event));
     }
 
-    public function testListenersRunInSubscriptionOrderAcrossSubscribers(): void
+    public function testListenersRunInRegistrationOrderAcrossSubscribers(): void
     {
         $trace = new Trace();
         $dispatcher = new EventDispatcher();
@@ -66,7 +66,7 @@ final class Trace
     }
 }
 
-final class MultiListenerSubscriber implements GenerationSubscriberInterface
+final class MultiListenerSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         private readonly Trace $trace,
@@ -74,10 +74,13 @@ final class MultiListenerSubscriber implements GenerationSubscriberInterface
     ) {
     }
 
-    public function getSubscribedEvents(): array
+    public static function getSubscribedEvents(): array
     {
         return [
-            GuessingStartedEvent::class => ['onFirstListener', 'onSecondListener'],
+            GuessingStartedEvent::class => [
+                ['onFirstListener'],
+                ['onSecondListener'],
+            ],
         ];
     }
 
@@ -92,7 +95,7 @@ final class MultiListenerSubscriber implements GenerationSubscriberInterface
     }
 }
 
-final class TypeSwappingSubscriber implements GenerationSubscriberInterface
+final class TypeSwappingSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         private readonly Trace $trace,
@@ -100,7 +103,7 @@ final class TypeSwappingSubscriber implements GenerationSubscriberInterface
     ) {
     }
 
-    public function getSubscribedEvents(): array
+    public static function getSubscribedEvents(): array
     {
         return [
             PropertyGuessedEvent::class => ['onPropertyGuessed'],

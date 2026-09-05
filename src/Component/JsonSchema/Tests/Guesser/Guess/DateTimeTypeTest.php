@@ -2,7 +2,6 @@
 
 namespace Jane\Component\JsonSchema\Tests\Guesser\Guess;
 
-use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Guesser\Guess\DateTimeType;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
@@ -11,6 +10,7 @@ use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\PrettyPrinter\Standard;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class DateTimeTypeTest extends TestCase
 {

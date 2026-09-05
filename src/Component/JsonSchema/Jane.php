@@ -2,7 +2,6 @@
 
 namespace Jane\Component\JsonSchema;
 
-use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
 use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
@@ -22,6 +21,8 @@ use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
 use Jane\Component\JsonSchemaRuntime\ReferenceResolver;
 use PhpParser\ParserFactory;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -37,7 +38,7 @@ class Jane extends ChainGenerator
         private readonly ChainGuesser $chainGuesser,
         private readonly Naming $naming,
         private readonly ChainValidatorFactory $chainValidatorFactory,
-        ?EventDispatcher $dispatcher = null,
+        ?EventDispatcherInterface $dispatcher = null,
         private readonly bool $strict = true,
     ) {
         $this->dispatcher = $dispatcher ?? new EventDispatcher();
@@ -96,7 +97,7 @@ class Jane extends ChainGenerator
         return new Context($registry, $this->strict, $this->dispatcher);
     }
 
-    public static function build(array $options = [], ?EventDispatcher $dispatcher = null): self
+    public static function build(array $options = [], ?EventDispatcherInterface $dispatcher = null): self
     {
         $options = Options::fromArray($options);
         ReferenceResolver::default()->applyOptions($options->toArray());
