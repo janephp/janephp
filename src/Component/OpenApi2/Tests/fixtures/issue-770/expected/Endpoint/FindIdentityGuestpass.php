@@ -5,18 +5,18 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 class FindIdentityGuestpass extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $index The index of the first entry to be retrieved. Default: 0
-     *     @var string $listSize The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
-     *     @var string $timeZone Display created date and time by specified time zone. Default is UTC.
-     *     @var string $wlan filter identity guest pass list by wlan id.
-     *     @var string $displayName filter identity guest pass list by display name.
-     *     @var string $expirationFrom filter identity guest pass list by expiration date and time. The start time of expiration date and time.The format is yyyy-MM-dd HH:mm:ss.
-     *     @var string $expirationTo filter identity guest pass list by expiration date and time. The end time of expiration date and time.The format is yyyy-MM-dd HH:mm:ss.
-     *     @var string $generatedTimeFrom filter identity guest pass list by generated date and time. The start time of generated date and time.The format is yyyy-MM-dd HH:mm:ss.
-     *     @var string $generatedTimeTo filter identity guest pass list by generated date and time. The end time of generated date and time.The format is yyyy-MM-dd HH:mm:ss.
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "index"?: string, //The index of the first entry to be retrieved. Default: 0
+     *    "listSize"?: string, //The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
+     *    "timeZone"?: string, //Display created date and time by specified time zone. Default is UTC.
+     *    "wlan"?: string, //filter identity guest pass list by wlan id.
+     *    "displayName"?: string, //filter identity guest pass list by display name.
+     *    "expirationFrom"?: string, //filter identity guest pass list by expiration date and time. The start time of expiration date and time.The format is yyyy-MM-dd HH:mm:ss.
+     *    "expirationTo"?: string, //filter identity guest pass list by expiration date and time. The end time of expiration date and time.The format is yyyy-MM-dd HH:mm:ss.
+     *    "generatedTimeFrom"?: string, //filter identity guest pass list by generated date and time. The start time of generated date and time.The format is yyyy-MM-dd HH:mm:ss.
+     *    "generatedTimeTo"?: string, //filter identity guest pass list by generated date and time. The end time of generated date and time.The format is yyyy-MM-dd HH:mm:ss.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

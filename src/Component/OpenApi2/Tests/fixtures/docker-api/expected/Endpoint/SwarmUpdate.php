@@ -6,14 +6,13 @@ class SwarmUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
 {
     /**
      * @param \Docker\Api\Model\SwarmSpec $body
-     * @param array $queryParameters {
-     *     @var int $version The version number of the swarm object being updated. This is
-     *     required to avoid conflicting writes.
-     *     
-     *     @var bool $rotateWorkerToken Rotate the worker join token.
-     *     @var bool $rotateManagerToken Rotate the manager join token.
-     *     @var bool $rotateManagerUnlockKey Rotate the manager unlock key.
-     * }
+     * @param array{
+     *    "version": int, //The version number of the swarm object being updated. This is
+     *                    //required to avoid conflicting writes.
+     *    "rotateWorkerToken"?: bool, //Rotate the worker join token.
+     *    "rotateManagerToken"?: bool, //Rotate the manager join token.
+     *    "rotateManagerUnlockKey"?: bool, //Rotate the manager unlock key.
+     * } $queryParameters
      */
     public function __construct(\Docker\Api\Model\SwarmSpec $body, array $queryParameters = [])
     {

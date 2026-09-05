@@ -8,9 +8,9 @@ class ContainerInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     /**
      * Return low-level information about a container.
      * @param string $id ID or name of the container
-     * @param array $queryParameters {
-     *     @var bool $size Return the size of container as fields `SizeRw` and `SizeRootFs`
-     * }
+     * @param array{
+     *    "size"?: bool, //Return the size of container as fields `SizeRw` and `SizeRootFs`
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

@@ -7,10 +7,10 @@ class NetworkInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     protected $id;
     /**
      * @param string $id Network ID or name
-     * @param array $queryParameters {
-     *     @var bool $verbose Detailed inspect output for troubleshooting
-     *     @var string $scope Filter the network by scope (swarm, global, or local)
-     * }
+     * @param array{
+     *    "verbose"?: bool, //Detailed inspect output for troubleshooting
+     *    "scope"?: string, //Filter the network by scope (swarm, global, or local)
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

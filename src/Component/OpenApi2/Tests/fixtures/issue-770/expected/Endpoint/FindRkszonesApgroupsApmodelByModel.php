@@ -11,9 +11,9 @@ class FindRkszonesApgroupsApmodelByModel extends \Jane\Component\OpenApi3\Tests\
      * @param string $zoneId
      * @param string $id
      * @param string $model
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $zoneId, string $id, string $model, array $queryParameters = [])
     {

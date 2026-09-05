@@ -6,18 +6,18 @@ class ListItemUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
 {
     protected $id;
     /**
-    * Updates a single list item.
-    * @param string $id The list item ID.
-    * @param \PicturePark\API\Model\ListItemUpdateRequest $requestBody
-    * @param array{
-    *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
-    *    "allowMissingDependencies"?: bool, //Allows creating list items that refer to list items or contents that don't exist in the system.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    */
+     * Updates a single list item.
+     * @param string $id The list item ID.
+     * @param \PicturePark\API\Model\ListItemUpdateRequest $requestBody
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
+     *    "allowMissingDependencies"?: bool, //Allows creating list items that refer to list items or contents that don't exist in the system.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     */
     public function __construct(string $id, \PicturePark\API\Model\ListItemUpdateRequest $requestBody, array $queryParameters = [])
     {
         $this->id = $id;

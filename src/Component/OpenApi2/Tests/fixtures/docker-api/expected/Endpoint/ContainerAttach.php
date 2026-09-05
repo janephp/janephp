@@ -101,26 +101,23 @@ class ContainerAttach extends \Docker\Api\Runtime\Client\BaseEndpoint implements
      * `stdin`.
      *
      * @param string $id ID or name of the container
-     * @param array $queryParameters {
-     *     @var string $detachKeys Override the key sequence for detaching a container.Format is a single
-     *     character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`,
-     *     `@`, `^`, `[`, `,` or `_`.
-     *     
-     *     @var bool $logs Replay previous logs from the container.
-     *     
-     *     This is useful for attaching to a container that has started and you
-     *     want to output everything since the container started.
-     *     
-     *     If `stream` is also enabled, once all the previous output has been
-     *     returned, it will seamlessly transition into streaming current
-     *     output.
-     *     
-     *     @var bool $stream Stream attached streams from the time the request was made onwards.
-     *     
-     *     @var bool $stdin Attach to `stdin`
-     *     @var bool $stdout Attach to `stdout`
-     *     @var bool $stderr Attach to `stderr`
-     * }
+     * @param array{
+     *    "detachKeys"?: string, //Override the key sequence for detaching a container.Format is a single
+     *                           //character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`,
+     *                           //`@`, `^`, `[`, `,` or `_`.
+     *    "logs"?: bool, //Replay previous logs from the container.
+     *                   //
+     *                   //This is useful for attaching to a container that has started and you
+     *                   //want to output everything since the container started.
+     *                   //
+     *                   //If `stream` is also enabled, once all the previous output has been
+     *                   //returned, it will seamlessly transition into streaming current
+     *                   //output.
+     *    "stream"?: bool, //Stream attached streams from the time the request was made onwards.
+     *    "stdin"?: bool, //Attach to `stdin`
+     *    "stdout"?: bool, //Attach to `stdout`
+     *    "stderr"?: bool, //Attach to `stderr`
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

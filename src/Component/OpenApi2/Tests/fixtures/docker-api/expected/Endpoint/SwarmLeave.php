@@ -5,11 +5,10 @@ namespace Docker\Api\Endpoint;
 class SwarmLeave extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var bool $force Force leave swarm, even if this is the last manager or that it will
-     *     break the cluster.
-     *     
-     * }
+     * @param array{
+     *    "force"?: bool, //Force leave swarm, even if this is the last manager or that it will
+     *                    //break the cluster.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

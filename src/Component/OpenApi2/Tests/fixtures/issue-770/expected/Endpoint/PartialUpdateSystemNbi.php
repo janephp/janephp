@@ -6,10 +6,10 @@ class PartialUpdateSystemNbi extends \Jane\Component\OpenApi3\Tests\Expected\Iss
 {
     /**
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $domainId Domain ID.
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "domainId"?: string, //Domain ID.
+     * } $queryParameters
      */
     public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface $body, array $queryParameters = [])
     {

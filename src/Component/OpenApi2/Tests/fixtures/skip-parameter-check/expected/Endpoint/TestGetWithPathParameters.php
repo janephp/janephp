@@ -8,14 +8,14 @@ class TestGetWithPathParameters extends \Jane\OpenApi2\Tests\Expected\SkipParame
     /**
      * @param string $testPath
      * @param array $testBody
-     * @param array $queryParameters {
-     *     @var string $testQuery
-     *     @var string $testQuerySkipped
-     * }
-     * @param array $headerParameters {
-     *     @var string $testHeader
-     *     @var string $testHeaderSkipped
-     * }
+     * @param array{
+     *    "testQuery": string,
+     *    "testQuerySkipped": string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader"?: string,
+     *    "testHeaderSkipped"?: string,
+     * } $headerParameters
      */
     public function __construct(string $testPath, array $testBody, array $queryParameters = [], array $headerParameters = [])
     {

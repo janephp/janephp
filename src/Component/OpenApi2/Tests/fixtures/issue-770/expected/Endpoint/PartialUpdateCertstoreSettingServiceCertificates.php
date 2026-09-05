@@ -6,9 +6,9 @@ class PartialUpdateCertstoreSettingServiceCertificates extends \Jane\Component\O
 {
     /**
      * @param array $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(array $body, array $queryParameters = [])
     {

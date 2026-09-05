@@ -7,9 +7,9 @@ class ServiceInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     protected $id;
     /**
      * @param string $id ID or name of service.
-     * @param array $queryParameters {
-     *     @var bool $insertDefaults Fill empty fields with default values.
-     * }
+     * @param array{
+     *    "insertDefaults"?: bool, //Fill empty fields with default values.
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

@@ -5,9 +5,9 @@ namespace Jane\Component\OpenApi2\Tests\Expected\BooleanQueryResolver;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\BooleanQueryResolver\Runtime\Client\Client
 {
     /**
-     * @param array $queryParameters {
-     *     @var bool $testBoolean
-     * }
+     * @param array{
+     *    "testBoolean"?: bool,
+     * } $queryParameters
      *
      * @return null
      */

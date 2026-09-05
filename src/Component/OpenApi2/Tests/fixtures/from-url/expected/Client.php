@@ -5,9 +5,9 @@ namespace Jane\Component\OpenApi2\Tests\Expected\FromUrl;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\FromUrl\Runtime\Client\Client
 {
     /**
-     * @param array $queryParameters {
-     *     @var int $limit How many items to return at one time (max 100)
-     * }
+     * @param array{
+     *    "limit"?: int, //How many items to return at one time (max 100)
+     * } $queryParameters
      *
      * @return null|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Pet[]|\Jane\Component\OpenApi2\Tests\Expected\FromUrl\Model\Error
      */

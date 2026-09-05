@@ -374,26 +374,25 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AppsRestart($appId, $requestBody));
     }
     /**
-    * Retrieve the logs of the active deployment if one exists. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment. Note log_type=BUILD logs will return logs associated with the current active deployment (being served). To view build logs associated with in-progress build, the query must explicitly reference the deployment id.
-    * @param string $appId The app ID
-    * @param string $componentName An optional component name. If set, logs will be limited to this component only.
-    * @param array{
-    *    "follow"?: bool, //Whether the logs should follow live updates.
-    *    "type": string, //The type of logs to retrieve
-    - BUILD: Build-time logs
-    - DEPLOY: Deploy-time logs
-    - RUN: Live run-time logs
-    - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
-    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    * } $queryParameters
-    
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentUnauthorizedException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentNotFoundException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentTooManyRequestsException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentInternalServerErrorException
-    *
-    * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
-    */
+     * Retrieve the logs of the active deployment if one exists. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment. Note log_type=BUILD logs will return logs associated with the current active deployment (being served). To view build logs associated with in-progress build, the query must explicitly reference the deployment id.
+     * @param string $appId The app ID
+     * @param string $componentName An optional component name. If set, logs will be limited to this component only.
+     * @param array{
+     *    "follow"?: bool, //Whether the logs should follow live updates.
+     *    "type"?: string, //The type of logs to retrieve
+     *                     //- BUILD: Build-time logs
+     *                     //- DEPLOY: Deploy-time logs
+     *                     //- RUN: Live run-time logs
+     *                     //- RUN_RESTARTED: Logs of crashed/restarted instances during runtime
+     *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+     * } $queryParameters
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     */
     public function appsGetLogsActiveDeployment(string $appId, string $componentName, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AppsGetLogsActiveDeployment($appId, $componentName, $queryParameters));
@@ -431,28 +430,27 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AppsGetInstances($appId));
     }
     /**
-    * List all deployments of an app.
-    * @param string $appId The app ID
-    * @param array{
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    *    "per_page"?: int, //Number of items returned per page
-    *    "deployment_types"?: array, //Optional. Filter deployments by deployment_type
-     - MANUAL: manual deployment
-     - DEPLOY_ON_PUSH: deployment triggered by a push to the app's repository
-     - MAINTENANCE: deployment for maintenance purposes
-     - MANUAL_ROLLBACK: manual revert to a previous deployment
-     - AUTO_ROLLBACK: automatic revert to a previous deployment
-     - UPDATE_DATABASE_TRUSTED_SOURCES: update database trusted sources
-     - AUTOSCALED: deployment that has been autoscaled
-    * } $queryParameters
-    
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsUnauthorizedException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsNotFoundException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsTooManyRequestsException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsInternalServerErrorException
-    *
-    * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentsResponse|\Jane\Generated\DigitalOcean\Model\Error
-    */
+     * List all deployments of an app.
+     * @param string $appId The app ID
+     * @param array{
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "per_page"?: int, //Number of items returned per page
+     *    "deployment_types"?: array, //Optional. Filter deployments by deployment_type
+     *                                //  - MANUAL: manual deployment
+     *                                //  - DEPLOY_ON_PUSH: deployment triggered by a push to the app's repository
+     *                                //  - MAINTENANCE: deployment for maintenance purposes
+     *                                //  - MANUAL_ROLLBACK: manual revert to a previous deployment
+     *                                //  - AUTO_ROLLBACK: automatic revert to a previous deployment
+     *                                //  - UPDATE_DATABASE_TRUSTED_SOURCES: update database trusted sources
+     *                                //  - AUTOSCALED: deployment that has been autoscaled
+     * } $queryParameters
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     */
     public function appsListDeployments(string $appId, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AppsListDeployments($appId, $queryParameters));
@@ -503,52 +501,50 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AppsCancelDeployment($appId, $deploymentId));
     }
     /**
-    * Retrieve the logs of a past, in-progress, or active deployment. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment.
-    * @param string $appId The app ID
-    * @param string $deploymentId The deployment ID
-    * @param string $componentName An optional component name. If set, logs will be limited to this component only.
-    * @param array{
-    *    "follow"?: bool, //Whether the logs should follow live updates.
-    *    "type": string, //The type of logs to retrieve
-    - BUILD: Build-time logs
-    - DEPLOY: Deploy-time logs
-    - RUN: Live run-time logs
-    - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
-    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    * } $queryParameters
-    
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsUnauthorizedException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsNotFoundException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsTooManyRequestsException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsInternalServerErrorException
-    *
-    * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
-    */
+     * Retrieve the logs of a past, in-progress, or active deployment. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment.
+     * @param string $appId The app ID
+     * @param string $deploymentId The deployment ID
+     * @param string $componentName An optional component name. If set, logs will be limited to this component only.
+     * @param array{
+     *    "follow"?: bool, //Whether the logs should follow live updates.
+     *    "type"?: string, //The type of logs to retrieve
+     *                     //- BUILD: Build-time logs
+     *                     //- DEPLOY: Deploy-time logs
+     *                     //- RUN: Live run-time logs
+     *                     //- RUN_RESTARTED: Logs of crashed/restarted instances during runtime
+     *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+     * } $queryParameters
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     */
     public function appsGetLogs(string $appId, string $deploymentId, string $componentName, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AppsGetLogs($appId, $deploymentId, $componentName, $queryParameters));
     }
     /**
-    * Retrieve the logs of a past, in-progress, or active deployment. If a component name is specified, the logs will be limited to only that component. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment.
-    * @param string $appId The app ID
-    * @param string $deploymentId The deployment ID
-    * @param array{
-    *    "follow"?: bool, //Whether the logs should follow live updates.
-    *    "type": string, //The type of logs to retrieve
-    - BUILD: Build-time logs
-    - DEPLOY: Deploy-time logs
-    - RUN: Live run-time logs
-    - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
-    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    * } $queryParameters
-    
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateUnauthorizedException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateNotFoundException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateTooManyRequestsException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateInternalServerErrorException
-    *
-    * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
-    */
+     * Retrieve the logs of a past, in-progress, or active deployment. If a component name is specified, the logs will be limited to only that component. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment.
+     * @param string $appId The app ID
+     * @param string $deploymentId The deployment ID
+     * @param array{
+     *    "follow"?: bool, //Whether the logs should follow live updates.
+     *    "type"?: string, //The type of logs to retrieve
+     *                     //- BUILD: Build-time logs
+     *                     //- DEPLOY: Deploy-time logs
+     *                     //- RUN: Live run-time logs
+     *                     //- RUN_RESTARTED: Logs of crashed/restarted instances during runtime
+     *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+     * } $queryParameters
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     */
     public function appsGetLogsAggregate(string $appId, string $deploymentId, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AppsGetLogsAggregate($appId, $deploymentId, $queryParameters));
@@ -573,25 +569,24 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AppsGetExec($appId, $deploymentId, $componentName, $queryParameters));
     }
     /**
-    * Retrieve the logs of the active deployment if one exists. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment. Note log_type=BUILD logs will return logs associated with the current active deployment (being served). To view build logs associated with in-progress build, the query must explicitly reference the deployment id.
-    * @param string $appId The app ID
-    * @param array{
-    *    "follow"?: bool, //Whether the logs should follow live updates.
-    *    "type": string, //The type of logs to retrieve
-    - BUILD: Build-time logs
-    - DEPLOY: Deploy-time logs
-    - RUN: Live run-time logs
-    - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
-    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    * } $queryParameters
-    
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateUnauthorizedException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateNotFoundException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateTooManyRequestsException
-    * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateInternalServerErrorException
-    *
-    * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
-    */
+     * Retrieve the logs of the active deployment if one exists. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment. Note log_type=BUILD logs will return logs associated with the current active deployment (being served). To view build logs associated with in-progress build, the query must explicitly reference the deployment id.
+     * @param string $appId The app ID
+     * @param array{
+     *    "follow"?: bool, //Whether the logs should follow live updates.
+     *    "type"?: string, //The type of logs to retrieve
+     *                     //- BUILD: Build-time logs
+     *                     //- DEPLOY: Deploy-time logs
+     *                     //- RUN: Live run-time logs
+     *                     //- RUN_RESTARTED: Logs of crashed/restarted instances during runtime
+     *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+     * } $queryParameters
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     */
     public function appsGetLogsActiveDeploymentAggregate(string $appId, array $queryParameters = [])
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AppsGetLogsActiveDeploymentAggregate($appId, $queryParameters));
@@ -9378,29 +9373,28 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\GenaiUpdateKnowledgeBase($uuid, $requestBody));
     }
     /**
-    * To list all models, send a GET request to `/v2/gen-ai/models`.
-    * @param array{
-    *    "usecases"?: array, //Include only models defined for the listed usecases.
-    
-    - MODEL_USECASE_UNKNOWN: The use case of the model is unknown
-    - MODEL_USECASE_AGENT: The model maybe used in an agent
-    - MODEL_USECASE_FINETUNED: The model maybe used for fine tuning
-    - MODEL_USECASE_KNOWLEDGEBASE: The model maybe used for knowledge bases (embedding models)
-    - MODEL_USECASE_GUARDRAIL: The model maybe used for guardrails
-    - MODEL_USECASE_REASONING: The model usecase for reasoning
-    - MODEL_USECASE_SERVERLESS: The model usecase for serverless inference
-    *    "public_only"?: bool, //Only include models that are publicly available.
-    *    "page"?: int, //Page number.
-    *    "per_page"?: int, //Items per page.
-    * } $queryParameters
-    
-    * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsUnauthorizedException
-    * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsNotFoundException
-    * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsTooManyRequestsException
-    * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsInternalServerErrorException
-    *
-    * @return null|\Jane\Generated\DigitalOcean\Model\ApiListModelsOutputPublic|\Jane\Generated\DigitalOcean\Model\Error
-    */
+     * To list all models, send a GET request to `/v2/gen-ai/models`.
+     * @param array{
+     *    "usecases"?: array, //Include only models defined for the listed usecases.
+     *                        //
+     *                        // - MODEL_USECASE_UNKNOWN: The use case of the model is unknown
+     *                        // - MODEL_USECASE_AGENT: The model maybe used in an agent
+     *                        // - MODEL_USECASE_FINETUNED: The model maybe used for fine tuning
+     *                        // - MODEL_USECASE_KNOWLEDGEBASE: The model maybe used for knowledge bases (embedding models)
+     *                        // - MODEL_USECASE_GUARDRAIL: The model maybe used for guardrails
+     *                        // - MODEL_USECASE_REASONING: The model usecase for reasoning
+     *                        // - MODEL_USECASE_SERVERLESS: The model usecase for serverless inference
+     *    "public_only"?: bool, //Only include models that are publicly available.
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
+     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListModelsOutputPublic|\Jane\Generated\DigitalOcean\Model\Error
+     */
     public function genaiListModels(array $queryParameters = [])
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\GenaiListModels($queryParameters));

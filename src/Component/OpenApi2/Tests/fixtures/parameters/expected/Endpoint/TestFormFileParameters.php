@@ -5,9 +5,9 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint;
 class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\Client\Endpoint
 {
     /**
-     * @param array $formParameters {
-     *     @var string|resource $testFile
-     * }
+     * @param array{
+     *    "testFile"?: string|resource,
+     * } $formParameters
      */
     public function __construct(array $formParameters = [])
     {

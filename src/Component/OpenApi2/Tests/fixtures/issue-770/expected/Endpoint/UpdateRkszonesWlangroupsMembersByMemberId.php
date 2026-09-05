@@ -12,9 +12,9 @@ class UpdateRkszonesWlangroupsMembersByMemberId extends \Jane\Component\OpenApi3
      * @param string $id
      * @param string $memberId
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroupMember $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters = [])
     {

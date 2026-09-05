@@ -5,10 +5,10 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 class FindAvcSignaturePackageV2Applications extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $appName Application name. Get Application info (catId, appId and name) by the application name.
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "appName"?: string, //Application name. Get Application info (catId, appId and name) by the application name.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

@@ -7,9 +7,9 @@ class ContainerRestart extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     protected $id;
     /**
      * @param string $id ID or name of the container
-     * @param array $queryParameters {
-     *     @var int $t Number of seconds to wait before killing the container
-     * }
+     * @param array{
+     *    "t"?: int, //Number of seconds to wait before killing the container
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

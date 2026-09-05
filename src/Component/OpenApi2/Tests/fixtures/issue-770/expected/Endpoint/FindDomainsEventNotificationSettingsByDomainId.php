@@ -7,9 +7,9 @@ class FindDomainsEventNotificationSettingsByDomainId extends \Jane\Component\Ope
     protected $domainId;
     /**
      * @param string $domainId
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $domainId, array $queryParameters = [])
     {

@@ -6,11 +6,10 @@ class PluginCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
 {
     /**
      * @param string|resource $tarContext Path to tar containing plugin rootfs and manifest
-     * @param array $queryParameters {
-     *     @var string $name The name of the plugin. The `:latest` tag is optional, and is the
-     *     default if omitted.
-     *     
-     * }
+     * @param array{
+     *    "name": string, //The name of the plugin. The `:latest` tag is optional, and is the
+     *                    //default if omitted.
+     * } $queryParameters
      */
     public function __construct($tarContext, array $queryParameters = [])
     {

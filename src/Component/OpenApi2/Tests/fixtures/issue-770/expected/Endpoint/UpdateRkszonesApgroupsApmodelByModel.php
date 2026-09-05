@@ -12,9 +12,9 @@ class UpdateRkszonesApgroupsApmodelByModel extends \Jane\Component\OpenApi3\Test
      * @param string $id
      * @param string $model
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $zoneId, string $id, string $model, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel $body, array $queryParameters = [])
     {

@@ -5,9 +5,9 @@ namespace Jane\Component\OpenApi2\Tests\Expected\BooleanQueryResolver\Endpoint;
 class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\BooleanQueryResolver\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\BooleanQueryResolver\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var bool $testBoolean
-     * }
+     * @param array{
+     *    "testBoolean"?: bool,
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

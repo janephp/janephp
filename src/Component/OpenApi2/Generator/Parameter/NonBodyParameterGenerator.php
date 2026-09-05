@@ -126,15 +126,14 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
     public function generateOptionDocParameter(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): string
     {
-        $type = implode('|', $this->convertParameterType($parameter));
-        $description = array_map(rtrim(...), explode("\n", ($parameter->description ?? null) ?: ''));
-
-        $var = [rtrim(\sprintf(' *     @var %s $%s %s', $type, str_replace('*/', '*\\/', $parameter->name ?? null), str_replace('*/', '*\\/', array_shift($description))))];
-        foreach ($description as $line) {
-            $var[] = \sprintf(' *     %s', str_replace('*/', '*\\/', $line));
-        }
-
-        return implode("\n", $var);
+        // Same notion of "required" as the options resolver above: a required
+        // parameter carrying a default is filled in, so its key is optional.
+        return $this->formatOptionDocEntry(
+            $parameter->name ?? '',
+            $parameter->required && null === ($parameter->default ?? null),
+            implode('|', $this->convertParameterType($parameter)),
+            $parameter->description ?? null
+        );
     }
 
     /**

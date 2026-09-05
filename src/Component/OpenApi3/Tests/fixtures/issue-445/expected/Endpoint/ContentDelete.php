@@ -6,16 +6,16 @@ class ContentDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
 {
     protected $id;
     /**
-    * Deletes a single content. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
-    * @param string $id The ID of the content to delete.
-    * @param array{
-    *    "forceReferenceRemoval"?: bool, //A value indicating whether references to the content should be removed.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    */
+     * Deletes a single content. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
+     * @param string $id The ID of the content to delete.
+     * @param array{
+     *    "forceReferenceRemoval"?: bool, //A value indicating whether references to the content should be removed.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     */
     public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;

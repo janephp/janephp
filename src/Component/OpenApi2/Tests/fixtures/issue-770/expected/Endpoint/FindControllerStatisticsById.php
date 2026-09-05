@@ -7,11 +7,11 @@ class FindControllerStatisticsById extends \Jane\Component\OpenApi3\Tests\Expect
     protected $id;
     /**
      * @param string $id
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $interval Interval, only valid of (QUARTER, HOUR, DAY). Default: QUARTER
-     *     @var float $size Size, list size to response. Default: 32
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "interval"?: string, //Interval, only valid of (QUARTER, HOUR, DAY). Default: QUARTER
+     *    "size"?: float, //Size, list size to response. Default: 32
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

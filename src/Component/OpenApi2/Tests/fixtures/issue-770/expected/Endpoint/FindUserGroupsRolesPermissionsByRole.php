@@ -7,10 +7,10 @@ class FindUserGroupsRolesPermissionsByRole extends \Jane\Component\OpenApi3\Test
     protected $role;
     /**
      * @param string $role
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $domainId
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "domainId"?: string,
+     * } $queryParameters
      */
     public function __construct(string $role, array $queryParameters = [])
     {

@@ -5,23 +5,23 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint;
 class FindIdentityUsers extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $index The index of the first entry to be retrieved. Default: 0
-     *     @var string $listSize The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
-     *     @var string $timeZone Display created date and time by specified time zone. Default is UTC.
-     *     @var string $userName filter identity user list by user name.
-     *     @var string $displayName filter identity user list by display name.
-     *     @var string $firstName filter identity user list by first name.
-     *     @var string $lastName filter identity user list by last name.
-     *     @var string $email filter identity user list by email.
-     *     @var string $phone filter identity user list by phone.
-     *     @var string $userType filter identity user list by user type.
-     *     @var string $userSource filter identity user list by user source.
-     *     @var string $isDisabled filter identity user list by isDisabled.
-     *     @var string $createdOnFrom filter identity user list by created date and time. The start time of created date and time.
-     *     @var string $createdOnTo filter identity user list by created date and time. The end time of created date and time.
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "index"?: string, //The index of the first entry to be retrieved. Default: 0
+     *    "listSize"?: string, //The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
+     *    "timeZone"?: string, //Display created date and time by specified time zone. Default is UTC.
+     *    "userName"?: string, //filter identity user list by user name.
+     *    "displayName"?: string, //filter identity user list by display name.
+     *    "firstName"?: string, //filter identity user list by first name.
+     *    "lastName"?: string, //filter identity user list by last name.
+     *    "email"?: string, //filter identity user list by email.
+     *    "phone"?: string, //filter identity user list by phone.
+     *    "userType"?: string, //filter identity user list by user type.
+     *    "userSource"?: string, //filter identity user list by user source.
+     *    "isDisabled"?: string, //filter identity user list by isDisabled.
+     *    "createdOnFrom"?: string, //filter identity user list by created date and time. The start time of created date and time.
+     *    "createdOnTo"?: string, //filter identity user list by created date and time. The end time of created date and time.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

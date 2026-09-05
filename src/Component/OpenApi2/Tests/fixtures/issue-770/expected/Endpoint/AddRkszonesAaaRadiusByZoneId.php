@@ -8,10 +8,10 @@ class AddRkszonesAaaRadiusByZoneId extends \Jane\Component\OpenApi3\Tests\Expect
     /**
      * @param string $zoneId
      * @param \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer $body
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $forAccounting radius server for accounting type. default: false.
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "forAccounting"?: string, //radius server for accounting type. default: false.
+     * } $queryParameters
      */
     public function __construct(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer $body, array $queryParameters = [])
     {

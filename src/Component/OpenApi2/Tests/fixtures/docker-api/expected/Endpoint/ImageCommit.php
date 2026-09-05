@@ -6,15 +6,15 @@ class ImageCommit extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
 {
     /**
      * @param \Docker\Api\Model\ContainerConfig $containerConfig The container configuration
-     * @param array $queryParameters {
-     *     @var string $container The ID or name of the container to commit
-     *     @var string $repo Repository name for the created image
-     *     @var string $tag Tag name for the create image
-     *     @var string $comment Commit message
-     *     @var string $author Author of the image (e.g., `John Hannibal Smith <hannibal@a-team.com>`)
-     *     @var bool $pause Whether to pause the container before committing
-     *     @var string $changes `Dockerfile` instructions to apply while committing
-     * }
+     * @param array{
+     *    "container"?: string, //The ID or name of the container to commit
+     *    "repo"?: string, //Repository name for the created image
+     *    "tag"?: string, //Tag name for the create image
+     *    "comment"?: string, //Commit message
+     *    "author"?: string, //Author of the image (e.g., `John Hannibal Smith <hannibal@a-team.com>`)
+     *    "pause"?: bool, //Whether to pause the container before committing
+     *    "changes"?: string, //`Dockerfile` instructions to apply while committing
+     * } $queryParameters
      */
     public function __construct(\Docker\Api\Model\ContainerConfig $containerConfig, array $queryParameters = [])
     {

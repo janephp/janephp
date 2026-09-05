@@ -6,12 +6,12 @@ class TestGetWithPathParameters extends \Jane\Component\OpenApi2\Tests\Expected\
 {
     /**
      * @param array $testBody
-     * @param array $queryParameters {
-     *     @var string $testQuery
-     * }
-     * @param array $headerParameters {
-     *     @var string $testHeader
-     * }
+     * @param array{
+     *    "testQuery"?: string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader"?: string,
+     * } $headerParameters
      */
     public function __construct(array $testBody, array $queryParameters = [], array $headerParameters = [])
     {

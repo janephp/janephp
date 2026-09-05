@@ -7,10 +7,10 @@ class FindUserGroupsByUserGroupId extends \Jane\Component\OpenApi3\Tests\Expecte
     protected $userGroupId;
     /**
      * @param string $userGroupId
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     *     @var string $includeUsers
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *    "includeUsers"?: string,
+     * } $queryParameters
      */
     public function __construct(string $userGroupId, array $queryParameters = [])
     {

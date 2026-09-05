@@ -5,13 +5,13 @@ namespace PicturePark\API\Endpoint;
 class SchemaCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Create a new schema.
-    * @param \PicturePark\API\Model\SchemaCreateRequest $requestBody
-    * @param array{
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    * } $queryParameters
-    */
+     * Create a new schema.
+     * @param \PicturePark\API\Model\SchemaCreateRequest $requestBody
+     * @param array{
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     * } $queryParameters
+     */
     public function __construct(\PicturePark\API\Model\SchemaCreateRequest $requestBody, array $queryParameters = [])
     {
         $this->body = $requestBody;

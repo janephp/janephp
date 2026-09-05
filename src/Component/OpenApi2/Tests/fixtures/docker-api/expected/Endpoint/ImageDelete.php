@@ -13,10 +13,10 @@ class ImageDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      * used by a running container or are being used by a build.
      *
      * @param string $name Image name or ID
-     * @param array $queryParameters {
-     *     @var bool $force Remove the image even if it is being used by stopped containers or has other tags
-     *     @var bool $noprune Do not delete untagged parent images
-     * }
+     * @param array{
+     *    "force"?: bool, //Remove the image even if it is being used by stopped containers or has other tags
+     *    "noprune"?: bool, //Do not delete untagged parent images
+     * } $queryParameters
      */
     public function __construct(string $name, array $queryParameters = [])
     {

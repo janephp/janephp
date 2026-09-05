@@ -6,17 +6,17 @@ class ContentUpdatePermissions extends \PicturePark\API\Runtime\Client\BaseEndpo
 {
     protected $id;
     /**
-    * Updates the content permission sets of a single content. To get a list of available content permission sets, see [Permissions](operation/Permission_SearchContentPermissions)
-    * @param string $id The content ID.
-    * @param \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody
-    * @param array{
-    *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
-    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
-               Only the waiting is aborted, and the calls returned.
-    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
-               By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * } $queryParameters
-    */
+     * Updates the content permission sets of a single content. To get a list of available content permission sets, see [Permissions](operation/Permission_SearchContentPermissions)
+     * @param string $id The content ID.
+     * @param \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
+     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+     *                        //            Only the waiting is aborted, and the calls returned.
+     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
+     *                                    //            By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
+     * } $queryParameters
+     */
     public function __construct(string $id, \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody, array $queryParameters = [])
     {
         $this->id = $id;

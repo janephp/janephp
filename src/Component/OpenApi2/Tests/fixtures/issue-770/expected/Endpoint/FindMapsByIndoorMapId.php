@@ -7,9 +7,9 @@ class FindMapsByIndoorMapId extends \Jane\Component\OpenApi3\Tests\Expected\Issu
     protected $indoorMapId;
     /**
      * @param string $indoorMapId
-     * @param array $queryParameters {
-     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
-     * }
+     * @param array{
+     *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * } $queryParameters
      */
     public function __construct(string $indoorMapId, array $queryParameters = [])
     {
