@@ -2,6 +2,8 @@
 
 namespace Jane\Component\JsonSchema;
 
+use Jane\Component\JsonSchema\Event\EventDispatcher;
+use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
 use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\EnumGenerator;
@@ -35,8 +37,10 @@ class Jane extends ChainGenerator
         private readonly ChainGuesser $chainGuesser,
         private readonly Naming $naming,
         private readonly ChainValidatorFactory $chainValidatorFactory,
+        ?EventDispatcher $dispatcher = null,
         private readonly bool $strict = true,
     ) {
+        $this->dispatcher = $dispatcher ?? new EventDispatcher();
     }
 
     public function createContext(Registry $registry): Context
@@ -72,6 +76,8 @@ class Jane extends ChainGenerator
                     $property->setPhpName($this->naming->getPropertyName($deduplicatedName));
 
                     $property->setType($this->chainGuesser->guessType($property->getObject(), $property->getName(), $property->getReference(), $registry));
+
+                    $this->dispatcher->dispatch(new PropertyGuessedEvent($schema, $class, $property));
                 }
 
                 $class->setProperties($properties);
@@ -87,10 +93,10 @@ class Jane extends ChainGenerator
             }
         }
 
-        return new Context($registry, $this->strict);
+        return new Context($registry, $this->strict, $this->dispatcher);
     }
 
-    public static function build(array $options = []): self
+    public static function build(array $options = [], ?EventDispatcher $dispatcher = null): self
     {
         $options = Options::fromArray($options);
         ReferenceResolver::default()->applyOptions($options->toArray());
@@ -109,7 +115,7 @@ class Jane extends ChainGenerator
         $naming = new Naming();
         $parser = (new ParserFactory())->createForHostVersion();
 
-        $self = new self($serializer, $chainGuesser, $naming, $chainValidatorFactory, $options->strict);
+        $self = new self($serializer, $chainGuesser, $naming, $chainValidatorFactory, $dispatcher, $options->strict);
         $self->addGenerator(new ModelGenerator($naming, $parser));
         $self->addGenerator(new NormalizerGenerator($naming, $parser, $options->reference, $options->useCacheableSupportsMethod ?? false, $options->skipNullValues, $options->skipRequiredFields, $options->validation, $options->includeNullValue));
         $self->addGenerator(new RuntimeGenerator($naming, $parser));

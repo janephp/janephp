@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApiCommon\Console\Command;
 use Jane\Component\JsonSchema\Console\Command\GenerateCommand as BaseGenerateCommand;
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoaderInterface;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoaderInterface;
+use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Printer;
 use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\JaneOpenApi;
@@ -36,12 +37,13 @@ class GenerateCommand extends BaseGenerateCommand
     {
         $options = $this->configLoader->load($this->configFileOption($input));
         $registries = $this->registries($options);
+        $dispatcher = new EventDispatcher();
 
         /** @var Registry $registry */
         foreach ($registries as $registry) {
             $openApiClass = $registry->getOpenApiClass();
             /** @var JaneOpenApi $janeOpenApi */
-            $janeOpenApi = $openApiClass::build($options);
+            $janeOpenApi = $openApiClass::build($options, $dispatcher);
             $fixerConfigFile = '';
 
             if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {

@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Generator\RuntimeGenerator;
+use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\ParserFactory;
@@ -26,7 +27,7 @@ class RuntimeGeneratorTest extends TestCase
         $schema->addRequiredRuntimeFile('Vendor\Api\Runtime\Normalizer\ValidatorTrait');
 
         $generator = new RuntimeGenerator(new Naming(), (new ParserFactory())->createForHostVersion());
-        $generator->generate($schema, 'Client', new Context(new Registry()));
+        $generator->generate($schema, 'Client', new Context(new Registry(), true, new EventDispatcher()));
 
         $files = array_map(static fn (File $file): string => basename($file->getFilename()), $schema->getFiles());
 
@@ -40,7 +41,7 @@ class RuntimeGeneratorTest extends TestCase
         $schema->addRequiredRuntimeFile('Vendor\Api\Runtime\Normalizer\CheckArray');
 
         $generator = new RuntimeGenerator(new Naming(), (new ParserFactory())->createForHostVersion());
-        $generator->generate($schema, 'Client', new Context(new Registry()));
+        $generator->generate($schema, 'Client', new Context(new Registry(), true, new EventDispatcher()));
 
         $files = array_map(static fn (File $file): string => basename($file->getFilename()), $schema->getFiles());
 

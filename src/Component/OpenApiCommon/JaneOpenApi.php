@@ -6,6 +6,8 @@ use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Generator\Options;
+use Jane\Component\JsonSchema\Event\EventDispatcher;
+use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
@@ -111,6 +113,10 @@ abstract class JaneOpenApi extends ChainGenerator
                     $class->setExtensionsType($extensionsTypes);
 
                     $chainValidator->guess($class->getObject(), $class->getName(), $class);
+
+                    foreach ($properties as $property) {
+                        $this->dispatcher->dispatch(new PropertyGuessedEvent($schema, $class, $property));
+                    }
                 } catch (\RuntimeException $exception) {
                     if (!$checkWhitelistedPaths) {
                         throw $exception;
@@ -137,7 +143,7 @@ abstract class JaneOpenApi extends ChainGenerator
             }
         }
 
-        return new Context($registry, $this->strict);
+        return new Context($registry, $this->strict, $this->dispatcher);
     }
 
     /**
@@ -189,7 +195,7 @@ abstract class JaneOpenApi extends ChainGenerator
 
     abstract protected static function generators(DenormalizerInterface $denormalizer, array $options = []): \Generator;
 
-    public static function build(array $options = [])
+    public static function build(array $options = [], ?EventDispatcher $dispatcher = null)
     {
         $options = Options::fromArray($options);
         $optionsArray = $options->toArray();
@@ -207,6 +213,7 @@ abstract class JaneOpenApi extends ChainGenerator
         $instance = static::create($optionsArray, $chainValidatorFactory);
         $instance->options = $optionsArray;
         $instance->chainValidatorFactory = $chainValidatorFactory;
+        $instance->dispatcher = $dispatcher ?? new EventDispatcher();
 
         /** @var DenormalizerInterface $denormalizer */
         $denormalizer = $instance->getSerializer();

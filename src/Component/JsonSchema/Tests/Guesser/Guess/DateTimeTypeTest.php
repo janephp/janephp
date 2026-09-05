@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Tests\Guesser\Guess;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Guesser\Guess\DateTimeType;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
@@ -19,7 +20,7 @@ class DateTimeTypeTest extends TestCase
     {
         $registry = new Registry();
         $schema = new Schema('/schema.json', 'Jane\Test', '/tmp', 'Test');
-        $this->context = new Context($registry);
+        $this->context = new Context($registry, true, new EventDispatcher());
         $this->context->setCurrentSchema($schema);
     }
 

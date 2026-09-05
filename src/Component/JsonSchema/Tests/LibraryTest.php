@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Tests;
 
 use Jane\Component\JsonSchema\Jane;
+use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Printer;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
@@ -26,7 +27,7 @@ class LibraryTest extends TestCase
             'reference' => true,
             'strict' => false,
             'skip-null-values' => false,
-        ]);
+        ], new EventDispatcher());
         $this->printer = new Printer(new Standard(['shortArraySyntax' => true]), '');
         $this->printer->setCleanGenerated(false);
     }
