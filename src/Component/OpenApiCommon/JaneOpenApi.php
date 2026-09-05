@@ -2,12 +2,12 @@
 
 namespace Jane\Component\OpenApiCommon;
 
+use Jane\Component\JsonSchema\Event\EventDispatcher;
+use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
 use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Generator\Options;
-use Jane\Component\JsonSchema\Event\EventDispatcher;
-use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;

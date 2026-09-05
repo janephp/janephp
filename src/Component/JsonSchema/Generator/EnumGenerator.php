@@ -2,9 +2,8 @@
 
 namespace Jane\Component\JsonSchema\Generator;
 
-use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
-use Jane\Component\JsonSchema\Generator\File;
+use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Guesser\Guess\EnumGuess;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Comment\Doc;

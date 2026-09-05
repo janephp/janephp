@@ -2,12 +2,12 @@
 
 namespace Jane\Component\JsonSchema\Generator;
 
-use Jane\Component\JsonSchema\Generator\Context\Context;
-use Jane\Component\JsonSchema\Generator\Model\ClassGenerator;
-use Jane\Component\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\Component\JsonSchema\Event\ClassGeneratedEvent;
 use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
 use Jane\Component\JsonSchema\Event\PropertyGeneratedEvent;
+use Jane\Component\JsonSchema\Generator\Context\Context;
+use Jane\Component\JsonSchema\Generator\Model\ClassGenerator;
+use Jane\Component\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;

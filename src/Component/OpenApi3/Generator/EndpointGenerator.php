@@ -2,8 +2,8 @@
 
 namespace Jane\Component\OpenApi3\Generator;
 
-use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
+use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetConstructorTrait;

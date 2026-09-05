@@ -14,7 +14,6 @@ use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
-use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
@@ -128,7 +127,7 @@ final class PositiveIntSubscriber implements GenerationSubscriberInterface
                 return 'positive-int';
             }
 
-            public function getTypeHint(string $namespace): Node\Identifier|Name|null
+            public function getTypeHint(string $namespace): Identifier|Name|null
             {
                 return new Identifier('int');
             }

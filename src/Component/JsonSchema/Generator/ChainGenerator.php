@@ -3,10 +3,10 @@
 namespace Jane\Component\JsonSchema\Generator;
 
 use Jane\Component\JsonSchema\Event\EventDispatcher;
-use Jane\Component\JsonSchema\Event\GenerationEndedEvent;
-use Jane\Component\JsonSchema\Event\GenerationStartedEvent;
 use Jane\Component\JsonSchema\Event\GeneratingEndedEvent;
 use Jane\Component\JsonSchema\Event\GeneratingStartedEvent;
+use Jane\Component\JsonSchema\Event\GenerationEndedEvent;
+use Jane\Component\JsonSchema\Event\GenerationStartedEvent;
 use Jane\Component\JsonSchema\Event\GuessingEndedEvent;
 use Jane\Component\JsonSchema\Event\GuessingStartedEvent;
 use Jane\Component\JsonSchema\Event\SchemaEndedEvent;

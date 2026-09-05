@@ -2,8 +2,8 @@
 
 namespace Jane\Component\JsonSchema\Console;
 
-use Jane\Component\JsonSchema\Event\GenerationEndedEvent;
 use Jane\Component\JsonSchema\Event\GeneratingEndedEvent;
+use Jane\Component\JsonSchema\Event\GenerationEndedEvent;
 use Jane\Component\JsonSchema\Event\GenerationSubscriberInterface;
 use Jane\Component\JsonSchema\Event\GuessingEndedEvent;
 use Jane\Component\JsonSchema\Event\SchemaStartedEvent;
@@ -71,7 +71,7 @@ final class GenerationProgressSubscriber implements GenerationSubscriberInterfac
                 $type = $file->getType();
                 $counts[$type] = ($counts[$type] ?? 0) + 1;
 
-                if ('runtime' === $type && \str_ends_with($file->getFilename(), 'ReferenceNormalizer.php')) {
+                if ('runtime' === $type && str_ends_with($file->getFilename(), 'ReferenceNormalizer.php')) {
                     $hasReferenceNormalizer = true;
                 }
             }

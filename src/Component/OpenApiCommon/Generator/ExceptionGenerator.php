@@ -2,8 +2,8 @@
 
 namespace Jane\Component\OpenApiCommon\Generator;
 
-use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
+use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Generator\Traits\StatusCodeRangeTrait;

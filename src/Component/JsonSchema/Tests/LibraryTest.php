@@ -2,8 +2,8 @@
 
 namespace Jane\Component\JsonSchema\Tests;
 
-use Jane\Component\JsonSchema\Jane;
 use Jane\Component\JsonSchema\Event\EventDispatcher;
+use Jane\Component\JsonSchema\Jane;
 use Jane\Component\JsonSchema\Printer;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;

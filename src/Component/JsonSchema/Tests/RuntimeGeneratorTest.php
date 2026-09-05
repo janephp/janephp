@@ -2,11 +2,11 @@
 
 namespace Jane\Component\JsonSchema\Tests;
 
+use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Generator\RuntimeGenerator;
-use Jane\Component\JsonSchema\Event\EventDispatcher;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\ParserFactory;
