@@ -30,6 +30,7 @@ Each record follows a lightweight ADR format:
 | [0010](0010-openapi-3-31-generator-consolidation.md) | Consolidate OpenAPI 3 / 3.1 generator duplication | Accepted |
 | [0011](0011-static-analysis-of-generated-code.md) | Generated code is statically analysed with Mago | Accepted |
 | [0012](0012-symfony-httpclient-migration-x-fetch-mode.md) | Symfony HttpClient migration and `x-fetch-mode` (GET/HEAD only) | Accepted |
+| [0013](0013-generation-events.md) | Generation events — internal dispatcher for progress and customization | Accepted |
 
 ## Adding a new record
 
