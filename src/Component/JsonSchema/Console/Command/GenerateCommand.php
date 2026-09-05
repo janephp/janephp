@@ -2,6 +2,7 @@
 
 namespace Jane\Component\JsonSchema\Console\Command;
 
+use Jane\Component\JsonSchema\Console\GenerationProgressSubscriber;
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoaderInterface;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoaderInterface;
 use Jane\Component\JsonSchema\Event\EventDispatcher;
@@ -50,6 +51,10 @@ class GenerateCommand extends Command
         $options = $this->configLoader->load($this->configFileOption($input));
         $registries = $this->registries($options);
         $dispatcher = new EventDispatcher();
+
+        if ($output->getVerbosity() > OutputInterface::VERBOSITY_QUIET) {
+            $dispatcher->addSubscriber(new GenerationProgressSubscriber(new SymfonyStyle($input, $output)));
+        }
 
         foreach ($registries as $registry) {
             $jane = Jane::build($options, $dispatcher);
