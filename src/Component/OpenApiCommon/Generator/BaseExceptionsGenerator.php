@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApiCommon\Generator;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Generator\GeneratorInterface;
 use Jane\Component\JsonSchema\Registry\Schema;
@@ -90,14 +91,21 @@ class BaseExceptionsGenerator implements GeneratorInterface
             ),
         ]);
 
-        $schema->addFile(new File($schema->getDirectory() . '/Exception/ApiException.php', $apiException, 'Exception'));
-        $schema->addFile(new File($schema->getDirectory() . '/Exception/ClientException.php', $clientException, 'Exception'));
-        $schema->addFile(new File($schema->getDirectory() . '/Exception/ServerException.php', $serverException, 'Exception'));
-        $schema->addFile(new File($schema->getDirectory() . '/Exception/WithResponseInterface.php', $withResponseInterface, 'Exception'));
+        $files = [
+            new File($schema->getDirectory() . '/Exception/ApiException.php', $apiException, 'Exception'),
+            new File($schema->getDirectory() . '/Exception/ClientException.php', $clientException, 'Exception'),
+            new File($schema->getDirectory() . '/Exception/ServerException.php', $serverException, 'Exception'),
+            new File($schema->getDirectory() . '/Exception/WithResponseInterface.php', $withResponseInterface, 'Exception'),
+        ];
 
         if ($registry->getThrowUnexpectedStatusCode()) {
-            $schema->addFile(new File($schema->getDirectory() . '/Exception/UnexpectedStatusCodeException.php', $this->createUnexpectedStatusCodeException($namespace), 'Exception'));
-            $schema->addFile(new File($schema->getDirectory() . '/Exception/BadResponseException.php', $this->createBadResponseException($namespace), 'Exception'));
+            $files[] = new File($schema->getDirectory() . '/Exception/UnexpectedStatusCodeException.php', $this->createUnexpectedStatusCodeException($namespace), 'Exception');
+            $files[] = new File($schema->getDirectory() . '/Exception/BadResponseException.php', $this->createBadResponseException($namespace), 'Exception');
+        }
+
+        foreach ($files as $file) {
+            $schema->addFile($file);
+            $context->dispatch(new FileGeneratedEvent($schema, $file));
         }
     }
 

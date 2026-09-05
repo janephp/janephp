@@ -5,6 +5,9 @@ namespace Jane\Component\JsonSchema\Generator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Model\ClassGenerator;
 use Jane\Component\JsonSchema\Generator\Model\PropertyGenerator;
+use Jane\Component\JsonSchema\Event\ClassGeneratedEvent;
+use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
+use Jane\Component\JsonSchema\Event\PropertyGeneratedEvent;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
@@ -61,14 +64,19 @@ class ModelGenerator implements GeneratorInterface
 
             /** @var Property $property */
             foreach ($class->getLocalProperties() as $property) {
-                $properties[] = $this->createProperty($property, $namespace, null, $context->isStrict());
+                $propertyStmt = $this->createProperty($property, $namespace, null, $context->isStrict());
+                $context->dispatch(new PropertyGeneratedEvent($schema, $class, $property, $propertyStmt));
+                $properties[] = $propertyStmt;
                 $methods = array_merge($methods, $this->doCreateClassMethods($class, $property, $namespace, $context->isStrict()));
             }
 
             [$model, $useStmts] = $this->doCreateModel($schema, $class, $properties, $methods);
+            $context->dispatch(new ClassGeneratedEvent($schema, $class, $model));
 
             $namespaceStmt = new Stmt\Namespace_(new Name($namespace), array_merge($useStmts, [$model]));
-            $schema->addFile(new File($this->naming->getArtifactPath($schema->getDirectory(), 'Model', $subNamespace) . '/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_MODEL));
+            $file = new File($this->naming->getArtifactPath($schema->getDirectory(), 'Model', $subNamespace) . '/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_MODEL);
+            $schema->addFile($file);
+            $context->dispatch(new FileGeneratedEvent($schema, $file));
         }
     }
 

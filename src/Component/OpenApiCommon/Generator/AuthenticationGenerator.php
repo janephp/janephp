@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApiCommon\Generator;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Generator\GeneratorInterface;
 use Jane\Component\JsonSchema\Generator\Naming;
@@ -53,7 +54,9 @@ class AuthenticationGenerator implements GeneratorInterface
 
                 $namespace = new Stmt\Namespace_(new Name($baseNamespace), [$authentication]);
 
-                $schema->addFile(new File(\sprintf('%s/%s/%s.php', $schema->getDirectory(), self::REFERENCE, $className), $namespace, self::FILE_TYPE_AUTH));
+                $file = new File(\sprintf('%s/%s/%s.php', $schema->getDirectory(), self::REFERENCE, $className), $namespace, self::FILE_TYPE_AUTH);
+                $schema->addFile($file);
+                $context->dispatch(new FileGeneratedEvent($schema, $file));
             }
         }
     }
