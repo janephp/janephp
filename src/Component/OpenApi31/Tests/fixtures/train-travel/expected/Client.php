@@ -138,6 +138,10 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtim
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Endpoint\CreateBookingPayment($bookingId, $requestBody, $accept));
     }
+    /**
+     * @param list<callable(\Symfony\Contracts\HttpClient\HttpClientInterface): \Symfony\Contracts\HttpClient\HttpClientInterface> $additionalPlugins HttpClientInterface decorator factories, applied left-to-right after the server URL decorator
+     * @param list<\Symfony\Component\Serializer\Normalizer\NormalizerInterface|\Symfony\Component\Serializer\Normalizer\DenormalizerInterface> $additionalNormalizers
+     */
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];

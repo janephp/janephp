@@ -36,6 +36,10 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Ru
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Endpoint\AddOrDeleteRules($requestBody, $queryParameters, $accept));
     }
+    /**
+     * @param list<callable(\Symfony\Contracts\HttpClient\HttpClientInterface): \Symfony\Contracts\HttpClient\HttpClientInterface> $additionalPlugins HttpClientInterface decorator factories, applied left-to-right after the server URL decorator
+     * @param list<\Symfony\Component\Serializer\Normalizer\NormalizerInterface|\Symfony\Component\Serializer\Normalizer\DenormalizerInterface> $additionalNormalizers
+     */
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
         $plugins = [];

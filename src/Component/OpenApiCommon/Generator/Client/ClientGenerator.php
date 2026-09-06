@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Registry\Schema;
 use Jane\Component\JsonSchema\Registry\Schema as BaseSchema;
+use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
@@ -15,6 +16,8 @@ use PhpParser\Node\Stmt;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -51,6 +54,13 @@ trait ClientGenerator
                     $this->createSerializerStatement($context),
                     $this->createReturnStatement(),
                 ],
+            ], [
+                'comments' => [new Doc(implode("\n", [
+                    '/**',
+                    \sprintf(' * @param list<callable(\%1$s): \%1$s> $additionalPlugins HttpClientInterface decorator factories, applied left-to-right after the server URL decorator', HttpClientInterface::class),
+                    \sprintf(' * @param list<\%s|\%s> $additionalNormalizers', NormalizerInterface::class, DenormalizerInterface::class),
+                    ' */',
+                ]))],
             ]
         );
     }

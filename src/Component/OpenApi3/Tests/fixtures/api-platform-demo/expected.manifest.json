@@ -2,7 +2,7 @@
     "algorithm": "sha256",
     "files": {
         "Authentication/ApiKeyAuthentication.php": "26e4d547cb8710d3a23c253b53fcb14df1db0c2a09533a5a334f90361055f8f5",
-        "Client.php": "bc0b5f8339f83ee349f3e1e44e32ef1f7eac99259b7d59ebdf00451ce11b0755",
+        "Client.php": "72ff75b50dc8d292215032684dca8a0e43d9599d73fe6335c73f964cf49d157d",
         "Endpoint/ApiBooksBookIdreviewsGetCollection.php": "4510cb5641bfca09f793e37b26a9e3773b95f5877477c68b91e7357c0c41fabc",
         "Endpoint/ApiBooksGetCollection.php": "5e46728cf08c404b11b72bcc0a47682997cddb91da4853af234bca766e427fa0",
         "Endpoint/ApiBooksIdDelete.php": "baa3560f7a2665033dee6db4d14aa32e45f027ed09bad4cb163b9d0fde709af9",
