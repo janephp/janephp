@@ -16,7 +16,7 @@ class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $queryParameters, array $headerParameters)
     {
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;

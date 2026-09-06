@@ -12,7 +12,7 @@ class FindRkszonesAaaHttp2ByZoneId extends \Jane\Component\OpenApi3\Tests\Expect
      *    "forAccounting"?: string,
      * } $queryParameters
      */
-    public function __construct(string $zoneId, array $queryParameters = [])
+    public function __construct(string $zoneId, array $queryParameters)
     {
         $this->zoneId = $zoneId;
         $this->queryParameters = $queryParameters;

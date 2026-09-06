@@ -11,7 +11,7 @@ class ContainerRename extends \Docker\Api\Runtime\Client\BaseEndpoint implements
      *    "name": string, //New name for the container
      * } $queryParameters
      */
-    public function __construct(string $id, array $queryParameters = [])
+    public function __construct(string $id, array $queryParameters)
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;

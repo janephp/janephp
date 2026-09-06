@@ -11,7 +11,7 @@ class FindApplicationsDownloadsnapByBladeUUID extends \Jane\Component\OpenApi3\T
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $bladeUUID, array $queryParameters = [])
+    public function __construct(string $bladeUUID, array $queryParameters)
     {
         $this->bladeUUID = $bladeUUID;
         $this->queryParameters = $queryParameters;

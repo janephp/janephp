@@ -15,7 +15,7 @@ class CustomReportParameters extends \CreditSafe\API\Runtime\Client\BaseEndpoint
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $country, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $country, array $queryParameters, array $headerParameters)
     {
         $this->country = $country;
         $this->queryParameters = $queryParameters;

@@ -12,7 +12,7 @@ class FilteredEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint imp
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $countryCode, array $headerParameters = [])
+    public function __construct(string $countryCode, array $headerParameters)
     {
         $this->countryCode = $countryCode;
         $this->headerParameters = $headerParameters;

@@ -13,7 +13,7 @@ class PostMonitoringPortfoliosByPortfolioIdImport extends \CreditSafe\API\Runtim
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody, array $headerParameters = [])
+    public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody, array $headerParameters)
     {
         $this->portfolioId = $portfolioId;
         $this->body = $requestBody;

@@ -13,7 +13,7 @@ class FindApplicationsDownloadByBladeUUID extends \Jane\Component\OpenApi3\Tests
      *    "logFileName"?: string, //Download log of the specified log file name.
      * } $queryParameters
      */
-    public function __construct(string $bladeUUID, array $queryParameters = [])
+    public function __construct(string $bladeUUID, array $queryParameters)
     {
         $this->bladeUUID = $bladeUUID;
         $this->queryParameters = $queryParameters;

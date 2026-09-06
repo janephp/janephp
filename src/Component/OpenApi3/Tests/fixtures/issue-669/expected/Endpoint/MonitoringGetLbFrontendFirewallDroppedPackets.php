@@ -12,7 +12,7 @@ class MonitoringGetLbFrontendFirewallDroppedPackets extends \Jane\Generated\Digi
      *    "end": string, //UNIX timestamp to end metric window.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

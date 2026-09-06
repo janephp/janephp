@@ -11,7 +11,7 @@ class PluginCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
      *                    //default if omitted.
      * } $queryParameters
      */
-    public function __construct($tarContext, array $queryParameters = [])
+    public function __construct($tarContext, array $queryParameters)
     {
         $this->body = $tarContext;
         $this->queryParameters = $queryParameters;

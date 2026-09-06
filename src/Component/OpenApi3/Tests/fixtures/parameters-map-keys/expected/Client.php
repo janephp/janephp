@@ -15,7 +15,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys\R
      *
      * @return null
      */
-    public function getOrder(int $orderId, array $queryParameters = [])
+    public function getOrder(int $orderId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys\Endpoint\GetOrder($orderId, $queryParameters));
     }

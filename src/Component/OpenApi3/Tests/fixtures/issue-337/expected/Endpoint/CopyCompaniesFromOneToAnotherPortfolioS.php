@@ -16,7 +16,7 @@ class CopyCompaniesFromOneToAnotherPortfolioS extends \CreditSafe\API\Runtime\Cl
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody, array $queryParameters, array $headerParameters)
     {
         $this->portfolioId = $portfolioId;
         $this->body = $requestBody;

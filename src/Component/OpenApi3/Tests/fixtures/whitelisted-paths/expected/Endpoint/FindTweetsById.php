@@ -17,7 +17,7 @@ class FindTweetsById extends \Jane\Component\OpenApi3\Tests\Expected\Whitelisted
      * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $queryParameters = [], array $accept = [])
+    public function __construct(array $queryParameters, array $accept = [])
     {
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;

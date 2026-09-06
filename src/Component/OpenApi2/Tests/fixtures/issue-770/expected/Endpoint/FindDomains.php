@@ -14,7 +14,7 @@ class FindDomains extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runti
      *    "excludeRegularDomain"?: string,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

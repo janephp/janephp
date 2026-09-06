@@ -12,7 +12,7 @@ class MonitoringGetDropletLoad5Metrics extends \Jane\Generated\DigitalOcean\Runt
      *    "end": string, //UNIX timestamp to end metric window.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

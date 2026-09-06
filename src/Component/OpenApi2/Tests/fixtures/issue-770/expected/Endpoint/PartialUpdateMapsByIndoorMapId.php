@@ -12,7 +12,7 @@ class PartialUpdateMapsByIndoorMapId extends \Jane\Component\OpenApi3\Tests\Expe
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $indoorMapId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap $body, array $queryParameters = [])
+    public function __construct(string $indoorMapId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap $body, array $queryParameters)
     {
         $this->indoorMapId = $indoorMapId;
         $this->body = $body;

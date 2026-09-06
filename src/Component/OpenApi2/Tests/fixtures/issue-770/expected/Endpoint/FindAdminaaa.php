@@ -10,7 +10,7 @@ class FindAdminaaa extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runt
      *    "type": string, //Type of Admin AAA Server (RADIUS/TACACS/AD/LDAP), please be infomed that the type name [TACACS] is for TACACS+ (Terminal Access Controller Access-Control System Plus)
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

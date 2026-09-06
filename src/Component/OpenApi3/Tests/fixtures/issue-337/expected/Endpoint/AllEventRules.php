@@ -10,7 +10,7 @@ class AllEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(array $headerParameters = [])
+    public function __construct(array $headerParameters)
     {
         $this->headerParameters = $headerParameters;
     }

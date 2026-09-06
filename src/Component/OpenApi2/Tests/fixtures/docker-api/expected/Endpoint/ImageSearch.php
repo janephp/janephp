@@ -16,7 +16,7 @@ class ImageSearch extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      *                        //- `stars=<number>` Matches images that has at least 'number' stars.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

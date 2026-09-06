@@ -22,7 +22,7 @@ class CompanyComplianceSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoin
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $predefinedSearch, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $predefinedSearch, array $queryParameters, array $headerParameters)
     {
         $this->predefinedSearch = $predefinedSearch;
         $this->queryParameters = $queryParameters;

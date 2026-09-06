@@ -14,7 +14,7 @@ class GetFilteredPortfolioEventRules extends \CreditSafe\API\Runtime\Client\Base
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $portfolioId, string $countryCode, array $headerParameters = [])
+    public function __construct(string $portfolioId, string $countryCode, array $headerParameters)
     {
         $this->portfolioId = $portfolioId;
         $this->countryCode = $countryCode;

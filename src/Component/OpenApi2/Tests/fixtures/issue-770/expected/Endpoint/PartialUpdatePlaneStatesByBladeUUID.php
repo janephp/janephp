@@ -12,7 +12,7 @@ class PartialUpdatePlaneStatesByBladeUUID extends \Jane\Component\OpenApi3\Tests
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlaneState $body, array $queryParameters = [])
+    public function __construct(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlaneState $body, array $queryParameters)
     {
         $this->bladeUUID = $bladeUUID;
         $this->body = $body;

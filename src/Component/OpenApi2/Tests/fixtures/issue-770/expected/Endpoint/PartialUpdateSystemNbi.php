@@ -11,7 +11,7 @@ class PartialUpdateSystemNbi extends \Jane\Component\OpenApi3\Tests\Expected\Iss
      *    "domainId"?: string, //Domain ID.
      * } $queryParameters
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface $body, array $queryParameters)
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;

@@ -14,7 +14,7 @@ class SwarmUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      *    "rotateManagerUnlockKey"?: bool, //Rotate the manager unlock key.
      * } $queryParameters
      */
-    public function __construct(\Docker\Api\Model\SwarmSpec $body, array $queryParameters = [])
+    public function __construct(\Docker\Api\Model\SwarmSpec $body, array $queryParameters)
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;

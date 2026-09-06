@@ -12,7 +12,7 @@ class PortfolioUserPermissions extends \CreditSafe\API\Runtime\Client\BaseEndpoi
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $portfolioId, array $headerParameters = [])
+    public function __construct(string $portfolioId, array $headerParameters)
     {
         $this->portfolioId = $portfolioId;
         $this->headerParameters = $headerParameters;

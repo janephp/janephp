@@ -10,7 +10,7 @@ class FindSmsGateway extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Ru
      *    "domainId"?: string, //MSP/Partner domain id of the SMS gateway
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

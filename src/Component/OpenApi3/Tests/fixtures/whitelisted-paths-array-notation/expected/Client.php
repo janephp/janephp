@@ -18,7 +18,7 @@ class Client extends \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation
      *
      * @return null|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\TweetLookupResponse|\Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Model\Error
      */
-    public function findTweetsById(array $queryParameters = [], array $accept = [])
+    public function findTweetsById(array $queryParameters, array $accept = [])
     {
         return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\WhitelistedPathsArrayNotation\Endpoint\FindTweetsById($queryParameters, $accept));
     }

@@ -11,7 +11,7 @@ class FindCertstoreTrustedCAChainCert extends \Jane\Component\OpenApi3\Tests\Exp
      *    "listSize"?: string, //The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

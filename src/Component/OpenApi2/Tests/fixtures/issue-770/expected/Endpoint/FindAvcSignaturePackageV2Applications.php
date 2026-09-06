@@ -10,7 +10,7 @@ class FindAvcSignaturePackageV2Applications extends \Jane\Component\OpenApi3\Tes
      *    "appName"?: string, //Application name. Get Application info (catId, appId and name) by the application name.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

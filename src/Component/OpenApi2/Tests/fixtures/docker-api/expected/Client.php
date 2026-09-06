@@ -301,7 +301,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null
      */
-    public function containerRename(string $id, array $queryParameters = [])
+    public function containerRename(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerRename($id, $queryParameters));
     }
@@ -526,7 +526,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null
      */
-    public function containerArchive(string $id, array $queryParameters = [])
+    public function containerArchive(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerArchive($id, $queryParameters));
     }
@@ -545,7 +545,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null
      */
-    public function containerArchiveInfo(string $id, array $queryParameters = [])
+    public function containerArchiveInfo(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerArchiveInfo($id, $queryParameters));
     }
@@ -571,7 +571,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null
     */
-    public function putContainerArchive(string $id, $inputStream, array $queryParameters = [])
+    public function putContainerArchive(string $id, $inputStream, array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PutContainerArchive($id, $inputStream, $queryParameters));
     }
@@ -794,7 +794,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null
      */
-    public function imagePush(string $name, array $queryParameters = [], array $headerParameters = [])
+    public function imagePush(string $name, array $queryParameters, array $headerParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImagePush($name, $queryParameters, $headerParameters));
     }
@@ -853,7 +853,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Docker\Api\Model\ImagesSearchGetResponse200Item[]
      */
-    public function imageSearch(array $queryParameters = [])
+    public function imageSearch(array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImageSearch($queryParameters));
     }
@@ -1358,7 +1358,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Docker\Api\Model\PluginPrivilege[]
      */
-    public function getPluginPrivileges(array $queryParameters = [])
+    public function getPluginPrivileges(array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\GetPluginPrivileges($queryParameters));
     }
@@ -1386,7 +1386,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null
      */
-    public function pluginPull(array $body, array $queryParameters = [], array $headerParameters = [])
+    public function pluginPull(array $body, array $queryParameters, array $headerParameters = [])
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PluginPull($body, $queryParameters, $headerParameters));
     }
@@ -1471,7 +1471,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null
      */
-    public function pluginUpgrade(string $name, array $body, array $queryParameters = [], array $headerParameters = [])
+    public function pluginUpgrade(string $name, array $body, array $queryParameters, array $headerParameters = [])
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PluginUpgrade($name, $body, $queryParameters, $headerParameters));
     }
@@ -1485,7 +1485,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null
      */
-    public function pluginCreate($tarContext, array $queryParameters = [])
+    public function pluginCreate($tarContext, array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PluginCreate($tarContext, $queryParameters));
     }
@@ -1580,7 +1580,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null
      */
-    public function nodeUpdate(string $id, \Docker\Api\Model\NodeSpec $body, array $queryParameters = [])
+    public function nodeUpdate(string $id, \Docker\Api\Model\NodeSpec $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\NodeUpdate($id, $body, $queryParameters));
     }
@@ -1648,7 +1648,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null
      */
-    public function swarmUpdate(\Docker\Api\Model\SwarmSpec $body, array $queryParameters = [])
+    public function swarmUpdate(\Docker\Api\Model\SwarmSpec $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\SwarmUpdate($body, $queryParameters));
     }
@@ -1772,7 +1772,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Docker\Api\Model\ServiceUpdateResponse
      */
-    public function serviceUpdate(string $id, \Docker\Api\Model\ServicesIdUpdatePostBody $body, array $queryParameters = [], array $headerParameters = [])
+    public function serviceUpdate(string $id, \Docker\Api\Model\ServicesIdUpdatePostBody $body, array $queryParameters, array $headerParameters = [])
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ServiceUpdate($id, $body, $queryParameters, $headerParameters));
     }
@@ -1941,7 +1941,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null
     */
-    public function secretUpdate(string $id, \Docker\Api\Model\SecretSpec $body, array $queryParameters = [])
+    public function secretUpdate(string $id, \Docker\Api\Model\SecretSpec $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\SecretUpdate($id, $body, $queryParameters));
     }
@@ -2019,7 +2019,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null
     */
-    public function configUpdate(string $id, \Docker\Api\Model\ConfigSpec $body, array $queryParameters = [])
+    public function configUpdate(string $id, \Docker\Api\Model\ConfigSpec $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ConfigUpdate($id, $body, $queryParameters));
     }

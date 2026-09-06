@@ -20,7 +20,7 @@ class AppsGetJobInvocationLogs extends \Jane\Generated\DigitalOcean\Runtime\Clie
      *    "tail_lines"?: string, //The number of lines from the end of the logs to retrieve.
      * } $queryParameters
      */
-    public function __construct(string $appId, string $jobName, string $jobInvocationId, array $queryParameters = [])
+    public function __construct(string $appId, string $jobName, string $jobInvocationId, array $queryParameters)
     {
         $this->app_id = $appId;
         $this->job_name = $jobName;

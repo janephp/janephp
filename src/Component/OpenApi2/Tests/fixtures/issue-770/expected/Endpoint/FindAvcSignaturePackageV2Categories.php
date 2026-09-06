@@ -10,7 +10,7 @@ class FindAvcSignaturePackageV2Categories extends \Jane\Component\OpenApi3\Tests
      *    "catName"?: string, //Category name. Get Application Category info (catId and name) by the category name.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

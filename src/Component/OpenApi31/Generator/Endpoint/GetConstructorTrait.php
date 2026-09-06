@@ -12,6 +12,7 @@ use Jane\Component\OpenApi31\Generator\RequestBodyGenerator;
 use Jane\Component\OpenApi31\Guesser\GuessClass;
 use Jane\Component\OpenApi31\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi31\JsonSchema\Model\RequestBody;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\ConstructorParametersTrait;
 use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment\Doc;
@@ -23,6 +24,7 @@ use PhpParser\Node\Stmt;
 
 trait GetConstructorTrait
 {
+    use ConstructorParametersTrait;
     use GetResponseContentTrait;
     use InflectorTrait;
     use PathParameterNameTrait;
@@ -31,6 +33,7 @@ trait GetConstructorTrait
     {
         $pathParams = $pathParamsDoc = $pathParamsWithDefaultValue = $pathParamsWithDefaultValueDoc = $queryParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = [];
         $bodyParam = $bodyDoc = $bodyAssign = null;
+        $queryParamsRequired = $headerParamsRequired = false;
         $contentTypes = $this->getContentTypes($operation, $guessClass, $context);
 
         foreach ($operation->getParameters() as $key => $parameter) {
@@ -67,9 +70,11 @@ trait GetConstructorTrait
 
             if ($parameter instanceof Parameter && EndpointGenerator::IN_QUERY === ($parameter->in ?? null)) {
                 $queryParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
+                $queryParamsRequired = $queryParamsRequired || $nonBodyParameterGenerator->isOptionRequired($parameter);
             }
             if ($parameter instanceof Parameter && EndpointGenerator::IN_HEADER === ($parameter->in ?? null)) {
                 $headerParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
+                $headerParamsRequired = $headerParamsRequired || $nonBodyParameterGenerator->isOptionRequired($parameter);
             }
         }
 
@@ -95,14 +100,14 @@ trait GetConstructorTrait
             return [null, [], '/**', []];
         }
 
-        $methodParams = array_merge(
+        $methodParams = $this->dropDefaultsBeforeRequired(array_merge(
             $pathParams,
             $pathParamsWithDefaultValue,
             $bodyParam ? [$bodyParam] : [],
-            \count($queryParamsDoc) > 0 ? [new Node\Param(new Expr\Variable('queryParameters'), new Expr\Array_(), new Name('array'))] : [],
-            \count($headerParamsDoc) > 0 ? [new Node\Param(new Expr\Variable('headerParameters'), new Expr\Array_(), new Name('array'))] : [],
+            \count($queryParamsDoc) > 0 ? [$this->optionsArrayParameter('queryParameters', $queryParamsRequired)] : [],
+            \count($headerParamsDoc) > 0 ? [$this->optionsArrayParameter('headerParameters', $headerParamsRequired)] : [],
             \count($contentTypes) > 1 ? [new Node\Param(new Expr\Variable('accept'), new Expr\Array_(), new Name('array'))] : []
-        );
+        ));
 
         $methodDocumentations = array_merge(
             $pathParamsDoc,

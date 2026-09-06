@@ -12,7 +12,7 @@ class UpdateDomainsEventEmailSettingsByDomainId extends \Jane\Component\OpenApi3
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $domainId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting $body, array $queryParameters = [])
+    public function __construct(string $domainId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting $body, array $queryParameters)
     {
         $this->domainId = $domainId;
         $this->body = $body;

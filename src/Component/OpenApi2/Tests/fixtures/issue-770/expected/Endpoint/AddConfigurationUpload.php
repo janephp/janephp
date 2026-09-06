@@ -12,7 +12,7 @@ class AddConfigurationUpload extends \Jane\Component\OpenApi3\Tests\Expected\Iss
      *    "uploadFile": string|resource, //The file to upload
      * } $formParameters
      */
-    public function __construct(array $queryParameters = [], array $formParameters = [])
+    public function __construct(array $queryParameters, array $formParameters)
     {
         $this->queryParameters = $queryParameters;
         $this->formParameters = $formParameters;

@@ -17,7 +17,7 @@ class Client extends \Jane\OpenApi3\Tests\Expected\SkipParameterCheck\Runtime\Cl
      *
      * @return null
      */
-    public function testGetWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [])
+    public function testGetWithPathParameters(string $testPath, array $queryParameters, array $headerParameters)
     {
         return $this->executeEndpoint(new \Jane\OpenApi3\Tests\Expected\SkipParameterCheck\Endpoint\TestGetWithPathParameters($testPath, $queryParameters, $headerParameters));
     }

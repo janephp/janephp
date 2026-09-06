@@ -11,7 +11,7 @@ class DeleteMapsByIndoorMapId extends \Jane\Component\OpenApi3\Tests\Expected\Is
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $indoorMapId, array $queryParameters = [])
+    public function __construct(string $indoorMapId, array $queryParameters)
     {
         $this->indoorMapId = $indoorMapId;
         $this->queryParameters = $queryParameters;

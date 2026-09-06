@@ -13,7 +13,7 @@ class NodeUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      *                    //to avoid conflicting writes.
      * } $queryParameters
      */
-    public function __construct(string $id, \Docker\Api\Model\NodeSpec $body, array $queryParameters = [])
+    public function __construct(string $id, \Docker\Api\Model\NodeSpec $body, array $queryParameters)
     {
         $this->id = $id;
         $this->body = $body;

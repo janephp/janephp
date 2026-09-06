@@ -648,7 +648,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function appsGetJobInvocationLogs(string $appId, string $jobName, string $jobInvocationId, array $queryParameters = [])
+    public function appsGetJobInvocationLogs(string $appId, string $jobName, string $jobInvocationId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AppsGetJobInvocationLogs($appId, $jobName, $jobInvocationId, $queryParameters));
     }
@@ -2632,7 +2632,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function dropletsDestroyByTag(array $queryParameters = [])
+    public function dropletsDestroyByTag(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\DropletsDestroyByTag($queryParameters));
     }
@@ -3093,7 +3093,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function dropletsDestroyWithAssociatedResourcesDangerous(int $dropletId, array $headerParameters = [])
+    public function dropletsDestroyWithAssociatedResourcesDangerous(int $dropletId, array $headerParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\DropletsDestroyWithAssociatedResourcesDangerous($dropletId, $headerParameters));
     }
@@ -3239,7 +3239,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function autoscalepoolsDeleteDangerous(string $autoscalePoolId, array $headerParameters = [])
+    public function autoscalepoolsDeleteDangerous(string $autoscalePoolId, array $headerParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AutoscalepoolsDeleteDangerous($autoscalePoolId, $headerParameters));
     }
@@ -4792,7 +4792,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletBandwidthMetrics(array $queryParameters = [])
+    public function monitoringGetDropletBandwidthMetrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletBandwidthMetrics($queryParameters));
     }
@@ -4809,7 +4809,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletCpuMetrics(array $queryParameters = [])
+    public function monitoringGetDropletCpuMetrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletCpuMetrics($queryParameters));
     }
@@ -4826,7 +4826,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletFilesystemFreeMetrics(array $queryParameters = [])
+    public function monitoringGetDropletFilesystemFreeMetrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletFilesystemFreeMetrics($queryParameters));
     }
@@ -4843,7 +4843,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletFilesystemSizeMetrics(array $queryParameters = [])
+    public function monitoringGetDropletFilesystemSizeMetrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletFilesystemSizeMetrics($queryParameters));
     }
@@ -4860,7 +4860,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletLoad1Metrics(array $queryParameters = [])
+    public function monitoringGetDropletLoad1Metrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletLoad1Metrics($queryParameters));
     }
@@ -4877,7 +4877,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletLoad5Metrics(array $queryParameters = [])
+    public function monitoringGetDropletLoad5Metrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletLoad5Metrics($queryParameters));
     }
@@ -4894,7 +4894,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletLoad15Metrics(array $queryParameters = [])
+    public function monitoringGetDropletLoad15Metrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletLoad15Metrics($queryParameters));
     }
@@ -4911,7 +4911,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletMemoryCachedMetrics(array $queryParameters = [])
+    public function monitoringGetDropletMemoryCachedMetrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletMemoryCachedMetrics($queryParameters));
     }
@@ -4928,7 +4928,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletMemoryFreeMetrics(array $queryParameters = [])
+    public function monitoringGetDropletMemoryFreeMetrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletMemoryFreeMetrics($queryParameters));
     }
@@ -4945,7 +4945,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletMemoryTotalMetrics(array $queryParameters = [])
+    public function monitoringGetDropletMemoryTotalMetrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletMemoryTotalMetrics($queryParameters));
     }
@@ -4962,7 +4962,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletMemoryAvailableMetrics(array $queryParameters = [])
+    public function monitoringGetDropletMemoryAvailableMetrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletMemoryAvailableMetrics($queryParameters));
     }
@@ -4980,7 +4980,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetAppMemoryPercentageMetrics(array $queryParameters = [])
+    public function monitoringGetAppMemoryPercentageMetrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetAppMemoryPercentageMetrics($queryParameters));
     }
@@ -4998,7 +4998,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetAppCPUPercentageMetrics(array $queryParameters = [])
+    public function monitoringGetAppCPUPercentageMetrics(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetAppCPUPercentageMetrics($queryParameters));
     }
@@ -5016,7 +5016,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetAppRestartCountMetricsYml(array $queryParameters = [])
+    public function monitoringGetAppRestartCountMetricsYml(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetAppRestartCountMetricsYml($queryParameters));
     }
@@ -5033,7 +5033,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendConnectionsCurrent(array $queryParameters = [])
+    public function monitoringGetLbFrontendConnectionsCurrent(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendConnectionsCurrent($queryParameters));
     }
@@ -5050,7 +5050,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendConnectionsLimit(array $queryParameters = [])
+    public function monitoringGetLbFrontendConnectionsLimit(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendConnectionsLimit($queryParameters));
     }
@@ -5067,7 +5067,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendCpuUtilization(array $queryParameters = [])
+    public function monitoringGetLbFrontendCpuUtilization(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendCpuUtilization($queryParameters));
     }
@@ -5084,7 +5084,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendFirewallDroppedBytes(array $queryParameters = [])
+    public function monitoringGetLbFrontendFirewallDroppedBytes(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendFirewallDroppedBytes($queryParameters));
     }
@@ -5101,7 +5101,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendFirewallDroppedPackets(array $queryParameters = [])
+    public function monitoringGetLbFrontendFirewallDroppedPackets(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendFirewallDroppedPackets($queryParameters));
     }
@@ -5118,7 +5118,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendHttpResponses(array $queryParameters = [])
+    public function monitoringGetLbFrontendHttpResponses(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendHttpResponses($queryParameters));
     }
@@ -5135,7 +5135,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendHttpRequestsPerSecond(array $queryParameters = [])
+    public function monitoringGetLbFrontendHttpRequestsPerSecond(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendHttpRequestsPerSecond($queryParameters));
     }
@@ -5152,7 +5152,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendNetworkThroughputHttp(array $queryParameters = [])
+    public function monitoringGetLbFrontendNetworkThroughputHttp(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendNetworkThroughputHttp($queryParameters));
     }
@@ -5169,7 +5169,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendNetworkThroughputUdp(array $queryParameters = [])
+    public function monitoringGetLbFrontendNetworkThroughputUdp(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendNetworkThroughputUdp($queryParameters));
     }
@@ -5186,7 +5186,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendNetworkThroughputTcp(array $queryParameters = [])
+    public function monitoringGetLbFrontendNetworkThroughputTcp(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendNetworkThroughputTcp($queryParameters));
     }
@@ -5203,7 +5203,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendNlbTcpNetworkThroughput(array $queryParameters = [])
+    public function monitoringGetLbFrontendNlbTcpNetworkThroughput(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendNlbTcpNetworkThroughput($queryParameters));
     }
@@ -5220,7 +5220,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendNlbUdpNetworkThroughput(array $queryParameters = [])
+    public function monitoringGetLbFrontendNlbUdpNetworkThroughput(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendNlbUdpNetworkThroughput($queryParameters));
     }
@@ -5237,7 +5237,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendTlsConnectionsCurrent(array $queryParameters = [])
+    public function monitoringGetLbFrontendTlsConnectionsCurrent(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendTlsConnectionsCurrent($queryParameters));
     }
@@ -5254,7 +5254,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendTlsConnectionsLimit(array $queryParameters = [])
+    public function monitoringGetLbFrontendTlsConnectionsLimit(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendTlsConnectionsLimit($queryParameters));
     }
@@ -5271,7 +5271,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbFrontendTlsConnectionsExceedingRateLimit(array $queryParameters = [])
+    public function monitoringGetLbFrontendTlsConnectionsExceedingRateLimit(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbFrontendTlsConnectionsExceedingRateLimit($queryParameters));
     }
@@ -5288,7 +5288,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsHttpSessionDurationAvg(array $queryParameters = [])
+    public function monitoringGetLbDropletsHttpSessionDurationAvg(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsHttpSessionDurationAvg($queryParameters));
     }
@@ -5305,7 +5305,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsHttpSessionDuration50p(array $queryParameters = [])
+    public function monitoringGetLbDropletsHttpSessionDuration50p(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsHttpSessionDuration50p($queryParameters));
     }
@@ -5322,7 +5322,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsHttpSessionDuration95p(array $queryParameters = [])
+    public function monitoringGetLbDropletsHttpSessionDuration95p(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsHttpSessionDuration95p($queryParameters));
     }
@@ -5339,7 +5339,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsHttpResponseTimeAvg(array $queryParameters = [])
+    public function monitoringGetLbDropletsHttpResponseTimeAvg(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsHttpResponseTimeAvg($queryParameters));
     }
@@ -5356,7 +5356,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsHttpResponseTime50p(array $queryParameters = [])
+    public function monitoringGetLbDropletsHttpResponseTime50p(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsHttpResponseTime50p($queryParameters));
     }
@@ -5373,7 +5373,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsHttpResponseTime95p(array $queryParameters = [])
+    public function monitoringGetLbDropletsHttpResponseTime95p(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsHttpResponseTime95p($queryParameters));
     }
@@ -5390,7 +5390,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsHttpResponseTime99p(array $queryParameters = [])
+    public function monitoringGetLbDropletsHttpResponseTime99p(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsHttpResponseTime99p($queryParameters));
     }
@@ -5407,7 +5407,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsQueueSize(array $queryParameters = [])
+    public function monitoringGetLbDropletsQueueSize(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsQueueSize($queryParameters));
     }
@@ -5424,7 +5424,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsHttpResponses(array $queryParameters = [])
+    public function monitoringGetLbDropletsHttpResponses(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsHttpResponses($queryParameters));
     }
@@ -5441,7 +5441,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsConnections(array $queryParameters = [])
+    public function monitoringGetLbDropletsConnections(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsConnections($queryParameters));
     }
@@ -5458,7 +5458,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsHealthChecks(array $queryParameters = [])
+    public function monitoringGetLbDropletsHealthChecks(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsHealthChecks($queryParameters));
     }
@@ -5475,7 +5475,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetLbDropletsDowntime(array $queryParameters = [])
+    public function monitoringGetLbDropletsDowntime(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetLbDropletsDowntime($queryParameters));
     }
@@ -5492,7 +5492,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletAutoscaleCurrentInstances(array $queryParameters = [])
+    public function monitoringGetDropletAutoscaleCurrentInstances(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletAutoscaleCurrentInstances($queryParameters));
     }
@@ -5509,7 +5509,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletAutoscaleTargetInstances(array $queryParameters = [])
+    public function monitoringGetDropletAutoscaleTargetInstances(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletAutoscaleTargetInstances($queryParameters));
     }
@@ -5526,7 +5526,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletAutoscaleCurrentCpuUtilizationYml(array $queryParameters = [])
+    public function monitoringGetDropletAutoscaleCurrentCpuUtilizationYml(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletAutoscaleCurrentCpuUtilizationYml($queryParameters));
     }
@@ -5543,7 +5543,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletAutoscaleTargetCpuUtilization(array $queryParameters = [])
+    public function monitoringGetDropletAutoscaleTargetCpuUtilization(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletAutoscaleTargetCpuUtilization($queryParameters));
     }
@@ -5560,7 +5560,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletAutoscaleCurrentMemoryUtilization(array $queryParameters = [])
+    public function monitoringGetDropletAutoscaleCurrentMemoryUtilization(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletAutoscaleCurrentMemoryUtilization($queryParameters));
     }
@@ -5577,7 +5577,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function monitoringGetDropletAutoscaleTargetMemoryUtilization(array $queryParameters = [])
+    public function monitoringGetDropletAutoscaleTargetMemoryUtilization(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\MonitoringGetDropletAutoscaleTargetMemoryUtilization($queryParameters));
     }
@@ -5725,7 +5725,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\NfsListResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function nfsList(array $queryParameters = [])
+    public function nfsList(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\NfsList($queryParameters));
     }
@@ -5760,7 +5760,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function nfsDelete(string $nfsId, array $queryParameters = [])
+    public function nfsDelete(string $nfsId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\NfsDelete($nfsId, $queryParameters));
     }
@@ -5780,7 +5780,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\NfsGetResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function nfsGet(string $nfsId, array $queryParameters = [])
+    public function nfsGet(string $nfsId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\NfsGet($nfsId, $queryParameters));
     }
@@ -5827,7 +5827,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\NfsSnapshotListResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function nfsListSnapshot(array $queryParameters = [])
+    public function nfsListSnapshot(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\NfsListSnapshot($queryParameters));
     }
@@ -5847,7 +5847,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function nfsDeleteSnapshot(string $nfsSnapshotId, array $queryParameters = [])
+    public function nfsDeleteSnapshot(string $nfsSnapshotId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\NfsDeleteSnapshot($nfsSnapshotId, $queryParameters));
     }
@@ -5867,7 +5867,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @return null|\Jane\Generated\DigitalOcean\Model\NfsSnapshotGetResponse|\Jane\Generated\DigitalOcean\Model\Error
      */
-    public function nfsGetSnapshot(string $nfsSnapshotId, array $queryParameters = [])
+    public function nfsGetSnapshot(string $nfsSnapshotId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\NfsGetSnapshot($nfsSnapshotId, $queryParameters));
     }

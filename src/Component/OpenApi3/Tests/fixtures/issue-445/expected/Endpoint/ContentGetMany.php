@@ -12,7 +12,7 @@ class ContentGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
      *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

@@ -16,7 +16,7 @@ class AddRkszonesWlansDpskUploadById extends \Jane\Component\OpenApi3\Tests\Expe
      *    "uploadFile": string|resource, //The file to upload
      * } $formParameters
      */
-    public function __construct(string $zoneId, string $id, array $queryParameters = [], array $formParameters = [])
+    public function __construct(string $zoneId, string $id, array $queryParameters, array $formParameters)
     {
         $this->zoneId = $zoneId;
         $this->id = $id;

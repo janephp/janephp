@@ -18,7 +18,7 @@ class FindIdentityGuestpass extends \Jane\Component\OpenApi3\Tests\Expected\Issu
      *    "generatedTimeTo"?: string, //filter identity guest pass list by generated date and time. The end time of generated date and time.The format is yyyy-MM-dd HH:mm:ss.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

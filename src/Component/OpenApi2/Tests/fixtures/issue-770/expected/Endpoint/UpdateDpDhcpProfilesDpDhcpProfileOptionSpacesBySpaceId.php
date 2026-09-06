@@ -14,7 +14,7 @@ class UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Compo
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $id, string $spaceId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceBO $body, array $queryParameters = [])
+    public function __construct(string $id, string $spaceId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceBO $body, array $queryParameters)
     {
         $this->id = $id;
         $this->spaceId = $spaceId;

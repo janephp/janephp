@@ -13,17 +13,17 @@ use Jane\Component\OpenApi2\JsonSchema\Model\FormDataParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\HeaderParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\QueryParameterSubSchema;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\ConstructorParametersTrait;
 use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
-use PhpParser\Node;
 use PhpParser\Node\Expr;
-use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
 trait GetConstructorTrait
 {
+    use ConstructorParametersTrait;
     use InflectorTrait;
     use PathParameterNameTrait;
 
@@ -31,6 +31,7 @@ trait GetConstructorTrait
     {
         $pathParams = $pathParamsDoc = $pathParamsWithDefaultValue = $pathParamsWithDefaultValueDoc = $queryParamsDoc = $formParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = [];
         $bodyParam = $bodyDoc = $bodyAssign = null;
+        $queryParamsRequired = $formParamsRequired = $headerParamsRequired = false;
 
         foreach ($operation->getParameters() as $key => $parameter) {
             if ($parameter instanceof Reference) {
@@ -62,14 +63,17 @@ trait GetConstructorTrait
 
             if ($parameter instanceof QueryParameterSubSchema) {
                 $queryParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
+                $queryParamsRequired = $queryParamsRequired || $nonBodyParameterGenerator->isOptionRequired($parameter);
             }
 
             if ($parameter instanceof FormDataParameterSubSchema) {
                 $formParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
+                $formParamsRequired = $formParamsRequired || $nonBodyParameterGenerator->isOptionRequired($parameter);
             }
 
             if ($parameter instanceof HeaderParameterSubSchema) {
                 $headerParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
+                $headerParamsRequired = $headerParamsRequired || $nonBodyParameterGenerator->isOptionRequired($parameter);
             }
         }
 
@@ -85,14 +89,14 @@ trait GetConstructorTrait
             return [null, [], '/**', []];
         }
 
-        $methodParams = array_merge(
+        $methodParams = $this->dropDefaultsBeforeRequired(array_merge(
             $pathParams,
             $pathParamsWithDefaultValue,
             $bodyParam ? [$bodyParam] : [],
-            \count($queryParamsDoc) > 0 ? [new Node\Param(new Expr\Variable('queryParameters'), new Expr\Array_(), new Name('array'))] : [],
-            \count($formParamsDoc) > 0 ? [new Node\Param(new Expr\Variable('formParameters'), new Expr\Array_(), new Name('array'))] : [],
-            \count($headerParamsDoc) > 0 ? [new Node\Param(new Expr\Variable('headerParameters'), new Expr\Array_(), new Name('array'))] : []
-        );
+            \count($queryParamsDoc) > 0 ? [$this->optionsArrayParameter('queryParameters', $queryParamsRequired)] : [],
+            \count($formParamsDoc) > 0 ? [$this->optionsArrayParameter('formParameters', $formParamsRequired)] : [],
+            \count($headerParamsDoc) > 0 ? [$this->optionsArrayParameter('headerParameters', $headerParamsRequired)] : []
+        ));
 
         $methodDocumentations = array_merge(
             $pathParamsDoc,

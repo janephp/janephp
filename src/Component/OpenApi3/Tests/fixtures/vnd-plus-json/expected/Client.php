@@ -18,7 +18,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Runtime
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent
      */
-    public function listSponsoredProductsCampaigns(?\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody = null, array $headerParameters = [])
+    public function listSponsoredProductsCampaigns(?\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody, array $headerParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Endpoint\ListSponsoredProductsCampaigns($requestBody, $headerParameters));
     }

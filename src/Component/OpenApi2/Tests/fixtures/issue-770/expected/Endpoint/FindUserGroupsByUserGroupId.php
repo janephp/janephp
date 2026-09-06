@@ -12,7 +12,7 @@ class FindUserGroupsByUserGroupId extends \Jane\Component\OpenApi3\Tests\Expecte
      *    "includeUsers"?: string,
      * } $queryParameters
      */
-    public function __construct(string $userGroupId, array $queryParameters = [])
+    public function __construct(string $userGroupId, array $queryParameters)
     {
         $this->userGroupId = $userGroupId;
         $this->queryParameters = $queryParameters;

@@ -13,7 +13,7 @@ class SharePortfolioId extends \CreditSafe\API\Runtime\Client\BaseEndpoint imple
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody = null, array $headerParameters = [])
+    public function __construct(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody, array $headerParameters)
     {
         $this->portfolioId = $portfolioId;
         $this->body = $requestBody;

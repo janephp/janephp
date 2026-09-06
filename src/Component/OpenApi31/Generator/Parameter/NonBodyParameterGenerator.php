@@ -158,11 +158,18 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $type = implode('|', $this->convertParameterType($schema));
         }
 
-        // Same notion of "required" as the options resolver above: a required
-        // parameter carrying a default is filled in, so its key is optional.
-        $required = $parameter->required && $schema instanceof JsonSchema && null === ($schema->default ?? null);
+        return $this->formatOptionDocEntry($parameter->name ?? '', $this->isOptionRequired($parameter), $type, $parameter->description ?? null);
+    }
 
-        return $this->formatOptionDocEntry($parameter->name ?? '', $required, $type, $parameter->description ?? null);
+    /**
+     * Same notion of "required" as the options resolver above: a required
+     * parameter carrying a default is filled in, so its key is optional.
+     */
+    public function isOptionRequired(Parameter $parameter): bool
+    {
+        $schema = ($parameter->schema ?? null);
+
+        return $parameter->required && $schema instanceof JsonSchema && null === ($schema->default ?? null);
     }
 
     private function getDefaultAsExpr(JsonSchema $schema): Expr

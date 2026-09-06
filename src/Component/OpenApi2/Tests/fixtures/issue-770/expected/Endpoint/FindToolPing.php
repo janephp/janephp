@@ -11,7 +11,7 @@ class FindToolPing extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runt
      *    "targetIP": string, //the IP address to PING
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

@@ -13,7 +13,7 @@ class UpdatePortfolioDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody = null, array $headerParameters = [])
+    public function __construct(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody, array $headerParameters)
     {
         $this->portfolioId = $portfolioId;
         $this->body = $requestBody;

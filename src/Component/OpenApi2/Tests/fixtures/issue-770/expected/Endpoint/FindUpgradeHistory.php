@@ -12,7 +12,7 @@ class FindUpgradeHistory extends \Jane\Component\OpenApi3\Tests\Expected\Issue77
      *    "timezone"?: string,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

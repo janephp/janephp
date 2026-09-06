@@ -10,7 +10,7 @@ class FindProfilesAuthAuthorizationList extends \Jane\Component\OpenApi3\Tests\E
      *    "type": string,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

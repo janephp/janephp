@@ -10,7 +10,7 @@ class PartialUpdateCertstoreSettingServiceCertificates extends \Jane\Component\O
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(array $body, array $queryParameters = [])
+    public function __construct(array $body, array $queryParameters)
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;

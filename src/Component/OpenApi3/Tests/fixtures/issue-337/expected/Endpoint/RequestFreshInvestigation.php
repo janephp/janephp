@@ -11,7 +11,7 @@ class RequestFreshInvestigation extends \CreditSafe\API\Runtime\Client\BaseEndpo
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody = null, array $headerParameters = [])
+    public function __construct(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody, array $headerParameters)
     {
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;

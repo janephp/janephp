@@ -22,7 +22,7 @@ class DropletsDestroyWithAssociatedResourcesDangerous extends \Jane\Generated\Di
      *    "X-Dangerous": bool, //Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed.
      * } $headerParameters
      */
-    public function __construct(int $dropletId, array $headerParameters = [])
+    public function __construct(int $dropletId, array $headerParameters)
     {
         $this->droplet_id = $dropletId;
         $this->headerParameters = $headerParameters;

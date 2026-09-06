@@ -23,7 +23,7 @@ class PluginUpgrade extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      *                                //details.
      * } $headerParameters
      */
-    public function __construct(string $name, array $body, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $name, array $body, array $queryParameters, array $headerParameters = [])
     {
         $this->name = $name;
         $this->body = $body;

@@ -23,7 +23,7 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
      *    "TotalChunks": int, //Information about chunk.
      * } $queryParameters
      */
-    public function __construct(string $transferId, string $requestId, $requestBody = null, array $queryParameters = [])
+    public function __construct(string $transferId, string $requestId, $requestBody, array $queryParameters)
     {
         $this->transferId = $transferId;
         $this->requestId = $requestId;

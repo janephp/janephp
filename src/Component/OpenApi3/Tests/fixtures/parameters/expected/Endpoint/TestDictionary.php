@@ -9,7 +9,7 @@ class TestDictionary extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\
      *    "input": array,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

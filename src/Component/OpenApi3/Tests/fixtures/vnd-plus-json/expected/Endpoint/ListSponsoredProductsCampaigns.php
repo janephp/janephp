@@ -16,7 +16,7 @@ class ListSponsoredProductsCampaigns extends \Jane\Component\OpenApi3\Tests\Expe
      *                                            //profiles associated with the access token passed in the HTTP Authorization header.
      * } $headerParameters
      */
-    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody = null, array $headerParameters = [])
+    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\VndPlusJson\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody, array $headerParameters)
     {
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;

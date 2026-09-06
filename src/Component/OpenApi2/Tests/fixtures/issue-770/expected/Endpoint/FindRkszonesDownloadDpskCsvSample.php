@@ -10,7 +10,7 @@ class FindRkszonesDownloadDpskCsvSample extends \Jane\Component\OpenApi3\Tests\E
      *    "type"?: string, //DPSK CSV sample type. Valid value is PHASE1 or PHASE2. Default: PHASE2.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

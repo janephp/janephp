@@ -15,7 +15,7 @@ class FreshInvestigationReport extends \CreditSafe\API\Runtime\Client\BaseEndpoi
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $orderId, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $orderId, array $queryParameters, array $headerParameters)
     {
         $this->orderId = $orderId;
         $this->queryParameters = $queryParameters;

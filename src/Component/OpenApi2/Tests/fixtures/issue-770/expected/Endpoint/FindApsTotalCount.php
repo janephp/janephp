@@ -11,7 +11,7 @@ class FindApsTotalCount extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
      *    "domainId"?: string, //filter AP total count by domain. Default: current logon domain
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

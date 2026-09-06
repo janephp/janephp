@@ -661,7 +661,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\ContentDetail[]
      */
-    public function contentGetMany(array $queryParameters = [])
+    public function contentGetMany(array $queryParameters)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetMany($queryParameters));
     }
@@ -3035,7 +3035,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null
      */
-    public function transferUploadFile(string $transferId, string $requestId, $requestBody = null, array $queryParameters = [])
+    public function transferUploadFile(string $transferId, string $requestId, $requestBody, array $queryParameters)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferUploadFile($transferId, $requestId, $requestBody, $queryParameters));
     }

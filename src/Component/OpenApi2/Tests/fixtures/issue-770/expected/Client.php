@@ -15,7 +15,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserAuditId
      */
-    public function deleteUsersByUserId(string $userId, array $queryParameters = [])
+    public function deleteUsersByUserId(string $userId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteUsersByUserId($userId, $queryParameters));
     }
@@ -30,7 +30,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserGetScgUser
      */
-    public function findUsersByUserId(string $userId, array $queryParameters = [])
+    public function findUsersByUserId(string $userId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUsersByUserId($userId, $queryParameters));
     }
@@ -47,7 +47,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserAuditId
      */
-    public function partialUpdateUsersByUserId(string $userId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserModifyScgUser $body, array $queryParameters = [])
+    public function partialUpdateUsersByUserId(string $userId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserModifyScgUser $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateUsersByUserId($userId, $body, $queryParameters));
     }
@@ -62,7 +62,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteUsers($body, $queryParameters));
     }
@@ -78,7 +78,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserAuditId
      */
-    public function addUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserCreateScgUser $body, array $queryParameters = [])
+    public function addUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserCreateScgUser $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddUsers($body, $queryParameters));
     }
@@ -94,7 +94,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserList
      */
-    public function findUsersByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteria $body, array $queryParameters = [])
+    public function findUsersByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteria $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUsersByQueryCriteria($body, $queryParameters));
     }
@@ -109,7 +109,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteUrlFilteringUrlFilteringPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringDeleteBulk $body, array $queryParameters = [])
+    public function deleteUrlFilteringUrlFilteringPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteUrlFilteringUrlFilteringPolicy($body, $queryParameters));
     }
@@ -126,7 +126,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringPolicyList
      */
-    public function findUrlFilteringUrlFilteringPolicy(array $queryParameters = [])
+    public function findUrlFilteringUrlFilteringPolicy(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUrlFilteringUrlFilteringPolicy($queryParameters));
     }
@@ -142,7 +142,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addUrlFilteringUrlFilteringPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringCreateUrlFilteringPolicy $body, array $queryParameters = [])
+    public function addUrlFilteringUrlFilteringPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringCreateUrlFilteringPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddUrlFilteringUrlFilteringPolicy($body, $queryParameters));
     }
@@ -157,7 +157,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteUrlFilteringUrlFilteringPolicyById(string $id, array $queryParameters = [])
+    public function deleteUrlFilteringUrlFilteringPolicyById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteUrlFilteringUrlFilteringPolicyById($id, $queryParameters));
     }
@@ -172,7 +172,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringPolicy
      */
-    public function findUrlFilteringUrlFilteringPolicyById(string $id, array $queryParameters = [])
+    public function findUrlFilteringUrlFilteringPolicyById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUrlFilteringUrlFilteringPolicyById($id, $queryParameters));
     }
@@ -189,7 +189,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateUrlFilteringUrlFilteringPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringModifyUrlFilteringPolicy $body, array $queryParameters = [])
+    public function partialUpdateUrlFilteringUrlFilteringPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringModifyUrlFilteringPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateUrlFilteringUrlFilteringPolicyById($id, $body, $queryParameters));
     }
@@ -206,7 +206,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateUrlFilteringUrlFilteringPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringModifyUrlFilteringPolicy $body, array $queryParameters = [])
+    public function updateUrlFilteringUrlFilteringPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringModifyUrlFilteringPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateUrlFilteringUrlFilteringPolicyById($id, $body, $queryParameters));
     }
@@ -220,7 +220,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringBlockCategoriesList
      */
-    public function findUrlFilteringBlockCategories(array $queryParameters = [])
+    public function findUrlFilteringBlockCategories(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUrlFilteringBlockCategories($queryParameters));
     }
@@ -236,7 +236,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\UrlFilteringUrlFilteringPolicyList
      */
-    public function findUrlFilteringByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findUrlFilteringByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUrlFilteringByQueryCriteria($body, $queryParameters));
     }
@@ -251,7 +251,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
      */
-    public function findApsApPacketCaptureByApMac(string $apMac, array $queryParameters = [])
+    public function findApsApPacketCaptureByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApsApPacketCaptureByApMac($apMac, $queryParameters));
     }
@@ -267,7 +267,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addApsApPacketCaptureDownloadByApMac(string $apMac, array $queryParameters = [])
+    public function addApsApPacketCaptureDownloadByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApsApPacketCaptureDownloadByApMac($apMac, $queryParameters));
     }
@@ -284,7 +284,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
      */
-    public function addApsApPacketCaptureStartFileCaptureByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureReq $body, array $queryParameters = [])
+    public function addApsApPacketCaptureStartFileCaptureByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureReq $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApsApPacketCaptureStartFileCaptureByApMac($apMac, $body, $queryParameters));
     }
@@ -301,7 +301,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureRes
      */
-    public function addApsApPacketCaptureStartStreamingByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureReq $body, array $queryParameters = [])
+    public function addApsApPacketCaptureStartStreamingByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApPacketCaptureApPacketCaptureReq $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApsApPacketCaptureStartStreamingByApMac($apMac, $body, $queryParameters));
     }
@@ -317,7 +317,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addApsApPacketCaptureStopByApMac(string $apMac, array $queryParameters = [])
+    public function addApsApPacketCaptureStopByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApsApPacketCaptureStopByApMac($apMac, $queryParameters));
     }
@@ -333,7 +333,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfileList
      */
-    public function findApplicationPolicyV2ByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findApplicationPolicyV2ByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApplicationPolicyV2ByQueryCriteria($body, $queryParameters));
     }
@@ -349,7 +349,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RogueInfoRogueInfoList
      */
-    public function findRoguesInfoListByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findRoguesInfoListByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRoguesInfoListByQueryCriteria($body, $queryParameters));
     }
@@ -365,7 +365,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientHistoricalClientList
      */
-    public function findHistoricalclientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findHistoricalclientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindHistoricalclientByQueryCriteria($body, $queryParameters));
     }
@@ -381,7 +381,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaServerQueryAaaServerQueryList
      */
-    public function findServicesAaaServerAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesAaaServerAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAaaServerAuthByQueryCriteria($body, $queryParameters));
     }
@@ -397,7 +397,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaServerQueryAaaServerQueryList
      */
-    public function findServicesAaaServerAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesAaaServerAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAaaServerAcctByQueryCriteria($body, $queryParameters));
     }
@@ -413,7 +413,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesBonjourPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesBonjourPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesBonjourPolicyByQueryCriteria($body, $queryParameters));
     }
@@ -429,7 +429,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesDscpProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesDscpProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesDscpProfileByQueryCriteria($body, $queryParameters));
     }
@@ -445,7 +445,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesWechatProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesWechatProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesWechatProfileByQueryCriteria($body, $queryParameters));
     }
@@ -461,7 +461,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcUserDefinedProfileList
      */
-    public function findUserDefinedByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findUserDefinedByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUserDefinedByQueryCriteria($body, $queryParameters));
     }
@@ -477,7 +477,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpProfileList
      */
-    public function findServicesDhcpProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesDhcpProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesDhcpProfileByQueryCriteria($body, $queryParameters));
     }
@@ -493,7 +493,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDpskQueryList
      */
-    public function findDpskByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findDpskByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpskByQueryCriteria($body, $queryParameters));
     }
@@ -509,7 +509,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileTrafficClassProfileList
      */
-    public function findServicesTrafficClassProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesTrafficClassProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesTrafficClassProfileByQueryCriteria($body, $queryParameters));
     }
@@ -525,7 +525,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesWlanSchedulerByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesWlanSchedulerByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesWlanSchedulerByQueryCriteria($body, $queryParameters));
     }
@@ -541,7 +541,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesWebAuthenticationByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesWebAuthenticationByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesWebAuthenticationByQueryCriteria($body, $queryParameters));
     }
@@ -557,7 +557,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesGuestAccessByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesGuestAccessByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesGuestAccessByQueryCriteria($body, $queryParameters));
     }
@@ -573,7 +573,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WiredClientQueryClientQueryList
      */
-    public function findWiredclientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findWiredclientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindWiredclientByQueryCriteria($body, $queryParameters));
     }
@@ -589,7 +589,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesL2AccessControlByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesL2AccessControlByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesL2AccessControlByQueryCriteria($body, $queryParameters));
     }
@@ -605,7 +605,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfileList
      */
-    public function findApplicationPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findApplicationPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApplicationPolicyByQueryCriteria($body, $queryParameters));
     }
@@ -621,7 +621,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesVlanPoolingByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesVlanPoolingByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesVlanPoolingByQueryCriteria($body, $queryParameters));
     }
@@ -637,7 +637,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesVenueProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesVenueProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesVenueProfileByQueryCriteria($body, $queryParameters));
     }
@@ -653,7 +653,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesEthernetPortProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesEthernetPortProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesEthernetPortProfileByQueryCriteria($body, $queryParameters));
     }
@@ -669,7 +669,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapSummaryList
      */
-    public function findIndoorMapByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findIndoorMapByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIndoorMapByQueryCriteria($body, $queryParameters));
     }
@@ -685,7 +685,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesDevicePolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesDevicePolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesDevicePolicyByQueryCriteria($body, $queryParameters));
     }
@@ -701,7 +701,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelistArray
      */
-    public function findServicesClientIsolationWhitelistByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesClientIsolationWhitelistByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesClientIsolationWhitelistByQueryCriteria($body, $queryParameters));
     }
@@ -717,7 +717,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicyList
      */
-    public function findServicesBonjourFencingPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesBonjourFencingPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesBonjourFencingPolicyByQueryCriteria($body, $queryParameters));
     }
@@ -733,7 +733,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanQueryWlanQueryList
      */
-    public function findWlanByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findWlanByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindWlanByQueryCriteria($body, $queryParameters));
     }
@@ -749,7 +749,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesHotspot20ProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesHotspot20ProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesHotspot20ProfileByQueryCriteria($body, $queryParameters));
     }
@@ -765,7 +765,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryApQueryList
      */
-    public function findApByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryQueryCriteria $body, array $queryParameters = [])
+    public function findApByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApQueryQueryCriteria $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApByQueryCriteria($body, $queryParameters));
     }
@@ -781,7 +781,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findServicesHotspotByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesHotspotByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesHotspotByQueryCriteria($body, $queryParameters));
     }
@@ -797,7 +797,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanQueryApWlanBssidQueryList
      */
-    public function findApWlanByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findApWlanByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApWlanByQueryCriteria($body, $queryParameters));
     }
@@ -813,7 +813,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RacStatsRadiusProxyList
      */
-    public function findRadiusProxyStatsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findRadiusProxyStatsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRadiusProxyStatsByQueryCriteria($body, $queryParameters));
     }
@@ -829,7 +829,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientQueryClientQueryList
      */
-    public function findClientByQueryCriteria(mixed $body, array $queryParameters = [])
+    public function findClientByQueryCriteria(mixed $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindClientByQueryCriteria($body, $queryParameters));
     }
@@ -843,7 +843,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType
      */
-    public function findRogueMarkKnown(array $queryParameters = [])
+    public function findRogueMarkKnown(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRogueMarkKnown($queryParameters));
     }
@@ -859,7 +859,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addRogueMarkKnown(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters = [])
+    public function addRogueMarkKnown(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRogueMarkKnown($body, $queryParameters));
     }
@@ -875,7 +875,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addRogueUnMark(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters = [])
+    public function addRogueUnMark(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRogueUnMark($body, $queryParameters));
     }
@@ -891,7 +891,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addRogueMarkMalicious(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters = [])
+    public function addRogueMarkMalicious(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRogueMarkMalicious($body, $queryParameters));
     }
@@ -907,7 +907,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addRogueMarkIgnore(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters = [])
+    public function addRogueMarkIgnore(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRogueMarkIgnore($body, $queryParameters));
     }
@@ -923,7 +923,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addRogueMarkRogue(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters = [])
+    public function addRogueMarkRogue(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyRogueType $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRogueMarkRogue($body, $queryParameters));
     }
@@ -937,7 +937,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpGlobalSetting
      */
-    public function findGlobalSettingsStatsFtp(array $queryParameters = [])
+    public function findGlobalSettingsStatsFtp(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindGlobalSettingsStatsFtp($queryParameters));
     }
@@ -953,7 +953,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateGlobalSettingsStatsFtp(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpGlobalSetting $body, array $queryParameters = [])
+    public function partialUpdateGlobalSettingsStatsFtp(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpGlobalSetting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateGlobalSettingsStatsFtp($body, $queryParameters));
     }
@@ -969,7 +969,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNtpServerValidationMessage
      */
-    public function addGlobalSettingsSystemTimeValidate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNtpServerValidation $body, array $queryParameters = [])
+    public function addGlobalSettingsSystemTimeValidate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNtpServerValidation $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddGlobalSettingsSystemTimeValidate($body, $queryParameters));
     }
@@ -983,7 +983,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFriendlyNameLangList
      */
-    public function findGlobalSettingsFriendlyNameLang(array $queryParameters = [])
+    public function findGlobalSettingsFriendlyNameLang(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindGlobalSettingsFriendlyNameLang($queryParameters));
     }
@@ -997,7 +997,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemPortalLangList
      */
-    public function findGlobalSettingsPortalLang(array $queryParameters = [])
+    public function findGlobalSettingsPortalLang(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindGlobalSettingsPortalLang($queryParameters));
     }
@@ -1013,7 +1013,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlansAccountingServiceOrProfileById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesWlansAccountingServiceOrProfileById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlansAccountingServiceOrProfileById($zoneId, $id, $queryParameters));
     }
@@ -1029,7 +1029,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlansL2ACLById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesWlansL2ACLById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlansL2ACLById($zoneId, $id, $queryParameters));
     }
@@ -1045,7 +1045,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlansDevicePolicyById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesWlansDevicePolicyById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlansDevicePolicyById($zoneId, $id, $queryParameters));
     }
@@ -1061,7 +1061,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlansDiffServProfileById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesWlansDiffServProfileById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlansDiffServProfileById($zoneId, $id, $queryParameters));
     }
@@ -1077,7 +1077,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlansQosMapsById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesWlansQosMapsById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlansQosMapsById($zoneId, $id, $queryParameters));
     }
@@ -1094,7 +1094,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addRkszonesWlansQosMapsById(string $zoneId, string $id, array $queryParameters = [])
+    public function addRkszonesWlansQosMapsById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansQosMapsById($zoneId, $id, $queryParameters));
     }
@@ -1110,7 +1110,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlansDnsServerProfileById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesWlansDnsServerProfileById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlansDnsServerProfileById($zoneId, $id, $queryParameters));
     }
@@ -1127,7 +1127,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanGroupList
      */
-    public function findRkszonesWlangroupsByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesWlangroupsByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesWlangroupsByZoneId($zoneId, $queryParameters));
     }
@@ -1144,7 +1144,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlangroupsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupCreateWlanGroup $body, array $queryParameters = [])
+    public function addRkszonesWlangroupsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupCreateWlanGroup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlangroupsByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1161,7 +1161,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters = [])
+    public function deleteRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlangroupsMembersByMemberId($zoneId, $id, $memberId, $queryParameters));
     }
@@ -1180,7 +1180,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters = [])
+    public function partialUpdateRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesWlangroupsMembersByMemberId($zoneId, $id, $memberId, $body, $queryParameters));
     }
@@ -1199,7 +1199,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters = [])
+    public function updateRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesWlangroupsMembersByMemberId($zoneId, $id, $memberId, $body, $queryParameters));
     }
@@ -1216,7 +1216,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanList
      */
-    public function findRkszonesWlansByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesWlansByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesWlansByZoneId($zoneId, $queryParameters));
     }
@@ -1233,7 +1233,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandardOpenWlan $body, array $queryParameters = [])
+    public function addRkszonesWlansByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandardOpenWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1250,7 +1250,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansStandard8021XByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandard80211Wlan $body, array $queryParameters = [])
+    public function addRkszonesWlansStandard8021XByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandard80211Wlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansStandard8021XByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1267,7 +1267,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansStandardmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandard80211Wlan $body, array $queryParameters = [])
+    public function addRkszonesWlansStandardmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandard80211Wlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansStandardmacByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1284,7 +1284,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansWisprByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspotWlan $body, array $queryParameters = [])
+    public function addRkszonesWlansWisprByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspotWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansWisprByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1301,7 +1301,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansWispr8021XByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspotWlan $body, array $queryParameters = [])
+    public function addRkszonesWlansWispr8021XByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspotWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansWispr8021XByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1318,7 +1318,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansWechatByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateWechatWlan $body, array $queryParameters = [])
+    public function addRkszonesWlansWechatByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateWechatWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansWechatByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1335,7 +1335,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansGuestByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateGuestAccessWlan $body, array $queryParameters = [])
+    public function addRkszonesWlansGuestByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateGuestAccessWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansGuestByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1352,7 +1352,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansWebauthByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateWebAuthWlan $body, array $queryParameters = [])
+    public function addRkszonesWlansWebauthByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateWebAuthWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansWebauthByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1369,7 +1369,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansHotspot20ByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspot20Wlan $body, array $queryParameters = [])
+    public function addRkszonesWlansHotspot20ByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspot20Wlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansHotspot20ByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1386,7 +1386,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansHotspot20openByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspot20OpenWlan $body, array $queryParameters = [])
+    public function addRkszonesWlansHotspot20openByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspot20OpenWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansHotspot20openByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1403,7 +1403,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansHotspot20osenByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspot20OpenWlan $body, array $queryParameters = [])
+    public function addRkszonesWlansHotspot20osenByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspot20OpenWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansHotspot20osenByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1419,7 +1419,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteRkszonesWlansFlexiVpnProfileById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesWlansFlexiVpnProfileById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlansFlexiVpnProfileById($zoneId, $id, $queryParameters));
     }
@@ -1436,7 +1436,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansStandard8021XmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandard80211Wlan $body, array $queryParameters = [])
+    public function addRkszonesWlansStandard8021XmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateStandard80211Wlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansStandard8021XmacByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1453,7 +1453,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlansWisprmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspotWlan $body, array $queryParameters = [])
+    public function addRkszonesWlansWisprmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanCreateHotspotWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansWisprmacByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1469,7 +1469,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlansById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesWlansById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlansById($zoneId, $id, $queryParameters));
     }
@@ -1485,7 +1485,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanWlanConfiguration
      */
-    public function findRkszonesWlansById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesWlansById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesWlansById($zoneId, $id, $queryParameters));
     }
@@ -1503,7 +1503,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesWlansById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanModifyWlan $body, array $queryParameters = [])
+    public function partialUpdateRkszonesWlansById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanModifyWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesWlansById($zoneId, $id, $body, $queryParameters));
     }
@@ -1521,7 +1521,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesWlansById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanModifyWlan $body, array $queryParameters = [])
+    public function updateRkszonesWlansById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanModifyWlan $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesWlansById($zoneId, $id, $body, $queryParameters));
     }
@@ -1537,7 +1537,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlangroupsById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesWlangroupsById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlangroupsById($zoneId, $id, $queryParameters));
     }
@@ -1553,7 +1553,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanGroup
      */
-    public function findRkszonesWlangroupsById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesWlangroupsById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesWlangroupsById($zoneId, $id, $queryParameters));
     }
@@ -1571,7 +1571,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesWlangroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroup $body, array $queryParameters = [])
+    public function partialUpdateRkszonesWlangroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesWlangroupsById($zoneId, $id, $body, $queryParameters));
     }
@@ -1588,7 +1588,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlangroupsMembersVlanOverrideByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters = [])
+    public function deleteRkszonesWlangroupsMembersVlanOverrideByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlangroupsMembersVlanOverrideByMemberId($zoneId, $id, $memberId, $queryParameters));
     }
@@ -1605,7 +1605,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlangroupsMembersNasIdByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters = [])
+    public function deleteRkszonesWlangroupsMembersNasIdByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlangroupsMembersNasIdByMemberId($zoneId, $id, $memberId, $queryParameters));
     }
@@ -1623,7 +1623,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addRkszonesWlangroupsMembersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanMember $body, array $queryParameters = [])
+    public function addRkszonesWlangroupsMembersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupWlanMember $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlangroupsMembersById($zoneId, $id, $body, $queryParameters));
     }
@@ -1638,7 +1638,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteFtps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemDeleteBulkFtp $body, array $queryParameters = [])
+    public function deleteFtps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemDeleteBulkFtp $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteFtps($body, $queryParameters));
     }
@@ -1654,7 +1654,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addFtps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtp $body, array $queryParameters = [])
+    public function addFtps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtp $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddFtps($body, $queryParameters));
     }
@@ -1669,7 +1669,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpTestResponse
      */
-    public function findFtpsTestByFtpId(string $ftpId, array $queryParameters = [])
+    public function findFtpsTestByFtpId(string $ftpId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindFtpsTestByFtpId($ftpId, $queryParameters));
     }
@@ -1684,7 +1684,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteFtpsByFtpId(string $ftpId, array $queryParameters = [])
+    public function deleteFtpsByFtpId(string $ftpId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteFtpsByFtpId($ftpId, $queryParameters));
     }
@@ -1699,7 +1699,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtp
      */
-    public function findFtpsByFtpId(string $ftpId, array $queryParameters = [])
+    public function findFtpsByFtpId(string $ftpId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindFtpsByFtpId($ftpId, $queryParameters));
     }
@@ -1716,7 +1716,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateFtpsByFtpId(string $ftpId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtp $body, array $queryParameters = [])
+    public function partialUpdateFtpsByFtpId(string $ftpId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtp $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateFtpsByFtpId($ftpId, $body, $queryParameters));
     }
@@ -1732,7 +1732,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpList
      */
-    public function findFtpsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findFtpsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindFtpsByQueryCriteria($body, $queryParameters));
     }
@@ -1747,7 +1747,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtpTestResponse
      */
-    public function findFtpsTest(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtp $body, array $queryParameters = [])
+    public function findFtpsTest(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemFtp $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindFtpsTest($body, $queryParameters));
     }
@@ -1763,7 +1763,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesTrafficClassProfileById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesTrafficClassProfileById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesTrafficClassProfileById($zoneId, $id, $queryParameters));
     }
@@ -1779,7 +1779,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonTrafficClassProfileRef
      */
-    public function findRkszonesTrafficClassProfileById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesTrafficClassProfileById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesTrafficClassProfileById($zoneId, $id, $queryParameters));
     }
@@ -1797,7 +1797,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesTrafficClassProfileById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateTrafficClassProfile $body, array $queryParameters = [])
+    public function partialUpdateRkszonesTrafficClassProfileById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateTrafficClassProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesTrafficClassProfileById($zoneId, $id, $body, $queryParameters));
     }
@@ -1813,7 +1813,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesTrafficClassProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesTrafficClassProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesTrafficClassProfileByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1828,7 +1828,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileTrafficClassProfileList
      */
-    public function findRkszonesTrafficClassProfileByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesTrafficClassProfileByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesTrafficClassProfileByZoneId($zoneId, $queryParameters));
     }
@@ -1845,7 +1845,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesTrafficClassProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateTrafficClassProfile $body, array $queryParameters = [])
+    public function addRkszonesTrafficClassProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateTrafficClassProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesTrafficClassProfileByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1862,7 +1862,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addBlockClientByZoneIdByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient $body, array $queryParameters = [])
+    public function addBlockClientByZoneIdByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddBlockClientByZoneIdByZoneId($zoneId, $body, $queryParameters));
     }
@@ -1877,7 +1877,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteBlockClientById(string $id, array $queryParameters = [])
+    public function deleteBlockClientById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteBlockClientById($id, $queryParameters));
     }
@@ -1892,7 +1892,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient
      */
-    public function findBlockClientById(string $id, array $queryParameters = [])
+    public function findBlockClientById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindBlockClientById($id, $queryParameters));
     }
@@ -1909,7 +1909,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateBlockClientById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBlockClient $body, array $queryParameters = [])
+    public function partialUpdateBlockClientById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBlockClient $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateBlockClientById($id, $body, $queryParameters));
     }
@@ -1926,7 +1926,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateBlockClientById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBlockClient $body, array $queryParameters = [])
+    public function updateBlockClientById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBlockClient $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateBlockClientById($id, $body, $queryParameters));
     }
@@ -1941,7 +1941,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteBlockClient(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteBlockClient(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteBlockClient($body, $queryParameters));
     }
@@ -1957,7 +1957,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult[]
      */
-    public function addBlockClient(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBulkBlockClient $body, array $queryParameters = [])
+    public function addBlockClient(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBulkBlockClient $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddBlockClient($body, $queryParameters));
     }
@@ -1974,7 +1974,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addBlockClientByApMacByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient $body, array $queryParameters = [])
+    public function addBlockClientByApMacByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddBlockClientByApMacByApMac($apMac, $body, $queryParameters));
     }
@@ -1989,7 +1989,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClientList
      */
-    public function findBlockClientByZoneByZoneId(string $zoneId, array $queryParameters = [])
+    public function findBlockClientByZoneByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindBlockClientByZoneByZoneId($zoneId, $queryParameters));
     }
@@ -2005,7 +2005,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClientList
      */
-    public function findBlockClientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findBlockClientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindBlockClientByQueryCriteria($body, $queryParameters));
     }
@@ -2019,7 +2019,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupRoleLabelValueList
      */
-    public function findUserGroupsRoles(array $queryParameters = [])
+    public function findUserGroupsRoles(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUserGroupsRoles($queryParameters));
     }
@@ -2035,7 +2035,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupPermissionList
      */
-    public function findUserGroupsRolesPermissionsByRole(string $role, array $queryParameters = [])
+    public function findUserGroupsRolesPermissionsByRole(string $role, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUserGroupsRolesPermissionsByRole($role, $queryParameters));
     }
@@ -2049,7 +2049,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupPermissionList
      */
-    public function findUserGroupsCurrentUserPermissionCategories(array $queryParameters = [])
+    public function findUserGroupsCurrentUserPermissionCategories(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUserGroupsCurrentUserPermissionCategories($queryParameters));
     }
@@ -2064,7 +2064,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteUserGroups(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteUserGroups(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteUserGroups($body, $queryParameters));
     }
@@ -2080,7 +2080,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupAuditId
      */
-    public function addUserGroups(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup $body, array $queryParameters = [])
+    public function addUserGroups(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddUserGroups($body, $queryParameters));
     }
@@ -2095,7 +2095,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupAuditId
      */
-    public function deleteUserGroupsByUserGroupId(string $userGroupId, array $queryParameters = [])
+    public function deleteUserGroupsByUserGroupId(string $userGroupId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteUserGroupsByUserGroupId($userGroupId, $queryParameters));
     }
@@ -2111,7 +2111,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroup
      */
-    public function findUserGroupsByUserGroupId(string $userGroupId, array $queryParameters = [])
+    public function findUserGroupsByUserGroupId(string $userGroupId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUserGroupsByUserGroupId($userGroupId, $queryParameters));
     }
@@ -2128,7 +2128,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupAuditId
      */
-    public function partialUpdateUserGroupsByUserGroupId(string $userGroupId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserPatchScgUserGroup $body, array $queryParameters = [])
+    public function partialUpdateUserGroupsByUserGroupId(string $userGroupId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserPatchScgUserGroup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateUserGroupsByUserGroupId($userGroupId, $body, $queryParameters));
     }
@@ -2144,7 +2144,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserScgUserGroupList
      */
-    public function findUserGroupsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteria $body, array $queryParameters = [])
+    public function findUserGroupsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ScguserQueryCriteria $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUserGroupsByQueryCriteria($body, $queryParameters));
     }
@@ -2159,7 +2159,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteApSyslogServerProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteApSyslogServerProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApSyslogServerProfiles($body, $queryParameters));
     }
@@ -2176,7 +2176,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileApSyslogServerProfileList
      */
-    public function findApSyslogServerProfiles(array $queryParameters = [])
+    public function findApSyslogServerProfiles(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApSyslogServerProfiles($queryParameters));
     }
@@ -2192,7 +2192,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addApSyslogServerProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileCreateApSyslogServerProfile $body, array $queryParameters = [])
+    public function addApSyslogServerProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileCreateApSyslogServerProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApSyslogServerProfiles($body, $queryParameters));
     }
@@ -2207,7 +2207,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApSyslogServerProfilesById(string $id, array $queryParameters = [])
+    public function deleteApSyslogServerProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApSyslogServerProfilesById($id, $queryParameters));
     }
@@ -2222,7 +2222,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileApSyslogServerProfile
      */
-    public function findApSyslogServerProfilesById(string $id, array $queryParameters = [])
+    public function findApSyslogServerProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApSyslogServerProfilesById($id, $queryParameters));
     }
@@ -2239,7 +2239,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateApSyslogServerProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileUpdateApSyslogServerProfile $body, array $queryParameters = [])
+    public function updateApSyslogServerProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSyslogServerProfileUpdateApSyslogServerProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateApSyslogServerProfilesById($id, $body, $queryParameters));
     }
@@ -2255,7 +2255,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAuthenticationServiceList
      */
-    public function findServicesAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthByQueryCriteria($body, $queryParameters));
     }
@@ -2270,7 +2270,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAuthById(string $id, array $queryParameters = [])
+    public function deleteServicesAuthById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAuthById($id, $queryParameters));
     }
@@ -2285,7 +2285,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAuth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceDeleteBulkAuthenticationService $body, array $queryParameters = [])
+    public function deleteServicesAuth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceDeleteBulkAuthenticationService $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAuth($body, $queryParameters));
     }
@@ -2300,7 +2300,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAuthenticationService
      */
-    public function findServicesAuthLocalDbById(string $id, array $queryParameters = [])
+    public function findServicesAuthLocalDbById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthLocalDbById($id, $queryParameters));
     }
@@ -2317,7 +2317,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateServicesAuthLocalDbById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyLocalDbAuthentication $body, array $queryParameters = [])
+    public function partialUpdateServicesAuthLocalDbById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyLocalDbAuthentication $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateServicesAuthLocalDbById($id, $body, $queryParameters));
     }
@@ -2333,7 +2333,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAuthenticationServiceList
      */
-    public function findServicesAuthRadiusByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesAuthRadiusByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthRadiusByQueryCriteria($body, $queryParameters));
     }
@@ -2347,7 +2347,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAuthenticationServiceList
      */
-    public function findServicesAuthRadius(array $queryParameters = [])
+    public function findServicesAuthRadius(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthRadius($queryParameters));
     }
@@ -2363,7 +2363,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addServicesAuthRadius(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAuthentication $body, array $queryParameters = [])
+    public function addServicesAuthRadius(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAuthentication $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddServicesAuthRadius($body, $queryParameters));
     }
@@ -2378,7 +2378,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAuthRadiusById(string $id, array $queryParameters = [])
+    public function deleteServicesAuthRadiusById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAuthRadiusById($id, $queryParameters));
     }
@@ -2393,7 +2393,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAuthenticationService
      */
-    public function findServicesAuthRadiusById(string $id, array $queryParameters = [])
+    public function findServicesAuthRadiusById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthRadiusById($id, $queryParameters));
     }
@@ -2410,7 +2410,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateServicesAuthRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyRadiusAuthentication $body, array $queryParameters = [])
+    public function partialUpdateServicesAuthRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyRadiusAuthentication $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateServicesAuthRadiusById($id, $body, $queryParameters));
     }
@@ -2427,7 +2427,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateServicesAuthRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAuthentication $body, array $queryParameters = [])
+    public function updateServicesAuthRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAuthentication $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateServicesAuthRadiusById($id, $body, $queryParameters));
     }
@@ -2442,7 +2442,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAuthRadiusSecondaryById(string $id, array $queryParameters = [])
+    public function deleteServicesAuthRadiusSecondaryById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAuthRadiusSecondaryById($id, $queryParameters));
     }
@@ -2457,7 +2457,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAuthRadiusStandbyPrimaryById(string $id, array $queryParameters = [])
+    public function deleteServicesAuthRadiusStandbyPrimaryById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAuthRadiusStandbyPrimaryById($id, $queryParameters));
     }
@@ -2473,7 +2473,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceActiveDirectoryServiceList
      */
-    public function findServicesAuthAdByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesAuthAdByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthAdByQueryCriteria($body, $queryParameters));
     }
@@ -2487,7 +2487,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceActiveDirectoryServiceList
      */
-    public function findServicesAuthAd(array $queryParameters = [])
+    public function findServicesAuthAd(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthAd($queryParameters));
     }
@@ -2503,7 +2503,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addServicesAuthAd(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateActiveDirectoryAuthentication $body, array $queryParameters = [])
+    public function addServicesAuthAd(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateActiveDirectoryAuthentication $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddServicesAuthAd($body, $queryParameters));
     }
@@ -2518,7 +2518,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAuthAdById(string $id, array $queryParameters = [])
+    public function deleteServicesAuthAdById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAuthAdById($id, $queryParameters));
     }
@@ -2533,7 +2533,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceActiveDirectoryService
      */
-    public function findServicesAuthAdById(string $id, array $queryParameters = [])
+    public function findServicesAuthAdById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthAdById($id, $queryParameters));
     }
@@ -2550,7 +2550,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateServicesAuthAdById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyActiveDirectoryAuthentication $body, array $queryParameters = [])
+    public function partialUpdateServicesAuthAdById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyActiveDirectoryAuthentication $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateServicesAuthAdById($id, $body, $queryParameters));
     }
@@ -2565,7 +2565,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAcctRadiusStandbyPrimaryById(string $id, array $queryParameters = [])
+    public function deleteServicesAcctRadiusStandbyPrimaryById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAcctRadiusStandbyPrimaryById($id, $queryParameters));
     }
@@ -2579,7 +2579,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPServiceList
      */
-    public function findServicesAuthLdap(array $queryParameters = [])
+    public function findServicesAuthLdap(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthLdap($queryParameters));
     }
@@ -2595,7 +2595,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addServicesAuthLdap(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication $body, array $queryParameters = [])
+    public function addServicesAuthLdap(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateLDAPAuthentication $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddServicesAuthLdap($body, $queryParameters));
     }
@@ -2610,7 +2610,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAuthLdapById(string $id, array $queryParameters = [])
+    public function deleteServicesAuthLdapById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAuthLdapById($id, $queryParameters));
     }
@@ -2625,7 +2625,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPService
      */
-    public function findServicesAuthLdapById(string $id, array $queryParameters = [])
+    public function findServicesAuthLdapById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthLdapById($id, $queryParameters));
     }
@@ -2642,7 +2642,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateServicesAuthLdapById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyLDAPAuthentication $body, array $queryParameters = [])
+    public function partialUpdateServicesAuthLdapById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyLDAPAuthentication $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateServicesAuthLdapById($id, $body, $queryParameters));
     }
@@ -2657,7 +2657,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAcctById(string $id, array $queryParameters = [])
+    public function deleteServicesAcctById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAcctById($id, $queryParameters));
     }
@@ -2674,7 +2674,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addServicesAcctTestById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTestingConfig $body, array $queryParameters = [])
+    public function addServicesAcctTestById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTestingConfig $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddServicesAcctTestById($id, $body, $queryParameters));
     }
@@ -2688,7 +2688,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAccountingServiceList
      */
-    public function findServicesAcctRadius(array $queryParameters = [])
+    public function findServicesAcctRadius(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAcctRadius($queryParameters));
     }
@@ -2704,7 +2704,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addServicesAcctRadius(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAccounting $body, array $queryParameters = [])
+    public function addServicesAcctRadius(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCreateRadiusAccounting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddServicesAcctRadius($body, $queryParameters));
     }
@@ -2719,7 +2719,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAcctRadiusById(string $id, array $queryParameters = [])
+    public function deleteServicesAcctRadiusById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAcctRadiusById($id, $queryParameters));
     }
@@ -2734,7 +2734,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAccountingService
      */
-    public function findServicesAcctRadiusById(string $id, array $queryParameters = [])
+    public function findServicesAcctRadiusById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAcctRadiusById($id, $queryParameters));
     }
@@ -2751,7 +2751,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateServicesAcctRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyRadiusAccounting $body, array $queryParameters = [])
+    public function partialUpdateServicesAcctRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyRadiusAccounting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateServicesAcctRadiusById($id, $body, $queryParameters));
     }
@@ -2768,7 +2768,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateServicesAcctRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAccounting $body, array $queryParameters = [])
+    public function updateServicesAcctRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceModifyEntireRadiusAccounting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateServicesAcctRadiusById($id, $body, $queryParameters));
     }
@@ -2784,7 +2784,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceLDAPServiceList
      */
-    public function findServicesAuthLdapByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesAuthLdapByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthLdapByQueryCriteria($body, $queryParameters));
     }
@@ -2800,7 +2800,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAccountingServiceList
      */
-    public function findServicesAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAcctByQueryCriteria($body, $queryParameters));
     }
@@ -2815,7 +2815,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAcct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceDeleteBulkAccountingService $body, array $queryParameters = [])
+    public function deleteServicesAcct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceDeleteBulkAccountingService $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAcct($body, $queryParameters));
     }
@@ -2831,7 +2831,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceRadiusAccountingServiceList
      */
-    public function findServicesAcctRadiusByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesAcctRadiusByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAcctRadiusByQueryCriteria($body, $queryParameters));
     }
@@ -2846,7 +2846,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteServicesAcctRadiusSecondaryById(string $id, array $queryParameters = [])
+    public function deleteServicesAcctRadiusSecondaryById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServicesAcctRadiusSecondaryById($id, $queryParameters));
     }
@@ -2863,7 +2863,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addServicesAuthTestById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTestingConfig $body, array $queryParameters = [])
+    public function addServicesAuthTestById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceTestingConfig $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddServicesAuthTestById($id, $body, $queryParameters));
     }
@@ -2878,7 +2878,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ServiceCommonAuthenticationService
      */
-    public function findServicesAuthGuestById(string $id, array $queryParameters = [])
+    public function findServicesAuthGuestById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesAuthGuestById($id, $queryParameters));
     }
@@ -2894,7 +2894,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileQuery
      */
-    public function findRkszonesBondPortProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findRkszonesBondPortProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesBondPortProfilesByQueryCriteria($body, $queryParameters));
     }
@@ -2909,7 +2909,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteRkszonesBondPortProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesBondPortProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesBondPortProfiles($body, $queryParameters));
     }
@@ -2924,7 +2924,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileList
      */
-    public function findRkszonesProfileBondPortByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesProfileBondPortByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesProfileBondPortByZoneId($zoneId, $queryParameters));
     }
@@ -2941,7 +2941,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesProfileBondPortByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortCreateBondPortProfile $body, array $queryParameters = [])
+    public function addRkszonesProfileBondPortByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortCreateBondPortProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesProfileBondPortByZoneId($zoneId, $body, $queryParameters));
     }
@@ -2957,7 +2957,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesProfileBondPortById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesProfileBondPortById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesProfileBondPortById($zoneId, $id, $queryParameters));
     }
@@ -2973,7 +2973,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortBondPortProfileWithEditInfo
      */
-    public function findRkszonesProfileBondPortById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesProfileBondPortById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesProfileBondPortById($zoneId, $id, $queryParameters));
     }
@@ -2991,7 +2991,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesProfileBondPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortModifyBondPortProfile $body, array $queryParameters = [])
+    public function updateRkszonesProfileBondPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\BondPortModifyBondPortProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesProfileBondPortById($zoneId, $id, $body, $queryParameters));
     }
@@ -3006,7 +3006,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio24gByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio24gByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio24gByApMac($apMac, $queryParameters));
     }
@@ -3021,7 +3021,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gByApMac($apMac, $queryParameters));
     }
@@ -3036,7 +3036,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gLowerByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gLowerByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gLowerByApMac($apMac, $queryParameters));
     }
@@ -3051,7 +3051,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gUpperByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gUpperByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gUpperByApMac($apMac, $queryParameters));
     }
@@ -3066,7 +3066,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gByApMac($apMac, $queryParameters));
     }
@@ -3081,7 +3081,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio24gTxPowerByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio24gTxPowerByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio24gTxPowerByApMac($apMac, $queryParameters));
     }
@@ -3096,7 +3096,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gTxPowerByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gTxPowerByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gTxPowerByApMac($apMac, $queryParameters));
     }
@@ -3111,7 +3111,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gLowerTxPowerByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gLowerTxPowerByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gLowerTxPowerByApMac($apMac, $queryParameters));
     }
@@ -3126,7 +3126,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gUpperTxPowerByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gUpperTxPowerByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gUpperTxPowerByApMac($apMac, $queryParameters));
     }
@@ -3141,7 +3141,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gTxPowerByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gTxPowerByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gTxPowerByApMac($apMac, $queryParameters));
     }
@@ -3156,7 +3156,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio24gChannelWidthByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio24gChannelWidthByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio24gChannelWidthByApMac($apMac, $queryParameters));
     }
@@ -3171,7 +3171,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio24gChannelByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio24gChannelByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio24gChannelByApMac($apMac, $queryParameters));
     }
@@ -3186,7 +3186,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio24gChannelRangeByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio24gChannelRangeByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio24gChannelRangeByApMac($apMac, $queryParameters));
     }
@@ -3201,7 +3201,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gChannelWidthByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gChannelWidthByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gChannelWidthByApMac($apMac, $queryParameters));
     }
@@ -3216,7 +3216,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gLowerChannelWidthByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gLowerChannelWidthByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gLowerChannelWidthByApMac($apMac, $queryParameters));
     }
@@ -3231,7 +3231,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gUpperChannelWidthByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gUpperChannelWidthByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gUpperChannelWidthByApMac($apMac, $queryParameters));
     }
@@ -3246,7 +3246,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gChannelWidthByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gChannelWidthByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gChannelWidthByApMac($apMac, $queryParameters));
     }
@@ -3261,7 +3261,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gChannelByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gChannelByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gChannelByApMac($apMac, $queryParameters));
     }
@@ -3276,7 +3276,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gLowerChannelByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gLowerChannelByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gLowerChannelByApMac($apMac, $queryParameters));
     }
@@ -3291,7 +3291,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gUpperChannelByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gUpperChannelByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gUpperChannelByApMac($apMac, $queryParameters));
     }
@@ -3306,7 +3306,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gChannelByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gChannelByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gChannelByApMac($apMac, $queryParameters));
     }
@@ -3321,7 +3321,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gChannelRangeByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gChannelRangeByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gChannelRangeByApMac($apMac, $queryParameters));
     }
@@ -3336,7 +3336,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gLowerChannelRangeByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gLowerChannelRangeByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gLowerChannelRangeByApMac($apMac, $queryParameters));
     }
@@ -3351,7 +3351,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gUpperChannelRangeByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gUpperChannelRangeByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gUpperChannelRangeByApMac($apMac, $queryParameters));
     }
@@ -3366,7 +3366,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gChannelRangeByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gChannelRangeByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gChannelRangeByApMac($apMac, $queryParameters));
     }
@@ -3381,7 +3381,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio24gWlanGroupIdByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio24gWlanGroupIdByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio24gWlanGroupIdByApMac($apMac, $queryParameters));
     }
@@ -3396,7 +3396,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gWlanGroupIdByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gWlanGroupIdByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gWlanGroupIdByApMac($apMac, $queryParameters));
     }
@@ -3411,7 +3411,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gLowerWlanGroupIdByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gLowerWlanGroupIdByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gLowerWlanGroupIdByApMac($apMac, $queryParameters));
     }
@@ -3426,7 +3426,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gUpperWlanGroupIdByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gUpperWlanGroupIdByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gUpperWlanGroupIdByApMac($apMac, $queryParameters));
     }
@@ -3441,7 +3441,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gWlanGroupIdByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gWlanGroupIdByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gWlanGroupIdByApMac($apMac, $queryParameters));
     }
@@ -3456,7 +3456,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gBssMinRateByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gBssMinRateByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gBssMinRateByApMac($apMac, $queryParameters));
     }
@@ -3471,7 +3471,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gMgmtTxRateByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gMgmtTxRateByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gMgmtTxRateByApMac($apMac, $queryParameters));
     }
@@ -3486,7 +3486,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMac($apMac, $queryParameters));
     }
@@ -3501,7 +3501,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gMulticastDownlinkRateLimitByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gMulticastDownlinkRateLimitByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gMulticastDownlinkRateLimitByApMac($apMac, $queryParameters));
     }
@@ -3516,7 +3516,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio24gProtectionModeByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio24gProtectionModeByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio24gProtectionModeByApMac($apMac, $queryParameters));
     }
@@ -3531,7 +3531,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio24gAutoChannelSelectionByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio24gAutoChannelSelectionByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio24gAutoChannelSelectionByApMac($apMac, $queryParameters));
     }
@@ -3546,7 +3546,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gAutoChannelSelectionByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gAutoChannelSelectionByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gAutoChannelSelectionByApMac($apMac, $queryParameters));
     }
@@ -3561,7 +3561,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMac($apMac, $queryParameters));
     }
@@ -3576,7 +3576,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio5gUpperAutoChannelSelectionByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio5gUpperAutoChannelSelectionByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio5gUpperAutoChannelSelectionByApMac($apMac, $queryParameters));
     }
@@ -3591,7 +3591,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRadioConfigRadio6gAutoChannelSelectionByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRadioConfigRadio6gAutoChannelSelectionByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRadioConfigRadio6gAutoChannelSelectionByApMac($apMac, $queryParameters));
     }
@@ -3606,7 +3606,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsLoginByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsLoginByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsLoginByApMac($apMac, $queryParameters));
     }
@@ -3621,7 +3621,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsSyslogByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsSyslogByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsSyslogByApMac($apMac, $queryParameters));
     }
@@ -3636,7 +3636,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsChannelEvaluationIntervalByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsChannelEvaluationIntervalByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsChannelEvaluationIntervalByApMac($apMac, $queryParameters));
     }
@@ -3651,7 +3651,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsApMgmtVlanByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsApMgmtVlanByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsApMgmtVlanByApMac($apMac, $queryParameters));
     }
@@ -3666,7 +3666,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsAltitudeByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsAltitudeByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsAltitudeByApMac($apMac, $queryParameters));
     }
@@ -3681,7 +3681,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsLocationByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsLocationByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsLocationByApMac($apMac, $queryParameters));
     }
@@ -3696,7 +3696,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsLocationAdditionalInfoByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsLocationAdditionalInfoByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsLocationAdditionalInfoByApMac($apMac, $queryParameters));
     }
@@ -3711,7 +3711,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsSmartMonitorByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsSmartMonitorByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsSmartMonitorByApMac($apMac, $queryParameters));
     }
@@ -3726,7 +3726,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsBonjourGatewayByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsBonjourGatewayByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsBonjourGatewayByApMac($apMac, $queryParameters));
     }
@@ -3741,7 +3741,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsClientAdmissionControl24ByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsClientAdmissionControl24ByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsClientAdmissionControl24ByApMac($apMac, $queryParameters));
     }
@@ -3756,7 +3756,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsClientAdmissionControl50ByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsClientAdmissionControl50ByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsClientAdmissionControl50ByApMac($apMac, $queryParameters));
     }
@@ -3771,7 +3771,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsVenueProfileByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsVenueProfileByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsVenueProfileByApMac($apMac, $queryParameters));
     }
@@ -3786,7 +3786,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsMeshOptionsByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsMeshOptionsByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsMeshOptionsByApMac($apMac, $queryParameters));
     }
@@ -3801,7 +3801,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRecoverySsidByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRecoverySsidByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRecoverySsidByApMac($apMac, $queryParameters));
     }
@@ -3816,7 +3816,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsDirectedMulticastFromWiredClientEnabledByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsDirectedMulticastFromWiredClientEnabledByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsDirectedMulticastFromWiredClientEnabledByApMac($apMac, $queryParameters));
     }
@@ -3831,7 +3831,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsDirectedMulticastFromWirelessClientEnabledByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsDirectedMulticastFromWirelessClientEnabledByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsDirectedMulticastFromWirelessClientEnabledByApMac($apMac, $queryParameters));
     }
@@ -3846,7 +3846,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsDirectedMulticastFromNetworkEnabledByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsDirectedMulticastFromNetworkEnabledByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsDirectedMulticastFromNetworkEnabledByApMac($apMac, $queryParameters));
     }
@@ -3861,7 +3861,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRogueApReportThresholdByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRogueApReportThresholdByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRogueApReportThresholdByApMac($apMac, $queryParameters));
     }
@@ -3876,7 +3876,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRogueApAggressivenessModeByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRogueApAggressivenessModeByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRogueApAggressivenessModeByApMac($apMac, $queryParameters));
     }
@@ -3891,7 +3891,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRogueApJammingThresholdByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRogueApJammingThresholdByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRogueApJammingThresholdByApMac($apMac, $queryParameters));
     }
@@ -3906,7 +3906,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsLteBandLockChannelsByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsLteBandLockChannelsByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsLteBandLockChannelsByApMac($apMac, $queryParameters));
     }
@@ -3921,7 +3921,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsRksGreForwardBroadcastByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsRksGreForwardBroadcastByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsRksGreForwardBroadcastByApMac($apMac, $queryParameters));
     }
@@ -3936,7 +3936,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApOperationalSummary
      */
-    public function findApsOperationalSummaryByApMac(string $apMac, array $queryParameters = [])
+    public function findApsOperationalSummaryByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApsOperationalSummaryByApMac($apMac, $queryParameters));
     }
@@ -3951,7 +3951,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteApsPictureByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsPictureByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsPictureByApMac($apMac, $queryParameters));
     }
@@ -3966,7 +3966,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findApsPictureByApMac(string $apMac, array $queryParameters = [])
+    public function findApsPictureByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApsPictureByApMac($apMac, $queryParameters));
     }
@@ -3985,7 +3985,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addApsPictureByApMac(string $apMac, array $queryParameters = [], array $formParameters = [])
+    public function addApsPictureByApMac(string $apMac, array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApsPictureByApMac($apMac, $queryParameters, $formParameters));
     }
@@ -4004,7 +4004,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApLinemanSummary
      */
-    public function findApsLineman(array $queryParameters = [])
+    public function findApsLineman(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApsLineman($queryParameters));
     }
@@ -4020,7 +4020,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addApsSwitchoverCluster(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSwitchoverAP $body, array $queryParameters = [])
+    public function addApsSwitchoverCluster(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSwitchoverAP $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApsSwitchoverCluster($body, $queryParameters));
     }
@@ -4035,7 +4035,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsGpsCoordinatesByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsGpsCoordinatesByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsGpsCoordinatesByApMac($apMac, $queryParameters));
     }
@@ -4050,7 +4050,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsSpecificByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsSpecificByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsSpecificByApMac($apMac, $queryParameters));
     }
@@ -4067,7 +4067,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateApsSpecificByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelApModel $body, array $queryParameters = [])
+    public function updateApsSpecificByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelApModel $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateApsSpecificByApMac($apMac, $body, $queryParameters));
     }
@@ -4082,7 +4082,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findApsSupportLogByApMac(string $apMac, array $queryParameters = [])
+    public function findApsSupportLogByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApsSupportLogByApMac($apMac, $queryParameters));
     }
@@ -4098,7 +4098,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addApsOperationalBlinkLedByApMac(string $apMac, array $queryParameters = [])
+    public function addApsOperationalBlinkLedByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApsOperationalBlinkLedByApMac($apMac, $queryParameters));
     }
@@ -4114,7 +4114,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApsByApMac(string $apMac, array $queryParameters = [])
+    public function deleteApsByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApsByApMac($apMac, $queryParameters));
     }
@@ -4129,7 +4129,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApConfiguration
      */
-    public function findApsByApMac(string $apMac, array $queryParameters = [])
+    public function findApsByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApsByApMac($apMac, $queryParameters));
     }
@@ -4146,7 +4146,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateApsByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyAP $body, array $queryParameters = [])
+    public function partialUpdateApsByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyAP $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateApsByApMac($apMac, $body, $queryParameters));
     }
@@ -4163,7 +4163,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateApsByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyAP $body, array $queryParameters = [])
+    public function updateApsByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApModifyAP $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateApsByApMac($apMac, $body, $queryParameters));
     }
@@ -4178,7 +4178,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingStatistic
      */
-    public function findApsBonjourFencingStatisticByApMac(string $apMac, array $queryParameters = [])
+    public function findApsBonjourFencingStatisticByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApsBonjourFencingStatisticByApMac($apMac, $queryParameters));
     }
@@ -4193,7 +4193,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findApsOperationalClientTotalCountByApMac(string $apMac, array $queryParameters = [])
+    public function findApsOperationalClientTotalCountByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApsOperationalClientTotalCountByApMac($apMac, $queryParameters));
     }
@@ -4210,7 +4210,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApNeighborAPList
      */
-    public function findApsOperationalNeighborByApMac(string $apMac, array $queryParameters = [])
+    public function findApsOperationalNeighborByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApsOperationalNeighborByApMac($apMac, $queryParameters));
     }
@@ -4226,7 +4226,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findApsTotalCount(array $queryParameters = [])
+    public function findApsTotalCount(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApsTotalCount($queryParameters));
     }
@@ -4242,7 +4242,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateApsRebootByApMac(string $apMac, array $queryParameters = [])
+    public function updateApsRebootByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateApsRebootByApMac($apMac, $queryParameters));
     }
@@ -4260,7 +4260,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApApListEntry
      */
-    public function findAps(array $queryParameters = [])
+    public function findAps(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAps($queryParameters));
     }
@@ -4276,7 +4276,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addAps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApCreateAP $body, array $queryParameters = [])
+    public function addAps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApCreateAP $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAps($body, $queryParameters));
     }
@@ -4292,7 +4292,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApMultipleMoveApMultipleMoveResponse
      */
-    public function addApsMove(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApMultipleMoveApMultipleMoveRequest $body, array $queryParameters = [])
+    public function addApsMove(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApMultipleMoveApMultipleMoveRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApsMove($body, $queryParameters));
     }
@@ -4308,7 +4308,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpNatProfilesDpNatPoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters = [])
+    public function deleteDpNatProfilesDpNatPoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpNatProfilesDpNatPoolsById($id, $body, $queryParameters));
     }
@@ -4323,7 +4323,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBOList
      */
-    public function findDpNatProfilesDpNatPoolsById(string $id, array $queryParameters = [])
+    public function findDpNatProfilesDpNatPoolsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpNatProfilesDpNatPoolsById($id, $queryParameters));
     }
@@ -4340,7 +4340,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO
      */
-    public function addDpNatProfilesDpNatPoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO $body, array $queryParameters = [])
+    public function addDpNatProfilesDpNatPoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddDpNatProfilesDpNatPoolsById($id, $body, $queryParameters));
     }
@@ -4355,7 +4355,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpNatProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters = [])
+    public function deleteDpNatProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpNatProfiles($body, $queryParameters));
     }
@@ -4369,7 +4369,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBOList
      */
-    public function findDpNatProfiles(array $queryParameters = [])
+    public function findDpNatProfiles(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpNatProfiles($queryParameters));
     }
@@ -4385,7 +4385,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO
      */
-    public function addDpNatProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO $body, array $queryParameters = [])
+    public function addDpNatProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddDpNatProfiles($body, $queryParameters));
     }
@@ -4400,7 +4400,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpNatProfilesById(string $id, array $queryParameters = [])
+    public function deleteDpNatProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpNatProfilesById($id, $queryParameters));
     }
@@ -4415,7 +4415,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO
      */
-    public function findDpNatProfilesById(string $id, array $queryParameters = [])
+    public function findDpNatProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpNatProfilesById($id, $queryParameters));
     }
@@ -4432,7 +4432,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO
      */
-    public function updateDpNatProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO $body, array $queryParameters = [])
+    public function updateDpNatProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfileBasicBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateDpNatProfilesById($id, $body, $queryParameters));
     }
@@ -4448,7 +4448,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, array $queryParameters = [])
+    public function deleteDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpNatProfilesDpNatPoolsByPoolId($id, $poolId, $queryParameters));
     }
@@ -4464,7 +4464,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO
      */
-    public function findDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, array $queryParameters = [])
+    public function findDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpNatProfilesDpNatPoolsByPoolId($id, $poolId, $queryParameters));
     }
@@ -4482,7 +4482,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO
      */
-    public function updateDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO $body, array $queryParameters = [])
+    public function updateDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpNatProfilePoolBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateDpNatProfilesDpNatPoolsByPoolId($id, $poolId, $body, $queryParameters));
     }
@@ -4496,7 +4496,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MulticastForwardingSetting
      */
-    public function findPlanesMulticastForwardingSetting(array $queryParameters = [])
+    public function findPlanesMulticastForwardingSetting(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindPlanesMulticastForwardingSetting($queryParameters));
     }
@@ -4512,7 +4512,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdatePlanesMulticastForwardingSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MulticastForwardingSetting $body, array $queryParameters = [])
+    public function partialUpdatePlanesMulticastForwardingSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MulticastForwardingSetting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdatePlanesMulticastForwardingSetting($body, $queryParameters));
     }
@@ -4527,7 +4527,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting
      */
-    public function findRkszonesEventEmailSettingsByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesEventEmailSettingsByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesEventEmailSettingsByZoneId($zoneId, $queryParameters));
     }
@@ -4544,7 +4544,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesEventEmailSettingsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting $body, array $queryParameters = [])
+    public function updateRkszonesEventEmailSettingsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesEventEmailSettingsByZoneId($zoneId, $body, $queryParameters));
     }
@@ -4559,7 +4559,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventDataResponse
      */
-    public function findRkszonesEventNotificationSettingsByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesEventNotificationSettingsByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesEventNotificationSettingsByZoneId($zoneId, $queryParameters));
     }
@@ -4576,7 +4576,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesEventNotificationSettingsByZoneId(string $zoneId, array $body, array $queryParameters = [])
+    public function updateRkszonesEventNotificationSettingsByZoneId(string $zoneId, array $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesEventNotificationSettingsByZoneId($zoneId, $body, $queryParameters));
     }
@@ -4592,7 +4592,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addGdprReport(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GdprReport $body, array $queryParameters = [])
+    public function addGdprReport(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GdprReport $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddGdprReport($body, $queryParameters));
     }
@@ -4608,7 +4608,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSmsList
      */
-    public function findSmsGatewayByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findSmsGatewayByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSmsGatewayByQueryCriteria($body, $queryParameters));
     }
@@ -4623,7 +4623,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSms
      */
-    public function findSmsGateway(array $queryParameters = [])
+    public function findSmsGateway(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSmsGateway($queryParameters));
     }
@@ -4639,7 +4639,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateSmsGateway(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSms $body, array $queryParameters = [])
+    public function partialUpdateSmsGateway(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSms $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSmsGateway($body, $queryParameters));
     }
@@ -4654,7 +4654,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesHs20OperatorsCertificateById(string $id, array $queryParameters = [])
+    public function deleteProfilesHs20OperatorsCertificateById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesHs20OperatorsCertificateById($id, $queryParameters));
     }
@@ -4669,7 +4669,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesHs20IdentityprovidersAccountingsById(string $id, array $queryParameters = [])
+    public function deleteProfilesHs20IdentityprovidersAccountingsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesHs20IdentityprovidersAccountingsById($id, $queryParameters));
     }
@@ -4684,7 +4684,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesHs20IdentityprovidersOsuById(string $id, array $queryParameters = [])
+    public function deleteProfilesHs20IdentityprovidersOsuById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesHs20IdentityprovidersOsuById($id, $queryParameters));
     }
@@ -4699,7 +4699,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesHs20Operators(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteProfilesHs20Operators(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesHs20Operators($body, $queryParameters));
     }
@@ -4715,7 +4715,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20OperatorList
      */
-    public function findProfilesHs20Operators(array $queryParameters = [])
+    public function findProfilesHs20Operators(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesHs20Operators($queryParameters));
     }
@@ -4731,7 +4731,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesHs20Operators(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator $body, array $queryParameters = [])
+    public function addProfilesHs20Operators(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesHs20Operators($body, $queryParameters));
     }
@@ -4747,7 +4747,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20OperatorList
      */
-    public function findProfilesHs20OperatorsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesHs20OperatorsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesHs20OperatorsByQueryCriteria($body, $queryParameters));
     }
@@ -4762,7 +4762,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesHs20OperatorsById(string $id, array $queryParameters = [])
+    public function deleteProfilesHs20OperatorsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesHs20OperatorsById($id, $queryParameters));
     }
@@ -4777,7 +4777,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator
      */
-    public function findProfilesHs20OperatorsById(string $id, array $queryParameters = [])
+    public function findProfilesHs20OperatorsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesHs20OperatorsById($id, $queryParameters));
     }
@@ -4794,7 +4794,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesHs20OperatorsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyHS20Operator $body, array $queryParameters = [])
+    public function partialUpdateProfilesHs20OperatorsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyHS20Operator $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesHs20OperatorsById($id, $body, $queryParameters));
     }
@@ -4811,7 +4811,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateProfilesHs20OperatorsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator $body, array $queryParameters = [])
+    public function updateProfilesHs20OperatorsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Operator $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateProfilesHs20OperatorsById($id, $body, $queryParameters));
     }
@@ -4826,7 +4826,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesHs20Identityproviders(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteProfilesHs20Identityproviders(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesHs20Identityproviders($body, $queryParameters));
     }
@@ -4842,7 +4842,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20ProviderList
      */
-    public function findProfilesHs20Identityproviders(array $queryParameters = [])
+    public function findProfilesHs20Identityproviders(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesHs20Identityproviders($queryParameters));
     }
@@ -4858,7 +4858,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesHs20Identityproviders(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider $body, array $queryParameters = [])
+    public function addProfilesHs20Identityproviders(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesHs20Identityproviders($body, $queryParameters));
     }
@@ -4874,7 +4874,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20ProviderList
      */
-    public function findProfilesHs20IdentityprovidersByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesHs20IdentityprovidersByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesHs20IdentityprovidersByQueryCriteria($body, $queryParameters));
     }
@@ -4889,7 +4889,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesHs20IdentityprovidersById(string $id, array $queryParameters = [])
+    public function deleteProfilesHs20IdentityprovidersById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesHs20IdentityprovidersById($id, $queryParameters));
     }
@@ -4904,7 +4904,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider
      */
-    public function findProfilesHs20IdentityprovidersById(string $id, array $queryParameters = [])
+    public function findProfilesHs20IdentityprovidersById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesHs20IdentityprovidersById($id, $queryParameters));
     }
@@ -4921,7 +4921,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesHs20IdentityprovidersById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider $body, array $queryParameters = [])
+    public function partialUpdateProfilesHs20IdentityprovidersById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileHs20Provider $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesHs20IdentityprovidersById($id, $body, $queryParameters));
     }
@@ -4937,7 +4937,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileIpsecProfileList
      */
-    public function findProfilesTunnelIpsecByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesTunnelIpsecByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesTunnelIpsecByQueryCriteria($body, $queryParameters));
     }
@@ -4952,7 +4952,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesTunnelIpsec(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteProfilesTunnelIpsec(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesTunnelIpsec($body, $queryParameters));
     }
@@ -4968,7 +4968,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
-    public function findProfilesTunnelIpsec(array $queryParameters = [])
+    public function findProfilesTunnelIpsec(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesTunnelIpsec($queryParameters));
     }
@@ -4984,7 +4984,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesTunnelIpsec(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateIpsecProfile $body, array $queryParameters = [])
+    public function addProfilesTunnelIpsec(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateIpsecProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesTunnelIpsec($body, $queryParameters));
     }
@@ -4999,7 +4999,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesTunnelIpsecById(string $id, array $queryParameters = [])
+    public function deleteProfilesTunnelIpsecById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesTunnelIpsecById($id, $queryParameters));
     }
@@ -5014,7 +5014,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileIpsecProfile
      */
-    public function findProfilesTunnelIpsecById(string $id, array $queryParameters = [])
+    public function findProfilesTunnelIpsecById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesTunnelIpsecById($id, $queryParameters));
     }
@@ -5031,7 +5031,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesTunnelIpsecById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyIpsecProfile $body, array $queryParameters = [])
+    public function partialUpdateProfilesTunnelIpsecById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyIpsecProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesTunnelIpsecById($id, $body, $queryParameters));
     }
@@ -5046,7 +5046,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesUtp(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkUserTrafficProfile $body, array $queryParameters = [])
+    public function deleteProfilesUtp(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkUserTrafficProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesUtp($body, $queryParameters));
     }
@@ -5062,7 +5062,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
-    public function findProfilesUtp(array $queryParameters = [])
+    public function findProfilesUtp(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesUtp($queryParameters));
     }
@@ -5078,7 +5078,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesUtp(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateUserTrafficProfile $body, array $queryParameters = [])
+    public function addProfilesUtp(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateUserTrafficProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesUtp($body, $queryParameters));
     }
@@ -5093,7 +5093,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesUtpById(string $id, array $queryParameters = [])
+    public function deleteProfilesUtpById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesUtpById($id, $queryParameters));
     }
@@ -5108,7 +5108,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUserTrafficProfile
      */
-    public function findProfilesUtpById(string $id, array $queryParameters = [])
+    public function findProfilesUtpById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesUtpById($id, $queryParameters));
     }
@@ -5125,7 +5125,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesUtpById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyUserTrafficProfile $body, array $queryParameters = [])
+    public function partialUpdateProfilesUtpById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyUserTrafficProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesUtpById($id, $body, $queryParameters));
     }
@@ -5142,7 +5142,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
      */
-    public function addProfilesUtpCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters = [])
+    public function addProfilesUtpCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesUtpCloneById($id, $body, $queryParameters));
     }
@@ -5158,7 +5158,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
-    public function findProfilesVdp(array $queryParameters = [])
+    public function findProfilesVdp(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesVdp($queryParameters));
     }
@@ -5173,7 +5173,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesVdpById(string $id, array $queryParameters = [])
+    public function deleteProfilesVdpById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesVdpById($id, $queryParameters));
     }
@@ -5188,7 +5188,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileVdpProfile
      */
-    public function findProfilesVdpById(string $id, array $queryParameters = [])
+    public function findProfilesVdpById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesVdpById($id, $queryParameters));
     }
@@ -5204,7 +5204,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateProfilesVdpApproveById(string $id, array $queryParameters = [])
+    public function updateProfilesVdpApproveById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateProfilesVdpApproveById($id, $queryParameters));
     }
@@ -5219,7 +5219,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesDnsserver(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteProfilesDnsserver(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesDnsserver($body, $queryParameters));
     }
@@ -5235,7 +5235,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfileList
      */
-    public function findProfilesDnsserver(array $queryParameters = [])
+    public function findProfilesDnsserver(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesDnsserver($queryParameters));
     }
@@ -5251,7 +5251,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesDnsserver(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDnsServerProfile $body, array $queryParameters = [])
+    public function addProfilesDnsserver(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDnsServerProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesDnsserver($body, $queryParameters));
     }
@@ -5266,7 +5266,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesDnsserverById(string $id, array $queryParameters = [])
+    public function deleteProfilesDnsserverById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesDnsserverById($id, $queryParameters));
     }
@@ -5281,7 +5281,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfile
      */
-    public function findProfilesDnsserverById(string $id, array $queryParameters = [])
+    public function findProfilesDnsserverById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesDnsserverById($id, $queryParameters));
     }
@@ -5298,7 +5298,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesDnsserverById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyDnsServerProfile $body, array $queryParameters = [])
+    public function partialUpdateProfilesDnsserverById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyDnsServerProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesDnsserverById($id, $body, $queryParameters));
     }
@@ -5315,7 +5315,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
      */
-    public function addProfilesDnsserverCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters = [])
+    public function addProfilesDnsserverCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesDnsserverCloneById($id, $body, $queryParameters));
     }
@@ -5331,7 +5331,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUserTrafficProfileList
      */
-    public function findProfilesUtpByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesUtpByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesUtpByQueryCriteria($body, $queryParameters));
     }
@@ -5346,7 +5346,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesUtpUplinkRateLimitingById(string $id, array $queryParameters = [])
+    public function deleteProfilesUtpUplinkRateLimitingById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesUtpUplinkRateLimitingById($id, $queryParameters));
     }
@@ -5361,7 +5361,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesUtpDownlinkRateLimitingById(string $id, array $queryParameters = [])
+    public function deleteProfilesUtpDownlinkRateLimitingById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesUtpDownlinkRateLimitingById($id, $queryParameters));
     }
@@ -5377,7 +5377,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDnsServerProfileList
      */
-    public function findProfilesDnsserverByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesDnsserverByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesDnsserverByQueryCriteria($body, $queryParameters));
     }
@@ -5393,7 +5393,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAuthenticationProfileList
      */
-    public function findProfilesAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesAuthByQueryCriteria($body, $queryParameters));
     }
@@ -5408,7 +5408,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesAuth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkAuthenticationProfile $body, array $queryParameters = [])
+    public function deleteProfilesAuth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkAuthenticationProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesAuth($body, $queryParameters));
     }
@@ -5422,7 +5422,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAuthenticationProfileList
      */
-    public function findProfilesAuth(array $queryParameters = [])
+    public function findProfilesAuth(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesAuth($queryParameters));
     }
@@ -5438,7 +5438,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesAuth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateAuthenticationProfile $body, array $queryParameters = [])
+    public function addProfilesAuth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateAuthenticationProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesAuth($body, $queryParameters));
     }
@@ -5453,7 +5453,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesAuthById(string $id, array $queryParameters = [])
+    public function deleteProfilesAuthById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesAuthById($id, $queryParameters));
     }
@@ -5468,7 +5468,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAuthenticationProfile
      */
-    public function findProfilesAuthById(string $id, array $queryParameters = [])
+    public function findProfilesAuthById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesAuthById($id, $queryParameters));
     }
@@ -5485,7 +5485,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesAuthById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyAuthenticationProfile $body, array $queryParameters = [])
+    public function partialUpdateProfilesAuthById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyAuthenticationProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesAuthById($id, $body, $queryParameters));
     }
@@ -5502,7 +5502,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
      */
-    public function addProfilesAuthCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters = [])
+    public function addProfilesAuthCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesAuthCloneById($id, $body, $queryParameters));
     }
@@ -5518,7 +5518,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAccountingProfileList
      */
-    public function findProfilesAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileQueryCriteriaWithProfileId $body, array $queryParameters = [])
+    public function findProfilesAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileQueryCriteriaWithProfileId $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesAcctByQueryCriteria($body, $queryParameters));
     }
@@ -5533,7 +5533,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesAcct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkAccountingProfile $body, array $queryParameters = [])
+    public function deleteProfilesAcct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkAccountingProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesAcct($body, $queryParameters));
     }
@@ -5547,7 +5547,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAccountingProfileList
      */
-    public function findProfilesAcct(array $queryParameters = [])
+    public function findProfilesAcct(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesAcct($queryParameters));
     }
@@ -5563,7 +5563,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesAcct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateAccountingProfile $body, array $queryParameters = [])
+    public function addProfilesAcct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateAccountingProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesAcct($body, $queryParameters));
     }
@@ -5577,7 +5577,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileGetL3RoamingConfig
      */
-    public function findProfilesTunnelL3Roaming(array $queryParameters = [])
+    public function findProfilesTunnelL3Roaming(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesTunnelL3Roaming($queryParameters));
     }
@@ -5593,7 +5593,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesTunnelL3Roaming(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdateL3RoamingConfig $body, array $queryParameters = [])
+    public function partialUpdateProfilesTunnelL3Roaming(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdateL3RoamingConfig $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesTunnelL3Roaming($body, $queryParameters));
     }
@@ -5608,7 +5608,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesBridge(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteProfilesBridge(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesBridge($body, $queryParameters));
     }
@@ -5622,7 +5622,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
-    public function findProfilesBridge(array $queryParameters = [])
+    public function findProfilesBridge(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesBridge($queryParameters));
     }
@@ -5638,7 +5638,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesBridge(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateBridgeProfile $body, array $queryParameters = [])
+    public function addProfilesBridge(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateBridgeProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesBridge($body, $queryParameters));
     }
@@ -5654,7 +5654,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBridgeProfileList
      */
-    public function findProfilesBridgeByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesBridgeByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesBridgeByQueryCriteria($body, $queryParameters));
     }
@@ -5669,7 +5669,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteProfilesBridgeById(string $id, array $queryParameters = [])
+    public function deleteProfilesBridgeById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesBridgeById($id, $queryParameters));
     }
@@ -5684,7 +5684,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBridgeProfile
      */
-    public function findProfilesBridgeById(string $id, array $queryParameters = [])
+    public function findProfilesBridgeById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesBridgeById($id, $queryParameters));
     }
@@ -5701,7 +5701,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesBridgeById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBridgeProfile $body, array $queryParameters = [])
+    public function partialUpdateProfilesBridgeById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBridgeProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesBridgeById($id, $body, $queryParameters));
     }
@@ -5717,7 +5717,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfileList
      */
-    public function findProfilesLbsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileQueryCriteriaWithProfileId $body, array $queryParameters = [])
+    public function findProfilesLbsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileQueryCriteriaWithProfileId $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesLbsByQueryCriteria($body, $queryParameters));
     }
@@ -5732,7 +5732,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesLbs(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteProfilesLbs(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesLbs($body, $queryParameters));
     }
@@ -5748,7 +5748,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesLbs(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfile $body, array $queryParameters = [])
+    public function addProfilesLbs(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesLbs($body, $queryParameters));
     }
@@ -5763,7 +5763,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesLbsById(string $id, array $queryParameters = [])
+    public function deleteProfilesLbsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesLbsById($id, $queryParameters));
     }
@@ -5778,7 +5778,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfile
      */
-    public function findProfilesLbsById(string $id, array $queryParameters = [])
+    public function findProfilesLbsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesLbsById($id, $queryParameters));
     }
@@ -5795,7 +5795,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesLbsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfile $body, array $queryParameters = [])
+    public function partialUpdateProfilesLbsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileLbsProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesLbsById($id, $body, $queryParameters));
     }
@@ -5810,7 +5810,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteProfilesDpGroupById(string $id, array $queryParameters = [])
+    public function deleteProfilesDpGroupById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesDpGroupById($id, $queryParameters));
     }
@@ -5825,7 +5825,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileReturnDPGroup
      */
-    public function findProfilesDpGroupById(string $id, array $queryParameters = [])
+    public function findProfilesDpGroupById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesDpGroupById($id, $queryParameters));
     }
@@ -5842,7 +5842,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesDpGroupById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyDPGroup $body, array $queryParameters = [])
+    public function partialUpdateProfilesDpGroupById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyDPGroup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesDpGroupById($id, $body, $queryParameters));
     }
@@ -5857,7 +5857,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDpGroupList
      */
-    public function findProfilesDpGroup(array $queryParameters = [])
+    public function findProfilesDpGroup(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesDpGroup($queryParameters));
     }
@@ -5873,7 +5873,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesDpGroup(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDPGroup $body, array $queryParameters = [])
+    public function addProfilesDpGroup(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDPGroup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesDpGroup($body, $queryParameters));
     }
@@ -5888,7 +5888,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesAcctById(string $id, array $queryParameters = [])
+    public function deleteProfilesAcctById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesAcctById($id, $queryParameters));
     }
@@ -5903,7 +5903,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileAccountingProfile
      */
-    public function findProfilesAcctById(string $id, array $queryParameters = [])
+    public function findProfilesAcctById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesAcctById($id, $queryParameters));
     }
@@ -5920,7 +5920,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesAcctById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyAccountingProfile $body, array $queryParameters = [])
+    public function partialUpdateProfilesAcctById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyAccountingProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesAcctById($id, $body, $queryParameters));
     }
@@ -5937,7 +5937,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone
      */
-    public function addProfilesAcctCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters = [])
+    public function addProfilesAcctCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileClone $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesAcctCloneById($id, $body, $queryParameters));
     }
@@ -5952,7 +5952,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesL2ogre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteProfilesL2ogre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesL2ogre($body, $queryParameters));
     }
@@ -5966,7 +5966,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
-    public function findProfilesL2ogre(array $queryParameters = [])
+    public function findProfilesL2ogre(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesL2ogre($queryParameters));
     }
@@ -5982,7 +5982,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesL2ogre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateL2oGREProfile $body, array $queryParameters = [])
+    public function addProfilesL2ogre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateL2oGREProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesL2ogre($body, $queryParameters));
     }
@@ -5998,7 +5998,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfileList
      */
-    public function findProfilesL2ogreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesL2ogreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesL2ogreByQueryCriteria($body, $queryParameters));
     }
@@ -6013,7 +6013,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteProfilesL2ogreById(string $id, array $queryParameters = [])
+    public function deleteProfilesL2ogreById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesL2ogreById($id, $queryParameters));
     }
@@ -6028,7 +6028,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL2oGREProfile
      */
-    public function findProfilesL2ogreById(string $id, array $queryParameters = [])
+    public function findProfilesL2ogreById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesL2ogreById($id, $queryParameters));
     }
@@ -6045,7 +6045,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesL2ogreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyL2oGREProfile $body, array $queryParameters = [])
+    public function partialUpdateProfilesL2ogreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyL2oGREProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesL2ogreById($id, $body, $queryParameters));
     }
@@ -6060,7 +6060,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesTunnelRuckusgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteProfilesTunnelRuckusgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesTunnelRuckusgre($body, $queryParameters));
     }
@@ -6074,7 +6074,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
-    public function findProfilesTunnelRuckusgre(array $queryParameters = [])
+    public function findProfilesTunnelRuckusgre(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesTunnelRuckusgre($queryParameters));
     }
@@ -6090,7 +6090,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesTunnelRuckusgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRuckusGREProfile $body, array $queryParameters = [])
+    public function addProfilesTunnelRuckusgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRuckusGREProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesTunnelRuckusgre($body, $queryParameters));
     }
@@ -6105,7 +6105,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteProfilesTunnelRuckusgreById(string $id, array $queryParameters = [])
+    public function deleteProfilesTunnelRuckusgreById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesTunnelRuckusgreById($id, $queryParameters));
     }
@@ -6120,7 +6120,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRuckusGREProfile
      */
-    public function findProfilesTunnelRuckusgreById(string $id, array $queryParameters = [])
+    public function findProfilesTunnelRuckusgreById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesTunnelRuckusgreById($id, $queryParameters));
     }
@@ -6137,7 +6137,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesTunnelRuckusgreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyRuckusGREProfile $body, array $queryParameters = [])
+    public function partialUpdateProfilesTunnelRuckusgreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyRuckusGREProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesTunnelRuckusgreById($id, $body, $queryParameters));
     }
@@ -6153,7 +6153,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRuckusGREProfileList
      */
-    public function findProfilesTunnelRuckusgreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesTunnelRuckusgreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesTunnelRuckusgreByQueryCriteria($body, $queryParameters));
     }
@@ -6168,7 +6168,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesTunnelSoftgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteProfilesTunnelSoftgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesTunnelSoftgre($body, $queryParameters));
     }
@@ -6182,7 +6182,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileList
      */
-    public function findProfilesTunnelSoftgre(array $queryParameters = [])
+    public function findProfilesTunnelSoftgre(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesTunnelSoftgre($queryParameters));
     }
@@ -6198,7 +6198,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addProfilesTunnelSoftgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateSoftGREProfile $body, array $queryParameters = [])
+    public function addProfilesTunnelSoftgre(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateSoftGREProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddProfilesTunnelSoftgre($body, $queryParameters));
     }
@@ -6213,7 +6213,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteProfilesTunnelSoftgreById(string $id, array $queryParameters = [])
+    public function deleteProfilesTunnelSoftgreById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteProfilesTunnelSoftgreById($id, $queryParameters));
     }
@@ -6228,7 +6228,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileSoftGREProfile
      */
-    public function findProfilesTunnelSoftgreById(string $id, array $queryParameters = [])
+    public function findProfilesTunnelSoftgreById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesTunnelSoftgreById($id, $queryParameters));
     }
@@ -6245,7 +6245,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateProfilesTunnelSoftgreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifySoftGREProfile $body, array $queryParameters = [])
+    public function partialUpdateProfilesTunnelSoftgreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifySoftGREProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateProfilesTunnelSoftgreById($id, $body, $queryParameters));
     }
@@ -6261,7 +6261,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileSoftGREProfileList
      */
-    public function findProfilesTunnelSoftgreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesTunnelSoftgreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesTunnelSoftgreByQueryCriteria($body, $queryParameters));
     }
@@ -6277,7 +6277,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList
      */
-    public function findProfilesAuthAuthServiceListByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findProfilesAuthAuthServiceListByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesAuthAuthServiceListByQueryCriteria($body, $queryParameters));
     }
@@ -6292,7 +6292,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBaseServiceInfoList
      */
-    public function findProfilesAuthAuthorizationList(array $queryParameters = [])
+    public function findProfilesAuthAuthorizationList(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindProfilesAuthAuthorizationList($queryParameters));
     }
@@ -6308,7 +6308,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileEmptyResult
      */
-    public function deleteRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileDeleteBulk $body, array $queryParameters = [])
+    public function deleteRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesVendorSpecificAttributeProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -6323,7 +6323,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileList
      */
-    public function findRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesVendorSpecificAttributeProfilesByZoneId($zoneId, $queryParameters));
     }
@@ -6340,7 +6340,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileCreateResult
      */
-    public function addRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfilePersist $body, array $queryParameters = [])
+    public function addRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfilePersist $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesVendorSpecificAttributeProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -6356,7 +6356,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileEmptyResult
      */
-    public function deleteRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesVendorSpecificAttributeProfilesById($zoneId, $id, $queryParameters));
     }
@@ -6372,7 +6372,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileGet
      */
-    public function findRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesVendorSpecificAttributeProfilesById($zoneId, $id, $queryParameters));
     }
@@ -6390,7 +6390,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileEmptyResult
      */
-    public function updateRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfilePersist $body, array $queryParameters = [])
+    public function updateRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfilePersist $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesVendorSpecificAttributeProfilesById($zoneId, $id, $body, $queryParameters));
     }
@@ -6406,7 +6406,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VendorSpecificAttributeProfileQueryCriteriaResult
      */
-    public function findRkszonesVendorSpecificAttributeProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findRkszonesVendorSpecificAttributeProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesVendorSpecificAttributeProfilesByQueryCriteria($body, $queryParameters));
     }
@@ -6422,7 +6422,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addNorthboundDataStreamingProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingCreateNorthboundDataStreamingProfile $body, array $queryParameters = [])
+    public function addNorthboundDataStreamingProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingCreateNorthboundDataStreamingProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddNorthboundDataStreamingProfile($body, $queryParameters));
     }
@@ -6436,7 +6436,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingEventCodes
      */
-    public function findNorthboundDataStreamingEventCodes(array $queryParameters = [])
+    public function findNorthboundDataStreamingEventCodes(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindNorthboundDataStreamingEventCodes($queryParameters));
     }
@@ -6452,7 +6452,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateNorthboundDataStreamingEventCodes(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingEventCodes $body, array $queryParameters = [])
+    public function updateNorthboundDataStreamingEventCodes(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingEventCodes $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateNorthboundDataStreamingEventCodes($body, $queryParameters));
     }
@@ -6468,7 +6468,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateNorthboundDataStreamingSettings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingSettings $body, array $queryParameters = [])
+    public function updateNorthboundDataStreamingSettings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingSettings $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateNorthboundDataStreamingSettings($body, $queryParameters));
     }
@@ -6483,7 +6483,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteNorthboundDataStreamingProfileById(string $id, array $queryParameters = [])
+    public function deleteNorthboundDataStreamingProfileById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteNorthboundDataStreamingProfileById($id, $queryParameters));
     }
@@ -6498,7 +6498,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingProfile
      */
-    public function findNorthboundDataStreamingProfileById(string $id, array $queryParameters = [])
+    public function findNorthboundDataStreamingProfileById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindNorthboundDataStreamingProfileById($id, $queryParameters));
     }
@@ -6515,7 +6515,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateNorthboundDataStreamingProfileById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingProfile $body, array $queryParameters = [])
+    public function updateNorthboundDataStreamingProfileById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingModifyNorthboundDataStreamingProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateNorthboundDataStreamingProfileById($id, $body, $queryParameters));
     }
@@ -6529,7 +6529,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\NorthboundDataStreamingNorthboundDataStreamingProfileList
      */
-    public function findNorthboundDataStreamingProfileList(array $queryParameters = [])
+    public function findNorthboundDataStreamingProfileList(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindNorthboundDataStreamingProfileList($queryParameters));
     }
@@ -6544,7 +6544,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteWifiCallingWifiCallingPolicyById(string $id, array $queryParameters = [])
+    public function deleteWifiCallingWifiCallingPolicyById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteWifiCallingWifiCallingPolicyById($id, $queryParameters));
     }
@@ -6559,7 +6559,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicy
      */
-    public function findWifiCallingWifiCallingPolicyById(string $id, array $queryParameters = [])
+    public function findWifiCallingWifiCallingPolicyById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindWifiCallingWifiCallingPolicyById($id, $queryParameters));
     }
@@ -6576,7 +6576,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateWifiCallingWifiCallingPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingModifyWifiCallingPolicy $body, array $queryParameters = [])
+    public function partialUpdateWifiCallingWifiCallingPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingModifyWifiCallingPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateWifiCallingWifiCallingPolicyById($id, $body, $queryParameters));
     }
@@ -6593,7 +6593,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateWifiCallingWifiCallingPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingModifyWifiCallingPolicy $body, array $queryParameters = [])
+    public function updateWifiCallingWifiCallingPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingModifyWifiCallingPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateWifiCallingWifiCallingPolicyById($id, $body, $queryParameters));
     }
@@ -6608,7 +6608,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteWifiCallingWifiCallingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingDeleteBulk $body, array $queryParameters = [])
+    public function deleteWifiCallingWifiCallingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteWifiCallingWifiCallingPolicy($body, $queryParameters));
     }
@@ -6625,7 +6625,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicyList
      */
-    public function findWifiCallingWifiCallingPolicy(array $queryParameters = [])
+    public function findWifiCallingWifiCallingPolicy(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindWifiCallingWifiCallingPolicy($queryParameters));
     }
@@ -6641,7 +6641,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addWifiCallingWifiCallingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingCreateWifiCallingPolicy $body, array $queryParameters = [])
+    public function addWifiCallingWifiCallingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingCreateWifiCallingPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddWifiCallingWifiCallingPolicy($body, $queryParameters));
     }
@@ -6657,7 +6657,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WifiCallingWifiCallingPolicyList
      */
-    public function findWifiCallingByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findWifiCallingByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindWifiCallingByQueryCriteria($body, $queryParameters));
     }
@@ -6672,7 +6672,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DhcppoolsDhcpPools
      */
-    public function findDhcpDataDhcpPoolsByApMac(string $apMac, array $queryParameters = [])
+    public function findDhcpDataDhcpPoolsByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDhcpDataDhcpPoolsByApMac($apMac, $queryParameters));
     }
@@ -6688,7 +6688,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DhcppoolsDhcpPoolInfo
      */
-    public function findDhcpDataDhcpPoolsByPoolIndex(string $apMac, string $poolIndex, array $queryParameters = [])
+    public function findDhcpDataDhcpPoolsByPoolIndex(string $apMac, string $poolIndex, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDhcpDataDhcpPoolsByPoolIndex($apMac, $poolIndex, $queryParameters));
     }
@@ -6703,7 +6703,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DhcpMsgStatsDhcpMsgStats
      */
-    public function findDhcpDataDhcpMsgStatsByApMac(string $apMac, array $queryParameters = [])
+    public function findDhcpDataDhcpMsgStatsByApMac(string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDhcpDataDhcpMsgStatsByApMac($apMac, $queryParameters));
     }
@@ -6717,7 +6717,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findLinemanWorkflow(array $queryParameters = [])
+    public function findLinemanWorkflow(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindLinemanWorkflow($queryParameters));
     }
@@ -6735,7 +6735,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateLinemanWorkflow(array $queryParameters = [], array $formParameters = [])
+    public function updateLinemanWorkflow(array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateLinemanWorkflow($queryParameters, $formParameters));
     }
@@ -6751,7 +6751,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio24gById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio24gById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio24gById($zoneId, $id, $queryParameters));
     }
@@ -6767,7 +6767,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gById($zoneId, $id, $queryParameters));
     }
@@ -6783,7 +6783,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gLowerById($zoneId, $id, $queryParameters));
     }
@@ -6799,7 +6799,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gUpperById($zoneId, $id, $queryParameters));
     }
@@ -6815,7 +6815,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gById($zoneId, $id, $queryParameters));
     }
@@ -6831,7 +6831,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio24gTxPowerById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio24gTxPowerById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio24gTxPowerById($zoneId, $id, $queryParameters));
     }
@@ -6847,7 +6847,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gTxPowerById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gTxPowerById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gTxPowerById($zoneId, $id, $queryParameters));
     }
@@ -6863,7 +6863,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerTxPowerById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerTxPowerById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gLowerTxPowerById($zoneId, $id, $queryParameters));
     }
@@ -6879,7 +6879,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperTxPowerById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperTxPowerById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gUpperTxPowerById($zoneId, $id, $queryParameters));
     }
@@ -6895,7 +6895,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gTxPowerById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gTxPowerById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gTxPowerById($zoneId, $id, $queryParameters));
     }
@@ -6911,7 +6911,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio24gChannelWidthById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio24gChannelWidthById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio24gChannelWidthById($zoneId, $id, $queryParameters));
     }
@@ -6927,7 +6927,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio24gChannelById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio24gChannelById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio24gChannelById($zoneId, $id, $queryParameters));
     }
@@ -6943,7 +6943,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio24gChannelRangeById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio24gChannelRangeById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio24gChannelRangeById($zoneId, $id, $queryParameters));
     }
@@ -6959,7 +6959,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gChannelWidthById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gChannelWidthById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gChannelWidthById($zoneId, $id, $queryParameters));
     }
@@ -6975,7 +6975,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gChannelIndoorById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gChannelIndoorById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gChannelIndoorById($zoneId, $id, $queryParameters));
     }
@@ -6991,7 +6991,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gChannelById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gChannelById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gChannelById($zoneId, $id, $queryParameters));
     }
@@ -7007,7 +7007,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeIndoorById($zoneId, $id, $queryParameters));
     }
@@ -7023,7 +7023,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gChannelRangeById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gChannelRangeById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeById($zoneId, $id, $queryParameters));
     }
@@ -7039,7 +7039,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelWidthById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelWidthById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelWidthById($zoneId, $id, $queryParameters));
     }
@@ -7055,7 +7055,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelIndoorById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelIndoorById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelIndoorById($zoneId, $id, $queryParameters));
     }
@@ -7071,7 +7071,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelById($zoneId, $id, $queryParameters));
     }
@@ -7087,7 +7087,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorById($zoneId, $id, $queryParameters));
     }
@@ -7103,7 +7103,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeById($zoneId, $id, $queryParameters));
     }
@@ -7119,7 +7119,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelWidthById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelWidthById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelWidthById($zoneId, $id, $queryParameters));
     }
@@ -7135,7 +7135,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelIndoorById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelIndoorById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelIndoorById($zoneId, $id, $queryParameters));
     }
@@ -7151,7 +7151,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelById($zoneId, $id, $queryParameters));
     }
@@ -7167,7 +7167,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeIndoorById($zoneId, $id, $queryParameters));
     }
@@ -7183,7 +7183,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeById($zoneId, $id, $queryParameters));
     }
@@ -7199,7 +7199,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gChannelWidthById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gChannelWidthById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gChannelWidthById($zoneId, $id, $queryParameters));
     }
@@ -7215,7 +7215,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gChannelById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gChannelById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gChannelById($zoneId, $id, $queryParameters));
     }
@@ -7231,7 +7231,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gChannelRangeById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gChannelRangeById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeById($zoneId, $id, $queryParameters));
     }
@@ -7247,7 +7247,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio24gWlanGroupIdById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio24gWlanGroupIdById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio24gWlanGroupIdById($zoneId, $id, $queryParameters));
     }
@@ -7263,7 +7263,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gWlanGroupIdById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gWlanGroupIdById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gWlanGroupIdById($zoneId, $id, $queryParameters));
     }
@@ -7279,7 +7279,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdById($zoneId, $id, $queryParameters));
     }
@@ -7295,7 +7295,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperWlanGroupIdById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperWlanGroupIdById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gUpperWlanGroupIdById($zoneId, $id, $queryParameters));
     }
@@ -7311,7 +7311,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gWlanGroupIdById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gWlanGroupIdById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gWlanGroupIdById($zoneId, $id, $queryParameters));
     }
@@ -7327,7 +7327,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gBssMinRateById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gBssMinRateById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gBssMinRateById($zoneId, $id, $queryParameters));
     }
@@ -7343,7 +7343,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gMgmtTxRateById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gMgmtTxRateById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gMgmtTxRateById($zoneId, $id, $queryParameters));
     }
@@ -7359,7 +7359,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gMulticastUplinkRateLimitById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gMulticastUplinkRateLimitById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastUplinkRateLimitById($zoneId, $id, $queryParameters));
     }
@@ -7375,7 +7375,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gMulticastDownlinkRateLimitById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gMulticastDownlinkRateLimitById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastDownlinkRateLimitById($zoneId, $id, $queryParameters));
     }
@@ -7391,7 +7391,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio24gProtectionModeById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio24gProtectionModeById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio24gProtectionModeById($zoneId, $id, $queryParameters));
     }
@@ -7407,7 +7407,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio24gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio24gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio24gAutoChannelSelectionById($zoneId, $id, $queryParameters));
     }
@@ -7423,7 +7423,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gAutoChannelSelectionById($zoneId, $id, $queryParameters));
     }
@@ -7439,7 +7439,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gLowerAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gLowerAutoChannelSelectionById($zoneId, $id, $queryParameters));
     }
@@ -7455,7 +7455,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio5gUpperAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio5gUpperAutoChannelSelectionById($zoneId, $id, $queryParameters));
     }
@@ -7471,7 +7471,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRadioConfigRadio6gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRadioConfigRadio6gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRadioConfigRadio6gAutoChannelSelectionById($zoneId, $id, $queryParameters));
     }
@@ -7487,7 +7487,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRecoverySsidById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRecoverySsidById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRecoverySsidById($zoneId, $id, $queryParameters));
     }
@@ -7503,7 +7503,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsDirectedMulticastFromWiredClientEnabledById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsDirectedMulticastFromWiredClientEnabledById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsDirectedMulticastFromWiredClientEnabledById($zoneId, $id, $queryParameters));
     }
@@ -7519,7 +7519,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsDirectedMulticastFromWirelessClientEnabledById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsDirectedMulticastFromWirelessClientEnabledById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsDirectedMulticastFromWirelessClientEnabledById($zoneId, $id, $queryParameters));
     }
@@ -7535,7 +7535,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsDirectedMulticastFromNetworkEnabledById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsDirectedMulticastFromNetworkEnabledById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsDirectedMulticastFromNetworkEnabledById($zoneId, $id, $queryParameters));
     }
@@ -7551,7 +7551,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRogueApReportThresholdById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRogueApReportThresholdById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRogueApReportThresholdById($zoneId, $id, $queryParameters));
     }
@@ -7567,7 +7567,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRogueApAggressivenessModeById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRogueApAggressivenessModeById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRogueApAggressivenessModeById($zoneId, $id, $queryParameters));
     }
@@ -7583,7 +7583,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRogueApJammingThresholdById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRogueApJammingThresholdById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRogueApJammingThresholdById($zoneId, $id, $queryParameters));
     }
@@ -7599,7 +7599,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsLteBandLockChannelsById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsLteBandLockChannelsById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsLteBandLockChannelsById($zoneId, $id, $queryParameters));
     }
@@ -7615,7 +7615,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsRksGreForwardBroadcastById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsRksGreForwardBroadcastById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsRksGreForwardBroadcastById($zoneId, $id, $queryParameters));
     }
@@ -7631,7 +7631,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsAwsVenueById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsAwsVenueById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsAwsVenueById($zoneId, $id, $queryParameters));
     }
@@ -7648,7 +7648,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, array $queryParameters = [])
+    public function deleteRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsApmodelByModel($zoneId, $id, $model, $queryParameters));
     }
@@ -7665,7 +7665,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel
      */
-    public function findRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, array $queryParameters = [])
+    public function findRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesApgroupsApmodelByModel($zoneId, $id, $model, $queryParameters));
     }
@@ -7684,7 +7684,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel $body, array $queryParameters = [])
+    public function updateRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesApgroupsApmodelByModel($zoneId, $id, $model, $body, $queryParameters));
     }
@@ -7700,7 +7700,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsById($zoneId, $id, $queryParameters));
     }
@@ -7716,7 +7716,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupConfiguration
      */
-    public function findRkszonesApgroupsById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesApgroupsById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesApgroupsById($zoneId, $id, $queryParameters));
     }
@@ -7734,7 +7734,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesApgroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupModifyAPGroup $body, array $queryParameters = [])
+    public function partialUpdateRkszonesApgroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupModifyAPGroup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesApgroupsById($zoneId, $id, $body, $queryParameters));
     }
@@ -7752,7 +7752,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesApgroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupModifyAPGroup $body, array $queryParameters = [])
+    public function updateRkszonesApgroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupModifyAPGroup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesApgroupsById($zoneId, $id, $body, $queryParameters));
     }
@@ -7768,7 +7768,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsLocationById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsLocationById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsLocationById($zoneId, $id, $queryParameters));
     }
@@ -7784,7 +7784,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsLocationAdditionalInfoById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsLocationAdditionalInfoById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsLocationAdditionalInfoById($zoneId, $id, $queryParameters));
     }
@@ -7800,7 +7800,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsLocationBasedServiceById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsLocationBasedServiceById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsLocationBasedServiceById($zoneId, $id, $queryParameters));
     }
@@ -7816,7 +7816,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsClientAdmissionControl24ById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsClientAdmissionControl24ById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsClientAdmissionControl24ById($zoneId, $id, $queryParameters));
     }
@@ -7832,7 +7832,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsClientAdmissionControl50ById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsClientAdmissionControl50ById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsClientAdmissionControl50ById($zoneId, $id, $queryParameters));
     }
@@ -7848,7 +7848,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsVenueProfileById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsVenueProfileById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsVenueProfileById($zoneId, $id, $queryParameters));
     }
@@ -7864,7 +7864,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsChannelEvaluationIntervalById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsChannelEvaluationIntervalById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsChannelEvaluationIntervalById($zoneId, $id, $queryParameters));
     }
@@ -7880,7 +7880,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsApMgmtVlanById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsApMgmtVlanById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsApMgmtVlanById($zoneId, $id, $queryParameters));
     }
@@ -7896,7 +7896,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsAltitudeById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsAltitudeById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsAltitudeById($zoneId, $id, $queryParameters));
     }
@@ -7913,7 +7913,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsMembersByApMac(string $zoneId, string $id, string $apMac, array $queryParameters = [])
+    public function deleteRkszonesApgroupsMembersByApMac(string $zoneId, string $id, string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsMembersByApMac($zoneId, $id, $apMac, $queryParameters));
     }
@@ -7931,7 +7931,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addRkszonesApgroupsMembersByApMac(string $zoneId, string $id, string $apMac, array $queryParameters = [])
+    public function addRkszonesApgroupsMembersByApMac(string $zoneId, string $id, string $apMac, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesApgroupsMembersByApMac($zoneId, $id, $apMac, $queryParameters));
     }
@@ -7947,7 +7947,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesApgroupsProtectionMode24ById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesApgroupsProtectionMode24ById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesApgroupsProtectionMode24ById($zoneId, $id, $queryParameters));
     }
@@ -7965,7 +7965,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addRkszonesApgroupsMembersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupAddMembers $body, array $queryParameters = [])
+    public function addRkszonesApgroupsMembersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupAddMembers $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesApgroupsMembersById($zoneId, $id, $body, $queryParameters));
     }
@@ -7982,7 +7982,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupList
      */
-    public function findRkszonesApgroupsByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesApgroupsByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesApgroupsByZoneId($zoneId, $queryParameters));
     }
@@ -7999,7 +7999,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesApgroupsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupCreateAPGroup $body, array $queryParameters = [])
+    public function addRkszonesApgroupsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupCreateAPGroup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesApgroupsByZoneId($zoneId, $body, $queryParameters));
     }
@@ -8014,7 +8014,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupApGroupConfiguration
      */
-    public function findRkszonesApgroupsDefaultByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesApgroupsDefaultByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesApgroupsDefaultByZoneId($zoneId, $queryParameters));
     }
@@ -8029,7 +8029,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteIdentityUserrole(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityDeleteBulk $body, array $queryParameters = [])
+    public function deleteIdentityUserrole(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteIdentityUserrole($body, $queryParameters));
     }
@@ -8043,7 +8043,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityList
      */
-    public function findIdentityUserrole(array $queryParameters = [])
+    public function findIdentityUserrole(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIdentityUserrole($queryParameters));
     }
@@ -8059,7 +8059,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addIdentityUserrole(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityUserRole $body, array $queryParameters = [])
+    public function addIdentityUserrole(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityUserRole $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddIdentityUserrole($body, $queryParameters));
     }
@@ -8074,7 +8074,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteIdentityUserroleById(string $id, array $queryParameters = [])
+    public function deleteIdentityUserroleById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteIdentityUserroleById($id, $queryParameters));
     }
@@ -8089,7 +8089,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityUserRole
      */
-    public function findIdentityUserroleById(string $id, array $queryParameters = [])
+    public function findIdentityUserroleById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIdentityUserroleById($id, $queryParameters));
     }
@@ -8106,7 +8106,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateIdentityUserroleById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyIdentityUserRole $body, array $queryParameters = [])
+    public function partialUpdateIdentityUserroleById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyIdentityUserRole $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateIdentityUserroleById($id, $body, $queryParameters));
     }
@@ -8121,7 +8121,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteIdentityUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityDeleteBulk $body, array $queryParameters = [])
+    public function deleteIdentityUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteIdentityUsers($body, $queryParameters));
     }
@@ -8149,7 +8149,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserList
      */
-    public function findIdentityUsers(array $queryParameters = [])
+    public function findIdentityUsers(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIdentityUsers($queryParameters));
     }
@@ -8165,7 +8165,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addIdentityUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser $body, array $queryParameters = [])
+    public function addIdentityUsers(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateUser $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddIdentityUsers($body, $queryParameters));
     }
@@ -8180,7 +8180,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteIdentityUsersById(string $id, array $queryParameters = [])
+    public function deleteIdentityUsersById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteIdentityUsersById($id, $queryParameters));
     }
@@ -8195,7 +8195,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserConfiguration
      */
-    public function findIdentityUsersById(string $id, array $queryParameters = [])
+    public function findIdentityUsersById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIdentityUsersById($id, $queryParameters));
     }
@@ -8212,7 +8212,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateIdentityUsersById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyUser $body, array $queryParameters = [])
+    public function partialUpdateIdentityUsersById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyUser $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateIdentityUsersById($id, $body, $queryParameters));
     }
@@ -8228,7 +8228,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addIdentityGuestpassUploadCommon(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityImportIdentityGuestPass $body, array $queryParameters = [])
+    public function addIdentityGuestpassUploadCommon(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityImportIdentityGuestPass $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddIdentityGuestpassUploadCommon($body, $queryParameters));
     }
@@ -8243,7 +8243,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteIdentityGuestpass(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityDeleteBulk $body, array $queryParameters = [])
+    public function deleteIdentityGuestpass(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteIdentityGuestpass($body, $queryParameters));
     }
@@ -8266,7 +8266,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityGuestPassList
      */
-    public function findIdentityGuestpass(array $queryParameters = [])
+    public function findIdentityGuestpass(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIdentityGuestpass($queryParameters));
     }
@@ -8281,7 +8281,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteIdentityGuestpassByUserId(string $userId, array $queryParameters = [])
+    public function deleteIdentityGuestpassByUserId(string $userId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteIdentityGuestpassByUserId($userId, $queryParameters));
     }
@@ -8298,7 +8298,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateIdentityGuestpassByUserId(string $userId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyGuestPass $body, array $queryParameters = [])
+    public function partialUpdateIdentityGuestpassByUserId(string $userId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifyGuestPass $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateIdentityGuestpassByUserId($userId, $body, $queryParameters));
     }
@@ -8314,7 +8314,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList
      */
-    public function addIdentityPackageList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters = [])
+    public function addIdentityPackageList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddIdentityPackageList($body, $queryParameters));
     }
@@ -8330,7 +8330,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityGuestPassList
      */
-    public function addIdentityGuestpassList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters = [])
+    public function addIdentityGuestpassList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddIdentityGuestpassList($body, $queryParameters));
     }
@@ -8345,7 +8345,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteIdentityPackages(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityDeleteBulk $body, array $queryParameters = [])
+    public function deleteIdentityPackages(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteIdentityPackages($body, $queryParameters));
     }
@@ -8359,7 +8359,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackageList
      */
-    public function findIdentityPackages(array $queryParameters = [])
+    public function findIdentityPackages(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIdentityPackages($queryParameters));
     }
@@ -8375,7 +8375,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addIdentityPackages(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateSubscriptionPackage $body, array $queryParameters = [])
+    public function addIdentityPackages(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateSubscriptionPackage $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddIdentityPackages($body, $queryParameters));
     }
@@ -8390,7 +8390,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteIdentityPackagesById(string $id, array $queryParameters = [])
+    public function deleteIdentityPackagesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteIdentityPackagesById($id, $queryParameters));
     }
@@ -8405,7 +8405,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentitySubscriptionPackage
      */
-    public function findIdentityPackagesById(string $id, array $queryParameters = [])
+    public function findIdentityPackagesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIdentityPackagesById($id, $queryParameters));
     }
@@ -8422,7 +8422,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateIdentityPackagesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifySubscriptionPackage $body, array $queryParameters = [])
+    public function partialUpdateIdentityPackagesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityModifySubscriptionPackage $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateIdentityPackagesById($id, $body, $queryParameters));
     }
@@ -8440,7 +8440,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addIdentityGuestpassUpload(array $queryParameters = [], array $formParameters = [])
+    public function addIdentityGuestpassUpload(array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddIdentityGuestpassUpload($queryParameters, $formParameters));
     }
@@ -8454,7 +8454,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityAaaServerList
      */
-    public function findIdentityUsersAaaserver(array $queryParameters = [])
+    public function findIdentityUsersAaaserver(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIdentityUsersAaaserver($queryParameters));
     }
@@ -8470,7 +8470,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addIdentityGuestpassGenerate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityGuestPass $body, array $queryParameters = [])
+    public function addIdentityGuestpassGenerate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCreateIdentityGuestPass $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddIdentityGuestpassGenerate($body, $queryParameters));
     }
@@ -8484,7 +8484,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityPackageList
      */
-    public function findIdentityUsersPackages(array $queryParameters = [])
+    public function findIdentityUsersPackages(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIdentityUsersPackages($queryParameters));
     }
@@ -8498,7 +8498,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityCountryList
      */
-    public function findIdentityUsersCountries(array $queryParameters = [])
+    public function findIdentityUsersCountries(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindIdentityUsersCountries($queryParameters));
     }
@@ -8514,7 +8514,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityIdentityList
      */
-    public function addIdentityUserRoleList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters = [])
+    public function addIdentityUserRoleList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddIdentityUserRoleList($body, $queryParameters));
     }
@@ -8530,7 +8530,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityUserList
      */
-    public function addIdentityUserList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters = [])
+    public function addIdentityUserList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IdentityQueryCriteria $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddIdentityUserList($body, $queryParameters));
     }
@@ -8546,7 +8546,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addClientsBulkDisconnect(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClientList $body, array $queryParameters = [])
+    public function addClientsBulkDisconnect(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClientList $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddClientsBulkDisconnect($body, $queryParameters));
     }
@@ -8563,7 +8563,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientQueryClientQueryList
      */
-    public function addClientsByWlanNameByWlanname(string $wlanname, mixed $body, array $queryParameters = [])
+    public function addClientsByWlanNameByWlanname(string $wlanname, mixed $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddClientsByWlanNameByWlanname($wlanname, $body, $queryParameters));
     }
@@ -8579,7 +8579,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addClientsBulkDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClientList $body, array $queryParameters = [])
+    public function addClientsBulkDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClientList $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddClientsBulkDeauth($body, $queryParameters));
     }
@@ -8595,7 +8595,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addClientsDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClient $body, array $queryParameters = [])
+    public function addClientsDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClient $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddClientsDeauth($body, $queryParameters));
     }
@@ -8611,7 +8611,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addClientsDisconnect(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClient $body, array $queryParameters = [])
+    public function addClientsDisconnect(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDisconnectClient $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddClientsDisconnect($body, $queryParameters));
     }
@@ -8627,7 +8627,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL3AccessControlPolicyArray
      */
-    public function findL3AccessControlPoliciesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findL3AccessControlPoliciesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindL3AccessControlPoliciesByQueryCriteria($body, $queryParameters));
     }
@@ -8642,7 +8642,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteL3AccessControlPoliciesById(string $id, array $queryParameters = [])
+    public function deleteL3AccessControlPoliciesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteL3AccessControlPoliciesById($id, $queryParameters));
     }
@@ -8657,7 +8657,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileL3AccessControlPolicy
      */
-    public function findL3AccessControlPoliciesById(string $id, array $queryParameters = [])
+    public function findL3AccessControlPoliciesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindL3AccessControlPoliciesById($id, $queryParameters));
     }
@@ -8674,7 +8674,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateL3AccessControlPoliciesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyL3AccessControlPolicy $body, array $queryParameters = [])
+    public function updateL3AccessControlPoliciesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyL3AccessControlPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateL3AccessControlPoliciesById($id, $body, $queryParameters));
     }
@@ -8689,7 +8689,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteL3AccessControlPolicies(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteL3AccessControlPolicies(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteL3AccessControlPolicies($body, $queryParameters));
     }
@@ -8706,7 +8706,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileIdList
      */
-    public function findL3AccessControlPolicies(array $queryParameters = [])
+    public function findL3AccessControlPolicies(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindL3AccessControlPolicies($queryParameters));
     }
@@ -8722,7 +8722,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addL3AccessControlPolicies(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateL3AccessControlPolicy $body, array $queryParameters = [])
+    public function addL3AccessControlPolicies(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateL3AccessControlPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddL3AccessControlPolicies($body, $queryParameters));
     }
@@ -8737,7 +8737,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteVlanpoolings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingDeleteBulkVlanPooling $body, array $queryParameters = [])
+    public function deleteVlanpoolings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingDeleteBulkVlanPooling $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteVlanpoolings($body, $queryParameters));
     }
@@ -8753,7 +8753,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addVlanpoolings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingCreateVlanPooling $body, array $queryParameters = [])
+    public function addVlanpoolings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingCreateVlanPooling $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddVlanpoolings($body, $queryParameters));
     }
@@ -8768,7 +8768,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteVlanpoolingsById(string $id, array $queryParameters = [])
+    public function deleteVlanpoolingsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteVlanpoolingsById($id, $queryParameters));
     }
@@ -8783,7 +8783,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingVlanPooling
      */
-    public function findVlanpoolingsById(string $id, array $queryParameters = [])
+    public function findVlanpoolingsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindVlanpoolingsById($id, $queryParameters));
     }
@@ -8800,7 +8800,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateVlanpoolingsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingModifyVlanPooling $body, array $queryParameters = [])
+    public function partialUpdateVlanpoolingsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingModifyVlanPooling $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateVlanpoolingsById($id, $body, $queryParameters));
     }
@@ -8816,7 +8816,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanpoolingVlanPoolingList
      */
-    public function findVlanpoolingsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findVlanpoolingsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindVlanpoolingsByQueryCriteria($body, $queryParameters));
     }
@@ -8830,7 +8830,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteServiceTicket(array $queryParameters = [])
+    public function deleteServiceTicket(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteServiceTicket($queryParameters));
     }
@@ -8859,7 +8859,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpDhcpProfilesDpDhcpProfilePoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters = [])
+    public function deleteDpDhcpProfilesDpDhcpProfilePoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpDhcpProfilesDpDhcpProfilePoolsById($id, $body, $queryParameters));
     }
@@ -8874,7 +8874,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBOList
      */
-    public function findDpDhcpProfilesDpDhcpProfilePoolsById(string $id, array $queryParameters = [])
+    public function findDpDhcpProfilesDpDhcpProfilePoolsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpDhcpProfilesDpDhcpProfilePoolsById($id, $queryParameters));
     }
@@ -8891,7 +8891,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO
      */
-    public function addDpDhcpProfilesDpDhcpProfilePoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO $body, array $queryParameters = [])
+    public function addDpDhcpProfilesDpDhcpProfilePoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddDpDhcpProfilesDpDhcpProfilePoolsById($id, $body, $queryParameters));
     }
@@ -8906,7 +8906,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpDhcpProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters = [])
+    public function deleteDpDhcpProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpDhcpProfiles($body, $queryParameters));
     }
@@ -8920,7 +8920,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBOList
      */
-    public function findDpDhcpProfiles(array $queryParameters = [])
+    public function findDpDhcpProfiles(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpDhcpProfiles($queryParameters));
     }
@@ -8936,7 +8936,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO
      */
-    public function addDpDhcpProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO $body, array $queryParameters = [])
+    public function addDpDhcpProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddDpDhcpProfiles($body, $queryParameters));
     }
@@ -8951,7 +8951,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpDhcpProfilesById(string $id, array $queryParameters = [])
+    public function deleteDpDhcpProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpDhcpProfilesById($id, $queryParameters));
     }
@@ -8966,7 +8966,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO
      */
-    public function findDpDhcpProfilesById(string $id, array $queryParameters = [])
+    public function findDpDhcpProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpDhcpProfilesById($id, $queryParameters));
     }
@@ -8983,7 +8983,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO
      */
-    public function updateDpDhcpProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO $body, array $queryParameters = [])
+    public function updateDpDhcpProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileBasicBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateDpDhcpProfilesById($id, $body, $queryParameters));
     }
@@ -8999,7 +8999,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, array $queryParameters = [])
+    public function deleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId($id, $poolId, $queryParameters));
     }
@@ -9015,7 +9015,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO
      */
-    public function findDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, array $queryParameters = [])
+    public function findDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpDhcpProfilesDpDhcpProfilePoolsByPoolId($id, $poolId, $queryParameters));
     }
@@ -9033,7 +9033,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO
      */
-    public function updateDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO $body, array $queryParameters = [])
+    public function updateDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfilePoolBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateDpDhcpProfilesDpDhcpProfilePoolsByPoolId($id, $poolId, $body, $queryParameters));
     }
@@ -9049,7 +9049,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpDhcpProfilesDpDhcpProfileHostsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters = [])
+    public function deleteDpDhcpProfilesDpDhcpProfileHostsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpDhcpProfilesDpDhcpProfileHostsById($id, $body, $queryParameters));
     }
@@ -9064,7 +9064,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBOList
      */
-    public function findDpDhcpProfilesDpDhcpProfileHostsById(string $id, array $queryParameters = [])
+    public function findDpDhcpProfilesDpDhcpProfileHostsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpDhcpProfilesDpDhcpProfileHostsById($id, $queryParameters));
     }
@@ -9081,7 +9081,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
      */
-    public function addDpDhcpProfilesDpDhcpProfileHostsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters = [])
+    public function addDpDhcpProfilesDpDhcpProfileHostsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddDpDhcpProfilesDpDhcpProfileHostsById($id, $body, $queryParameters));
     }
@@ -9097,7 +9097,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, array $queryParameters = [])
+    public function deleteDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpDhcpProfilesDpDhcpProfileHostsByHostId($id, $hostId, $queryParameters));
     }
@@ -9113,7 +9113,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
      */
-    public function findDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, array $queryParameters = [])
+    public function findDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpDhcpProfilesDpDhcpProfileHostsByHostId($id, $hostId, $queryParameters));
     }
@@ -9131,7 +9131,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO
      */
-    public function updateDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters = [])
+    public function updateDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateDpDhcpProfilesDpDhcpProfileHostsByHostId($id, $hostId, $body, $queryParameters));
     }
@@ -9147,7 +9147,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpDhcpProfilesDpDhcpProfileOptionSpacesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters = [])
+    public function deleteDpDhcpProfilesDpDhcpProfileOptionSpacesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesById($id, $body, $queryParameters));
     }
@@ -9162,7 +9162,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBOList
      */
-    public function findDpDhcpProfilesDpDhcpProfileOptionSpacesById(string $id, array $queryParameters = [])
+    public function findDpDhcpProfilesDpDhcpProfileOptionSpacesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpDhcpProfilesDpDhcpProfileOptionSpacesById($id, $queryParameters));
     }
@@ -9179,7 +9179,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addDpDhcpProfilesDpDhcpProfileOptionSpacesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceBO $body, array $queryParameters = [])
+    public function addDpDhcpProfilesDpDhcpProfileOptionSpacesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddDpDhcpProfilesDpDhcpProfileOptionSpacesById($id, $body, $queryParameters));
     }
@@ -9195,7 +9195,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId(string $id, string $spaceId, array $queryParameters = [])
+    public function deleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId(string $id, string $spaceId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId($id, $spaceId, $queryParameters));
     }
@@ -9211,7 +9211,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBO
      */
-    public function findDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId(string $id, string $spaceId, array $queryParameters = [])
+    public function findDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId(string $id, string $spaceId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId($id, $spaceId, $queryParameters));
     }
@@ -9229,7 +9229,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId(string $id, string $spaceId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceBO $body, array $queryParameters = [])
+    public function updateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId(string $id, string $spaceId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileOptionSpaceBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId($id, $spaceId, $body, $queryParameters));
     }
@@ -9244,7 +9244,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteDevicePolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteDevicePolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDevicePolicy($body, $queryParameters));
     }
@@ -9261,7 +9261,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyProfileList
      */
-    public function findDevicePolicy(array $queryParameters = [])
+    public function findDevicePolicy(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDevicePolicy($queryParameters));
     }
@@ -9277,7 +9277,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addDevicePolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyCreateDomainDevicePolicy $body, array $queryParameters = [])
+    public function addDevicePolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyCreateDomainDevicePolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddDevicePolicy($body, $queryParameters));
     }
@@ -9293,7 +9293,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyDomainDevicePolicyProfileByQueryCriteria
      */
-    public function findDevicePolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findDevicePolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDevicePolicyByQueryCriteria($body, $queryParameters));
     }
@@ -9308,7 +9308,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteDevicePolicyById(string $id, array $queryParameters = [])
+    public function deleteDevicePolicyById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDevicePolicyById($id, $queryParameters));
     }
@@ -9323,7 +9323,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyDomainDevicePolicyProfile
      */
-    public function findDevicePolicyById(string $id, array $queryParameters = [])
+    public function findDevicePolicyById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDevicePolicyById($id, $queryParameters));
     }
@@ -9340,7 +9340,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateDevicePolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyModifyDomainDevicePolicy $body, array $queryParameters = [])
+    public function updateDevicePolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDevicePolicyModifyDomainDevicePolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateDevicePolicyById($id, $body, $queryParameters));
     }
@@ -9354,7 +9354,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterbladeClusterState
      */
-    public function findClusterState(array $queryParameters = [])
+    public function findClusterState(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindClusterState($queryParameters));
     }
@@ -9369,7 +9369,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRtlsProfileList
      */
-    public function findRkszonesRealTimeLocationServiceByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesRealTimeLocationServiceByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesRealTimeLocationServiceByZoneId($zoneId, $queryParameters));
     }
@@ -9386,7 +9386,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesRealTimeLocationServiceByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRtlsProfile $body, array $queryParameters = [])
+    public function addRkszonesRealTimeLocationServiceByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRtlsProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesRealTimeLocationServiceByZoneId($zoneId, $body, $queryParameters));
     }
@@ -9402,7 +9402,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRealTimeLocationServiceById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesRealTimeLocationServiceById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRealTimeLocationServiceById($zoneId, $id, $queryParameters));
     }
@@ -9418,7 +9418,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRtlsProfile
      */
-    public function findRkszonesRealTimeLocationServiceById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesRealTimeLocationServiceById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesRealTimeLocationServiceById($zoneId, $id, $queryParameters));
     }
@@ -9436,7 +9436,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesRealTimeLocationServiceById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdateRtlsProfile $body, array $queryParameters = [])
+    public function updateRkszonesRealTimeLocationServiceById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdateRtlsProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesRealTimeLocationServiceById($zoneId, $id, $body, $queryParameters));
     }
@@ -9452,7 +9452,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesGeofenceProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesGeofenceProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesGeofenceProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -9467,7 +9467,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGetGeofenceProfileProfileList
      */
-    public function findRkszonesGeofenceProfilesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesGeofenceProfilesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesGeofenceProfilesByZoneId($zoneId, $queryParameters));
     }
@@ -9484,7 +9484,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesGeofenceProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGeofenceProfile $body, array $queryParameters = [])
+    public function addRkszonesGeofenceProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGeofenceProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesGeofenceProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -9500,7 +9500,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesGeofenceProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesGeofenceProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesGeofenceProfilesById($zoneId, $id, $queryParameters));
     }
@@ -9516,7 +9516,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGetGeofenceProfile
      */
-    public function findRkszonesGeofenceProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesGeofenceProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesGeofenceProfilesById($zoneId, $id, $queryParameters));
     }
@@ -9534,7 +9534,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesGeofenceProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGeofenceProfile $body, array $queryParameters = [])
+    public function updateRkszonesGeofenceProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\GeofenceProfileGeofenceProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesGeofenceProfilesById($zoneId, $id, $body, $queryParameters));
     }
@@ -9549,7 +9549,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventDataResponse
      */
-    public function findDomainsEventNotificationSettingsByDomainId(string $domainId, array $queryParameters = [])
+    public function findDomainsEventNotificationSettingsByDomainId(string $domainId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDomainsEventNotificationSettingsByDomainId($domainId, $queryParameters));
     }
@@ -9566,7 +9566,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateDomainsEventNotificationSettingsByDomainId(string $domainId, array $body, array $queryParameters = [])
+    public function updateDomainsEventNotificationSettingsByDomainId(string $domainId, array $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateDomainsEventNotificationSettingsByDomainId($domainId, $body, $queryParameters));
     }
@@ -9581,7 +9581,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting
      */
-    public function findDomainsEventEmailSettingsByDomainId(string $domainId, array $queryParameters = [])
+    public function findDomainsEventEmailSettingsByDomainId(string $domainId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDomainsEventEmailSettingsByDomainId($domainId, $queryParameters));
     }
@@ -9598,7 +9598,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateDomainsEventEmailSettingsByDomainId(string $domainId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting $body, array $queryParameters = [])
+    public function updateDomainsEventEmailSettingsByDomainId(string $domainId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventManagementEventEmailSetting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateDomainsEventEmailSettingsByDomainId($domainId, $body, $queryParameters));
     }
@@ -9614,7 +9614,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateAlertAlarmAck(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertAckBulkAlarms $body, array $queryParameters = [])
+    public function updateAlertAlarmAck(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertAckBulkAlarms $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateAlertAlarmAck($body, $queryParameters));
     }
@@ -9630,7 +9630,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateAlertAlarmClear(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertClearBulkAlarms $body, array $queryParameters = [])
+    public function updateAlertAlarmClear(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertClearBulkAlarms $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateAlertAlarmClear($body, $queryParameters));
     }
@@ -9646,7 +9646,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertSummaryEventSummary
      */
-    public function addAlertEventSummary(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function addAlertEventSummary(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAlertEventSummary($body, $queryParameters));
     }
@@ -9662,7 +9662,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlertSummaryAlarmSummary
      */
-    public function addAlertAlarmSummary(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function addAlertAlarmSummary(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAlertAlarmSummary($body, $queryParameters));
     }
@@ -9678,7 +9678,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AlarmListAlarmQueryResultList
      */
-    public function addAlertAlarmList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function addAlertAlarmList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAlertAlarmList($body, $queryParameters));
     }
@@ -9694,7 +9694,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EventListEventQueryResultList
      */
-    public function addAlertEventList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function addAlertEventList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAlertEventList($body, $queryParameters));
     }
@@ -9710,7 +9710,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateAlertAlarmAckByAlarmID(string $alarmID, array $queryParameters = [])
+    public function updateAlertAlarmAckByAlarmID(string $alarmID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateAlertAlarmAckByAlarmID($alarmID, $queryParameters));
     }
@@ -9726,7 +9726,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateAlertAlarmClearByAlarmID(string $alarmID, array $queryParameters = [])
+    public function updateAlertAlarmClearByAlarmID(string $alarmID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateAlertAlarmClearByAlarmID($alarmID, $queryParameters));
     }
@@ -9741,7 +9741,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteApSnmpAgentProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteApSnmpAgentProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApSnmpAgentProfiles($body, $queryParameters));
     }
@@ -9758,7 +9758,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileApSnmpAgentProfileList
      */
-    public function findApSnmpAgentProfiles(array $queryParameters = [])
+    public function findApSnmpAgentProfiles(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApSnmpAgentProfiles($queryParameters));
     }
@@ -9774,7 +9774,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addApSnmpAgentProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileCreateApSnmpAgentProfile $body, array $queryParameters = [])
+    public function addApSnmpAgentProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileCreateApSnmpAgentProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApSnmpAgentProfiles($body, $queryParameters));
     }
@@ -9789,7 +9789,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteApSnmpAgentProfilesById(string $id, array $queryParameters = [])
+    public function deleteApSnmpAgentProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApSnmpAgentProfilesById($id, $queryParameters));
     }
@@ -9804,7 +9804,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileApSnmpAgentProfileSummary
      */
-    public function findApSnmpAgentProfilesById(string $id, array $queryParameters = [])
+    public function findApSnmpAgentProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApSnmpAgentProfilesById($id, $queryParameters));
     }
@@ -9821,7 +9821,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateApSnmpAgentProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile $body, array $queryParameters = [])
+    public function updateApSnmpAgentProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateApSnmpAgentProfilesById($id, $body, $queryParameters));
     }
@@ -9837,7 +9837,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesDhcpSiteDhcpProfileByZoneId($zoneId, $body, $queryParameters));
     }
@@ -9852,7 +9852,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDhcpProfileList
      */
-    public function findRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDhcpSiteDhcpProfileByZoneId($zoneId, $queryParameters));
     }
@@ -9869,7 +9869,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile $body, array $queryParameters = [])
+    public function addRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesDhcpSiteDhcpProfileByZoneId($zoneId, $body, $queryParameters));
     }
@@ -9885,7 +9885,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesDhcpSiteDhcpProfileById($zoneId, $id, $queryParameters));
     }
@@ -9901,7 +9901,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpProfileRef
      */
-    public function findRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDhcpSiteDhcpProfileById($zoneId, $id, $queryParameters));
     }
@@ -9919,7 +9919,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile $body, array $queryParameters = [])
+    public function partialUpdateRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateDhcpProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesDhcpSiteDhcpProfileById($zoneId, $id, $body, $queryParameters));
     }
@@ -9934,7 +9934,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteL2AccessControlsById(string $id, array $queryParameters = [])
+    public function deleteL2AccessControlsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteL2AccessControlsById($id, $queryParameters));
     }
@@ -9949,7 +9949,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControl
      */
-    public function findL2AccessControlsById(string $id, array $queryParameters = [])
+    public function findL2AccessControlsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindL2AccessControlsById($id, $queryParameters));
     }
@@ -9966,7 +9966,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateL2AccessControlsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlModifyL2AccessControl $body, array $queryParameters = [])
+    public function updateL2AccessControlsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlModifyL2AccessControl $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateL2AccessControlsById($id, $body, $queryParameters));
     }
@@ -9982,7 +9982,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControlList
      */
-    public function findL2AccessControlsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findL2AccessControlsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindL2AccessControlsByQueryCriteria($body, $queryParameters));
     }
@@ -9997,7 +9997,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteL2AccessControls(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteL2AccessControls(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteL2AccessControls($body, $queryParameters));
     }
@@ -10014,7 +10014,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlL2AccessControlList
      */
-    public function findL2AccessControls(array $queryParameters = [])
+    public function findL2AccessControls(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindL2AccessControls($queryParameters));
     }
@@ -10030,7 +10030,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addL2AccessControls(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlCreateL2AccessControl $body, array $queryParameters = [])
+    public function addL2AccessControls(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\L2AccessControlCreateL2AccessControl $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddL2AccessControls($body, $queryParameters));
     }
@@ -10046,7 +10046,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
      */
-    public function deleteAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileDelete $body, array $queryParameters = [])
+    public function deleteAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileDelete $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteAccountSecurityById($id, $body, $queryParameters));
     }
@@ -10062,7 +10062,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileGetByIdResult
      */
-    public function findAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileGetById $body, array $queryParameters = [])
+    public function findAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileGetById $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAccountSecurityById($id, $body, $queryParameters));
     }
@@ -10079,7 +10079,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
      */
-    public function partialUpdateAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileUpdate $body, array $queryParameters = [])
+    public function partialUpdateAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileUpdate $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateAccountSecurityById($id, $body, $queryParameters));
     }
@@ -10096,7 +10096,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
      */
-    public function updateAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileUpdate $body, array $queryParameters = [])
+    public function updateAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileUpdate $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateAccountSecurityById($id, $body, $queryParameters));
     }
@@ -10111,7 +10111,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteAccountSecurity(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileDeleteList $body, array $queryParameters = [])
+    public function deleteAccountSecurity(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileDeleteList $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteAccountSecurity($body, $queryParameters));
     }
@@ -10125,7 +10125,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileProfileListResult
      */
-    public function findAccountSecurity(array $queryParameters = [])
+    public function findAccountSecurity(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAccountSecurity($queryParameters));
     }
@@ -10141,7 +10141,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResultIdName
      */
-    public function addAccountSecurity(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileCreate $body, array $queryParameters = [])
+    public function addAccountSecurity(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileCreate $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAccountSecurity($body, $queryParameters));
     }
@@ -10156,7 +10156,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpProfileSettings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters = [])
+    public function deleteDpProfileSettings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileBulkDelete $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpProfileSettings($body, $queryParameters));
     }
@@ -10170,7 +10170,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBOList
      */
-    public function findDpProfileSettings(array $queryParameters = [])
+    public function findDpProfileSettings(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpProfileSettings($queryParameters));
     }
@@ -10186,7 +10186,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addDpProfileSettings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO $body, array $queryParameters = [])
+    public function addDpProfileSettings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddDpProfileSettings($body, $queryParameters));
     }
@@ -10201,7 +10201,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDpProfileSettingsByDpKey(string $dpKey, array $queryParameters = [])
+    public function deleteDpProfileSettingsByDpKey(string $dpKey, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDpProfileSettingsByDpKey($dpKey, $queryParameters));
     }
@@ -10216,7 +10216,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO
      */
-    public function findDpProfileSettingsByDpKey(string $dpKey, array $queryParameters = [])
+    public function findDpProfileSettingsByDpKey(string $dpKey, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDpProfileSettingsByDpKey($dpKey, $queryParameters));
     }
@@ -10233,7 +10233,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateDpProfileSettingsByDpKey(string $dpKey, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO $body, array $queryParameters = [])
+    public function updateDpProfileSettingsByDpKey(string $dpKey, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateDpProfileSettingsByDpKey($dpKey, $body, $queryParameters));
     }
@@ -10248,7 +10248,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteWhitelabelsById(string $id, array $queryParameters = [])
+    public function deleteWhitelabelsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteWhitelabelsById($id, $queryParameters));
     }
@@ -10263,7 +10263,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationWhiteLabelCustomization
      */
-    public function findWhitelabelsById(string $id, array $queryParameters = [])
+    public function findWhitelabelsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindWhitelabelsById($id, $queryParameters));
     }
@@ -10280,7 +10280,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateWhitelabelsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationUpdateWhiteLabelCustomization $body, array $queryParameters = [])
+    public function updateWhitelabelsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationUpdateWhiteLabelCustomization $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateWhitelabelsById($id, $body, $queryParameters));
     }
@@ -10294,7 +10294,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationWhiteLabelCustomizationList
      */
-    public function findWhitelabels(array $queryParameters = [])
+    public function findWhitelabels(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindWhitelabels($queryParameters));
     }
@@ -10310,7 +10310,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addWhitelabels(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationCreateWhiteLabelCustomization $body, array $queryParameters = [])
+    public function addWhitelabels(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationCreateWhiteLabelCustomization $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddWhitelabels($body, $queryParameters));
     }
@@ -10326,7 +10326,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesAaaRadiusById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesAaaRadiusById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesAaaRadiusById($zoneId, $id, $queryParameters));
     }
@@ -10342,7 +10342,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaAuthenticationServer
      */
-    public function findRkszonesAaaRadiusById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesAaaRadiusById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesAaaRadiusById($zoneId, $id, $queryParameters));
     }
@@ -10360,7 +10360,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesAaaRadiusById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyAuthenticationServer $body, array $queryParameters = [])
+    public function partialUpdateRkszonesAaaRadiusById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyAuthenticationServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesAaaRadiusById($zoneId, $id, $body, $queryParameters));
     }
@@ -10378,7 +10378,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesAaaRadiusById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyAuthenticationServer $body, array $queryParameters = [])
+    public function updateRkszonesAaaRadiusById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyAuthenticationServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesAaaRadiusById($zoneId, $id, $body, $queryParameters));
     }
@@ -10394,7 +10394,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaAuthenticationServerList
      */
-    public function findRkszonesAaaRadiusByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesAaaRadiusByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesAaaRadiusByZoneId($zoneId, $queryParameters));
     }
@@ -10412,7 +10412,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesAaaRadiusByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer $body, array $queryParameters = [])
+    public function addRkszonesAaaRadiusByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesAaaRadiusByZoneId($zoneId, $body, $queryParameters));
     }
@@ -10428,7 +10428,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesAaaRadiusSecondaryById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesAaaRadiusSecondaryById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesAaaRadiusSecondaryById($zoneId, $id, $queryParameters));
     }
@@ -10444,7 +10444,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesAaaRadiusStandbyPrimaryById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesAaaRadiusStandbyPrimaryById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesAaaRadiusStandbyPrimaryById($zoneId, $id, $queryParameters));
     }
@@ -10459,7 +10459,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaActiveDirectoryList
      */
-    public function findRkszonesAaaAdByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesAaaAdByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesAaaAdByZoneId($zoneId, $queryParameters));
     }
@@ -10476,7 +10476,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesAaaAdByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateActiveDirectoryServer $body, array $queryParameters = [])
+    public function addRkszonesAaaAdByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateActiveDirectoryServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesAaaAdByZoneId($zoneId, $body, $queryParameters));
     }
@@ -10492,7 +10492,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesAaaAdById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesAaaAdById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesAaaAdById($zoneId, $id, $queryParameters));
     }
@@ -10508,7 +10508,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaActiveDirectory
      */
-    public function findRkszonesAaaAdById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesAaaAdById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesAaaAdById($zoneId, $id, $queryParameters));
     }
@@ -10526,7 +10526,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesAaaAdById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyActiveDirectoryServer $body, array $queryParameters = [])
+    public function partialUpdateRkszonesAaaAdById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyActiveDirectoryServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesAaaAdById($zoneId, $id, $body, $queryParameters));
     }
@@ -10544,7 +10544,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesAaaAdById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyActiveDirectoryServer $body, array $queryParameters = [])
+    public function updateRkszonesAaaAdById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyActiveDirectoryServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesAaaAdById($zoneId, $id, $body, $queryParameters));
     }
@@ -10559,7 +10559,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaLDAPServerList
      */
-    public function findRkszonesAaaLdapByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesAaaLdapByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesAaaLdapByZoneId($zoneId, $queryParameters));
     }
@@ -10576,7 +10576,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesAaaLdapByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateLDAPServer $body, array $queryParameters = [])
+    public function addRkszonesAaaLdapByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateLDAPServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesAaaLdapByZoneId($zoneId, $body, $queryParameters));
     }
@@ -10592,7 +10592,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesAaaLdapById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesAaaLdapById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesAaaLdapById($zoneId, $id, $queryParameters));
     }
@@ -10608,7 +10608,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaLDAPServer
      */
-    public function findRkszonesAaaLdapById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesAaaLdapById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesAaaLdapById($zoneId, $id, $queryParameters));
     }
@@ -10626,7 +10626,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesAaaLdapById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyLDAPServer $body, array $queryParameters = [])
+    public function partialUpdateRkszonesAaaLdapById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyLDAPServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesAaaLdapById($zoneId, $id, $body, $queryParameters));
     }
@@ -10644,7 +10644,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesAaaLdapById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyLDAPServer $body, array $queryParameters = [])
+    public function updateRkszonesAaaLdapById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyLDAPServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesAaaLdapById($zoneId, $id, $body, $queryParameters));
     }
@@ -10660,7 +10660,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesAaaByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesAaaByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesAaaByZoneId($zoneId, $body, $queryParameters));
     }
@@ -10676,7 +10676,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaHttp2ServerList
      */
-    public function findRkszonesAaaHttp2ByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesAaaHttp2ByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesAaaHttp2ByZoneId($zoneId, $queryParameters));
     }
@@ -10694,7 +10694,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesAaaHttp2ByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateHttp2Server $body, array $queryParameters = [])
+    public function addRkszonesAaaHttp2ByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateHttp2Server $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesAaaHttp2ByZoneId($zoneId, $body, $queryParameters));
     }
@@ -10710,7 +10710,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesAaaHttp2ById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesAaaHttp2ById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesAaaHttp2ById($zoneId, $id, $queryParameters));
     }
@@ -10726,7 +10726,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaHttp2Server
      */
-    public function findRkszonesAaaHttp2ById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesAaaHttp2ById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesAaaHttp2ById($zoneId, $id, $queryParameters));
     }
@@ -10744,7 +10744,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesAaaHttp2ById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyHttp2Server $body, array $queryParameters = [])
+    public function updateRkszonesAaaHttp2ById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaModifyHttp2Server $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesAaaHttp2ById($zoneId, $id, $body, $queryParameters));
     }
@@ -10760,7 +10760,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesAaaById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesAaaById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesAaaById($zoneId, $id, $queryParameters));
     }
@@ -10775,7 +10775,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteZoneSwitchGroupLinksById(string $id, array $queryParameters = [])
+    public function deleteZoneSwitchGroupLinksById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteZoneSwitchGroupLinksById($id, $queryParameters));
     }
@@ -10790,7 +10790,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingBindingRecord
      */
-    public function findZoneSwitchGroupLinksById(string $id, array $queryParameters = [])
+    public function findZoneSwitchGroupLinksById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindZoneSwitchGroupLinksById($id, $queryParameters));
     }
@@ -10807,7 +10807,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateZoneSwitchGroupLinksById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingCreateRecord $body, array $queryParameters = [])
+    public function updateZoneSwitchGroupLinksById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingCreateRecord $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateZoneSwitchGroupLinksById($id, $body, $queryParameters));
     }
@@ -10826,7 +10826,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingDataList
      */
-    public function findZoneSwitchGroupLinks(array $queryParameters = [])
+    public function findZoneSwitchGroupLinks(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindZoneSwitchGroupLinks($queryParameters));
     }
@@ -10842,7 +10842,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addZoneSwitchGroupLinks(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingCreateRecord $body, array $queryParameters = [])
+    public function addZoneSwitchGroupLinks(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneSwitchGroupBindingCreateRecord $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddZoneSwitchGroupLinks($body, $queryParameters));
     }
@@ -10857,7 +10857,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, array $queryParameters = [])
+    public function deleteControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteControlPlanesUserDefinedInterfaceByBladeUUID($bladeUUID, $queryParameters));
     }
@@ -10872,7 +10872,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUserDefinedInterfaceList
      */
-    public function findControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, array $queryParameters = [])
+    public function findControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindControlPlanesUserDefinedInterfaceByBladeUUID($bladeUUID, $queryParameters));
     }
@@ -10889,7 +10889,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyCPUserDefinedInterface $body, array $queryParameters = [])
+    public function partialUpdateControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyCPUserDefinedInterface $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateControlPlanesUserDefinedInterfaceByBladeUUID($bladeUUID, $body, $queryParameters));
     }
@@ -10904,7 +10904,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControlPlaneConfiguration
      */
-    public function findControlPlanesByBladeUUID(string $bladeUUID, array $queryParameters = [])
+    public function findControlPlanesByBladeUUID(string $bladeUUID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindControlPlanesByBladeUUID($bladeUUID, $queryParameters));
     }
@@ -10921,7 +10921,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateControlPlanesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyControlPlane $body, array $queryParameters = [])
+    public function partialUpdateControlPlanesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyControlPlane $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateControlPlanesByBladeUUID($bladeUUID, $body, $queryParameters));
     }
@@ -10936,7 +10936,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, array $queryParameters = [])
+    public function deleteControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteControlPlanesStaticRoutesByBladeUUID($bladeUUID, $queryParameters));
     }
@@ -10951,7 +10951,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStaticRouteList
      */
-    public function findControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, array $queryParameters = [])
+    public function findControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindControlPlanesStaticRoutesByBladeUUID($bladeUUID, $queryParameters));
     }
@@ -10968,7 +10968,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyCPStaticRoute $body, array $queryParameters = [])
+    public function partialUpdateControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyCPStaticRoute $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateControlPlanesStaticRoutesByBladeUUID($bladeUUID, $body, $queryParameters));
     }
@@ -10983,7 +10983,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControlPlaneInterfaceList
      */
-    public function findControlPlanesInterfaces(array $queryParameters = [])
+    public function findControlPlanesInterfaces(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindControlPlanesInterfaces($queryParameters));
     }
@@ -10999,7 +10999,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateControlPlanesIpSupport(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyIpSupportType $body, array $queryParameters = [])
+    public function partialUpdateControlPlanesIpSupport(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyIpSupportType $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateControlPlanesIpSupport($body, $queryParameters));
     }
@@ -11013,7 +11013,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControlPlaneList
      */
-    public function findControlPlanes(array $queryParameters = [])
+    public function findControlPlanes(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindControlPlanes($queryParameters));
     }
@@ -11029,7 +11029,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addWiredClientsDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClient $body, array $queryParameters = [])
+    public function addWiredClientsDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClient $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddWiredClientsDeauth($body, $queryParameters));
     }
@@ -11045,7 +11045,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addWiredClientsBulkDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClientList $body, array $queryParameters = [])
+    public function addWiredClientsBulkDeauth(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClientDeAuthClientList $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddWiredClientsBulkDeauth($body, $queryParameters));
     }
@@ -11060,7 +11060,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteRkszonesVlanNameProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesVlanNameProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesVlanNameProfiles($body, $queryParameters));
     }
@@ -11075,7 +11075,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfileList
      */
-    public function findRkszonesVlanNameProfilesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesVlanNameProfilesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesVlanNameProfilesByZoneId($zoneId, $queryParameters));
     }
@@ -11092,7 +11092,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesVlanNameProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfile $body, array $queryParameters = [])
+    public function addRkszonesVlanNameProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesVlanNameProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -11108,7 +11108,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesVlanNameProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesVlanNameProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesVlanNameProfilesById($zoneId, $id, $queryParameters));
     }
@@ -11124,7 +11124,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfileWithEditInfo
      */
-    public function findRkszonesVlanNameProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesVlanNameProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesVlanNameProfilesById($zoneId, $id, $queryParameters));
     }
@@ -11142,7 +11142,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateRkszonesVlanNameProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfile $body, array $queryParameters = [])
+    public function updateRkszonesVlanNameProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\VlanNameProfileVlanNameProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesVlanNameProfilesById($zoneId, $id, $body, $queryParameters));
     }
@@ -11157,7 +11157,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteZoneScheduleUpgradeById(string $id, array $queryParameters = [])
+    public function deleteZoneScheduleUpgradeById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteZoneScheduleUpgradeById($id, $queryParameters));
     }
@@ -11172,7 +11172,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeTaskConfig
      */
-    public function findZoneScheduleUpgradeById(string $id, array $queryParameters = [])
+    public function findZoneScheduleUpgradeById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindZoneScheduleUpgradeById($id, $queryParameters));
     }
@@ -11189,7 +11189,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateZoneScheduleUpgradeById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeCreateTaskConfig $body, array $queryParameters = [])
+    public function updateZoneScheduleUpgradeById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeCreateTaskConfig $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateZoneScheduleUpgradeById($id, $body, $queryParameters));
     }
@@ -11204,7 +11204,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteZoneScheduleUpgrade(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteZoneScheduleUpgrade(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteZoneScheduleUpgrade($body, $queryParameters));
     }
@@ -11218,7 +11218,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeTaskList
      */
-    public function findZoneScheduleUpgrade(array $queryParameters = [])
+    public function findZoneScheduleUpgrade(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindZoneScheduleUpgrade($queryParameters));
     }
@@ -11234,7 +11234,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addZoneScheduleUpgrade(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeCreateTaskConfig $body, array $queryParameters = [])
+    public function addZoneScheduleUpgrade(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeCreateTaskConfig $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddZoneScheduleUpgrade($body, $queryParameters));
     }
@@ -11248,7 +11248,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneScheduleUpgradeHistoryList
      */
-    public function findZoneScheduleUpgradeHistory(array $queryParameters = [])
+    public function findZoneScheduleUpgradeHistory(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindZoneScheduleUpgradeHistory($queryParameters));
     }
@@ -11262,7 +11262,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DeviceCapacityDevicesSummary
      */
-    public function findSystemDevicesSummary(array $queryParameters = [])
+    public function findSystemDevicesSummary(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemDevicesSummary($queryParameters));
     }
@@ -11277,7 +11277,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteApRulesById(string $id, array $queryParameters = [])
+    public function deleteApRulesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteApRulesById($id, $queryParameters));
     }
@@ -11292,7 +11292,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesApRuleConfiguration
      */
-    public function findApRulesById(string $id, array $queryParameters = [])
+    public function findApRulesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApRulesById($id, $queryParameters));
     }
@@ -11309,7 +11309,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateApRulesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesModifyApRule $body, array $queryParameters = [])
+    public function partialUpdateApRulesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesModifyApRule $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateApRulesById($id, $body, $queryParameters));
     }
@@ -11323,7 +11323,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesApRuleList
      */
-    public function findApRules(array $queryParameters = [])
+    public function findApRules(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApRules($queryParameters));
     }
@@ -11339,7 +11339,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addApRules(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesCreateApRule $body, array $queryParameters = [])
+    public function addApRules(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AprulesCreateApRule $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApRules($body, $queryParameters));
     }
@@ -11354,7 +11354,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findApRulesPriorityUpById(string $id, array $queryParameters = [])
+    public function findApRulesPriorityUpById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApRulesPriorityUpById($id, $queryParameters));
     }
@@ -11369,7 +11369,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findApRulesPriorityDownById(string $id, array $queryParameters = [])
+    public function findApRulesPriorityDownById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApRulesPriorityDownById($id, $queryParameters));
     }
@@ -11383,7 +11383,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemDataPlaneList
      */
-    public function findPlanes(array $queryParameters = [])
+    public function findPlanes(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindPlanes($queryParameters));
     }
@@ -11398,7 +11398,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemDataPlaneConfiguration
      */
-    public function findPlanesByBladeUUID(string $bladeUUID, array $queryParameters = [])
+    public function findPlanesByBladeUUID(string $bladeUUID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindPlanesByBladeUUID($bladeUUID, $queryParameters));
     }
@@ -11415,7 +11415,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdatePlanesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlane $body, array $queryParameters = [])
+    public function partialUpdatePlanesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlane $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdatePlanesByBladeUUID($bladeUUID, $body, $queryParameters));
     }
@@ -11430,7 +11430,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deletePlanesStaticRouteByBladeUUID(string $bladeUUID, array $queryParameters = [])
+    public function deletePlanesStaticRouteByBladeUUID(string $bladeUUID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeletePlanesStaticRouteByBladeUUID($bladeUUID, $queryParameters));
     }
@@ -11447,7 +11447,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdatePlaneStatesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlaneState $body, array $queryParameters = [])
+    public function partialUpdatePlaneStatesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyDataPlaneState $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdatePlaneStatesByBladeUUID($bladeUUID, $body, $queryParameters));
     }
@@ -11464,7 +11464,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemGetDataPlaneMeshTunnelSetting
      */
-    public function findPlanesDpTunnelSetting(array $queryParameters = [], array $formParameters = [])
+    public function findPlanesDpTunnelSetting(array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindPlanesDpTunnelSetting($queryParameters, $formParameters));
     }
@@ -11480,7 +11480,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updatePlanesDpTunnelSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUpdateDpMeshTunnelSetting $body, array $queryParameters = [])
+    public function updatePlanesDpTunnelSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUpdateDpMeshTunnelSetting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdatePlanesDpTunnelSetting($body, $queryParameters));
     }
@@ -11496,7 +11496,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addDpsSwitchoverCluster(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpSwitchoverDp $body, array $queryParameters = [])
+    public function addDpsSwitchoverCluster(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpSwitchoverDp $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddDpsSwitchoverCluster($body, $queryParameters));
     }
@@ -11512,7 +11512,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFlexiVpnProfileList
      */
-    public function findServicesFlexiVpnProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findServicesFlexiVpnProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindServicesFlexiVpnProfileByQueryCriteria($body, $queryParameters));
     }
@@ -11528,7 +11528,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfileList
      */
-    public function findRkszonesPortalDetectionProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findRkszonesPortalDetectionProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalDetectionProfilesByQueryCriteria($body, $queryParameters));
     }
@@ -11544,7 +11544,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesPortalDetectionProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesPortalDetectionProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesPortalDetectionProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -11559,7 +11559,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfileList
      */
-    public function findRkszonesPortalDetectionProfilesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesPortalDetectionProfilesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalDetectionProfilesByZoneId($zoneId, $queryParameters));
     }
@@ -11576,7 +11576,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesPortalDetectionProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters = [])
+    public function addRkszonesPortalDetectionProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesPortalDetectionProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -11592,7 +11592,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesPortalDetectionProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesPortalDetectionProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesPortalDetectionProfilesById($zoneId, $id, $queryParameters));
     }
@@ -11608,7 +11608,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfilePortalDetectionProfile
      */
-    public function findRkszonesPortalDetectionProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesPortalDetectionProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalDetectionProfilesById($zoneId, $id, $queryParameters));
     }
@@ -11626,7 +11626,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesPortalDetectionProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters = [])
+    public function partialUpdateRkszonesPortalDetectionProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesPortalDetectionProfilesById($zoneId, $id, $body, $queryParameters));
     }
@@ -11644,7 +11644,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesPortalDetectionProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters = [])
+    public function updateRkszonesPortalDetectionProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesPortalDetectionProfilesById($zoneId, $id, $body, $queryParameters));
     }
@@ -11659,7 +11659,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfileList
      */
-    public function findRkszonesSocialMediaLoginProfilesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesSocialMediaLoginProfilesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesSocialMediaLoginProfilesByZoneId($zoneId, $queryParameters));
     }
@@ -11676,7 +11676,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesSocialMediaLoginProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfile $body, array $queryParameters = [])
+    public function addRkszonesSocialMediaLoginProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesSocialMediaLoginProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -11692,7 +11692,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesSocialMediaLoginProfilesById($zoneId, $id, $queryParameters));
     }
@@ -11708,7 +11708,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfileWithEditInfo
      */
-    public function findRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesSocialMediaLoginProfilesById($zoneId, $id, $queryParameters));
     }
@@ -11726,7 +11726,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfile $body, array $queryParameters = [])
+    public function updateRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SocialMediaLoginProfileSocialMediaLoginProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesSocialMediaLoginProfilesById($zoneId, $id, $body, $queryParameters));
     }
@@ -11741,7 +11741,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteRkszonesSocialMediaLoginProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesSocialMediaLoginProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesSocialMediaLoginProfiles($body, $queryParameters));
     }
@@ -11756,7 +11756,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApCloudOnBoardingSyncResult
      */
-    public function addApsSyncProvisionApsToCloudService(array $queryParameters = [])
+    public function addApsSyncProvisionApsToCloudService(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApsSyncProvisionApsToCloudService($queryParameters));
     }
@@ -11773,7 +11773,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpSiteConfigListRef
      */
-    public function addRkszonesDhcpSiteDhcpSiteConfigDoAssignIpByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDoAssignIp $body, array $queryParameters = [])
+    public function addRkszonesDhcpSiteDhcpSiteConfigDoAssignIpByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDoAssignIp $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesDhcpSiteDhcpSiteConfigDoAssignIpByZoneId($zoneId, $body, $queryParameters));
     }
@@ -11788,7 +11788,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonDhcpSiteConfigListRef
      */
-    public function findRkszonesDhcpSiteDhcpSiteConfigByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesDhcpSiteDhcpSiteConfigByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDhcpSiteDhcpSiteConfigByZoneId($zoneId, $queryParameters));
     }
@@ -11804,7 +11804,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDhcpSiteConfigList
      */
-    public function findRkszonesServicesDhcpSiteConfigByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneQueryCriteria $body, array $queryParameters = [])
+    public function findRkszonesServicesDhcpSiteConfigByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneQueryCriteria $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesServicesDhcpSiteConfigByQueryCriteria($body, $queryParameters));
     }
@@ -11819,7 +11819,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicyList
      */
-    public function findRkszonesBonjourFencingPolicyByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesBonjourFencingPolicyByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesBonjourFencingPolicyByZoneId($zoneId, $queryParameters));
     }
@@ -11836,7 +11836,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesBonjourFencingPolicyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateBonjourFencingPolicy $body, array $queryParameters = [])
+    public function addRkszonesBonjourFencingPolicyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateBonjourFencingPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesBonjourFencingPolicyByZoneId($zoneId, $body, $queryParameters));
     }
@@ -11852,7 +11852,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesIpv6(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone $body, array $queryParameters = [])
+    public function addRkszonesIpv6(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesIpv6($body, $queryParameters));
     }
@@ -11868,7 +11868,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesDual(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone $body, array $queryParameters = [])
+    public function addRkszonesDual(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesDual($body, $queryParameters));
     }
@@ -11883,7 +11883,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesSoftGreTunnelProfliesById(string $id, array $queryParameters = [])
+    public function deleteRkszonesSoftGreTunnelProfliesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesSoftGreTunnelProfliesById($id, $queryParameters));
     }
@@ -11898,7 +11898,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesIpsecProfilesById(string $id, array $queryParameters = [])
+    public function deleteRkszonesIpsecProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesIpsecProfilesById($id, $queryParameters));
     }
@@ -11914,7 +11914,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel
      */
-    public function findRkszonesApmodelByModel(string $zoneId, string $model, array $queryParameters = [])
+    public function findRkszonesApmodelByModel(string $zoneId, string $model, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesApmodelByModel($zoneId, $model, $queryParameters));
     }
@@ -11932,7 +11932,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesApmodelByModel(string $zoneId, string $model, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel $body, array $queryParameters = [])
+    public function updateRkszonesApmodelByModel(string $zoneId, string $model, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApmodelApModel $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesApmodelByModel($zoneId, $model, $body, $queryParameters));
     }
@@ -11948,7 +11948,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApmodelCommonAttribute
      */
-    public function findRkszonesApmodelCommonAttributeByModel(string $zoneId, string $model, array $queryParameters = [])
+    public function findRkszonesApmodelCommonAttributeByModel(string $zoneId, string $model, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesApmodelCommonAttributeByModel($zoneId, $model, $queryParameters));
     }
@@ -11963,7 +11963,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesById(string $id, array $queryParameters = [])
+    public function deleteRkszonesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesById($id, $queryParameters));
     }
@@ -11978,7 +11978,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneZoneConfiguration
      */
-    public function findRkszonesById(string $id, array $queryParameters = [])
+    public function findRkszonesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesById($id, $queryParameters));
     }
@@ -11995,7 +11995,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyZone $body, array $queryParameters = [])
+    public function partialUpdateRkszonesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyZone $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesById($id, $body, $queryParameters));
     }
@@ -12012,7 +12012,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyZone $body, array $queryParameters = [])
+    public function updateRkszonesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyZone $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesById($id, $body, $queryParameters));
     }
@@ -12027,7 +12027,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesMeshById(string $id, array $queryParameters = [])
+    public function deleteRkszonesMeshById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesMeshById($id, $queryParameters));
     }
@@ -12042,7 +12042,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneMeshConfiguration
      */
-    public function findRkszonesMeshById(string $id, array $queryParameters = [])
+    public function findRkszonesMeshById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesMeshById($id, $queryParameters));
     }
@@ -12057,7 +12057,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesSyslogById(string $id, array $queryParameters = [])
+    public function deleteRkszonesSyslogById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesSyslogById($id, $queryParameters));
     }
@@ -12072,7 +12072,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesSmartMonitorById(string $id, array $queryParameters = [])
+    public function deleteRkszonesSmartMonitorById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesSmartMonitorById($id, $queryParameters));
     }
@@ -12087,7 +12087,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesClientAdmissionControl24ById(string $id, array $queryParameters = [])
+    public function deleteRkszonesClientAdmissionControl24ById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesClientAdmissionControl24ById($id, $queryParameters));
     }
@@ -12102,7 +12102,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesClientAdmissionControl50ById(string $id, array $queryParameters = [])
+    public function deleteRkszonesClientAdmissionControl50ById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesClientAdmissionControl50ById($id, $queryParameters));
     }
@@ -12117,7 +12117,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesLoadBalancingClientLoadBalancing24ById(string $id, array $queryParameters = [])
+    public function deleteRkszonesLoadBalancingClientLoadBalancing24ById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesLoadBalancingClientLoadBalancing24ById($id, $queryParameters));
     }
@@ -12132,7 +12132,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesLoadBalancingClientLoadBalancing50ById(string $id, array $queryParameters = [])
+    public function deleteRkszonesLoadBalancingClientLoadBalancing50ById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesLoadBalancingClientLoadBalancing50ById($id, $queryParameters));
     }
@@ -12147,7 +12147,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesLoadBalancingBandBalancingById(string $id, array $queryParameters = [])
+    public function deleteRkszonesLoadBalancingBandBalancingById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesLoadBalancingBandBalancingById($id, $queryParameters));
     }
@@ -12162,7 +12162,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesVenueProfileById(string $id, array $queryParameters = [])
+    public function deleteRkszonesVenueProfileById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesVenueProfileById($id, $queryParameters));
     }
@@ -12177,7 +12177,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRogueById(string $id, array $queryParameters = [])
+    public function deleteRkszonesRogueById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRogueById($id, $queryParameters));
     }
@@ -12192,7 +12192,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesLocationBasedServiceById(string $id, array $queryParameters = [])
+    public function deleteRkszonesLocationBasedServiceById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesLocationBasedServiceById($id, $queryParameters));
     }
@@ -12207,7 +12207,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesAltitudeById(string $id, array $queryParameters = [])
+    public function deleteRkszonesAltitudeById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesAltitudeById($id, $queryParameters));
     }
@@ -12222,7 +12222,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesSnmpAgentById(string $id, array $queryParameters = [])
+    public function deleteRkszonesSnmpAgentById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesSnmpAgentById($id, $queryParameters));
     }
@@ -12237,7 +12237,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRecoverySsidById(string $id, array $queryParameters = [])
+    public function deleteRkszonesRecoverySsidById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRecoverySsidById($id, $queryParameters));
     }
@@ -12252,7 +12252,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRadioConfigRadio24gBackgroundScanningById(string $id, array $queryParameters = [])
+    public function deleteRkszonesRadioConfigRadio24gBackgroundScanningById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRadioConfigRadio24gBackgroundScanningById($id, $queryParameters));
     }
@@ -12267,7 +12267,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRadioConfigRadio5gBackgroundScanningById(string $id, array $queryParameters = [])
+    public function deleteRkszonesRadioConfigRadio5gBackgroundScanningById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRadioConfigRadio5gBackgroundScanningById($id, $queryParameters));
     }
@@ -12282,7 +12282,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRadioConfigRadio5gLowerBackgroundScanningById(string $id, array $queryParameters = [])
+    public function deleteRkszonesRadioConfigRadio5gLowerBackgroundScanningById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRadioConfigRadio5gLowerBackgroundScanningById($id, $queryParameters));
     }
@@ -12297,7 +12297,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRadioConfigRadio5gUpperBackgroundScanningById(string $id, array $queryParameters = [])
+    public function deleteRkszonesRadioConfigRadio5gUpperBackgroundScanningById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRadioConfigRadio5gUpperBackgroundScanningById($id, $queryParameters));
     }
@@ -12312,7 +12312,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRadioConfigRadio6gBackgroundScanningById(string $id, array $queryParameters = [])
+    public function deleteRkszonesRadioConfigRadio6gBackgroundScanningById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRadioConfigRadio6gBackgroundScanningById($id, $queryParameters));
     }
@@ -12327,7 +12327,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesLoadBalancingById(string $id, array $queryParameters = [])
+    public function deleteRkszonesLoadBalancingById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesLoadBalancingById($id, $queryParameters));
     }
@@ -12344,7 +12344,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerWlanScheduleList
      */
-    public function findRkszonesWlanSchedulersByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesWlanSchedulersByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesWlanSchedulersByZoneId($zoneId, $queryParameters));
     }
@@ -12361,7 +12361,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesWlanSchedulersByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerCreateWlanScheduler $body, array $queryParameters = [])
+    public function addRkszonesWlanSchedulersByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerCreateWlanScheduler $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlanSchedulersByZoneId($zoneId, $body, $queryParameters));
     }
@@ -12377,7 +12377,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesWlanSchedulersById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesWlanSchedulersById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesWlanSchedulersById($zoneId, $id, $queryParameters));
     }
@@ -12393,7 +12393,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerWlanSchedule
      */
-    public function findRkszonesWlanSchedulersById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesWlanSchedulersById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesWlanSchedulersById($zoneId, $id, $queryParameters));
     }
@@ -12411,7 +12411,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesWlanSchedulersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerModifyWlanScheduler $body, array $queryParameters = [])
+    public function partialUpdateRkszonesWlanSchedulersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanschedulerModifyWlanScheduler $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesWlanSchedulersById($zoneId, $id, $body, $queryParameters));
     }
@@ -12426,7 +12426,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
-    public function findRkszonesPortalsWebauthByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesPortalsWebauthByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalsWebauthByZoneId($zoneId, $queryParameters));
     }
@@ -12443,7 +12443,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesPortalsWebauthByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWebAuthentication $body, array $queryParameters = [])
+    public function addRkszonesPortalsWebauthByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWebAuthentication $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesPortalsWebauthByZoneId($zoneId, $body, $queryParameters));
     }
@@ -12459,7 +12459,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesPortalsWebauthById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesPortalsWebauthById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesPortalsWebauthById($zoneId, $id, $queryParameters));
     }
@@ -12475,7 +12475,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceWebAuthentication
      */
-    public function findRkszonesPortalsWebauthById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesPortalsWebauthById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalsWebauthById($zoneId, $id, $queryParameters));
     }
@@ -12493,7 +12493,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesPortalsWebauthById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyWebAuthentication $body, array $queryParameters = [])
+    public function partialUpdateRkszonesPortalsWebauthById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyWebAuthentication $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesPortalsWebauthById($zoneId, $id, $body, $queryParameters));
     }
@@ -12508,7 +12508,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
-    public function findRkszonesPortalsHotspotByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesPortalsHotspotByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalsHotspotByZoneId($zoneId, $queryParameters));
     }
@@ -12525,7 +12525,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesPortalsHotspotInternalByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotInternal $body, array $queryParameters = [])
+    public function addRkszonesPortalsHotspotInternalByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotInternal $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesPortalsHotspotInternalByZoneId($zoneId, $body, $queryParameters));
     }
@@ -12542,7 +12542,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesPortalsHotspotExternalByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotExternal $body, array $queryParameters = [])
+    public function addRkszonesPortalsHotspotExternalByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotExternal $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesPortalsHotspotExternalByZoneId($zoneId, $body, $queryParameters));
     }
@@ -12560,7 +12560,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesPortalsHotspotInternalById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotInternal $body, array $queryParameters = [])
+    public function updateRkszonesPortalsHotspotInternalById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotInternal $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesPortalsHotspotInternalById($zoneId, $id, $body, $queryParameters));
     }
@@ -12578,7 +12578,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesPortalsHotspotExternalById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotExternal $body, array $queryParameters = [])
+    public function updateRkszonesPortalsHotspotExternalById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotExternal $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesPortalsHotspotExternalById($zoneId, $id, $body, $queryParameters));
     }
@@ -12594,7 +12594,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesPortalsWebauthRedirectById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesPortalsWebauthRedirectById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesPortalsWebauthRedirectById($zoneId, $id, $queryParameters));
     }
@@ -12611,7 +12611,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesPortalsHotspotSmartClientOnlyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotSmartClientOnly $body, array $queryParameters = [])
+    public function addRkszonesPortalsHotspotSmartClientOnlyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotSmartClientOnly $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesPortalsHotspotSmartClientOnlyByZoneId($zoneId, $body, $queryParameters));
     }
@@ -12629,7 +12629,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesPortalsHotspotSmartClientOnlyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotSmartClientOnly $body, array $queryParameters = [])
+    public function updateRkszonesPortalsHotspotSmartClientOnlyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspotSmartClientOnly $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesPortalsHotspotSmartClientOnlyById($zoneId, $id, $body, $queryParameters));
     }
@@ -12645,7 +12645,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesPortalsGuestRedirectById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesPortalsGuestRedirectById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesPortalsGuestRedirectById($zoneId, $id, $queryParameters));
     }
@@ -12661,7 +12661,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesPortalsGuestSmsGatewayById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesPortalsGuestSmsGatewayById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesPortalsGuestSmsGatewayById($zoneId, $id, $queryParameters));
     }
@@ -12676,7 +12676,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
-    public function findRkszonesHs20sByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesHs20sByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesHs20sByZoneId($zoneId, $queryParameters));
     }
@@ -12693,7 +12693,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesHs20sByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20WlanProfile $body, array $queryParameters = [])
+    public function addRkszonesHs20sByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20WlanProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesHs20sByZoneId($zoneId, $body, $queryParameters));
     }
@@ -12709,7 +12709,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesHs20sById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesHs20sById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesHs20sById($zoneId, $id, $queryParameters));
     }
@@ -12725,7 +12725,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot20WlanProfile
      */
-    public function findRkszonesHs20sById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesHs20sById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesHs20sById($zoneId, $id, $queryParameters));
     }
@@ -12743,7 +12743,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesHs20sById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot20WlanProfile $body, array $queryParameters = [])
+    public function partialUpdateRkszonesHs20sById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot20WlanProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesHs20sById($zoneId, $id, $body, $queryParameters));
     }
@@ -12758,7 +12758,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
-    public function findRkszonesHs20VenuesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesHs20VenuesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesHs20VenuesByZoneId($zoneId, $queryParameters));
     }
@@ -12775,7 +12775,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesHs20VenuesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20VenueProfile $body, array $queryParameters = [])
+    public function addRkszonesHs20VenuesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateHotspot20VenueProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesHs20VenuesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -12791,7 +12791,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesHs20VenuesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesHs20VenuesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesHs20VenuesById($zoneId, $id, $queryParameters));
     }
@@ -12807,7 +12807,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot20VeuneProfile
      */
-    public function findRkszonesHs20VenuesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesHs20VenuesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesHs20VenuesById($zoneId, $id, $queryParameters));
     }
@@ -12825,7 +12825,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesHs20VenuesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot20VenueProfile $body, array $queryParameters = [])
+    public function partialUpdateRkszonesHs20VenuesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot20VenueProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesHs20VenuesById($zoneId, $id, $body, $queryParameters));
     }
@@ -12841,7 +12841,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesProfileEthernetPortById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesProfileEthernetPortById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesProfileEthernetPortById($zoneId, $id, $queryParameters));
     }
@@ -12857,7 +12857,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortEthernetPortProfile
      */
-    public function findRkszonesProfileEthernetPortById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesProfileEthernetPortById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesProfileEthernetPortById($zoneId, $id, $queryParameters));
     }
@@ -12875,7 +12875,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesProfileEthernetPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortModifyEthernetPortProfile $body, array $queryParameters = [])
+    public function partialUpdateRkszonesProfileEthernetPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortModifyEthernetPortProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesProfileEthernetPortById($zoneId, $id, $body, $queryParameters));
     }
@@ -12893,7 +12893,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesProfileEthernetPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortModifyEthernetPortProfile $body, array $queryParameters = [])
+    public function updateRkszonesProfileEthernetPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortModifyEthernetPortProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesProfileEthernetPortById($zoneId, $id, $body, $queryParameters));
     }
@@ -12909,7 +12909,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBonjourFencingPolicy
      */
-    public function findRkszonesBonjourFencingPolicyById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesBonjourFencingPolicyById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesBonjourFencingPolicyById($zoneId, $id, $queryParameters));
     }
@@ -12927,7 +12927,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesBonjourFencingPolicyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBonjourFencingPolicy $body, array $queryParameters = [])
+    public function partialUpdateRkszonesBonjourFencingPolicyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyBonjourFencingPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesBonjourFencingPolicyById($zoneId, $id, $body, $queryParameters));
     }
@@ -12942,7 +12942,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesBonjourFencingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesBonjourFencingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesBonjourFencingPolicy($body, $queryParameters));
     }
@@ -12957,7 +12957,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneBonjourGatewayPolicyList
      */
-    public function findRkszonesBonjourGatewayPoliciesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesBonjourGatewayPoliciesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesBonjourGatewayPoliciesByZoneId($zoneId, $queryParameters));
     }
@@ -12974,7 +12974,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesBonjourGatewayPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateBonjourGatewayPolicy $body, array $queryParameters = [])
+    public function addRkszonesBonjourGatewayPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateBonjourGatewayPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesBonjourGatewayPoliciesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -12990,7 +12990,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesBonjourGatewayPoliciesById($zoneId, $id, $queryParameters));
     }
@@ -13006,7 +13006,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneBonjourGatewayPolicyConfiguration
      */
-    public function findRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesBonjourGatewayPoliciesById($zoneId, $id, $queryParameters));
     }
@@ -13024,7 +13024,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyBonjourGatewayPolicy $body, array $queryParameters = [])
+    public function partialUpdateRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyBonjourGatewayPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesBonjourGatewayPoliciesById($zoneId, $id, $body, $queryParameters));
     }
@@ -13040,7 +13040,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelist
      */
-    public function findRkszonesClientIsolationWhitelistById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesClientIsolationWhitelistById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesClientIsolationWhitelistById($zoneId, $id, $queryParameters));
     }
@@ -13058,7 +13058,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesClientIsolationWhitelistById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyClientIsolationWhitelist $body, array $queryParameters = [])
+    public function partialUpdateRkszonesClientIsolationWhitelistById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyClientIsolationWhitelist $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesClientIsolationWhitelistById($zoneId, $id, $body, $queryParameters));
     }
@@ -13073,7 +13073,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
-    public function findRkszonesPortalsGuestByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesPortalsGuestByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalsGuestByZoneId($zoneId, $queryParameters));
     }
@@ -13090,7 +13090,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesPortalsGuestByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateGuestAccess $body, array $queryParameters = [])
+    public function addRkszonesPortalsGuestByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateGuestAccess $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesPortalsGuestByZoneId($zoneId, $body, $queryParameters));
     }
@@ -13106,7 +13106,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesPortalsGuestById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesPortalsGuestById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesPortalsGuestById($zoneId, $id, $queryParameters));
     }
@@ -13122,7 +13122,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceGuestAccess
      */
-    public function findRkszonesPortalsGuestById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesPortalsGuestById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalsGuestById($zoneId, $id, $queryParameters));
     }
@@ -13140,7 +13140,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesPortalsGuestById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyGuestAccess $body, array $queryParameters = [])
+    public function partialUpdateRkszonesPortalsGuestById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyGuestAccess $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesPortalsGuestById($zoneId, $id, $body, $queryParameters));
     }
@@ -13157,7 +13157,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
-    public function findRkszonesL2ACLByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesL2ACLByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesL2ACLByZoneId($zoneId, $queryParameters));
     }
@@ -13174,7 +13174,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesL2ACLByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateL2ACL $body, array $queryParameters = [])
+    public function addRkszonesL2ACLByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateL2ACL $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesL2ACLByZoneId($zoneId, $body, $queryParameters));
     }
@@ -13190,7 +13190,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesL2ACLById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesL2ACLById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesL2ACLById($zoneId, $id, $queryParameters));
     }
@@ -13206,7 +13206,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceL2ACL
      */
-    public function findRkszonesL2ACLById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesL2ACLById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesL2ACLById($zoneId, $id, $queryParameters));
     }
@@ -13224,7 +13224,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesL2ACLById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyL2ACL $body, array $queryParameters = [])
+    public function partialUpdateRkszonesL2ACLById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyL2ACL $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesL2ACLById($zoneId, $id, $body, $queryParameters));
     }
@@ -13240,7 +13240,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesPortalsWechatById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesPortalsWechatById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesPortalsWechatById($zoneId, $id, $queryParameters));
     }
@@ -13256,7 +13256,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceWechatConfiguration
      */
-    public function findRkszonesPortalsWechatById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesPortalsWechatById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalsWechatById($zoneId, $id, $queryParameters));
     }
@@ -13274,7 +13274,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesPortalsWechatById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyWechat $body, array $queryParameters = [])
+    public function partialUpdateRkszonesPortalsWechatById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyWechat $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesPortalsWechatById($zoneId, $id, $body, $queryParameters));
     }
@@ -13291,7 +13291,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalservicePortalServiceList
      */
-    public function findRkszonesPortalsWechatByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesPortalsWechatByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalsWechatByZoneId($zoneId, $queryParameters));
     }
@@ -13308,7 +13308,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesPortalsWechatByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWechat $body, array $queryParameters = [])
+    public function addRkszonesPortalsWechatByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceCreateWechat $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesPortalsWechatByZoneId($zoneId, $body, $queryParameters));
     }
@@ -13323,7 +13323,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneApFirmwareList
      */
-    public function findRkszonesApFirmwareByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesApFirmwareByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesApFirmwareByZoneId($zoneId, $queryParameters));
     }
@@ -13340,7 +13340,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesApFirmwareByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModfiyApFirmware $body, array $queryParameters = [])
+    public function updateRkszonesApFirmwareByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModfiyApFirmware $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesApFirmwareByZoneId($zoneId, $body, $queryParameters));
     }
@@ -13357,7 +13357,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyPorfileList
      */
-    public function findRkszonesDevicePolicyByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesDevicePolicyByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDevicePolicyByZoneId($zoneId, $queryParameters));
     }
@@ -13374,7 +13374,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesDevicePolicyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyCreateDevicePolicy $body, array $queryParameters = [])
+    public function addRkszonesDevicePolicyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyCreateDevicePolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesDevicePolicyByZoneId($zoneId, $body, $queryParameters));
     }
@@ -13389,7 +13389,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDiffServList
      */
-    public function findRkszonesDiffservByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesDiffservByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDiffservByZoneId($zoneId, $queryParameters));
     }
@@ -13406,7 +13406,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesDiffservByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateDiffServProfile $body, array $queryParameters = [])
+    public function addRkszonesDiffservByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateDiffServProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesDiffservByZoneId($zoneId, $body, $queryParameters));
     }
@@ -13422,7 +13422,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteRkszonesDiffservById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesDiffservById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesDiffservById($zoneId, $id, $queryParameters));
     }
@@ -13438,7 +13438,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneDiffServConfiguration
      */
-    public function findRkszonesDiffservById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesDiffservById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDiffservById($zoneId, $id, $queryParameters));
     }
@@ -13456,7 +13456,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateRkszonesDiffservById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyDiffServProfile $body, array $queryParameters = [])
+    public function partialUpdateRkszonesDiffservById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyDiffServProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesDiffservById($zoneId, $id, $body, $queryParameters));
     }
@@ -13471,7 +13471,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileClientIsolationWhitelistArray
      */
-    public function findRkszonesClientIsolationWhitelistByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesClientIsolationWhitelistByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesClientIsolationWhitelistByZoneId($zoneId, $queryParameters));
     }
@@ -13488,7 +13488,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesClientIsolationWhitelistByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateClientIsolationWhitelist $body, array $queryParameters = [])
+    public function addRkszonesClientIsolationWhitelistByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateClientIsolationWhitelist $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesClientIsolationWhitelistByZoneId($zoneId, $body, $queryParameters));
     }
@@ -13503,7 +13503,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesClientIsolationWhitelist(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesClientIsolationWhitelist(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesClientIsolationWhitelist($body, $queryParameters));
     }
@@ -13518,7 +13518,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneAvailableTunnelProfileList
      */
-    public function findRkszonesAvailableTunnelProfilesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesAvailableTunnelProfilesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesAvailableTunnelProfilesByZoneId($zoneId, $queryParameters));
     }
@@ -13533,7 +13533,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneAvailableTunnelProfileList
      */
-    public function findRkszonesAvailableIpsecProfilesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesAvailableIpsecProfilesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesAvailableIpsecProfilesByZoneId($zoneId, $queryParameters));
     }
@@ -13550,7 +13550,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortProfileList
      */
-    public function findRkszonesProfileEthernetPortByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesProfileEthernetPortByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesProfileEthernetPortByZoneId($zoneId, $queryParameters));
     }
@@ -13567,7 +13567,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesProfileEthernetPortByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortCreateEthernetPortProfile $body, array $queryParameters = [])
+    public function addRkszonesProfileEthernetPortByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortCreateEthernetPortProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesProfileEthernetPortByZoneId($zoneId, $body, $queryParameters));
     }
@@ -13582,7 +13582,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteRkszonesBonjourFencingPolicyById(string $id, array $queryParameters = [])
+    public function deleteRkszonesBonjourFencingPolicyById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesBonjourFencingPolicyById($id, $queryParameters));
     }
@@ -13597,7 +13597,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesClientIsolationWhitelistById(string $id, array $queryParameters = [])
+    public function deleteRkszonesClientIsolationWhitelistById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesClientIsolationWhitelistById($id, $queryParameters));
     }
@@ -13613,7 +13613,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesDevicePolicyById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesDevicePolicyById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesDevicePolicyById($zoneId, $id, $queryParameters));
     }
@@ -13629,7 +13629,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyDevicePolicyPorfile
      */
-    public function findRkszonesDevicePolicyById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesDevicePolicyById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDevicePolicyById($zoneId, $id, $queryParameters));
     }
@@ -13647,7 +13647,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesDevicePolicyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyModifyDevicePolicy $body, array $queryParameters = [])
+    public function partialUpdateRkszonesDevicePolicyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DevicePolicyModifyDevicePolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesDevicePolicyById($zoneId, $id, $body, $queryParameters));
     }
@@ -13663,7 +13663,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesPortalsHotspotById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesPortalsHotspotById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesPortalsHotspotById($zoneId, $id, $queryParameters));
     }
@@ -13679,7 +13679,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceHotspot
      */
-    public function findRkszonesPortalsHotspotById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesPortalsHotspotById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesPortalsHotspotById($zoneId, $id, $queryParameters));
     }
@@ -13697,7 +13697,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesPortalsHotspotById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot $body, array $queryParameters = [])
+    public function partialUpdateRkszonesPortalsHotspotById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\PortalserviceModifyHotspot $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesPortalsHotspotById($zoneId, $id, $body, $queryParameters));
     }
@@ -13714,7 +13714,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addRkszonesBonjourGatewayEnableByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyBonjourGatewayEnable $body, array $queryParameters = [])
+    public function addRkszonesBonjourGatewayEnableByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneModifyBonjourGatewayEnable $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesBonjourGatewayEnableByZoneId($zoneId, $body, $queryParameters));
     }
@@ -13731,7 +13731,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneZoneList
      */
-    public function findRkszones(array $queryParameters = [])
+    public function findRkszones(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszones($queryParameters));
     }
@@ -13747,7 +13747,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszones(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone $body, array $queryParameters = [])
+    public function addRkszones(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ZoneCreateZone $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszones($body, $queryParameters));
     }
@@ -13761,7 +13761,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyClusterRedundancySettings
      */
-    public function findClusterGeoRedundancy(array $queryParameters = [])
+    public function findClusterGeoRedundancy(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindClusterGeoRedundancy($queryParameters));
     }
@@ -13777,7 +13777,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateClusterGeoRedundancy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyUpdateClusterRedundancy $body, array $queryParameters = [])
+    public function updateClusterGeoRedundancy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ClusterRedundancyUpdateClusterRedundancy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateClusterGeoRedundancy($body, $queryParameters));
     }
@@ -13793,7 +13793,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapList
      */
-    public function findMapsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findMapsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindMapsByQueryCriteria($body, $queryParameters));
     }
@@ -13810,7 +13810,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
      */
-    public function updateMapsApsByIndoorMapId(string $indoorMapId, array $body, array $queryParameters = [])
+    public function updateMapsApsByIndoorMapId(string $indoorMapId, array $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateMapsApsByIndoorMapId($indoorMapId, $body, $queryParameters));
     }
@@ -13826,7 +13826,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMapList
      */
-    public function findMaps(array $queryParameters = [])
+    public function findMaps(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindMaps($queryParameters));
     }
@@ -13842,7 +13842,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
      */
-    public function addMaps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap $body, array $queryParameters = [])
+    public function addMaps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddMaps($body, $queryParameters));
     }
@@ -13857,7 +13857,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
      */
-    public function deleteMapsByIndoorMapId(string $indoorMapId, array $queryParameters = [])
+    public function deleteMapsByIndoorMapId(string $indoorMapId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteMapsByIndoorMapId($indoorMapId, $queryParameters));
     }
@@ -13872,7 +13872,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap
      */
-    public function findMapsByIndoorMapId(string $indoorMapId, array $queryParameters = [])
+    public function findMapsByIndoorMapId(string $indoorMapId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindMapsByIndoorMapId($indoorMapId, $queryParameters));
     }
@@ -13889,7 +13889,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndooMapAuditId
      */
-    public function partialUpdateMapsByIndoorMapId(string $indoorMapId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap $body, array $queryParameters = [])
+    public function partialUpdateMapsByIndoorMapId(string $indoorMapId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\IndoorMapIndoorMap $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateMapsByIndoorMapId($indoorMapId, $body, $queryParameters));
     }
@@ -13903,7 +13903,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SessionManagementRuckusSessions
      */
-    public function findSessionManagement(array $queryParameters = [])
+    public function findSessionManagement(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSessionManagement($queryParameters));
     }
@@ -13919,7 +13919,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfilePrecedenceList
      */
-    public function findPrecedenceByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findPrecedenceByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindPrecedenceByQueryCriteria($body, $queryParameters));
     }
@@ -13934,7 +13934,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deletePrecedence(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkPrecedenceProfile $body, array $queryParameters = [])
+    public function deletePrecedence(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileDeleteBulkPrecedenceProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeletePrecedence($body, $queryParameters));
     }
@@ -13950,7 +13950,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfilePrecedenceList
      */
-    public function findPrecedence(array $queryParameters = [])
+    public function findPrecedence(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindPrecedence($queryParameters));
     }
@@ -13966,7 +13966,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addPrecedence(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreatePrecedenceProfile $body, array $queryParameters = [])
+    public function addPrecedence(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreatePrecedenceProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddPrecedence($body, $queryParameters));
     }
@@ -13981,7 +13981,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deletePrecedenceById(string $id, array $queryParameters = [])
+    public function deletePrecedenceById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeletePrecedenceById($id, $queryParameters));
     }
@@ -13996,7 +13996,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreatePrecedenceProfile
      */
-    public function findPrecedenceById(string $id, array $queryParameters = [])
+    public function findPrecedenceById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindPrecedenceById($id, $queryParameters));
     }
@@ -14013,7 +14013,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdatePrecedenceById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdatePrecedenceProfile $body, array $queryParameters = [])
+    public function partialUpdatePrecedenceById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdatePrecedenceProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdatePrecedenceById($id, $body, $queryParameters));
     }
@@ -14029,7 +14029,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfoList
      */
-    public function findMeshTopologyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findMeshTopologyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindMeshTopologyByQueryCriteria($body, $queryParameters));
     }
@@ -14043,7 +14043,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfoList
      */
-    public function findMeshZeroTouch(array $queryParameters = [])
+    public function findMeshZeroTouch(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindMeshZeroTouch($queryParameters));
     }
@@ -14059,7 +14059,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateMeshZeroTouch(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoUpdateAPZeroTouch $body, array $queryParameters = [])
+    public function updateMeshZeroTouch(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoUpdateAPZeroTouch $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateMeshZeroTouch($body, $queryParameters));
     }
@@ -14076,7 +14076,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNodeInfoMeshNodeInfo[]
      */
-    public function findMeshTopologyByApMacByQueryCriteria(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findMeshTopologyByApMacByQueryCriteria(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindMeshTopologyByApMacByQueryCriteria($apMac, $body, $queryParameters));
     }
@@ -14093,7 +14093,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MeshNeighborInfoMeshNeighborInfoList
      */
-    public function findMeshNeighborByApMacByQueryCriteria(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findMeshNeighborByApMacByQueryCriteria(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindMeshNeighborByApMacByQueryCriteria($apMac, $body, $queryParameters));
     }
@@ -14108,7 +14108,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfileList
      */
-    public function findRkszonesSplitTunnelProfilesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesSplitTunnelProfilesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesSplitTunnelProfilesByZoneId($zoneId, $queryParameters));
     }
@@ -14125,7 +14125,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesSplitTunnelProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelCreateSplitTunnelProfile $body, array $queryParameters = [])
+    public function addRkszonesSplitTunnelProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelCreateSplitTunnelProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesSplitTunnelProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -14141,7 +14141,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesSplitTunnelProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesSplitTunnelProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesSplitTunnelProfilesById($zoneId, $id, $queryParameters));
     }
@@ -14157,7 +14157,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfile
      */
-    public function findRkszonesSplitTunnelProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesSplitTunnelProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesSplitTunnelProfilesById($zoneId, $id, $queryParameters));
     }
@@ -14175,7 +14175,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesSplitTunnelProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelModifySplitTunnelProfile $body, array $queryParameters = [])
+    public function partialUpdateRkszonesSplitTunnelProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelModifySplitTunnelProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesSplitTunnelProfilesById($zoneId, $id, $body, $queryParameters));
     }
@@ -14193,7 +14193,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesSplitTunnelProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelCreateSplitTunnelProfile $body, array $queryParameters = [])
+    public function updateRkszonesSplitTunnelProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelCreateSplitTunnelProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesSplitTunnelProfilesById($zoneId, $id, $body, $queryParameters));
     }
@@ -14209,7 +14209,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SplitTunnelSplitTunnelProfileQuery
      */
-    public function findRkszonesSplitTunnelProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findRkszonesSplitTunnelProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesSplitTunnelProfilesByQueryCriteria($body, $queryParameters));
     }
@@ -14224,7 +14224,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesSplitTunnelProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesSplitTunnelProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesSplitTunnelProfiles($body, $queryParameters));
     }
@@ -14240,7 +14240,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRogueApPoliciesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesRogueApPoliciesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRogueApPoliciesById($zoneId, $id, $queryParameters));
     }
@@ -14256,7 +14256,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRogueApPolicy
      */
-    public function findRkszonesRogueApPoliciesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesRogueApPoliciesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesRogueApPoliciesById($zoneId, $id, $queryParameters));
     }
@@ -14274,7 +14274,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesRogueApPoliciesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdateRogueApPolicy $body, array $queryParameters = [])
+    public function partialUpdateRkszonesRogueApPoliciesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileUpdateRogueApPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesRogueApPoliciesById($zoneId, $id, $body, $queryParameters));
     }
@@ -14290,7 +14290,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRogueApPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesRogueApPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRogueApPoliciesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -14305,7 +14305,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRogueApPolicyList
      */
-    public function findRkszonesRogueApPoliciesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesRogueApPoliciesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesRogueApPoliciesByZoneId($zoneId, $queryParameters));
     }
@@ -14322,7 +14322,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesRogueApPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRogueApPolicy $body, array $queryParameters = [])
+    public function addRkszonesRogueApPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRogueApPolicy $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesRogueApPoliciesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -14338,7 +14338,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\RogueclientRogueInfoList
      */
-    public function findRogueclientsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findRogueclientsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRogueclientsByQueryCriteria($body, $queryParameters));
     }
@@ -14355,7 +14355,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileIdList
      */
-    public function findRkszonesRestrictedApAccessProfilesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesRestrictedApAccessProfilesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesRestrictedApAccessProfilesByZoneId($zoneId, $queryParameters));
     }
@@ -14372,7 +14372,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesRestrictedApAccessProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRestrictedApAccessProfile $body, array $queryParameters = [])
+    public function addRkszonesRestrictedApAccessProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateRestrictedApAccessProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesRestrictedApAccessProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -14388,7 +14388,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRestrictedApAccessProfileArray
      */
-    public function findRkszonesRestrictedApAccessProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findRkszonesRestrictedApAccessProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesRestrictedApAccessProfilesByQueryCriteria($body, $queryParameters));
     }
@@ -14403,7 +14403,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesRestrictedApAccessProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesRestrictedApAccessProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRestrictedApAccessProfiles($body, $queryParameters));
     }
@@ -14419,7 +14419,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesRestrictedApAccessProfilesById($zoneId, $id, $queryParameters));
     }
@@ -14435,7 +14435,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileRestrictedApAccessProfile
      */
-    public function findRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesRestrictedApAccessProfilesById($zoneId, $id, $queryParameters));
     }
@@ -14453,7 +14453,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyRestrictedApAccessProfile $body, array $queryParameters = [])
+    public function updateRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyRestrictedApAccessProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesRestrictedApAccessProfilesById($zoneId, $id, $body, $queryParameters));
     }
@@ -14469,7 +14469,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addNetworkSegmentation(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileCreateMduSegmentationProfile $body, array $queryParameters = [])
+    public function addNetworkSegmentation(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileCreateMduSegmentationProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddNetworkSegmentation($body, $queryParameters));
     }
@@ -14484,7 +14484,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteNetworkSegmentationById(string $id, array $queryParameters = [])
+    public function deleteNetworkSegmentationById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteNetworkSegmentationById($id, $queryParameters));
     }
@@ -14499,7 +14499,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileMduSegmentationProfileSummary
      */
-    public function findNetworkSegmentationById(string $id, array $queryParameters = [])
+    public function findNetworkSegmentationById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindNetworkSegmentationById($id, $queryParameters));
     }
@@ -14516,7 +14516,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateNetworkSegmentationById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfile $body, array $queryParameters = [])
+    public function updateNetworkSegmentationById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileUpdateMduSegmentationProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateNetworkSegmentationById($id, $body, $queryParameters));
     }
@@ -14532,7 +14532,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileMduSegmentationProfileQuery
      */
-    public function findNetworkSegmentationByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findNetworkSegmentationByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindNetworkSegmentationByQueryCriteria($body, $queryParameters));
     }
@@ -14547,7 +14547,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteNetworkSegmentationEthernetPortProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteNetworkSegmentationEthernetPortProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteNetworkSegmentationEthernetPortProfile($body, $queryParameters));
     }
@@ -14561,7 +14561,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileProfileContentList
      */
-    public function findNetworkSegmentationEthernetPortProfile(array $queryParameters = [])
+    public function findNetworkSegmentationEthernetPortProfile(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindNetworkSegmentationEthernetPortProfile($queryParameters));
     }
@@ -14577,7 +14577,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addNetworkSegmentationEthernetPortProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileEthernetPortProfileConfig $body, array $queryParameters = [])
+    public function addNetworkSegmentationEthernetPortProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileEthernetPortProfileConfig $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddNetworkSegmentationEthernetPortProfile($body, $queryParameters));
     }
@@ -14592,7 +14592,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteNetworkSegmentationEthernetPortProfileById(string $id, array $queryParameters = [])
+    public function deleteNetworkSegmentationEthernetPortProfileById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteNetworkSegmentationEthernetPortProfileById($id, $queryParameters));
     }
@@ -14607,7 +14607,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileEthernetPortProfile
      */
-    public function findNetworkSegmentationEthernetPortProfileById(string $id, array $queryParameters = [])
+    public function findNetworkSegmentationEthernetPortProfileById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindNetworkSegmentationEthernetPortProfileById($id, $queryParameters));
     }
@@ -14624,7 +14624,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateNetworkSegmentationEthernetPortProfileById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileEthernetPortProfileConfig $body, array $queryParameters = [])
+    public function updateNetworkSegmentationEthernetPortProfileById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\MduSegmentationProfileEthernetPortProfileConfig $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateNetworkSegmentationEthernetPortProfileById($id, $body, $queryParameters));
     }
@@ -14639,7 +14639,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRetrieveAdminAAAServerList
      */
-    public function findAdminaaa(array $queryParameters = [])
+    public function findAdminaaa(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAdminaaa($queryParameters));
     }
@@ -14655,7 +14655,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addAdminaaa(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationCreateAdminAAAServer $body, array $queryParameters = [])
+    public function addAdminaaa(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationCreateAdminAAAServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAdminaaa($body, $queryParameters));
     }
@@ -14670,7 +14670,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteAdminaaaById(string $id, array $queryParameters = [])
+    public function deleteAdminaaaById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteAdminaaaById($id, $queryParameters));
     }
@@ -14685,7 +14685,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRetrieveAdminAAAServer
      */
-    public function findAdminaaaById(string $id, array $queryParameters = [])
+    public function findAdminaaaById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAdminaaaById($id, $queryParameters));
     }
@@ -14702,7 +14702,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateAdminaaaById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyAdminAAAServer $body, array $queryParameters = [])
+    public function updateAdminaaaById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyAdminAAAServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateAdminaaaById($id, $body, $queryParameters));
     }
@@ -14716,7 +14716,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationAutoExportBackup
      */
-    public function findConfigurationSettingsAutoExportBackup(array $queryParameters = [])
+    public function findConfigurationSettingsAutoExportBackup(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindConfigurationSettingsAutoExportBackup($queryParameters));
     }
@@ -14732,7 +14732,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateConfigurationSettingsAutoExportBackup(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyAutoExportBackup $body, array $queryParameters = [])
+    public function partialUpdateConfigurationSettingsAutoExportBackup(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyAutoExportBackup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateConfigurationSettingsAutoExportBackup($body, $queryParameters));
     }
@@ -14746,7 +14746,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationScheduleBackup
      */
-    public function findConfigurationSettingsScheduleBackup(array $queryParameters = [])
+    public function findConfigurationSettingsScheduleBackup(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindConfigurationSettingsScheduleBackup($queryParameters));
     }
@@ -14762,7 +14762,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateConfigurationSettingsScheduleBackup(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyScheduleBackup $body, array $queryParameters = [])
+    public function partialUpdateConfigurationSettingsScheduleBackup(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyScheduleBackup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateConfigurationSettingsScheduleBackup($body, $queryParameters));
     }
@@ -14778,7 +14778,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addClusterRestoreById(string $id, array $queryParameters = [])
+    public function addClusterRestoreById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddClusterRestoreById($id, $queryParameters));
     }
@@ -14795,7 +14795,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApplicationLogAndStatusList
      */
-    public function findApplicationsByBladeUUID(string $bladeUUID, array $queryParameters = [])
+    public function findApplicationsByBladeUUID(string $bladeUUID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApplicationsByBladeUUID($bladeUUID, $queryParameters));
     }
@@ -14811,7 +14811,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateApplications(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyLogLevel $body, array $queryParameters = [])
+    public function partialUpdateApplications(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModifyLogLevel $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateApplications($body, $queryParameters));
     }
@@ -14828,7 +14828,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findApplicationsDownloadByBladeUUID(string $bladeUUID, array $queryParameters = [])
+    public function findApplicationsDownloadByBladeUUID(string $bladeUUID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApplicationsDownloadByBladeUUID($bladeUUID, $queryParameters));
     }
@@ -14843,7 +14843,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findApplicationsDownloadsnapByBladeUUID(string $bladeUUID, array $queryParameters = [])
+    public function findApplicationsDownloadsnapByBladeUUID(string $bladeUUID, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApplicationsDownloadsnapByBladeUUID($bladeUUID, $queryParameters));
     }
@@ -14861,7 +14861,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
      */
-    public function addUpgradeUpload(array $queryParameters = [], array $formParameters = [])
+    public function addUpgradeUpload(array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddUpgradeUpload($queryParameters, $formParameters));
     }
@@ -14879,7 +14879,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addApPatchFile(array $queryParameters = [], array $formParameters = [])
+    public function addApPatchFile(array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApPatchFile($queryParameters, $formParameters));
     }
@@ -14893,7 +14893,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchInfo
      */
-    public function findApPatch(array $queryParameters = [])
+    public function findApPatch(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApPatch($queryParameters));
     }
@@ -14908,7 +14908,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchStatus
      */
-    public function addApPatch(array $queryParameters = [])
+    public function addApPatch(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddApPatch($queryParameters));
     }
@@ -14922,7 +14922,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchStatus
      */
-    public function findApPatchStatus(array $queryParameters = [])
+    public function findApPatchStatus(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApPatchStatus($queryParameters));
     }
@@ -14939,7 +14939,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationApPatchHistoryList
      */
-    public function findApPatchHistory(array $queryParameters = [])
+    public function findApPatchHistory(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindApPatchHistory($queryParameters));
     }
@@ -14954,7 +14954,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addRestart(array $queryParameters = [])
+    public function addRestart(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRestart($queryParameters));
     }
@@ -14969,7 +14969,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addShutdown(array $queryParameters = [])
+    public function addShutdown(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddShutdown($queryParameters));
     }
@@ -14983,7 +14983,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicenseServer
      */
-    public function findLicenseServer(array $queryParameters = [])
+    public function findLicenseServer(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindLicenseServer($queryParameters));
     }
@@ -14999,7 +14999,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateLicenseServer(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModfiyLicenseServer $body, array $queryParameters = [])
+    public function updateLicenseServer(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationModfiyLicenseServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateLicenseServer($body, $queryParameters));
     }
@@ -15014,7 +15014,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateLicensesSync(array $queryParameters = [])
+    public function updateLicensesSync(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateLicensesSync($queryParameters));
     }
@@ -15028,7 +15028,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradePatchInfo
      */
-    public function findUpgradePatch(array $queryParameters = [])
+    public function findUpgradePatch(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUpgradePatch($queryParameters));
     }
@@ -15043,7 +15043,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addClusterBackup(array $queryParameters = [])
+    public function addClusterBackup(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddClusterBackup($queryParameters));
     }
@@ -15058,7 +15058,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteClusterById(string $id, array $queryParameters = [])
+    public function deleteClusterById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteClusterById($id, $queryParameters));
     }
@@ -15075,7 +15075,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationClusterBackupList
      */
-    public function findCluster(array $queryParameters = [])
+    public function findCluster(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindCluster($queryParameters));
     }
@@ -15093,7 +15093,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addConfigurationUpload(array $queryParameters = [], array $formParameters = [])
+    public function addConfigurationUpload(array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddConfigurationUpload($queryParameters, $formParameters));
     }
@@ -15108,7 +15108,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addConfigurationBackup(array $queryParameters = [])
+    public function addConfigurationBackup(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddConfigurationBackup($queryParameters));
     }
@@ -15122,7 +15122,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesSummaryList
      */
-    public function findLicensesSummary(array $queryParameters = [])
+    public function findLicensesSummary(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindLicensesSummary($queryParameters));
     }
@@ -15136,7 +15136,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesSyncLogsList
      */
-    public function findLicensesSyncLogs(array $queryParameters = [])
+    public function findLicensesSyncLogs(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindLicensesSyncLogs($queryParameters));
     }
@@ -15152,7 +15152,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationConfigurationBackupList
      */
-    public function findConfiguration(array $queryParameters = [])
+    public function findConfiguration(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindConfiguration($queryParameters));
     }
@@ -15168,7 +15168,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findConfigurationDownload(array $queryParameters = [])
+    public function findConfigurationDownload(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindConfigurationDownload($queryParameters));
     }
@@ -15182,7 +15182,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
      */
-    public function findUpgradeStatus(array $queryParameters = [])
+    public function findUpgradeStatus(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUpgradeStatus($queryParameters));
     }
@@ -15199,7 +15199,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeHistoryList
      */
-    public function findUpgradeHistory(array $queryParameters = [])
+    public function findUpgradeHistory(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindUpgradeHistory($queryParameters));
     }
@@ -15214,7 +15214,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteConfigurationById(string $id, array $queryParameters = [])
+    public function deleteConfigurationById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteConfigurationById($id, $queryParameters));
     }
@@ -15231,7 +15231,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addConfigurationRestoreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRestoreConfigurationBackup $body, array $queryParameters = [])
+    public function addConfigurationRestoreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationRestoreConfigurationBackup $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddConfigurationRestoreById($id, $body, $queryParameters));
     }
@@ -15245,7 +15245,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationLicensesList
      */
-    public function findLicenses(array $queryParameters = [])
+    public function findLicenses(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindLicenses($queryParameters));
     }
@@ -15260,7 +15260,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationUpgradeStatus
      */
-    public function addUpgrade(array $queryParameters = [])
+    public function addUpgrade(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddUpgrade($queryParameters));
     }
@@ -15275,7 +15275,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteAvcUserDefinedById(string $id, array $queryParameters = [])
+    public function deleteAvcUserDefinedById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteAvcUserDefinedById($id, $queryParameters));
     }
@@ -15290,7 +15290,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcUserDefinedProfile
      */
-    public function findAvcUserDefinedById(string $id, array $queryParameters = [])
+    public function findAvcUserDefinedById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcUserDefinedById($id, $queryParameters));
     }
@@ -15307,7 +15307,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateAvcUserDefinedById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcModifyUserDefinedProfile $body, array $queryParameters = [])
+    public function partialUpdateAvcUserDefinedById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcModifyUserDefinedProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateAvcUserDefinedById($id, $body, $queryParameters));
     }
@@ -15322,7 +15322,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteAvcUserDefined(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDeleteBulk $body, array $queryParameters = [])
+    public function deleteAvcUserDefined(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteAvcUserDefined($body, $queryParameters));
     }
@@ -15338,7 +15338,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addAvcUserDefined(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateUserDefinedProfile $body, array $queryParameters = [])
+    public function addAvcUserDefined(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateUserDefinedProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAvcUserDefined($body, $queryParameters));
     }
@@ -15353,7 +15353,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteAvcApplicationPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDeleteBulk $body, array $queryParameters = [])
+    public function deleteAvcApplicationPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteAvcApplicationPolicy($body, $queryParameters));
     }
@@ -15369,7 +15369,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addAvcApplicationPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateApplicationPolicyProfile $body, array $queryParameters = [])
+    public function addAvcApplicationPolicy(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateApplicationPolicyProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAvcApplicationPolicy($body, $queryParameters));
     }
@@ -15384,7 +15384,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteAvcApplicationPolicyById(string $id, array $queryParameters = [])
+    public function deleteAvcApplicationPolicyById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteAvcApplicationPolicyById($id, $queryParameters));
     }
@@ -15399,7 +15399,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfile
      */
-    public function findAvcApplicationPolicyById(string $id, array $queryParameters = [])
+    public function findAvcApplicationPolicyById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcApplicationPolicyById($id, $queryParameters));
     }
@@ -15416,7 +15416,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateAvcApplicationPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcModifyApplicationPolicyProfile $body, array $queryParameters = [])
+    public function partialUpdateAvcApplicationPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcModifyApplicationPolicyProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateAvcApplicationPolicyById($id, $body, $queryParameters));
     }
@@ -15431,7 +15431,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteAvcApplicationPolicyV2ById(string $id, array $queryParameters = [])
+    public function deleteAvcApplicationPolicyV2ById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteAvcApplicationPolicyV2ById($id, $queryParameters));
     }
@@ -15446,7 +15446,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationPolicyProfile
      */
-    public function findAvcApplicationPolicyV2ById(string $id, array $queryParameters = [])
+    public function findAvcApplicationPolicyV2ById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcApplicationPolicyV2ById($id, $queryParameters));
     }
@@ -15463,7 +15463,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateAvcApplicationPolicyV2ById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcModifyApplicationPolicyProfile $body, array $queryParameters = [])
+    public function partialUpdateAvcApplicationPolicyV2ById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcModifyApplicationPolicyProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateAvcApplicationPolicyV2ById($id, $body, $queryParameters));
     }
@@ -15478,7 +15478,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteAvcApplicationPolicyV2(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDeleteBulk $body, array $queryParameters = [])
+    public function deleteAvcApplicationPolicyV2(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteAvcApplicationPolicyV2($body, $queryParameters));
     }
@@ -15494,7 +15494,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addAvcApplicationPolicyV2(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateApplicationPolicyProfile $body, array $queryParameters = [])
+    public function addAvcApplicationPolicyV2(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcCreateApplicationPolicyProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAvcApplicationPolicyV2($body, $queryParameters));
     }
@@ -15508,7 +15508,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
      */
-    public function findAvcSignaturePackageV2(array $queryParameters = [])
+    public function findAvcSignaturePackageV2(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcSignaturePackageV2($queryParameters));
     }
@@ -15524,7 +15524,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateAvcSignaturePackageV2(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcPatchSignaturePackage $body, array $queryParameters = [])
+    public function partialUpdateAvcSignaturePackageV2(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcPatchSignaturePackage $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateAvcSignaturePackageV2($body, $queryParameters));
     }
@@ -15539,7 +15539,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcLatestInstallableSignaturePackage
      */
-    public function addAvcSignaturePackageV2CheckLatest(array $queryParameters = [])
+    public function addAvcSignaturePackageV2CheckLatest(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAvcSignaturePackageV2CheckLatest($queryParameters));
     }
@@ -15553,7 +15553,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
      */
-    public function findAvcSignaturePackage(array $queryParameters = [])
+    public function findAvcSignaturePackage(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcSignaturePackage($queryParameters));
     }
@@ -15567,7 +15567,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationList
      */
-    public function findAvcSignaturePackageApplications(array $queryParameters = [])
+    public function findAvcSignaturePackageApplications(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcSignaturePackageApplications($queryParameters));
     }
@@ -15585,7 +15585,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
      */
-    public function addAvcSignaturePackageV2Upload(array $queryParameters = [], array $formParameters = [])
+    public function addAvcSignaturePackageV2Upload(array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAvcSignaturePackageV2Upload($queryParameters, $formParameters));
     }
@@ -15600,7 +15600,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategoryList
      */
-    public function findAvcSignaturePackageV2Categories(array $queryParameters = [])
+    public function findAvcSignaturePackageV2Categories(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcSignaturePackageV2Categories($queryParameters));
     }
@@ -15615,7 +15615,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplicationList
      */
-    public function findAvcSignaturePackageV2Applications(array $queryParameters = [])
+    public function findAvcSignaturePackageV2Applications(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcSignaturePackageV2Applications($queryParameters));
     }
@@ -15630,7 +15630,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategory
      */
-    public function findAvcSignaturePackageCategoryByCategoryName(string $categoryName, array $queryParameters = [])
+    public function findAvcSignaturePackageCategoryByCategoryName(string $categoryName, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcSignaturePackageCategoryByCategoryName($categoryName, $queryParameters));
     }
@@ -15645,7 +15645,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcApplication
      */
-    public function findAvcSignaturePackageApplicationByApplicationName(string $applicationName, array $queryParameters = [])
+    public function findAvcSignaturePackageApplicationByApplicationName(string $applicationName, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcSignaturePackageApplicationByApplicationName($applicationName, $queryParameters));
     }
@@ -15660,7 +15660,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDownloadLatestInstallableSignaturePackage
      */
-    public function addAvcSignaturePackageV2DownloadAndInstallLastChecked(array $queryParameters = [])
+    public function addAvcSignaturePackageV2DownloadAndInstallLastChecked(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAvcSignaturePackageV2DownloadAndInstallLastChecked($queryParameters));
     }
@@ -15678,7 +15678,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcSignaturePackage
      */
-    public function addAvcSignaturePackageUpload(array $queryParameters = [], array $formParameters = [])
+    public function addAvcSignaturePackageUpload(array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddAvcSignaturePackageUpload($queryParameters, $formParameters));
     }
@@ -15692,7 +15692,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcDownloadLatestInstallableSignaturePackage
      */
-    public function findAvcSignaturePackageV2DownloadAndInstallLastCheckedProgress(array $queryParameters = [])
+    public function findAvcSignaturePackageV2DownloadAndInstallLastCheckedProgress(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgress($queryParameters));
     }
@@ -15706,7 +15706,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AvcAppCategoryList
      */
-    public function findAvcSignaturePackageCategories(array $queryParameters = [])
+    public function findAvcSignaturePackageCategories(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindAvcSignaturePackageCategories($queryParameters));
     }
@@ -15720,7 +15720,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciSciEventCode
      */
-    public function findSciSciEventCode(array $queryParameters = [])
+    public function findSciSciEventCode(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSciSciEventCode($queryParameters));
     }
@@ -15736,7 +15736,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addSciSciEventCode(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifyEventCode $body, array $queryParameters = [])
+    public function addSciSciEventCode(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifyEventCode $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSciSciEventCode($body, $queryParameters));
     }
@@ -15751,7 +15751,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteSciSciProfileById(string $id, array $queryParameters = [])
+    public function deleteSciSciProfileById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteSciSciProfileById($id, $queryParameters));
     }
@@ -15766,7 +15766,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciSciProfile
      */
-    public function findSciSciProfileById(string $id, array $queryParameters = [])
+    public function findSciSciProfileById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSciSciProfileById($id, $queryParameters));
     }
@@ -15783,7 +15783,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateSciSciProfileById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciProfile $body, array $queryParameters = [])
+    public function partialUpdateSciSciProfileById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSciSciProfileById($id, $body, $queryParameters));
     }
@@ -15798,7 +15798,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteSciSciProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciDeleteSciProfileList $body, array $queryParameters = [])
+    public function deleteSciSciProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciDeleteSciProfileList $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteSciSciProfile($body, $queryParameters));
     }
@@ -15812,7 +15812,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciSciProfileList
      */
-    public function findSciSciProfile(array $queryParameters = [])
+    public function findSciSciProfile(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSciSciProfile($queryParameters));
     }
@@ -15828,7 +15828,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addSciSciProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciCreateSciProfile $body, array $queryParameters = [])
+    public function addSciSciProfile(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciCreateSciProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSciSciProfile($body, $queryParameters));
     }
@@ -15844,7 +15844,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateSciSciEnabled(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciEnabled $body, array $queryParameters = [])
+    public function partialUpdateSciSciEnabled(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SciModifySciEnabled $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSciSciEnabled($body, $queryParameters));
     }
@@ -15863,7 +15863,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
      */
-    public function findDomains(array $queryParameters = [])
+    public function findDomains(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDomains($queryParameters));
     }
@@ -15880,7 +15880,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addDomains(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainCreateDomain $body, array $queryParameters = [])
+    public function addDomains(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainCreateDomain $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddDomains($body, $queryParameters));
     }
@@ -15895,7 +15895,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteDomainsById(string $id, array $queryParameters = [])
+    public function deleteDomainsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteDomainsById($id, $queryParameters));
     }
@@ -15911,7 +15911,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainConfiguration
      */
-    public function findDomainsById(string $id, array $queryParameters = [])
+    public function findDomainsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDomainsById($id, $queryParameters));
     }
@@ -15928,7 +15928,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateDomainsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainModifyDomain $body, array $queryParameters = [])
+    public function partialUpdateDomainsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainModifyDomain $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateDomainsById($id, $body, $queryParameters));
     }
@@ -15948,7 +15948,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
      */
-    public function findDomainsSubdomainById(string $id, array $queryParameters = [])
+    public function findDomainsSubdomainById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDomainsSubdomainById($id, $queryParameters));
     }
@@ -15963,7 +15963,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainDomainList
      */
-    public function findDomainsByNameByDomainName(string $domainName, array $queryParameters = [])
+    public function findDomainsByNameByDomainName(string $domainName, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindDomainsByNameByDomainName($domainName, $queryParameters));
     }
@@ -15979,7 +15979,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskInfoList
      */
-    public function findRkszonesWlansDpskById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesWlansDpskById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesWlansDpskById($zoneId, $id, $queryParameters));
     }
@@ -15997,7 +15997,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteDpskResult
      */
-    public function addRkszonesWlansDpskById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteDPSKs $body, array $queryParameters = [])
+    public function addRkszonesWlansDpskById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteDPSKs $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansDpskById($zoneId, $id, $body, $queryParameters));
     }
@@ -16012,7 +16012,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findRkszonesDownloadDpskCsvSample(array $queryParameters = [])
+    public function findRkszonesDownloadDpskCsvSample(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDownloadDpskCsvSample($queryParameters));
     }
@@ -16027,7 +16027,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskEnabledWlans
      */
-    public function findRkszonesDpskEnabledWlansByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesDpskEnabledWlansByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDpskEnabledWlansByZoneId($zoneId, $queryParameters));
     }
@@ -16042,7 +16042,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskDeleteExpiredDpskConfig
      */
-    public function findRkszonesDeleteExpiredDpskByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesDeleteExpiredDpskByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDeleteExpiredDpskByZoneId($zoneId, $queryParameters));
     }
@@ -16059,7 +16059,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesDeleteExpiredDpskByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskModifyDeleteExpiredDpsk $body, array $queryParameters = [])
+    public function updateRkszonesDeleteExpiredDpskByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskModifyDeleteExpiredDpsk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesDeleteExpiredDpskByZoneId($zoneId, $body, $queryParameters));
     }
@@ -16079,7 +16079,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskResult
      */
-    public function addRkszonesWlansDpskUploadById(string $zoneId, string $id, array $queryParameters = [], array $formParameters = [])
+    public function addRkszonesWlansDpskUploadById(string $zoneId, string $id, array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansDpskUploadById($zoneId, $id, $queryParameters, $formParameters));
     }
@@ -16097,7 +16097,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskResult
      */
-    public function addRkszonesWlansDpskBatchGenUnboundById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskBatchGenUnbound $body, array $queryParameters = [])
+    public function addRkszonesWlansDpskBatchGenUnboundById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskBatchGenUnbound $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesWlansDpskBatchGenUnboundById($zoneId, $id, $body, $queryParameters));
     }
@@ -16114,7 +16114,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskInfoList
      */
-    public function findRkszonesWlansDpskByDpskId(string $zoneId, string $id, string $dpskId, array $queryParameters = [])
+    public function findRkszonesWlansDpskByDpskId(string $zoneId, string $id, string $dpskId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesWlansDpskByDpskId($zoneId, $id, $dpskId, $queryParameters));
     }
@@ -16133,7 +16133,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateRkszonesWlansDpskByDpskId(string $zoneId, string $id, string $dpskId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskUpdateDpsk $body, array $queryParameters = [])
+    public function partialUpdateRkszonesWlansDpskByDpskId(string $zoneId, string $id, string $dpskId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskUpdateDpsk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateRkszonesWlansDpskByDpskId($zoneId, $id, $dpskId, $body, $queryParameters));
     }
@@ -16148,7 +16148,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpskGetDpskInfoList
      */
-    public function findRkszonesDpskByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesDpskByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDpskByZoneId($zoneId, $queryParameters));
     }
@@ -16163,7 +16163,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteFirewallProfilesById(string $id, array $queryParameters = [])
+    public function deleteFirewallProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteFirewallProfilesById($id, $queryParameters));
     }
@@ -16178,7 +16178,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFirewallProfile
      */
-    public function findFirewallProfilesById(string $id, array $queryParameters = [])
+    public function findFirewallProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindFirewallProfilesById($id, $queryParameters));
     }
@@ -16195,7 +16195,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateFirewallProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyFirewallProfile $body, array $queryParameters = [])
+    public function updateFirewallProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileModifyFirewallProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateFirewallProfilesById($id, $body, $queryParameters));
     }
@@ -16211,7 +16211,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFirewallProfileArray
      */
-    public function findFirewallProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFirewallProfileQueryCriteria $body, array $queryParameters = [])
+    public function findFirewallProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileFirewallProfileQueryCriteria $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindFirewallProfilesByQueryCriteria($body, $queryParameters));
     }
@@ -16226,7 +16226,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteFirewallProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteFirewallProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteFirewallProfiles($body, $queryParameters));
     }
@@ -16243,7 +16243,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileProfileIdList
      */
-    public function findFirewallProfiles(array $queryParameters = [])
+    public function findFirewallProfiles(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindFirewallProfiles($queryParameters));
     }
@@ -16259,7 +16259,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addFirewallProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateFirewallProfile $body, array $queryParameters = [])
+    public function addFirewallProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileCreateFirewallProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddFirewallProfiles($body, $queryParameters));
     }
@@ -16274,7 +16274,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\EthernetPortProfileList
      */
-    public function findFirewallProfilesEthernetPortProfilesById(string $id, array $queryParameters = [])
+    public function findFirewallProfilesEthernetPortProfilesById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindFirewallProfilesEthernetPortProfilesById($id, $queryParameters));
     }
@@ -16289,7 +16289,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlanQueryWlanQueryList
      */
-    public function findFirewallProfilesWlansById(string $id, array $queryParameters = [])
+    public function findFirewallProfilesWlansById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindFirewallProfilesWlansById($id, $queryParameters));
     }
@@ -16304,7 +16304,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileGetDnsSpoofingProfileList
      */
-    public function findRkszonesDnsSpoofingProfilesByZoneId(string $zoneId, array $queryParameters = [])
+    public function findRkszonesDnsSpoofingProfilesByZoneId(string $zoneId, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDnsSpoofingProfilesByZoneId($zoneId, $queryParameters));
     }
@@ -16321,7 +16321,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addRkszonesDnsSpoofingProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfile $body, array $queryParameters = [])
+    public function addRkszonesDnsSpoofingProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddRkszonesDnsSpoofingProfilesByZoneId($zoneId, $body, $queryParameters));
     }
@@ -16336,7 +16336,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesDnsSpoofingProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters = [])
+    public function deleteRkszonesDnsSpoofingProfiles(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonBulkDeleteRequest $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesDnsSpoofingProfiles($body, $queryParameters));
     }
@@ -16352,7 +16352,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function deleteRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteRkszonesDnsSpoofingProfilesById($zoneId, $id, $queryParameters));
     }
@@ -16368,7 +16368,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfileDetail
      */
-    public function findRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, array $queryParameters = [])
+    public function findRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindRkszonesDnsSpoofingProfilesById($zoneId, $id, $queryParameters));
     }
@@ -16386,7 +16386,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfile $body, array $queryParameters = [])
+    public function updateRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DnsSpoofingProfileDnsSpoofingProfile $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateRkszonesDnsSpoofingProfilesById($zoneId, $id, $body, $queryParameters));
     }
@@ -16403,7 +16403,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|string
      */
-    public function findToolTraceRoute(array $queryParameters = [])
+    public function findToolTraceRoute(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindToolTraceRoute($queryParameters));
     }
@@ -16419,7 +16419,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolTestResult
      */
-    public function addToolSpeedflex(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolSpeedFlex $body, array $queryParameters = [])
+    public function addToolSpeedflex(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolSpeedFlex $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddToolSpeedflex($body, $queryParameters));
     }
@@ -16434,7 +16434,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ToolTestResult
      */
-    public function findToolSpeedflexByWcid(string $wcid, array $queryParameters = [])
+    public function findToolSpeedflexByWcid(string $wcid, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindToolSpeedflexByWcid($wcid, $queryParameters));
     }
@@ -16450,7 +16450,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|string
      */
-    public function findToolPing(array $queryParameters = [])
+    public function findToolPing(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindToolPing($queryParameters));
     }
@@ -16465,7 +16465,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationZdAPList
      */
-    public function findZdImportGetZDAPs(array $queryParameters = [])
+    public function findZdImportGetZDAPs(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindZdImportGetZDAPs($queryParameters));
     }
@@ -16480,7 +16480,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationZdImportStatus
      */
-    public function findZdImportStatus(array $queryParameters = [])
+    public function findZdImportStatus(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindZdImportStatus($queryParameters));
     }
@@ -16496,7 +16496,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addZdImportConnectZD(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationConnectZD $body, array $queryParameters = [])
+    public function addZdImportConnectZD(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationConnectZD $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddZdImportConnectZD($body, $queryParameters));
     }
@@ -16512,7 +16512,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addZdImportMigrate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationZdImport $body, array $queryParameters = [])
+    public function addZdImportMigrate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AdministrationZdImport $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddZdImportMigrate($body, $queryParameters));
     }
@@ -16528,7 +16528,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addSwapAps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSwapApConfigure $body, array $queryParameters = [])
+    public function addSwapAps(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApSwapApConfigure $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSwapAps($body, $queryParameters));
     }
@@ -16544,7 +16544,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateCertstoreSettingServiceCertificates(array $body, array $queryParameters = [])
+    public function partialUpdateCertstoreSettingServiceCertificates(array $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateCertstoreSettingServiceCertificates($body, $queryParameters));
     }
@@ -16558,7 +16558,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemApMacOUIList
      */
-    public function findSystemApMacOUIs(array $queryParameters = [])
+    public function findSystemApMacOUIs(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemApMacOUIs($queryParameters));
     }
@@ -16574,7 +16574,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addSystemApMacOUIs(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCreateApMacOUI $body, array $queryParameters = [])
+    public function addSystemApMacOUIs(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCreateApMacOUI $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSystemApMacOUIs($body, $queryParameters));
     }
@@ -16590,7 +16590,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCsrList
      */
-    public function findCertstoreCsr(array $queryParameters = [])
+    public function findCertstoreCsr(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindCertstoreCsr($queryParameters));
     }
@@ -16606,7 +16606,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addCertstoreCsr(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCSR $body, array $queryParameters = [])
+    public function addCertstoreCsr(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCSR $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddCertstoreCsr($body, $queryParameters));
     }
@@ -16621,7 +16621,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteCertstoreCsrById(string $id, array $queryParameters = [])
+    public function deleteCertstoreCsrById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteCertstoreCsrById($id, $queryParameters));
     }
@@ -16636,7 +16636,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificatesSigningRequest
      */
-    public function findCertstoreCsrById(string $id, array $queryParameters = [])
+    public function findCertstoreCsrById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindCertstoreCsrById($id, $queryParameters));
     }
@@ -16652,7 +16652,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateSystemSyslogPrimaryServer(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogPrimaryServer $body, array $queryParameters = [])
+    public function partialUpdateSystemSyslogPrimaryServer(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogPrimaryServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSystemSyslogPrimaryServer($body, $queryParameters));
     }
@@ -16668,7 +16668,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateSystemSyslogSecondaryServer(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSecondaryServer $body, array $queryParameters = [])
+    public function partialUpdateSystemSyslogSecondaryServer(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSecondaryServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSystemSyslogSecondaryServer($body, $queryParameters));
     }
@@ -16683,7 +16683,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteCertstoreTrustedCAChainCert(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateDeleteBulk $body, array $queryParameters = [])
+    public function deleteCertstoreTrustedCAChainCert(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateDeleteBulk $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteCertstoreTrustedCAChainCert($body, $queryParameters));
     }
@@ -16699,7 +16699,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateTrustedCAChainCertList
      */
-    public function findCertstoreTrustedCAChainCert(array $queryParameters = [])
+    public function findCertstoreTrustedCAChainCert(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindCertstoreTrustedCAChainCert($queryParameters));
     }
@@ -16715,7 +16715,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addCertstoreTrustedCAChainCert(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateTrustedCAChain $body, array $queryParameters = [])
+    public function addCertstoreTrustedCAChainCert(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateTrustedCAChain $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddCertstoreTrustedCAChainCert($body, $queryParameters));
     }
@@ -16730,7 +16730,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteCertstoreTrustedCAChainCertById(string $id, array $queryParameters = [])
+    public function deleteCertstoreTrustedCAChainCertById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteCertstoreTrustedCAChainCertById($id, $queryParameters));
     }
@@ -16745,7 +16745,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateTrustedCAChain
      */
-    public function findCertstoreTrustedCAChainCertById(string $id, array $queryParameters = [])
+    public function findCertstoreTrustedCAChainCertById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindCertstoreTrustedCAChainCertById($id, $queryParameters));
     }
@@ -16762,7 +16762,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateCertstoreTrustedCAChainCertById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateModifyTrustedCAChain $body, array $queryParameters = [])
+    public function partialUpdateCertstoreTrustedCAChainCertById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateModifyTrustedCAChain $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateCertstoreTrustedCAChainCertById($id, $body, $queryParameters));
     }
@@ -16777,7 +16777,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addSystemApRoutineStatusIntervalSpeedup(array $queryParameters = [])
+    public function addSystemApRoutineStatusIntervalSpeedup(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSystemApRoutineStatusIntervalSpeedup($queryParameters));
     }
@@ -16792,7 +16792,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addSystemApRoutineStatusIntervalSlowdown(array $queryParameters = [])
+    public function addSystemApRoutineStatusIntervalSlowdown(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSystemApRoutineStatusIntervalSlowdown($queryParameters));
     }
@@ -16806,7 +16806,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemTimeSetting
      */
-    public function findSystemSystemTime(array $queryParameters = [])
+    public function findSystemSystemTime(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemSystemTime($queryParameters));
     }
@@ -16822,7 +16822,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateSystemSystemTime(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifySystemTimeSetting $body, array $queryParameters = [])
+    public function partialUpdateSystemSystemTime(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifySystemTimeSetting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSystemSystemTime($body, $queryParameters));
     }
@@ -16838,7 +16838,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogSyslogServerSetting
      */
-    public function findSystemSyslog(array $queryParameters = [])
+    public function findSystemSyslog(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemSyslog($queryParameters));
     }
@@ -16854,7 +16854,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateSystemSyslog(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogModifySyslogSettings $body, array $queryParameters = [])
+    public function partialUpdateSystemSyslog(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogModifySyslogSettings $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSystemSyslog($body, $queryParameters));
     }
@@ -16870,7 +16870,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateSystemSyslogPriority(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogPriority $body, array $queryParameters = [])
+    public function partialUpdateSystemSyslogPriority(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SyslogPriority $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSystemSyslogPriority($body, $queryParameters));
     }
@@ -16885,7 +16885,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addSystemApBalance(array $queryParameters = [])
+    public function addSystemApBalance(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSystemApBalance($queryParameters));
     }
@@ -16901,7 +16901,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificateList
      */
-    public function findCertstoreCertificate(array $queryParameters = [])
+    public function findCertstoreCertificate(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindCertstoreCertificate($queryParameters));
     }
@@ -16917,7 +16917,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addCertstoreCertificate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCert $body, array $queryParameters = [])
+    public function addCertstoreCertificate(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateCert $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddCertstoreCertificate($body, $queryParameters));
     }
@@ -16932,7 +16932,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteCertstoreCertificateById(string $id, array $queryParameters = [])
+    public function deleteCertstoreCertificateById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteCertstoreCertificateById($id, $queryParameters));
     }
@@ -16947,7 +16947,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertificate
      */
-    public function findCertstoreCertificateById(string $id, array $queryParameters = [])
+    public function findCertstoreCertificateById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindCertstoreCertificateById($id, $queryParameters));
     }
@@ -16961,7 +16961,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertSetting
      */
-    public function findCertstoreSetting(array $queryParameters = [])
+    public function findCertstoreSetting(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindCertstoreSetting($queryParameters));
     }
@@ -16977,7 +16977,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateCertstoreSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertSetting $body, array $queryParameters = [])
+    public function partialUpdateCertstoreSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCertSetting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateCertstoreSetting($body, $queryParameters));
     }
@@ -16992,7 +16992,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteCertstoreClientCertById(string $id, array $queryParameters = [])
+    public function deleteCertstoreClientCertById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteCertstoreClientCertById($id, $queryParameters));
     }
@@ -17007,7 +17007,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateClientCert
      */
-    public function findCertstoreClientCertById(string $id, array $queryParameters = [])
+    public function findCertstoreClientCertById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindCertstoreClientCertById($id, $queryParameters));
     }
@@ -17021,7 +17021,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSnmpAgentConfiguration
      */
-    public function findSystemSnmpAgent(array $queryParameters = [])
+    public function findSystemSnmpAgent(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemSnmpAgent($queryParameters));
     }
@@ -17037,7 +17037,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function updateSystemSnmpAgent(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifySnmpAgent $body, array $queryParameters = [])
+    public function updateSystemSnmpAgent(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifySnmpAgent $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateSystemSnmpAgent($body, $queryParameters));
     }
@@ -17052,7 +17052,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteSystemNbi(array $queryParameters = [])
+    public function deleteSystemNbi(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteSystemNbi($queryParameters));
     }
@@ -17067,7 +17067,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface
      */
-    public function findSystemNbi(array $queryParameters = [])
+    public function findSystemNbi(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemNbi($queryParameters));
     }
@@ -17084,7 +17084,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateSystemNbi(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface $body, array $queryParameters = [])
+    public function partialUpdateSystemNbi(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemNorthboundInterface $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSystemNbi($body, $queryParameters));
     }
@@ -17098,7 +17098,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteSystemCaleaMacList(array $queryParameters = [])
+    public function deleteSystemCaleaMacList(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteSystemCaleaMacList($queryParameters));
     }
@@ -17112,7 +17112,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRsp
      */
-    public function findSystemCaleaMacList(array $queryParameters = [])
+    public function findSystemCaleaMacList(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemCaleaMacList($queryParameters));
     }
@@ -17130,7 +17130,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addSystemCaleaMacList(array $queryParameters = [], array $formParameters = [])
+    public function addSystemCaleaMacList(array $queryParameters, array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSystemCaleaMacList($queryParameters, $formParameters));
     }
@@ -17145,7 +17145,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function deleteSystemCaleaMac(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRq $body, array $queryParameters = [])
+    public function deleteSystemCaleaMac(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRq $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteSystemCaleaMac($body, $queryParameters));
     }
@@ -17161,7 +17161,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addSystemCaleaMac(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRq $body, array $queryParameters = [])
+    public function addSystemCaleaMac(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaMacListRq $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSystemCaleaMac($body, $queryParameters));
     }
@@ -17175,7 +17175,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaCommonSettingRsp
      */
-    public function findSystemCaleaCommonSetting(array $queryParameters = [])
+    public function findSystemCaleaCommonSetting(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemCaleaCommonSetting($queryParameters));
     }
@@ -17191,7 +17191,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function addSystemCaleaCommonSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaCommonSettingRq $body, array $queryParameters = [])
+    public function addSystemCaleaCommonSetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CaleaCaleaCommonSettingRq $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSystemCaleaCommonSetting($body, $queryParameters));
     }
@@ -17205,7 +17205,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemGatewayAdvanced
      */
-    public function findSystemGatewayAdvanced(array $queryParameters = [])
+    public function findSystemGatewayAdvanced(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemGatewayAdvanced($queryParameters));
     }
@@ -17221,7 +17221,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateSystemGatewayAdvanced(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyGatewayAdvanced $body, array $queryParameters = [])
+    public function partialUpdateSystemGatewayAdvanced(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyGatewayAdvanced $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSystemGatewayAdvanced($body, $queryParameters));
     }
@@ -17235,7 +17235,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemControllerList
      */
-    public function findController(array $queryParameters = [])
+    public function findController(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindController($queryParameters));
     }
@@ -17251,7 +17251,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemInventoryList
      */
-    public function findSystemInventory(array $queryParameters = [])
+    public function findSystemInventory(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemInventory($queryParameters));
     }
@@ -17265,7 +17265,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSecuritySetting
      */
-    public function findSystemSecuritySetting(array $queryParameters = [])
+    public function findSystemSecuritySetting(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemSecuritySetting($queryParameters));
     }
@@ -17281,7 +17281,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateSystemSecuritySetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSecuritySetting $body, array $queryParameters = [])
+    public function updateSystemSecuritySetting(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSecuritySetting $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateSystemSecuritySetting($body, $queryParameters));
     }
@@ -17295,7 +17295,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCloudOptions
      */
-    public function findSystemCloudOptions(array $queryParameters = [])
+    public function findSystemCloudOptions(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemCloudOptions($queryParameters));
     }
@@ -17311,7 +17311,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateSystemCloudOptions(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCloudOptions $body, array $queryParameters = [])
+    public function updateSystemCloudOptions(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCloudOptions $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateSystemCloudOptions($body, $queryParameters));
     }
@@ -17327,7 +17327,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemSettings
      */
-    public function findSystemByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [])
+    public function findSystemByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemByQueryCriteria($body, $queryParameters));
     }
@@ -17341,7 +17341,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemSettings
      */
-    public function findSystem(array $queryParameters = [])
+    public function findSystem(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystem($queryParameters));
     }
@@ -17357,7 +17357,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function partialUpdateSystem(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemSettings $body, array $queryParameters = [])
+    public function partialUpdateSystem(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemSystemSettings $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateSystem($body, $queryParameters));
     }
@@ -17372,7 +17372,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function deleteSystemApMacOUIsByOUI(string $oUI, array $queryParameters = [])
+    public function deleteSystemApMacOUIsByOUI(string $oUI, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\DeleteSystemApMacOUIsByOUI($oUI, $queryParameters));
     }
@@ -17389,7 +17389,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateSystemApMacOUIsByOUI(string $oUI, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUpdateApMacOUI $body, array $queryParameters = [])
+    public function updateSystemApMacOUIsByOUI(string $oUI, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemUpdateApMacOUI $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateSystemApMacOUIsByOUI($oUI, $body, $queryParameters));
     }
@@ -17404,7 +17404,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findSystemApmodelsByFirmwareVersion(string $firmwareVersion, array $queryParameters = [])
+    public function findSystemApmodelsByFirmwareVersion(string $firmwareVersion, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemApmodelsByFirmwareVersion($firmwareVersion, $queryParameters));
     }
@@ -17421,7 +17421,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemStatisticListItem[]
      */
-    public function findControllerStatisticsById(string $id, array $queryParameters = [])
+    public function findControllerStatisticsById(string $id, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindControllerStatisticsById($id, $queryParameters));
     }
@@ -17437,7 +17437,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateClientCertList
      */
-    public function findCertstoreClientCert(array $queryParameters = [])
+    public function findCertstoreClientCert(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindCertstoreClientCert($queryParameters));
     }
@@ -17453,7 +17453,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonCreateResult
      */
-    public function addCertstoreClientCert(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateClientCert $body, array $queryParameters = [])
+    public function addCertstoreClientCert(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CertificateCreateClientCert $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddCertstoreClientCert($body, $queryParameters));
     }
@@ -17469,7 +17469,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAAAServerSingleResult
      */
-    public function addSystemAaaTest(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAuthenticationServer $body, array $queryParameters = [])
+    public function addSystemAaaTest(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaTestAuthenticationServer $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSystemAaaTest($body, $queryParameters));
     }
@@ -17483,7 +17483,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApRoutineConfigIntervalApRoutineConfigIntervalRsp
      */
-    public function findSystemApRoutineConfigInterval(array $queryParameters = [])
+    public function findSystemApRoutineConfigInterval(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemApRoutineConfigInterval($queryParameters));
     }
@@ -17499,7 +17499,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function addSystemApRoutineConfigInterval(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApRoutineConfigIntervalApRoutineConfigIntervalReq $body, array $queryParameters = [])
+    public function addSystemApRoutineConfigInterval(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApRoutineConfigIntervalApRoutineConfigIntervalReq $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\AddSystemApRoutineConfigInterval($body, $queryParameters));
     }
@@ -17513,7 +17513,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function findSystemApmodels(array $queryParameters = [])
+    public function findSystemApmodels(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemApmodels($queryParameters));
     }
@@ -17527,7 +17527,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemLwapp2scgConfiguration
      */
-    public function findLwapp2scg(array $queryParameters = [])
+    public function findLwapp2scg(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindLwapp2scg($queryParameters));
     }
@@ -17543,7 +17543,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateLwapp2scg(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyLwapp2scg $body, array $queryParameters = [])
+    public function partialUpdateLwapp2scg(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyLwapp2scg $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateLwapp2scg($body, $queryParameters));
     }
@@ -17559,7 +17559,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\CommonEmptyResult
      */
-    public function partialUpdateLwapp2scgApList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyLwapp2scg $body, array $queryParameters = [])
+    public function partialUpdateLwapp2scgApList(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemModifyLwapp2scg $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\PartialUpdateLwapp2scgApList($body, $queryParameters));
     }
@@ -17573,7 +17573,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApRoutineStatusIntervalApRoutineStatusIntervalRsp
      */
-    public function findSystemApRoutineStatusInterval(array $queryParameters = [])
+    public function findSystemApRoutineStatusInterval(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemApRoutineStatusInterval($queryParameters));
     }
@@ -17587,7 +17587,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCommonAccessCardSettings
      */
-    public function findSystemCommonAccessCardSettings(array $queryParameters = [])
+    public function findSystemCommonAccessCardSettings(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemCommonAccessCardSettings($queryParameters));
     }
@@ -17603,7 +17603,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateSystemCommonAccessCardSettings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCommonAccessCardSettings $body, array $queryParameters = [])
+    public function updateSystemCommonAccessCardSettings(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCommonAccessCardSettings $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateSystemCommonAccessCardSettings($body, $queryParameters));
     }
@@ -17617,7 +17617,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIPsecGetResult
      */
-    public function findSystemIpsec(array $queryParameters = [])
+    public function findSystemIpsec(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\FindSystemIpsec($queryParameters));
     }
@@ -17633,7 +17633,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\Cl
      *
      * @return null
      */
-    public function updateSystemIpsec(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIPsecUpdate $body, array $queryParameters = [])
+    public function updateSystemIpsec(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemIPsecUpdate $body, array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Endpoint\UpdateSystemIpsec($body, $queryParameters));
     }

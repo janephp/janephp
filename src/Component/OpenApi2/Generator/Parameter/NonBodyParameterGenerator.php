@@ -126,14 +126,21 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
     public function generateOptionDocParameter(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): string
     {
-        // Same notion of "required" as the options resolver above: a required
-        // parameter carrying a default is filled in, so its key is optional.
         return $this->formatOptionDocEntry(
             $parameter->name ?? '',
-            $parameter->required && null === ($parameter->default ?? null),
+            $this->isOptionRequired($parameter),
             implode('|', $this->convertParameterType($parameter)),
             $parameter->description ?? null
         );
+    }
+
+    /**
+     * Same notion of "required" as the options resolver above: a required
+     * parameter carrying a default is filled in, so its key is optional.
+     */
+    public function isOptionRequired(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): bool
+    {
+        return $parameter->required && null === ($parameter->default ?? null);
     }
 
     /**

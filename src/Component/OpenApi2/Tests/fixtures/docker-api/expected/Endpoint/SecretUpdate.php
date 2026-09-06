@@ -15,7 +15,7 @@ class SecretUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     *                    //required to avoid conflicting writes.
     * } $queryParameters
     */
-    public function __construct(string $id, \Docker\Api\Model\SecretSpec $body, array $queryParameters = [])
+    public function __construct(string $id, \Docker\Api\Model\SecretSpec $body, array $queryParameters)
     {
         $this->id = $id;
         $this->body = $body;

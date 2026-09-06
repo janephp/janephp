@@ -46,7 +46,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
      *
      * @return null
      */
-    public function testQueryParameters(array $queryParameters = [])
+    public function testQueryParameters(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint\TestQueryParameters($queryParameters));
     }
@@ -62,7 +62,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
      *
      * @return null
      */
-    public function testHeaderParameters(array $headerParameters = [])
+    public function testHeaderParameters(array $headerParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint\TestHeaderParameters($headerParameters));
     }
@@ -78,7 +78,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Parameters\Runtime\
      *
      * @return null
      */
-    public function testFormParameters(array $formParameters = [])
+    public function testFormParameters(array $formParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Parameters\Endpoint\TestFormParameters($formParameters));
     }

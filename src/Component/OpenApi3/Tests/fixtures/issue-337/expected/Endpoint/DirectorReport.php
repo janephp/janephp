@@ -15,7 +15,7 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $personId, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $personId, array $queryParameters, array $headerParameters)
     {
         $this->personId = $personId;
         $this->queryParameters = $queryParameters;

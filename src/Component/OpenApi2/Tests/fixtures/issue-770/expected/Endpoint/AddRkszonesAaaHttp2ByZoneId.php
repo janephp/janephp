@@ -13,7 +13,7 @@ class AddRkszonesAaaHttp2ByZoneId extends \Jane\Component\OpenApi3\Tests\Expecte
      *    "forAccounting"?: string,
      * } $queryParameters
      */
-    public function __construct(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateHttp2Server $body, array $queryParameters = [])
+    public function __construct(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateHttp2Server $body, array $queryParameters)
     {
         $this->zoneId = $zoneId;
         $this->body = $body;

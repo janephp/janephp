@@ -11,7 +11,7 @@ class AddDomains extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtim
      *    "parentDomainId"?: string,
      * } $queryParameters
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainCreateDomain $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DomainCreateDomain $body, array $queryParameters)
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;

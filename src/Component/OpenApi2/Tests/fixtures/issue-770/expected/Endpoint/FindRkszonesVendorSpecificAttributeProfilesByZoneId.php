@@ -11,7 +11,7 @@ class FindRkszonesVendorSpecificAttributeProfilesByZoneId extends \Jane\Componen
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $zoneId, array $queryParameters = [])
+    public function __construct(string $zoneId, array $queryParameters)
     {
         $this->zoneId = $zoneId;
         $this->queryParameters = $queryParameters;

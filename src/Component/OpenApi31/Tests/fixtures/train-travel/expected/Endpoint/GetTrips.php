@@ -19,7 +19,7 @@ class GetTrips extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runt
      * } $queryParameters
      * @param array $accept Accept content header application/json|application/xml|application/problem+json|application/problem+xml
      */
-    public function __construct(array $queryParameters = [], array $accept = [])
+    public function __construct(array $queryParameters, array $accept = [])
     {
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;

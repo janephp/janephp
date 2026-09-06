@@ -19,7 +19,7 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $portfolioId, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $portfolioId, array $queryParameters, array $headerParameters)
     {
         $this->portfolioId = $portfolioId;
         $this->queryParameters = $queryParameters;

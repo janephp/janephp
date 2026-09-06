@@ -15,7 +15,7 @@ class NfsDeleteSnapshot extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
      * } $queryParameters
      */
-    public function __construct(string $nfsSnapshotId, array $queryParameters = [])
+    public function __construct(string $nfsSnapshotId, array $queryParameters)
     {
         $this->nfs_snapshot_id = $nfsSnapshotId;
         $this->queryParameters = $queryParameters;

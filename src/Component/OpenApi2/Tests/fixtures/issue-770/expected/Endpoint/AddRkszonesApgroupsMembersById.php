@@ -14,7 +14,7 @@ class AddRkszonesApgroupsMembersById extends \Jane\Component\OpenApi3\Tests\Expe
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupAddMembers $body, array $queryParameters = [])
+    public function __construct(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ApgroupAddMembers $body, array $queryParameters)
     {
         $this->zoneId = $zoneId;
         $this->id = $id;

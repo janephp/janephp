@@ -14,7 +14,7 @@ class AutoscalepoolsDeleteDangerous extends \Jane\Generated\DigitalOcean\Runtime
      *    "X-Dangerous": bool, //Acknowledge this action will destroy the autoscale pool and its associated resources and _can not_ be reversed.
      * } $headerParameters
      */
-    public function __construct(string $autoscalePoolId, array $headerParameters = [])
+    public function __construct(string $autoscalePoolId, array $headerParameters)
     {
         $this->autoscale_pool_id = $autoscalePoolId;
         $this->headerParameters = $headerParameters;

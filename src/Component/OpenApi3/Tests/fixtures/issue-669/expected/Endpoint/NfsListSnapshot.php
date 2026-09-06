@@ -16,7 +16,7 @@ class NfsListSnapshot extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
      *    "share_id"?: string, //The unique ID of an NFS share. If provided, only snapshots of this specific share will be returned.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

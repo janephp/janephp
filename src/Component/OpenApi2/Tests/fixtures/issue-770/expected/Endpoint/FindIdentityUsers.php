@@ -23,7 +23,7 @@ class FindIdentityUsers extends \Jane\Component\OpenApi3\Tests\Expected\Issue770
      *    "createdOnTo"?: string, //filter identity user list by created date and time. The end time of created date and time.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

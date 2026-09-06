@@ -16,7 +16,7 @@ class FindDomainsSubdomainById extends \Jane\Component\OpenApi3\Tests\Expected\I
      *    "excludeRegularDomain"?: string,
      * } $queryParameters
      */
-    public function __construct(string $id, array $queryParameters = [])
+    public function __construct(string $id, array $queryParameters)
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;

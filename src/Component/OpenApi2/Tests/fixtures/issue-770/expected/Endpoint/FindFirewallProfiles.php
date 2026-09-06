@@ -12,7 +12,7 @@ class FindFirewallProfiles extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      *    "domainId"?: string, //The domain ID. Default: current logon domain ID
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }
