@@ -12,6 +12,10 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatM
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\CustomStringFormatMapping\Endpoint\GetSomething());
     }
+    /**
+     * @param list<callable(\Symfony\Contracts\HttpClient\HttpClientInterface): \Symfony\Contracts\HttpClient\HttpClientInterface> $additionalPlugins HttpClientInterface decorator factories, applied left-to-right after the server URL decorator
+     * @param list<\Symfony\Component\Serializer\Normalizer\NormalizerInterface|\Symfony\Component\Serializer\Normalizer\DenormalizerInterface> $additionalNormalizers
+     */
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {

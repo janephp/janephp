@@ -54,6 +54,10 @@ abstract class Client
      */
     public function stream(iterable|ResponseInterface $responses, ?float $timeout = null): ResponseStreamInterface
     {
+        if ($responses instanceof ResponseInterface) {
+            $responses = [$responses];
+        }
+
         $mapped = [];
 
         foreach ($responses as $response) {

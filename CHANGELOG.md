@@ -37,6 +37,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - [OpenApi2] [OpenApi3] [OpenApi31] Generated endpoint constructors and client methods now document their `$queryParameters` / `$headerParameters` / `$formParameters` arrays with a PHPDoc array shape that parses: OpenAPI 2 output used the phpDocumentor 2 `@param array $queryParameters { @var int $keep-storage ... }` inline-tag form, and multi-line parameter descriptions in OpenAPI 3 / 3.1 output continued outside the `//` comment. Either one makes PHPStan, Mago and IDEs drop the whole docblock (`@throws` and `@return` included). All three components now share one emitter: `@param array{ "keep-storage"?: int, //description ... } $queryParameters`, with every further description line on its own `//` line
+- [OpenApi] The runtime `Client::stream()` now streams a single `ResponseInterface` argument instead of iterating over it as an object, which streamed nothing
+- [OpenApi] A specification without operations no longer generates a runtime `Client` referencing an `Endpoint` interface that is never generated: the Client template declares the dependency
+- [OpenApi] Generated clients are cleaner for static analysers: `Client::create()` documents `$additionalPlugins` as `list<callable(HttpClientInterface): HttpClientInterface>` and `$additionalNormalizers` as normalizer instances, and the runtime `FormEncoder` initialises the `parse_str()` output variable (the runtime-template family of the Mago baseline, #1066)
 
 ## [7.14.0] - 2026-08-31
 ### Added

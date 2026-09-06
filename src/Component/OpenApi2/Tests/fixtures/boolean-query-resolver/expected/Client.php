@@ -15,6 +15,10 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\BooleanQueryResolve
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\BooleanQueryResolver\Endpoint\GetFoo($queryParameters));
     }
+    /**
+     * @param list<callable(\Symfony\Contracts\HttpClient\HttpClientInterface): \Symfony\Contracts\HttpClient\HttpClientInterface> $additionalPlugins HttpClientInterface decorator factories, applied left-to-right after the server URL decorator
+     * @param list<\Symfony\Component\Serializer\Normalizer\NormalizerInterface|\Symfony\Component\Serializer\Normalizer\DenormalizerInterface> $additionalNormalizers
+     */
     public static function create(?\Symfony\Contracts\HttpClient\HttpClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
