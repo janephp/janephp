@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\PrettyPrinter\Standard;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class LibraryTest extends TestCase
 {
@@ -26,7 +27,7 @@ class LibraryTest extends TestCase
             'reference' => true,
             'strict' => false,
             'skip-null-values' => false,
-        ]);
+        ], new EventDispatcher());
         $this->printer = new Printer(new Standard(['shortArraySyntax' => true]), '');
         $this->printer->setCleanGenerated(false);
     }

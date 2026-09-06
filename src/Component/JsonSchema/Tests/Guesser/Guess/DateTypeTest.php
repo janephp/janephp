@@ -10,6 +10,7 @@ use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\PrettyPrinter\Standard;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class DateTypeTest extends TestCase
 {
@@ -19,7 +20,7 @@ class DateTypeTest extends TestCase
     {
         $registry = new Registry();
         $schema = new Schema('/schema.json', 'Jane\Test', '/tmp', 'Test');
-        $this->context = new Context($registry);
+        $this->context = new Context($registry, true, new EventDispatcher());
         $this->context->setCurrentSchema($schema);
     }
 

@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApiCommon\Console\Command;
 
 use Jane\Component\JsonSchema\Console\Command\GenerateCommand as BaseGenerateCommand;
+use Jane\Component\JsonSchema\Console\GenerationProgressSubscriber;
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoaderInterface;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoaderInterface;
 use Jane\Component\JsonSchema\Printer;
@@ -15,6 +16,8 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 #[AsCommand(name: 'generate', description: 'Generate an api client: class, normalizers and resources given a specific Json OpenApi file')]
 class GenerateCommand extends BaseGenerateCommand
@@ -36,12 +39,17 @@ class GenerateCommand extends BaseGenerateCommand
     {
         $options = $this->configLoader->load($this->configFileOption($input));
         $registries = $this->registries($options);
+        $dispatcher = new EventDispatcher();
+
+        if ($output->getVerbosity() > OutputInterface::VERBOSITY_QUIET) {
+            $dispatcher->addSubscriber(new GenerationProgressSubscriber(new SymfonyStyle($input, $output)));
+        }
 
         /** @var Registry $registry */
         foreach ($registries as $registry) {
             $openApiClass = $registry->getOpenApiClass();
             /** @var JaneOpenApi $janeOpenApi */
-            $janeOpenApi = $openApiClass::build($options);
+            $janeOpenApi = $openApiClass::build($options, $dispatcher);
             $fixerConfigFile = '';
 
             if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {

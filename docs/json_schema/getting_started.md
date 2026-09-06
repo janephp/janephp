@@ -82,6 +82,29 @@ php vendor/bin/jane generate --config-file=jane-configuration.php
 > always use the same set of parameters and, when it changes, give vision of the new option(s) used to generate the
 > code.
 
+### Progress output
+
+The command prints what it is doing at the default (and higher) verbosity levels, and stays fully silent with
+`--quiet`:
+
+```console
+$ php vendor/bin/jane generate
+ Generating for schema `json-schema.json`
+ Output: `generated/`
+ ➜ Guessing… done (0.05s)
+ ➜ Generating… done (0.03s)
+ ➜ 11 files written
+     • 2 Models
+     • 3 Normalizers
+     • 6 Runtime
+
+ [OK] Done in 0.09s
+```
+
+The summary groups every generated file by type (models, enums, normalizers, validators, runtime, auth, client,
+endpoints, exceptions). When the `reference` option is on (the console default), the shared `ReferenceNormalizer`
+is generated as a runtime file and counted under `Runtime`.
+
 ## Configuration file
 
 The configuration file consists of a simple PHP script returning an array:
@@ -155,6 +178,58 @@ $serializer->deserialize('{...}');
 With Symfony ecosystem, you just have to use the recipe and all the configuration will be added automatically.
 This serializer will be able to encode and decode every data respecting your JSON Schema specification thanks to
 autowiring of the generated normalizers.
+
+## Customizing generation
+
+Generation is customizable programmatically through **experimental** generation events (see
+[ADR 0013](../contributing/adrs/0013-generation-events.md)). Build a Symfony `EventDispatcher` (from
+`symfony/event-dispatcher`), attach subscribers and pass it to `Jane::build()` as a second argument — listeners
+registered there are called during generation:
+
+```php
+use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
+use Jane\Component\JsonSchema\Guesser\Guess\Type;
+use Jane\Component\JsonSchema\Jane;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+$dispatcher = new EventDispatcher();
+$dispatcher->addSubscriber(new class implements EventSubscriberInterface {
+    public function getSubscribedEvents(): array
+    {
+        // symfony subscriber map: event class => method name(s) on the subscriber
+        // (arbitrary callables can be attached with EventDispatcher::addListener())
+        return [PropertyGuessedEvent::class => ['onPropertyGuessed']];
+    }
+
+    public function onPropertyGuessed(PropertyGuessedEvent $event): void
+    {
+        // replace the guessed type of a property: flows into models AND normalizers
+        $event->getProperty()->setType(new Type($event->getProperty()->getObject(), 'int'));
+    }
+});
+
+$jane = Jane::build($options, $dispatcher);
+$jane->generate($registry);
+```
+
+Two families of events exist:
+
+- **Lifecycle events** (readonly payloads): `GenerationStartedEvent` / `GenerationEndedEvent` (with elapsed time),
+  `SchemaStartedEvent` / `SchemaEndedEvent`, `GuessingStartedEvent` / `GuessingEndedEvent`,
+  `GeneratingStartedEvent` / `GeneratingEndedEvent` and `FileGeneratedEvent` (one per generated file). These are
+  what the console progress output is built on.
+- **Mutation events** (live mutable references): `PropertyGuessedEvent` to replace a property type
+  (`Property::setType()`), and `PropertyGeneratedEvent` / `ClassGeneratedEvent` to decorate the PhpParser AST of the
+  generated model (docblock tags such as `@psalm-*`, custom methods, traits, extends...).
+
+Guidance: change **types** through `PropertyGuessedEvent` so models and normalizers stay consistent; the AST events
+are model-file decoration only. A throwing listener aborts generation (wrapped in Jane's `GenerationFailedException`).
+
+> [!NOTE]
+> The events API is experimental: shipped event constructor signatures are frozen, but the event set may grow. The
+> console `generate` command cannot register listeners from the `.jane` config yet — customization is programmatic
+> only for now.
 
 ## Related
 

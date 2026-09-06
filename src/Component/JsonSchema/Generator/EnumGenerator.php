@@ -2,6 +2,7 @@
 
 namespace Jane\Component\JsonSchema\Generator;
 
+use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Guesser\Guess\EnumGuess;
 use Jane\Component\JsonSchema\Registry\Schema;
@@ -34,7 +35,9 @@ class EnumGenerator implements GeneratorInterface
             $enum = $this->createEnum($class);
 
             $namespaceStmt = new Stmt\Namespace_(new Name($namespace), [$enum]);
-            $schema->addFile(new File($naming->getArtifactPath($schema->getDirectory(), 'Model', $subNamespace) . '/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_ENUM));
+            $file = new File($naming->getArtifactPath($schema->getDirectory(), 'Model', $subNamespace) . '/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_ENUM);
+            $schema->addFile($file);
+            $context->dispatch(new FileGeneratedEvent($schema, $file));
         }
     }
 

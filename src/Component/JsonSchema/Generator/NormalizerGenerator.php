@@ -2,6 +2,7 @@
 
 namespace Jane\Component\JsonSchema\Generator;
 
+use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Normalizer\DenormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\Normalizer\ExternalNormalizersResolver;
@@ -116,18 +117,22 @@ class NormalizerGenerator implements GeneratorInterface
 
             $namespace = new Stmt\Namespace_(new Name($normalizerNamespace), $useStmts);
             $normalizers[$modelFqdn] = $normalizerNamespace . '\\' . $symfony7NormalizerClass->name;
-            $schema->addFile(new File($this->naming->getArtifactPath($schema->getDirectory(), 'Normalizer', $subNamespace) . '/' . $symfony7NormalizerClass->name . '.php', $namespace, self::FILE_TYPE_NORMALIZER));
+            $file = new File($this->naming->getArtifactPath($schema->getDirectory(), 'Normalizer', $subNamespace) . '/' . $symfony7NormalizerClass->name . '.php', $namespace, self::FILE_TYPE_NORMALIZER);
+            $schema->addFile($file);
+            $context->dispatch(new FileGeneratedEvent($schema, $file));
         }
 
         // Add normalizers of models from other schemas transitively used by this schema's models,
         // so the generated JaneObjectNormalizer can handle them at runtime.
         $normalizers += (new ExternalNormalizersResolver())->resolve($schema, $context->getRegistry());
 
-        $schema->addFile(new File(
+        $file = new File(
             $schema->getDirectory() . '/Normalizer/JaneObjectNormalizer.php',
             new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $this->createJaneObjectNormalizerClass($schema, $normalizers)),
             self::FILE_TYPE_NORMALIZER
-        ));
+        );
+        $schema->addFile($file);
+        $context->dispatch(new FileGeneratedEvent($schema, $file));
     }
 
     protected function createJaneObjectNormalizerClass(Schema $schema, array $normalizers): array

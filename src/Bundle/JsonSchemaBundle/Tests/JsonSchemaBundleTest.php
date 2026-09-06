@@ -40,7 +40,7 @@ class JsonSchemaBundleTest extends KernelTestCase
         $tester->execute([]);
 
         $this->assertSame(Command::SUCCESS, $tester->getStatusCode());
-        $this->assertStringContainsString('Generation done.', $tester->getDisplay());
+        $this->assertStringContainsString('Done in', $tester->getDisplay());
     }
 
     public function testGenerateCommandReturnsFailureOnGenerationError(): void
@@ -51,7 +51,7 @@ class JsonSchemaBundleTest extends KernelTestCase
         $tester->execute(['--config-file' => __DIR__ . '/Fixtures/jane-invalid-config.php']);
 
         $this->assertSame(Command::FAILURE, $tester->getStatusCode());
-        $this->assertStringNotContainsString('Generation done.', $tester->getDisplay());
+        $this->assertStringNotContainsString('Done in', $tester->getDisplay());
     }
 
     public function testConfigurationAcceptsEmptyConfigAndRejectsUnknownKeys(): void

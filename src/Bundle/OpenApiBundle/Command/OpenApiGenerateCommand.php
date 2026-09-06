@@ -11,7 +11,6 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(name: 'jane:open-api:generate', description: 'Generate an api client: class, normalizers and resources given a specific OpenApi file')]
 final class OpenApiGenerateCommand extends Command
@@ -36,13 +35,8 @@ final class OpenApiGenerateCommand extends Command
         ], '.jane-openapi');
 
         $inputArray = new ArrayInput(['--config-file' => $configFile], $this->generateCommand->getDefinition());
-        $returnCode = $this->generateCommand->run($inputArray, $output);
 
-        if (Command::SUCCESS === $returnCode) {
-            (new SymfonyStyle($input, $output))->success('Generation done.');
-        }
-
-        return $returnCode;
+        return $this->generateCommand->run($inputArray, $output);
     }
 
     private function configFileOption(InputInterface $input): ?string

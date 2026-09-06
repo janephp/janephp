@@ -2,6 +2,7 @@
 
 namespace Jane\Component\OpenApiCommon\Generator;
 
+use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
@@ -178,7 +179,9 @@ EOD
                 ),
             ]);
 
-            $schema->addFile(new File($schema->getDirectory() . '/Exception/' . $exceptionName . '.php', $exception, 'Exception'));
+            $file = new File($schema->getDirectory() . '/Exception/' . $exceptionName . '.php', $exception, 'Exception');
+            $schema->addFile($file);
+            $context->dispatch(new FileGeneratedEvent($schema, $file));
 
             return $exceptionName;
         }
@@ -230,7 +233,9 @@ EOD
             ),
         ]);
 
-        $schema->addFile(new File($schema->getDirectory() . '/Exception/' . $exceptionName . '.php', $exception, 'Exception'));
+        $file = new File($schema->getDirectory() . '/Exception/' . $exceptionName . '.php', $exception, 'Exception');
+        $schema->addFile($file);
+        $context->dispatch(new FileGeneratedEvent($schema, $file));
 
         return $exceptionName;
     }
@@ -285,7 +290,9 @@ EOD
             ),
         ]);
 
-        $schema->addFile(new File(\sprintf('%s/Exception/%s.php', $schema->getDirectory(), $highLevelExceptionName), $highLevelException, 'Exception'));
+        $file = new File(\sprintf('%s/Exception/%s.php', $schema->getDirectory(), $highLevelExceptionName), $highLevelException, 'Exception');
+        $schema->addFile($file);
+        $context->dispatch(new FileGeneratedEvent($schema, $file));
 
         return $highLevelExceptionName;
     }

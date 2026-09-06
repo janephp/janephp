@@ -28,6 +28,7 @@
         "jane-php/json-schema": "^7.5",
         "jane-php/open-api-runtime": "^7.0",
         "symfony/console": "^5.4 || ^6.4 || ^7.0 || ^8.0",
+        "symfony/event-dispatcher": "^5.4 || ^6.4 || ^7.0 || ^8.0",
         "symfony/filesystem": "^5.4 || ^6.4 || ^7.0 || ^8.0",
         "symfony/string": "^5.4 || ^6.4 || ^7.0 || ^8.0",
         "symfony/var-dumper": "^5.4 || ^6.4 || ^7.0 || ^8.0"

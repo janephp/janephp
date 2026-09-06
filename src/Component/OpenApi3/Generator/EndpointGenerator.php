@@ -2,6 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Generator;
 
+use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Generator\Naming;
@@ -150,6 +151,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         );
 
         $schema->addFile($file);
+        $context->dispatch(new FileGeneratedEvent($schema, $file));
 
         return [$endpointNamespace . '\\' . $endpointName, $methodParams, $methodParamsDoc, $outputTypes, $throwTypes];
     }

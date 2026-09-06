@@ -2,6 +2,7 @@
 
 namespace Jane\Component\JsonSchema\Generator;
 
+use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Guesser\DefaultAdditionalPropertiesTrait;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
@@ -68,7 +69,9 @@ class ValidatorGenerator implements GeneratorInterface
             );
 
             $namespaceStmt = new Node\Stmt\Namespace_(new Node\Name($namespace), [$constraint]);
-            $schema->addFile(new File($this->naming->getArtifactPath($schema->getDirectory(), 'Validator', $subNamespace) . '/' . $className . '.php', $namespaceStmt, self::FILE_TYPE_VALIDATOR));
+            $file = new File($this->naming->getArtifactPath($schema->getDirectory(), 'Validator', $subNamespace) . '/' . $className . '.php', $namespaceStmt, self::FILE_TYPE_VALIDATOR);
+            $schema->addFile($file);
+            $context->dispatch(new FileGeneratedEvent($schema, $file));
         }
     }
 

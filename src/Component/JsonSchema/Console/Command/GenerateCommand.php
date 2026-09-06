@@ -2,6 +2,7 @@
 
 namespace Jane\Component\JsonSchema\Console\Command;
 
+use Jane\Component\JsonSchema\Console\GenerationProgressSubscriber;
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoaderInterface;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoaderInterface;
 use Jane\Component\JsonSchema\Jane;
@@ -16,6 +17,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 #[AsCommand(name: 'generate', description: 'Generate a set of class and normalizers given a specific Json Schema file')]
 class GenerateCommand extends Command
@@ -48,9 +50,14 @@ class GenerateCommand extends Command
     {
         $options = $this->configLoader->load($this->configFileOption($input));
         $registries = $this->registries($options);
+        $dispatcher = new EventDispatcher();
+
+        if ($output->getVerbosity() > OutputInterface::VERBOSITY_QUIET) {
+            $dispatcher->addSubscriber(new GenerationProgressSubscriber(new SymfonyStyle($input, $output)));
+        }
 
         foreach ($registries as $registry) {
-            $jane = Jane::build($options);
+            $jane = Jane::build($options, $dispatcher);
             $fixerConfigFile = '';
 
             if (\array_key_exists('fixer-config-file', $options) && null !== $options['fixer-config-file']) {

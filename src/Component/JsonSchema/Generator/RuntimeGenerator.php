@@ -2,6 +2,7 @@
 
 namespace Jane\Component\JsonSchema\Generator;
 
+use Jane\Component\JsonSchema\Event\FileGeneratedEvent;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Node\Name;
@@ -49,11 +50,13 @@ class RuntimeGenerator implements GeneratorInterface
                 $ast = $this->parser->parse(file_get_contents($sourceDir . '/' . $config['source']));
                 $namespaceNode = new Namespace_(new Name($this->naming->getRuntimeNamespace($schema->getNamespace(), $config['namespace'])), $ast);
                 $prefixNamespace = \count($config['namespace']) > 0 ? implode('/', $config['namespace']) . '/' : '';
-                $schema->addFile(new File(
+                $file = new File(
                     $schema->getDirectory() . '/Runtime/' . $prefixNamespace . $config['file'],
                     $namespaceNode,
                     self::FILE_TYPE_RUNTIME
-                ));
+                );
+                $schema->addFile($file);
+                $context->dispatch(new FileGeneratedEvent($schema, $file));
             }
         }
     }

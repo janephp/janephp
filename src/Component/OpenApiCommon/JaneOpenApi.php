@@ -2,6 +2,7 @@
 
 namespace Jane\Component\OpenApiCommon;
 
+use Jane\Component\JsonSchema\Event\PropertyGuessedEvent;
 use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
@@ -18,6 +19,8 @@ use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\Component\OpenApiCommon\Registry\Schema;
 use Jane\Component\OpenApiCommon\SchemaParser\SchemaParser;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -111,6 +114,10 @@ abstract class JaneOpenApi extends ChainGenerator
                     $class->setExtensionsType($extensionsTypes);
 
                     $chainValidator->guess($class->getObject(), $class->getName(), $class);
+
+                    foreach ($properties as $property) {
+                        $this->dispatcher->dispatch(new PropertyGuessedEvent($schema, $class, $property));
+                    }
                 } catch (\RuntimeException $exception) {
                     if (!$checkWhitelistedPaths) {
                         throw $exception;
@@ -137,7 +144,7 @@ abstract class JaneOpenApi extends ChainGenerator
             }
         }
 
-        return new Context($registry, $this->strict);
+        return new Context($registry, $this->strict, $this->dispatcher);
     }
 
     /**
@@ -189,7 +196,7 @@ abstract class JaneOpenApi extends ChainGenerator
 
     abstract protected static function generators(DenormalizerInterface $denormalizer, array $options = []): \Generator;
 
-    public static function build(array $options = [])
+    public static function build(array $options = [], ?EventDispatcherInterface $dispatcher = null)
     {
         $options = Options::fromArray($options);
         $optionsArray = $options->toArray();
@@ -207,6 +214,7 @@ abstract class JaneOpenApi extends ChainGenerator
         $instance = static::create($optionsArray, $chainValidatorFactory);
         $instance->options = $optionsArray;
         $instance->chainValidatorFactory = $chainValidatorFactory;
+        $instance->dispatcher = $dispatcher ?? new EventDispatcher();
 
         /** @var DenormalizerInterface $denormalizer */
         $denormalizer = $instance->getSerializer();
