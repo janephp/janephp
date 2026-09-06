@@ -3,8 +3,11 @@
 namespace Jane\Component\JsonSchema\Console;
 
 use Jane\Component\JsonSchema\Event\GeneratingEndedEvent;
+use Jane\Component\JsonSchema\Event\GeneratingStartedEvent;
 use Jane\Component\JsonSchema\Event\GenerationEndedEvent;
+use Jane\Component\JsonSchema\Event\GenerationStartedEvent;
 use Jane\Component\JsonSchema\Event\GuessingEndedEvent;
+use Jane\Component\JsonSchema\Event\GuessingStartedEvent;
 use Jane\Component\JsonSchema\Event\SchemaStartedEvent;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -30,6 +33,11 @@ final class GenerationProgressSubscriber implements EventSubscriberInterface
         'Exception' => 'Exceptions',
     ];
 
+    private float $guessingStartedAt = 0.0;
+    private float $guessingDuration = 0.0;
+    private float $generatingStartedAt = 0.0;
+    private float $generatingDuration = 0.0;
+
     public function __construct(
         private readonly SymfonyStyle $io,
     ) {
@@ -38,75 +46,70 @@ final class GenerationProgressSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
+            GenerationStartedEvent::class => ['onGenerationStarted'],
             SchemaStartedEvent::class => ['onSchemaStarted'],
+            GuessingStartedEvent::class => ['onGuessingStarted'],
             GuessingEndedEvent::class => ['onGuessingEnded'],
+            GeneratingStartedEvent::class => ['onGeneratingStarted'],
             GeneratingEndedEvent::class => ['onGeneratingEnded'],
             GenerationEndedEvent::class => ['onGenerationEnded'],
         ];
     }
 
+    public function onGenerationStarted(GenerationStartedEvent $event): void
+    {
+        $this->guessingDuration = 0.0;
+        $this->generatingDuration = 0.0;
+    }
+
     public function onSchemaStarted(SchemaStartedEvent $event): void
     {
-        $this->io->text(\sprintf('Generating for schema <info>%s</info>', $event->getSchema()->getOrigin()));
-        $this->io->text(\sprintf('Output: <info>%s</info>', $event->getSchema()->getDirectory()));
+        $this->io->text(\sprintf('Generating for schema `%s`', basename($event->getSchema()->getOrigin())));
+        $this->io->text(\sprintf('Output: `%s/`', basename($event->getSchema()->getDirectory())));
+    }
+
+    public function onGuessingStarted(GuessingStartedEvent $event): void
+    {
+        $this->guessingStartedAt = hrtime(true);
     }
 
     public function onGuessingEnded(GuessingEndedEvent $event): void
     {
-        $this->io->text('✔️ Guessing');
+        $this->guessingDuration = (hrtime(true) - $this->guessingStartedAt) / 1e9;
+    }
+
+    public function onGeneratingStarted(GeneratingStartedEvent $event): void
+    {
+        $this->generatingStartedAt = hrtime(true);
     }
 
     public function onGeneratingEnded(GeneratingEndedEvent $event): void
     {
-        $this->io->text('✔️ Generating');
+        $this->generatingDuration += (hrtime(true) - $this->generatingStartedAt) / 1e9;
     }
 
     public function onGenerationEnded(GenerationEndedEvent $event): void
     {
-        $counts = [];
-        $hasReferenceNormalizer = false;
+        $this->io->text(\sprintf('➜ Guessing… done (%.2fs)', $this->guessingDuration));
+        $this->io->text(\sprintf('➜ Generating… done (%.2fs)', $this->generatingDuration));
 
+        $counts = [];
         foreach ($event->getRegistry()->getSchemas() as $schema) {
             foreach ($schema->getFiles() as $file) {
                 $type = $file->getType();
                 $counts[$type] = ($counts[$type] ?? 0) + 1;
-
-                if ('runtime' === $type && str_ends_with($file->getFilename(), 'ReferenceNormalizer.php')) {
-                    $hasReferenceNormalizer = true;
-                }
             }
         }
 
+        $total = array_sum($counts);
+        $this->io->text(\sprintf('➜ %d file%s written', $total, 1 === $total ? '' : 's'));
+
         foreach (self::TYPE_LABELS as $type => $label) {
-            if (!\array_key_exists($type, $counts)) {
-                continue;
+            if (\array_key_exists($type, $counts)) {
+                $this->io->text(\sprintf('    • %d %s', $counts[$type], $label));
             }
-
-            if ('normalizer' === $type) {
-                $this->io->text($this->normalizerSummary($counts['normalizer'], $hasReferenceNormalizer));
-
-                continue;
-            }
-
-            $this->io->text(\sprintf('* %d %s', $counts[$type], $label));
         }
 
         $this->io->success(\sprintf('Done in %.2fs', $event->getElapsedSeconds()));
-    }
-
-    private function normalizerSummary(int $count, bool $hasReferenceNormalizer): string
-    {
-        if ($hasReferenceNormalizer) {
-            // JaneObjectNormalizer is already part of the normalizer file count;
-            // per-model normalizers are followed by the two shared normalizers.
-            $perModelNormalizers = $count - 1;
-
-            return \sprintf(
-                '* %s Normalizers (JaneObjectNormalizer + ReferenceNormalizer)',
-                $perModelNormalizers > 0 ? $perModelNormalizers . '+2' : '2'
-            );
-        }
-
-        return \sprintf('* %d Normalizers (incl. JaneObjectNormalizer)', $count);
     }
 }

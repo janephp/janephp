@@ -89,20 +89,21 @@ The command prints what it is doing at the default (and higher) verbosity levels
 
 ```console
 $ php vendor/bin/jane generate
- ✔️ Guessing
- Generating for schema json-schema.json
- Output: generated
- ✔️ Generating
- * 2 Models
- * 2+2 Normalizers (JaneObjectNormalizer + ReferenceNormalizer)
- * 6 Runtime
+ Generating for schema `json-schema.json`
+ Output: `generated/`
+ ➜ Guessing… done (0.05s)
+ ➜ Generating… done (0.03s)
+ ➜ 11 files written
+     • 2 Models
+     • 3 Normalizers
+     • 6 Runtime
 
- [OK] Done in 0.04s
+ [OK] Done in 0.09s
 ```
 
 The summary groups every generated file by type (models, enums, normalizers, validators, runtime, auth, client,
-endpoints, exceptions). When the `reference` option is on (the console default), the normalizer line shows the
-two shared normalizers (`JaneObjectNormalizer` + `ReferenceNormalizer`) on top of the per-model normalizers.
+endpoints, exceptions). When the `reference` option is on (the console default), the shared `ReferenceNormalizer`
+is generated as a runtime file and counted under `Runtime`.
 
 ## Configuration file
 

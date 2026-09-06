@@ -33,13 +33,14 @@ class GenerationProgressTest extends TestCase
     {
         $display = $this->generate();
 
-        self::assertStringContainsString('Generating for schema ' . $this->tmpDir . '/schema.json', $display);
-        self::assertStringContainsString('Output: ' . $this->tmpDir . '/generated', $display);
-        self::assertStringContainsString('✔️ Guessing', $display);
-        self::assertStringContainsString('✔️ Generating', $display);
-        self::assertStringContainsString('* 2 Models', $display);
-        self::assertStringContainsString('* 2+2 Normalizers (JaneObjectNormalizer + ReferenceNormalizer)', $display);
-        self::assertMatchesRegularExpression('/\* \d+ Runtime/', $display);
+        self::assertStringContainsString('Generating for schema `schema.json`', $display);
+        self::assertStringContainsString('Output: `generated/`', $display);
+        self::assertMatchesRegularExpression('/➜ Guessing… done \(\d+\.\d{2}s\)/', $display);
+        self::assertMatchesRegularExpression('/➜ Generating… done \(\d+\.\d{2}s\)/', $display);
+        self::assertMatchesRegularExpression('/➜ \d+ files? written/', $display);
+        self::assertStringContainsString('• 2 Models', $display);
+        self::assertStringContainsString('• 3 Normalizers', $display);
+        self::assertMatchesRegularExpression('/• \d+ Runtime/', $display);
         self::assertMatchesRegularExpression('/Done in \d+\.\d{2}s/', $display);
     }
 
