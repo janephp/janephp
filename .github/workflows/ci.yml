@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - next
+      - 7.x
     paths-ignore:
       - '**.md'
       - 'docs/**'
