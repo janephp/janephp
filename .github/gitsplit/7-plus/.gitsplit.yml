@@ -34,4 +34,5 @@ splits:
 # List of references to split (defined as regexp)
 origins:
   - ^next$
+  - ^7\.x$
   - ^v[7]+\.\d+\.\d+$
