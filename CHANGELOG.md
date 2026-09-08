@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.14.3] - 2026-09-08
 ### Fixed
 - [OpenApi] The runtime `BaseEndpoint` no longer percent-encodes nested query parameter keys twice. `encodeArrayValue()`, `encodeFormStyle()` and `flattenBracketPairs()` pre-encoded each sub-key before appending it to the bracketed key, which `encodeStringValue()` / `encodeIntValue()` then encoded again: a sub-key containing a reserved character was emitted as `queryParam%5Bunit%253Amm%5D=width` instead of `queryParam%5Bunit%3Amm%5D=width`, so after the server's own URL-decoding the sub-key arrived as the literal string `unit%3Amm` rather than `unit:mm`. Sub-keys are now appended raw and encoded once, by the single `rawurlencode()` of the assembled key, matching `http_build_query(..., PHP_QUERY_RFC3986)`. Regressed in 7.14.0 for `style` / `explode` / `deepObject` parameters and in 7.10.4 ([GH#907](https://github.com/janephp/janephp/pull/907), [GH#908](https://github.com/janephp/janephp/pull/908)) for bracketed arrays; keys made only of unreserved characters are unaffected
 
@@ -967,7 +969,9 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.14.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.14.2...HEAD
+[7.14.3]: https://github.com/janephp/janephp/compare/v7.14.2...v7.14.3
+[7.14.2]: https://github.com/janephp/janephp/compare/v7.14.0...v7.14.2
 [7.14.1]: https://github.com/janephp/janephp/compare/v7.14.0...v7.14.1
 [7.14.0]: https://github.com/janephp/janephp/compare/v7.13.0...v7.14.0
 [7.13.0]: https://github.com/janephp/janephp/compare/v7.12.0...v7.13.0
