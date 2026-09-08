@@ -14,7 +14,7 @@ class AddApsPictureByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      *    "uploadFile": string|resource, //The file to upload
      * } $formParameters
      */
-    public function __construct(string $apMac, array $queryParameters = [], array $formParameters = [])
+    public function __construct(string $apMac, array $queryParameters, array $formParameters)
     {
         $this->apMac = $apMac;
         $this->queryParameters = $queryParameters;

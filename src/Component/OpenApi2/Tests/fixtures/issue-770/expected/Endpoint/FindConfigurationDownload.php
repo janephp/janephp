@@ -11,7 +11,7 @@ class FindConfigurationDownload extends \Jane\Component\OpenApi3\Tests\Expected\
      *    "timeZone"?: string, //<font color="red">DEPRECATED</font> Time zone
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

@@ -14,7 +14,7 @@ class DeleteMonitoringPortfoliosByPortfolioIdCompanyById extends \CreditSafe\API
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $portfolioId, string $id, array $headerParameters = [])
+    public function __construct(string $portfolioId, string $id, array $headerParameters)
     {
         $this->portfolioId = $portfolioId;
         $this->id = $id;

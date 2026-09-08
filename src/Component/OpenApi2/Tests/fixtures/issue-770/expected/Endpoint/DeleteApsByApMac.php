@@ -12,7 +12,7 @@ class DeleteApsByApMac extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\
      *    "validateMesh"?: string, //Validate if AP is not MAP/eMAP. Default: true
      * } $queryParameters
      */
-    public function __construct(string $apMac, array $queryParameters = [])
+    public function __construct(string $apMac, array $queryParameters)
     {
         $this->apMac = $apMac;
         $this->queryParameters = $queryParameters;

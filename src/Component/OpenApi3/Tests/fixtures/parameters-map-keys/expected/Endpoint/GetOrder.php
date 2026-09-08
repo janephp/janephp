@@ -14,7 +14,7 @@ class GetOrder extends \Jane\Component\OpenApi3\Tests\Expected\ParametersMapKeys
      *    "explicit_name"?: string, //Explicit name takes precedence over the key
      * } $queryParameters
      */
-    public function __construct(int $orderId, array $queryParameters = [])
+    public function __construct(int $orderId, array $queryParameters)
     {
         $this->order_id = $orderId;
         $this->queryParameters = $queryParameters;

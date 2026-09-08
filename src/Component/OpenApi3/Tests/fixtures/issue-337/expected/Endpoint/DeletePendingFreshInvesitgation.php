@@ -12,7 +12,7 @@ class DeletePendingFreshInvesitgation extends \CreditSafe\API\Runtime\Client\Bas
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $orderId, array $headerParameters = [])
+    public function __construct(string $orderId, array $headerParameters)
     {
         $this->orderId = $orderId;
         $this->headerParameters = $headerParameters;

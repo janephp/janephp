@@ -13,7 +13,7 @@ class FindDpNatProfilesDpNatPoolsByPoolId extends \Jane\Component\OpenApi3\Tests
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $id, string $poolId, array $queryParameters = [])
+    public function __construct(string $id, string $poolId, array $queryParameters)
     {
         $this->id = $id;
         $this->poolId = $poolId;

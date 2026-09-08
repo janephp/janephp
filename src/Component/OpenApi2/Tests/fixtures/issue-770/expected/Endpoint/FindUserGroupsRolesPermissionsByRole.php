@@ -12,7 +12,7 @@ class FindUserGroupsRolesPermissionsByRole extends \Jane\Component\OpenApi3\Test
      *    "domainId"?: string,
      * } $queryParameters
      */
-    public function __construct(string $role, array $queryParameters = [])
+    public function __construct(string $role, array $queryParameters)
     {
         $this->role = $role;
         $this->queryParameters = $queryParameters;

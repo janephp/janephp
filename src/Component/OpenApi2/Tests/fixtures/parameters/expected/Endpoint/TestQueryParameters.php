@@ -14,7 +14,7 @@ class TestQueryParameters extends \Jane\Component\OpenApi2\Tests\Expected\Parame
      *    "testDefault"?: string,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

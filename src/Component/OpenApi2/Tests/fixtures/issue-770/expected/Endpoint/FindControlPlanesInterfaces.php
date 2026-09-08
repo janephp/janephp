@@ -10,7 +10,7 @@ class FindControlPlanesInterfaces extends \Jane\Component\OpenApi3\Tests\Expecte
      *    "bladeUUID"?: string,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

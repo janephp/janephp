@@ -16,7 +16,7 @@ class PartialUpdateRkszonesWlangroupsMembersByMemberId extends \Jane\Component\O
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters = [])
+    public function __construct(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters)
     {
         $this->zoneId = $zoneId;
         $this->id = $id;

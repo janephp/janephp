@@ -11,7 +11,7 @@ class CreateMonitoringPortfolio extends \CreditSafe\API\Runtime\Client\BaseEndpo
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(\CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody, array $headerParameters = [])
+    public function __construct(\CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody, array $headerParameters)
     {
         $this->body = $requestBody;
         $this->headerParameters = $headerParameters;

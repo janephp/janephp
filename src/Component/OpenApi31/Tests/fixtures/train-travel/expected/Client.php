@@ -47,7 +47,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtim
      *
      * @return null|\Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Model\TripsGetJsonResponse200
      */
-    public function getTrips(array $queryParameters = [], array $accept = [])
+    public function getTrips(array $queryParameters, array $accept = [])
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Endpoint\GetTrips($queryParameters, $accept));
     }

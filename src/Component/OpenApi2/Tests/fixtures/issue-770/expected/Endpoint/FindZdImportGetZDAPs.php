@@ -10,7 +10,7 @@ class FindZdImportGetZDAPs extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      *    "ip": string,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

@@ -12,7 +12,7 @@ class UpdateAccountSecurityById extends \Jane\Component\OpenApi3\Tests\Expected\
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileUpdate $body, array $queryParameters = [])
+    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AccountSecurityProfileUpdate $body, array $queryParameters)
     {
         $this->id = $id;
         $this->body = $body;

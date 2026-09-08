@@ -14,7 +14,7 @@ class TestFormParameters extends \Jane\Component\OpenApi2\Tests\Expected\Paramet
      *    "testDefault"?: string,
      * } $formParameters
      */
-    public function __construct(array $formParameters = [])
+    public function __construct(array $formParameters)
     {
         $this->formParameters = $formParameters;
     }

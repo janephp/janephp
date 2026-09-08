@@ -12,7 +12,7 @@ class AddBlockClientByApMacByApMac extends \Jane\Component\OpenApi3\Tests\Expect
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient $body, array $queryParameters = [])
+    public function __construct(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\ProfileBlockClient $body, array $queryParameters)
     {
         $this->apMac = $apMac;
         $this->body = $body;

@@ -13,7 +13,7 @@ class FindApplicationsByBladeUUID extends \Jane\Component\OpenApi3\Tests\Expecte
      *    "listSize"?: string, //The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
      * } $queryParameters
      */
-    public function __construct(string $bladeUUID, array $queryParameters = [])
+    public function __construct(string $bladeUUID, array $queryParameters)
     {
         $this->bladeUUID = $bladeUUID;
         $this->queryParameters = $queryParameters;

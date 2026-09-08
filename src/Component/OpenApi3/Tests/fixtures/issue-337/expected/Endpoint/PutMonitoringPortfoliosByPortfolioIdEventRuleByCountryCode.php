@@ -15,7 +15,7 @@ class PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode extends \Credit
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $portfolioId, string $countryCode, ?array $requestBody = null, array $headerParameters = [])
+    public function __construct(string $portfolioId, string $countryCode, ?array $requestBody, array $headerParameters)
     {
         $this->portfolioId = $portfolioId;
         $this->countryCode = $countryCode;

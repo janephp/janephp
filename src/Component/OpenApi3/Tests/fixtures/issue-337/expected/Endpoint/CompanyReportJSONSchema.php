@@ -16,7 +16,7 @@ class CompanyReportJSONSchema extends \CreditSafe\API\Runtime\Client\BaseEndpoin
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $countryCode, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $countryCode, array $queryParameters, array $headerParameters)
     {
         $this->countryCode = $countryCode;
         $this->queryParameters = $queryParameters;

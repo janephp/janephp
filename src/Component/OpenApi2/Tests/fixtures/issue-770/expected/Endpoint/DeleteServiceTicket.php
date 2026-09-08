@@ -9,7 +9,7 @@ class DeleteServiceTicket extends \Jane\Component\OpenApi3\Tests\Expected\Issue7
      *    "serviceTicket": string,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

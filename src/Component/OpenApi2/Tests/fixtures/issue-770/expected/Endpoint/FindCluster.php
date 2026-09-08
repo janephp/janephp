@@ -12,7 +12,7 @@ class FindCluster extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runti
      *    "timezone"?: string, //Change display timezone of created date and time, like timezone=Asia/Taipei, default is UTC time.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

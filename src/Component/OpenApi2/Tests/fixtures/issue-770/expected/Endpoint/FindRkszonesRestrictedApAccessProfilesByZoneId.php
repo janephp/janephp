@@ -13,7 +13,7 @@ class FindRkszonesRestrictedApAccessProfilesByZoneId extends \Jane\Component\Ope
      *    "listSize"?: string, //The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
      * } $queryParameters
      */
-    public function __construct(string $zoneId, array $queryParameters = [])
+    public function __construct(string $zoneId, array $queryParameters)
     {
         $this->zoneId = $zoneId;
         $this->queryParameters = $queryParameters;

@@ -12,7 +12,7 @@ class UpdateWhitelabelsById extends \Jane\Component\OpenApi3\Tests\Expected\Issu
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationUpdateWhiteLabelCustomization $body, array $queryParameters = [])
+    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\WhiteLabelCustomizationUpdateWhiteLabelCustomization $body, array $queryParameters)
     {
         $this->id = $id;
         $this->body = $body;

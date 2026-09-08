@@ -12,7 +12,7 @@ class FindDomainsById extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\R
      *    "recursively"?: string,
      * } $queryParameters
      */
-    public function __construct(string $id, array $queryParameters = [])
+    public function __construct(string $id, array $queryParameters)
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;

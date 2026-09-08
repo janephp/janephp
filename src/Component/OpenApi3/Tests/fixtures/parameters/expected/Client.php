@@ -46,7 +46,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      *
      * @return null
      */
-    public function testQueryParameters(array $queryParameters = [])
+    public function testQueryParameters(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestQueryParameters($queryParameters));
     }
@@ -62,7 +62,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      *
      * @return null
      */
-    public function testHeaderParameters(array $headerParameters = [])
+    public function testHeaderParameters(array $headerParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestHeaderParameters($headerParameters));
     }
@@ -120,7 +120,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      *
      * @return null
      */
-    public function testDictionary(array $queryParameters = [])
+    public function testDictionary(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestDictionary($queryParameters));
     }
@@ -142,7 +142,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Parameters\Runtime\
      *
      * @return null
      */
-    public function testObjectAdditionalProperties(array $queryParameters = [])
+    public function testObjectAdditionalProperties(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Parameters\Endpoint\TestObjectAdditionalProperties($queryParameters));
     }

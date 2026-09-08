@@ -12,7 +12,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\ParameterTypeRefere
      *
      * @return null
      */
-    public function foo(array $queryParameters = [])
+    public function foo(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\ParameterTypeReference\Endpoint\Foo($queryParameters));
     }

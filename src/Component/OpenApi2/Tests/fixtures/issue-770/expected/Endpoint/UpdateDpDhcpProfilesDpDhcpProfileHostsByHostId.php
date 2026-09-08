@@ -14,7 +14,7 @@ class UpdateDpDhcpProfilesDpDhcpProfileHostsByHostId extends \Jane\Component\Ope
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $id, string $hostId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters = [])
+    public function __construct(string $id, string $hostId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters)
     {
         $this->id = $id;
         $this->hostId = $hostId;

@@ -13,7 +13,7 @@ class FindApsOperationalNeighborByApMac extends \Jane\Component\OpenApi3\Tests\E
      *    "listSize"?: string, //The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
      * } $queryParameters
      */
-    public function __construct(string $apMac, array $queryParameters = [])
+    public function __construct(string $apMac, array $queryParameters)
     {
         $this->apMac = $apMac;
         $this->queryParameters = $queryParameters;

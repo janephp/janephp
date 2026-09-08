@@ -11,7 +11,7 @@ class FindMaps extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\
      *    "groupType": string,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

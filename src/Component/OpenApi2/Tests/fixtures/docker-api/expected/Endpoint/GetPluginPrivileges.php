@@ -10,7 +10,7 @@ class GetPluginPrivileges extends \Docker\Api\Runtime\Client\BaseEndpoint implem
      *                      //default if omitted.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

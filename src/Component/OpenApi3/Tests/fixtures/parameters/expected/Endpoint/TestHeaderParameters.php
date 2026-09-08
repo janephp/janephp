@@ -14,7 +14,7 @@ class TestHeaderParameters extends \Jane\Component\OpenApi3\Tests\Expected\Param
      *    "testDefault"?: string,
      * } $headerParameters
      */
-    public function __construct(array $headerParameters = [])
+    public function __construct(array $headerParameters)
     {
         $this->headerParameters = $headerParameters;
     }

@@ -13,7 +13,7 @@ class AddRkszonesAaaRadiusByZoneId extends \Jane\Component\OpenApi3\Tests\Expect
      *    "forAccounting"?: string, //radius server for accounting type. default: false.
      * } $queryParameters
      */
-    public function __construct(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer $body, array $queryParameters = [])
+    public function __construct(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\AaaCreateAuthenticationServer $body, array $queryParameters)
     {
         $this->zoneId = $zoneId;
         $this->body = $body;

@@ -18,7 +18,7 @@ class RunDecisionTree extends \CreditSafe\API\Runtime\Client\BaseEndpoint implem
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $provenirId, ?\stdClass $requestBody = null, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $provenirId, ?\stdClass $requestBody, array $queryParameters, array $headerParameters)
     {
         $this->provenirId = $provenirId;
         $this->body = $requestBody;

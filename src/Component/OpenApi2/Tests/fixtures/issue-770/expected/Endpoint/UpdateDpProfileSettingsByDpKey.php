@@ -12,7 +12,7 @@ class UpdateDpProfileSettingsByDpKey extends \Jane\Component\OpenApi3\Tests\Expe
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $dpKey, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO $body, array $queryParameters = [])
+    public function __construct(string $dpKey, \Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\DpProfileDpProfileSettingBO $body, array $queryParameters)
     {
         $this->dpKey = $dpKey;
         $this->body = $body;

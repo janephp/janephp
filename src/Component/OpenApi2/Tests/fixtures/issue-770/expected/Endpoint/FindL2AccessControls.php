@@ -12,7 +12,7 @@ class FindL2AccessControls extends \Jane\Component\OpenApi3\Tests\Expected\Issue
      *    "domainId"?: string, //Domain id for query
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

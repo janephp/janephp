@@ -12,7 +12,7 @@ class FindToolTraceRoute extends \Jane\Component\OpenApi3\Tests\Expected\Issue77
      *    "timeoutInSec"?: string, //Timeout in unit of seconds (Default: 30)
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

@@ -12,7 +12,7 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $imageId, array $headerParameters = [])
+    public function __construct(string $imageId, array $headerParameters)
     {
         $this->imageId = $imageId;
         $this->headerParameters = $headerParameters;

@@ -12,7 +12,7 @@ class FindApSnmpAgentProfiles extends \Jane\Component\OpenApi3\Tests\Expected\Is
      *    "domainId": string,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

@@ -12,7 +12,7 @@ class FindWifiCallingWifiCallingPolicy extends \Jane\Component\OpenApi3\Tests\Ex
      *    "domainId"?: string, //Hi joe, please check.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

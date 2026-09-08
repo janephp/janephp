@@ -12,7 +12,7 @@ class AddAvcSignaturePackageV2Upload extends \Jane\Component\OpenApi3\Tests\Expe
      *    "uploadFile": string|resource, //The file to upload
      * } $formParameters
      */
-    public function __construct(array $queryParameters = [], array $formParameters = [])
+    public function __construct(array $queryParameters, array $formParameters)
     {
         $this->queryParameters = $queryParameters;
         $this->formParameters = $formParameters;

@@ -11,7 +11,7 @@ class FindSystemInventory extends \Jane\Component\OpenApi3\Tests\Expected\Issue7
      *    "listSize"?: string, //The maximum number of entries to be retrieved. Default: 100, Maximum: 1000
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

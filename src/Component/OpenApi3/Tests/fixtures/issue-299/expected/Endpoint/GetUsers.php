@@ -11,7 +11,7 @@ class GetUsers extends \Jane\Component\OpenApi3\Tests\Expected\Issue299\Runtime\
      *    "userState": string, //User state
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

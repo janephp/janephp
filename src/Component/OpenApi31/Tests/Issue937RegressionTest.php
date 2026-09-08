@@ -76,9 +76,8 @@ class Issue937RegressionTest extends TestCase
 
             $clientContent = file_get_contents($generatedDirectory . '/Client.php');
             self::assertIsString($clientContent);
-            self::assertStringContainsString('public function getProposal(', $clientContent);
-            self::assertStringContainsString('$proposalId', $clientContent);
-            self::assertStringContainsString('array $queryParameters = []', $clientContent);
+            // The query parameter `preview` is required, so the options array has no default (#1072).
+            self::assertStringContainsString('public function getProposal(string $proposalId, array $queryParameters)', $clientContent);
             self::assertStringContainsString('new \\Jane\\Component\\OpenApi31\\Tests\\Issue937Expected\\Endpoint\\GetProposal($proposalId, $queryParameters)', $clientContent);
 
             $endpointContent = file_get_contents($generatedDirectory . '/Endpoint/GetProposal.php');

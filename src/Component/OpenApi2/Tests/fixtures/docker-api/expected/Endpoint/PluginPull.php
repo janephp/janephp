@@ -25,7 +25,7 @@ class PluginPull extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      *                                //details.
      * } $headerParameters
      */
-    public function __construct(array $body, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $body, array $queryParameters, array $headerParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;

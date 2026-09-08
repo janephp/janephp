@@ -12,7 +12,7 @@ class FindDevicePolicy extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\
      *    "domainId"?: string, //Domain id for query
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

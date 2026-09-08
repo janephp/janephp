@@ -9,7 +9,7 @@ class TestObjectAdditionalProperties extends \Jane\Component\OpenApi3\Tests\Expe
      *    "search": array,
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

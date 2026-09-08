@@ -18,7 +18,7 @@ class DropletsDestroyByTag extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      *    "tag_name": string, //Specifies Droplets to be deleted by tag.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

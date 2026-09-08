@@ -10,7 +10,7 @@ class UpdateSystemCommonAccessCardSettings extends \Jane\Component\OpenApi3\Test
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCommonAccessCardSettings $body, array $queryParameters = [])
+    public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Issue770\Model\SystemCommonAccessCardSettings $body, array $queryParameters)
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;

@@ -15,7 +15,7 @@ class FindRkszonesWlansDpskByDpskId extends \Jane\Component\OpenApi3\Tests\Expec
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $zoneId, string $id, string $dpskId, array $queryParameters = [])
+    public function __construct(string $zoneId, string $id, string $dpskId, array $queryParameters)
     {
         $this->zoneId = $zoneId;
         $this->id = $id;

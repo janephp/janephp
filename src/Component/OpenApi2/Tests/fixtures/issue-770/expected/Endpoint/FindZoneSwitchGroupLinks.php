@@ -14,7 +14,7 @@ class FindZoneSwitchGroupLinks extends \Jane\Component\OpenApi3\Tests\Expected\I
      *    "switchGroupId"?: string, //Get by Switch Group ID
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

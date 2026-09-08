@@ -12,7 +12,7 @@ class UpdateMapsApsByIndoorMapId extends \Jane\Component\OpenApi3\Tests\Expected
      *    "serviceTicket": string, //Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * } $queryParameters
      */
-    public function __construct(string $indoorMapId, array $body, array $queryParameters = [])
+    public function __construct(string $indoorMapId, array $body, array $queryParameters)
     {
         $this->indoorMapId = $indoorMapId;
         $this->body = $body;

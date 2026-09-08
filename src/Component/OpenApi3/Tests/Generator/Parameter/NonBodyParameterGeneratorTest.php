@@ -65,6 +65,42 @@ final class NonBodyParameterGeneratorTest extends TestCase
         self::assertSame(' *    "page"?: int,', $this->generator()->generateOptionDocParameter($parameter));
     }
 
+    /**
+     * The constructor drops the `= []` default of an options array as soon as
+     * the resolver would reject an empty one, so both must agree on "required".
+     */
+    public function testOptionIsRequiredExactlyWhenTheResolverRequiresIt(): void
+    {
+        $generator = $this->generator();
+
+        $schema = new Schema();
+        $schema->type = 'string';
+
+        $parameter = new Parameter();
+        $parameter->name = 'filter';
+        $parameter->required = true;
+        $parameter->schema = $schema;
+        self::assertTrue($generator->isOptionRequired($parameter));
+
+        $parameter->required = false;
+        self::assertFalse($generator->isOptionRequired($parameter));
+
+        $withDefault = new Schema();
+        $withDefault->type = 'integer';
+        $withDefault->default = 1;
+
+        $parameter = new Parameter();
+        $parameter->name = 'page';
+        $parameter->required = true;
+        $parameter->schema = $withDefault;
+        self::assertFalse($generator->isOptionRequired($parameter));
+
+        $parameter = new Parameter();
+        $parameter->name = 'id';
+        $parameter->required = true;
+        self::assertFalse($generator->isOptionRequired($parameter));
+    }
+
     private function generator(): NonBodyParameterGenerator
     {
         return new NonBodyParameterGenerator(JaneOpenApi::buildSerializer(), (new ParserFactory())->createForHostVersion());

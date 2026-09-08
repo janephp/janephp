@@ -15,7 +15,7 @@ class ContainerArchiveInfo extends \Docker\Api\Runtime\Client\BaseEndpoint imple
      *    "path": string, //Resource in the container’s filesystem to archive.
      * } $queryParameters
      */
-    public function __construct(string $id, array $queryParameters = [])
+    public function __construct(string $id, array $queryParameters)
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;

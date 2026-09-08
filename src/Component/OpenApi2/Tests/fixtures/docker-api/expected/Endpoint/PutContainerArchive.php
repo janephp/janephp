@@ -20,7 +20,7 @@ class PutContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implem
     *                           //dir
     * } $queryParameters
     */
-    public function __construct(string $id, $inputStream, array $queryParameters = [])
+    public function __construct(string $id, $inputStream, array $queryParameters)
     {
         $this->id = $id;
         $this->body = $inputStream;

@@ -12,7 +12,7 @@ class FindRkszonesAaaRadiusByZoneId extends \Jane\Component\OpenApi3\Tests\Expec
      *    "forAccounting"?: string, //radius server for filtering accounting type(forAccounting=true), not accounting type(forAccounting=false) and both(without forAccounting).
      * } $queryParameters
      */
-    public function __construct(string $zoneId, array $queryParameters = [])
+    public function __construct(string $zoneId, array $queryParameters)
     {
         $this->zoneId = $zoneId;
         $this->queryParameters = $queryParameters;

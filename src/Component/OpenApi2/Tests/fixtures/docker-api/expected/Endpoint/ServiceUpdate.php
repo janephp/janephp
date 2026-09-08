@@ -28,7 +28,7 @@ class ServiceUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
      *                                //details.
      * } $headerParameters
      */
-    public function __construct(string $id, \Docker\Api\Model\ServicesIdUpdatePostBody $body, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $id, \Docker\Api\Model\ServicesIdUpdatePostBody $body, array $queryParameters, array $headerParameters = [])
     {
         $this->id = $id;
         $this->body = $body;

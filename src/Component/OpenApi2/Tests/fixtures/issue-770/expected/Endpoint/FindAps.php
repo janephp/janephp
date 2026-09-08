@@ -13,7 +13,7 @@ class FindAps extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\C
      *    "domainId"?: string, //filter AP list by domain. Default: current logon domain
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

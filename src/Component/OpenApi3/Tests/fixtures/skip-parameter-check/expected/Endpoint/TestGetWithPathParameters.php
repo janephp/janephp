@@ -16,7 +16,7 @@ class TestGetWithPathParameters extends \Jane\OpenApi3\Tests\Expected\SkipParame
      *    "testHeaderSkipped": string,
      * } $headerParameters
      */
-    public function __construct(string $testPath, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $testPath, array $queryParameters, array $headerParameters)
     {
         $this->testPath = $testPath;
         $this->queryParameters = $queryParameters;

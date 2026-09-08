@@ -14,7 +14,7 @@ class FindApsLineman extends \Jane\Component\OpenApi3\Tests\Expected\Issue770\Ru
      *    "showAlarm"?: string, //indicate to show alarm counter. Default: true
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

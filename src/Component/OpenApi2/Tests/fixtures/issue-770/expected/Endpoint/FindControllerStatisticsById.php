@@ -13,7 +13,7 @@ class FindControllerStatisticsById extends \Jane\Component\OpenApi3\Tests\Expect
      *    "size"?: float, //Size, list size to response. Default: 32
      * } $queryParameters
      */
-    public function __construct(string $id, array $queryParameters = [])
+    public function __construct(string $id, array $queryParameters)
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;

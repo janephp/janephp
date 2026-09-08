@@ -25,7 +25,7 @@ class ImagePush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
      *                               //details.
      * } $headerParameters
      */
-    public function __construct(string $name, array $queryParameters = [], array $headerParameters = [])
+    public function __construct(string $name, array $queryParameters, array $headerParameters)
     {
         $this->name = $name;
         $this->queryParameters = $queryParameters;

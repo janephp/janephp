@@ -13,7 +13,7 @@ class NfsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint i
      *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
      * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }

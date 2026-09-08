@@ -13,7 +13,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Issue299\Runtime\Cl
      *
      * @return null|array
      */
-    public function getUsers(array $queryParameters = [])
+    public function getUsers(array $queryParameters)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Issue299\Endpoint\GetUsers($queryParameters));
     }

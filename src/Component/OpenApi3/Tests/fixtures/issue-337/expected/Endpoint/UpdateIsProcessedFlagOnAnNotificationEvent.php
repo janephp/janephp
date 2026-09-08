@@ -15,7 +15,7 @@ class UpdateIsProcessedFlagOnAnNotificationEvent extends \CreditSafe\API\Runtime
      *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * } $headerParameters
      */
-    public function __construct(string $portfolioId, string $notificationEventId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody = null, array $headerParameters = [])
+    public function __construct(string $portfolioId, string $notificationEventId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody, array $headerParameters)
     {
         $this->portfolioId = $portfolioId;
         $this->notificationEventId = $notificationEventId;
