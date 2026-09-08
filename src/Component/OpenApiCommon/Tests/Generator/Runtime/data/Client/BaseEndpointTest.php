@@ -100,7 +100,7 @@ if (!class_exists('BaseEndpoint', false)) {
         private function encodeArrayValue(string $queryParamName, array $value, bool $allowReserved): string {
             $params = [];
             foreach ($value as $subKey => $subValue) {
-                $arrayKey = $queryParamName . "[" . rawurlencode((string) $subKey) . "]";
+                $arrayKey = $queryParamName . "[" . $subKey . "]";
                 $params[] = $this->encodeValue($arrayKey, $subValue, $allowReserved);
             }
             return implode("&", $params);
@@ -123,14 +123,14 @@ if (!class_exists('BaseEndpoint', false)) {
             $pairs = [];
             if (array_is_list($value)) {
                 foreach ($value as $index => $item) {
-                    if (is_array($item)) { $pairs = array_merge($pairs, $this->flattenBracketPairs($name . "[" . rawurlencode((string) $index) . "]", $item, $allowReserved)); continue; }
+                    if (is_array($item)) { $pairs = array_merge($pairs, $this->flattenBracketPairs($name . "[" . $index . "]", $item, $allowReserved)); continue; }
                     if (null === $item) { continue; }
                     $pairs[] = $this->encodeValue($name, $item, $allowReserved);
                 }
                 return $pairs;
             }
             foreach ($value as $subKey => $subValue) {
-                if (is_array($subValue)) { $pairs = array_merge($pairs, $this->flattenBracketPairs(rawurlencode((string) $subKey), $subValue, $allowReserved)); continue; }
+                if (is_array($subValue)) { $pairs = array_merge($pairs, $this->flattenBracketPairs((string) $subKey, $subValue, $allowReserved)); continue; }
                 if (null === $subValue) { continue; }
                 $pairs[] = $this->encodeValue((string) $subKey, $subValue, $allowReserved);
             }
@@ -149,7 +149,7 @@ if (!class_exists('BaseEndpoint', false)) {
         private function flattenBracketPairs(string $prefix, mixed $value, bool $allowReserved): array {
             if (!is_array($value)) { if (null === $value) { return []; } return [$this->encodeValue($prefix, $value, $allowReserved)]; }
             $pairs = [];
-            foreach ($value as $subKey => $subValue) { $pairs = array_merge($pairs, $this->flattenBracketPairs($prefix . "[" . rawurlencode((string) $subKey) . "]", $subValue, $allowReserved)); }
+            foreach ($value as $subKey => $subValue) { $pairs = array_merge($pairs, $this->flattenBracketPairs($prefix . "[" . $subKey . "]", $subValue, $allowReserved)); }
             return $pairs;
         }
         private function implodeStyledValues(string $name, array $value, string $style, bool $allowReserved): string {
@@ -190,6 +190,9 @@ final class BaseEndpointTest extends TestCase
         yield 'int array' => [['queryParam' => [1, 2, 3]], 'queryParam%5B0%5D=1&queryParam%5B1%5D=2&queryParam%5B2%5D=3'];
         yield 'array with string keys' => [['queryParam' => ['key' => 1]], 'queryParam%5Bkey%5D=1'];
         yield 'nested array' => [['queryParam' => ['key' => ['test' => 'test1']]], 'queryParam%5Bkey%5D%5Btest%5D=test1'];
+        yield 'array with a reserved character in the key' => [['queryParam' => ['unit:mm' => 'width']], 'queryParam%5Bunit%3Amm%5D=width'];
+        yield 'array with a separator character in the key' => [['queryParam' => ['span&low' => 'ten']], 'queryParam%5Bspan%26low%5D=ten'];
+        yield 'nested array with reserved characters in the keys' => [['queryParam' => ['group:one' => ['unit:mm' => 'width']]], 'queryParam%5Bgroup%3Aone%5D%5Bunit%3Amm%5D=width'];
     }
 
     public static function queryParamsProviderWithAllowingReservedCharacters(): iterable
@@ -220,6 +223,11 @@ final class BaseEndpointTest extends TestCase
             ['search' => ['name' => 'john', 'address' => ['city' => 'NY']]],
             ['search' => ['style' => 'form', 'explode' => true]],
             'name=john&address%5Bcity%5D=NY',
+        ];
+        yield 'form exploded object with a reserved character in the nested key' => [
+            ['layout' => ['group:one' => ['unit:mm' => 'width']]],
+            ['layout' => ['style' => 'form', 'explode' => true]],
+            'group%3Aone%5Bunit%3Amm%5D=width',
         ];
         yield 'form exploded array of objects uses bracket notation' => [
             ['points' => [['x' => 1], ['x' => 2]]],
@@ -255,6 +263,21 @@ final class BaseEndpointTest extends TestCase
             ['filter' => ['range' => ['from' => 'a']]],
             ['filter' => ['style' => 'deepObject', 'explode' => true]],
             'filter%5Brange%5D%5Bfrom%5D=a',
+        ];
+        yield 'deep object with a reserved character in the key' => [
+            ['bounds' => ['unit:mm' => 'width']],
+            ['bounds' => ['style' => 'deepObject', 'explode' => true]],
+            'bounds%5Bunit%3Amm%5D=width',
+        ];
+        yield 'deep object with a separator character in the key' => [
+            ['bounds' => ['span&low' => 'ten']],
+            ['bounds' => ['style' => 'deepObject', 'explode' => true]],
+            'bounds%5Bspan%26low%5D=ten',
+        ];
+        yield 'deep object nested with reserved characters in the keys' => [
+            ['bounds' => ['group:one' => ['unit:mm' => 'width']]],
+            ['bounds' => ['style' => 'deepObject', 'explode' => true]],
+            'bounds%5Bgroup%3Aone%5D%5Bunit%3Amm%5D=width',
         ];
         yield 'null value is omitted' => [
             ['search' => null, 'other' => 'kept'],
