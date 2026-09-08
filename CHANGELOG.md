@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [7.14.1] - 2026-09-07
+## [7.14.2] - 2026-09-08
+> **Note:** `7.14.1` was withdrawn and never published on Packagist: it was mistakenly tagged from `next` (8.0 content), breaking BC in `jane-php/open-api-runtime` (missing `AuthenticationRegistry::SCOPES_HEADER`). Its only change (#1069) ships in this release — see [GH-1076](https://github.com/janephp/janephp/issues/1076).
 ### Fixed
 - [JsonSchema] [GH#559](https://github.com/janephp/janephp/issues/559) Guard nested collection loops against `null` entries: a collection (map/array) whose item type is itself a nullable collection generated a nested `foreach` without a null check, crashing with `foreach() argument must be of type array|object, null given` on valid payloads (e.g. a Docker PortMap containing `"9000/tcp": null`). Generated loops now assign `null` for such entries and continue, on both denormalization and normalization, and only when the item schema declares nullability (`x-nullable` / `nullable` / type containing `null`)
 
