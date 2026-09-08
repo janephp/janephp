@@ -4,6 +4,7 @@ parameters:
 	reportUnmatchedIgnoredErrors: false
 	paths:
 		- src/
+		- corpus/
 	excludePaths:
 		analyse:
 			- src/Component/*/JsonSchema/*

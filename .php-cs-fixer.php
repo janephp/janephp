@@ -20,6 +20,7 @@ $finder = (new PhpCsFixer\Finder())
     ->exclude('Bundle/OpenApiBundle/Tests/Resources')
     ->exclude('cache')
     ->in(__DIR__ . '/src')
+    ->in(__DIR__ . '/corpus')
 ;
 
 return (new PhpCsFixer\Config())
