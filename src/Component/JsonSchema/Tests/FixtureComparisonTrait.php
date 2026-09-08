@@ -2,8 +2,6 @@
 
 namespace Jane\Component\JsonSchema\Tests;
 
-use PhpParser\Error;
-use PhpParser\ParserFactory;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -54,20 +52,7 @@ trait FixtureComparisonTrait
             return;
         }
 
-        $parser = (new ParserFactory())->createForHostVersion();
-        $errors = [];
-
-        $finder = new Finder();
-        $finder->in($generatedDirectory)->files()->name('*.php');
-
-        foreach ($finder as $generatedFile) {
-            try {
-                $parser->parse(file_get_contents($generatedFile->getRealPath()));
-            } catch (Error $error) {
-                $errors[] = \sprintf('%s: %s', $generatedFile->getRelativePathname(), $error->getMessage());
-            }
-        }
-
+        $errors = PhpSyntaxGate::errors($generatedDirectory);
         $fixtureName = basename($testDirectory);
 
         if (is_file($testDirectory . \DIRECTORY_SEPARATOR . '.known-invalid-php')) {
