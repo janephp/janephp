@@ -87,6 +87,37 @@ meaning anything.
 > copies: currently `multi-namespace` (JsonSchema), `docker-api`, `issue-793`, `bad-response-exception`,
 > `multipart-boolean`, `multipart-nested-object` and `issue-680` (OpenAPI 2 / 3).
 
+### Corpus smoke job
+
+Every gate above runs over the committed fixtures. The corpus smoke job runs the generator over real-world specs the
+fixture set does not contain — one vendor-published file per entry of `corpus/specs.json` (Kubernetes, Docker,
+GitHub in 3.0 and 3.1, Stripe, Discord, OpenAI, …), each pinned to a commit SHA and fetched at run time from the
+vendor's repository. Nothing is committed but the list: no `expected/` tree, no manifest, no baseline. Per spec it
+asserts three things:
+
+1. **Generation exits cleanly.** A spec refused with a clean Jane error (pre-generation validation, unsupported
+   version — [ADR 0002](adrs/0002-pre-generation-schema-validation.md)) is reported as `rejected`, which is correct
+   behaviour and not a failure; a crash (any other exception, a PHP fatal, a timeout) is.
+2. **The output parses**, through the same php-parser syntax gate as the fixture tests (`PhpSyntaxGate`).
+3. **Mago report** — the generated tree is analysed with `mago-generated.toml`'s rules and *no* baseline. The
+   per-code counts are reported only: freshly generated code carries the clusters frozen in the fixture baseline
+   ([#1066](https://github.com/janephp/janephp/issues/1066)), so this becomes a gate once that baseline is empty.
+
+```bash
+castor qa:corpus                 # every entry
+castor qa:corpus --spec discord  # one entry
+```
+
+It runs nightly (`.github/workflows/corpus-smoke.yml`, also on `workflow_dispatch` with an optional `spec` input)
+and is never a required check. An entry carrying `known-failure` (a link to the tracking issue) is expected to fail:
+its failure does not fail the run, and an unexpected pass is reported so the marker gets removed with the fix. The
+run exits non-zero only when an entry without that marker crashes or produces PHP that does not parse; the
+generation output of failed entries is kept under `.corpus/failures/` (uploaded as a workflow artifact) so a red
+row can become a minimal-repro issue without re-running anything. Downloads are cached under `.corpus/cache/`.
+
+Adding a spec is one entry: `name`, `repo`, `sha`, `path`, and a one-line `why`. Bumping a `sha` is a deliberate
+change that re-runs the job on new content.
+
 ### Creating / refreshing baselines
 
 A new fixture's config must generate into a namespace no other fixture uses — the convention is the component's

@@ -1,0 +1,117 @@
+{
+    "$comment": "Corpus smoke job (docs/contributing/tests.md, 'Corpus smoke job'). One vendor-published spec per entry, pinned to a commit SHA and fetched at run time from raw.githubusercontent.com/<repo>/<sha>/<path>. Bumping a sha is a deliberate change. `known-failure` (issue link) marks an entry expected to fail: its failure does not fail the run, an unexpected pass is reported.",
+    "specs": [
+        {
+            "name": "kubernetes",
+            "repo": "kubernetes/kubernetes",
+            "sha": "5261422c0c345347c1469d16148fd8539d7e60f4",
+            "path": "api/openapi-spec/swagger.json",
+            "why": "Largest Swagger 2.0 spec in the wild: thousands of definitions, deep $ref chains, x-kubernetes-* extensions, int-or-string types"
+        },
+        {
+            "name": "docker-engine",
+            "repo": "moby/moby",
+            "sha": "e0c1583c7891b34bd199fdf9e02fb7c7b65bb1ca",
+            "path": "api/docs/v1.56.yaml",
+            "why": "Swagger 2.0; the docker-api fixture is an older version of this spec, this one measures drift"
+        },
+        {
+            "name": "slack",
+            "repo": "slackapi/slack-api-specs",
+            "sha": "bc08db49625630e3585bf2f1322128ea04f2a7f3",
+            "path": "web-api/slack_web_openapi_v2.json",
+            "why": "Swagger 2.0; hundreds of near-identical ok/error response schemas, odd formats"
+        },
+        {
+            "name": "netlify",
+            "repo": "netlify/open-api",
+            "sha": "e6e204e1c94845d9dfc9581a0d7ef1bb212c0aed",
+            "path": "swagger.yml",
+            "why": "Swagger 2.0; small, hand-written and maintained: the control entry"
+        },
+        {
+            "name": "github",
+            "repo": "github/rest-api-description",
+            "sha": "3cef12e8a02d612ad032473d4fb87266f2befeae",
+            "path": "descriptions/api.github.com/api.github.com.yaml",
+            "why": "OpenAPI 3.0.3; the github manifest fixture commits no expected/ tree, so this is where its output gets analysed"
+        },
+        {
+            "name": "github-dereferenced",
+            "repo": "github/rest-api-description",
+            "sha": "3cef12e8a02d612ad032473d4fb87266f2befeae",
+            "path": "descriptions/api.github.com/dereferenced/api.github.com.deref.yaml",
+            "why": "OpenAPI 3.0.3; the same API with zero $refs: giant inline schemas, a different resolution path"
+        },
+        {
+            "name": "stripe",
+            "repo": "stripe/openapi",
+            "sha": "d7ff1f0a57e504527cbd3cc3d32ac044c66cf444",
+            "path": "openapi/spec3.yaml",
+            "why": "OpenAPI 3.0; keys in alphabetical order (components before openapi), expandable objects via anyOf, x-expansionResources"
+        },
+        {
+            "name": "plaid",
+            "repo": "plaid/plaid-openapi",
+            "sha": "457d08b92a569289195312aec8daa712d3324cab",
+            "path": "2020-09-14.yml",
+            "why": "OpenAPI 3.0.0; dense nullable + enum + allOf usage in one large file"
+        },
+        {
+            "name": "box",
+            "repo": "box/box-openapi",
+            "sha": "933ec4c5d9f4dbdaaa823efa3a083cf177aecbde",
+            "path": "openapi.json",
+            "why": "OpenAPI 3.0.2; allOf inheritance chains with discriminators (File--Mini, File, File--Full)"
+        },
+        {
+            "name": "twilio-api",
+            "repo": "twilio/twilio-oai",
+            "sha": "ef1d81e7b6e49e602530601e913eedc21aedd6da",
+            "path": "spec/yaml/twilio_api_v2010.yaml",
+            "why": "OpenAPI 3.0; the largest of ~80 machine-generated Twilio specs"
+        },
+        {
+            "name": "twilio-messaging",
+            "repo": "twilio/twilio-oai",
+            "sha": "ef1d81e7b6e49e602530601e913eedc21aedd6da",
+            "path": "spec/yaml/twilio_messaging_v1.yaml",
+            "why": "OpenAPI 3.0; a small Twilio spec from the same generator"
+        },
+        {
+            "name": "kubernetes-v3",
+            "repo": "kubernetes/kubernetes",
+            "sha": "5261422c0c345347c1469d16148fd8539d7e60f4",
+            "path": "api/openapi-spec/v3/api__v1_openapi.json",
+            "why": "OpenAPI 3.0; the same API as the kubernetes entry through the other component"
+        },
+        {
+            "name": "github-next",
+            "repo": "github/rest-api-description",
+            "sha": "3cef12e8a02d612ad032473d4fb87266f2befeae",
+            "path": "descriptions-next/api.github.com/api.github.com.yaml",
+            "why": "OpenAPI 3.1.0; the same API as the github entry in 3.1, isolating 3.1 handling from spec content"
+        },
+        {
+            "name": "discord",
+            "repo": "discord/discord-api-spec",
+            "sha": "d415390f20bcd62533361391f9c80778e2340c96",
+            "path": "specs/openapi.json",
+            "why": "OpenAPI 3.1.0; type arrays with null, const, oneOf + discriminator everywhere"
+        },
+        {
+            "name": "openai",
+            "repo": "openai/openai-openapi",
+            "sha": "21cb7e98d8166a691a0eb8679a90419eb816cf35",
+            "path": "openapi.yaml",
+            "why": "OpenAPI 3.1.0; anyOf/oneOf-heavy request bodies, text/event-stream and binary responses"
+        },
+        {
+            "name": "cloudflare",
+            "repo": "cloudflare/api-schemas",
+            "sha": "a54982ef99cb008abebd7cb37f57600833e530b6",
+            "path": "openapi.json",
+            "why": "Enormous allOf composition, more than 10 MB"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+# Nightly, non-blocking smoke run of the generator over real-world specs
+# (corpus/specs.json). Never a required check: it is not triggered by pull
+# requests. See docs/contributing/tests.md, "Corpus smoke job".
+name: Corpus smoke
+
+on:
+  schedule:
+    # 03:17 UTC daily. `schedule` only runs on the default branch and is paused
+    # by GitHub after 60 days without commits; `workflow_dispatch` covers both.
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+    inputs:
+      spec:
+        description: 'Run a single entry of corpus/specs.json (name), empty for all'
+        required: false
+        default: ''
+
+jobs:
+  corpus-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+      - name: cache-composer
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache/
+          key: composer-${{ github.sha }}
+      - name: setup
+        uses: shivammathur/setup-php@2.32.0
+        with:
+          php-version: 8.4
+          coverage: none
+      - name: composer install
+        run: composer update --prefer-stable
+      - name: setup
+        uses: castor-php/setup-castor@v0.1.0
+      - name: 'corpus smoke run'
+        env:
+          SPEC: ${{ inputs.spec }}
+        run: castor qa:corpus ${SPEC:+--spec "$SPEC"}
+      - name: 'upload failed generation output'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: corpus-failures
+          path: .corpus/failures/
+          if-no-files-found: ignore
+          retention-days: 7
