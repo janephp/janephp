@@ -100,7 +100,8 @@ class UserProfileUpdateRequestNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
             $value = $data->address;
             if (is_object($data->address)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->address, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['address'] = $value;
         }

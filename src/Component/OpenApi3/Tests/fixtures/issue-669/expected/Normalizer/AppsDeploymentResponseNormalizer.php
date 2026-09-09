@@ -52,7 +52,8 @@ class AppsDeploymentResponseNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('deployment', get_object_vars($data)) && null !== ($data->deployment ?? null)) {
-            $dataArray['deployment'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->deployment, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->deployment, 'json', $context);
+            $dataArray['deployment'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

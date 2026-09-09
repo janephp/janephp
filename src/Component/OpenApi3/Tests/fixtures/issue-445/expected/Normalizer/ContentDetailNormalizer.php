@@ -253,14 +253,16 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         if (array_key_exists('outputs', get_object_vars($data)) && null !== ($data->outputs ?? null)) {
             $values_7 = [];
             foreach ($data->outputs as $value_7) {
-                $values_7[] = $value_7 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
+                $normalized = $value_7 === null ? null : $this->normalizer->normalize($value_7, 'json', $context);
+                $values_7[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['outputs'] = $values_7;
         }
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_8 = $data->audit;
             if (is_object($data->audit)) {
-                $value_8 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->audit, 'json', $context);
+                $value_8 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['audit'] = $value_8;
         }
@@ -268,7 +270,8 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         if (array_key_exists('owner', get_object_vars($data)) && null !== ($data->owner ?? null)) {
             $value_9 = $data->owner;
             if (is_object($data->owner)) {
-                $value_9 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->owner, 'json', $context));
+                $normalized_2 = $this->normalizer->normalize($data->owner, 'json', $context);
+                $value_9 = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['owner'] = $value_9;
         }
@@ -303,7 +306,8 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         if (array_key_exists('activity', get_object_vars($data)) && null !== ($data->activity ?? null)) {
             $value_15 = $data->activity;
             if (is_object($data->activity)) {
-                $value_15 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->activity, 'json', $context));
+                $normalized_3 = $this->normalizer->normalize($data->activity, 'json', $context);
+                $value_15 = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['activity'] = $value_15;
         }

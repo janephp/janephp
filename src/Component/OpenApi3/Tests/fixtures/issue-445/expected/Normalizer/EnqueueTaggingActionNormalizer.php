@@ -78,7 +78,8 @@ class EnqueueTaggingActionNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
             $value = $data->options;
             if (is_object($data->options)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->options, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->options, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['options'] = $value;
         }

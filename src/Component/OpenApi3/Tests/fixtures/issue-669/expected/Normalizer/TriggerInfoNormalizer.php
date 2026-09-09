@@ -108,10 +108,12 @@ class TriggerInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['updated_at'] = $data->updatedAt;
         }
         if (array_key_exists('scheduledDetails', get_object_vars($data)) && null !== ($data->scheduledDetails ?? null)) {
-            $dataArray['scheduled_details'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduledDetails, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->scheduledDetails, 'json', $context);
+            $dataArray['scheduled_details'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('scheduledRuns', get_object_vars($data)) && null !== ($data->scheduledRuns ?? null)) {
-            $dataArray['scheduled_runs'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduledRuns, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->scheduledRuns, 'json', $context);
+            $dataArray['scheduled_runs'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -116,7 +116,8 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $dataArray['Description'] = $data->description;
         $dataArray['Documentation'] = $data->documentation;
-        $dataArray['Interface'] = $data->interface === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->interface, 'json', $context));
+        $normalized = $data->interface === null ? null : $this->normalizer->normalize($data->interface, 'json', $context);
+        $dataArray['Interface'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         $values = [];
         foreach ($data->entrypoint as $value) {
             $values[] = $value;
@@ -124,26 +125,33 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['Entrypoint'] = $values;
         $dataArray['WorkDir'] = $data->workDir;
         if (array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
-            $dataArray['User'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->user, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->user, 'json', $context);
+            $dataArray['User'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
-        $dataArray['Network'] = $data->network === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->network, 'json', $context));
-        $dataArray['Linux'] = $data->linux === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->linux, 'json', $context));
+        $normalized_2 = $data->network === null ? null : $this->normalizer->normalize($data->network, 'json', $context);
+        $dataArray['Network'] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
+        $normalized_3 = $data->linux === null ? null : $this->normalizer->normalize($data->linux, 'json', $context);
+        $dataArray['Linux'] = \is_iterable($normalized_3) ? new \Docker\Api\Runtime\JsonObject($normalized_3) : $normalized_3;
         $dataArray['PropagatedMount'] = $data->propagatedMount;
         $dataArray['IpcHost'] = $data->ipcHost;
         $dataArray['PidHost'] = $data->pidHost;
         $values_1 = [];
         foreach ($data->mounts as $value_1) {
-            $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            $normalized_4 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = \is_iterable($normalized_4) ? new \Docker\Api\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         $dataArray['Mounts'] = $values_1;
         $values_2 = [];
         foreach ($data->env as $value_2) {
-            $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+            $normalized_5 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+            $values_2[] = \is_iterable($normalized_5) ? new \Docker\Api\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         $dataArray['Env'] = $values_2;
-        $dataArray['Args'] = $data->args === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->args, 'json', $context));
+        $normalized_6 = $data->args === null ? null : $this->normalizer->normalize($data->args, 'json', $context);
+        $dataArray['Args'] = \is_iterable($normalized_6) ? new \Docker\Api\Runtime\JsonObject($normalized_6) : $normalized_6;
         if (array_key_exists('rootfs', get_object_vars($data)) && null !== ($data->rootfs ?? null)) {
-            $dataArray['rootfs'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rootfs, 'json', $context));
+            $normalized_7 = $this->normalizer->normalize($data->rootfs, 'json', $context);
+            $dataArray['rootfs'] = \is_iterable($normalized_7) ? new \Docker\Api\Runtime\JsonObject($normalized_7) : $normalized_7;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginConfigConstraint());

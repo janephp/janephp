@@ -53,7 +53,8 @@ class ApmodelAuthenticatorAAAServerNormalizer implements DenormalizerInterface, 
         $dataArray = [];
         $dataArray['enableUseSCGasProxy'] = $data->enableUseSCGasProxy;
         if (array_key_exists('server', get_object_vars($data)) && null !== ($data->server ?? null)) {
-            $dataArray['server'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->server, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->server, 'json', $context);
+            $dataArray['server'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         return $dataArray;
     }

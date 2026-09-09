@@ -169,7 +169,8 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
         if (array_key_exists('precedingBusinessProcessException', get_object_vars($data)) && null !== ($data->precedingBusinessProcessException ?? null)) {
             $value = $data->precedingBusinessProcessException;
             if (is_object($data->precedingBusinessProcessException)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->precedingBusinessProcessException, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->precedingBusinessProcessException, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['precedingBusinessProcessException'] = $value;
         }

@@ -79,9 +79,11 @@ class ResponseListFirewallsResponseNormalizer implements DenormalizerInterface, 
             $dataArray['firewalls'] = $values;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->links, 'json', $context);
+            $dataArray['links'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
-        $dataArray['meta'] = $data->meta === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta, 'json', $context));
+        $normalized_1 = $data->meta === null ? null : $this->normalizer->normalize($data->meta, 'json', $context);
+        $dataArray['meta'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_2;

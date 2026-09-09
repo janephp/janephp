@@ -267,14 +267,16 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
         if (array_key_exists('indexAnalyzers', get_object_vars($data)) && null !== ($data->indexAnalyzers ?? null)) {
             $values_2 = [];
             foreach ($data->indexAnalyzers as $value_4) {
-                $values_2[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_2[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['indexAnalyzers'] = $values_2;
         }
         if (array_key_exists('simpleSearchAnalyzers', get_object_vars($data)) && null !== ($data->simpleSearchAnalyzers ?? null)) {
             $values_3 = [];
             foreach ($data->simpleSearchAnalyzers as $value_5) {
-                $values_3[] = $value_5 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
+                $normalized_1 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_3[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['simpleSearchAnalyzers'] = $values_3;
         }

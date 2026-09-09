@@ -75,7 +75,8 @@ class ConfigsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['Data'] = $data->data;
         }
         if (array_key_exists('templating', get_object_vars($data)) && null !== ($data->templating ?? null)) {
-            $dataArray['Templating'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->templating, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->templating, 'json', $context);
+            $dataArray['Templating'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ConfigsCreatePostBodyConstraint());

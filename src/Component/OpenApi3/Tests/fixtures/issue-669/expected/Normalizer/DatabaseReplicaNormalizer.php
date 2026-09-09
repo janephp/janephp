@@ -117,10 +117,12 @@ class DatabaseReplicaNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['private_network_uuid'] = $data->privateNetworkUuid;
         }
         if (array_key_exists('connection', get_object_vars($data)) && null !== ($data->connection ?? null)) {
-            $dataArray['connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->connection, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->connection, 'json', $context);
+            $dataArray['connection'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('privateConnection', get_object_vars($data)) && null !== ($data->privateConnection ?? null)) {
-            $dataArray['private_connection'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->privateConnection, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->privateConnection, 'json', $context);
+            $dataArray['private_connection'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('storageSizeMib', get_object_vars($data)) && null !== ($data->storageSizeMib ?? null)) {
             $dataArray['storage_size_mib'] = $data->storageSizeMib;

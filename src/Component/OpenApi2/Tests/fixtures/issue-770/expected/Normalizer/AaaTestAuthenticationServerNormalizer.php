@@ -66,7 +66,8 @@ class AaaTestAuthenticationServerNormalizer implements DenormalizerInterface, No
         if (array_key_exists('aaaType', get_object_vars($data)) && null !== ($data->aaaType ?? null)) {
             $dataArray['aaaType'] = $data->aaaType;
         }
-        $dataArray['aaaServer'] = $data->aaaServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->aaaServer, 'json', $context));
+        $normalized = $data->aaaServer === null ? null : $this->normalizer->normalize($data->aaaServer, 'json', $context);
+        $dataArray['aaaServer'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         if (array_key_exists('userName', get_object_vars($data)) && null !== ($data->userName ?? null)) {
             $dataArray['userName'] = $data->userName;
         }

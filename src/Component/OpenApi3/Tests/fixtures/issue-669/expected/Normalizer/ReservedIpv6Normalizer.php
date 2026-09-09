@@ -95,7 +95,8 @@ class ReservedIpv6Normalizer implements DenormalizerInterface, NormalizerInterfa
                 }
                 $value = $values;
             } elseif (is_object($data->droplet)) {
-                $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->droplet, 'json', $context);
+                $value = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['droplet'] = $value;
         }

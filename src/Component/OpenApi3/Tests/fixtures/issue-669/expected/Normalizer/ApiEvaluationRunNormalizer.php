@@ -206,7 +206,8 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('runLevelMetricResults', get_object_vars($data)) && null !== ($data->runLevelMetricResults ?? null)) {
             $values = [];
             foreach ($data->runLevelMetricResults as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['run_level_metric_results'] = $values;
         }
@@ -214,7 +215,8 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['run_name'] = $data->runName;
         }
         if (array_key_exists('starMetricResult', get_object_vars($data)) && null !== ($data->starMetricResult ?? null)) {
-            $dataArray['star_metric_result'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetricResult, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->starMetricResult, 'json', $context);
+            $dataArray['star_metric_result'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('startedAt', get_object_vars($data)) && null !== ($data->startedAt ?? null)) {
             $dataArray['started_at'] = $data->startedAt->format('Y-m-d\TH:i:sP');

@@ -122,7 +122,8 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value = $data->audit;
             if (is_object($data->audit)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->audit, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['audit'] = $value;
         }

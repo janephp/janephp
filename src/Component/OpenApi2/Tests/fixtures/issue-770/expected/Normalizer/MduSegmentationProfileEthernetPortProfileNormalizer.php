@@ -148,13 +148,16 @@ class MduSegmentationProfileEthernetPortProfileNormalizer implements Denormalize
             $dataArray['userSidePortDownlinkLimit'] = $data->userSidePortDownlinkLimit;
         }
         if (array_key_exists('n8021X', get_object_vars($data)) && null !== ($data->n8021X ?? null)) {
-            $dataArray['_8021X'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->n8021X, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->n8021X, 'json', $context);
+            $dataArray['_8021X'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('tunnelProfile', get_object_vars($data)) && null !== ($data->tunnelProfile ?? null)) {
-            $dataArray['tunnelProfile'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->tunnelProfile, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->tunnelProfile, 'json', $context);
+            $dataArray['tunnelProfile'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('ipsecProfile', get_object_vars($data)) && null !== ($data->ipsecProfile ?? null)) {
-            $dataArray['ipsecProfile'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipsecProfile, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->ipsecProfile, 'json', $context);
+            $dataArray['ipsecProfile'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         return $dataArray;
     }

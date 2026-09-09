@@ -157,7 +157,8 @@ class IdentityUserConfigurationNormalizer implements DenormalizerInterface, Norm
             $dataArray['userName'] = $data->userName;
         }
         if (array_key_exists('subscriberPackage', get_object_vars($data)) && null !== ($data->subscriberPackage ?? null)) {
-            $dataArray['subscriberPackage'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->subscriberPackage, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->subscriberPackage, 'json', $context);
+            $dataArray['subscriberPackage'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('isDisabled', get_object_vars($data)) && null !== ($data->isDisabled ?? null)) {
             $dataArray['isDisabled'] = $data->isDisabled;
@@ -193,10 +194,12 @@ class IdentityUserConfigurationNormalizer implements DenormalizerInterface, Norm
             $dataArray['modifierUsername'] = $data->modifierUsername;
         }
         if (array_key_exists('usernamePasswordCredentialsImplDto', get_object_vars($data)) && null !== ($data->usernamePasswordCredentialsImplDto ?? null)) {
-            $dataArray['usernamePasswordCredentialsImplDto'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->usernamePasswordCredentialsImplDto, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->usernamePasswordCredentialsImplDto, 'json', $context);
+            $dataArray['usernamePasswordCredentialsImplDto'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('credentialsGuestPassDto', get_object_vars($data)) && null !== ($data->credentialsGuestPassDto ?? null)) {
-            $dataArray['credentialsGuestPassDto'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->credentialsGuestPassDto, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->credentialsGuestPassDto, 'json', $context);
+            $dataArray['credentialsGuestPassDto'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         return $dataArray;
     }

@@ -57,7 +57,8 @@ class ListAlertPolicyNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray = [];
         $values = [];
         foreach ($data->policies as $value) {
-            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['policies'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

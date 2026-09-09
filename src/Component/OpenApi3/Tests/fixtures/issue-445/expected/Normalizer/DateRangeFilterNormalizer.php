@@ -67,7 +67,8 @@ class DateRangeFilterNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['field'] = $data->field;
         $value = $data->range;
         if (is_object($data->range)) {
-            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->range, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->range, 'json', $context);
+            $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['range'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

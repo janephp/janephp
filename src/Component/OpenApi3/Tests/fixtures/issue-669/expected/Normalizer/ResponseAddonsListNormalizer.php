@@ -58,7 +58,8 @@ class ResponseAddonsListNormalizer implements DenormalizerInterface, NormalizerI
         if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
             $values = [];
             foreach ($data->resources as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['resources'] = $values;
         }

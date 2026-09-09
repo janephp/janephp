@@ -59,7 +59,8 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             if (is_null($data->id)) {
                 $value = $data->id;
             } elseif (is_object($data->id)) {
-                $value = new \Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Runtime\JsonObject($this->normalizer->normalize($data->id, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->id, 'json', $context);
+                $value = \is_iterable($normalized) ? new \Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['id'] = $value;
         }

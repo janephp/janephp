@@ -78,13 +78,15 @@ class ApiUpdateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
             $dataArray['description'] = $data->description;
         }
         if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
-            $dataArray['metrics'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->metrics, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->metrics, 'json', $context);
+            $dataArray['metrics'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('starMetric', get_object_vars($data)) && null !== ($data->starMetric ?? null)) {
-            $dataArray['star_metric'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->starMetric, 'json', $context);
+            $dataArray['star_metric'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
             $dataArray['test_case_uuid'] = $data->testCaseUuid;

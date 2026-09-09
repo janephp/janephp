@@ -266,7 +266,8 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('epsInfo', get_object_vars($data)) && null !== ($data->epsInfo ?? null)) {
             $value_4 = $data->epsInfo;
             if (is_object($data->epsInfo)) {
-                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->epsInfo, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->epsInfo, 'json', $context);
+                $value_4 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['epsInfo'] = $value_4;
         }

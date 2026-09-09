@@ -79,14 +79,16 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
         if (array_key_exists('schemaImportResult', get_object_vars($data)) && null !== ($data->schemaImportResult ?? null)) {
             $value = $data->schemaImportResult;
             if (is_object($data->schemaImportResult)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaImportResult, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->schemaImportResult, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['schemaImportResult'] = $value;
         }
         if (array_key_exists('listItemImportResult', get_object_vars($data)) && null !== ($data->listItemImportResult ?? null)) {
             $value_1 = $data->listItemImportResult;
             if (is_object($data->listItemImportResult)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->listItemImportResult, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->listItemImportResult, 'json', $context);
+                $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['listItemImportResult'] = $value_1;
         }

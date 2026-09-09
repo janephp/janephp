@@ -52,7 +52,8 @@ class AppHealthResponseNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('appHealth', get_object_vars($data)) && null !== ($data->appHealth ?? null)) {
-            $dataArray['app_health'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->appHealth, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->appHealth, 'json', $context);
+            $dataArray['app_health'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

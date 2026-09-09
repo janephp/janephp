@@ -347,7 +347,8 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['DockerRootDir'] = $data->dockerRootDir;
         }
         if (array_key_exists('plugins', get_object_vars($data)) && null !== ($data->plugins ?? null)) {
-            $dataArray['Plugins'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->plugins, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->plugins, 'json', $context);
+            $dataArray['Plugins'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('memoryLimit', get_object_vars($data)) && null !== ($data->memoryLimit ?? null)) {
             $dataArray['MemoryLimit'] = $data->memoryLimit;
@@ -434,12 +435,14 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['IndexServerAddress'] = $data->indexServerAddress;
         }
         if (array_key_exists('registryConfig', get_object_vars($data)) && null !== ($data->registryConfig ?? null)) {
-            $dataArray['RegistryConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->registryConfig, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->registryConfig, 'json', $context);
+            $dataArray['RegistryConfig'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('genericResources', get_object_vars($data)) && null !== ($data->genericResources ?? null)) {
             $values_2 = [];
             foreach ($data->genericResources as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['GenericResources'] = $values_2;
         }
@@ -477,7 +480,8 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('runtimes', get_object_vars($data)) && null !== ($data->runtimes ?? null)) {
             $values_4 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->runtimes as $key => $value_4) {
-                $values_4[$key] = $value_4 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized_3 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[$key] = \is_iterable($normalized_3) ? new \Docker\Api\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['Runtimes'] = $values_4;
         }
@@ -485,7 +489,8 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['DefaultRuntime'] = $data->defaultRuntime;
         }
         if (array_key_exists('swarm', get_object_vars($data)) && null !== ($data->swarm ?? null)) {
-            $dataArray['Swarm'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->swarm, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->swarm, 'json', $context);
+            $dataArray['Swarm'] = \is_iterable($normalized_4) ? new \Docker\Api\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('liveRestoreEnabled', get_object_vars($data)) && null !== ($data->liveRestoreEnabled ?? null)) {
             $dataArray['LiveRestoreEnabled'] = $data->liveRestoreEnabled;
@@ -497,13 +502,16 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['InitBinary'] = $data->initBinary;
         }
         if (array_key_exists('containerdCommit', get_object_vars($data)) && null !== ($data->containerdCommit ?? null)) {
-            $dataArray['ContainerdCommit'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->containerdCommit, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->containerdCommit, 'json', $context);
+            $dataArray['ContainerdCommit'] = \is_iterable($normalized_5) ? new \Docker\Api\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (array_key_exists('runcCommit', get_object_vars($data)) && null !== ($data->runcCommit ?? null)) {
-            $dataArray['RuncCommit'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->runcCommit, 'json', $context));
+            $normalized_6 = $this->normalizer->normalize($data->runcCommit, 'json', $context);
+            $dataArray['RuncCommit'] = \is_iterable($normalized_6) ? new \Docker\Api\Runtime\JsonObject($normalized_6) : $normalized_6;
         }
         if (array_key_exists('initCommit', get_object_vars($data)) && null !== ($data->initCommit ?? null)) {
-            $dataArray['InitCommit'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->initCommit, 'json', $context));
+            $normalized_7 = $this->normalizer->normalize($data->initCommit, 'json', $context);
+            $dataArray['InitCommit'] = \is_iterable($normalized_7) ? new \Docker\Api\Runtime\JsonObject($normalized_7) : $normalized_7;
         }
         if (array_key_exists('securityOptions', get_object_vars($data)) && null !== ($data->securityOptions ?? null)) {
             $values_5 = [];
@@ -518,7 +526,8 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         if (array_key_exists('defaultAddressPools', get_object_vars($data)) && null !== ($data->defaultAddressPools ?? null)) {
             $values_6 = [];
             foreach ($data->defaultAddressPools as $value_6) {
-                $values_6[] = $value_6 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
+                $normalized_8 = $value_6 === null ? null : $this->normalizer->normalize($value_6, 'json', $context);
+                $values_6[] = \is_iterable($normalized_8) ? new \Docker\Api\Runtime\JsonObject($normalized_8) : $normalized_8;
             }
             $dataArray['DefaultAddressPools'] = $values_6;
         }

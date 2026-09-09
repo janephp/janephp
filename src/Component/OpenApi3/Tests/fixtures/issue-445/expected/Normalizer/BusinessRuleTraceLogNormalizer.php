@@ -132,28 +132,32 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('rules', get_object_vars($data)) && null !== ($data->rules ?? null)) {
             $values_1 = [];
             foreach ($data->rules as $value_2) {
-                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['rules'] = $values_1;
         }
         if (array_key_exists('validationErrors', get_object_vars($data)) && null !== ($data->validationErrors ?? null)) {
             $values_2 = [];
             foreach ($data->validationErrors as $value_3) {
-                $values_2[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_1 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_2[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['validationErrors'] = $values_2;
         }
         if (array_key_exists('generalErrors', get_object_vars($data)) && null !== ($data->generalErrors ?? null)) {
             $values_3 = [];
             foreach ($data->generalErrors as $value_4) {
-                $values_3[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized_2 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_3[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['generalErrors'] = $values_3;
         }
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_5 = $data->audit;
             if (is_object($data->audit)) {
-                $value_5 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $normalized_3 = $this->normalizer->normalize($data->audit, 'json', $context);
+                $value_5 = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['audit'] = $value_5;
         }

@@ -70,7 +70,8 @@ class RepositoryNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('latestTag', get_object_vars($data)) && null !== ($data->latestTag ?? null)) {
-            $dataArray['latest_tag'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->latestTag, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->latestTag, 'json', $context);
+            $dataArray['latest_tag'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('tagCount', get_object_vars($data)) && null !== ($data->tagCount ?? null)) {
             $dataArray['tag_count'] = $data->tagCount;

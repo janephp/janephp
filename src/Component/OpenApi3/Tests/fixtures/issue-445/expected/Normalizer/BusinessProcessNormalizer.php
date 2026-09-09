@@ -166,7 +166,8 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('stateHistory', get_object_vars($data)) && null !== ($data->stateHistory ?? null)) {
             $values = [];
             foreach ($data->stateHistory as $value_2) {
-                $values[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['stateHistory'] = $values;
         }

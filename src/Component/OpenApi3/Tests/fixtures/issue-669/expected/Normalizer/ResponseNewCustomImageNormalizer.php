@@ -52,7 +52,8 @@ class ResponseNewCustomImageNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
-            $dataArray['image'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->image, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->image, 'json', $context);
+            $dataArray['image'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

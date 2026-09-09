@@ -74,7 +74,8 @@ class CreateTriggerNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['function'] = $data->function;
         $dataArray['type'] = $data->type;
         $dataArray['is_enabled'] = $data->isEnabled;
-        $dataArray['scheduled_details'] = $data->scheduledDetails === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduledDetails, 'json', $context));
+        $normalized = $data->scheduledDetails === null ? null : $this->normalizer->normalize($data->scheduledDetails, 'json', $context);
+        $dataArray['scheduled_details'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

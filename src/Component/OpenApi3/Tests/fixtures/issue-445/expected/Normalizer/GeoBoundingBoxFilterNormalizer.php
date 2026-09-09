@@ -75,12 +75,14 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
         $dataArray['field'] = $data->field;
         $value = $data->topLeft;
         if (is_object($data->topLeft)) {
-            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->topLeft, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->topLeft, 'json', $context);
+            $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['topLeft'] = $value;
         $value_1 = $data->bottomRight;
         if (is_object($data->bottomRight)) {
-            $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->bottomRight, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->bottomRight, 'json', $context);
+            $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['bottomRight'] = $value_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

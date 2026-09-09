@@ -52,7 +52,8 @@ class ResponseSubscriptionResponseNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('subscription', get_object_vars($data)) && null !== ($data->subscription ?? null)) {
-            $dataArray['subscription'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->subscription, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->subscription, 'json', $context);
+            $dataArray['subscription'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

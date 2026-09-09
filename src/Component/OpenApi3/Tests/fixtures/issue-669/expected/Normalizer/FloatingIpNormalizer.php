@@ -84,7 +84,8 @@ class FloatingIpNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['ip'] = $data->ip;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->region, 'json', $context);
+            $dataArray['region'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('droplet', get_object_vars($data)) && null !== ($data->droplet ?? null)) {
             $value = $data->droplet;
@@ -95,7 +96,8 @@ class FloatingIpNormalizer implements DenormalizerInterface, NormalizerInterface
                 }
                 $value = $values;
             } elseif (is_object($data->droplet)) {
-                $value = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->droplet, 'json', $context);
+                $value = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['droplet'] = $value;
         }

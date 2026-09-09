@@ -116,7 +116,8 @@ class ApiKnowledgeBaseDataSourceNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('awsDataSource', get_object_vars($data)) && null !== ($data->awsDataSource ?? null)) {
-            $dataArray['aws_data_source'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->awsDataSource, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->awsDataSource, 'json', $context);
+            $dataArray['aws_data_source'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('bucketName', get_object_vars($data)) && null !== ($data->bucketName ?? null)) {
             $dataArray['bucket_name'] = $data->bucketName;
@@ -125,31 +126,37 @@ class ApiKnowledgeBaseDataSourceNormalizer implements DenormalizerInterface, Nor
             $dataArray['chunking_algorithm'] = $data->chunkingAlgorithm;
         }
         if (array_key_exists('chunkingOptions', get_object_vars($data)) && null !== ($data->chunkingOptions ?? null)) {
-            $dataArray['chunking_options'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->chunkingOptions, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->chunkingOptions, 'json', $context);
+            $dataArray['chunking_options'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
             $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('dropboxDataSource', get_object_vars($data)) && null !== ($data->dropboxDataSource ?? null)) {
-            $dataArray['dropbox_data_source'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dropboxDataSource, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->dropboxDataSource, 'json', $context);
+            $dataArray['dropbox_data_source'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('fileUploadDataSource', get_object_vars($data)) && null !== ($data->fileUploadDataSource ?? null)) {
-            $dataArray['file_upload_data_source'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->fileUploadDataSource, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->fileUploadDataSource, 'json', $context);
+            $dataArray['file_upload_data_source'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('googleDriveDataSource', get_object_vars($data)) && null !== ($data->googleDriveDataSource ?? null)) {
-            $dataArray['google_drive_data_source'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->googleDriveDataSource, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->googleDriveDataSource, 'json', $context);
+            $dataArray['google_drive_data_source'] = \is_iterable($normalized_4) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('itemPath', get_object_vars($data)) && null !== ($data->itemPath ?? null)) {
             $dataArray['item_path'] = $data->itemPath;
         }
         if (array_key_exists('lastDatasourceIndexingJob', get_object_vars($data)) && null !== ($data->lastDatasourceIndexingJob ?? null)) {
-            $dataArray['last_datasource_indexing_job'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->lastDatasourceIndexingJob, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->lastDatasourceIndexingJob, 'json', $context);
+            $dataArray['last_datasource_indexing_job'] = \is_iterable($normalized_5) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
             $dataArray['region'] = $data->region;
         }
         if (array_key_exists('spacesDataSource', get_object_vars($data)) && null !== ($data->spacesDataSource ?? null)) {
-            $dataArray['spaces_data_source'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spacesDataSource, 'json', $context));
+            $normalized_6 = $this->normalizer->normalize($data->spacesDataSource, 'json', $context);
+            $dataArray['spaces_data_source'] = \is_iterable($normalized_6) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_6) : $normalized_6;
         }
         if (array_key_exists('updatedAt', get_object_vars($data)) && null !== ($data->updatedAt ?? null)) {
             $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
@@ -158,7 +165,8 @@ class ApiKnowledgeBaseDataSourceNormalizer implements DenormalizerInterface, Nor
             $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('webCrawlerDataSource', get_object_vars($data)) && null !== ($data->webCrawlerDataSource ?? null)) {
-            $dataArray['web_crawler_data_source'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->webCrawlerDataSource, 'json', $context));
+            $normalized_7 = $this->normalizer->normalize($data->webCrawlerDataSource, 'json', $context);
+            $dataArray['web_crawler_data_source'] = \is_iterable($normalized_7) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_7) : $normalized_7;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

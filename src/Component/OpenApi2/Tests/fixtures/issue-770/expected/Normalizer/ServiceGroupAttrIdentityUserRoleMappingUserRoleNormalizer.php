@@ -61,7 +61,8 @@ class ServiceGroupAttrIdentityUserRoleMappingUserRoleNormalizer implements Denor
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('userTrafficProfile', get_object_vars($data)) && null !== ($data->userTrafficProfile ?? null)) {
-            $dataArray['userTrafficProfile'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userTrafficProfile, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->userTrafficProfile, 'json', $context);
+            $dataArray['userTrafficProfile'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('firewallProfileId', get_object_vars($data)) && null !== ($data->firewallProfileId ?? null)) {
             $dataArray['firewallProfileId'] = $data->firewallProfileId;

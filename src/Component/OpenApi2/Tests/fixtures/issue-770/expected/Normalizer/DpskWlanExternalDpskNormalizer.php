@@ -56,10 +56,12 @@ class DpskWlanExternalDpskNormalizer implements DenormalizerInterface, Normalize
         $dataArray = [];
         $dataArray['enabled'] = $data->enabled;
         if (array_key_exists('encryption', get_object_vars($data)) && null !== ($data->encryption ?? null)) {
-            $dataArray['encryption'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->encryption, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->encryption, 'json', $context);
+            $dataArray['encryption'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('authService', get_object_vars($data)) && null !== ($data->authService ?? null)) {
-            $dataArray['authService'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->authService, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->authService, 'json', $context);
+            $dataArray['authService'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         return $dataArray;
     }

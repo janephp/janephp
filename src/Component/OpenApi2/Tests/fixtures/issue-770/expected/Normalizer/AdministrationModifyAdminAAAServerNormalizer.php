@@ -66,19 +66,24 @@ class AdministrationModifyAdminAAAServerNormalizer implements DenormalizerInterf
         $dataArray['name'] = $data->name;
         $dataArray['type'] = $data->type;
         if (array_key_exists('defaultRoleMapping', get_object_vars($data)) && null !== ($data->defaultRoleMapping ?? null)) {
-            $dataArray['defaultRoleMapping'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->defaultRoleMapping, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->defaultRoleMapping, 'json', $context);
+            $dataArray['defaultRoleMapping'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('radiusServer', get_object_vars($data)) && null !== ($data->radiusServer ?? null)) {
-            $dataArray['radiusServer'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->radiusServer, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->radiusServer, 'json', $context);
+            $dataArray['radiusServer'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('tacacsServer', get_object_vars($data)) && null !== ($data->tacacsServer ?? null)) {
-            $dataArray['tacacsServer'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->tacacsServer, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->tacacsServer, 'json', $context);
+            $dataArray['tacacsServer'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('activeDirectoryServer', get_object_vars($data)) && null !== ($data->activeDirectoryServer ?? null)) {
-            $dataArray['activeDirectoryServer'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->activeDirectoryServer, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->activeDirectoryServer, 'json', $context);
+            $dataArray['activeDirectoryServer'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('ldapServer', get_object_vars($data)) && null !== ($data->ldapServer ?? null)) {
-            $dataArray['ldapServer'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ldapServer, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->ldapServer, 'json', $context);
+            $dataArray['ldapServer'] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         return $dataArray;
     }

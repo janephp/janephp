@@ -95,14 +95,16 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
             $value = $data->resizeAction;
             if (is_object($data->resizeAction)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->resizeAction, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['resizeAction'] = $value;
         }
         if (array_key_exists('audioCodec', get_object_vars($data)) && null !== ($data->audioCodec ?? null)) {
             $value_1 = $data->audioCodec;
             if (is_object($data->audioCodec)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audioCodec, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->audioCodec, 'json', $context);
+                $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['audioCodec'] = $value_1;
         }

@@ -115,7 +115,8 @@ class OutputNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
             $value_1 = $data->detail;
             if (is_object($data->detail)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->detail, 'json', $context);
+                $value_1 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['detail'] = $value_1;
         }

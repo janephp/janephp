@@ -71,7 +71,8 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
             $dataArray['record'] = $data->record;
         }
         if (array_key_exists('recordDetails', get_object_vars($data)) && null !== ($data->recordDetails ?? null)) {
-            $dataArray['recordDetails'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->recordDetails, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->recordDetails, 'json', $context);
+            $dataArray['recordDetails'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('resultID', get_object_vars($data)) && null !== ($data->resultID ?? null)) {
             $dataArray['resultID'] = $data->resultID;
@@ -80,7 +81,8 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
             $dataArray['runID'] = $data->runID;
         }
         if (array_key_exists('watchlist', get_object_vars($data)) && null !== ($data->watchlist ?? null)) {
-            $dataArray['watchlist'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->watchlist, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->watchlist, 'json', $context);
+            $dataArray['watchlist'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

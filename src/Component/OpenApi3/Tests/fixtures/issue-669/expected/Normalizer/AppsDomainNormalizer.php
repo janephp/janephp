@@ -93,15 +93,18 @@ class AppsDomainNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['phase'] = $data->phase;
         }
         if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
-            $dataArray['progress'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->progress, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->progress, 'json', $context);
+            $dataArray['progress'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['spec'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->spec, 'json', $context);
+            $dataArray['spec'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('validations', get_object_vars($data)) && null !== ($data->validations ?? null)) {
             $values = [];
             foreach ($data->validations as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_2 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['validations'] = $values;
         }

@@ -63,7 +63,8 @@ class DestinationRequestNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['name'] = $data->name;
         }
         $dataArray['type'] = $data->type;
-        $dataArray['config'] = $data->config === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+        $normalized = $data->config === null ? null : $this->normalizer->normalize($data->config, 'json', $context);
+        $dataArray['config'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

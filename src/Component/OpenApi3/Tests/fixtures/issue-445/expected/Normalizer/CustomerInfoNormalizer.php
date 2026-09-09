@@ -122,17 +122,20 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['enableQueryDetails'] = $data->enableQueryDetails;
         $value = $data->languageConfiguration;
         if (is_object($data->languageConfiguration)) {
-            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->languageConfiguration, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->languageConfiguration, 'json', $context);
+            $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['languageConfiguration'] = $value;
         $values = [];
         foreach ($data->languages as $value_1) {
-            $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+            $values[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['languages'] = $values;
         $values_1 = [];
         foreach ($data->outputFormats as $value_2) {
-            $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+            $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+            $values_1[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         $dataArray['outputFormats'] = $values_1;
         $values_2 = [];
@@ -143,7 +146,8 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('apps', get_object_vars($data)) && null !== ($data->apps ?? null)) {
             $values_3 = [];
             foreach ($data->apps as $value_4) {
-                $values_3[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized_3 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['apps'] = $values_3;
         }

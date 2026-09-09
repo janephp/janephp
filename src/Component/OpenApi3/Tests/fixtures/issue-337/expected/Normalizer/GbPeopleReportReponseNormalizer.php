@@ -94,7 +94,8 @@ class GbPeopleReportReponseNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['userId'] = $data->userId;
         }
         if (array_key_exists('report', get_object_vars($data)) && null !== ($data->report ?? null)) {
-            $dataArray['report'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->report, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->report, 'json', $context);
+            $dataArray['report'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

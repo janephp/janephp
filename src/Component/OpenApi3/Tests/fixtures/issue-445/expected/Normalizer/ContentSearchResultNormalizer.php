@@ -125,7 +125,8 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['totalResults'] = $data->totalResults;
         $values = [];
         foreach ($data->results as $value) {
-            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['results'] = $values;
         $dataArray['elapsedMilliseconds'] = $data->elapsedMilliseconds;
@@ -141,21 +142,24 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('queryDebugInformation', get_object_vars($data)) && null !== ($data->queryDebugInformation ?? null)) {
             $values_1 = [];
             foreach ($data->queryDebugInformation as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['queryDebugInformation'] = $values_1;
         }
         if (array_key_exists('aggregationResults', get_object_vars($data)) && null !== ($data->aggregationResults ?? null)) {
             $values_2 = [];
             foreach ($data->aggregationResults as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['aggregationResults'] = $values_2;
         }
         if (array_key_exists('rightsAggregationsCounts', get_object_vars($data)) && null !== ($data->rightsAggregationsCounts ?? null)) {
             $values_3 = [];
             foreach ($data->rightsAggregationsCounts as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_3 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \PicturePark\API\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['rightsAggregationsCounts'] = $values_3;
         }

@@ -58,7 +58,8 @@ class ResponseGarbageCollectionsNormalizer implements DenormalizerInterface, Nor
         if (array_key_exists('garbageCollections', get_object_vars($data)) && null !== ($data->garbageCollections ?? null)) {
             $values = [];
             foreach ($data->garbageCollections as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['garbage_collections'] = $values;
         }

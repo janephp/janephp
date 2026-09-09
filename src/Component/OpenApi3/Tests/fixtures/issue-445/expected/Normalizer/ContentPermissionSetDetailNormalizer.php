@@ -123,14 +123,16 @@ class ContentPermissionSetDetailNormalizer implements DenormalizerInterface, Nor
         if (array_key_exists('userRolesRights', get_object_vars($data)) && null !== ($data->userRolesRights ?? null)) {
             $values_1 = [];
             foreach ($data->userRolesRights as $value_2) {
-                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['userRolesRights'] = $values_1;
         }
         if (array_key_exists('userRolesPermissionSetRights', get_object_vars($data)) && null !== ($data->userRolesPermissionSetRights ?? null)) {
             $values_2 = [];
             foreach ($data->userRolesPermissionSetRights as $value_3) {
-                $values_2[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_1 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_2[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['userRolesPermissionSetRights'] = $values_2;
         }
@@ -139,7 +141,8 @@ class ContentPermissionSetDetailNormalizer implements DenormalizerInterface, Nor
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_4 = $data->audit;
             if (is_object($data->audit)) {
-                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $normalized_2 = $this->normalizer->normalize($data->audit, 'json', $context);
+                $value_4 = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['audit'] = $value_4;
         }

@@ -112,20 +112,23 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_1 = $data->filter;
             if (is_object($data->filter)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->filter, 'json', $context);
+                $value_1 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['filter'] = $value_1;
         }
         if (array_key_exists('aggregationFilters', get_object_vars($data)) && null !== ($data->aggregationFilters ?? null)) {
             $values_1 = [];
             foreach ($data->aggregationFilters as $value_2) {
-                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_1 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
         $values_2 = [];
         foreach ($data->aggregators as $value_3) {
-            $values_2[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+            $normalized_2 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+            $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         $dataArray['aggregators'] = $values_2;
         foreach ($data->additionalPropertyEntries() as $key => $value_4) {

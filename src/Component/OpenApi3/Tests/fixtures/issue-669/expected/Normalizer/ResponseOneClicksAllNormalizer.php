@@ -58,7 +58,8 @@ class ResponseOneClicksAllNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('n1Clicks', get_object_vars($data)) && null !== ($data->n1Clicks ?? null)) {
             $values = [];
             foreach ($data->n1Clicks as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['1_clicks'] = $values;
         }

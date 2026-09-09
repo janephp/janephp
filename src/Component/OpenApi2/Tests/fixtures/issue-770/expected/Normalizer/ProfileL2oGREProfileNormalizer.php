@@ -88,10 +88,12 @@ class ProfileL2oGREProfileNormalizer implements DenormalizerInterface, Normalize
             $dataArray['description'] = $data->description;
         }
         if (array_key_exists('coreNetworkGateway', get_object_vars($data)) && null !== ($data->coreNetworkGateway ?? null)) {
-            $dataArray['coreNetworkGateway'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->coreNetworkGateway, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->coreNetworkGateway, 'json', $context);
+            $dataArray['coreNetworkGateway'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('dhcpRelay', get_object_vars($data)) && null !== ($data->dhcpRelay ?? null)) {
-            $dataArray['dhcpRelay'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->dhcpRelay, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->dhcpRelay, 'json', $context);
+            $dataArray['dhcpRelay'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
             $dataArray['domainId'] = $data->domainId;

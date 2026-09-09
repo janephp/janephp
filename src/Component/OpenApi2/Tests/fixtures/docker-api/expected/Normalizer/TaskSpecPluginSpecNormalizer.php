@@ -76,7 +76,8 @@ class TaskSpecPluginSpecNormalizer implements DenormalizerInterface, NormalizerI
         if (array_key_exists('pluginPrivilege', get_object_vars($data)) && null !== ($data->pluginPrivilege ?? null)) {
             $values = [];
             foreach ($data->pluginPrivilege as $value) {
-                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['PluginPrivilege'] = $values;
         }

@@ -99,7 +99,8 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray['contentIds'] = $values;
         $value_1 = $data->audit;
         if (is_object($data->audit)) {
-            $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->audit, 'json', $context);
+            $value_1 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['audit'] = $value_1;
         if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {

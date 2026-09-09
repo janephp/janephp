@@ -130,12 +130,14 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray['Created'] = $data->created;
         $dataArray['Container'] = $data->container;
         if (array_key_exists('containerConfig', get_object_vars($data)) && null !== ($data->containerConfig ?? null)) {
-            $dataArray['ContainerConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->containerConfig, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->containerConfig, 'json', $context);
+            $dataArray['ContainerConfig'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['DockerVersion'] = $data->dockerVersion;
         $dataArray['Author'] = $data->author;
         if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
-            $dataArray['Config'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->config, 'json', $context);
+            $dataArray['Config'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['Architecture'] = $data->architecture;
         $dataArray['Os'] = $data->os;
@@ -144,10 +146,13 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $dataArray['Size'] = $data->size;
         $dataArray['VirtualSize'] = $data->virtualSize;
-        $dataArray['GraphDriver'] = $data->graphDriver === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->graphDriver, 'json', $context));
-        $dataArray['RootFS'] = $data->rootFS === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->rootFS, 'json', $context));
+        $normalized_2 = $data->graphDriver === null ? null : $this->normalizer->normalize($data->graphDriver, 'json', $context);
+        $dataArray['GraphDriver'] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
+        $normalized_3 = $data->rootFS === null ? null : $this->normalizer->normalize($data->rootFS, 'json', $context);
+        $dataArray['RootFS'] = \is_iterable($normalized_3) ? new \Docker\Api\Runtime\JsonObject($normalized_3) : $normalized_3;
         if (array_key_exists('metadata', get_object_vars($data)) && null !== ($data->metadata ?? null)) {
-            $dataArray['Metadata'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->metadata, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->metadata, 'json', $context);
+            $dataArray['Metadata'] = \is_iterable($normalized_4) ? new \Docker\Api\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImageConstraint());

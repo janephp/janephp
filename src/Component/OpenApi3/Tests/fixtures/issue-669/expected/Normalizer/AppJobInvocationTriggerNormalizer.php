@@ -63,10 +63,12 @@ class AppJobInvocationTriggerNormalizer implements DenormalizerInterface, Normal
             $dataArray['type'] = $data->type;
         }
         if (array_key_exists('scheduled', get_object_vars($data)) && null !== ($data->scheduled ?? null)) {
-            $dataArray['scheduled'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->scheduled, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->scheduled, 'json', $context);
+            $dataArray['scheduled'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('manual', get_object_vars($data)) && null !== ($data->manual ?? null)) {
-            $dataArray['manual'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->manual, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->manual, 'json', $context);
+            $dataArray['manual'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

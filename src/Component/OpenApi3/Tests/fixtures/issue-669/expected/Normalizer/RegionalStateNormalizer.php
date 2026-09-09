@@ -56,10 +56,12 @@ class RegionalStateNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('usEast', get_object_vars($data)) && null !== ($data->usEast ?? null)) {
-            $dataArray['us_east'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->usEast, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->usEast, 'json', $context);
+            $dataArray['us_east'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('euWest', get_object_vars($data)) && null !== ($data->euWest ?? null)) {
-            $dataArray['eu_west'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->euWest, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->euWest, 'json', $context);
+            $dataArray['eu_west'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

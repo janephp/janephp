@@ -62,7 +62,8 @@ class NfsActionResizeNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['type'] = $data->type;
         $dataArray['region'] = $data->region;
         if (array_key_exists('params', get_object_vars($data)) && null !== ($data->params ?? null)) {
-            $dataArray['params'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->params, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->params, 'json', $context);
+            $dataArray['params'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

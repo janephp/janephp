@@ -148,7 +148,8 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['created_by_user_id'] = $data->createdByUserId;
         }
         if (array_key_exists('dataset', get_object_vars($data)) && null !== ($data->dataset ?? null)) {
-            $dataArray['dataset'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dataset, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->dataset, 'json', $context);
+            $dataArray['dataset'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('datasetName', get_object_vars($data)) && null !== ($data->datasetName ?? null)) {
             $dataArray['dataset_name'] = $data->datasetName;
@@ -165,7 +166,8 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
         if (array_key_exists('metrics', get_object_vars($data)) && null !== ($data->metrics ?? null)) {
             $values = [];
             foreach ($data->metrics as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['metrics'] = $values;
         }
@@ -173,7 +175,8 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('starMetric', get_object_vars($data)) && null !== ($data->starMetric ?? null)) {
-            $dataArray['star_metric'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->starMetric, 'json', $context);
+            $dataArray['star_metric'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('testCaseUuid', get_object_vars($data)) && null !== ($data->testCaseUuid ?? null)) {
             $dataArray['test_case_uuid'] = $data->testCaseUuid;

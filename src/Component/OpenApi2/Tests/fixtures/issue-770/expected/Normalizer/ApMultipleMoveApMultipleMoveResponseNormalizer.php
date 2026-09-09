@@ -52,7 +52,8 @@ class ApMultipleMoveApMultipleMoveResponseNormalizer implements DenormalizerInte
             $dataArray['successApCount'] = $data->successApCount;
         }
         if (array_key_exists('failAps', get_object_vars($data)) && null !== ($data->failAps ?? null)) {
-            $dataArray['failAps'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->failAps, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->failAps, 'json', $context);
+            $dataArray['failAps'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         return $dataArray;
     }

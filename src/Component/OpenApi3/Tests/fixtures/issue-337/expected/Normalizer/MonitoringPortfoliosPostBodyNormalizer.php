@@ -79,7 +79,8 @@ class MonitoringPortfoliosPostBodyNormalizer implements DenormalizerInterface, N
             $dataArray['isDefault'] = $data->isDefault;
         }
         if (array_key_exists('emails', get_object_vars($data)) && null !== ($data->emails ?? null)) {
-            $dataArray['emails'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->emails, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->emails, 'json', $context);
+            $dataArray['emails'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('emailSubject', get_object_vars($data)) && null !== ($data->emailSubject ?? null)) {
             $dataArray['emailSubject'] = $data->emailSubject;

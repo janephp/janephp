@@ -70,7 +70,8 @@ class EventMessageNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['Action'] = $data->action;
         }
         if (array_key_exists('actor', get_object_vars($data)) && null !== ($data->actor ?? null)) {
-            $dataArray['Actor'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->actor, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->actor, 'json', $context);
+            $dataArray['Actor'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('scope', get_object_vars($data)) && null !== ($data->scope ?? null)) {
             $dataArray['scope'] = $data->scope;

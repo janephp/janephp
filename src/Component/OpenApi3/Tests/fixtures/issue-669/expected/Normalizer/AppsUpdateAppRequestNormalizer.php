@@ -58,7 +58,8 @@ class AppsUpdateAppRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['spec'] = $data->spec === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+        $normalized = $data->spec === null ? null : $this->normalizer->normalize($data->spec, 'json', $context);
+        $dataArray['spec'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         if (array_key_exists('updateAllSourceVersions', get_object_vars($data)) && null !== ($data->updateAllSourceVersions ?? null)) {
             $dataArray['update_all_source_versions'] = $data->updateAllSourceVersions;
         }

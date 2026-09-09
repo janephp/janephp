@@ -159,14 +159,16 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
             $value_2 = $data->resizeAction;
             if (is_object($data->resizeAction)) {
-                $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->resizeAction, 'json', $context);
+                $value_2 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['resizeAction'] = $value_2;
         }
         if (array_key_exists('actions', get_object_vars($data)) && null !== ($data->actions ?? null)) {
             $values = [];
             foreach ($data->actions as $value_3) {
-                $values[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_1 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['actions'] = $values;
         }

@@ -58,7 +58,8 @@ class ResponseEventsLogsNormalizer implements DenormalizerInterface, NormalizerI
         if (array_key_exists('events', get_object_vars($data)) && null !== ($data->events ?? null)) {
             $values = [];
             foreach ($data->events as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['events'] = $values;
         }

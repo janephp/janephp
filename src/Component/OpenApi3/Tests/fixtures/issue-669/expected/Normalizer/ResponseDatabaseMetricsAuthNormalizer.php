@@ -52,7 +52,8 @@ class ResponseDatabaseMetricsAuthNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('credentials', get_object_vars($data)) && null !== ($data->credentials ?? null)) {
-            $dataArray['credentials'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->credentials, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->credentials, 'json', $context);
+            $dataArray['credentials'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

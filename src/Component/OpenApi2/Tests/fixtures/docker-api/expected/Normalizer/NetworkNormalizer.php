@@ -127,7 +127,8 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['EnableIPv6'] = $data->enableIPv6;
         }
         if (array_key_exists('iPAM', get_object_vars($data)) && null !== ($data->iPAM ?? null)) {
-            $dataArray['IPAM'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->iPAM, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->iPAM, 'json', $context);
+            $dataArray['IPAM'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('internal', get_object_vars($data)) && null !== ($data->internal ?? null)) {
             $dataArray['Internal'] = $data->internal;
@@ -141,7 +142,8 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (array_key_exists('containers', get_object_vars($data)) && null !== ($data->containers ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->containers as $key => $value) {
-                $values[$key] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['Containers'] = $values;
         }

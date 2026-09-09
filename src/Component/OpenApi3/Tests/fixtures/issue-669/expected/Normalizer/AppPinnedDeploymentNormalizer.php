@@ -154,14 +154,16 @@ class AppPinnedDeploymentNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('jobs', get_object_vars($data)) && null !== ($data->jobs ?? null)) {
             $values = [];
             foreach ($data->jobs as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['jobs'] = $values;
         }
         if (array_key_exists('functions', get_object_vars($data)) && null !== ($data->functions ?? null)) {
             $values_1 = [];
             foreach ($data->functions as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['functions'] = $values_1;
         }
@@ -172,22 +174,26 @@ class AppPinnedDeploymentNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['phase_last_updated_at'] = $data->phaseLastUpdatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
-            $dataArray['progress'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->progress, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->progress, 'json', $context);
+            $dataArray['progress'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('services', get_object_vars($data)) && null !== ($data->services ?? null)) {
             $values_2 = [];
             foreach ($data->services as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_3 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['services'] = $values_2;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['spec'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->spec, 'json', $context);
+            $dataArray['spec'] = \is_iterable($normalized_4) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('staticSites', get_object_vars($data)) && null !== ($data->staticSites ?? null)) {
             $values_3 = [];
             foreach ($data->staticSites as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_5 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_5) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_5) : $normalized_5;
             }
             $dataArray['static_sites'] = $values_3;
         }
@@ -197,7 +203,8 @@ class AppPinnedDeploymentNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('workers', get_object_vars($data)) && null !== ($data->workers ?? null)) {
             $values_4 = [];
             foreach ($data->workers as $value_4) {
-                $values_4[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized_6 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = \is_iterable($normalized_6) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_6) : $normalized_6;
             }
             $dataArray['workers'] = $values_4;
         }

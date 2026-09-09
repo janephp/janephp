@@ -72,7 +72,8 @@ class AddonsAppInfoNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['eula'] = $data->eula;
         $values = [];
         foreach ($data->plans as $value) {
-            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['plans'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

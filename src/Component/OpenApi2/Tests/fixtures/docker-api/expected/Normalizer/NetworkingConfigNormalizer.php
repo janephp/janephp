@@ -55,7 +55,8 @@ class NetworkingConfigNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('endpointsConfig', get_object_vars($data)) && null !== ($data->endpointsConfig ?? null)) {
             $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->endpointsConfig as $key => $value) {
-                $values[$key] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['EndpointsConfig'] = $values;
         }

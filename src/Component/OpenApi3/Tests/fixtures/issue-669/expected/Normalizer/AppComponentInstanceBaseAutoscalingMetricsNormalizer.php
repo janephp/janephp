@@ -52,7 +52,8 @@ class AppComponentInstanceBaseAutoscalingMetricsNormalizer implements Denormaliz
     {
         $dataArray = [];
         if (array_key_exists('cpu', get_object_vars($data)) && null !== ($data->cpu ?? null)) {
-            $dataArray['cpu'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cpu, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->cpu, 'json', $context);
+            $dataArray['cpu'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

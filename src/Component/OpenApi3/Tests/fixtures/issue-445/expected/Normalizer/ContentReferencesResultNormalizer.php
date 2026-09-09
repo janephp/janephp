@@ -65,14 +65,16 @@ class ContentReferencesResultNormalizer implements DenormalizerInterface, Normal
         if (array_key_exists('metadataReferences', get_object_vars($data)) && null !== ($data->metadataReferences ?? null)) {
             $value = $data->metadataReferences;
             if (is_object($data->metadataReferences)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->metadataReferences, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->metadataReferences, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['metadataReferences'] = $value;
         }
         if (array_key_exists('shareReferences', get_object_vars($data)) && null !== ($data->shareReferences ?? null)) {
             $value_1 = $data->shareReferences;
             if (is_object($data->shareReferences)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shareReferences, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->shareReferences, 'json', $context);
+                $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['shareReferences'] = $value_1;
         }

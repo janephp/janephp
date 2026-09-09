@@ -69,7 +69,8 @@ class AutoscalePoolCreateNormalizer implements DenormalizerInterface, Normalizer
             $values[$key] = $value;
         }
         $dataArray['config'] = $values;
-        $dataArray['droplet_template'] = $data->dropletTemplate === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->dropletTemplate, 'json', $context));
+        $normalized = $data->dropletTemplate === null ? null : $this->normalizer->normalize($data->dropletTemplate, 'json', $context);
+        $dataArray['droplet_template'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;

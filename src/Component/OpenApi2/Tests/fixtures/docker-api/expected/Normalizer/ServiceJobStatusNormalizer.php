@@ -52,7 +52,8 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('jobIteration', get_object_vars($data)) && null !== ($data->jobIteration ?? null)) {
-            $dataArray['JobIteration'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->jobIteration, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->jobIteration, 'json', $context);
+            $dataArray['JobIteration'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('lastExecution', get_object_vars($data)) && null !== ($data->lastExecution ?? null)) {
             $dataArray['LastExecution'] = $data->lastExecution;

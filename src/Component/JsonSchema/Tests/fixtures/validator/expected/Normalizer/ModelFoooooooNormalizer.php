@@ -270,7 +270,8 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['dateTimeFormat'] = $data->dateTimeFormat->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('foo', get_object_vars($data)) && null !== ($data->foo ?? null)) {
-            $dataArray['foo'] = new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\JsonObject($this->normalizer->normalize($data->foo, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->foo, 'json', $context);
+            $dataArray['foo'] = \is_iterable($normalized) ? new \Jane\JsonSchema\Tests\Expected\Validator\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('arrayEmptyItems', get_object_vars($data)) && null !== ($data->arrayEmptyItems ?? null)) {
             $values_4 = [];

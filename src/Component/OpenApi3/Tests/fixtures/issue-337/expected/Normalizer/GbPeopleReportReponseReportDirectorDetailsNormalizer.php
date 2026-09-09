@@ -129,7 +129,8 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
             $dataArray['surname'] = $data->surname;
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->address, 'json', $context);
+            $dataArray['address'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('gender', get_object_vars($data)) && null !== ($data->gender ?? null)) {
             $dataArray['gender'] = $data->gender;
@@ -146,12 +147,14 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
         if (array_key_exists('positions', get_object_vars($data)) && null !== ($data->positions ?? null)) {
             $values = [];
             foreach ($data->positions as $value) {
-                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['positions'] = $values;
         }
         if (array_key_exists('additionalData', get_object_vars($data)) && null !== ($data->additionalData ?? null)) {
-            $dataArray['additionalData'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->additionalData, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->additionalData, 'json', $context);
+            $dataArray['additionalData'] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

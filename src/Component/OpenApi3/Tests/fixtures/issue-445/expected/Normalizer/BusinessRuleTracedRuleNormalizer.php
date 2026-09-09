@@ -65,14 +65,16 @@ class BusinessRuleTracedRuleNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('configuration', get_object_vars($data)) && null !== ($data->configuration ?? null)) {
             $value = $data->configuration;
             if (is_object($data->configuration)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->configuration, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->configuration, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['configuration'] = $value;
         }
         if (array_key_exists('evaluations', get_object_vars($data)) && null !== ($data->evaluations ?? null)) {
             $values = [];
             foreach ($data->evaluations as $value_1) {
-                $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['evaluations'] = $values;
         }

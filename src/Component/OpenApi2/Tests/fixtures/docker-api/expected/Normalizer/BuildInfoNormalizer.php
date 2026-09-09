@@ -79,7 +79,8 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['error'] = $data->error;
         }
         if (array_key_exists('errorDetail', get_object_vars($data)) && null !== ($data->errorDetail ?? null)) {
-            $dataArray['errorDetail'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->errorDetail, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->errorDetail, 'json', $context);
+            $dataArray['errorDetail'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
             $dataArray['status'] = $data->status;
@@ -88,10 +89,12 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['progress'] = $data->progress;
         }
         if (array_key_exists('progressDetail', get_object_vars($data)) && null !== ($data->progressDetail ?? null)) {
-            $dataArray['progressDetail'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->progressDetail, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->progressDetail, 'json', $context);
+            $dataArray['progressDetail'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('aux', get_object_vars($data)) && null !== ($data->aux ?? null)) {
-            $dataArray['aux'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->aux, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->aux, 'json', $context);
+            $dataArray['aux'] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\BuildInfoConstraint());

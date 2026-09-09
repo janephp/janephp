@@ -55,7 +55,8 @@ class AppsCreateAppRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['spec'] = $data->spec === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+        $normalized = $data->spec === null ? null : $this->normalizer->normalize($data->spec, 'json', $context);
+        $dataArray['spec'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
             $dataArray['project_id'] = $data->projectId;
         }

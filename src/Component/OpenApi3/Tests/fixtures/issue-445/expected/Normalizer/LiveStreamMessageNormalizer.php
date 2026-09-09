@@ -152,14 +152,16 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('documentChange', get_object_vars($data)) && null !== ($data->documentChange ?? null)) {
             $value = $data->documentChange;
             if (is_object($data->documentChange)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->documentChange, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->documentChange, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['documentChange'] = $value;
         }
         if (array_key_exists('applicationEvent', get_object_vars($data)) && null !== ($data->applicationEvent ?? null)) {
             $value_1 = $data->applicationEvent;
             if (is_object($data->applicationEvent)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->applicationEvent, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->applicationEvent, 'json', $context);
+                $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['applicationEvent'] = $value_1;
         }

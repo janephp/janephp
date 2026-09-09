@@ -74,12 +74,14 @@ class ServiceLDAPServiceListNormalizer implements DenormalizerInterface, Normali
             $dataArray['firstIndex'] = $data->firstIndex;
         }
         if (array_key_exists('extra', get_object_vars($data)) && null !== ($data->extra ?? null)) {
-            $dataArray['extra'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extra, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->extra, 'json', $context);
+            $dataArray['extra'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('list', get_object_vars($data)) && null !== ($data->list ?? null)) {
             $values = [];
             foreach ($data->list as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['list'] = $values;
         }

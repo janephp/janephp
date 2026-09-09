@@ -61,7 +61,8 @@ class FirewallRulesOutboundRulesItemNormalizer implements DenormalizerInterface,
         $dataArray = [];
         $dataArray['protocol'] = $data->protocol;
         $dataArray['ports'] = $data->ports;
-        $dataArray['destinations'] = $data->destinations === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->destinations, 'json', $context));
+        $normalized = $data->destinations === null ? null : $this->normalizer->normalize($data->destinations, 'json', $context);
+        $dataArray['destinations'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

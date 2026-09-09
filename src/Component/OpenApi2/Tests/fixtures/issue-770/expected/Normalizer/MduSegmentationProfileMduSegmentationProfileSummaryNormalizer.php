@@ -76,21 +76,25 @@ class MduSegmentationProfileMduSegmentationProfileSummaryNormalizer implements D
         $dataArray['name'] = $data->name;
         $values = [];
         foreach ($data->dpInfoList as $value) {
-            $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['dpInfoList'] = $values;
         if (array_key_exists('apGroupInfoList', get_object_vars($data)) && null !== ($data->apGroupInfoList ?? null)) {
             $values_1 = [];
             foreach ($data->apGroupInfoList as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['apGroupInfoList'] = $values_1;
         }
         if (array_key_exists('networkSegmentationSwitchInfo', get_object_vars($data)) && null !== ($data->networkSegmentationSwitchInfo ?? null)) {
-            $dataArray['networkSegmentationSwitchInfo'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->networkSegmentationSwitchInfo, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->networkSegmentationSwitchInfo, 'json', $context);
+            $dataArray['networkSegmentationSwitchInfo'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('reviewData', get_object_vars($data)) && null !== ($data->reviewData ?? null)) {
-            $dataArray['reviewData'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->reviewData, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->reviewData, 'json', $context);
+            $dataArray['reviewData'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         return $dataArray;
     }

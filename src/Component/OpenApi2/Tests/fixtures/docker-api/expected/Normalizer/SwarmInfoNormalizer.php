@@ -109,7 +109,8 @@ class SwarmInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('remoteManagers', get_object_vars($data)) && null !== ($data->remoteManagers ?? null)) {
             $values = [];
             foreach ($data->remoteManagers as $value) {
-                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['RemoteManagers'] = $values;
         }
@@ -120,7 +121,8 @@ class SwarmInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['Managers'] = $data->managers;
         }
         if (array_key_exists('cluster', get_object_vars($data)) && null !== ($data->cluster ?? null)) {
-            $dataArray['Cluster'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->cluster, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->cluster, 'json', $context);
+            $dataArray['Cluster'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmInfoConstraint());

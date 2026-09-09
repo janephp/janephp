@@ -88,7 +88,8 @@ class AppAlertProgressStepNormalizer implements DenormalizerInterface, Normalize
             $dataArray['ended_at'] = $data->endedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('reason', get_object_vars($data)) && null !== ($data->reason ?? null)) {
-            $dataArray['reason'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->reason, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->reason, 'json', $context);
+            $dataArray['reason'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

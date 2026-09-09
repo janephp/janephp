@@ -225,7 +225,8 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['Cmd'] = $values_2;
         }
         if (array_key_exists('healthcheck', get_object_vars($data)) && null !== ($data->healthcheck ?? null)) {
-            $dataArray['Healthcheck'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->healthcheck, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->healthcheck, 'json', $context);
+            $dataArray['Healthcheck'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('argsEscaped', get_object_vars($data)) && null !== ($data->argsEscaped ?? null)) {
             $dataArray['ArgsEscaped'] = $data->argsEscaped;

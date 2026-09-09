@@ -84,7 +84,8 @@ class V2UptimeChecksCheckIdAlertsAlertIdPutBodyNormalizer implements Denormalize
             $dataArray['comparison'] = $data->comparison;
         }
         if (array_key_exists('notifications', get_object_vars($data)) && null !== ($data->notifications ?? null)) {
-            $dataArray['notifications'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->notifications, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->notifications, 'json', $context);
+            $dataArray['notifications'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('period', get_object_vars($data)) && null !== ($data->period ?? null)) {
             $dataArray['period'] = $data->period;

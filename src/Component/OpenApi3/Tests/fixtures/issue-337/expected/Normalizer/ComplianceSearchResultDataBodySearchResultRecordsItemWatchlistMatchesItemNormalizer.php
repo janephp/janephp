@@ -215,10 +215,12 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
             $dataArray['checkSum'] = $data->checkSum;
         }
         if (array_key_exists('conflicts', get_object_vars($data)) && null !== ($data->conflicts ?? null)) {
-            $dataArray['conflicts'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->conflicts, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->conflicts, 'json', $context);
+            $dataArray['conflicts'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('entityDetails', get_object_vars($data)) && null !== ($data->entityDetails ?? null)) {
-            $dataArray['entityDetails'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->entityDetails, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->entityDetails, 'json', $context);
+            $dataArray['entityDetails'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('entityName', get_object_vars($data)) && null !== ($data->entityName ?? null)) {
             $dataArray['entityName'] = $data->entityName;
@@ -233,7 +235,8 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
             $dataArray['falsePositive'] = $data->falsePositive;
         }
         if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
-            $dataArray['file'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->file, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->file, 'json', $context);
+            $dataArray['file'] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('gatewayOFACScreeningIndicatorMatch', get_object_vars($data)) && null !== ($data->gatewayOFACScreeningIndicatorMatch ?? null)) {
             $dataArray['gatewayOFACScreeningIndicatorMatch'] = $data->gatewayOFACScreeningIndicatorMatch;

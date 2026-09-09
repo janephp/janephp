@@ -52,7 +52,8 @@ class ResponseRegistryOptionsResponseNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
-            $dataArray['options'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->options, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->options, 'json', $context);
+            $dataArray['options'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

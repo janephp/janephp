@@ -116,19 +116,24 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemNormalizer
             $dataArray['auditQualification'] = $data->auditQualification;
         }
         if (array_key_exists('profitAndLoss', get_object_vars($data)) && null !== ($data->profitAndLoss ?? null)) {
-            $dataArray['profitAndLoss'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->profitAndLoss, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->profitAndLoss, 'json', $context);
+            $dataArray['profitAndLoss'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('balanceSheet', get_object_vars($data)) && null !== ($data->balanceSheet ?? null)) {
-            $dataArray['balanceSheet'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->balanceSheet, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->balanceSheet, 'json', $context);
+            $dataArray['balanceSheet'] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('cashFlow', get_object_vars($data)) && null !== ($data->cashFlow ?? null)) {
-            $dataArray['cashFlow'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->cashFlow, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->cashFlow, 'json', $context);
+            $dataArray['cashFlow'] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('otherFinancials', get_object_vars($data)) && null !== ($data->otherFinancials ?? null)) {
-            $dataArray['otherFinancials'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->otherFinancials, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->otherFinancials, 'json', $context);
+            $dataArray['otherFinancials'] = \is_iterable($normalized_3) ? new \CreditSafe\API\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('ratios', get_object_vars($data)) && null !== ($data->ratios ?? null)) {
-            $dataArray['ratios'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->ratios, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->ratios, 'json', $context);
+            $dataArray['ratios'] = \is_iterable($normalized_4) ? new \CreditSafe\API\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

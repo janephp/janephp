@@ -58,7 +58,8 @@ class ResponseListSinksNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('sinks', get_object_vars($data)) && null !== ($data->sinks ?? null)) {
             $values = [];
             foreach ($data->sinks as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['sinks'] = $values;
         }

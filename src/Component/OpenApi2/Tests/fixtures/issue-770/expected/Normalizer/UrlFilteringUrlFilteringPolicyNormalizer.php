@@ -187,7 +187,8 @@ class UrlFilteringUrlFilteringPolicyNormalizer implements DenormalizerInterface,
             $dataArray['blacklist'] = $values_2;
         }
         if (array_key_exists('blockByThreatLevelConfig', get_object_vars($data)) && null !== ($data->blockByThreatLevelConfig ?? null)) {
-            $dataArray['blockByThreatLevelConfig'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->blockByThreatLevelConfig, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->blockByThreatLevelConfig, 'json', $context);
+            $dataArray['blockByThreatLevelConfig'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('createDateTime', get_object_vars($data)) && null !== ($data->createDateTime ?? null)) {
             $dataArray['createDateTime'] = $data->createDateTime;

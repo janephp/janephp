@@ -84,7 +84,8 @@ class MemberNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $dataArray['updated_at'] = $data->updatedAt->format('Y-m-d\TH:i:sP');
         $dataArray['health_status'] = $data->healthStatus;
         $dataArray['status'] = $data->status;
-        $dataArray['current_utilization'] = $data->currentUtilization === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->currentUtilization, 'json', $context));
+        $normalized = $data->currentUtilization === null ? null : $this->normalizer->normalize($data->currentUtilization, 'json', $context);
+        $dataArray['current_utilization'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

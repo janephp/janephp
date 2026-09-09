@@ -71,14 +71,16 @@ class ProfileModifyBonjourFencingPolicyNormalizer implements DenormalizerInterfa
         if (array_key_exists('bonjourFencingRuleList', get_object_vars($data)) && null !== ($data->bonjourFencingRuleList ?? null)) {
             $values = [];
             foreach ($data->bonjourFencingRuleList as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['bonjourFencingRuleList'] = $values;
         }
         if (array_key_exists('bonjourFencingRuleMappingList', get_object_vars($data)) && null !== ($data->bonjourFencingRuleMappingList ?? null)) {
             $values_1 = [];
             foreach ($data->bonjourFencingRuleMappingList as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['bonjourFencingRuleMappingList'] = $values_1;
         }

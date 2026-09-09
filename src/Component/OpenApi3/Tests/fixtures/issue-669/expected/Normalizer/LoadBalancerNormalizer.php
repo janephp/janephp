@@ -220,14 +220,17 @@ class LoadBalancerNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $values = [];
         foreach ($data->forwardingRules as $value) {
-            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['forwarding_rules'] = $values;
         if (array_key_exists('healthCheck', get_object_vars($data)) && null !== ($data->healthCheck ?? null)) {
-            $dataArray['health_check'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->healthCheck, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->healthCheck, 'json', $context);
+            $dataArray['health_check'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('stickySessions', get_object_vars($data)) && null !== ($data->stickySessions ?? null)) {
-            $dataArray['sticky_sessions'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->stickySessions, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->stickySessions, 'json', $context);
+            $dataArray['sticky_sessions'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('redirectHttpToHttps', get_object_vars($data)) && null !== ($data->redirectHttpToHttps ?? null)) {
             $dataArray['redirect_http_to_https'] = $data->redirectHttpToHttps;
@@ -248,7 +251,8 @@ class LoadBalancerNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['disable_lets_encrypt_dns_records'] = $data->disableLetsEncryptDnsRecords;
         }
         if (array_key_exists('firewall', get_object_vars($data)) && null !== ($data->firewall ?? null)) {
-            $dataArray['firewall'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->firewall, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->firewall, 'json', $context);
+            $dataArray['firewall'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('network', get_object_vars($data)) && null !== ($data->network ?? null)) {
             $dataArray['network'] = $data->network;
@@ -262,12 +266,14 @@ class LoadBalancerNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('domains', get_object_vars($data)) && null !== ($data->domains ?? null)) {
             $values_1 = [];
             foreach ($data->domains as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_4 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_4) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['domains'] = $values_1;
         }
         if (array_key_exists('glbSettings', get_object_vars($data)) && null !== ($data->glbSettings ?? null)) {
-            $dataArray['glb_settings'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->glbSettings, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->glbSettings, 'json', $context);
+            $dataArray['glb_settings'] = \is_iterable($normalized_5) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (array_key_exists('targetLoadBalancerIds', get_object_vars($data)) && null !== ($data->targetLoadBalancerIds ?? null)) {
             $values_2 = [];

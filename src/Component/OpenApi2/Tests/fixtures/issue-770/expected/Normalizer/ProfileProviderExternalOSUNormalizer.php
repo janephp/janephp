@@ -88,7 +88,8 @@ class ProfileProviderExternalOSUNormalizer implements DenormalizerInterface, Nor
         $dataArray['commonLanguageIcon'] = $data->commonLanguageIcon;
         $values_1 = [];
         foreach ($data->subscriptionDescriptions as $value_1) {
-            $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['subscriptionDescriptions'] = $values_1;
         if (array_key_exists('whitelistedDomains', get_object_vars($data)) && null !== ($data->whitelistedDomains ?? null)) {

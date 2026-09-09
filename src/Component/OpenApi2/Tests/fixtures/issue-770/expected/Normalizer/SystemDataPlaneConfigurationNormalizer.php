@@ -80,21 +80,26 @@ class SystemDataPlaneConfigurationNormalizer implements DenormalizerInterface, N
             $dataArray['interfaceMode'] = $data->interfaceMode;
         }
         if (array_key_exists('primaryInterface', get_object_vars($data)) && null !== ($data->primaryInterface ?? null)) {
-            $dataArray['primaryInterface'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primaryInterface, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->primaryInterface, 'json', $context);
+            $dataArray['primaryInterface'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('ipv6PrimaryInterface', get_object_vars($data)) && null !== ($data->ipv6PrimaryInterface ?? null)) {
-            $dataArray['ipv6PrimaryInterface'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipv6PrimaryInterface, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->ipv6PrimaryInterface, 'json', $context);
+            $dataArray['ipv6PrimaryInterface'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('ipv6SecondaryInterface', get_object_vars($data)) && null !== ($data->ipv6SecondaryInterface ?? null)) {
-            $dataArray['ipv6SecondaryInterface'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipv6SecondaryInterface, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->ipv6SecondaryInterface, 'json', $context);
+            $dataArray['ipv6SecondaryInterface'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('secondaryInterface', get_object_vars($data)) && null !== ($data->secondaryInterface ?? null)) {
-            $dataArray['secondaryInterface'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryInterface, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->secondaryInterface, 'json', $context);
+            $dataArray['secondaryInterface'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('staticRoute', get_object_vars($data)) && null !== ($data->staticRoute ?? null)) {
             $values = [];
             foreach ($data->staticRoute as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_4 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['staticRoute'] = $values;
         }

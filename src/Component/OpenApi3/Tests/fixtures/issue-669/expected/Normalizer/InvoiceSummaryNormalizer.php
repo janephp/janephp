@@ -111,7 +111,8 @@ class InvoiceSummaryNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['user_name'] = $data->userName;
         }
         if (array_key_exists('userBillingAddress', get_object_vars($data)) && null !== ($data->userBillingAddress ?? null)) {
-            $dataArray['user_billing_address'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->userBillingAddress, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->userBillingAddress, 'json', $context);
+            $dataArray['user_billing_address'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('userCompany', get_object_vars($data)) && null !== ($data->userCompany ?? null)) {
             $dataArray['user_company'] = $data->userCompany;
@@ -120,16 +121,20 @@ class InvoiceSummaryNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['user_email'] = $data->userEmail;
         }
         if (array_key_exists('productCharges', get_object_vars($data)) && null !== ($data->productCharges ?? null)) {
-            $dataArray['product_charges'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->productCharges, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->productCharges, 'json', $context);
+            $dataArray['product_charges'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('overages', get_object_vars($data)) && null !== ($data->overages ?? null)) {
-            $dataArray['overages'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->overages, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->overages, 'json', $context);
+            $dataArray['overages'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('taxes', get_object_vars($data)) && null !== ($data->taxes ?? null)) {
-            $dataArray['taxes'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->taxes, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->taxes, 'json', $context);
+            $dataArray['taxes'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('creditsAndAdjustments', get_object_vars($data)) && null !== ($data->creditsAndAdjustments ?? null)) {
-            $dataArray['credits_and_adjustments'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->creditsAndAdjustments, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->creditsAndAdjustments, 'json', $context);
+            $dataArray['credits_and_adjustments'] = \is_iterable($normalized_4) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

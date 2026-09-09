@@ -66,7 +66,8 @@ class AppMetricsBandwidthUsageNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('appBandwidthUsage', get_object_vars($data)) && null !== ($data->appBandwidthUsage ?? null)) {
             $values = [];
             foreach ($data->appBandwidthUsage as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['app_bandwidth_usage'] = $values;
         }

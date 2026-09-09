@@ -96,7 +96,8 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('downloadInfos', get_object_vars($data)) && null !== ($data->downloadInfos ?? null)) {
             $values = [];
             foreach ($data->downloadInfos as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['downloadInfos'] = $values;
         }

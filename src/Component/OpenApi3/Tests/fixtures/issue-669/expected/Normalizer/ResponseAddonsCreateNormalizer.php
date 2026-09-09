@@ -52,7 +52,8 @@ class ResponseAddonsCreateNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if (array_key_exists('resource', get_object_vars($data)) && null !== ($data->resource ?? null)) {
-            $dataArray['resource'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->resource, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->resource, 'json', $context);
+            $dataArray['resource'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

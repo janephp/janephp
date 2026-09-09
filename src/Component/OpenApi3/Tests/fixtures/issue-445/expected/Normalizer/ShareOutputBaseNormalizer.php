@@ -102,7 +102,8 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
             $value = $data->detail;
             if (is_object($data->detail)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->detail, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['detail'] = $value;
         }

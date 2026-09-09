@@ -78,7 +78,8 @@ class ApiResourceUsageNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('measurements', get_object_vars($data)) && null !== ($data->measurements ?? null)) {
             $values = [];
             foreach ($data->measurements as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['measurements'] = $values;
         }

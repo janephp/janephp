@@ -70,12 +70,14 @@ class ResponseAppsValidateRollbackNormalizer implements DenormalizerInterface, N
             $dataArray['valid'] = $data->valid;
         }
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
-            $dataArray['error'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->error, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->error, 'json', $context);
+            $dataArray['error'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('warnings', get_object_vars($data)) && null !== ($data->warnings ?? null)) {
             $values = [];
             foreach ($data->warnings as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['warnings'] = $values;
         }

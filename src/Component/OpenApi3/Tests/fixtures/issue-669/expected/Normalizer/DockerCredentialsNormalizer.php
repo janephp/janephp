@@ -52,7 +52,8 @@ class DockerCredentialsNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('auths', get_object_vars($data)) && null !== ($data->auths ?? null)) {
-            $dataArray['auths'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->auths, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->auths, 'json', $context);
+            $dataArray['auths'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

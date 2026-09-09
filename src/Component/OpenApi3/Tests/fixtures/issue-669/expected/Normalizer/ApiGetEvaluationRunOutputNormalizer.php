@@ -52,7 +52,8 @@ class ApiGetEvaluationRunOutputNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('evaluationRun', get_object_vars($data)) && null !== ($data->evaluationRun ?? null)) {
-            $dataArray['evaluation_run'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->evaluationRun, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->evaluationRun, 'json', $context);
+            $dataArray['evaluation_run'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

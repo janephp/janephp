@@ -68,18 +68,22 @@ class ApiGetEvaluationRunResultsOutputNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if (array_key_exists('evaluationRun', get_object_vars($data)) && null !== ($data->evaluationRun ?? null)) {
-            $dataArray['evaluation_run'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->evaluationRun, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->evaluationRun, 'json', $context);
+            $dataArray['evaluation_run'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->links, 'json', $context);
+            $dataArray['links'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('meta', get_object_vars($data)) && null !== ($data->meta ?? null)) {
-            $dataArray['meta'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->meta, 'json', $context);
+            $dataArray['meta'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('prompts', get_object_vars($data)) && null !== ($data->prompts ?? null)) {
             $values = [];
             foreach ($data->prompts as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_3 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['prompts'] = $values;
         }

@@ -104,7 +104,8 @@ class AppJobInvocationNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['phase'] = $data->phase;
         }
         if (array_key_exists('trigger', get_object_vars($data)) && null !== ($data->trigger ?? null)) {
-            $dataArray['trigger'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->trigger, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->trigger, 'json', $context);
+            $dataArray['trigger'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
             $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');

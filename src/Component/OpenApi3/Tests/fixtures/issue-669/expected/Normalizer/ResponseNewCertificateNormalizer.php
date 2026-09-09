@@ -52,7 +52,8 @@ class ResponseNewCertificateNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if (array_key_exists('certificate', get_object_vars($data)) && null !== ($data->certificate ?? null)) {
-            $dataArray['certificate'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->certificate, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->certificate, 'json', $context);
+            $dataArray['certificate'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

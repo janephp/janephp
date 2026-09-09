@@ -78,7 +78,8 @@ class GlbSettingsNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['target_port'] = $data->targetPort;
         }
         if (array_key_exists('cdn', get_object_vars($data)) && null !== ($data->cdn ?? null)) {
-            $dataArray['cdn'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->cdn, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->cdn, 'json', $context);
+            $dataArray['cdn'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('regionPriorities', get_object_vars($data)) && null !== ($data->regionPriorities ?? null)) {
             $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();

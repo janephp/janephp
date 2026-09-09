@@ -66,7 +66,8 @@ class SourceDatabaseNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['source'] = $data->source === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->source, 'json', $context));
+        $normalized = $data->source === null ? null : $this->normalizer->normalize($data->source, 'json', $context);
+        $dataArray['source'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         if (array_key_exists('disableSsl', get_object_vars($data)) && null !== ($data->disableSsl ?? null)) {
             $dataArray['disable_ssl'] = $data->disableSsl;
         }

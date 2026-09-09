@@ -52,7 +52,8 @@ class ResponseSshKeysExistingNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if (array_key_exists('sshKey', get_object_vars($data)) && null !== ($data->sshKey ?? null)) {
-            $dataArray['ssh_key'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->sshKey, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->sshKey, 'json', $context);
+            $dataArray['ssh_key'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

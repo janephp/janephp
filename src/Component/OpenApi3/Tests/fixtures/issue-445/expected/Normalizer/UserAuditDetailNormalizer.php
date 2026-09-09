@@ -81,14 +81,16 @@ class UserAuditDetailNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('createdByUser', get_object_vars($data)) && null !== ($data->createdByUser ?? null)) {
             $value = $data->createdByUser;
             if (is_object($data->createdByUser)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->createdByUser, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->createdByUser, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['createdByUser'] = $value;
         }
         if (array_key_exists('modifiedByUser', get_object_vars($data)) && null !== ($data->modifiedByUser ?? null)) {
             $value_1 = $data->modifiedByUser;
             if (is_object($data->modifiedByUser)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->modifiedByUser, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->modifiedByUser, 'json', $context);
+                $value_1 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['modifiedByUser'] = $value_1;
         }

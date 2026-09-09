@@ -46,7 +46,8 @@ class AdministrationUpgradeStatusNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('clusterOperationProgress', get_object_vars($data)) && null !== ($data->clusterOperationProgress ?? null)) {
-            $dataArray['clusterOperationProgress'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clusterOperationProgress, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->clusterOperationProgress, 'json', $context);
+            $dataArray['clusterOperationProgress'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         return $dataArray;
     }

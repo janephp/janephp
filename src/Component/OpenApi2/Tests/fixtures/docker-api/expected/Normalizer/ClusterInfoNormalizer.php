@@ -86,7 +86,8 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['ID'] = $data->iD;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['Version'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->version, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->version, 'json', $context);
+            $dataArray['Version'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
             $dataArray['CreatedAt'] = $data->createdAt;
@@ -95,10 +96,12 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['UpdatedAt'] = $data->updatedAt;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['Spec'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->spec, 'json', $context);
+            $dataArray['Spec'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('tLSInfo', get_object_vars($data)) && null !== ($data->tLSInfo ?? null)) {
-            $dataArray['TLSInfo'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->tLSInfo, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->tLSInfo, 'json', $context);
+            $dataArray['TLSInfo'] = \is_iterable($normalized_2) ? new \Docker\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('rootRotationInProgress', get_object_vars($data)) && null !== ($data->rootRotationInProgress ?? null)) {
             $dataArray['RootRotationInProgress'] = $data->rootRotationInProgress;

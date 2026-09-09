@@ -104,7 +104,8 @@ class RegistryServiceConfigNormalizer implements DenormalizerInterface, Normaliz
         if (array_key_exists('indexConfigs', get_object_vars($data)) && null !== ($data->indexConfigs ?? null)) {
             $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->indexConfigs as $key => $value_3) {
-                $values_3[$key] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[$key] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['IndexConfigs'] = $values_3;
         }

@@ -58,13 +58,15 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if (array_key_exists('replicated', get_object_vars($data)) && null !== ($data->replicated ?? null)) {
-            $dataArray['Replicated'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->replicated, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->replicated, 'json', $context);
+            $dataArray['Replicated'] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('global', get_object_vars($data)) && null !== ($data->global ?? null)) {
             $dataArray['Global'] = $data->global;
         }
         if (array_key_exists('replicatedJob', get_object_vars($data)) && null !== ($data->replicatedJob ?? null)) {
-            $dataArray['ReplicatedJob'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->replicatedJob, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->replicatedJob, 'json', $context);
+            $dataArray['ReplicatedJob'] = \is_iterable($normalized_1) ? new \Docker\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('globalJob', get_object_vars($data)) && null !== ($data->globalJob ?? null)) {
             $dataArray['GlobalJob'] = $data->globalJob;

@@ -95,7 +95,8 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('filters', get_object_vars($data)) && null !== ($data->filters ?? null)) {
             $values = [];
             foreach ($data->filters as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['filters'] = $values;
         }
@@ -109,10 +110,12 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
             $dataArray['options'] = $data->options;
         }
         if (array_key_exists('extraTimeRange', get_object_vars($data)) && null !== ($data->extraTimeRange ?? null)) {
-            $dataArray['extraTimeRange'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extraTimeRange, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->extraTimeRange, 'json', $context);
+            $dataArray['extraTimeRange'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('fullTextSearch', get_object_vars($data)) && null !== ($data->fullTextSearch ?? null)) {
-            $dataArray['fullTextSearch'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->fullTextSearch, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->fullTextSearch, 'json', $context);
+            $dataArray['fullTextSearch'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('attributes', get_object_vars($data)) && null !== ($data->attributes ?? null)) {
             $values_1 = [];
@@ -122,7 +125,8 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
             $dataArray['attributes'] = $values_1;
         }
         if (array_key_exists('sortInfo', get_object_vars($data)) && null !== ($data->sortInfo ?? null)) {
-            $dataArray['sortInfo'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->sortInfo, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->sortInfo, 'json', $context);
+            $dataArray['sortInfo'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('page', get_object_vars($data)) && null !== ($data->page ?? null)) {
             $dataArray['page'] = $data->page;

@@ -120,7 +120,8 @@ class UserSearchAndAggregationBaseRequestNormalizer implements DenormalizerInter
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_1 = $data->filter;
             if (is_object($data->filter)) {
-                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->filter, 'json', $context);
+                $value_1 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['filter'] = $value_1;
         }
@@ -139,7 +140,8 @@ class UserSearchAndAggregationBaseRequestNormalizer implements DenormalizerInter
         if (array_key_exists('aggregationFilters', get_object_vars($data)) && null !== ($data->aggregationFilters ?? null)) {
             $values_2 = [];
             foreach ($data->aggregationFilters as $value_4) {
-                $values_2[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized_1 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_2[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['aggregationFilters'] = $values_2;
         }

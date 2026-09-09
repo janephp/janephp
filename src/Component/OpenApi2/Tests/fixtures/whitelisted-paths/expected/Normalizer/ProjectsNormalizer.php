@@ -72,7 +72,8 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray = [];
         $values = [];
         foreach ($data->projects as $value) {
-            $values[] = $value === null ? null : new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['projects'] = $values;
         $dataArray['per_page'] = $data->perPage;
@@ -81,7 +82,8 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['next_page'] = $data->nextPage;
         $dataArray['previous_page'] = $data->previousPage;
         $dataArray['page'] = $data->page;
-        $dataArray['links'] = $data->links === null ? null : new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+        $normalized_1 = $data->links === null ? null : $this->normalizer->normalize($data->links, 'json', $context);
+        $dataArray['links'] = \is_iterable($normalized_1) ? new \Jane\OpenApi2\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($normalized_1) : $normalized_1;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

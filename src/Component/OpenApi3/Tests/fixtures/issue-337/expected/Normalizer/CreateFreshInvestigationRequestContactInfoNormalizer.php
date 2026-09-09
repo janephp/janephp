@@ -73,7 +73,8 @@ class CreateFreshInvestigationRequestContactInfoNormalizer implements Denormaliz
             $dataArray['telephoneNumber'] = $data->telephoneNumber;
         }
         if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
-            $dataArray['company'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->company, 'json', $context);
+            $dataArray['company'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

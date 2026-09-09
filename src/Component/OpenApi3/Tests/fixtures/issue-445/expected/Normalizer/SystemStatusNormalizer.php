@@ -75,21 +75,24 @@ class SystemStatusNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('searchIndicesStatus', get_object_vars($data)) && null !== ($data->searchIndicesStatus ?? null)) {
             $values = [];
             foreach ($data->searchIndicesStatus as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['searchIndicesStatus'] = $values;
         }
         if (array_key_exists('displayValuesStatus', get_object_vars($data)) && null !== ($data->displayValuesStatus ?? null)) {
             $values_1 = [];
             foreach ($data->displayValuesStatus as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['displayValuesStatus'] = $values_1;
         }
         if (array_key_exists('metadataStatus', get_object_vars($data)) && null !== ($data->metadataStatus ?? null)) {
             $values_2 = [];
             foreach ($data->metadataStatus as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['metadataStatus'] = $values_2;
         }

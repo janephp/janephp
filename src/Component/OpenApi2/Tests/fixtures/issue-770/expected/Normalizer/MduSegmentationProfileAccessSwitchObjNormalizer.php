@@ -95,12 +95,14 @@ class MduSegmentationProfileAccessSwitchObjNormalizer implements DenormalizerInt
             $dataArray['webAuthPasswordLabel'] = $data->webAuthPasswordLabel;
         }
         if (array_key_exists('upLink', get_object_vars($data)) && null !== ($data->upLink ?? null)) {
-            $dataArray['upLink'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->upLink, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->upLink, 'json', $context);
+            $dataArray['upLink'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
             $values = [];
             foreach ($data->ports as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['ports'] = $values;
         }

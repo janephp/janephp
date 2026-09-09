@@ -136,20 +136,23 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
         }
         $value_1 = $data->audit;
         if (is_object($data->audit)) {
-            $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->audit, 'json', $context);
+            $value_1 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['audit'] = $value_1;
         if (array_key_exists('fileMetadata', get_object_vars($data)) && null !== ($data->fileMetadata ?? null)) {
             $value_2 = $data->fileMetadata;
             if (is_object($data->fileMetadata)) {
-                $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->fileMetadata, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->fileMetadata, 'json', $context);
+                $value_2 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['fileMetadata'] = $value_2;
         }
         if (array_key_exists('outputItems', get_object_vars($data)) && null !== ($data->outputItems ?? null)) {
             $values = [];
             foreach ($data->outputItems as $value_3) {
-                $values[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_2 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values[] = \is_iterable($normalized_2) ? new \PicturePark\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['outputItems'] = $values;
         }

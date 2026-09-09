@@ -122,40 +122,46 @@ class ProfileHs20ProviderNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('realms', get_object_vars($data)) && null !== ($data->realms ?? null)) {
             $values = [];
             foreach ($data->realms as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['realms'] = $values;
         }
         if (array_key_exists('plmns', get_object_vars($data)) && null !== ($data->plmns ?? null)) {
             $values_1 = [];
             foreach ($data->plmns as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['plmns'] = $values_1;
         }
         if (array_key_exists('homeOis', get_object_vars($data)) && null !== ($data->homeOis ?? null)) {
             $values_2 = [];
             foreach ($data->homeOis as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['homeOis'] = $values_2;
         }
         if (array_key_exists('authentications', get_object_vars($data)) && null !== ($data->authentications ?? null)) {
             $values_3 = [];
             foreach ($data->authentications as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_3 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['authentications'] = $values_3;
         }
         if (array_key_exists('accountings', get_object_vars($data)) && null !== ($data->accountings ?? null)) {
             $values_4 = [];
             foreach ($data->accountings as $value_4) {
-                $values_4[] = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized_4 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['accountings'] = $values_4;
         }
         if (array_key_exists('osu', get_object_vars($data)) && null !== ($data->osu ?? null)) {
-            $dataArray['osu'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->osu, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->osu, 'json', $context);
+            $dataArray['osu'] = \is_iterable($normalized_5) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
             $dataArray['domainId'] = $data->domainId;

@@ -129,7 +129,8 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray['id'] = $data->id;
         $values_3 = [];
         foreach ($data->outputs as $value_3) {
-            $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+            $normalized = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+            $values_3[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['outputs'] = $values_3;
         $value_4 = $data->contentType;

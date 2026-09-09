@@ -52,7 +52,8 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreNormalizer 
     {
         $dataArray = [];
         if (array_key_exists('currentCreditRating', get_object_vars($data)) && null !== ($data->currentCreditRating ?? null)) {
-            $dataArray['currentCreditRating'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->currentCreditRating, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->currentCreditRating, 'json', $context);
+            $dataArray['currentCreditRating'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

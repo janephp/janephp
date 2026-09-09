@@ -102,7 +102,8 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('evaluationTraceSpans', get_object_vars($data)) && null !== ($data->evaluationTraceSpans ?? null)) {
             $values = [];
             foreach ($data->evaluationTraceSpans as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['evaluation_trace_spans'] = $values;
         }
@@ -124,7 +125,8 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('promptChunks', get_object_vars($data)) && null !== ($data->promptChunks ?? null)) {
             $values_1 = [];
             foreach ($data->promptChunks as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['prompt_chunks'] = $values_1;
         }
@@ -134,7 +136,8 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('promptLevelMetricResults', get_object_vars($data)) && null !== ($data->promptLevelMetricResults ?? null)) {
             $values_2 = [];
             foreach ($data->promptLevelMetricResults as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['prompt_level_metric_results'] = $values_2;
         }

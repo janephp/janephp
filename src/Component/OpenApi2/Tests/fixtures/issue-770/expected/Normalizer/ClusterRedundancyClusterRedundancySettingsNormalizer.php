@@ -101,14 +101,16 @@ class ClusterRedundancyClusterRedundancySettingsNormalizer implements Denormaliz
         if (array_key_exists('managementEntryList', get_object_vars($data)) && null !== ($data->managementEntryList ?? null)) {
             $values = [];
             foreach ($data->managementEntryList as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['managementEntryList'] = $values;
         }
         if (array_key_exists('activeClusterList', get_object_vars($data)) && null !== ($data->activeClusterList ?? null)) {
             $values_1 = [];
             foreach ($data->activeClusterList as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['activeClusterList'] = $values_1;
         }

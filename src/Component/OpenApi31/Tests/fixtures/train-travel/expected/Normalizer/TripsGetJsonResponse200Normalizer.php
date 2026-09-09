@@ -65,12 +65,14 @@ class TripsGetJsonResponse200Normalizer implements DenormalizerInterface, Normal
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $values = [];
             foreach ($data->data as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['data'] = $values;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->links, 'json', $context);
+            $dataArray['links'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

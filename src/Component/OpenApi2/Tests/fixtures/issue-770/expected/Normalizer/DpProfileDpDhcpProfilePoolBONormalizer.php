@@ -161,14 +161,16 @@ class DpProfileDpDhcpProfilePoolBONormalizer implements DenormalizerInterface, N
         if (array_key_exists('qinqVlanRanges', get_object_vars($data)) && null !== ($data->qinqVlanRanges ?? null)) {
             $values = [];
             foreach ($data->qinqVlanRanges as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['qinqVlanRanges'] = $values;
         }
         if (array_key_exists('subOptionSpaces', get_object_vars($data)) && null !== ($data->subOptionSpaces ?? null)) {
             $values_1 = [];
             foreach ($data->subOptionSpaces as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['subOptionSpaces'] = $values_1;
         }

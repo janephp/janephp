@@ -106,21 +106,24 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         if (array_key_exists('additionalInfo', get_object_vars($data)) && null !== ($data->additionalInfo ?? null)) {
             $values = [];
             foreach ($data->additionalInfo as $value) {
-                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['additionalInfo'] = $values;
         }
         if (array_key_exists('addresses', get_object_vars($data)) && null !== ($data->addresses ?? null)) {
             $values_1 = [];
             foreach ($data->addresses as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \CreditSafe\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['addresses'] = $values_1;
         }
         if (array_key_exists('akAs', get_object_vars($data)) && null !== ($data->akAs ?? null)) {
             $values_2 = [];
             foreach ($data->akAs as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \CreditSafe\API\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['akAs'] = $values_2;
         }
@@ -136,7 +139,8 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         if (array_key_exists('iDs', get_object_vars($data)) && null !== ($data->iDs ?? null)) {
             $values_3 = [];
             foreach ($data->iDs as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_3 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \CreditSafe\API\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['iDs'] = $values_3;
         }
@@ -144,7 +148,8 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             $dataArray['listReferenceNumber'] = $data->listReferenceNumber;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->name, 'json', $context);
+            $dataArray['name'] = \is_iterable($normalized_4) ? new \CreditSafe\API\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('reasonListed', get_object_vars($data)) && null !== ($data->reasonListed ?? null)) {
             $dataArray['reasonListed'] = $data->reasonListed;

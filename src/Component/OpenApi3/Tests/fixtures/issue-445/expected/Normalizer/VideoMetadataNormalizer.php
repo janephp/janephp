@@ -273,14 +273,16 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         if (array_key_exists('videoStreams', get_object_vars($data)) && null !== ($data->videoStreams ?? null)) {
             $values_2 = [];
             foreach ($data->videoStreams as $value_4) {
-                $values_2[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_2[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['videoStreams'] = $values_2;
         }
         if (array_key_exists('audioStreams', get_object_vars($data)) && null !== ($data->audioStreams ?? null)) {
             $values_3 = [];
             foreach ($data->audioStreams as $value_5) {
-                $values_3[] = $value_5 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
+                $normalized_1 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_3[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['audioStreams'] = $values_3;
         }

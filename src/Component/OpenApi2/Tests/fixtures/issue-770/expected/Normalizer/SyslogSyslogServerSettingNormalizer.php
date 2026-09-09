@@ -109,10 +109,12 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
             $dataArray['forwardUEEventsMsgFormatType'] = $data->forwardUEEventsMsgFormatType;
         }
         if (array_key_exists('primaryServer', get_object_vars($data)) && null !== ($data->primaryServer ?? null)) {
-            $dataArray['primaryServer'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primaryServer, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->primaryServer, 'json', $context);
+            $dataArray['primaryServer'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('secondaryServer', get_object_vars($data)) && null !== ($data->secondaryServer ?? null)) {
-            $dataArray['secondaryServer'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryServer, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->secondaryServer, 'json', $context);
+            $dataArray['secondaryServer'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('eventFilter', get_object_vars($data)) && null !== ($data->eventFilter ?? null)) {
             $dataArray['eventFilter'] = $data->eventFilter;
@@ -121,7 +123,8 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
             $dataArray['eventFilterSeverity'] = $data->eventFilterSeverity;
         }
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->priority, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->priority, 'json', $context);
+            $dataArray['priority'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         return $dataArray;
     }

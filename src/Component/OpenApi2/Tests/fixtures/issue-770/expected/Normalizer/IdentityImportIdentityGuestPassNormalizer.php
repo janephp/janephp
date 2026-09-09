@@ -69,18 +69,23 @@ class IdentityImportIdentityGuestPassNormalizer implements DenormalizerInterface
         if (array_key_exists('domainId', get_object_vars($data)) && null !== ($data->domainId ?? null)) {
             $dataArray['domainId'] = $data->domainId;
         }
-        $dataArray['wlan'] = $data->wlan === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->wlan, 'json', $context));
-        $dataArray['zone'] = $data->zone === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->zone, 'json', $context));
-        $dataArray['passValidFor'] = $data->passValidFor === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->passValidFor, 'json', $context));
+        $normalized = $data->wlan === null ? null : $this->normalizer->normalize($data->wlan, 'json', $context);
+        $dataArray['wlan'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
+        $normalized_1 = $data->zone === null ? null : $this->normalizer->normalize($data->zone, 'json', $context);
+        $dataArray['zone'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $normalized_2 = $data->passValidFor === null ? null : $this->normalizer->normalize($data->passValidFor, 'json', $context);
+        $dataArray['passValidFor'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         if (array_key_exists('passEffectSince', get_object_vars($data)) && null !== ($data->passEffectSince ?? null)) {
             $dataArray['passEffectSince'] = $data->passEffectSince;
         }
         if (array_key_exists('passUseDays', get_object_vars($data)) && null !== ($data->passUseDays ?? null)) {
             $dataArray['passUseDays'] = $data->passUseDays;
         }
-        $dataArray['maxDevices'] = $data->maxDevices === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->maxDevices, 'json', $context));
+        $normalized_3 = $data->maxDevices === null ? null : $this->normalizer->normalize($data->maxDevices, 'json', $context);
+        $dataArray['maxDevices'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         if (array_key_exists('sessionDuration', get_object_vars($data)) && null !== ($data->sessionDuration ?? null)) {
-            $dataArray['sessionDuration'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->sessionDuration, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->sessionDuration, 'json', $context);
+            $dataArray['sessionDuration'] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         return $dataArray;
     }

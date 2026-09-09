@@ -146,7 +146,8 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('sprites', get_object_vars($data)) && null !== ($data->sprites ?? null)) {
             $values = [];
             foreach ($data->sprites as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['sprites'] = $values;
         }

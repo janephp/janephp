@@ -198,7 +198,8 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('stateHistory', get_object_vars($data)) && null !== ($data->stateHistory ?? null)) {
             $values = [];
             foreach ($data->stateHistory as $value_2) {
-                $values[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['stateHistory'] = $values;
         }
@@ -215,7 +216,8 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('details', get_object_vars($data)) && null !== ($data->details ?? null)) {
             $value_3 = $data->details;
             if (is_object($data->details)) {
-                $value_3 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->details, 'json', $context));
+                $normalized_1 = $this->normalizer->normalize($data->details, 'json', $context);
+                $value_3 = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['details'] = $value_3;
         }

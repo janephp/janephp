@@ -55,7 +55,8 @@ class SchemaUpdateResultNormalizer implements DenormalizerInterface, NormalizerI
         if (array_key_exists('schema', get_object_vars($data)) && null !== ($data->schema ?? null)) {
             $value = $data->schema;
             if (is_object($data->schema)) {
-                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schema, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->schema, 'json', $context);
+                $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['schema'] = $value;
         }

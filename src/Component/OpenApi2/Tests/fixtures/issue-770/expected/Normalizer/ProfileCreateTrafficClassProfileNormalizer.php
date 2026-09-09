@@ -61,7 +61,8 @@ class ProfileCreateTrafficClassProfileNormalizer implements DenormalizerInterfac
         }
         $values = [];
         foreach ($data->trafficClasses as $value) {
-            $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['trafficClasses'] = $values;
         return $dataArray;

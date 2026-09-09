@@ -164,60 +164,70 @@ class AppSpecNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (array_key_exists('domains', get_object_vars($data)) && null !== ($data->domains ?? null)) {
             $values = [];
             foreach ($data->domains as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['domains'] = $values;
         }
         if (array_key_exists('services', get_object_vars($data)) && null !== ($data->services ?? null)) {
             $values_1 = [];
             foreach ($data->services as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['services'] = $values_1;
         }
         if (array_key_exists('staticSites', get_object_vars($data)) && null !== ($data->staticSites ?? null)) {
             $values_2 = [];
             foreach ($data->staticSites as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['static_sites'] = $values_2;
         }
         if (array_key_exists('jobs', get_object_vars($data)) && null !== ($data->jobs ?? null)) {
             $values_3 = [];
             foreach ($data->jobs as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_3 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['jobs'] = $values_3;
         }
         if (array_key_exists('workers', get_object_vars($data)) && null !== ($data->workers ?? null)) {
             $values_4 = [];
             foreach ($data->workers as $value_4) {
-                $values_4[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized_4 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = \is_iterable($normalized_4) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['workers'] = $values_4;
         }
         if (array_key_exists('functions', get_object_vars($data)) && null !== ($data->functions ?? null)) {
             $values_5 = [];
             foreach ($data->functions as $value_5) {
-                $values_5[] = $value_5 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
+                $normalized_5 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = \is_iterable($normalized_5) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_5) : $normalized_5;
             }
             $dataArray['functions'] = $values_5;
         }
         if (array_key_exists('databases', get_object_vars($data)) && null !== ($data->databases ?? null)) {
             $values_6 = [];
             foreach ($data->databases as $value_6) {
-                $values_6[] = $value_6 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
+                $normalized_6 = $value_6 === null ? null : $this->normalizer->normalize($value_6, 'json', $context);
+                $values_6[] = \is_iterable($normalized_6) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_6) : $normalized_6;
             }
             $dataArray['databases'] = $values_6;
         }
         if (array_key_exists('ingress', get_object_vars($data)) && null !== ($data->ingress ?? null)) {
-            $dataArray['ingress'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->ingress, 'json', $context));
+            $normalized_7 = $this->normalizer->normalize($data->ingress, 'json', $context);
+            $dataArray['ingress'] = \is_iterable($normalized_7) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_7) : $normalized_7;
         }
         if (array_key_exists('egress', get_object_vars($data)) && null !== ($data->egress ?? null)) {
-            $dataArray['egress'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->egress, 'json', $context));
+            $normalized_8 = $this->normalizer->normalize($data->egress, 'json', $context);
+            $dataArray['egress'] = \is_iterable($normalized_8) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_8) : $normalized_8;
         }
         if (array_key_exists('maintenance', get_object_vars($data)) && null !== ($data->maintenance ?? null)) {
-            $dataArray['maintenance'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->maintenance, 'json', $context));
+            $normalized_9 = $this->normalizer->normalize($data->maintenance, 'json', $context);
+            $dataArray['maintenance'] = \is_iterable($normalized_9) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_9) : $normalized_9;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {

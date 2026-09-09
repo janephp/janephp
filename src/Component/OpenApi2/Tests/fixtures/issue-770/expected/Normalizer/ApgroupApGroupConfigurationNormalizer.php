@@ -196,7 +196,8 @@ class ApgroupApGroupConfigurationNormalizer implements DenormalizerInterface, No
             $dataArray['locationAdditionalInfo'] = $data->locationAdditionalInfo;
         }
         if (array_key_exists('altitude', get_object_vars($data)) && null !== ($data->altitude ?? null)) {
-            $dataArray['altitude'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->altitude, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->altitude, 'json', $context);
+            $dataArray['altitude'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('latitude', get_object_vars($data)) && null !== ($data->latitude ?? null)) {
             $dataArray['latitude'] = $data->latitude;
@@ -205,24 +206,30 @@ class ApgroupApGroupConfigurationNormalizer implements DenormalizerInterface, No
             $dataArray['longitude'] = $data->longitude;
         }
         if (array_key_exists('locationBasedService', get_object_vars($data)) && null !== ($data->locationBasedService ?? null)) {
-            $dataArray['locationBasedService'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->locationBasedService, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->locationBasedService, 'json', $context);
+            $dataArray['locationBasedService'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('clientAdmissionControl24', get_object_vars($data)) && null !== ($data->clientAdmissionControl24 ?? null)) {
-            $dataArray['clientAdmissionControl24'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clientAdmissionControl24, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->clientAdmissionControl24, 'json', $context);
+            $dataArray['clientAdmissionControl24'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('clientAdmissionControl50', get_object_vars($data)) && null !== ($data->clientAdmissionControl50 ?? null)) {
-            $dataArray['clientAdmissionControl50'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clientAdmissionControl50, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->clientAdmissionControl50, 'json', $context);
+            $dataArray['clientAdmissionControl50'] = \is_iterable($normalized_3) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
         if (array_key_exists('snmpAgent', get_object_vars($data)) && null !== ($data->snmpAgent ?? null)) {
-            $dataArray['snmpAgent'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->snmpAgent, 'json', $context));
+            $normalized_4 = $this->normalizer->normalize($data->snmpAgent, 'json', $context);
+            $dataArray['snmpAgent'] = \is_iterable($normalized_4) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_4) : $normalized_4;
         }
         if (array_key_exists('venueProfile', get_object_vars($data)) && null !== ($data->venueProfile ?? null)) {
-            $dataArray['venueProfile'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->venueProfile, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->venueProfile, 'json', $context);
+            $dataArray['venueProfile'] = \is_iterable($normalized_5) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         if (array_key_exists('members', get_object_vars($data)) && null !== ($data->members ?? null)) {
             $values = [];
             foreach ($data->members as $value) {
-                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized_6 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_6) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_6) : $normalized_6;
             }
             $dataArray['members'] = $values;
         }
@@ -230,13 +237,15 @@ class ApgroupApGroupConfigurationNormalizer implements DenormalizerInterface, No
             $dataArray['channelEvaluationInterval'] = $data->channelEvaluationInterval;
         }
         if (array_key_exists('apMgmtVlan', get_object_vars($data)) && null !== ($data->apMgmtVlan ?? null)) {
-            $dataArray['apMgmtVlan'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->apMgmtVlan, 'json', $context));
+            $normalized_7 = $this->normalizer->normalize($data->apMgmtVlan, 'json', $context);
+            $dataArray['apMgmtVlan'] = \is_iterable($normalized_7) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_7) : $normalized_7;
         }
         if (array_key_exists('awsVenue', get_object_vars($data)) && null !== ($data->awsVenue ?? null)) {
             $dataArray['awsVenue'] = $data->awsVenue;
         }
         if (array_key_exists('recoverySsid', get_object_vars($data)) && null !== ($data->recoverySsid ?? null)) {
-            $dataArray['recoverySsid'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->recoverySsid, 'json', $context));
+            $normalized_8 = $this->normalizer->normalize($data->recoverySsid, 'json', $context);
+            $dataArray['recoverySsid'] = \is_iterable($normalized_8) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_8) : $normalized_8;
         }
         if (array_key_exists('rogueApReportThreshold', get_object_vars($data)) && null !== ($data->rogueApReportThreshold ?? null)) {
             $dataArray['rogueApReportThreshold'] = $data->rogueApReportThreshold;
@@ -259,7 +268,8 @@ class ApgroupApGroupConfigurationNormalizer implements DenormalizerInterface, No
         if (array_key_exists('lteBandLockChannels', get_object_vars($data)) && null !== ($data->lteBandLockChannels ?? null)) {
             $values_1 = [];
             foreach ($data->lteBandLockChannels as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_9 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_9) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_9) : $normalized_9;
             }
             $dataArray['lteBandLockChannels'] = $values_1;
         }
@@ -285,7 +295,8 @@ class ApgroupApGroupConfigurationNormalizer implements DenormalizerInterface, No
             $dataArray['bssColoringEnable'] = $data->bssColoringEnable;
         }
         if (array_key_exists('radioConfig', get_object_vars($data)) && null !== ($data->radioConfig ?? null)) {
-            $dataArray['radioConfig'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->radioConfig, 'json', $context));
+            $normalized_10 = $this->normalizer->normalize($data->radioConfig, 'json', $context);
+            $dataArray['radioConfig'] = \is_iterable($normalized_10) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_10) : $normalized_10;
         }
         return $dataArray;
     }

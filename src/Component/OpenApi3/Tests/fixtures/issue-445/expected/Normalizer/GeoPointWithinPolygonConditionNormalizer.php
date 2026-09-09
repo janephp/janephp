@@ -89,7 +89,8 @@ class GeoPointWithinPolygonConditionNormalizer implements DenormalizerInterface,
         if (array_key_exists('polygon', get_object_vars($data)) && null !== ($data->polygon ?? null)) {
             $values = [];
             foreach ($data->polygon as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['polygon'] = $values;
         }

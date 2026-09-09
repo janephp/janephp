@@ -52,7 +52,8 @@ class ResponseNamespaceCreatedNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('namespace', get_object_vars($data)) && null !== ($data->namespace ?? null)) {
-            $dataArray['namespace'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->namespace, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->namespace, 'json', $context);
+            $dataArray['namespace'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

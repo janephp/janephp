@@ -52,7 +52,8 @@ class ResponseCreateDomainResponseNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('domain', get_object_vars($data)) && null !== ($data->domain ?? null)) {
-            $dataArray['domain'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->domain, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->domain, 'json', $context);
+            $dataArray['domain'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

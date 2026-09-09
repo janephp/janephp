@@ -56,10 +56,12 @@ class StateNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if (array_key_exists('regions', get_object_vars($data)) && null !== ($data->regions ?? null)) {
-            $dataArray['regions'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->regions, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->regions, 'json', $context);
+            $dataArray['regions'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('previousOutage', get_object_vars($data)) && null !== ($data->previousOutage ?? null)) {
-            $dataArray['previous_outage'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->previousOutage, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->previousOutage, 'json', $context);
+            $dataArray['previous_outage'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

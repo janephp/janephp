@@ -70,17 +70,21 @@ class ResponseInvoicesNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('invoices', get_object_vars($data)) && null !== ($data->invoices ?? null)) {
             $values = [];
             foreach ($data->invoices as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['invoices'] = $values;
         }
         if (array_key_exists('invoicePreview', get_object_vars($data)) && null !== ($data->invoicePreview ?? null)) {
-            $dataArray['invoice_preview'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->invoicePreview, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->invoicePreview, 'json', $context);
+            $dataArray['invoice_preview'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->links, 'json', $context);
+            $dataArray['links'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
-        $dataArray['meta'] = $data->meta === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta, 'json', $context));
+        $normalized_3 = $data->meta === null ? null : $this->normalizer->normalize($data->meta, 'json', $context);
+        $dataArray['meta'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

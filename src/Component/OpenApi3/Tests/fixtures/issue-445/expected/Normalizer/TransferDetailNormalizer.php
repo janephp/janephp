@@ -168,7 +168,8 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $value_2 = $data->audit;
         if (is_object($data->audit)) {
-            $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->audit, 'json', $context);
+            $value_2 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['audit'] = $value_2;
         if (array_key_exists('itemProgress', get_object_vars($data)) && null !== ($data->itemProgress ?? null)) {

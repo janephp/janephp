@@ -93,7 +93,8 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if (array_key_exists('company', get_object_vars($data)) && null !== ($data->company ?? null)) {
-            $dataArray['company'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->company, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->company, 'json', $context);
+            $dataArray['company'] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('eventId', get_object_vars($data)) && null !== ($data->eventId ?? null)) {
             $dataArray['eventId'] = $data->eventId;

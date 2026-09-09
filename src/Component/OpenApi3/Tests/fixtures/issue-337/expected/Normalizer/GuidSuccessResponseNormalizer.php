@@ -58,7 +58,8 @@ class GuidSuccessResponseNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('gUIDList', get_object_vars($data)) && null !== ($data->gUIDList ?? null)) {
             $values = [];
             foreach ($data->gUIDList as $value) {
-                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \CreditSafe\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['GUIDList'] = $values;
         }

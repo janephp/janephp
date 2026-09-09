@@ -58,10 +58,12 @@ class WidgetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('settings', get_object_vars($data)) && null !== ($data->settings ?? null)) {
-            $dataArray['settings'] = new \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\JsonObject($this->normalizer->normalize($data->settings, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->settings, 'json', $context);
+            $dataArray['settings'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('plain', get_object_vars($data)) && null !== ($data->plain ?? null)) {
-            $dataArray['plain'] = new \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\JsonObject($this->normalizer->normalize($data->plain, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->plain, 'json', $context);
+            $dataArray['plain'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi31\Tests\Issue1006\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Issue1006\Validator\WidgetConstraint());

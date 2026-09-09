@@ -90,7 +90,8 @@ class KafkaTopicPartitionNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('consumerGroups', get_object_vars($data)) && null !== ($data->consumerGroups ?? null)) {
             $values = [];
             foreach ($data->consumerGroups as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['consumer_groups'] = $values;
         }

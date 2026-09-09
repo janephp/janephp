@@ -148,20 +148,26 @@ class AppNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     {
         $dataArray = [];
         if (array_key_exists('activeDeployment', get_object_vars($data)) && null !== ($data->activeDeployment ?? null)) {
-            $dataArray['active_deployment'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->activeDeployment, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->activeDeployment, 'json', $context);
+            $dataArray['active_deployment'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('inProgressDeployment', get_object_vars($data)) && null !== ($data->inProgressDeployment ?? null)) {
-            $dataArray['in_progress_deployment'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->inProgressDeployment, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->inProgressDeployment, 'json', $context);
+            $dataArray['in_progress_deployment'] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('pendingDeployment', get_object_vars($data)) && null !== ($data->pendingDeployment ?? null)) {
-            $dataArray['pending_deployment'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pendingDeployment, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->pendingDeployment, 'json', $context);
+            $dataArray['pending_deployment'] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region, 'json', $context));
+            $normalized_3 = $this->normalizer->normalize($data->region, 'json', $context);
+            $dataArray['region'] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
         }
-        $dataArray['spec'] = $data->spec === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+        $normalized_4 = $data->spec === null ? null : $this->normalizer->normalize($data->spec, 'json', $context);
+        $dataArray['spec'] = \is_iterable($normalized_4) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_4) : $normalized_4;
         if (array_key_exists('pinnedDeployment', get_object_vars($data)) && null !== ($data->pinnedDeployment ?? null)) {
-            $dataArray['pinned_deployment'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pinnedDeployment, 'json', $context));
+            $normalized_5 = $this->normalizer->normalize($data->pinnedDeployment, 'json', $context);
+            $dataArray['pinned_deployment'] = \is_iterable($normalized_5) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_5) : $normalized_5;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

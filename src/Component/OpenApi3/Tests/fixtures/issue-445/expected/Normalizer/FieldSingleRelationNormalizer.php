@@ -201,13 +201,15 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('schemaIndexingInfo', get_object_vars($data)) && null !== ($data->schemaIndexingInfo ?? null)) {
             $value_4 = $data->schemaIndexingInfo;
             if (is_object($data->schemaIndexingInfo)) {
-                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaIndexingInfo, 'json', $context));
+                $normalized = $this->normalizer->normalize($data->schemaIndexingInfo, 'json', $context);
+                $value_4 = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['schemaIndexingInfo'] = $value_4;
         }
         $values_2 = [];
         foreach ($data->relationTypes as $value_5) {
-            $values_2[] = $value_5 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
+            $normalized_1 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+            $values_2[] = \is_iterable($normalized_1) ? new \PicturePark\API\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['relationTypes'] = $values_2;
         foreach ($data->additionalPropertyEntries() as $key_2 => $value_6) {

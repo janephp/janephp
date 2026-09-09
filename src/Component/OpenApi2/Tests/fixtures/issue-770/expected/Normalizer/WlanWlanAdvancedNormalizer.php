@@ -452,7 +452,8 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['clientIsolationAutoVrrpEnabled'] = $data->clientIsolationAutoVrrpEnabled;
         }
         if (array_key_exists('clientIsolationWhitelist', get_object_vars($data)) && null !== ($data->clientIsolationWhitelist ?? null)) {
-            $dataArray['clientIsolationWhitelist'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clientIsolationWhitelist, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->clientIsolationWhitelist, 'json', $context);
+            $dataArray['clientIsolationWhitelist'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
             $dataArray['priority'] = $data->priority;
@@ -687,7 +688,8 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['oceApChannelReportEnabled'] = $data->oceApChannelReportEnabled;
         }
         if (array_key_exists('fils', get_object_vars($data)) && null !== ($data->fils ?? null)) {
-            $dataArray['fils'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->fils, 'json', $context));
+            $normalized_1 = $this->normalizer->normalize($data->fils, 'json', $context);
+            $dataArray['fils'] = \is_iterable($normalized_1) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         if (array_key_exists('dhcp82SubOptRadiusFormat', get_object_vars($data)) && null !== ($data->dhcp82SubOptRadiusFormat ?? null)) {
             $dataArray['dhcp82SubOptRadiusFormat'] = $data->dhcp82SubOptRadiusFormat;
@@ -699,7 +701,8 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['vlanNameProfileId'] = $data->vlanNameProfileId;
         }
         if (array_key_exists('userRoleAccess', get_object_vars($data)) && null !== ($data->userRoleAccess ?? null)) {
-            $dataArray['userRoleAccess'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->userRoleAccess, 'json', $context));
+            $normalized_2 = $this->normalizer->normalize($data->userRoleAccess, 'json', $context);
+            $dataArray['userRoleAccess'] = \is_iterable($normalized_2) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
         return $dataArray;
     }

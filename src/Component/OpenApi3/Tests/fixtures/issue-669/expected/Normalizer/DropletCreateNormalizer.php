@@ -174,7 +174,8 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['backups'] = $data->backups;
         }
         if (array_key_exists('backupPolicy', get_object_vars($data)) && null !== ($data->backupPolicy ?? null)) {
-            $dataArray['backup_policy'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->backupPolicy, 'json', $context);
+            $dataArray['backup_policy'] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('ipv6', get_object_vars($data)) && null !== ($data->ipv6 ?? null)) {
             $dataArray['ipv6'] = $data->ipv6;

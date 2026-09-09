@@ -106,49 +106,56 @@ class OptionsVersionAvailabilityNormalizer implements DenormalizerInterface, Nor
         if (array_key_exists('kafka', get_object_vars($data)) && null !== ($data->kafka ?? null)) {
             $values = [];
             foreach ($data->kafka as $value) {
-                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['kafka'] = $values;
         }
         if (array_key_exists('pg', get_object_vars($data)) && null !== ($data->pg ?? null)) {
             $values_1 = [];
             foreach ($data->pg as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['pg'] = $values_1;
         }
         if (array_key_exists('mysql', get_object_vars($data)) && null !== ($data->mysql ?? null)) {
             $values_2 = [];
             foreach ($data->mysql as $value_2) {
-                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                $normalized_2 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized_2) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_2) : $normalized_2;
             }
             $dataArray['mysql'] = $values_2;
         }
         if (array_key_exists('redis', get_object_vars($data)) && null !== ($data->redis ?? null)) {
             $values_3 = [];
             foreach ($data->redis as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+                $normalized_3 = $value_3 === null ? null : $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = \is_iterable($normalized_3) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_3) : $normalized_3;
             }
             $dataArray['redis'] = $values_3;
         }
         if (array_key_exists('valkey', get_object_vars($data)) && null !== ($data->valkey ?? null)) {
             $values_4 = [];
             foreach ($data->valkey as $value_4) {
-                $values_4[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
+                $normalized_4 = $value_4 === null ? null : $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = \is_iterable($normalized_4) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_4) : $normalized_4;
             }
             $dataArray['valkey'] = $values_4;
         }
         if (array_key_exists('mongodb', get_object_vars($data)) && null !== ($data->mongodb ?? null)) {
             $values_5 = [];
             foreach ($data->mongodb as $value_5) {
-                $values_5[] = $value_5 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
+                $normalized_5 = $value_5 === null ? null : $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = \is_iterable($normalized_5) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_5) : $normalized_5;
             }
             $dataArray['mongodb'] = $values_5;
         }
         if (array_key_exists('opensearch', get_object_vars($data)) && null !== ($data->opensearch ?? null)) {
             $values_6 = [];
             foreach ($data->opensearch as $value_6) {
-                $values_6[] = $value_6 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
+                $normalized_6 = $value_6 === null ? null : $this->normalizer->normalize($value_6, 'json', $context);
+                $values_6[] = \is_iterable($normalized_6) ? new \Jane\Generated\DigitalOcean\Runtime\JsonObject($normalized_6) : $normalized_6;
             }
             $dataArray['opensearch'] = $values_6;
         }

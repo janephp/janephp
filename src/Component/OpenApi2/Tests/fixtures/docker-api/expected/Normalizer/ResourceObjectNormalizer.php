@@ -67,7 +67,8 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('genericResources', get_object_vars($data)) && null !== ($data->genericResources ?? null)) {
             $values = [];
             foreach ($data->genericResources as $value) {
-                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Docker\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['GenericResources'] = $values;
         }

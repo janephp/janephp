@@ -74,7 +74,8 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray['field'] = $data->field;
         $value = $data->location;
         if (is_object($data->location)) {
-            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->location, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->location, 'json', $context);
+            $value = \is_iterable($normalized) ? new \PicturePark\API\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['location'] = $value;
         if (array_key_exists('distance', get_object_vars($data)) && null !== ($data->distance ?? null)) {

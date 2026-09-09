@@ -105,7 +105,8 @@ class RadioRadio6gApGroupNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['wlanGroupId'] = $data->wlanGroupId;
         }
         if (array_key_exists('autoChannelSelection', get_object_vars($data)) && null !== ($data->autoChannelSelection ?? null)) {
-            $dataArray['autoChannelSelection'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->autoChannelSelection, 'json', $context));
+            $normalized = $this->normalizer->normalize($data->autoChannelSelection, 'json', $context);
+            $dataArray['autoChannelSelection'] = \is_iterable($normalized) ? new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($normalized) : $normalized;
         }
         if (array_key_exists('bssMinRate', get_object_vars($data)) && null !== ($data->bssMinRate ?? null)) {
             $dataArray['bssMinRate'] = $data->bssMinRate;
