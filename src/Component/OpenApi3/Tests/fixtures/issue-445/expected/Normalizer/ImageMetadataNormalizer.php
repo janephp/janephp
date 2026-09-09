@@ -88,7 +88,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->names = $value;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -104,7 +104,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
             unset($data['descriptions']);
         }
@@ -112,7 +112,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->fileExtension = $data['fileExtension'];
             unset($data['fileExtension']);
         }
-        elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
+        elseif (\array_key_exists('fileExtension', $data)) {
             $object->fileExtension = null;
             unset($data['fileExtension']);
         }
@@ -120,7 +120,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->fileName = $data['fileName'];
             unset($data['fileName']);
         }
-        elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
+        elseif (\array_key_exists('fileName', $data)) {
             $object->fileName = null;
             unset($data['fileName']);
         }
@@ -128,7 +128,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->filePath = $data['filePath'];
             unset($data['filePath']);
         }
-        elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
+        elseif (\array_key_exists('filePath', $data)) {
             $object->filePath = null;
             unset($data['filePath']);
         }
@@ -136,7 +136,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->fileSizeInBytes = $data['fileSizeInBytes'];
             unset($data['fileSizeInBytes']);
         }
-        elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
+        elseif (\array_key_exists('fileSizeInBytes', $data)) {
             $object->fileSizeInBytes = null;
             unset($data['fileSizeInBytes']);
         }
@@ -144,7 +144,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->sha1Hash = $data['sha1Hash'];
             unset($data['sha1Hash']);
         }
-        elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
+        elseif (\array_key_exists('sha1Hash', $data)) {
             $object->sha1Hash = null;
             unset($data['sha1Hash']);
         }
@@ -152,7 +152,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->xmpMetadata = $data['xmpMetadata'];
             unset($data['xmpMetadata']);
         }
-        elseif (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] === null) {
+        elseif (\array_key_exists('xmpMetadata', $data)) {
             $object->xmpMetadata = null;
             unset($data['xmpMetadata']);
         }
@@ -160,7 +160,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->exifMetadata = $data['exifMetadata'];
             unset($data['exifMetadata']);
         }
-        elseif (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] === null) {
+        elseif (\array_key_exists('exifMetadata', $data)) {
             $object->exifMetadata = null;
             unset($data['exifMetadata']);
         }
@@ -168,7 +168,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->language = $data['language'];
             unset($data['language']);
         }
-        elseif (\array_key_exists('language', $data) && $data['language'] === null) {
+        elseif (\array_key_exists('language', $data)) {
             $object->language = null;
             unset($data['language']);
         }
@@ -200,7 +200,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->colorSpace = $data['colorSpace'];
             unset($data['colorSpace']);
         }
-        elseif (\array_key_exists('colorSpace', $data) && $data['colorSpace'] === null) {
+        elseif (\array_key_exists('colorSpace', $data)) {
             $object->colorSpace = null;
             unset($data['colorSpace']);
         }
@@ -208,7 +208,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->colorProfile = $data['colorProfile'];
             unset($data['colorProfile']);
         }
-        elseif (\array_key_exists('colorProfile', $data) && $data['colorProfile'] === null) {
+        elseif (\array_key_exists('colorProfile', $data)) {
             $object->colorProfile = null;
             unset($data['colorProfile']);
         }
@@ -224,7 +224,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->channels = $data['channels'];
             unset($data['channels']);
         }
-        elseif (\array_key_exists('channels', $data) && $data['channels'] === null) {
+        elseif (\array_key_exists('channels', $data)) {
             $object->channels = null;
             unset($data['channels']);
         }
@@ -232,7 +232,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->pixelFormat = $data['pixelFormat'];
             unset($data['pixelFormat']);
         }
-        elseif (\array_key_exists('pixelFormat', $data) && $data['pixelFormat'] === null) {
+        elseif (\array_key_exists('pixelFormat', $data)) {
             $object->pixelFormat = null;
             unset($data['pixelFormat']);
         }

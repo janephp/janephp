@@ -58,7 +58,7 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->colorProfile = $value;
             unset($data['colorProfile']);
         }
-        elseif (\array_key_exists('colorProfile', $data) && $data['colorProfile'] === null) {
+        elseif (\array_key_exists('colorProfile', $data)) {
             $object->colorProfile = null;
             unset($data['colorProfile']);
         }
@@ -74,7 +74,7 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->horizontalResolution = $data['horizontalResolution'];
             unset($data['horizontalResolution']);
         }
-        elseif (\array_key_exists('horizontalResolution', $data) && $data['horizontalResolution'] === null) {
+        elseif (\array_key_exists('horizontalResolution', $data)) {
             $object->horizontalResolution = null;
             unset($data['horizontalResolution']);
         }
@@ -82,7 +82,7 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->verticalResolution = $data['verticalResolution'];
             unset($data['verticalResolution']);
         }
-        elseif (\array_key_exists('verticalResolution', $data) && $data['verticalResolution'] === null) {
+        elseif (\array_key_exists('verticalResolution', $data)) {
             $object->verticalResolution = null;
             unset($data['verticalResolution']);
         }
@@ -98,7 +98,7 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->resizeAction = $value_2;
             unset($data['resizeAction']);
         }
-        elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
+        elseif (\array_key_exists('resizeAction', $data)) {
             $object->resizeAction = null;
             unset($data['resizeAction']);
         }
@@ -110,7 +110,7 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->actions = $values;
             unset($data['actions']);
         }
-        elseif (\array_key_exists('actions', $data) && $data['actions'] === null) {
+        elseif (\array_key_exists('actions', $data)) {
             $object->actions = null;
             unset($data['actions']);
         }
@@ -118,7 +118,7 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->extension = $data['extension'];
             unset($data['extension']);
         }
-        elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
+        elseif (\array_key_exists('extension', $data)) {
             $object->extension = null;
             unset($data['extension']);
         }
@@ -159,7 +159,7 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('resizeAction', get_object_vars($data)) && null !== ($data->resizeAction ?? null)) {
             $value_2 = $data->resizeAction;
             if (is_object($data->resizeAction)) {
-                $value_2 = $data->resizeAction === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction, 'json', $context));
+                $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->resizeAction, 'json', $context));
             }
             $dataArray['resizeAction'] = $value_2;
         }

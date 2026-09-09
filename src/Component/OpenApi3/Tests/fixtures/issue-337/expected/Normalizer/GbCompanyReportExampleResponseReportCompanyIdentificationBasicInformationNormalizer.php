@@ -99,16 +99,16 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationN
             $dataArray['companyRegistrationDate'] = $data->companyRegistrationDate;
         }
         if (array_key_exists('legalForm', get_object_vars($data)) && null !== ($data->legalForm ?? null)) {
-            $dataArray['legalForm'] = $data->legalForm === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->legalForm, 'json', $context));
+            $dataArray['legalForm'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->legalForm, 'json', $context));
         }
         if (array_key_exists('companyStatus', get_object_vars($data)) && null !== ($data->companyStatus ?? null)) {
-            $dataArray['companyStatus'] = $data->companyStatus === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyStatus, 'json', $context));
+            $dataArray['companyStatus'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->companyStatus, 'json', $context));
         }
         if (array_key_exists('principalActivity', get_object_vars($data)) && null !== ($data->principalActivity ?? null)) {
-            $dataArray['principalActivity'] = $data->principalActivity === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->principalActivity, 'json', $context));
+            $dataArray['principalActivity'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->principalActivity, 'json', $context));
         }
         if (array_key_exists('contactAddress', get_object_vars($data)) && null !== ($data->contactAddress ?? null)) {
-            $dataArray['contactAddress'] = $data->contactAddress === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->contactAddress, 'json', $context));
+            $dataArray['contactAddress'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->contactAddress, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

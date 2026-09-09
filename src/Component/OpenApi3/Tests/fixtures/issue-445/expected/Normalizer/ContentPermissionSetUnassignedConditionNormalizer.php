@@ -41,7 +41,7 @@ class ContentPermissionSetUnassignedConditionNormalizer implements DenormalizerI
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -53,7 +53,7 @@ class ContentPermissionSetUnassignedConditionNormalizer implements DenormalizerI
             $object->permissionSetId = $data['permissionSetId'];
             unset($data['permissionSetId']);
         }
-        elseif (\array_key_exists('permissionSetId', $data) && $data['permissionSetId'] === null) {
+        elseif (\array_key_exists('permissionSetId', $data)) {
             $object->permissionSetId = null;
             unset($data['permissionSetId']);
         }

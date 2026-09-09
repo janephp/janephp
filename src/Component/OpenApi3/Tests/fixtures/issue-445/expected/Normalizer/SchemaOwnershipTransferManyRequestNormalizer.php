@@ -44,13 +44,13 @@ class SchemaOwnershipTransferManyRequestNormalizer implements DenormalizerInterf
             }
             $object->schemaIds = $values;
         }
-        elseif (\array_key_exists('schemaIds', $data) && $data['schemaIds'] === null) {
+        elseif (\array_key_exists('schemaIds', $data)) {
             $object->schemaIds = null;
         }
         if (\array_key_exists('transferUserId', $data) && $data['transferUserId'] !== null) {
             $object->transferUserId = $data['transferUserId'];
         }
-        elseif (\array_key_exists('transferUserId', $data) && $data['transferUserId'] === null) {
+        elseif (\array_key_exists('transferUserId', $data)) {
             $object->transferUserId = null;
         }
         return $object;

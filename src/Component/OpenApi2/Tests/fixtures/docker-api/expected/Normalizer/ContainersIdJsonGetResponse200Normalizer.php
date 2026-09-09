@@ -102,7 +102,7 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
             }
             $object->execIDs = $values_1;
         }
-        elseif (\array_key_exists('ExecIDs', $data) && $data['ExecIDs'] === null) {
+        elseif (\array_key_exists('ExecIDs', $data)) {
             $object->execIDs = null;
         }
         if (\array_key_exists('HostConfig', $data)) {
@@ -152,7 +152,7 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
             $dataArray['Args'] = $values;
         }
         if (array_key_exists('state', get_object_vars($data)) && null !== ($data->state ?? null)) {
-            $dataArray['State'] = $data->state === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->state, 'json', $context));
+            $dataArray['State'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->state, 'json', $context));
         }
         if (array_key_exists('image', get_object_vars($data)) && null !== ($data->image ?? null)) {
             $dataArray['Image'] = $data->image;
@@ -198,10 +198,10 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
             $dataArray['ExecIDs'] = $values_1;
         }
         if (array_key_exists('hostConfig', get_object_vars($data)) && null !== ($data->hostConfig ?? null)) {
-            $dataArray['HostConfig'] = $data->hostConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig, 'json', $context));
+            $dataArray['HostConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig, 'json', $context));
         }
         if (array_key_exists('graphDriver', get_object_vars($data)) && null !== ($data->graphDriver ?? null)) {
-            $dataArray['GraphDriver'] = $data->graphDriver === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->graphDriver, 'json', $context));
+            $dataArray['GraphDriver'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->graphDriver, 'json', $context));
         }
         if (array_key_exists('sizeRw', get_object_vars($data)) && null !== ($data->sizeRw ?? null)) {
             $dataArray['SizeRw'] = $data->sizeRw;
@@ -217,10 +217,10 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
             $dataArray['Mounts'] = $values_2;
         }
         if (array_key_exists('config', get_object_vars($data)) && null !== ($data->config ?? null)) {
-            $dataArray['Config'] = $data->config === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
+            $dataArray['Config'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->config, 'json', $context));
         }
         if (array_key_exists('networkSettings', get_object_vars($data)) && null !== ($data->networkSettings ?? null)) {
-            $dataArray['NetworkSettings'] = $data->networkSettings === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkSettings, 'json', $context));
+            $dataArray['NetworkSettings'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkSettings, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdJsonGetResponse200Constraint());

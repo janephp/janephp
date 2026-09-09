@@ -36,7 +36,7 @@ class BinaryStringType extends Type
         return [[], $input];
     }
 
-    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
+    public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): array
     {
         return [[], $input];
     }

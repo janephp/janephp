@@ -141,10 +141,10 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
             $dataArray['lastUpdatedDate'] = $data->lastUpdatedDate;
         }
         if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
-            $dataArray['name'] = $data->name === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name, 'json', $context));
+            $dataArray['name'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->name, 'json', $context));
         }
         if (array_key_exists('recordState', get_object_vars($data)) && null !== ($data->recordState ?? null)) {
-            $dataArray['recordState'] = $data->recordState === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->recordState, 'json', $context));
+            $dataArray['recordState'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->recordState, 'json', $context));
         }
         if (array_key_exists('searchDate', get_object_vars($data)) && null !== ($data->searchDate ?? null)) {
             $dataArray['searchDate'] = $data->searchDate;

@@ -45,7 +45,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -53,7 +53,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -65,7 +65,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -77,7 +77,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
             $object->expectedCustomerId = $data['expectedCustomerId'];
             unset($data['expectedCustomerId']);
         }
-        elseif (\array_key_exists('expectedCustomerId', $data) && $data['expectedCustomerId'] === null) {
+        elseif (\array_key_exists('expectedCustomerId', $data)) {
             $object->expectedCustomerId = null;
             unset($data['expectedCustomerId']);
         }
@@ -85,7 +85,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
             $object->currentCustomerId = $data['currentCustomerId'];
             unset($data['currentCustomerId']);
         }
-        elseif (\array_key_exists('currentCustomerId', $data) && $data['currentCustomerId'] === null) {
+        elseif (\array_key_exists('currentCustomerId', $data)) {
             $object->currentCustomerId = null;
             unset($data['currentCustomerId']);
         }

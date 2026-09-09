@@ -46,19 +46,19 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('fieldId', $data) && $data['fieldId'] !== null) {
             $object->fieldId = $data['fieldId'];
         }
-        elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
+        elseif (\array_key_exists('fieldId', $data)) {
             $object->fieldId = null;
         }
         if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->type = $data['type'];
         }
-        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+        elseif (\array_key_exists('type', $data)) {
             $object->type = null;
         }
         if (\array_key_exists('indexFields', $data) && $data['indexFields'] !== null) {
@@ -68,7 +68,7 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $object->indexFields = $values;
         }
-        elseif (\array_key_exists('indexFields', $data) && $data['indexFields'] === null) {
+        elseif (\array_key_exists('indexFields', $data)) {
             $object->indexFields = null;
         }
         if (\array_key_exists('simpleSearchFields', $data) && $data['simpleSearchFields'] !== null) {
@@ -78,7 +78,7 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $object->simpleSearchFields = $values_1;
         }
-        elseif (\array_key_exists('simpleSearchFields', $data) && $data['simpleSearchFields'] === null) {
+        elseif (\array_key_exists('simpleSearchFields', $data)) {
             $object->simpleSearchFields = null;
         }
         if (\array_key_exists('boost', $data)) {
@@ -90,13 +90,13 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('nestedPath', $data) && $data['nestedPath'] !== null) {
             $object->nestedPath = $data['nestedPath'];
         }
-        elseif (\array_key_exists('nestedPath', $data) && $data['nestedPath'] === null) {
+        elseif (\array_key_exists('nestedPath', $data)) {
             $object->nestedPath = null;
         }
         if (\array_key_exists('sortField', $data) && $data['sortField'] !== null) {
             $object->sortField = $data['sortField'];
         }
-        elseif (\array_key_exists('sortField', $data) && $data['sortField'] === null) {
+        elseif (\array_key_exists('sortField', $data)) {
             $object->sortField = null;
         }
         return $object;

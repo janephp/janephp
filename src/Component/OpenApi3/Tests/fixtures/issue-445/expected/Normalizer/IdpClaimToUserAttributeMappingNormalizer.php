@@ -40,13 +40,13 @@ class IdpClaimToUserAttributeMappingNormalizer implements DenormalizerInterface,
         if (\array_key_exists('claimType', $data) && $data['claimType'] !== null) {
             $object->claimType = $data['claimType'];
         }
-        elseif (\array_key_exists('claimType', $data) && $data['claimType'] === null) {
+        elseif (\array_key_exists('claimType', $data)) {
             $object->claimType = null;
         }
         if (\array_key_exists('userAttributePath', $data) && $data['userAttributePath'] !== null) {
             $object->userAttributePath = $data['userAttributePath'];
         }
-        elseif (\array_key_exists('userAttributePath', $data) && $data['userAttributePath'] === null) {
+        elseif (\array_key_exists('userAttributePath', $data)) {
             $object->userAttributePath = null;
         }
         return $object;

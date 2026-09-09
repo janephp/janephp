@@ -46,25 +46,25 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('string', $data) && $data['string'] !== null) {
             $object->string = $data['string'];
         }
-        elseif (\array_key_exists('string', $data) && $data['string'] === null) {
+        elseif (\array_key_exists('string', $data)) {
             $object->string = null;
         }
         if (\array_key_exists('bool', $data) && $data['bool'] !== null) {
             $object->bool = $data['bool'];
         }
-        elseif (\array_key_exists('bool', $data) && $data['bool'] === null) {
+        elseif (\array_key_exists('bool', $data)) {
             $object->bool = null;
         }
         if (\array_key_exists('integer', $data) && $data['integer'] !== null) {
             $object->integer = $data['integer'];
         }
-        elseif (\array_key_exists('integer', $data) && $data['integer'] === null) {
+        elseif (\array_key_exists('integer', $data)) {
             $object->integer = null;
         }
         if (\array_key_exists('float', $data) && $data['float'] !== null) {
             $object->float = $data['float'];
         }
-        elseif (\array_key_exists('float', $data) && $data['float'] === null) {
+        elseif (\array_key_exists('float', $data)) {
             $object->float = null;
         }
         if (\array_key_exists('array', $data) && $data['array'] !== null) {
@@ -74,7 +74,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $object->array = $values;
         }
-        elseif (\array_key_exists('array', $data) && $data['array'] === null) {
+        elseif (\array_key_exists('array', $data)) {
             $object->array = null;
         }
         if (\array_key_exists('object', $data) && $data['object'] !== null) {
@@ -84,13 +84,13 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $object->object = $values_1;
         }
-        elseif (\array_key_exists('object', $data) && $data['object'] === null) {
+        elseif (\array_key_exists('object', $data)) {
             $object->object = null;
         }
         if (\array_key_exists('subObject', $data) && $data['subObject'] !== null) {
             $object->subObject = $this->denormalizer->denormalize($data['subObject'], \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Model\TestSubObject::class, 'json', $context);
         }
-        elseif (\array_key_exists('subObject', $data) && $data['subObject'] === null) {
+        elseif (\array_key_exists('subObject', $data)) {
             $object->subObject = null;
         }
         return $object;
@@ -125,7 +125,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['object'] = $values_1;
         }
         if (array_key_exists('subObject', get_object_vars($data)) && null !== ($data->subObject ?? null)) {
-            $dataArray['subObject'] = $data->subObject === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Runtime\JsonObject($this->normalizer->normalize($data->subObject, 'json', $context));
+            $dataArray['subObject'] = new \Jane\Component\JsonSchema\Tests\Expected\TestDefault\Runtime\JsonObject($this->normalizer->normalize($data->subObject, 'json', $context));
         }
         return $dataArray;
     }

@@ -46,7 +46,7 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->name = $data['name'];
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        elseif (\array_key_exists('name', $data)) {
             $object->name = null;
         }
         if (\array_key_exists('contentIds', $data)) {
@@ -70,7 +70,7 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
             $object->expirationDate = $date;
         }
-        elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
+        elseif (\array_key_exists('expirationDate', $data)) {
             $object->expirationDate = null;
         }
         if (\array_key_exists('shareType', $data)) {
@@ -99,7 +99,7 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray['contentIds'] = $values;
         $value_1 = $data->audit;
         if (is_object($data->audit)) {
-            $value_1 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+            $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
         }
         $dataArray['audit'] = $value_1;
         if (array_key_exists('expirationDate', get_object_vars($data)) && null !== ($data->expirationDate ?? null)) {

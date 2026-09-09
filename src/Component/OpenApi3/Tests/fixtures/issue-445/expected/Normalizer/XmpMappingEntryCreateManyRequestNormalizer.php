@@ -44,7 +44,7 @@ class XmpMappingEntryCreateManyRequestNormalizer implements DenormalizerInterfac
             }
             $object->items = $values;
         }
-        elseif (\array_key_exists('items', $data) && $data['items'] === null) {
+        elseif (\array_key_exists('items', $data)) {
             $object->items = null;
         }
         return $object;

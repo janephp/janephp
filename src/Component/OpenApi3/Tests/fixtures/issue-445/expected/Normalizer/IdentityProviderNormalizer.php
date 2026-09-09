@@ -45,7 +45,7 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
             $object->claimMapping = $values;
             unset($data['claimMapping']);
         }
-        elseif (\array_key_exists('claimMapping', $data) && $data['claimMapping'] === null) {
+        elseif (\array_key_exists('claimMapping', $data)) {
             $object->claimMapping = null;
             unset($data['claimMapping']);
         }
@@ -53,7 +53,7 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
             $object->groupClaimType = $data['groupClaimType'];
             unset($data['groupClaimType']);
         }
-        elseif (\array_key_exists('groupClaimType', $data) && $data['groupClaimType'] === null) {
+        elseif (\array_key_exists('groupClaimType', $data)) {
             $object->groupClaimType = null;
             unset($data['groupClaimType']);
         }
@@ -65,7 +65,7 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
             $object->groupMapping = $values_1;
             unset($data['groupMapping']);
         }
-        elseif (\array_key_exists('groupMapping', $data) && $data['groupMapping'] === null) {
+        elseif (\array_key_exists('groupMapping', $data)) {
             $object->groupMapping = null;
             unset($data['groupMapping']);
         }
@@ -73,7 +73,7 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
             $object->fallbackUserRoleId = $data['fallbackUserRoleId'];
             unset($data['fallbackUserRoleId']);
         }
-        elseif (\array_key_exists('fallbackUserRoleId', $data) && $data['fallbackUserRoleId'] === null) {
+        elseif (\array_key_exists('fallbackUserRoleId', $data)) {
             $object->fallbackUserRoleId = null;
             unset($data['fallbackUserRoleId']);
         }
@@ -81,7 +81,7 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -89,7 +89,7 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
             $object->name = $data['name'];
             unset($data['name']);
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        elseif (\array_key_exists('name', $data)) {
             $object->name = null;
             unset($data['name']);
         }
@@ -97,7 +97,7 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
             $object->displayName = $data['displayName'];
             unset($data['displayName']);
         }
-        elseif (\array_key_exists('displayName', $data) && $data['displayName'] === null) {
+        elseif (\array_key_exists('displayName', $data)) {
             $object->displayName = null;
             unset($data['displayName']);
         }

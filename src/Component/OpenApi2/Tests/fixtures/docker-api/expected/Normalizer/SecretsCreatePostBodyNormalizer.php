@@ -78,10 +78,10 @@ class SecretsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['Data'] = $data->data;
         }
         if (array_key_exists('driver', get_object_vars($data)) && null !== ($data->driver ?? null)) {
-            $dataArray['Driver'] = $data->driver === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->driver, 'json', $context));
+            $dataArray['Driver'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->driver, 'json', $context));
         }
         if (array_key_exists('templating', get_object_vars($data)) && null !== ($data->templating ?? null)) {
-            $dataArray['Templating'] = $data->templating === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->templating, 'json', $context));
+            $dataArray['Templating'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->templating, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SecretsCreatePostBodyConstraint());

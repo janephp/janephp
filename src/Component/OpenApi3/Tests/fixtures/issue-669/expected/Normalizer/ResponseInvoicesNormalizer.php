@@ -75,10 +75,10 @@ class ResponseInvoicesNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['invoices'] = $values;
         }
         if (array_key_exists('invoicePreview', get_object_vars($data)) && null !== ($data->invoicePreview ?? null)) {
-            $dataArray['invoice_preview'] = $data->invoicePreview === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->invoicePreview, 'json', $context));
+            $dataArray['invoice_preview'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->invoicePreview, 'json', $context));
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = $data->links === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $dataArray['links'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         }
         $dataArray['meta'] = $data->meta === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->meta, 'json', $context));
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

@@ -172,7 +172,7 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['phase_last_updated_at'] = $data->phaseLastUpdatedAt->format('Y-m-d\TH:i:sP');
         }
         if (array_key_exists('progress', get_object_vars($data)) && null !== ($data->progress ?? null)) {
-            $dataArray['progress'] = $data->progress === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->progress, 'json', $context));
+            $dataArray['progress'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->progress, 'json', $context));
         }
         if (array_key_exists('services', get_object_vars($data)) && null !== ($data->services ?? null)) {
             $values_2 = [];
@@ -182,7 +182,7 @@ class AppsDeploymentNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['services'] = $values_2;
         }
         if (array_key_exists('spec', get_object_vars($data)) && null !== ($data->spec ?? null)) {
-            $dataArray['spec'] = $data->spec === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
+            $dataArray['spec'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->spec, 'json', $context));
         }
         if (array_key_exists('staticSites', get_object_vars($data)) && null !== ($data->staticSites ?? null)) {
             $values_3 = [];

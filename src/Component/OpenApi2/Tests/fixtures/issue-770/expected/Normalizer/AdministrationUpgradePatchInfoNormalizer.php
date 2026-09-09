@@ -49,10 +49,10 @@ class AdministrationUpgradePatchInfoNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('clusterOperationProgress', get_object_vars($data)) && null !== ($data->clusterOperationProgress ?? null)) {
-            $dataArray['clusterOperationProgress'] = $data->clusterOperationProgress === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clusterOperationProgress, 'json', $context));
+            $dataArray['clusterOperationProgress'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->clusterOperationProgress, 'json', $context));
         }
         if (array_key_exists('uploadPatchInfo', get_object_vars($data)) && null !== ($data->uploadPatchInfo ?? null)) {
-            $dataArray['uploadPatchInfo'] = $data->uploadPatchInfo === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->uploadPatchInfo, 'json', $context));
+            $dataArray['uploadPatchInfo'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->uploadPatchInfo, 'json', $context));
         }
         return $dataArray;
     }

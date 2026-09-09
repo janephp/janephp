@@ -53,7 +53,7 @@ class XmpWritebackCompletedEventNormalizer implements DenormalizerInterface, Nor
             $object->outputDocId = $data['outputDocId'];
             unset($data['outputDocId']);
         }
-        elseif (\array_key_exists('outputDocId', $data) && $data['outputDocId'] === null) {
+        elseif (\array_key_exists('outputDocId', $data)) {
             $object->outputDocId = null;
             unset($data['outputDocId']);
         }

@@ -40,13 +40,13 @@ class FileTransferOutputNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
             $object->filePath = $data['filePath'];
         }
-        elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
+        elseif (\array_key_exists('filePath', $data)) {
             $object->filePath = null;
         }
         if (\array_key_exists('outputSource', $data)) {

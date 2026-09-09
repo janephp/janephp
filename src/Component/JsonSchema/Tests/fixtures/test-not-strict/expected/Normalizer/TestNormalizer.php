@@ -40,7 +40,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('onlyNull', $data) && $data['onlyNull'] !== null) {
             $object->onlyNull = $data['onlyNull'];
         }
-        elseif (\array_key_exists('onlyNull', $data) && $data['onlyNull'] === null) {
+        elseif (\array_key_exists('onlyNull', $data)) {
             $object->onlyNull = null;
         }
         if (\array_key_exists('nullOrString', $data) && $data['nullOrString'] !== null) {
@@ -52,7 +52,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $object->nullOrString = $value;
         }
-        elseif (\array_key_exists('nullOrString', $data) && $data['nullOrString'] === null) {
+        elseif (\array_key_exists('nullOrString', $data)) {
             $object->nullOrString = null;
         }
         if (\array_key_exists('array', $data) && $data['array'] !== null) {
@@ -62,7 +62,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $object->array = $values;
         }
-        elseif (\array_key_exists('array', $data) && $data['array'] === null) {
+        elseif (\array_key_exists('array', $data)) {
             $object->array = null;
         }
         if (\array_key_exists('object', $data) && $data['object'] !== null) {
@@ -72,7 +72,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $object->object = $values_1;
         }
-        elseif (\array_key_exists('object', $data) && $data['object'] === null) {
+        elseif (\array_key_exists('object', $data)) {
             $object->object = null;
         }
         return $object;

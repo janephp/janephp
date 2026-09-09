@@ -49,7 +49,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->description = $data['description'];
         }
-        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+        elseif (\array_key_exists('description', $data)) {
             $object->description = null;
         }
         if (\array_key_exists('creator', $data)) {
@@ -80,7 +80,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->layerSchemaIds = $values_1;
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
         if (\array_key_exists('data', $data) && $data['data'] !== null) {
@@ -90,7 +90,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->data = $value_4;
         }
-        elseif (\array_key_exists('data', $data) && $data['data'] === null) {
+        elseif (\array_key_exists('data', $data)) {
             $object->data = null;
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
@@ -100,7 +100,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->expirationDate = $date;
         }
-        elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
+        elseif (\array_key_exists('expirationDate', $data)) {
             $object->expirationDate = null;
         }
         if (\array_key_exists('expired', $data)) {
@@ -127,7 +127,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->schemas = $values_2;
         }
-        elseif (\array_key_exists('schemas', $data) && $data['schemas'] === null) {
+        elseif (\array_key_exists('schemas', $data)) {
             $object->schemas = null;
         }
         return $object;
@@ -142,12 +142,12 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $value = $data->creator;
         if (is_object($data->creator)) {
-            $value = $data->creator === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->creator, 'json', $context));
+            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->creator, 'json', $context));
         }
         $dataArray['creator'] = $value;
         $value_1 = $data->audit;
         if (is_object($data->audit)) {
-            $value_1 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+            $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
         }
         $dataArray['audit'] = $value_1;
         $values = [];
@@ -165,7 +165,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (array_key_exists('data', get_object_vars($data)) && null !== ($data->data ?? null)) {
             $value_4 = $data->data;
             if (is_object($data->data)) {
-                $value_4 = $data->data === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->data, 'json', $context));
+                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->data, 'json', $context));
             }
             $dataArray['data'] = $value_4;
         }

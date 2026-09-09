@@ -40,13 +40,13 @@ class UserEmailNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
             $object->firstName = $data['firstName'];
         }
-        elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
+        elseif (\array_key_exists('firstName', $data)) {
             $object->firstName = null;
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
             $object->lastName = $data['lastName'];
         }
-        elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
+        elseif (\array_key_exists('lastName', $data)) {
             $object->lastName = null;
         }
         if (\array_key_exists('emailAddress', $data)) {

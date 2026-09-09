@@ -211,13 +211,13 @@ class AppSpecNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['databases'] = $values_6;
         }
         if (array_key_exists('ingress', get_object_vars($data)) && null !== ($data->ingress ?? null)) {
-            $dataArray['ingress'] = $data->ingress === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->ingress, 'json', $context));
+            $dataArray['ingress'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->ingress, 'json', $context));
         }
         if (array_key_exists('egress', get_object_vars($data)) && null !== ($data->egress ?? null)) {
-            $dataArray['egress'] = $data->egress === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->egress, 'json', $context));
+            $dataArray['egress'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->egress, 'json', $context));
         }
         if (array_key_exists('maintenance', get_object_vars($data)) && null !== ($data->maintenance ?? null)) {
-            $dataArray['maintenance'] = $data->maintenance === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->maintenance, 'json', $context));
+            $dataArray['maintenance'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->maintenance, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {

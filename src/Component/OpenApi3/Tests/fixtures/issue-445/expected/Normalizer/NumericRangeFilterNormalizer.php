@@ -67,7 +67,7 @@ class NumericRangeFilterNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray['field'] = $data->field;
         $value = $data->range;
         if (is_object($data->range)) {
-            $value = $data->range === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->range, 'json', $context));
+            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->range, 'json', $context));
         }
         $dataArray['range'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

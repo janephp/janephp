@@ -40,7 +40,7 @@ class SortInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('field', $data) && $data['field'] !== null) {
             $object->field = $data['field'];
         }
-        elseif (\array_key_exists('field', $data) && $data['field'] === null) {
+        elseif (\array_key_exists('field', $data)) {
             $object->field = null;
         }
         if (\array_key_exists('direction', $data)) {

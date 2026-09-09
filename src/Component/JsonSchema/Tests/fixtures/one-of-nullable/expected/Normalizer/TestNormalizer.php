@@ -46,7 +46,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $object->id = $value;
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         return $object;
@@ -59,7 +59,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             if (is_null($data->id)) {
                 $value = $data->id;
             } elseif (is_object($data->id)) {
-                $value = $data->id === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Runtime\JsonObject($this->normalizer->normalize($data->id, 'json', $context));
+                $value = new \Jane\Component\JsonSchema\Tests\Expected\OneOfNullable\Runtime\JsonObject($this->normalizer->normalize($data->id, 'json', $context));
             }
             $dataArray['id'] = $value;
         }

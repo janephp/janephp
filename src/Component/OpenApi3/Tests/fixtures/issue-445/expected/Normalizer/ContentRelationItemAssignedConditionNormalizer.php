@@ -41,7 +41,7 @@ class ContentRelationItemAssignedConditionNormalizer implements DenormalizerInte
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -53,7 +53,7 @@ class ContentRelationItemAssignedConditionNormalizer implements DenormalizerInte
             $object->contentId = $data['contentId'];
             unset($data['contentId']);
         }
-        elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
+        elseif (\array_key_exists('contentId', $data)) {
             $object->contentId = null;
             unset($data['contentId']);
         }
@@ -61,7 +61,7 @@ class ContentRelationItemAssignedConditionNormalizer implements DenormalizerInte
             $object->fieldPath = $data['fieldPath'];
             unset($data['fieldPath']);
         }
-        elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
+        elseif (\array_key_exists('fieldPath', $data)) {
             $object->fieldPath = null;
             unset($data['fieldPath']);
         }

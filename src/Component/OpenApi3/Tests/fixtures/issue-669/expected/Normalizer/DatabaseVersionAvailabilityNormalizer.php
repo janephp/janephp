@@ -41,7 +41,7 @@ class DatabaseVersionAvailabilityNormalizer implements DenormalizerInterface, No
             $object->endOfLife = $data['end_of_life'];
             unset($data['end_of_life']);
         }
-        elseif (\array_key_exists('end_of_life', $data) && $data['end_of_life'] === null) {
+        elseif (\array_key_exists('end_of_life', $data)) {
             $object->endOfLife = null;
             unset($data['end_of_life']);
         }
@@ -49,7 +49,7 @@ class DatabaseVersionAvailabilityNormalizer implements DenormalizerInterface, No
             $object->endOfAvailability = $data['end_of_availability'];
             unset($data['end_of_availability']);
         }
-        elseif (\array_key_exists('end_of_availability', $data) && $data['end_of_availability'] === null) {
+        elseif (\array_key_exists('end_of_availability', $data)) {
             $object->endOfAvailability = null;
             unset($data['end_of_availability']);
         }

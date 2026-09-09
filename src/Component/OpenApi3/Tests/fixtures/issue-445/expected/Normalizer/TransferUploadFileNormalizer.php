@@ -41,7 +41,7 @@ class TransferUploadFileNormalizer implements DenormalizerInterface, NormalizerI
             $object->identifier = $data['identifier'];
             unset($data['identifier']);
         }
-        elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
+        elseif (\array_key_exists('identifier', $data)) {
             $object->identifier = null;
             unset($data['identifier']);
         }
@@ -49,7 +49,7 @@ class TransferUploadFileNormalizer implements DenormalizerInterface, NormalizerI
             $object->requestId = $data['requestId'];
             unset($data['requestId']);
         }
-        elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
+        elseif (\array_key_exists('requestId', $data)) {
             $object->requestId = null;
             unset($data['requestId']);
         }

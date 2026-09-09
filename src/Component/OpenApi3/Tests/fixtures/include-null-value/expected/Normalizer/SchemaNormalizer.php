@@ -48,7 +48,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->attribute2 = $data['attribute2'];
             unset($data['attribute2']);
         }
-        elseif (\array_key_exists('attribute2', $data) && $data['attribute2'] === null) {
+        elseif (\array_key_exists('attribute2', $data)) {
             $object->attribute2 = null;
             unset($data['attribute2']);
         }
@@ -60,7 +60,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->attribute4 = $data['attribute4'];
             unset($data['attribute4']);
         }
-        elseif (\array_key_exists('attribute4', $data) && $data['attribute4'] === null) {
+        elseif (\array_key_exists('attribute4', $data)) {
             $object->attribute4 = null;
             unset($data['attribute4']);
         }
@@ -84,7 +84,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->dateNullableProperty = $date_1;
             unset($data['dateNullableProperty']);
         }
-        elseif (\array_key_exists('dateNullableProperty', $data) && $data['dateNullableProperty'] === null) {
+        elseif (\array_key_exists('dateNullableProperty', $data)) {
             $object->dateNullableProperty = null;
             unset($data['dateNullableProperty']);
         }

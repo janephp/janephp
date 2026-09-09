@@ -45,7 +45,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -53,7 +53,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -65,7 +65,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -77,7 +77,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
-        elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
+        elseif (\array_key_exists('customerId', $data)) {
             $object->customerId = null;
             unset($data['customerId']);
         }
@@ -85,7 +85,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
-        elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
+        elseif (\array_key_exists('customerAlias', $data)) {
             $object->customerAlias = null;
             unset($data['customerAlias']);
         }
@@ -93,7 +93,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $object->userId = $data['userId'];
             unset($data['userId']);
         }
-        elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
+        elseif (\array_key_exists('userId', $data)) {
             $object->userId = null;
             unset($data['userId']);
         }
@@ -101,7 +101,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $object->continuationBusinessProcessId = $data['continuationBusinessProcessId'];
             unset($data['continuationBusinessProcessId']);
         }
-        elseif (\array_key_exists('continuationBusinessProcessId', $data) && $data['continuationBusinessProcessId'] === null) {
+        elseif (\array_key_exists('continuationBusinessProcessId', $data)) {
             $object->continuationBusinessProcessId = null;
             unset($data['continuationBusinessProcessId']);
         }
@@ -109,7 +109,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $object->precedingBusinessProcessId = $data['precedingBusinessProcessId'];
             unset($data['precedingBusinessProcessId']);
         }
-        elseif (\array_key_exists('precedingBusinessProcessId', $data) && $data['precedingBusinessProcessId'] === null) {
+        elseif (\array_key_exists('precedingBusinessProcessId', $data)) {
             $object->precedingBusinessProcessId = null;
             unset($data['precedingBusinessProcessId']);
         }
@@ -121,7 +121,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $object->precedingBusinessProcessException = $value;
             unset($data['precedingBusinessProcessException']);
         }
-        elseif (\array_key_exists('precedingBusinessProcessException', $data) && $data['precedingBusinessProcessException'] === null) {
+        elseif (\array_key_exists('precedingBusinessProcessException', $data)) {
             $object->precedingBusinessProcessException = null;
             unset($data['precedingBusinessProcessException']);
         }
@@ -169,7 +169,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
         if (array_key_exists('precedingBusinessProcessException', get_object_vars($data)) && null !== ($data->precedingBusinessProcessException ?? null)) {
             $value = $data->precedingBusinessProcessException;
             if (is_object($data->precedingBusinessProcessException)) {
-                $value = $data->precedingBusinessProcessException === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->precedingBusinessProcessException, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->precedingBusinessProcessException, 'json', $context));
             }
             $dataArray['precedingBusinessProcessException'] = $value;
         }

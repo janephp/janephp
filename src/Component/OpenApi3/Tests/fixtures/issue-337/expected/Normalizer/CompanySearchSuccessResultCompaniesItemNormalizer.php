@@ -117,7 +117,7 @@ class CompanySearchSuccessResultCompaniesItemNormalizer implements DenormalizerI
             $dataArray['regNo'] = $data->regNo;
         }
         if (array_key_exists('vatNo', get_object_vars($data)) && null !== ($data->vatNo ?? null)) {
-            $dataArray['vatNo'] = $data->vatNo === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->vatNo, 'json', $context));
+            $dataArray['vatNo'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->vatNo, 'json', $context));
         }
         if (array_key_exists('safeNo', get_object_vars($data)) && null !== ($data->safeNo ?? null)) {
             $dataArray['safeNo'] = $data->safeNo;
@@ -141,16 +141,16 @@ class CompanySearchSuccessResultCompaniesItemNormalizer implements DenormalizerI
             $dataArray['activityCode'] = $data->activityCode;
         }
         if (array_key_exists('tradingNames', get_object_vars($data)) && null !== ($data->tradingNames ?? null)) {
-            $dataArray['tradingNames'] = $data->tradingNames === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->tradingNames, 'json', $context));
+            $dataArray['tradingNames'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->tradingNames, 'json', $context));
         }
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
-            $dataArray['address'] = $data->address === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+            $dataArray['address'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
         }
         if (array_key_exists('dateOfLatestChange', get_object_vars($data)) && null !== ($data->dateOfLatestChange ?? null)) {
-            $dataArray['dateOfLatestChange'] = $data->dateOfLatestChange === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->dateOfLatestChange, 'json', $context));
+            $dataArray['dateOfLatestChange'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->dateOfLatestChange, 'json', $context));
         }
         if (array_key_exists('dateOfLatestCAccounts', get_object_vars($data)) && null !== ($data->dateOfLatestCAccounts ?? null)) {
-            $dataArray['dateOfLatestCAccounts'] = $data->dateOfLatestCAccounts === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->dateOfLatestCAccounts, 'json', $context));
+            $dataArray['dateOfLatestCAccounts'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->dateOfLatestCAccounts, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

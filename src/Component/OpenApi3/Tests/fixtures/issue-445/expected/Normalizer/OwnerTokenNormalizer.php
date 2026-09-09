@@ -40,13 +40,13 @@ class OwnerTokenNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
             $object->userId = $data['userId'];
         }
-        elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
+        elseif (\array_key_exists('userId', $data)) {
             $object->userId = null;
         }
         return $object;

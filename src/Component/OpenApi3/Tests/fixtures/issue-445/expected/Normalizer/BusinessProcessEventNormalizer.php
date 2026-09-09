@@ -53,7 +53,7 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             $object->businessProcessId = $data['businessProcessId'];
             unset($data['businessProcessId']);
         }
-        elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
+        elseif (\array_key_exists('businessProcessId', $data)) {
             $object->businessProcessId = null;
             unset($data['businessProcessId']);
         }
@@ -65,7 +65,7 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             $object->lifeCycle = $value;
             unset($data['lifeCycle']);
         }
-        elseif (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] === null) {
+        elseif (\array_key_exists('lifeCycle', $data)) {
             $object->lifeCycle = null;
             unset($data['lifeCycle']);
         }
@@ -73,7 +73,7 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             $object->state = $data['state'];
             unset($data['state']);
         }
-        elseif (\array_key_exists('state', $data) && $data['state'] === null) {
+        elseif (\array_key_exists('state', $data)) {
             $object->state = null;
             unset($data['state']);
         }

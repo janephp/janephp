@@ -93,7 +93,7 @@ class BookingsBookingIdGetXmlResponse200Normalizer implements DenormalizerInterf
             $dataArray['has_dog'] = $data->hasDog;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = $data->links === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $dataArray['links'] = new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

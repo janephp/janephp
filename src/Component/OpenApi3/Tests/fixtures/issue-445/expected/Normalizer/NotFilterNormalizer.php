@@ -62,7 +62,7 @@ class NotFilterNormalizer implements DenormalizerInterface, NormalizerInterface,
         $dataArray['kind'] = $data->kind;
         $value = $data->filter;
         if (is_object($data->filter)) {
-            $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
         }
         $dataArray['filter'] = $value;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

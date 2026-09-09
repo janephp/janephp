@@ -68,10 +68,10 @@ class AssociatedResourceStatusNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('droplet', get_object_vars($data)) && null !== ($data->droplet ?? null)) {
-            $dataArray['droplet'] = $data->droplet === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet, 'json', $context));
+            $dataArray['droplet'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplet, 'json', $context));
         }
         if (array_key_exists('resources', get_object_vars($data)) && null !== ($data->resources ?? null)) {
-            $dataArray['resources'] = $data->resources === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->resources, 'json', $context));
+            $dataArray['resources'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->resources, 'json', $context));
         }
         if (array_key_exists('completedAt', get_object_vars($data)) && null !== ($data->completedAt ?? null)) {
             $dataArray['completed_at'] = $data->completedAt->format('Y-m-d\TH:i:sP');

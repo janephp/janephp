@@ -41,7 +41,7 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -53,7 +53,7 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
             $object->layerId = $data['layerId'];
             unset($data['layerId']);
         }
-        elseif (\array_key_exists('layerId', $data) && $data['layerId'] === null) {
+        elseif (\array_key_exists('layerId', $data)) {
             $object->layerId = null;
             unset($data['layerId']);
         }
@@ -65,7 +65,7 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
             $object->defaultValues = $values;
             unset($data['defaultValues']);
         }
-        elseif (\array_key_exists('defaultValues', $data) && $data['defaultValues'] === null) {
+        elseif (\array_key_exists('defaultValues', $data)) {
             $object->defaultValues = null;
             unset($data['defaultValues']);
         }

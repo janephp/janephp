@@ -43,7 +43,7 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->searchString = $data['searchString'];
         }
-        elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+        elseif (\array_key_exists('searchString', $data)) {
             $object->searchString = null;
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
@@ -53,7 +53,7 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
             }
             $object->searchBehaviors = $values;
         }
-        elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
+        elseif (\array_key_exists('searchBehaviors', $data)) {
             $object->searchBehaviors = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
@@ -63,7 +63,7 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
             }
             $object->filter = $value_1;
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
@@ -73,7 +73,7 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
             }
             $object->aggregationFilters = $values_1;
         }
-        elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
+        elseif (\array_key_exists('aggregationFilters', $data)) {
             $object->aggregationFilters = null;
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
@@ -93,7 +93,7 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
             }
             $object->schemaIds = $values_2;
         }
-        elseif (\array_key_exists('schemaIds', $data) && $data['schemaIds'] === null) {
+        elseif (\array_key_exists('schemaIds', $data)) {
             $object->schemaIds = null;
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
@@ -103,7 +103,7 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
             }
             $object->searchLanguages = $values_3;
         }
-        elseif (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] === null) {
+        elseif (\array_key_exists('searchLanguages', $data)) {
             $object->searchLanguages = null;
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
@@ -131,7 +131,7 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_1 = $data->filter;
             if (is_object($data->filter)) {
-                $value_1 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_1;
         }

@@ -72,7 +72,7 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
             $object->configuration = $value_1;
             unset($data['configuration']);
         }
-        elseif (\array_key_exists('configuration', $data) && $data['configuration'] === null) {
+        elseif (\array_key_exists('configuration', $data)) {
             $object->configuration = null;
             unset($data['configuration']);
         }
@@ -80,7 +80,7 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
             $object->requestId = $data['requestId'];
             unset($data['requestId']);
         }
-        elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
+        elseif (\array_key_exists('requestId', $data)) {
             $object->requestId = null;
             unset($data['requestId']);
         }
@@ -106,7 +106,7 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
         if (array_key_exists('configuration', get_object_vars($data)) && null !== ($data->configuration ?? null)) {
             $value_1 = $data->configuration;
             if (is_object($data->configuration)) {
-                $value_1 = $data->configuration === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->configuration, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->configuration, 'json', $context));
             }
             $dataArray['configuration'] = $value_1;
         }

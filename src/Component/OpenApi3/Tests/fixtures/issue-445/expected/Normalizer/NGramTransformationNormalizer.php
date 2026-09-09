@@ -41,7 +41,7 @@ class NGramTransformationNormalizer implements DenormalizerInterface, Normalizer
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -61,7 +61,7 @@ class NGramTransformationNormalizer implements DenormalizerInterface, Normalizer
             $object->maxWordLength = $data['maxWordLength'];
             unset($data['maxWordLength']);
         }
-        elseif (\array_key_exists('maxWordLength', $data) && $data['maxWordLength'] === null) {
+        elseif (\array_key_exists('maxWordLength', $data)) {
             $object->maxWordLength = null;
             unset($data['maxWordLength']);
         }

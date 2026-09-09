@@ -40,7 +40,7 @@ class SchemaOwnershipTransferRequestNormalizer implements DenormalizerInterface,
         if (\array_key_exists('transferUserId', $data) && $data['transferUserId'] !== null) {
             $object->transferUserId = $data['transferUserId'];
         }
-        elseif (\array_key_exists('transferUserId', $data) && $data['transferUserId'] === null) {
+        elseif (\array_key_exists('transferUserId', $data)) {
             $object->transferUserId = null;
         }
         return $object;

@@ -59,10 +59,10 @@ class PortalserviceCreateWebAuthenticationNormalizer implements DenormalizerInte
             $dataArray['description'] = $data->description;
         }
         if (array_key_exists('redirect', get_object_vars($data)) && null !== ($data->redirect ?? null)) {
-            $dataArray['redirect'] = $data->redirect === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->redirect, 'json', $context));
+            $dataArray['redirect'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->redirect, 'json', $context));
         }
         if (array_key_exists('webAuthenticationPortalCustomization', get_object_vars($data)) && null !== ($data->webAuthenticationPortalCustomization ?? null)) {
-            $dataArray['webAuthenticationPortalCustomization'] = $data->webAuthenticationPortalCustomization === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->webAuthenticationPortalCustomization, 'json', $context));
+            $dataArray['webAuthenticationPortalCustomization'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->webAuthenticationPortalCustomization, 'json', $context));
         }
         return $dataArray;
     }

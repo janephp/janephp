@@ -44,7 +44,7 @@ class ContentReferencesResultNormalizer implements DenormalizerInterface, Normal
             }
             $object->metadataReferences = $value;
         }
-        elseif (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] === null) {
+        elseif (\array_key_exists('metadataReferences', $data)) {
             $object->metadataReferences = null;
         }
         if (\array_key_exists('shareReferences', $data) && $data['shareReferences'] !== null) {
@@ -54,7 +54,7 @@ class ContentReferencesResultNormalizer implements DenormalizerInterface, Normal
             }
             $object->shareReferences = $value_1;
         }
-        elseif (\array_key_exists('shareReferences', $data) && $data['shareReferences'] === null) {
+        elseif (\array_key_exists('shareReferences', $data)) {
             $object->shareReferences = null;
         }
         return $object;
@@ -65,14 +65,14 @@ class ContentReferencesResultNormalizer implements DenormalizerInterface, Normal
         if (array_key_exists('metadataReferences', get_object_vars($data)) && null !== ($data->metadataReferences ?? null)) {
             $value = $data->metadataReferences;
             if (is_object($data->metadataReferences)) {
-                $value = $data->metadataReferences === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->metadataReferences, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->metadataReferences, 'json', $context));
             }
             $dataArray['metadataReferences'] = $value;
         }
         if (array_key_exists('shareReferences', get_object_vars($data)) && null !== ($data->shareReferences ?? null)) {
             $value_1 = $data->shareReferences;
             if (is_object($data->shareReferences)) {
-                $value_1 = $data->shareReferences === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shareReferences, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shareReferences, 'json', $context));
             }
             $dataArray['shareReferences'] = $value_1;
         }

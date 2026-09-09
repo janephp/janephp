@@ -47,7 +47,7 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->sort = $values;
         }
-        elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
+        elseif (\array_key_exists('sort', $data)) {
             $object->sort = null;
         }
         if (\array_key_exists('sortOrder', $data)) {
@@ -70,7 +70,7 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('searchIndexId', $data) && $data['searchIndexId'] !== null) {
             $object->searchIndexId = $data['searchIndexId'];
         }
-        elseif (\array_key_exists('searchIndexId', $data) && $data['searchIndexId'] === null) {
+        elseif (\array_key_exists('searchIndexId', $data)) {
             $object->searchIndexId = null;
         }
         if (\array_key_exists('grantedUserRoleIds', $data) && $data['grantedUserRoleIds'] !== null) {
@@ -80,7 +80,7 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->grantedUserRoleIds = $values_3;
         }
-        elseif (\array_key_exists('grantedUserRoleIds', $data) && $data['grantedUserRoleIds'] === null) {
+        elseif (\array_key_exists('grantedUserRoleIds', $data)) {
             $object->grantedUserRoleIds = null;
         }
         if (\array_key_exists('aggregations', $data) && $data['aggregations'] !== null) {
@@ -90,7 +90,7 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->aggregations = $values_4;
         }
-        elseif (\array_key_exists('aggregations', $data) && $data['aggregations'] === null) {
+        elseif (\array_key_exists('aggregations', $data)) {
             $object->aggregations = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
@@ -100,7 +100,7 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->filter = $value_5;
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
         if (\array_key_exists('extendedSimpleSearchFields', $data) && $data['extendedSimpleSearchFields'] !== null) {
@@ -110,7 +110,7 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->extendedSimpleSearchFields = $values_5;
         }
-        elseif (\array_key_exists('extendedSimpleSearchFields', $data) && $data['extendedSimpleSearchFields'] === null) {
+        elseif (\array_key_exists('extendedSimpleSearchFields', $data)) {
             $object->extendedSimpleSearchFields = null;
         }
         if (\array_key_exists('missingResultsDisplayPatterns', $data) && $data['missingResultsDisplayPatterns'] !== null) {
@@ -124,7 +124,7 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $object->missingResultsDisplayPatterns = $value_7;
         }
-        elseif (\array_key_exists('missingResultsDisplayPatterns', $data) && $data['missingResultsDisplayPatterns'] === null) {
+        elseif (\array_key_exists('missingResultsDisplayPatterns', $data)) {
             $object->missingResultsDisplayPatterns = null;
         }
         if (\array_key_exists('viewForAll', $data)) {
@@ -173,7 +173,7 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_5 = $data->filter;
             if (is_object($data->filter)) {
-                $value_5 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value_5 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_5;
         }

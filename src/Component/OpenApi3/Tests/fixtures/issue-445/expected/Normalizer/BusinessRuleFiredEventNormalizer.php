@@ -57,7 +57,7 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
             $object->details = $values;
             unset($data['details']);
         }
-        elseif (\array_key_exists('details', $data) && $data['details'] === null) {
+        elseif (\array_key_exists('details', $data)) {
             $object->details = null;
             unset($data['details']);
         }

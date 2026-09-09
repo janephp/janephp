@@ -79,7 +79,7 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['error'] = $data->error;
         }
         if (array_key_exists('errorDetail', get_object_vars($data)) && null !== ($data->errorDetail ?? null)) {
-            $dataArray['errorDetail'] = $data->errorDetail === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->errorDetail, 'json', $context));
+            $dataArray['errorDetail'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->errorDetail, 'json', $context));
         }
         if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
             $dataArray['status'] = $data->status;
@@ -88,10 +88,10 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['progress'] = $data->progress;
         }
         if (array_key_exists('progressDetail', get_object_vars($data)) && null !== ($data->progressDetail ?? null)) {
-            $dataArray['progressDetail'] = $data->progressDetail === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->progressDetail, 'json', $context));
+            $dataArray['progressDetail'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->progressDetail, 'json', $context));
         }
         if (array_key_exists('aux', get_object_vars($data)) && null !== ($data->aux ?? null)) {
-            $dataArray['aux'] = $data->aux === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->aux, 'json', $context));
+            $dataArray['aux'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->aux, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\BuildInfoConstraint());

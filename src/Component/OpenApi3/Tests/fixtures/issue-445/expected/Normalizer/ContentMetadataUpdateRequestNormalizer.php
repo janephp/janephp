@@ -44,7 +44,7 @@ class ContentMetadataUpdateRequestNormalizer implements DenormalizerInterface, N
             }
             $object->layerSchemaIds = $values;
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
@@ -54,7 +54,7 @@ class ContentMetadataUpdateRequestNormalizer implements DenormalizerInterface, N
             }
             $object->content = $values_1;
         }
-        elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+        elseif (\array_key_exists('content', $data)) {
             $object->content = null;
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
@@ -64,7 +64,7 @@ class ContentMetadataUpdateRequestNormalizer implements DenormalizerInterface, N
             }
             $object->metadata = $values_2;
         }
-        elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
+        elseif (\array_key_exists('metadata', $data)) {
             $object->metadata = null;
         }
         if (\array_key_exists('layerSchemasUpdateOptions', $data)) {

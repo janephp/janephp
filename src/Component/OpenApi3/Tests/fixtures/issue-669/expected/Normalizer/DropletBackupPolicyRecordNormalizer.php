@@ -73,10 +73,10 @@ class DropletBackupPolicyRecordNormalizer implements DenormalizerInterface, Norm
             $dataArray['backup_enabled'] = $data->backupEnabled;
         }
         if (array_key_exists('backupPolicy', get_object_vars($data)) && null !== ($data->backupPolicy ?? null)) {
-            $dataArray['backup_policy'] = $data->backupPolicy === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy, 'json', $context));
+            $dataArray['backup_policy'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy, 'json', $context));
         }
         if (array_key_exists('nextBackupWindow', get_object_vars($data)) && null !== ($data->nextBackupWindow ?? null)) {
-            $dataArray['next_backup_window'] = $data->nextBackupWindow === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->nextBackupWindow, 'json', $context));
+            $dataArray['next_backup_window'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->nextBackupWindow, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -49,7 +49,7 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
             $object->spriteResizeAction = $value;
             unset($data['spriteResizeAction']);
         }
-        elseif (\array_key_exists('spriteResizeAction', $data) && $data['spriteResizeAction'] === null) {
+        elseif (\array_key_exists('spriteResizeAction', $data)) {
             $object->spriteResizeAction = null;
             unset($data['spriteResizeAction']);
         }
@@ -65,7 +65,7 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
             $object->extension = $data['extension'];
             unset($data['extension']);
         }
-        elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
+        elseif (\array_key_exists('extension', $data)) {
             $object->extension = null;
             unset($data['extension']);
         }
@@ -83,7 +83,7 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('spriteResizeAction', get_object_vars($data)) && null !== ($data->spriteResizeAction ?? null)) {
             $value = $data->spriteResizeAction;
             if (is_object($data->spriteResizeAction)) {
-                $value = $data->spriteResizeAction === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->spriteResizeAction, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->spriteResizeAction, 'json', $context));
             }
             $dataArray['spriteResizeAction'] = $value;
         }

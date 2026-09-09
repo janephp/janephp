@@ -99,7 +99,7 @@ class ApiCreateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
             $dataArray['name'] = $data->name;
         }
         if (array_key_exists('starMetric', get_object_vars($data)) && null !== ($data->starMetric ?? null)) {
-            $dataArray['star_metric'] = $data->starMetric === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric, 'json', $context));
+            $dataArray['star_metric'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->starMetric, 'json', $context));
         }
         if (array_key_exists('workspaceUuid', get_object_vars($data)) && null !== ($data->workspaceUuid ?? null)) {
             $dataArray['workspace_uuid'] = $data->workspaceUuid;

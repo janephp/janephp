@@ -52,31 +52,31 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('emailAddress', $data) && $data['emailAddress'] !== null) {
             $object->emailAddress = $data['emailAddress'];
         }
-        elseif (\array_key_exists('emailAddress', $data) && $data['emailAddress'] === null) {
+        elseif (\array_key_exists('emailAddress', $data)) {
             $object->emailAddress = null;
         }
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
             $object->firstName = $data['firstName'];
         }
-        elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
+        elseif (\array_key_exists('firstName', $data)) {
             $object->firstName = null;
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
             $object->lastName = $data['lastName'];
         }
-        elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
+        elseif (\array_key_exists('lastName', $data)) {
             $object->lastName = null;
         }
         if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
             $object->languageCode = $data['languageCode'];
         }
-        elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
+        elseif (\array_key_exists('languageCode', $data)) {
             $object->languageCode = null;
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
@@ -86,7 +86,7 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->address = $value;
         }
-        elseif (\array_key_exists('address', $data) && $data['address'] === null) {
+        elseif (\array_key_exists('address', $data)) {
             $object->address = null;
         }
         if (\array_key_exists('authorizationState', $data)) {
@@ -106,7 +106,7 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->userRights = $values;
         }
-        elseif (\array_key_exists('userRights', $data) && $data['userRights'] === null) {
+        elseif (\array_key_exists('userRights', $data)) {
             $object->userRights = null;
         }
         if (\array_key_exists('userRoleIds', $data) && $data['userRoleIds'] !== null) {
@@ -116,7 +116,7 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->userRoleIds = $values_1;
         }
-        elseif (\array_key_exists('userRoleIds', $data) && $data['userRoleIds'] === null) {
+        elseif (\array_key_exists('userRoleIds', $data)) {
             $object->userRoleIds = null;
         }
         if (\array_key_exists('termsConsentExpired', $data)) {
@@ -129,7 +129,7 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $object->systemUserRoles = $values_2;
         }
-        elseif (\array_key_exists('systemUserRoles', $data) && $data['systemUserRoles'] === null) {
+        elseif (\array_key_exists('systemUserRoles', $data)) {
             $object->systemUserRoles = null;
         }
         if (\array_key_exists('isDeveloper', $data)) {
@@ -161,7 +161,7 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
             $value = $data->address;
             if (is_object($data->address)) {
-                $value = $data->address === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
             }
             $dataArray['address'] = $value;
         }

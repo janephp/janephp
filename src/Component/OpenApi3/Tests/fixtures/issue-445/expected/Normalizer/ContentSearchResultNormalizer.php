@@ -60,7 +60,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
             $object->pageToken = $data['pageToken'];
             unset($data['pageToken']);
         }
-        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+        elseif (\array_key_exists('pageToken', $data)) {
             $object->pageToken = null;
             unset($data['pageToken']);
         }
@@ -68,7 +68,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
             $object->searchString = $data['searchString'];
             unset($data['searchString']);
         }
-        elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+        elseif (\array_key_exists('searchString', $data)) {
             $object->searchString = null;
             unset($data['searchString']);
         }
@@ -84,7 +84,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
             $object->queryDebugInformation = $values_1;
             unset($data['queryDebugInformation']);
         }
-        elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
+        elseif (\array_key_exists('queryDebugInformation', $data)) {
             $object->queryDebugInformation = null;
             unset($data['queryDebugInformation']);
         }
@@ -96,7 +96,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
             $object->aggregationResults = $values_2;
             unset($data['aggregationResults']);
         }
-        elseif (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] === null) {
+        elseif (\array_key_exists('aggregationResults', $data)) {
             $object->aggregationResults = null;
             unset($data['aggregationResults']);
         }
@@ -108,7 +108,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
             $object->rightsAggregationsCounts = $values_3;
             unset($data['rightsAggregationsCounts']);
         }
-        elseif (\array_key_exists('rightsAggregationsCounts', $data) && $data['rightsAggregationsCounts'] === null) {
+        elseif (\array_key_exists('rightsAggregationsCounts', $data)) {
             $object->rightsAggregationsCounts = null;
             unset($data['rightsAggregationsCounts']);
         }

@@ -49,7 +49,7 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('Details', $data) && $data['Details'] !== null) {
             $object->details = $data['Details'];
         }
-        elseif (\array_key_exists('Details', $data) && $data['Details'] === null) {
+        elseif (\array_key_exists('Details', $data)) {
             $object->details = null;
         }
         return $object;

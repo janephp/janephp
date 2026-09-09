@@ -41,7 +41,7 @@ class TakeArrayValueTransformationNormalizer implements DenormalizerInterface, N
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -53,7 +53,7 @@ class TakeArrayValueTransformationNormalizer implements DenormalizerInterface, N
             $object->index = $data['index'];
             unset($data['index']);
         }
-        elseif (\array_key_exists('index', $data) && $data['index'] === null) {
+        elseif (\array_key_exists('index', $data)) {
             $object->index = null;
             unset($data['index']);
         }

@@ -99,7 +99,7 @@ class PortalserviceCreateHotspot20WlanProfileNormalizer implements DenormalizerI
         }
         $dataArray['defaultIdentityProvider'] = $data->defaultIdentityProvider === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->defaultIdentityProvider, 'json', $context));
         if (array_key_exists('signupSsid', get_object_vars($data)) && null !== ($data->signupSsid ?? null)) {
-            $dataArray['signupSsid'] = $data->signupSsid === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->signupSsid, 'json', $context));
+            $dataArray['signupSsid'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->signupSsid, 'json', $context));
         }
         $dataArray['internetOption'] = $data->internetOption;
         $dataArray['accessNetworkType'] = $data->accessNetworkType;

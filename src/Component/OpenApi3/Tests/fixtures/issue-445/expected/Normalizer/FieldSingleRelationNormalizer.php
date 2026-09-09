@@ -60,7 +60,7 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
             $object->indexId = $data['indexId'];
             unset($data['indexId']);
         }
-        elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
+        elseif (\array_key_exists('indexId', $data)) {
             $object->indexId = null;
             unset($data['indexId']);
         }
@@ -68,7 +68,7 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
             $object->fieldNamespace = $data['fieldNamespace'];
             unset($data['fieldNamespace']);
         }
-        elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
+        elseif (\array_key_exists('fieldNamespace', $data)) {
             $object->fieldNamespace = null;
             unset($data['fieldNamespace']);
         }
@@ -84,7 +84,7 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
             $object->names = $value;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -100,7 +100,7 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
             $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
             unset($data['descriptions']);
         }
@@ -140,7 +140,7 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
             $object->schemaIndexingInfo = $value_4;
             unset($data['schemaIndexingInfo']);
         }
-        elseif (\array_key_exists('schemaIndexingInfo', $data) && $data['schemaIndexingInfo'] === null) {
+        elseif (\array_key_exists('schemaIndexingInfo', $data)) {
             $object->schemaIndexingInfo = null;
             unset($data['schemaIndexingInfo']);
         }
@@ -201,7 +201,7 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('schemaIndexingInfo', get_object_vars($data)) && null !== ($data->schemaIndexingInfo ?? null)) {
             $value_4 = $data->schemaIndexingInfo;
             if (is_object($data->schemaIndexingInfo)) {
-                $value_4 = $data->schemaIndexingInfo === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaIndexingInfo, 'json', $context));
+                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaIndexingInfo, 'json', $context));
             }
             $dataArray['schemaIndexingInfo'] = $value_4;
         }

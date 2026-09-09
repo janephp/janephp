@@ -40,13 +40,13 @@ class ContentShareReferenceNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->name = $data['name'];
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        elseif (\array_key_exists('name', $data)) {
             $object->name = null;
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
@@ -56,7 +56,7 @@ class ContentShareReferenceNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->audit = $value;
         }
-        elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
+        elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
         if (\array_key_exists('shareType', $data)) {
@@ -69,7 +69,7 @@ class ContentShareReferenceNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('emailAddress', $data) && $data['emailAddress'] !== null) {
             $object->emailAddress = $data['emailAddress'];
         }
-        elseif (\array_key_exists('emailAddress', $data) && $data['emailAddress'] === null) {
+        elseif (\array_key_exists('emailAddress', $data)) {
             $object->emailAddress = null;
         }
         return $object;
@@ -86,7 +86,7 @@ class ContentShareReferenceNormalizer implements DenormalizerInterface, Normaliz
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value = $data->audit;
             if (is_object($data->audit)) {
-                $value = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value;
         }

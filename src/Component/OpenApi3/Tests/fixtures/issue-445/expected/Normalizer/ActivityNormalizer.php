@@ -44,7 +44,7 @@ class ActivityNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->creationDate = $date;
         }
-        elseif (\array_key_exists('creationDate', $data) && $data['creationDate'] === null) {
+        elseif (\array_key_exists('creationDate', $data)) {
             $object->creationDate = null;
         }
         if (\array_key_exists('modificationDate', $data) && $data['modificationDate'] !== null) {
@@ -54,7 +54,7 @@ class ActivityNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->modificationDate = $date_1;
         }
-        elseif (\array_key_exists('modificationDate', $data) && $data['modificationDate'] === null) {
+        elseif (\array_key_exists('modificationDate', $data)) {
             $object->modificationDate = null;
         }
         return $object;

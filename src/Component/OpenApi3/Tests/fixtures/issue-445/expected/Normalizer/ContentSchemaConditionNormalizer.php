@@ -41,7 +41,7 @@ class ContentSchemaConditionNormalizer implements DenormalizerInterface, Normali
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -53,7 +53,7 @@ class ContentSchemaConditionNormalizer implements DenormalizerInterface, Normali
             $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
         }
-        elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
+        elseif (\array_key_exists('schemaId', $data)) {
             $object->schemaId = null;
             unset($data['schemaId']);
         }

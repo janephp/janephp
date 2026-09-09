@@ -52,7 +52,7 @@ class ApiMoveAgentsToWorkspaceOutputNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if (array_key_exists('workspace', get_object_vars($data)) && null !== ($data->workspace ?? null)) {
-            $dataArray['workspace'] = $data->workspace === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->workspace, 'json', $context));
+            $dataArray['workspace'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->workspace, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -40,19 +40,19 @@ class BusinessRuleTracedTransformationNormalizer implements DenormalizerInterfac
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->traceRefId = $data['traceRefId'];
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
         }
         if (\array_key_exists('input', $data) && $data['input'] !== null) {
             $object->input = $data['input'];
         }
-        elseif (\array_key_exists('input', $data) && $data['input'] === null) {
+        elseif (\array_key_exists('input', $data)) {
             $object->input = null;
         }
         if (\array_key_exists('output', $data) && $data['output'] !== null) {
             $object->output = $data['output'];
         }
-        elseif (\array_key_exists('output', $data) && $data['output'] === null) {
+        elseif (\array_key_exists('output', $data)) {
             $object->output = null;
         }
         return $object;

@@ -40,31 +40,31 @@ class SourceOutputFormatsNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('image', $data) && $data['image'] !== null) {
             $object->image = $data['image'];
         }
-        elseif (\array_key_exists('image', $data) && $data['image'] === null) {
+        elseif (\array_key_exists('image', $data)) {
             $object->image = null;
         }
         if (\array_key_exists('video', $data) && $data['video'] !== null) {
             $object->video = $data['video'];
         }
-        elseif (\array_key_exists('video', $data) && $data['video'] === null) {
+        elseif (\array_key_exists('video', $data)) {
             $object->video = null;
         }
         if (\array_key_exists('document', $data) && $data['document'] !== null) {
             $object->document = $data['document'];
         }
-        elseif (\array_key_exists('document', $data) && $data['document'] === null) {
+        elseif (\array_key_exists('document', $data)) {
             $object->document = null;
         }
         if (\array_key_exists('audio', $data) && $data['audio'] !== null) {
             $object->audio = $data['audio'];
         }
-        elseif (\array_key_exists('audio', $data) && $data['audio'] === null) {
+        elseif (\array_key_exists('audio', $data)) {
             $object->audio = null;
         }
         if (\array_key_exists('vector', $data) && $data['vector'] !== null) {
             $object->vector = $data['vector'];
         }
-        elseif (\array_key_exists('vector', $data) && $data['vector'] === null) {
+        elseif (\array_key_exists('vector', $data)) {
             $object->vector = null;
         }
         return $object;

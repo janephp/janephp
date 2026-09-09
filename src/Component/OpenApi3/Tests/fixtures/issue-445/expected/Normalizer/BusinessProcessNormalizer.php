@@ -55,13 +55,13 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('referenceId', $data) && $data['referenceId'] !== null) {
             $object->referenceId = $data['referenceId'];
         }
-        elseif (\array_key_exists('referenceId', $data) && $data['referenceId'] === null) {
+        elseif (\array_key_exists('referenceId', $data)) {
             $object->referenceId = null;
         }
         if (\array_key_exists('referenceDocType', $data) && $data['referenceDocType'] !== null) {
             $object->referenceDocType = $data['referenceDocType'];
         }
-        elseif (\array_key_exists('referenceDocType', $data) && $data['referenceDocType'] === null) {
+        elseif (\array_key_exists('referenceDocType', $data)) {
             $object->referenceDocType = null;
         }
         if (\array_key_exists('supportsCancellation', $data)) {
@@ -105,13 +105,13 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $object->stateHistory = $values;
         }
-        elseif (\array_key_exists('stateHistory', $data) && $data['stateHistory'] === null) {
+        elseif (\array_key_exists('stateHistory', $data)) {
             $object->stateHistory = null;
         }
         if (\array_key_exists('currentState', $data) && $data['currentState'] !== null) {
             $object->currentState = $data['currentState'];
         }
-        elseif (\array_key_exists('currentState', $data) && $data['currentState'] === null) {
+        elseif (\array_key_exists('currentState', $data)) {
             $object->currentState = null;
         }
         if (\array_key_exists('lastReportedProgress', $data) && $data['lastReportedProgress'] !== null) {
@@ -121,13 +121,13 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $object->lastReportedProgress = $date_2;
         }
-        elseif (\array_key_exists('lastReportedProgress', $data) && $data['lastReportedProgress'] === null) {
+        elseif (\array_key_exists('lastReportedProgress', $data)) {
             $object->lastReportedProgress = null;
         }
         if (\array_key_exists('continuationBusinessProcessId', $data) && $data['continuationBusinessProcessId'] !== null) {
             $object->continuationBusinessProcessId = $data['continuationBusinessProcessId'];
         }
-        elseif (\array_key_exists('continuationBusinessProcessId', $data) && $data['continuationBusinessProcessId'] === null) {
+        elseif (\array_key_exists('continuationBusinessProcessId', $data)) {
             $object->continuationBusinessProcessId = null;
         }
         if (\array_key_exists('kind', $data)) {

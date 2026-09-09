@@ -44,7 +44,7 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -72,7 +72,7 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->detail = $value_1;
             unset($data['detail']);
         }
-        elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
+        elseif (\array_key_exists('detail', $data)) {
             $object->detail = null;
             unset($data['detail']);
         }
@@ -84,7 +84,7 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->backupTimestamp = $date;
             unset($data['backupTimestamp']);
         }
-        elseif (\array_key_exists('backupTimestamp', $data) && $data['backupTimestamp'] === null) {
+        elseif (\array_key_exists('backupTimestamp', $data)) {
             $object->backupTimestamp = null;
             unset($data['backupTimestamp']);
         }
@@ -127,7 +127,7 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
             $value_1 = $data->detail;
             if (is_object($data->detail)) {
-                $value_1 = $data->detail === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->detail, 'json', $context));
             }
             $dataArray['detail'] = $value_1;
         }

@@ -107,7 +107,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
             $dataArray['companyHistory'] = $values;
         }
         if (array_key_exists('mortgageSummary', get_object_vars($data)) && null !== ($data->mortgageSummary ?? null)) {
-            $dataArray['mortgageSummary'] = $data->mortgageSummary === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mortgageSummary, 'json', $context));
+            $dataArray['mortgageSummary'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->mortgageSummary, 'json', $context));
         }
         if (array_key_exists('mortgageDetails', get_object_vars($data)) && null !== ($data->mortgageDetails ?? null)) {
             $values_1 = [];

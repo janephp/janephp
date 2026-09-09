@@ -63,7 +63,7 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->sourceOutputFormats = $value;
             unset($data['sourceOutputFormats']);
         }
-        elseif (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] === null) {
+        elseif (\array_key_exists('sourceOutputFormats', $data)) {
             $object->sourceOutputFormats = null;
             unset($data['sourceOutputFormats']);
         }
@@ -75,7 +75,7 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->format = $value_1;
             unset($data['format']);
         }
-        elseif (\array_key_exists('format', $data) && $data['format'] === null) {
+        elseif (\array_key_exists('format', $data)) {
             $object->format = null;
             unset($data['format']);
         }
@@ -107,7 +107,7 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->downloadFileNamePatterns = $value_4;
             unset($data['downloadFileNamePatterns']);
         }
-        elseif (\array_key_exists('downloadFileNamePatterns', $data) && $data['downloadFileNamePatterns'] === null) {
+        elseif (\array_key_exists('downloadFileNamePatterns', $data)) {
             $object->downloadFileNamePatterns = null;
             unset($data['downloadFileNamePatterns']);
         }
@@ -123,7 +123,7 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -156,14 +156,14 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('sourceOutputFormats', get_object_vars($data)) && null !== ($data->sourceOutputFormats ?? null)) {
             $value = $data->sourceOutputFormats;
             if (is_object($data->sourceOutputFormats)) {
-                $value = $data->sourceOutputFormats === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->sourceOutputFormats, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->sourceOutputFormats, 'json', $context));
             }
             $dataArray['sourceOutputFormats'] = $value;
         }
         if (array_key_exists('format', get_object_vars($data)) && null !== ($data->format ?? null)) {
             $value_1 = $data->format;
             if (is_object($data->format)) {
-                $value_1 = $data->format === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->format, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->format, 'json', $context));
             }
             $dataArray['format'] = $value_1;
         }

@@ -44,7 +44,7 @@ class LanguageConfigurationNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->systemLanguages = $values;
         }
-        elseif (\array_key_exists('systemLanguages', $data) && $data['systemLanguages'] === null) {
+        elseif (\array_key_exists('systemLanguages', $data)) {
             $object->systemLanguages = null;
         }
         if (\array_key_exists('metadataLanguages', $data) && $data['metadataLanguages'] !== null) {
@@ -54,13 +54,13 @@ class LanguageConfigurationNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->metadataLanguages = $values_1;
         }
-        elseif (\array_key_exists('metadataLanguages', $data) && $data['metadataLanguages'] === null) {
+        elseif (\array_key_exists('metadataLanguages', $data)) {
             $object->metadataLanguages = null;
         }
         if (\array_key_exists('defaultLanguage', $data) && $data['defaultLanguage'] !== null) {
             $object->defaultLanguage = $data['defaultLanguage'];
         }
-        elseif (\array_key_exists('defaultLanguage', $data) && $data['defaultLanguage'] === null) {
+        elseif (\array_key_exists('defaultLanguage', $data)) {
             $object->defaultLanguage = null;
         }
         return $object;

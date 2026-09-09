@@ -41,7 +41,7 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
             $object->tagOutputFormatId = $data['tagOutputFormatId'];
             unset($data['tagOutputFormatId']);
         }
-        elseif (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] === null) {
+        elseif (\array_key_exists('tagOutputFormatId', $data)) {
             $object->tagOutputFormatId = null;
             unset($data['tagOutputFormatId']);
         }
@@ -49,7 +49,7 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
             $object->keywordLookupCacheName = $data['keywordLookupCacheName'];
             unset($data['keywordLookupCacheName']);
         }
-        elseif (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] === null) {
+        elseif (\array_key_exists('keywordLookupCacheName', $data)) {
             $object->keywordLookupCacheName = null;
             unset($data['keywordLookupCacheName']);
         }
@@ -57,7 +57,7 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
             $object->taggingLayerId = $data['taggingLayerId'];
             unset($data['taggingLayerId']);
         }
-        elseif (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] === null) {
+        elseif (\array_key_exists('taggingLayerId', $data)) {
             $object->taggingLayerId = null;
             unset($data['taggingLayerId']);
         }
@@ -65,7 +65,7 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
             $object->foundTagsFieldId = $data['foundTagsFieldId'];
             unset($data['foundTagsFieldId']);
         }
-        elseif (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] === null) {
+        elseif (\array_key_exists('foundTagsFieldId', $data)) {
             $object->foundTagsFieldId = null;
             unset($data['foundTagsFieldId']);
         }
@@ -73,7 +73,7 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
             $object->missingKeywordsFieldId = $data['missingKeywordsFieldId'];
             unset($data['missingKeywordsFieldId']);
         }
-        elseif (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] === null) {
+        elseif (\array_key_exists('missingKeywordsFieldId', $data)) {
             $object->missingKeywordsFieldId = null;
             unset($data['missingKeywordsFieldId']);
         }
@@ -85,7 +85,7 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
             $object->model = $data['model'];
             unset($data['model']);
         }
-        elseif (\array_key_exists('model', $data) && $data['model'] === null) {
+        elseif (\array_key_exists('model', $data)) {
             $object->model = null;
             unset($data['model']);
         }
@@ -93,7 +93,7 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
             $object->language = $data['language'];
             unset($data['language']);
         }
-        elseif (\array_key_exists('language', $data) && $data['language'] === null) {
+        elseif (\array_key_exists('language', $data)) {
             $object->language = null;
             unset($data['language']);
         }
@@ -101,7 +101,7 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
             $object->minimumValue = $data['minimumValue'];
             unset($data['minimumValue']);
         }
-        elseif (\array_key_exists('minimumValue', $data) && $data['minimumValue'] === null) {
+        elseif (\array_key_exists('minimumValue', $data)) {
             $object->minimumValue = null;
             unset($data['minimumValue']);
         }

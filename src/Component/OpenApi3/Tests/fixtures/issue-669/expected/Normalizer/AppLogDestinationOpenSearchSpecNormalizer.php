@@ -67,7 +67,7 @@ class AppLogDestinationOpenSearchSpecNormalizer implements DenormalizerInterface
             $dataArray['endpoint'] = $data->endpoint;
         }
         if (array_key_exists('basicAuth', get_object_vars($data)) && null !== ($data->basicAuth ?? null)) {
-            $dataArray['basic_auth'] = $data->basicAuth === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->basicAuth, 'json', $context));
+            $dataArray['basic_auth'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->basicAuth, 'json', $context));
         }
         if (array_key_exists('indexName', get_object_vars($data)) && null !== ($data->indexName ?? null)) {
             $dataArray['index_name'] = $data->indexName;

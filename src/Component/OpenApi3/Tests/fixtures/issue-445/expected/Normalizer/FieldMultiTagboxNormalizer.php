@@ -60,7 +60,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $object->indexId = $data['indexId'];
             unset($data['indexId']);
         }
-        elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
+        elseif (\array_key_exists('indexId', $data)) {
             $object->indexId = null;
             unset($data['indexId']);
         }
@@ -68,7 +68,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $object->fieldNamespace = $data['fieldNamespace'];
             unset($data['fieldNamespace']);
         }
-        elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
+        elseif (\array_key_exists('fieldNamespace', $data)) {
             $object->fieldNamespace = null;
             unset($data['fieldNamespace']);
         }
@@ -84,7 +84,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $object->names = $value;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -100,7 +100,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
             unset($data['descriptions']);
         }
@@ -140,7 +140,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $object->schemaIndexingInfo = $value_4;
             unset($data['schemaIndexingInfo']);
         }
-        elseif (\array_key_exists('schemaIndexingInfo', $data) && $data['schemaIndexingInfo'] === null) {
+        elseif (\array_key_exists('schemaIndexingInfo', $data)) {
             $object->schemaIndexingInfo = null;
             unset($data['schemaIndexingInfo']);
         }
@@ -148,7 +148,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $object->maximumItems = $data['maximumItems'];
             unset($data['maximumItems']);
         }
-        elseif (\array_key_exists('maximumItems', $data) && $data['maximumItems'] === null) {
+        elseif (\array_key_exists('maximumItems', $data)) {
             $object->maximumItems = null;
             unset($data['maximumItems']);
         }
@@ -156,7 +156,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $object->minimumItems = $data['minimumItems'];
             unset($data['minimumItems']);
         }
-        elseif (\array_key_exists('minimumItems', $data) && $data['minimumItems'] === null) {
+        elseif (\array_key_exists('minimumItems', $data)) {
             $object->minimumItems = null;
             unset($data['minimumItems']);
         }
@@ -168,7 +168,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $object->filter = $value_5;
             unset($data['filter']);
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
             unset($data['filter']);
         }
@@ -176,7 +176,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $object->listItemCreateTemplate = $data['listItemCreateTemplate'];
             unset($data['listItemCreateTemplate']);
         }
-        elseif (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] === null) {
+        elseif (\array_key_exists('listItemCreateTemplate', $data)) {
             $object->listItemCreateTemplate = null;
             unset($data['listItemCreateTemplate']);
         }
@@ -237,7 +237,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('schemaIndexingInfo', get_object_vars($data)) && null !== ($data->schemaIndexingInfo ?? null)) {
             $value_4 = $data->schemaIndexingInfo;
             if (is_object($data->schemaIndexingInfo)) {
-                $value_4 = $data->schemaIndexingInfo === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaIndexingInfo, 'json', $context));
+                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schemaIndexingInfo, 'json', $context));
             }
             $dataArray['schemaIndexingInfo'] = $value_4;
         }
@@ -250,7 +250,7 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_5 = $data->filter;
             if (is_object($data->filter)) {
-                $value_5 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value_5 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_5;
         }

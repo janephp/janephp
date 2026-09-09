@@ -46,13 +46,13 @@ class ContentImportResultNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
             $object->contentId = $data['contentId'];
         }
-        elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
+        elseif (\array_key_exists('contentId', $data)) {
             $object->contentId = null;
         }
         if (\array_key_exists('state', $data) && $data['state'] !== null) {
             $object->state = $data['state'];
         }
-        elseif (\array_key_exists('state', $data) && $data['state'] === null) {
+        elseif (\array_key_exists('state', $data)) {
             $object->state = null;
         }
         if (\array_key_exists('succeeded', $data)) {
@@ -65,7 +65,7 @@ class ContentImportResultNormalizer implements DenormalizerInterface, Normalizer
             }
             $object->error = $value;
         }
-        elseif (\array_key_exists('error', $data) && $data['error'] === null) {
+        elseif (\array_key_exists('error', $data)) {
             $object->error = null;
         }
         return $object;
@@ -84,7 +84,7 @@ class ContentImportResultNormalizer implements DenormalizerInterface, Normalizer
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
             $value = $data->error;
             if (is_object($data->error)) {
-                $value = $data->error === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error, 'json', $context));
             }
             $dataArray['error'] = $value;
         }

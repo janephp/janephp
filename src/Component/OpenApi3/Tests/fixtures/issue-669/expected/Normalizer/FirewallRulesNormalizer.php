@@ -45,7 +45,7 @@ class FirewallRulesNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->inboundRules = $values;
             unset($data['inbound_rules']);
         }
-        elseif (\array_key_exists('inbound_rules', $data) && $data['inbound_rules'] === null) {
+        elseif (\array_key_exists('inbound_rules', $data)) {
             $object->inboundRules = null;
             unset($data['inbound_rules']);
         }
@@ -57,7 +57,7 @@ class FirewallRulesNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->outboundRules = $values_1;
             unset($data['outbound_rules']);
         }
-        elseif (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] === null) {
+        elseif (\array_key_exists('outbound_rules', $data)) {
             $object->outboundRules = null;
             unset($data['outbound_rules']);
         }

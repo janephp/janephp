@@ -74,7 +74,7 @@ class DpskDpskQueryListNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['firstIndex'] = $data->firstIndex;
         }
         if (array_key_exists('extra', get_object_vars($data)) && null !== ($data->extra ?? null)) {
-            $dataArray['extra'] = $data->extra === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extra, 'json', $context));
+            $dataArray['extra'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extra, 'json', $context));
         }
         if (array_key_exists('list', get_object_vars($data)) && null !== ($data->list ?? null)) {
             $values = [];

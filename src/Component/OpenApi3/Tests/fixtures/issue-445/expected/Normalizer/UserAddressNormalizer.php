@@ -40,49 +40,49 @@ class UserAddressNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('company', $data) && $data['company'] !== null) {
             $object->company = $data['company'];
         }
-        elseif (\array_key_exists('company', $data) && $data['company'] === null) {
+        elseif (\array_key_exists('company', $data)) {
             $object->company = null;
         }
         if (\array_key_exists('department', $data) && $data['department'] !== null) {
             $object->department = $data['department'];
         }
-        elseif (\array_key_exists('department', $data) && $data['department'] === null) {
+        elseif (\array_key_exists('department', $data)) {
             $object->department = null;
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
             $object->address = $data['address'];
         }
-        elseif (\array_key_exists('address', $data) && $data['address'] === null) {
+        elseif (\array_key_exists('address', $data)) {
             $object->address = null;
         }
         if (\array_key_exists('alternativeAddress', $data) && $data['alternativeAddress'] !== null) {
             $object->alternativeAddress = $data['alternativeAddress'];
         }
-        elseif (\array_key_exists('alternativeAddress', $data) && $data['alternativeAddress'] === null) {
+        elseif (\array_key_exists('alternativeAddress', $data)) {
             $object->alternativeAddress = null;
         }
         if (\array_key_exists('zip', $data) && $data['zip'] !== null) {
             $object->zip = $data['zip'];
         }
-        elseif (\array_key_exists('zip', $data) && $data['zip'] === null) {
+        elseif (\array_key_exists('zip', $data)) {
             $object->zip = null;
         }
         if (\array_key_exists('city', $data) && $data['city'] !== null) {
             $object->city = $data['city'];
         }
-        elseif (\array_key_exists('city', $data) && $data['city'] === null) {
+        elseif (\array_key_exists('city', $data)) {
             $object->city = null;
         }
         if (\array_key_exists('phone', $data) && $data['phone'] !== null) {
             $object->phone = $data['phone'];
         }
-        elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
+        elseif (\array_key_exists('phone', $data)) {
             $object->phone = null;
         }
         if (\array_key_exists('countryCode', $data) && $data['countryCode'] !== null) {
             $object->countryCode = $data['countryCode'];
         }
-        elseif (\array_key_exists('countryCode', $data) && $data['countryCode'] === null) {
+        elseif (\array_key_exists('countryCode', $data)) {
             $object->countryCode = null;
         }
         return $object;

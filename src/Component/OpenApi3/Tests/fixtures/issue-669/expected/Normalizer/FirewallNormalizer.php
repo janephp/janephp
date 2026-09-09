@@ -73,7 +73,7 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->dropletIds = $values_1;
             unset($data['droplet_ids']);
         }
-        elseif (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] === null) {
+        elseif (\array_key_exists('droplet_ids', $data)) {
             $object->dropletIds = null;
             unset($data['droplet_ids']);
         }
@@ -93,7 +93,7 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->inboundRules = $values_3;
             unset($data['inbound_rules']);
         }
-        elseif (\array_key_exists('inbound_rules', $data) && $data['inbound_rules'] === null) {
+        elseif (\array_key_exists('inbound_rules', $data)) {
             $object->inboundRules = null;
             unset($data['inbound_rules']);
         }
@@ -105,7 +105,7 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->outboundRules = $values_4;
             unset($data['outbound_rules']);
         }
-        elseif (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] === null) {
+        elseif (\array_key_exists('outbound_rules', $data)) {
             $object->outboundRules = null;
             unset($data['outbound_rules']);
         }

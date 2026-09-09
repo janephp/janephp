@@ -47,7 +47,7 @@ class AdditionalPropertiesNormalizer implements DenormalizerInterface, Normalize
             $object->foo = $value;
             unset($data['foo']);
         }
-        elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
+        elseif (\array_key_exists('foo', $data)) {
             $object->foo = null;
             unset($data['foo']);
         }

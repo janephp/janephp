@@ -70,7 +70,7 @@ class BookingsGetJsonResponse200Normalizer implements DenormalizerInterface, Nor
             $dataArray['data'] = $values;
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = $data->links === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $dataArray['links'] = new \Jane\Component\OpenApi31\Tests\Expected\TrainTravel\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

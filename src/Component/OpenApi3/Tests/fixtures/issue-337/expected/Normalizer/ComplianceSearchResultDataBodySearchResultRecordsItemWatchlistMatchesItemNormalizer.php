@@ -215,10 +215,10 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
             $dataArray['checkSum'] = $data->checkSum;
         }
         if (array_key_exists('conflicts', get_object_vars($data)) && null !== ($data->conflicts ?? null)) {
-            $dataArray['conflicts'] = $data->conflicts === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->conflicts, 'json', $context));
+            $dataArray['conflicts'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->conflicts, 'json', $context));
         }
         if (array_key_exists('entityDetails', get_object_vars($data)) && null !== ($data->entityDetails ?? null)) {
-            $dataArray['entityDetails'] = $data->entityDetails === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->entityDetails, 'json', $context));
+            $dataArray['entityDetails'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->entityDetails, 'json', $context));
         }
         if (array_key_exists('entityName', get_object_vars($data)) && null !== ($data->entityName ?? null)) {
             $dataArray['entityName'] = $data->entityName;
@@ -233,7 +233,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
             $dataArray['falsePositive'] = $data->falsePositive;
         }
         if (array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
-            $dataArray['file'] = $data->file === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->file, 'json', $context));
+            $dataArray['file'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->file, 'json', $context));
         }
         if (array_key_exists('gatewayOFACScreeningIndicatorMatch', get_object_vars($data)) && null !== ($data->gatewayOFACScreeningIndicatorMatch ?? null)) {
             $dataArray['gatewayOFACScreeningIndicatorMatch'] = $data->gatewayOFACScreeningIndicatorMatch;

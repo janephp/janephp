@@ -47,7 +47,7 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -59,7 +59,7 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             $object->triggerPoint = $value;
             unset($data['triggerPoint']);
         }
-        elseif (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] === null) {
+        elseif (\array_key_exists('triggerPoint', $data)) {
             $object->triggerPoint = null;
             unset($data['triggerPoint']);
         }
@@ -79,7 +79,7 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             $object->names = $value_1;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -95,7 +95,7 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             $object->description = $value_3;
             unset($data['description']);
         }
-        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+        elseif (\array_key_exists('description', $data)) {
             $object->description = null;
             unset($data['description']);
         }
@@ -111,7 +111,7 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             $object->script = $data['script'];
             unset($data['script']);
         }
-        elseif (\array_key_exists('script', $data) && $data['script'] === null) {
+        elseif (\array_key_exists('script', $data)) {
             $object->script = null;
             unset($data['script']);
         }
@@ -131,7 +131,7 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
         if (array_key_exists('triggerPoint', get_object_vars($data)) && null !== ($data->triggerPoint ?? null)) {
             $value = $data->triggerPoint;
             if (is_object($data->triggerPoint)) {
-                $value = $data->triggerPoint === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->triggerPoint, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->triggerPoint, 'json', $context));
             }
             $dataArray['triggerPoint'] = $value;
         }

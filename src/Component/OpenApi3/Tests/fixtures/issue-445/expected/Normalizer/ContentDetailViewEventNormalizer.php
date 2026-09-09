@@ -57,7 +57,7 @@ class ContentDetailViewEventNormalizer implements DenormalizerInterface, Normali
             $object->contentIds = $values;
             unset($data['contentIds']);
         }
-        elseif (\array_key_exists('contentIds', $data) && $data['contentIds'] === null) {
+        elseif (\array_key_exists('contentIds', $data)) {
             $object->contentIds = null;
             unset($data['contentIds']);
         }

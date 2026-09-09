@@ -108,49 +108,49 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data->data as $value) {
                 $value_1 = $value;
                 if (is_object($value)) {
-                    $value_1 = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                    $value_1 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
                 } elseif (is_object($value)) {
-                    $value_1 = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                    $value_1 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
                 } elseif (is_object($value)) {
-                    $value_1 = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                    $value_1 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
                 }
                 $values[] = $value_1;
             }
             $dataArray['data'] = $values;
         }
         if (array_key_exists('includes', get_object_vars($data)) && null !== ($data->includes ?? null)) {
-            $dataArray['includes'] = $data->includes === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($data->includes, 'json', $context));
+            $dataArray['includes'] = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($data->includes, 'json', $context));
         }
         if (array_key_exists('errors', get_object_vars($data)) && null !== ($data->errors ?? null)) {
             $values_1 = [];
             foreach ($data->errors as $value_2) {
                 $value_3 = $value_2;
                 if (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 } elseif (is_object($value_2)) {
-                    $value_3 = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+                    $value_3 = new \Jane\Component\OpenApi3\Tests\Expected\WhitelistedPaths\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 }
                 $values_1[] = $value_3;
             }

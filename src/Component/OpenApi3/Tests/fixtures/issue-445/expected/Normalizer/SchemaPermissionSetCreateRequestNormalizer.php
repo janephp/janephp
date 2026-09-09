@@ -60,7 +60,7 @@ class SchemaPermissionSetCreateRequestNormalizer implements DenormalizerInterfac
             $object->userRolesRights = $values_1;
             unset($data['userRolesRights']);
         }
-        elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
+        elseif (\array_key_exists('userRolesRights', $data)) {
             $object->userRolesRights = null;
             unset($data['userRolesRights']);
         }
@@ -72,7 +72,7 @@ class SchemaPermissionSetCreateRequestNormalizer implements DenormalizerInterfac
             $object->userRolesPermissionSetRights = $values_2;
             unset($data['userRolesPermissionSetRights']);
         }
-        elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
+        elseif (\array_key_exists('userRolesPermissionSetRights', $data)) {
             $object->userRolesPermissionSetRights = null;
             unset($data['userRolesPermissionSetRights']);
         }
@@ -84,7 +84,7 @@ class SchemaPermissionSetCreateRequestNormalizer implements DenormalizerInterfac
             $object->requestId = $data['requestId'];
             unset($data['requestId']);
         }
-        elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
+        elseif (\array_key_exists('requestId', $data)) {
             $object->requestId = null;
             unset($data['requestId']);
         }

@@ -47,13 +47,13 @@ class InternalRecipientNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('token', $data) && $data['token'] !== null) {
             $object->token = $data['token'];
         }
-        elseif (\array_key_exists('token', $data) && $data['token'] === null) {
+        elseif (\array_key_exists('token', $data)) {
             $object->token = null;
         }
         if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->url = $data['url'];
         }
-        elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+        elseif (\array_key_exists('url', $data)) {
             $object->url = null;
         }
         return $object;
@@ -63,7 +63,7 @@ class InternalRecipientNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         $value = $data->recipient;
         if (is_object($data->recipient)) {
-            $value = $data->recipient === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->recipient, 'json', $context));
+            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->recipient, 'json', $context));
         }
         $dataArray['recipient'] = $value;
         if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {

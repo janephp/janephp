@@ -89,7 +89,7 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if (array_key_exists('platform', get_object_vars($data)) && null !== ($data->platform ?? null)) {
-            $dataArray['Platform'] = $data->platform === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->platform, 'json', $context));
+            $dataArray['Platform'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->platform, 'json', $context));
         }
         if (array_key_exists('components', get_object_vars($data)) && null !== ($data->components ?? null)) {
             $values = [];

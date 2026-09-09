@@ -43,12 +43,12 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
             $object->dateOrNull = (new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']);
         }
-        elseif (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] === null) {
+        elseif (\array_key_exists('dateOrNull', $data)) {
             $object->dateOrNull = null;
         }
         if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
             $value = $data['dateOrNullOrInt'];
-            if (is_string($data['dateOrNullOrInt']) and false !== ((new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']))) {
+            if (is_string($data['dateOrNullOrInt'])) {
                 $value = (new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']);
             } elseif (is_null($data['dateOrNullOrInt'])) {
                 $value = $data['dateOrNullOrInt'];
@@ -57,7 +57,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $object->dateOrNullOrInt = $value;
         }
-        elseif (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] === null) {
+        elseif (\array_key_exists('dateOrNullOrInt', $data)) {
             $object->dateOrNullOrInt = null;
         }
         return $object;

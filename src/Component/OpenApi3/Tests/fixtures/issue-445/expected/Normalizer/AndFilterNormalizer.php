@@ -49,7 +49,7 @@ class AndFilterNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->filters = $values;
             unset($data['filters']);
         }
-        elseif (\array_key_exists('filters', $data) && $data['filters'] === null) {
+        elseif (\array_key_exists('filters', $data)) {
             $object->filters = null;
             unset($data['filters']);
         }

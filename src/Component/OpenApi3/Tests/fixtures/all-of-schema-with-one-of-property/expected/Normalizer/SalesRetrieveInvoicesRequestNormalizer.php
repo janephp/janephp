@@ -40,7 +40,7 @@ class SalesRetrieveInvoicesRequestNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->filter = $this->denormalizer->denormalize($data['filter'], \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Model\SalesRetrieveInvoicesRequestFilter::class, 'json', $context);
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
         if (\array_key_exists('discriminator', $data)) {
@@ -52,7 +52,7 @@ class SalesRetrieveInvoicesRequestNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
-            $dataArray['filter'] = $data->filter === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+            $dataArray['filter'] = new \Jane\Component\OpenApi3\Tests\Expected\AllOfSchemaWithOneOfProperty\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
         }
         $dataArray['discriminator'] = $data->discriminator;
         return $dataArray;

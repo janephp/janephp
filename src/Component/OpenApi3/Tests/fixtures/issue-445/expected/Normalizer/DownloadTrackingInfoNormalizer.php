@@ -40,25 +40,25 @@ class DownloadTrackingInfoNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
             $object->contentId = $data['contentId'];
         }
-        elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
+        elseif (\array_key_exists('contentId', $data)) {
             $object->contentId = null;
         }
         if (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] !== null) {
             $object->outputFormatId = $data['outputFormatId'];
         }
-        elseif (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] === null) {
+        elseif (\array_key_exists('outputFormatId', $data)) {
             $object->outputFormatId = null;
         }
         if (\array_key_exists('width', $data) && $data['width'] !== null) {
             $object->width = $data['width'];
         }
-        elseif (\array_key_exists('width', $data) && $data['width'] === null) {
+        elseif (\array_key_exists('width', $data)) {
             $object->width = null;
         }
         if (\array_key_exists('height', $data) && $data['height'] !== null) {
             $object->height = $data['height'];
         }
-        elseif (\array_key_exists('height', $data) && $data['height'] === null) {
+        elseif (\array_key_exists('height', $data)) {
             $object->height = null;
         }
         if (\array_key_exists('contentDisposition', $data)) {

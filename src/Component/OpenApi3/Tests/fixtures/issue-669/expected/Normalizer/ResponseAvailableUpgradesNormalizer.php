@@ -45,7 +45,7 @@ class ResponseAvailableUpgradesNormalizer implements DenormalizerInterface, Norm
             $object->availableUpgradeVersions = $values;
             unset($data['available_upgrade_versions']);
         }
-        elseif (\array_key_exists('available_upgrade_versions', $data) && $data['available_upgrade_versions'] === null) {
+        elseif (\array_key_exists('available_upgrade_versions', $data)) {
             $object->availableUpgradeVersions = null;
             unset($data['available_upgrade_versions']);
         }

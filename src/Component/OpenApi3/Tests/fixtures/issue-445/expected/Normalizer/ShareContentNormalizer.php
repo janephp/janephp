@@ -47,7 +47,7 @@ class ShareContentNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->outputFormatIds = $values;
         }
-        elseif (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] === null) {
+        elseif (\array_key_exists('outputFormatIds', $data)) {
             $object->outputFormatIds = null;
         }
         return $object;

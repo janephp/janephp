@@ -91,7 +91,7 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
         $dataArray['kind'] = $data->kind;
         $value_1 = $data->filterRequest;
         if (is_object($data->filterRequest)) {
-            $value_1 = $data->filterRequest === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest, 'json', $context));
+            $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filterRequest, 'json', $context));
         }
         $dataArray['filterRequest'] = $value_1;
         foreach ($data->additionalPropertyEntries() as $key => $value_2) {

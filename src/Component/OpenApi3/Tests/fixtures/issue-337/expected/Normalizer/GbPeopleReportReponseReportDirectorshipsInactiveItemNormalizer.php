@@ -100,22 +100,22 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemNormalizer implements 
             $dataArray['status'] = $data->status;
         }
         if (array_key_exists('position', get_object_vars($data)) && null !== ($data->position ?? null)) {
-            $dataArray['position'] = $data->position === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->position, 'json', $context));
+            $dataArray['position'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->position, 'json', $context));
         }
         if (array_key_exists('companyRegistrationDate', get_object_vars($data)) && null !== ($data->companyRegistrationDate ?? null)) {
             $dataArray['companyRegistrationDate'] = $data->companyRegistrationDate;
         }
         if (array_key_exists('netWorth', get_object_vars($data)) && null !== ($data->netWorth ?? null)) {
-            $dataArray['netWorth'] = $data->netWorth === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->netWorth, 'json', $context));
+            $dataArray['netWorth'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->netWorth, 'json', $context));
         }
         if (array_key_exists('legalCount', get_object_vars($data)) && null !== ($data->legalCount ?? null)) {
             $dataArray['legalCount'] = $data->legalCount;
         }
         if (array_key_exists('creditScore', get_object_vars($data)) && null !== ($data->creditScore ?? null)) {
-            $dataArray['creditScore'] = $data->creditScore === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditScore, 'json', $context));
+            $dataArray['creditScore'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditScore, 'json', $context));
         }
         if (array_key_exists('additionalData', get_object_vars($data)) && null !== ($data->additionalData ?? null)) {
-            $dataArray['additionalData'] = $data->additionalData === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->additionalData, 'json', $context));
+            $dataArray['additionalData'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->additionalData, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

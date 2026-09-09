@@ -66,10 +66,10 @@ class ZoneModifyDiffServProfileNormalizer implements DenormalizerInterface, Norm
             $dataArray['description'] = $data->description;
         }
         if (array_key_exists('uplinkDiffServ', get_object_vars($data)) && null !== ($data->uplinkDiffServ ?? null)) {
-            $dataArray['uplinkDiffServ'] = $data->uplinkDiffServ === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->uplinkDiffServ, 'json', $context));
+            $dataArray['uplinkDiffServ'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->uplinkDiffServ, 'json', $context));
         }
         if (array_key_exists('downlinkDiffServ', get_object_vars($data)) && null !== ($data->downlinkDiffServ ?? null)) {
-            $dataArray['downlinkDiffServ'] = $data->downlinkDiffServ === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->downlinkDiffServ, 'json', $context));
+            $dataArray['downlinkDiffServ'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->downlinkDiffServ, 'json', $context));
         }
         if (array_key_exists('preservedList', get_object_vars($data)) && null !== ($data->preservedList ?? null)) {
             $values = [];

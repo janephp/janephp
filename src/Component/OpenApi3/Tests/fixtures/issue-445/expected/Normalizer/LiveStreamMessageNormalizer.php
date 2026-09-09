@@ -44,7 +44,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             $object->id = $data['id'];
             unset($data['id']);
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
             unset($data['id']);
         }
@@ -68,7 +68,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
-        elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
+        elseif (\array_key_exists('customerId', $data)) {
             $object->customerId = null;
             unset($data['customerId']);
         }
@@ -76,7 +76,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
-        elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
+        elseif (\array_key_exists('customerAlias', $data)) {
             $object->customerAlias = null;
             unset($data['customerAlias']);
         }
@@ -92,7 +92,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             $object->scope = $data['scope'];
             unset($data['scope']);
         }
-        elseif (\array_key_exists('scope', $data) && $data['scope'] === null) {
+        elseif (\array_key_exists('scope', $data)) {
             $object->scope = null;
             unset($data['scope']);
         }
@@ -104,7 +104,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             $object->documentChange = $value;
             unset($data['documentChange']);
         }
-        elseif (\array_key_exists('documentChange', $data) && $data['documentChange'] === null) {
+        elseif (\array_key_exists('documentChange', $data)) {
             $object->documentChange = null;
             unset($data['documentChange']);
         }
@@ -116,7 +116,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             $object->applicationEvent = $value_1;
             unset($data['applicationEvent']);
         }
-        elseif (\array_key_exists('applicationEvent', $data) && $data['applicationEvent'] === null) {
+        elseif (\array_key_exists('applicationEvent', $data)) {
             $object->applicationEvent = null;
             unset($data['applicationEvent']);
         }
@@ -152,14 +152,14 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('documentChange', get_object_vars($data)) && null !== ($data->documentChange ?? null)) {
             $value = $data->documentChange;
             if (is_object($data->documentChange)) {
-                $value = $data->documentChange === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->documentChange, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->documentChange, 'json', $context));
             }
             $dataArray['documentChange'] = $value;
         }
         if (array_key_exists('applicationEvent', get_object_vars($data)) && null !== ($data->applicationEvent ?? null)) {
             $value_1 = $data->applicationEvent;
             if (is_object($data->applicationEvent)) {
-                $value_1 = $data->applicationEvent === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->applicationEvent, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->applicationEvent, 'json', $context));
             }
             $dataArray['applicationEvent'] = $value_1;
         }

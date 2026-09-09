@@ -54,7 +54,7 @@ class BusinessProcessStateNormalizer implements DenormalizerInterface, Normalize
             }
             $object->error = $value;
         }
-        elseif (\array_key_exists('error', $data) && $data['error'] === null) {
+        elseif (\array_key_exists('error', $data)) {
             $object->error = null;
         }
         return $object;
@@ -67,7 +67,7 @@ class BusinessProcessStateNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
             $value = $data->error;
             if (is_object($data->error)) {
-                $value = $data->error === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->error, 'json', $context));
             }
             $dataArray['error'] = $value;
         }

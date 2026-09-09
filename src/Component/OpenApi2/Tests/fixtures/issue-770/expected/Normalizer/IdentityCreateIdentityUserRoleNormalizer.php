@@ -86,13 +86,13 @@ class IdentityCreateIdentityUserRoleNormalizer implements DenormalizerInterface,
             $dataArray['vlanId'] = $data->vlanId;
         }
         if (array_key_exists('vlanPooling', get_object_vars($data)) && null !== ($data->vlanPooling ?? null)) {
-            $dataArray['vlanPooling'] = $data->vlanPooling === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling, 'json', $context));
+            $dataArray['vlanPooling'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->vlanPooling, 'json', $context));
         }
         if (array_key_exists('timeSchedulePolicy', get_object_vars($data)) && null !== ($data->timeSchedulePolicy ?? null)) {
             $dataArray['timeSchedulePolicy'] = $data->timeSchedulePolicy;
         }
         if (array_key_exists('timeScheduleList', get_object_vars($data)) && null !== ($data->timeScheduleList ?? null)) {
-            $dataArray['timeScheduleList'] = $data->timeScheduleList === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->timeScheduleList, 'json', $context));
+            $dataArray['timeScheduleList'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->timeScheduleList, 'json', $context));
         }
         return $dataArray;
     }

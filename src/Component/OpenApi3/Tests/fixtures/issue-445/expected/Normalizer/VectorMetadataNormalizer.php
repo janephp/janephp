@@ -49,7 +49,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->names = $value;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -65,7 +65,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
             unset($data['descriptions']);
         }
@@ -73,7 +73,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->fileExtension = $data['fileExtension'];
             unset($data['fileExtension']);
         }
-        elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
+        elseif (\array_key_exists('fileExtension', $data)) {
             $object->fileExtension = null;
             unset($data['fileExtension']);
         }
@@ -81,7 +81,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->fileName = $data['fileName'];
             unset($data['fileName']);
         }
-        elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
+        elseif (\array_key_exists('fileName', $data)) {
             $object->fileName = null;
             unset($data['fileName']);
         }
@@ -89,7 +89,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->filePath = $data['filePath'];
             unset($data['filePath']);
         }
-        elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
+        elseif (\array_key_exists('filePath', $data)) {
             $object->filePath = null;
             unset($data['filePath']);
         }
@@ -97,7 +97,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->fileSizeInBytes = $data['fileSizeInBytes'];
             unset($data['fileSizeInBytes']);
         }
-        elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
+        elseif (\array_key_exists('fileSizeInBytes', $data)) {
             $object->fileSizeInBytes = null;
             unset($data['fileSizeInBytes']);
         }
@@ -105,7 +105,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->sha1Hash = $data['sha1Hash'];
             unset($data['sha1Hash']);
         }
-        elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
+        elseif (\array_key_exists('sha1Hash', $data)) {
             $object->sha1Hash = null;
             unset($data['sha1Hash']);
         }
@@ -113,7 +113,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->xmpMetadata = $data['xmpMetadata'];
             unset($data['xmpMetadata']);
         }
-        elseif (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] === null) {
+        elseif (\array_key_exists('xmpMetadata', $data)) {
             $object->xmpMetadata = null;
             unset($data['xmpMetadata']);
         }
@@ -121,7 +121,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->exifMetadata = $data['exifMetadata'];
             unset($data['exifMetadata']);
         }
-        elseif (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] === null) {
+        elseif (\array_key_exists('exifMetadata', $data)) {
             $object->exifMetadata = null;
             unset($data['exifMetadata']);
         }
@@ -129,7 +129,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->language = $data['language'];
             unset($data['language']);
         }
-        elseif (\array_key_exists('language', $data) && $data['language'] === null) {
+        elseif (\array_key_exists('language', $data)) {
             $object->language = null;
             unset($data['language']);
         }
@@ -137,7 +137,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->author = $data['author'];
             unset($data['author']);
         }
-        elseif (\array_key_exists('author', $data) && $data['author'] === null) {
+        elseif (\array_key_exists('author', $data)) {
             $object->author = null;
             unset($data['author']);
         }
@@ -145,7 +145,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->creator = $data['creator'];
             unset($data['creator']);
         }
-        elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
+        elseif (\array_key_exists('creator', $data)) {
             $object->creator = null;
             unset($data['creator']);
         }
@@ -153,7 +153,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->publisher = $data['publisher'];
             unset($data['publisher']);
         }
-        elseif (\array_key_exists('publisher', $data) && $data['publisher'] === null) {
+        elseif (\array_key_exists('publisher', $data)) {
             $object->publisher = null;
             unset($data['publisher']);
         }
@@ -161,7 +161,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->company = $data['company'];
             unset($data['company']);
         }
-        elseif (\array_key_exists('company', $data) && $data['company'] === null) {
+        elseif (\array_key_exists('company', $data)) {
             $object->company = null;
             unset($data['company']);
         }
@@ -169,7 +169,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->title = $data['title'];
             unset($data['title']);
         }
-        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
+        elseif (\array_key_exists('title', $data)) {
             $object->title = null;
             unset($data['title']);
         }
@@ -185,7 +185,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $object->epsInfo = $value_4;
             unset($data['epsInfo']);
         }
-        elseif (\array_key_exists('epsInfo', $data) && $data['epsInfo'] === null) {
+        elseif (\array_key_exists('epsInfo', $data)) {
             $object->epsInfo = null;
             unset($data['epsInfo']);
         }
@@ -266,7 +266,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('epsInfo', get_object_vars($data)) && null !== ($data->epsInfo ?? null)) {
             $value_4 = $data->epsInfo;
             if (is_object($data->epsInfo)) {
-                $value_4 = $data->epsInfo === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->epsInfo, 'json', $context));
+                $value_4 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->epsInfo, 'json', $context));
             }
             $dataArray['epsInfo'] = $value_4;
         }

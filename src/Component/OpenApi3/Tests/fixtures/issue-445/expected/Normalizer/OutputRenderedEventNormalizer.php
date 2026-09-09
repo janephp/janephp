@@ -53,7 +53,7 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
             $object->outputId = $data['outputId'];
             unset($data['outputId']);
         }
-        elseif (\array_key_exists('outputId', $data) && $data['outputId'] === null) {
+        elseif (\array_key_exists('outputId', $data)) {
             $object->outputId = null;
             unset($data['outputId']);
         }
@@ -61,7 +61,7 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
             $object->contentId = $data['contentId'];
             unset($data['contentId']);
         }
-        elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
+        elseif (\array_key_exists('contentId', $data)) {
             $object->contentId = null;
             unset($data['contentId']);
         }
@@ -69,7 +69,7 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
             $object->outputFormatId = $data['outputFormatId'];
             unset($data['outputFormatId']);
         }
-        elseif (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] === null) {
+        elseif (\array_key_exists('outputFormatId', $data)) {
             $object->outputFormatId = null;
             unset($data['outputFormatId']);
         }

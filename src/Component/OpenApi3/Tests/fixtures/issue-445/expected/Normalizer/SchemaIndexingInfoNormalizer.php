@@ -44,7 +44,7 @@ class SchemaIndexingInfoNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->fields = $values;
         }
-        elseif (\array_key_exists('fields', $data) && $data['fields'] === null) {
+        elseif (\array_key_exists('fields', $data)) {
             $object->fields = null;
         }
         return $object;

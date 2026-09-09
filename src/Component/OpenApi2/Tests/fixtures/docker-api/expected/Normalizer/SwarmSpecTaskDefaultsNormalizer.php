@@ -49,7 +49,7 @@ class SwarmSpecTaskDefaultsNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if (array_key_exists('logDriver', get_object_vars($data)) && null !== ($data->logDriver ?? null)) {
-            $dataArray['LogDriver'] = $data->logDriver === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->logDriver, 'json', $context));
+            $dataArray['LogDriver'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->logDriver, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmSpecTaskDefaultsConstraint());

@@ -109,7 +109,7 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
             $dataArray['ExitCode'] = $data->exitCode;
         }
         if (array_key_exists('processConfig', get_object_vars($data)) && null !== ($data->processConfig ?? null)) {
-            $dataArray['ProcessConfig'] = $data->processConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->processConfig, 'json', $context));
+            $dataArray['ProcessConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->processConfig, 'json', $context));
         }
         if (array_key_exists('openStdin', get_object_vars($data)) && null !== ($data->openStdin ?? null)) {
             $dataArray['OpenStdin'] = $data->openStdin;

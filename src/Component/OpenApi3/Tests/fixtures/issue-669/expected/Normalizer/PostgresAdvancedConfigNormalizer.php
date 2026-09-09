@@ -434,13 +434,13 @@ class PostgresAdvancedConfigNormalizer implements DenormalizerInterface, Normali
             $dataArray['shared_buffers_percentage'] = $data->sharedBuffersPercentage;
         }
         if (array_key_exists('pgbouncer', get_object_vars($data)) && null !== ($data->pgbouncer ?? null)) {
-            $dataArray['pgbouncer'] = $data->pgbouncer === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pgbouncer, 'json', $context));
+            $dataArray['pgbouncer'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pgbouncer, 'json', $context));
         }
         if (array_key_exists('workMem', get_object_vars($data)) && null !== ($data->workMem ?? null)) {
             $dataArray['work_mem'] = $data->workMem;
         }
         if (array_key_exists('timescaledb', get_object_vars($data)) && null !== ($data->timescaledb ?? null)) {
-            $dataArray['timescaledb'] = $data->timescaledb === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->timescaledb, 'json', $context));
+            $dataArray['timescaledb'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->timescaledb, 'json', $context));
         }
         if (array_key_exists('synchronousReplication', get_object_vars($data)) && null !== ($data->synchronousReplication ?? null)) {
             $dataArray['synchronous_replication'] = $data->synchronousReplication;

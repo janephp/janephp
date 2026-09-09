@@ -57,7 +57,7 @@ class VolumeActionPostAttachNormalizer implements DenormalizerInterface, Normali
             $object->tags = $values;
             unset($data['tags']);
         }
-        elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
+        elseif (\array_key_exists('tags', $data)) {
             $object->tags = null;
             unset($data['tags']);
         }

@@ -63,7 +63,7 @@ class FieldDictionaryArrayNormalizer implements DenormalizerInterface, Normalize
             $object->indexId = $data['indexId'];
             unset($data['indexId']);
         }
-        elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
+        elseif (\array_key_exists('indexId', $data)) {
             $object->indexId = null;
             unset($data['indexId']);
         }
@@ -71,7 +71,7 @@ class FieldDictionaryArrayNormalizer implements DenormalizerInterface, Normalize
             $object->fieldNamespace = $data['fieldNamespace'];
             unset($data['fieldNamespace']);
         }
-        elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
+        elseif (\array_key_exists('fieldNamespace', $data)) {
             $object->fieldNamespace = null;
             unset($data['fieldNamespace']);
         }
@@ -87,7 +87,7 @@ class FieldDictionaryArrayNormalizer implements DenormalizerInterface, Normalize
             $object->names = $value;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -103,7 +103,7 @@ class FieldDictionaryArrayNormalizer implements DenormalizerInterface, Normalize
             $object->descriptions = $value_2;
             unset($data['descriptions']);
         }
-        elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
+        elseif (\array_key_exists('descriptions', $data)) {
             $object->descriptions = null;
             unset($data['descriptions']);
         }
@@ -139,7 +139,7 @@ class FieldDictionaryArrayNormalizer implements DenormalizerInterface, Normalize
             $object->maximumItems = $data['maximumItems'];
             unset($data['maximumItems']);
         }
-        elseif (\array_key_exists('maximumItems', $data) && $data['maximumItems'] === null) {
+        elseif (\array_key_exists('maximumItems', $data)) {
             $object->maximumItems = null;
             unset($data['maximumItems']);
         }
@@ -147,7 +147,7 @@ class FieldDictionaryArrayNormalizer implements DenormalizerInterface, Normalize
             $object->minimumItems = $data['minimumItems'];
             unset($data['minimumItems']);
         }
-        elseif (\array_key_exists('minimumItems', $data) && $data['minimumItems'] === null) {
+        elseif (\array_key_exists('minimumItems', $data)) {
             $object->minimumItems = null;
             unset($data['minimumItems']);
         }

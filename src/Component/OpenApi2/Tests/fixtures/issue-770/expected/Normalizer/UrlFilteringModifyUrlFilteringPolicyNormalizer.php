@@ -151,7 +151,7 @@ class UrlFilteringModifyUrlFilteringPolicyNormalizer implements DenormalizerInte
             $dataArray['blacklist'] = $values_2;
         }
         if (array_key_exists('blockByThreatLevelConfig', get_object_vars($data)) && null !== ($data->blockByThreatLevelConfig ?? null)) {
-            $dataArray['blockByThreatLevelConfig'] = $data->blockByThreatLevelConfig === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->blockByThreatLevelConfig, 'json', $context));
+            $dataArray['blockByThreatLevelConfig'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->blockByThreatLevelConfig, 'json', $context));
         }
         return $dataArray;
     }

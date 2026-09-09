@@ -53,7 +53,7 @@ class ObjectAggregationResultNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->searchString = $data['searchString'];
         }
-        elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+        elseif (\array_key_exists('searchString', $data)) {
             $object->searchString = null;
         }
         if (\array_key_exists('isSearchStringRewritten', $data)) {
@@ -66,7 +66,7 @@ class ObjectAggregationResultNormalizer implements DenormalizerInterface, Normal
             }
             $object->queryDebugInformation = $values_1;
         }
-        elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
+        elseif (\array_key_exists('queryDebugInformation', $data)) {
             $object->queryDebugInformation = null;
         }
         return $object;

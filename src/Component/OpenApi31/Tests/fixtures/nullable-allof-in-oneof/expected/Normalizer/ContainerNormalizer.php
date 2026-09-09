@@ -50,7 +50,7 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->iconOneOf = $value;
             unset($data['iconOneOf']);
         }
-        elseif (\array_key_exists('iconOneOf', $data) && $data['iconOneOf'] === null) {
+        elseif (\array_key_exists('iconOneOf', $data)) {
             $object->iconOneOf = null;
             unset($data['iconOneOf']);
         }
@@ -64,7 +64,7 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->iconAnyOf = $value_1;
             unset($data['iconAnyOf']);
         }
-        elseif (\array_key_exists('iconAnyOf', $data) && $data['iconAnyOf'] === null) {
+        elseif (\array_key_exists('iconAnyOf', $data)) {
             $object->iconAnyOf = null;
             unset($data['iconAnyOf']);
         }
@@ -81,7 +81,7 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('iconOneOf', get_object_vars($data)) && null !== ($data->iconOneOf ?? null)) {
             $value = $data->iconOneOf;
             if (is_object($data->iconOneOf)) {
-                $value = $data->iconOneOf === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconOneOf, 'json', $context));
+                $value = new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconOneOf, 'json', $context));
             } elseif (is_null($data->iconOneOf)) {
                 $value = $data->iconOneOf;
             }
@@ -90,7 +90,7 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (array_key_exists('iconAnyOf', get_object_vars($data)) && null !== ($data->iconAnyOf ?? null)) {
             $value_1 = $data->iconAnyOf;
             if (is_object($data->iconAnyOf)) {
-                $value_1 = $data->iconAnyOf === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconAnyOf, 'json', $context));
+                $value_1 = new \Jane\Component\OpenApi31\Tests\Expected\NullableAllofInOneof\Runtime\JsonObject($this->normalizer->normalize($data->iconAnyOf, 'json', $context));
             } elseif (is_null($data->iconAnyOf)) {
                 $value_1 = $data->iconAnyOf;
             }

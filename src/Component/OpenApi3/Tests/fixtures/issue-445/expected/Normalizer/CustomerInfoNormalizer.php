@@ -93,7 +93,7 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->apps = $values_3;
         }
-        elseif (\array_key_exists('apps', $data) && $data['apps'] === null) {
+        elseif (\array_key_exists('apps', $data)) {
             $object->apps = null;
         }
         if (\array_key_exists('modificationDate', $data)) {
@@ -122,7 +122,7 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['enableQueryDetails'] = $data->enableQueryDetails;
         $value = $data->languageConfiguration;
         if (is_object($data->languageConfiguration)) {
-            $value = $data->languageConfiguration === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->languageConfiguration, 'json', $context));
+            $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->languageConfiguration, 'json', $context));
         }
         $dataArray['languageConfiguration'] = $value;
         $values = [];

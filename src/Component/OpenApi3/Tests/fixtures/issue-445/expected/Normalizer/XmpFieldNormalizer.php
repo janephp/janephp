@@ -43,7 +43,7 @@ class XmpFieldNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('path', $data) && $data['path'] !== null) {
             $object->path = $data['path'];
         }
-        elseif (\array_key_exists('path', $data) && $data['path'] === null) {
+        elseif (\array_key_exists('path', $data)) {
             $object->path = null;
         }
         if (\array_key_exists('isWritable', $data)) {

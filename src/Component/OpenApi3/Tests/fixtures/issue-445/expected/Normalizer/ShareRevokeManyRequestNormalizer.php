@@ -44,7 +44,7 @@ class ShareRevokeManyRequestNormalizer implements DenormalizerInterface, Normali
             }
             $object->ids = $values;
         }
-        elseif (\array_key_exists('ids', $data) && $data['ids'] === null) {
+        elseif (\array_key_exists('ids', $data)) {
             $object->ids = null;
         }
         return $object;

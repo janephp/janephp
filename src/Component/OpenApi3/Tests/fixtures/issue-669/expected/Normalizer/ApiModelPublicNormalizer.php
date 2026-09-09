@@ -118,7 +118,7 @@ class ApiModelPublicNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('agreement', get_object_vars($data)) && null !== ($data->agreement ?? null)) {
-            $dataArray['agreement'] = $data->agreement === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->agreement, 'json', $context));
+            $dataArray['agreement'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->agreement, 'json', $context));
         }
         if (array_key_exists('createdAt', get_object_vars($data)) && null !== ($data->createdAt ?? null)) {
             $dataArray['created_at'] = $data->createdAt->format('Y-m-d\TH:i:sP');
@@ -157,7 +157,7 @@ class ApiModelPublicNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['uuid'] = $data->uuid;
         }
         if (array_key_exists('version', get_object_vars($data)) && null !== ($data->version ?? null)) {
-            $dataArray['version'] = $data->version === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->version, 'json', $context));
+            $dataArray['version'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->version, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

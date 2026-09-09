@@ -44,7 +44,7 @@ class SchemaCreateResultNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->schema = $value;
         }
-        elseif (\array_key_exists('schema', $data) && $data['schema'] === null) {
+        elseif (\array_key_exists('schema', $data)) {
             $object->schema = null;
         }
         return $object;
@@ -55,7 +55,7 @@ class SchemaCreateResultNormalizer implements DenormalizerInterface, NormalizerI
         if (array_key_exists('schema', get_object_vars($data)) && null !== ($data->schema ?? null)) {
             $value = $data->schema;
             if (is_object($data->schema)) {
-                $value = $data->schema === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schema, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->schema, 'json', $context));
             }
             $dataArray['schema'] = $value;
         }

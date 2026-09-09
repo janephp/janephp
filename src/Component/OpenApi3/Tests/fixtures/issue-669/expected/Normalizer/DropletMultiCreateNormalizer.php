@@ -116,7 +116,7 @@ class DropletMultiCreateNormalizer implements DenormalizerInterface, NormalizerI
             $object->tags = $values_2;
             unset($data['tags']);
         }
-        elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
+        elseif (\array_key_exists('tags', $data)) {
             $object->tags = null;
             unset($data['tags']);
         }
@@ -187,7 +187,7 @@ class DropletMultiCreateNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['backups'] = $data->backups;
         }
         if (array_key_exists('backupPolicy', get_object_vars($data)) && null !== ($data->backupPolicy ?? null)) {
-            $dataArray['backup_policy'] = $data->backupPolicy === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy, 'json', $context));
+            $dataArray['backup_policy'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->backupPolicy, 'json', $context));
         }
         if (array_key_exists('ipv6', get_object_vars($data)) && null !== ($data->ipv6 ?? null)) {
             $dataArray['ipv6'] = $data->ipv6;

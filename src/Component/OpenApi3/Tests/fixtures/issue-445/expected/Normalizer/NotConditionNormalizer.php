@@ -41,7 +41,7 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->traceRefId = $data['traceRefId'];
             unset($data['traceRefId']);
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
             unset($data['traceRefId']);
         }
@@ -57,7 +57,7 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->condition = $value;
             unset($data['condition']);
         }
-        elseif (\array_key_exists('condition', $data) && $data['condition'] === null) {
+        elseif (\array_key_exists('condition', $data)) {
             $object->condition = null;
             unset($data['condition']);
         }
@@ -78,7 +78,7 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('condition', get_object_vars($data)) && null !== ($data->condition ?? null)) {
             $value = $data->condition;
             if (is_object($data->condition)) {
-                $value = $data->condition === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->condition, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->condition, 'json', $context));
             }
             $dataArray['condition'] = $value;
         }

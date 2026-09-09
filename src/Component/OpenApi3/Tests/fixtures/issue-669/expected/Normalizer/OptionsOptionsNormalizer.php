@@ -76,25 +76,25 @@ class OptionsOptionsNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if (array_key_exists('kafka', get_object_vars($data)) && null !== ($data->kafka ?? null)) {
-            $dataArray['kafka'] = $data->kafka === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kafka, 'json', $context));
+            $dataArray['kafka'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->kafka, 'json', $context));
         }
         if (array_key_exists('mongodb', get_object_vars($data)) && null !== ($data->mongodb ?? null)) {
-            $dataArray['mongodb'] = $data->mongodb === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mongodb, 'json', $context));
+            $dataArray['mongodb'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mongodb, 'json', $context));
         }
         if (array_key_exists('pg', get_object_vars($data)) && null !== ($data->pg ?? null)) {
-            $dataArray['pg'] = $data->pg === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pg, 'json', $context));
+            $dataArray['pg'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->pg, 'json', $context));
         }
         if (array_key_exists('mysql', get_object_vars($data)) && null !== ($data->mysql ?? null)) {
-            $dataArray['mysql'] = $data->mysql === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysql, 'json', $context));
+            $dataArray['mysql'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->mysql, 'json', $context));
         }
         if (array_key_exists('redis', get_object_vars($data)) && null !== ($data->redis ?? null)) {
-            $dataArray['redis'] = $data->redis === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->redis, 'json', $context));
+            $dataArray['redis'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->redis, 'json', $context));
         }
         if (array_key_exists('valkey', get_object_vars($data)) && null !== ($data->valkey ?? null)) {
-            $dataArray['valkey'] = $data->valkey === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->valkey, 'json', $context));
+            $dataArray['valkey'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->valkey, 'json', $context));
         }
         if (array_key_exists('opensearch', get_object_vars($data)) && null !== ($data->opensearch ?? null)) {
-            $dataArray['opensearch'] = $data->opensearch === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->opensearch, 'json', $context));
+            $dataArray['opensearch'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->opensearch, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

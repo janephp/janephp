@@ -57,7 +57,7 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
             $object->downloadInfos = $values;
             unset($data['downloadInfos']);
         }
-        elseif (\array_key_exists('downloadInfos', $data) && $data['downloadInfos'] === null) {
+        elseif (\array_key_exists('downloadInfos', $data)) {
             $object->downloadInfos = null;
             unset($data['downloadInfos']);
         }
@@ -69,7 +69,7 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
             $object->shareToken = $data['shareToken'];
             unset($data['shareToken']);
         }
-        elseif (\array_key_exists('shareToken', $data) && $data['shareToken'] === null) {
+        elseif (\array_key_exists('shareToken', $data)) {
             $object->shareToken = null;
             unset($data['shareToken']);
         }
@@ -77,7 +77,7 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
             $object->range = $data['range'];
             unset($data['range']);
         }
-        elseif (\array_key_exists('range', $data) && $data['range'] === null) {
+        elseif (\array_key_exists('range', $data)) {
             $object->range = null;
             unset($data['range']);
         }

@@ -72,7 +72,7 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->names = $value;
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
@@ -82,7 +82,7 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->aggregators = $values_1;
         }
-        elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
+        elseif (\array_key_exists('aggregators', $data)) {
             $object->aggregators = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
@@ -92,7 +92,7 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->filter = $value_3;
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
         if (\array_key_exists('kind', $data)) {
@@ -146,7 +146,7 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_3 = $data->filter;
             if (is_object($data->filter)) {
-                $value_3 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value_3 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_3;
         }

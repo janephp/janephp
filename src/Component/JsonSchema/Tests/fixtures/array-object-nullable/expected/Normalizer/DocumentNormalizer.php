@@ -50,7 +50,7 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->attributes = $value;
         }
-        elseif (\array_key_exists('attributes', $data) && $data['attributes'] === null) {
+        elseif (\array_key_exists('attributes', $data)) {
             $object->attributes = null;
         }
         return $object;

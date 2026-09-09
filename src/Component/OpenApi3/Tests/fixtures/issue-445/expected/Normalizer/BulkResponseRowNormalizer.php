@@ -49,7 +49,7 @@ class BulkResponseRowNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('error', $data) && $data['error'] !== null) {
             $object->error = $data['error'];
         }
-        elseif (\array_key_exists('error', $data) && $data['error'] === null) {
+        elseif (\array_key_exists('error', $data)) {
             $object->error = null;
         }
         if (\array_key_exists('succeeded', $data)) {
@@ -61,7 +61,7 @@ class BulkResponseRowNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->requestId = $data['requestId'];
         }
-        elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
+        elseif (\array_key_exists('requestId', $data)) {
             $object->requestId = null;
         }
         return $object;

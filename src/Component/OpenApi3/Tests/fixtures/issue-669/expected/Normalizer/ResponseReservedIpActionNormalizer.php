@@ -52,7 +52,7 @@ class ResponseReservedIpActionNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('action', get_object_vars($data)) && null !== ($data->action ?? null)) {
-            $dataArray['action'] = $data->action === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->action, 'json', $context));
+            $dataArray['action'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->action, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

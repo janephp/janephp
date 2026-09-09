@@ -55,7 +55,7 @@ class PermissionSetUpdateRequestOfContentRightNormalizer implements Denormalizer
             }
             $object->userRolesRights = $values_1;
         }
-        elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
+        elseif (\array_key_exists('userRolesRights', $data)) {
             $object->userRolesRights = null;
         }
         if (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] !== null) {
@@ -65,7 +65,7 @@ class PermissionSetUpdateRequestOfContentRightNormalizer implements Denormalizer
             }
             $object->userRolesPermissionSetRights = $values_2;
         }
-        elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
+        elseif (\array_key_exists('userRolesPermissionSetRights', $data)) {
             $object->userRolesPermissionSetRights = null;
         }
         return $object;

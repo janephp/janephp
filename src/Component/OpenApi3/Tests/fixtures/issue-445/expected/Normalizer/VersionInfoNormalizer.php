@@ -40,25 +40,25 @@ class VersionInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('fileVersion', $data) && $data['fileVersion'] !== null) {
             $object->fileVersion = $data['fileVersion'];
         }
-        elseif (\array_key_exists('fileVersion', $data) && $data['fileVersion'] === null) {
+        elseif (\array_key_exists('fileVersion', $data)) {
             $object->fileVersion = null;
         }
         if (\array_key_exists('fileProductVersion', $data) && $data['fileProductVersion'] !== null) {
             $object->fileProductVersion = $data['fileProductVersion'];
         }
-        elseif (\array_key_exists('fileProductVersion', $data) && $data['fileProductVersion'] === null) {
+        elseif (\array_key_exists('fileProductVersion', $data)) {
             $object->fileProductVersion = null;
         }
         if (\array_key_exists('contractVersion', $data) && $data['contractVersion'] !== null) {
             $object->contractVersion = $data['contractVersion'];
         }
-        elseif (\array_key_exists('contractVersion', $data) && $data['contractVersion'] === null) {
+        elseif (\array_key_exists('contractVersion', $data)) {
             $object->contractVersion = null;
         }
         if (\array_key_exists('release', $data) && $data['release'] !== null) {
             $object->release = $data['release'];
         }
-        elseif (\array_key_exists('release', $data) && $data['release'] === null) {
+        elseif (\array_key_exists('release', $data)) {
             $object->release = null;
         }
         return $object;

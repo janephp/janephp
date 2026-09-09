@@ -44,7 +44,7 @@ class BusinessRuleTracedRuleNormalizer implements DenormalizerInterface, Normali
             }
             $object->configuration = $value;
         }
-        elseif (\array_key_exists('configuration', $data) && $data['configuration'] === null) {
+        elseif (\array_key_exists('configuration', $data)) {
             $object->configuration = null;
         }
         if (\array_key_exists('evaluations', $data) && $data['evaluations'] !== null) {
@@ -54,7 +54,7 @@ class BusinessRuleTracedRuleNormalizer implements DenormalizerInterface, Normali
             }
             $object->evaluations = $values;
         }
-        elseif (\array_key_exists('evaluations', $data) && $data['evaluations'] === null) {
+        elseif (\array_key_exists('evaluations', $data)) {
             $object->evaluations = null;
         }
         return $object;
@@ -65,7 +65,7 @@ class BusinessRuleTracedRuleNormalizer implements DenormalizerInterface, Normali
         if (array_key_exists('configuration', get_object_vars($data)) && null !== ($data->configuration ?? null)) {
             $value = $data->configuration;
             if (is_object($data->configuration)) {
-                $value = $data->configuration === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->configuration, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->configuration, 'json', $context));
             }
             $dataArray['configuration'] = $value;
         }

@@ -45,7 +45,7 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -53,7 +53,7 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -65,7 +65,7 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -77,7 +77,7 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
             $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
-        elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
+        elseif (\array_key_exists('customerId', $data)) {
             $object->customerId = null;
             unset($data['customerId']);
         }
@@ -85,7 +85,7 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
             $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
-        elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
+        elseif (\array_key_exists('customerAlias', $data)) {
             $object->customerAlias = null;
             unset($data['customerAlias']);
         }
@@ -93,7 +93,7 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
             $object->userId = $data['userId'];
             unset($data['userId']);
         }
-        elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
+        elseif (\array_key_exists('userId', $data)) {
             $object->userId = null;
             unset($data['userId']);
         }
@@ -101,7 +101,7 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
             $object->fieldId = $data['fieldId'];
             unset($data['fieldId']);
         }
-        elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
+        elseif (\array_key_exists('fieldId', $data)) {
             $object->fieldId = null;
             unset($data['fieldId']);
         }
@@ -109,7 +109,7 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
             $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
         }
-        elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
+        elseif (\array_key_exists('schemaId', $data)) {
             $object->schemaId = null;
             unset($data['schemaId']);
         }
@@ -117,7 +117,7 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
             $object->fieldType = $data['fieldType'];
             unset($data['fieldType']);
         }
-        elseif (\array_key_exists('fieldType', $data) && $data['fieldType'] === null) {
+        elseif (\array_key_exists('fieldType', $data)) {
             $object->fieldType = null;
             unset($data['fieldType']);
         }

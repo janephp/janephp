@@ -144,7 +144,20 @@ trait NormalizerGenerator
                 new Expr\ConstFetch(new Name('null'))
             );
 
-            list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar);
+            // Only guards ending in "null !== ($property ?? null)" statically
+            // guarantee a non-null input: the "required, executed always" path
+            // and the "initialized only" check cannot, so the emitters keep
+            // their null-safety wrappers there.
+            $inputMayBeNull = true;
+            if (!$skipRequiredFields && $property->isRequired()) {
+                // executed unconditionally
+            } elseif (!$includeNullValue && !$property->isRequired()) {
+                // guarded by the initialized check only
+            } else {
+                $inputMayBeNull = false;
+            }
+
+            list($normalizationStatements, $outputVar) = $property->getType()->createNormalizationStatement($context, $propertyVar, true, $inputMayBeNull);
 
             $normalizationStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), $outputVar));
 

@@ -79,7 +79,7 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $object->secondaryIPAddresses = $values_2;
         }
-        elseif (\array_key_exists('SecondaryIPAddresses', $data) && $data['SecondaryIPAddresses'] === null) {
+        elseif (\array_key_exists('SecondaryIPAddresses', $data)) {
             $object->secondaryIPAddresses = null;
         }
         if (\array_key_exists('SecondaryIPv6Addresses', $data) && $data['SecondaryIPv6Addresses'] !== null) {
@@ -89,7 +89,7 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $object->secondaryIPv6Addresses = $values_3;
         }
-        elseif (\array_key_exists('SecondaryIPv6Addresses', $data) && $data['SecondaryIPv6Addresses'] === null) {
+        elseif (\array_key_exists('SecondaryIPv6Addresses', $data)) {
             $object->secondaryIPv6Addresses = null;
         }
         if (\array_key_exists('EndpointID', $data)) {

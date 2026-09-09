@@ -41,7 +41,7 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->foo = $data['foo'];
             unset($data['foo']);
         }
-        elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
+        elseif (\array_key_exists('foo', $data)) {
             $object->foo = null;
             unset($data['foo']);
         }
@@ -57,7 +57,7 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->date = $date;
             unset($data['date']);
         }
-        elseif (\array_key_exists('date', $data) && $data['date'] === null) {
+        elseif (\array_key_exists('date', $data)) {
             $object->date = null;
             unset($data['date']);
         }

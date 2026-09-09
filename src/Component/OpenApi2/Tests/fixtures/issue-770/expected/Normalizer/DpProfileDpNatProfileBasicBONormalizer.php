@@ -88,7 +88,7 @@ class DpProfileDpNatProfileBasicBONormalizer implements DenormalizerInterface, N
             $dataArray['primaryNatDefaultRouteGateway'] = $data->primaryNatDefaultRouteGateway;
         }
         if (array_key_exists('natPublicSubnetId', get_object_vars($data)) && null !== ($data->natPublicSubnetId ?? null)) {
-            $dataArray['natPublicSubnetId'] = $data->natPublicSubnetId === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->natPublicSubnetId, 'json', $context));
+            $dataArray['natPublicSubnetId'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->natPublicSubnetId, 'json', $context));
         }
         return $dataArray;
     }

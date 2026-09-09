@@ -52,7 +52,7 @@ class ResponseVpcNatGatewayCreateNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if (array_key_exists('vpcNatGateway', get_object_vars($data)) && null !== ($data->vpcNatGateway ?? null)) {
-            $dataArray['vpc_nat_gateway'] = $data->vpcNatGateway === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->vpcNatGateway, 'json', $context));
+            $dataArray['vpc_nat_gateway'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->vpcNatGateway, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

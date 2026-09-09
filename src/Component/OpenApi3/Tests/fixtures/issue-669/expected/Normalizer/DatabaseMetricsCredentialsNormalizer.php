@@ -52,7 +52,7 @@ class DatabaseMetricsCredentialsNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('credentials', get_object_vars($data)) && null !== ($data->credentials ?? null)) {
-            $dataArray['credentials'] = $data->credentials === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->credentials, 'json', $context));
+            $dataArray['credentials'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->credentials, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

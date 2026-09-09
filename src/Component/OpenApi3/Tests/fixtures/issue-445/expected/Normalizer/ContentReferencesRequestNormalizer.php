@@ -44,7 +44,7 @@ class ContentReferencesRequestNormalizer implements DenormalizerInterface, Norma
             }
             $object->references = $value;
         }
-        elseif (\array_key_exists('references', $data) && $data['references'] === null) {
+        elseif (\array_key_exists('references', $data)) {
             $object->references = null;
         }
         if (\array_key_exists('shares', $data) && $data['shares'] !== null) {
@@ -54,7 +54,7 @@ class ContentReferencesRequestNormalizer implements DenormalizerInterface, Norma
             }
             $object->shares = $value_1;
         }
-        elseif (\array_key_exists('shares', $data) && $data['shares'] === null) {
+        elseif (\array_key_exists('shares', $data)) {
             $object->shares = null;
         }
         return $object;
@@ -65,14 +65,14 @@ class ContentReferencesRequestNormalizer implements DenormalizerInterface, Norma
         if (array_key_exists('references', get_object_vars($data)) && null !== ($data->references ?? null)) {
             $value = $data->references;
             if (is_object($data->references)) {
-                $value = $data->references === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->references, 'json', $context));
             }
             $dataArray['references'] = $value;
         }
         if (array_key_exists('shares', get_object_vars($data)) && null !== ($data->shares ?? null)) {
             $value_1 = $data->shares;
             if (is_object($data->shares)) {
-                $value_1 = $data->shares === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shares, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->shares, 'json', $context));
             }
             $dataArray['shares'] = $value_1;
         }

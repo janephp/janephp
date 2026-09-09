@@ -860,7 +860,7 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
             $dataArray['latency6G'] = $data->latency6G;
         }
         if (array_key_exists('indoorMapXy', get_object_vars($data)) && null !== ($data->indoorMapXy ?? null)) {
-            $dataArray['indoorMapXy'] = $data->indoorMapXy === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->indoorMapXy, 'json', $context));
+            $dataArray['indoorMapXy'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->indoorMapXy, 'json', $context));
         }
         if (array_key_exists('apGroupId', get_object_vars($data)) && null !== ($data->apGroupId ?? null)) {
             $dataArray['apGroupId'] = $data->apGroupId;

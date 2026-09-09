@@ -68,13 +68,13 @@ class AprulesCreateApRuleNormalizer implements DenormalizerInterface, Normalizer
         }
         $dataArray['type'] = $data->type;
         if (array_key_exists('ipAddressRange', get_object_vars($data)) && null !== ($data->ipAddressRange ?? null)) {
-            $dataArray['ipAddressRange'] = $data->ipAddressRange === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipAddressRange, 'json', $context));
+            $dataArray['ipAddressRange'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipAddressRange, 'json', $context));
         }
         if (array_key_exists('subnet', get_object_vars($data)) && null !== ($data->subnet ?? null)) {
-            $dataArray['subnet'] = $data->subnet === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->subnet, 'json', $context));
+            $dataArray['subnet'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->subnet, 'json', $context));
         }
         if (array_key_exists('gpsCoordinates', get_object_vars($data)) && null !== ($data->gpsCoordinates ?? null)) {
-            $dataArray['gpsCoordinates'] = $data->gpsCoordinates === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->gpsCoordinates, 'json', $context));
+            $dataArray['gpsCoordinates'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->gpsCoordinates, 'json', $context));
         }
         if (array_key_exists('provisionTag', get_object_vars($data)) && null !== ($data->provisionTag ?? null)) {
             $dataArray['provisionTag'] = $data->provisionTag;

@@ -231,7 +231,7 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $dataArray['Cmd'] = $values_2;
         }
         if (array_key_exists('healthcheck', get_object_vars($data)) && null !== ($data->healthcheck ?? null)) {
-            $dataArray['Healthcheck'] = $data->healthcheck === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->healthcheck, 'json', $context));
+            $dataArray['Healthcheck'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->healthcheck, 'json', $context));
         }
         if (array_key_exists('argsEscaped', get_object_vars($data)) && null !== ($data->argsEscaped ?? null)) {
             $dataArray['ArgsEscaped'] = $data->argsEscaped;
@@ -290,10 +290,10 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $dataArray['Shell'] = $values_7;
         }
         if (array_key_exists('hostConfig', get_object_vars($data)) && null !== ($data->hostConfig ?? null)) {
-            $dataArray['HostConfig'] = $data->hostConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig, 'json', $context));
+            $dataArray['HostConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig, 'json', $context));
         }
         if (array_key_exists('networkingConfig', get_object_vars($data)) && null !== ($data->networkingConfig ?? null)) {
-            $dataArray['NetworkingConfig'] = $data->networkingConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkingConfig, 'json', $context));
+            $dataArray['NetworkingConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkingConfig, 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersCreatePostBodyConstraint());

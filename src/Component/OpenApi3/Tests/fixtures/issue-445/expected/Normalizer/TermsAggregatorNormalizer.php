@@ -53,7 +53,7 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $object->names = $value;
             unset($data['names']);
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
             unset($data['names']);
         }
@@ -65,7 +65,7 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $object->aggregators = $values_1;
             unset($data['aggregators']);
         }
-        elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
+        elseif (\array_key_exists('aggregators', $data)) {
             $object->aggregators = null;
             unset($data['aggregators']);
         }
@@ -77,7 +77,7 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $object->filter = $value_3;
             unset($data['filter']);
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
             unset($data['filter']);
         }
@@ -93,7 +93,7 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $object->size = $data['size'];
             unset($data['size']);
         }
-        elseif (\array_key_exists('size', $data) && $data['size'] === null) {
+        elseif (\array_key_exists('size', $data)) {
             $object->size = null;
             unset($data['size']);
         }
@@ -105,7 +105,7 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $object->includes = $values_2;
             unset($data['includes']);
         }
-        elseif (\array_key_exists('includes', $data) && $data['includes'] === null) {
+        elseif (\array_key_exists('includes', $data)) {
             $object->includes = null;
             unset($data['includes']);
         }
@@ -117,7 +117,7 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $object->excludes = $values_3;
             unset($data['excludes']);
         }
-        elseif (\array_key_exists('excludes', $data) && $data['excludes'] === null) {
+        elseif (\array_key_exists('excludes', $data)) {
             $object->excludes = null;
             unset($data['excludes']);
         }
@@ -125,7 +125,7 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $object->searchString = $data['searchString'];
             unset($data['searchString']);
         }
-        elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+        elseif (\array_key_exists('searchString', $data)) {
             $object->searchString = null;
             unset($data['searchString']);
         }
@@ -137,7 +137,7 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $object->searchFields = $values_4;
             unset($data['searchFields']);
         }
-        elseif (\array_key_exists('searchFields', $data) && $data['searchFields'] === null) {
+        elseif (\array_key_exists('searchFields', $data)) {
             $object->searchFields = null;
             unset($data['searchFields']);
         }
@@ -173,7 +173,7 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_3 = $data->filter;
             if (is_object($data->filter)) {
-                $value_3 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value_3 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_3;
         }

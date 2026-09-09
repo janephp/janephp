@@ -45,7 +45,7 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             $object->layerSchemaIds = $values;
             unset($data['layerSchemaIds']);
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
             unset($data['layerSchemaIds']);
         }
@@ -57,7 +57,7 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             $object->content = $values_1;
             unset($data['content']);
         }
-        elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+        elseif (\array_key_exists('content', $data)) {
             $object->content = null;
             unset($data['content']);
         }
@@ -69,7 +69,7 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             $object->metadata = $values_2;
             unset($data['metadata']);
         }
-        elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
+        elseif (\array_key_exists('metadata', $data)) {
             $object->metadata = null;
             unset($data['metadata']);
         }

@@ -57,7 +57,7 @@ class DocumentHistorySearchResultNormalizer implements DenormalizerInterface, No
             $object->pageToken = $data['pageToken'];
             unset($data['pageToken']);
         }
-        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+        elseif (\array_key_exists('pageToken', $data)) {
             $object->pageToken = null;
             unset($data['pageToken']);
         }

@@ -70,10 +70,10 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
             $dataArray['commonDescription'] = $data->commonDescription;
         }
         if (array_key_exists('creditLimit', get_object_vars($data)) && null !== ($data->creditLimit ?? null)) {
-            $dataArray['creditLimit'] = $data->creditLimit === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditLimit, 'json', $context));
+            $dataArray['creditLimit'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->creditLimit, 'json', $context));
         }
         if (array_key_exists('providerValue', get_object_vars($data)) && null !== ($data->providerValue ?? null)) {
-            $dataArray['providerValue'] = $data->providerValue === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->providerValue, 'json', $context));
+            $dataArray['providerValue'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->providerValue, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

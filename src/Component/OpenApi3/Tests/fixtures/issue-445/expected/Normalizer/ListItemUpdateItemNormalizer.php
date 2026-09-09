@@ -45,7 +45,7 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
             $object->content = $values;
             unset($data['content']);
         }
-        elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+        elseif (\array_key_exists('content', $data)) {
             $object->content = null;
             unset($data['content']);
         }

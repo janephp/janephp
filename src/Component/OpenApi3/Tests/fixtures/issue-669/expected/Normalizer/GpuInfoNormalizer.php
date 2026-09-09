@@ -66,7 +66,7 @@ class GpuInfoNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['model'] = $data->model;
         }
         if (array_key_exists('vram', get_object_vars($data)) && null !== ($data->vram ?? null)) {
-            $dataArray['vram'] = $data->vram === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->vram, 'json', $context));
+            $dataArray['vram'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->vram, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

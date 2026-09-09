@@ -77,7 +77,7 @@ class PortfolioRequestNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['name'] = $data->name;
         $dataArray['isDefault'] = $data->isDefault;
         if (array_key_exists('emails', get_object_vars($data)) && null !== ($data->emails ?? null)) {
-            $dataArray['emails'] = $data->emails === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->emails, 'json', $context));
+            $dataArray['emails'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->emails, 'json', $context));
         }
         if (array_key_exists('emailSubject', get_object_vars($data)) && null !== ($data->emailSubject ?? null)) {
             $dataArray['emailSubject'] = $data->emailSubject;

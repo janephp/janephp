@@ -50,7 +50,7 @@ class BusinessRuleConfigurationUpdateRequestNormalizer implements DenormalizerIn
             }
             $object->rules = $values;
         }
-        elseif (\array_key_exists('rules', $data) && $data['rules'] === null) {
+        elseif (\array_key_exists('rules', $data)) {
             $object->rules = null;
         }
         if (\array_key_exists('caches', $data) && $data['caches'] !== null) {
@@ -60,7 +60,7 @@ class BusinessRuleConfigurationUpdateRequestNormalizer implements DenormalizerIn
             }
             $object->caches = $values_1;
         }
-        elseif (\array_key_exists('caches', $data) && $data['caches'] === null) {
+        elseif (\array_key_exists('caches', $data)) {
             $object->caches = null;
         }
         return $object;

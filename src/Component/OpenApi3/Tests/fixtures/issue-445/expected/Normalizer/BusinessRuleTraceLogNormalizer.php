@@ -40,13 +40,13 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('documentId', $data) && $data['documentId'] !== null) {
             $object->documentId = $data['documentId'];
         }
-        elseif (\array_key_exists('documentId', $data) && $data['documentId'] === null) {
+        elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
         }
         if (\array_key_exists('documentType', $data)) {
@@ -63,7 +63,7 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
             }
             $object->ruleIds = $values;
         }
-        elseif (\array_key_exists('ruleIds', $data) && $data['ruleIds'] === null) {
+        elseif (\array_key_exists('ruleIds', $data)) {
             $object->ruleIds = null;
         }
         if (\array_key_exists('rules', $data) && $data['rules'] !== null) {
@@ -73,7 +73,7 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
             }
             $object->rules = $values_1;
         }
-        elseif (\array_key_exists('rules', $data) && $data['rules'] === null) {
+        elseif (\array_key_exists('rules', $data)) {
             $object->rules = null;
         }
         if (\array_key_exists('validationErrors', $data) && $data['validationErrors'] !== null) {
@@ -83,7 +83,7 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
             }
             $object->validationErrors = $values_2;
         }
-        elseif (\array_key_exists('validationErrors', $data) && $data['validationErrors'] === null) {
+        elseif (\array_key_exists('validationErrors', $data)) {
             $object->validationErrors = null;
         }
         if (\array_key_exists('generalErrors', $data) && $data['generalErrors'] !== null) {
@@ -93,7 +93,7 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
             }
             $object->generalErrors = $values_3;
         }
-        elseif (\array_key_exists('generalErrors', $data) && $data['generalErrors'] === null) {
+        elseif (\array_key_exists('generalErrors', $data)) {
             $object->generalErrors = null;
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
@@ -103,7 +103,7 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
             }
             $object->audit = $value_5;
         }
-        elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
+        elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
         return $object;
@@ -153,7 +153,7 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_5 = $data->audit;
             if (is_object($data->audit)) {
-                $value_5 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $value_5 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_5;
         }

@@ -47,7 +47,7 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
             $object->name = $data['name'];
             unset($data['name']);
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        elseif (\array_key_exists('name', $data)) {
             $object->name = null;
             unset($data['name']);
         }
@@ -63,7 +63,7 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
             $object->schemaId = $data['schemaId'];
             unset($data['schemaId']);
         }
-        elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
+        elseif (\array_key_exists('schemaId', $data)) {
             $object->schemaId = null;
             unset($data['schemaId']);
         }
@@ -71,7 +71,7 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
             $object->valueField = $data['valueField'];
             unset($data['valueField']);
         }
-        elseif (\array_key_exists('valueField', $data) && $data['valueField'] === null) {
+        elseif (\array_key_exists('valueField', $data)) {
             $object->valueField = null;
             unset($data['valueField']);
         }
@@ -83,7 +83,7 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
             $object->filter = $value;
             unset($data['filter']);
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
             unset($data['filter']);
         }
@@ -115,7 +115,7 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value = $data->filter;
             if (is_object($data->filter)) {
-                $value = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value;
         }

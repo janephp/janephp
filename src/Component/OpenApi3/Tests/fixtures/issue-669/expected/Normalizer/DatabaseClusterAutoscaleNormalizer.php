@@ -52,7 +52,7 @@ class DatabaseClusterAutoscaleNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if (array_key_exists('storage', get_object_vars($data)) && null !== ($data->storage ?? null)) {
-            $dataArray['storage'] = $data->storage === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->storage, 'json', $context));
+            $dataArray['storage'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->storage, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

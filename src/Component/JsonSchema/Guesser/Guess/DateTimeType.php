@@ -74,7 +74,7 @@ class DateTimeType extends ObjectType
         return [$statements, $output];
     }
 
-    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
+    protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true, bool $inputMayBeNull = true): Expr
     {
         if ($this->isNullable($this->object)) {
             // $object?->format($format);
@@ -91,6 +91,19 @@ class DateTimeType extends ObjectType
 
     public function createConditionStatement(Expr $input): Expr
     {
+        // When no input format is configured the parse runs through
+        // "new \DateTime($data)": it never returns false. It either yields a
+        // \DateTime or throws on an unparseable string (in both generator
+        // output variants the throwing case is reached the same way), so
+        // checking the result here would be a dead always-truthy comparison.
+        if (empty($this->inputFormat)) {
+            return new Expr\FuncCall(
+                new Name('is_string'), [
+                    new Arg($input),
+                ]
+            );
+        }
+
         return new Expr\BinaryOp\LogicalAnd(new Expr\FuncCall(
             new Name('is_string'), [
                 new Arg($input),

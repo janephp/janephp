@@ -65,7 +65,7 @@ class ActionNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->completedAt = $date_1;
             unset($data['completed_at']);
         }
-        elseif (\array_key_exists('completed_at', $data) && $data['completed_at'] === null) {
+        elseif (\array_key_exists('completed_at', $data)) {
             $object->completedAt = null;
             unset($data['completed_at']);
         }
@@ -73,7 +73,7 @@ class ActionNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->resourceId = $data['resource_id'];
             unset($data['resource_id']);
         }
-        elseif (\array_key_exists('resource_id', $data) && $data['resource_id'] === null) {
+        elseif (\array_key_exists('resource_id', $data)) {
             $object->resourceId = null;
             unset($data['resource_id']);
         }
@@ -89,7 +89,7 @@ class ActionNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->regionSlug = $data['region_slug'];
             unset($data['region_slug']);
         }
-        elseif (\array_key_exists('region_slug', $data) && $data['region_slug'] === null) {
+        elseif (\array_key_exists('region_slug', $data)) {
             $object->regionSlug = null;
             unset($data['region_slug']);
         }
@@ -125,7 +125,7 @@ class ActionNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['resource_type'] = $data->resourceType;
         }
         if (array_key_exists('region', get_object_vars($data)) && null !== ($data->region ?? null)) {
-            $dataArray['region'] = $data->region === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region, 'json', $context));
+            $dataArray['region'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->region, 'json', $context));
         }
         if (array_key_exists('regionSlug', get_object_vars($data)) && null !== ($data->regionSlug ?? null)) {
             $dataArray['region_slug'] = $data->regionSlug;

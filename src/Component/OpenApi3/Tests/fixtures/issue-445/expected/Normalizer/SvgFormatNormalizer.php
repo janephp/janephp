@@ -45,7 +45,7 @@ class SvgFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->extension = $data['extension'];
             unset($data['extension']);
         }
-        elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
+        elseif (\array_key_exists('extension', $data)) {
             $object->extension = null;
             unset($data['extension']);
         }

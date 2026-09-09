@@ -57,7 +57,7 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->files = $values;
         }
-        elseif (\array_key_exists('files', $data) && $data['files'] === null) {
+        elseif (\array_key_exists('files', $data)) {
             $object->files = null;
         }
         if (\array_key_exists('webLinks', $data) && $data['webLinks'] !== null) {
@@ -67,13 +67,13 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->webLinks = $values_1;
         }
-        elseif (\array_key_exists('webLinks', $data) && $data['webLinks'] === null) {
+        elseif (\array_key_exists('webLinks', $data)) {
             $object->webLinks = null;
         }
         if (\array_key_exists('collectionName', $data) && $data['collectionName'] !== null) {
             $object->collectionName = $data['collectionName'];
         }
-        elseif (\array_key_exists('collectionName', $data) && $data['collectionName'] === null) {
+        elseif (\array_key_exists('collectionName', $data)) {
             $object->collectionName = null;
         }
         if (\array_key_exists('createCollection', $data)) {

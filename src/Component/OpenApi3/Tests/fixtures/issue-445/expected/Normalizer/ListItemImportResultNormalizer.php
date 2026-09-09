@@ -53,7 +53,7 @@ class ListItemImportResultNormalizer implements DenormalizerInterface, Normalize
             }
             $object->skippedListItemIds = $values;
         }
-        elseif (\array_key_exists('skippedListItemIds', $data) && $data['skippedListItemIds'] === null) {
+        elseif (\array_key_exists('skippedListItemIds', $data)) {
             $object->skippedListItemIds = null;
         }
         if (\array_key_exists('importedListItemIds', $data) && $data['importedListItemIds'] !== null) {
@@ -63,7 +63,7 @@ class ListItemImportResultNormalizer implements DenormalizerInterface, Normalize
             }
             $object->importedListItemIds = $values_1;
         }
-        elseif (\array_key_exists('importedListItemIds', $data) && $data['importedListItemIds'] === null) {
+        elseif (\array_key_exists('importedListItemIds', $data)) {
             $object->importedListItemIds = null;
         }
         return $object;

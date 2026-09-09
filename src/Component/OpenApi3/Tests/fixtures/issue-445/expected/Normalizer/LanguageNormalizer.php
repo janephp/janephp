@@ -54,19 +54,19 @@ class LanguageNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('twoLetterISOLanguageName', $data) && $data['twoLetterISOLanguageName'] !== null) {
             $object->twoLetterISOLanguageName = $data['twoLetterISOLanguageName'];
         }
-        elseif (\array_key_exists('twoLetterISOLanguageName', $data) && $data['twoLetterISOLanguageName'] === null) {
+        elseif (\array_key_exists('twoLetterISOLanguageName', $data)) {
             $object->twoLetterISOLanguageName = null;
         }
         if (\array_key_exists('threeLetterISOLanguageName', $data) && $data['threeLetterISOLanguageName'] !== null) {
             $object->threeLetterISOLanguageName = $data['threeLetterISOLanguageName'];
         }
-        elseif (\array_key_exists('threeLetterISOLanguageName', $data) && $data['threeLetterISOLanguageName'] === null) {
+        elseif (\array_key_exists('threeLetterISOLanguageName', $data)) {
             $object->threeLetterISOLanguageName = null;
         }
         if (\array_key_exists('regionCode', $data) && $data['regionCode'] !== null) {
             $object->regionCode = $data['regionCode'];
         }
-        elseif (\array_key_exists('regionCode', $data) && $data['regionCode'] === null) {
+        elseif (\array_key_exists('regionCode', $data)) {
             $object->regionCode = null;
         }
         return $object;

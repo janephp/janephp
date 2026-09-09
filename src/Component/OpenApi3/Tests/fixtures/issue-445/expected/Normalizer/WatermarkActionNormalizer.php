@@ -54,7 +54,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
             $object->watermarkFilePath = $data['watermarkFilePath'];
             unset($data['watermarkFilePath']);
         }
-        elseif (\array_key_exists('watermarkFilePath', $data) && $data['watermarkFilePath'] === null) {
+        elseif (\array_key_exists('watermarkFilePath', $data)) {
             $object->watermarkFilePath = null;
             unset($data['watermarkFilePath']);
         }
@@ -62,7 +62,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
             $object->marginLeft = $data['marginLeft'];
             unset($data['marginLeft']);
         }
-        elseif (\array_key_exists('marginLeft', $data) && $data['marginLeft'] === null) {
+        elseif (\array_key_exists('marginLeft', $data)) {
             $object->marginLeft = null;
             unset($data['marginLeft']);
         }
@@ -70,7 +70,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
             $object->marginTop = $data['marginTop'];
             unset($data['marginTop']);
         }
-        elseif (\array_key_exists('marginTop', $data) && $data['marginTop'] === null) {
+        elseif (\array_key_exists('marginTop', $data)) {
             $object->marginTop = null;
             unset($data['marginTop']);
         }
@@ -78,7 +78,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
             $object->marginRight = $data['marginRight'];
             unset($data['marginRight']);
         }
-        elseif (\array_key_exists('marginRight', $data) && $data['marginRight'] === null) {
+        elseif (\array_key_exists('marginRight', $data)) {
             $object->marginRight = null;
             unset($data['marginRight']);
         }
@@ -86,7 +86,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
             $object->marginBottom = $data['marginBottom'];
             unset($data['marginBottom']);
         }
-        elseif (\array_key_exists('marginBottom', $data) && $data['marginBottom'] === null) {
+        elseif (\array_key_exists('marginBottom', $data)) {
             $object->marginBottom = null;
             unset($data['marginBottom']);
         }

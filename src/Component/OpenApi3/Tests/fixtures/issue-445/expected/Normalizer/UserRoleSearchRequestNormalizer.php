@@ -46,7 +46,7 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->searchString = $data['searchString'];
         }
-        elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+        elseif (\array_key_exists('searchString', $data)) {
             $object->searchString = null;
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
@@ -56,7 +56,7 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->searchBehaviors = $values;
         }
-        elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
+        elseif (\array_key_exists('searchBehaviors', $data)) {
             $object->searchBehaviors = null;
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
@@ -66,7 +66,7 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->sort = $values_1;
         }
-        elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
+        elseif (\array_key_exists('sort', $data)) {
             $object->sort = null;
         }
         if (\array_key_exists('limit', $data)) {
@@ -75,7 +75,7 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
             $object->pageToken = $data['pageToken'];
         }
-        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+        elseif (\array_key_exists('pageToken', $data)) {
             $object->pageToken = null;
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
@@ -85,7 +85,7 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->filter = $value_2;
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
         if (\array_key_exists('debugMode', $data)) {
@@ -98,7 +98,7 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $object->searchLanguages = $values_2;
         }
-        elseif (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] === null) {
+        elseif (\array_key_exists('searchLanguages', $data)) {
             $object->searchLanguages = null;
         }
         if (\array_key_exists('includeAdministratorSystemUserRole', $data)) {
@@ -133,7 +133,7 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_2 = $data->filter;
             if (is_object($data->filter)) {
-                $value_2 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_2;
         }

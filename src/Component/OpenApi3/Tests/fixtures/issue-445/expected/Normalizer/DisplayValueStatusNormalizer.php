@@ -44,7 +44,7 @@ class DisplayValueStatusNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->contentOrLayerSchemaIds = $values;
         }
-        elseif (\array_key_exists('contentOrLayerSchemaIds', $data) && $data['contentOrLayerSchemaIds'] === null) {
+        elseif (\array_key_exists('contentOrLayerSchemaIds', $data)) {
             $object->contentOrLayerSchemaIds = null;
         }
         if (\array_key_exists('listSchemaIds', $data) && $data['listSchemaIds'] !== null) {
@@ -54,7 +54,7 @@ class DisplayValueStatusNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->listSchemaIds = $values_1;
         }
-        elseif (\array_key_exists('listSchemaIds', $data) && $data['listSchemaIds'] === null) {
+        elseif (\array_key_exists('listSchemaIds', $data)) {
             $object->listSchemaIds = null;
         }
         if (\array_key_exists('state', $data)) {

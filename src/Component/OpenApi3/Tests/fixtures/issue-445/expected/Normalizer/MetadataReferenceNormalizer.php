@@ -49,13 +49,13 @@ class MetadataReferenceNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('sourceMetadataItemId', $data) && $data['sourceMetadataItemId'] !== null) {
             $object->sourceMetadataItemId = $data['sourceMetadataItemId'];
         }
-        elseif (\array_key_exists('sourceMetadataItemId', $data) && $data['sourceMetadataItemId'] === null) {
+        elseif (\array_key_exists('sourceMetadataItemId', $data)) {
             $object->sourceMetadataItemId = null;
         }
         if (\array_key_exists('sourceDocType', $data) && $data['sourceDocType'] !== null) {
             $object->sourceDocType = $data['sourceDocType'];
         }
-        elseif (\array_key_exists('sourceDocType', $data) && $data['sourceDocType'] === null) {
+        elseif (\array_key_exists('sourceDocType', $data)) {
             $object->sourceDocType = null;
         }
         return $object;

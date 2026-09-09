@@ -52,7 +52,7 @@ class ApiLinkAgentFunctionOutputNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if (array_key_exists('agent', get_object_vars($data)) && null !== ($data->agent ?? null)) {
-            $dataArray['agent'] = $data->agent === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->agent, 'json', $context));
+            $dataArray['agent'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->agent, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -106,7 +106,7 @@ class BusinessRuleConditionNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->traceRefId = $data['traceRefId'];
         }
-        elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
+        elseif (\array_key_exists('traceRefId', $data)) {
             $object->traceRefId = null;
         }
         if (\array_key_exists('kind', $data)) {

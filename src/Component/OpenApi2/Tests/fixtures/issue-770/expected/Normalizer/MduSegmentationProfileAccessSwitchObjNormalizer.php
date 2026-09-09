@@ -95,7 +95,7 @@ class MduSegmentationProfileAccessSwitchObjNormalizer implements DenormalizerInt
             $dataArray['webAuthPasswordLabel'] = $data->webAuthPasswordLabel;
         }
         if (array_key_exists('upLink', get_object_vars($data)) && null !== ($data->upLink ?? null)) {
-            $dataArray['upLink'] = $data->upLink === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->upLink, 'json', $context));
+            $dataArray['upLink'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->upLink, 'json', $context));
         }
         if (array_key_exists('ports', get_object_vars($data)) && null !== ($data->ports ?? null)) {
             $values = [];

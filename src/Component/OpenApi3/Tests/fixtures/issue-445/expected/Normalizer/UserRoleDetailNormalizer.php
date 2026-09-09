@@ -69,7 +69,7 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $object->audit = $value_3;
             unset($data['audit']);
         }
-        elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
+        elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
             unset($data['audit']);
         }
@@ -101,7 +101,7 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_3 = $data->audit;
             if (is_object($data->audit)) {
-                $value_3 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $value_3 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_3;
         }

@@ -73,7 +73,7 @@ class ClusterlintResultsDiagnosticsItemNormalizer implements DenormalizerInterfa
             $dataArray['message'] = $data->message;
         }
         if (array_key_exists('object', get_object_vars($data)) && null !== ($data->object ?? null)) {
-            $dataArray['object'] = $data->object === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->object, 'json', $context));
+            $dataArray['object'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->object, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

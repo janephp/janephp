@@ -43,7 +43,7 @@ class AggregationResultNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('sumOtherDocCount', $data) && $data['sumOtherDocCount'] !== null) {
             $object->sumOtherDocCount = $data['sumOtherDocCount'];
         }
-        elseif (\array_key_exists('sumOtherDocCount', $data) && $data['sumOtherDocCount'] === null) {
+        elseif (\array_key_exists('sumOtherDocCount', $data)) {
             $object->sumOtherDocCount = null;
         }
         if (\array_key_exists('aggregationResultItems', $data) && $data['aggregationResultItems'] !== null) {
@@ -53,7 +53,7 @@ class AggregationResultNormalizer implements DenormalizerInterface, NormalizerIn
             }
             $object->aggregationResultItems = $values;
         }
-        elseif (\array_key_exists('aggregationResultItems', $data) && $data['aggregationResultItems'] === null) {
+        elseif (\array_key_exists('aggregationResultItems', $data)) {
             $object->aggregationResultItems = null;
         }
         return $object;

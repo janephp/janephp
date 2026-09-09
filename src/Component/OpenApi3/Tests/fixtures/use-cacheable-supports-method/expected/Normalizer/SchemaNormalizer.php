@@ -122,10 +122,10 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['mapProperty'] = $values_1;
         }
         if (array_key_exists('objectProperty', get_object_vars($data)) && null !== ($data->objectProperty ?? null)) {
-            $dataArray['objectProperty'] = $data->objectProperty === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty, 'json', $context));
+            $dataArray['objectProperty'] = new \Jane\Component\OpenApi3\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject($this->normalizer->normalize($data->objectProperty, 'json', $context));
         }
         if (array_key_exists('objectRefProperty', get_object_vars($data)) && null !== ($data->objectRefProperty ?? null)) {
-            $dataArray['objectRefProperty'] = $data->objectRefProperty === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty, 'json', $context));
+            $dataArray['objectRefProperty'] = new \Jane\Component\OpenApi3\Tests\Expected\UseCacheableSupportsMethod\Runtime\JsonObject($this->normalizer->normalize($data->objectRefProperty, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

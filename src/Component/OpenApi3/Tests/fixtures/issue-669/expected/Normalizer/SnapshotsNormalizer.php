@@ -88,7 +88,7 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->tags = $values_1;
             unset($data['tags']);
         }
-        elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
+        elseif (\array_key_exists('tags', $data)) {
             $object->tags = null;
             unset($data['tags']);
         }

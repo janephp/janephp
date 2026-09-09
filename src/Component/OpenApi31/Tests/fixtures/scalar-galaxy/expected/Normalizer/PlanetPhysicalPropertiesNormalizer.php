@@ -85,7 +85,7 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
             $dataArray['gravity'] = $data->gravity;
         }
         if (array_key_exists('temperature', get_object_vars($data)) && null !== ($data->temperature ?? null)) {
-            $dataArray['temperature'] = $data->temperature === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->temperature, 'json', $context));
+            $dataArray['temperature'] = new \Jane\Component\OpenApi31\Tests\Expected\ScalarGalaxy\Runtime\JsonObject($this->normalizer->normalize($data->temperature, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

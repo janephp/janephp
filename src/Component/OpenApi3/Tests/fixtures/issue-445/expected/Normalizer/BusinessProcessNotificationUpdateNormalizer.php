@@ -62,7 +62,7 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
         if (\array_key_exists('navigationLink', $data) && $data['navigationLink'] !== null) {
             $object->navigationLink = $data['navigationLink'];
         }
-        elseif (\array_key_exists('navigationLink', $data) && $data['navigationLink'] === null) {
+        elseif (\array_key_exists('navigationLink', $data)) {
             $object->navigationLink = null;
         }
         if (\array_key_exists('eventType', $data)) {

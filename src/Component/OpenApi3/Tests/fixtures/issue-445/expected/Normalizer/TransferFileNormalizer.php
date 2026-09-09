@@ -40,13 +40,13 @@ class TransferFileNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('identifier', $data) && $data['identifier'] !== null) {
             $object->identifier = $data['identifier'];
         }
-        elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
+        elseif (\array_key_exists('identifier', $data)) {
             $object->identifier = null;
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->requestId = $data['requestId'];
         }
-        elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
+        elseif (\array_key_exists('requestId', $data)) {
             $object->requestId = null;
         }
         return $object;

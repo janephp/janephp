@@ -56,10 +56,10 @@ class ResponseFloatingIpCreatedNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if (array_key_exists('floatingIp', get_object_vars($data)) && null !== ($data->floatingIp ?? null)) {
-            $dataArray['floating_ip'] = $data->floatingIp === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->floatingIp, 'json', $context));
+            $dataArray['floating_ip'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->floatingIp, 'json', $context));
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
-            $dataArray['links'] = $data->links === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
+            $dataArray['links'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->links, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

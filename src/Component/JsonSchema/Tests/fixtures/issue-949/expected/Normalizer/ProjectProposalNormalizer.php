@@ -49,7 +49,7 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $object->name = $value;
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        elseif (\array_key_exists('name', $data)) {
             $object->name = null;
         }
         if (\array_key_exists('ecoScore', $data) && $data['ecoScore'] !== null) {
@@ -61,7 +61,7 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $object->ecoScore = $value_1;
         }
-        elseif (\array_key_exists('ecoScore', $data) && $data['ecoScore'] === null) {
+        elseif (\array_key_exists('ecoScore', $data)) {
             $object->ecoScore = null;
         }
         return $object;
@@ -79,7 +79,7 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['name'] = $value;
         $value_1 = $data->ecoScore;
         if (is_object($data->ecoScore)) {
-            $value_1 = $data->ecoScore === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\JsonObject($this->normalizer->normalize($data->ecoScore, 'json', $context));
+            $value_1 = new \Jane\Component\JsonSchema\Tests\Expected\Issue949\Runtime\JsonObject($this->normalizer->normalize($data->ecoScore, 'json', $context));
         } elseif (is_null($data->ecoScore)) {
             $value_1 = $data->ecoScore;
         }

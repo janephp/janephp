@@ -82,19 +82,19 @@ class TagsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['last_tagged_uri'] = $data->lastTaggedUri;
         }
         if (array_key_exists('droplets', get_object_vars($data)) && null !== ($data->droplets ?? null)) {
-            $dataArray['droplets'] = $data->droplets === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplets, 'json', $context));
+            $dataArray['droplets'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->droplets, 'json', $context));
         }
         if (array_key_exists('imgages', get_object_vars($data)) && null !== ($data->imgages ?? null)) {
-            $dataArray['imgages'] = $data->imgages === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->imgages, 'json', $context));
+            $dataArray['imgages'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->imgages, 'json', $context));
         }
         if (array_key_exists('volumes', get_object_vars($data)) && null !== ($data->volumes ?? null)) {
-            $dataArray['volumes'] = $data->volumes === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->volumes, 'json', $context));
+            $dataArray['volumes'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->volumes, 'json', $context));
         }
         if (array_key_exists('volumeSnapshots', get_object_vars($data)) && null !== ($data->volumeSnapshots ?? null)) {
-            $dataArray['volume_snapshots'] = $data->volumeSnapshots === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->volumeSnapshots, 'json', $context));
+            $dataArray['volume_snapshots'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->volumeSnapshots, 'json', $context));
         }
         if (array_key_exists('databases', get_object_vars($data)) && null !== ($data->databases ?? null)) {
-            $dataArray['databases'] = $data->databases === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->databases, 'json', $context));
+            $dataArray['databases'] = new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->databases, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -51,7 +51,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $object->dateOrNull = $date_1->setTime(0, 0, 0);
         }
-        elseif (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] === null) {
+        elseif (\array_key_exists('dateOrNull', $data)) {
             $object->dateOrNull = null;
         }
         if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
@@ -73,7 +73,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $object->dateOrNullOrInt = $value;
         }
-        elseif (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] === null) {
+        elseif (\array_key_exists('dateOrNullOrInt', $data)) {
             $object->dateOrNullOrInt = null;
         }
         return $object;

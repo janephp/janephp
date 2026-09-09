@@ -40,7 +40,7 @@ class StatusOfSearchIndexStateNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->id = $data['id'];
         }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        elseif (\array_key_exists('id', $data)) {
             $object->id = null;
         }
         if (\array_key_exists('state', $data)) {

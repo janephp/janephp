@@ -77,7 +77,7 @@ class NotificationEventsResponseNormalizer implements DenormalizerInterface, Nor
             $dataArray['data'] = $values;
         }
         if (array_key_exists('paging', get_object_vars($data)) && null !== ($data->paging ?? null)) {
-            $dataArray['paging'] = $data->paging === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->paging, 'json', $context));
+            $dataArray['paging'] = new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->paging, 'json', $context));
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

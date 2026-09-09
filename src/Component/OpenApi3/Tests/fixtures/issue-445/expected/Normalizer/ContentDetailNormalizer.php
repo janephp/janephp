@@ -47,7 +47,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->layerSchemaIds = $values;
         }
-        elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
+        elseif (\array_key_exists('layerSchemaIds', $data)) {
             $object->layerSchemaIds = null;
         }
         if (\array_key_exists('brokenReferenceIds', $data) && $data['brokenReferenceIds'] !== null) {
@@ -57,7 +57,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->brokenReferenceIds = $values_1;
         }
-        elseif (\array_key_exists('brokenReferenceIds', $data) && $data['brokenReferenceIds'] === null) {
+        elseif (\array_key_exists('brokenReferenceIds', $data)) {
             $object->brokenReferenceIds = null;
         }
         if (\array_key_exists('brokenIndirectReferenceIds', $data) && $data['brokenIndirectReferenceIds'] !== null) {
@@ -67,7 +67,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->brokenIndirectReferenceIds = $values_2;
         }
-        elseif (\array_key_exists('brokenIndirectReferenceIds', $data) && $data['brokenIndirectReferenceIds'] === null) {
+        elseif (\array_key_exists('brokenIndirectReferenceIds', $data)) {
             $object->brokenIndirectReferenceIds = null;
         }
         if (\array_key_exists('brokenRelationTargetIds', $data) && $data['brokenRelationTargetIds'] !== null) {
@@ -77,7 +77,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->brokenRelationTargetIds = $values_3;
         }
-        elseif (\array_key_exists('brokenRelationTargetIds', $data) && $data['brokenRelationTargetIds'] === null) {
+        elseif (\array_key_exists('brokenRelationTargetIds', $data)) {
             $object->brokenRelationTargetIds = null;
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
@@ -87,7 +87,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->content = $values_4;
         }
-        elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+        elseif (\array_key_exists('content', $data)) {
             $object->content = null;
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
@@ -97,7 +97,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->metadata = $values_5;
         }
-        elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
+        elseif (\array_key_exists('metadata', $data)) {
             $object->metadata = null;
         }
         if (\array_key_exists('id', $data)) {
@@ -110,7 +110,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->contentPermissionSetIds = $values_6;
         }
-        elseif (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] === null) {
+        elseif (\array_key_exists('contentPermissionSetIds', $data)) {
             $object->contentPermissionSetIds = null;
         }
         if (\array_key_exists('outputs', $data) && $data['outputs'] !== null) {
@@ -120,7 +120,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->outputs = $values_7;
         }
-        elseif (\array_key_exists('outputs', $data) && $data['outputs'] === null) {
+        elseif (\array_key_exists('outputs', $data)) {
             $object->outputs = null;
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
@@ -130,7 +130,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->audit = $value_8;
         }
-        elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
+        elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
         if (\array_key_exists('ownerTokenId', $data)) {
@@ -143,7 +143,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->owner = $value_9;
         }
-        elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
+        elseif (\array_key_exists('owner', $data)) {
             $object->owner = null;
         }
         if (\array_key_exists('contentType', $data)) {
@@ -164,7 +164,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->displayValues = $value_11;
         }
-        elseif (\array_key_exists('displayValues', $data) && $data['displayValues'] === null) {
+        elseif (\array_key_exists('displayValues', $data)) {
             $object->displayValues = null;
         }
         if (\array_key_exists('lifeCycle', $data)) {
@@ -181,7 +181,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->contentRights = $values_9;
         }
-        elseif (\array_key_exists('contentRights', $data) && $data['contentRights'] === null) {
+        elseif (\array_key_exists('contentRights', $data)) {
             $object->contentRights = null;
         }
         if (\array_key_exists('activity', $data) && $data['activity'] !== null) {
@@ -191,7 +191,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->activity = $value_15;
         }
-        elseif (\array_key_exists('activity', $data) && $data['activity'] === null) {
+        elseif (\array_key_exists('activity', $data)) {
             $object->activity = null;
         }
         return $object;
@@ -260,7 +260,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_8 = $data->audit;
             if (is_object($data->audit)) {
-                $value_8 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $value_8 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_8;
         }
@@ -268,7 +268,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         if (array_key_exists('owner', get_object_vars($data)) && null !== ($data->owner ?? null)) {
             $value_9 = $data->owner;
             if (is_object($data->owner)) {
-                $value_9 = $data->owner === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->owner, 'json', $context));
+                $value_9 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->owner, 'json', $context));
             }
             $dataArray['owner'] = $value_9;
         }
@@ -303,7 +303,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         if (array_key_exists('activity', get_object_vars($data)) && null !== ($data->activity ?? null)) {
             $value_15 = $data->activity;
             if (is_object($data->activity)) {
-                $value_15 = $data->activity === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->activity, 'json', $context));
+                $value_15 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->activity, 'json', $context));
             }
             $dataArray['activity'] = $value_15;
         }

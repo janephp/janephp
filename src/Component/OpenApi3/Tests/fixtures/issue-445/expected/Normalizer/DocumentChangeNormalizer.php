@@ -40,13 +40,13 @@ class DocumentChangeNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('documentName', $data) && $data['documentName'] !== null) {
             $object->documentName = $data['documentName'];
         }
-        elseif (\array_key_exists('documentName', $data) && $data['documentName'] === null) {
+        elseif (\array_key_exists('documentName', $data)) {
             $object->documentName = null;
         }
         if (\array_key_exists('documentId', $data) && $data['documentId'] !== null) {
             $object->documentId = $data['documentId'];
         }
-        elseif (\array_key_exists('documentId', $data) && $data['documentId'] === null) {
+        elseif (\array_key_exists('documentId', $data)) {
             $object->documentId = null;
         }
         if (\array_key_exists('version', $data)) {
@@ -55,7 +55,7 @@ class DocumentChangeNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('action', $data) && $data['action'] !== null) {
             $object->action = $data['action'];
         }
-        elseif (\array_key_exists('action', $data) && $data['action'] === null) {
+        elseif (\array_key_exists('action', $data)) {
             $object->action = null;
         }
         if (\array_key_exists('timeStamp', $data)) {

@@ -45,7 +45,7 @@ class BusinessProcessStateNotHitExceptionNormalizer implements DenormalizerInter
             $object->traceId = $data['traceId'];
             unset($data['traceId']);
         }
-        elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
+        elseif (\array_key_exists('traceId', $data)) {
             $object->traceId = null;
             unset($data['traceId']);
         }
@@ -53,7 +53,7 @@ class BusinessProcessStateNotHitExceptionNormalizer implements DenormalizerInter
             $object->traceJobId = $data['traceJobId'];
             unset($data['traceJobId']);
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
             unset($data['traceJobId']);
         }
@@ -65,7 +65,7 @@ class BusinessProcessStateNotHitExceptionNormalizer implements DenormalizerInter
             $object->exceptionMessage = $data['exceptionMessage'];
             unset($data['exceptionMessage']);
         }
-        elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
+        elseif (\array_key_exists('exceptionMessage', $data)) {
             $object->exceptionMessage = null;
             unset($data['exceptionMessage']);
         }
@@ -77,7 +77,7 @@ class BusinessProcessStateNotHitExceptionNormalizer implements DenormalizerInter
             $object->customerId = $data['customerId'];
             unset($data['customerId']);
         }
-        elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
+        elseif (\array_key_exists('customerId', $data)) {
             $object->customerId = null;
             unset($data['customerId']);
         }
@@ -85,7 +85,7 @@ class BusinessProcessStateNotHitExceptionNormalizer implements DenormalizerInter
             $object->customerAlias = $data['customerAlias'];
             unset($data['customerAlias']);
         }
-        elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
+        elseif (\array_key_exists('customerAlias', $data)) {
             $object->customerAlias = null;
             unset($data['customerAlias']);
         }
@@ -93,7 +93,7 @@ class BusinessProcessStateNotHitExceptionNormalizer implements DenormalizerInter
             $object->userId = $data['userId'];
             unset($data['userId']);
         }
-        elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
+        elseif (\array_key_exists('userId', $data)) {
             $object->userId = null;
             unset($data['userId']);
         }
@@ -101,7 +101,7 @@ class BusinessProcessStateNotHitExceptionNormalizer implements DenormalizerInter
             $object->businessProcessId = $data['businessProcessId'];
             unset($data['businessProcessId']);
         }
-        elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
+        elseif (\array_key_exists('businessProcessId', $data)) {
             $object->businessProcessId = null;
             unset($data['businessProcessId']);
         }
@@ -113,7 +113,7 @@ class BusinessProcessStateNotHitExceptionNormalizer implements DenormalizerInter
             $object->expected = $values;
             unset($data['expected']);
         }
-        elseif (\array_key_exists('expected', $data) && $data['expected'] === null) {
+        elseif (\array_key_exists('expected', $data)) {
             $object->expected = null;
             unset($data['expected']);
         }
@@ -121,7 +121,7 @@ class BusinessProcessStateNotHitExceptionNormalizer implements DenormalizerInter
             $object->actual = $data['actual'];
             unset($data['actual']);
         }
-        elseif (\array_key_exists('actual', $data) && $data['actual'] === null) {
+        elseif (\array_key_exists('actual', $data)) {
             $object->actual = null;
             unset($data['actual']);
         }

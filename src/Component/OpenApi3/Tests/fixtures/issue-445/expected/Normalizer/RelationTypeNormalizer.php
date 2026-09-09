@@ -51,7 +51,7 @@ class RelationTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->names = $value;
         }
-        elseif (\array_key_exists('names', $data) && $data['names'] === null) {
+        elseif (\array_key_exists('names', $data)) {
             $object->names = null;
         }
         if (\array_key_exists('targetDocType', $data)) {
@@ -64,7 +64,7 @@ class RelationTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->filter = $value_2;
         }
-        elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
+        elseif (\array_key_exists('filter', $data)) {
             $object->filter = null;
         }
         return $object;
@@ -88,7 +88,7 @@ class RelationTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (array_key_exists('filter', get_object_vars($data)) && null !== ($data->filter ?? null)) {
             $value_2 = $data->filter;
             if (is_object($data->filter)) {
-                $value_2 = $data->filter === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
+                $value_2 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->filter, 'json', $context));
             }
             $dataArray['filter'] = $value_2;
         }

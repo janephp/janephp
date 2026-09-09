@@ -155,10 +155,10 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['Status'] = $data->status;
         }
         if (array_key_exists('hostConfig', get_object_vars($data)) && null !== ($data->hostConfig ?? null)) {
-            $dataArray['HostConfig'] = $data->hostConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig, 'json', $context));
+            $dataArray['HostConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->hostConfig, 'json', $context));
         }
         if (array_key_exists('networkSettings', get_object_vars($data)) && null !== ($data->networkSettings ?? null)) {
-            $dataArray['NetworkSettings'] = $data->networkSettings === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkSettings, 'json', $context));
+            $dataArray['NetworkSettings'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->networkSettings, 'json', $context));
         }
         if (array_key_exists('mounts', get_object_vars($data)) && null !== ($data->mounts ?? null)) {
             $values_3 = [];

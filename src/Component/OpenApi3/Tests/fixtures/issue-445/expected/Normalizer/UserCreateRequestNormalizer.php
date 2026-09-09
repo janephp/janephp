@@ -40,13 +40,13 @@ class UserCreateRequestNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
             $object->firstName = $data['firstName'];
         }
-        elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
+        elseif (\array_key_exists('firstName', $data)) {
             $object->firstName = null;
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
             $object->lastName = $data['lastName'];
         }
-        elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
+        elseif (\array_key_exists('lastName', $data)) {
             $object->lastName = null;
         }
         if (\array_key_exists('emailAddress', $data)) {
@@ -55,7 +55,7 @@ class UserCreateRequestNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
             $object->languageCode = $data['languageCode'];
         }
-        elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
+        elseif (\array_key_exists('languageCode', $data)) {
             $object->languageCode = null;
         }
         if (\array_key_exists('userRoleIds', $data) && $data['userRoleIds'] !== null) {
@@ -65,7 +65,7 @@ class UserCreateRequestNormalizer implements DenormalizerInterface, NormalizerIn
             }
             $object->userRoleIds = $values;
         }
-        elseif (\array_key_exists('userRoleIds', $data) && $data['userRoleIds'] === null) {
+        elseif (\array_key_exists('userRoleIds', $data)) {
             $object->userRoleIds = null;
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
@@ -75,7 +75,7 @@ class UserCreateRequestNormalizer implements DenormalizerInterface, NormalizerIn
             }
             $object->address = $value_1;
         }
-        elseif (\array_key_exists('address', $data) && $data['address'] === null) {
+        elseif (\array_key_exists('address', $data)) {
             $object->address = null;
         }
         return $object;
@@ -103,7 +103,7 @@ class UserCreateRequestNormalizer implements DenormalizerInterface, NormalizerIn
         if (array_key_exists('address', get_object_vars($data)) && null !== ($data->address ?? null)) {
             $value_1 = $data->address;
             if (is_object($data->address)) {
-                $value_1 = $data->address === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
+                $value_1 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->address, 'json', $context));
             }
             $dataArray['address'] = $value_1;
         }

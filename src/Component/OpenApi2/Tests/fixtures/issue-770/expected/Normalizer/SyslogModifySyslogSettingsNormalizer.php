@@ -109,10 +109,10 @@ class SyslogModifySyslogSettingsNormalizer implements DenormalizerInterface, Nor
             $dataArray['forwardUEEventsMsgFormatType'] = $data->forwardUEEventsMsgFormatType;
         }
         if (array_key_exists('primaryServer', get_object_vars($data)) && null !== ($data->primaryServer ?? null)) {
-            $dataArray['primaryServer'] = $data->primaryServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primaryServer, 'json', $context));
+            $dataArray['primaryServer'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->primaryServer, 'json', $context));
         }
         if (array_key_exists('secondaryServer', get_object_vars($data)) && null !== ($data->secondaryServer ?? null)) {
-            $dataArray['secondaryServer'] = $data->secondaryServer === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryServer, 'json', $context));
+            $dataArray['secondaryServer'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->secondaryServer, 'json', $context));
         }
         if (array_key_exists('eventFilter', get_object_vars($data)) && null !== ($data->eventFilter ?? null)) {
             $dataArray['eventFilter'] = $data->eventFilter;
@@ -121,7 +121,7 @@ class SyslogModifySyslogSettingsNormalizer implements DenormalizerInterface, Nor
             $dataArray['eventFilterSeverity'] = $data->eventFilterSeverity;
         }
         if (array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
-            $dataArray['priority'] = $data->priority === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->priority, 'json', $context));
+            $dataArray['priority'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->priority, 'json', $context));
         }
         return $dataArray;
     }

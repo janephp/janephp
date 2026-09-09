@@ -40,7 +40,7 @@ class OutputFormatRenderPreviewRequestNormalizer implements DenormalizerInterfac
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
             $object->contentId = $data['contentId'];
         }
-        elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
+        elseif (\array_key_exists('contentId', $data)) {
             $object->contentId = null;
         }
         if (\array_key_exists('outputFormat', $data) && $data['outputFormat'] !== null) {
@@ -50,7 +50,7 @@ class OutputFormatRenderPreviewRequestNormalizer implements DenormalizerInterfac
             }
             $object->outputFormat = $value;
         }
-        elseif (\array_key_exists('outputFormat', $data) && $data['outputFormat'] === null) {
+        elseif (\array_key_exists('outputFormat', $data)) {
             $object->outputFormat = null;
         }
         return $object;
@@ -64,7 +64,7 @@ class OutputFormatRenderPreviewRequestNormalizer implements DenormalizerInterfac
         if (array_key_exists('outputFormat', get_object_vars($data)) && null !== ($data->outputFormat ?? null)) {
             $value = $data->outputFormat;
             if (is_object($data->outputFormat)) {
-                $value = $data->outputFormat === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->outputFormat, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->outputFormat, 'json', $context));
             }
             $dataArray['outputFormat'] = $value;
         }

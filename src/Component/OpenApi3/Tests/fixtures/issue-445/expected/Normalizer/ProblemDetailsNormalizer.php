@@ -40,31 +40,31 @@ class ProblemDetailsNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->type = $data['type'];
         }
-        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+        elseif (\array_key_exists('type', $data)) {
             $object->type = null;
         }
         if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->title = $data['title'];
         }
-        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
+        elseif (\array_key_exists('title', $data)) {
             $object->title = null;
         }
         if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->status = $data['status'];
         }
-        elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+        elseif (\array_key_exists('status', $data)) {
             $object->status = null;
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
             $object->detail = $data['detail'];
         }
-        elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
+        elseif (\array_key_exists('detail', $data)) {
             $object->detail = null;
         }
         if (\array_key_exists('instance', $data) && $data['instance'] !== null) {
             $object->instance = $data['instance'];
         }
-        elseif (\array_key_exists('instance', $data) && $data['instance'] === null) {
+        elseif (\array_key_exists('instance', $data)) {
             $object->instance = null;
         }
         if (\array_key_exists('extensions', $data) && $data['extensions'] !== null) {
@@ -74,7 +74,7 @@ class ProblemDetailsNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->extensions = $values;
         }
-        elseif (\array_key_exists('extensions', $data) && $data['extensions'] === null) {
+        elseif (\array_key_exists('extensions', $data)) {
             $object->extensions = null;
         }
         return $object;

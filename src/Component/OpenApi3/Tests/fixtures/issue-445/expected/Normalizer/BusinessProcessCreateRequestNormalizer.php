@@ -50,7 +50,7 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
             }
             $object->notification = $value;
         }
-        elseif (\array_key_exists('notification', $data) && $data['notification'] === null) {
+        elseif (\array_key_exists('notification', $data)) {
             $object->notification = null;
         }
         if (\array_key_exists('initialState', $data)) {
@@ -65,7 +65,7 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
         if (array_key_exists('notification', get_object_vars($data)) && null !== ($data->notification ?? null)) {
             $value = $data->notification;
             if (is_object($data->notification)) {
-                $value = $data->notification === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->notification, 'json', $context));
+                $value = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->notification, 'json', $context));
             }
             $dataArray['notification'] = $value;
         }

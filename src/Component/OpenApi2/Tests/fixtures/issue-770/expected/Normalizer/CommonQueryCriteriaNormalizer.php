@@ -101,10 +101,10 @@ class CommonQueryCriteriaNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['options'] = $data->options;
         }
         if (array_key_exists('extraTimeRange', get_object_vars($data)) && null !== ($data->extraTimeRange ?? null)) {
-            $dataArray['extraTimeRange'] = $data->extraTimeRange === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extraTimeRange, 'json', $context));
+            $dataArray['extraTimeRange'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->extraTimeRange, 'json', $context));
         }
         if (array_key_exists('fullTextSearch', get_object_vars($data)) && null !== ($data->fullTextSearch ?? null)) {
-            $dataArray['fullTextSearch'] = $data->fullTextSearch === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->fullTextSearch, 'json', $context));
+            $dataArray['fullTextSearch'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->fullTextSearch, 'json', $context));
         }
         if (array_key_exists('attributes', get_object_vars($data)) && null !== ($data->attributes ?? null)) {
             $values = [];
@@ -114,7 +114,7 @@ class CommonQueryCriteriaNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['attributes'] = $values;
         }
         if (array_key_exists('sortInfo', get_object_vars($data)) && null !== ($data->sortInfo ?? null)) {
-            $dataArray['sortInfo'] = $data->sortInfo === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->sortInfo, 'json', $context));
+            $dataArray['sortInfo'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->sortInfo, 'json', $context));
         }
         if (array_key_exists('page', get_object_vars($data)) && null !== ($data->page ?? null)) {
             $dataArray['page'] = $data->page;

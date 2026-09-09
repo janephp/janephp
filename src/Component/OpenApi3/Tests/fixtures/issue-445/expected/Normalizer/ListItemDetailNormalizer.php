@@ -50,7 +50,7 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->content = $values;
         }
-        elseif (\array_key_exists('content', $data) && $data['content'] === null) {
+        elseif (\array_key_exists('content', $data)) {
             $object->content = null;
         }
         if (\array_key_exists('displayValues', $data) && $data['displayValues'] !== null) {
@@ -64,7 +64,7 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->displayValues = $value_1;
         }
-        elseif (\array_key_exists('displayValues', $data) && $data['displayValues'] === null) {
+        elseif (\array_key_exists('displayValues', $data)) {
             $object->displayValues = null;
         }
         if (\array_key_exists('brokenReferenceIds', $data) && $data['brokenReferenceIds'] !== null) {
@@ -74,7 +74,7 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->brokenReferenceIds = $values_2;
         }
-        elseif (\array_key_exists('brokenReferenceIds', $data) && $data['brokenReferenceIds'] === null) {
+        elseif (\array_key_exists('brokenReferenceIds', $data)) {
             $object->brokenReferenceIds = null;
         }
         if (\array_key_exists('brokenRelationTargetIds', $data) && $data['brokenRelationTargetIds'] !== null) {
@@ -84,7 +84,7 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->brokenRelationTargetIds = $values_3;
         }
-        elseif (\array_key_exists('brokenRelationTargetIds', $data) && $data['brokenRelationTargetIds'] === null) {
+        elseif (\array_key_exists('brokenRelationTargetIds', $data)) {
             $object->brokenRelationTargetIds = null;
         }
         if (\array_key_exists('brokenIndirectReferenceIds', $data) && $data['brokenIndirectReferenceIds'] !== null) {
@@ -94,7 +94,7 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->brokenIndirectReferenceIds = $values_4;
         }
-        elseif (\array_key_exists('brokenIndirectReferenceIds', $data) && $data['brokenIndirectReferenceIds'] === null) {
+        elseif (\array_key_exists('brokenIndirectReferenceIds', $data)) {
             $object->brokenIndirectReferenceIds = null;
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
@@ -104,7 +104,7 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->audit = $value_6;
         }
-        elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
+        elseif (\array_key_exists('audit', $data)) {
             $object->audit = null;
         }
         if (\array_key_exists('activity', $data) && $data['activity'] !== null) {
@@ -114,7 +114,7 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $object->activity = $value_7;
         }
-        elseif (\array_key_exists('activity', $data) && $data['activity'] === null) {
+        elseif (\array_key_exists('activity', $data)) {
             $object->activity = null;
         }
         return $object;
@@ -166,14 +166,14 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('audit', get_object_vars($data)) && null !== ($data->audit ?? null)) {
             $value_6 = $data->audit;
             if (is_object($data->audit)) {
-                $value_6 = $data->audit === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
+                $value_6 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->audit, 'json', $context));
             }
             $dataArray['audit'] = $value_6;
         }
         if (array_key_exists('activity', get_object_vars($data)) && null !== ($data->activity ?? null)) {
             $value_7 = $data->activity;
             if (is_object($data->activity)) {
-                $value_7 = $data->activity === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->activity, 'json', $context));
+                $value_7 = new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->activity, 'json', $context));
             }
             $dataArray['activity'] = $value_7;
         }

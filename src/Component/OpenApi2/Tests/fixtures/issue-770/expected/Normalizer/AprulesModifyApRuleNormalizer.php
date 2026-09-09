@@ -73,16 +73,16 @@ class AprulesModifyApRuleNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['provisionTag'] = $data->provisionTag;
         }
         if (array_key_exists('mobilityZone', get_object_vars($data)) && null !== ($data->mobilityZone ?? null)) {
-            $dataArray['mobilityZone'] = $data->mobilityZone === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->mobilityZone, 'json', $context));
+            $dataArray['mobilityZone'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->mobilityZone, 'json', $context));
         }
         if (array_key_exists('ipAddressRange', get_object_vars($data)) && null !== ($data->ipAddressRange ?? null)) {
-            $dataArray['ipAddressRange'] = $data->ipAddressRange === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipAddressRange, 'json', $context));
+            $dataArray['ipAddressRange'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->ipAddressRange, 'json', $context));
         }
         if (array_key_exists('subnet', get_object_vars($data)) && null !== ($data->subnet ?? null)) {
-            $dataArray['subnet'] = $data->subnet === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->subnet, 'json', $context));
+            $dataArray['subnet'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->subnet, 'json', $context));
         }
         if (array_key_exists('gpsCoordinates', get_object_vars($data)) && null !== ($data->gpsCoordinates ?? null)) {
-            $dataArray['gpsCoordinates'] = $data->gpsCoordinates === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->gpsCoordinates, 'json', $context));
+            $dataArray['gpsCoordinates'] = new \Jane\Component\OpenApi3\Tests\Expected\Issue770\Runtime\JsonObject($this->normalizer->normalize($data->gpsCoordinates, 'json', $context));
         }
         return $dataArray;
     }

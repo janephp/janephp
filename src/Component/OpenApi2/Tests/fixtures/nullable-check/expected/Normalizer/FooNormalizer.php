@@ -50,7 +50,7 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (\array_key_exists('baz', $data) && $data['baz'] !== null) {
             $object->baz = $data['baz'];
         }
-        elseif (\array_key_exists('baz', $data) && $data['baz'] === null) {
+        elseif (\array_key_exists('baz', $data)) {
             $object->baz = null;
         }
         return $object;

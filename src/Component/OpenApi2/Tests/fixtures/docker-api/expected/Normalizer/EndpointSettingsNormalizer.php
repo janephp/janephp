@@ -43,7 +43,7 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('IPAMConfig', $data) && $data['IPAMConfig'] !== null) {
             $object->iPAMConfig = $this->denormalizer->denormalize($data['IPAMConfig'], \Docker\Api\Model\EndpointIPAMConfig::class, 'json', $context);
         }
-        elseif (\array_key_exists('IPAMConfig', $data) && $data['IPAMConfig'] === null) {
+        elseif (\array_key_exists('IPAMConfig', $data)) {
             $object->iPAMConfig = null;
         }
         if (\array_key_exists('Links', $data)) {
@@ -94,7 +94,7 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
             }
             $object->driverOpts = $values_2;
         }
-        elseif (\array_key_exists('DriverOpts', $data) && $data['DriverOpts'] === null) {
+        elseif (\array_key_exists('DriverOpts', $data)) {
             $object->driverOpts = null;
         }
         return $object;
@@ -103,7 +103,7 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if (array_key_exists('iPAMConfig', get_object_vars($data)) && null !== ($data->iPAMConfig ?? null)) {
-            $dataArray['IPAMConfig'] = $data->iPAMConfig === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->iPAMConfig, 'json', $context));
+            $dataArray['IPAMConfig'] = new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->iPAMConfig, 'json', $context));
         }
         if (array_key_exists('links', get_object_vars($data)) && null !== ($data->links ?? null)) {
             $values = [];

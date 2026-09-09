@@ -40,25 +40,25 @@ class LiveStreamTraceJobNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->traceJobId = $data['traceJobId'];
         }
-        elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
+        elseif (\array_key_exists('traceJobId', $data)) {
             $object->traceJobId = null;
         }
         if (\array_key_exists('ipAddress', $data) && $data['ipAddress'] !== null) {
             $object->ipAddress = $data['ipAddress'];
         }
-        elseif (\array_key_exists('ipAddress', $data) && $data['ipAddress'] === null) {
+        elseif (\array_key_exists('ipAddress', $data)) {
             $object->ipAddress = null;
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
             $object->userId = $data['userId'];
         }
-        elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
+        elseif (\array_key_exists('userId', $data)) {
             $object->userId = null;
         }
         if (\array_key_exists('apiClientId', $data) && $data['apiClientId'] !== null) {
             $object->apiClientId = $data['apiClientId'];
         }
-        elseif (\array_key_exists('apiClientId', $data) && $data['apiClientId'] === null) {
+        elseif (\array_key_exists('apiClientId', $data)) {
             $object->apiClientId = null;
         }
         return $object;
